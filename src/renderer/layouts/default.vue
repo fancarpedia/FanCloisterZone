@@ -20,8 +20,8 @@
       />
     </v-dialog>
     <v-dialog
-      content-class="settings-dialog"
       v-model="showSettings"
+      content-class="settings-dialog"
       max-width="800"
     >
       <SettingsDialog
@@ -33,16 +33,14 @@
 </template>
 
 <script>
-import fs from 'fs'
 import { webFrame, remote, shell } from 'electron'
-import { mapGetters, mapState } from 'vuex'
+import { mapState } from 'vuex'
 
 import AboutDialog from '@/components/AboutDialog'
 import JoinGameDialog from '@/components/JoinGameDialog'
 import SettingsDialog from '@/components/SettingsDialog'
 
-
-const { app, Menu, dialog } = remote
+const { Menu } = remote
 
 export default {
   components: {
@@ -60,12 +58,12 @@ export default {
   computed: {
     ...mapState({
       java: state => state.java,
-      undoAllowed: state => state.game.undo?.allowed,
+      undoAllowed: state => state.game.undo?.allowed
     }),
 
     showJoinDialog: {
       get () {
-       return this.$store.state.showJoinDialog
+        return this.$store.state.showJoinDialog
       },
 
       set (value) {
@@ -75,7 +73,7 @@ export default {
 
     showSettings: {
       get () {
-       return this.$store.state.showSettings
+        return this.$store.state.showSettings
       },
 
       set (value) {
@@ -127,7 +125,7 @@ export default {
           { id: 'save-game', label: 'Save Game', accelerator: 'CommandOrControl+S', click: this.saveGame },
           { id: 'load-game', label: 'Load Game', accelerator: 'CommandOrControl+L', click: this.loadGame },
           { type: 'separator' },
-          { id: 'settigns', label: 'Settings', accelerator: 'CommandOrControl+,', click: () => { this.showSettings = true }},
+          { id: 'settigns', label: 'Settings', accelerator: 'CommandOrControl+,', click: () => { this.showSettings = true } },
           { type: 'separator' },
           isMac ? { role: 'close' } : { role: 'quit' }
         ]
@@ -138,7 +136,10 @@ export default {
           { id: 'undo', label: 'Undo', accelerator: 'CommandOrControl+Z', click: this.undo },
           { type: 'separator' },
           { id: 'zoom-in', label: 'Zoom In', accelerator: 'numadd', click: this.zoomIn },
-          { id: 'zoom-out', label: 'Zoom Out', accelerator: 'numsub', click: this.zoomOut }
+          { id: 'zoom-out', label: 'Zoom Out', accelerator: 'numsub', click: this.zoomOut },
+          { type: 'separator' },
+          { id: 'toggle-history', label: 'Toggle history', accelerator: 'h', click: this.toggleGameHistory },
+
         ]
       }, {
         label: 'Help',
@@ -149,13 +150,12 @@ export default {
         ]
       }
     ]
-    if ( this.$store.state.settings.devMode) {
+    if (this.$store.state.settings.devMode) {
       template.push({
         label: 'Dev',
         submenu: [
           { role: 'toggleDevTools', label: 'Toggle DevTools' },
-          { label: 'Change clientId', click: this.changeClientId },
-          //{ label: 'Relaunch electron', accelerator: 'CommandOrControl+E', click: () => app.exit(250) }
+          { label: 'Change clientId', click: this.changeClientId }
         ]
       })
     }
@@ -197,6 +197,7 @@ export default {
       this.menu.getMenuItemById('undo').enabled = gameRunning && this.undoAllowed
       this.menu.getMenuItemById('zoom-in').enabled = gameRunning
       this.menu.getMenuItemById('zoom-out').enabled = gameRunning
+      this.menu.getMenuItemById('toggle-history').enabled = gameRunning
     },
 
     newGame () {
@@ -232,6 +233,10 @@ export default {
       this.$store.commit('board/changeZoom', -2)
     },
 
+    toggleGameHistory () {
+      this.$store.commit('toggleGameHistory')
+    },
+
     showRules () {
       shell.openExternal('http://wikicarpedia.com/index.php/Main_Page')
     },
@@ -245,7 +250,7 @@ export default {
     },
 
     changeClientId () {
-      const [ base, suffix = '0'] = this.$store.state.settings.clientId.split('--', 2)
+      const [base, suffix = '0'] = this.$store.state.settings.clientId.split('--', 2)
       const newId = `${base}--${~~suffix + 1}`
       this.$store.commit('settings/clientId', newId)
       console.log(`Client id changed to ${newId}`)
@@ -255,6 +260,24 @@ export default {
 </script>
 
 <style lang="sass">
+@import 'typeface-roboto/index.css'
+@import '~vuetify/src/styles/styles.sass'
+
+@import '~/assets/styles/player-colors.scss'
+@import '~/assets/styles/rotation.sass'
+
+:root
+  --aside-width: 290px
+  --aside-width-plus-gap: #{290px + $panel-gap}
+
+  @media #{map-get($display-breakpoints, 'lg-and-down')}
+    --aside-width: 250px
+    --aside-width-plus-gap: #{250px + $panel-gap}
+
+  @media #{map-get($display-breakpoints, 'md-and-down')}
+    --aside-width: 210px
+    --aside-width-plus-gap: #{210px + $panel-gap}
+
 html
   overflow-y: auto
 
@@ -265,23 +288,25 @@ body
   width: 100%
   min-height: 100vh
 
-@import '~/assets/styles/player-colors.scss'
-@import '~/assets/styles/rotation.sass'
+svg, g, use
+  &.dragon
+    fill: $dragon-color
 
-.dragon
-  fill: $dragon-color
+svg, g, use
+  &.fairy
+    fill: $fairy-color
 
-.fairy
-  fill: $fairy-color
+svg, g, use
+  &.count
+    fill: $count-color
 
-.count
-  fill: $count-color
+svg, g, use
+  &.mage
+    fill: $mage-color
 
-.mage
-  fill: $mage-color
-
-.witch
-  fill: $witch-color
+svg, g, use
+  &.witch
+    fill: $witch-color
 
 .settings-dialog
   height: 80vh

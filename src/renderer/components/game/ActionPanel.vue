@@ -14,7 +14,7 @@
         <v-progress-linear
           indeterminate
           color="white"
-        ></v-progress-linear>
+        />
       </v-alert>
     </div>
     <PointsExpression
@@ -45,11 +45,20 @@
         </template>
       </template>
     </component>
+
     <GameResultPanel
       v-else-if="phase === 'GameOverPhase'"
       v-show="!pointsExpression"
       class="game-over"
     />
+
+    <svg
+      v-if="action"
+      :class="`active-player-marker ${colorCssClass(action.player)} color-fill`"
+      width="42" height="42"
+    >
+      <polygon points="0,0 42,0 42,42" />
+    </svg>
 
     <audio
       ref="beep"
@@ -59,7 +68,8 @@
 </template>
 
 <script>
-import { mapState } from 'vuex'
+import { remote } from 'electron'
+import { mapGetters, mapState } from 'vuex'
 
 import ActionPhaseAction from '@/components/game/actions/ActionPhaseAction.vue'
 import BazaarPhaseAction from '@/components/game/actions/BazaarPhaseAction.vue'
@@ -80,6 +90,7 @@ import ShepherdPhaseAction from '@/components/game/actions/ShepherdPhaseAction.v
 import TilePhaseAction from '@/components/game/actions/TilePhaseAction.vue'
 import TowerCapturePhaseAction from '@/components/game/actions/TowerCapturePhaseAction.vue'
 
+const { BrowserWindow } = remote
 const MAPPING = {
   AbbeyPhase: TilePhaseAction,
   ChangeFerriesPhase: FerryPhaseAction,
@@ -124,14 +135,22 @@ export default {
   },
 
   computed: {
+    ...mapGetters({
+      colorCssClass: 'game/colorCssClass'
+    }),
+
     ...mapState({
       connectionState: state => state.networking.connectionStatus,
       pointsExpression: state => state.board.pointsExpression,
       beep: state => state.settings.beep
     }),
 
+    playerIndex () {
+      return this.action?.player
+    },
+
     notifyConnectionClosed () {
-      return this.connectionState === 'closed' && this.phase !== 'GameOverPhase'
+      return this.connectionState === null && this.phase !== 'GameOverPhase'
     },
 
     notifyConnectionReconnecting () {
@@ -178,6 +197,8 @@ export default {
     local (val) {
       if (val) {
         this.onPlayerActivated()
+      } else {
+        this.onPlayerDeactivated()
       }
     }
   },
@@ -187,10 +208,33 @@ export default {
     if (this.local) {
       this.onPlayerActivated()
     }
+    this._restored = () => {
+      this.clearProgress()
+    }
+    this._minimized = () => {
+      if (this.local) {
+        this.setupProgress()
+      }
+    }
+
+    const win = BrowserWindow.getAllWindows()[0]
+    win.on('restore', this._restored)
+    win.on('show', this._restored)
+    win.on('focus', this._restored)
+    win.on('minimize', this._minimized)
+    win.on('hide', this._minimized)
+    win.on('blur', this._minimized)
   },
 
   beforeDestroy () {
     window.removeEventListener('keydown', this.onKeyDown)
+    const win = BrowserWindow.getAllWindows()[0]
+    win.off('restore', this._restored)
+    win.off('show', this._restored)
+    win.off('focus', this._restored)
+    win.off('minimize', this._minimized)
+    win.off('hide', this._minimized)
+    win.off('blur', this._minimized)
   },
 
   methods: {
@@ -213,8 +257,28 @@ export default {
 
     onPlayerActivated () {
       if (this.beep) {
-        this.$refs.beep.play();
+        this.$refs.beep.play()
       }
+      const win = BrowserWindow.getAllWindows()[0]
+      if (win.isMinimized() || !win.isVisible()) {
+        this.setupProgress()
+      }
+    },
+
+    onPlayerDeactivated () {
+      this.clearProgress()
+    },
+
+    setupProgress () {
+      const win = BrowserWindow.getAllWindows()[0]
+      win.setProgressBar(1, {
+        mode: 'indeterminate'
+      })
+    },
+
+    clearProgress () {
+      const win = BrowserWindow.getAllWindows()[0]
+      win.setProgressBar(-1)
     }
   }
 }
@@ -225,7 +289,7 @@ export default {
   position: absolute
   top: 0
   left: 0px
-  width: calc(100% - #{$rside-width + $panel-gap})
+  width: calc(100% - var(--aside-width-plus-gap))
   height: $action-bar-height
   display: flex
   align-items: stretch
@@ -262,4 +326,9 @@ export default {
   .game-over
     text-align: center
     padding-top: 20px
+
+.active-player-marker
+  position: absolute
+  top: 0
+  right: 0
 </style>

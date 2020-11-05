@@ -1,10 +1,11 @@
 import fs from 'fs'
 import { extname } from 'path'
 import { remote } from 'electron'
-import compareVersions from 'compare-versions';
+import compareVersions from 'compare-versions'
+import { v4 as uuidv4 } from 'uuid'
 
 import difference from 'lodash/difference'
-import pick from 'lodash/pick';
+import pick from 'lodash/pick'
 import range from 'lodash/range'
 import zip from 'lodash/zip'
 import Vue from 'vue'
@@ -41,7 +42,7 @@ const deployedOnTower = (state, response) => {
 
 const computeClock = (playersCount, messages) => {
   const clocks = (new Array(playersCount)).fill(0)
-  let active = 0;
+  let active = 0
   let prevClock = 0
   messages.forEach(({ clock, player }) => {
     clocks[active] += clock - prevClock
@@ -57,6 +58,7 @@ const computeClock = (playersCount, messages) => {
 export const state = () => ({
   id: null,
   hash: null,
+  lastMessageId: null,
   owner: null,
   setup: null,
   slots: null,
@@ -82,19 +84,21 @@ export const state = () => ({
   gameMessages: null,
   gameAnnotations: {},
   testScenario: null,
-  testScenarioResult: null
+  testScenarioResult: null,
+  lockUi: false
 })
 
 export const mutations = {
   clear (state) {
     state.id = null
     state.hash = null
+    state.lastMessageId = null
     state.owner = null
     state.setup = null
     state.slots = null
     state.players = null
     state.clock = null
-    state.lastMessageClock = null,
+    state.lastMessageClock = null
     state.lastMessageClockLocal = null
     state.tilePack = null
     state.placedTiles = null
@@ -112,6 +116,7 @@ export const mutations = {
     state.gameAnnotations = {}
     state.testScenario = null
     state.testScenarioResult = null
+    state.lockUi = false
   },
 
   id (state, value) {
@@ -120,6 +125,10 @@ export const mutations = {
 
   hash (state, value) {
     state.hash = value
+  },
+
+  lastMessageId (state, value) {
+    state.lastMessageId = value
   },
 
   owner (state, value) {
@@ -152,7 +161,7 @@ export const mutations = {
     }
   },
 
-  updateClock (state, { player, clock, shiftLocal=0 }) {
+  updateClock (state, { player, clock, shiftLocal = 0 }) {
     if (player !== null && player !== undefined) {
       Vue.set(state.clock, player, state.clock[player] + clock - state.lastMessageClock)
     }
@@ -199,6 +208,10 @@ export const mutations = {
 
   testScenarioResult (state, value) {
     state.testScenarioResult = value
+  },
+
+  lockUi (state, value) {
+    state.lockUi = value
   }
 }
 
@@ -214,12 +227,12 @@ export const getters = {
     const fillCss = inactive ? 'color-inactive-fill' : 'color-fill'
     if (letter === 'A') {
       const { slot } = state.players[player]
-      return `color-${slot} ${fillCss} color-overlay`
+      return `color-${slot} ${fillCss} color-overlay tunnel`
     }
 
     const emptySlots = difference(range(9), state.players.map(p => p.slot))
     const slot = emptySlots[player + (letter === 'B' ? 0 : state.players.length)]
-    return `color-${slot} ${fillCss} color-overlay`
+    return `color-${slot} ${fillCss} color-overlay tunnel`
   },
 
   tileOn: state => pos => {
@@ -239,7 +252,6 @@ export const getters = {
     // what about keep followers and meepkes in same structure
     return state.players[playerIdx].meeples[meepleType][1]
   },
-
 
   canPayRansom: state => player => {
     if (state.action === null || state.action.player !== player) {
@@ -284,7 +296,7 @@ export const getters = {
 
 export const actions = {
   async save ({ state, dispatch }) {
-    return new Promise(async (resolve, reject) => {
+    return new Promise(async (resolve, reject) => { /* eslint no-async-promise-executor: 0 */
       const { dialog } = remote
       let { filePath } = await dialog.showSaveDialog({
         title: 'Save Game',
@@ -302,7 +314,7 @@ export const actions = {
           name: '',
           initialSeed: state.initialSeed,
           created: (new Date()).toISOString(),
-          clock: clock,
+          clock,
           setup: state.setup,
           players: state.players.map(p => ({
             name: p.name,
@@ -350,7 +362,7 @@ export const actions = {
       let sg, slots
       try {
         const data = await fs.promises.readFile(filePath)
-        sg = JSON.parse(data) 
+        sg = JSON.parse(data)
         if (compareVersions(SAVED_GAME_COMPATIBILITY, sg.appVersion) === 1) {
           const msg = `Saves created prior ${SAVED_GAME_COMPATIBILITY} are not supported.`
           dialog.showErrorBox('Load Error', msg)
@@ -381,7 +393,7 @@ export const actions = {
         setup: sg.setup,
         initialSeed: sg.initialSeed,
         gameAnnotations: sg.gameAnnotations || {},
-        slots: slots,
+        slots,
         replay: sg.replay,
         clock: sg.clock
       }, { root: true })
@@ -398,9 +410,14 @@ export const actions = {
     })
   },
 
-  async handleGameMessage ({ commit }, payload) {
-    commit('clear')
-    commit('id', payload.gameId)
+  async handleGameMessage ({ state, commit }, payload) {
+    if (payload.started) {
+      commit('lockUi', true)
+    }
+    if (state.id !== payload.gameId) {
+      commit('clear')
+      commit('id', payload.gameId)
+    }
     commit('setup', payload.setup)
     commit('slots', payload.slots)
     commit('initialSeed', payload.initialSeed)
@@ -437,10 +454,10 @@ export const actions = {
 
   async start () {
     const { $connection } = this._vm
-    $connection.send({ type: 'START'})
+    $connection.send({ type: 'START' })
   },
 
-  async handleStartMessage ({ state, commit, dispatch, rootState }, { clock }) {
+  async handleStartMessage ({ state, commit, dispatch, rootState }, message) {
     const players = state.slots.filter(s => s.clientId).map(s => ({ ...s }))
     players.sort((a, b) => a.order - b.order)
     players.forEach(s => {
@@ -448,9 +465,12 @@ export const actions = {
       delete s.number
       delete s.order
     })
-    commit('players', players)
+    if (state.players === null) {
+      commit('players', players)
+    } else {
+      commit('update', { players })
+    }
     commit('resetClock')
-    commit('board/resetZoom', null, { root: true })
 
     console.log(state.setup, state.gameAnnotations)
 
@@ -494,6 +514,10 @@ export const actions = {
       }
     }
 
+    if (message.id) {
+      commit('lastMessageId', message.id)
+    }
+
     if (state.gameMessages?.length) {
       commit('resetClock', computeClock(players.length, state.gameMessages))
       await engine.writeMessage(setupMessage)
@@ -502,47 +526,65 @@ export const actions = {
       }
       const lastMessage = state.gameMessages[state.gameMessages.length - 1]
       // TODO shift local
-      commit('updateClock', { player: null, clock: lastMessage.clock, shiftLocal: lastMessage.clock - clock})
+      commit('updateClock', { player: null, clock: lastMessage.clock, shiftLocal: lastMessage.clock - message.clock })
       const { response, hash } = await engine.disableBulkMode()
-      await dispatch('applyEngineResponse', { response, hash, message: lastMessage })
+      await dispatch('applyEngineResponse', { response, hash, message: lastMessage, allowAutoCommit: false })
     } else {
       commit('updateClock', { player: null, clock: 0 })
       const { response, hash } = await engine.writeMessage(setupMessage)
-      await dispatch('applyEngineResponse', { response, hash, message: null })
+      await dispatch('applyEngineResponse', { response, hash, message: null, allowAutoCommit: false })
     }
     if (state.gameMessages === null) {
       commit('gameMessages', [])
     }
+
+    commit('lockUi', false)
   },
 
   close ({ dispatch }) {
-    console.log("Game close requested")
+    console.log('Game close requested')
     const { $engine } = this._vm
     dispatch('networking/close', null, { root: true })
     $engine.kill()
   },
 
-  async apply ({ state }, message) {
+  async apply ({ state, commit }, message) {
+    if (state.lockUi) {
+      return
+    }
     const { $connection } = this._vm
-    $connection.send({
+    const id = uuidv4()
+    message = {
       ...message,
+      id,
+      parentId: state.lastMessageId,
       sourceHash: state.hash,
       player: state.action.player
-    })
+    }
+    $connection.send(message)
   },
 
-  async handleEngineMessage ({ state, commit, dispatch }, message) {
+  async handleEngineMessage ({ state, commit, dispatch, rootState }, message) {
     const engine = this._vm.$engine.get()
     const { response, hash } = await engine.writeMessage(message)
+    if (rootState.networking.sessionId !== state.players[message.player].sessionId) {
+      if (message.sourceHash && message.sourceHash !== state.hash) {
+        console.warn(`Message source ${message.sourceHash} doesn't match ${state.hash}`)
+        // const { $connection } = this._vm
+        // $connection.send({ type: 'SYNC_GAME' })
+        // return
+      }
+    }
     commit('appendMessage', message)
+    commit('lastMessageId', message.id)
     commit('updateClock', { player: state.action?.player, clock: message.clock || 0 })
-    await dispatch('applyEngineResponse', { response, hash, message })
+    await dispatch('applyEngineResponse', { response, hash, message, allowAutoCommit: true })
   },
 
-  async applyEngineResponse ({ state, commit, dispatch, rootState }, { response, hash, message }) {
+  async applyEngineResponse ({ state, commit, dispatch, rootState }, { response, hash, message, allowAutoCommit }) {
     const local = rootState.networking.sessionId === state.players[response.action?.player]?.sessionId
     let autoCommit = false
-    if (local) {
+    if (local && allowAutoCommit) {
       if (response.phase === 'CommitActionPhase') {
         let confirm = response.undo.allowed && message?.type !== 'PASS' && message?.type !== 'EXCHANGE_FOLLOWER'
         if (confirm) {

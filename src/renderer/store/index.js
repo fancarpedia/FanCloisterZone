@@ -14,7 +14,8 @@ export const state = () => ({
   gameDialog: null,
   showJoinDialog: false,
   showSettings: false,
-  java: null,  // { version, outdated, error }
+  showGameHistory: true,
+  java: null, // { version, outdated, error }
   engine: null,
   download: null
 })
@@ -44,6 +45,10 @@ export const mutations = {
     state.showSettings = value
   },
 
+  toggleGameHistory (state) {
+    state.showGameHistory = !state.showGameHistory
+  },
+
   java (state, value) {
     state.java = value
   },
@@ -58,7 +63,7 @@ export const mutations = {
 }
 
 export const getters = {
-  loaded: state => state.loaded.plugins && state.loaded.tiles,
+  loaded: state => state.loaded.plugins && state.loaded.tiles
 }
 
 export const actions = {
@@ -66,23 +71,23 @@ export const actions = {
     const { $theme } = this._vm
     await $theme.loadPlugins()
     if (!$theme.installedArtworks.find(({ id }) => id === 'classic')) {
-      console.log("Classic artwork does not exist. Downloading")
+      console.log('Classic artwork does not exist. Downloading.')
       const link = 'https://jcloisterzone.com/artworks/classic.zip'
       commit('download', { name: 'classic.zip', description: 'Downloading classic artwork', link })
       const artworksFolder = path.join(remote.app.getPath('userData'), 'artworks')
       await fs.promises.mkdir(artworksFolder, { recursive: true })
       const zipName = path.join(artworksFolder, 'classic.zip')
-      const file = fs.createWriteStream(zipName);
+      const file = fs.createWriteStream(zipName)
       await new Promise((resolve, reject) => {
-        https.get(link, function(response) {
-          response.pipe(file);
-          file.on('finish', function() {
-            file.close(resolve);
-          });
-        }).on('error', function(err) { // Handle errors
-          fs.unlink(dest); // Delete the file async. (But we don't check the result)
-          if (cb) reject(err.message);
-        });
+        https.get(link, function (response) {
+          response.pipe(file)
+          file.on('finish', function () {
+            file.close(resolve)
+          })
+        }).on('error', function (err) { // Handle errors
+          fs.unlink(zipName) // Delete the file async. (But we don't check the result)
+          reject(err.message)
+        })
       })
       console.log('classic.zip downloaded')
       await fs.createReadStream(zipName)
@@ -159,7 +164,7 @@ export const actions = {
         const value = {
           ok: false,
           path: enginePath,
-          error: 'not-found',
+          error: 'not-found'
         }
         commit('engine', value)
         reject(value)
@@ -173,13 +178,13 @@ export const actions = {
             ok: false,
             path: enginePath,
             error: 'exec-error',
-            errorMessage: "" + error
+            errorMessage: '' + error
           }
           commit('engine', value)
           reject(value)
         } else {
           const version = stdout.trim()
-          console.log("engine version " + version)
+          console.log('engine version ' + version)
           const value = {
             ok: true,
             path: enginePath,
