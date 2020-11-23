@@ -43,9 +43,9 @@
 </template>
 
 <script>
+import path from 'path'
 import { mapState } from 'vuex'
 import { remote } from 'electron'
-import path from 'path'
 
 import ActionPanel from '@/components/game/ActionPanel.vue'
 import Board from '@/components/game/Board.vue'
