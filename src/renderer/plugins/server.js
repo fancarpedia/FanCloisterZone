@@ -33,7 +33,7 @@ export class GameServer {
     this.ownerClientId = clientId
     this.wss = null
     this.clients = null
-    this.heartBeatInterval = null
+    this.heartbeatInterval = null
     this.replay = game.replay || []
     this.initialClock = game.clock || 0
     this.receivedMessageIds = new Set()
@@ -81,7 +81,7 @@ export class GameServer {
         dialog.showErrorBox(`Can't start server on port ${port}`, msg)
       })
 
-      this.heartBeatInterval = setInterval(() => {
+      this.heartbeatInterval = setInterval(() => {
         this.wss.clients.forEach(ws => {
           if (ws.isAlive === false) {
             ws.terminate()
@@ -100,7 +100,7 @@ export class GameServer {
       return new Promise(resolve => {
         this.closing = resolve
 
-        clearInterval(this.heartBeatInterval)
+        clearInterval(this.heartbeatInterval)
         this.clients.forEach(ws => {
           ws.close()
         })
@@ -278,7 +278,8 @@ export class GameServer {
     this.send(ws, {
       type: 'WELCOME',
       payload: {
-        sessionId
+        sessionId,
+        heartbeat: HEARTBEAT_INTERVAL
       }
     })
 
