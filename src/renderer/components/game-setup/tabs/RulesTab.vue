@@ -256,6 +256,28 @@
           </template>
         </RuleBox>
 
+        <RuleBox :item="Expansion.COUNT">
+          <template #icon>
+            <ExpansionSymbol :expansion="Expansion.COUNT" />
+          </template>
+          <template #rules="{ selected }">
+            <div class="rule-line">
+              Moving meeples from the City of Carcassonne before final scoring <RuleSelect :rule="Rule.COC_FINAL_SCORING" :enabled="selected" xlong />.
+            </div>
+          </template>
+        </RuleBox>
+
+        <RuleBox :item="Expansion.COUNT">
+          <template #icon>
+            <ExpansionSymbol :expansion="Expansion.COUNT" />
+          </template>
+          <template #rules="{ selected }">
+            <div class="rule-line">
+              When meeple is deployed to the City of C. then the Count is moved <RuleSelect :rule="Rule.COUNT_MOVE" :enabled="selected" long />.
+            </div>
+          </template>
+        </RuleBox>
+
         <RuleBox :item="Expansion.LABYRINTH">
           <template #icon>
             <ExpansionSymbol :expansion="Expansion.LABYRINTH" />

@@ -33,12 +33,16 @@
 </template>
 
 <script>
-import { webFrame, remote, shell } from 'electron'
-import { mapState } from 'vuex'
+import os from 'os'
+import fs from 'fs'
+import { extname } from 'path'
+import { webFrame, remote, shell, ipcRenderer } from 'electron'
+import { mapState, mapGetters } from 'vuex'
 
 import AboutDialog from '@/components/AboutDialog'
 import JoinGameDialog from '@/components/JoinGameDialog'
 import SettingsDialog from '@/components/SettingsDialog'
+import { getAppVersion } from '@/utils/version'
 
 const { Menu } = remote
 
@@ -58,7 +62,11 @@ export default {
   computed: {
     ...mapState({
       java: state => state.java,
-      undoAllowed: state => state.game.undo?.allowed
+      onlineConnected: state => state.networking.connectionType === 'online'
+    }),
+
+    ...mapGetters({
+      undoAllowed: 'game/isUndoAllowed'
     }),
 
     showJoinDialog: {
@@ -91,11 +99,21 @@ export default {
       this.updateMenu()
     },
 
+    onlineConnected () {
+      this.updateMenu()
+    },
+
     showSettings (val) {
       if (val) {
         this.$refs.settings?.clean()
       }
     }
+  },
+
+  created () {
+    ipcRenderer.on('app-update', (event, updateInfo) => {
+      this.$store.commit('updateInfo', updateInfo)
+    })
   },
 
   async mounted () {
@@ -117,6 +135,9 @@ export default {
       {
         label: 'Session',
         submenu: [
+          { id: 'playonline-connect', label: 'Play Online', accelerator: 'CommandOrControl+P', click: this.playOnline },
+          { id: 'playonline-disconnect', label: 'Disconnect', click: this.disconnect },
+          { type: 'separator' },
           { id: 'new-game', label: 'New Game', accelerator: 'CommandOrControl+N', click: this.newGame },
           { id: 'join-game', label: 'Join Game', accelerator: 'CommandOrControl+J', click: this.joinGame },
           { type: 'separator' },
@@ -138,8 +159,7 @@ export default {
           { id: 'zoom-in', label: 'Zoom In', accelerator: 'numadd', click: this.zoomIn },
           { id: 'zoom-out', label: 'Zoom Out', accelerator: 'numsub', click: this.zoomOut },
           { type: 'separator' },
-          { id: 'toggle-history', label: 'Toggle history', accelerator: 'h', click: this.toggleGameHistory },
-
+          { id: 'toggle-history', label: 'Toggle history', accelerator: 'h', click: this.toggleGameHistory }
         ]
       }, {
         label: 'Help',
@@ -155,7 +175,8 @@ export default {
         label: 'Dev',
         submenu: [
           { role: 'toggleDevTools', label: 'Toggle DevTools' },
-          { label: 'Change clientId', click: this.changeClientId }
+          { label: 'Change clientId', click: this.changeClientId },
+          { id: 'dump-server', label: 'Dump hosted game server state', click: this.dumpServer }
         ]
       })
     }
@@ -189,8 +210,10 @@ export default {
       const routeName = this.$route.name
       const gameOpen = routeName === 'game-setup' || routeName === 'open-game' || routeName === 'game'
       const gameRunning = routeName === 'game'
-      this.menu.getMenuItemById('new-game').enabled = !gameOpen
-      this.menu.getMenuItemById('join-game').enabled = !gameOpen
+      this.menu.getMenuItemById('playonline-connect').enabled = !this.onlineConnected && !gameOpen
+      this.menu.getMenuItemById('playonline-disconnect').enabled = this.onlineConnected
+      this.menu.getMenuItemById('new-game').enabled = !this.onlineConnected && !gameOpen
+      this.menu.getMenuItemById('join-game').enabled = !this.onlineConnected && !gameOpen
       this.menu.getMenuItemById('leave-game').enabled = gameOpen
       this.menu.getMenuItemById('save-game').enabled = gameRunning
       this.menu.getMenuItemById('load-game').enabled = !gameOpen
@@ -198,6 +221,19 @@ export default {
       this.menu.getMenuItemById('zoom-in').enabled = gameRunning
       this.menu.getMenuItemById('zoom-out').enabled = gameRunning
       this.menu.getMenuItemById('toggle-history').enabled = gameRunning
+
+      if (this.$store.state.settings.devMode) {
+        this.menu.getMenuItemById('dump-server').enabled = this.$server.isRunning()
+      }
+    },
+
+    playOnline () {
+      this.$store.dispatch('networking/connectPlayOnline')
+    },
+
+    disconnect () {
+      this.$store.dispatch('networking/close')
+      this.$router.push('/')
     },
 
     newGame () {
@@ -209,8 +245,17 @@ export default {
     },
 
     leaveGame () {
-      this.$store.dispatch('game/close')
-      this.$router.push('/')
+      if (this.onlineConnected) {
+        const { $connection } = this
+        const gameId = this.$store.state.game.id
+        if (gameId) {
+          $connection.send({ type: 'LEAVE_GAME', payload: { gameId } })
+        }
+        this.$router.push('/online')
+      } else {
+        this.$store.dispatch('game/close')
+        this.$router.push('/')
+      }
     },
 
     async saveGame () {
@@ -254,6 +299,36 @@ export default {
       const newId = `${base}--${~~suffix + 1}`
       this.$store.commit('settings/clientId', newId)
       console.log(`Client id changed to ${newId}`)
+    },
+
+    async dumpServer () {
+      const data = {
+        appVersion: getAppVersion(),
+        engineVersion: this.$store.state.engine?.version,
+        date: (new Date()).toISOString(),
+        os: `${os.platform()} ${os.release()}`,
+        java: this.java ? `${this.java.vendor} ${this.java.version}` : '',
+        ...this.$server.getServer().dump()
+      }
+
+      const { dialog } = remote
+      let { filePath } = await dialog.showSaveDialog({
+        title: 'Save Server Dump',
+        filters: [{ name: 'JSON files', extensions: ['json'] }],
+        properties: ['createDirectory', 'showOverwriteConfirmation']
+      })
+      if (filePath) {
+        if (extname(filePath) === '') {
+          filePath += '.json'
+        }
+        fs.writeFile(filePath, JSON.stringify(data, null, 2), err => {
+          if (err) {
+            console.error(err)
+          } else {
+            console.log(`Dump save to ${filePath}`)
+          }
+        })
+      }
     }
   }
 }
