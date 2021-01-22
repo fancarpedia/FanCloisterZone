@@ -15,6 +15,9 @@ export default {
     },
 
     pointerAsKey (ptr) {
+      if (ptr?.length === 3) {
+        return ptr.join(',')
+      }
       return `${ptr.position[0]},${ptr.position[1]},${ptr.location}`
     },
 
@@ -29,7 +32,13 @@ export default {
     getTilePoint ({ position, location }) {
       const tile = this.tileOn(position)
       const feature = this.$theme.getFeature(tile, location, this.bridges)
-      return { tile, point: feature.point, rotation: feature.rotation, transform: feature.transform }
+      return {
+        tile,
+        point: feature.point,
+        rotation: feature.rotation,
+        transform: feature.transform,
+        inverseScaleTransform: feature.inverseScaleTransform
+      }
     },
 
     transformPosition (pos) {
@@ -41,8 +50,8 @@ export default {
     },
 
     transformPoint (ptr) { // ptr is { position, location }
-      const { tile, point, rotation, transform } = this.getTilePoint(ptr)
-      return `${this.transformPosition(tile.position)} ${this.transformRotation(rotation)} ${transform || ''} translate(${point[0]} ${point[1]}) rotate(${-rotation} 0 0)`
+      const { tile, point, rotation, transform, inverseScaleTransform } = this.getTilePoint(ptr)
+      return `${this.transformPosition(tile.position)} ${this.transformRotation(rotation)} ${transform || ''} translate(${point[0]} ${point[1]}) rotate(${-rotation} 0 0) ${inverseScaleTransform || ''}`
     },
 
     transformTunnelEnd (ptr) {

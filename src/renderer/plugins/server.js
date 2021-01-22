@@ -1,17 +1,19 @@
+
 import WebSocket from 'ws'
-import { v4 as uuidv4 } from 'uuid'
 import Vue from 'vue'
 import { remote } from 'electron'
 
 import camelCase from 'lodash/camelCase'
-import compareVersions from 'compare-versions'
+import shuffle from 'lodash/shuffle'
 
 import { NETWORK_PROTOCOL_COMPATIBILITY } from '@/constants/versions'
 import { getAppVersion } from '@/utils/version'
-import { randomLong } from '@/utils/random'
+import { randomLong, randomId } from '@/utils/random'
 import { ENGINE_MESSAGES } from '@/constants/messages'
 import { CONSOLE_SERVER_COLOR } from '@/constants/logging'
 import { HEARTBEAT_INTERVAL } from '@/constants/ws'
+
+const isDev = process.env.NODE_ENV === 'development'
 
 export class GameServer {
   constructor (game, clientId, { engineVersion, appVersion }, app) {
@@ -22,7 +24,6 @@ export class GameServer {
       gameId: game.gameId,
       setup: game.setup,
       initialSeed: game.initialSeed || randomLong().toString(),
-      replay: game.replay || null,
       gameAnnotations: game.gameAnnotations || {},
       slots: game.slots,
       owner: null // owner session
@@ -32,11 +33,30 @@ export class GameServer {
     this.ownerClientId = clientId
     this.wss = null
     this.clients = null
-    this.heartBeatInterval = null
+    this.heartbeatInterval = null
     this.replay = game.replay || []
     this.initialClock = game.clock || 0
     this.receivedMessageIds = new Set()
     this.expectedParentId = null
+  }
+
+  dump () {
+    return {
+      ownerClientId: this.ownerClientId,
+      gameStatus: this.status,
+      initialClock: this.initialClock,
+      connectedClients: this.clients?.map(ws => ws.clientId),
+      receivedMessageIds: Array.from(this.receivedMessageIds),
+      expectedParentId: this.expectedParentId,
+      replay: this.replay,
+      game: {
+        gameId: this.game.gameId,
+        initialSeed: this.game.initialSeed,
+        setup: this.game.setup,
+        gameAnnotation: this.game.gameAnnotation,
+        slots: this.game.slots
+      }
+    }
   }
 
   async start (port) {
@@ -61,7 +81,7 @@ export class GameServer {
         dialog.showErrorBox(`Can't start server on port ${port}`, msg)
       })
 
-      this.heartBeatInterval = setInterval(() => {
+      this.heartbeatInterval = setInterval(() => {
         this.wss.clients.forEach(ws => {
           if (ws.isAlive === false) {
             ws.terminate()
@@ -80,7 +100,7 @@ export class GameServer {
       return new Promise(resolve => {
         this.closing = resolve
 
-        clearInterval(this.heartBeatInterval)
+        clearInterval(this.heartbeatInterval)
         this.clients.forEach(ws => {
           ws.close()
         })
@@ -105,8 +125,11 @@ export class GameServer {
 
     let helloExpected = true
     ws.on('message', async data => {
-      console.log('%c embedded server %c received ' + data, CONSOLE_SERVER_COLOR, '')
       const message = JSON.parse(data)
+      if (isDev) {
+        console.log('%c embedded server %c received message', CONSOLE_SERVER_COLOR, '')
+        console.log(message)
+      }
       const { id, type } = message
       if (this.receivedMessageIds.has(id)) {
         console.warn(`Dropping already received message ${data}"`)
@@ -167,7 +190,7 @@ export class GameServer {
           }
           this.broadcast({
             type: 'SLOT',
-            payload: slot
+            payload: { ...slot, gameId: this.game.gameId }
           })
         })
       }
@@ -192,7 +215,7 @@ export class GameServer {
 
   async send (ws, msg) {
     if (!msg.id) {
-      msg = { ...msg, id: uuidv4() }
+      msg = { ...msg, id: randomId() }
     }
     return new Promise(resolve => {
       ws.send(JSON.stringify(msg), {}, resolve)
@@ -201,7 +224,7 @@ export class GameServer {
 
   async broadcast (msg) {
     if (!msg.id) {
-      msg = { ...msg, id: uuidv4() }
+      msg = { ...msg, id: randomId() }
     }
     const data = JSON.stringify(msg)
     return Promise.all(this.clients.map(client => {
@@ -229,7 +252,7 @@ export class GameServer {
       ws.close()
       return
     }
-    if (compareVersions(NETWORK_PROTOCOL_COMPATIBILITY, payload.appVersion) === 1) {
+    if (NETWORK_PROTOCOL_COMPATIBILITY !== payload.protocolVersion) {
       await this.send(ws, { type: 'ERR', code: 'bad-version', message: `Incompatible versions. server ${this.appVersion} / client: ${payload.appVersion}` })
       ws.close()
       return
@@ -246,7 +269,7 @@ export class GameServer {
     console.log(`%c embedded server %c client ${clientId} connected`, CONSOLE_SERVER_COLOR, '')
 
     this.clients.push(ws)
-    const sessionId = uuidv4()
+    const sessionId = randomId()
     ws.sessionId = sessionId
     ws.clientId = clientId
     ws.secret = secret
@@ -255,7 +278,8 @@ export class GameServer {
     this.send(ws, {
       type: 'WELCOME',
       payload: {
-        sessionId
+        sessionId,
+        heartbeat: HEARTBEAT_INTERVAL
       }
     })
 
@@ -279,16 +303,19 @@ export class GameServer {
     assignedSlots.forEach(slot => {
       this.broadcast({
         type: 'SLOT',
-        payload: slot
+        payload: { ...slot, gameId: this.game.gameId }
       })
     })
   }
 
   createGameMessage () {
     const started = this.status === 'started'
-    let game = this.game
+    const game = {
+      ...this.game,
+      replay: this.status === 'new' ? null : this.replay
+    }
     if (started) {
-      game = { ...game, replay: this.replay, started: true }
+      game.started = true
     }
 
     const msg = {
@@ -335,7 +362,7 @@ export class GameServer {
     slot.clientId = ws.clientId
     this.broadcast({
       type: 'SLOT',
-      payload: slot
+      payload: { ...slot, gameId: this.game.gameId }
     })
   }
 
@@ -362,7 +389,7 @@ export class GameServer {
     slot.name = name
     this.broadcast({
       type: 'SLOT',
-      payload: slot
+      payload: { ...slot, gameId: this.game.gameId }
     })
   }
 
@@ -391,7 +418,7 @@ export class GameServer {
       slot.clientId = null
       this.broadcast({
         type: 'SLOT',
-        payload: slot
+        payload: { ...slot, gameId: this.game.gameId }
       })
     }
   }
@@ -406,14 +433,42 @@ export class GameServer {
       this.send(ws, { type: 'ERR', code: 'game-owner', message: 'Not a game owner' })
       return
     }
+
+    const payload = {}
+
+    if (this.game.setup.options.randomizeSeating && this.status === 'new') {
+      const slots = shuffle(this.game.slots.filter(s => s.order))
+      const seating = {}
+      slots.forEach((slot, idx) => {
+        slot.order = idx + 1
+        seating[slot.number] = slot.order
+      })
+      payload.seating = seating
+    }
+
     this.status = 'started'
     this.startedAt = Date.now() - this.initialClock
     this.broadcast({
       id: message.id,
       type: 'START',
-      payload: {},
+      payload,
       clock: this.initialClock
     })
+  }
+
+  handleGameOption (ws, message) {
+    if (this.status === 'started') {
+      this.send(ws, { type: 'ERR', code: 'illegal-game-state', message: 'Game already started' })
+      return
+    }
+
+    if (this.game.owner !== ws.sessionId) {
+      this.send(ws, { type: 'ERR', code: 'game-owner', message: 'Not a game owner' })
+      return
+    }
+
+    this.game.setup.options[message.payload.key] = message.payload.value
+    this.broadcast(message)
   }
 
   handleEngineMessage (ws, { id, type, payload, player, sourceHash }) {
@@ -443,6 +498,9 @@ export default ({ app }, inject) => {
       const { settings } = app.store.state
       const appVersion = getAppVersion()
       const engineVersion = app.store.state.engine.version
+      if (!game.gameId) {
+        game = { gameId: randomId(), ...game }
+      }
       gameServer = new GameServer(game, settings.clientId, {
         appVersion,
         engineVersion
@@ -455,6 +513,14 @@ export default ({ app }, inject) => {
         await gameServer.stop()
         gameServer = null
       }
+    },
+
+    isRunning () {
+      return gameServer !== null
+    },
+
+    getServer () {
+      return gameServer
     }
   }
 }

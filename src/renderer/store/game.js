@@ -2,10 +2,11 @@ import fs from 'fs'
 import { extname } from 'path'
 import { remote } from 'electron'
 import compareVersions from 'compare-versions'
-import { v4 as uuidv4 } from 'uuid'
+import { randomId } from '@/utils/random'
 
 import difference from 'lodash/difference'
 import pick from 'lodash/pick'
+import omit from 'lodash/omit'
 import range from 'lodash/range'
 import zip from 'lodash/zip'
 import Vue from 'vue'
@@ -137,6 +138,12 @@ export const mutations = {
 
   setup (state, value) {
     state.setup = value
+  },
+
+  options (state, options) {
+    Object.entries(options).forEach(([key, value]) => {
+      Vue.set(state.setup.options, key, value)
+    })
   },
 
   slot (state, slot) {
@@ -291,6 +298,19 @@ export const getters = {
       return state.history.flatMap(h => h.events.filter(ev => ev.type === 'castle-created'))
     }
     return []
+  },
+
+  isActionLocal (state, getters, rootState) {
+    if (!state.action) {
+      return false
+    }
+    const clientSessionId = rootState.networking.sessionId
+    const actionSessionId = state.players[state.action.player].sessionId
+    return clientSessionId === actionSessionId
+  },
+
+  isUndoAllowed: (state, getters) => {
+    return state.undo?.allowed && getters.isActionLocal
   }
 }
 
@@ -321,7 +341,11 @@ export const actions = {
             slot: p.slot,
             clientId: p.clientId
           })),
-          replay: state.gameMessages.map(m => pick(m, ['type', 'payload', 'player', 'clock']))
+          replay: state.gameMessages.map(m => {
+            m = pick(m, ['type', 'payload', 'player', 'clock'])
+            m.payload = omit(m.payload, ['gameId'])
+            return m
+          })
         }
 
         if (Object.keys(state.gameAnnotations).length) {
@@ -388,9 +412,10 @@ export const actions = {
         slots.forEach(s => { s.clientId = rootState.settings.clientId })
       }
 
+      commit('game/clear', null, { root: true })
       await dispatch('networking/startServer', {
         gameId: sg.gameId,
-        setup: sg.setup,
+        setup: { options: {}, ...sg.setup },
         initialSeed: sg.initialSeed,
         gameAnnotations: sg.gameAnnotations || {},
         slots,
@@ -421,7 +446,7 @@ export const actions = {
     commit('setup', payload.setup)
     commit('slots', payload.slots)
     commit('initialSeed', payload.initialSeed)
-    commit('gameAnnotations', payload.gameAnnotations)
+    commit('gameAnnotations', payload.gameAnnotations || {})
     commit('gameMessages', payload.replay)
     commit('owner', payload.owner)
   },
@@ -452,13 +477,27 @@ export const actions = {
     }
   },
 
-  async start () {
+  async start ({ state }) {
     const { $connection } = this._vm
-    $connection.send({ type: 'START' })
+    $connection.send({ type: 'START', payload: { gameId: state.id } })
   },
 
   async handleStartMessage ({ state, commit, dispatch, rootState }, message) {
-    const players = state.slots.filter(s => s.clientId).map(s => ({ ...s }))
+    let slots
+    if (message.payload.seating) {
+      const { seating } = message.payload
+      slots = state.slots.map(slot => {
+        if (seating[slot.number]) {
+          return { ...slot, order: seating[slot.number] }
+        }
+        return slot
+      })
+      commit('slots', slots)
+    } else {
+      slots = state.slots
+    }
+
+    const players = slots.filter(s => s.clientId).map(s => ({ ...s }))
     players.sort((a, b) => a.order - b.order)
     players.forEach(s => {
       s.slot = s.number
@@ -472,13 +511,11 @@ export const actions = {
     }
     commit('resetClock')
 
-    console.log(state.setup, state.gameAnnotations)
-
     const loggingEnabled = rootState.settings.devMode
     const engine = this._vm.$engine.spawn({ loggingEnabled })
     engine.on('error', data => {
       const { dialog } = remote
-      dialog.showErrorBox('Engine error', data)
+      dialog.showErrorBox('Engine error', data + '')
     })
 
     if (state.gameMessages?.length) {
@@ -508,6 +545,7 @@ export const actions = {
       type: 'GAME_SETUP',
       payload: {
         ...state.setup,
+        gameId: state.id,
         players: players.length,
         initialSeed: state.initialSeed,
         gameAnnotations: annotations
@@ -541,22 +579,26 @@ export const actions = {
     commit('lockUi', false)
   },
 
-  close ({ dispatch }) {
+  close ({ dispatch, commit, rootState }) {
     console.log('Game close requested')
-    const { $engine } = this._vm
-    dispatch('networking/close', null, { root: true })
-    $engine.kill()
+    commit('id', null)
+    if (rootState.networking.connectionType !== 'online') {
+      const { $engine } = this._vm
+      dispatch('networking/close', null, { root: true })
+      $engine.kill()
+    }
   },
 
-  async apply ({ state, commit }, message) {
+  async apply ({ state }, { type, payload }) {
     if (state.lockUi) {
       return
     }
     const { $connection } = this._vm
-    const id = uuidv4()
-    message = {
-      ...message,
+    const id = randomId()
+    const message = {
       id,
+      type,
+      payload: { ...payload, gameId: state.id },
       parentId: state.lastMessageId,
       sourceHash: state.hash,
       player: state.action.player
@@ -585,7 +627,8 @@ export const actions = {
     const local = rootState.networking.sessionId === state.players[response.action?.player]?.sessionId
     let autoCommit = false
     if (local && allowAutoCommit) {
-      if (response.phase === 'CommitActionPhase') {
+      const itemType = response.action.items.length ? response.action.items[0].type : null
+      if (itemType === 'Confirm') {
         let confirm = response.undo.allowed && message?.type !== 'PASS' && message?.type !== 'EXCHANGE_FOLLOWER'
         if (confirm) {
           confirm = rootState.settings['confirm.always']
@@ -599,7 +642,7 @@ export const actions = {
     }
     commit('hash', hash)
     if (autoCommit) {
-      dispatch('apply', { type: 'COMMIT', payload: {} })
+      dispatch('apply', { type: 'COMMIT', payload: { gameId: state.id } })
     } else {
       commit('update', response)
       if (state.testScenario) {
@@ -608,11 +651,13 @@ export const actions = {
     }
   },
 
-  async undo ({ state, dispatch }) {
-    if (state.undo.allowed) {
+  async undo ({ getters, dispatch }) {
+    if (getters.isUndoAllowed) {
       await dispatch('apply', {
         type: 'UNDO',
-        payload: {}
+        payload: {
+          gameId: state.id
+        }
       })
     }
   }

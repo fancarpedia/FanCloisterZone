@@ -62,13 +62,18 @@ export default {
         if (this.history[i].finalScoring) {
           continue
         }
+        if (i < this.history.length - 1 && !this.history[i].events.length) {
+          // ignore empty rows - curently only if player pass during AbbeYEndGamePhase
+          continue
+        }
         const item = { ...this.history[i] }
         let lastRowIsScore = null
         let row = null
         item.rows = []
         item.events.forEach(ev => {
           const isScore = ev.type === 'points' || ev.type === 'token-received'
-          if (isScore !== lastRowIsScore) {
+          const isTileAuctioned = ev.type === 'tile-auctioned'
+          if (isScore !== lastRowIsScore || isTileAuctioned) {
             row = { events: [], height: isScore ? 27 : 41 }
             item.rows.unshift(row)
             lastRowIsScore = isScore
@@ -106,7 +111,6 @@ export default {
   created () {
     this._finalScoringResized = height => {
       this.finalHeight = height
-      console.log(height)
     }
     this.$root.$on('final-scoring-height', this._finalScoringResized)
   },
@@ -131,7 +135,6 @@ export default {
       if (ev.clientX < 52) {
         const availableHeight = document.documentElement.clientHeight - BASE_Y
         const maxOffset = this.eventsHeight - availableHeight
-        console.log(availableHeight, this.eventsHeight, maxOffset)
         // handle wheel only on first item
         this.offset += ev.deltaY / 3
         if (this.offset < 0) {

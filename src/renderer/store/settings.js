@@ -2,23 +2,24 @@ import fs from 'fs'
 import path from 'path'
 import Vue from 'vue'
 import isEqual from 'lodash/isEqual'
-import { v4 as uuidv4 } from 'uuid'
+import { randomId } from '@/utils/random'
 
 import username from 'username'
 import { remote } from 'electron'
 import { CONSOLE_SETTINGS_COLOR } from '@/constants/logging'
 
 const RECENT_GAMES_COUNT = 14
-const RECENT_SETUPS_COUNT = 3
+const RECENT_SETUPS_COUNT = 4
 
 /* eslint quote-props: 0 */
 export const state = () => ({
-  // theme: 'light',
-  // artworks: ['classic'], //active artworks
+  userArtworks: [],
+  enabledArtworks: ['classic'],
   lastGameSetup: null,
   recentSaves: [],
   recentGameSetups: [],
   recentJoinedGames: [],
+  showValidRulesOnly: false,
   clientId: null,
   secret: null,
   port: 37447,
@@ -31,13 +32,31 @@ export const state = () => ({
   theme: 'light',
   enginePath: null, // explicit engine path
   javaPath: null, // exolicit java path
+  playOnlineUrl: 'play.jcloisterzone.com/ws',
+  'experimental.playOnline': false,
   devMode: process.env.NODE_ENV === 'development'
 })
 
+const changeCallbacks = {}
+
+let fileModifiedBySave = false
+let watcher = null
+
 export const mutations = {
   settings (state, settings) {
+    const changed = []
     Object.keys(settings).forEach(key => {
+      if (JSON.stringify(state[key]) !== JSON.stringify(settings[key])) {
+        changed.push(key)
+      }
       Vue.set(state, key, settings[key])
+    })
+
+    console.log('Changed settings: ' + changed)
+
+    changed.forEach(key => {
+      const cb = changeCallbacks[key]
+      if (cb) cb(settings[key])
     })
   },
 
@@ -65,6 +84,27 @@ export const getters = {
 }
 
 export const actions = {
+  async watchSettingsFile ({ dispatch, getters }) {
+    try {
+      watcher = fs.watch(getters.settingsFile, eventType => {
+        if (eventType === 'change' && !fileModifiedBySave) {
+          dispatch('load')
+        }
+      })
+    } catch (e) {
+      console.error(e)
+    }
+  },
+
+  async unwatchSettingsFile () {
+    watcher?.close()
+    watcher = null
+  },
+
+  registerChangeCallback (ctx, [key, cb]) {
+    changeCallbacks[key] = cb
+  },
+
   async load ({ commit, getters, dispatch }) {
     const settingsFile = getters.settingsFile
     let missingKey = false
@@ -73,15 +113,29 @@ export const actions = {
       const settings = JSON.parse(await fs.promises.readFile(settingsFile))
       if (!settings.clientId) {
         missingKey = true
-        settings.clientId = uuidv4()
+        settings.clientId = randomId()
+      }
+      // migrate old format
+      if (settings.clientId.includes('-')) {
+        missingKey = true
+        settings.clientId = settings.clientId.replaceAll('-', '')
       }
       if (!settings.secret) {
         missingKey = true
-        settings.secret = uuidv4()
+        settings.secret = randomId()
+      }
+      // migrate old format
+      if (settings.secret.includes('-')) {
+        missingKey = true
+        settings.secret = settings.secret.replaceAll('-', '')
       }
       if (!settings.nickname) {
         missingKey = true
         settings.nickname = await username()
+      }
+      if (settings.playOnlineUrl === null) {
+        missingKey = true
+        settings.playOnlineUrl = 'play.jcloisterzone.com/ws'
       }
       commit('settings', settings)
       console.log(`%c settings %c loaded ${settingsFile}`, CONSOLE_SETTINGS_COLOR, '')
@@ -89,8 +143,8 @@ export const actions = {
       // do nothong, settings doesn't exist
       missingKey = true
       commit('settings', {
-        clientId: uuidv4(),
-        secret: uuidv4(),
+        clientId: randomId(),
+        secret: randomId(),
         nickname: await username()
       })
       console.log(`%c settings %c file ${settingsFile} doesn't exist. Creating default one.`, CONSOLE_SETTINGS_COLOR, '')
@@ -110,8 +164,10 @@ export const actions = {
         delete data.devMode
       }
       data.clientId = data.clientId.split('--')[0] // for dev mode, do not store changed id
+      fileModifiedBySave = true
       await fs.promises.writeFile(settingsFile, JSON.stringify(data, null, 2))
       console.log(`%c settings %c writing ${settingsFile}`, CONSOLE_SETTINGS_COLOR, '')
+      fileModifiedBySave = false
     } catch (e) {
       console.error(e)
       // do nothong, settings doesnt exist
@@ -153,8 +209,10 @@ export const actions = {
   },
 
   async addRecentGameSetup ({ state, commit, dispatch }, setup) {
-    const recentGameSetups = state.recentGameSetups.filter(s => !isEqual(s, setup)) // if file is contained, it will be only reordered to begining
-    recentGameSetups.unshift(setup)
+    const bareSetup = { ...setup }
+    delete bareSetup.options
+    const recentGameSetups = state.recentGameSetups.filter(s => !isEqual(s, bareSetup)) // if file is contained, it will be only reordered to begining
+    recentGameSetups.unshift(bareSetup)
     recentGameSetups.splice(RECENT_SETUPS_COUNT, recentGameSetups.length)
     commit('recentGameSetups', recentGameSetups)
     dispatch('save')

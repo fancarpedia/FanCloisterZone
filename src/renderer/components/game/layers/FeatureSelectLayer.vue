@@ -17,7 +17,7 @@
         @click="ev => onSelect(ev, opt, abbotChoice)"
       />
       <path
-        v-else-if="feature.clip[0] !== '<'"
+        v-else-if="feature.clip && feature.clip[0] !== '<'"
         :d="feature.clip"
         :transform="transformRotation(feature.rotation) + ' ' + (feature.transform || '')"
         :class="{ area: true, mouseover: opt === mouseOver, mouseout: opt !== mouseOver }"
@@ -27,7 +27,7 @@
       />
       <!-- eslint-disable vue/no-v-html-->
       <g
-        v-else
+        v-else-if="feature.clip"
         :transform="transformRotation(feature.rotation) + ' ' + (feature.transform || '')"
         :class="{ area: true, mouseover: opt === mouseOver, mouseout: opt !== mouseOver }"
         @mouseenter="onMouseOver(opt)"
@@ -79,6 +79,11 @@ export default {
           feature: this.$theme.getFeature(tile, option.location, this.bridges),
           abbotChoice: null
         }
+
+        if (!opt.feature.clip) {
+          console.error(`Clipping is not defined for ${tile.id} ${option.location}`)
+        }
+
         optionsWithFeature.push(opt)
         if (option.location === 'CLOISTER') {
           cloisterOptionsWithFeature.push(opt)
@@ -113,6 +118,7 @@ export default {
           return bFarm - aFarm
         }
       })
+
       return optionsWithFeature
     }
   },

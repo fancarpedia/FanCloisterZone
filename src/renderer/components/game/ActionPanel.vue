@@ -90,12 +90,13 @@ import ShepherdPhaseAction from '@/components/game/actions/ShepherdPhaseAction.v
 import TilePhaseAction from '@/components/game/actions/TilePhaseAction.vue'
 import TowerCapturePhaseAction from '@/components/game/actions/TowerCapturePhaseAction.vue'
 
-const { BrowserWindow } = remote
 const MAPPING = {
   AbbeyPhase: TilePhaseAction,
+  AbbeyEndGamePhase: TilePhaseAction,
   ChangeFerriesPhase: FerryPhaseAction,
   CocFollowerPhase: ActionPhaseAction,
   CocScoringPhase: ActionPhaseAction,
+  CocFinalScoringPhase: ActionPhaseAction,
   PlaceFerryPhase: FerryPhaseAction,
   PhantomPhase: ActionPhaseAction,
   WagonPhase: ActionPhaseAction
@@ -136,7 +137,8 @@ export default {
 
   computed: {
     ...mapGetters({
-      colorCssClass: 'game/colorCssClass'
+      colorCssClass: 'game/colorCssClass',
+      local: 'game/isActionLocal'
     }),
 
     ...mapState({
@@ -157,21 +159,17 @@ export default {
       return this.connectionState === 'reconnecting'
     },
 
-    local () {
-      if (!this.action) {
-        return false
-      }
-      const clientSessionId = this.$store.state.networking.sessionId
-      const actionSessionId = this.$store.state.game.players[this.action.player].sessionId
-      return clientSessionId === actionSessionId
-    },
-
     actionComponent () {
+      const itemType = this.action.items.length ? this.action.items[0].type : null
+      if (itemType === 'Confirm') {
+        return CommitActionPhaseAction
+      }
+
       const component = MAPPING[this.phase]
       if (component) {
         return component
       }
-      const itemType = this.action.items.length ? this.action.items[0].type : null
+
       if (this.phase === 'CornCirclePhase') {
         if (itemType === 'CornCircleSelectDeployOrRemove') {
           return CornCircleChoice
@@ -217,7 +215,7 @@ export default {
       }
     }
 
-    const win = BrowserWindow.getAllWindows()[0]
+    const win = remote.getCurrentWindow()
     win.on('restore', this._restored)
     win.on('show', this._restored)
     win.on('focus', this._restored)
@@ -228,7 +226,7 @@ export default {
 
   beforeDestroy () {
     window.removeEventListener('keydown', this.onKeyDown)
-    const win = BrowserWindow.getAllWindows()[0]
+    const win = remote.getCurrentWindow()
     win.off('restore', this._restored)
     win.off('show', this._restored)
     win.off('focus', this._restored)
@@ -249,17 +247,19 @@ export default {
     },
 
     async pass () {
-      await this.$store.dispatch('game/apply', {
-        type: 'PASS',
-        payload: {}
-      })
+      if (this.local) {
+        await this.$store.dispatch('game/apply', {
+          type: 'PASS',
+          payload: {}
+        })
+      }
     },
 
     onPlayerActivated () {
       if (this.beep) {
         this.$refs.beep.play()
       }
-      const win = BrowserWindow.getAllWindows()[0]
+      const win = remote.getCurrentWindow()
       if (win.isMinimized() || !win.isVisible()) {
         this.setupProgress()
       }
@@ -270,14 +270,14 @@ export default {
     },
 
     setupProgress () {
-      const win = BrowserWindow.getAllWindows()[0]
+      const win = remote.getCurrentWindow()
       win.setProgressBar(1, {
         mode: 'indeterminate'
       })
     },
 
     clearProgress () {
-      const win = BrowserWindow.getAllWindows()[0]
+      const win = remote.getCurrentWindow()
       win.setProgressBar(-1)
     }
   }
@@ -323,12 +323,16 @@ export default {
     top: 7px
     transform: scale(1.1)
 
-  .game-over
-    text-align: center
-    padding-top: 20px
-
 .active-player-marker
   position: absolute
   top: 0
   right: 0
+
+@media (max-width: 1080px)
+  .action-panel > section
+    .skip-text
+      margin-left: 20px
+
+    .pass-item
+      margin-left: 20px
 </style>

@@ -59,13 +59,13 @@ export default {
           if (ev.type === 'points') {
             ev.points.forEach(p => {
               if (p.ptr) {
-                items.push(this.gameEnd && i != len-1 ? {...p, inGame: true} : p)
+                items.push(this.gameEnd && i !== len - 1 ? { ...p, inGame: true } : p)
               }
             })
           }
         })
       }
-      return groupBy(items, item => this.pointerAsKey(item.ptr))
+      return groupBy(items, item => Array.isArray(item.ptr) ? this.positionAsKey(item.ptr) : this.pointerAsKey(item.ptr))
     }
   },
 
@@ -73,6 +73,9 @@ export default {
     transformPointer (ptr) {
       if (Array.isArray(ptr)) {
         return this.transformPosition(ptr) + 'translate(500 500)'
+      }
+      if (ptr.position && !ptr.location) {
+        return this.transformPosition(ptr.position) + 'translate(500 500)'
       }
       return this.transformPoint(ptr)
     },

@@ -16,17 +16,23 @@ yarn run package
 yarn run lint
 ```
 
+## Run client against remote engine
+
+Run engine listening to socket. It will be usualy started using Java IDE.
+Add program args to run configuration
+
+```
+--socket 9000
+```
+
+Add engine's socket address to jcz-config.json
+```
+"enginePath": "localhost:9000",
+```
+
 ## Development notes
 
-### Issues with upgrade to Electron 9 / 10
-
-Issues with 9
-- after page reload, spawn jave process seems to be stucked
-look at app.allowRendererProcessReuse - which changed to true in 9
-- also page perfomance seems to be worse
-
-Issues with 10
-Vue Dev Tools are not loaded
+https://github.com/electron-userland/electron-builder/issues/1340
 
 ### How to convert Photoshop path to SVG
 

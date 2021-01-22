@@ -1,9 +1,8 @@
 import Vue from 'vue'
 import uniq from 'lodash/uniq'
 import mapKeys from 'lodash/mapKeys'
-import { v4 as uuidv4 } from 'uuid'
 
-import { isConfigValueEnabled, getDefaultElements } from '@/models/elements'
+import { GameElement, isConfigValueEnabled, getDefaultElements } from '@/models/elements'
 import { getDefaultRules } from '@/models/rules'
 
 const DEFAULT_SETS = {
@@ -112,8 +111,16 @@ export const actions = {
     if (enabledStateChanged) {
       const diff = getModifiedDefaults(before, after)
       Object.entries(diff).forEach(([id, config]) => {
-        // use commit, not dispatch - bounded meeples (eg mage/witch) are alredy reflected in rules
+        // use commit, not dispatch - bounded meeples (eg mage/witch) are already reflected in rules
         commit('elementConfig', { id, config })
+      })
+
+      GameElement.all().forEach(ge => {
+        if (ge.id in state.elements) {
+          if (!ge.isEnabled(state.sets, state.elements)) {
+            commit('elementConfig', { id: ge.id, config: false })
+          }
+        }
       })
     }
   },
@@ -133,24 +140,24 @@ export const actions = {
     commit('ruleConfig', { id, config })
   },
 
-  takeSlot ({ ctx }, { number, name }) {
+  takeSlot ({ rootState }, { number, name }) {
     this._vm.$connection.send({
       type: 'TAKE_SLOT',
-      payload: { number, name }
+      payload: { gameId: rootState.game.id, number, name }
     })
   },
 
-  renameSlot (ctx, { number, name }) {
+  renameSlot ({ rootState }, { number, name }) {
     this._vm.$connection.send({
       type: 'UPDATE_SLOT',
-      payload: { number, name }
+      payload: { gameId: rootState.game.id, number, name }
     })
   },
 
-  releaseSlot (ctx, { number }) {
+  releaseSlot ({ rootState }, { number }) {
     this._vm.$connection.send({
       type: 'LEAVE_SLOT',
-      payload: { number }
+      payload: { gameId: rootState.game.id, number }
     })
   },
 
@@ -165,12 +172,12 @@ export const actions = {
       elements: state.elements,
       rules: state.rules,
       timer: state.timer,
-      start: getters.selectedStartingTiles.value
+      start: getters.selectedStartingTiles.value,
+      options: {}
     }
 
     dispatch('settings/addRecentGameSetup', setup, { root: true })
     dispatch('networking/startServer', {
-      gameId: uuidv4(),
       setup,
       slots: getEmptySlots(),
       gameAnnotations: state.gameAnnotations

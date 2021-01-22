@@ -3,6 +3,7 @@ import path from 'path'
 import https from 'https'
 import { execFile } from 'child_process'
 import unzipper from 'unzipper'
+import sha256File from 'sha256-file'
 import { remote } from 'electron'
 
 export const state = () => ({
@@ -15,9 +16,13 @@ export const state = () => ({
   showJoinDialog: false,
   showSettings: false,
   showGameHistory: true,
+  showGameTiles: false,
+  showGameSetup: false,
   java: null, // { version, outdated, error }
   engine: null,
-  download: null
+  download: null,
+  updateInfo: null,
+  updateProgress: null
 })
 
 export const mutations = {
@@ -49,6 +54,14 @@ export const mutations = {
     state.showGameHistory = !state.showGameHistory
   },
 
+  showGameTiles (state, value) {
+    state.showGameTiles = value
+  },
+
+  showGameSetup (state, value) {
+    state.showGameSetup = value
+  },
+
   java (state, value) {
     state.java = value
   },
@@ -59,6 +72,14 @@ export const mutations = {
 
   download (state, value) {
     state.download = value
+  },
+
+  updateInfo (state, value) {
+    state.updateInfo = value
+  },
+
+  updateProgress (state, value) {
+    state.updateProgress = value
   }
 }
 
@@ -70,13 +91,21 @@ export const actions = {
   async loadPlugins ({ commit }) {
     const { $theme } = this._vm
     await $theme.loadPlugins()
-    if (!$theme.installedArtworks.find(({ id }) => id === 'classic')) {
-      console.log('Classic artwork does not exist. Downloading.')
-      const link = 'https://jcloisterzone.com/artworks/classic.zip'
+    const classicArtwork = $theme.installedArtworks.find(({ id }) => id === 'classic')
+    if (!classicArtwork || classicArtwork.outdated) {
+      console.log('Downloading classic artwork.')
+      const link = $theme.REMOTE_ARTWORKS.classic.url
       commit('download', { name: 'classic.zip', description: 'Downloading classic artwork', link })
       const artworksFolder = path.join(remote.app.getPath('userData'), 'artworks')
       await fs.promises.mkdir(artworksFolder, { recursive: true })
       const zipName = path.join(artworksFolder, 'classic.zip')
+      try {
+        if ((await fs.promises.stat(zipName)).isFile()) {
+          await fs.promises.unlink(zipName)
+        }
+      } catch {
+        // ignore
+      }
       const file = fs.createWriteStream(zipName)
       await new Promise((resolve, reject) => {
         https.get(link, function (response) {
@@ -89,13 +118,24 @@ export const actions = {
           reject(err.message)
         })
       })
-      console.log('classic.zip downloaded')
-      await fs.createReadStream(zipName)
-        .pipe(unzipper.Extract({ path: artworksFolder }))
-        .promise()
-      await fs.promises.unlink(zipName)
-      await $theme.loadPlugins() // reload
-      commit('download', null)
+      const checksum = sha256File(zipName)
+      if (checksum !== $theme.REMOTE_ARTWORKS.classic.sha256) {
+        console.log('classic.zip checksum mismatch ' + checksum)
+        commit('download', { name: 'classic.zip', description: 'Error: Downloaded file has invalid checksum', link })
+        await fs.promises.unlink(zipName)
+      } else {
+        console.log('classic.zip downloaded. sha256: ' + checksum)
+        if (classicArtwork?.outdated) {
+          console.log('Removing outdated artwork ' + classicArtwork.folder)
+          await fs.promises.rmdir(classicArtwork.folder, { recursive: true })
+        }
+        await fs.createReadStream(zipName)
+          .pipe(unzipper.Extract({ path: artworksFolder }))
+          .promise()
+        await fs.promises.unlink(zipName)
+        await $theme.loadPlugins() // reload
+        commit('download', null)
+      }
     }
     commit('pluginsLoaded')
   },
@@ -152,6 +192,19 @@ export const actions = {
     }
     return new Promise(async (resolve, reject) => {
       const { $engine } = this._vm
+      const remote = $engine.isRemote()
+
+      if (remote) {
+        const value = {
+          ok: true,
+          path: `Remote engine on ${remote.host}:${remote.port}`,
+          version: ''
+        }
+        commit('engine', value)
+        resolve(value.version)
+        return
+      }
+
       const executable = rootState.settings.javaPath || 'java'
       const args = $engine.getJavaArgs()
       args[args.length - 1] = args[args.length - 1]

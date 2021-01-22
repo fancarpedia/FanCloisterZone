@@ -29,7 +29,7 @@ class ConnectionHandler {
   }
 
   async processMessage (message) {
-    const { commit, dispatch, rootState } = this.ctx
+    const { commit, state, dispatch, rootState } = this.ctx
     const { type, payload } = message
     if (ENGINE_MESSAGES.has(type)) {
       await dispatch('game/handleEngineMessage', message, { root: true })
@@ -37,7 +37,12 @@ class ConnectionHandler {
       commit('sessionId', payload.sessionId)
       commit('connectionStatus', STATUS_CONNECTED)
       commit('reconnectAttempt', null)
+      if (state.connectionType === 'online') {
+        this.$router.push('/online')
+      }
       this.resolve()
+    } else if (type === 'GAME_LIST') {
+      commit('online/gameList', payload.games, { root: true })
     } else if (type === 'SLOT') {
       await dispatch('game/handleSlotMessage', payload, { root: true })
     } else if (type === 'START') {
@@ -63,13 +68,17 @@ class ConnectionHandler {
           }
         }
       }
+    } else if (type === 'GAME_UPDATE') {
+      await dispatch('online/gameUpdate', payload, { root: true })
+    } else if (type === 'GAME_OPTION') {
+      commit('game/options', { [payload.key]: payload.value }, { root: true })
     } else {
       console.error(payload)
       throw new Error(`Unhandled message ${type}`)
     }
   }
 
-  onClose (errCode) {
+  async onClose (errCode) {
     const { state, commit, dispatch } = this.ctx
     const reconnecting = state.connectionStatus === STATUS_RECONNECTING
     if (errCode === 1006 || reconnecting) {
@@ -84,13 +93,16 @@ class ConnectionHandler {
       } else {
         delay = 6000
       }
+      if (state.connectionType === 'online') {
+        await dispatch('online/onClose', null, { root: true })
+      }
       commit('connectionStatus', STATUS_RECONNECTING)
       commit('reconnectAttempt', attempt)
       console.log(`Connection interrupted. Next attempt (${attempt}) in ${delay}ms`)
       reconnectTimeout = setTimeout(async () => {
         reconnectTimeout = null
         try {
-          await dispatch('connect', this.host)
+          await dispatch('connect', { host: this.host })
         } catch (err) {
           if (!err.error?.errno) {
             // unexpected error
@@ -107,6 +119,7 @@ class ConnectionHandler {
 
 export const state = () => ({
   sessionId: null,
+  connectionType: null, // direct / online
   connectionStatus: null,
   reconnectAttempt: null
 })
@@ -114,6 +127,10 @@ export const state = () => ({
 export const mutations = {
   sessionId (state, sessionId) {
     state.sessionId = sessionId
+  },
+
+  connectionType (state, connectionType) {
+    state.connectionType = connectionType
   },
 
   connectionStatus (state, value) {
@@ -126,28 +143,42 @@ export const mutations = {
 }
 
 export const actions = {
-  async startServer ({ commit, dispatch }, game) {
-    const { $server } = this._vm
-    commit('game/clear', null, { root: true })
-    await $server.start(game)
-    try {
-      await dispatch('connect', 'localhost')
-    } catch (err) {
-      console.error(err)
-      const { dialog } = remote
-      dialog.showErrorBox('Engine error', err.message || err + '')
+  async startServer ({ state, commit, dispatch, rootState }, game) {
+    if (state.connectionType === 'online') {
+      const { $connection } = this._vm
+      $connection.send({
+        type: 'CREATE_GAME',
+        payload: {
+          name: 'Test game',
+          setup: game.setup,
+          slots: game.slots.length
+        }
+      })
+    } else {
+      const { $server } = this._vm
+      await $server.start(game)
+      try {
+        await dispatch('connect', { host: 'localhost', connectionType: 'direct' })
+      } catch (err) {
+        console.error(err)
+        const { dialog } = remote
+        dialog.showErrorBox('Engine error', err.message || err + '')
+      }
     }
   },
 
-  async connect (ctx, host) {
+  async connect (ctx, { host, connectionType }) {
     const { state, commit, rootState } = ctx
     if (state.connectionStatus !== STATUS_RECONNECTING) {
+      commit('connectionType', connectionType)
       commit('connectionStatus', STATUS_CONNECTING)
     }
-    commit('gameSetup/clear', null, { root: true })
     const { $connection } = this._vm
-    if (!host.match(/:\d+$/)) {
+    if (!host.match(/:\d+/)) {
       host = `${host}:${rootState.settings.port}`
+    }
+    if (!host.match(/^\w+:\/\//)) {
+      host = 'ws://' + host
     }
     return new Promise((resolve, reject) => {
       const handler = new ConnectionHandler(ctx, host, this.$router, resolve)
@@ -158,6 +189,13 @@ export const actions = {
         reject(err)
       })
     })
+  },
+
+  async connectPlayOnline ({ dispatch, rootState }) {
+    const host = rootState.settings.playOnlineUrl
+    if (host) {
+      dispatch('connect', { host, connectionType: 'online' })
+    }
   },
 
   close () {

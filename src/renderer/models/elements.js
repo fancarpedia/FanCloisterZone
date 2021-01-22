@@ -58,14 +58,14 @@ export class GameElement {
   }
 }
 
-export function isConfigValueEnabled(config) {
+export function isConfigValueEnabled (config) {
   return config !== 'off' && config !== false && config !== 0
 }
 
 export function getDefaultElements (sets) {
   const q = {}
 
-  sets = mapKeys(sets, (val, key) => key.split(":")[0]) // strip C1 / C2 suffix
+  sets = mapKeys(sets, (val, key) => key.split(':')[0]) // strip C1 / C2 suffix
   GameElement.all().forEach(c => {
     const conf = c.getDefaultConfig(sets)
     if (isConfigValueEnabled(conf)) {
@@ -149,7 +149,7 @@ export const BRIDGE = GameElement.BRIDGE = new GameElement('bridge', 'Bridges', 
   '*': 0,
   'bridges-castles-and-bazaars': 1
 })
-export const CASTLE = GameElement.CASTLE = new GameElement('castle', 'Catles', {
+export const CASTLE = GameElement.CASTLE = new GameElement('castle', 'Castles', {
   '*': 0,
   'bridges-castles-and-bazaars': 1
 })
@@ -198,6 +198,7 @@ export const CATHEDRAL = GameElement.CATHEDRAL = new GameElement('cathedral', 'C
 export const INN = GameElement.INN = new GameElement('inn', 'Inns', {
   '*': 'off',
   'river/2': false,
+  'bridges-castles-and-bazaars': false,
   'inns-and-cathedrals': true
 })
 export const PRINCESS = GameElement.PRINCESS = new GameElement('princess', 'Princess', {

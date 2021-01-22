@@ -1,30 +1,32 @@
 <template>
   <g id="tile-layer">
     <defs>
-      <template v-for="artwork in artworksWithBackground">
+      <template v-for="({ artwork, positions }) in artworksWithBackground">
         <pattern
           :id="artwork.id + '/bg'"
           :key="artwork.id + '/bg'"
           :width="artwork.background.cols * 1000"
           :height="artwork.background.rows * 1000"
-          :viewBox="`0 0 ${artwork.background.width} ${artwork.background.height}`"
+          :viewBox="`0 0 ${artwork.background.cols * artwork.tileSize} ${artwork.background.rows * artwork.tileSize}`"
           patternUnits="userSpaceOnUse"
         >
           <image :href="artwork.background.image" />
         </pattern>
 
-        <clipPath
+        <mask
           :id="artwork.id + '/placed-tiles-clip'"
           :key="artwork.id + '/placed-tiles-clip'"
         >
           <rect
-            v-for="({position: pos}) in tilesByArtwork[artwork.id]"
+            v-for="pos in positions"
             :key="'clip-' + positionAsKey(pos)"
             width="1000"
             height="1000"
+            fill="white"
             :transform="transformPosition(pos)"
+            :opacity="tilePlacementMouseOver && tilePlacementMouseOver[0] === pos ? PREVIEW_OPACITY : 1"
           />
-        </clipPath>
+        </mask>
       </template>
     </defs>
 
@@ -41,14 +43,14 @@
     </g>
 
     <rect
-      v-for="artwork in artworksWithBackground"
+      v-for="({ artwork }) in artworksWithBackground"
       :key="artwork.id + '/bg-rect'"
-      :x="1000 * bounds.x"
-      :y="1000 * bounds.y"
-      :width="1000 * bounds.width"
-      :height="1000 * bounds.height"
+      :x="1000 * (bounds.x - 1)"
+      :y="1000 * (bounds.y - 1)"
+      :width="1000 * (bounds.width + 2)"
+      :height="1000 * (bounds.height + 2)"
       :fill="`url(#${artwork.id}/bg)`"
-      :clip-path="`url(#${artwork.id}/placed-tiles-clip)`"
+      :mask="`url(#${artwork.id}/placed-tiles-clip)`"
     />
 
     <g
@@ -65,13 +67,19 @@
       </g>
     </g>
 
-    <TileImage
-      v-for="({position: pos, rotation: rot, id}) in tiles"
-      :key="positionAsKey(pos)"
-      :transform="transformPosition(pos)"
-      :tile-id="id"
-      :rotation="rot"
-    />
+    <g
+      v-for="bucket in layerBuckets"
+      :key="bucket.id"
+      :transform="bucket.transform"
+      :opacity="bucket.opacity"
+    >
+      <component
+        :is="layer.tag"
+        v-for="(layer, idx) in bucket.layers"
+        :key="idx"
+        v-bind="layer.props"
+      />
+    </g>
 
     <g
       v-for="({ position: pos, player }) in lastPlacements"
@@ -90,10 +98,13 @@
 </template>
 
 <script>
+import sortBy from 'lodash/sortBy'
 import { mapGetters, mapState } from 'vuex'
 
 import LayerMixin from '@/components/game/layers/LayerMixin'
 import TileImage from '@/components/game/TileImage'
+
+const PREVIEW_OPACITY = 0.8
 
 export default {
   components: {
@@ -102,12 +113,22 @@ export default {
 
   mixins: [LayerMixin],
 
+  data () {
+    return {
+      PREVIEW_OPACITY,
+      artworks: {},
+      artworksWithBackground: [],
+      layerBuckets: []
+    }
+  },
+
   computed: {
     ...mapState({
       tiles: state => state.game.placedTiles,
       layers: state => state.board.layers,
       playersCount: state => state.game.players.length,
-      history: state => state.game.history
+      history: state => state.game.history,
+      tilePlacementMouseOver: state => state.board.tilePlacementMouseOver
     }),
 
     ...mapGetters({
@@ -132,23 +153,79 @@ export default {
       }
       placements.reverse()
       return placements
+    }
+  },
+
+  watch: {
+    tiles (tiles) {
+      this.onTilesChange(tiles)
     },
 
-    tilesByArtwork () {
-      const res = {}
-      this.tiles.forEach(t => {
-        const { artwork } = this.$theme.getTile(t.id)
-        let tiles = res[artwork.id]
-        if (!tiles) {
-          tiles = res[artwork.id] = []
+    tilePlacementMouseOver (val) {
+      if (val) {
+        const [position, rotation] = val
+        const { tileId } = this.$store.state.board.layers.TilePlacementLayer
+        this.onTilesChange([...this.tiles, { id: tileId, position, rotation }], position)
+      } else {
+        this.onTilesChange(this.tiles)
+      }
+    }
+  },
+
+  mounted () {
+    this.onTilesChange(this.tiles)
+  },
+
+  methods: {
+    onTilesChange (tiles, previewPosition) {
+      const tileLayers = {}
+      const artworks = {}
+      for (const tile of sortBy(tiles, t => t.position[1] << 8 + t.position[0])) {
+        const { artwork, layers } = this.$theme.getTileLayers(tile.id, tile.rotation)
+        let artworkData = artworks[artwork.id]
+        if (!artworkData) {
+          artworkData = artworks[artwork.id] = {
+            artwork: this.$theme.getArtwork(artwork.id),
+            positions: []
+          }
         }
-        tiles.push(t)
-      })
-      return res
-    },
+        artworkData.positions.push(tile.position)
 
-    artworksWithBackground () {
-      return Object.keys(this.tilesByArtwork).map(id => this.$theme.getArtwork(id)).filter(artwork => artwork && artwork.background)
+        for (const layer of layers) {
+          let zval = tileLayers[layer.zindex]
+          if (!zval) {
+            zval = tileLayers[layer.zindex] = []
+          }
+          zval.push({ tile, artwork, layer })
+        }
+
+        // if (tile.position === previewPosition) {
+        //   (tileLayers[99] = []).push({ tile, artwork, layer: { tag: 'rect', props: { x: 0, y: 0, width: 900, height: 900, fill: 'gray', opacity: '0.6' } } })
+        // }
+      }
+      const zindexes = Object.keys(tileLayers).map(k => ~~k)
+      zindexes.sort((a, b) => a - b)
+      const buckets = []
+      for (const z of zindexes) {
+        let bucket = null
+        for (const { tile, artwork, layer } of tileLayers[z]) {
+          // positions can be compared as ref because equal positions must originate from same tile instance
+          if (!bucket || tile.position !== bucket.position) {
+            bucket = {
+              id: `${this.positionAsKey(tile.position)}^${z}`,
+              position: tile.position,
+              transform: `${this.transformPosition(tile.position)} ${artwork.scaleTransform}`,
+              layers: [],
+              opacity: tile.position === previewPosition ? PREVIEW_OPACITY : 1
+            }
+            buckets.push(bucket)
+          }
+          bucket.layers.push(layer)
+        }
+      }
+      this.layerBuckets = buckets
+      this.artworks = Object.values(artworks)
+      this.artworksWithBackground = this.artworks.filter(({ artwork }) => artwork.background)
     }
   }
 }
@@ -158,4 +235,7 @@ export default {
 .tiles-border
   +theme using ($theme)
     fill: map-get($theme, 'cards-bg')
+
+.board.overlay #tile-layer
+  opacity: 0.3
 </style>

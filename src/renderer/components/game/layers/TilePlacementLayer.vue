@@ -5,23 +5,8 @@
       :key="positionAsKey(pos)"
       :transform="transformPosition(pos)"
     >
-      <g
-        v-if="mouseOver === pos"
-        opacity="0.8"
-        clip-path="polygon(0 0, 1000 0, 1000 1000, 0 1000)"
-      >
-        <image
-          v-if="background"
-          :href="background.image"
-          :transform="backgroundScale"
-        />
-        <TileImage
-          :tile-id="tileId"
-          :rotation="getForcedRotation(rotations)"
-        />
-      </g>
       <rect
-        v-else
+        v-if="!mouseOver || mouseOver[0] !== pos"
         class="available-tile"
         :class="{ local }"
         :x="60" :y="60" width="880" height="880"
@@ -31,8 +16,8 @@
       <rect
         :x="0" :y="0" width="1000" height="1000"
         :style="{'pointer-events': 'all', fill: 'none'}"
-        @mouseenter="local && onMouseOver(pos)"
-        @mouseleave="local && onMouseLeave(pos)"
+        @mouseenter="local && onMouseOver(pos, getForcedRotation(rotations))"
+        @mouseleave="local && onMouseLeave()"
         @click="ev => local && onClick(ev, rotations, pos)"
       />
     </g>
@@ -40,14 +25,10 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
 import LayerMixin from '@/components/game/layers/LayerMixin'
-import TileImage from '@/components/game/TileImage'
 
 export default {
-  components: {
-    TileImage
-  },
-
   mixins: [LayerMixin],
 
   props: {
@@ -57,16 +38,17 @@ export default {
     local: { type: Boolean }
   },
 
-  data () {
-    return {
-      mouseOver: null
-    }
-  },
-
   computed: {
+    ...mapState({
+      mouseOver: state => state.board.tilePlacementMouseOver
+    }),
+
+    artwork () {
+      return this.$theme.getTileArtwork(this.tileId)
+    },
+
     background () {
-      const artwork = this.$theme.getTileArtwork(this.tileId)
-      return artwork ? artwork.background : null
+      return this.artwork?.background
     },
 
     backgroundScale () {
@@ -76,13 +58,22 @@ export default {
     }
   },
 
+  watch: {
+    rotation () {
+      if (this.mouseOver) {
+        const opt = this.options.find(({ position }) => position === this.mouseOver[0])
+        opt && this.$store.commit('board/tilePlacementMouseOver', [this.mouseOver[0], this.getForcedRotation(opt.rotations)])
+      }
+    }
+  },
+
   methods: {
-    onMouseOver (pos) {
-      this.mouseOver = pos
+    onMouseOver (position, rotation) {
+      this.$store.commit('board/tilePlacementMouseOver', [position, rotation])
     },
 
-    onMouseLeave (pos) {
-      this.mouseOver = null
+    onMouseLeave () {
+      this.$store.commit('board/tilePlacementMouseOver', null)
     },
 
     getForcedRotation (rotations) {

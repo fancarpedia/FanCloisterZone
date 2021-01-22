@@ -47,32 +47,33 @@
                 @click="() => { preferredColor = i }"
               >
                 <template v-if="preferredColor === i">x</template>
-                <template v-else>&nbsp;</template>
               </v-btn>
             </div>
           </template>
           <template v-if="section === 1">
             <h3 class="mt-2 mb-4">Game Interface</h3>
 
-            <h4>End turn confirmation</h4>
-            <em>Confirmation allows player undo performed action actions before activity is passed to a next player.
-              Enable explicit confirmation at the turn end&hellip;</em>
+            <h4>Confirmation</h4>
+            <em>
+              Confirmation allows player undo performed actions before activity is passed to a next player.
+              It happens before scoring or eg. in during opponent turn when you move wagon, etc.
+              Enable explicit confirmation&hellip;</em>
             <div class="checkboxes-wrapper">
               <v-checkbox
                 v-model="confirmAlways"
                 dense hide-details
-                label="After each turn"
+                label="always"
               />
               <v-checkbox
                 v-model="confirmField"
                 :disabled="confirmAlways"
                 dense hide-details
-                label="When meeple was deployed on a field"
+                label="only when meeple was deployed on a field"
               />
               <v-checkbox
                 :disabled="confirmAlways"
                 dense hide-details
-                label="When meeple was deployed on a tower"
+                label="only when meeple was deployed on a tower"
               />
             </div>
 
@@ -93,7 +94,6 @@
             <h4>Theme</h4>
             <v-radio-group
               v-model="theme"
-              @change="onThemeChange"
             >
               <v-radio
                 label="Light"
@@ -104,6 +104,24 @@
                 value="dark"
               />
             </v-radio-group>
+
+            <h4>Artworks</h4>
+
+            <div
+              v-for="{ json: artwork } in $theme.installedArtworks"
+              :key="artwork.id"
+              class="artwork-box"
+              :class="{ disabled: !isArtworkEnabled(artwork.id) }"
+            >
+              <div class="artwork-icon">
+                <img v-if="artwork.icon" :src="artwork.icon">
+              </div>
+              <div>
+                <h5>{{ artwork.title }}</h5>
+                <p>{{ artwork.description }}</p>
+                <p v-if="artwork.artist" class="artist">(illustrated by {{ artwork.artist }})</p>
+              </div>
+            </div>
           </template>
 
           <template v-if="section === 3">
@@ -211,16 +229,6 @@ export default {
       this.notJavaError = false
     },
 
-    onThemeChange (val) {
-      if (val === 'dark') {
-        this.$vuetify.theme.dark = true
-        remote.nativeTheme.themeSource = 'dark'
-      } else {
-        this.$vuetify.theme.dark = false
-        remote.nativeTheme.themeSource = 'light'
-      }
-    },
-
     async selectJava () {
       const { dialog } = remote
       const opts = {
@@ -255,6 +263,10 @@ export default {
       if (!this.engine && this.java?.ok) {
         this.$store.dispatch('checkEngineVersion')
       }
+    },
+
+    isArtworkEnabled (id) {
+      return this.$store.state.settings.enabledArtworks.includes(id)
     }
   }
 }
@@ -296,4 +308,38 @@ em
 .checkboxes-wrapper
   .v-input
     margin-top: 0
+
+.artwork-box
+  display: flex
+  padding: 16px
+  margin-top: 20px
+
+  +theme using ($theme)
+    background: map-get($theme, 'board-bg')
+
+  h5
+    font-size: 16px
+    margin-bottom: 10px
+
+  p
+    margin-bottom: 2px
+
+  .artwork-icon
+    width: 120px
+    height: 120px
+    margin-right: 16px
+
+    +theme using ($theme)
+      background: map-get($theme, 'cards-bg')
+
+    img
+      object-fit: cover
+      max-width: 100%
+
+  &.disabled
+    filter: grayscale(100%)
+
+    p
+      opacity: 0.75
+
 </style>

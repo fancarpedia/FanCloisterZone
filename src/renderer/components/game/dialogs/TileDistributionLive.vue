@@ -1,9 +1,10 @@
 <template>
-  <div class="tile-distribution">
+  <div class="tile-distribution-live">
     <div
-      v-for="{id, count, rotation } in tiles"
+      v-for="{id, count, remainingCount, rotation } in tiles"
       :key="id"
       class="tile"
+      :class="{noleft: remainingCount === 0}"
     >
       <StandaloneTileImage
         :tile-id="id"
@@ -11,18 +12,20 @@
         :rotation="rotation"
         @click.native="$emit('tile-click', id)"
       />
-      <div class="count">{{ count }}</div>
+      <div class="count">{{ remainingCount }} <span class="total">/ {{ count }}</span></div>
     </div>
 
-    <div v-if="sets.count" class="tile">
+    <div v-if="sets.count" class="tile noleft">
       <CountMiniboard :tile-size="77" />
-      <div class="count">1</div>
+      <div class="count">1 <span class="total">/ 1</span></div>
     </div>
   </div>
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
+import { mapGetters, mapState } from 'vuex'
+import countBy from 'lodash/countBy'
+
 import StandaloneTileImage from '@/components/game/StandaloneTileImage'
 import CountMiniboard from '@/components/game-setup/details/CountMiniboard'
 
@@ -39,6 +42,11 @@ export default {
   },
 
   computed: {
+    ...mapState({
+      placedTiles: state => state.game.placedTiles,
+      action: state => state.game.action
+    }),
+
     ...mapGetters({
       edition: 'gameSetup/getSelectedEdition',
       start: 'gameSetup/selectedStartingTiles'
@@ -69,11 +77,17 @@ export default {
       const tiles = Object.keys(counts).map(id => ({ id, ...this.$tiles.tiles[id] }))
       tiles.sort(sortByEdge)
 
+      const actionItem = this.action?.items[0]
+      const drawnId = actionItem.type === 'TilePlacement' ? actionItem.tileId : null
+      const placedTiles = countBy(this.placedTiles, 'id')
+
       return tiles.map(t => {
         const themeTile = this.$theme.getTile(t.id)
+        const count = counts[t.id]
         return {
           id: t.id,
-          count: counts[t.id],
+          remainingCount: count - (placedTiles[t.id] || 0) - (drawnId === t.id ? 1 : 0),
+          count,
           rotation: themeTile ? themeTile.rotation : 0
         }
       })
@@ -83,7 +97,7 @@ export default {
 </script>
 
 <style lang="sass" scoped>
-.tile-distribution
+.tile-distribution-live
   display: flex
   flex-wrap: wrap
   justify-content: flex-start
@@ -102,4 +116,9 @@ export default {
     font-weight: 300
     font-size: 26px
 
+    .total
+      font-size: 16px
+
+  .tile.noleft
+    filter: grayscale(100%)
 </style>

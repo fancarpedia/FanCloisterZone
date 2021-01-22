@@ -2,12 +2,16 @@
   <div class="view game-view">
     <template v-if="phase">
       <div v-if="forcedDraw" class="forced-draw">
-        Game is created in development mode.<br>
+        Game was created in development mode.<br>
         Tile draw order is predefined.
       </div>
       <TestResult v-if="testScenarioResult" :result="testScenarioResult" />
       <Board />
-      <TilePackSize :size="tilePackSize" />
+      <TilePackSize
+        :size="tilePackSize"
+        :removed-tiles-size="removedTilesSize"
+        @click.native="tilePackOpen = !tilePackOpen"
+      />
       <aside ref="aside" :class="`shrink-${shrink}`">
         <PlayerPanel
           v-for="(player, idx) in players"
@@ -39,13 +43,27 @@
         <v-progress-circular indeterminate />
       </v-row>
     </template>
+
+    <v-dialog
+      v-model="tilePackOpen"
+      max-width="800"
+    >
+      <TilePackDialog @close="tilePackOpen = false" />
+    </v-dialog>
+
+    <v-dialog
+      v-model="showGameSetup"
+      max-width="800"
+    >
+      <GameSetupDialog @close="showGameSetup = false" />
+    </v-dialog>
   </div>
 </template>
 
 <script>
+import path from 'path'
 import { mapState } from 'vuex'
 import { remote } from 'electron'
-import path from 'path'
 
 import ActionPanel from '@/components/game/ActionPanel.vue'
 import Board from '@/components/game/Board.vue'
@@ -54,17 +72,21 @@ import ChooseMonkOrAbbotDialog from '@/components/game/dialogs/ChooseMonkOrAbbot
 import PlayerPanel from '@/components/game/PlayerPanel.vue'
 import PlayEvents from '@/components/game/PlayEvents.vue'
 import TestResult from '@/components/game/TestResult.vue'
+import TilePackDialog from '@/components/game/dialogs/TilePackDialog.vue'
 import TilePackSize from '@/components/game/TilePackSize.vue'
+import GameSetupDialog from '@/components/game/dialogs/GameSetupDialog.vue'
 
 export default {
   components: {
     ActionPanel,
     Board,
-    FinalScoringEvents,
     ChooseMonkOrAbbotDialog,
+    FinalScoringEvents,
+    GameSetupDialog,
     PlayerPanel,
     PlayEvents,
     TestResult,
+    TilePackDialog,
     TilePackSize
   },
 
@@ -74,23 +96,46 @@ export default {
     }
   },
 
-  computed: mapState({
-    action: state => state.game.action,
-    activePlayerIdx: state => state.game.action?.player,
-    gameDialog: state => state.gameDialog,
-    phase: state => state.game.phase,
-    players: state => state.game.players,
-    tilePackSize: state => state.game.tilePack.size,
-    testScenarioResult: state => state.game.testScenarioResult,
-    forcedDraw: state => {
-      if (process.env.NODE_ENV === 'development') {
-        return false
+  computed: {
+    ...mapState({
+      action: state => state.game.action,
+      activePlayerIdx: state => state.game.action?.player,
+      gameDialog: state => state.gameDialog,
+      phase: state => state.game.phase,
+      players: state => state.game.players,
+      tilePackSize: state => state.game.tilePack.size,
+      removedTilesSize: state => state.game.discardedTiles.length,
+      testScenarioResult: state => state.game.testScenarioResult,
+      forcedDraw: state => {
+        if (process.env.NODE_ENV === 'development') {
+          return false
+        }
+        const { drawOrder, endTurn } = state.game.gameAnnotations
+        return !!(drawOrder || endTurn)
+      },
+      gameHash: state => state.game.hash
+    }),
+
+    tilePackOpen: {
+      get () {
+        return this.$store.state.showGameTiles
+      },
+
+      set (value) {
+        this.$store.commit('showGameTiles', value)
       }
-      const { drawOrder, endTurn } = state.game.gameAnnotations
-      return !!(drawOrder || endTurn)
     },
-    gameHash: state => state.game.hash
-  }),
+
+    showGameSetup: {
+      get () {
+        return this.$store.state.showGameSetup
+      },
+
+      set (value) {
+        this.$store.commit('showGameSetup', value)
+      }
+    }
+  },
 
   watch: {
     phase (newVal, oldVal) {
@@ -118,14 +163,20 @@ export default {
     window.addEventListener('resize', this.onRezize)
     this.checkOverflow()
     this.setPlayerIcon(this.activePlayerIdx)
+    this.gameId = this.$store.state.game.id
   },
 
   beforeDestroy () {
     this._ro?.disconnect()
     window.removeEventListener('resize', this.onRezize)
     clearTimeout(this.checkOverflowTimeout)
-    this.$store.dispatch('game/close')
     this.setPlayerIcon(null)
+    if (this.gameId === this.$store.state.game.id) {
+      // close only if not already closed (eg by Play Again button )
+      this.$store.dispatch('game/close')
+    }
+    this.$store.commit('showGameTiles', false)
+    this.$store.commit('showGameSetup', false)
   },
 
   methods: {
@@ -232,6 +283,7 @@ export default {
   right: 0
   width: var(--aside-width)
   height: $action-bar-height
+  cursor: pointer
 
   +theme using ($theme)
     background: map-get($theme, 'opaque-bg')
