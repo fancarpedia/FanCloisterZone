@@ -61,6 +61,7 @@ export const state = () => ({
   hash: null,
   lastMessageId: null,
   owner: null,
+  ai: null,
   setup: null,
   slots: null,
   players: null,
@@ -95,6 +96,7 @@ export const mutations = {
     state.hash = null
     state.lastMessageId = null
     state.owner = null
+    state.ai = null
     state.setup = null
     state.slots = null
     state.players = null
@@ -134,6 +136,10 @@ export const mutations = {
 
   owner (state, value) {
     state.owner = value
+  },
+
+  ai (state, value) {
+    state.ai = value
   },
 
   setup (state, value) {
@@ -445,6 +451,7 @@ export const actions = {
     commit('gameAnnotations', payload.gameAnnotations || {})
     commit('gameMessages', payload.replay)
     commit('owner', payload.owner)
+    commit('ai', payload.ai)
   },
 
   handleSlotMessage ({ state, commit }, payload) {

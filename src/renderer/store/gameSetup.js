@@ -147,7 +147,14 @@ export const actions = {
     })
   },
 
-  renameSlot ({ rootState }, { number, name }) {
+  aiSlot ({ rootState }, { number, name }) {
+    this._vm.$connection.send({
+      type: 'AI_SLOT',
+      payload: { gameId: rootState.game.id, number, name }
+    })
+  },
+
+  renameSlot ({ rootState }, { number, name, ai }) {
     this._vm.$connection.send({
       type: 'UPDATE_SLOT',
       payload: { gameId: rootState.game.id, number, name }

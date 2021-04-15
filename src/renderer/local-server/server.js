@@ -358,6 +358,34 @@ export default class GameServer {
     }
     slot.sessionId = ws.sessionId
     slot.clientId = ws.clientId
+    slot.ai = false
+    this.broadcast({
+      type: 'SLOT',
+      payload: { ...slot, gameId: this.game.gameId }
+    })
+  }
+
+  async handleAiSlot (ws, { payload: { number, name } }) {
+    if (this.status === 'started') {
+      this.send(ws, { type: 'ERR', code: 'illegal-game-state', message: 'Game already started' })
+      return
+    }
+
+    const slot = this.game.slots.find(s => s.number === number)
+    if (!slot) {
+      this.send(ws, { type: 'ERR', code: 'bad-slot', message: "Slot doesn't exist" })
+      return
+    }
+    if (slot.sessionId !== ws.sessionId) {
+      this.send(ws, { type: 'ERR', code: 'slot-owner', message: 'Slot is not assigned to your session' })
+      return
+    }
+    if (this.status !== 'new') {
+      this.send(ws, { type: 'ERR', code: 'slot-reaonly', message: "Can't update slot" })
+      return
+    }
+
+    slot.ai = true
     this.broadcast({
       type: 'SLOT',
       payload: { ...slot, gameId: this.game.gameId }

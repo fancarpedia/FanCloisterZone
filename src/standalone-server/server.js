@@ -11,15 +11,15 @@ const game = {
     options: {}
   },
   slots: [
-    { number: 0, clientId: null, sessionId: null, name: null },
-    { number: 1, clientId: null, sessionId: null, name: null },
-    { number: 2, clientId: null, sessionId: null, name: null },
-    { number: 3, clientId: null, sessionId: null, name: null },
-    { number: 4, clientId: null, sessionId: null, name: null },
-    { number: 5, clientId: null, sessionId: null, name: null },
-    { number: 6, clientId: null, sessionId: null, name: null },
-    { number: 7, clientId: null, sessionId: null, name: null },
-    { number: 8, clientId: null, sessionId: null, name: null }
+    { number: 0, clientId: null, sessionId: null, name: null, ai: false },
+    { number: 1, clientId: null, sessionId: null, name: null, ai: false },
+    { number: 2, clientId: null, sessionId: null, name: null, ai: false },
+    { number: 3, clientId: null, sessionId: null, name: null, ai: false },
+    { number: 4, clientId: null, sessionId: null, name: null, ai: false },
+    { number: 5, clientId: null, sessionId: null, name: null, ai: false },
+    { number: 6, clientId: null, sessionId: null, name: null, ai: false },
+    { number: 7, clientId: null, sessionId: null, name: null, ai: false },
+    { number: 8, clientId: null, sessionId: null, name: null, ai: false }
   ],
   gameAnnotations: {}
 }

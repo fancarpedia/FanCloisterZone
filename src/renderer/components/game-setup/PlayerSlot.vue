@@ -13,6 +13,7 @@
       <template v-if="slotState === 'open'">open slot</template>
       <template v-if="slotState === 'local'">local player</template>
       <template v-if="slotState === 'remote'">remote player</template>
+      <template v-if="slotState === 'ai'">ai player</template>
     </div>
     <div
       v-if="slotState === 'local'"
@@ -65,7 +66,8 @@ export default {
     return {
       MEEPLES_SVG,
       edit: false,
-      editName: null
+      editName: null,
+      ai: null
     }
   },
 
@@ -77,7 +79,7 @@ export default {
 
     slotState () {
       if (this.owner === this.sessionId) {
-        return 'local'
+        return this.ai ? 'ai' : 'local'
       }
       return this.owner ? 'remote' : 'open'
     }
@@ -87,8 +89,13 @@ export default {
     toggle () {
       const { number } = this
       if (this.slotState === 'local') {
+      	this.ai = true;
+        this.$store.dispatch('gameSetup/aiSlot', { number })
+      } else if (this.slotState === 'ai') {
+     	this.ai = null;
         this.$store.dispatch('gameSetup/releaseSlot', { number })
       } else if (this.slotState === 'open') {
+        this.ai = false;
         this.$store.dispatch('gameSetup/takeSlot', { number })
       }
     },
