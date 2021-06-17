@@ -19,6 +19,9 @@
             <v-list-item>
               <v-list-item-title>Java</v-list-item-title>
             </v-list-item>
+            <v-list-item>
+              <v-list-item-title>Plugins</v-list-item-title>
+            </v-list-item>
           </v-list-item-group>
         </v-list>
 
@@ -189,6 +192,20 @@
               </v-alert>
             </div>
           </template>
+
+          <template v-if="section === 4">
+            <h3 class="mt-2 mb-4">Plugins</h3>
+
+            <h4>Install new plugin</h4>
+            <v-btn color="secondary" small @click="selectPluginFile">Select file</v-btn>
+
+            <div class="mt-4">
+              <v-alert v-if="ZIPFileError" type="warning" dense>
+                {{ ZIPFileError }}
+              </v-alert>
+            </div>
+
+          </template>
         </div>
       </div>
     </v-card-text>
@@ -201,15 +218,18 @@
 
 <script>
 import path from 'path'
-import { ipcRenderer } from 'electron'
+import { ipcRenderer, remote } from 'electron'
 import { mapState } from 'vuex'
+import unzipper from 'unzipper'
+import fs from 'fs'
 
 export default {
   data () {
     return {
       section: 0,
       platform: process.platform,
-      notJavaError: false
+      notJavaError: false,
+      ZIPFileError: null
     }
   },
 
@@ -278,6 +298,7 @@ export default {
   methods: {
     clean () {
       this.notJavaError = false
+      this.ZIPFileError = null
     },
 
     async selectJava () {
@@ -317,6 +338,69 @@ export default {
 
     isArtworkEnabled (id) {
       return this.$store.state.settings.enabledArtworks.includes(id)
+    },
+    
+    async selectPluginFile () {
+      const opts = {
+        title: 'Select plugin file',
+        properties: ['openFile']
+      }
+      if (this.platform === 'win32') {
+        opts.filters = [{ name: 'ZIP File', extensions: ['zip'] }]
+      }
+      const { filePaths } = await ipcRenderer.invoke('dialog.showOpenDialog', opts)
+      if (filePaths.length) {
+        const f = filePaths[0]
+        if (path.extname(f) == '.zip') {
+          this.ZIPFileError = ''
+          console.log('Reading plugin file')
+          const name = path.basename(f,path.extname(f));
+          console.log(name);
+          let artwork;
+          console.log(unzipper);
+          try {
+            const directory = await unzipper.Open.file(f);
+            const file = directory.files.find(d => d.path === 'artwork.json');
+            const content = await file.buffer();
+            const artworkDef = JSON.parse(content);
+            artwork = artworkDef.dir;
+            const expansionFile = directory.files.find(d => d.path === 'tiles.xml');
+            const expansion = await expansionFile.buffer();
+          } catch {
+            this.ZIPFileError = 'Not ZIP File or corrupted file or not plugin file'
+            return
+          }
+          const userDataPath = window.process.argv.find(arg => arg.startsWith('--user-data=')).replace('--user-data=', '')
+          const pluginFolder = path.join(userDataPath, 'artworks', 'fan', artwork)
+          await fs.promises.mkdir(pluginFolder, { recursive: true })
+          try {
+            await fs.createReadStream(f)
+              .pipe(unzipper.Extract({ path: pluginFolder }))
+              .promise()
+          } catch {
+            this.ZIPFileError = 'Not ZIP File or corrupted ZIP file'
+            return
+          }
+          console.log(path.join(pluginFolder,'tiles.xml'))
+          const expansionFile = path.join(userDataPath, 'artworks', 'expansions', artwork+'.xml');
+          await fs.promises.copyFile(path.join(pluginFolder,'tiles.xml'), path.join(userDataPath, 'artworks', 'expansions', artwork+'.xml'));
+          if (!this.$store.state.settings.enabledArtworks.includes(artwork)) {
+            this.$store.state.settings.enabledArtworks.push(artwork);
+          }
+          if (!this.$store.state.settings.userArtworks.includes(pluginFolder)) {
+            this.$store.state.settings.userArtworks.push(pluginFolder);
+          }
+          if (!this.$store.state.settings.userExpansions.includes(expansionFile)) {
+            this.$store.state.settings.userExpansions.push(expansionFile);
+          }
+
+          this.$store.dispatch('settings/update', {});
+          await this.$theme.loadPlugins() // load new plugins
+          await this.$tiles.loadExpansions() // load new expansions
+        } else {
+          this.ZIPFileError = 'Not ZIP File'
+        }
+      }
     }
   }
 }
