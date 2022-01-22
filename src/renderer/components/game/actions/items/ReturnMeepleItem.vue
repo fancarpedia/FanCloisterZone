@@ -29,6 +29,16 @@
       <v-icon class="color-overlay">fas fa-undo</v-icon>
     </div>
     <div
+      v-else-if="source === 'BARBER_SURGEON'"
+      class="meeple-return trap"
+    >
+      <StandaloneTileImage
+        tile-id="barbersurgeons/FfRr.B4"
+        :size="48"
+      />
+      <v-icon class="color-overlay">fas fa-undo</v-icon>
+    </div>
+    <div
       v-else
       :class="{'meeple-return': true, [colorCssClass(player)]: active}"
     >

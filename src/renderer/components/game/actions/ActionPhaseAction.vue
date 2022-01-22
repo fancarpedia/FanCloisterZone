@@ -33,6 +33,11 @@
       <br>
       {{ local ? 'You' : 'Player' }} may place a meeple next to already present one.
     </div>
+    <div v-if="phase === 'BarberSurgeonPhase'" class="text-with-icons text-center">
+      <ExpansionSymbol :expansion="Expansion.CORN_CIRCLES" :style="{ width: 30, height: 30 }" /> Barber-Surgeon:
+      <br>
+      {{ local ? 'You' : 'Player' }} have to place meeple to one of empty bads.
+    </div>
 
     <!-- key composed from phase meepls trigers properly mounted when one action follows another
          eg phantom action -->
