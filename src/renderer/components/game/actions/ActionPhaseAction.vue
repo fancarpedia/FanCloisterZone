@@ -33,7 +33,12 @@
       <br>
       {{ local ? 'You' : 'Player' }} may place a meeple next to already present one.
     </div>
-    <div v-if="phase === 'BarberSurgeonPhase'" class="text-with-icons text-center">
+    <div v-if="phase === 'BarberSurgeonBuyBackPhase'" class="text-with-icons text-center">
+      <ExpansionSymbol :expansion="Expansion.CORN_CIRCLES" :style="{ width: 30, height: 30 }" /> Barber-Surgeon:
+      <br>
+      {{ local ? 'You' : 'Player' }} may buy back tour traped meeple.
+    </div>
+    <div v-if="phase === 'BarberSurgeonTrapPhase'" class="text-with-icons text-center">
       <ExpansionSymbol :expansion="Expansion.CORN_CIRCLES" :style="{ width: 30, height: 30 }" /> Barber-Surgeon:
       <br>
       {{ local ? 'You' : 'Player' }} have to place meeple to one of empty bads.
