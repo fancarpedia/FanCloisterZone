@@ -39,7 +39,7 @@ export const state = () => ({
   enginePath: null, // explicit engine path
   javaPath: null, // exolicit java path
   playOnlineUrl: 'play.jcloisterzone.com/ws',
-  devMode: process.env.NODE_ENV === 'development'
+  devMode: process.env.NODE_ENV === 'development' || true
 })
 
 const changeCallbacks = {}
