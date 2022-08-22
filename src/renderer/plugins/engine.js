@@ -87,6 +87,10 @@ class Engine extends BaseEngine {
         stdoutData = []
       }
 
+      if (data.length % 2 == 0 && data.substring(0,data.length/2-1)==data.substring(data.length/2,data.length-1)) {
+        data = data.substring(0,data.length/2-1)
+      }
+
       try {
         const response = JSON.parse(data)
         const hash = crypto.createHash('sha1').update(data).digest('hex')
@@ -159,6 +163,10 @@ class SocketEngine extends BaseEngine {
         stdoutData.push(data)
         data = stdoutData.join('')
         stdoutData = []
+      }
+
+      if (data.length % 2 == 0 && data.substring(0,data.length/2-1)==data.substring(data.length/2,data.length-1)) {
+        data = data.substring(0,data.length/2-1)
       }
 
       try {
