@@ -453,6 +453,10 @@ svg, g, use
   &.witch
     fill: $witch-color
 
+svg, g, use
+  &.courier
+    fill: $courier-color
+
 .settings-dialog
   height: 80vh
   display: grid

@@ -87,6 +87,15 @@
           :height="BASE_SIZE * 0.42"
           :href="`${NEUTRAL_SVG}#fairy`"
         />
+        <use
+          v-if="courier && courier.placement.meepleId === meeple.id"
+          class="courier"
+          :x="-BASE_SIZE * 0.1"
+          :y="-BASE_SIZE * 0.24"
+          :width="BASE_SIZE * 0.32"
+          :height="BASE_SIZE * 0.32"
+          :href="`${NEUTRAL_SVG}#courier`"
+        />
       </g>
 
       <g
@@ -145,6 +154,20 @@
         :href="`${NEUTRAL_SVG}#fairy`"
       />
     </g>
+
+    <!--
+        if meepleId is null, courier is placet to new tile
+    -->
+    <g
+      v-if="courier && !courier.placement.meepleId"
+      class="courier"
+    >
+      <use
+        :width="BASE_SIZE * 0.32"
+        :height="BASE_SIZE * 0.32"
+        :href="`${NEUTRAL_SVG}#courier`"
+      />
+    </g>
   </g>
 </template>
 
@@ -198,6 +221,7 @@ export default {
         const bt = state.game.neutralFigures.bigtop
         return bt ? { placement: { position: bt.placement, feature: 'Circus', location: 'I' } } : null
       },
+      courier: state => state.game.neutralFigures.courier,
       meepleSelect: state => state.board.layers.MeepleSelectLayer
     }),
 
@@ -237,6 +261,14 @@ export default {
               return -1
             }
           }
+          if (this.courier) {
+            if (this.courier.placement.meepleId === a.id) {
+              return 1
+            }
+            if (this.courier.placement.meepleId === b.id) {
+              return -1
+            }
+          }
           return FOLLOWER_ORDERING[a.type] - FOLLOWER_ORDERING[b.type]
         })
 
@@ -268,6 +300,10 @@ export default {
         }
 
         if (this.fairy && meeples.find(m => m.id === this.fairy.placement.meepleId)) {
+          x += BASE_SIZE * 0.14
+          y += BASE_SIZE * 0.02
+        }
+        if (this.courier && meeples.find(m => m.id === this.courier.placement.meepleId)) {
           x += BASE_SIZE * 0.14
           y += BASE_SIZE * 0.02
         }
@@ -368,6 +404,11 @@ export default {
       }
     },
 
+//    lonelyCourierTransform () {
+//      const { placement } = this.courier
+//      return this.transformPoint({ position: placement, feature: 'CourierLetter', location: 'I' }) + ` translate(${BASE_SIZE * -0.15} ${BASE_SIZE * -0.15})`
+//    },
+
     getCastleTransformation ({ places }, position) {
       let t
       if (places[0][0] === places[1][0]) { /// compare X
@@ -386,7 +427,7 @@ export default {
 </script>
 
 <style lang="sass" scoped>
-.fairy
+.fairy,.courier
   opacity: 0.9
 
 .dragon
