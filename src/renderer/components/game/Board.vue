@@ -203,7 +203,7 @@ export default {
 
   methods: {
     onKeyDown (ev) {
-      if (['a', 's', 'd', 'w', 'r'].includes(ev.key) && !this.$store.state.gameDialog) {
+      if (['a', 's', 'd', 'w', 'r'].includes(ev.key) && !this.$store.state.gameDialog && !this.$store.state.gameChatEdit) {
         if (ev.ctrlKey || ev.metaKey || ev.altKey || ev.shiftKey) {
           return
         }

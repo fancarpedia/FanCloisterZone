@@ -121,6 +121,8 @@ class ConnectionHandler {
       await dispatch('online/gameUpdate', payload, { root: true })
     } else if (type === 'GAME_OPTION') {
       commit('game/options', { [payload.key]: payload.value }, { root: true })
+    } else if (type === 'GAME_CHAT') {
+      commit('game/chatCommit', { message: payload }, { root: true })
     } else {
       console.error(payload)
       throw new Error(`Unhandled message ${type}`)
@@ -245,7 +247,21 @@ export const actions = {
   },
 
   async connectPlayOnline ({ dispatch, commit, rootState }) {
-    const host = rootState.settings.playOnlineUrl
+    const host = 'play-online.jcloisterzone.com/ws' // rootState.settings.playOnlineUrl
+    if (host) {
+      try {
+        await dispatch('connect', { host, connectionType: 'online' })
+      } catch (e) {
+        const title = e.type === 'ERR' ? 'Connection has been rejected.' : 'Unable to connect'
+        const content = connectExceptionToMessage(e)
+        commit('errorMessage', { title, content }, { root: true })
+        console.error(e)
+      }
+    }
+  },
+
+  async connectPlayOnlineFan ({ dispatch, commit, rootState }) {
+    const host = 'fancarpedia.snazzybee.com:37447'
     if (host) {
       try {
         await dispatch('connect', { host, connectionType: 'online' })

@@ -31,6 +31,7 @@
         :action="action"
       />
       <PlayEvents />
+      <GameChat />
       <FinalScoringEvents v-if="phase === 'GameOverPhase'" />
       <FinalStats v-if="showGameStats" />
       <div
@@ -75,6 +76,7 @@ import ActionPanel from '@/components/game/ActionPanel.vue'
 import Board from '@/components/game/Board.vue'
 import FinalScoringEvents from '@/components/game/FinalScoringEvents.vue'
 import FinalStats from '@/components/game/FinalStats.vue'
+import GameChat from '@/components/game/GameChat.vue'
 import ChooseMonkOrAbbotDialog from '@/components/game/dialogs/ChooseMonkOrAbbotDialog.vue'
 import PlayerPanel from '@/components/game/PlayerPanel.vue'
 import PlayEvents from '@/components/game/PlayEvents.vue'
@@ -90,6 +92,7 @@ export default {
     ChooseMonkOrAbbotDialog,
     FinalScoringEvents,
     FinalStats,
+    GameChat,
     GameSetupDialog,
     PlayerPanel,
     PlayEvents,

@@ -80,6 +80,19 @@
       </div>
     </div>
 
+    <section class="online-hosted-fan">
+      <div>
+        <h2>{{ $t('index.online-fan.title') }}</h2>
+        <v-btn large color="secondary" :disabled="!engine || !engine.ok" @click="playOnlineFan()">
+          {{ $t('button.play-online-fan') }}
+          <v-icon right>fa-cloud</v-icon>
+        </v-btn>
+        <div class="subsection">
+          {{ $t('index.online.private-games-only') }}<br>({{ $t('index.online.no-random-discovery') }})
+        </div>
+      </div>
+    </section>
+
     <section class="online-hosted">
       <div>
         <h2>{{ $t('index.online.title') }}</h2>
@@ -198,6 +211,10 @@ export default {
       this.$store.dispatch('networking/connectPlayOnline')
     },
 
+    playOnlineFan () {
+      this.$store.dispatch('networking/connectPlayOnlineFan')
+    },
+
     loadGame () {
       this.$store.dispatch('game/load')
     },
@@ -287,7 +304,7 @@ h2
     color: inherit !important
     font-size: inherit !important
 
-.online-hosted
+.online-hosted, .online-hosted-fan
   height: 33vh
   display: flex
   justify-content: center
@@ -304,6 +321,11 @@ h2
 
   p
     margin-top: 30px
+
+.online-hosted-fan
+  +theme using ($theme)
+    background: map-get($theme, 'opaque-bg')
+
 
 .player-hosted
   padding: 30px 0
