@@ -6,8 +6,10 @@
     <v-container>
       <h1>Test Runner</h1>
 
-      <v-btn color="secondary" @click="runAll">Run All</v-btn>
-
+      <v-btn color="secondary" @click="toggleRunAll">
+        {{ isRunningAll ? 'Stop running all' : 'Run All' }}
+      </v-btn>
+      
       <v-simple-table>
         <template v-slot:default>
           <thead>
@@ -29,7 +31,8 @@
               <td>{{ test.name }}</td>
               <td>
                 <span v-if="test.result && test.result.ok">OK</span>
-                <span v-if="test.result && !test.result.ok">FAIL</span>
+                <span v-else-if="test.result && test.result.error">{{ test.result.error }}</span>
+                <span v-else-if="test.result && !test.result.ok">FAIL</span>
               </td>
               <td>
                 <v-btn small color="secondary" @click="run(test, idx)">Run</v-btn>
@@ -55,8 +58,16 @@ export default {
 
   },
 
+  data () {
+    return {
+      isRunningAll: false,
+      stopRunning: false
+    }
+  },
+  
   async asyncData () {
     const testFolder = path.join('engine-tests')
+  console.log(path,testFolder);
     const tests = []
     try {
       const listing = await fs.promises.readdir(testFolder)
@@ -99,6 +110,52 @@ export default {
       Vue.set(this.tests, idx, { ...test, result })
     },
 
+    async toggleRunAll () {
+      if (!this.isRunningAll) {
+        this.isRunningAll = true
+        this.stopRunning = false
+//        this.tests = this.tests.map(test => omit(test, ['result']))
+        for (let idx = 0; idx < this.tests.length; idx++) {
+          if (this.stopRunning) break
+          const test = this.tests[idx]
+          if (test.result) continue
+          const result = await this.runTest(test.file)
+          Vue.set(this.tests, idx, { ...test, result })
+        }
+        this.isRunningAll = false
+      } else {
+        // stop button was clicked
+        this.stopRunning = true
+        this.isRunningAll = false
+      }
+    },
+
+runTest (file) {
+  return new Promise(resolve => {
+    const unsubscribe = this.$store.subscribe(async (mutation, state) => {
+      if (mutation.type === 'game/testScenarioResult') {
+        unsubscribe()
+        await this.$store.dispatch('game/close')
+        const failed = mutation.payload.assertions.find(a => a.result === false)
+        setTimeout(() => {
+          resolve({
+            ...mutation.payload,
+            ok: !failed
+          })
+        }, 100)
+      }
+    })
+
+    this.$store.dispatch('game/load', { file }).catch(err => {
+      // 💥 Catch errors like "missing addon"
+      resolve({
+        ok: false,
+        error: err.message || 'Error loading test file'
+      })
+    })
+  })
+},
+
     async runAll () {
       this.tests = this.tests.map(test => omit(test, ['result']))
       for (let idx = 0; idx < this.tests.length; idx++) {
@@ -108,7 +165,7 @@ export default {
       }
     },
 
-    runTest (file) {
+/*    runTest (file) {
       return new Promise(resolve => {
         const unsubscribe = this.$store.subscribe(async (mutation, state) => {
           if (mutation.type === 'game/testScenarioResult') {
@@ -126,7 +183,7 @@ export default {
         })
         this.$store.dispatch('game/load', { file })
       })
-    }
+    }*/
   }
 }
 </script>
