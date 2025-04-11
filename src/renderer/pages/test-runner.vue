@@ -9,34 +9,50 @@
       <v-btn color="secondary" @click="toggleRunAll">
         {{ isRunningAll ? 'Stop running all' : 'Run All' }}
       </v-btn>
-      
+
       <v-simple-table>
         <template v-slot:default>
           <thead>
             <tr>
-              <th class="text-left">
-                Test
-              </th>
-              <th class="text-left">
-                Result
-              </th>
-              <th class="text-left" />
+              <th class="text-left">Test</th>
+              <th class="text-left">Result</th>
+              <th class="text-left">Actions</th>
             </tr>
           </thead>
           <tbody>
             <tr
               v-for="(test, idx) in tests"
               :key="test.file"
+              :class="{ disabled: test.disabled }"
             >
-              <td>{{ test.name }}</td>
               <td>
-                <span v-if="test.result && test.result.ok">OK</span>
-                <span v-else-if="test.result && test.result.error">{{ test.result.error }}</span>
-                <span v-else-if="test.result && !test.result.ok">FAIL</span>
+                {{ test.name }}
+                <div v-if="test.error" class="error-message">
+                  {{ test.error }}
+                </div>
               </td>
               <td>
-                <v-btn small color="secondary" @click="run(test, idx)">Run</v-btn>
-                <v-btn small color="secondary" @click="open(test)">Open</v-btn>
+                <span v-if="test.result && test.result.ok">✅ OK</span>
+                <span v-else-if="test.result && test.result.error">❌ {{ test.result.error }}</span>
+                <span v-else-if="test.result && !test.result.ok">❌ FAIL</span>
+              </td>
+              <td>
+                <v-btn
+                  small
+                  color="secondary"
+                  @click="run(test, idx)"
+                  :disabled="test.disabled"
+                >
+                  Run
+                </v-btn>
+                <v-btn
+                  small
+                  color="secondary"
+                  @click="open(test)"
+                  :disabled="test.disabled"
+                >
+                  Open
+                </v-btn>
               </td>
             </tr>
           </tbody>
@@ -49,131 +65,118 @@
 <script>
 import fs from 'fs'
 import path from 'path'
-
 import Vue from 'vue'
 import omit from 'lodash/omit'
+import { Expansion } from '@/models/expansions'
 
 export default {
-  components: {
-
-  },
-
-  data () {
+  data() {
     return {
       isRunningAll: false,
-      stopRunning: false
+      stopRunning: false,
+      tests: []
     }
   },
-  
-  async asyncData () {
+
+  async asyncData() {
     const testFolder = path.join('engine-tests')
-  console.log(path,testFolder);
     const tests = []
+
+    const installedSets = Expansion.all().map(e =>
+      e.name.toLowerCase().replace(/_/g, '-')
+    )
+
     try {
       const listing = await fs.promises.readdir(testFolder)
       for (const subfolder of listing) {
         const files = await fs.promises.readdir(path.join(testFolder, subfolder))
-        files.forEach(f => {
+        for (const f of files) {
+          const filePath = path.join(testFolder, subfolder, f)
+          let disabled = false
+          let error = null
+
+          try {
+            const fileContent = await fs.promises.readFile(filePath, 'utf-8')
+            const json = JSON.parse(fileContent)
+            const setsRaw = json?.setup?.sets
+            const requiredSets = Object.keys(setsRaw).map(set =>
+              set.split(/:|,v|\//)[0].toLowerCase().replace(/_/g, '-')
+            );
+            const missing = requiredSets.filter(set => !installedSets.includes(set))
+            if (missing.length > 0) {
+              disabled = true
+              error = `Missing expansions: ${missing.join(', ')}`
+            }
+          } catch (err) {
+            disabled = true
+            error = `Invalid test file: ${err.message}`
+          }
+
           tests.push({
             name: path.join(subfolder, f).replace('.jcz', ''),
-            file: path.join(testFolder, subfolder, f)
+            file: filePath,
+            disabled,
+            error
           })
-        })
+        }
       }
     } catch (e) {
-      console.log(`test folder ${testFolder} does not exist`)
+      console.log(`Test folder ${testFolder} does not exist`)
       return { tests: [] }
     }
+
     return { tests }
   },
 
-  computed: {
-  },
-
-  mounted () {
+  mounted() {
     this.$store.commit('runningTests', true)
   },
 
-  beforeDestroy () {
+  beforeDestroy() {
     this.$store.commit('runningTests', false)
   },
 
   methods: {
-    open ({ file }) {
+    open({ file }) {
       this.$store.commit('runningTests', false)
       this.$store.dispatch('game/load', { file })
     },
 
-    async run (test, idx) {
+    async run(test, idx) {
+      if (test.disabled) return
       Vue.set(this.tests, idx, omit(test, ['result']))
       const result = await this.runTest(test.file)
       Vue.set(this.tests, idx, { ...test, result })
     },
 
-    async toggleRunAll () {
+    async toggleRunAll() {
       if (!this.isRunningAll) {
         this.isRunningAll = true
         this.stopRunning = false
-//        this.tests = this.tests.map(test => omit(test, ['result']))
+
         for (let idx = 0; idx < this.tests.length; idx++) {
-          if (this.stopRunning) break
           const test = this.tests[idx]
-          if (test.result) continue
+          if (this.stopRunning) break
+          if (test.disabled || test.result) continue
           const result = await this.runTest(test.file)
           Vue.set(this.tests, idx, { ...test, result })
         }
+
         this.isRunningAll = false
       } else {
-        // stop button was clicked
         this.stopRunning = true
         this.isRunningAll = false
       }
     },
 
-runTest (file) {
-  return new Promise(resolve => {
-    const unsubscribe = this.$store.subscribe(async (mutation, state) => {
-      if (mutation.type === 'game/testScenarioResult') {
-        unsubscribe()
-        await this.$store.dispatch('game/close')
-        const failed = mutation.payload.assertions.find(a => a.result === false)
-        setTimeout(() => {
-          resolve({
-            ...mutation.payload,
-            ok: !failed
-          })
-        }, 100)
-      }
-    })
-
-    this.$store.dispatch('game/load', { file }).catch(err => {
-      // 💥 Catch errors like "missing addon"
-      resolve({
-        ok: false,
-        error: err.message || 'Error loading test file'
-      })
-    })
-  })
-},
-
-    async runAll () {
-      this.tests = this.tests.map(test => omit(test, ['result']))
-      for (let idx = 0; idx < this.tests.length; idx++) {
-        const test = this.tests[idx]
-        const result = await this.runTest(test.file)
-        Vue.set(this.tests, idx, { ...test, result })
-      }
-    },
-
-/*    runTest (file) {
+    runTest(file) {
       return new Promise(resolve => {
-        const unsubscribe = this.$store.subscribe(async (mutation, state) => {
+        const unsubscribe = this.$store.subscribe(async mutation => {
           if (mutation.type === 'game/testScenarioResult') {
             unsubscribe()
             await this.$store.dispatch('game/close')
             const failed = mutation.payload.assertions.find(a => a.result === false)
             setTimeout(() => {
-              // unfortunatelly waiting for game close is not implemented, HACK it with timeout
               resolve({
                 ...mutation.payload,
                 ok: !failed
@@ -181,9 +184,15 @@ runTest (file) {
             }, 100)
           }
         })
-        this.$store.dispatch('game/load', { file })
+
+        this.$store.dispatch('game/load', { file }).catch(err => {
+          resolve({
+            ok: false,
+            error: err.message || 'Error loading test file'
+          })
+        })
       })
-    }*/
+    }
   }
 }
 </script>
@@ -191,8 +200,16 @@ runTest (file) {
 <style lang="sass" scoped>
 h1
   margin-bottom: 20px
+
 .close
- position: absolute
- top: 10px
- right: 10px
+  position: absolute
+  top: 10px
+  right: 10px
+
+.disabled
+  opacity: 0.6
+
+.error-message
+  color: orange
+  font-size: 0.8em
 </style>
