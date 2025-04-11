@@ -6,8 +6,16 @@
     <v-container>
       <h1>Test Runner</h1>
 
-      <v-btn color="secondary" @click="toggleRunAll">
+      <v-btn color="primary" @click="toggleRunAll">
         {{ isRunningAll ? 'Stop running all' : 'Run All' }}
+      </v-btn>
+
+      <v-btn color="secondary" @click="resetAll">
+        Reset All
+      </v-btn>
+
+      <v-btn color="secondary" @click="resetFailed">
+        Reset Failed
       </v-btn>
 
       <v-simple-table>
@@ -167,6 +175,23 @@ export default {
         this.stopRunning = true
         this.isRunningAll = false
       }
+    },
+
+    resetAll() {
+      this.tests = this.tests.map(test => ({
+        ...omit(test, ['result']),
+      }))
+    },
+
+    resetFailed() {
+      this.tests = this.tests.map(test => {
+        if (test.result && !test.result.ok) {
+          return {
+            ...omit(test, ['result']),
+          }
+        }
+        return test
+      })
     },
 
     runTest(file) {
