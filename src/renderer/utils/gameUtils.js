@@ -13,7 +13,7 @@ export function getMeeplePlayer (meepleId) {
 export function generateSaveContent(state, onlySetup = false) {
   const rules = {};
   Rule.all().forEach(r => {
-    const value = state.setup.rules[r.id];
+    const value = state.setup.rules[r.id] ?? r.default;
     if (r.default !== value) rules[r.id] = value;
   });
 
