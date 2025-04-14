@@ -1,5 +1,5 @@
 import fs from 'fs'
-import { extname } from 'path'
+import { extname, parse } from 'path'
 import { ipcRenderer } from 'electron'
 import { compare } from 'compare-versions'
 
@@ -394,6 +394,67 @@ export const actions = {
         })
       } else {
         resolve(null)
+      }
+    })
+  },
+
+  async savescenario ({ state, dispatch }, {} = {}) {
+    return new Promise(async (resolve, reject) => { /* eslint no-async-promise-executor: 0 */
+      let { filePath } = await ipcRenderer.invoke('dialog.showSaveDialog', {
+        title: 'Save Test runner Scenario',
+        filters: [{ name: 'Test scenarios', extensions: ['jcz'] }],
+        properties: ['createDirectory', 'showOverwriteConfirmation']
+      })
+      if (filePath) {
+        if (extname(filePath) === '') {
+          filePath += '.jcz'
+        }
+
+        const gameState = state
+        console.log('GS',gameState);
+        if (gameState.id) {
+          let content = generateSaveContent( gameState, false)
+          const names = { 0: 'Ariel', 1: 'John', 2: 'Betty', 3: 'Andy', 4: 'Marie', 5: 'Freddy', 6: 'Mustafa', 7: 'Zuna', 8: 'Sigma' }
+          content.players = content.players.map(player => ({
+            ...player,
+            name: names[player.slot] || 'Player-'+player.slot.toString()  // fallback if defined more players
+          }));
+          const playerNameBySlot = {};
+          content.players.forEach(player => {
+            playerNameBySlot[player.slot] = names[player.slot] || player.name;
+          });
+          content.test = {
+            description: parse(filePath).name.replace(/[-_]/g, ' ').replace(/\b\w/g, char => char.toUpperCase()),
+            assertions: []
+          }
+          console.log(content.test.description);
+          const asserts = [];
+          for (const step of gameState.history) {
+            for (const event of step.events) {
+              if (event.points) {
+                for (const p of event.points) {
+                  content.test.assertions.push(`${playerNameBySlot[p.player]} scored ${p.name} for ${p.points} point${p.points !== 1 ? "s" : ""}.`);
+                }
+              }
+            }
+          }
+          for (const p of gameState.players) {
+            content.test.assertions.push(`${playerNameBySlot[p.slot]} has ${p.points} point${p.points !== 1 ? "s" : ""}.`);
+          }
+
+          fs.writeFile(filePath, JSON.stringify(content, null, 2), err => {
+            if (err) {
+              reject(err)
+            } else {
+//              Vue.nextTick(() => {
+//                dispatch(onlySetup ? 'settings/addRecentSetupSave' : 'settings/addRecentSave', { file: filePath, setup }, { root: true })
+//              })
+              resolve(filePath)
+            }
+          })
+        } else {
+          resolve(null)
+        }
       }
     })
   },
