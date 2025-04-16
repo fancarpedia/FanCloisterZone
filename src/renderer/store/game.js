@@ -380,7 +380,7 @@ export const actions = {
           filePath += '.jcz'
         }
 
-		const content = generateSaveContent(state, onlySetup);
+		const content = generateSaveContent(state, onlySetup)
 
         fs.writeFile(filePath, JSON.stringify(content, null, 2), err => {
           if (err) {
@@ -417,28 +417,31 @@ export const actions = {
           content.players = content.players.map(player => ({
             ...player,
             name: names[player.slot] || 'Player-'+player.slot.toString()  // fallback if defined more players
-          }));
-          const playerNameBySlot = {};
+          }))
+          const playerNameBySlot = {}
           content.players.forEach(player => {
-            playerNameBySlot[player.slot] = names[player.slot] || `Player-${player.slot}`;
-          });
+            playerNameBySlot[player.slot] = names[player.slot] || `Player-${player.slot}`
+            delete player.clientId
+          })
           content.test = {
             description: parse(filePath).name.replace(/[-_]/g, ' ').replace(/\b\w/g, char => char.toUpperCase()),
             assertions: []
           }
-          const asserts = [];
+          const asserts = []
           for (const step of gameState.history) {
             for (const event of step.events) {
               if (event.points) {
                 for (const p of event.points) {
-                  content.test.assertions.push(`${content.players[p.player].name} scored ${p.name.split('.')[0]} for ${p.points} point${p.points !== 1 ? "s" : ""}.`);
+                  content.test.assertions.push(`${content.players[p.player].name} scored ${p.name.split('.')[0]} for ${p.points} point${p.points !== 1 ? "s" : ""}.`)
                 }
               }
             }
           }
           for (const p of gameState.players) {
-            content.test.assertions.push(`${playerNameBySlot[p.slot]} has ${p.points} point${p.points !== 1 ? "s" : ""}.`);
+            content.test.assertions.push(`${playerNameBySlot[p.slot]} has ${p.points} point${p.points !== 1 ? "s" : ""}.`)
           }
+          content.gameId = '1'
+          content.initialRandom = 0.0
           fs.writeFile(filePath, JSON.stringify(content, null, 2), err => {
             if (err) {
               reject(err)
