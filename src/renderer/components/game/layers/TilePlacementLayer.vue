@@ -81,8 +81,11 @@ export default {
       this.$store.commit('board/tilePlacementMouseOver', null)
     },
 
-    getForcedRotation (rotations) {
-      return rotations[0] 
+    getForcedRotation(rotations) {
+      if (!rotations.includes(this.rotation)) {
+        this.$root.$emit('tile-placement.rotation', rotations[0])
+      }
+      return this.rotation
     },
 
     onClick (ev, rotations, position) {
