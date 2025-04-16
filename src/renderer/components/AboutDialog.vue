@@ -74,16 +74,16 @@ export default {
     margin: 5px 40px 5px 20px
 
   svg.small-follower
-    fill: #FF5722
+    fill: yellow
     z-index: 10
 
   svg.builder
-    fill: #2196F3
+    fill: #FF5722
     margin-left: -55px
     z-index: 9
 
   svg.barn
-    fill: #8BC34A
+    fill: #2196F3
     margin-left: -55px
     z-index: 8
     position: relative
