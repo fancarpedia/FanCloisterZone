@@ -111,5 +111,5 @@ export const ACROBATS = GameElement.ACROBATS = new GameElement('acrobats', 'Acro
   selector: 'acrobats'
 })
 export const ROBBERS_SON = GameElement.ROBBERS_SON = new GameElement('robbers-son', 'Robber\'s son', Boolean, {
-  selector: 'road[robbersson]'
+  selector: 'road[robbers-son]'
 })

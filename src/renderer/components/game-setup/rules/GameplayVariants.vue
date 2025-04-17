@@ -151,7 +151,7 @@
 
     <RuleBox
       :setup="setup"
-      :rules="[Rule.ROBBES_SON_ACTION]"
+      :rules="[Rule.ROBBERS_SON_ACTION]"
       :read-only="readOnly"
     >
       <template #icon>
