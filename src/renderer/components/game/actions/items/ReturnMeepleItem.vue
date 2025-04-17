@@ -1,6 +1,7 @@
 <template>
   <div :class="{ active }">
     <img v-if="source === 'PRINCESS'" src="~/assets/features/C1/princess.png" height="54">
+    <img v-else-if="source === 'ROBBERS_SON'" src="~/assets/features/C1/robbers-son.png" height="74">
     <div
       v-else-if="source === 'ABBOT_RETURN'"
       :class="{'meeple-return': true, 'abbot-return': true, [colorCssClass(player)]: active}"
@@ -10,9 +11,6 @@
         type="Abbot"
       />
       <v-icon class="color-overlay">fas fa-undo</v-icon>
-    </div>
-    <div v-else-if="source === 'ROBBERS_SON'">
-      <img src="~/assets/features/C1/robbers-son.png" height="74">
     </div>
     <div v-else-if="source === 'FESTIVAL'">
       <img src="~/assets/features/C1/festival.png" height="74">
