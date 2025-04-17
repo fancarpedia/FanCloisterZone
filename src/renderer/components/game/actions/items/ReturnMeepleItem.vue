@@ -11,6 +11,9 @@
       />
       <v-icon class="color-overlay">fas fa-undo</v-icon>
     </div>
+    <div v-else-if="source === 'ROBBERS_SON'">
+      <img src="~/assets/features/C1/robbers-son.png" height="74">
+    </div>
     <div v-else-if="source === 'FESTIVAL'">
       <img src="~/assets/features/C1/festival.png" height="74">
     </div>

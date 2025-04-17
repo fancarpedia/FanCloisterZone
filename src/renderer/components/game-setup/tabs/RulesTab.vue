@@ -141,6 +141,14 @@
           <template #description>{{ $t('game-setup.rules.acrobats-description') }}</template>
           <template #disabled>{{ $t('game-setup.rules.acrobats-disabled') }}</template>
         </GameMechanicsBox>
+
+        <GameMechanicsBox :item="GameElement.ROBBERS_SON">
+          <template #icon>
+            <img src="~/assets/features/C1/robbers-son.png" height="55">
+          </template>
+          <template #description>{{ $t('game-setup.rules.robbers-son-description') }}</template>
+          <template #disabled>{{ $t('game-setup.rules.robbers-son-disabled') }}</template>
+        </GameMechanicsBox>
       </div>
     </ConfigSection>
 

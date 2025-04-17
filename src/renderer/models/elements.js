@@ -110,3 +110,6 @@ export const ESCAPE = GameElement.ESCAPE = new GameElement('escape', 'Escaping a
 export const ACROBATS = GameElement.ACROBATS = new GameElement('acrobats', 'Acrobats', Boolean, {
   selector: 'acrobats'
 })
+export const ROBBERS_SON = GameElement.ROBBERS_SON = new GameElement('robbers-son', 'Robber\'s son', Boolean, {
+  selector: 'road[robbersson]'
+})
