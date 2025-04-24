@@ -57,3 +57,31 @@ With path selected choose "Layers / New fill layer"
 ```
 JCZ_CONFIG=/home/farin/.config/Electron/jcz-config-2.json JCZ_NETWORK_DELAY=1-50 yarn dev
 ```
+
+## Special downgrades
+Envoronment requires node 16, yarn 1
+
+### On Mac
+```
+corepack disable
+npm uninstall -g yarn
+npm install -g yarn@1
+xcode-select --install
+yarn --version
+```
+
+### Every Operating Systems
+Check if version is 1.22.x
+```
+nvm install 16
+nvm use 16
+node --version
+```
+Check if version is 16.x.x 
+
+### Update package.json (macOS)
+Add package manager witch current yarn version
+```
+  "packageManager": "yarn@1.22.22"
+```
+
