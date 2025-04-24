@@ -12,6 +12,12 @@
         {{ expr.meeple }}
         2 body
       </div>
+      <div>
+        from
+      </div>
+      <div>
+      	{{ expr.from.feature }}
+      </div>
       {{ expr }}
     </div>
   </section>
@@ -159,4 +165,8 @@ export default {
   .sub
     font-size: 16px
     margin-top: 4px
+
+svg.meeple
+  max-width: 40px;
+  height: 40px;
 </style>
