@@ -1,5 +1,9 @@
 <template>
-  <div class="game-chat">
+  <div
+    class="game-chat"
+    :style="{ top: position.top + 'px', left: position.left + 'px', display: getChatDisplay() }"
+    @mousedown="startDrag"
+  >
     <div class="messages-wrapper">
       <div class="messages" ref="gameChatMessages">
         <div class="message"
@@ -42,7 +46,15 @@ export default {
     return {
       sentMessage: null,
       newMessage: '',
-      
+      position: {
+        top: 100,
+        left: 100,
+      },
+      dragging: false,
+      offset: {
+        x: 0,
+        y: 0
+      }
     }
   },
   
@@ -53,8 +65,6 @@ export default {
 
     ...mapState({
       chat: state => state.game.gameChat,
-      slots: state => state.game.slots,
-      players: state => state.game.players,
       messagePlayer: state => {
         let firstLocalPlayer
       	for(let i=0;i<state.game.players.length;i++) {
@@ -69,6 +79,11 @@ export default {
         	}
         }
         return firstLocalPlayer
+      },
+      players: state => state.game.players,
+      slots: state => state.game.slots,
+      savedPosition(state) {
+        return state.settings.chatPosition
       }
     }),
 
@@ -78,6 +93,13 @@ export default {
     
   },
 
+  mounted() {
+    if (this.savedPosition) {
+      this.position.top = this.savedPosition.top;
+      this.position.left = this.savedPosition.left;
+    }
+  },
+  
   watch: {
     chat() {
       const lastMessage = this.chat.slice(-1);
@@ -103,6 +125,9 @@ export default {
     getPlayerSlotColor(player) {
       return this.players[player].slot
     },
+    getChatDisplay() {
+      return (this.chat ? 'block' : 'none')
+    },
     keyDown(ev) {
       if (ev.code === 'Space') {
         ev.stopPropagation()
@@ -117,7 +142,33 @@ export default {
         this.$store.dispatch('game/chat', { player: this.messagePlayer, message: this.newMessage.trim() } )
         this.sentMessage = this.newMessage.trim()
         this.newMessage = ''
+        this.scrollToBottom()
       }
+    },
+    startDrag(ev) {
+      this.dragging = true;
+      this.offset.x = ev.clientX - this.position.left
+      this.offset.y = ev.clientY - this.position.top
+      document.addEventListener('mousemove', this.onDrag)
+      document.addEventListener('mouseup', this.stopDrag)
+    },
+    onDrag(ev) {
+      if (this.dragging) {
+        this.position.left = ev.clientX - this.offset.x
+        this.position.top = ev.clientY - this.offset.y
+      }
+    },
+    scrollToBottom() {
+      const container = this.$refs.gameChatMessages;
+      container.scrollTop = container.scrollHeight;
+    },
+    stopDrag() {
+      this.dragging = false;
+      document.removeEventListener('mousemove', this.onDrag)
+      document.removeEventListener('mouseup', this.stopDrag)
+      this.$store.dispatch('settings/update', {
+        chatPosition: { ...this.position },
+      })
     }
   }
 }
@@ -125,31 +176,50 @@ export default {
 
 <style lang="sass" scoped>
 
+::-webkit-scrollbar
+  width: 8px
+  height: 8px
+
+::-webkit-scrollbar-track 
+  background: #888
+  border-radius: 2px
+
+::-webkit-scrollbar-thumb
+  background: #f0f0f0
+  border-radius: 2px
+  margin: 2px
+
+::-webkit-scrollbar-thumb:hover
+  background: #555
+
 .game-chat
-  position: absolute
-  bottom: 0
-  right: var(--aside-width-plus-gap)
-  width: var(--aside-width)
-  height: calc(100% - var(--action-bar-height))
+  width: 400px
+  height: 200px
   background-color: rgba(0,0,0,0.5)
   padding: 0
+  position: absolute
+  cursor: move
+  user-select: none /* prevent text selection while dragging */
+  display: flex
+  align-items: center
+  justify-content: center
+  font-weight: bold
   
   .messages-wrapper
     overflow: hidden
-    width: var(--aside-width)
-    height: calc(100% - 40px)
-    position: relative
+    height: 160px
     
   .messages
     position: absolute
-    overflow-y: hidden
+    overflow-y: scroll
     overflow-x: hidden
     margin-bottom: 10px	
     width: 100%
     bottom: 50px
     left: 0
     padding: 5px
-
+    height: 140px
+    
   .edit-message
     height: 40px
     margin: 5px

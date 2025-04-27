@@ -151,8 +151,9 @@ export const mutations = {
   },
 
   chatCommit (state, value) {
-    if (!state.gameChat) Vue.set(state, 'gameChat', [])
-    state.gameChat.push(value.message)
+    if (state.gameChat) {
+      state.gameChat.push(value.message)
+    }
   },
 
   lastMessageId (state, value) {
