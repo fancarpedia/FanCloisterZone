@@ -10,7 +10,7 @@
           v-for="m in messages"
         >
           <div
-            :class="'sender color-bg-important color color-'+ getPlayerSlotColor(m.player)"
+            :class="'sender color-bg-important color color-overlay color-'+ getPlayerSlotColor(m.player)"
           >
             {{ getPlayerName(m.player) }}
           </div>
@@ -54,7 +54,8 @@ export default {
       offset: {
         x: 0,
         y: 0
-      }
+      },
+      chatInitialized: false
     }
   },
   
@@ -66,19 +67,14 @@ export default {
     ...mapState({
       chat: state => state.game.gameChat,
       messagePlayer: state => {
-        let firstLocalPlayer
+        let localPlayers = [];
       	for(let i=0;i<state.game.players.length;i++) {
       	    console.log('Current action player',state.game.action.player,'i',i,state.networking.sessionId,state.game.players)
-	        if (state.game.players[i]?.sessionId == state.networking.sessionId) {
-	          if (state.game.action.player == i) {
-	            return i
-	          }
-	          if (firstLocalPlayer === null) {
-	            firstLocalPlayer = i
-	          }
-        	}
+	        if (state.game.players[i].sessionId == state.networking.sessionId) {
+	          localPlayers.push(i)
+	        }
         }
-        return firstLocalPlayer
+        return localPlayers[0]
       },
       players: state => state.game.players,
       slots: state => state.game.slots,
@@ -98,6 +94,9 @@ export default {
       this.position.top = this.savedPosition.top;
       this.position.left = this.savedPosition.left;
     }
+    this.$nextTick(() => {
+      this.scrollToBottom();
+    });
   },
   
   watch: {
@@ -108,6 +107,9 @@ export default {
 	        this.sentMessage = null;
 	      }
 	  }
+	  this.$nextTick(() => {
+        this.scrollToBottom();
+      })
     }
   },
 
@@ -142,7 +144,6 @@ export default {
         this.$store.dispatch('game/chat', { player: this.messagePlayer, message: this.newMessage.trim() } )
         this.sentMessage = this.newMessage.trim()
         this.newMessage = ''
-        this.scrollToBottom()
       }
     },
     startDrag(ev) {
@@ -159,8 +160,10 @@ export default {
       }
     },
     scrollToBottom() {
-      const container = this.$refs.gameChatMessages;
-      container.scrollTop = container.scrollHeight;
+      const endOfChat = this.$refs.endOfChat;
+      if (endOfChat) {
+        endOfChat.scrollIntoView({ behavior: 'auto' }); // or 'smooth'
+      }
     },
     stopDrag() {
       this.dragging = false;
@@ -234,7 +237,6 @@ export default {
 
     .sender
       padding: 2px 5px
-      color: white
       display: inline-block
       border-radius: 5px
     
