@@ -82,13 +82,16 @@
 
     <section class="online-hosted-fan">
       <div>
-        <h2>{{ $t('index.online-fan.title') }}</h2>
+        <h2>{{ $t('index.online.title-fan') }}</h2>
         <v-btn large color="secondary" :disabled="!engine || !engine.ok" @click="playOnlineFan()">
           {{ $t('button.play-online-fan') }}
           <v-icon right>fa-cloud</v-icon>
         </v-btn>
         <div class="subsection">
-          {{ $t('index.online.private-games-only') }}<br>({{ $t('index.online.no-random-discovery') }})
+          {{ $t('index.online.some-expansions-are-playable-only-here') }}
+          <ul>
+          	<li>{{ $t('index.online.chat-during-game') }}</li>
+          </ul>
         </div>
       </div>
     </section>

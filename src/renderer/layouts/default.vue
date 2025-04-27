@@ -96,7 +96,7 @@ export default {
       engine: state => state.engine,
       connectionState: state => state.networking.connectionStatus,
       onlineConnected: state => state.networking.connectionType === 'online',
-      playOnlineHostname: state => state.settings.playOnlineUrl.split('/')[0],
+      playOnlineHostname: state => state.onlineHostName,
       errorMessage: state => state.errorMessage
     }),
 
@@ -361,7 +361,7 @@ export default {
         this.$store.dispatch('game/close')
         this.$router.push('/')
       }
-    },
+    },	
 
     onKeyDown (ev) {
       if (ev.key === '+') { // bind both + and numpad +

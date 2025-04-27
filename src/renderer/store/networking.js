@@ -231,6 +231,7 @@ export const actions = {
     if (!host.match(/^\w+:\/\//)) {
       host = 'ws://' + host
     }
+    rootState.onlineHostName = (new URL(host)).hostname
     return new Promise((resolve, reject) => {
       const handler = new ConnectionHandler(ctx, host, this.$router, $addons, $connection, resolve)
       $connection.connect(host, {
@@ -247,7 +248,7 @@ export const actions = {
   },
 
   async connectPlayOnline ({ dispatch, commit, rootState }) {
-    const host = 'play-online.jcloisterzone.com/ws' // rootState.settings.playOnlineUrl
+    const host = rootState.settings.playOnlineUrl
     if (host) {
       try {
         await dispatch('connect', { host, connectionType: 'online' })
@@ -261,7 +262,7 @@ export const actions = {
   },
 
   async connectPlayOnlineFan ({ dispatch, commit, rootState }) {
-    const host = 'fancarpedia.snazzybee.com:37447'
+    const host = rootState.settings.playOnlineFanURL
     if (host) {
       try {
         await dispatch('connect', { host, connectionType: 'online' })

@@ -151,8 +151,8 @@ export const mutations = {
   },
 
   chatCommit (state, value) {
-    console.log(CC,value);
-    Vue.set(state.gameChat, state.gameChat.length, value)
+    if (!state.gameChat) Vue.set(state, 'gameChat', [])
+    state.gameChat.push(value.message)
   },
 
   lastMessageId (state, value) {
@@ -642,7 +642,6 @@ export const actions = {
   async chat ({ state }, payload) {
     const { $connection } = this._vm
     payload.gameId = state.id
-    console.log('PPP',payload);
     $connection.send({ type: 'GAME_CHAT', payload: payload })
   },
 

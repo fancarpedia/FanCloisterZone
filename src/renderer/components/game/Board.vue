@@ -203,7 +203,7 @@ export default {
 
   methods: {
     onKeyDown (ev) {
-      if (['a', 's', 'd', 'w', 'r'].includes(ev.key) && !this.$store.state.gameDialog && !this.$store.state.gameChatEdit) {
+      if (['a', 's', 'd', 'w', 'r', 't', 'h', 'f'].includes(ev.key) && !this.$store.state.gameDialog && !this.$store.state.gameChatEdit) {
         if (ev.ctrlKey || ev.metaKey || ev.altKey || ev.shiftKey) {
           return
         }
@@ -230,6 +230,15 @@ export default {
             if (this.pressedKeys.w) {
               this.offsetY -= KEY_PRESSED_OFFSET
               pressed = true
+            }
+            if (this.pressedKeys.f) {
+              console.log('Pressed f')
+            }
+            if (this.pressedKeys.h) {
+              this.$store.commit('toggleGameHistory')
+            }
+            if (this.pressedKeys.t) {
+              console.log('Pressed t')
             }
             if (pressed) {
               this.adjustAfterMove()
