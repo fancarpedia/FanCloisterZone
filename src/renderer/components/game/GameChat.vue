@@ -14,6 +14,9 @@
           >
             {{ getPlayerName(m.player) }}
           </div>
+          <div class="time">
+            {{ getMessageTime(m) }}
+          </div>
           <div class="message-text">
 	        {{ m.message }}
 	      </div>
@@ -52,8 +55,10 @@
 
 <script>
 import { mapGetters, mapState } from 'vuex'
+import { app } from 'electron'
 
 import isEqual from 'lodash/isEqual'
+import isNil from 'lodash/isNil'
 
 export default {
   data () {
@@ -80,9 +85,8 @@ export default {
     ...mapState({
       chat: state => state.game.gameChat,
       players: state => state.game.players,
-      savedPosition(state) {
-        return state.settings.chatPosition
-      },
+      savedPosition: state => state.settings.chatPosition,
+      locale: state => state.settings.locale,
       slots: state => state.game.slots,
       sessionId: state => state.networking.sessionId
     }),
@@ -150,6 +154,16 @@ export default {
     getChatDisplay() {
       return (this.chat ? 'block' : 'none')
     },
+    getMessageTime(message) {
+      if (!isNil(message.timestamp)) {
+        const date = new Date(message.timestamp * 1000)
+        return date.toLocaleTimeString(this.locale, {
+          hour: '2-digit',
+          minute: '2-digit',
+        })
+      }
+      return ''
+    },
     keyDown(ev) {
       if (ev.code === 'Space') {
         ev.stopPropagation()
@@ -175,7 +189,7 @@ export default {
     startDrag(ev) {
       this.dragging = true;
       this.offset = {
-        x: ev.clientX - this.position.left,
+        x: ev.clientX - thmis.position.left,
         y: ev.clientY - this.position.top,
       }
       document.addEventListener('mousemove', this.onDrag)
@@ -304,6 +318,10 @@ export default {
       padding: 2px 5px
       display: inline-block
       border-radius: 5px
+      
+    .time
+      color: #bbb
+      white-space: nowrap
     
   .theme--dark .message .message-text
     color: white
