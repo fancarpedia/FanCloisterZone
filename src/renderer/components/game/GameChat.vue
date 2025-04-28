@@ -1,7 +1,7 @@
 <template>
   <div
     class="game-chat"
-    :style="{ top: position.top + 'px', left: position.left + 'px', display: getChatDisplay() }"
+    :style="{ top: `${position.top}px`, left: `${position.left}px`, display: chatDisplay }"
     @mousedown="startDrag"
   >
     <div class="messages-wrapper">
@@ -18,44 +18,57 @@
 	        {{ m.message }}
 	      </div>
         </div>
-        <div class="message" style="display: none">
+        <div class="message">
           {{ sentMessage }}
         </div>
         <div ref="endOfChat" ></div>
       </div>
-      <v-text-field
-        class="edit-message"
-        ref="chatMessage"
-        v-model="newMessage"
-        :label="$t('game.chat.new-message')"
-        @focus="joinMessage"
-        @blur="leaveMessage"
-        @keydown="keyDown"
-        @keydown.enter="sendMessage"
-      />
+      <div class="send-message-wrapper">
+        <div class="new-message-text-wrapper">
+          <v-text-field
+            class="edit-message"
+            ref="chatMessage"
+            v-model="newMessage"
+            :label="$t('game.chat.new-message')"
+            @focus="joinMessage"
+            @blur="leaveMessage"
+            @keydown="keyDown"
+            @keydown.enter="sendMessage"
+          />
+        </div>
+        <div class="new-massage-send-wrapper">
+          <button
+            v-for="p in localPlayers"
+            :class="'send-button color-bg-important color color-overlay color-'+ getPlayerSlotColor(p)"
+            @click="sendMessageByPlayer(p)"
+          >
+           <v-icon class="color-overlay">fas fa-paper-plane</v-icon>
+          </button>
+        </div>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
-import { ref } from "vue"
 import { mapGetters, mapState } from 'vuex'
+
+import isEqual from 'lodash/isEqual'
 
 export default {
   data () {
     return {
-      sentMessage: null,
-      newMessage: '',
-      position: {
-        top: 100,
-        left: 100,
-      },
       dragging: false,
+      newMessage: '',
       offset: {
         x: 0,
         y: 0
       },
-      chatInitialized: false
+      position: {
+        top: 100,
+        left: 100,
+      },
+      sentMessage: null
     }
   },
   
@@ -66,50 +79,46 @@ export default {
 
     ...mapState({
       chat: state => state.game.gameChat,
-      messagePlayer: state => {
-        let localPlayers = [];
-      	for(let i=0;i<state.game.players.length;i++) {
-      	    console.log('Current action player',state.game.action.player,'i',i,state.networking.sessionId,state.game.players)
-	        if (state.game.players[i].sessionId == state.networking.sessionId) {
-	          localPlayers.push(i)
-	        }
-        }
-        return localPlayers[0]
-      },
       players: state => state.game.players,
-      slots: state => state.game.slots,
       savedPosition(state) {
         return state.settings.chatPosition
-      }
+      },
+      slots: state => state.game.slots,
+      sessionId: state => state.networking.sessionId
     }),
 
     messages() {
       return this.chat
     },
+
+    localPlayers() {
+      return this.players
+        .map((player, index) => ({ player, index }))
+        .filter(({ player }) => player.sessionId === this.sessionId)
+        .map(({ index }) => index)
+    },
     
+    chatDisplay() {
+      return this.messages.length ? 'block' : 'none'
+    }
   },
 
   mounted() {
     if (this.savedPosition) {
-      this.position.top = this.savedPosition.top;
-      this.position.left = this.savedPosition.left;
+      this.position.top = this.savedPosition.top
+      this.position.left = this.savedPosition.left
+      this.$nextTick(this.ensureChatIsVisible())
     }
-    this.$nextTick(() => {
-      this.scrollToBottom();
-    });
+    this.scrollToBottom()
   },
   
   watch: {
     chat() {
-      const lastMessage = this.chat.slice(-1);
-      if (lastMessage) {
-	      if (lastMessage[0].player.message == this.sentMessage) {
-	        this.sentMessage = null;
-	      }
-	  }
-	  this.$nextTick(() => {
-        this.scrollToBottom();
-      })
+      const lastMessage = this.messages.at(-1)
+      if (lastMessage?.message === this.sentMessage) {
+        this.sentMessage = null
+      }
+      this.scrollToBottom()
     }
   },
 
@@ -120,6 +129,17 @@ export default {
   methods: {
     joinMessage() {
         this.$store.commit('gameChatEdit', true)
+    },
+    ensureChatIsVisible() {
+      const chatWidth = 400;  // or get it dynamically if resizable
+      const chatHeight = 200;
+      const margin = 10; // optional margin from edge
+
+      const windowWidth = window.innerWidth;
+      const windowHeight = window.innerHeight;
+
+      this.position.left = Math.min(Math.max(this.position.left, margin), windowWidth - chatWidth - margin)
+      this.position.top = Math.min(Math.max(this.position.top, margin), windowHeight - chatHeight - margin)
     },
     getPlayerName(player) {
       return this.players[player].name
@@ -140,37 +160,64 @@ export default {
       this.$store.commit('gameChatEdit', null)
     },
     sendMessage() {
-      if (this.newMessage.trim().length>0) {
-        this.$store.dispatch('game/chat', { player: this.messagePlayer, message: this.newMessage.trim() } )
-        this.sentMessage = this.newMessage.trim()
+      if (this.localPlayers.length === 1) {
+        this.sendMessageByPlayer(this.localPlayers[0])
+      }
+    },
+    sendMessageByPlayer(player) {
+      const message = this.newMessage.trim()
+      if (message.length>0) {
+        this.$store.dispatch('game/chat', { player: player, message: message } )
+        this.sentMessage = message
         this.newMessage = ''
       }
     },
     startDrag(ev) {
       this.dragging = true;
-      this.offset.x = ev.clientX - this.position.left
-      this.offset.y = ev.clientY - this.position.top
+      this.offset = {
+        x: ev.clientX - this.position.left,
+        y: ev.clientY - this.position.top,
+      }
       document.addEventListener('mousemove', this.onDrag)
       document.addEventListener('mouseup', this.stopDrag)
     },
     onDrag(ev) {
       if (this.dragging) {
-        this.position.left = ev.clientX - this.offset.x
-        this.position.top = ev.clientY - this.offset.y
-      }
-    },
-    scrollToBottom() {
-      const endOfChat = this.$refs.endOfChat;
-      if (endOfChat) {
-        endOfChat.scrollIntoView({ behavior: 'auto' }); // or 'smooth'
+        const chatWidth = 400; // your fixed width
+        const chatHeight = 200; // your fixed height
+        const margin = 10; // margin from edges
+
+        let newLeft = ev.clientX - this.offset.x;
+        let newTop = ev.clientY - this.offset.y;
+
+        const windowWidth = window.innerWidth;
+        const windowHeight = window.innerHeight;
+
+        newLeft = Math.min(Math.max(newLeft, margin), windowWidth - chatWidth - margin)
+        newTop = Math.min(Math.max(newTop, margin), windowHeight - chatHeight - margin)
+
+        this.position.left = newLeft;
+        this.position.top = newTop;
       }
     },
     stopDrag() {
       this.dragging = false;
       document.removeEventListener('mousemove', this.onDrag)
       document.removeEventListener('mouseup', this.stopDrag)
-      this.$store.dispatch('settings/update', {
-        chatPosition: { ...this.position },
+
+      if (!isEqual(this.position,this.savedPosition)) {
+        this.$store.dispatch('settings/update', {
+          chatPosition: { ...this.position },
+        })
+      }
+    },
+    scrollToBottom() {
+      this.$nextTick(() => {
+        const container = this.$refs.gameChatMessages
+        const endOfChat = this.$refs.endOfChat
+        if (container && endOfChat) {
+          container.scrollTop = endOfChat.offsetTop
+        }
       })
     }
   }
@@ -224,12 +271,30 @@ export default {
     height: 140px
     
   .edit-message
+    width: 200px
     height: 40px
     margin: 5px
+
+  .send-message-wrapper
+    display: flex
+    width: 400px
     position: absolute
     bottom: 0
     left: 0
+    
+  .new-message-text-wrapper
+    flex: 1 1 auto
+    min-width: 0
+    
+  .new-massage-send-wrapper
+    flex: 0 0 auto
+    padding-top: 12px
 
+  .send-button
+    padding: 5px
+    border-radius: 5px
+    margin-left: 10px
+    
   .message
     display: flex
     gap: 5px
