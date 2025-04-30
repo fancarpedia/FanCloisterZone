@@ -89,9 +89,8 @@
         </v-btn>
         <div class="subsection">
           {{ $t('index.online.some-expansions-are-playable-only-here') }}
-          <ul>
-          	<li>{{ $t('index.online.chat-during-game') }}</li>
-          </ul>
+          <br />
+          {{ $t('index.online.chat-during-game') }}
         </div>
       </div>
     </section>

@@ -84,19 +84,12 @@ export default {
     }
   },
 
-  head () {
-    return {
-      title: this.onlineConnected ? 'JCloisterZone @ ' + this.playOnlineHostname : 'JCloisterZone'
-    }
-  },
-
   computed: {
     ...mapState({
       java: state => state.java,
       engine: state => state.engine,
       connectionState: state => state.networking.connectionStatus,
       onlineConnected: state => state.networking.connectionType === 'online',
-      playOnlineHostname: state => state.onlineHostName,
       errorMessage: state => state.errorMessage
     }),
 
@@ -150,6 +143,7 @@ export default {
 
     onlineConnected () {
       this.updateMenu()
+      this.updateTitle()
     },
 
     showSettings (val) {
@@ -345,6 +339,10 @@ export default {
         'dump-server': this.$server.isRunning(),
         'theme-inspector': !gameOpen
       })
+    },
+    
+    updateTitle() {
+      document.title = this.onlineConnected ? 'JCloisterZone @ ' + this.$store.state.onlineHostName : 'JCloisterZone'
     },
 
     leaveGame () {

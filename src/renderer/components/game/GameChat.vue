@@ -1,7 +1,7 @@
 <template>
   <div
     class="game-chat"
-    :style="{ top: `${position.top}px`, left: `${position.left}px`, display: chatDisplay }"
+    :style="{ top: `${position.top}px`, left: `${position.left}px`, display: getChatDisplay }"
     @mousedown="startDrag"
   >
     <div class="messages-wrapper">
@@ -57,6 +57,7 @@
 import { mapGetters, mapState } from 'vuex'
 import { app } from 'electron'
 
+import isArray from 'lodash/isArray'
 import isEqual from 'lodash/isEqual'
 import isNil from 'lodash/isNil'
 
@@ -102,8 +103,8 @@ export default {
         .map(({ index }) => index)
     },
     
-    chatDisplay() {
-      return this.messages.length ? 'block' : 'none'
+    getChatDisplay() {
+      isArray(this.$store.state.game.gameChat) ? 'block' : 'none'
     }
   },
 
@@ -151,9 +152,6 @@ export default {
     getPlayerSlotColor(player) {
       return this.players[player].slot
     },
-    getChatDisplay() {
-      return (this.chat ? 'block' : 'none')
-    },
     getMessageTime(message) {
       if (!isNil(message.timestamp)) {
         const date = new Date(message.timestamp * 1000)
@@ -189,7 +187,7 @@ export default {
     startDrag(ev) {
       this.dragging = true;
       this.offset = {
-        x: ev.clientX - thmis.position.left,
+        x: ev.clientX - this.position.left,
         y: ev.clientY - this.position.top,
       }
       document.addEventListener('mousemove', this.onDrag)
