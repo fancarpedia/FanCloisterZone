@@ -40,6 +40,10 @@ export function generateSaveContent(state, onlySetup = false) {
         slot: p.slot,
         clientId: p.clientId
       })),
+      chat: state.gameChat.map(m => {
+        m = pick(m, ['player', 'message'])
+        return m
+      }),
       replay: state.gameMessages.map(m => {
         m = pick(m, ['type', 'payload', 'player', 'clock']);
         m.payload = omit(m.payload, ['gameId']);

@@ -308,3 +308,13 @@ export const TINY_CITY_SCORING = Rule.TINY_CITY_SCORING = new Rule('tiny-city-sc
   ],
   { style: 'short' }
 )
+
+export const ROBBERS_SON_ACTION = Rule.ROBBERS_SON_ACTION = new Rule('robbers-son-action', GAMEPLAY,
+  'Robber\'s son {} remove robber from a road.',
+  [GameElement.ROBBERS_SON],
+  [
+    { value: 'may', text: 'may' },
+    { value: 'must', text: 'must' }
+  ],
+  { style: 'short' }
+)

@@ -391,48 +391,6 @@ export const actions = {
         if (extname(filePath) === '') {
           filePath += '.jcz'
         }
-<<<<<<< HEAD
-=======
-        const rules = {}
-        Rule.all().forEach(r => {
-          const value = state.setup.rules[r.id]
-          if (r.default !== value) rules[r.id] = value
-        })
-        const setup = { ...state.setup, rules }
-        let content
-        if (onlySetup) {
-          content = {
-            appVersion: getAppVersion(),
-            created: (new Date()).toISOString(),
-            setup
-          }
-        } else {
-          const clock = state.lastMessageClock + Date.now() - state.lastMessageClockLocal
-          content = {
-            appVersion: state.originAppVersion || getAppVersion(),
-            gameId: state.id,
-            name: '',
-            initialRandom: state.initialRandom,
-            created: (new Date()).toISOString(),
-            clock,
-            setup,
-            players: state.players.map(p => ({
-              name: p.name,
-              slot: p.slot,
-              clientId: p.clientId
-            })),
-            chat: state.gameChat.map(m => {
-              m = pick(m, ['player', 'message'])
-              return m
-            }),
-            replay: state.gameMessages.map(m => {
-              m = pick(m, ['type', 'payload', 'player', 'clock'])
-              m.payload = omit(m.payload, ['gameId'])
-              return m
-            })
-          }
-        }
->>>>>>> gamechat
 
 		const content = generateSaveContent(state, onlySetup)
 

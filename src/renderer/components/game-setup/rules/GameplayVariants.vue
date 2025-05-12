@@ -148,6 +148,17 @@
         <ExpansionSymbol :expansion="Expansion.LABYRINTH" />
       </template>
     </RuleBox>
+
+    <RuleBox
+      :setup="setup"
+      :rules="[Rule.ROBBERS_SON_ACTION]"
+      :read-only="readOnly"
+    >
+      <template #icon>
+        <img src="~/assets/features/C1/robbers-son.png" height="35">
+      </template>
+    </RuleBox>
+
   </div>
 </template>
 
