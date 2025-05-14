@@ -9,7 +9,6 @@ export function isSameFeature (f1, f2) {
 export function getMeeplePlayer (meepleId) {
   return parseInt(meepleId.split('.')[0])
 }
-
 export function generateSaveContent(state, onlySetup = false) {
   const rules = {};
   Rule.all().forEach(r => {

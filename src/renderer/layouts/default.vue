@@ -238,9 +238,6 @@ export default {
     ipcRenderer.on('menu.dump-server', () => {
       this.dumpServer()
     })
-    ipcRenderer.on('menu.save-for-test-runner', () => {
-      this.$store.dispatch('game/savescenario')
-    })
     ipcRenderer.on('menu.test-runner', () => {
       this.$router.push('/test-runner')
     })
