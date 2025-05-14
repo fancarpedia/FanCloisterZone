@@ -343,8 +343,7 @@ export default {
         'game-farm-hints': gameRunning,
         'game-setup': gameRunning,
         'dump-server': this.$server.isRunning(),
-        'theme-inspector': !gameOpen,
-        'save-for-test-runner': gameRunning
+        'theme-inspector': !gameOpen
       })
     },
 
