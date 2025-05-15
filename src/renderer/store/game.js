@@ -84,6 +84,7 @@ export const state = () => ({
   phase: null,
   action: null,
   history: null,
+  gameChat: null,
   undo: {
     allowed: false,
     depth: 0
@@ -122,6 +123,7 @@ export const mutations = {
     state.phase = null
     state.action = null
     state.history = null
+    state.gameChat = null
     state.undo = false
     state.initialRandom = null
     state.gameMessages = null
@@ -146,6 +148,12 @@ export const mutations = {
 
   name (state, value) {
     state.name = value
+  },
+
+  chatCommit (state, value) {
+    if (state.gameChat) {
+      state.gameChat.push(value.message)
+    }
   },
 
   lastMessageId (state, value) {
@@ -243,6 +251,10 @@ export const mutations = {
 
   lockUi (state, value) {
     state.lockUi = value
+  },
+
+  gameChat (state, value) {
+    state.gameChat = value
   },
 
   showGameStats (state, value) {
@@ -387,7 +399,7 @@ export const actions = {
             reject(err)
           } else {
             Vue.nextTick(() => {
-              dispatch(onlySetup ? 'settings/addRecentSetupSave' : 'settings/addRecentSave', { file: filePath, setup }, { root: true })
+              dispatch(onlySetup ? 'settings/addRecentSetupSave' : 'settings/addRecentSave', { file: filePath, content }, { root: true })
             })
             resolve(filePath)
           }
@@ -559,7 +571,8 @@ export const actions = {
         gameAnnotations: sg.gameAnnotations || {},
         slots,
         replay: sg.replay,
-        clock: sg.clock
+        clock: sg.clock,
+        chat: sg.chat ?? null
       }, { root: true })
 
       if (sg.test) {
@@ -606,6 +619,7 @@ export const actions = {
     commit('initialRandom', payload.initialRandom)
     commit('gameAnnotations', payload.gameAnnotations || {})
     commit('gameMessages', payload.replay)
+    commit('gameChat', payload.chat ?? null)
     commit('owner', payload.owner)
     commit('id', payload.gameId) // set as latest commit, /open-game rendering waits for it
   },
@@ -644,6 +658,12 @@ export const actions = {
   async rename ({ state }, name) {
     const { $connection } = this._vm
     $connection.send({ type: 'RENAME_GAME', payload: { gameId: state.id, name: name.trim() } })
+  },
+
+  async chat ({ state }, payload) {
+    const { $connection } = this._vm
+    payload.gameId = state.id
+    $connection.send({ type: 'GAME_CHAT', payload: payload })
   },
 
   async handleStartMessage ({ state, commit, dispatch, rootState }, message) {

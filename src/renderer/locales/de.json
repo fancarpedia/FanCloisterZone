@@ -172,6 +172,9 @@
       "you-may-place-an-abbey": "Du darfst eine Abtei einsetzen",
       "your-action": "deiner Aktion"
     },
+    "chat": {
+      "new-message": "New message"
+    },
     "element": {
       "abbey": "Abtei",
       "abbot": "Abt",
@@ -489,6 +492,7 @@
     "new-version-available": "Es ist eine neue Version von JCloisterZone verfügbar.",
     "online": {
       "abandon-game": "Spiel aufgeben",
+      "chat-during-game": "Chat with players during playing game",
       "connected-to": "Verbunden mit {0}",
       "game-id": "Spiel-ID",
       "games-in-progress": "Laufende Spiele",

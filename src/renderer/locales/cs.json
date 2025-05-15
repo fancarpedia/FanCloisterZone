@@ -172,6 +172,9 @@
       "you-may-place-an-abbey": "Můžete přiložit opatství",
       "your-action": "provedený úkon"
     },
+    "chat": {
+      "new-message": "New message"
+    },
     "element": {
       "abbey": "Opatství",
       "abbot": "Opat",
@@ -489,6 +492,7 @@
     "new-version-available": "Nová verze JCloisterZone je připravena ke stažení.",
     "online": {
       "abandon-game": "Opustit hru",
+      "chat-during-game": "Chat with players during playing game",
       "connected-to": "Připojeno k {0}",
       "game-id": "Kód hry",
       "games-in-progress": "Probíhající hry",

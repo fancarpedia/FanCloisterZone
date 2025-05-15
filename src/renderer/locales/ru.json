@@ -172,6 +172,9 @@
         "you-may-place-an-abbey": "Вы можете разместить аббатство",
         "your-action": "ваш ход"
       },
+      "chat": {
+        "new-message": "New message"
+      },
       "element": {
         "abbey": "Аббатство",
         "abbot": "Аббат",
@@ -489,6 +492,7 @@
       "new-version-available": "Доступна новая версия JCloisterZone.",
       "online": {
         "abandon-game": "Покинуть игру",
+        "chat-during-game": "Chat with players during playing game",
         "connected-to": "Подключен к {0}",
         "game-id": "Идентификатор игры",
         "games-in-progress": "Игры в процессе",

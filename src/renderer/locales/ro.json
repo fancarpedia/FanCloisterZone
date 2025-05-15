@@ -172,6 +172,9 @@
       "you-may-place-an-abbey": "Poți plasa o abație",
       "your-action": "acțiunea ta"
     },
+    "chat": {
+      "new-message": "New message"
+    },
     "element": {
       "abbey": "Abație",
       "abbot": "Abate",
@@ -489,6 +492,7 @@
     "new-version-available": "O nouă versiune de JCloisterZone este disponibilă.",
     "online": {
       "abandon-game": "Abandonează jocul",
+      "chat-during-game": "Chat with players during playing game",
       "connected-to": "Conectat la {0}",
       "game-id": "ID-ul jocului",
       "games-in-progress": "Jocuri în curs de jucare",

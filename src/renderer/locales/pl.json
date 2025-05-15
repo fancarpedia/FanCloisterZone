@@ -172,6 +172,9 @@
       "you-may-place-an-abbey": "Możesz umieścić Opactwo",
       "your-action": "twoja czynność"
     },
+    "chat": {
+      "new-message": "New message"
+    },
     "element": {
       "abbey": "Opactwo",
       "abbot": "Opat",
@@ -489,6 +492,7 @@
     "new-version-available": "Nowa wersja JCloisterZone jest już dostępna.",
     "online": {
       "abandon-game": "Porzuć grę",
+      "chat-during-game": "Chat with players during playing game",
       "connected-to": "Połączono z {0}",
       "game-id": "Klucz",
       "games-in-progress": "Gry w toku",

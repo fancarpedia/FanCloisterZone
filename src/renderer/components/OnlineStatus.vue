@@ -10,7 +10,7 @@ import { mapState } from 'vuex'
 export default {
   computed: {
     ...mapState({
-      playOnlineHostname: state => state.settings.playOnlineUrl.split('/')[0]
+      playOnlineHostname: state => state.onlineHostName
     })
   }
 }
