@@ -12,11 +12,15 @@
       v-else-if="pointsExpression"
       :expr="pointsExpression"
     />
+    <ReturnedMeeplePanel
+      v-else-if="returnedMeeplePanel"
+      :expr="returnedMeeplePanel"
+    />
     <!-- use v-show bit v-if for pointsExoression - to not hide related layers when pointExpression is triggered by mouse hover  -->
     <component
       :is="actionComponent"
       v-if="action"
-      v-show="!pointsExpression && !notifyConnectionClosed"
+      v-show="!pointsExpression && !notifyConnectionClosed && !returnedMeeplePanel"
       :action="action"
       :phase="phase"
       :local="local"
@@ -39,12 +43,12 @@
 
     <GameResultPanel
       v-else-if="phase === 'GameOverPhase'"
-      v-show="!pointsExpression"
+      v-show="!pointsExpression && !returnedMeeplePanel"
       class="game-over"
     />
 
     <svg
-      v-if="action && activePlayerIndicatorTriangle"
+      v-if="action && activePlayerIndicatorTriangle && !returnedMeeplePanel"
       :class="`active-player-marker ${colorCssClass(action.player)} color-fill`"
       width="42" height="42"
     >
@@ -76,6 +80,7 @@ import GameResultPanel from '@/components/game/GameResultPanel.vue'
 import GoldPiecePhaseAction from '@/components/game/actions/GoldPiecePhaseAction.vue'
 import PointsExpression from '@/components/game/PointsExpression.vue'
 import RemoveMageOrWitchAction from '@/components/game/actions/RemoveMageOrWitchAction.vue'
+import ReturnedMeeplePanel from '@/components/game/ReturnedMeeplePanel.vue'
 import SelectPrisonerToExchangeAction from '@/components/game/actions/SelectPrisonerToExchangeAction.vue'
 import ShepherdPhaseAction from '@/components/game/actions/ShepherdPhaseAction.vue'
 import TilePhaseAction from '@/components/game/actions/TilePhaseAction.vue'
@@ -110,6 +115,7 @@ export default {
     FerryPhaseAction,
     PointsExpression,
     RemoveMageOrWitchAction,
+    ReturnedMeeplePanel,
     SelectPrisonerToExchangeAction,
     ShepherdPhaseAction,
     TilePhaseAction,
@@ -138,6 +144,7 @@ export default {
     ...mapState({
       connectionState: state => state.networking.connectionStatus,
       pointsExpression: state => state.board.pointsExpression,
+      returnedMeeplePanel: state => state.board.returnedMeeplePanel,
       beep: state => state.settings.beep,
       activePlayerIndicatorTriangle: state => state.settings.activePlayerIndicatorTriangle
     }),
