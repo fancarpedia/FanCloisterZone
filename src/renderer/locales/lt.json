@@ -171,6 +171,9 @@
       "you-may-place-an-abbey": "Jūs galite padėti Abatiją",
       "your-action": "Jūsų veiksmas"
     },
+    "chat": {
+      "new-message": "New message"
+    },
     "element": {
       "abbey": "Abatija",
       "abbot": "Abotas",
@@ -480,6 +483,7 @@
     "new-version-available": "Nauja JCloisterZone versija yra prieinama",
     "online": {
       "abandon-game": "Palieka žaidimą",
+      "chat-during-game": "Chat with players during playing game",
       "connected-to": "Prisijungia prie {0}",
       "game-id": "Žaidimo ID",
       "games-in-progress": "Žaidimas jau vyksta",

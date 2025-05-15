@@ -172,6 +172,9 @@
       "you-may-place-an-abbey": "Vous pouvez placer un monastère",
       "your-action": "votre action"
     },
+    "chat": {
+      "new-message": "New message"
+    },
     "element": {
       "abbey": "Monastère",
       "abbot": "Abbé",
@@ -482,6 +485,7 @@
     "new-version-available": "Une nouvelle version de JCloisterZone est disponible.",
     "online": {
       "abandon-game": "Abandonner la partie",
+      "chat-during-game": "Chat with players during playing game",
       "connected-to": "Connecté à {0}",
       "game-id": "Identifiant de la partie",
       "games-in-progress": "Parties en cours",

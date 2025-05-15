@@ -171,6 +171,9 @@
       "you-may-place-an-abbey": "Puede colocar una abadía",
       "your-action": "su acción"
     },
+    "chat": {
+      "new-message": "New message"
+    },
     "element": {
       "abbey": "Abadía",
       "abbot": "Abad",
@@ -480,6 +483,7 @@
     "new-version-available": "Nueva versión de JCloisterZone está disponible.",
     "online": {
       "abandon-game": "Abandonar el juego",
+      "chat-during-game": "Chat with players during playing game",
       "connected-to": "Conectado a {0}",
       "game-id": "ID del juego",
       "games-in-progress": "Juego en curso",

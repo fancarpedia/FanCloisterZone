@@ -1,7 +1,7 @@
 <template>
   <div
     class="game-chat"
-    :style="{ top: `${position.top}px`, left: `${position.left}px`, display: getChatDisplay }"
+    :style="{ top: `${position.top}px`, left: `${position.left}px`, display: `${displayChat}` }"
     @mousedown="startDrag"
   >
     <div class="messages-wrapper">
@@ -74,7 +74,8 @@ export default {
         top: 100,
         left: 100,
       },
-      sentMessage: null
+      sentMessage: null,
+      displayChat: 'none'
     }
   },
   
@@ -101,10 +102,6 @@ export default {
         .map((player, index) => ({ player, index }))
         .filter(({ player }) => player.sessionId === this.sessionId)
         .map(({ index }) => index)
-    },
-    
-    getChatDisplay() {
-      isArray(this.$store.state.game.gameChat) ? 'block' : 'none'
     }
   },
 
@@ -115,6 +112,7 @@ export default {
       this.$nextTick(this.ensureChatIsVisible())
     }
     this.scrollToBottom()
+    this.displayChat = isArray(this.$store.state.game.gameChat) ? 'block' : 'none'
   },
   
   watch: {

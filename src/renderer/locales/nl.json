@@ -171,6 +171,9 @@
       "you-may-place-an-abbey": "U mag een abdij leggen",
       "your-action": "uw actie"
     },
+    "chat": {
+      "new-message": "New message"
+    },
     "element": {
       "abbey": "Abdij",
       "abbot": "Abt",
@@ -480,6 +483,7 @@
     "new-version-available": "Er is een nieuwe versie van JCloisterZone beschikbaar.",
     "online": {
       "abandon-game": "Spel verlaten",
+      "chat-during-game": "Chat with players during playing game",
       "connected-to": "Verbonden met {0}",
       "game-id": "Spel ID",
       "games-in-progress": "Lopende spellen",
