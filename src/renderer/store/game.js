@@ -399,7 +399,7 @@ export const actions = {
             reject(err)
           } else {
             Vue.nextTick(() => {
-              dispatch(onlySetup ? 'settings/addRecentSetupSave' : 'settings/addRecentSave', { file: filePath, setup }, { root: true })
+              dispatch(onlySetup ? 'settings/addRecentSetupSave' : 'settings/addRecentSave', { file: filePath, content }, { root: true })
             })
             resolve(filePath)
           }
@@ -511,7 +511,7 @@ export const actions = {
         slots,
         replay: sg.replay,
         clock: sg.clock,
-        chat: sq.chat ?? null
+        chat: sg.chat ?? null
       }, { root: true })
 
       if (sg.test) {
