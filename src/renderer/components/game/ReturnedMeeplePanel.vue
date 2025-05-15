@@ -167,6 +167,6 @@ export default {
     margin-top: 4px
 
 svg.meeple
-  max-width: 40px;
-  height: 40px;
+  max-width: 40px
+  height: 40px
 </style>
