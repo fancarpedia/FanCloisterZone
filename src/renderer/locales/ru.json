@@ -299,11 +299,7 @@
         "rename-player": "Переименовать игрока"
       },
       "game-element-box": {
-<<<<<<< HEAD
         "mandatory-for-selected-tiles": "Обязательно для выбранных плиток",
-=======
-        "mandatory-for-selected-tiles": "Обязательно для выбранных плиток","delete":"null",
->>>>>>> buildin-robbers-son
         "related-tiles-not-selected": "Связанные плитки не выбраны"
       },
       "header": {
