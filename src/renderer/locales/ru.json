@@ -242,6 +242,7 @@
         "road": "Дорога",
         "roads": "Дороги",
         "robber": "Грабитель-барон",
+        "robbers-son": "Robber's son",
         "sheep": "Овцы",
         "shrine": "Святыня",
         "shrines": "Святыни",
@@ -298,7 +299,11 @@
         "rename-player": "Переименовать игрока"
       },
       "game-element-box": {
+<<<<<<< HEAD
         "mandatory-for-selected-tiles": "Обязательно для выбранных плиток",
+=======
+        "mandatory-for-selected-tiles": "Обязательно для выбранных плиток","delete":"null",
+>>>>>>> buildin-robbers-son
         "related-tiles-not-selected": "Связанные плитки не выбраны"
       },
       "header": {

@@ -116,6 +116,9 @@ export const ACROBATS = GameElement.ACROBATS = new GameElement('acrobats', 'Acro
 export const FAMILIES = GameElement.FAMILIES = new GameElement('families', 'Families', Boolean, {
   selector: 'city[family]'
 })
+export const ROBBERS_SON = GameElement.ROBBERS_SON = new GameElement('robbers-son', 'Robber\'s son', Boolean, {
+  selector: 'road[robbers-son]'
+})
 export const WELL = GameElement.WELL = new GameElement('well', 'Well', Boolean, {
   selector: 'road[wells]'
 })
