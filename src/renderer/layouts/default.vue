@@ -345,6 +345,10 @@ export default {
       document.title = this.onlineConnected ? 'JCloisterZone @ ' + this.$store.state.onlineHostName : 'JCloisterZone'
     },
 
+    updateTitle() {
+      document.title = this.onlineConnected ? 'JCloisterZone Fan Edition @ ' + this.$store.state.onlineHostName : 'JCloisterZone Fan Edition'
+    },
+
     leaveGame () {
       if (this.onlineConnected) {
         const { $connection } = this
