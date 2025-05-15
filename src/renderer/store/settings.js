@@ -41,6 +41,7 @@ export const state = () => ({
   enginePath: null, // explicit engine path
   javaPath: null, // exolicit java path
   playOnlineUrl: 'play.jcloisterzone.com/ws',
+  playOnlineFanURL: 'fancarpedia.snazzybee.com:37447',
   devMode: process.env.NODE_ENV === 'development'
 })
 
@@ -122,6 +123,11 @@ export const actions = {
       if (settings.playOnlineUrl === null || settings.playOnlineUrl === 'play.jcloisterzone.com/ws') {
         missingKey = true
         settings.playOnlineUrl = 'play-online.jcloisterzone.com/ws'
+      }
+      // Add Fan server
+      if (settings.playOnlineFanURL === null) {
+        missingKey = true
+        settings.playOnlineFanURL = 'fancarpedia.snazzybee.com:37447'
       }
       // migrate 5.6
       if (settings.enabledArtworks.length > 0 && settings.enabledArtworks[0] === 'classic') {

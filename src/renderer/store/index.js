@@ -10,6 +10,7 @@ export const state = () => ({
   },
   hasClassicAddon: false,
   gameDialog: null,
+  gameChatEdit: null,
   showJoinDialog: false,
   showSettings: false,
   showGameHistory: true,
@@ -47,6 +48,10 @@ export const mutations = {
 
   gameDialog (state, gameDialog) {
     state.gameDialog = gameDialog
+  },
+
+  gameChatEdit (state, gameChatEdit) {
+    state.gameChatEdit = gameChatEdit
   },
 
   showJoinDialog (state, value) {

@@ -41,9 +41,9 @@ async function createMenu (win, messages) {
         { id: 'zoom-out', label: $t('menu.zoom-out') || 'Zoom Out', accelerator: 'numsub', registerAccelerator: false, click () { win.webContents.send('menu.zoom-out') } },
         { id: 'rotate', label: $t('menu.rotate') || 'Rotate', accelerator: 'r', registerAccelerator: false, click () { win.webContents.send('menu.rotate') } },
         { type: 'separator' },
-        { id: 'game-tiles', label: $t('menu.tiles') || 'Tiles', accelerator: 't', click () { win.webContents.send('menu.game-tiles') } },
-        { id: 'game-farm-hints', label: $t('menu.farm-hints') || 'Farm Hints', accelerator: 'f', click () { win.webContents.send('menu.game-farm-hints') } },
-        { id: 'toggle-history', label: $t('menu.toggle-history') || 'Toggle History', accelerator: 'h', click () { win.webContents.send('menu.game-history') } },
+        { id: 'game-tiles', label: $t('menu.tiles') || 'Tiles', click () { win.webContents.send('menu.game-tiles') } },
+        { id: 'game-farm-hints', label: $t('menu.farm-hints') || 'Farm Hints', click () { win.webContents.send('menu.game-farm-hints') } },
+        { id: 'toggle-history', label: $t('menu.toggle-history') || 'Toggle History', accelerator: 'h', registerAccelerator: false, click () { win.webContents.send('menu.game-history') } },
         { type: 'separator' },
         { id: 'game-setup', label: $t('menu.show-game-setup') || 'Show game setup', click () { win.webContents.send('menu.game-setup') } }
       ]
