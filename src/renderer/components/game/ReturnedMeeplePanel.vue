@@ -9,16 +9,17 @@
         :class="colorCssClass(expr.player)"
       >
         <Meeple :type="expr.meeple" />
-        {{ expr.meeple }}
-        2 body
+      </div>
+      <div v-if="expr.forced">
+        forced &nbsp;
       </div>
       <div>
         from
       </div>
+      &nbsp;
       <div>
       	{{ expr.from.feature }}
       </div>
-      {{ expr }}
     </div>
   </section>
 </template>
