@@ -342,7 +342,7 @@ export default {
     },
     
     updateTitle() {
-      document.title = this.onlineConnected ? 'JCloisterZone @ ' + this.$store.state.onlineHostName : 'JCloisterZone'
+      document.title = this.onlineConnected ? 'JCloisterZone Fan Edition @ ' + this.$store.state.onlineHostName : 'JCloisterZone Fan Edition'
     },
 
     updateTitle() {

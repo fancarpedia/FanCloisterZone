@@ -142,6 +142,10 @@
           <template #disabled>{{ $t('game-setup.rules.acrobats-disabled') }}</template>
         </GameMechanicsBox>
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> branch 'fan-5.13.5' of git@github.com:stanolacko/JCloisterZone-Client.git
         <GameMechanicsBox :item="GameElement.FAMILIES">
           <template #icon>
             <img src="~/assets/features/C1/families.png" height="55">
@@ -149,6 +153,7 @@
           <template #description>{{ $t('game-setup.rules.families-description') }}</template>
           <template #disabled>{{ $t('game-setup.rules.families-disabled') }}</template>
         </GameMechanicsBox>
+<<<<<<< HEAD
 
         <GameMechanicsBox :item="GameElement.ROBBERS_SON">
           <template #icon>
@@ -158,12 +163,31 @@
           <template #disabled>{{ $t('game-setup.rules.robbers-son-disabled') }}</template>
         </GameMechanicsBox>
 
+=======
+        <GameMechanicsBox :item="GameElement.ROBBERS_SON">
+          <template #icon>
+            <img src="~/assets/features/C1/robbers-son.png" height="55">
+          </template>
+          <template #description>{{ $t('game-setup.rules.robbers-son-description') }}</template>
+          <template #disabled>{{ $t('game-setup.rules.robbers-son-disabled') }}</template>
+        </GameMechanicsBox>
+>>>>>>> branch 'fan-5.13.5' of git@github.com:stanolacko/JCloisterZone-Client.git
         <GameMechanicsBox :item="GameElement.WELL">
           <template #icon>
             <img src="~/assets/features/C2/well.png" height="55">
           </template>
           <template #description>{{ $t('game-setup.rules.well-description') }}</template>
           <template #disabled>{{ $t('game-setup.rules.well-disabled') }}No tile with Well is in the game.</template>
+<<<<<<< HEAD
+=======
+        </GameMechanicsBox>
+        <GameMechanicsBox :item="GameElement.ROBBERS_SON">
+          <template #icon>
+            <img src="~/assets/features/C1/robbers-son.png" height="55">
+          </template>
+          <template #description>{{ $t('game-setup.rules.robbers-son-description') }}</template>
+          <template #disabled>{{ $t('game-setup.rules.robbers-son-disabled') }}</template>
+>>>>>>> branch 'fan-5.13.5' of git@github.com:stanolacko/JCloisterZone-Client.git
         </GameMechanicsBox>
       </div>
     </ConfigSection>
