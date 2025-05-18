@@ -41,11 +41,7 @@ export function generateSaveContent(state, onlySetup = false) {
       })),
       chat: state.gameChat.map(m => {
         m = pick(m, ['player', 'message'])
-<<<<<<< HEAD
-          return m
-=======
         return m
->>>>>>> branch 'fan-5.13.5' of git@github.com:stanolacko/JCloisterZone-Client.git
       }),
       replay: state.gameMessages.map(m => {
         m = pick(m, ['type', 'payload', 'player', 'clock']);
