@@ -1,7 +1,7 @@
 {
   "@author": "Challa007",
-  "@jcz-version": "5.11.0",
-  "@version": "0.4.1",
+  "@jcz-version": "5.13.5",
+  "@version": "0.6.0",
   "about": {
     "configuration-file": "Konfigurationsdatei",
     "jcloisterzone-game-engine": "JCloisteZone Spiel-Engine",
@@ -41,6 +41,7 @@
     "pass": "Passen",
     "play-again": "Nochmal spielen",
     "play-online": "Online spielen",
+    "play-online-fan": "Spiele online auf dem Fan-Server",
     "plus-description": "Fügen Sie mehrere Instanzen hinzu",
     "raise": "Erhöhen",
     "remove": "Entfernen",
@@ -67,7 +68,7 @@
     "offline": "Offline",
     "penalties": "Strafen",
     "show-available-only": "nur Verfügbare anzeigen",
-    "special-figures": "Special figures",
+    "special-figures": "Spezialfiguren",
     "the-biggest-city": "Die größte Stadt",
     "the-longest-road": "Die längste Straße",
     "tiles": "Plättchen",
@@ -174,7 +175,7 @@
       "your-action": "deiner Aktion"
     },
     "chat": {
-      "new-message": "New message"
+      "new-message": "Neue Nachricht"
     },
     "element": {
       "abbey": "Abtei",
@@ -222,8 +223,8 @@
       "crop-circle": "Kornkreis",
       "escape": "Flucht",
       "fairy": "Fee",
-      "family": "Family",
-      "families": "Families",
+      "family": "Familie",
+      "families": "Familien",
       "farmers": "Bauern",
       "festival": "Fest",
       "field": "Wiese",
@@ -246,7 +247,7 @@
       "road": "Straße",
       "roads": "Straßen",
       "robber": "Raubritter",
-      "robbers-son": "Robber's son",
+      "robbers-son": "Räubersohn",
       "sheep": "Schafe",
       "shrine": "Kultstätte",
       "shrines": "Kultstätten",
@@ -260,8 +261,8 @@
       "vodyanoy": "Vodjanoy",
       "watchtower": "Wachturm",
       "watchtowers": "Wachtürme",
-      "well": "Well",
-      "wells": "Wells",
+      "well": "Brunnen",
+      "wells": "Brunnen",
       "wind-rose": "Windrose",
       "wind-roses": "Windrosen",
       "yaga-hut": "Baba-Jagas Hütte"
@@ -360,8 +361,8 @@
       "starting-tiles-different-configuration": "Einige Erweiterungen bieten alternative Startkonfigurationen.",
       "vineyard-description": "Zusätzliche Punkte für nahe gelegenes Kloster.",
       "vineyard-disabled": "Kein Plättchen mit Weinberg ist im Spiel.",
-      "well-description": "Add point per well on roads. Road with in gets 2 points when completed but no points on final scoring.",
-      "well-disabled": "No tile with Well is in game."
+      "well-description": "Füge einen Punkt pro Brunnen auf Straßen hinzu. Eine abgeschlossene Straße mit Wirtshaus bekommt 2 Punkte, eine unfertige Straße mit Wirtshaus bekommt 0 Punkte.",
+      "well-disabled": "Es gibt kein Plättchen mit Brunnen im Spie"
     },
     "selected-tiles": "Ausgewählte Plättchen",
     "tiles": {
@@ -493,7 +494,7 @@
     "new-version-available": "Es ist eine neue Version von JCloisterZone verfügbar.",
     "online": {
       "abandon-game": "Spiel aufgeben",
-      "chat-during-game": "Chat with players during playing game",
+      "chat-during-game": "Chat während des Spiels",
       "connected-to": "Verbunden mit {0}",
       "game-id": "Spiel-ID",
       "games-in-progress": "Laufende Spiele",
@@ -503,7 +504,9 @@
       "paste-a-game-key": "Füge einen vom Host bereitgestellten Spielschlüssel ein",
       "private-games-only": "Nur private Spiele werden jetzt unterstützt.",
       "remove-unfinished-game-confirmation": "Möchtest du das unfertige Spiel dauerhaft aus deiner Liste entfernen?",
+      "some-expansions-are-playable-only-here": "Einige Erweiterungen können nur hier gespielt werden",
       "title": "Auf öffentlichen Servern gehostete Spiele",
+      "title-fan": "Auf dem Fan-Server gehostete Spiele",
       "you-have-no-game-in-progress": "Du hast kein laufendes Spiel."
     },
     "release-notes": "Versionshinweise",
