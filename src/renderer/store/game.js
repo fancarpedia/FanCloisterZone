@@ -547,6 +547,7 @@ export const actions = {
             name: p.name,
             clientId: p.clientId,
             sessionId: null,
+            ai: p.ai,
             order: i + 1
           }
         })

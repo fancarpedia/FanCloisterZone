@@ -12,7 +12,9 @@
     <div class="state">
       <template v-if="slotState === 'open'">{{ $t('game-setup.create.open-slot') }}</template>
       <template v-if="slotState === 'local'">{{ $t('game-setup.create.local-player') }}</template>
+      <template v-if="slotState === 'localai'">{{ $t('game-setup.create.local-ai-player') }}</template>
       <template v-if="slotState === 'remote'">{{ $t('game-setup.create.remote-player') }}</template>
+      <template v-if="slotState === 'remoteai'">{{ $t('game-setup.create.remote-ai-player') }}</template>
     </div>
     <div
       v-if="slotState === 'local'"
@@ -57,6 +59,7 @@ export default {
     number: { type: Number, required: true },
     owner: { type: String, default: null },
     name: { type: String, default: null },
+    ai: { type: Boolean },
     order: { type: Number, default: null },
     readOnly: { type: Boolean }
   },
@@ -77,9 +80,9 @@ export default {
 
     slotState () {
       if (this.owner === this.sessionId) {
-        return 'local'
+        return 'local' + (this.ai ? 'ai' : '')
       }
-      return this.owner ? 'remote' : 'open'
+      return this.owner ? 'remote' + (this.ai ? 'ai' : '') : 'open'
     }
   },
 
@@ -87,6 +90,8 @@ export default {
     toggle () {
       const { number } = this
       if (this.slotState === 'local') {
+        this.$store.dispatch('gameSetup/changeSlotToAi', { number })
+      } else if (this.slotState === 'localai') {
         this.$store.dispatch('gameSetup/releaseSlot', { number })
       } else if (this.slotState === 'open') {
         this.$store.dispatch('gameSetup/takeSlot', { number })
@@ -177,18 +182,18 @@ export default {
       +theme using ($theme)
         color: map-get($theme, 'slot-assign-text')
 
-  &.open, &.local
+  &.open, &.local, &.localai
     cursor: pointer
 
-  &.local, &.remote
+  &.local, &.localai, &.remote, &.remoteai
     box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.15), 0 3px 10px 0 rgba(0, 0, 0, 0.10)
 
-  &.local
+  &.local, &.localai
     +theme using ($theme)
       background: map-get($theme, 'slot-local-bg')
       color: map-get($theme, 'slot-local-text')
 
-  &.remote
+  &.remote, &.remoteai
     +theme using ($theme)
       background: map-get($theme, 'slot-remote-bg')
       color: map-get($theme, 'slot-remote-text')
