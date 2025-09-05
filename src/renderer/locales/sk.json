@@ -297,9 +297,11 @@
     },
     "create": {
       "click-to-assign": "kliknutím zvoľte",
+      "local-ai-player": "miestne ai",
       "local-player": "miestny hráč",
       "name": "Meno",
       "open-slot": "otvorené",
+      "remote-ai-player": "vzdialené ai",
       "remote-player": "vzdialený hráč",
       "rename-player": "Premenovať hráča"
     },

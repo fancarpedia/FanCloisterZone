@@ -297,10 +297,11 @@
     },
     "create": {
       "click-to-assign": "click to assign",
+      "local-ai-player": "local ai",
       "local-player": "local player",
       "name": "Name",
       "open-slot": "open slot",
-      "remote-player": "remote player",
+      "remote-ai-player": "remote ai",
       "rename-player": "Rename Player"
     },
     "game-element-box": {
