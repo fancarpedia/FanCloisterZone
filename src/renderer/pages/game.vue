@@ -180,7 +180,7 @@ export default {
     },
 
     activePlayerIdx (val) {
-      this.setPlayerIcon(val)
+      this.setPlayer(val)
     }
   },
 
@@ -197,7 +197,7 @@ export default {
     this.shrinkChanged = false
     window.addEventListener('resize', this.onRezize)
     this.checkOverflow()
-    this.setPlayerIcon(this.activePlayerIdx)
+    this.setPlayer(this.activePlayerIdx)
     this.gameId = this.$store.state.game.id
   },
 
@@ -205,7 +205,7 @@ export default {
     this._ro?.disconnect()
     window.removeEventListener('resize', this.onRezize)
     clearTimeout(this.checkOverflowTimeout)
-    this.setPlayerIcon(null)
+    this.setPlayer(null)
     if (this.gameId === this.$store.state.game.id) {
       // close only if not already closed (eg by Play Again button )
       this.$store.dispatch('game/close')
@@ -215,6 +215,9 @@ export default {
   },
 
   methods: {
+    setPlayer (idx) {
+      this.setPlayerIcon(idx)
+    },
     setPlayerIcon (idx) {
       let icon
       if (Number.isInteger(idx)) {

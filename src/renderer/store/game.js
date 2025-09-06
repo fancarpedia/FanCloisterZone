@@ -348,6 +348,16 @@ export const getters = {
     return clientSessionId === actionSessionId
   },
 
+  isActionAi (state, getters, rootState) {
+    if (!state.action) {
+      return false
+    }
+    const clientSessionId = rootState.networking.sessionId
+    const actionSessionId = state.players[state.action.player].sessionId
+    const aiPlayer = state.players[state.action.player].ai
+    return clientSessionId === actionSessionId && aiPlayer
+  },
+
   localPlayers (state, getters, rootState) {
     const clientSessionId = rootState.networking.sessionId
     return state.players
@@ -776,6 +786,8 @@ export const actions = {
     }
 
     commit('lockUi', false)
+    console.log('handleStartMessage end')
+    
   },
 
   close ({ dispatch, commit, rootState }) {
@@ -810,6 +822,7 @@ export const actions = {
   },
 
   async handleEngineMessage ({ state, commit, dispatch, rootState }, message) {
+    console.log('message',message)
     if (message.seq !== 1 + state.gameMessages.length) {
       console.warn(`Seq doesn't match ${message.seq} != ${1 + state.gameMessages.length}`)
       const { $connection } = this._vm
@@ -822,9 +835,19 @@ export const actions = {
     commit('lastMessageId', message.id)
     commit('updateClock', { player: state.action?.player, clock: message.clock || 0 })
     await dispatch('applyEngineResponse', { response, hash, message, allowAutoCommit: true })
+    console.log('Engine response: ',response)
+    console.log('Current player: ', state.action?.player)
+    console.log('Response player: ', response.action?.player)
+    const aiPlayer = state.players[response.action?.player].ai && rootState.networking.sessionId === state.players[response.action?.player]?.sessionId
+    console.log('AI: ',aiPlayer)
+    if (aiPlayer) {
+      await dispatch('aiEngineRequest', { response, hash, message, allowAutoCommit: true })
+    }
+    console.log('handleEngineMessage end')
   },
 
   async applyEngineResponse ({ state, commit, dispatch, rootState }, { response, hash, message, allowAutoCommit }) {
+    console.log('engine response',response)
     const local = rootState.networking.sessionId === state.players[response.action?.player]?.sessionId
     let autoCommit = false
     if (local && allowAutoCommit) {
@@ -841,6 +864,7 @@ export const actions = {
         autoCommit = true
       }
     }
+    console.log('This is before autocommit',autoCommit)
     if (autoCommit) {
       dispatch('apply', { type: 'COMMIT', payload: { gameId: state.id }, force: true })
     } else {
@@ -860,8 +884,21 @@ export const actions = {
           },
           force: true
         })
+      } else {
+        console.log('Game is not yet finished')
       }
     }
+  },
+
+  async aiEngineRequest ({ state, commit, dispatch, rootState }, { response, hash, message, allowAutoCommit }) {
+    console.log('AI Request')
+    await dispatch('apply', {
+      type: 'AI',
+      payload: {
+        gameId: state.id
+      },
+      force: true
+    })
   },
 
   async undo ({ getters, dispatch }) {
