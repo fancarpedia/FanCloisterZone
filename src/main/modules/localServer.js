@@ -550,6 +550,8 @@ class GameServer {
     const msg = { id, type, payload, player, seq, clock: Date.now() - this.startedAt }
     if (type === 'UNDO') {
       this.replay.pop()
+    } else if ( type === 'AI' ) {
+      // Skip storing
     } else {
       this.replay.push(msg)
     }

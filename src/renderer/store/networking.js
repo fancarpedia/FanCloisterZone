@@ -35,7 +35,7 @@ class ConnectionHandler {
   async processMessage (message) {
     const { commit, state, dispatch, rootState } = this.ctx
     const { type, payload } = message
-    if (ENGINE_MESSAGES.has(type)) {
+	if (ENGINE_MESSAGES.has(type)) {
       await dispatch('game/handleEngineMessage', message, { root: true })
     } else if (type === 'WELCOME') {
       const reconnected = !!state.reconnectAttempt
