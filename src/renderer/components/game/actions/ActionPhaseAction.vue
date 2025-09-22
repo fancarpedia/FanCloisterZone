@@ -106,6 +106,12 @@
         :options="item.options"
         :active="idx === selected"
       />
+      <MoveDonkeyOnTileItem
+        v-else-if="item.type == 'MoveDonkeyOnTile'"
+        :figure-id="item.figureId"
+        :options="item.options"
+        :active="idx === selected"
+      />
       <div v-else>{{ item.type }}</div>
     </div>
     <slot />
@@ -120,6 +126,7 @@ import ExpansionSymbol from '@/components/ExpansionSymbol'
 import BridgeItem from '@/components/game/actions/items/BridgeItem.vue'
 import LittleBuildingItem from '@/components/game/actions/items/LittleBuildingItem.vue'
 import MeeplePlacementItem from '@/components/game/actions/items/MeeplePlacementItem.vue'
+import MoveDonkeyOnTileItem from '@/components/game/actions/items/MoveDonkeyOnTileItem.vue'
 import MoveFairyNextToItem from '@/components/game/actions/items/MoveFairyNextToItem.vue'
 import MoveFairyOnTileItem from '@/components/game/actions/items/MoveFairyOnTileItem.vue'
 import NeutralFigureItem from '@/components/game/actions/items/NeutralFigureItem.vue'
@@ -134,6 +141,7 @@ export default {
     ExpansionSymbol,
     LittleBuildingItem,
     MeeplePlacementItem,
+    MoveDonkeyOnTileItem,
     MoveFairyNextToItem,
     MoveFairyOnTileItem,
     NeutralFigureItem,

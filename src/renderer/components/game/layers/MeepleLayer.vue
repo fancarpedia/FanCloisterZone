@@ -173,6 +173,18 @@
         :href="`${NEUTRAL_SVG}#fairy`"
       />
     </g>
+
+    <g
+      v-if="donkey"
+      :transform="donkeyTransform()"
+      class="donkey"
+    >
+      <use
+        :width="BASE_SIZE * 0.42"
+        :height="BASE_SIZE * 0.42"
+        :href="`${NEUTRAL_SVG}#donkey`"
+      />
+    </g>
   </g>
 </template>
 
@@ -191,7 +203,7 @@ import { FOLLOWER_ORDERING } from '@/constants/ordering'
 
 const MEEPLES_SVG = require('~/assets/meeples.svg')
 const NEUTRAL_SVG = require('~/assets/neutral.svg')
-const NEUTRAL_FIGURES = ['count', 'mage', 'witch', 'bigtop']
+const NEUTRAL_FIGURES = ['count', 'mage', 'witch', 'bigtop' ]
 
 export default {
   components: {
@@ -226,6 +238,7 @@ export default {
         const bt = state.game.neutralFigures.bigtop
         return bt ? { placement: { position: bt.placement, feature: 'Circus', location: 'I' } } : null
       },
+      donkey: state => state.game.neutralFigures.donkey,
       meepleSelect: state => state.board.layers.MeepleSelectLayer,
       rotate: state => state.board.rotate
     }),
@@ -316,7 +329,6 @@ export default {
           x += BASE_SIZE * 0.14
           y += BASE_SIZE * 0.02
         }
-
         NEUTRAL_FIGURES.forEach(figure => {
           if (!this[figure]) {
             return
@@ -401,6 +413,11 @@ export default {
       if (opt && !this.isDragging(ev)) {
         this.$root.$emit('meeple.select', opt)
       }
+    },
+
+    donkeyTransform () {
+      const { placement } = this.donkey
+      return this.transformPosition(placement) + ` translate(${BASE_SIZE * 0.15} ${BASE_SIZE * 0.45})`
     },
 
     lonelyFairyTransform () {

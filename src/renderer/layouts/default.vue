@@ -471,6 +471,10 @@ svg, g, use
   &.witch
     fill: $witch-color
 
+svg, g, use
+  &.donkey
+    fill: $donkey-color
+
 .settings-dialog
   height: 80vh
   display: grid

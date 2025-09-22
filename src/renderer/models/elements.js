@@ -124,3 +124,5 @@ export const ROBBERS_SON = GameElement.ROBBERS_SON = new GameElement('robbers-so
 export const WELL = GameElement.WELL = new GameElement('well', 'Well', Boolean, {
   selector: 'road[wells]'
 })
+
+export const DONKEY = GameElement.DONKEY = new GameElement('donkey', 'Donkey', Number, { default: false })
