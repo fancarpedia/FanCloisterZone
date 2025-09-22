@@ -302,7 +302,7 @@ export default {
               ...m,
               x,
               y,
-              rotate90: m.location === 'AS_ABBOT' || (deployedOnFarm && !['Shepherd', 'Pig'].includes(m.type)),
+              rotate90: m.location === 'AS_ABBOT' || (deployedOnFarm && !['Shepherd', 'Pig', 'DecinskySneznik', 'Windmill'].includes(m.type)),
               selectable: selectable && selectable[m.id]
             }
             x += m.type === 'SmallFollower' ? BASE_SIZE * 0.1 : BASE_SIZE * 0.14
