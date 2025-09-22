@@ -70,6 +70,10 @@ export default {
           rows.penalties.events.push(ev)
         } else if (type === 'obelisk') {
           rows.specialfigures.events.push(ev)
+        } else if (type === 'windmill') {
+          rows.specialfigures.events.push(ev)
+        } else if (type === 'decinsky-sneznik') {
+          rows.specialfigures.events.push(ev)
         } else {
           rows.features.events.push(ev)
         }

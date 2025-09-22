@@ -10,7 +10,9 @@ export const FOLLOWER_ORDERING = {
   Builder: 70,
   Pig: 80,
   Barn: 90,
-  Obelisk: 100
+  Obelisk: 100,
+  Windmill: 110,
+  DecinskySneznik: 120
 }
 
 export const TOKEN_ORDERING = {

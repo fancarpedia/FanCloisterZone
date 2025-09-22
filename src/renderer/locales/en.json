@@ -187,6 +187,7 @@
       "builder": "Builder",
       "castle": "Castle",
       "count": "Count",
+      "decinsky-sneznik": "Decinsky Sneznik",
       "dragon": "Dragon",
       "fairy": "Fairy",
       "ferry": "Ferry",
@@ -206,6 +207,7 @@
       "traders": "Trade Goods",
       "tunnel": "Tunnel",
       "wagon": "Wagon",
+      "windmill": "Windmill",
       "witch": "Witch"
     },
     "feature": {
