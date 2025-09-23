@@ -67,6 +67,7 @@ export const state = () => ({
   name: null,
   lastMessageId: null,
   owner: null,
+  ai: null,
   setup: null,
   packSize: null,
   slots: null,
@@ -106,6 +107,7 @@ export const mutations = {
     state.name = null
     state.lastMessageId = null
     state.owner = null
+    state.ai = null
     state.setup = null
     state.packSize = null
     state.slots = null
@@ -162,6 +164,10 @@ export const mutations = {
 
   owner (state, value) {
     state.owner = value
+  },
+
+  ai (state, value) {
+    state.ai = value
   },
 
   setup (state, value) {

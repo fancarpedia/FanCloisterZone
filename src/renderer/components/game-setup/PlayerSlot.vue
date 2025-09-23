@@ -68,7 +68,8 @@ export default {
     return {
       MEEPLES_SVG,
       edit: false,
-      editName: null
+      editName: null,
+      ai: null
     }
   },
 
@@ -94,6 +95,7 @@ export default {
       } else if (this.slotState === 'localai') {
         this.$store.dispatch('gameSetup/releaseSlot', { number })
       } else if (this.slotState === 'open') {
+        this.ai = false;
         this.$store.dispatch('gameSetup/takeSlot', { number })
       }
     },
