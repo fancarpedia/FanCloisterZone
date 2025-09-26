@@ -14,6 +14,10 @@ export default {
       return `${pos[0]},${pos[1]}`
     },
 
+    positionsAsKey (positions) {
+      return positions.map(pos => this.positionAsKey(pos)).join(';')
+    },
+
     pointerAsKey (ptr) {
       if (ptr?.length === 3) {
         return ptr.join(',')

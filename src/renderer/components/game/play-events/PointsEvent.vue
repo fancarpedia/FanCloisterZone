@@ -42,6 +42,8 @@ export default {
       if (ptr) {
         if (Array.isArray(ptr)) {
           this.showTile(ptr)
+        } else if (ptr.positions) {
+          this.showTiles(ptr.positions)
         } else if (ptr.position && !ptr.location) {
           this.showTile(ptr.position)
         } else {
@@ -63,6 +65,18 @@ export default {
           emphasis: {
             type: 'tile',
             position
+          }
+        }
+      })
+    },
+
+    showTiles (positions) {
+      this.$store.dispatch('board/showLayer', {
+        layer: 'EmphasizeLayer',
+        props: {
+          emphasis: {
+            type: 'tiles',
+            positions
           }
         }
       })
