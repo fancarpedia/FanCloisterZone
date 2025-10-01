@@ -60,6 +60,7 @@
     "undo": "Undo"
   },
   "core-messages": {
+    "bonuses": "Bonuses",
     "choose": "Choose",
     "done": "Done",
     "game-engine-not-available": "Game engine not available.",
@@ -233,6 +234,7 @@
       "field": "Field",
       "fields": "Fields",
       "flock": "Flock",
+      "flowers": "Flowers",
       "garden": "Garden",
       "gardens": "Gardens",
       "gold": "Gold",
@@ -341,6 +343,8 @@
       "farmers-description": "Players are allowed to place meeples on fields.",
       "festival-description": "With festival tile you can return one of your own figures instead of placing one.",
       "festival-disabled": "No tile with Festival is in game.",
+      "flowers-description": "TBA",
+      "flowers-disabled": "No tile with Flowers is in the game.",
       "gameplay-variants": "Gameplay variants",
       "garden-description": "Can be occupied by an abbot.",
       "garden-disabled": "Abbot is not selected.",

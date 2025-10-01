@@ -126,3 +126,7 @@ export const WELL = GameElement.WELL = new GameElement('well', 'Well', Boolean, 
 })
 
 export const DONKEY = GameElement.DONKEY = new GameElement('donkey', 'Donkey', Number, { default: false })
+
+export const FLOWERS = GameElement.FLOWERS = new GameElement('flowers', 'Flowers', Boolean, {
+  selector: '*[flowers]'
+})

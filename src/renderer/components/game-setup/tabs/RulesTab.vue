@@ -161,7 +161,14 @@
             <img src="~/assets/features/C2/well.png" height="55">
           </template>
           <template #description>{{ $t('game-setup.rules.well-description') }}</template>
-          <template #disabled>{{ $t('game-setup.rules.well-disabled') }}No tile with Well is in the game.</template>
+          <template #disabled>{{ $t('game-setup.rules.well-disabled') }}</template>
+        </GameMechanicsBox>
+        <GameMechanicsBox :item="GameElement.FLOWERS">
+          <template #icon>
+            <img src="~/assets/features/C1/flowers-yellow.png" height="55">
+          </template>
+          <template #description>{{ $t('game-setup.rules.flowers-description') }}</template>
+          <template #disabled>{{ $t('game-setup.rules.flowers-disabled') }}</template>
         </GameMechanicsBox>
       </div>
     </ConfigSection>

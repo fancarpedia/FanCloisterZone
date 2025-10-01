@@ -207,6 +207,15 @@
         </div>
       </template>
 
+      <template v-if="stats.points.flowers.some(p => p)">
+        <div class="header flowers" :title="$t('game.feature.flowers')">
+          <TokenImage token="FLOWERS_YELLOW" :height="40" />
+        </div>
+        <div v-for="(val, idx) in stats.points.flowers" :key="'flowers-'+idx" class="flowers value">
+          {{ val }}
+        </div>
+      </template>
+
       <template v-if="stats.points.obelisk.some(p => p)">
         <div class="header obelisk" :title="$t('game.element.obelisk')">
           <Meeple type="Obelisk" />
@@ -308,6 +317,7 @@ export default {
           'church': (new Array(this.players.length)).fill(0),
           'yaga-hut': (new Array(this.players.length)).fill(0),
           'vodyanoy': (new Array(this.players.length)).fill(0),
+          'flowers': (new Array(this.players.length)).fill(0),
           'obelisk': (new Array(this.players.length)).fill(0),
           'windmill': (new Array(this.players.length)).fill(0),
           'decinsky-sneznik': (new Array(this.players.length)).fill(0)
