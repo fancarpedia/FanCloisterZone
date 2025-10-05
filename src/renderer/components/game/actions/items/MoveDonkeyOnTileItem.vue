@@ -60,7 +60,7 @@ export default {
 svg.donkey
   fill: #aaa
   position: relative
-  top: -10px
+  top: 0px
 
 .active
   svg.donkey
