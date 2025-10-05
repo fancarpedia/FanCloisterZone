@@ -248,7 +248,8 @@ section
       cursor: default
 
       +theme using ($theme)
-        background: radial-gradient(circle, #{map-get($theme, 'action-panel-active-bg')} 72%, transparent 73%)
+        background: rgba(map-get($theme, 'action-panel-active-bg'), 0.72)
+        border-radius: 500px
 
 section.local
   .action-item
@@ -256,7 +257,8 @@ section.local
 
     &:hover
       +theme using ($theme)
-        background: radial-gradient(circle, #{map-get($theme, 'action-panel-hover-bg')} 72%, transparent 73%)
+        background: rgba(map-get($theme, 'action-panel-hover-bg'), 0.72)
+        border-radius: 500px
 
 @media (max-height: 800px)
   section
