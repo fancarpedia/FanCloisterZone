@@ -170,6 +170,13 @@
           <template #description>{{ $t('game-setup.rules.flowers-description') }}</template>
           <template #disabled>{{ $t('game-setup.rules.flowers-disabled') }}</template>
         </GameMechanicsBox>
+        <GameMechanicsBox :item="GameElement.MARKETPLACE">
+          <template #icon>
+            <img src="~/assets/features/C1/marketplace.png" height="55">
+          </template>
+          <template #description>{{ $t('game-setup.rules.marketplace-description') }}</template>
+          <template #disabled>{{ $t('game-setup.rules.marketplace-disabled') }}</template>
+        </GameMechanicsBox>
       </div>
     </ConfigSection>
 

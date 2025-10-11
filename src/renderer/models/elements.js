@@ -130,3 +130,7 @@ export const DONKEY = GameElement.DONKEY = new GameElement('donkey', 'Donkey', N
 export const FLOWERS = GameElement.FLOWERS = new GameElement('flowers', 'Flowers', Boolean, {
   selector: '*[flowers]'
 })
+
+export const MARKETPLACE = GameElement.MARKETPLACE = new GameElement('marketplace', 'Marketplace', Boolean, {
+  selector: 'marketplace'
+})

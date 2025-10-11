@@ -12,7 +12,6 @@ class PointsAssert {
 
   verify (assertion) {
     const m = this.REGEXP.exec(assertion)
-    console.log('ASSERTION',m)
     if (m) {
       const player = this.state.players[findPlayerIndex(this.state, m[1])]
       const points = parseInt(m[2])
