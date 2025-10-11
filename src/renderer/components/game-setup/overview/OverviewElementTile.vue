@@ -106,4 +106,16 @@ export default {
 <style lang="sass" scoped>
 .tile-img, img
   filter: grayscale(100%)
+  
+.off
+  .tile-img, img
+    filter: grayscale(75%)
+
+#app.theme--dark .icon img.bw
+  .tile-img, img
+    filter: grayscale(100%)
+
+  .off
+    .tile-img, img
+      filter: grayscale(25%)
  </style>
