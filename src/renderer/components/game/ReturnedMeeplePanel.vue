@@ -1,23 +1,24 @@
 <template>
   <section @click="onClick">
     <div class="expr-title">
-      <div>{{ title }}</div>
-      <div v-if="subtitle" class="sub">{{ subtitle }}</div>
+      <div>{{ expr.type }}</div>
+      <div v-if="subtitle" class="sub">{{ expr.type }}</div>
     </div>
     <div class="expr-row">
-      <div class="expr">
-        <ExpressionItem
-          v-for="(item, idx) in expr.items"
-          :key="idx"
-          :item="item"
-          :index="idx"
-        />
-      </div>
-      <div v-if="expr.items.length" class="equal">=</div>
       <div
-        :class="'points ' + colorCssClass(expr.player)"
+        :class="colorCssClass(expr.player)"
       >
-        {{ expr.points }}
+        <Meeple :type="expr.meeple" />
+      </div>
+      <div v-if="expr.forced">
+        forced &nbsp;
+      </div>
+      <div>
+        from
+      </div>
+      &nbsp;
+      <div>
+      	{{ expr.from.feature }}
       </div>
     </div>
   </section>
@@ -28,6 +29,7 @@ import { mapGetters } from 'vuex'
 
 import { Expansion } from '@/models/expansions'
 import ExpressionItem from '@/components/game/ExpressionItem'
+import Meeple from '@/components/game/Meeple'
 
 const TITLE_MAPPING = {
   'acrobats': 'game.feature.acrobats',
@@ -53,8 +55,7 @@ const TITLE_MAPPING = {
   'special-monastery': 'game.feature.special-monastery',
   'gold': 'game.feature.gold-ingots',
   'vodyanoy': 'game.feature.vodyanoy',
-  'watchtower': 'game.feature.watchtower',
-  'obelisk': 'game.element.obelisk'
+  'watchtower': 'game.feature.watchtower'
 }
 
 const SUBTITLE_MAPPING = {
@@ -70,11 +71,11 @@ const SUBTITLE_MAPPING = {
 
 export default {
   components: {
-    ExpressionItem
+    Meeple
   },
 
   props: {
-    expr: { type: Object, required: true }
+    expr: { type: Object, required: false }
   },
 
   data () {
@@ -89,25 +90,27 @@ export default {
     }),
 
     title () {
-      let title = TITLE_MAPPING[this.expr.name]
+      return 'title2';
+/*      let title = TITLE_MAPPING[this.expr.name]
       if (title) return this.$t(title)
       title = TITLE_MAPPING[this.expr.name.split('.')[0]]
       if (title) return this.$t(title)
-      return this.expr.name
+      return this.expr.name*/
     },
 
     subtitle () {
-      const title = SUBTITLE_MAPPING[this.expr.name]
+      return 'subtitle2'
+/*      const title = SUBTITLE_MAPPING[this.expr.name]
       if (title !== undefined) return '(' + this.$t(title) + ')'
       const key = this.expr.name.split('.')[1]
       if (!key) return null
-      return SUBTITLE_MAPPING[key] !== undefined ? '(' + this.$t(SUBTITLE_MAPPING[key]) + ')' : key
+      return SUBTITLE_MAPPING[key] !== undefined ? '(' + this.$t(SUBTITLE_MAPPING[key]) + ')' : key*/
     }
   },
 
   methods: {
     onClick () {
-      this.$store.commit('board/pointsExpression', null)
+      this.$store.commit('board/returnedMeeplePanel', null)
     }
   }
 }
@@ -163,4 +166,8 @@ export default {
   .sub
     font-size: 16px
     margin-top: 4px
+
+svg.meeple
+  max-width: 40px
+  height: 40px
 </style>

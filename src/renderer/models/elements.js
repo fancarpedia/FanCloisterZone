@@ -42,6 +42,9 @@ export const MAYOR = GameElement.MAYOR = new GameElement('mayor', 'Mayor', Numbe
 export const SHEPHERD = GameElement.SHEPHERD = new GameElement('shepherd', 'Shepherd', Number, { default: 0 })
 export const RINGMASTER = GameElement.RINGMASTER = new GameElement('ringmaster', 'Ringmaster', Number, { default: 0 })
 
+// Fan figures
+export const OBELISK = GameElement.OBELISK = new GameElement('obelisk', 'Obelisk', Number, { default: 0 })
+
 // Neutral
 export const DRAGON = GameElement.DRAGON = new GameElement('dragon', 'Dragon', Number, { selector: 'dragon' })
 export const FAIRY = GameElement.FAIRY = new GameElement('fairy', 'Fairy', Number, { default: 0 })
@@ -109,4 +112,13 @@ export const ESCAPE = GameElement.ESCAPE = new GameElement('escape', 'Escaping a
 })
 export const ACROBATS = GameElement.ACROBATS = new GameElement('acrobats', 'Acrobats', Boolean, {
   selector: 'acrobats'
+})
+export const FAMILIES = GameElement.FAMILIES = new GameElement('families', 'Families', Boolean, {
+  selector: 'city[family]'
+})
+export const ROBBERS_SON = GameElement.ROBBERS_SON = new GameElement('robbers-son', 'Robber\'s son', Boolean, {
+  selector: 'road[robbers-son]'
+})
+export const WELL = GameElement.WELL = new GameElement('well', 'Well', Boolean, {
+  selector: 'road[wells]'
 })

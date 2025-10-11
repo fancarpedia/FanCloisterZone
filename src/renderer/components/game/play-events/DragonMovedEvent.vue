@@ -2,8 +2,8 @@
   <NeutralFigure
     figure="dragon"
     :width="34" :height="34"
-    @mouseenter="onMouseEnter"
-    @mouseleave="onMouseLeave"
+    @mouseenter.native="onMouseEnter"
+    @mouseleave.native="onMouseLeave"
   />
 </template>
 

@@ -1,16 +1,17 @@
 {
-  "@author": "NGC 54",
-  "@jcz-version": "5.11.0",
-  "@version": "0.4.1",
+  "@author": "Paloi Sciurala",
+  "@jcz-version": "5.13.5",
+  "@version": "0.6.0",
   "about": {
     "configuration-file": "Fișier de configurație",
     "jcloisterzone-game-engine": "Motorul Jocului JCloisterZone",
-    "system-java-version": "Versiunea de sistem Java",
+    "system-java-version": "Versiunea de Java a sistemului",
+    "title": "Ediția de fani JCloisterZone",
     "version": "versiune"
   },
   "bookmarks": {
-    "description-end": "buton în bara laterală a vizualizării în ansamblu.",
-    "description-start": "Nu ai nicio configurație de joc în lista favoritelor. Pentru a adăuga aici o configurație, mai întâi creează un joc și aopi folosește",
+    "description-end": "din bara laterală a vizualizării în ansamblu.",
+    "description-start": "Nu ai nicio configurație de joc în lista favoritelor. Pentru a adăuga aici o configurație, mai întâi creează un joc și apoi folosește butonul",
     "nothing-saved": "Nimic salvat.",
     "setups-saved-to-file": "Configurații salvate în fișier",
     "title": "Favoritele mele"
@@ -18,8 +19,8 @@
   "button": {
     "add": "Adaugă",
     "add-to-favorites": "Adaugă la favorite",
-    "as-a-abbot": "Ca stareț",
-    "as-a-monk": "Ca călugăr",
+    "as-a-abbot": "Drept abate",
+    "as-a-monk": "Drept călugăr",
     "buy": "Cumpără",
     "cancel": "Anulare",
     "change": "Schimbă",
@@ -29,7 +30,7 @@
     "connect": "Conectează",
     "create": "Creează",
     "create-game": "Creează joc",
-    "disconnect": "Deconectează",
+    "disconnect": "Deconectează-te",
     "grow-the-flock": "Crește turma",
     "hide-stats": "Ascunde statisticile",
     "join-game": "Alătură-te jocului",
@@ -40,6 +41,7 @@
     "pass": "Omite",
     "play-again": "Joacă din nou",
     "play-online": "Joacă online",
+    "play-online-fan": "Joacă online pe serverul de fani",
     "plus-description": "Adaugă multiple întâmplări",
     "raise": "Crește",
     "remove": "Elimină",
@@ -66,6 +68,7 @@
     "offline": "Offline",
     "penalties": "Penalități",
     "show-available-only": "arată numai ceea ce este disponibil",
+    "special-figures": "Pioni speciali",
     "the-biggest-city": "Cel mai mare oraș",
     "the-longest-road": "Cel mai lung drum",
     "tiles": "Cartonașe",
@@ -87,7 +90,7 @@
     "ferries": "Bacuri",
     "festival": "Festivalul",
     "flier": "Aparate de zbor",
-    "goldmines": "Mine de aur",
+    "goldmines": "Minele de aur",
     "gq11": "Miniextensia (GQ11)",
     "heretics-and-shrines": "Eretici și lăcașuri de cult",
     "hills-and-sheep": "Oi și dealuri",
@@ -107,7 +110,7 @@
     "traders-and-builders": "Negustori și constructori",
     "tunnel": "Tunelul",
     "under-the-big-top": "În arena circului",
-    "watchtowers": "Turnurile de observație",
+    "watchtowers": "Turnurile de veghe",
     "wind-roses": "Rozele vântului",
     "winter": "Iarnă"
   },
@@ -171,6 +174,9 @@
       "you-may-place-an-abbey": "Poți plasa o abație",
       "your-action": "acțiunea ta"
     },
+    "chat": {
+      "new-message": "Mesaj nou"
+    },
     "element": {
       "abbey": "Abație",
       "abbot": "Abate",
@@ -189,6 +195,7 @@
       "little-buildings": "Construcții mici",
       "mage": "Magician",
       "mayor": "Primar",
+      "obelisk": "Obelisc",
       "phantom": "Fantomă",
       "pig": "Porc",
       "ringmaster": "Director de circ",
@@ -216,6 +223,8 @@
       "crop-circle": "Cerc în lan",
       "escape": "Evadare",
       "fairy": "Zână",
+      "family": "Familie",
+      "families": "Familii",
       "farmers": "Țărani",
       "festival": "Festival",
       "field": "Câmp",
@@ -238,6 +247,7 @@
       "road": "Drum",
       "roads": "Drumuri",
       "robber": "Cavalerul brigand",
+      "robbers-son": "Fiul jefuitorului",
       "sheep": "Oi",
       "shrine": "Lăcaș de cult",
       "shrines": "Lăcașuri de cult",
@@ -249,8 +259,10 @@
       "trade-goods": "Jetoane cu mărfuri",
       "vineyard": "Vie",
       "vodyanoy": "Vodyanoy",
-      "watchtower": "Turn de observație",
-      "watchtowers": "Turnuri de observație",
+      "watchtower": "Turn de veghe",
+      "watchtowers": "Turnuri de veghe",
+      "well": "Puț",
+      "wells": "Puțuri",
       "wind-rose": "Roză a vântului",
       "wind-roses": "Rozele vântului",
       "yaga-hut": "Coliba lui Yaga"
@@ -303,8 +315,8 @@
     },
     "open-game": {
       "assign-all-players-to-start": "Atribuie toți jucători pentru a începe",
-      "hide-remaining-tiles-cheat-sheet": "Ascunde fișa de trișare a caronașelor rămase",
-      "name": "Nune",
+      "hide-remaining-tiles-cheat-sheet": "Ascunde fițuica cartonașelor rămase",
+      "name": "Nume",
       "no-player-in-game": "Niciun jucător în joc",
       "options": "Opțiuni",
       "randomize-seating-order": "Fă aleatorie ordinea turelor jucătorilor",
@@ -348,7 +360,9 @@
       "starting-tiles-configuration": "Configurația cartonașului/cartonașelor de pornire",
       "starting-tiles-different-configuration": "Unele extensii oferă configurații de pornire alternative.",
       "vineyard-description": "Puncte adiționale pentru mănăstire învecinată.",
-      "vineyard-disabled": "Nu există niciun cartonaș cu vie în joc."
+      "vineyard-disabled": "Nu există niciun cartonaș cu vie în joc.",
+      "well-description": "Adaugă punct per puț de pe drumuri. Drumul cu han obține 2 puncte atunci când este finalizat, dar niciun punct la evaluarea finală.",
+      "well-disabled": "Nu există niciun cartonaș cu puț în joc."
     },
     "selected-tiles": "Cartonașe selectate",
     "tiles": {
@@ -425,10 +439,10 @@
         "replace": "înlocuiesc mănăstirile originale"
       },
       "king-and-robber-scoring": {
-        "10/20": "10 puncte / fiecare card la sfârșitul jocului",
-        "15/40": "15/40 puncte pentru deținerea unu/ameblor card(uri) la sfârșitul jocului",
-        "continuously": "puncte continue în timpul jocului",
-        "default": "1 punct pentru fiecare teritoriu nefinalizat la sfârșitul jocului",
+        "10/20": "10 puncte / fiecare carte la sfârșitul jocului",
+        "15/40": "15/40 pte pentru deținerea unei/ambelor cărți la sfârșitul jocului",
+        "continuously": "1 punct pentru fiecare teritoriu finalizat în timpul jocului",
+        "default": "1 punct pentru fiecare teritoriu finalizat la sfârșitul jocului",
         "description": "Încasează câte {}."
       },
       "labyrinth-variant": {
@@ -477,19 +491,22 @@
       "new-game": "Joc nou",
       "title": "Jocuri găzduite de jucător"
     },
-    "new-version-available": "O nouă versiune de JCloisterZone este disponibilă.",
+    "new-version-available": "Este disponibilă o nouă versiune de JCloisterZone.",
     "online": {
       "abandon-game": "Abandonează jocul",
+      "chat-during-game": "Discută în timpul jocului",
       "connected-to": "Conectat la {0}",
       "game-id": "ID-ul jocului",
       "games-in-progress": "Jocuri în curs de jucare",
-      "join-game": "Alătură-te jocului",
+      "join-game": "Alătură-te unui joc",
       "no-random-discovery": "asta înseamnă că nu se pot descoperi jucători aleatorii",
       "online-storage-description": "Părăsirea jocului online doar menține jocul neîncheiat în fundal. Poți să îi te alături oricând dorești din această listă.",
       "paste-a-game-key": "Lipește o cheie de joc furnizată de o gazdă",
       "private-games-only": "Deocamdată sunt suportate numai jocuri private.",
       "remove-unfinished-game-confirmation": "Vrei să elimini permanent jocul neîncheiat din lista ta?",
+      "some-expansions-are-playable-only-here": "Unele extensii sunt jucabile numai aici",
       "title": "Jocuri găzduite pe servere publice",
+      "title-fan": "Partide găzduite pe serverul de fani",
       "you-have-no-game-in-progress": "Nu ai niciun joc în curs de jucare."
     },
     "release-notes": "Note despre lansare",
@@ -509,7 +526,7 @@
     "help": "Ajutor",
     "join-game": "Alătură-te jocului",
     "leave-game": "Părăsește jocul",
-    "load-game": "Încarcă joc/ Configurează",
+    "load-game": "Încarcă joc / Configurează",
     "new-game": "Joc nou",
     "playonline-connect": "Joacă online",
     "playonline-disconnect": "Deconectează-te",
@@ -572,7 +589,7 @@
       "title": "Interfața jocului",
       "triangle-in-top-bar": "triunghi în bara de sus",
       "turn-confirmation": "Confirmarea turei",
-      "turn-confirmation-description": "Confirmarea îi permite jucătorului să anuleze acțiunile efectuate înainte ca activitatea să treacă la un jucător următor. Se întâmplă înainte de evaluare sau de ex. în timpul turei unui adversar când muți căruța, etc. Activează confirmarea explicită…"
+      "turn-confirmation-description": "Confirmarea îi permite jucătorului să anuleze acțiunile efectuate înainte ca activitatea să treacă la un jucător următor. Se întâmplă înainte de evaluare sau de ex. în timpul turei unui adversar când muți căruța etc. Activează confirmarea explicită…"
     },
     "java": {
       "change-in-settings": "Schimbă asta în {settings}.",
@@ -608,13 +625,13 @@
   "tile-set": {
     "abbey-and-mayor-description": "Fiecare jucător poate plasa și un cartonaș cu abație din rezerva sa.",
     "abbey-and-mayor-release": "A cincea extensie majoră lansată în 2007.",
-    "base-game-description": "Poți juca cartonașele cu regulile primei ediții sau celei noi (de ex. grădinile). Asta se poate selecta în al doilea pas al configurării jocului.",
-    "bridges-castles-and-bazaars-release": "A opta extensie majoră lansată în 2010. (A șasea extensie majoră, „Contele, regele și vasalii”, este divizată în mici module individuale. A șaptea, „Catapulta”, este evident omisă)",
+    "base-game-description": "Poți juca cartonașele cu regulile primei ediții sau regulile noii ediții (de ex. grădinile). Asta se poate selecta în al doilea pas al configurării jocului.",
+    "bridges-castles-and-bazaars-release": "A opta extensie majoră lansată în 2010. (A șasea extensie majoră, „Contele, regele și vasalii”, este divizată în mici module individuale. A șaptea, „Catapulta”, este desigur omisă)",
     "darmstadt-release": "Lansat original în 2014.",
     "gq11-release": "Lansată original în revista Games Quarterly în 2006.",
     "hills-and-sheep-release": "A noua extensie majoră lansată în 2014.",
     "inns-and-cathedrals-release": "Prima extensie majoră pentru Carcassonne lansată în 2002.",
-    "king-and-robber-release": "Lansat original în 2003 ca parte a Regele și inspectorul. Mai târziu inclus în a șasea extensie majoră: Contele, regele și vasalii (2007)",
+    "king-and-robber-release": "Lansat original în 2003 ca parte a Regele și iscoada. Mai târziu inclus în a șasea extensie majoră: Contele, regele și vasalii (2007)",
     "labyrinth-release": "Lansat original în 2016.",
     "princess-and-dragon-release": "A treia extensie majoră lansată în 2005.",
     "river-I-release": "Râul I este o miniextensie lansată în 2001.",

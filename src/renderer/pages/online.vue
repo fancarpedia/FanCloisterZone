@@ -30,7 +30,7 @@
 
       <div class="game-list">
         <div
-          v-for="{ game, slots, valid } in verifiedGameList"
+          v-for="{ game, slots, valid, isOwner } in verifiedGameList"
           :key="game.gameId"
           class="game"
         >
@@ -63,7 +63,7 @@
 
           <div class="buttons">
             <v-btn color="primary" :disabled="!valid || !connected" @click="resume(game)"><v-icon left>fa-play</v-icon> {{ $t('button.resume') }}</v-btn>
-            <v-btn color="secondary" :disabled="!connected" @click="del(game)"><v-icon>fa-trash-alt</v-icon></v-btn>
+            <v-btn color="secondary" :disabled="!isOwner || !connected" @click="del(game)"><v-icon>fa-trash-alt</v-icon></v-btn>
           </div>
         </div>
       </div>
@@ -169,7 +169,8 @@ export default {
         const edition = game.setup.elements.garden ? 2 : 1
         const valid = !this.$tiles.getExpansions(game.setup.sets, edition)._UNKNOWN
         const slots = sortBy(game.slots.filter(s => s.clientId), 'order')
-        return { game, valid, slots }
+        const isOwner = game.owner === this.$store.state.settings.clientId
+        return { game, valid, slots, isOwner }
       })
     }
   },

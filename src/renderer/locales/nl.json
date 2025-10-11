@@ -6,6 +6,7 @@
     "configuration-file": "Configuratiebestand",
     "jcloisterzone-game-engine": "JCloisterZone Spelmachine",
     "system-java-version": "Java Versie van het systeem",
+    "title": "JCloisterZone Fan Edition",
     "version": "versie"
   },
   "bookmarks": {
@@ -66,6 +67,7 @@
     "offline": "Offline",
     "penalties": "Strafpunten",
     "show-available-only": "alleen beschikbare tonen",
+    "special-figures": "Special figures",
     "the-biggest-city": "De grootste stad",
     "the-longest-road": "De langste weg",
     "tiles": "Tegels",
@@ -171,6 +173,9 @@
       "you-may-place-an-abbey": "U mag een abdij leggen",
       "your-action": "uw actie"
     },
+    "chat": {
+      "new-message": "New message"
+    },
     "element": {
       "abbey": "Abdij",
       "abbot": "Abt",
@@ -189,6 +194,7 @@
       "little-buildings": "Kleine gebouwen",
       "mage": "Tovenaar",
       "mayor": "Burgemeester",
+      "obelisk": "Obelisk",
       "phantom": "Fantoom",
       "pig": "Varken",
       "ringmaster": "Circusdirecteur",
@@ -216,6 +222,8 @@
       "crop-circle": "Graancirkel",
       "escape": "Ontsnappen",
       "fairy": "Fee",
+      "family": "Family",
+      "families": "Families",
       "farmers": "Boeren",
       "festival": "Feest",
       "field": "Weide",
@@ -238,6 +246,7 @@
       "road": "Weg",
       "roads": "Wegen",
       "robber": "Roofridder",
+      "robbers-son": "Robber's son",
       "sheep": "Schaap",
       "shrine": "Cultusplaats",
       "shrines": "Cultusplaats",
@@ -251,6 +260,8 @@
       "vodyanoy": "Vodyanoy",
       "watchtower": "Wachttoren",
       "watchtowers": "Wachttorens",
+      "well": "Well",
+      "wells": "Wells",
       "wind-rose": "Windroos",
       "wind-roses": "Windrozen",
       "yaga-hut": "Yaga-hut"
@@ -348,7 +359,9 @@
       "starting-tiles-configuration": "Configuratie van de starttegel(s)",
       "starting-tiles-different-configuration": "Sommige uitbreidingen voorzien in alternatieve startconfiguraties.",
       "vineyard-description": "Geeft extra punten voor naastgelegen klooster.",
-      "vineyard-disabled": "Er zijn geen tegels met wijngaarden in het spel."
+      "vineyard-disabled": "Er zijn geen tegels met wijngaarden in het spel.",
+      "well-description": "Add point per well on roads. Road with in gets 2 points when completed but no points on final scoring.",
+      "well-disabled": "No tile with Well is in game."
     },
     "selected-tiles": "Geselecteerde tegels",
     "tiles": {
@@ -480,6 +493,7 @@
     "new-version-available": "Er is een nieuwe versie van JCloisterZone beschikbaar.",
     "online": {
       "abandon-game": "Spel verlaten",
+      "chat-during-game": "Chat with players during playing game",
       "connected-to": "Verbonden met {0}",
       "game-id": "Spel ID",
       "games-in-progress": "Lopende spellen",

@@ -165,7 +165,7 @@
       </template>
 
       <template v-if="stats.points.acrobats.some(p => p)">
-        <div class="header bigtop" :title="$t('game.feature.acrobats')">
+        <div class="header acrobats" :title="$t('game.feature.acrobats')">
           <svg class="meeple" width="40" height="40">
             <g transform="scale(0.40)">
               <use :href="`${MEEPLES_SVG}#small-follower`" x="22" y="0" />
@@ -174,7 +174,7 @@
             </g>
           </svg>
         </div>
-        <div v-for="(val, idx) in stats.points.bigtop" :key="'acrobats-'+idx" class="bigtop value">
+        <div v-for="(val, idx) in stats.points.acrobats" :key="'acrobats-'+idx" class="acrobats value">
           {{ val }}
         </div>
       </template>
@@ -203,6 +203,15 @@
       <template v-if="stats.points.vodyanoy.some(p => p)">
         <div class="header vodyanoy" :title="$t('game.feature.vodyanoy')"><StandaloneTileImage tile-id="RU/V" :size="40" /></div>
         <div v-for="(val, idx) in stats.points.vodyanoy" :key="'vodyanoy-'+idx" class="vodyanoy value">
+          {{ val }}
+        </div>
+      </template>
+
+      <template v-if="stats.points.obelisk.some(p => p)">
+        <div class="header obelisk" :title="$t('game.element.obelisk')">
+          <Meeple type="Obelisk" />
+        </div>
+        <div v-for="(val, idx) in stats.points.obelisk" :key="'obelisk-'+idx" class="obeliskvalue">
           {{ val }}
         </div>
       </template>
@@ -280,7 +289,8 @@ export default {
           'wind-rose': (new Array(this.players.length)).fill(0),
           'church': (new Array(this.players.length)).fill(0),
           'yaga-hut': (new Array(this.players.length)).fill(0),
-          'vodyanoy': (new Array(this.players.length)).fill(0)
+          'vodyanoy': (new Array(this.players.length)).fill(0),
+          'obelisk': (new Array(this.players.length)).fill(0)
         }
       }
       this.history.forEach(h => {

@@ -6,6 +6,7 @@
     "configuration-file": "Plik konfiguracyjny",
     "jcloisterzone-game-engine": "Silnik gry JCloisterZone",
     "system-java-version": "Wersja systemowa Java",
+    "title": "JCloisterZone Fan Edition",
     "version": "wersja"
   },
   "bookmarks": {
@@ -66,6 +67,7 @@
     "offline": "Offline",
     "penalties": "Kary",
     "show-available-only": "Pokaż wyłącznie dostepne",
+    "special-figures": "Special figures",
     "the-biggest-city": "Największe miasto",
     "the-longest-road": "Najdłuższa droga",
     "tiles": "Płytki",
@@ -171,6 +173,9 @@
       "you-may-place-an-abbey": "Możesz umieścić Opactwo",
       "your-action": "twoja czynność"
     },
+    "chat": {
+      "new-message": "New message"
+    },
     "element": {
       "abbey": "Opactwo",
       "abbot": "Opat",
@@ -189,6 +194,7 @@
       "little-buildings": "Mały budynek",
       "mage": "Mag",
       "mayor": "Burmistrz",
+      "obelisk": "Obelisk",
       "phantom": "Świta",
       "pig": "Świnia",
       "ringmaster": "Dyrektor cyrku",
@@ -216,6 +222,8 @@
       "crop-circle": "Kręgi w zborzu",
       "escape": "Ucieknij",
       "fairy": "Wróżka",
+      "family": "Family",
+      "families": "Families",
       "farmers": "Chłopi",
       "festival": "Festiwal",
       "field": "Pole",
@@ -238,6 +246,7 @@
       "road": "Droga",
       "roads": "Drogi",
       "robber": "Baron Rabusiów",
+      "robbers-son": "Robber's son",
       "sheep": "Owce",
       "shrine": "Siedziba Kultu",
       "shrines": "Siedziby Kultu",
@@ -251,6 +260,8 @@
       "vodyanoy": "Utopiec",
       "watchtower": "Strażnica",
       "watchtowers": "Strażnice",
+      "well": "Well",
+      "wells": "Wells",
       "wind-rose": "Róża Wiatrów",
       "wind-roses": "Róże Wiatrów",
       "yaga-hut": "Hatka Baby Jagi"
@@ -348,7 +359,9 @@
       "starting-tiles-configuration": "Konfiguracja startowa",
       "starting-tiles-different-configuration": "Niektóre z roszerzeń pozwalają na alternatywną konfiguracje startową.",
       "vineyard-description": "Dodatkowe punkty do klasztorów.",
-      "vineyard-disabled": "Nie wybrano płytek z winiarnią."
+      "vineyard-disabled": "Nie wybrano płytek z winiarnią.",
+      "well-description": "Add point per well on roads. Road with in gets 2 points when completed but no points on final scoring.",
+      "well-disabled": "No tile with Well is in game."
     },
     "selected-tiles": "Wybrane płytki",
     "tiles": {
@@ -480,6 +493,7 @@
     "new-version-available": "Nowa wersja JCloisterZone jest już dostępna.",
     "online": {
       "abandon-game": "Porzuć grę",
+      "chat-during-game": "Chat with players during playing game",
       "connected-to": "Połączono z {0}",
       "game-id": "Klucz",
       "games-in-progress": "Gry w toku",

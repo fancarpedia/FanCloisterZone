@@ -6,6 +6,7 @@
     "configuration-file": "Fitxer de configuració",
     "jcloisterzone-game-engine": "Motor de joc del JCloisterZone",
     "system-java-version": "Versió del Java del sistema",
+    "title": "JCloisterZone Fan Edition",
     "version": "versió"
   },
   "bookmarks": {
@@ -66,6 +67,7 @@
     "offline": "Fora de línia",
     "penalties": "Penalitzacions",
     "show-available-only": "mostra només els disponibles",
+    "special-figures": "Special figures",
     "the-biggest-city": "La ciutat més gran",
     "the-longest-road": "El camí més llarg",
     "tiles": "Rajoles",
@@ -171,6 +173,9 @@
       "you-may-place-an-abbey": "Podeu col·locar una abadia",
       "your-action": "la vostra acció"
     },
+    "chat": {
+      "new-message": "New message"
+    },
     "element": {
       "abbey": "Abat",
       "abbot": "Abat",
@@ -189,6 +194,7 @@
       "little-buildings": "Edificis petits",
       "mage": "Mag",
       "mayor": "Alcalde",
+      "obelisk": "Obelisc",
       "phantom": "Fantasma",
       "pig": "Porc",
       "ringmaster": "Mestre de cerimònies",
@@ -216,6 +222,8 @@
       "crop-circle": "Cercle de cultiu",
       "escape": "Escapada",
       "fairy": "Fada",
+      "family": "Family",
+      "families": "Families",
       "farmers": "Grangers",
       "festival": "Festival",
       "field": "Camp",
@@ -238,6 +246,7 @@
       "road": "Camí",
       "roads": "Camins",
       "robber": "Lladre",
+      "robbers-son": "Robber's son",
       "sheep": "Ovella",
       "shrine": "Santuari",
       "shrines": "Santuaris",
@@ -251,6 +260,8 @@
       "vodyanoy": "Vodyanoy",
       "watchtower": "Talaia",
       "watchtowers": "Talaies",
+      "well": "Well",
+      "wells": "Wells",
       "wind-rose": "Rosa dels vents",
       "wind-roses": "Roses dels vents",
       "yaga-hut": "Cabana de Yaga"
@@ -348,7 +359,9 @@
       "starting-tiles-configuration": "Configuració de les rajoles inicials",
       "starting-tiles-different-configuration": "Algunes expansions proporcionen configuracions inicials alternatives.",
       "vineyard-description": "Punts addicionals per monestir proper.",
-      "vineyard-disabled": "No hi ha cap rajola amb vinyes a la partida."
+      "vineyard-disabled": "No hi ha cap rajola amb vinyes a la partida.",
+      "well-description": "Add point per well on roads. Road with in gets 2 points when completed but no points on final scoring.",
+      "well-disabled": "No tile with Well is in game."
     },
     "selected-tiles": "Rajoles seleccionades",
     "tiles": {
@@ -480,6 +493,7 @@
     "new-version-available": "Hi ha una nova versió del JCloisterZone disponible.",
     "online": {
       "abandon-game": "Abandona la partida",
+      "chat-during-game": "Chat with players during playing game",
       "connected-to": "Connectat a {0}",
       "game-id": "ID de la partida",
       "games-in-progress": "Partides en curs",

@@ -6,6 +6,7 @@
     "configuration-file": "Archivo de configuración",
     "jcloisterzone-game-engine": "Motor de juego JCloisterZone",
     "system-java-version": "Versión de Java",
+    "title": "JCloisterZone Fan Edition",
     "version": "versión"
   },
   "bookmarks": {
@@ -66,6 +67,7 @@
     "offline": "Fuera de línea",
     "penalties": "Penalidades",
     "show-available-only": "mostrar solo disponibles",
+    "special-figures": "Special figures",
     "the-biggest-city": "La ciudad más grande",
     "the-longest-road": "El camino más largo",
     "tiles": "Losetas",
@@ -171,6 +173,9 @@
       "you-may-place-an-abbey": "Puede colocar una abadía",
       "your-action": "su acción"
     },
+    "chat": {
+      "new-message": "New message"
+    },
     "element": {
       "abbey": "Abadía",
       "abbot": "Abad",
@@ -189,6 +194,7 @@
       "little-buildings": "Pequeños edificios",
       "mage": "Mago",
       "mayor": "Alcalde",
+      "obelisk": "Obelisco",
       "phantom": "Fantasma",
       "pig": "Cerdo",
       "ringmaster": "Maestro de ceremonias",
@@ -216,6 +222,8 @@
       "crop-circle": "Círculo de Cultivo",
       "escape": "Escape",
       "fairy": "Hada",
+      "family": "Family",
+      "families": "Families",
       "farmers": "Campesinos",
       "festival": "Festival",
       "field": "Campo",
@@ -238,6 +246,7 @@
       "road": "Camino",
       "roads": "Caminos",
       "robber": "El Ladrón",
+      "robbers-son": "Robber's son",
       "sheep": "Oveja",
       "shrine": "Santuario",
       "shrines": "Santuarios",
@@ -251,6 +260,8 @@
       "vodyanoy": "Vodyanoy",
       "watchtower": "Atalaya",
       "watchtowers": "Atalayas",
+      "well": "Well",
+      "wells": "Wells",
       "wind-rose": "Rosa de los Vientos",
       "wind-roses": "Rosas de los Vientos",
       "yaga-hut": "Cabaña de Yagá"
@@ -348,7 +359,9 @@
       "starting-tiles-configuration": "Configuración de loseta(s) de inicio",
       "starting-tiles-different-configuration": "Algunas expansiones ofrecen configuraciones de inicio alternativas.",
       "vineyard-description": "Puntos adicionales para monasterio cercano.",
-      "vineyard-disabled": "No hay ninguna loseta con Viñedo en el juego."
+      "vineyard-disabled": "No hay ninguna loseta con Viñedo en el juego.",
+      "well-description": "Add point per well on roads. Road with in gets 2 points when completed but no points on final scoring.",
+      "well-disabled": "No tile with Well is in game."
     },
     "selected-tiles": "Losetas seleccionadas",
     "tiles": {
@@ -480,6 +493,7 @@
     "new-version-available": "Nueva versión de JCloisterZone está disponible.",
     "online": {
       "abandon-game": "Abandonar el juego",
+      "chat-during-game": "Chat with players during playing game",
       "connected-to": "Conectado a {0}",
       "game-id": "ID del juego",
       "games-in-progress": "Juego en curso",

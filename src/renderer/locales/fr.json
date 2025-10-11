@@ -1,11 +1,12 @@
 {
   "@author": "Black Bear",
-  "@jcz-version": "5.11.0",
-  "@version": "0.4.1",
+  "@jcz-version": "5.13.5",
+  "@version": "0.6.0",
   "about": {
     "configuration-file": "Fichier de configuration",
     "jcloisterzone-game-engine": "Moteur de jeu de JCloisterZone",
     "system-java-version": "Version Java du système",
+    "title": "Édition de Fans de JCloisterZone",
     "version": "version"
   },
   "bookmarks": {
@@ -40,6 +41,7 @@
     "pass": "Passer",
     "play-again": "Jouer à nouveau",
     "play-online": "Jouer en ligne",
+    "play-online-fan": "Jouer en ligne sur le serveur des fans",
     "plus-description": "Ajouter plusieurs instances",
     "raise": "Augmenter",
     "remove": "Retirer",
@@ -60,13 +62,13 @@
   "core-messages": {
     "choose": "Choisir",
     "done": "Terminé",
-    "figures": "Pions du jeu",
     "game-engine-not-available": "Moteur de jeu non disponible.",
     "incomplete-features": "Zones incomplètes",
     "no-core-set": "Pas de jeu de base !",
     "offline": "Déconnecté",
     "penalties": "Pénalités",
     "show-available-only": "Afficher uniquement les tuiles disponibles",
+    "special-figures": "Pions spéciaux",
     "the-biggest-city": "La plus grande ville",
     "the-longest-road": "La route la plus longue",
     "tiles": "Tuiles",
@@ -172,6 +174,9 @@
       "you-may-place-an-abbey": "Vous pouvez placer un monastère",
       "your-action": "votre action"
     },
+    "chat": {
+      "new-message": "Nouveau message"
+    },
     "element": {
       "abbey": "Monastère",
       "abbot": "Abbé",
@@ -190,9 +195,9 @@
       "little-buildings": "Petits bâtiments",
       "mage": "Mage",
       "mayor": "Maire",
+      "obelisk": "Obélisque",
       "phantom": "Fantôme",
       "pig": "Cochon",
-      "obelisk": "Obélisque",
       "ringmaster": "Directeur de cirque",
       "robber": "Chevalier-brigand",
       "shepherd": "Berger",
@@ -218,6 +223,8 @@
       "crop-circle": "Agroglyphe",
       "escape": "Évasion",
       "fairy": "Fée",
+      "family": "Famille",
+      "families": "Familles",
       "farmers": "Paysans",
       "festival": "Festival",
       "field": "Pré",
@@ -240,6 +247,7 @@
       "road": "Route",
       "roads": "Routes",
       "robber": "Chevalier-brigand",
+      "robbers-son": "Fils du Voleur",
       "sheep": "Mouton",
       "shrine": "Lieu de culte",
       "shrines": "Lieux de culte",
@@ -253,6 +261,8 @@
       "vodyanoy": "Vodianoï",
       "watchtower": "Tour de guet",
       "watchtowers": "Tours de guet",
+      "well": "Puits",
+      "wells": "Puits",
       "wind-rose": "Rose des vents",
       "wind-roses": "Roses des vents",
       "yaga-hut": "Isba de Baba Yaga"
@@ -350,7 +360,9 @@
       "starting-tiles-configuration": "Configuration de la ou les tuiles de départ",
       "starting-tiles-different-configuration": "Certaines extensions fournissent des configurations de départ alternatives.",
       "vineyard-description": "Points supplémentaires pour les abbayes situées autour.",
-      "vineyard-disabled": "Aucune tuile Vignoble n’est en jeu."
+      "vineyard-disabled": "Aucune tuile Vignoble n’est en jeu.",
+      "well-description": "Ajoute un point par puits sur les routes. Une route avec une auberge au lac rapporte 2 points lorsqu’elle est terminée, mais aucun point lors de l'évaluation finale.",
+      "well-disabled": "Aucune tuile Puits n’est en jeu."
     },
     "selected-tiles": "Tuiles sélectionnées",
     "tiles": {
@@ -482,6 +494,7 @@
     "new-version-available": "Une nouvelle version de JCloisterZone est disponible.",
     "online": {
       "abandon-game": "Abandonner la partie",
+      "chat-during-game": "Discuter pendant la partie",
       "connected-to": "Connecté à {0}",
       "game-id": "Identifiant de la partie",
       "games-in-progress": "Parties en cours",
@@ -491,7 +504,9 @@
       "paste-a-game-key": "Coller la clé fournie par l’hôte",
       "private-games-only": "Seules les parties privées sont désormais prises en charge.",
       "remove-unfinished-game-confirmation": "Voulez-vous supprimer définitivement la partie inachevée de votre liste ?",
+      "some-expansions-are-playable-only-here": "Certaines extensions ne sont jouables qu’ici",
       "title": "Parties hébergées sur un serveur public",
+      "title-fan": "Jeux hébergés sur le serveur des fans",
       "you-have-no-game-in-progress": "Vous n’avez pas de partie en cours."
     },
     "release-notes": "Notes de version",

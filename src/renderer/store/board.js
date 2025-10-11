@@ -5,6 +5,7 @@ const DEFAULT_ZOOM = 0.18
 export const state = () => ({
   dragging: null,
   pointsExpression: null,
+  returnedMeeplePanel: null,
   layers: {},
   tilePlacementMouseOver: null, // select tile from TilePlacementLayer must be drawn together with regular tils by TileLayer
   zoom: DEFAULT_ZOOM,
@@ -20,6 +21,10 @@ export const mutations = {
 
   pointsExpression (state, value) {
     state.pointsExpression = value
+  },
+
+  returnedMeeplePanel (state, value) {
+    state.returnedMeeplePanel = value
   },
 
   showLayer (state, { layer, props }) {
@@ -65,6 +70,7 @@ export const mutations = {
   reset (state) {
     state.dragging = null
     state.pointsExpression = null
+    state.returnedMeeplePanel = null
     state.layers = {}
     state.tilePlacementMouseOver = null
     state.zoom = DEFAULT_ZOOM

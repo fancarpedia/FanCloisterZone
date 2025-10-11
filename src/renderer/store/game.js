@@ -1,5 +1,5 @@
 import fs from 'fs'
-import { extname } from 'path'
+import { extname, parse } from 'path'
 import { ipcRenderer } from 'electron'
 import { compare } from 'compare-versions'
 
@@ -17,7 +17,7 @@ import { SAVED_GAME_COMPATIBILITY } from '@/constants/versions'
 import Location from '@/models/Location'
 import { randomId } from '@/utils/random'
 import { getAppVersion } from '@/utils/version'
-import { isSameFeature } from '@/utils/gameUtils'
+import { isSameFeature, generateSaveContent } from '@/utils/gameUtils'
 import { verifyScenario } from '@/utils/testing'
 import { Rule, getDefaultRules } from '@/models/rules'
 
@@ -84,6 +84,7 @@ export const state = () => ({
   phase: null,
   action: null,
   history: null,
+  gameChat: null,
   undo: {
     allowed: false,
     depth: 0
@@ -122,6 +123,7 @@ export const mutations = {
     state.phase = null
     state.action = null
     state.history = null
+    state.gameChat = null
     state.undo = false
     state.initialRandom = null
     state.gameMessages = null
@@ -146,6 +148,12 @@ export const mutations = {
 
   name (state, value) {
     state.name = value
+  },
+
+  chatCommit (state, value) {
+    if (state.gameChat) {
+      state.gameChat.push(value.message)
+    }
   },
 
   lastMessageId (state, value) {
@@ -243,6 +251,10 @@ export const mutations = {
 
   lockUi (state, value) {
     state.lockUi = value
+  },
+
+  gameChat (state, value) {
+    state.gameChat = value
   },
 
   showGameStats (state, value) {
@@ -379,58 +391,82 @@ export const actions = {
         if (extname(filePath) === '') {
           filePath += '.jcz'
         }
-        const rules = {}
-        Rule.all().forEach(r => {
-          const value = state.setup.rules[r.id]
-          if (r.default !== value) rules[r.id] = value
-        })
-        const setup = { ...state.setup, rules }
-        let content
-        if (onlySetup) {
-          content = {
-            appVersion: getAppVersion(),
-            created: (new Date()).toISOString(),
-            setup
-          }
-        } else {
-          const clock = state.lastMessageClock + Date.now() - state.lastMessageClockLocal
-          content = {
-            appVersion: state.originAppVersion || getAppVersion(),
-            gameId: state.id,
-            name: '',
-            initialRandom: state.initialRandom,
-            created: (new Date()).toISOString(),
-            clock,
-            setup,
-            players: state.players.map(p => ({
-              name: p.name,
-              slot: p.slot,
-              clientId: p.clientId
-            })),
-            replay: state.gameMessages.map(m => {
-              m = pick(m, ['type', 'payload', 'player', 'clock'])
-              m.payload = omit(m.payload, ['gameId'])
-              return m
-            })
-          }
-        }
 
-        if (Object.keys(state.gameAnnotations).length) {
-          content.gameAnnotations = state.gameAnnotations
-        }
+		const content = generateSaveContent(state, onlySetup)
 
         fs.writeFile(filePath, JSON.stringify(content, null, 2), err => {
           if (err) {
             reject(err)
           } else {
             Vue.nextTick(() => {
-              dispatch(onlySetup ? 'settings/addRecentSetupSave' : 'settings/addRecentSave', { file: filePath, setup }, { root: true })
+              dispatch(onlySetup ? 'settings/addRecentSetupSave' : 'settings/addRecentSave', { file: filePath, content }, { root: true })
             })
             resolve(filePath)
           }
         })
       } else {
         resolve(null)
+      }
+    })
+  },
+
+  async savescenario ({ state, dispatch }, {} = {}) {
+    return new Promise(async (resolve, reject) => { /* eslint no-async-promise-executor: 0 */
+      let { filePath } = await ipcRenderer.invoke('dialog.showSaveDialog', {
+        title: 'Save Test runner Scenario',
+        filters: [{ name: 'Test scenarios', extensions: ['jcz'] }],
+        properties: ['createDirectory', 'showOverwriteConfirmation']
+      })
+      if (filePath) {
+        if (extname(filePath) === '') {
+          filePath += '.jcz'
+        }
+
+        const gameState = state
+        if (gameState.id) {
+          let content = generateSaveContent( gameState, false)
+          const names = { 0: 'Ariel', 1: 'John', 2: 'Betty', 3: 'Andy', 4: 'Marie', 5: 'Freddy', 6: 'Mustafa', 7: 'Zuna', 8: 'Sigma' }
+          content.players = content.players.map(player => ({
+            ...player,
+            name: names[player.slot] || 'Player-'+player.slot.toString()  // fallback if defined more players
+          }))
+          const playerNameBySlot = {}
+          content.players.forEach(player => {
+            playerNameBySlot[player.slot] = names[player.slot] || `Player-${player.slot}`
+            delete player.clientId
+          })
+          content.test = {
+            description: parse(filePath).name.replace(/[-_]/g, ' ').replace(/\b\w/g, char => char.toUpperCase()),
+            assertions: []
+          }
+          const asserts = []
+          for (const step of gameState.history) {
+            for (const event of step.events) {
+              if (event.points) {
+                for (const p of event.points) {
+                  content.test.assertions.push(`${content.players[p.player].name} scored ${p.name.split('.')[0]} for ${p.points} point${p.points !== 1 ? "s" : ""}.`)
+                }
+              }
+            }
+          }
+          for (const p of gameState.players) {
+            content.test.assertions.push(`${playerNameBySlot[p.slot]} has ${p.points} point${p.points !== 1 ? "s" : ""}.`)
+          }
+          content.gameId = '1'
+          content.initialRandom = 0.0
+          fs.writeFile(filePath, JSON.stringify(content, null, 2), err => {
+            if (err) {
+              reject(err)
+            } else {
+//              Vue.nextTick(() => {
+//                dispatch(onlySetup ? 'settings/addRecentSetupSave' : 'settings/addRecentSave', { file: filePath, setup }, { root: true })
+//              })
+              resolve(filePath)
+            }
+          })
+        } else {
+          resolve(null)
+        }
       }
     })
   },
@@ -535,7 +571,8 @@ export const actions = {
         gameAnnotations: sg.gameAnnotations || {},
         slots,
         replay: sg.replay,
-        clock: sg.clock
+        clock: sg.clock,
+        chat: sg.chat ?? null
       }, { root: true })
 
       if (sg.test) {
@@ -582,6 +619,7 @@ export const actions = {
     commit('initialRandom', payload.initialRandom)
     commit('gameAnnotations', payload.gameAnnotations || {})
     commit('gameMessages', payload.replay)
+    commit('gameChat', payload.chat ?? null)
     commit('owner', payload.owner)
     commit('id', payload.gameId) // set as latest commit, /open-game rendering waits for it
   },
@@ -620,6 +658,12 @@ export const actions = {
   async rename ({ state }, name) {
     const { $connection } = this._vm
     $connection.send({ type: 'RENAME_GAME', payload: { gameId: state.id, name: name.trim() } })
+  },
+
+  async chat ({ state }, payload) {
+    const { $connection } = this._vm
+    payload.gameId = state.id
+    $connection.send({ type: 'GAME_CHAT', payload: payload })
   },
 
   async handleStartMessage ({ state, commit, dispatch, rootState }, message) {

@@ -36,6 +36,8 @@
     <img v-else-if="element === 'festival'" src="~/assets/features/C1/festival.png" height="55">
     <img v-else-if="element === 'escape'" src="~/assets/features/C1/escape.png" height="55">
 
+	<img v-else-if="element === 'robbers-son'" src="~/assets/features/C1/robbers-son.png" height="55">
+    
     <template #quantity>
       <div class="quantity" :class="enabled ? 'addition': 'removal'">
         {{ label }}
@@ -55,7 +57,7 @@ import OverviewTile from '@/components/game-setup/overview/OverviewTile'
 import StandaloneTileImage from '@/components/game/StandaloneTileImage'
 
 const MEEPLES_SVG = require('~/assets/meeples.svg')
-const MEEPLES = ['small-follower', 'abbot', 'phantom', 'big-follower', 'builder', 'pig', 'mayor', 'wagon', 'barn', 'shepherd']
+const MEEPLES = ['small-follower', 'abbot', 'phantom', 'big-follower', 'builder', 'pig', 'mayor', 'wagon', 'barn', 'shepherd', 'obelisk' ]
 
 export default {
   components: {

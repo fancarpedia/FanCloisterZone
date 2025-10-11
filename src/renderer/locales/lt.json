@@ -6,6 +6,7 @@
     "configuration-file": "Nustatymų aplankas",
     "jcloisterzone-game-engine": "JCloisterZone Žaidimo variklis",
     "system-java-version": "Sistemos Java Versija",
+    "title": "JCloisterZone Fan Edition",
     "version": "versija"
   },
   "bookmarks": {
@@ -66,6 +67,7 @@
     "offline": "Neprisijungęs",
     "penalties": "Nuobaudos",
     "show-available-only": "Rodyti tik prieinamus",
+    "special-figures": "Special figures",
     "the-biggest-city": "Didžiausias Miestas",
     "the-longest-road": "Ilgiausias kelias",
     "tiles": "Kortelės",
@@ -171,6 +173,9 @@
       "you-may-place-an-abbey": "Jūs galite padėti Abatiją",
       "your-action": "Jūsų veiksmas"
     },
+    "chat": {
+      "new-message": "New message"
+    },
     "element": {
       "abbey": "Abatija",
       "abbot": "Abotas",
@@ -189,6 +194,7 @@
       "little-buildings": "Maži pastatai",
       "mage": "Burtininkas",
       "mayor": "Meras",
+      "obelisk": "Obeliskas",
       "phantom": "Fantomas",
       "pig": "Kiaulė",
       "ringmaster": "Ringmeisteris",
@@ -216,6 +222,8 @@
       "crop-circle": "Ratai pasėliuose",
       "escape": "Pabėgimas",
       "fairy": "Fėja",
+      "family": "Family",
+      "families": "Families",
       "farmers": "Fermeris",
       "festival": "Festivalis",
       "field": "Laukas",
@@ -238,6 +246,7 @@
       "road": "Kelias",
       "roads": "Keliai",
       "robber": "Plėšikų Baronas",
+      "robbers-son": "Robber's son",
       "sheep": "Avis",
       "shrine": "Šventovė",
       "shrines": "Šventyklos",
@@ -251,6 +260,8 @@
       "vodyanoy": "Vodyanoy",
       "watchtower": "Sargybos bokštas",
       "watchtowers": "Sargybos bokštai",
+      "well": "Well",
+      "wells": "Wells",
       "wind-rose": "Vėjo rožė",
       "wind-roses": "Vėjo Rožės",
       "yaga-hut": "Yagos trobelė"
@@ -348,7 +359,9 @@
       "starting-tiles-configuration": "Pradžios kortelės(ių) pasirinkimas",
       "starting-tiles-different-configuration": "Kai kurie papildymai suteikia alternatyvias pradžios konfigūracijas",
       "vineyard-description": "Papildomi taškai už šalia esančius vienuolynus",
-      "vineyard-disabled": "Kortelių su Vynuogynu nėra šiame žaidime"
+      "vineyard-disabled": "Kortelių su Vynuogynu nėra šiame žaidime",
+      "well-description": "Add point per well on roads. Road with in gets 2 points when completed but no points on final scoring.",
+      "well-disabled": "No tile with Well is in game."
     },
     "selected-tiles": "Pasirinktos kortelės",
     "tiles": {
@@ -480,6 +493,7 @@
     "new-version-available": "Nauja JCloisterZone versija yra prieinama",
     "online": {
       "abandon-game": "Palieka žaidimą",
+      "chat-during-game": "Chat with players during playing game",
       "connected-to": "Prisijungia prie {0}",
       "game-id": "Žaidimo ID",
       "games-in-progress": "Žaidimas jau vyksta",

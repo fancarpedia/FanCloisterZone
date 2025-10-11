@@ -1,11 +1,12 @@
 {
   "@author": "farin",
-  "@jcz-version": "5.10.2",
-  "@version": "0.4.0",
+  "@jcz-version": "5.13.5",
+  "@version": "0.6.0",
   "about": {
     "configuration-file": "Configuration file",
     "jcloisterzone-game-engine": "JCloisterZone Game Engine",
     "system-java-version": "System Java Version",
+    "title": "JCloisterZone Fan Edition",
     "version": "version"
   },
   "bookmarks": {
@@ -40,6 +41,7 @@
     "pass": "Pass",
     "play-again": "Play again",
     "play-online": "Play Online",
+    "play-online-fan": "Play Online on Fan Server",
     "plus-description": "Add multiple instances",
     "raise": "Raise",
     "remove": "Remove",
@@ -66,6 +68,7 @@
     "offline": "Offline",
     "penalties": "Penalties",
     "show-available-only": "show available only",
+    "special-figures": "Special Figures",
     "the-biggest-city": "The Biggest City",
     "the-longest-road": "The Longest Road",
     "tiles": "Tiles",
@@ -171,6 +174,9 @@
       "you-may-place-an-abbey": "You may place an abbey",
       "your-action": "your action"
     },
+    "chat": {
+      "new-message": "New message"
+    },
     "element": {
       "abbey": "Abbey",
       "abbot": "Abbot",
@@ -189,6 +195,7 @@
       "little-buildings": "Little buildings",
       "mage": "Mage",
       "mayor": "Mayor",
+      "obelisk": "Obelisk",
       "phantom": "Phantom",
       "pig": "Pig",
       "ringmaster": "Ringmaster",
@@ -216,6 +223,8 @@
       "crop-circle": "Crop Circle",
       "escape": "Escape",
       "fairy": "Fairy",
+      "family": "Family",
+      "families": "Families",
       "farmers": "Farmers",
       "festival": "Festival",
       "field": "Field",
@@ -238,6 +247,7 @@
       "road": "Road",
       "roads": "Roads",
       "robber": "Robber Barron",
+      "robbers-son": "Robber's son",
       "sheep": "Sheep",
       "shrine": "Shrine",
       "shrines": "Shrines",
@@ -251,6 +261,8 @@
       "vodyanoy": "Vodyanoy",
       "watchtower": "Watchtower",
       "watchtowers": "Watchtowers",
+      "well": "Well",
+      "wells": "Wells",
       "wind-rose": "Wind rose",
       "wind-roses": "Wind roses",
       "yaga-hut": "Yaga hut"
@@ -348,7 +360,9 @@
       "starting-tiles-configuration": "Starting tile(s) configuration",
       "starting-tiles-different-configuration": "Some expansions provides alternative starting configurations.",
       "vineyard-description": "Additional points for nearby monastery.",
-      "vineyard-disabled": "No tile with Vineyard is in game."
+      "vineyard-disabled": "No tile with Vineyard is in game.",
+      "well-description": "Add point per well on roads. Road with inn gets 2 points when completed but no points on final scoring.",
+      "well-disabled": "No tile with Well is in the game."
     },
     "selected-tiles": "Selected tiles",
     "tiles": {
@@ -371,7 +385,7 @@
     "title": "Game Setup",
     "variant": {
       "barn-placement": {
-        "description": "Barn {} be placed on a field already occupied by another barn.",
+        "description": "Barn {} be placed on a field already occupied by another barn.",
         "not-occupied": "can't",
         "occupied": "can"
       },
@@ -396,12 +410,12 @@
       },
       "espace-variant": {
         "any-tile": "any tile",
-        "description": "Monastery must be placed adjacent to {} of a besieged city to escape.",
+        "description": "Monastery must be placed adjacent to {} of a besieged city to escape.",
         "siege-tile": "siege tile"
       },
       "fairy-placement": {
         "description": "The Fairy is deployed {}.",
-        "next-follower": "next to a meeple",
+        "next-follower": "next to a meeple",
         "on-tile": "on a tile"
       },
       "festival-return": {
@@ -448,7 +462,7 @@
         "description": "Assign {} token sets to each player in game of two/three."
       },
       "princess-action": {
-        "description": "The Princess {} remove knight from a city.",
+        "description": "The Princess {} remove knight from a city.",
         "may": "may",
         "must": "must"
       },
@@ -480,6 +494,7 @@
     "new-version-available": "New JCloisterZone version is available.",
     "online": {
       "abandon-game": "Abandon game",
+      "chat-during-game": "Chat during game",
       "connected-to": "Connected to {0}",
       "game-id": "Game ID",
       "games-in-progress": "Games in progress",
@@ -489,7 +504,9 @@
       "paste-a-game-key": "Paste a game key provided by host",
       "private-games-only": "Only private games are now supported.",
       "remove-unfinished-game-confirmation": "Do you want to permanently remove unfinished game from your list?",
+      "some-expansions-are-playable-only-here": "Some expansions are playable only here",
       "title": "Public server hosted games",
+      "title-fan": "Games hosted on fan-server",
       "you-have-no-game-in-progress": "You have no game in progress."
     },
     "release-notes": "Release Notes",

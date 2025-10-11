@@ -31,6 +31,7 @@ export default {
 
   methods: {
     onMouseEnter () {
+      this.$store.commit('board/returnedMeeplePanel', this.ev)
       this.$store.dispatch('board/showLayer', {
         layer: 'EmphasizeLayer',
         props: {
@@ -44,6 +45,7 @@ export default {
 
     onMouseLeave () {
       this.$store.dispatch('board/hideLayerDebounced', { layer: 'EmphasizeLayer' })
+      this.$store.commit('board/returnedMeeplePanel', null)
     }
   }
 }
