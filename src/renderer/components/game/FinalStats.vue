@@ -216,6 +216,15 @@
         </div>
       </template>
 
+      <template v-if="stats.points.marketplace.some(p => p)">
+        <div class="header marketplace" :title="$t('game.feature.marketplace')">
+          <img src="~/assets/features/C1/marketplace.png" height="30">
+        </div>
+        <div v-for="(val, idx) in stats.points.marketplace" :key="'marktplace-'+idx" class="marketplace value">
+          {{ val }}
+        </div>
+      </template>
+
       <template v-if="stats.points.obelisk.some(p => p)">
         <div class="header obelisk" :title="$t('game.element.obelisk')">
           <Meeple type="Obelisk" />
@@ -318,6 +327,7 @@ export default {
           'yaga-hut': (new Array(this.players.length)).fill(0),
           'vodyanoy': (new Array(this.players.length)).fill(0),
           'flowers': (new Array(this.players.length)).fill(0),
+          'marketplace': (new Array(this.players.length)).fill(0),
           'obelisk': (new Array(this.players.length)).fill(0),
           'windmill': (new Array(this.players.length)).fill(0),
           'decinsky-sneznik': (new Array(this.players.length)).fill(0)
@@ -329,7 +339,7 @@ export default {
             const idx = this.players.findIndex(p => p.index === h.player)
             stats.tiles[idx] += 1
           } else if (ev.type === 'ransom-paid') {
-          console.log(ev.jailer,ev.prisoner,stats.tower);
+            console.log(ev.jailer,ev.prisoner,stats.tower);
             const jailerIdx = this.players.findIndex(p => p.index === ev.jailer)
             stats.points.tower[jailerIdx] += 3
             const prisonerIdx = this.players.findIndex(p => p.index === ev.prisoner)
