@@ -44,6 +44,8 @@ export const RINGMASTER = GameElement.RINGMASTER = new GameElement('ringmaster',
 
 // Fan figures
 export const OBELISK = GameElement.OBELISK = new GameElement('obelisk', 'Obelisk', Number, { default: 0 })
+export const WINDMILL = GameElement.WINDMILL = new GameElement('windmill', 'Windmill', Number, { default: 0 })
+export const DECINSKY_SNEZNIK = GameElement.DECINSKY_SNEZNIK = new GameElement('decinsky-sneznik', 'Decinsky Sneznik', Number, { default: 0 })
 
 // Neutral
 export const DRAGON = GameElement.DRAGON = new GameElement('dragon', 'Dragon', Number, { selector: 'dragon' })
@@ -121,4 +123,14 @@ export const ROBBERS_SON = GameElement.ROBBERS_SON = new GameElement('robbers-so
 })
 export const WELL = GameElement.WELL = new GameElement('well', 'Well', Boolean, {
   selector: 'road[wells]'
+})
+
+export const DONKEY = GameElement.DONKEY = new GameElement('donkey', 'Donkey', Number, { default: false })
+
+export const FLOWERS = GameElement.FLOWERS = new GameElement('flowers', 'Flowers', Boolean, {
+  selector: '*[flowers]'
+})
+
+export const MARKETPLACE = GameElement.MARKETPLACE = new GameElement('marketplace', 'Marketplace', Boolean, {
+  selector: 'marketplace'
 })

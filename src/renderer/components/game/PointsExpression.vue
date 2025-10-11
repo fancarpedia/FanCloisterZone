@@ -54,8 +54,11 @@ const TITLE_MAPPING = {
   'gold': 'game.feature.gold-ingots',
   'vodyanoy': 'game.feature.vodyanoy',
   'watchtower': 'game.feature.watchtower',
-  'obelisk': 'game.element.obelisk'
-}
+  'obelisk': 'game.element.obelisk',
+  'windmill': 'game.element.windmill',
+  'decinsky-sneznik': 'game.element.decinsky-sneznik',
+  'flowers': 'game.feature.flowers'
+} 
 
 const SUBTITLE_MAPPING = {
   'incomplete': 'game.scoring.incomplete',

@@ -232,6 +232,9 @@ export default {
     ipcRenderer.on('menu.dump-server', () => {
       this.dumpServer()
     })
+    ipcRenderer.on('menu.save-for-test-runner', () => {
+      this.$store.dispatch('game/savescenario')
+    })
     ipcRenderer.on('menu.test-runner', () => {
       this.$router.push('/test-runner')
     })
@@ -337,7 +340,8 @@ export default {
         'game-farm-hints': gameRunning,
         'game-setup': gameRunning,
         'dump-server': this.$server.isRunning(),
-        'theme-inspector': !gameOpen
+        'theme-inspector': !gameOpen,
+        'save-for-test-runner': gameRunning
       })
     },
     
@@ -470,6 +474,10 @@ svg, g, use
 svg, g, use
   &.witch
     fill: $witch-color
+
+svg, g, use
+  &.donkey
+    fill: $donkey-color
 
 .settings-dialog
   height: 80vh

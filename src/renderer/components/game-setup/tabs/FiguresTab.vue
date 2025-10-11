@@ -62,6 +62,16 @@
             <use :href="`${MEEPLES_SVG}#obelisk`" />
           </svg>
         </GameElementBox>
+        <GameElementBox :item="GameElement.WINDMILL" :max="9">
+          <svg class="meeple" :width="55" :height="55">
+            <use :href="`${MEEPLES_SVG}#windmill`" />
+          </svg>
+        </GameElementBox>
+        <GameElementBox :item="GameElement.DECINSKY_SNEZNIK" :max="9">
+          <svg class="meeple" :width="55" :height="55">
+            <use :href="`${MEEPLES_SVG}#decinsky-sneznik`" />
+          </svg>
+        </GameElementBox>
       </div>
     </ConfigSection>
 
@@ -84,6 +94,9 @@
         </GameElementBox>
         <GameElementBox :item="GameElement.BIG_TOP">
           <NeutralFigure figure="big-top" :width="55" :height="55" />
+        </GameElementBox>
+        <GameElementBox :item="GameElement.DONKEY">
+          <NeutralFigure figure="donkey" :width="55" :height="55" />
         </GameElementBox>
       </div>
     </ConfigSection>
