@@ -41,6 +41,7 @@
 	<TokenImage v-else-if="element === 'flowers'" token="FLOWERS_YELLOW" :height="55" />
 	<img v-else-if="element === 'marketplace'" src="~/assets/features/C1/marketplace.png" height="55">
     <NeutralFigure v-else-if="element === 'donkey'" figure="donkey" :width="70" :height="70" />
+	<img v-else-if="element === 'meteorite'" src="~/assets/features/C1/crater.png" height="55">
     
     <template #quantity>
       <div class="quantity" :class="enabled ? 'addition': 'removal'">

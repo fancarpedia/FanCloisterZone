@@ -177,6 +177,13 @@
           <template #description>{{ $t('game-setup.rules.marketplace-description') }}</template>
           <template #disabled>{{ $t('game-setup.rules.marketplace-disabled') }}</template>
         </GameMechanicsBox>
+        <GameMechanicsBox :item="GameElement.METEORITE">
+          <template #icon>
+            <img src="~/assets/features/C1/crater.png" height="55">
+          </template>
+          <template #description>{{ $t('game-setup.rules.meteorite-description') }}</template>
+          <template #disabled>{{ $t('game-setup.rules.meteorite-disabled') }}</template>
+        </GameMechanicsBox>
       </div>
     </ConfigSection>
 

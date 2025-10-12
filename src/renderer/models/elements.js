@@ -134,3 +134,7 @@ export const FLOWERS = GameElement.FLOWERS = new GameElement('flowers', 'Flowers
 export const MARKETPLACE = GameElement.MARKETPLACE = new GameElement('marketplace', 'Marketplace', Boolean, {
   selector: 'marketplace'
 })
+
+export const METEORITE = GameElement.METEORITE = new GameElement('meteorite', 'Meteorite', Boolean, {
+  selector: 'crater'
+})
