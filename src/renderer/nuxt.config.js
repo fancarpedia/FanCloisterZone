@@ -11,7 +11,7 @@ const isDev = process.env.NODE_ENV === 'development'
 module.exports = {
   ssr: false,
   head: {
-    title: 'JCloisterZoneFan',
+    title: 'FanCloisterZone Edition',
     meta: [
       { charset: 'utf-8' }
     ]

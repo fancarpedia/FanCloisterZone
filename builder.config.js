@@ -44,9 +44,9 @@ const macOS = {
 
 module.exports = {
   asar: false,
-  productName: 'JCloisterZoneFan',
+  productName: 'FanCloisterZone',
   appId: 'com.jcloisterzone.fan',
-  artifactName: 'jcloisterzonefan-${version}.${ext}',
+  artifactName: 'fancloisterzone-${version}.${ext}',
   directories: {
     output: 'build'
   },

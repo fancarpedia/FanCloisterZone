@@ -1,12 +1,13 @@
 {
   "@author": "farin",
-  "@jcz-version": "5.13.5",
-  "@version": "0.6.0",
+  "@jcz-version": "6.0.0",
+  "@version": "0.6.6",
   "about": {
     "configuration-file": "Configuration file",
     "jcloisterzone-game-engine": "JCloisterZone Game Engine",
     "system-java-version": "System Java Version",
-    "title": "JCloisterZone Fan Edition",
+    "title": "JCloisterZone",
+    "fantitle": " FanCloisterZone Edition",
     "version": "version"
   },
   "bookmarks": {
@@ -149,6 +150,7 @@
       "hills-and-sheep-tokens-left-plural": "None tokens left | 1 token left | {tokens} tokens left",
       "mage-and-witch-player-must-remove-mage-or-witch": "Player must remove mage or witch.",
       "mage-and-witch-remove-mage-or-witch": "Remove mage or witch.",
+      "meteorite-impact": "Meteorite impact",
       "monasteries-how-do-you-want-place-follower": "How do you want to place meeple on special monastery?",
       "or": "or",
       "place-the-tile": "Place the tile",
@@ -245,6 +247,8 @@
       "king-and-robber": "King & Robber",
       "marketplace": "Marketplace",
       "marketplaces": "Marketplaces",
+      "meteorite": "Meteorite",
+      "meteorites": "Meteorites",
       "monasteries": "Monasteries",
       "monastery": "Monastery",
       "pig-herd": "Pig herd",
@@ -356,6 +360,8 @@
       "inn-disabled": "No tile with Inn is in the game.",
       "marketplace-description": "TBA",
       "marketplace-disabled": "No tile with Marketplace is in the game.",
+      "meteorite-description": "TBA",
+      "meteorite-disabled": " No tile with Crater is in the game.",
       "optional-game-mechanics": "Optional game mechanics",
       "pig-herd-description": "Counts as additional pig on field (farmers scores more points).",
       "pig-herd-disabled": "No tile with Pig herd is in game.",
@@ -465,6 +471,12 @@
         "1/1/1": "1/1/1",
         "3/2/1": "3/2/1",
         "description": "Assign {} points for tower/house/shed."
+      },
+      "meteorite-impact": {
+        "standard": "Standard",
+        "extended": "Stronger",
+        "combination": "Combined",
+        "description": "{} impact of meteorite destruction."
       },
       "more-tunnel-tokens": {
         "1/1": "1/1",

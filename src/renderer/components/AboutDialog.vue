@@ -1,6 +1,6 @@
 <template>
   <v-card class="about">
-    <v-card-title class="headline">{{ $t('about.title') }}</v-card-title>
+    <v-card-title class="headline">{{ $t('about.fantitle') }}</v-card-title>
     <v-card-text>
       <section class="d-flex my-3">
         <div class="meeples d-flex">
