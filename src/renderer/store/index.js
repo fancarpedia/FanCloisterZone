@@ -153,7 +153,7 @@ export const actions = {
             }
           }
 
-          const outdated = !!version && version < 11
+          const outdated = !!version && version < 17
           const value = {
             version,
             vendor,
