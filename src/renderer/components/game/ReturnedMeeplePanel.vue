@@ -6,8 +6,8 @@
     </div>
     <div class="expr-row">
       <div
-        :class="`${(player === null ? '' : colorCssClass(player))}`"
-      >
+        :class="expr.player === null || expr.player === undefined ? '' : colorCssClass(expr.player)"
+      >	
         <Meeple v-if="expr.meeple" :type="expr.meeple" />
         <NeutralFigure v-else-if="expr.figure" :figure="expr.figure.toLowerCase()" />
       </div>
@@ -93,6 +93,7 @@ export default {
     }),
 
     title () {
+    console.log(this.expr)
       return 'title2';
 /*      let title = TITLE_MAPPING[this.expr.name]
       if (title) return this.$t(title)
@@ -102,7 +103,6 @@ export default {
     },
 
     subtitle () {
-    console.log(this.expr.figure ?? 'qqq')
       return 'subtitle2'
 /*      const title = SUBTITLE_MAPPING[this.expr.name]
       if (title !== undefined) return '(' + this.$t(title) + ')'
