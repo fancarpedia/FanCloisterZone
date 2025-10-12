@@ -22,6 +22,7 @@ import FlierRollEvent from '@/components/game/play-events/FlierRollEvent'
 import MeepleDeployedEvent from '@/components/game/play-events/MeepleDeployedEvent'
 import MeepleReturnedEvent from '@/components/game/play-events/MeepleReturnedEvent'
 import NeutralMovedEvent from '@/components/game/play-events/NeutralMovedEvent'
+import NeutralReturnedEvent from '@/components/game/play-events/NeutralReturnedEvent'
 import PointsEvent from '@/components/game/play-events/PointsEvent'
 import PrisonersExchangeEvent from '@/components/game/play-events/PrisonersExchangeEvent'
 import RansomPaidEvent from '@/components/game/play-events/RansomPaidEvent'
@@ -41,6 +42,7 @@ const MAPPING = {
   'meeple-deployed': MeepleDeployedEvent,
   'meeple-returned': MeepleReturnedEvent,
   'neutral-moved': NeutralMovedEvent,
+  'neutral-returned': NeutralReturnedEvent,
   'points': PointsEvent,
   'prisoners-exchange': PrisonersExchangeEvent,
   'ransom-paid': RansomPaidEvent,
@@ -61,6 +63,7 @@ export default {
     MeepleDeployedEvent,
     MeepleReturnedEvent,
     NeutralMovedEvent,
+    NeutralReturnedEvent,
     PointsEvent,
     PrisonersExchangeEvent,
     RansomPaidEvent,
