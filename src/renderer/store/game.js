@@ -264,7 +264,7 @@ export const mutations = {
 
 export const getters = {
   // playerSlot: state => idx => state.setup.players[idx].slot,
-  colorCssClass: state => player => (player ? 'color color-' + state.players[player].slot : ''),
+  colorCssClass: state => player => 'color color-' + state.players[player].slot,
 
   tunnelTokenColorCssClass: state => (token, player, inactive = false) => {
     const [prefix, letter] = token.split('_', 2)

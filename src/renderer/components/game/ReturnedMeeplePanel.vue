@@ -6,7 +6,7 @@
     </div>
     <div class="expr-row">
       <div
-        :class="colorCssClass(expr.player)"
+        :class="`${(player === null ? '' : colorCssClass(player))}`"
       >
         <Meeple v-if="expr.meeple" :type="expr.meeple" />
         <NeutralFigure v-else-if="expr.figure" :figure="expr.figure.toLowerCase()" />
