@@ -4,6 +4,7 @@ const DEFAULT_ZOOM = 0.18
 
 export const state = () => ({
   dragging: null,
+  diceRollPanel: null,
   pointsExpression: null,
   returnedMeeplePanel: null,
   layers: {},
@@ -17,6 +18,10 @@ const delayedHideTimeout = {}
 export const mutations = {
   dragging (state, value) {
     state.dragging = value
+  },
+
+  diceRollPanel (state, value) {
+    state.diceRollPanel = value
   },
 
   pointsExpression (state, value) {
