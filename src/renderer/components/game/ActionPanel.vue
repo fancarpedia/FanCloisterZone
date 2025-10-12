@@ -16,11 +16,15 @@
       v-else-if="returnedMeeplePanel"
       :expr="returnedMeeplePanel"
     />
+    <DiceRollPanel
+      v-else-if="diceRollPanel"
+      :expr="diceRollPanel"
+    />
     <!-- use v-show bit v-if for pointsExoression - to not hide related layers when pointExpression is triggered by mouse hover  -->
     <component
       :is="actionComponent"
       v-if="action"
-      v-show="!pointsExpression && !notifyConnectionClosed && !returnedMeeplePanel"
+      v-show="!pointsExpression && !notifyConnectionClosed && !returnedMeeplePanel && !diceRollPanel"
       :action="action"
       :phase="phase"
       :local="local"
@@ -43,12 +47,12 @@
 
     <GameResultPanel
       v-else-if="phase === 'GameOverPhase'"
-      v-show="!pointsExpression && !returnedMeeplePanel"
+      v-show="!pointsExpression && !returnedMeeplePanel && !diceRollPanel"
       class="game-over"
     />
 
     <svg
-      v-if="action && activePlayerIndicatorTriangle && !returnedMeeplePanel"
+      v-if="action && activePlayerIndicatorTriangle && !returnedMeeplePanel && !diceRollPanel"
       :class="`active-player-marker ${colorCssClass(action.player)} color-fill`"
       width="42" height="42"
     >
@@ -73,6 +77,7 @@ import CocCountPhaseAction from '@/components/game/actions/CocCountPhaseAction.v
 import CornCircleChoice from '@/components/game/actions/CornCircleChoice.vue'
 import CornCircleReturn from '@/components/game/actions/CornCircleReturn.vue'
 import CommitActionPhaseAction from '@/components/game/actions/CommitActionPhaseAction.vue'
+import DiceRollPanel from '@/components/game/DiceRollPanel.vue'
 import DragonMovePhaseAction from '@/components/game/actions/DragonMovePhaseAction.vue'
 import EscapePhaseAction from '@/components/game/actions/EscapePhaseAction.vue'
 import FerryPhaseAction from '@/components/game/actions/FerryPhaseAction.vue'
@@ -108,6 +113,7 @@ export default {
     CornCircleChoice,
     CornCircleReturn,
     CommitActionPhaseAction,
+    DiceRollPanel,
     DragonMovePhaseAction,
     EscapePhaseAction,
     GameResultPanel,
@@ -143,6 +149,7 @@ export default {
 
     ...mapState({
       connectionState: state => state.networking.connectionStatus,
+      diceRollPanel: state => state.board.diceRollPanel,
       pointsExpression: state => state.board.pointsExpression,
       returnedMeeplePanel: state => state.board.returnedMeeplePanel,
       beep: state => state.settings.beep,
