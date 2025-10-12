@@ -89,6 +89,7 @@ import ReturnedMeeplePanel from '@/components/game/ReturnedMeeplePanel.vue'
 import SelectPrisonerToExchangeAction from '@/components/game/actions/SelectPrisonerToExchangeAction.vue'
 import ShepherdPhaseAction from '@/components/game/actions/ShepherdPhaseAction.vue'
 import TilePhaseAction from '@/components/game/actions/TilePhaseAction.vue'
+import TilePlacementConfirmPhaseAction from '@/components/game/actions/TilePlacementConfirmPhaseAction.vue'
 import TowerCapturePhaseAction from '@/components/game/actions/TowerCapturePhaseAction.vue'
 
 const MAPPING = {
@@ -125,6 +126,7 @@ export default {
     SelectPrisonerToExchangeAction,
     ShepherdPhaseAction,
     TilePhaseAction,
+    TilePlacementConfirmPhaseAction,
     TowerCapturePhaseAction
   },
 

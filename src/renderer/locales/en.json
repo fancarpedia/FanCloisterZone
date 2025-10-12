@@ -1,7 +1,7 @@
 {
   "@author": "farin",
   "@jcz-version": "6.0.0",
-  "@version": "0.6.6",
+  "@version": "0.7.1",
   "about": {
     "configuration-file": "Configuration file",
     "jcloisterzone-game-engine": "JCloisterZone Game Engine",
@@ -164,6 +164,7 @@
       "siege-player-can-escape-a-besieged-city": "Player can escape a besieged city.",
       "siege-you-can-escape-a-besieged-city": "You can escape a besieged city.",
       "skip-action": "Skip action",
+      "tile-placement": "Tile placement",
       "tower-player-can-take-a-prisoner": "Player can take a prisoner",
       "tower-player-must-select-follower-for-exchange": "Player must select meeple for exchange",
       "tower-select-follower-for-exchange": "Select meeple for exchange",
