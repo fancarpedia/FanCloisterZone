@@ -16,8 +16,9 @@
         </div>
         <div>
           <div class="version">{{ $t('about.version') }} {{ version }}</div>
-          Roman Krejčík<br>
-          farin@farin.cz
+          Roman Krejčík &amp; fans<br>
+          farin@farin.cz<br>
+          Bugs: <a href="https://github.com/fancarpedia/fancloisterzone/issues">github.com</a>
         </div>
       </section>
       <hr>
