@@ -51,6 +51,7 @@ async function createMenu (win, messages) {
       label: $t('menu.help') || 'Help',
       submenu: [
         { label: ($t('menu.rules') || 'Rules') + ' (WikiCarpedia)', click () { win.webContents.send('menu.rules') } },
+        { label: ($t('menu.report-bug') || 'Report a bug'), click () { win.webContents.send('menu.report-bug') } },
         { type: 'separator' },
         { label: $t('menu.about') || 'About', click () { win.webContents.send('menu.about') } }
       ]

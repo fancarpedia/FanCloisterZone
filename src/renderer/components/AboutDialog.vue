@@ -1,6 +1,6 @@
 <template>
   <v-card class="about">
-    <v-card-title class="headline">{{ $t('about.fantitle') }}</v-card-title>
+    <v-card-title class="headline">{{ $t('about.fantitle') /* Fan Edition */ }}</v-card-title>
     <v-card-text>
       <section class="d-flex my-3">
         <div class="meeples d-flex">
@@ -17,8 +17,8 @@
         <div>
           <div class="version">{{ $t('about.version') }} {{ version }}</div>
           Roman Krejčík &amp; fans<br>
-          farin@farin.cz<br>
-          Bugs: <a href="https://github.com/fancarpedia/fancloisterzone/issues">github.com</a>
+          farin@farin.cz
+          <div class="report-bug" @click="openReportBug">{{ $t('menu.report-bug')}}: gihub.com</div>
         </div>
       </section>
       <hr>
@@ -63,6 +63,9 @@ export default {
   methods: {
     openConfig () {
       shell.openPath(this.$store.state.settings.file)
+    },
+    openReportBug () {
+      shell.openPath('https://github.com/fancarpedia/FanCloisterZone/issues') /* Fan Edition */
     }
   }
 }
@@ -104,7 +107,7 @@ export default {
   .value
     margin-left: 20px
 
-  .config-file
+  .config-file, .report-bug
     cursor: pointer
 
     &:hover
