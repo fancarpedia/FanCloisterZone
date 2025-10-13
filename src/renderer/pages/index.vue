@@ -187,7 +187,7 @@ export default {
 
     updateInfoFile () {
       if (this.updateInfo) {
-        return `https://github.com/farin/JCloisterZone-Client/releases/download/v${this.updateInfo.version}/${this.updateInfo.files[0].url}`
+        return `https://github.com/fancarpedia/FanCloisterZone/releases/download/v${this.updateInfo.version}/${this.updateInfo.files[0].url}` /* Fan Edition */
       }
       return null
     }
