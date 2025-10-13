@@ -82,10 +82,9 @@ export default function () {
   autoUpdater.autoDownload = false
   autoUpdater.setFeedURL({
     provider: 'github',
-    owner: 'farin',
-    repo: 'JCloisterZone-Client'
+    owner: 'fancarpedia', /* Fan Edition */
+    repo: 'FanCloisterZone' /* Fan Edition */
   })
-  /* Fan Edition
   autoUpdater.checkForUpdates().then(result => {
     // console.log(result)
     if (compareVersions(result.updateInfo.version, app.getVersion()) === 1) {
@@ -97,7 +96,6 @@ export default function () {
   }).catch(err => {
     console.error(err)
   })
-  Fan Edition */
 
   return {
     winCreated (_win) {
