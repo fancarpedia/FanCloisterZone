@@ -4,11 +4,11 @@
   "description": "FanCloisterZone Edition",
   "repository": "github:fancarpedia/FanCloisterZone",
   "license": "AGPL-3.0-or-later",
-  "author": "Roman Krejcik <farin@farin.cz>",
+  "author": "Roman Krejcik <farin@farin.cz> and fans",
   "main": "./dist/main/index.js",
   "scripts": {
     "download-game-engine": "node build-scripts/download-game-engine.js",
-    "dev": "node .electron-nuxt/dev.js",
+    "dev": "node .-nuxt/dev.js",
     "build": "yarn run download-game-engine && node .electron-nuxt/build.js",
     "rebuild": "node .electron-nuxt/build.js",
     "test": "",
