@@ -3,8 +3,8 @@
     <p>
       <RulesLink :title="$t('expansion.crop-circles-I')" href="https://boardgamegeek.com/boardgame/67055/carcassonne-die-kornkreise" />
       <RulesLink :title="$t('expansion.crop-circles-II')" href="https://boardgamegeek.com/boardgame/120686/carcassonne-corn-circles-ii" />
-      <RulesLink :title="$t('button.rules')" href="http://wikicarpedia.com/index.php/Special:MyLanguage/Crop_Circles" />
-      <RulesLink :title="$t('button.rules-1st-edition')" href="http://wikicarpedia.com/index.php/Special:MyLanguage/Crop_Circles_(1st_edition)" />
+      <RulesLink :title="$t('button.rules')" href="https://wikicarpedia.com/car/Special:MyLanguage/Crop_Circles" />
+      <RulesLink :title="$t('button.rules-1st-edition')" href="https://wikicarpedia.com/car/Special:MyLanguage/Crop_Circles_(1st_edition)" />
     </p>
 
     <h5>{{ $t('expansion.crop-circles-I') }}</h5>

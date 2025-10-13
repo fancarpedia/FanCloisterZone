@@ -223,7 +223,10 @@ export default {
       this.$store.commit('showGameSetup', true)
     })
     ipcRenderer.on('menu.rules', () => {
-      shell.openExternal('http://wikicarpedia.com/index.php/Special:MyLanguage/Main_Page')
+      shell.openExternal('https://wikicarpedia.com/car/Special:MyLanguage/Main_Page')
+    })
+    ipcRenderer.on('menu.report-bug', () => {
+      shell.openExternal('https://github.com/fancarpedia/FanCloisterZone/issues') /* Fan Edition */
     })
     ipcRenderer.on('menu.about', () => {
       this.showAbout = true

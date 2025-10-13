@@ -3,7 +3,7 @@
     <p>
       <RulesLink :title="$t('expansion.cathars')" href="https://boardgamegeek.com/boardgameexpansion/13300/carcassonne-die-katharer" />
       <RulesLink :title="$t('expansion.besiegers')" href="https://boardgamegeek.com/boardgameexpansion/166518/carcassonne-die-belagerer" />
-      <RulesLink :title="$t('button.rules')" href="http://wikicarpedia.com/index.php/Special:MyLanguage/Besiegers_Cathars_Siege_(1st_edition)" />
+      <RulesLink :title="$t('button.rules')" href="https://wikicarpedia.com/car/Special:MyLanguage/Besiegers_Cathars_Siege_(1st_edition)" />
     </p>
 
     <h5>{{ $t('expansion.cathars') }}</h5>
