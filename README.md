@@ -1,7 +1,12 @@
-# JCloisterZone Client
+# FanCloisterZone Edition
 
-Main platform repository https://github.com/farin/JCloisterZone
-(report issue there)
+Updated original JCloisterZone with many improvements.
+Also support of many fan-expansions, chat during game.
+All issues on FanCloisterZone report here https://github.com/fancarpedia/FanCloisterZone
+
+## Engine
+
+Engine for game can be found on https://github.com/fancarpedia/JCloisterZone 
 
 #### Build Setup
 
