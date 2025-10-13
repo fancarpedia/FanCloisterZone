@@ -500,7 +500,7 @@ class GameServer {
   }
 
   handleEngineMessage (ws, { id, type, payload, player, seq }) {
-    const randomChanging = ['COMMIT', 'FLOCK_EXPAND_OR_SCORE'].includes(type) || (type === 'DEPLOY_MEEPLE' && payload.pointer.feature === 'FlyingMachine')
+    const randomChanging = ['COMMIT', 'FLOCK_EXPAND_OR_SCORE', 'TILE_CONFIRMED' ].includes(type) || (type === 'DEPLOY_MEEPLE' && payload.pointer.feature === 'FlyingMachine')
     if (randomChanging) {
       payload = {
         ...payload,

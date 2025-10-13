@@ -1,12 +1,13 @@
 {
   "@author": "farin",
-  "@jcz-version": "5.13.5",
-  "@version": "0.6.0",
+  "@jcz-version": "6.0.0",
+  "@version": "0.7.1",
   "about": {
     "configuration-file": "Configuration file",
     "jcloisterzone-game-engine": "JCloisterZone Game Engine",
     "system-java-version": "System Java Version",
-    "title": "JCloisterZone Fan Edition",
+    "title": "JCloisterZone",
+    "fantitle": " FanCloisterZone Edition",
     "version": "version"
   },
   "bookmarks": {
@@ -60,6 +61,7 @@
     "undo": "Undo"
   },
   "core-messages": {
+    "bonuses": "Bonuses",
     "choose": "Choose",
     "done": "Done",
     "game-engine-not-available": "Game engine not available.",
@@ -148,6 +150,7 @@
       "hills-and-sheep-tokens-left-plural": "None tokens left | 1 token left | {tokens} tokens left",
       "mage-and-witch-player-must-remove-mage-or-witch": "Player must remove mage or witch.",
       "mage-and-witch-remove-mage-or-witch": "Remove mage or witch.",
+      "meteorite-impact": "Meteorite impact",
       "monasteries-how-do-you-want-place-follower": "How do you want to place meeple on special monastery?",
       "or": "or",
       "place-the-tile": "Place the tile",
@@ -161,6 +164,7 @@
       "siege-player-can-escape-a-besieged-city": "Player can escape a besieged city.",
       "siege-you-can-escape-a-besieged-city": "You can escape a besieged city.",
       "skip-action": "Skip action",
+      "tile-placement": "Tile placement",
       "tower-player-can-take-a-prisoner": "Player can take a prisoner",
       "tower-player-must-select-follower-for-exchange": "Player must select meeple for exchange",
       "tower-select-follower-for-exchange": "Select meeple for exchange",
@@ -187,6 +191,8 @@
       "builder": "Builder",
       "castle": "Castle",
       "count": "Count",
+      "decinsky-sneznik": "Decinsky Sneznik",
+      "donkey": "Donkey",
       "dragon": "Dragon",
       "fairy": "Fairy",
       "ferry": "Ferry",
@@ -206,6 +212,7 @@
       "traders": "Trade Goods",
       "tunnel": "Tunnel",
       "wagon": "Wagon",
+      "windmill": "Windmill",
       "witch": "Witch"
     },
     "feature": {
@@ -230,6 +237,7 @@
       "field": "Field",
       "fields": "Fields",
       "flock": "Flock",
+      "flowers": "Flowers",
       "garden": "Garden",
       "gardens": "Gardens",
       "gold": "Gold",
@@ -238,6 +246,10 @@
       "inn": "Inn",
       "king": "King",
       "king-and-robber": "King & Robber",
+      "marketplace": "Marketplace",
+      "marketplaces": "Marketplaces",
+      "meteorite": "Meteorite",
+      "meteorites": "Meteorites",
       "monasteries": "Monasteries",
       "monastery": "Monastery",
       "pig-herd": "Pig herd",
@@ -338,6 +350,8 @@
       "farmers-description": "Players are allowed to place meeples on fields.",
       "festival-description": "With festival tile you can return one of your own figures instead of placing one.",
       "festival-disabled": "No tile with Festival is in game.",
+      "flowers-description": "TBA",
+      "flowers-disabled": "No tile with Flowers is in the game.",
       "gameplay-variants": "Gameplay variants",
       "garden-description": "Can be occupied by an abbot.",
       "garden-disabled": "Abbot is not selected.",
@@ -345,6 +359,10 @@
       "hill-disabled": "No tile with Hill is in game.",
       "inn-description": "Completed roads with inn ×2, no points during final scoring.",
       "inn-disabled": "No tile with Inn is in the game.",
+      "marketplace-description": "TBA",
+      "marketplace-disabled": "No tile with Marketplace is in the game.",
+      "meteorite-description": "TBA",
+      "meteorite-disabled": " No tile with Crater is in the game.",
       "optional-game-mechanics": "Optional game mechanics",
       "pig-herd-description": "Counts as additional pig on field (farmers scores more points).",
       "pig-herd-disabled": "No tile with Pig herd is in game.",
@@ -454,6 +472,12 @@
         "1/1/1": "1/1/1",
         "3/2/1": "3/2/1",
         "description": "Assign {} points for tower/house/shed."
+      },
+      "meteorite-impact": {
+        "standard": "Standard",
+        "extended": "Stronger",
+        "combination": "Combined",
+        "description": "{} impact of meteorite destruction."
       },
       "more-tunnel-tokens": {
         "1/1": "1/1",

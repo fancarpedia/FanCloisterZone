@@ -1,7 +1,7 @@
 {
-  "name": "jcloisterzonefan",
-  "version": "5.13.5",
-  "description": "JCloisterZone UI client Fan Edition",
+  "name": "fancloisterzone",
+  "version": "6.0.0-alpha",
+  "description": "FanCloisterZone Edition",
   "repository": "github:farin/JCloisterZone-Client",
   "license": "AGPL-3.0-or-later",
   "author": "Roman Krejcik <farin@farin.cz>",

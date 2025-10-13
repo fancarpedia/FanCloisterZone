@@ -318,3 +318,14 @@ export const ROBBERS_SON_ACTION = Rule.ROBBERS_SON_ACTION = new Rule('robbers-so
   ],
   { style: 'short' }
 )
+
+export const METEORITE_IMPACT = Rule.METEORITE_IMPACT = new Rule('meteorite-impact', GAMEPLAY,
+  'Meteorite impact is.',
+  [GameElement.METEORITE],
+  [
+    { value: 'standard', text: 'standard' },
+    { value: 'extended', text: 'extended' },
+    { value: 'combination', text: 'combination' }
+  ],
+  { style: 'short' }
+)
