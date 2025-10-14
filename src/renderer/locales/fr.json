@@ -1,17 +1,19 @@
 {
   "@author": "Black Bear",
-  "@jcz-version": "5.13.5",
-  "@version": "0.6.0",
+  "@jcz-version": "5.12.1",
+  "@fcz-version": "6.0.0",
+  "@version": "0.7.5",
   "about": {
     "configuration-file": "Fichier de configuration",
     "jcloisterzone-game-engine": "Moteur de jeu de JCloisterZone",
     "system-java-version": "Version Java du système",
-    "title": "Édition de Fans de JCloisterZone",
+    "title": "JCloisterZone",
+    "fantitle": " Édition FanCloisterZone",
     "version": "version"
   },
   "bookmarks": {
     "description-end": "le bouton dans la barre latérale d’aperçu.",
-    "description-start": "Vous n’avez pas de partie en cours dans la liste des favoris. Pour ajouter une partie ici, créez en d’abord une, puis utilisez",
+    "description-start": "Vous n’avez pas de partie en cours dans votre liste des favoris. Pour ajouter une partie ici, créez en d’abord une, puis utilisez",
     "nothing-saved": "Rien n’a été sauvegardé.",
     "setups-saved-to-file": "Configurations enregistrées dans un fichier",
     "title": "Mes favoris"
@@ -60,6 +62,7 @@
     "undo": "Annuler"
   },
   "core-messages": {
+    "bonuses": "Bonus",
     "choose": "Choisir",
     "done": "Terminé",
     "game-engine-not-available": "Moteur de jeu non disponible.",
@@ -118,7 +121,7 @@
     "action": {
       "bazaar-buy-sell-the-tile-from-to": "Achetez la tuile ou vendez la à",
       "bazaar-choose-a-tile": "Choisissez une tuile",
-      "bazaar-choose-a-tile-and-your-bid": "Choisissez une tuile et votre mise",
+      "bazaar-choose-a-tile-and-your-bid": "Choisissez une tuile et placez votre enchère",
       "bazaar-player-must-buy-sell-the-tile-from-to": "Le joueur doit acheter la tuile ou la vendre à",
       "bazaar-player-must-choose-a-tile": "Le joueur doit choisir une tuile",
       "bazaar-player-must-choose-a-tile-and-bid": "Le joueur doit choisir une tuile et miser",
@@ -148,7 +151,8 @@
       "hills-and-sheep-tokens-left-plural": "Aucun jeton restant | 1 jeton restant | {tokens} jetons restant",
       "mage-and-witch-player-must-remove-mage-or-witch": "Le joueur doit retirer le Mage ou la Sorcière.",
       "mage-and-witch-remove-mage-or-witch": "Retirez le Mage ou la Sorcière.",
-      "monasteries-how-do-you-want-place-follower": "Comment voulez-vous poser le meeple sur la nouvelle tuile Abbaye ?",
+      "meteorite-impact": "Impact de météorite",
+      "monasteries-how-do-you-want-place-follower": "Comment voulez-vous poser votre meeple sur la nouvelle tuile Abbaye ?",
       "or": "ou",
       "place-the-tile": "Placez la tuile",
       "player-may-move-a-meeple-from-a-city-district": "Le joueur peut déplacer un meeple d’un quartier de la ville.",
@@ -161,6 +165,7 @@
       "siege-player-can-escape-a-besieged-city": "Le joueur peut s’échapper d’une ville assiégée.",
       "siege-you-can-escape-a-besieged-city": "Vous pouvez vous échapper d’une ville assiégée.",
       "skip-action": "Sauter l’action",
+      "tile-placement": "Placement de tuile",
       "tower-player-can-take-a-prisoner": "Le joueur peut capturer un meeple",
       "tower-player-must-select-follower-for-exchange": "Le joueur doit sélectionner un meeple pour l’échange",
       "tower-select-follower-for-exchange": "Sélectionnez un meeple pour l’échange",
@@ -187,6 +192,9 @@
       "builder": "Bâtisseur",
       "castle": "Forteresse",
       "count": "Comte",
+      "decinsky-sneznik": "Decinsky Sneznik",
+      "donkey": "Âne",
+      "donkey-description": "L’âne, en tant que pion neutre, empêche la complétion de toute zone présente sur la tuile où il se trouve.",
       "dragon": "Dragon",
       "fairy": "Fée",
       "ferry": "Bac",
@@ -206,6 +214,8 @@
       "traders": "Marchandises",
       "tunnel": "Tunnel",
       "wagon": "Charriot",
+      "windmill": "Moulin à vent",
+      "windmill-description": "Les moulins à vent rapportent des points lorsqu’ils sont entourés d’un grand motif en forme de plus.",
       "witch": "Sorcière"
     },
     "feature": {
@@ -230,6 +240,7 @@
       "field": "Pré",
       "fields": "Prés",
       "flock": "Troupeau",
+      "flowers": "Fleurs",
       "garden": "Jardin",
       "gardens": "Jardins",
       "gold": "Or",
@@ -238,6 +249,10 @@
       "inn": "Auberge au lac",
       "king": "Roi",
       "king-and-robber": "Roi et Chevalier-brigand",
+      "marketplace": "Place du marché",
+      "marketplaces": "Places du marché",
+      "meteorite": "Météorite",
+      "meteorites": "Météorites",
       "monasteries": "Abbayes",
       "monastery": "Abbaye",
       "pig-herd": "Troupeau de porcs",
@@ -329,15 +344,17 @@
     "rules": {
       "acrobats-description": "Poser un meeple en tant qu’artiste sur une piste d’artiste.",
       "acrobats-disabled": "Aucune tuile Piste d’Artiste n’est en jeu.",
-      "bazaar-description": "Les tuiles Terrain sont vendues aux enchères lorsque le bazar entre en jeu.",
+      "bazaar-description": "Les tuiles Terrain sont vendues aux enchères lorsqu’un bazar entre en jeu.",
       "bazaar-disabled": "Aucune tuile Bazar n’est en jeu.",
       "cathedral-description": "Villes complétées avec une ou plusieurs cathédrales ×3 au lieu de ×2, aucun point lors de l’évaluation finale.",
       "cathedral-disabled": "Aucune tuile Cathédrale n’est en jeu.",
       "escape-description": "Évasion possible via une abbaye voisine.",
       "escape-disabled": "Aucune tuile Siège n’est en jeu.",
       "farmers-description": "Les joueurs sont autorisés à placer des meeples sur les prés.",
-      "festival-description": "Avec la tuile Festival, vous pouvez récupérer une de vos propres pions au lieu d’en poser un.",
+      "festival-description": "Avec une tuile Festival, vous pouvez récupérer une de vos propres pions au lieu d’en poser un.",
       "festival-disabled": "Aucune tuile Festival n’est en jeu.",
+      "flowers-description": "Les fleurs ajoutent 3 points à une zone évaluée lorsqu’elles correspondent au jeton du joueur.",
+      "flowers-disabled": "Aucune tuile Fleurs n’est en jeu.",
       "gameplay-variants": "Variantes de jeu",
       "garden-description": "Peut être occupé par un abbé.",
       "garden-disabled": "L’abbé n’est pas sélectionné.",
@@ -345,6 +362,10 @@
       "hill-disabled": "Aucune tuile Colline n’est en jeu.",
       "inn-description": "Routes achevées avec une ou plusieurs auberges au lac ×2, aucun point lors de l’évaluation finale.",
       "inn-disabled": "Aucune tuile Auberge au Lac n’est en jeu.",
+      "marketplace-description": "Les places du marché relient plusieurs routes pour former un réseau commun qui n’est complété que lorsque toutes les routes reliées sont fermées. Lors de l’évaluation, des points bonus équivalents à la longueur des autres routes complétées dans ce réseau, sont attribués.",
+      "marketplace-disabled": "Aucune tuile Place du marché n’est en jeu.",
+      "meteorite-description": "TBA",
+      "meteorite-disabled": " Aucune tuile Cratère n’est en jeu.",
       "optional-game-mechanics": "Mécaniques de jeu facultatives",
       "pig-herd-description": "Compte comme un cochon supplémentaire sur le pré (les paysans marquent plus de points).",
       "pig-herd-disabled": "Aucune tuile Troupeau de Porcs n’est en jeu.",
@@ -354,7 +375,7 @@
       "princess-disabled": "Aucune tuile Princesse n’est en jeu.",
       "scoring-variants": "Variantes d’évaluation",
       "shrine-description": "Un lieu de culte placé à côté d’une abbaye la défie. Le premier à finir sa zone obtient tous ses points et le second n’obtient rien.",
-      "shrine-disabled": "Acune tuile Lieu de Culte n’est en jeu.",
+      "shrine-disabled": "Aucune tuile Lieu de Culte n’est en jeu.",
       "siege-description": "Les villes assiégées ont moins de valeur.",
       "siege-disabled": "Aucune tuile Siège n’est en jeu.",
       "starting-tiles-configuration": "Configuration de la ou les tuiles de départ",
@@ -455,11 +476,17 @@
         "3/2/1": "respectivement 3, 2 ou 1",
         "description": "Attribuer {} point pour la tour, la maison et l’étable."
       },
+      "meteorite-impact": {
+        "standard": "Standard",
+        "extended": "Plus fort",
+        "combination": "Combiné",
+        "description": "{} impact(s) de destruction par une météorite."
+      },
       "more-tunnel-tokens": {
         "1/1": "1 jeton",
-        "2/1": "respectivement 2 à 1 ensemble de jetons",
+        "2/1": "respectivement 2 à 1 ensembles de jetons",
         "3/2": "respectivement 3 à 2 ensembles de jetons",
-        "description": "Attribuer {} à chaque joueur dans une partie à 2 ou à 3."
+        "description": "Attribuer {} ensembles de jetons à chaque joueur dans une partie à 2 ou 3 joueurs."
       },
       "princess-action": {
         "description": "La princesse {} retirer un chevalier d’une ville.",
@@ -476,7 +503,7 @@
       },
       "wagon-move": {
         "C1": "connecté (intersection ou route menant vers une ville ou une abbaye) (1ʳᵉ édition)",
-        "C2": "zone sur la même tuile ou sur une tuile orthogonalement ou diagonalement adjacente (2ᵉ édition)",
+        "C2": "une zone sur la même tuile ou sur une tuile orthogonalement ou diagonalement adjacente (2ᵉ édition)",
         "description": "Après l’évaluation, le charriot peut être déplacé vers une zone adjacente inoccupée et incomplète. Adjacent signifie : {}"
       }
     }
@@ -491,7 +518,7 @@
       "new-game": "Nouvelle partie",
       "title": "Parties hébergées par le joueur"
     },
-    "new-version-available": "Une nouvelle version de JCloisterZone est disponible.",
+    "new-version-available": "Une nouvelle version de FanCloisterZone est disponible.",
     "online": {
       "abandon-game": "Abandonner la partie",
       "chat-during-game": "Discuter pendant la partie",
@@ -500,10 +527,10 @@
       "games-in-progress": "Parties en cours",
       "join-game": "Rejoindre une partie",
       "no-random-discovery": "cela signifie qu’il n’y a pas de découverte de joueurs aléatoires",
-      "online-storage-description": "En quittant la partie en ligne, la partie inachevée reste en arrière-plan. Vous pouvez la rejoindre à partir de cette liste quand vous le souhaitez.",
+      "online-storage-description": "En quittant une partie en ligne, la partie inachevée reste en arrière-plan. Vous pouvez la rejoindre à partir de cette liste quand vous le souhaitez.",
       "paste-a-game-key": "Coller la clé fournie par l’hôte",
       "private-games-only": "Seules les parties privées sont désormais prises en charge.",
-      "remove-unfinished-game-confirmation": "Voulez-vous supprimer définitivement la partie inachevée de votre liste ?",
+      "remove-unfinished-game-confirmation": "Voulez-vous supprimer définitivement cette partie inachevée de votre liste ?",
       "some-expansions-are-playable-only-here": "Certaines extensions ne sont jouables qu’ici",
       "title": "Parties hébergées sur un serveur public",
       "title-fan": "Jeux hébergés sur le serveur des fans",
@@ -530,6 +557,7 @@
     "new-game": "Nouvelle partie",
     "playonline-connect": "Jouer en ligne",
     "playonline-disconnect": "Se déconnecter",
+    "report-bug": "Signaler un bug",
     "rotate": "Pivoter",
     "rules": "Règles",
     "save-game": "Sauvegarder la partie",
@@ -546,7 +574,7 @@
     "add-ons": {
       "add-on-already-installed": "Le module complémentaire {id} est déjà installé. Si vous voulez le réinstaller, veuillez d’abord le supprimer.",
       "add-on-url": "Lien du module complémentaire",
-      "artwork-not-found-internet-connection-is-needed": "Impossible de localiser ou de télécharger le module complémentaire avec les illustrations par défaut. Une connexion Internet est nécessaire pour le télécharger.",
+      "artwork-not-found-internet-connection-is-needed": "Impossible de localiser ou de télécharger le module complémentaire avec les illustrations par défaut. Une connexion Internet est nécessaire au premier lancement pour le télécharger.",
       "drag-add-on-here-or-click-here": "Faites glisser le module complémentaire ici (fichier .jca) ou cliquez ici pour le sélectionner.",
       "finish-or-leave-game-to-make-changes": "Veuillez terminer ou quitter la partie avant de pouvoir effectuer des changements ici.",
       "install-add-on": "Installer un module complémentaire",
@@ -574,7 +602,7 @@
       "active-player-indication": "Indication du joueur actif",
       "always-enabled": "toujours activé",
       "beep": "Signal sonore",
-      "beep-description": "Bippe lorsque c’est votre tour (ou lorsque votre action est requise pendant le tour de l’adversaire).",
+      "beep-description": "Bippe lorsque c’est votre tour (ou lorsque votre action est requise pendant le tour d’un adversaire).",
       "colored-background-in-right-sidebar": "fond coloré dans la barre latérale droite",
       "enable-beep": "Activer le signal sonore",
       "language": "Langue",
@@ -589,11 +617,11 @@
       "title": "Interface de jeu",
       "triangle-in-top-bar": "triangle dans la barre supérieure",
       "turn-confirmation": "Confirmation du tour",
-      "turn-confirmation-description": "La confirmation permet au joueur d’annuler les actions effectuées avant que l’activité ne soit transmise au joueur suivant. Cela se produit avant l’évaluation ou par exemple pendant le tour de l’adversaire lorsque vous déplacez le chariot, etc. Activer la confirmation explicite…"
+      "turn-confirmation-description": "La confirmation permet au joueur d’annuler les actions effectuées avant que l’activité ne soit transmise au joueur suivant. Cela se produit avant l’évaluation ou, par exemple, pendant le tour d’un adversaire lorsque vous déplacez votre chariot, etc. Activer la confirmation explicite…"
     },
     "java": {
       "change-in-settings": "Changez-le dans {settings}.",
-      "description": "Bien que le client JCloisterZone soit une pure application native, Java est nécessaire pour faire tourner le moteur de jeu. En d’autres termes, pour jouer à une partie.",
+      "description": "Bien que le client FanCloisterZone soit une pure application native, Java est nécessaire pour jouer à une partie.",
       "download-java": "Télécharger Java",
       "java-executable": "L’exécutable Java",
       "java-is-not-installed": "Java n’est pas installé !",
@@ -606,7 +634,7 @@
       "title": "Java",
       "unable-to-find-java": "Impossible de localiser Java sur votre système.",
       "using-system-default": "en utilisant le système par défaut.",
-      "verify": "Si Java est déjà installé, vérifiez si Java est ajouté au chemin d’accès de votre système ou sélectionnez manuellement le fichier binaire java dans {settings}.",
+      "verify": "Si Java est déjà installé, vérifiez si Java a été ajouté au chemin d’accès de votre système ou sélectionnez manuellement le fichier binaire java dans {settings}.",
       "version": "Version de Java : {0}",
       "warning-file-is-not-java-binary": "Ce fichier n’est pas à un fichier binaire Java.",
       "warning-java-not-found": "Java n’a pas été trouvé.",
@@ -623,19 +651,19 @@
     "title": "Paramètres"
   },
   "tile-set": {
-    "abbey-and-mayor-description": "Chaque joueur peut également placer une tuile Monastère de sa réserve.",
+    "abbey-and-mayor-description": "Chaque joueur peut également placer la tuile Monastère de sa réserve.",
     "abbey-and-mayor-release": "La cinquième extension majeure sortie en 2007.",
     "base-game-description": "Vous pouvez jouer les tuiles avec les règles de la 1ʳᵉ édition ou de la nouvelle édition (par exemple les jardins). Ceci peut être sélectionné lors de la deuxième étape de configuration d’une partie.",
     "bridges-castles-and-bazaars-release": "La huitième extension majeure sortie en 2010. (La sixième extension majeure Comte, Roi et Brigand est divisée en petits modules individuels. La septième, La Catapulte, est évidemment ignorée).",
     "darmstadt-release": "Sortie initialement en 2014.",
     "gq11-release": "Sortie initialement dans le magazine Games Quarterly en 2006.",
     "hills-and-sheep-release": "La neuvième extension majeure sortie en 2014.",
-    "inns-and-cathedrals-release": "Première extension majeure de Carcassonne sortie en 2002.",
-    "king-and-robber-release": "Sortie initialement en 2003 en tant que partie de Roi et Éclaireur. Inclus plus tard dans la sixième extension majeure : Comte, Roi et Brigand (2007).",
+    "inns-and-cathedrals-release": "Première extension majeure sortie en 2002.",
+    "king-and-robber-release": "Sortie initialement en 2003 en tant que partie de Roi et Éclaireur et incluse plus tard dans la sixième extension majeure : Comte, Roi et Brigand (2007).",
     "labyrinth-release": "Sortie initialement en 2016.",
     "princess-and-dragon-release": "La troisième extension majeure sortie en 2005.",
     "river-I-release": "La Rivière I est une mini extension sortie en 2001.",
-    "river-II-release": "La Rivière II est sortie en 2006 et fait maintenant partie de la sixième extension majeure Comte, Roi et Brigand.",
+    "river-II-release": "La Rivière II est sortie en 2006 et a été incluse plus tard dans la sixième extension majeure : Comte, Roi et Brigand.",
     "russian-promos-2013-title": "Tuiles de 2013",
     "russian-promos-2016-title": "Tuiles de 2016",
     "tower-release": "La quatrième extension majeure sortie en 2006.",
