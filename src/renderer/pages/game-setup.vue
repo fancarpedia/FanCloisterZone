@@ -3,10 +3,15 @@
     <template #header>
       <v-tabs v-model="tab" @change="onTabChange">
         <v-tab><v-icon small>far fa-heart</v-icon></v-tab>
-        <v-tab>{{ $t('game-setup.header.tiles') }}</v-tab>
-        <v-tab>{{ $t('game-setup.header.components') }}</v-tab>
-        <v-tab>{{ $t('game-setup.header.rules') }}</v-tab>
-        <v-tab>{{ $t('game-setup.header.timer') }}</v-tab>
+        <v-tab><v-icon small class="icon">fas fa-square</v-icon>{{ $t('game-setup.header.tiles') }}</v-tab>
+        <v-tab active-class="active">
+          <div class="meeple icon">
+            <Meeple type="SmallFollower" />
+          </div>
+          {{ $t('game-setup.header.components') }}
+        </v-tab>
+        <v-tab><v-icon small class="icon">fas fa-book</v-icon>{{ $t('game-setup.header.rules') }}</v-tab>
+        <v-tab><v-icon small class="icon">far fa-clock</v-icon>{{ $t('game-setup.header.timer') }}</v-tab>
       </v-tabs>
 
       <HeaderMessage v-if="tab > 0" :sets="sets" />
@@ -45,6 +50,7 @@ import GameAnnotationsPanel from '@/components/dev/GameAnnotationsPanel'
 import GameSetupGrid from '@/components/game-setup/GameSetupGrid'
 import HeaderMessage from '@/components/game-setup/HeaderMessage'
 import HeaderGameButton from '@/components/game-setup/HeaderGameButton'
+import Meeple from '@/components/game/Meeple'
 import TileDistribution from '@/components/TileDistribution'
 import TileSetsTab from '@/components/game-setup/tabs/TileSetsTab'
 import TimerTab from '@/components/game-setup/tabs/TimerTab'
@@ -58,6 +64,7 @@ export default {
     GameAnnotationsPanel,
     HeaderMessage,
     HeaderGameButton,
+    Meeple,
     TileDistribution,
     TileSetsTab,
     TimerTab,
@@ -149,7 +156,22 @@ header
   h5
     margin-top: 10px
     text-align: center
+    
+.meeple
+  svg
+    width: 18px
+    height: 18px
+    +theme using ($theme)
+      fill: map-get($theme, 'cards-text')
 
+.active
+  .meeple
+    svg
+      fill: var(--v-primary-base) !important
+      
+.icon, .meeple
+  margin-right: 1ex
+  
 @media (max-height: 768px)
   .detail-pack
     padding: 10px
