@@ -75,8 +75,7 @@ export default function () {
     }
     autoUpdater.quitAndInstall()
   })
-
-  // const log = require(''electron-log')
+  // const log = require('electron-log')
   // log.transports.file.level = 'debug'
   // autoUpdater.logger = log
   autoUpdater.autoDownload = false
