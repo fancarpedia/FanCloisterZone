@@ -62,8 +62,13 @@ export const LOCALES = [
   {
     id: 'sk',
     flag: 'slovakia',
-    text: 'Slovensky'
-  }
+    text: 'Slovenčina'
+  },
+  {
+    id: 'sl',
+    flag: 'slovenia',
+    text: 'Slovenščina',
+  },
   //  {
   //    id: 'zh',
   //    flag: 'china',
