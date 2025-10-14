@@ -18,7 +18,7 @@
           <div class="version">{{ $t('about.version') }} {{ version }}</div>
           Roman Krejčík &amp; fans<br>
           farin@farin.cz
-          <div class="report-bug" @click="openReportBug">{{ $t('menu.report-bug')}}: gihub.com</div>
+          <div class="report-bug" @click="openReportBug">{{ $t('menu.report-bug')}}: Discord</div>
         </div>
       </section>
       <hr>
@@ -65,7 +65,7 @@ export default {
       shell.openPath(this.$store.state.settings.file)
     },
     openReportBug () {
-      shell.openPath('https://github.com/fancarpedia/FanCloisterZone/issues') /* Fan Edition */
+      shell.openPath('https://discord.gg/CswNeVg3eS') /* Fan Edition */
     }
   }
 }

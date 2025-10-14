@@ -226,7 +226,7 @@ export default {
       shell.openExternal('https://wikicarpedia.com/car/Special:MyLanguage/Main_Page')
     })
     ipcRenderer.on('menu.report-bug', () => {
-      shell.openExternal('https://github.com/fancarpedia/FanCloisterZone/issues') /* Fan Edition */
+      shell.openExternal('https://discord.gg/CswNeVg3eS') /* Fan Edition */
     })
     ipcRenderer.on('menu.about', () => {
       this.showAbout = true
@@ -495,4 +495,18 @@ svg, g, use
   left: 0
   width: 100%
   z-index: 999
+
+::-webkit-scrollbar
+  width: 8px
+  height: 8px
+
+::-webkit-scrollbar-track
+  background: #f0f0f0
+
+::-webkit-scrollbar-thumb
+  background: #555
+  border-radius: 10px
+
+::-webkit-scrollbar-thumb:hover
+  background: #777
 </style>
