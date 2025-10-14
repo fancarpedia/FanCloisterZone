@@ -67,7 +67,7 @@
 
         <div class="update-action">
           <template v-if="isMac || isWin">
-            {{ $t('index.automatic-updates-linux-only') }}<br>
+            <!-- {{ $t('index.automatic-updates-linux-only') }}<br> -->
             <a :href="updateInfoFile">{{ updateInfoFile }}</a>
           </template>
           <v-btn v-else-if="!updating" color="secondary" @click="updateApp">{{ $t('index.update-to', { version: updateInfo.version }) }}</v-btn>
@@ -76,7 +76,7 @@
         </div>
 
         <h4>{{ $t('index.release-notes') }}</h4>
-        <div v-html="updateInfo.releaseNotes" />
+        <div class="update-release-notes" v-html="updateInfo.releaseNotes" />
       </div>
     </div>
 
@@ -375,6 +375,26 @@ h2
   .update-note
     font-style: italic
     margin-bottom: 10px
+    
+  .update-release-notes
+    max-height: 25vh
+    overflow: auto
+    text-align: left
+    
+    &::-webkit-scrollbar
+      width: 8px
+      height: 8px
+
+    &::-webkit-scrollbar-track
+      background: #f0f0f0
+      border-radius: 10px
+
+    &::-webkit-scrollbar-thumb
+      background: linear-gradient(180deg, #4e9af1, #0056b3)
+      border-radius: 10px
+
+      &:hover
+        background: linear-gradient(180deg, #66b2ff, #007bff)
 
   ::v-deep ul
     list-style: none
