@@ -11,7 +11,7 @@ const isDev = process.env.NODE_ENV === 'development'
 module.exports = {
   ssr: false,
   head: {
-    title: 'FanCloisterZone Edition',
+    title: 'FanCloisterZone Edition', /* Fan Edition */
     meta: [
       { charset: 'utf-8' }
     ]
@@ -117,10 +117,10 @@ module.exports = {
       options: { customProperties: true },
       themes: {
         light: {
-          primary: '#E64A19' // deep orange darken-2
+          primary: '#5dc4ff' // /* Fan Edition */
         },
         dark: {
-          primary: '#EF6C00' // orange darken-3
+          primary: '#148bd0' // /* Fan Edition */
         }
       }
     }

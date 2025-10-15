@@ -80,6 +80,10 @@
       </div>
     </div>
 
+    <section class="splash">
+      <img :src="splashImage()" />
+    </section>
+
     <section class="online-hosted-fan">
       <div>
         <h2>{{ $t('index.online.title-fan') }}</h2>
@@ -244,6 +248,11 @@ export default {
       this.recentSaves = []
     },
 
+    splashImage () {
+      const theme = this.$vuetify.theme.dark ? 'dark' : 'light'
+      return require(`@/assets/splash_${theme}.png`)
+    },
+
     updateApp () {
       this.updating = true
       ipcRenderer.send('do-update')
@@ -275,8 +284,6 @@ export default {
 
 h2
   font-weight: 300
-
-h2
   font-size: 26px
   margin: 0 0 20px
 
@@ -407,6 +414,19 @@ h2
 
   .description
     flex-grow: 1
+
+.splash
+  margin-top: 1ex
+  text-align: center
+  
+  img
+    max-width: 600px
+
+.theme--light a
+  color: var(--v-primary-darken2)
+
+.theme--dark a
+  color: var(--v-primary-lighten2)
 
 @media (max-height: 1199px)
   .landing-view
