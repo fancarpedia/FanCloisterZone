@@ -51,7 +51,7 @@
 
     <template #title>
       <template v-if="element === 'traders'">{{ $t('game.feature.trade-goods') }}</template>
-      <template v-else>{{ element.replace('-', ' ') }}</template>
+      <template v-else>{{ elementTitle }}</template>
     </template>
   </OverviewTile>
 </template>
@@ -93,6 +93,16 @@ export default {
       if (this.value === false) return '-'
       if (this.value > 0) return '+' + this.value
       return '' + this.value
+    },
+    
+    elementTitle () {
+      if (this.$te('game.feature.'+this.element)) {
+        return this.$t('game.feature.'+this.element)
+      }
+      if (this.$te('game.element.'+this.element)) {
+        return this.$t('game.element.'+this.element)
+      }
+      return this.element.replace('-',' ')
     }
   },
 
