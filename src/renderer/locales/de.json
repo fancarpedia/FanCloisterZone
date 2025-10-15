@@ -1,12 +1,14 @@
 {
   "@author": "Challa007",
-  "@jcz-version": "5.13.5",
-  "@version": "0.6.0",
+  "@jcz-version": "5.12.1",
+  "@fcz-version": "8.0.0",
+  "@version": "0.8.0",
   "about": {
     "configuration-file": "Konfigurationsdatei",
     "jcloisterzone-game-engine": "JCloisteZone Spiel-Engine",
     "system-java-version": "System-Java-Version",
-    "title": "JCloisterZone Fan Edition",
+    "title": "JCloisterZone",
+    "fantitle": "FanCloisterZone Edition",
     "version": "Version"
   },
   "bookmarks": {
@@ -60,6 +62,7 @@
     "undo": "Rückgängig machen"
   },
   "core-messages": {
+    "bonuses": "Boni",
     "choose": "Wählen",
     "done": "Erledigt",
     "game-engine-not-available": "Spiel-Engine nicht verfügbar.",
@@ -75,6 +78,7 @@
     "used-time": "Genutzte Zeit"
   },
   "expansion": {
+    "-unknown": "Missing expansion",
     "abbey-and-mayor": "Abtei und Bürgermeister",
     "basic": "Grundspiel",
     "besiegers": "Die Belagerer",
@@ -87,6 +91,10 @@
     "cult": "Kultstätten",
     "cult-places": "Die Kultstätte und der Ketzer (6 Plättchen)",
     "darmstadt": "Darmstadt",
+    "decinsky-sneznik": "Hoher Schneeberg",
+    "dutch-monasteries": "Niederländische Klöster",
+    "family-feud": "Familienfehde",
+    "farmers-heaven": "Bauernzuflucht",
     "ferries": "Die Fähren",
     "festival": "Das Fest",
     "flier": "Die Fluggeräte",
@@ -98,6 +106,7 @@
     "king-and-robber": "König und Raubritter",
     "labyrinth": "Das Labyrinth",
     "mage-and-witch": "Magier und Hexe",
+    "meteorites": "Meteoriten",
     "monasteries": "Besondere Klöster",
     "princess-and-dragon": "Burgfräulein und Drache",
     "river": "Der Fluss",
@@ -106,11 +115,15 @@
     "russian-promos": "Russische Sonderplättchen",
     "siege": "Belagerung",
     "spiel-doch": "Spiel Doch",
+    "the-flying-machines-2": "Die Flugmaschinen 2",
+    "the-labyrinths": "Labyrinthe",
     "tower": "Der Turm",
     "traders-and-builders": "Händler und Baumeister",
     "tunnel": "Die Tunnel",
     "under-the-big-top": "Manege frei!",
+    "village-life": "Dorfleben",
     "watchtowers": "Die Wachtürme",
+    "wells": "Brunnen",
     "wind-roses": "Die Windrosen",
     "winter": "Winter"
   },
@@ -148,6 +161,7 @@
       "hills-and-sheep-tokens-left-plural": "Keine Schafsplättchen übrig | Ein Schafsplättchen übrig | {tokens} Schafsplättchen übrig",
       "mage-and-witch-player-must-remove-mage-or-witch": "Der Spieler muss den Magier oder die Hexe entfernen.",
       "mage-and-witch-remove-mage-or-witch": "Entferne den Magier oder die Hexe.",
+      "meteorite-impact": "Meteoriteneinschlag",
       "monasteries-how-do-you-want-place-follower": "Wie willst du den Meeple auf das besondere Kloster setzen?",
       "or": "oder",
       "place-the-tile": "Lege das Plättchen",
@@ -161,6 +175,7 @@
       "siege-player-can-escape-a-besieged-city": "Der Spieler kann aus einer belagerten Stadt fliehen.",
       "siege-you-can-escape-a-besieged-city": "Du kannst aus einer belagerten Stadt fliehen.",
       "skip-action": "Aktion überspringen",
+      "tile-placement": "Platzierung der Plättchen",
       "tower-player-can-take-a-prisoner": "Der Spieler kann einen Gefangenen machen",
       "tower-player-must-select-follower-for-exchange": "Der Spieler muss einen Meeple für den Austausch auswählen",
       "tower-select-follower-for-exchange": "Wähle einen Meeple für den Austausch aus",
@@ -187,6 +202,9 @@
       "builder": "Baumeister",
       "castle": "Burg",
       "count": "Graf",
+      "decinsky-sneznik": "Hoher Schneeberg",
+      "donkey": "Esel",
+      "donkey-description": "Der Esel als neutrale Figur blockiert die Fertigstellung jedes Landschaftselements, das sich auf dem Plättchen befindet, auf dem er steht.",
       "dragon": "Drache",
       "fairy": "Fee",
       "ferry": "Fähre",
@@ -206,6 +224,8 @@
       "traders": "Warenplättchen",
       "tunnel": "Tunnel",
       "wagon": "Wagen",
+      "windmill": "Windmühle",
+      "windmill-description": "Windmühlen bringen Punkte, wenn sie in einem großen Kreuz aus Plättchen stehen. (Substituted the plus with a cross, since that's more commonly used to reference the form.)",
       "witch": "Hexe"
     },
     "feature": {
@@ -230,6 +250,7 @@
       "field": "Wiese",
       "fields": "Wiesen",
       "flock": "Herde",
+      "flowers": "Blumen",
       "garden": "Garten",
       "gardens": "Gärten",
       "gold": "Gold",
@@ -238,6 +259,10 @@
       "inn": "Wirtshaus",
       "king": "König",
       "king-and-robber": "König und Raubritter",
+      "marketplace": "Marktplatz",
+      "marketplaces": "Marktplätze",
+      "meteorite": "Meteorit",
+      "meteorites": "Meteoriten",
       "monasteries": "Klöster",
       "monastery": "Kloster",
       "pig-herd": "Schweineherde",
@@ -338,6 +363,8 @@
       "farmers-description": "Spieler dürfen Meeples auf Wiesen setzen.",
       "festival-description": "Mit einem Festplättchen kann man eine eigene Figur zurückholen, anstatt eine einzusetzen.",
       "festival-disabled": "Kein Festplättchen ist im Spiel.",
+      "flowers-description": "Wenn ein Bauwerk gewertet wird, erhält jeder daran beteiligte Spieler, unabhängig von der Mehrheit, drei Punkte, wenn sein Blumenplättchen dieselbe Farbe hat.",
+      "flowers-disabled": "Kein Plättchen mit Blumen ist im Spiel.",
       "gameplay-variants": "Spielvarianten",
       "garden-description": "Hier kann ein Abt gesetzt werden.",
       "garden-disabled": "Abt ist nicht ausgewählt.",
@@ -345,6 +372,10 @@
       "hill-disabled": "Kein Plättchen mit Hügel ist im Spiel.",
       "inn-description": "Fertige Strassen mit Wirtshaus ×2, keine Punkte bei der Schlusswertung.",
       "inn-disabled": "Kein Plättchen mit Wirtshaus ist im Spiel.",
+      "marketplace-description": "Marktpläze verbinden mehrere Straßen zu einem gemeinsamen Netzwerk, welches nur fertiggestellt wird, wenn alle zugehörigen Straßen fertiggestellt sind. Beim Abschluss werden Bonuspunkte im Wert aller anderen verbundenen Straßen erzielt.",
+      "marketplace-disabled": "Kein Plättchen mit einem Marktplatz ist im Spiel.",
+      "meteorite-description": "TBA",
+      "meteorite-disabled": "Kein Plättchen mit einem Krater ist im Spiel.",
       "optional-game-mechanics": "Optionale Spielmechanik",
       "pig-herd-description": "Zählt als zusätzliches Schwein auf der Wiese (Bauer erhält mehr Punkte).",
       "pig-herd-disabled": "Kein Plättchen mit Schweineherde ist im Spiel.",
@@ -455,6 +486,12 @@
         "3/2/1": "3/2/1",
         "description": "Es gibt {} Punkte für Turm/Bauernhof/Stall."
       },
+      "meteorite-impact": {
+        "standard": "Standard",
+        "extended": "Stärker",
+        "combination": "Kombiniert",
+        "description": "{} impact of meteorite destruction."
+      },
       "more-tunnel-tokens": {
         "1/1": "1/1",
         "2/1": "2/1",
@@ -491,7 +528,7 @@
       "new-game": "Neues Spiel",
       "title": "Vom Spieler gehostete Spiele"
     },
-    "new-version-available": "Es ist eine neue Version von JCloisterZone verfügbar.",
+    "new-version-available": "Es ist eine neue Version von FanCloisterZone verfügbar.",
     "online": {
       "abandon-game": "Spiel aufgeben",
       "chat-during-game": "Chat während des Spiels",
@@ -530,6 +567,7 @@
     "new-game": "Neues Spiel",
     "playonline-connect": "Onlinespiel Verbinden",
     "playonline-disconnect": "Onlinespiel Trennen",
+    "report-bug": "Bug melden",
     "rotate": "Rotieren",
     "rules": "Regeln",
     "save-game": "Spiel speichern",
@@ -593,7 +631,7 @@
     },
     "java": {
       "change-in-settings": "Ändere es in {settings}.",
-      "description": "Obwohl der JCloisterZone-Client eine reine native Anwendung ist, ist Java erforderlich, um die Spiel-Engine auszuführen. Mit anderen Worten, um ein Spiel zu spielen.",
+      "description": "Obwohl der FanCloisterZone eine reine native Anwendung ist, ist Java erforderlich, um die Spiel-Engine auszuführen. Mit anderen Worten, um ein Spiel zu spielen.",
       "download-java": "Java herunterladen",
       "java-executable": "Java ausführbar",
       "java-is-not-installed": "Java ist nicht installiert!",
