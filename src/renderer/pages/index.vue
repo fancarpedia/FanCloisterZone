@@ -99,7 +99,7 @@
       </div>
     </section>
 
-    <section class="online-hosted">
+    <!-- <section class="online-hosted">
       <div>
         <h2>{{ $t('index.online.title') }}</h2>
         <v-btn large color="secondary" :disabled="!engine || !engine.ok" @click="playOnline()">
@@ -110,7 +110,7 @@
           {{ $t('index.online.private-games-only') }}<br>({{ $t('index.online.no-random-discovery') }})
         </div>
       </div>
-    </section>
+    </section> -->
 
     <section class="player-hosted">
       <h2>{{ $t('index.local.title') }}</h2>

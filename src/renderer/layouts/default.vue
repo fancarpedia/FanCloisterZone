@@ -166,7 +166,7 @@ export default {
     })
 
     ipcRenderer.on('menu.playonline-connect', () => {
-      this.$store.dispatch('networking/connectPlayOnline')
+      this.$store.dispatch('networking/connectPlayOnlineFan')
     })
     ipcRenderer.on('menu.playonline-disconnect', () => {
       this.$store.dispatch('networking/close')

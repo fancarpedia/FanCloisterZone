@@ -1,6 +1,6 @@
 <template>
   <div class="online-status">
-    <span class="text">{{ $t('index.online.connected-to', [playOnlineHostname]) }}</span>
+    <span class="text">{{ $t('index.online.connected-to', ['fanserver'/*playOnlineHostname*/]) }}</span><!-- /* Fan Edition */ -->
   </div>
 </template>
 
