@@ -2,7 +2,7 @@
   "@author": "Challa007",
   "@jcz-version": "5.12.1",
   "@fcz-version": "6.0.0",
-  "@version": "0.8.0",
+  "@version": "0.8.1",
   "about": {
     "configuration-file": "Konfigurationsdatei",
     "jcloisterzone-game-engine": "JCloisteZone Spiel-Engine",
@@ -78,7 +78,7 @@
     "used-time": "Genutzte Zeit"
   },
   "expansion": {
-    "-unknown": "Missing expansion",
+    "-unknown": "Fehlende Erweiterung",
     "abbey-and-mayor": "Abtei und Bürgermeister",
     "basic": "Grundspiel",
     "besiegers": "Die Belagerer",
@@ -490,7 +490,7 @@
         "standard": "Standard",
         "extended": "Stärker",
         "combination": "Kombiniert",
-        "description": "{} impact of meteorite destruction."
+        "description": "Zerstörung durch den Meteoriteneuinschlag {}."
       },
       "more-tunnel-tokens": {
         "1/1": "1/1",
