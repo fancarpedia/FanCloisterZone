@@ -91,13 +91,13 @@
           {{ $t('button.play-online-fan') }}
           <v-icon right>fa-cloud</v-icon>
         </v-btn>
-        <div class="subsection">
+        <!-- <div class="subsection">
           {{ $t('index.online.some-expansions-are-playable-only-here') }}
           <br />
           {{ $t('expansion.meteorites') }}
           <br />
           {{ $t('index.online.chat-during-game') }}
-        </div>
+        </div> -->
       </div>
     </section>
 
