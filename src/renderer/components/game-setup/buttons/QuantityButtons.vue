@@ -91,7 +91,9 @@ export default {
         return
       }
       if (this.value) {
-        this.removeAll()
+        if (this.hasBooleanInterface) {
+          this.removeAll()
+        }
       } else {
         this.add()
       }
