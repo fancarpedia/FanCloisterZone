@@ -94,6 +94,8 @@
         <div class="subsection">
           {{ $t('index.online.some-expansions-are-playable-only-here') }}
           <br />
+          {{ $t('expansion.meteorites') }}
+          <br />
           {{ $t('index.online.chat-during-game') }}
         </div>
       </div>
