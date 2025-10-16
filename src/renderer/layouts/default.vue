@@ -349,11 +349,7 @@ export default {
     },
     
     updateTitle() {
-      document.title = this.onlineConnected ? 'JCloisterZone Fan Edition @ ' + this.$store.state.onlineHostName : 'JCloisterZone Fan Edition'
-    },
-
-    updateTitle() {
-      document.title = this.onlineConnected ? 'JCloisterZone Fan Edition @ ' + this.$store.state.onlineHostName : 'JCloisterZone Fan Edition'
+      document.title = this.onlineConnected ? 'FanCloisterZone Edition @ fanserver' /* + this.$store.state.onlineHostName */ : 'FanCloisterZone Edition' /* Fan Edition */
     },
 
     leaveGame () {
