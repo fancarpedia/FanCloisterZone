@@ -11,13 +11,8 @@ async function createMenu (win, messages) {
 
   const isMac = process.platform === 'darwin'
   const sessionSubmenu = [
-    { id: 'playonline-connect', label: $t('menu.playonline-connect') || 'Play Online', accelerator: 'CommandOrControl+P', click () { win.webContents.send('menu.playonline-connect') } },
-    { id: 'playonline-disconnect', label: $t('menu.playonline-disconnect') || 'Disconnect', click () { win.webContents.send('menu.playonline-disconnect') } },
-    { type: 'separator' },
     { id: 'new-game', label: $t('menu.new-game') || 'New Game', accelerator: 'CommandOrControl+N', click () { win.webContents.send('menu.new-game') } },
-    { id: 'join-game', label: $t('menu.join-game') || 'Join Game', accelerator: 'CommandOrControl+J', click () { win.webContents.send('menu.join-game') } },
-    { type: 'separator' },
-    { id: 'leave-game', label: $t('menu.leave-game') || 'Leave Game', click () { win.webContents.send('menu.leave-game') } },
+/* Fan Server *///    { id: 'join-game', label: $t('menu.join-game') || 'Join Game', accelerator: 'CommandOrControl+J', click () { win.webContents.send('menu.join-game') } },
     { type: 'separator' },
     { id: 'save-game', label: $t('menu.save-game') || 'Save Game', accelerator: 'CommandOrControl+S', click () { win.webContents.send('menu.save-game') } },
     { id: 'load-game', label: $t('menu.load-game') || 'Load Game / Setup', accelerator: 'CommandOrControl+L', click () { win.webContents.send('menu.load-game') } },
@@ -29,12 +24,21 @@ async function createMenu (win, messages) {
 
   const template = [
     {
-      label: $t('menu.session') || 'Session',
+      label: $t('menu.file') || 'File',
       submenu: sessionSubmenu
+    },
+    {
+      label: $t('menu.online') || 'Online',
+      submenu: [
+        { id: 'playonline-connect', label: $t('menu.playonline-connect') || 'Play Online', accelerator: 'CommandOrControl+P', click () { win.webContents.send('menu.playonline-connect') } },
+        { id: 'playonline-disconnect', label: $t('menu.playonline-disconnect') || 'Disconnect', click () { win.webContents.send('menu.playonline-disconnect') } },
+      ]
     },
     {
       label: $t('menu.game') || 'Game',
       submenu: [
+        { id: 'leave-game', label: $t('menu.leave-game') || 'Leave Game', click () { win.webContents.send('menu.leave-game') } },
+        { type: 'separator' },
         { id: 'undo', label: $t('menu.undo') || 'Undo', accelerator: 'CommandOrControl+Z', click () { win.webContents.send('menu.undo') } },
         { type: 'separator' },
         { id: 'zoom-in', label: $t('menu.zoom-in') || 'Zoom In', accelerator: 'numadd', registerAccelerator: false, click () { win.webContents.send('menu.zoom-in') } },
