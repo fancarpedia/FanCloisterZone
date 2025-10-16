@@ -1,18 +1,20 @@
 {
-  "@author": "Carlium",
-  "@jcz-version": "5.11.0",
-  "@version": "0.4.1",
+  "@author": "Carlium & Meepledrone",
+  "@jcz-version": "5.12.1",
+  "@fcz-version": "6.0.0",
+  "@version": "0.8.1",
   "about": {
     "configuration-file": "Archivo de configuración",
     "jcloisterzone-game-engine": "Motor de juego JCloisterZone",
     "system-java-version": "Versión de Java",
-    "title": "JCloisterZone Fan Edition",
+    "title": "JCloisterZone",
+    "fantitle": "Edición FanCloisterZone",
     "version": "versión"
   },
   "bookmarks": {
-    "description-end": "botónen la barra lateral",
-    "description-start": "No hay ninguna configuración de juego en la lista de favoritos. Para añadir la configuración es necesario crear un juego primero",
-    "nothing-saved": "No se guardó nada",
+    "description-end": "botón en la barra lateral.",
+    "description-start": "No tienes ninguna configuración de juego en tu lista de favoritos. Para solucionarlo, primero crea un juego y selecciona a continuación",
+    "nothing-saved": "No se guardó nada.",
     "setups-saved-to-file": "Configuraciones guardadas en archivo",
     "title": "Mis favoritos"
   },
@@ -41,6 +43,7 @@
     "pass": "Pasar",
     "play-again": "Jugar otra vez",
     "play-online": "Jugar online",
+    "play-online-fan": "Jugar online en servidor de fan",
     "plus-description": "Agregar múltiple instancias",
     "raise": "Aumentar la oferta",
     "remove": "Remover",
@@ -59,7 +62,8 @@
     "undo": "Deshacer"
   },
   "core-messages": {
-    "choose": "Elija",
+    "bonuses": "Bónuses",
+    "choose": "Elegir",
     "done": "Hecho",
     "game-engine-not-available": "Motor de juego no disponible.",
     "incomplete-features": "Elementos incompletos",
@@ -67,13 +71,14 @@
     "offline": "Fuera de línea",
     "penalties": "Penalidades",
     "show-available-only": "mostrar solo disponibles",
-    "special-figures": "Special figures",
+    "special-figures": "Figuras especiales",
     "the-biggest-city": "La ciudad más grande",
     "the-longest-road": "El camino más largo",
     "tiles": "Losetas",
     "used-time": "Tiempo total"
   },
   "expansion": {
+    "-unknown": "Expansión no encontrada",
     "abbey-and-mayor": "La Abadía y el Alcalde",
     "basic": "Juego base",
     "besiegers": "El Asedio",
@@ -86,6 +91,10 @@
     "cult": "El culto",
     "cult-places": "Lugares de culto",
     "darmstadt": "Darmstadt",
+    "decinsky-sneznik": "Decinsky Sneznik",
+    "dutch-monasteries": "Monasterios holandeses",
+    "family-feud": "Disputa Familiar",
+    "farmers-heaven": "Cielo de los Campesino",
     "ferries": "Transbordadores",
     "festival": "El festival",
     "flier": "Máquinas Voladoras",
@@ -97,6 +106,7 @@
     "king-and-robber": "El Rey y el Ladrón",
     "labyrinth": "El Laberinto",
     "mage-and-witch": "Mago y Bruja",
+    "meteorites": "Meteoritos",
     "monasteries": "Monasterios",
     "princess-and-dragon": "La Princesa y el Dragón",
     "river": "El río",
@@ -105,11 +115,15 @@
     "russian-promos": "Promos Rusas",
     "siege": "Sitio",
     "spiel-doch": "Spiel Doch!",
+    "the-flying-machines-2": "Máquinas Voladoras 2",
+    "the-labyrinths": "Laberintos",
     "tower": "La Torre",
     "traders-and-builders": "Constructores y Comerciantes",
     "tunnel": "El Túnel",
     "under-the-big-top": "El Circo",
+    "village-life": "Vida Rural",
     "watchtowers": "Las Atalayas",
+    "wells": "Pozos",
     "wind-roses": "La rosa de los vientos",
     "winter": "Invierno"
   },
@@ -117,7 +131,7 @@
     "action": {
       "bazaar-buy-sell-the-tile-from-to": "Comprar/vender la loseta a",
       "bazaar-choose-a-tile": "Elejir una loseta",
-      "bazaar-choose-a-tile-and-your-bid": "Elegir una loseta y su oferta",
+      "bazaar-choose-a-tile-and-your-bid": "Eligir una loseta y hacer su apuesta",
       "bazaar-player-must-buy-sell-the-tile-from-to": "Jugador debe comprar/vender la loseta a",
       "bazaar-player-must-choose-a-tile": "Jugador debe elejir una loseta",
       "bazaar-player-must-choose-a-tile-and-bid": "Jugador debe elegir una loseta y hacer su oferta",
@@ -129,11 +143,11 @@
       "coc-you-can-move-the-count": "Puede mover el conde",
       "crop-circles-choose-city": "una ciudad",
       "crop-circles-choose-field": "un campo",
-      "crop-circles-choose-one": "Eligir uno. Cada jugador {deploy} o {remove} un meeple en {feature}.",
+      "crop-circles-choose-one": "Eligir uno. Cada jugador {deploy} o {remove} un seguidor en {feature}.",
       "crop-circles-choose-road": "un camino",
-      "crop-circles-player-must-choose": "Jugador debe elegir: Cada jugador puede colocar o debe retirar un meeple en {feature}.",
-      "crop-circles-player-must-return-meeple": "Jugador debe retirar un meeple",
-      "crop-circles-you-must-return-meeple": "Debe retirar uno de los meeples.",
+      "crop-circles-player-must-choose": "Jugador debe elegir: Cada jugador puede colocar o debe retirar un seguidor en {feature}.",
+      "crop-circles-player-must-return-meeple": "Jugador debe retirar un seguidor",
+      "crop-circles-you-must-return-meeple": "Debe retirar uno de sus seguidores.",
       "draw-a-tile": "Robar una loseta",
       "ferries-place-a-ferry": "Colocar un transbordador",
       "ferries-player-can-move-ferries": "Jugador puede mover un transbordador",
@@ -141,40 +155,42 @@
       "ferries-you-can-move-ferries": "Puede mover un transbordador",
       "goldmines-place-a-gold-ingot": "Coloque un lingote de oro",
       "goldmines-player-must-place-a-gold-ingot": "Jugador debe colocar un lingote de oro",
-      "hills-and-player-must-choose-grow-or-score-plural": "El jugador debe elegir entre hacer crecer el rebaño o puntuar las ovejas por 0 puntos. | El jugador debe elegir entre hacer crecer el rebaño o puntuar las ovejas por {points} puntos. | El jugador debe elegir entre hacer crecer el rebaño o puntuar las ovejas por {points} puntos.",
+      "hills-and-player-must-choose-grow-or-score-plural": "El jugador debe elegir entre hacer ampliar el rebaño o puntuar las ovejas por 0 puntos. | El jugador debe elegir entre ampliar el rebaño o puntuar la oveja por {points} punto. | El jugador debe elegir entre ampliar el rebaño o puntuar las ovejas por {points} puntos.",
       "hills-and-receive-points-plural": "No recibe puntos | Recibe 1 punto | Recibe {points} puntos",
       "hills-and-sheep-shepherd-fields-was-expanded": "El campo de pastor se amplió.",
       "hills-and-sheep-tokens-left-plural": "No queda ninguna ficha | Queda una ficha | Quedan {tokens} fichas",
       "mage-and-witch-player-must-remove-mage-or-witch": "Jugador debe remover el mago o la bruja.",
       "mage-and-witch-remove-mage-or-witch": "Remueva el mago o la bruja.",
-      "monasteries-how-do-you-want-place-follower": "¿Cómo quiere colocar el meeple en monasterio especial?",
+      "meteorite-impact": "Impacto de meteorito",
+      "monasteries-how-do-you-want-place-follower": "¿Cómo quieres colocar el meeple en monasterio especial?",
       "or": "o",
       "place-the-tile": "Colocar una loseta",
-      "player-may-move-a-meeple-from-a-city-district": "Jugador puede mover un meeple desde un distrito de la ciudad.",
-      "player-may-move-a-meeple-from-a-city-district-before-final-scoring": "Jugador puede mover un meeple desde un distrito de la ciudad antes de la puntuación final",
-      "player-may-move-a-meeple-from-the-market-district-before-final-scoring": "Jugador puede mover un meeple desde el distrito del mercado antes de la puntuación final.",
-      "player-may-place-a-meeple-in-a-city-district": "Jugador puede colocar un meeple en un distrito de la ciudad.",
-      "player-may-place-a-meeple-next-to-already-present-one": "Jugador puede colocar un meeple junto a uno ya presente.",
+      "player-may-move-a-meeple-from-a-city-district": "Jugador puede mover un seguidor desde un distrito de la ciudad.",
+      "player-may-move-a-meeple-from-a-city-district-before-final-scoring": "Jugador puede mover un seguidor desde un distrito de la ciudad antes de la puntuación final",
+      "player-may-move-a-meeple-from-the-market-district-before-final-scoring": "Jugador puede mover un seguidor desde el distrito del mercado antes de la puntuación final.",
+      "player-may-place-a-meeple-in-a-city-district": "Jugador puede colocar un seguidor en un distrito de la ciudad.",
+      "player-may-place-a-meeple-next-to-already-present-one": "Jugador puede colocar un seguidor junto a uno ya presente.",
       "player-may-place-an-abbey": "Jugador puede colocar una abadía",
       "player-must-place-the-tile": "Jugador debe colocar una loseta",
       "siege-player-can-escape-a-besieged-city": "Jugador puede escapar de una ciudad sitiada.",
       "siege-you-can-escape-a-besieged-city": "Puede escapar de una ciudad sitiada.",
       "skip-action": "Saltar acción",
+      "tile-placement": "Colocación de loseta",
       "tower-player-can-take-a-prisoner": "Jugador puede tomar un prisionero",
       "tower-player-must-select-follower-for-exchange": "Jugador debe seleccionar meeple para intercambiar",
       "tower-select-follower-for-exchange": "Seleccione meeple para intercambiar",
       "tower-you-can-take-a-prisoner": "Puede tomar un prisionero",
       "waiting-for-player-confirmation": "Esperando la confirmación del jugador",
-      "you-may-move-a-meeple-from-a-city-district": "Puede mover un meeple desde un distrito de la ciudad.",
-      "you-may-move-a-meeple-from-a-city-district-before-final-scoring": "Puede mover un meeple desde un distrito de la ciudad antes de la puntuación final",
-      "you-may-move-a-meeple-from-the-market-district-before-final-scoring": "Puede mover un meeple desde el distrito del mercado antes de la puntuación final.",
-      "you-may-place-a-meeple-in-a-city-district": "Puede colocar un meeple en un distrito de la ciudad.",
-      "you-may-place-a-meeple-next-to-already-present-one": "Puede colocar un meeple junto a uno ya presente.",
+      "you-may-move-a-meeple-from-a-city-district": "Puede mover un seguidor desde un distrito de la ciudad.",
+      "you-may-move-a-meeple-from-a-city-district-before-final-scoring": "Puede mover un seguidor desde un distrito de la ciudad antes de la puntuación final",
+      "you-may-move-a-meeple-from-the-market-district-before-final-scoring": "Puede mover un seguidor desde el distrito del mercado antes de la puntuación final.",
+      "you-may-place-a-meeple-in-a-city-district": "Puede colocar un seguidor en un distrito de la ciudad.",
+      "you-may-place-a-meeple-next-to-already-present-one": "Puede colocar un seguidor junto a uno ya presente.",
       "you-may-place-an-abbey": "Puede colocar una abadía",
       "your-action": "su acción"
     },
     "chat": {
-      "new-message": "New message"
+      "new-message": "Nuevo mensaje"
     },
     "element": {
       "abbey": "Abadía",
@@ -186,6 +202,9 @@
       "builder": "Constructor",
       "castle": "Castillo",
       "count": "Conde",
+      "decinsky-sneznik": "Decinsky Sneznik",
+      "donkey": "Burro",
+      "donkey-description": "El burro, como figura neutral, no permite que se complete ninguna zona de la loseta donde está situado.",
       "dragon": "Dragón",
       "fairy": "Hada",
       "ferry": "Transbordador",
@@ -205,6 +224,8 @@
       "traders": "Mercancías",
       "tunnel": "Túnel",
       "wagon": "Carro",
+      "windmill": "Molino",
+      "windmill-description": "Los Molinos proporcionan puntos una vez rodeados siguiendo un patrón de cruz grande.",
       "witch": "Bruja"
     },
     "feature": {
@@ -222,13 +243,14 @@
       "crop-circle": "Círculo de Cultivo",
       "escape": "Escape",
       "fairy": "Hada",
-      "family": "Family",
-      "families": "Families",
+      "family": "Familia",
+      "families": "Familias",
       "farmers": "Campesinos",
       "festival": "Festival",
       "field": "Campo",
       "fields": "Campos",
       "flock": "Rebaño",
+      "flowers": "Flores",
       "garden": "Jardín",
       "gardens": "Jardínes",
       "gold": "Oro",
@@ -237,6 +259,10 @@
       "inn": "Posada",
       "king": "Rey",
       "king-and-robber": "El Rey y el Ladrón",
+      "marketplace": "Mercado",
+      "marketplaces": "Mercados",
+      "meteorite": "Meteorito",
+      "meteorites": "Metoritos",
       "monasteries": "Monasterios",
       "monastery": "Monasterio",
       "pig-herd": "Piara de cerdos",
@@ -246,7 +272,7 @@
       "road": "Camino",
       "roads": "Caminos",
       "robber": "El Ladrón",
-      "robbers-son": "Robber's son",
+      "robbers-son": "Hijo del ladrón",
       "sheep": "Oveja",
       "shrine": "Santuario",
       "shrines": "Santuarios",
@@ -260,11 +286,11 @@
       "vodyanoy": "Vodyanoy",
       "watchtower": "Atalaya",
       "watchtowers": "Atalayas",
-      "well": "Well",
-      "wells": "Wells",
+      "well": "Pozo",
+      "wells": "Pozos",
       "wind-rose": "Rosa de los Vientos",
       "wind-roses": "Rosas de los Vientos",
-      "yaga-hut": "Cabaña de Yagá"
+      "yaga-hut": "Cabaña de Baba Yaga"
     },
     "scoring": {
       "barn-connected": "granero conectado",
@@ -278,7 +304,7 @@
     "tile-pack-dialog": {
       "disabled-show-remaining": "El juego fue creado con una opción que no permite mostrar el número de losetas restantes.",
       "game-tiles": "Losetas de juego",
-      "hidden-tiles-under-hill-plural": "No hay ninguna loseta bajo de losetas de colina. | No olvidar que 1 loseta desconocida está oculta bajo una loseta de colina. | No olvidar que {count} losetas desconocidas están ocultas bajo losetas de colina.",
+      "hidden-tiles-under-hill-plural": "No hay ninguna loseta desconocida bajo losetas de colina. | No olvidar que 1 loseta desconocida está oculta bajo una loseta de colina. | No olvidar que {count} losetas desconocidas están ocultas bajo losetas de colina.",
       "remaining-tiles": "Losetas restantes",
       "tiles": "Losetas",
       "tiles-plural": "losetas | loseta | losetas"
@@ -335,19 +361,25 @@
       "escape-description": "Escape permitido a través de un monasterio vecino.",
       "escape-disabled": "No hay ninguna loseta con asedio en el juego.",
       "farmers-description": "Los jugadores pueden colocar seguidores en los campos.",
-      "festival-description": "Con la loseta de festival se puede devolver una meeple del jugador activo en lugar de colocar una.",
+      "festival-description": "Con la loseta de festival se puede devolver una meeple del jugador activo en lugar de colocar uno.",
       "festival-disabled": "No hay ninguna loseta con festival en el juego.",
+      "flowers-description": "Las flores añaden +3 puntos a la zona puntuada cuando coinciden con la ficha del flor del jugador.",
+      "flowers-disabled": "No hay losetas con flores en el juego.",
       "gameplay-variants": "Variantes de juego",
       "garden-description": "Puede ser ocupado por un abad.",
       "garden-disabled": "Abad no está seleccionado.",
       "hill-description": "Se utiliza como desempate. También esconde una loseta aleatoria debajo.",
       "hill-disabled": "No hay ninguna loseta con Colina en el juego.",
-      "inn-description": "Caminos completados con posada ×2, no dan puntos durante la puntuación final.",
+      "inn-description": "Los caminos completados con posada ×2, no dan puntos durante la puntuación final.",
       "inn-disabled": "No hay ninguna loseta con Posada en el juego.",
+      "marketplace-description": "Los Mercados conectan varios caminos formando una red compartida que solo se completa cuando todos los caminos conectados están cerrados. Al puntuarlos, se otorgan puntos de bonificación equivalentes a la longitud de los demás caminos completados en esa red.",
+      "marketplace-disabled": "No hay ninguna loseta de Mercado en el juego.",
+      "meteorite-description": "TBA",
+      "meteorite-disabled": "No hay ninguna loseta de Cráter en el juego.",
       "optional-game-mechanics": "Mecánicas de juego opcionales",
       "pig-herd-description": "Cuenta como cerdo adicional en el campo (los campesinos consiguen más puntos).",
       "pig-herd-disabled": "No hay ninguna loseta con Piara de Cerdos en el juego.",
-      "portal-description": "A través de Portal Mágico un seguidor puede colocarse en cualquier loseta.",
+      "portal-description": "A través de Portal Mágico, un seguidor puede colocarse en cualquier loseta.",
       "portal-disabled": "No hay ninguna loseta con Portal Mágico en el juego.",
       "princess-description": "La princesa puede retirar un caballero de una ciudad.",
       "princess-disabled": "No hay ninguna loseta con Princesa en el juego.",
@@ -355,13 +387,13 @@
       "shrine-description": "Santuario situado junto a un monasterio compiten, quien termine la zona en primer lugar obtiene los puntos. (el segundo no obtiene puntos)",
       "shrine-disabled": "No hay ninguna loseta con Santuario en el juego.",
       "siege-description": "Las ciudades sitiadas son menos valiosas.",
-      "siege-disabled": "No hay ninguna loseta con asedio en el juego.",
+      "siege-disabled": "No hay ninguna loseta con Asedio en el juego.",
       "starting-tiles-configuration": "Configuración de loseta(s) de inicio",
       "starting-tiles-different-configuration": "Algunas expansiones ofrecen configuraciones de inicio alternativas.",
-      "vineyard-description": "Puntos adicionales para monasterio cercano.",
+      "vineyard-description": "Puntos adicionales por monasterio cercano.",
       "vineyard-disabled": "No hay ninguna loseta con Viñedo en el juego.",
-      "well-description": "Add point per well on roads. Road with in gets 2 points when completed but no points on final scoring.",
-      "well-disabled": "No tile with Well is in game."
+      "well-description": "Añade un punto por cada pozo en un camino. Los caminos con posadas obtienen 2 puntos cuando se completan, pero no obtienen puntos en la puntuación final.",
+      "well-disabled": "No hay ninguna loseta con Pozo en el juego."
     },
     "selected-tiles": "Losetas seleccionadas",
     "tiles": {
@@ -399,8 +431,8 @@
       "count-move": {
         "by-player": "a donde el jugador decida",
         "clockwise": "en el sentido de las agujas del reloj hasta el siguiente distrito",
-        "description": "Cuando un meeple se coloca en la ciudad de C. el Conde se mueve {}.",
-        "follow-meeple": "a cualquier distrito como el meeple"
+        "description": "Cuando un seguidor se coloca en la ciudad de C. el Conde se mueve {}.",
+        "follow-meeple": "a cualquier distrito como el seguidor"
       },
       "dragon-move": {
         "after-scoring": "después",
@@ -414,13 +446,13 @@
       },
       "fairy-placement": {
         "description": "El Hada está se coloca {}.",
-        "next-follower": "junto a un meeple",
+        "next-follower": "junto a un seguidor",
         "on-tile": "en la loseta"
       },
       "festival-return": {
         "description": "El jugador puede devolver uno de sus {}.",
-        "follower": "uno de sus e’spropios meeples",
-        "meeple": "una de sus e’spropias figuras"
+        "follower": "seguidores",
+        "meeple": "figuras del jugador"
       },
       "gq11-pig-herd": {
         "description": "La loseta de campo de la expansión Games Quarterly 11 {}.",
@@ -428,7 +460,7 @@
         "pig": "contiene una piara de cerdos"
       },
       "hill-tiebreaker": {
-        "at-least-one-follower": "al menos un meeple",
+        "at-least-one-follower": "al menos un seguidor",
         "description": "Método de desempate: {} en las colinas.",
         "number-of-followers": "número de meeples"
       },
@@ -438,7 +470,7 @@
         "replace": "reemplazan monasterios originales"
       },
       "king-and-robber-scoring": {
-        "10/20": "10 puntos / por cada carta al final del juego",
+        "10/20": "10 puntos por cada carta al final del juego",
         "15/40": "15/40 puntos por tener una/ambas cartas al final de la partida",
         "continuously": "1 punto por cada elemento completado durante el juego",
         "default": "1 punto por cada elemento completado al final del juego",
@@ -454,14 +486,20 @@
         "3/2/1": "3/2/1",
         "description": "Asigna {} puntos por torre/casa/cobertizo."
       },
+      "meteorite-impact": {
+        "standard": "Estándar",
+        "extended": "Más fuerte",
+        "combination": "Combinado",
+        "description": "{} impacto de destrucción de meteorito."
+      },
       "more-tunnel-tokens": {
         "1/1": "1/1",
         "2/1": "2/1",
         "3/2": "3/2",
-        "description": "Asignar {} conjuntos de fichas a cada jugador en el juego de dos/tres."
+        "description": "Asignar {} conjuntos de fichas a cada jugador en un juego de dos/tres jugadores."
       },
       "princess-action": {
-        "description": "La princesa {} remover al caballero de una ciudad.",
+        "description": "La princesa {} retira un caballero de una ciudad.",
         "may": "puede",
         "must": "debe"
       },
@@ -475,8 +513,8 @@
       },
       "wagon-move": {
         "C1": "conectado (cruce de carreteras o carretera que se dirige a una ciudad o monasterio) (1ª ed.)",
-        "C2": "en un elemento la misma loseta o en una adyacente (2ª ed.)",
-        "description": "Una vez puntuado, el carro puede moverse a un elemento adyacente desocupado e incompleto. Adyacente significa: {}"
+        "C2": "una zona en la misma loseta o en una adyacente (2ª ed.)",
+        "description": "Una vez puntuado, el carromato puede moverse a una zona adyacente desocupada e incompleta. Adyacente significa: {}"
       }
     }
   },
@@ -490,20 +528,22 @@
       "new-game": "Nuevo juego",
       "title": "Partidas organizadas por el jugador"
     },
-    "new-version-available": "Nueva versión de JCloisterZone está disponible.",
+    "new-version-available": "Una nueva versión de FanCloisterZone está disponible.",
     "online": {
       "abandon-game": "Abandonar el juego",
-      "chat-during-game": "Chat with players during playing game",
+      "chat-during-game": "Charlar durante el juego",
       "connected-to": "Conectado a {0}",
       "game-id": "ID del juego",
       "games-in-progress": "Juego en curso",
       "join-game": "Unirse al juego",
-      "no-random-discovery": "significa que no se encuentran ugadores al azar",
-      "online-storage-description": "Salir del juego online sólo mantiene la partida incompleta en segundo plano. Se puede volver a la partida desde esta lista.",
+      "no-random-discovery": "significa que no se buscan jugadores al azar",
+      "online-storage-description": "Salir del juego online mantiene la partida incompleta en segundo plano. Se puede volver a la partida desde esta lista cuando se desee.",
       "paste-a-game-key": "Pegar una clave de juego proporcionada por el anfitrión",
       "private-games-only": "Ahora sólo son soportadas partidas privadas.",
-      "remove-unfinished-game-confirmation": "¿Quiere eliminar permanentemente los juego incompletosde su lista?",
+      "remove-unfinished-game-confirmation": "¿Quiere eliminar permanentemente los juego incompletos de su lista?",
+      "some-expansions-are-playable-only-here": "Algunas expansiones solo se pueden jugar aquí",
       "title": "Partidas alojadas en servidores públicos",
+      "title-fan": "Juegos alojados en un servidor de fan",
       "you-have-no-game-in-progress": "No hay juegos en curso."
     },
     "release-notes": "Notas de la versión",
@@ -527,6 +567,7 @@
     "new-game": "Nuevo juego",
     "playonline-connect": "Jugar en línea",
     "playonline-disconnect": "Desconectar",
+    "report-bug": "Reporte un error",
     "rotate": "Rotar",
     "rules": "Reglas",
     "save-game": "Guardar el juego",
@@ -543,7 +584,7 @@
     "add-ons": {
       "add-on-already-installed": "El add-on {id} ya está instalado. Para volver a instalarlo, se debe eliminar primero.",
       "add-on-url": "dirección url del add-on",
-      "artwork-not-found-internet-connection-is-needed": "No se puede localizar o descargar el add-on con el estilo artístico por defecto. Se necesita conexión a Internet para descargarlo.",
+      "artwork-not-found-internet-connection-is-needed": "No se puede localizar o descargar el add-on con el estilo artístico por defecto. Se necesita conexión a Internet en la primera ejecución para descargarlo.",
       "drag-add-on-here-or-click-here": "Arrastre el add-on aquí (archivo .jca) o haga clic aquí para seleccionarlo.",
       "finish-or-leave-game-to-make-changes": "Termine o abandone el juego antes de hacer cambios acá.",
       "install-add-on": "Instalar add-on",
@@ -551,7 +592,7 @@
       "installed-add-ons": "Add-ons instalados",
       "invalid-add-on-multiple-folders-in-root": "Add-on inválido: el paquete debe contener una sola carpeta en la raíz",
       "look-at-jcz-for-add-ons": "Visitar {link} para ver los add-ons disponibles.",
-      "please-check-connectivity-and-restart-app": "Comprobar la conexión y reiniciar la aplicación para volver a intentarlo.",
+      "please-check-connectivity-and-restart-app": "Comprobar por favor la conexión y reiniciar la aplicación para volver a intentarlo.",
       "title": "Add-ons"
     },
     "appearance": {
@@ -571,7 +612,7 @@
       "active-player-indication": "Indicación de jugador activo",
       "always-enabled": "siempre habilitada",
       "beep": "Pitido",
-      "beep-description": "Pita cuando estás en su turno (o cuando alguna acción es requerida durante el turno del oponente).",
+      "beep-description": "Pitar cuando comienza su turno (o cuando alguna acción es requerida durante el turno del oponente).",
       "colored-background-in-right-sidebar": "fondo de color en la barra lateral derecha",
       "enable-beep": "Habilitar pitido",
       "language": "Idioma",
@@ -586,11 +627,11 @@
       "title": "Interfaz del juego",
       "triangle-in-top-bar": "triángulo en la barra superior",
       "turn-confirmation": "Confirmación de turno",
-      "turn-confirmation-description": "La confirmación permite al jugador deshacer las acciones realizadas antes de que la actividad pase al siguiente jugador. Esto ocurre antes de puntuar o, por ejemplo, durante el turno del oponente cuando mueve el carro, etc. Activar confirmación explícita..."
+      "turn-confirmation-description": "La confirmación permite al jugador deshacer las acciones realizadas antes de que la actividad pase al siguiente jugador. Esto ocurre antes de puntuar o, por ejemplo, durante el turno de un oponente cuando mueve el carromato, etc. Activar confirmación explícita..."
     },
     "java": {
       "change-in-settings": "Cambiar en {settings}.",
-      "description": "Aunque el cliente JCloisterZone es una aplicación nativa, se necesita Java para ejecutar el motor del juego. En otras palabras, para jugar.",
+      "description": "Aunque el cliente FanCloisterZone es una aplicación nativa, se necesita Java para jugar.",
       "download-java": "Descargar Java",
       "java-executable": "Ejecutable de Java",
       "java-is-not-installed": "¡Java no está instalado!",
@@ -620,7 +661,7 @@
     "title": "Ajustes"
   },
   "tile-set": {
-    "abbey-and-mayor-description": "Cada jugador también puede colocar una loseta de Abadía desde su reserva.",
+    "abbey-and-mayor-description": "Cada jugador también puede colocar una loseta de Abadía disponible en su reserva.",
     "abbey-and-mayor-release": "Quinta expansión mayor lanzada en 2007.",
     "base-game-description": "Se puede jugar con losetas con las reglas de la 1ª edición o de la nueva edición (por ejemplo, jardines). Esto se puede seleccionar en el segundo paso de configuración del juego.",
     "bridges-castles-and-bazaars-release": "La octava expansión mayor lanzada en 2010. (La sexta gran expansión Conde, Rey y Ladrón está dividida en pequeños módulos individuales. La séptima, la Catapulta, obviamente se omite).",
