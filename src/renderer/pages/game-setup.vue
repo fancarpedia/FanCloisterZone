@@ -16,6 +16,8 @@
 
       <HeaderMessage v-if="tab > 0" :sets="sets" />
       <HeaderGameButton v-if="tab > 0" :title="$t('button.create')" :sets="sets" @click="createGame" />
+      <HeaderLeaveGameButton v-if="tab > 0" @click="leaveGame" />
+      
     </template>
 
     <template #main>
@@ -42,6 +44,7 @@
 </template>
 
 <script>
+import { ipcRenderer } from 'electron'
 import { mapGetters, mapState } from 'vuex'
 
 import BookmarksTab from '@/components/game-setup/tabs/BookmarksTab'
@@ -50,6 +53,7 @@ import GameAnnotationsPanel from '@/components/dev/GameAnnotationsPanel'
 import GameSetupGrid from '@/components/game-setup/GameSetupGrid'
 import HeaderMessage from '@/components/game-setup/HeaderMessage'
 import HeaderGameButton from '@/components/game-setup/HeaderGameButton'
+import HeaderLeaveGameButton from '@/components/game-setup/HeaderLeaveGameButton'
 import Meeple from '@/components/game/Meeple'
 import TileDistribution from '@/components/TileDistribution'
 import TileSetsTab from '@/components/game-setup/tabs/TileSetsTab'
@@ -64,6 +68,7 @@ export default {
     GameAnnotationsPanel,
     HeaderMessage,
     HeaderGameButton,
+    HeaderLeaveGameButton,
     Meeple,
     TileDistribution,
     TileSetsTab,
@@ -105,6 +110,11 @@ export default {
   methods: {
     async createGame () {
       await this.$store.dispatch('gameSetup/createGame')
+    },
+
+    async leaveGame () {
+      await ipcRenderer.emit('menu.leave-game')
+//      await this.$store.dispatch('default/leaveGame')
     },
 
     onTileClick (tileId) {

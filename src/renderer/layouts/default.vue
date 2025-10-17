@@ -279,7 +279,7 @@ export default {
     ipcRenderer.on('settings.update', (ev, update) => {
       this.$store.dispatch('settings/update', update)
     })
-
+    
     try {
       await this.$store.dispatch('checkJavaVersion')
       if (this.java?.ok) {
@@ -307,7 +307,7 @@ export default {
       this.loadAddons()
     })
   },
-
+  
   beforeDestroy () {
     window.removeEventListener('keydown', this.onKeyDown)
   },
