@@ -91,6 +91,13 @@
         <h2>{{ $t('game-setup.open-game.options') }}</h2>
         <v-checkbox
           v-if="!readOnly"
+          v-model="publicGame"
+          dense hide-details
+          :label="$t('game-setup.open-game.public-game')"
+          :disabled="!isOwner"
+        />
+        <v-checkbox
+          v-if="!readOnly"
           v-model="randomizeSeating"
           dense hide-details
           :label="$t('game-setup.open-game.randomize-seating-order')"
@@ -179,6 +186,24 @@ export default {
 
       get () {
         return this.options.randomizeSeating
+      }
+    },
+
+    publicGame: {
+      set (value) {
+        this.$store.commit('game/options', { publicGame: value })
+        this.$connection.send({
+          type: 'GAME_OPTION',
+          payload: {
+            gameId: this.gameId,
+            key: 'publicGame',
+            value
+          }
+        })
+      },
+
+      get () {
+        return this.options.publicGame
       }
     },
 

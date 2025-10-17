@@ -63,6 +63,8 @@ class ConnectionHandler {
       this.resolve()
     } else if (type === 'GAME_LIST') {
       commit('online/gameList', payload.games, { root: true })
+    } else if (type === 'GAME_PUBLIC_LIST') {
+      commit('online/gamePublicList', payload.games, { root: true })
     } else if (type === 'SLOT') {
       await dispatch('game/handleSlotMessage', payload, { root: true })
     } else if (type === 'START') {

@@ -1,17 +1,22 @@
 
 export const state = () => ({
-  gameList: []
+  gameList: [],
+  gamePublicList: []
 })
 
 export const mutations = {
   gameList (state, value) {
     state.gameList = value
+  },
+  gamePublicList (state, value) {
+    state.gamePublicList = value
   }
 }
 
 export const actions = {
   onClose ({ commit }) {
-    commit('gameList', [])
+    commit('gameList', []),
+    commit('gamePublicList', [])
   },
 
   gameUpdate ({ state, commit }, payload) {
