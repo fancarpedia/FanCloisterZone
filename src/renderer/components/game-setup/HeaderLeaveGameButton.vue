@@ -1,14 +1,12 @@
 <template>
   <div class="header-leavegame-button">
-    <v-btn :large="$vuetify.breakpoint.height > 768" color="error" @click="ev => $emit('click', ev)">
+    <v-btn :large="$vuetify.breakpoint.height > 768" color="error" :disabled="disabled" @click="ev => $emit('click', ev)">
       <v-icon>fas fa-xmark</v-icon>
     </v-btn>
   </div>
 </template>
 
 <script>
-import { mapState } from 'vuex'
-
 export default {
   props: {
     disabled: { type: Boolean, default: false },

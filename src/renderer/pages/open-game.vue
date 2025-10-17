@@ -44,6 +44,9 @@
       <template v-else>
         <span class="text">{{ $t('game-setup.open-game.waiting-for-host-to-start-the-game') }}</span>
       </template>
+
+      <HeaderLeaveGameButton :title="$t('button.leave-game')" @click="leaveGame" />
+
     </template>
 
     <template #main>
@@ -107,11 +110,13 @@
 </template>
 
 <script>
+import { ipcRenderer } from 'electron'
 import { mapGetters, mapState } from 'vuex'
 
 import GameSetupOverview from '@/components/game-setup/overview/GameSetupOverview'
 import GameSetupGrid from '@/components/game-setup/GameSetupGrid'
 import HeaderGameButton from '@/components/game-setup/HeaderGameButton'
+import HeaderLeaveGameButton from '@/components/game-setup/HeaderLeaveGameButton'
 import HeaderMessage from '@/components/game-setup/HeaderMessage'
 import PlayerSlot from '@/components/game-setup/PlayerSlot'
 
@@ -120,6 +125,7 @@ export default {
     GameSetupOverview,
     GameSetupGrid,
     HeaderGameButton,
+    HeaderLeaveGameButton,
     HeaderMessage,
     PlayerSlot
   },
@@ -210,6 +216,10 @@ export default {
   methods: {
     startGame () {
       this.$store.dispatch('game/start')
+    },
+
+    async leaveGame () {
+      await ipcRenderer.emit('menu.leave-game')
     },
 
     renameGame () {

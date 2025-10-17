@@ -16,7 +16,7 @@
 
       <HeaderMessage v-if="tab > 0" :sets="sets" />
       <HeaderGameButton v-if="tab > 0" :title="$t('button.create')" :sets="sets" @click="createGame" />
-      <HeaderLeaveGameButton v-if="tab > 0" @click="leaveGame" />
+      <HeaderLeaveGameButton :title="$t('button.leave-game')" @click="leaveGame" />
       
     </template>
 
@@ -114,7 +114,6 @@ export default {
 
     async leaveGame () {
       await ipcRenderer.emit('menu.leave-game')
-//      await this.$store.dispatch('default/leaveGame')
     },
 
     onTileClick (tileId) {
