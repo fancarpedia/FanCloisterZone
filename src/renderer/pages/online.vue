@@ -15,6 +15,70 @@
       </v-btn>
     </header>
     <main>
+      <h2>{{ $t('index.online.public-games') }}</h2>
+
+      <div v-if="!verifiedGamePublicList.length" class="empty-message">
+        <p>
+          <i>{{ $t('index.online.no-public-games') }}</i>
+        </p>
+        <p>
+          <i>
+            {{ $t('index.online.online-storage-description') }}
+          </i>
+        </p>
+      </div>
+
+      <div v-if="!verifiedGameList.length" class="empty-message">
+        <p>
+          <i>{{ $t('index.online.you-have-no-game-in-progress') }}</i>
+        </p>
+        <p>
+          <i>
+            {{ $t('index.online.online-storage-description') }}
+          </i>
+        </p>
+      </div>
+
+      <div class="game-list">
+        <div
+          v-for="{ game, slots, valid, isOwner } in verifiedGamePublicList"
+          :key="game.gameId"
+          class="game"
+        >
+          <div v-if="game.name" class="game-name">
+            {{ game.name }}
+          </div>
+
+          <div class="game-header">
+            <span class="game-key">{{ game.key.substring(0,3) }}-{{ game.key.substring(3) }}</span>
+            <span class="game-started">{{ game.started | formatDate }}</span>
+          </div>
+
+          <div
+            class="game-slots"
+            :class="{ full: slots.length > 8 }"
+          >
+            <div
+              v-for="s in slots"
+              :key="s.number"
+              :class="'game-slot color color-' + s.number"
+              :title="s.name"
+            >
+              <Meeple type="SmallFollower" />
+            </div>
+          </div>
+
+          <div :class="{ invalid: !valid }">
+            <GameSetupOverviewInline :sets="game.setup.sets" :elements="game.setup.elements" />
+          </div>
+
+          <div class="buttons">
+            <v-btn color="primary" :disabled="!valid || !connected" @click="resume(game)"><v-icon left>fa-play</v-icon> {{ $t('button.resume') }}</v-btn>
+            <v-btn color="secondary" :disabled="!isOwner || !connected" @click="del(game)"><v-icon>fa-trash-alt</v-icon></v-btn>
+          </div>
+        </div>
+      </div>
+
       <h2>{{ $t('index.online.games-in-progress') }}</h2>
 
       <div v-if="!verifiedGameList.length" class="empty-message">
@@ -160,12 +224,23 @@ export default {
   computed: {
     ...mapState({
       gameList: state => state.online.gameList,
+      gamePublicList: state => state.online.gamePublicList,
       playOnlineHostname: state => state.settings.playOnlineUrl.split('/')[0],
       connected: state => state.networking.connectionStatus === STATUS_CONNECTED
     }),
 
     verifiedGameList () {
       return this.gameList.map(game => {
+        const edition = game.setup.elements.garden ? 2 : 1
+        const valid = !this.$tiles.getExpansions(game.setup.sets, edition)._UNKNOWN
+        const slots = sortBy(game.slots.filter(s => s.clientId), 'order')
+        const isOwner = game.owner === this.$store.state.settings.clientId
+        return { game, valid, slots, isOwner }
+      })
+    },
+
+    verifiedGamePublicList () {
+      return this.gamePublicList.map(game => {
         const edition = game.setup.elements.garden ? 2 : 1
         const valid = !this.$tiles.getExpansions(game.setup.sets, edition)._UNKNOWN
         const slots = sortBy(game.slots.filter(s => s.clientId), 'order')
@@ -186,6 +261,7 @@ export default {
     if (this.$store.state.networking.connectionStatus === STATUS_CONNECTED) {
       // not reconnecting
       this.$connection.send({ type: 'LIST_GAMES', payload: {} })
+      this.$connection.send({ type: 'LIST_PUBLIC_GAMES', payload: {} })
     }
   },
 
