@@ -50,10 +50,6 @@
     </template>
 
     <template #main>
-      <!--div v-if="gameKey" class="game-key">
-        <span>Share the key with other players to let them connect to the game.</span>
-        <strong @click="selectOnClick">{{ gameKey }}</strong>
-      </--div-->
 
       <div class="slots">
         <PlayerSlot
@@ -319,7 +315,12 @@ header .v-alert
   top: 8px
   width: 300px
 
+main
+  dislay: flex
+  flex-order: start
+  
 .slots
+  order: 1
   padding: 0 30px
   display: grid
   grid-template-columns: 1fr 1fr 1fr
@@ -351,6 +352,7 @@ h2
 
 .options
   padding: 30px 20px 40px
+  order: 2
 
 @media (max-width: 1079px)
   .slots
@@ -362,8 +364,10 @@ h2
 
 @media (max-height: 768px)
   .slots
+    order: 2
     margin-top: 20px
 
   .options
+    order: 1
     padding-top: 15px
 </style>
