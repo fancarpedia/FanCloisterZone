@@ -18,6 +18,15 @@
       />
 
       <div v-if="gameKey" class="game-key">
+        <v-checkbox
+          class="public-game"
+          v-if="!readOnly"
+          v-model="publicGame"
+          dense hide-details
+          :label="$t('game-setup.open-game.public-game')"
+          :disabled="!isOwner"
+        />
+        
         <v-tooltip bottom :open-delay="200">
           <template #activator="{ on, attrs }">
             <span
@@ -85,13 +94,6 @@
     <template #detail>
       <div class="options">
         <h2>{{ $t('game-setup.open-game.options') }}</h2>
-        <v-checkbox
-          v-if="!readOnly"
-          v-model="publicGame"
-          dense hide-details
-          :label="$t('game-setup.open-game.public-game')"
-          :disabled="!isOwner"
-        />
         <v-checkbox
           v-if="!readOnly"
           v-model="randomizeSeating"
@@ -310,6 +312,9 @@ export default {
       color: map-get($theme, 'text-color')
       background: map-get($theme, 'cards-selected-bg')
 
+.public-game
+  margin-right: 2ex
+    
 header .v-alert
   position: relative
   top: 8px
