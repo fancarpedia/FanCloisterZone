@@ -13,7 +13,7 @@
       stroke="black"
       stroke-width="1.4"
     />
-    <text x="72" y="124" fill="currentColor" style="font-size: 96px; font-weight: 600">2</text>
+    <text x="13" y="22" fill="currentColor" style="font-size: 15px; font-weight: 600">2</text>
   </symbol>
 
   <symbol id="abbot" viewBox="0 0 200 200">
