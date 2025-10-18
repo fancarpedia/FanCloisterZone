@@ -92,7 +92,13 @@ export default {
           this.onMouseLeave()
         }, 0)
       }
-      return groupBy(items, item => Array.isArray(item.ptr) ? this.positionAsKey(item.ptr) : (item.ptr.hasOwnProperty("positions") ? this.positionsAsKey(item.ptr.positions) : this.pointerAsKey(item.ptr)))
+      return groupBy(items, item => 
+    Array.isArray(item.ptr) ? this.positionAsKey(item.ptr)
+    : item.ptr?.hasOwnProperty('featurePointer') ? this.pointerAsKey(item.ptr.featurePointer)
+    : item.ptr?.hasOwnProperty('positions') ? this.positionsAsKey(item.ptr.positions)
+    : this.pointerAsKey(item.ptr)
+);
+  //    return groupBy(items, item => Array.isArray(item.ptr) ? this.positionAsKey(item.ptr) : ((item.ptr.hasOwnProperty("featurePointer") ? this.positionsAsKey(item.ptr.featurePointer) : ((item.ptr.hasOwnProperty("positions") ? this.positionsAsKey(item.ptr.positions) : this.pointerAsKey(item.ptr))))))
     }
   },
 
