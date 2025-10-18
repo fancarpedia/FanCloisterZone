@@ -22,22 +22,6 @@
           <p>
             <i>{{ $t('index.online.no-public-games') }}</i>
           </p>
-          <p>
-            <i>
-              {{ $t('index.online.online-storage-description') }}
-            </i>
-          </p>
-        </div>
-
-        <div v-if="!verifiedGameList.length" class="empty-message">
-          <p>
-            <i>{{ $t('index.online.you-have-no-game-in-progress') }}</i>
-          </p>
-          <p>
-            <i>
-              {{ $t('index.online.online-storage-description') }}
-            </i>
-          </p>
         </div>
 
         <div class="game-list">
