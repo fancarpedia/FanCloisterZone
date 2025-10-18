@@ -39,7 +39,7 @@ async function createMenu (win, messages) {
       submenu: [
         { id: 'undo', label: $t('menu.undo') || 'Undo', accelerator: 'CommandOrControl+Z', click () { win.webContents.send('menu.undo') } },
         { type: 'separator' },
-        { id: 'leave-game', label: $t('menu.leave-game') || 'Leave Game', click () { win.webContents.send('menu.leave-game') } },
+        { id: 'leave-game', label: $t('menu.leave-game') || 'Leave Game', accelerator: 'CommandOrControl+W', click () { win.webContents.send('menu.leave-game') } },
         { type: 'separator' },
         { id: 'game-setup', label: $t('menu.show-game-setup') || 'Show game setup', click () { win.webContents.send('menu.game-setup') } },
         { type: 'separator' },
