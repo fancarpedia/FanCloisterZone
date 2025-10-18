@@ -70,7 +70,7 @@
         />
       </template>
       <template v-else>
-        <v-icon :title="item.name">fas fa-question</v-icon>
+        <v-icon :title="item.name">fas fa-question</v-icon> {{ item.name }}
       </template>
     </div>
     <div class="points">{{ points }}</div>
