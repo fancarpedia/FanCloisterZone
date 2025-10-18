@@ -37,9 +37,11 @@ async function createMenu (win, messages) {
     {
       label: $t('menu.game') || 'Game',
       submenu: [
+        { id: 'undo', label: $t('menu.undo') || 'Undo', accelerator: 'CommandOrControl+Z', click () { win.webContents.send('menu.undo') } },
+        { type: 'separator' },
         { id: 'leave-game', label: $t('menu.leave-game') || 'Leave Game', click () { win.webContents.send('menu.leave-game') } },
         { type: 'separator' },
-        { id: 'undo', label: $t('menu.undo') || 'Undo', accelerator: 'CommandOrControl+Z', click () { win.webContents.send('menu.undo') } },
+        { id: 'game-setup', label: $t('menu.show-game-setup') || 'Show game setup', click () { win.webContents.send('menu.game-setup') } },
         { type: 'separator' },
         { id: 'zoom-in', label: $t('menu.zoom-in') || 'Zoom In', accelerator: 'numadd', registerAccelerator: false, click () { win.webContents.send('menu.zoom-in') } },
         { id: 'zoom-out', label: $t('menu.zoom-out') || 'Zoom Out', accelerator: 'numsub', registerAccelerator: false, click () { win.webContents.send('menu.zoom-out') } },
@@ -47,9 +49,7 @@ async function createMenu (win, messages) {
         { type: 'separator' },
         { id: 'game-tiles', label: $t('menu.tiles') || 'Tiles', click () { win.webContents.send('menu.game-tiles') } },
         { id: 'game-farm-hints', label: $t('menu.farm-hints') || 'Farm Hints', click () { win.webContents.send('menu.game-farm-hints') } },
-        { id: 'toggle-history', label: $t('menu.toggle-history') || 'Toggle History', accelerator: 'h', registerAccelerator: false, click () { win.webContents.send('menu.game-history') } },
-        { type: 'separator' },
-        { id: 'game-setup', label: $t('menu.show-game-setup') || 'Show game setup', click () { win.webContents.send('menu.game-setup') } }
+        { id: 'toggle-history', label: $t('menu.toggle-history') || 'Toggle History', accelerator: 'h', registerAccelerator: false, click () { win.webContents.send('menu.game-history') } }
       ]
     }, {
       label: $t('menu.help') || 'Help',
