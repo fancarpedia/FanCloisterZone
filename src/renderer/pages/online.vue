@@ -26,7 +26,7 @@
 
         <div class="game-list">
           <div
-            v-for="{ game, slots, valid, isOwner } in verifiedGamePublicList"
+            v-for="{ game, slots, valid, isOwner, isStarted } in verifiedGamePublicList"
             :key="game.gameId"
             class="game"
           >
@@ -36,7 +36,14 @@
 
             <div class="game-header">
               <span class="game-key">{{ game.key.substring(0,3) }}-{{ game.key.substring(3) }}</span>
-              <span class="game-started">{{ game.started | formatDate }}</span>
+              <span class="game-started">
+                <span v-if="isStarted">
+                  {{ formatDate(game.started) }}
+                </span>
+                <span v-if="!isStarted">
+                  {{ $t('index.online.not-yet-started') }}
+                </span>
+              </span>
             </div>
 
             <div
@@ -88,7 +95,7 @@
 
         <div class="game-list">
           <div
-            v-for="{ game, slots, valid, isOwner } in verifiedGameList"
+            v-for="{ game, slots, valid, isOwner, isStarted } in verifiedGameList"
             :key="game.gameId"
             class="game"
           >
@@ -98,7 +105,14 @@
 
             <div class="game-header">
               <span class="game-key">{{ game.key.substring(0,3) }}-{{ game.key.substring(3) }}</span>
-              <span class="game-started">{{ game.started | formatDate }}</span>
+              <span class="game-started">
+                <span v-if="isStarted">
+                  {{ formatDate(game.started) }}
+                </span>
+                <span v-if="!isStarted">
+                  {{ $t('index.online.not-yet-started') }}
+                </span>
+              </span>
             </div>
 
             <div
@@ -222,6 +236,7 @@ export default {
       gameList: state => state.online.gameList,
       gamePublicList: state => state.online.gamePublicList,
       playOnlineHostname: state => state.settings.playOnlineUrl.split('/')[0],
+      locale: state => state.settings.locale,
       connected: state => state.networking.connectionStatus === STATUS_CONNECTED
     }),
 
@@ -231,7 +246,9 @@ export default {
         const valid = !this.$tiles.getExpansions(game.setup.sets, edition)._UNKNOWN
         const slots = sortBy(game.slots.filter(s => s.clientId), 'order')
         const isOwner = game.owner === this.$store.state.settings.clientId
-        return { game, valid, slots, isOwner }
+        const isStarted = !(game.started == null || game.started === '')
+        console.log(game.started)
+        return { game, valid, slots, isOwner, isStarted }
       })
     },
 
@@ -241,7 +258,9 @@ export default {
         const valid = !this.$tiles.getExpansions(game.setup.sets, edition)._UNKNOWN
         const slots = sortBy(game.slots.filter(s => s.clientId), 'order')
         const isOwner = game.owner === this.$store.state.settings.clientId
-        return { game, valid, slots, isOwner }
+        const isStarted = !(game.started == null || game.started === '')
+        console.log(game.started)
+        return { game, valid, slots, isOwner, isStarted }
       })
     }
   },
@@ -271,6 +290,10 @@ export default {
       this.$router.push('/game-setup')
     },
 
+    formatDate(date) {
+      return new Date(date).toLocaleString(this.locale);
+    },
+    
     openJoinGameDialog () {
       this.joinGameId = ''
       this.showJoinDialog = true
