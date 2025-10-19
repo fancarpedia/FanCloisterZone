@@ -56,7 +56,7 @@ export const LOCALES = [
   },
   {
     id: 'ru',
-    flag: 'russia-anti-war',
+    flag: 'russia',
     text: 'Русский'
   },
   {
