@@ -2,7 +2,7 @@
   "@author": "farin & Scott",
   "@jcz-version": "5.12.1",
   "@fcz-version": "6.0.0",
-  "@version": "0.8.6",
+  "@version": "0.8.7",
   "about": {
     "configuration-file": "Configuration file",
     "jcloisterzone-game-engine": "JCloisterZone Game Engine",
@@ -526,6 +526,7 @@
       "continue-with-recently-saved-games": "Continue with recently saved games",
       "create-directly-from": "Create a new game directly from",
       "load-game": "Load game",
+      "local-games": "Local games",
       "my-favorites": "my favorites",
       "new-game": "New game",
       "title": "Player hosted games"

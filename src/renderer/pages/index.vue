@@ -115,16 +115,16 @@
     </section> -->
 
     <section class="player-hosted">
-      <h2>{{ $t('index.local.title') }}</h2>
+      <h2>{{ $t('index.local.local-games') }}</h2>
 
       <div class="subsection">
         <v-btn large color="secondary" @click="newGame()">
           {{ $t('index.local.new-game') }}
         </v-btn>
 
-        <v-btn large color="secondary" :disabled="!engine || !engine.ok" @click="joinGame()">
+        <!-- <v-btn large color="secondary" :disabled="!engine || !engine.ok" @click="joinGame()">
           {{ $t('button.join-game') }}
-        </v-btn>
+        </v-btn> -->
 
         <v-btn large color="secondary" :disabled="!engine || !engine.ok" @click="loadGame()">
           {{ $t('index.local.load-game') }}
