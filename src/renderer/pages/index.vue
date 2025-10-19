@@ -372,9 +372,20 @@ h2
         color: inherit !important
         font-size: inherit !important
 
+.theme--light .update-box
+  background-color: var(--v-primary-darken1)
+  
+  a
+    color: white
+
+.theme--dark .update-box
+  background-color: var(--v-primary-lighten1)
+  
+  a
+    color: white
+
 .update-box
   padding: 20px
-  background-color: #FFE082
   color: black
   text-align: center
 
@@ -418,8 +429,10 @@ h2
     flex-grow: 1
 
 .splash
-  margin-top: 1ex
-  text-align: center
+  height: 25vh
+  display: flex
+  justify-content: center
+  align-items: center
   
   img
     max-width: 600px
