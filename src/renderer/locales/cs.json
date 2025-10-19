@@ -2,7 +2,7 @@
   "@author": "Peťul",
   "@jcz-version": "5.12.1",
   "@fcz-version": "6.0.0",
-  "@version": "0.8.0",
+  "@version": "0.8.5",
   "about": {
     "configuration-file": "Konfigurační soubor",
     "jcloisterzone-game-engine": "Herní engine JCloisterZone",
@@ -32,6 +32,7 @@
     "connect": "Připojit se",
     "create": "Vytvořit hru",
     "create-game": "Vytvořit hru",
+    "create-public-game": "Vytvořte veřejnou hru",
     "disconnect": "Odpojit",
     "grow-the-flock": "Rozšíření stáda",
     "hide-stats": "Skrýt statistiky",
@@ -78,7 +79,7 @@
     "used-time": "Použitý čas"
   },
   "expansion": {
-    "-unknown": "Missing expansion",
+    "-unknown": "Chybějící rozšíření",
     "abbey-and-mayor": "Opatství a starosta",
     "basic": "Základní hra",
     "besiegers": "Obléhání",
@@ -344,6 +345,7 @@
       "name": "Název",
       "no-player-in-game": "Žádný hráč ve hře",
       "options": "Možnosti",
+      "public-game": "Veřejná hra",
       "randomize-seating-order": "Náhodné pořadí hráčů",
       "set-game-title": "Nastavte název hry",
       "share-the-key": "Nasdílejte kód hry ostatním hráčům, aby se mohli připojit ke hře.",
@@ -536,9 +538,12 @@
       "game-id": "Kód hry",
       "games-in-progress": "Probíhající hry",
       "join-game": "Připojit se do hry",
+      "lobby": "Lobby",
+      "no-public-games": "Žádná veřejná hra",
       "no-random-discovery": "Nespustíte žádné hry vytvořené jinými hráči",
       "online-storage-description": "Pokud opustíte online hru, nedokončená hra zůstane rozháraná na serveru a můžete ji dokončit později.",
       "paste-a-game-key": "Vložte kód hry poskytnutý hostitelem",
+      "public-games": "Veřejné hry",
       "private-games-only": "Nyní můžete hrát pouze hry na tomto počítači.",
       "remove-unfinished-game-confirmation": "Chcete trvale odstranit nedokončenou hru ze svého seznamu?",
       "some-expansions-are-playable-only-here": "Některá rozšíření je možné hrát jen na tomto serveru",
@@ -559,12 +564,14 @@
     "about": "O aplikaci",
     "exit": "Ukončit",
     "farm-hints": "Zvýraznit louky",
+    "file": "Soubor",
     "game": "Hra",
     "help": "Pomoc",
     "join-game": "Připojit se do hry",
     "leave-game": "Opustit hru",
     "load-game": "Načíst hru / Nastavení",
     "new-game": "Nová hra",
+    "online": "Online",
     "playonline-connect": "Hrát online",
     "playonline-disconnect": "Odpojit se",
     "report-bug": "Nahlášení chyby",
@@ -605,7 +612,7 @@
       "title": "Vzhled"
     },
     "engine": {
-      "engine-path-not-exists": " Nelze najít herní engine (soubor {path} nebyl nalezen nebo se nedá načíst).",
+      "engine-path-not-exists": "Nelze najít herní engine (soubor {path} nebyl nalezen nebo se nedá načíst).",
       "unable-to-spawn-game-engine": "Nelze spustit herní engine."
     },
     "game-interface": {
