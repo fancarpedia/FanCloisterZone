@@ -2,7 +2,7 @@
   "@author": "J0anJosep",
   "@jcz-version": "5.12.1",
   "@fcz-version": "6.0.0",
-  "@version": "0.4.1",
+  "@version": "0.8.6",
   "about": {
     "configuration-file": "Fitxer de configuració",
     "jcloisterzone-game-engine": "Motor de joc del JCloisterZone",
@@ -203,7 +203,7 @@
       "builder": "Constructor",
       "castle": "Castell",
       "count": "Comte",
-      "decinsky-sneznik": "Decinsky Sneznik",
+      "decinsky-sneznik": "Děčínský Sněžník",
       "donkey": "L'ase",
       "donkey-description": "L'ase, com a figura neutral, evita que es completin àrees que impliquin la casella on està.",
       "dragon": "Drac",

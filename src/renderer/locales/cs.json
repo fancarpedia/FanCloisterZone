@@ -2,7 +2,7 @@
   "@author": "Peťul",
   "@jcz-version": "5.12.1",
   "@fcz-version": "6.0.0",
-  "@version": "0.8.5",
+  "@version": "0.8.6",
   "about": {
     "configuration-file": "Konfigurační soubor",
     "jcloisterzone-game-engine": "Herní engine JCloisterZone",
@@ -541,6 +541,7 @@
       "lobby": "Lobby",
       "no-public-games": "Žádná veřejná hra",
       "no-random-discovery": "Nespustíte žádné hry vytvořené jinými hráči",
+      "not-yet-started": "Ještě nezahájeno",
       "online-storage-description": "Pokud opustíte online hru, nedokončená hra zůstane rozháraná na serveru a můžete ji dokončit později.",
       "paste-a-game-key": "Vložte kód hry poskytnutý hostitelem",
       "public-games": "Veřejné hry",

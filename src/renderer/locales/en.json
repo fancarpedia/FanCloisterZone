@@ -2,7 +2,7 @@
   "@author": "farin & Scott",
   "@jcz-version": "5.12.1",
   "@fcz-version": "6.0.0",
-  "@version": "0.8.5",
+  "@version": "0.8.6",
   "about": {
     "configuration-file": "Configuration file",
     "jcloisterzone-game-engine": "JCloisterZone Game Engine",
@@ -541,6 +541,7 @@
       "lobby": "Lobby",
       "no-public-games": "No public games",
       "no-random-discovery": "it means no random player discovery",
+      "not-yet-started": "Not yet started",
       "online-storage-description": "Leaving an online game keeps the unfinished game in the background. You can rejoin it from this list whenever you want.",
       "paste-a-game-key": "Paste a game key provided by host",
       "public-games": "Public games",
