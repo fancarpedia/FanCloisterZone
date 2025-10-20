@@ -23,15 +23,23 @@ jobs:
         with:
           node-version: 16
 
+      # Check for macOS code signing identity
+      - name: Check for macOS signing identity
+        if: matrix.os == 'macos-13'
+        id: mac_identity
+        run: |
+          IDENTITY=$(security find-identity -v -p codesigning | grep "Developer ID Application" | awk '{print $2}')
+          if [ -z "$IDENTITY" ]; then
+            echo "No macOS signing identity found. Skipping code signing."
+            echo "CSC_NAME=" >> $GITHUB_ENV
+          else
+            echo "Found macOS signing identity: $IDENTITY"
+            echo "CSC_NAME=$IDENTITY" >> $GITHUB_ENV
+          fi
+
       - name: Build/release Electron app
         uses: samuelmeuli/action-electron-builder@v1
         with:
           args: "-c builder.config.js"
-          # GitHub token, automatically provided to the action
-          # (No need to define this secret in the repo settings)
-          # type: string
           github_token: ${{ secrets.github_token }}
-
-          # If the commit is tagged with a version (e.g. "v1.0.0")
-          # type: boolean
           release: ${{ true }}
