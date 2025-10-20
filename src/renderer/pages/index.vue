@@ -50,12 +50,6 @@
         <small>{{ $t('settings.add-ons.add-on-url') }}: <a :href="$addons.getDefaultArtworkUrl()" @click.prevent="openLink($addons.getDefaultArtworkUrl())">>{{ $addons.getDefaultArtworkUrl() }}</a></small>
       </v-alert>
       <div v-if="download" class="download">
-        <div class="download-header">
-          <span class="description">{{ download.description }}</span>
-          <span v-if="download.size" class="size">
-            {{ (download.progress / 1048576).toFixed(2) }} / {{ (download.size / 1048576).toFixed(2) }} MiB
-          </span>
-        </div>
         <v-progress-linear
           v-if="download.size"
           :value="download.size ? download.progress / download.size * 100 : null"
@@ -63,19 +57,16 @@
         <v-progress-linear v-else indeterminate />
       </div>
       <div v-if="updateInfo" class="update-box">
-        <h3>{{ $t('index.new-version-available') }}</h3>
+        <InstallerDownloader
+          :fileURL="updateInfoFile"
+          :titleText="$t('index.update.new-version-available')"
+          :downloadButtonText="$t('index.update.download')"
+          :installButtonText="$t('index.update.install-new-version')"
+          :installerErrorText="$t('index.update.download-error')"
+          :startingText="$t('index.update.starting')"
+        />
 
-        <div class="update-action">
-          <template v-if="isMac || isWin">
-            <!-- {{ $t('index.automatic-updates-linux-only') }}<br> -->
-            <a :href="updateInfoFile">{{ updateInfoFile }}</a>
-          </template>
-          <v-btn v-else-if="!updating" color="secondary" @click="updateApp">{{ $t('index.update-to', { version: updateInfo.version }) }}</v-btn>
-          <v-progress-linear v-else-if="updateProgress === null" indeterminate />
-          <v-progress-linear v-else :value="updateProgress" />
-        </div>
-
-        <h4>{{ $t('index.release-notes') }}</h4>
+        <h4>{{ $t('index.update.release-notes') }}</h4>
         <div class="update-release-notes" v-html="updateInfo.releaseNotes" />
       </div>
     </div>
@@ -154,15 +145,19 @@ import Vue from 'vue'
 import { mapState } from 'vuex'
 
 import AddonsReloadObserverMixin from '@/components/AddonsReloadObserverMixin'
+import InstallerDownloader from '@/components/InstallerDownloader'
 
 const isMac = process.platform === 'darwin'
 const isWin = process.platform === 'win32'
 
 export default {
   components: {
+    InstallerDownloader
   },
 
-  mixins: [AddonsReloadObserverMixin],
+  mixins: [
+    AddonsReloadObserverMixin
+  ],
 
   data () {
     return {
@@ -187,8 +182,21 @@ export default {
       settingsLoaded: state => state.loaded.settings,
       artworksLoaded: state => state.loaded.artworks,
       hasClassicAddon: state => state.hasClassicAddon,
-      updateInfo: state => state.updateInfo,
-      updateProgress: state => state.updateProgress
+      updateInfo: state => {
+        if (process.env.NODE_ENV === 'development') {
+          return {
+            releaseNotes: 'Cool stuff',
+            description: 'Tha description',
+            version: '6.0.0-beta.6',
+            files: [
+              {
+                url: 'fancloisterzone-6.0.0-beta.6.exe'
+              }
+            ]
+          }
+        }
+        return state.updateInfo
+      }
     }),
 
     updateInfoFile () {
@@ -253,11 +261,6 @@ export default {
     splashImage () {
       const theme = this.$vuetify.theme.dark ? 'dark' : 'light'
       return require(`@/assets/splash_${theme}.png`)
-    },
-
-    updateApp () {
-      this.updating = true
-      ipcRenderer.send('do-update')
     },
 
     afterAddonsReloaded () {

@@ -2,7 +2,7 @@
   "@author": "farin & Scott",
   "@jcz-version": "5.12.1",
   "@fcz-version": "6.0.0",
-  "@version": "0.8.7",
+  "@version": "0.8.8",
   "about": {
     "configuration-file": "Configuration file",
     "jcloisterzone-game-engine": "JCloisterZone Game Engine",
@@ -531,7 +531,6 @@
       "new-game": "New game",
       "title": "Player hosted games"
     },
-    "new-version-available": "New FanCloisterZone version is available.",
     "online": {
       "abandon-game": "Abandon game",
       "chat-during-game": "Chat during game",
@@ -553,8 +552,14 @@
       "title-fan": "Games hosted on fan-server",
       "you-have-no-game-in-progress": "You have no game in progress."
     },
-    "release-notes": "Release Notes",
-    "update-to": "Update to {version}"
+    "update": {
+      "download": "Download",
+      "download-error": "Download error",
+      "install-new-version": "Install new version",
+      "new-version-available": "New FanCloisterZone version is available.",
+      "release-notes": "Release Notes",
+      "update-to": "Update to {version}"
+    }
   },
   "join-game": {
     "connect-to-remote-host": "Connect to remote host with created game.",

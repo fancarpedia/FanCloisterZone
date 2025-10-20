@@ -64,6 +64,7 @@
     "@nuxtjs/i18n": "^7.3.1",
     "@nuxtjs/style-resources": "^1.2.1",
     "@openfonts/roboto_latin-ext": "^1.44.1",
+    "axios": "0.27.2",
     "compare-versions": "^5.0.3",
     "electron-log": "^4.4.1",
     "electron-updater": "^4.3.9",
