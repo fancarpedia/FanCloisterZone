@@ -28,6 +28,7 @@ jobs:
 
       - name: Determine macOS code signing identity
         if: matrix.os == 'macos-13'
+        shell: bash
         id: mac_identity
         run: |
           IDENTITY=$(security find-identity -v -p codesigning | grep "Developer ID Application" | awk '{print $2}')
@@ -37,7 +38,8 @@ jobs:
           else
             echo "Found macOS signing identity: $IDENTITY"
             echo "MAC_IDENTITY=$IDENTITY" >> $GITHUB_ENV
-
+          fi
+      
       - name: Build/release Electron app
         run: |
           if [ "${{ matrix.os }}" == "macos-13" ]; then
