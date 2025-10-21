@@ -10,10 +10,16 @@ export const FOLLOWER_ORDERING = {
   Builder: 70,
   Pig: 80,
   Barn: 90,
-  Obelisk: 100
+  Obelisk: 100,
+  Windmill: 110,
+  DecinskySneznik: 120
 }
 
 export const TOKEN_ORDERING = {
+  FLOWERS_BLUE: -10,
+  FLOWERS_VIOLET: -9,
+  FLOWERS_WHITE: -8,
+  FLOWERS_YELLOW: -7,
   ABBEY_TILE: 10,
   TOWER_PIECE: 20,
   BRIDGE: 30,

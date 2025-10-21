@@ -44,6 +44,7 @@ export default {
         gold: { title: this.$t('game.feature.gold-ingots'), events: [] },
         kingAndRobber: { title: this.$t('game.feature.king-and-robber'), events: [] },
         penalties: { title: this.$t('core-messages.penalties'), events: [] },
+        bonuses: { title: this.$t('core-messages.bonuses'), events: [] },
         specialfigures: { title: this.$t('core-messages.special-figures'), events: [] }
       }
       item.events.forEach(ev => {
@@ -68,8 +69,16 @@ export default {
           rows.monasteries.events.push(ev)
         } else if (type === 'vodyanoy') {
           rows.penalties.events.push(ev)
+        } else if (type === 'fairy') {
+          rows.bonuses.events.push(ev)
         } else if (type === 'obelisk') {
           rows.specialfigures.events.push(ev)
+        } else if (type === 'windmill') {
+          rows.specialfigures.events.push(ev)
+        } else if (type === 'decinsky-sneznik') {
+          rows.specialfigures.events.push(ev)
+        } else if (type === 'flowers') {
+          rows.bonuses.events.push(ev)
         } else {
           rows.features.events.push(ev)
         }

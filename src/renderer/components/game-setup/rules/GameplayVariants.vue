@@ -159,6 +159,16 @@
       </template>
     </RuleBox>
 
+    <RuleBox
+      :setup="setup"
+      :rules="[Rule.METEORITE_IMPACT]"
+      :read-only="readOnly"
+    >
+      <template #icon>
+        <img src="~/assets/features/C1/crater.png" height="35">
+      </template>
+    </RuleBox>
+
   </div>
 </template>
 

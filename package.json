@@ -1,10 +1,10 @@
 {
-  "name": "jcloisterzonefan",
-  "version": "5.13.5",
-  "description": "JCloisterZone UI client Fan Edition",
-  "repository": "github:farin/JCloisterZone-Client",
+  "name": "fancloisterzone",
+  "version": "6.0.0-beta.7",
+  "description": "FanCloisterZone Edition",
+  "repository": "github:fancarpedia/FanCloisterZone",
   "license": "AGPL-3.0-or-later",
-  "author": "Roman Krejcik <farin@farin.cz>",
+  "author": "Roman Krejcik <farin@farin.cz> and fans",
   "main": "./dist/main/index.js",
   "scripts": {
     "download-game-engine": "node build-scripts/download-game-engine.js",
@@ -64,6 +64,7 @@
     "@nuxtjs/i18n": "^7.3.1",
     "@nuxtjs/style-resources": "^1.2.1",
     "@openfonts/roboto_latin-ext": "^1.44.1",
+    "axios": "0.27.2",
     "compare-versions": "^5.0.3",
     "electron-log": "^4.4.1",
     "electron-updater": "^4.3.9",

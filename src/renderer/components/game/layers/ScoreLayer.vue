@@ -92,7 +92,13 @@ export default {
           this.onMouseLeave()
         }, 0)
       }
-      return groupBy(items, item => Array.isArray(item.ptr) ? this.positionAsKey(item.ptr) : this.pointerAsKey(item.ptr))
+      return groupBy(items, item => 
+    Array.isArray(item.ptr) ? this.positionAsKey(item.ptr)
+    : item.ptr?.hasOwnProperty('featurePointer') ? this.pointerAsKey(item.ptr.featurePointer)
+    : item.ptr?.hasOwnProperty('positions') ? this.positionsAsKey(item.ptr.positions)
+    : this.pointerAsKey(item.ptr)
+);
+  //    return groupBy(items, item => Array.isArray(item.ptr) ? this.positionAsKey(item.ptr) : ((item.ptr.hasOwnProperty("featurePointer") ? this.positionsAsKey(item.ptr.featurePointer) : ((item.ptr.hasOwnProperty("positions") ? this.positionsAsKey(item.ptr.positions) : this.pointerAsKey(item.ptr))))))
     }
   },
 
@@ -100,6 +106,9 @@ export default {
     transformPointer (ptr) {
       if (Array.isArray(ptr)) {
         return this.transformPosition(ptr) + 'translate(500 500)'
+      }
+      if (ptr.featurePointer) {
+        return this.transformPoint(ptr.featurePointer)
       }
       if (ptr.position && !ptr.location) {
         return this.transformPosition(ptr.position) + 'translate(500 500)'

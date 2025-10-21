@@ -144,7 +144,7 @@ export const BAZAAR_NO_AUCTION = Rule.BAZAAR_NO_AUCTION = new Rule('bazaar-no-au
   [GameElement.BAZAAR],
   Boolean,
   {
-    link: 'http://wikicarpedia.com/index.php/Special:MyLanguage/Bridges,_Castles_and_Bazaars#Bazaar'
+    link: 'https://wikicarpedia.com/car/Special:MyLanguage/Bridges,_Castles_and_Bazaars#Bazaar'
   }
 )
 
@@ -156,7 +156,7 @@ export const HILL_TIEBREAKER = Rule.HILL_TIEBREAKER = new Rule('hill-tiebreaker'
     { value: 'number-of-followers', text: 'number of followers' }
   ],
   {
-    link: 'http://wikicarpedia.com/index.php/Special:MyLanguage/Hills_%26_Sheep_(1st_edition)#cite_note-9'
+    link: 'https://wikicarpedia.com/car/Special:MyLanguage/Hills_%26_Sheep_(1st_edition)#cite_note-9'
   }
 )
 
@@ -168,7 +168,7 @@ export const ESCAPE_VARIANT = Rule.ESCAPE_VARIANT = new Rule('espace-variant', G
     { value: 'siege-tile', text: 'siege tile' }
   ],
   {
-    link: 'http://wikicarpedia.com/index.php/Special:MyLanguage/Besiegers_Cathars_Siege_(1st_edition)#cite_note-5'
+    link: 'https://wikicarpedia.com/car/Special:MyLanguage/Besiegers_Cathars_Siege_(1st_edition)#cite_note-5'
   }
 )
 
@@ -180,7 +180,7 @@ export const GQ11_PIG_HERD = Rule.GQ11_PIG_HERD = new Rule('gq11-pig-herd', GAME
     { value: 'nothing', text: 'is just empty field' }
   ],
   {
-    link: 'http://wikicarpedia.com/index.php/Special:MyLanguage/Games_Quarterly_11_(1st_edition)#cite_note-5'
+    link: 'https://wikicarpedia.com/car/Special:MyLanguage/Games_Quarterly_11_(1st_edition)#cite_note-5'
   }
 )
 
@@ -190,7 +190,7 @@ export const TUNNELIZE_OTHER_EXPANSIONS = Rule.TUNNELIZE_OTHER_EXPANSIONS = new 
   Boolean,
   {
     default: true,
-    link: 'http://wikicarpedia.com/index.php/Special:MyLanguage/The_Tunnel_(1st_edition)#Other_Expansions'
+    link: 'https://wikicarpedia.com/car/Special:MyLanguage/The_Tunnel_(1st_edition)#Other_Expansions'
   }
 )
 
@@ -203,7 +203,7 @@ export const MORE_TUNNEL_TOKENS = Rule.MORE_TUNNEL_TOKENS = new Rule('more-tunne
     { value: '1/1', text: '1/1' }
   ],
   {
-    link: 'http://wikicarpedia.com/index.php/Special:MyLanguage/The_Tunnel_(1st_edition)#Preparation',
+    link: 'https://wikicarpedia.com/car/Special:MyLanguage/The_Tunnel_(1st_edition)#Preparation',
     style: 'short'
   }
 )
@@ -216,7 +216,7 @@ export const FESTIVAL_RETURN = Rule.FESTIVAL_RETURN = new Rule('festival-return'
     { value: 'follower', text: 'followers', flags: 'RGG' }
   ],
   {
-    link: 'http://wikicarpedia.com/index.php/Special:MyLanguage/The_Festival_(1st_edition)#cite_ref-6'
+    link: 'https://wikicarpedia.com/car/Special:MyLanguage/The_Festival_(1st_edition)#cite_ref-6'
   }
 )
 
@@ -228,7 +228,7 @@ export const KEEP_MONASTERIES = Rule.KEEP_MONASTERIES = new Rule('keep-monasteri
     { value: 'keep', text: 'are just added' }
   ],
   {
-    link: 'http://wikicarpedia.com/index.php/Special:MyLanguage/Monasteries#cite_note-1',
+    link: 'https://wikicarpedia.com/car/Special:MyLanguage/Monasteries#cite_note-1',
     style: 'long'
   }
 )
@@ -242,7 +242,7 @@ export const LABYRINTH_VARIANT = Rule.LABYRINTH_VARIANT = new Rule('labyrinth-va
   ],
   {
     default: 'advanced',
-    link: 'http://wikicarpedia.com/index.php/Special:MyLanguage/The_Labyrinths'
+    link: 'https://wikicarpedia.com/car/Special:MyLanguage/The_Labyrinths'
   },
   { style: 'short' }
 )
@@ -278,7 +278,7 @@ export const LITTLE_BUILDINGS_SCORING = Rule.LITTLE_BUILDINGS_SCORING = new Rule
     { value: '3/2/1', text: '3/2/1' }
   ],
   {
-    link: 'http://wikicarpedia.com/index.php/Special:MyLanguage/Little_Buildings_(1st_edition)#Variant',
+    link: 'https://wikicarpedia.com/car/Special:MyLanguage/Little_Buildings_(1st_edition)#Variant',
     style: 'short'
   }
 )
@@ -293,7 +293,7 @@ export const KING_AND_ROBBER_SCORING = Rule.KING_AND_ROBBER_SCORING = new Rule('
     { value: 'continuously', text: 'points continuously during play' }
   ],
   {
-    link: 'http://wikicarpedia.com/index.php/Special:MyLanguage/Count,_King_and_Robber_(1st_edition)#House_Rules',
+    link: 'https://wikicarpedia.com/car/Special:MyLanguage/Count,_King_and_Robber_(1st_edition)#House_Rules',
     style: 'xlong',
     hideTitleSuffixIfValueEquals: 'continuously'
   }
@@ -315,6 +315,17 @@ export const ROBBERS_SON_ACTION = Rule.ROBBERS_SON_ACTION = new Rule('robbers-so
   [
     { value: 'may', text: 'may' },
     { value: 'must', text: 'must' }
+  ],
+  { style: 'short' }
+)
+
+export const METEORITE_IMPACT = Rule.METEORITE_IMPACT = new Rule('meteorite-impact', GAMEPLAY,
+  'Meteorite impact is.',
+  [GameElement.METEORITE],
+  [
+    { value: 'standard', text: 'standard' },
+    { value: 'extended', text: 'extended' },
+    { value: 'combination', text: 'combination' }
   ],
   { style: 'short' }
 )

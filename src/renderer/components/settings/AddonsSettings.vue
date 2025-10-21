@@ -34,7 +34,9 @@
 
 	<i18n path="settings.add-ons.look-at-jcz-for-add-ons" tag="p" class="info-box">
 	    <template #link>
-	      <a href="https://jcloisterzone.com/addons/" @click.prevent="openLink">https://jcloisterzone.com/addons/</a>
+	      <a href="https://www.carcassonneforum.cz/thread-4160.html" @click.prevent="openLink">Carcassonne CZ</a><!-- /* Fan Edition */ -->,
+
+	      <a href="https://www.carcassonnecentral.com/community/index.php?action=downloads;cat=30" @click.prevent="openLink">Carcassonne Central Forum</a><!-- /* Fan Edition */ -->
 	    </template>
     </i18n>
     <h4>{{ $t('settings.add-ons.installed-add-ons') }}</h4>

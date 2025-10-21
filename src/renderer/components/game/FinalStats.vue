@@ -187,7 +187,7 @@
       </template>
 
       <template v-if="stats.points['church'].some(p => p)">
-        <div class="header yaga-hut" :title="$t('game.feature.church-bonus')"><StandaloneTileImage tile-id="DA/LRRRR" :size="40" /></div>
+        <div class="header church" :title="$t('game.feature.church-bonus')"><StandaloneTileImage tile-id="DA/LRRRR" :size="40" /></div>
         <div v-for="(val, idx) in stats.points['church']" :key="'church-'+idx" class="church value">
           {{ val }}
         </div>
@@ -207,11 +207,47 @@
         </div>
       </template>
 
+      <template v-if="stats.points.flowers.some(p => p)">
+        <div class="header flowers" :title="$t('game.feature.flowers')">
+          <TokenImage token="FLOWERS_YELLOW" :height="40" />
+        </div>
+        <div v-for="(val, idx) in stats.points.flowers" :key="'flowers-'+idx" class="flowers value">
+          {{ val }}
+        </div>
+      </template>
+
+      <template v-if="stats.points.marketplace.some(p => p)">
+        <div class="header marketplace" :title="$t('game.feature.marketplace')">
+          <img src="~/assets/features/C1/marketplace.png" height="30">
+        </div>
+        <div v-for="(val, idx) in stats.points.marketplace" :key="'marktplace-'+idx" class="marketplace value">
+          {{ val }}
+        </div>
+      </template>
+
       <template v-if="stats.points.obelisk.some(p => p)">
         <div class="header obelisk" :title="$t('game.element.obelisk')">
           <Meeple type="Obelisk" />
         </div>
-        <div v-for="(val, idx) in stats.points.obelisk" :key="'obelisk-'+idx" class="obeliskvalue">
+        <div v-for="(val, idx) in stats.points.obelisk" :key="'obelisk-'+idx" class="obelisk value">
+          {{ val }}
+        </div>
+      </template>
+
+      <template v-if="stats.points.windmill.some(p => p)">
+        <div class="header windmill" :title="$t('game.element.windmill')">
+          <Meeple type="Windmill" />
+        </div>
+        <div v-for="(val, idx) in stats.points.windmill" :key="'windmill-'+idx" class="windmill value">
+          {{ val }}
+        </div>
+      </template>
+
+      <template v-if="stats.points['decinsky-sneznik'].some(p => p)">
+        <div class="header decinsky-sneznik" :title="$t('game.element.decinsky-sneznik')">
+          <Meeple type="Decinsky-Sneznik" />
+        </div>
+        <div v-for="(val, idx) in stats.points['decinsky-sneznik']" :key="'decinsky-sneznik-'+idx" class="decinky-sneznik value">
           {{ val }}
         </div>
       </template>
@@ -290,7 +326,11 @@ export default {
           'church': (new Array(this.players.length)).fill(0),
           'yaga-hut': (new Array(this.players.length)).fill(0),
           'vodyanoy': (new Array(this.players.length)).fill(0),
-          'obelisk': (new Array(this.players.length)).fill(0)
+          'flowers': (new Array(this.players.length)).fill(0),
+          'marketplace': (new Array(this.players.length)).fill(0),
+          'obelisk': (new Array(this.players.length)).fill(0),
+          'windmill': (new Array(this.players.length)).fill(0),
+          'decinsky-sneznik': (new Array(this.players.length)).fill(0)
         }
       }
       this.history.forEach(h => {
@@ -299,7 +339,7 @@ export default {
             const idx = this.players.findIndex(p => p.index === h.player)
             stats.tiles[idx] += 1
           } else if (ev.type === 'ransom-paid') {
-          console.log(ev.jailer,ev.prisoner,stats.tower);
+            console.log(ev.jailer,ev.prisoner,stats.tower);
             const jailerIdx = this.players.findIndex(p => p.index === ev.jailer)
             stats.points.tower[jailerIdx] += 3
             const prisonerIdx = this.players.findIndex(p => p.index === ev.prisoner)

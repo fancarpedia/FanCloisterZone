@@ -469,14 +469,10 @@ export const actions = {
             content.test.assertions.push(`${playerNameBySlot[p.slot]} has ${p.points} point${p.points !== 1 ? "s" : ""}.`)
           }
           content.gameId = '1'
-          content.initialRandom = 0.0
           fs.writeFile(filePath, JSON.stringify(content, null, 2), err => {
             if (err) {
               reject(err)
             } else {
-//              Vue.nextTick(() => {
-//                dispatch(onlySetup ? 'settings/addRecentSetupSave' : 'settings/addRecentSave', { file: filePath, setup }, { root: true })
-//              })
               resolve(filePath)
             }
           })

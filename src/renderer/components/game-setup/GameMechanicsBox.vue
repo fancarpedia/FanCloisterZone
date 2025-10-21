@@ -13,7 +13,7 @@
       <h3>{{ $t(['game.feature',item.id].join('.')) }}</h3>
     </div>
     <div class="toggle">
-      <v-icon v-if="selected">fas fa-check</v-icon>
+      <div v-if="selected"><v-icon>fas fa-check</v-icon></div>
       <div v-else-if="enabled" class="add-first">{{ $t('button.set') }}</div>
       <div v-else class="disabled-message">
         <slot name="disabled" />

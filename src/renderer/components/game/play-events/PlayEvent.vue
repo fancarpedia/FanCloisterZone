@@ -16,10 +16,13 @@
 <script>
 import CastleCreatedEvent from '@/components/game/play-events/CastleCreatedEvent'
 import DragonMovedEvent from '@/components/game/play-events/DragonMovedEvent'
+import DiceSixRollEvent from '@/components/game/play-events/DiceSixRollEvent'
+import FlierDiceRollEvent from '@/components/game/play-events/FlierDiceRollEvent'
 import FlierRollEvent from '@/components/game/play-events/FlierRollEvent'
 import MeepleDeployedEvent from '@/components/game/play-events/MeepleDeployedEvent'
 import MeepleReturnedEvent from '@/components/game/play-events/MeepleReturnedEvent'
 import NeutralMovedEvent from '@/components/game/play-events/NeutralMovedEvent'
+import NeutralReturnedEvent from '@/components/game/play-events/NeutralReturnedEvent'
 import PointsEvent from '@/components/game/play-events/PointsEvent'
 import PrisonersExchangeEvent from '@/components/game/play-events/PrisonersExchangeEvent'
 import RansomPaidEvent from '@/components/game/play-events/RansomPaidEvent'
@@ -32,11 +35,14 @@ import TokenReceivedEvent from '@/components/game/play-events/TokenReceivedEvent
 const MAPPING = {
   'castle-created': CastleCreatedEvent,
   'dragon-moved': DragonMovedEvent,
+  'dicesix-roll': DiceSixRollEvent,
   'flier-roll': FlierRollEvent,
+  'flierdice-roll': FlierDiceRollEvent,
   'meeple-captured': MeepleReturnedEvent, // reuse returned component
   'meeple-deployed': MeepleDeployedEvent,
   'meeple-returned': MeepleReturnedEvent,
   'neutral-moved': NeutralMovedEvent,
+  'neutral-returned': NeutralReturnedEvent,
   'points': PointsEvent,
   'prisoners-exchange': PrisonersExchangeEvent,
   'ransom-paid': RansomPaidEvent,
@@ -50,11 +56,14 @@ const MAPPING = {
 export default {
   components: {
     CastleCreatedEvent,
+    DiceSixRollEvent,
     DragonMovedEvent,
+    FlierDiceRollEvent,
     FlierRollEvent,
     MeepleDeployedEvent,
     MeepleReturnedEvent,
     NeutralMovedEvent,
+    NeutralReturnedEvent,
     PointsEvent,
     PrisonersExchangeEvent,
     RansomPaidEvent,

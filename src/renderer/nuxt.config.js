@@ -3,10 +3,15 @@
  * This default configuration can be overwritten in this file
  * @link {https://nuxtjs.org/guide/configuration/}
  */
+ 
+const path = require('path')
+
+const isDev = process.env.NODE_ENV === 'development'
+
 module.exports = {
   ssr: false,
   head: {
-    title: 'JCloisterZoneFan',
+    title: 'FanCloisterZone Edition', /* Fan Edition */
     meta: [
       { charset: 'utf-8' }
     ]
@@ -112,10 +117,10 @@ module.exports = {
       options: { customProperties: true },
       themes: {
         light: {
-          primary: '#E64A19' // deep orange darken-2
+          primary: '#5dc4ff' // /* Fan Edition */
         },
         dark: {
-          primary: '#EF6C00' // orange darken-3
+          primary: '#148bd0' // /* Fan Edition */
         }
       }
     }
@@ -149,5 +154,15 @@ module.exports = {
         fsevents: "require('fsevents')"
       }
     }
-  }
+  },
+  
+  watch: isDev ? [
+  	path.resolve(__dirname, 'src/render/store/board.js'),
+  	path.resolve(__dirname, 'src/render/store/game.js'),
+  	path.resolve(__dirname, 'src/render/store/gameSetup.js'),
+  	path.resolve(__dirname, 'src/render/store/index.js'),
+  	path.resolve(__dirname, 'src/render/store/networking.js'),
+  	path.resolve(__dirname, 'src/render/store/online.js'),
+  	path.resolve(__dirname, 'src/render/store/settings.js')
+  ] : []
 }

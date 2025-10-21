@@ -18,6 +18,15 @@
       />
 
       <div v-if="gameKey" class="game-key">
+        <v-checkbox
+          class="public-game"
+          v-if="!readOnly"
+          v-model="publicGame"
+          dense hide-details
+          :label="$t('game-setup.open-game.public-game')"
+          :disabled="!isOwner"
+        />
+        
         <v-tooltip bottom :open-delay="200">
           <template #activator="{ on, attrs }">
             <span
@@ -44,13 +53,12 @@
       <template v-else>
         <span class="text">{{ $t('game-setup.open-game.waiting-for-host-to-start-the-game') }}</span>
       </template>
+
+      <HeaderLeaveGameButton :title="$t('button.leave-game')" @click="leaveGame" />
+
     </template>
 
     <template #main>
-      <!--div v-if="gameKey" class="game-key">
-        <span>Share the key with other players to let them connect to the game.</span>
-        <strong @click="selectOnClick">{{ gameKey }}</strong>
-      </--div-->
 
       <div class="slots">
         <PlayerSlot
@@ -108,11 +116,13 @@
 </template>
 
 <script>
+import { ipcRenderer } from 'electron'
 import { mapGetters, mapState } from 'vuex'
 
 import GameSetupOverview from '@/components/game-setup/overview/GameSetupOverview'
 import GameSetupGrid from '@/components/game-setup/GameSetupGrid'
 import HeaderGameButton from '@/components/game-setup/HeaderGameButton'
+import HeaderLeaveGameButton from '@/components/game-setup/HeaderLeaveGameButton'
 import HeaderMessage from '@/components/game-setup/HeaderMessage'
 import PlayerSlot from '@/components/game-setup/PlayerSlot'
 
@@ -121,6 +131,7 @@ export default {
     GameSetupOverview,
     GameSetupGrid,
     HeaderGameButton,
+    HeaderLeaveGameButton,
     HeaderMessage,
     PlayerSlot
   },
@@ -177,6 +188,24 @@ export default {
       }
     },
 
+    publicGame: {
+      set (value) {
+        this.$store.commit('game/options', { publicGame: value })
+        this.$connection.send({
+          type: 'GAME_OPTION',
+          payload: {
+            gameId: this.gameId,
+            key: 'publicGame',
+            value
+          }
+        })
+      },
+
+      get () {
+        return this.options.publicGame
+      }
+    },
+
     puristTiles: {
       set (value) {
         this.$store.commit('game/options', { puristTiles: value })
@@ -211,6 +240,10 @@ export default {
   methods: {
     startGame () {
       this.$store.dispatch('game/start')
+    },
+
+    async leaveGame () {
+      await ipcRenderer.emit('menu.leave-game')
     },
 
     renameGame () {
@@ -280,12 +313,20 @@ export default {
       color: map-get($theme, 'text-color')
       background: map-get($theme, 'cards-selected-bg')
 
+.public-game
+  margin-right: 2ex
+    
 header .v-alert
   position: relative
   top: 8px
   width: 300px
 
+main
+  dislay: flex
+  flex-order: start
+  
 .slots
+  order: 1
   padding: 0 30px
   display: grid
   grid-template-columns: 1fr 1fr 1fr
@@ -317,6 +358,7 @@ h2
 
 .options
   padding: 30px 20px 40px
+  order: 2
 
 @media (max-width: 1079px)
   .slots
@@ -328,8 +370,10 @@ h2
 
 @media (max-height: 768px)
   .slots
+    order: 2
     margin-top: 20px
 
   .options
+    order: 1
     padding-top: 15px
 </style>

@@ -1,6 +1,12 @@
 <template>
   <section :class="{ remote: !local }">
     <div class="move-dragon-item">
+      <v-icon
+        v-for="(item, index) in dragon.visited"
+        :key="'visited-' + index"
+      >
+        fas fa-arrow-right
+      </v-icon>
       <NeutralFigure figure="dragon" :width="90" :height="45" />
       <v-icon
         v-for="i in dragon.remaining"

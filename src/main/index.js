@@ -13,6 +13,7 @@ import updater from './modules/updater'
 import winevents from './modules/winevents'
 import settingsWatch from './modules/settingsWatch'
 import localServer from './modules/localServer'
+import installer from './modules/installer'
 
 autoUpdater.logger = electronLogger
 autoUpdater.logger.transports.file.level = 'info'
@@ -74,6 +75,8 @@ app.whenReady().then(() => {
     modules.push(dialog(settings))
     modules.push(winevents(settings))
     modules.push(localServer(settings))
+    modules.push(updater(settings))
+    modules.push(installer())
 
     if (process.env.NODE_ENV === 'production') {
       modules.push(updater(settings))

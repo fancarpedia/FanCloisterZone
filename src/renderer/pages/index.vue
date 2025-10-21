@@ -50,12 +50,6 @@
         <small>{{ $t('settings.add-ons.add-on-url') }}: <a :href="$addons.getDefaultArtworkUrl()" @click.prevent="openLink($addons.getDefaultArtworkUrl())">>{{ $addons.getDefaultArtworkUrl() }}</a></small>
       </v-alert>
       <div v-if="download" class="download">
-        <div class="download-header">
-          <span class="description">{{ download.description }}</span>
-          <span v-if="download.size" class="size">
-            {{ (download.progress / 1048576).toFixed(2) }} / {{ (download.size / 1048576).toFixed(2) }} MiB
-          </span>
-        </div>
         <v-progress-linear
           v-if="download.size"
           :value="download.size ? download.progress / download.size * 100 : null"
@@ -63,22 +57,23 @@
         <v-progress-linear v-else indeterminate />
       </div>
       <div v-if="updateInfo" class="update-box">
-        <h3>{{ $t('index.new-version-available') }}</h3>
+        <InstallerDownloader
+          :fileURL="updateInfoFile"
+          :titleText="$t('index.update.new-version-available')"
+          :downloadButtonText="$t('index.update.download')"
+          :installButtonText="$t('index.update.install-new-version')"
+          :installerErrorText="$t('index.update.download-error')"
+          :startingText="$t('index.update.starting')"
+        />
 
-        <div class="update-action">
-          <template v-if="isMac || isWin">
-            {{ $t('index.automatic-updates-linux-only') }}<br>
-            <a :href="updateInfoFile">{{ updateInfoFile }}</a>
-          </template>
-          <v-btn v-else-if="!updating" color="secondary" @click="updateApp">{{ $t('index.update-to', { version: updateInfo.version }) }}</v-btn>
-          <v-progress-linear v-else-if="updateProgress === null" indeterminate />
-          <v-progress-linear v-else :value="updateProgress" />
-        </div>
-
-        <h4>{{ $t('index.release-notes') }}</h4>
-        <div v-html="updateInfo.releaseNotes" />
+        <h4>{{ $t('index.update.release-notes') }}</h4>
+        <div class="update-release-notes" v-html="updateInfo.releaseNotes" />
       </div>
     </div>
+
+    <section class="splash">
+      <img :src="splashImage()" />
+    </section>
 
     <section class="online-hosted-fan">
       <div>
@@ -87,15 +82,17 @@
           {{ $t('button.play-online-fan') }}
           <v-icon right>fa-cloud</v-icon>
         </v-btn>
-        <div class="subsection">
+        <!-- <div class="subsection">
           {{ $t('index.online.some-expansions-are-playable-only-here') }}
           <br />
+          {{ $t('expansion.meteorites') }}
+          <br />
           {{ $t('index.online.chat-during-game') }}
-        </div>
+        </div> -->
       </div>
     </section>
 
-    <section class="online-hosted">
+    <!-- <section class="online-hosted">
       <div>
         <h2>{{ $t('index.online.title') }}</h2>
         <v-btn large color="secondary" :disabled="!engine || !engine.ok" @click="playOnline()">
@@ -106,19 +103,19 @@
           {{ $t('index.online.private-games-only') }}<br>({{ $t('index.online.no-random-discovery') }})
         </div>
       </div>
-    </section>
+    </section> -->
 
     <section class="player-hosted">
-      <h2>{{ $t('index.local.title') }}</h2>
+      <h2>{{ $t('index.local.local-games') }}</h2>
 
       <div class="subsection">
         <v-btn large color="secondary" @click="newGame()">
           {{ $t('index.local.new-game') }}
         </v-btn>
 
-        <v-btn large color="secondary" :disabled="!engine || !engine.ok" @click="joinGame()">
+        <!-- <v-btn large color="secondary" :disabled="!engine || !engine.ok" @click="joinGame()">
           {{ $t('button.join-game') }}
-        </v-btn>
+        </v-btn> -->
 
         <v-btn large color="secondary" :disabled="!engine || !engine.ok" @click="loadGame()">
           {{ $t('index.local.load-game') }}
@@ -148,15 +145,19 @@ import Vue from 'vue'
 import { mapState } from 'vuex'
 
 import AddonsReloadObserverMixin from '@/components/AddonsReloadObserverMixin'
+import InstallerDownloader from '@/components/InstallerDownloader'
 
 const isMac = process.platform === 'darwin'
 const isWin = process.platform === 'win32'
 
 export default {
   components: {
+    InstallerDownloader
   },
 
-  mixins: [AddonsReloadObserverMixin],
+  mixins: [
+    AddonsReloadObserverMixin
+  ],
 
   data () {
     return {
@@ -181,13 +182,26 @@ export default {
       settingsLoaded: state => state.loaded.settings,
       artworksLoaded: state => state.loaded.artworks,
       hasClassicAddon: state => state.hasClassicAddon,
-      updateInfo: state => state.updateInfo,
-      updateProgress: state => state.updateProgress
+      updateInfo: state => {
+        if (process.env.NODE_ENV === 'development') {
+          return {
+            releaseNotes: 'Cool stuff',
+            description: 'Tha description',
+            version: '6.0.0-beta.6',
+            files: [
+              {
+                url: 'fancloisterzone-6.0.0-beta.6.exe'
+              }
+            ]
+          }
+        }
+        return state.updateInfo
+      }
     }),
 
     updateInfoFile () {
       if (this.updateInfo) {
-        return `https://github.com/farin/JCloisterZone-Client/releases/download/v${this.updateInfo.version}/${this.updateInfo.files[0].url}`
+        return `https://github.com/fancarpedia/FanCloisterZone/releases/download/v${this.updateInfo.version}/${this.updateInfo.files[0].url}` /* Fan Edition */
       }
       return null
     }
@@ -244,9 +258,9 @@ export default {
       this.recentSaves = []
     },
 
-    updateApp () {
-      this.updating = true
-      ipcRenderer.send('do-update')
+    splashImage () {
+      const theme = this.$vuetify.theme.dark ? 'dark' : 'light'
+      return require(`@/assets/splash_${theme}.png`)
     },
 
     afterAddonsReloaded () {
@@ -275,8 +289,6 @@ export default {
 
 h2
   font-weight: 300
-
-h2
   font-size: 26px
   margin: 0 0 20px
 
@@ -363,9 +375,20 @@ h2
         color: inherit !important
         font-size: inherit !important
 
+.theme--light .update-box
+  background-color: var(--v-primary-darken1)
+  
+  a
+    color: white
+
+.theme--dark .update-box
+  background-color: var(--v-primary-lighten1)
+  
+  a
+    color: white
+
 .update-box
   padding: 20px
-  background-color: #FFE082
   color: black
   text-align: center
 
@@ -375,6 +398,26 @@ h2
   .update-note
     font-style: italic
     margin-bottom: 10px
+    
+  .update-release-notes
+    max-height: 25vh
+    overflow: auto
+    text-align: left
+    
+    &::-webkit-scrollbar
+      width: 8px
+      height: 8px
+
+    &::-webkit-scrollbar-track
+      background: #f0f0f0
+      border-radius: 10px
+
+    &::-webkit-scrollbar-thumb
+      background: linear-gradient(180deg, #4e9af1, #0056b3)
+      border-radius: 10px
+
+      &:hover
+        background: linear-gradient(180deg, #66b2ff, #007bff)
 
   ::v-deep ul
     list-style: none
@@ -387,6 +430,21 @@ h2
 
   .description
     flex-grow: 1
+
+.splash
+  height: 25vh
+  display: flex
+  justify-content: center
+  align-items: center
+  
+  img
+    max-width: 600px
+
+.theme--light a
+  color: var(--v-primary-darken2)
+
+.theme--dark a
+  color: var(--v-primary-lighten2)
 
 @media (max-height: 1199px)
   .landing-view

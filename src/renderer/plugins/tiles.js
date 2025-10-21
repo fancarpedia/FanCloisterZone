@@ -94,22 +94,24 @@ class Tiles extends EventsBase {
       if (!setCount) return
 
       const set = this.sets[id] || this.sets[id + ':' + edition] || UNKWNOWN_SET
-      Object.entries(set.tiles).forEach(([tileId, tileCount]) => {
-        counts[tileId] = (counts[tileId] || 0) + setCount * tileCount
-        const { max } = this.tiles[tileId]
-        if (max) {
-          counts[tileId] = Math.min(counts[tileId], max)
+      if (set !== UNKWNOWN_SET) { 
+        Object.entries(set.tiles).forEach(([tileId, tileCount]) => {
+          counts[tileId] = (counts[tileId] || 0) + setCount * tileCount
+          const { max } = this.tiles[tileId]
+          if (max) {
+            counts[tileId] = Math.min(counts[tileId], max)
+          }
+        })
+        if (set.remove) {
+          set.remove.forEach(id => { remove[id] = true })
         }
-      })
-      if (set.remove) {
-        set.remove.forEach(id => { remove[id] = true })
-      }
-      if (set.enforces) {
-        specialMonasteries ||= set.enforces.includes('monastery')
+        if (set.enforces) {
+          specialMonasteries ||= set.enforces.includes('monastery')
+        }
       }
     })
     Object.keys(remove).forEach(id => { delete counts[id] })
-
+    
     if (start) {
       if (counts['GQ/RFI']) {
         if (start.id === 'spring-alt') {

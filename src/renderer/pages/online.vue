@@ -15,55 +15,128 @@
       </v-btn>
     </header>
     <main>
-      <h2>{{ $t('index.online.games-in-progress') }}</h2>
+      <div class="lobby">
+        <h2>{{ $t('index.online.lobby') }}</h2>
 
-      <div v-if="!verifiedGameList.length" class="empty-message">
-        <p>
-          <i>{{ $t('index.online.you-have-no-game-in-progress') }}</i>
-        </p>
-        <p>
-          <i>
-            {{ $t('index.online.online-storage-description') }}
-          </i>
-        </p>
-      </div>
+        <div v-if="!verifiedGamePublicList.length" class="empty-message">
+          <p>
+            <i>{{ $t('index.online.no-public-games') }}</i>
+          </p>
+        </div>
 
-      <div class="game-list">
-        <div
-          v-for="{ game, slots, valid, isOwner } in verifiedGameList"
-          :key="game.gameId"
-          class="game"
-        >
-          <div v-if="game.name" class="game-name">
-            {{ game.name }}
-          </div>
-
-          <div class="game-header">
-            <span class="game-key">{{ game.key.substring(0,3) }}-{{ game.key.substring(3) }}</span>
-            <span class="game-started">{{ game.started | formatDate }}</span>
-          </div>
-
+        <div class="game-list">
           <div
-            class="game-slots"
-            :class="{ full: slots.length > 8 }"
+            v-for="{ game, slots, valid, isOwner, isStarted } in verifiedGamePublicList"
+            :key="game.gameId"
+            class="game"
           >
+            <div v-if="game.name" class="game-name">
+              {{ game.name }}
+            </div>
+
+            <div class="game-header">
+              <span class="game-key">{{ game.key.substring(0,3) }}-{{ game.key.substring(3) }}</span>
+              <span class="game-started">
+                <span v-if="isStarted">
+                  {{ formatDate(game.started) }}
+                </span>
+                <span v-if="!isStarted">
+                  {{ $t('index.online.not-yet-started') }}
+                </span>
+              </span>
+            </div>
+
             <div
-              v-for="s in slots"
-              :key="s.number"
-              :class="'game-slot color color-' + s.number"
-              :title="s.name"
+              class="game-slots"
+              :class="{ full: slots.length > 8 }"
             >
-              <Meeple type="SmallFollower" />
+              <div
+                v-for="s in slots"
+                :key="s.number"
+                :class="'game-slot color color-' + s.number +' ' + ((s.sessionId || s.clientId == clientId)? '' : 'disconnected')"
+                :title="s.name"
+              >
+                <Meeple type="SmallFollower" />
+                <v-icon
+                  v-if="!s.sessionId && s.clientId != clientId"
+                  class="disconnected-icon"
+                  small
+                >
+                  fa-user-slash
+                </v-icon>
+              </div>
+            </div>
+
+            <div :class="{ invalid: !valid }">
+              <GameSetupOverviewInline :sets="game.setup.sets" :elements="game.setup.elements" />
+            </div>
+
+            <div class="buttons">
+              <v-btn color="primary" :disabled="!valid || !connected" @click="resume(game)"><v-icon left>fa-play</v-icon> {{ $t('button.join-game') }}</v-btn>
+              <v-btn color="secondary" :disabled="!isOwner || !connected" @click="del(game)"><v-icon>fa-trash-alt</v-icon></v-btn>
             </div>
           </div>
+        </div>
+      </div>
 
-          <div :class="{ invalid: !valid }">
-            <GameSetupOverviewInline :sets="game.setup.sets" :elements="game.setup.elements" />
-          </div>
+      <div class="games-in-progress">
+        <h2>{{ $t('index.online.games-in-progress') }}</h2>
 
-          <div class="buttons">
-            <v-btn color="primary" :disabled="!valid || !connected" @click="resume(game)"><v-icon left>fa-play</v-icon> {{ $t('button.resume') }}</v-btn>
-            <v-btn color="secondary" :disabled="!isOwner || !connected" @click="del(game)"><v-icon>fa-trash-alt</v-icon></v-btn>
+        <div v-if="!verifiedGameList.length" class="empty-message">
+          <p>
+            <i>{{ $t('index.online.you-have-no-game-in-progress') }}</i>
+          </p>
+          <p>
+            <i>
+              {{ $t('index.online.online-storage-description') }}
+            </i>
+          </p>
+        </div>
+
+        <div class="game-list">
+          <div
+            v-for="{ game, slots, valid, isOwner, isStarted } in verifiedGameList"
+            :key="game.gameId"
+            class="game"
+          >
+            <div v-if="game.name" class="game-name">
+              {{ game.name }}
+            </div>
+
+            <div class="game-header">
+              <span class="game-key">{{ game.key.substring(0,3) }}-{{ game.key.substring(3) }}</span>
+              <span class="game-started">
+                <span v-if="isStarted">
+                  {{ formatDate(game.started) }}
+                </span>
+                <span v-if="!isStarted">
+                  {{ $t('index.online.not-yet-started') }}
+                </span>
+              </span>
+            </div>
+
+            <div
+              class="game-slots"
+              :class="{ full: slots.length > 8 }"
+            >
+              <div
+                v-for="s in slots"
+                :key="s.number"
+                :class="'game-slot color color-' + s.number"
+                :title="s.name"
+              >
+                <Meeple type="SmallFollower" />
+              </div>
+            </div>
+
+            <div :class="{ invalid: !valid }">
+              <GameSetupOverviewInline :sets="game.setup.sets" :elements="game.setup.elements" />
+            </div>
+
+            <div class="buttons">
+              <v-btn color="primary" :disabled="!valid || !connected" @click="resume(game)"><v-icon left>fa-play</v-icon> {{ $t('button.resume') }}</v-btn>
+              <v-btn color="secondary" :disabled="!isOwner || !connected" @click="del(game)"><v-icon>fa-trash-alt</v-icon></v-btn>
+            </div>
           </div>
         </div>
       </div>
@@ -159,8 +232,11 @@ export default {
 
   computed: {
     ...mapState({
+      clientId: state =>state.settings.clientId,
       gameList: state => state.online.gameList,
+      gamePublicList: state => state.online.gamePublicList,
       playOnlineHostname: state => state.settings.playOnlineUrl.split('/')[0],
+      locale: state => state.settings.locale,
       connected: state => state.networking.connectionStatus === STATUS_CONNECTED
     }),
 
@@ -170,7 +246,21 @@ export default {
         const valid = !this.$tiles.getExpansions(game.setup.sets, edition)._UNKNOWN
         const slots = sortBy(game.slots.filter(s => s.clientId), 'order')
         const isOwner = game.owner === this.$store.state.settings.clientId
-        return { game, valid, slots, isOwner }
+        const isStarted = !(game.started == null || game.started === '')
+        console.log(game.started)
+        return { game, valid, slots, isOwner, isStarted }
+      })
+    },
+
+    verifiedGamePublicList () {
+      return this.gamePublicList.map(game => {
+        const edition = game.setup.elements.garden ? 2 : 1
+        const valid = !this.$tiles.getExpansions(game.setup.sets, edition)._UNKNOWN
+        const slots = sortBy(game.slots.filter(s => s.clientId), 'order')
+        const isOwner = game.owner === this.$store.state.settings.clientId
+        const isStarted = !(game.started == null || game.started === '')
+        console.log(game.started)
+        return { game, valid, slots, isOwner, isStarted }
       })
     }
   },
@@ -186,6 +276,7 @@ export default {
     if (this.$store.state.networking.connectionStatus === STATUS_CONNECTED) {
       // not reconnecting
       this.$connection.send({ type: 'LIST_GAMES', payload: {} })
+      this.$connection.send({ type: 'LIST_PUBLIC_GAMES', payload: {} })
     }
   },
 
@@ -199,6 +290,10 @@ export default {
       this.$router.push('/game-setup')
     },
 
+    formatDate(date) {
+      return new Date(date).toLocaleString(this.locale);
+    },
+    
     openJoinGameDialog () {
       this.joinGameId = ''
       this.showJoinDialog = true
@@ -322,10 +417,37 @@ h2
       margin: 0 4px 12px
 
   .game-slot
+    /* must not grow/shrink and must provide a positioning context */
+    flex: 0 0 auto
+    position: relative
+    width: 36px
+    height: 36px
+    display: inline-flex
+    align-items: center
+    justify-content: center
+
+    /* keep meeple size consistent */
     svg.meeple
       width: 36px
       height: 36px
+      display: block
 
+    /* badge for disconnected user */
+    .disconnected-icon
+      position: absolute
+      top: -6px
+      right: -6px
+      font-size: 12px
+      z-index: 10
+      border-radius: 50%
+      padding: 2px
+      box-shadow: 0 1px 2px rgba(0,0,0,0.15)
+      pointer-events: none /* lets the title/hover pass through */
+
+    /* visual treatment for disconnected slot */
+    &.disconnected
+      opacity: 0.6
+      
 .empty-message
   margin: 30px 0
   text-align: center

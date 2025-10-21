@@ -166,7 +166,7 @@ export default {
     })
 
     ipcRenderer.on('menu.playonline-connect', () => {
-      this.$store.dispatch('networking/connectPlayOnline')
+      this.$store.dispatch('networking/connectPlayOnlineFan')
     })
     ipcRenderer.on('menu.playonline-disconnect', () => {
       this.$store.dispatch('networking/close')
@@ -223,7 +223,10 @@ export default {
       this.$store.commit('showGameSetup', true)
     })
     ipcRenderer.on('menu.rules', () => {
-      shell.openExternal('http://wikicarpedia.com/index.php/Special:MyLanguage/Main_Page')
+      shell.openExternal('https://wikicarpedia.com/car/Special:MyLanguage/Main_Page')
+    })
+    ipcRenderer.on('menu.report-bug', () => {
+      shell.openExternal('https://discord.gg/CswNeVg3eS') /* Fan Edition */
     })
     ipcRenderer.on('menu.about', () => {
       this.showAbout = true
@@ -231,6 +234,9 @@ export default {
 
     ipcRenderer.on('menu.dump-server', () => {
       this.dumpServer()
+    })
+    ipcRenderer.on('menu.save-for-test-runner', () => {
+      this.$store.dispatch('game/savescenario')
     })
     ipcRenderer.on('menu.test-runner', () => {
       this.$router.push('/test-runner')
@@ -273,7 +279,7 @@ export default {
     ipcRenderer.on('settings.update', (ev, update) => {
       this.$store.dispatch('settings/update', update)
     })
-
+    
     try {
       await this.$store.dispatch('checkJavaVersion')
       if (this.java?.ok) {
@@ -301,7 +307,7 @@ export default {
       this.loadAddons()
     })
   },
-
+  
   beforeDestroy () {
     window.removeEventListener('keydown', this.onKeyDown)
   },
@@ -337,16 +343,13 @@ export default {
         'game-farm-hints': gameRunning,
         'game-setup': gameRunning,
         'dump-server': this.$server.isRunning(),
-        'theme-inspector': !gameOpen
+        'theme-inspector': !gameOpen,
+        'save-for-test-runner': gameRunning
       })
     },
     
     updateTitle() {
-      document.title = this.onlineConnected ? 'JCloisterZone Fan Edition @ ' + this.$store.state.onlineHostName : 'JCloisterZone Fan Edition'
-    },
-
-    updateTitle() {
-      document.title = this.onlineConnected ? 'JCloisterZone Fan Edition @ ' + this.$store.state.onlineHostName : 'JCloisterZone Fan Edition'
+      document.title = this.onlineConnected ? 'FanCloisterZone Edition @ fanserver' /* + this.$store.state.onlineHostName */ : 'FanCloisterZone Edition' /* Fan Edition */
     },
 
     leaveGame () {
@@ -471,6 +474,10 @@ svg, g, use
   &.witch
     fill: $witch-color
 
+svg, g, use
+  &.donkey
+    fill: $donkey-color
+
 .settings-dialog
   height: 80vh
   display: grid
@@ -484,4 +491,18 @@ svg, g, use
   left: 0
   width: 100%
   z-index: 999
+
+::-webkit-scrollbar
+  width: 8px
+  height: 8px
+
+::-webkit-scrollbar-track
+  background: #f0f0f0
+
+::-webkit-scrollbar-thumb
+  background: #555
+  border-radius: 10px
+
+::-webkit-scrollbar-thumb:hover
+  background: #777
 </style>

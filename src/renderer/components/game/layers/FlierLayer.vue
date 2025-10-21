@@ -17,11 +17,11 @@
     >
       <polygon
         :transform="transformPosition(targetPosition)"
-        points="-20,-20, 1020,-20, 1020,1020, -20,1020"
+        points="-50,-50, 950,-50, 950,950, -50,950"
         fill="none"
         stroke="red"
         stroke-width="40"
-        stroke-opacity="0.2"
+        stroke-opacity="0.8"
       />
     </g>
   </g>

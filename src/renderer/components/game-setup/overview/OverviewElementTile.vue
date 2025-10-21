@@ -37,6 +37,11 @@
     <img v-else-if="element === 'escape'" src="~/assets/features/C1/escape.png" height="55">
 
 	<img v-else-if="element === 'robbers-son'" src="~/assets/features/C1/robbers-son.png" height="55">
+	<img v-else-if="element === 'well'" src="~/assets/features/C2/well.png" height="55">
+	<TokenImage v-else-if="element === 'flowers'" token="FLOWERS_YELLOW" :height="55" />
+	<img v-else-if="element === 'marketplace'" src="~/assets/features/C1/marketplace.png" height="55">
+    <NeutralFigure v-else-if="element === 'donkey'" figure="donkey" :width="70" :height="70" />
+	<img v-else-if="element === 'meteorite'" src="~/assets/features/C1/crater.png" height="55">
     
     <template #quantity>
       <div class="quantity" :class="enabled ? 'addition': 'removal'">
@@ -46,7 +51,7 @@
 
     <template #title>
       <template v-if="element === 'traders'">{{ $t('game.feature.trade-goods') }}</template>
-      <template v-else>{{ element.replace('-', ' ') }}</template>
+      <template v-else>{{ elementTitle }}</template>
     </template>
   </OverviewTile>
 </template>
@@ -55,15 +60,17 @@
 import NeutralFigure from '@/components/game/NeutralFigure'
 import OverviewTile from '@/components/game-setup/overview/OverviewTile'
 import StandaloneTileImage from '@/components/game/StandaloneTileImage'
+import TokenImage from '@/components/game/TokenImage'
 
 const MEEPLES_SVG = require('~/assets/meeples.svg')
-const MEEPLES = ['small-follower', 'abbot', 'phantom', 'big-follower', 'builder', 'pig', 'mayor', 'wagon', 'barn', 'shepherd', 'obelisk' ]
+const MEEPLES = ['small-follower', 'abbot', 'phantom', 'big-follower', 'builder', 'pig', 'mayor', 'wagon', 'barn', 'shepherd', 'obelisk', 'windmill', 'decinsky-sneznik' ]
 
 export default {
   components: {
     NeutralFigure,
     OverviewTile,
-    StandaloneTileImage
+    StandaloneTileImage,
+    TokenImage
   },
 
   props: {
@@ -86,6 +93,16 @@ export default {
       if (this.value === false) return '-'
       if (this.value > 0) return '+' + this.value
       return '' + this.value
+    },
+    
+    elementTitle () {
+      if (this.$te('game.feature.'+this.element)) {
+        return this.$t('game.feature.'+this.element)
+      }
+      if (this.$te('game.element.'+this.element)) {
+        return this.$t('game.element.'+this.element)
+      }
+      return this.element.replace('-',' ')
     }
   },
 
@@ -100,4 +117,16 @@ export default {
 <style lang="sass" scoped>
 .tile-img, img
   filter: grayscale(100%)
-</style>
+  
+.off
+  .tile-img, img
+    filter: grayscale(75%)
+
+#app.theme--dark .icon img.bw
+  .tile-img, img
+    filter: grayscale(100%)
+
+  .off
+    .tile-img, img
+      filter: grayscale(25%)
+ </style>

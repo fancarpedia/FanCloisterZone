@@ -1,6 +1,6 @@
 <template>
   <v-card class="about">
-    <v-card-title class="headline">{{ $t('about.title') }}</v-card-title>
+    <v-card-title class="headline">{{ $t('about.fantitle') /* Fan Edition */ }}</v-card-title>
     <v-card-text>
       <section class="d-flex my-3">
         <div class="meeples d-flex">
@@ -16,8 +16,9 @@
         </div>
         <div>
           <div class="version">{{ $t('about.version') }} {{ version }}</div>
-          Roman Krejčík<br>
+          Roman Krejčík &amp; fans<br>
           farin@farin.cz
+          <div class="report-bug" @click="openReportBug">{{ $t('menu.report-bug')}}: Discord</div>
         </div>
       </section>
       <hr>
@@ -62,6 +63,9 @@ export default {
   methods: {
     openConfig () {
       shell.openPath(this.$store.state.settings.file)
+    },
+    openReportBug () {
+      shell.openPath('https://discord.gg/CswNeVg3eS') /* Fan Edition */
     }
   }
 }
@@ -103,7 +107,7 @@ export default {
   .value
     margin-left: 20px
 
-  .config-file
+  .config-file, .report-bug
     cursor: pointer
 
     &:hover

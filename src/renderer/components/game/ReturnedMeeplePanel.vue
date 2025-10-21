@@ -6,9 +6,10 @@
     </div>
     <div class="expr-row">
       <div
-        :class="colorCssClass(expr.player)"
-      >
-        <Meeple :type="expr.meeple" />
+        :class="expr.player === null || expr.player === undefined ? '' : colorCssClass(expr.player)"
+      >	
+        <Meeple v-if="expr.meeple" :type="expr.meeple" />
+        <NeutralFigure v-else-if="expr.figure" :figure="expr.figure.toLowerCase()" />
       </div>
       <div v-if="expr.forced">
         forced &nbsp;
@@ -30,6 +31,7 @@ import { mapGetters } from 'vuex'
 import { Expansion } from '@/models/expansions'
 import ExpressionItem from '@/components/game/ExpressionItem'
 import Meeple from '@/components/game/Meeple'
+import NeutralFigure from '@/components/game/NeutralFigure'
 
 const TITLE_MAPPING = {
   'acrobats': 'game.feature.acrobats',
@@ -71,7 +73,8 @@ const SUBTITLE_MAPPING = {
 
 export default {
   components: {
-    Meeple
+    Meeple,
+    NeutralFigure
   },
 
   props: {
@@ -90,6 +93,7 @@ export default {
     }),
 
     title () {
+    console.log(this.expr)
       return 'title2';
 /*      let title = TITLE_MAPPING[this.expr.name]
       if (title) return this.$t(title)
@@ -167,7 +171,7 @@ export default {
     font-size: 16px
     margin-top: 4px
 
-svg.meeple
+svg.meeple, svg.neutral
   max-width: 40px
   height: 40px
 </style>
