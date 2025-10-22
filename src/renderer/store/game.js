@@ -789,7 +789,12 @@ export const actions = {
 
     commit('lockUi', false)
     console.log('handleStartMessage end')
+    const aiPlayer = state.players[state.action?.player].ai && rootState.networking.sessionId === state.players[state.action?.player]?.sessionId
     
+    if (aiPlayer) {
+          await dispatch('aiEngineRequest', { })
+    }
+    console.log('isaiplayer',aiPlayer,state)
   },
 
   close ({ dispatch, commit, rootState }) {
@@ -872,7 +877,7 @@ export const actions = {
     console.log('AI: ',aiPlayer)
     if (aiPlayer) {
       console.log('BEFORE 2 aiEngineRequest: ',response)
-      await dispatch('aiEngineRequest', { response, hash, message, allowAutoCommit: true })
+      await dispatch('aiEngineRequest', { })
       console.log('AFTER 2 aiEngineRequest: ',response)
     }
     console.log('handleEngineMessage end')
@@ -921,10 +926,11 @@ export const actions = {
         console.log('Game is not yet finished')
       }
     }
+    console.log('AIPlayer',aiPlayer)
     console.log('This is after autocommit',autoCommit)
   },
 
-  async aiEngineRequest ({ state, commit, dispatch, rootState }, { response, hash, message, allowAutoCommit }) {
+  async aiEngineRequest ({ state, commit, dispatch, rootState }, { }) {
     console.log('AI Request')
     await dispatch('apply', {
       type: 'AI',
