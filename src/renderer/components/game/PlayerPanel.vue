@@ -14,7 +14,7 @@
       </div>
       <div class="name">
         <div>
-          <span class="name-label">{{ player.name }}</span>
+          <span class="name-label">{{ player.name }}<v-icon v-if="player.ai">fa-solid fa-robot</v-icon></span>
           <template v-if="!slot.sessionId">
             <br>
             <span class="offline-label">{{ $t('core-messages.offline') }}</span>
@@ -183,6 +183,11 @@ section
   +theme using ($theme)
     color: map-get($theme, 'player-panel-name-color')
 
+  .v-icon
+    vertical-align: inherit
+    padding-left: 1ex
+    font-size: inherit
+    
 .offline-label
   text-transform: uppercase
   font-weight: 400
