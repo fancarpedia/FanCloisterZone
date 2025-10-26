@@ -216,15 +216,6 @@
         </div>
       </template>
 
-      <template v-if="stats.points.marketplace.some(p => p)">
-        <div class="header marketplace" :title="$t('game.feature.marketplace')">
-          <img src="~/assets/features/C1/marketplace.png" height="30">
-        </div>
-        <div v-for="(val, idx) in stats.points.marketplace" :key="'marktplace-'+idx" class="marketplace value">
-          {{ val }}
-        </div>
-      </template>
-
       <template v-if="stats.points.obelisk.some(p => p)">
         <div class="header obelisk" :title="$t('game.element.obelisk')">
           <Meeple type="Obelisk" />
