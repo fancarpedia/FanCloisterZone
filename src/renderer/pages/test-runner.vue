@@ -129,7 +129,8 @@ export default {
         }
       }
     } catch (e) {
-      console.log(`Test folder ${testFolder} does not exist`)
+      const realpath = fs.promises.realpath(testFolder)
+      console.log(`Test folder ${realpath} does not exist`,e.getMessage())
       return { tests: [] }
     }
 
@@ -195,10 +196,13 @@ export default {
     },
 
     runTest(file) {
+      console.log('RUN TEST',file)
       return new Promise(resolve => {
         const unsubscribe = this.$store.subscribe(async mutation => {
+          console.log('MUTATION',mutation)
           if (mutation.type === 'game/testScenarioResult') {
             unsubscribe()
+            console.log('THIS IS CLOSE IN TEST RUNNER')
             await this.$store.dispatch('game/close')
             const failed = mutation.payload.assertions.find(a => a.result === false)
             setTimeout(() => {
@@ -235,6 +239,9 @@ h1
   opacity: 0.6
 
 .error-message
-  color: orange
   font-size: 0.8em
+
+  +theme using ($theme)
+    color: map-get($theme, '--v-error-base')
+  
 </style>
