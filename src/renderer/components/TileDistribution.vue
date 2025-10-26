@@ -9,7 +9,7 @@
         :tile-id="id"
         :size="tileSize"
         :rotation="rotation"
-        @click.native="$emit('tile-click', id)"
+        @click.native="$emit('tile-click', id, count)"
       />
       <div class="count">{{ count }}</div>
     </div>
