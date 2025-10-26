@@ -55,6 +55,7 @@
       <template v-else-if="item.name === 'flowers.FLOWERS_VIOLET'"><TokenImage token="FLOWERS_VIOLET" :height="40" /></template>
       <template v-else-if="item.name === 'flowers.FLOWERS_WHITE'"><TokenImage token="FLOWERS_WHITE" :height="40" /></template>
       <template v-else-if="item.name === 'flowers.FLOWERS_YELLOW'"><TokenImage token="FLOWERS_YELLOW" :height="40" /></template>
+      <template v-else-if="item.name.startsWith('marketplace.')"><img src="~/assets/features/C1/marketplace.png" height="40" /></template>
 
       <!-- TODO images, also imprev tile image (green field ?)-->
       <template v-else-if="item.name === 'darmstadtium'"><ExpansionSymbol :expansion="Expansion.DARMSTADT" :style="{ width: 40, height: 40 }" /></template>
