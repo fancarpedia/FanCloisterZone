@@ -129,8 +129,9 @@ export default {
         }
       }
     } catch (e) {
-      const realpath = fs.promises.realpath(testFolder)
-      console.log(`Test folder ${realpath} does not exist`,e.getMessage())
+      const realPath = await fs.promises.realpath('.')
+      const testFolderPath = path.join(realPath, testFolder)
+      console.log(`Test folder ${testFolderPath} does not exist`,e.message)
       return { tests: [] }
     }
 
@@ -196,13 +197,10 @@ export default {
     },
 
     runTest(file) {
-      console.log('RUN TEST',file)
       return new Promise(resolve => {
         const unsubscribe = this.$store.subscribe(async mutation => {
-          console.log('MUTATION',mutation)
           if (mutation.type === 'game/testScenarioResult') {
             unsubscribe()
-            console.log('THIS IS CLOSE IN TEST RUNNER')
             await this.$store.dispatch('game/close')
             const failed = mutation.payload.assertions.find(a => a.result === false)
             setTimeout(() => {
