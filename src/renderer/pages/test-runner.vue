@@ -1,24 +1,29 @@
 <template>
   <div class="test-runner">
-    <div class="close">
-      <NuxtLink to="/">Close</NuxtLink>
-    </div>
-    <v-container>
-      <h1>Test Runner</h1>
 
-      <v-btn color="primary" @click="toggleRunAll">
-        {{ isRunningAll ? 'Stop running all' : 'Run All' }}
-      </v-btn>
+    <v-container class="test-runner-container">
+      <div class="test-runner-header">
+        <h1>Test Runner</h1>
 
-      <v-btn color="secondary" @click="resetAll">
-        Reset All
-      </v-btn>
+        <v-btn color="primary" @click="toggleRunAll">
+          {{ isRunningAll ? 'Stop running all' : 'Run All' }}
+        </v-btn>
 
-      <v-btn color="secondary" @click="resetFailed">
-        Reset Failed
-      </v-btn>
+        <v-btn color="secondary" @click="resetAll">
+          Reset All
+        </v-btn>
 
-      <v-simple-table>
+        <v-btn color="secondary" @click="resetFailed">
+          Reset Failed
+        </v-btn>
+        
+        <v-btn to="/" color="secondary" @click="resetFailed">
+          Close
+        </v-btn>
+
+      </div>
+
+      <v-simple-table class="test-runner-table">
         <template v-slot:default>
           <thead>
             <tr>
@@ -235,6 +240,41 @@ h1
 
 .disabled
   opacity: 0.6
+
+.test-runner-container
+  display: flex
+  flex-direction: column
+  height: 100vh
+  overflow: hidden
+  background: #fafafa
+
+.test-runner-header
+  position: fixed
+  top: 0
+  left: 0
+  right: 0
+  height: 70px
+  display: flex
+  align-items: center
+  justify-content: space-between
+  padding: 0 20px
+  border-bottom: 1px solid #ddd
+  z-index: 10
+  background-color: white
+
+.test-runner-header h1
+  margin: 0
+  font-size: 20px
+
+.test-runner-header .buttons
+  display: flex
+  gap: 10px
+
+
+.test-runner-table
+  margin-top: 70px
+  flex: 1
+  overflow-y: auto
 
 .error-message
   font-size: 0.8em
