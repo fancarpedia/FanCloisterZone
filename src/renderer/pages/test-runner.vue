@@ -5,18 +5,19 @@
       <div class="test-runner-header">
         <h1>Test Runner</h1>
 
-        <v-btn color="primary" @click="toggleRunAll">
-          {{ isRunningAll ? 'Stop running all' : 'Run All' }}
-        </v-btn>
+        <div>
+          <v-btn color="primary" @click="toggleRunAll">
+            {{ isRunningAll ? 'Stop running all' : 'Run All' }}
+          </v-btn>
 
-        <v-btn color="secondary" @click="resetAll">
-          Reset All
-        </v-btn>
+          <v-btn color="secondary" @click="resetAll">
+            Reset All
+          </v-btn>
 
-        <v-btn color="secondary" @click="resetFailed">
-          Reset Failed
-        </v-btn>
-        
+          <v-btn color="secondary" @click="resetFailed">
+            Reset Failed
+          </v-btn>
+        </div>
         <v-btn to="/" color="secondary" @click="resetFailed">
           Close
         </v-btn>
