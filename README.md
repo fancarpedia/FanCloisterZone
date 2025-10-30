@@ -19,6 +19,19 @@ All issues on FanCloisterZone report on [Discord](https://discord.gg/3qpHWN8k)
 
 Engine for game can be found on https://github.com/fancarpedia/JCloisterZoneEngine
 
+
+## I want to help
+
+There is several options how you halp help this open-source project. You can ask on our [Discord](https://discord.gg/3qpHWN8k)
+
+### How I can help
+* Better UI
+* Better AI/Bot answers / quicker response
+* Creating addons for new fan expansions - tile shapes and/or game mechanics
+* Testing
+
+### Run your own installation for DEV
+
 #### Build Setup
 
 ``` bash
@@ -50,32 +63,22 @@ Run engine listening to socket. It will be usualy started using Java IDE.
 Add program args to run configuration
 
 ```
--port 9000
+java -Dorg.slf4j.simpleLogger.log.AIRanking=debug -ea -jar build\Engine.jar -port 9001
 ```
 
-Add engine's socket address to jcz-config.json
+Add engine's socket address to jcz-config.json (you can find location in Main menu / Help / About)
 ```
 "enginePath": "localhost:9000",
 ```
 
-## Development notes
-
-https://github.com/electron-userland/electron-builder/issues/1340
-
-### How to convert Photoshop path to SVG
-
-https://www.bittbox.com/culture/convert-paths-to-shapes-in-photoshop
-
-With path selected choose "Layers / New fill layer"
-
 ### Run second client with different config in dev
 
 ```
-JCZ_CONFIG=/home/farin/.config/Electron/jcz-config-2.json JCZ_NETWORK_DELAY=1-50 yarn dev
+JCZ_CONFIG=/home/user/.config/Electron/jcz-config-2.json JCZ_NETWORK_DELAY=1-50 yarn dev
 ```
 
 ## Special downgrades
-Envoronment requires node 16, yarn 1
+Envoronment requires node 16, yarn 1, java 17
 
 ### On Mac
 ```
