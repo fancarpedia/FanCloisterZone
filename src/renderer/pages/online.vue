@@ -328,6 +328,7 @@ export default {
       this.showDeleteDialog = false
       await this.$connection.send({ type: 'ABANDON_GAME', payload: { gameId: this.showDeleteGameId } })
       await this.$connection.send({ type: 'LIST_GAMES', payload: {} })
+      await this.$connection.send({ type: 'LIST_PUBLIC_GAMES', payload: {} })
     }
   }
 }
