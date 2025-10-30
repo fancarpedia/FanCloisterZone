@@ -150,6 +150,8 @@ import InstallerDownloader from '@/components/InstallerDownloader'
 const isMac = process.platform === 'darwin'
 const isWin = process.platform === 'win32'
 
+import { STATUS_CONNECTED } from '@/store/networking'
+
 export default {
   components: {
     InstallerDownloader
@@ -182,6 +184,7 @@ export default {
       settingsLoaded: state => state.loaded.settings,
       artworksLoaded: state => state.loaded.artworks,
       hasClassicAddon: state => state.hasClassicAddon,
+      connectionStatus: state => state.networking.connectionStatus,
       updateInfo: state => {
         if (process.env.NODE_ENV === 'development') {
           return {
@@ -199,6 +202,9 @@ export default {
       }
     }),
 
+    connectionStatus() {
+      return this.connectionStatus
+    },
     updateInfoFile () {
       if (this.updateInfo) {
         return `https://github.com/fancarpedia/FanCloisterZone/releases/download/v${this.updateInfo.version}/${this.updateInfo.files[0].url}` /* Fan Edition */
@@ -207,7 +213,24 @@ export default {
     }
   },
 
+/*  created() {
+    if (this.connectionStatus === null) {
+      this.$store.dispatch('networking/connectPlayOnlineFan')
+    } else if (this.connectionStatus === STATUS_CONNECTED) {
+      // not reconnecting
+      this.$connection.send({ type: 'LIST_GAMES', payload: {} })
+      this.$connection.send({ type: 'LIST_PUBLIC_GAMES', payload: {} })
+    }
+  },*/
   watch: {
+/*    connectionStatus(newValue) {
+      if (newValue === null) {
+        this.$store.dispatch('networking/connectPlayOnlineFan')
+      } else if (newValue === STATUS_CONNECTED) {
+        this.$connection.send({ type: 'LIST_GAMES', payload: {} })
+        this.$connection.send({ type: 'LIST_PUBLIC_GAMES', payload: {} })
+      }
+    },*/
     settingsLoaded () {
       this.recentSaves = [...this.$store.state.settings.recentSaves]
     }
