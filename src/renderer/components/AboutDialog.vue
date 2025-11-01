@@ -17,7 +17,6 @@
         <div>
           <div class="version">{{ $t('about.version') }} {{ version }}</div>
           Roman Krejčík &amp; fans<br>
-          farin@farin.cz
           <div class="report-bug" @click="openReportBug">{{ $t('menu.report-bug')}}: Discord</div>
         </div>
       </section>
