@@ -287,6 +287,7 @@ export const getters = {
   },
 
   featureOn: state => ({ position, location }) => {
+    // TODO Aware there can be multiple Inner features with location I, II, III, IV!
     if (location === 'AS_ABBOT') {
       location = 'I'
     }
