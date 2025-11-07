@@ -93,7 +93,6 @@ import TilePlacementConfirmPhaseAction from '@/components/game/actions/TilePlace
 import TowerCapturePhaseAction from '@/components/game/actions/TowerCapturePhaseAction.vue'
 
 const MAPPING = {
-  AbbeyPhase: TilePhaseAction,
   AbbeyEndGamePhase: TilePhaseAction,
   ChangeFerriesPhase: FerryPhaseAction,
   CocFollowerPhase: ActionPhaseAction,
@@ -101,6 +100,7 @@ const MAPPING = {
   CocFinalScoringPhase: ActionPhaseAction,
   PlaceFerryPhase: FerryPhaseAction,
   PhantomPhase: ActionPhaseAction,
+  TileFromSupplyPhase: TilePhaseAction,
   TunnelPhase: ActionPhaseAction,
   WagonPhase: ActionPhaseAction
 }
