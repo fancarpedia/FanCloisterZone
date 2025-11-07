@@ -155,6 +155,14 @@
           :y="BASE_SIZE * 0.25"
           :href="`${NEUTRAL_SVG}#dragon`"
         />
+        <text
+          :x="BASE_SIZE * 0.45"
+          :y="BASE_SIZE * 0.55"
+          :font-size="150"
+          :fill="white"
+        >
+          {{ dragon.remaining }}
+        </text>
       </g>
     </g>
 
@@ -362,6 +370,7 @@ export default {
     },
 
     dragonVisitedPoints () {
+      console.log('DRAGON',this.dragon)
       const { visited, position } = this.dragon
       if (!visited || !visited.length) {
         return null
@@ -457,6 +466,9 @@ export default {
 
 .dragon
   opacity: 0.9
+  
+  text
+    fill: white !important
 
 .fairy-select
   circle.color-stroke
