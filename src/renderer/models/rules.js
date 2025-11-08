@@ -274,8 +274,8 @@ export const LITTLE_BUILDINGS_SCORING = Rule.LITTLE_BUILDINGS_SCORING = new Rule
   'Assign {} points for tower/house/shed.',
   [GameElement.LITTLE_BUILDINGS],
   [
-    { value: '1/1/1', text: '1/1/1' },
-    { value: '3/2/1', text: '3/2/1' }
+    { value: '3/2/1', text: '3/2/1' },
+    { value: '1/1/1', text: '1/1/1' }
   ],
   {
     link: 'https://wikicarpedia.com/car/Special:MyLanguage/Little_Buildings_(1st_edition)#Variant',
