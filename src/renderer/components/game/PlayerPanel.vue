@@ -49,7 +49,7 @@
           :token="token" :player="index"
         />
         <span v-if="(count > 1 && stackTwo(token)) || count > 2" class="count">{{ count }}</span>
-        <span v-if="size != null" class="count size">{{ size }} <v-icon class="color-overlay">fas fa-square</v-icon></span>
+        <span v-if="size != null" class="size"><span class="value">{{ size }}</span> <v-icon class="color-overlay">fas fa-square</v-icon></span>
       </div>
 
       <div
@@ -274,12 +274,31 @@ section
       background: map-get($theme, 'player-panel-count-bg')
       color: map-get($theme, 'player-panel-count-text')
       
-    &.size
-      width: auto
-      left: 0
-      padding-right: 5px
-      border-bottom-left-radius: 0
-      border-top-left-radius: 0
+  span.size
+    display: inline-flex
+    justify-content: center
+    align-items: top
+    font-weight: bold
+    font-size: 20px
+    
+    position: relative
+    z-index: 1
+    width: auto
+    left: 0
+    padding: 5px 5px 0 5px
+      
+    +theme using ($theme)
+      color: map-get($theme, 'player-panel-size-text')
+      
+    .value
+      z-index: 2
+      font-size: smaller
+        
+    .v-icon
+      position: absolute
+
+      +theme using ($theme)
+        color: map-get($theme, 'player-panel-size-icon')
 
   .item-follower, .item-prisoner
     margin: 0 2px
@@ -294,6 +313,9 @@ section
     .token-image
       position: relative
       z-index: 2
+      
+      &.token-KING,&.token-ROBBER
+        vertical-align: top
 
     .stacked
       margin-left: -24px
@@ -342,9 +364,6 @@ aside.shrink-0
       top: -10px
       margin-right: -6px
       
-      &.size
-        left: -3px
-
 aside.shrink-1
   section
     padding-top: 10px
