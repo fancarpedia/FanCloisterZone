@@ -2,7 +2,7 @@
   "@author": "farin & Scott",
   "@jcz-version": "5.12.1",
   "@fcz-version": "6.0.0",
-  "@version": "0.8.8",
+  "@version": "0.8.12",
   "about": {
     "configuration-file": "Configuration file",
     "jcloisterzone-game-engine": "JCloisterZone Game Engine",
@@ -116,6 +116,7 @@
     "russian-promos": "Russian Promos",
     "siege": "Siege",
     "spiel-doch": "Spiel Doch!",
+    "the-city-gates": "City Gates",
     "the-flying-machines-2": "Flying Machines 2",
     "the-labyrinths": "Labyrinths",
     "tower": "The Tower",
@@ -171,6 +172,7 @@
       "player-may-move-a-meeple-from-the-market-district-before-final-scoring": "Player may move a meeple from the market district before final scoring.",
       "player-may-place-a-meeple-in-a-city-district": "Player may place a meeple in a city district.",
       "player-may-place-a-meeple-next-to-already-present-one": "Player may place a meeple next to one already present.",
+      "player-may-place-a-tile-from-supply": "Player may place a tile from supply",
       "player-may-place-an-abbey": "Player may place an abbey",
       "player-must-place-the-tile": "Player must place the tile",
       "siege-player-can-escape-a-besieged-city": "Player can escape a besieged city.",
@@ -187,6 +189,7 @@
       "you-may-move-a-meeple-from-the-market-district-before-final-scoring": "You may move a meeple from the market district before final scoring.",
       "you-may-place-a-meeple-in-a-city-district": "You may place a meeple in a city district.",
       "you-may-place-a-meeple-next-to-already-present-one": "You may place a meeple next to one already present.",
+      "you-may-place-a-tile-from-supply": "You may place a tile from supply",
       "you-may-place-an-abbey": "You may place an abbey",
       "your-action": "your action"
     },
@@ -327,7 +330,8 @@
       "name": "Name",
       "open-slot": "open slot",
       "remote-player": "remote player",
-      "rename-player": "Rename Player"
+      "rename-player": "Rename Player",
+      "waiting-for-player": "waiting for player"
     },
     "game-element-box": {
       "mandatory-for-selected-tiles": "Mandatory for selected tiles",
@@ -529,6 +533,7 @@
       "local-games": "Local games",
       "my-favorites": "my favorites",
       "new-game": "New game",
+      "open-game": "Open game",
       "title": "Player hosted games"
     },
     "online": {
@@ -558,6 +563,7 @@
       "install-new-version": "Install new version",
       "new-version-available": "New FanCloisterZone version is available.",
       "release-notes": "Release Notes",
+      "starting": "Starting",
       "update-to": "Update to {version}"
     }
   },
