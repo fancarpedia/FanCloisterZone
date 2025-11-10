@@ -13,6 +13,7 @@
       <template v-if="slotState === 'open'">{{ $t('game-setup.create.open-slot') }}</template>
       <template v-if="slotState === 'local'">{{ $t('game-setup.create.local-player') }}</template>
       <template v-if="slotState === 'remote'">{{ $t('game-setup.create.remote-player') }}</template>
+      <template v-if="slotState === 'waiting'">{{ $t('game-setup.create.waiting-for-player') }}</template>
     </div>
     <div
       v-if="slotState === 'local'"
@@ -56,6 +57,7 @@ export default {
   props: {
     number: { type: Number, required: true },
     owner: { type: String, default: null },
+    client: { type: String, default: null },
     name: { type: String, default: null },
     order: { type: Number, default: null },
     readOnly: { type: Boolean }
@@ -76,10 +78,14 @@ export default {
     }),
 
     slotState () {
+      console.log('STATE',this.owner,this.sessionId,this.client ?? 'no-client',this.clientId ?? 'no-clientid')
       if (this.owner === this.sessionId) {
         return 'local'
       }
-      return this.owner ? 'remote' : 'open'
+      if (this.owner) {
+        return 'remote' 
+      }
+	  return this.client ? 'waiting' : 'open'
     }
   },
 

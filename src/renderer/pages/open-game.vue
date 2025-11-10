@@ -66,6 +66,7 @@
           :key="slot.number"
           :number="slot.number"
           :owner="slot.sessionId"
+          :client="slot.clientId"
           :name="slot.name"
           :order="slot.order"
           :read-only="readOnly"
