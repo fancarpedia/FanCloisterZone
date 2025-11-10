@@ -140,7 +140,7 @@ export default {
     return {
       isRenameDialogOpen: false,
       editName: null,
-      // do not updata it after start when gameMessages are set to empty array
+      // do not update it after start when gameMessages are set to empty array
       readOnly: this.$store.state.game.gameMessages !== null
     }
   },
