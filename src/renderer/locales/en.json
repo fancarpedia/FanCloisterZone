@@ -678,6 +678,13 @@
       "preferred-color-description": "Automatically take a color after game join.",
       "title": "Player"
     },
+    "system": {
+      "app-channel": "App updates channel",
+      "dev": "Testing new function during implementations",
+      "beta": "Prove that app and new functions are done",
+      "stable": "I want just to play and enjoy the game",
+      "title": "System"
+    },
     "title": "Settings"
   },
   "tile-set": {

@@ -20,6 +20,9 @@
             <v-list-item>
               <v-list-item-title>{{ $t('settings.java.title') }}</v-list-item-title>
             </v-list-item>
+            <v-list-item>
+              <v-list-item-title>{{ $t('settings.system.title') }}</v-list-item-title>
+            </v-list-item>
           </v-list-item-group>
         </v-list>
 
@@ -29,6 +32,7 @@
           <ApperanceSettings v-else-if="section === 2" />
           <AddonsSettings v-else-if="section === 3" />
           <JavaSettings v-else-if="section === 4" ref="javaSettings" />
+          <SystemSettings v-else-if="section === 5" ref="systemSettings" />
         </div>
       </div>
     </v-card-text>
@@ -45,6 +49,7 @@ import ApperanceSettings from '@/components/settings/ApperanceSettings'
 import GameInterfaceSettings from '@/components/settings/GameInterfaceSettings'
 import JavaSettings from '@/components/settings/JavaSettings'
 import PlayerSettings from '@/components/settings/PlayerSettings'
+import SystemSettings from '@/components/settings/SystemSettings'
 
 export default {
   components: {
@@ -52,7 +57,8 @@ export default {
     ApperanceSettings,
     GameInterfaceSettings,
     JavaSettings,
-    PlayerSettings
+    PlayerSettings,
+    SystemSettings
   },
 
   data () {
