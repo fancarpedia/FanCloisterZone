@@ -74,18 +74,21 @@ export default {
   computed: {
     ...mapState({
       sessionId: state => state.networking.sessionId,
-      randomized: state => state.game.setup.options.randomizeSeating
+      randomized: state => state.game.setup.options.randomizeSeating,
+      gameKey: state => state.game.key
     }),
 
     slotState () {
-      console.log('STATE',this.owner,this.sessionId,this.client ?? 'no-client',this.clientId ?? 'no-clientid')
       if (this.owner === this.sessionId) {
         return 'local'
       }
       if (this.owner) {
         return 'remote' 
       }
-	  return this.client ? 'waiting' : 'open'
+      if (this.gameKey) {
+	    return this.client ? 'waiting' : 'open'
+	  }
+	  return 'open'
     }
   },
 
