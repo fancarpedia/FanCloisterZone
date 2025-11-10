@@ -63,7 +63,8 @@ class ConnectionPlugin extends EventsBase {
         name: settings.nickname,
         clientId: settings.clientId,
         secret: settings.secret,
-        appSessionId: appSessionId
+        appSessionId: appSessionId,
+        language: settings.locale
       }
     }))
     this.heartbeat()
