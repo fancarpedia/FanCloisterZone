@@ -95,6 +95,10 @@ module.exports = {
       {
         code: 'sk',
         file: 'sk.json'
+      },
+      {
+        code: 'sl',
+        file: 'sl.json'
       }
     ],
     // lazy: true,
