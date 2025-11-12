@@ -35,7 +35,7 @@ class Addons extends EventsBase {
   }
 
   async loadAddons () {
-    console.log('Looking for installed` addons')
+    console.log('Looking for installed addons')
     const { settings } = this.ctx.store.state
     const userDataPath = window.process.argv.find(arg => arg.startsWith('--user-data=')).replace('--user-data=', '')
     const installedAddons = []
