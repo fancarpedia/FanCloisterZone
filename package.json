@@ -69,6 +69,7 @@
     "electron-log": "^4.4.1",
     "electron-updater": "^4.3.9",
     "lodash": "^4.17.21",
+    "marked": "4.0.18",
     "moment": "^2.29.4",
     "paper": "^0.12.17",
     "portal-vue": "^2.1.7",
