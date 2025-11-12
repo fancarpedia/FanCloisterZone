@@ -4,6 +4,7 @@ import path from 'path'
 import { app, BrowserWindow } from 'electron'
 import { autoUpdater } from 'electron-updater'
 import electronLogger from 'electron-log'
+import fs from 'fs'
 
 import settings from './settings'
 import menu from './modules/menu'
@@ -19,7 +20,16 @@ autoUpdater.logger = electronLogger
 autoUpdater.logger.transports.file.level = 'info'
 
 const modules = []
-
+function getAppVersion() {
+  if (process.env.NODE_ENV === 'development') {
+    // Read version from your package.json in development
+    const packageJsonPath = path.join(process.cwd(), 'package.json')
+    const packageJson = JSON.parse(fs.readFileSync(packageJsonPath, 'utf8'))
+    return packageJson.version
+  }
+  return app.getVersion()
+}
+  
 async function createWindow () {
   const win = new BrowserWindow({
     height: 600,
@@ -32,7 +42,7 @@ async function createWindow () {
       contextIsolation: false,
       additionalArguments: [
         '--user-data=' + app.getPath('userData'),
-        '--app-version=' + app.getVersion()
+        '--app-version=' + getAppVersion()
       ],
       devTools: !process.env.SPECTRON // disable on e2e test environment
     }
@@ -75,7 +85,7 @@ app.whenReady().then(() => {
     modules.push(dialog(settings))
     modules.push(winevents(settings))
     modules.push(localServer(settings))
-    modules.push(updater(settings))
+    modules.push(updater(settings, getAppVersion))
     modules.push(installer())
 
     if (process.env.NODE_ENV === 'production') {

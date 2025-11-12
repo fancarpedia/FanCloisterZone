@@ -58,7 +58,7 @@
       </div>
       <div v-if="updateInfo" class="update-box">
         <InstallerDownloader
-          :fileURL="updateInfoFile"
+          :fileURL="updateInfo.assetUrl"
           :titleText="$t('index.update.new-version-available')"
           :downloadButtonText="$t('index.update.download')"
           :installButtonText="$t('index.update.install-new-version')"
@@ -185,31 +185,11 @@ export default {
       artworksLoaded: state => state.loaded.artworks,
       hasClassicAddon: state => state.hasClassicAddon,
       connectionStatus: state => state.networking.connectionStatus,
-      updateInfo: state => {
-        if (process.env.NODE_ENV === 'development') {
-          return {
-            releaseNotes: 'Cool stuff',
-            description: 'Tha description',
-            version: '6.0.0-beta.6',
-            files: [
-              {
-                url: 'fancloisterzone-6.0.0-beta.6.exe'
-              }
-            ]
-          }
-        }
-        return state.updateInfo
-      }
+      updateInfo: state => state.updateInfo
     }),
 
     connectionStatus() {
       return this.connectionStatus
-    },
-    updateInfoFile () {
-      if (this.updateInfo) {
-        return `https://github.com/fancarpedia/FanCloisterZone/releases/download/v${this.updateInfo.version}/${this.updateInfo.files[0].url}` /* Fan Edition */
-      }
-      return null
     }
   },
 

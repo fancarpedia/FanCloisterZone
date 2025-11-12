@@ -2,6 +2,8 @@ import { app, ipcMain } from 'electron'
 import { autoUpdater } from 'electron-updater'
 import electronLogger from 'electron-log'
 import { compareVersions } from 'compare-versions'
+import fetch from 'node-fetch'
+import { marked } from 'marked'
 
 let diffDown = {
   percent: 0,
@@ -18,7 +20,56 @@ let diffDownHelper = {
 let win = null
 let updateInfo = null
 
-export default function () {
+/**
+ * Get the newest release according to channel and SemVer rules
+ * @param {string} channel - 'stable' | 'beta' | 'alpha'
+ * @param {string} currentVersion - app.getVersion()
+ */
+async function getLatestReleaseByChannel(channel = 'stable', currentVersion) {
+  const res = await fetch('https://api.github.com/repos/fancarpedia/FanCloisterZone/releases') /* Fan Edition */
+  const releases = await res.json()
+  const parsed = releases
+    .filter(r => !r.draft)
+    .map(r => ({
+      version: r.tag_name.replace(/^v/, ''),
+      prerelease: /-/.test(r.tag_name),
+      alpha: /-alpha/i.test(r.tag_name),
+      beta: /-beta/i.test(r.tag_name),
+      rc: /-rc/i.test(r.tag_name),
+      assetUrl: (r.assets && r.assets.length > 0) ? r.assets[0].browser_download_url : null,
+      releaseNotes: (r.body ? marked.parse(r.body || '') : r.tag_name) + ' ' + channel
+    }))
+
+  parsed.sort((a, b) => compareVersions(b.version, a.version))
+
+  const pickNewer = predicate =>
+    parsed.find(v => predicate(v) && compareVersions(v.version, currentVersion) > 0) || null
+
+  let candidate = null
+
+  switch (channel) {
+    case 'beta':
+      candidate =
+        pickNewer(v => !v.prerelease || v.rc || v.beta ) ||       // stable, rc or beta
+        pickNewer(v => v.alpha)                // alpha fallback
+      break
+
+    case 'dev':
+      candidate = parsed.find(v => compareVersions(v.version, currentVersion) > 0) || null
+      break
+
+    case 'stable':
+    default:
+      candidate =
+        pickNewer(v => !v.prerelease) ||       // stable
+        pickNewer(v => v.rc || v.beta) ||      // rc / beta fallback
+        pickNewer(v => v.alpha)                // alpha fallback
+      break
+  }
+  return candidate
+}
+
+export default function (settings, getAppVersion) {
   // https://gist.github.com/the3moon/0e9325228f6334dabac6dadd7a3fc0b9
   electronLogger.hooks.push((msg, transport) => {
     if (transport !== electronLogger.transports.console) {
@@ -84,24 +135,28 @@ export default function () {
     owner: 'fancarpedia', /* Fan Edition */
     repo: 'FanCloisterZone' /* Fan Edition */
   })
-  autoUpdater.checkForUpdates().then(result => {
-    // console.log(result)
-    if (compareVersions(result.updateInfo.version, app.getVersion()) === 1) {
-      updateInfo = result.updateInfo
-      if (win) {
+  // ---- Check for updates ----
+  const channel = settings.devChannel ? settings.devChannel : 'stable'
+  
+  function trySendUpdate() {
+    if (win && updateInfo) {
+      win.webContents.once('did-finish-load', () => {
         win.webContents.send('app-update', updateInfo)
-      }
+      })
     }
-  }).catch(err => {
-    console.error(err)
-  })
-
+  }
+  getLatestReleaseByChannel(channel, getAppVersion())
+    .then(result => {
+      if (!result) return
+      updateInfo = result
+      trySendUpdate()
+    })
+    .catch(err => console.error(err))
+  
   return {
     winCreated (_win) {
       win = _win
-      if (updateInfo) {
-        win.webContents.send('app-update', updateInfo)
-      }
+      trySendUpdate()
     },
     winClosed (_win) { win = null }
   }
