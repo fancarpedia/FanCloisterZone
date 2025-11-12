@@ -103,7 +103,6 @@ export const actions = {
   },
 
   async loaded ({ commit, dispatch }, { settings, file, systemLocale }) {
-    console.log(systemLocale)
     let missingKey = false
     if (settings) {
       settings = { ...settings, file }
