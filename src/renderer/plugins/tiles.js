@@ -409,7 +409,6 @@ class Tiles extends EventsBase {
       symbolsContainer.innerHTML = this.symbols.join('\n')
     }
 
-    console.log('Expansions definitions loaded.')
     this.ctx.app.store.commit('tilesLoaded')
     this.emit('load')
   }

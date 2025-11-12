@@ -46,7 +46,6 @@ class Theme extends EventsBase {
 
   async loadArtworks () {
     const { settings } = this.ctx.store.state
-    console.log(`Loading enabled artworks. (${settings.enabledArtworks})`)
 
     let resourcesContainer = document.getElementById('theme-resources')
     if (resourcesContainer) {

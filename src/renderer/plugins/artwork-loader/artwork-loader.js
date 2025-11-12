@@ -208,8 +208,6 @@ export default class ArtworkLoader {
     Object.entries(artwork.aliases).forEach(([id, alias]) => {
       this.tiles[id] = this.tiles[alias]
     })
-
-    console.log(`Loaded artwork '${id}' from ${folder}`)
   }
 
   injectClip (attr, clip) {
