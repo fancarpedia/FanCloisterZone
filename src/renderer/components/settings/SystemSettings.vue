@@ -22,15 +22,15 @@ export default {
     devChannels() {
       return [
         {
-          text: this.$t('settings.system.stable'),
+          text: ['Stable',this.$t('settings.system.stable')].join(': '),
           id: 'stable'
         },
         {
-          text: this.$t('settings.system.beta'),
+          text: ['Beta',this.$t('settings.system.beta')].join(': '),
           id: 'beta'
         },
         {
-          text: this.$t('settings.system.dev'),
+          text: ['Dev',this.$t('settings.system.dev')].join(': '),
           id: 'dev'
         }
       ]
