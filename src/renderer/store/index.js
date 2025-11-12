@@ -132,7 +132,6 @@ export const actions = {
       const executable = rootState.settings.javaPath || 'java'
       console.log(`Checking ${executable}`)
       execFile(executable, ['-version'], (error, stdout, stderr) => {
-        console.log(stderr)
         if (error) {
           console.error(error)
           const value = { ok: false, error: 'not-found' }
