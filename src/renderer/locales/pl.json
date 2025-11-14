@@ -2,7 +2,7 @@
   "@author": "Snearone",
   "@jcz-version": "5.12.1",
   "@fcz-version": "6.0.0",
-  "@version": "0.8.6",
+  "@version": "0.8.13",
   "about": {
     "configuration-file": "Plik konfiguracyjny",
     "jcloisterzone-game-engine": "Silnik gry JCloisterZone",
@@ -67,7 +67,7 @@
     "choose": "Wybierz",
     "done": "Gotowe",
     "game-engine-not-available": "Silnik gry niedostępny.",
-    "incomplete-features": "Nieukończone obiekty",
+    "incomplete-features": "Nieukończone obszary",
     "no-core-set": "Brak gry podstawowej!",
     "offline": "Offline",
     "penalties": "Kary",
@@ -116,6 +116,7 @@
     "russian-promos": "Rosyjskie Baśnie",
     "siege": "Oblężenie",
     "spiel-doch": "Spiel Doch",
+    "the-city-gates": "Bramy Miast",
     "the-flying-machines-2": "Maszyny Latające 2",
     "the-labyrinths": "Labirynty",
     "tower": "Wieża",
@@ -144,9 +145,9 @@
       "coc-you-can-move-the-count": "Możesz przesunąć Hrabiego",
       "crop-circles-choose-city": "miasto",
       "crop-circles-choose-field": "pole",
-      "crop-circles-choose-one": "Wybierz opcję dla wszystkich graczy. {deploy} lub {remove} podwładnego ze obiektu, w tym wypadku jest to {feature}.",
+      "crop-circles-choose-one": "Wybierz opcję dla wszystkich graczy. {deploy} lub {remove} podwładnego z/do obszaru, w tym wypadku jest to {feature}.",
       "crop-circles-choose-road": "droga",
-      "crop-circles-player-must-choose": "Wybierana jest opcja dla wszystkich graczy. {deploy} lub {remove} podwładnego ze obiektu, w tym wypadku jest to {feature}.",
+      "crop-circles-player-must-choose": "Wybierana jest opcja dla wszystkich graczy. {deploy} lub {remove} podwładnego z/do obszaru, w tym wypadku jest to {feature}.",
       "crop-circles-player-must-return-meeple": "Gracz musi usunąć jednego ze swoich podwładnych z planszy",
       "crop-circles-you-must-return-meeple": "Musisz usunąć jednego ze swoich podwładnych z planszy.",
       "draw-a-tile": "Losuj płytkę",
@@ -171,6 +172,7 @@
       "player-may-move-a-meeple-from-the-market-district-before-final-scoring": "Gracz może przenieść podwładnego z targu przed ostatecznym punktowaniem.",
       "player-may-place-a-meeple-in-a-city-district": "Gracz może umieścić podwładnego w dzielnicy miasta.",
       "player-may-place-a-meeple-next-to-already-present-one": "Gracz może umieścić podwładnego obok innego już obecnego na planszy.",
+      "player-may-place-a-tile-from-supply": "Gracz może położyć płytkę z zasobu",
       "player-may-place-an-abbey": "Gracz może umieścić Opactwo",
       "player-must-place-the-tile": "Gracz musi umieścić płytkę",
       "siege-player-can-escape-a-besieged-city": "Gracz może uciec z oblężonego miasta.",
@@ -187,6 +189,7 @@
       "you-may-move-a-meeple-from-the-market-district-before-final-scoring": "Możesz przenieść podwładnego z targu przed ostatecznym punktowaniem.",
       "you-may-place-a-meeple-in-a-city-district": "Możesz umieścić podwładnego w dzielnicy miasta.",
       "you-may-place-a-meeple-next-to-already-present-one": "Możesz umieścić podwładnego obok innego już obecnego na planszy.",
+      "you-may-place-a-tile-from-supply": "Możesz położyć płytkę z zasobu",
       "you-may-place-an-abbey": "Możesz umieścić Opactwo",
       "your-action": "twoja czynność"
     },
@@ -205,7 +208,7 @@
       "count": "Hrabia",
       "decinsky-sneznik": "Dieczyński Śnieżnik",
       "donkey": "Osioł",
-      "donkey-description": "Osioł jako neutralna figura, blokuje możliwość ukończenia struktur na płytce na której się znajduję.",
+      "donkey-description": "Osioł jako neutralna figura, blokuje możliwość ukończenia obszarów na płytce na której się znajduję.",
       "dragon": "Smok",
       "fairy": "Wróżka",
       "ferry": "Prom",
@@ -298,7 +301,7 @@
       "barn-placed": "położona stodoła",
       "challenged": "Wyzwanie",
       "empty": "puste",
-      "feature-scored": "puntkowany obiekt",
+      "feature-scored": "puntkowany obszar",
       "incomplete": "Nieukończone",
       "turn-start": "start tury"
     },
@@ -327,7 +330,8 @@
       "name": "Nazwa",
       "open-slot": "Wolne miejsce",
       "remote-player": "gracz zdalny",
-      "rename-player": "Zmień nazwę"
+      "rename-player": "Zmień nazwę",
+      "waiting-for-player": "oczekiwanie na gracza"
     },
     "game-element-box": {
       "mandatory-for-selected-tiles": "Obowiązkowe do wybranych płytek",
@@ -365,7 +369,7 @@
       "farmers-description": "Możliwość umieszczenia chłopów na polach.",
       "festival-description": "Festiwal pozwala na usunięcie z planszy własnego podwładnego.",
       "festival-disabled": "Nie wybrano płytek z festiwalem.",
-      "flowers-description": "Kwiaty dodają +3 punkty do punktowanej struktury gdy gracz posiada odpowiedni żeton kwiatów.",
+      "flowers-description": "Kwiaty dodają +3 punkty do punktowanego obszaru gdy gracz posiada odpowiedni żeton kwiatów.",
       "flowers-disabled": "Brak płytek z kwiatami w tej grze.",
       "gameplay-variants": "Warianty zasad",
       "garden-description": "Możliwość umieszczenia na nim opata.",
@@ -474,8 +478,8 @@
       "king-and-robber-scoring": {
         "10/20": "na koniec gry 10 punktów za posiadanie żetonu",
         "15/40": "na koniec gry 15/40 za posiadanie jednego/dwóch żetonów",
-        "continuously": "1 punkt za każdą ukończoną strukturę podczas gry",
-        "default": "na koniec gry 1 punkt za każdą ukończoną strukturę",
+        "continuously": "1 punkt za każdy ukończony obszar podczas gry",
+        "default": "na koniec gry 1 punkt za każdy ukończony obszar",
         "description": "Punktacja: {}."
       },
       "labyrinth-variant": {
@@ -526,11 +530,12 @@
       "continue-with-recently-saved-games": "kontynuując ostatnio zapisną grę",
       "create-directly-from": "Utwórz nową grę",
       "load-game": "Wczytaj grę",
+      "local-games": "Gry lokalne",
       "my-favorites": "bezpośrednio z ulubionych",
       "new-game": "Nowa gra",
+      "open-game": "Otwarta gra",
       "title": "Gry prywatne"
     },
-    "new-version-available": "Nowa wersja FanCloisterZone jest już dostępna.",
     "online": {
       "abandon-game": "Porzuć grę",
       "chat-during-game": "Czat podczas gry",
@@ -552,8 +557,15 @@
       "title-fan": "Gry na fanowskim serwerze",
       "you-have-no-game-in-progress": "Nie masz żadnej gry w toku."
     },
-    "release-notes": "Informacje o wersji",
-    "update-to": "Aktualizacja do {version}"
+    "update": {
+      "download": "Pobierz",
+      "download-error": "Błąd pobierania",
+      "install-new-version": "Zainstaluj nową wersję",
+      "new-version-available": "Nowa wersja FanCloisterZone jest już dostępna.",
+      "release-notes": "Informacje o wersji",
+      "starting": "Rozpoczynanie",
+      "update-to": "Aktualizacja do {version}"
+    }
   },
   "join-game": {
     "connect-to-remote-host": "Połącz się ze zdalnym hostem z utworzoną grą.",
@@ -666,10 +678,17 @@
       "preferred-color-description": "Automatycznie wybieraj kolor po dołączeniu do gry.",
       "title": "Gracz"
     },
+    "system": {
+      "app-channel": "Kanał aktualizacji aplikacji",
+      "dev": "Testowanie nowych funkcji podczas wdrażania",
+      "beta": "Dowód, że plikacja i nowe funkcje są gotowe",
+      "stable": "Chcę po prostu grać i cieszyć się grą",
+      "title": "System"
+    },
     "title": "Ustawienia"
   },
   "tile-set": {
-    "abbey-and-mayor-description": "Każdy gracz może również umieścić płytkę Opactwa ze swojego zapasu.",
+    "abbey-and-mayor-description": "Każdy gracz może również umieścić płytkę Opactwa ze swoich zasobów.",
     "abbey-and-mayor-release": "Piąte duże rozszerzenie wydane w 2007 roku.",
     "base-game-description": "Można grać płytkami z zasadami 1 edycji lub 2 edycji (np. ogrody). Można to wybrać w drugim kroku ustawień gry.",
     "bridges-castles-and-bazaars-release": "Ósme duże rozszerzenie wydane w 2010 roku. (Szóste duże rozszerzenie Hrabia, Król i Rzeka jest podzielone na pojedyncze małe moduły. Siódme, Katapulta, jest oczywiście pominięte).",

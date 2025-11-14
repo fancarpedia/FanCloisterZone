@@ -2,7 +2,7 @@
   "@author": "Black Bear",
   "@jcz-version": "5.12.1",
   "@fcz-version": "6.0.0",
-  "@version": "0.8.6",
+  "@version": "0.8.13",
   "about": {
     "configuration-file": "Fichier de configuration",
     "jcloisterzone-game-engine": "Moteur de jeu de JCloisterZone",
@@ -44,7 +44,7 @@
     "pass": "Passer",
     "play-again": "Jouer à nouveau",
     "play-online": "Jouer en ligne",
-    "play-online-fan": "Jouer en ligne sur le serveur de Fan",
+    "play-online-fan": "Jouer en ligne sur le serveur Fan",
     "plus-description": "Ajouter plusieurs instances",
     "raise": "Augmenter",
     "remove": "Retirer",
@@ -116,6 +116,7 @@
     "russian-promos": "Tuiles promotionnelles russes",
     "siege": "Siège",
     "spiel-doch": "Spiel Doch!",
+    "the-city-gates": "Les Portes de la Ville",
     "the-flying-machines-2": "Les Ornithoptères 2",
     "the-labyrinths": "Les Labyrinthes",
     "tower": "La Tour",
@@ -171,6 +172,7 @@
       "player-may-move-a-meeple-from-the-market-district-before-final-scoring": "Le joueur peut déplacer un meeple du Marché avant l’évaluation finale.",
       "player-may-place-a-meeple-in-a-city-district": "Le joueur peut poser un meeple dans un quartier de la ville.",
       "player-may-place-a-meeple-next-to-already-present-one": "Le joueur peut poser un meeple à côté d’un meeple déjà présent.",
+      "player-may-place-a-tile-from-supply": "Le joueur peut placer une tuile provenant de la réserve",
       "player-may-place-an-abbey": "Le joueur peut placer un monastère",
       "player-must-place-the-tile": "Le joueur doit placer la tuile",
       "siege-player-can-escape-a-besieged-city": "Le joueur peut s’échapper d’une ville assiégée.",
@@ -187,6 +189,7 @@
       "you-may-move-a-meeple-from-the-market-district-before-final-scoring": "Vous pouvez déplacer un meeple du Marché avant l’évaluation finale.",
       "you-may-place-a-meeple-in-a-city-district": "Vous pouvez poser un meeple dans un quartier de la ville.",
       "you-may-place-a-meeple-next-to-already-present-one": "Vous pouvez poser un meeple à côté d’un meeple déjà présent.",
+      "you-may-place-a-tile-from-supply": "Vous pouvez placer une tuile provenant de la réserve",
       "you-may-place-an-abbey": "Vous pouvez placer un monastère",
       "your-action": "votre action"
     },
@@ -327,7 +330,8 @@
       "name": "Nom",
       "open-slot": "ouvrir emplacement",
       "remote-player": "joueur à distance",
-      "rename-player": "Renommer le joueur"
+      "rename-player": "Renommer le joueur",
+      "waiting-for-player": "en attente de joueur"
     },
     "game-element-box": {
       "mandatory-for-selected-tiles": "Obligatoire pour les tuiles sélectionnées",
@@ -526,11 +530,12 @@
       "continue-with-recently-saved-games": "Continuer des parties récemment sauvegardées",
       "create-directly-from": "Créer une nouvelle partie directement à partir de",
       "load-game": "Charger une partie",
+      "local-games": "Parties locales",
       "my-favorites": "mes favoris",
       "new-game": "Nouvelle partie",
+      "open-game": "Ouvrir une partie",
       "title": "Parties hébergées par le joueur"
     },
-    "new-version-available": "Une nouvelle version de FanCloisterZone est disponible.",
     "online": {
       "abandon-game": "Abandonner la partie",
       "chat-during-game": "Discuter pendant la partie",
@@ -549,11 +554,18 @@
       "remove-unfinished-game-confirmation": "Voulez-vous supprimer définitivement cette partie inachevée de votre liste ?",
       "some-expansions-are-playable-only-here": "Certaines extensions ne sont jouables qu’ici",
       "title": "Parties hébergées sur un serveur public",
-      "title-fan": "Jeux hébergés sur le serveur de Fan",
+      "title-fan": "Jeux hébergés sur le serveur Fan",
       "you-have-no-game-in-progress": "Vous n’avez pas de partie en cours."
     },
-    "release-notes": "Notes de version",
-    "update-to": "Mise à jour vers {version}"
+    "update": {
+      "download": "Télécharger",
+      "download-error": "Erreur de téléchargement",
+      "install-new-version": "Installer la nouvelle version",
+      "new-version-available": "Une nouvelle version de FanCloisterZone est disponible.",
+      "release-notes": "Notes de version",
+      "starting": "Début",
+      "update-to": "Mise à jour vers {version}"
+    }
   },
   "join-game": {
     "connect-to-remote-host": "Connectez-vous à l’hôte distant avec une partie créée.",
@@ -563,7 +575,7 @@
   },
   "menu": {
     "about": "À propos",
-    "exit": "Quitter JCloisterZone",
+    "exit": "Quitter FanCloisterZone",
     "farm-hints": "Délimiter les prés",
     "file": "Fichier",
     "game": "Partie",
@@ -665,6 +677,13 @@
       "preferred-color": "Couleur préférée",
       "preferred-color-description": "Acceptez automatiquement une couleur après avoir rejoint une partie.",
       "title": "Joueur"
+    },
+    "system": {
+      "app-channel": "Chaîne de mises à jour de l’application",
+      "dev": "Test de nouvelles fonctionnalités pendant les implémentations",
+      "beta": "Prouvez que l’application et les nouvelles fonctions sont opérationnelles",
+      "stable": "Je veux juste jouer et profiter du jeu",
+      "title": "Système"
     },
     "title": "Paramètres"
   },

@@ -2,7 +2,7 @@
   "@author": "Carlium & Meepledrone",
   "@jcz-version": "5.12.1",
   "@fcz-version": "6.0.0",
-  "@version": "0.8.6",
+  "@version": "0.8.13",
   "about": {
     "configuration-file": "Archivo de configuración",
     "jcloisterzone-game-engine": "Motor de juego JCloisterZone",
@@ -116,6 +116,7 @@
     "russian-promos": "Promos Rusas",
     "siege": "Sitio",
     "spiel-doch": "Spiel Doch!",
+    "the-city-gates": "Puertas de Ciudad",
     "the-flying-machines-2": "Máquinas Voladoras 2",
     "the-labyrinths": "Laberintos",
     "tower": "La Torre",
@@ -171,6 +172,7 @@
       "player-may-move-a-meeple-from-the-market-district-before-final-scoring": "Jugador puede mover un seguidor desde el distrito del mercado antes de la puntuación final.",
       "player-may-place-a-meeple-in-a-city-district": "Jugador puede colocar un seguidor en un distrito de la ciudad.",
       "player-may-place-a-meeple-next-to-already-present-one": "Jugador puede colocar un seguidor junto a uno ya presente.",
+      "player-may-place-a-tile-from-supply": "Jugador puede colocar una loseta de su reserva",
       "player-may-place-an-abbey": "Jugador puede colocar una abadía",
       "player-must-place-the-tile": "Jugador debe colocar una loseta",
       "siege-player-can-escape-a-besieged-city": "Jugador puede escapar de una ciudad sitiada.",
@@ -187,6 +189,7 @@
       "you-may-move-a-meeple-from-the-market-district-before-final-scoring": "Puede mover un seguidor desde el distrito del mercado antes de la puntuación final.",
       "you-may-place-a-meeple-in-a-city-district": "Puede colocar un seguidor en un distrito de la ciudad.",
       "you-may-place-a-meeple-next-to-already-present-one": "Puede colocar un seguidor junto a uno ya presente.",
+      "you-may-place-a-tile-from-supply": "Puede colocar una loseta de su reserva",
       "you-may-place-an-abbey": "Puede colocar una abadía",
       "your-action": "su acción"
     },
@@ -327,7 +330,8 @@
       "name": "Nombre",
       "open-slot": "puesto disponible",
       "remote-player": "jugador remoto",
-      "rename-player": "Renombrar jugador"
+      "rename-player": "Renombrar jugador",
+      "waiting-for-player": "esperando a jugador"
     },
     "game-element-box": {
       "mandatory-for-selected-tiles": "Obligatorio para las losetas seleccionadas",
@@ -526,11 +530,12 @@
       "continue-with-recently-saved-games": "Continuar con partidas guardadas recientemente",
       "create-directly-from": "Crear una nueva partida directamente desde",
       "load-game": "Cargar partida",
+      "local-games": "Partidas locales",
       "my-favorites": "mis favoritos",
       "new-game": "Nueva partida",
+      "open-game": "Abrir partida",
       "title": "Partidas organizadas por el jugador"
     },
-    "new-version-available": "Una nueva versión de FanCloisterZone está disponible.",
     "online": {
       "abandon-game": "Abandonar la partida",
       "chat-during-game": "Charlar durante la partida",
@@ -552,8 +557,15 @@
       "title-fan": "Partidas alojadas en un servidor de fan",
       "you-have-no-game-in-progress": "No hay partidas en curso."
     },
-    "release-notes": "Notas de la versión",
-    "update-to": "Actualizar a la versión {version}"
+    "update": {
+      "download": "Descargar",
+      "download-error": "Error de descarga",
+      "install-new-version": "Instalar nueva versión",
+      "new-version-available": "Una nueva versión de FanCloisterZone está disponible.",
+      "release-notes": "Notas de la versión",
+      "starting": "Iniciando",
+      "update-to": "Actualizar a la versión {version}"
+    }
   },
   "join-game": {
     "connect-to-remote-host": "Conectar a un servidor remoto con una partida iniciada.",
@@ -665,6 +677,13 @@
       "preferred-color": "Color preferido",
       "preferred-color-description": "Seleccionar color automáticamente después de unirse a una partida.",
       "title": "Jugador"
+    },
+    "system": {
+      "app-channel": "Canal de actualizaciones de la App",
+      "dev": "Probando nueva función durante implementaciones",
+      "beta": "Confirma que la App y las nuevas funciones se han completado",
+      "stable": "Solo quiero jugar y disfrutar del juego",
+      "title": "Sistema"
     },
     "title": "Ajustes"
   },

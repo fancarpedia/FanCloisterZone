@@ -2,10 +2,10 @@
   "@author": "Challa007 & Bombur",
   "@jcz-version": "5.12.1",
   "@fcz-version": "6.0.0",
-  "@version": "0.8.6",
+  "@version": "0.8.13",
   "about": {
     "configuration-file": "Konfigurationsdatei",
-    "jcloisterzone-game-engine": "JCloisteZone Spiel-Engine",
+    "jcloisterzone-game-engine": "JCloisterZone Spiel-Engine",
     "system-java-version": "System-Java-Version",
     "title": "JCloisterZone",
     "fantitle": "FanCloisterZone Edition",
@@ -30,7 +30,7 @@
     "close": "Schliessen",
     "confirm": "Bestätigen",
     "connect": "Verbinde",
-    "create": "Erstelle Spiel",
+    "create": "Erstelle",
     "create-game": "Spiel erstellen",
     "create-public-game": "Öffentliches Spiel erstellen",
     "disconnect": "Trennen",
@@ -45,7 +45,7 @@
     "play-again": "Nochmal spielen",
     "play-online": "Online spielen",
     "play-online-fan": "Spiele online auf dem Fan-Server",
-    "plus-description": "Fügen Sie mehrere Instanzen hinzu",
+    "plus-description": "Füge mehrere Instanzen hinzu",
     "raise": "Erhöhen",
     "remove": "Entfernen",
     "remove-from-favorites": "Aus Favoriten entfernen",
@@ -100,7 +100,7 @@
     "festival": "Das Fest",
     "flier": "Die Fluggeräte",
     "goldmines": "Die Goldminen",
-    "gq11": "Die GAMES QUARTERLY #11 Erweiterung",
+    "gq11": "Die GAMES QUARTERLY #11 Mini-Erweiterung",
     "heretics-and-shrines": "Die Kultstätte (und der Ketzer) (5 Plättchen)",
     "hills-and-sheep": "Schafe und Hügel",
     "inns-and-cathedrals": "Wirtshäuser und Kathedralen",
@@ -116,6 +116,7 @@
     "russian-promos": "Russische Sonderplättchen",
     "siege": "Belagerung",
     "spiel-doch": "Spiel Doch",
+    "the-city-gates": "Stadttore",
     "the-flying-machines-2": "Die Flugmaschinen 2",
     "the-labyrinths": "Labyrinthe",
     "tower": "Der Turm",
@@ -138,14 +139,14 @@
       "bazaar-player-must-choose-a-tile-and-bid": "Der Spieler muss ein Plättchen und ein Gebot auswählen.",
       "bazaar-player-must-raise-bid-or-pass": "Der Spieler muss das Gebot erhöhen oder passen",
       "bazaar-raise-bid-or-pass": "Gebot erhöhen oder passen",
-      "castle-player-is-allowed-to-place": "Der Spieler darf setzen'",
-      "castle-you-are-allowed-to-place": "Du darfst setzen'",
+      "castle-player-is-allowed-to-place": "Der Spieler darf setzen",
+      "castle-you-are-allowed-to-place": "Du darfst setzen",
       "coc-player-can-move-the-count": "Der Spieler darf den Grafen in ein anderes Stadtviertel ziehen.",
       "coc-you-can-move-the-count": "Du darfst den Grafen in ein anderes Stadtviertel ziehen.",
-      "crop-circles-choose-city": "Stadt",
-      "crop-circles-choose-field": "Wiese",
-      "crop-circles-choose-one": "Wähle: Der Spieler {deploy} oder {remove} einen Meeple in/von Gebiet. Gebiet: {feature}.",
-      "crop-circles-choose-road": "Strasse",
+      "crop-circles-choose-city": "eine Stadt",
+      "crop-circles-choose-field": "eine Wiese",
+      "crop-circles-choose-one": "Wähle: Jeder Spieler {deploy} oder {remove} einen Meeple in/von {feature}.",
+      "crop-circles-choose-road": "eine Strasse",
       "crop-circles-player-must-choose": "Der Spieler muss wählen: Jeder Spieler darf 1 Meeple auf/von {feature} einsetzen oder entfernen.",
       "crop-circles-player-must-return-meeple": "Der Spieler muss einen seiner Meeples zurücknehmen.",
       "crop-circles-you-must-return-meeple": "Du musst einen deiner Meeples zurücknehmen.",
@@ -171,6 +172,7 @@
       "player-may-move-a-meeple-from-the-market-district-before-final-scoring": "Der Spieler darf vor der Schlusswertung 1 Meeple vom Markt  herausnehmen.",
       "player-may-place-a-meeple-in-a-city-district": "Der Spieler darf 1 Meeple auf ein Stadtviertel setzen.",
       "player-may-place-a-meeple-next-to-already-present-one": "Der Spieler kann einen Meeple neben einen bereits vorhandenen stellen.",
+      "player-may-place-a-tile-from-supply": "Der Spieler darf ein Plättchen aus dem Vorrat einsetzen",
       "player-may-place-an-abbey": "Der Spieler darf eine Abtei einsetzen",
       "player-must-place-the-tile": "Der Spieler muss das Plättchen legen",
       "siege-player-can-escape-a-besieged-city": "Der Spieler kann aus einer belagerten Stadt fliehen.",
@@ -187,8 +189,9 @@
       "you-may-move-a-meeple-from-the-market-district-before-final-scoring": "Du darfst vor der Schlusswertung 1 Meeple vom Markt herausnehmen.",
       "you-may-place-a-meeple-in-a-city-district": "Du darfst 1 Meeple auf ein Stadtviertel setzen.",
       "you-may-place-a-meeple-next-to-already-present-one": "Du darfst einen Meeple neben einen bereits vorhandenen stellen.",
+      "you-may-place-a-tile-from-supply": "Du darfst ein Plättchen aus dem Vorrat legen",
       "you-may-place-an-abbey": "Du darfst eine Abtei einsetzen",
-      "your-action": "deiner Aktion"
+      "your-action": "deine Aktion"
     },
     "chat": {
       "new-message": "Neue Nachricht"
@@ -205,7 +208,7 @@
       "count": "Graf",
       "decinsky-sneznik": "Hoher Schneeberg",
       "donkey": "Esel",
-      "donkey-description": "Der Esel als neutrale Figur blockiert die Fertigstellung jedes Landschaftselements, das sich auf dem Plättchen befindet, auf dem er steht.",
+      "donkey-description": "Der Esel als neutrale Figur blockiert die Fertigstellung jedes Gebiets, das sich auf dem Plättchen befindet, auf dem er steht.",
       "dragon": "Drache",
       "fairy": "Fee",
       "ferry": "Fähre",
@@ -226,7 +229,7 @@
       "tunnel": "Tunnel",
       "wagon": "Wagen",
       "windmill": "Windmühle",
-      "windmill-description": "Windmühlen bringen Punkte, wenn sie in einem großen Kreuz aus Plättchen stehen. (Substituted the plus with a cross, since that's more commonly used to reference the form.)",
+      "windmill-description": "Windmühlen bringen Punkte, wenn sie in einem großen Kreuz aus Plättchen stehen.",
       "witch": "Hexe"
     },
     "feature": {
@@ -327,7 +330,8 @@
       "name": "Name",
       "open-slot": "offener Slot",
       "remote-player": "Remote Spieler",
-      "rename-player": "Spieler umbenennen"
+      "rename-player": "Spieler umbenennen",
+      "waiting-for-player": "auf Spieler warten"
     },
     "game-element-box": {
       "mandatory-for-selected-tiles": "Obligatorisch für ausgewählte Plättchen",
@@ -365,8 +369,8 @@
       "farmers-description": "Spieler dürfen Meeples auf Wiesen setzen.",
       "festival-description": "Mit einem Festplättchen kann man eine eigene Figur zurückholen, anstatt eine einzusetzen.",
       "festival-disabled": "Kein Festplättchen ist im Spiel.",
-      "flowers-description": "Wenn ein Bauwerk gewertet wird, erhält jeder daran beteiligte Spieler, unabhängig von der Mehrheit, drei Punkte, wenn sein Blumenplättchen dieselbe Farbe hat.",
-      "flowers-disabled": "Kein Plättchen mit Blumen ist im Spiel.",
+      "flowers-description": "Wenn ein Bauwerk gewertet wird, erhält jeder daran beteiligte Spieler, unabhängig von der Mehrheit, 3 Punkte, wenn er den entsprechenden Blumenmarker hat.",
+      "flowers-disabled": "Kein Blumenmarker ist im Spiel.",
       "gameplay-variants": "Spielvarianten",
       "garden-description": "Hier kann ein Abt gesetzt werden.",
       "garden-disabled": "Abt ist nicht ausgewählt.",
@@ -395,7 +399,7 @@
       "vineyard-description": "Zusätzliche Punkte für nahe gelegenes Kloster.",
       "vineyard-disabled": "Kein Plättchen mit Weinberg ist im Spiel.",
       "well-description": "Füge einen Punkt pro Brunnen auf Straßen hinzu. Eine abgeschlossene Straße mit Wirtshaus bekommt 2 Punkte, eine unfertige Straße mit Wirtshaus bekommt 0 Punkte.",
-      "well-disabled": "Es gibt kein Plättchen mit Brunnen im Spie"
+      "well-disabled": "Es gibt kein Plättchen mit Brunnen im Spiel"
     },
     "selected-tiles": "Ausgewählte Plättchen",
     "tiles": {
@@ -492,7 +496,7 @@
         "standard": "Standard",
         "extended": "Stärker",
         "combination": "Kombiniert",
-        "description": "Zerstörung durch den Meteoriteneuinschlag {}."
+        "description": "{} Zerstörung durch den Meteoriteneuinschlag."
       },
       "more-tunnel-tokens": {
         "1/1": "1/1",
@@ -526,11 +530,12 @@
       "continue-with-recently-saved-games": "Fahre mit zuletzt gespeicherten Spielen fort",
       "create-directly-from": "Erstelle ein neues Spiel direkt aus",
       "load-game": "Spiel laden",
+      "local-games": "lokale Spiele",
       "my-favorites": "meinen Favoriten",
       "new-game": "Neues Spiel",
+      "open-game": "Offenes Spiel",
       "title": "Vom Spieler gehostete Spiele"
     },
-    "new-version-available": "Es ist eine neue Version von FanCloisterZone verfügbar.",
     "online": {
       "abandon-game": "Spiel aufgeben",
       "chat-during-game": "Chat während des Spiels",
@@ -552,8 +557,15 @@
       "title-fan": "Auf dem Fan-Server gehostete Spiele",
       "you-have-no-game-in-progress": "Du hast kein laufendes Spiel."
     },
-    "release-notes": "Versionshinweise",
-    "update-to": "Aktualisiere auf {version}"
+    "update": {
+      "download": "Download",
+      "download-error": "Download Fehler",
+      "install-new-version": "Installiere die neue Version",
+      "new-version-available": "Es ist eine neue Version von FanCloisterZone verfügbar.",
+      "release-notes": "Versionshinweise",
+      "starting": "Start",
+      "update-to": "Aktualisiere auf {version}"
+    }
   },
   "join-game": {
     "connect-to-remote-host": "Verbinde dich mit dem erstellten Spiel mit dem Remote-Host.",
@@ -575,7 +587,7 @@
     "online": "Online",
     "playonline-connect": "Onlinespiel Verbinden",
     "playonline-disconnect": "Onlinespiel Trennen",
-    "report-bug": "Bug melden",
+    "report-bug": "einen Fehler melden",
     "rotate": "Rotieren",
     "rules": "Regeln",
     "save-game": "Spiel speichern",
@@ -665,6 +677,13 @@
       "preferred-color": "Bevorzugte Farbe",
       "preferred-color-description": "automatisch zugewiesene Farbe nach Beitritt zum Spiel",
       "title": "Spieler"
+    },
+    "system": {
+      "app-channel": "App Updates Kanal",
+      "dev": "Test neuer Funktionen während der Implementierung",
+      "beta": "Beweis, dass App und neue Funktionen fertig sind",
+      "stable": "Ich möchte nur spielen und das Spiel genießen",
+      "title": "System"
     },
     "title": "Einstellungen"
   },

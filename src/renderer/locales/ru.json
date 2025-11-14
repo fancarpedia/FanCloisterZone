@@ -1,12 +1,14 @@
 {
   "@author": "pOison & Dextea",
-  "@jcz-version": "5.13.5",
+  "@jcz-version": "5.12.1",
+  "@fcz-version": "6.0.0",
   "@version": "0.6.0",
   "about": {
     "configuration-file": "Файл конфигурации",
     "jcloisterzone-game-engine": "Игровой движок JCloisterZone",
     "system-java-version": "Версия Java системы",
-    "title": "JCloisterZone Fan Edition",
+    "title": "JCloisterZone",
+    "fantitle": "FanCloisterZone Edition",
     "version": "версия"
   },
   "bookmarks": {
@@ -30,6 +32,7 @@
     "connect": "Подключиться",
     "create": "Создать",
     "create-game": "Создать игру",
+    "create-public-game": "Create Public Game",
     "disconnect": "Отключиться",
     "grow-the-flock": "Увеличить стадо",
     "hide-stats": "Скрыть статистику",
@@ -60,6 +63,7 @@
     "undo": "Отменить"
   },
   "core-messages": {
+    "bonuses": "Бонусы",
     "choose": "Выбрать",
     "done": "Готово",
     "game-engine-not-available": "Игровой движок недоступен.",
@@ -75,6 +79,7 @@
     "used-time": "Затраченное время"
   },
   "expansion": {
+    "-unknown": "Missing expansion",
     "abbey-and-mayor": "Аббатство и мэр",
     "basic": "Основной набор",
     "besiegers": "Осадники",
@@ -87,6 +92,10 @@
     "cult": "Культ",
     "cult-places": "Места культа",
     "darmstadt": "Дармштадт",
+    "decinsky-sneznik": "Дечинский Снежник",
+    "dutch-monasteries": "Dutch Monasteries",
+    "family-feud": "Family Feud",
+    "farmers-heaven": "Farmers Heaven",
     "ferries": "Паромы",
     "festival": "Фестиваль",
     "flier": "Летающие машины",
@@ -98,6 +107,7 @@
     "king-and-robber": "Король и Барон разбойников",
     "labyrinth": "Лабиринт",
     "mage-and-witch": "Маг и Ведьма",
+    "meteorites": "Метеориты",
     "monasteries": "Монастыри",
     "princess-and-dragon": "Принцесса и Дракон",
     "river": "Река",
@@ -106,11 +116,16 @@
     "russian-promos": "Русские промо",
     "siege": "Осада",
     "spiel-doch": "Spiel Doch!",
+    "the-city-gates": "Городские ворота",
+    "the-flying-machines-2": "Летательные аппараты 2",
+    "the-labyrinths": "Лабиринты",
     "tower": "Башня",
     "traders-and-builders": "Торговцы и строители",
     "tunnel": "Туннель",
     "under-the-big-top": "Цирк",
+    "village-life": "Village Life",
     "watchtowers": "Сторожевые башни",
+    "wells": "Колодцы",
     "wind-roses": "Розы ветров",
     "winter": "Зима"
   },
@@ -148,6 +163,7 @@
       "hills-and-sheep-tokens-left-plural": "Осталось 0 жетонов | Остался 1 жетон | Осталось {tokens} жетонов",
       "mage-and-witch-player-must-remove-mage-or-witch": "Игрок должен удалить мага или ведьму.",
       "mage-and-witch-remove-mage-or-witch": "Удалить мага или ведьму.",
+      "meteorite-impact": "Meteorite impact",
       "monasteries-how-do-you-want-place-follower": "Как вы хотите разместить мипла на особом монастыре?",
       "or": "или",
       "place-the-tile": "Поместите плитку",
@@ -156,11 +172,13 @@
       "player-may-move-a-meeple-from-the-market-district-before-final-scoring": "Игрок может переместить мипла из рыночного района перед окончательным подсчетом очков.",
       "player-may-place-a-meeple-in-a-city-district": "Игрок может разместить мипла в городском районе.",
       "player-may-place-a-meeple-next-to-already-present-one": "Игрок может разместить мипла рядом с уже присутствующим.",
+      "player-may-place-a-tile-from-supply": "Player may place a tile from supply",
       "player-may-place-an-abbey": "Игрок может разместить аббатство",
       "player-must-place-the-tile": "Игрок должен поместить плитку",
       "siege-player-can-escape-a-besieged-city": "Игрок может выбраться из осажденного города.",
       "siege-you-can-escape-a-besieged-city": "Вы можете выбраться из осажденного города.",
       "skip-action": "Пропустить действие",
+      "tile-placement": "Tile placement",
       "tower-player-can-take-a-prisoner": "Игрок может взять в плен.",
       "tower-player-must-select-follower-for-exchange": "Игрок должен выбрать мипла для обмена",
       "tower-select-follower-for-exchange": "Выберите мипла для обмена",
@@ -171,6 +189,7 @@
       "you-may-move-a-meeple-from-the-market-district-before-final-scoring": "Вы можете переместить мипла из рыночного района перед окончательным подсчетом очков.",
       "you-may-place-a-meeple-in-a-city-district": "Вы можете разместить мипла в городском районе.",
       "you-may-place-a-meeple-next-to-already-present-one": "Вы можете разместить мипла рядом с уже присутствующим.",
+      "you-may-place-a-tile-from-supply": "You may place a tile from supply",
       "you-may-place-an-abbey": "Вы можете разместить аббатство",
       "your-action": "ваш ход"
     },
@@ -187,6 +206,9 @@
       "builder": "Строитель",
       "castle": "Замок",
       "count": "Граф",
+      "decinsky-sneznik": "Дечинский Снежник",
+      "donkey": "Обезьяна",
+      "donkey-description": "Donkey as an neutral figure, blocks the completion of any feature from the tile it stands on.",
       "dragon": "Дракон",
       "fairy": "Фея",
       "ferry": "Паром",
@@ -206,6 +228,8 @@
       "traders": "Торговые товары",
       "tunnel": "Туннель",
       "wagon": "Фургон",
+      "windmill": "Windmill",
+      "windmill-description": "Windmills grant points once surrounded in a large plus-shaped pattern.",
       "witch": "Ведьма"
     },
     "feature": {
@@ -230,6 +254,7 @@
       "field": "Поле",
       "fields": "Поля",
       "flock": "Стадо",
+      "flowers": "Flowers",
       "garden": "Сад",
       "gardens": "Сады",
       "gold": "Золото",
@@ -238,6 +263,10 @@
       "inn": "Трактир",
       "king": "Король",
       "king-and-robber": "Король и грабитель",
+      "marketplace": "Marketplace",
+      "marketplaces": "Marketplaces",
+      "meteorite": "Метеорит",
+      "meteorites": "Метеориты",
       "monasteries": "Монастыри",
       "monastery": "Монастырь",
       "pig-herd": "Стая свиней",
@@ -301,7 +330,8 @@
       "name": "Имя",
       "open-slot": "открытое место",
       "remote-player": "удаленный игрок",
-      "rename-player": "Переименовать игрока"
+      "rename-player": "Переименовать игрока",
+      "waiting-for-player": "waiting for player"
     },
     "game-element-box": {
       "mandatory-for-selected-tiles": "Обязательно для выбранных плиток",
@@ -319,6 +349,7 @@
       "name": "Имя",
       "no-player-in-game": "Нет игрока в игре",
       "options": "Опции",
+      "public-game": "Public game",
       "randomize-seating-order": "Случайный порядок сидения",
       "set-game-title": "Задать название игры",
       "share-the-key": "Поделитесь ключом с другими игроками, чтобы позволить им подключиться к игре.",
@@ -338,6 +369,8 @@
       "farmers-description": "Игроки могут размещать миплы на полях.",
       "festival-description": "С плиткой фестиваля вы можете вернуть одну из своих фигур вместо размещения новой.",
       "festival-disabled": "В игре нет плитки с фестивалем.",
+      "flowers-description": "Flowers add +3 points to scored feature when they match player's token.",
+      "flowers-disabled": "No tile with Flowers is in the game.",
       "gameplay-variants": "Варианты игры",
       "garden-description": "Может быть занят аббатом.",
       "garden-disabled": "Аббат не выбран.",
@@ -345,6 +378,10 @@
       "hill-disabled": "В игре нет плитки с холмом.",
       "inn-description": "Завершенные дороги с постоялым двором умножаются на 2, без очков во время окончательного подсчета.",
       "inn-disabled": "В игре нет плитки с постоялым двором.",
+      "marketplace-description": "Marketplaces connect several roads into a shared network that only completes when all linked roads are closed. When scored, bonus points equal to the length of the other completed roads in that network are given.",
+      "marketplace-disabled": "No tile with Marketplace is in the game.",
+      "meteorite-description": "TBA",
+      "meteorite-disabled": "No tile with Crater is in the game.",
       "optional-game-mechanics": "Дополнительные игровые механики",
       "pig-herd-description": "Считается дополнительной свиньей на поле (фермеры получают больше очков).",
       "pig-herd-disabled": "В игре нет плитки с свинным стадом.",
@@ -362,7 +399,7 @@
       "vineyard-description": "Дополнительные очки за близлежащий монастырь.",
       "vineyard-disabled": "В игре нет плитки с виноградником.",
       "well-description": "Добавляет по одному очку за каждый колодец на дорогах. Дорога с трактиром даёт 2 очка при завершении, но не приносит очков при окончательном подсчёте.",
-      "well-disabled": "В игре нет плитки с колодцем."
+      "well-disabled": ""В игре нет плитки с колодцем."
     },
     "selected-tiles": "Выбранные плитки",
     "tiles": {
@@ -455,6 +492,12 @@
         "3/2/1": "3/2/1",
         "description": "Присвоить {} очков за башню/дом/поле."
       },
+      "meteorite-impact": {
+        "standard": "Standard",
+        "extended": "Stronger",
+        "combination": "Combined",
+        "description": "{} impact of meteorite destruction."
+      },
       "more-tunnel-tokens": {
         "1/1": "1/1",
         "2/1": "2/1",
@@ -487,11 +530,12 @@
       "continue-with-recently-saved-games": "Продолжить с недавно сохраненными играми",
       "create-directly-from": "Создать новую игру напрямую из",
       "load-game": "Загрузить игру",
+      "local-games": "Local games",
       "my-favorites": "мои избранные",
       "new-game": "Новая игра",
+      "open-game": "Open game",
       "title": "Игры, созданные игроками"
     },
-    "new-version-available": "Доступна новая версия JCloisterZone.",
     "online": {
       "abandon-game": "Покинуть игру",
       "chat-during-game": "Chat during game",
@@ -499,9 +543,13 @@
       "game-id": "Идентификатор игры",
       "games-in-progress": "Игры в процессе",
       "join-game": "Присоединиться к игре",
+      "lobby": "Lobby",
+      "no-public-games": "No public games",
       "no-random-discovery": "это означает отсутствие случайного обнаружения игроков",
+      "not-yet-started": "Not yet started",
       "online-storage-description": "При выходе из онлайн-игры она остается в фоновом режиме. Вы можете присоединиться к ней из этого списка в любое время.",
       "paste-a-game-key": "Вставьте ключ игры, предоставленный хостом",
+      "public-games": "Public games",
       "private-games-only": "Теперь поддерживаются только частные игры.",
       "remove-unfinished-game-confirmation": "Вы уверены, что хотите окончательно удалить неоконченную игру из своего списка?",
       "some-expansions-are-playable-only-here": "...",
@@ -509,8 +557,15 @@
       "title-fan": "Games hosted on fan-server",
       "you-have-no-game-in-progress": "У вас нет активных игр."
     },
-    "release-notes": "Изменения в версии",
-    "update-to": "Обновить до версии {version}"
+    "update": {
+      "download": "Download",
+      "download-error": "Download error",
+      "install-new-version": "Install new version",
+      "new-version-available": "Доступна новая версия FanCloisterZone.",
+      "release-notes": "Изменения в версии",
+      "starting": "Starting",
+      "update-to": "Обновить до версии {version}"
+    }
   },
   "join-game": {
     "connect-to-remote-host": "Присоединиться к удаленному хосту с созданной игрой.",
@@ -522,14 +577,17 @@
     "about": "О программе",
     "exit": "Выход",
     "farm-hints": "Подсказки для ферм",
+    "file": "File",
     "game": "Игра",
     "help": "Помощь",
     "join-game": "Присоединиться к игре",
     "leave-game": "Выйти из игры",
     "load-game": "Загрузить игру / Настройки",
     "new-game": "Новая игра",
+    "online": "Online",
     "playonline-connect": "Играть онлайн",
     "playonline-disconnect": "Отключиться",
+    "report-bug": "Report a bug",
     "rotate": "Повернуть",
     "rules": "Правила",
     "save-game": "Сохранить игру",
@@ -593,7 +651,7 @@
     },
     "java": {
       "change-in-settings": "Измените это в {settings}.",
-      "description": "Хотя клиент JCloisterZone является чистым нативным приложением, для запуска игрового движка требуется установленная Java. Другими словами, для игры необходимо наличие Java.",
+      "description": "Хотя клиент FanCloisterZone является чистым нативным приложением, для запуска игрового движка требуется установленная Java. Другими словами, для игры необходимо наличие Java.",
       "download-java": "Скачать Java",
       "java-executable": "Исполняемый файл Java",
       "java-is-not-installed": "Java не установлена!",
@@ -619,6 +677,13 @@
       "preferred-color": "Предпочитаемый цвет",
       "preferred-color-description": "Автоматически выбирать цвет после присоединения к игре.",
       "title": "Игрок"
+    },
+    "system": {
+      "app-channel": "App updates channel",
+      "dev": "Testing new function during implementations",
+      "beta": "Prove that app and new functions are done",
+      "stable": "I want just to play and enjoy the game",
+      "title": "System"
     },
     "title": "Настройка"
   },

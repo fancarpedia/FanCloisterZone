@@ -116,6 +116,7 @@
     "russian-promos": "Promos russes",
     "siege": "El setge",
     "spiel-doch": "Spiel Doch!",
+    "the-city-gates": "City Gates",
     "the-flying-machines-2": "Les màquines voladores 2",
     "the-labyrinths": "Laberints",
     "tower": "La torre",
@@ -171,6 +172,7 @@
       "player-may-move-a-meeple-from-the-market-district-before-final-scoring": "El jugador pot moure un seguidor del districte del mercat abans de la puntuació final.",
       "player-may-place-a-meeple-in-a-city-district": "El jugador pot col·locar un seguidor en un districte de la ciutat.",
       "player-may-place-a-meeple-next-to-already-present-one": "Si hi ha un seguidor col·locat, el jugador en pot col·locar un altre al costat.",
+      "player-may-place-a-tile-from-supply": "Player may place a tile from supply",
       "player-may-place-an-abbey": "El jugador pot col·locar una abadia",
       "player-must-place-the-tile": "El jugador ha de col·locar la rajola",
       "siege-player-can-escape-a-besieged-city": "El jugador es pot escapar d'una ciutat assetjada.",
@@ -187,6 +189,7 @@
       "you-may-move-a-meeple-from-the-market-district-before-final-scoring": "Podeu moure un seguidor del districte del mercat abans de la puntuació final.",
       "you-may-place-a-meeple-in-a-city-district": "Podeu col·locar un seguidor en un districte de la ciutat.",
       "you-may-place-a-meeple-next-to-already-present-one": "Si hi ha un seguidor col·locat, en podeu col·locar un altre al costat.",
+      "you-may-place-a-tile-from-supply": "You may place a tile from supply",
       "you-may-place-an-abbey": "Podeu col·locar una abadia",
       "your-action": "la vostra acció"
     },
@@ -327,7 +330,8 @@
       "name": "Nom",
       "open-slot": "ranura oberta",
       "remote-player": "jugador remot",
-      "rename-player": "Canvia el nom de jugador"
+      "rename-player": "Canvia el nom de jugador",
+      "waiting-for-player": "waiting for player"
     },
     "game-element-box": {
       "mandatory-for-selected-tiles": "Obligatori per a les rajoles seleccionades",
@@ -526,11 +530,12 @@
       "continue-with-recently-saved-games": "Continua amb les partides desades recents",
       "create-directly-from": "Crea una partida nova directament des de",
       "load-game": "Carrega partida",
+      "local-games": "Local games",
       "my-favorites": "els meus preferits",
       "new-game": "Partida nova",
+      "open-game": "Open game",
       "title": "Partides organitzades pel jugador"
     },
-    "new-version-available": "Hi ha una nova versió del FanCloisterZone disponible.",
     "online": {
       "abandon-game": "Abandona la partida",
       "chat-during-game": "Xat durant la partida",
@@ -552,8 +557,15 @@
       "title-fan": "Partides allotjades en servidors públics fan",
       "you-have-no-game-in-progress": "No teniu cap partida en curs."
     },
-    "release-notes": "Notes de la versió",
-    "update-to": "Actualitza a la versió {version}"
+    "update": {
+      "download": "Download",
+      "download-error": "Download error",
+      "install-new-version": "Install new version",
+      "new-version-available": "Hi ha una nova versió del FanCloisterZone disponible.",
+      "release-notes": "Notes de la versió",
+      "starting": "Starting",
+      "update-to": "Actualitza a la versió {version}"
+    }
   },
   "join-game": {
     "connect-to-remote-host": "Connecta a un servidor remot amb una partida creada.",
@@ -665,6 +677,13 @@
       "preferred-color": "Color preferit",
       "preferred-color-description": "Tria un color automàticament després d'unir-vos a una partida.",
       "title": "Jugador"
+    },
+    "system": {
+      "app-channel": "App updates channel",
+      "dev": "Testing new function during implementations",
+      "beta": "Prove that app and new functions are done",
+      "stable": "I want just to play and enjoy the game",
+      "title": "System"
     },
     "title": "Opcions"
   },

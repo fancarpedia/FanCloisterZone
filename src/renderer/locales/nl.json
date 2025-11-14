@@ -1,8 +1,8 @@
 {
-  "@author": "Kiap1969",
+  "@author": "Kiap1969 & Sinscerly",
   "@jcz-version": "5.12.1",
   "@fcz-version": "6.0.0",
-  "@version": "0.8.5",
+  "@version": "0.8.13",
   "about": {
     "configuration-file": "Configuratiebestand",
     "jcloisterzone-game-engine": "JCloisterZone Spelmachine",
@@ -116,6 +116,7 @@
     "russian-promos": "Russische Promo's",
     "siege": "Belegering",
     "spiel-doch": "Spiel Doch",
+    "the-city-gates": "Stadspoorten",
     "the-flying-machines-2": "Vliegtuigen 2",
     "the-labyrinths": "Labyrinths",
     "tower": "De Toren",
@@ -171,6 +172,7 @@
       "player-may-move-a-meeple-from-the-market-district-before-final-scoring": "Speler mag voorafgaand aan de eindtelling een meeple uit het marktkwartier verzetten.",
       "player-may-place-a-meeple-in-a-city-district": "Speler mag een meeple op een stadsdeel zetten.",
       "player-may-place-a-meeple-next-to-already-present-one": "De speler mag een meeple bij een reeds aanwezige zetten.",
+      "player-may-place-a-tile-from-supply": "Speler mag een tegel uit de voorraad plaatsen",
       "player-may-place-an-abbey": "Speler mag een adbij leggen",
       "player-must-place-the-tile": "Speler moet de tegel aanleggen",
       "siege-player-can-escape-a-besieged-city": "Speler mag een belegerde stad ontvluchten.",
@@ -187,6 +189,7 @@
       "you-may-move-a-meeple-from-the-market-district-before-final-scoring": "Je mag voorafgaand aan de eindtelling een meeple uit het marktkwartier verzetten.",
       "you-may-place-a-meeple-in-a-city-district": "Je mag een meeple op een stadsdeel zetten.",
       "you-may-place-a-meeple-next-to-already-present-one": "Je mag een meeple bij een reeds aanwezige zetten.",
+      "you-may-place-a-tile-from-supply": "Je mag een tegel uit de voorraad pakken",
       "you-may-place-an-abbey": "Je mag een abdij leggen",
       "your-action": "jouw actie"
     },
@@ -327,7 +330,8 @@
       "name": "Naam",
       "open-slot": "open plaats",
       "remote-player": "externe speler",
-      "rename-player": "Speler hernoemen"
+      "rename-player": "Speler hernoemen",
+      "waiting-for-player": "wachten op tegenspeler"
     },
     "game-element-box": {
       "mandatory-for-selected-tiles": "Verplicht voor de geselecteerde tegels",
@@ -526,11 +530,12 @@
       "continue-with-recently-saved-games": "Recent opgeslagen spellen voortzetten",
       "create-directly-from": "Direct een nieuw spel maken vanuit",
       "load-game": "Spel laden",
+      "local-games": "Lokale spellen",
       "my-favorites": "mijn favorieten",
       "new-game": "Nieuw spel",
+      "open-game": "Open spel",
       "title": "Door speler georganiseerde spellen"
     },
-    "new-version-available": "Er is een nieuwe versie van FanCloisterZone beschikbaar.",
     "online": {
       "abandon-game": "Spel verlaten",
       "chat-during-game": "Chatten tijdens het spel",
@@ -541,6 +546,7 @@
       "lobby": "Lobby",
       "no-public-games": "Geen openbare spellen",
       "no-random-discovery": "dat wil zeggen geen willekeurig zoeken naar spelers",
+      "not-yet-started": "Nog niet begonnen",
       "online-storage-description": "Een online-spel verlaten behoudt het onafgeronde spel op de achtergrond. Je kunt er wanneer je wilt opnieuw mee verbinden.",
       "paste-a-game-key": "Plak een spelsleutel zoals verstrekt door de host",
       "public-games": "Openbare spellen",
@@ -551,8 +557,15 @@
       "title-fan": "Spellen die beschikbaar zijn op de fan-server",
       "you-have-no-game-in-progress": "Je hebt geen lopende spellen."
     },
-    "release-notes": "Uitgave-opmerkingen",
-    "update-to": "Updaten naar {version}"
+    "update": {
+      "download": "Downloaden",
+      "download-error": "Fout bij downloaden",
+      "install-new-version": "Nieuwe versie installeren",
+      "new-version-available": "Er is een nieuwe versie van FanCloisterZone beschikbaar.",
+      "release-notes": "Uitgave-opmerkingen",
+      "starting": "Bezig met starten",
+      "update-to": "Updaten naar {version}"
+    }
   },
   "join-game": {
     "connect-to-remote-host": "Verbinden met externe host met gemaakt spel.",
@@ -664,6 +677,13 @@
       "preferred-color": "Voorkeurskleur",
       "preferred-color-description": "Automatisch een kleur kiezen na verbinden met het spel",
       "title": "Speler"
+    },
+    "system": {
+      "app-channel": "App-updatekanaal",
+      "dev": "Nieuwe functies testen tijdens implementaties",
+      "beta": "Bewijs dat de app en de nieuwe functies klaar zijn",
+      "stable": "Ik wil spelen en genieten van het spel",
+      "title": "Systeem"
     },
     "title": "Instellingen"
   },

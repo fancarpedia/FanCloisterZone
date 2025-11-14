@@ -2,7 +2,7 @@
   "@author": "Bumsakalaka",
   "@jcz-version": "5.12.1",
   "@fcz-version": "6.0.0",
-  "@version": "0.8.6",
+  "@version": "0.8.13",
   "about": {
     "configuration-file": "Konfiguračný súbor",
     "jcloisterzone-game-engine": "Herný engine JCloisteZone",
@@ -116,6 +116,7 @@
     "russian-promos": "Ruské promo",
     "siege": "Obliehanie II",
     "spiel-doch": "Spiel DOCH!",
+    "the-city-gates": "Mestské brány",
     "the-flying-machines-2": "Lietacie stroje 2",
     "the-labyrinths": "Labyrinty",
     "tower": "Veža",
@@ -171,6 +172,7 @@
       "player-may-move-a-meeple-from-the-market-district-before-final-scoring": "Hráč môže umiestniť spoločníka z trhoviska pred konečným bodovaním.",
       "player-may-place-a-meeple-in-a-city-district": "Hráč môže umiestniť spoločníka do mestskej časti.",
       "player-may-place-a-meeple-next-to-already-present-one": "Hráč môže umiestniť spoločníka vedľa už umiestneného.",
+      "player-may-place-a-tile-from-supply": "Hráč môže umiestniť kartičku zo zásoby",
       "player-may-place-an-abbey": "Hráč môže umiestniť opátstvo",
       "player-must-place-the-tile": "Hráč musí priložiť kartičku",
       "siege-player-can-escape-a-besieged-city": "Hráč môže uniknúť z obliehaného mesta.",
@@ -187,6 +189,7 @@
       "you-may-move-a-meeple-from-the-market-district-before-final-scoring": "Môžete umestniť spoločníka z trhoviska pred konečným bodovaním.",
       "you-may-place-a-meeple-in-a-city-district": "Môžete umiestniť spoločníka do mestskej časti.",
       "you-may-place-a-meeple-next-to-already-present-one": "Môžete umiestnniť spoločníka vedľa už umiestneného.",
+      "you-may-place-a-tile-from-supply": "Môžete umiestniť kartičku zo zásoby",
       "you-may-place-an-abbey": "Môžete umiestniť opátstvo",
       "your-action": "vaša akcia"
     },
@@ -327,7 +330,8 @@
       "name": "Meno",
       "open-slot": "otvorené",
       "remote-player": "vzdialený hráč",
-      "rename-player": "Premenovať hráča"
+      "rename-player": "Premenovať hráča",
+      "waiting-for-player": "čakáme na hráča"
     },
     "game-element-box": {
       "mandatory-for-selected-tiles": "Povinné pre vybrané kartičky",
@@ -526,11 +530,12 @@
       "continue-with-recently-saved-games": "Pokračujte v nedávno uložených hrách",
       "create-directly-from": "Vytvorte novú hru priamo z",
       "load-game": "Načítať hru",
+      "local-games": "Miestne hry",
       "my-favorites": "moje obľúbené",
       "new-game": "Nová hra",
+      "open-game": "Otvoriť uloženú hru",
       "title": "Hry na tomto počítači"
     },
-    "new-version-available": "K dispozícii je nová verzia FanCloisterZone.",
     "online": {
       "abandon-game": "Opustiť hru",
       "chat-during-game": "Chat s hráčmi počas hry",
@@ -552,8 +557,15 @@
       "title-fan": "Hry na fanúšikovskom serveri",
       "you-have-no-game-in-progress": "Nemáte rozohranú žiadnu hru."
     },
-    "release-notes": "Poznámky k vydaniu",
-    "update-to": "Aktualizovať na {version}"
+    "update": {
+      "download": "Stiahnuť",
+      "download-error": "Chyba sťahovania",
+      "install-new-version": "Inštalovať novú veriu",
+      "new-version-available": "K dispozícii je nová verzia FanCloisterZone.",
+      "release-notes": "Poznámky k vydaniu",
+      "starting": "Štartovanie",
+      "update-to": "Aktualizovať na {version}"
+    }
   },
   "join-game": {
     "connect-to-remote-host": "Pripojte sa k vzdialenému hostiteľovi s vytvorenou hrou.",
@@ -665,6 +677,13 @@
       "preferred-color": "Predvolená farba",
       "preferred-color-description": "Automaticky vyberie farbu po pripojení k hre.",
       "title": "Hráč"
+    },
+    "system": {
+      "app-channel": "Kanál pre aktualizácie",
+      "dev": "Testovanie nových možností počas ich programovania",
+      "beta": "Otestuj, že nové funkcie v aplikácii sú hotové",
+      "stable": "Chcem len hrať a užívať si hru",
+      "title": "Systém"
     },
     "title": "Nastavenia"
   },

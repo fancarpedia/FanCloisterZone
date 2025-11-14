@@ -2,7 +2,7 @@
   "@author": "Paloi Sciurala",
   "@jcz-version": "5.12.1",
   "@fcz-version": "6.0.0",
-  "@version": "0.8.6",
+  "@version": "0.8.13",
   "about": {
     "configuration-file": "Fișier de configurație",
     "jcloisterzone-game-engine": "Motorul Jocului JCloisterZone",
@@ -116,6 +116,7 @@
     "russian-promos": "Promo-uri rusești",
     "siege": "Asediu",
     "spiel-doch": "Spiel Doch",
+    "the-city-gates": "Porțile de oraș",
     "the-flying-machines-2": "Aparate de zbor 2",
     "the-labyrinths": "Labirinturi",
     "tower": "Turnul",
@@ -171,6 +172,7 @@
       "player-may-move-a-meeple-from-the-market-district-before-final-scoring": "Jucătorul poate muta un meeple din cartierul piață înaintea evaluării finale.",
       "player-may-place-a-meeple-in-a-city-district": "Jucătorul poate plasa un meeple într-un cartier al orașului.",
       "player-may-place-a-meeple-next-to-already-present-one": "Jucătorul poate plasa un meeple lângă unul deja prezent.",
+      "player-may-place-a-tile-from-supply": "Jucătorul are posibilitatea de a plasa un cartonaș din rezervă",
       "player-may-place-an-abbey": "Jucătorul poate plasa o abație",
       "player-must-place-the-tile": "Jucătorul trebuie să plaseze cartonașul",
       "siege-player-can-escape-a-besieged-city": "Jucătorul poate scăpa dintr-un oraș asediat.",
@@ -187,6 +189,7 @@
       "you-may-move-a-meeple-from-the-market-district-before-final-scoring": "Poți muta un meeple din cartierul piață înaintea evaluării finale.",
       "you-may-place-a-meeple-in-a-city-district": "Poți plasa un meeple într-un cartier al orașului.",
       "you-may-place-a-meeple-next-to-already-present-one": "Poți plasa un meeple lângă unul deja prezent.",
+      "you-may-place-a-tile-from-supply": "Ai posibilitatea de a plasa un cartonaș din rezervă",
       "you-may-place-an-abbey": "Poți plasa o abație",
       "your-action": "acțiunea ta"
     },
@@ -327,7 +330,8 @@
       "name": "Nume",
       "open-slot": "deschide locul",
       "remote-player": "jucător de la distanță",
-      "rename-player": "Redenumește jucătorul"
+      "rename-player": "Redenumește jucătorul",
+      "waiting-for-player": "se așteaptă după jucător"
     },
     "game-element-box": {
       "mandatory-for-selected-tiles": "Obligatoriu pentru cartonașele selectate",
@@ -526,11 +530,12 @@
       "continue-with-recently-saved-games": "Continuă cu jocurile salvate recent",
       "create-directly-from": "Creează un joc nou direct din",
       "load-game": "Încarcă joc",
+      "local-games": "Partide locale",
       "my-favorites": "favoritele mele",
       "new-game": "Joc nou",
+      "open-game": "Deschide partida",
       "title": "Jocuri găzduite de jucător"
     },
-    "new-version-available": "Este disponibilă o nouă versiune de FanCloisterZone.",
     "online": {
       "abandon-game": "Abandonează jocul",
       "chat-during-game": "Discută în timpul jocului",
@@ -552,8 +557,15 @@
       "title-fan": "Partide găzduite pe serverul de fani",
       "you-have-no-game-in-progress": "Nu ai niciun joc în curs de jucare."
     },
-    "release-notes": "Note despre lansare",
-    "update-to": "Actualizare la {version}"
+    "update": {
+      "download": "Descarcă",
+      "download-error": "Eroare la descărcare",
+      "install-new-version": "Instalează noua versiune",
+      "new-version-available": "Este disponibilă o nouă versiune de FanCloisterZone.",
+      "release-notes": "Note despre lansare",
+      "starting": "Începe",
+      "update-to": "Actualizare la {version}"
+    }
   },
   "join-game": {
     "connect-to-remote-host": "Conectează-te la gazda de la distanță cu jocul creat.",
@@ -665,6 +677,13 @@
       "preferred-color": "Culoare preferată",
       "preferred-color-description": "Ia automat o culoare după alăturarea la joc.",
       "title": "Jucători"
+    },
+    "system": {
+      "app-channel": "Canalul actualizărilor aplicației",
+      "dev": "Se testează funcții noi în timpul implementării",
+      "beta": "Dovada că aplicația și noile funcții sunt realizate",
+      "stable": "Vreau doar să joc și să mă bucur de joc",
+      "title": "Sistem"
     },
     "title": "Setări"
   },
