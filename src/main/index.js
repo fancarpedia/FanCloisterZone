@@ -85,7 +85,8 @@ app.whenReady().then(() => {
     modules.push(dialog(settings))
     modules.push(winevents(settings))
     modules.push(localServer(settings))
-    modules.push(updater(settings, getAppVersion))
+    const appVersion = getAppVersion()
+    modules.push(updater(settings, appVersion))
     modules.push(installer())
 
     if (process.env.NODE_ENV === 'production') {

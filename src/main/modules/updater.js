@@ -25,7 +25,7 @@ let updateInfo = null
  * @param {string} channel - 'stable' | 'beta' | 'alpha'
  * @param {string} currentVersion - app.getVersion()
  */
-async function getLatestReleaseByChannel(channel = 'stable', currentVersion) {
+async function getLatestReleaseByChannel(channel, currentVersion) {
   const res = await fetch('https://api.github.com/repos/fancarpedia/FanCloisterZone/releases') /* Fan Edition */
   const releases = await res.json()
   const parsed = releases
@@ -69,7 +69,7 @@ async function getLatestReleaseByChannel(channel = 'stable', currentVersion) {
   return candidate
 }
 
-export default function (settings, getAppVersion) {
+export default function (settings, appVersion) {
   // https://gist.github.com/the3moon/0e9325228f6334dabac6dadd7a3fc0b9
   electronLogger.hooks.push((msg, transport) => {
     if (transport !== electronLogger.transports.console) {
@@ -145,7 +145,7 @@ export default function (settings, getAppVersion) {
       })
     }
   }
-  getLatestReleaseByChannel(channel, getAppVersion())
+  getLatestReleaseByChannel(channel, appVersion)
     .then(result => {
       if (!result) return
       updateInfo = result
