@@ -63,9 +63,10 @@ async function createMenu (win, messages) {
   ]
 
   if (settings.devMode) {
+    const remoteEngineValue = 'localhost:9001'
     const toggleRemoteEngine = async () => {
       const currValue = (await getSettings()).enginePath
-      win.webContents.send('settings.update', { enginePath: currValue === 'localhost:9000' ? null : 'localhost:9000' })
+      win.webContents.send('settings.update', { enginePath: currValue === remoteEngineValue ? null : remoteEngineValue })
     }
 
     const toggleLocalPlayOnline = async () => {
@@ -78,7 +79,7 @@ async function createMenu (win, messages) {
       submenu: [
         { role: 'toggleDevTools', label: 'Toggle DevTools' },
         { type: 'separator' },
-        { id: 'remote-engine', label: 'Use Remote Engine', type: 'checkbox', checked: settings.enginePath === 'localhost:9000', click () { toggleRemoteEngine() } },
+        { id: 'remote-engine', label: 'Use Remote Engine', type: 'checkbox', checked: settings.enginePath === remoteEngineValue, click () { toggleRemoteEngine() } },
         { id: 'local-play-online', label: 'Use Local Play Online', type: 'checkbox', checked: settings.playOnlineUrl === 'localhost:8000/ws', click () { toggleLocalPlayOnline() } },
         { id: 'dump-server', label: 'Dump Hosted Game Server State', click () { win.webContents.send('menu.dump-server') } },
         { type: 'separator' },
