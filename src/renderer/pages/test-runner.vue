@@ -14,6 +14,10 @@
             Reset All
           </v-btn>
 
+          <v-btn color="secondary" @click="toggleFinished">
+            {{ !hideFinished ? 'Hide finished' : 'Show All' }}
+          </v-btn>
+
           <v-btn color="secondary" @click="resetFailed">
             Reset Failed
           </v-btn>
@@ -34,8 +38,9 @@
             </tr>
           </thead>
           <tbody>
+           <template v-for="(test, idx) in tests">
             <tr
-              v-for="(test, idx) in tests"
+              v-if="!hideFinished || !test.result || !test.result.ok"
               :key="test.file"
               :class="{ disabled: test.disabled }"
             >
@@ -69,6 +74,7 @@
                 </v-btn>
               </td>
             </tr>
+           </template>
           </tbody>
         </template>
       </v-simple-table>
@@ -86,7 +92,8 @@ import { Expansion } from '@/models/expansions'
 export default {
   data() {
     return {
-      isRunningAll: false,
+      hideFinished: false,
+   	  isRunningAll: false,
       stopRunning: false,
       tests: []
     }
@@ -186,6 +193,10 @@ export default {
     },
 
     resetAll() {
+      if (this.isRunningAll) {
+        this.toggleRunAll()
+      }
+      this.onlyFailed = false
       this.tests = this.tests.map(test => ({
         ...omit(test, ['result']),
       }))
@@ -202,6 +213,10 @@ export default {
       })
     },
 
+    toggleFinished() {
+      this.hideFinished = !this.hideFinished
+    },
+    
     runTest(file) {
       return new Promise(resolve => {
         const unsubscribe = this.$store.subscribe(async mutation => {
@@ -247,7 +262,6 @@ h1
   flex-direction: column
   height: 100vh
   overflow: hidden
-  background: #fafafa
 
 .test-runner-header
   position: fixed
@@ -261,7 +275,6 @@ h1
   padding: 0 20px
   border-bottom: 1px solid #ddd
   z-index: 10
-  background-color: white
 
 .test-runner-header h1
   margin: 0
