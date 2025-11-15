@@ -9,7 +9,7 @@
     "system-java-version": "Versió del Java del sistema",
     "title": "JCloisterZone",
     "fantitle": "Edició FanCloisterZone",
-    "version": "versió"
+    "version": "Versió"
   },
   "bookmarks": {
     "description-end": "el botó de la barra lateral.",
@@ -116,7 +116,7 @@
     "russian-promos": "Promos russes",
     "siege": "El setge",
     "spiel-doch": "Spiel Doch!",
-    "the-city-gates": "City Gates",
+    "the-city-gates": "Portes de la ciutat",
     "the-flying-machines-2": "Les màquines voladores 2",
     "the-labyrinths": "Laberints",
     "tower": "La torre",
@@ -172,7 +172,7 @@
       "player-may-move-a-meeple-from-the-market-district-before-final-scoring": "El jugador pot moure un seguidor del districte del mercat abans de la puntuació final.",
       "player-may-place-a-meeple-in-a-city-district": "El jugador pot col·locar un seguidor en un districte de la ciutat.",
       "player-may-place-a-meeple-next-to-already-present-one": "Si hi ha un seguidor col·locat, el jugador en pot col·locar un altre al costat.",
-      "player-may-place-a-tile-from-supply": "Player may place a tile from supply",
+      "player-may-place-a-tile-from-supply": "El jugador pot col·locar una rajola del subministrament.",
       "player-may-place-an-abbey": "El jugador pot col·locar una abadia",
       "player-must-place-the-tile": "El jugador ha de col·locar la rajola",
       "siege-player-can-escape-a-besieged-city": "El jugador es pot escapar d'una ciutat assetjada.",
@@ -189,9 +189,9 @@
       "you-may-move-a-meeple-from-the-market-district-before-final-scoring": "Podeu moure un seguidor del districte del mercat abans de la puntuació final.",
       "you-may-place-a-meeple-in-a-city-district": "Podeu col·locar un seguidor en un districte de la ciutat.",
       "you-may-place-a-meeple-next-to-already-present-one": "Si hi ha un seguidor col·locat, en podeu col·locar un altre al costat.",
-      "you-may-place-a-tile-from-supply": "You may place a tile from supply",
+      "you-may-place-a-tile-from-supply": "Podeu col·locar una rajola del subministrament",
       "you-may-place-an-abbey": "Podeu col·locar una abadia",
-      "your-action": "la vostra acció"
+      "your-action": "l'acció"
     },
     "chat": {
       "new-message": "Missatge nou"
@@ -331,7 +331,7 @@
       "open-slot": "ranura oberta",
       "remote-player": "jugador remot",
       "rename-player": "Canvia el nom de jugador",
-      "waiting-for-player": "waiting for player"
+      "waiting-for-player": "s'espera al jugador"
     },
     "game-element-box": {
       "mandatory-for-selected-tiles": "Obligatori per a les rajoles seleccionades",
@@ -457,8 +457,8 @@
       },
       "festival-return": {
         "description": "El jugador pot tornar {}.",
-        "follower": "un dels’seus seguidors",
-        "meeple": "una de les seves’pròpies figures"
+        "follower": "un dels seus seguidors",
+        "meeple": "una de les seves pròpies figures"
       },
       "gq11-pig-herd": {
         "description": "La rajola de camp de l'11a expansió de Games Quarterly {}.",
@@ -530,10 +530,10 @@
       "continue-with-recently-saved-games": "Continua amb les partides desades recents",
       "create-directly-from": "Crea una partida nova directament des de",
       "load-game": "Carrega partida",
-      "local-games": "Local games",
+      "local-games": "Partides locals",
       "my-favorites": "els meus preferits",
       "new-game": "Partida nova",
-      "open-game": "Open game",
+      "open-game": "Partida oberta",
       "title": "Partides organitzades pel jugador"
     },
     "online": {
@@ -558,12 +558,12 @@
       "you-have-no-game-in-progress": "No teniu cap partida en curs."
     },
     "update": {
-      "download": "Download",
-      "download-error": "Download error",
-      "install-new-version": "Install new version",
+      "download": "Descarrega",
+      "download-error": "Error de descàrrega",
+      "install-new-version": "Instal·la una versió nova",
       "new-version-available": "Hi ha una nova versió del FanCloisterZone disponible.",
       "release-notes": "Notes de la versió",
-      "starting": "Starting",
+      "starting": "S'inicia",
       "update-to": "Actualitza a la versió {version}"
     }
   },
@@ -605,7 +605,7 @@
       "add-on-already-installed": "El complement {id} ja està instal·lat. Si el voleu reinstal·lar, primer cal traure'l.",
       "add-on-url": "direcció url del complement",
       "artwork-not-found-internet-connection-is-needed": "No es pot trobar o descarregar el complement amb la xarxa per defecte. Cal una connexió a internet per a descarregar-ho.",
-      "drag-add-on-here-or-click-here": "Arrossegueu el complement aquí (fitxers .jca) o feu clic aquí per a seleccinar-lo.",
+      "drag-add-on-here-or-click-here": "Arrossegueu el complement aquí (fitxers .jca) o feu clic aquí per a seleccionar-lo.",
       "finish-or-leave-game-to-make-changes": "Acabeu o sortiu de la partida abans de fer canvis.",
       "install-add-on": "Instal·la el complement",
       "installation-is-not-allowed-during-game": "No es permet instal·lar ni desinstal·lar complements durant les partides ni quan la configuració del joc està oberta.",
@@ -679,11 +679,11 @@
       "title": "Jugador"
     },
     "system": {
-      "app-channel": "App updates channel",
-      "dev": "Testing new function during implementations",
-      "beta": "Prove that app and new functions are done",
-      "stable": "I want just to play and enjoy the game",
-      "title": "System"
+      "app-channel": "Canal d'actualitzacions de l'aplicació",
+      "dev": "Proves de noves funcions durant la implementació",
+      "beta": "Proves de les noves funcions de l'aplicació",
+      "stable": "Només vull jugar i gaudir amb el joc",
+      "title": "Sistema"
     },
     "title": "Opcions"
   },
@@ -705,6 +705,6 @@
     "russian-promos-2016-title": "Rajoles del 2016",
     "tower-release": "La quarta expansió major, publicada el 2006.",
     "traders-and-builders-release": "La segona expansió major, publicada el 2003",
-    "winter-edition-description": "Conjunt bse de l'edició d'hivern. Conté el joc bàsic i 12 rajoles addicionals."
+    "winter-edition-description": "Conjunt base de l'edició d'hivern. Conté el joc bàsic i 12 rajoles addicionals."
   }
 }
