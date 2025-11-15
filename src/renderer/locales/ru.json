@@ -2,7 +2,7 @@
   "@author": "pOison & Dextea & SonicDC",
   "@jcz-version": "5.12.1",
   "@fcz-version": "6.0.0",
-  "@version": "0.8.8",
+  "@version": "0.8.13",
   "about": {
     "configuration-file": "Файл конфигурации",
     "jcloisterzone-game-engine": "Игровой движок JCloisterZone",
@@ -208,7 +208,7 @@
       "count": "Граф",
       "decinsky-sneznik": "Дечинский Снежник",
       "donkey": "Обезьяна",
-      "donkey-description": "Donkey as an neutral figure, blocks the completion of any feature from the tile it stands on.",
+      "donkey-description": "Осёл, как нейтральная фигура, блокирует завершение любой области на тайле, на котором стоит.",
       "dragon": "Дракон",
       "fairy": "Фея",
       "ferry": "Паром",
@@ -229,7 +229,7 @@
       "tunnel": "Туннель",
       "wagon": "Фургон",
       "windmill": "Мельница",
-      "windmill-description": "Windmills grant points once surrounded in a large plus-shaped pattern.",
+      "windmill-description": "Ветряные мельницы дают очки, когда окружены тайлами в форме большого плюса.",
       "witch": "Ведьма"
     },
     "feature": {
@@ -263,8 +263,8 @@
       "inn": "Трактир",
       "king": "Король",
       "king-and-robber": "Король и грабитель",
-      "marketplace": "Marketplace",
-      "marketplaces": "Marketplaces",
+      "marketplace": "Рынок",
+      "marketplaces": "Рынки",
       "meteorite": "Метеорит",
       "meteorites": "Метеориты",
       "monasteries": "Монастыри",
@@ -331,7 +331,7 @@
       "open-slot": "открытое место",
       "remote-player": "удаленный игрок",
       "rename-player": "Переименовать игрока",
-      "waiting-for-player": "waiting for player"
+      "waiting-for-player": "ожидание игрока"
     },
     "game-element-box": {
       "mandatory-for-selected-tiles": "Обязательно для выбранных плиток",
@@ -369,8 +369,8 @@
       "farmers-description": "Игроки могут размещать миплы на полях.",
       "festival-description": "С плиткой фестиваля вы можете вернуть одну из своих фигур вместо размещения новой.",
       "festival-disabled": "В игре нет плитки с фестивалем.",
-      "flowers-description": "Flowers add +3 points to scored feature when they match player's token.",
-      "flowers-disabled": "No tile with Flowers is in the game.",
+      "flowers-description": "Цветы добавляют +3 очка к подсчитанной области, если совпадают с жетоном игрока.",
+      "flowers-disabled": "В игре нет тайлов с Цветами.",
       "gameplay-variants": "Варианты игры",
       "garden-description": "Может быть занят аббатом.",
       "garden-disabled": "Аббат не выбран.",
@@ -378,10 +378,10 @@
       "hill-disabled": "В игре нет плитки с холмом.",
       "inn-description": "Завершенные дороги с постоялым двором умножаются на 2, без очков во время окончательного подсчета.",
       "inn-disabled": "В игре нет плитки с постоялым двором.",
-      "marketplace-description": "Marketplaces connect several roads into a shared network that only completes when all linked roads are closed. When scored, bonus points equal to the length of the other completed roads in that network are given.",
-      "marketplace-disabled": "No tile with Marketplace is in the game.",
+      "marketplace-description": "Рынки соединяют несколько дорог в единую сеть, которая считается завершённой только тогда, когда закрыты все связанные дороги. При подсчёте начисляются бонусные очки, равные длине остальных завершённых дорог в этой сети.",
+      "marketplace-disabled": "В игре нет тайлов с Рынком.",
       "meteorite-description": "TBA",
-      "meteorite-disabled": "No tile with Crater is in the game.",
+      "meteorite-disabled": "В игре нет тайлов с Кратером.",
       "optional-game-mechanics": "Дополнительные игровые механики",
       "pig-herd-description": "Считается дополнительной свиньей на поле (фермеры получают больше очков).",
       "pig-herd-disabled": "В игре нет плитки с свинным стадом.",
@@ -493,10 +493,10 @@
         "description": "Присвоить {} очков за башню/дом/поле."
       },
       "meteorite-impact": {
-        "standard": "Standard",
-        "extended": "Stronger",
-        "combination": "Combined",
-        "description": "{} impact of meteorite destruction."
+        "standard": "Стандартное",
+        "extended": "Усиленное",
+        "combination": "Комбинированное",
+        "description": "Влияние разрушения метеоритом: {}."
       },
       "more-tunnel-tokens": {
         "1/1": "1/1",
@@ -533,12 +533,12 @@
       "local-games": "Локальные игры",
       "my-favorites": "мои избранные",
       "new-game": "Новая игра",
-      "open-game": "Open game",
+      "open-game": "Открыть игру",
       "title": "Игры, созданные игроками"
     },
     "online": {
       "abandon-game": "Покинуть игру",
-      "chat-during-game": "Chat during game",
+      "chat-during-game": "Чат во время игры",
       "connected-to": "Подключен к {0}",
       "game-id": "Идентификатор игры",
       "games-in-progress": "Игры в процессе",
@@ -554,7 +554,7 @@
       "remove-unfinished-game-confirmation": "Вы уверены, что хотите окончательно удалить неоконченную игру из своего списка?",
       "some-expansions-are-playable-only-here": "...",
       "title": "Игры на общедоступном сервере",
-      "title-fan": "Games hosted on fan-server",
+      "title-fan": "Игры, размещённые на фан-сервере",
       "you-have-no-game-in-progress": "У вас нет активных игр."
     },
     "update": {
@@ -679,9 +679,9 @@
       "title": "Игрок"
     },
     "system": {
-      "app-channel": "App updates channel",
-      "dev": "Testing new function during implementations",
-      "beta": "Prove that app and new functions are done",
+      "app-channel": "Канал обновлений приложения",
+      "dev": "Тестирование новой функции во время её внедрения",
+      "beta": "Подтвердить, что приложение и новые функции готовы",
       "stable": "Я просто хочу играть и наслаждаться игрой",
       "title": "Система"
     },
