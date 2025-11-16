@@ -14,7 +14,7 @@
 
       <HeaderMessage
         :sets="sets"
-        :info="slotsAssigned ? null : (readOnly ? $t('game-setup.open-game.assign-all-players-to-start') : $t('game-setup.open-game.no-player-in-game') )"
+        :info="slotsReserved ? null : (readOnly ? $t('game-setup.open-game.assign-all-players-to-start') : $t('game-setup.open-game.no-player-in-game') )"
       />
 
       <div v-if="gameKey" class="game-key">
@@ -168,6 +168,10 @@ export default {
       } else {
         return !!this.slots.find(slot => slot.sessionId)
       }
+    },
+
+    slotsReserved () {
+      return !!this.slots.find(slot => slot.clientId)
     },
 
     randomizeSeating: {
