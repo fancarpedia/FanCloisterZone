@@ -2,7 +2,7 @@
   "@author": "J0anJosep",
   "@jcz-version": "5.12.1",
   "@fcz-version": "6.0.0",
-  "@version": "0.8.6",
+  "@version": "0.8.13",
   "about": {
     "configuration-file": "Fitxer de configuració",
     "jcloisterzone-game-engine": "Motor de joc del JCloisterZone",
@@ -189,7 +189,7 @@
       "you-may-move-a-meeple-from-the-market-district-before-final-scoring": "Podeu moure un seguidor del districte del mercat abans de la puntuació final.",
       "you-may-place-a-meeple-in-a-city-district": "Podeu col·locar un seguidor en un districte de la ciutat.",
       "you-may-place-a-meeple-next-to-already-present-one": "Si hi ha un seguidor col·locat, en podeu col·locar un altre al costat.",
-      "you-may-place-a-tile-from-supply": "Podeu col·locar una rajola del subministrament",
+      "you-may-place-a-tile-from-supply": "Podeu col·locar una rajola del subministrament.",
       "you-may-place-an-abbey": "Podeu col·locar una abadia",
       "your-action": "l'acció"
     },
@@ -387,7 +387,7 @@
       "pig-herd-disabled": "No hi ha rajoles amb porcades a la partida.",
       "portal-description": "A través del portal màgic es pot posar un seguidor en qualsevol rajola.",
       "portal-disabled": "No hi ha cap rajola amb portals màgics a la partida.",
-      "princess-description": "La princesa pot traure un cavaller d'una ciutat.",
+      "princess-description": "La princesa pot traure un cavaller d'una ciutat.",
       "princess-disabled": "No hi ha rajoles amb la princesa a la partida.",
       "scoring-variants": "Variants de puntuació",
       "shrine-description": "Un santuari i un monestir un al costat de l'altre competeixen. Qui acabi primer, puntua. El segon, no obté cap punt.",
@@ -422,7 +422,7 @@
     "title": "Configuració de la partida",
     "variant": {
       "barn-placement": {
-        "description": "El graner {} posar en un camp on ja hi ha un altre graner.",
+        "description": "El graner {} posar en un camp on ja hi ha un altre graner.",
         "not-occupied": "no es pot",
         "occupied": "es pot"
       },
@@ -447,7 +447,7 @@
       },
       "espace-variant": {
         "any-tile": "de qualsevol rajola",
-        "description": "El monestir s'ha de posar al costat {} d'una ciutat assetjada per a escapar.",
+        "description": "El monestir s'ha de posar al costat {} d'una ciutat assetjada per a escapar.",
         "siege-tile": "d'una rajola de setge"
       },
       "fairy-placement": {
@@ -505,7 +505,7 @@
         "description": "Assigna {} conjunts de fitxes a cada jugador en partides de dos/tres jugadors."
       },
       "princess-action": {
-        "description": "La princesa {} traure un cavaller d'una ciutat.",
+        "description": "La princesa {} traure un cavaller d'una ciutat.",
         "may": "pot",
         "must": "ha de"
       },
@@ -705,6 +705,6 @@
     "russian-promos-2016-title": "Rajoles del 2016",
     "tower-release": "La quarta expansió major, publicada el 2006.",
     "traders-and-builders-release": "La segona expansió major, publicada el 2003",
-    "winter-edition-description": "Conjunt base de l'edició d'hivern. Conté el joc bàsic i 12 rajoles addicionals."
+    "winter-edition-description": "Conjunt bse de l'edició d'hivern. Conté el joc bàsic i 12 rajoles addicionals."
   }
 }
