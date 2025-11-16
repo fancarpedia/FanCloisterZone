@@ -5,7 +5,7 @@
   "@version": "0.8.13",
   "about": {
     "configuration-file": "Konfiguračný súbor",
-    "jcloisterzone-game-engine": "Herný engine JCloisteZone",
+    "jcloisterzone-game-engine": "Herný engine JCloisterZone",
     "system-java-version": "Verzia systému Java",
     "title": "JCloisterZone",
     "fantitle": "FanCloisterZone Edition",
@@ -560,7 +560,7 @@
     "update": {
       "download": "Stiahnuť",
       "download-error": "Chyba sťahovania",
-      "install-new-version": "Inštalovať novú veriu",
+      "install-new-version": "Inštalovať novú verziu",
       "new-version-available": "K dispozícii je nová verzia FanCloisterZone.",
       "release-notes": "Poznámky k vydaniu",
       "starting": "Štartovanie",
