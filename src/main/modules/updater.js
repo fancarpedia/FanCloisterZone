@@ -31,8 +31,13 @@ async function getLatestReleaseByChannel(channel, currentVersion) {
   const parsed = releases
     .filter(r => !r.draft)
     .map(r => {
-      const getAsset = (ext) =>
-        r.assets?.find(a => a.name.endsWith(ext))?.browser_download_url || null
+      function getAsset(ext) {
+        if (!r.assets || !Array.isArray(r.assets)) return null;
+        let found = r.assets.find(function(a) {
+          return a.name && a.name.endsWith(ext);
+        });
+        return found ? found.browser_download_url : null;
+      }
 
       return {
         version: r.tag_name.replace(/^v/, ''),
