@@ -68,7 +68,7 @@ java -Dorg.slf4j.simpleLogger.log.AIRanking=debug -ea -jar build\Engine.jar -por
 
 Add engine's socket address to jcz-config.json (you can find location in Main menu / Help / About)
 ```
-"enginePath": "localhost:9000",
+"enginePath": "localhost:9001",
 ```
 
 ### Run second client with different config in dev
@@ -104,3 +104,19 @@ Add package manager witch current yarn version
   "packageManager": "yarn@1.22.22"
 ```
 
+## Adding new language
+
+### Add plural settings
+`src/renderer/plugins/vuei18n.js`
+
+### Add flag
+`src/renderer/assets/flags.svg`
+
+### Define new language
+`src/renderer/constants/locales.js`
+
+### Add new locale files
+`src/renderer/locales/`
+
+### Define new language for compile
+`src/renferer/nuxt.config.js`
