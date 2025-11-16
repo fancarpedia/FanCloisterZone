@@ -30,15 +30,24 @@ async function getLatestReleaseByChannel(channel, currentVersion) {
   const releases = await res.json()
   const parsed = releases
     .filter(r => !r.draft)
-    .map(r => ({
-      version: r.tag_name.replace(/^v/, ''),
-      prerelease: /-/.test(r.tag_name),
-      alpha: /-alpha/i.test(r.tag_name),
-      beta: /-beta/i.test(r.tag_name),
-      rc: /-rc/i.test(r.tag_name),
-      assetUrl: (r.assets && r.assets.length > 0) ? r.assets[0].browser_download_url : null,
-      releaseNotes: (r.body ? marked.parse(r.body || '') : r.tag_name) + ' ' + channel
-    }))
+    .map(r => {
+      const getAsset = (ext) =>
+        r.assets?.find(a => a.name.endsWith(ext))?.browser_download_url || null
+
+      return {
+        version: r.tag_name.replace(/^v/, ''),
+        prerelease: /-/.test(r.tag_name),
+        alpha: /-alpha/i.test(r.tag_name),
+        beta: /-beta/i.test(r.tag_name),
+        rc: /-rc/i.test(r.tag_name),
+        assetUrl: {
+          exe: getAsset('.exe'),
+          dmg: getAsset('.dmg'),
+          appImage: getAsset('.AppImage')
+        },
+        releaseNotes: (r.body ? marked.parse(r.body || '') : r.tag_name) + ' ' + channel
+      }
+    })
 
   parsed.sort((a, b) => compareVersions(b.version, a.version))
 

@@ -58,7 +58,7 @@
       </div>
       <div v-if="updateInfo" class="update-box">
         <InstallerDownloader
-          :fileURL="updateInfo.assetUrl"
+          :fileURL="isWin ? updateInfo.assetUrl.exe : isMac ? updateInfo.assetUrl.dmg : updateInfo.assetUrl.appImage"
           :titleText="$t('index.update.new-version-available')"
           :downloadButtonText="$t('index.update.download')"
           :installButtonText="$t('index.update.install-new-version')"
