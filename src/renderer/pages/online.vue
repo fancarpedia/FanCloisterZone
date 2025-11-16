@@ -24,7 +24,7 @@
           </p>
         </div>
 
-        <div class="game-list">
+        <div class="game-list public">
           <div
             v-for="{ game, slots, valid, isOwner, isStarted } in verifiedGamePublicList"
             :key="game.gameId"
@@ -56,13 +56,18 @@
                 :class="'game-slot color color-' + s.number +' ' + ((s.sessionId || s.clientId == clientId) ? '' : 'disconnected')"
                 :title="s.name"
               >
-                <Meeple type="SmallFollower" />
+                <div class="meeple">
+                  <Meeple type="SmallFollower" />
+                </div>
                 <v-icon
                   class="status-icon"
                   small
                 >
                   {{ (!s.sessionId && s.clientId != clientId) ? 'fa-user-xmark' : (s.sessionId && s.clientId != clientId) ? 'fa-user-check' : 'fa-user' }}
                 </v-icon>
+                <div class="name">
+                  {{ s.name }}
+                </div>
               </div>
             </div>
 
@@ -92,7 +97,7 @@
           </p>
         </div>
 
-        <div class="game-list">
+        <div class="game-list player">
           <div
             v-for="{ game, slots, valid, isOwner, isStarted } in verifiedGameList"
             :key="game.gameId"
@@ -121,10 +126,21 @@
               <div
                 v-for="s in slots"
                 :key="s.number"
-                :class="'game-slot color color-' + s.number"
+                :class="'game-slot color color-' + s.number +' ' + ((s.sessionId || s.clientId == clientId) ? '' : 'disconnected')"
                 :title="s.name"
               >
-                <Meeple type="SmallFollower" />
+                <div class="meeple">
+                  <Meeple type="SmallFollower" />
+                </div>
+                <v-icon
+                  class="status-icon"
+                  small
+                >
+                  {{ (!s.sessionId && s.clientId != clientId) ? 'fa-user-xmark' : (s.sessionId && s.clientId != clientId) ? 'fa-user-check' : 'fa-user' }}
+                </v-icon>
+                <div class="name">
+                  {{ s.name }}
+                </div>
               </div>
             </div>
 
@@ -368,6 +384,12 @@ h2
   display: flex
   flex-wrap: wrap
 
+  &.player
+    +theme using ($theme)
+      background-color: map-get($theme, 'cards-bg')
+      color: map-get($theme, 'gray-text-color')
+  
+
 .game
   width: 380px
   padding: 20px 10px
@@ -421,10 +443,11 @@ h2
     flex: 0 0 auto
     position: relative
     width: 36px
-    height: 36px
-    display: inline-flex
+    height: 60px
+    display: inline-block
     align-items: center
     justify-content: center
+    overflow: hidden
 
     /* keep meeple size consistent */
     svg.meeple
@@ -435,9 +458,9 @@ h2
     /* badge for disconnected user */
     .status-icon
       position: absolute
-      top: -6px
-      right: -6px
-      font-size: 12px
+      top: 0
+      right: 0
+      font-size: 8px
       z-index: 10
       border-radius: 50%
       padding: 2px
