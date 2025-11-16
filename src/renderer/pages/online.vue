@@ -53,16 +53,15 @@
               <div
                 v-for="s in slots"
                 :key="s.number"
-                :class="'game-slot color color-' + s.number +' ' + ((s.sessionId || s.clientId == clientId)? '' : 'disconnected')"
+                :class="'game-slot color color-' + s.number +' ' + ((s.sessionId || s.clientId == clientId) ? '' : 'disconnected')"
                 :title="s.name"
               >
                 <Meeple type="SmallFollower" />
                 <v-icon
-                  v-if="!s.sessionId && s.clientId != clientId"
-                  class="disconnected-icon"
+                  class="status-icon"
                   small
                 >
-                  fa-user-slash
+                  {{ (!s.sessionId && s.clientId != clientId) ? 'fa-user-xmark' : (s.sessionId && s.clientId != clientId) ? 'fa-user-check' : 'fa-user' }}
                 </v-icon>
               </div>
             </div>
@@ -434,7 +433,7 @@ h2
       display: block
 
     /* badge for disconnected user */
-    .disconnected-icon
+    .status-icon
       position: absolute
       top: -6px
       right: -6px

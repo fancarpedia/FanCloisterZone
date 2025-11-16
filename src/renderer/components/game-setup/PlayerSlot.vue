@@ -189,7 +189,7 @@ export default {
   &.open, &.local
     cursor: pointer
 
-  &.local, &.remote
+  &.local, &.remote, &.waiting
     box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.15), 0 3px 10px 0 rgba(0, 0, 0, 0.10)
 
   &.local
@@ -197,7 +197,7 @@ export default {
       background: map-get($theme, 'slot-local-bg')
       color: map-get($theme, 'slot-local-text')
 
-  &.remote
+  &.remote, &.waiting
     +theme using ($theme)
       background: map-get($theme, 'slot-remote-bg')
       color: map-get($theme, 'slot-remote-text')
