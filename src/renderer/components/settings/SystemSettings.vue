@@ -37,7 +37,7 @@ export default {
     },
     
     devChannel: {
-      get () { return this.$store.state.settings.devChannel ?? 'beta' },
+      get () { return this.$store.state.settings.devChannel ?? 'stable' },
       set (val) { this.$store.dispatch('settings/update', { devChannel: val }) }
     }
   }
