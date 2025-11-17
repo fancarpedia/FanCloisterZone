@@ -189,6 +189,7 @@
 
     <v-dialog
       v-model="showJoinDialog"
+      persistent
       max-width="400px"
     >
       <v-card>
@@ -226,9 +227,9 @@
         </v-card-title>
         <v-card-text>
           <v-container>
-            <p>{{ alertMessage.message.message }}</p>
+            <p>{{ getAlertMessageText }}</p>
             <div
-                v-for="link in alertMessage.message.links"
+                v-for="link in getAlertMessageLinks"
               >
                 <div><a :href="link.url" target="_blank">{{ link.title }}</a></div>
             </div>
@@ -236,7 +237,7 @@
         </v-card-text>
         <v-card-actions>
           <v-spacer />
-          <v-btn text @click="showAlertMessage = false">{{ $t('button.close') }}</v-btn>
+          <v-btn text @click="hideAlertMessage = true">{{ $t('button.close') }}</v-btn>
         </v-card-actions>
       </v-card>
     </v-dialog>
@@ -263,7 +264,7 @@ export default {
 
   data () {
     return {
-      showAlertMessage: true,
+      hideAlertMessage: false,
       showDeleteDialog: false,
       showDeleteGameId: null,
       showJoinDialog: false,
@@ -283,6 +284,24 @@ export default {
       connected: state => state.networking.connectionStatus === STATUS_CONNECTED
     }),
 
+    getAlertMessageLinks() {
+      return this.alertMessage && this.alertMessage.message.links ? this.alertMessage.message.links : [];
+    },
+    getAlertMessageText() {
+      return this.alertMessage && this.alertMessage.message.message ? this.alertMessage.message.message : '';
+    },
+    showAlertMessage: {
+      get() {
+        return this.alertMessage && this.alertMessage.message && !this.hideAlertMessage;
+      },
+      set(value) {
+        // When dialog is dismissed (value goes false), set hideAlertMessage=true
+        if (!value) {
+          this.hideAlertMessage = true;
+        }
+      }
+    },
+
     verifiedGameList () {
       return this.gameList.map(game => {
         const edition = game.setup.elements.garden ? 2 : 1
@@ -290,7 +309,6 @@ export default {
         const slots = sortBy(game.slots.filter(s => s.clientId), 'order')
         const isOwner = game.owner === this.$store.state.settings.clientId
         const isStarted = !(game.started == null || game.started === '')
-        console.log(game.started)
         return { game, valid, slots, isOwner, isStarted }
       })
     },
@@ -302,7 +320,6 @@ export default {
         const slots = sortBy(game.slots.filter(s => s.clientId), 'order')
         const isOwner = game.owner === this.$store.state.settings.clientId
         const isStarted = !(game.started == null || game.started === '')
-        console.log(game.started)
         return { game, valid, slots, isOwner, isStarted }
       })
     }
@@ -316,6 +333,8 @@ export default {
   },
 
   mounted () {
+  console.log("Initial alertMessage:", this.alertMessage);
+  console.log("Initial showAlertMessage:", this.showAlertMessage);
     if (this.$store.state.networking.connectionStatus === STATUS_CONNECTED) {
       // not reconnecting
       this.$connection.send({ type: 'LIST_GAMES', payload: {} })
@@ -325,6 +344,18 @@ export default {
 
   beforeDestroy () {
     this._onClose && this.$connection.off('close', this._onClose)
+  },
+
+  watch: {
+    alertMessage: {
+      handler(newVal) {
+        // When a new message arrives, show dialog
+        if (newVal && newVal.message) {
+          this.hideAlertMessage = false;
+        }
+      },
+      deep: true
+    }
   },
 
   methods: {
