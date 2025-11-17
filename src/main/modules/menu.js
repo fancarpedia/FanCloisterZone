@@ -99,6 +99,7 @@ async function createMenu (win, messages) {
 
 export default function () {
   ipcMain.handle('update-menu', (ev, update) => {
+    const menu = Menu.getApplicationMenu();
     Object.entries(update).forEach(([id, enabled]) => {
       const item = menu.getMenuItemById(id)
       if (item) {
