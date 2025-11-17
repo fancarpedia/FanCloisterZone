@@ -2,7 +2,7 @@
   "@author": "Stepukiss",
   "@jcz-version": "5.12.1",
   "@fcz-version": "6.0.0",
-  "@version": "0.8.8",
+  "@version": "0.8.13",
   "about": {
     "configuration-file": "Nustatymų aplankas",
     "jcloisterzone-game-engine": "JCloisterZone Žaidimo variklis",
@@ -116,7 +116,7 @@
     "russian-promos": "rusijos Reklaminės",
     "siege": "Apgultis",
     "spiel-doch": "Spiel Doch!",
-    "the-city-gates": "City Gates",
+    "the-city-gates": "Miesto vartai",
     "the-flying-machines-2": "Skraidančios mašinos 2",
     "the-labyrinths": "Labirintai",
     "tower": "Bokštas",
@@ -172,7 +172,7 @@
       "player-may-move-a-meeple-from-the-market-district-before-final-scoring": "Žaidėjas gali perkelti Miplą iš turgaus rajono prieš galutinį taškų skaičiavimą",
       "player-may-place-a-meeple-in-a-city-district": "Žaidėjas gali padėti Miplą miesto rajone",
       "player-may-place-a-meeple-next-to-already-present-one": "Žaidėjas gali padėti dar vieną Miplą prie jau padėto Miplo.",
-      "player-may-place-a-tile-from-supply": "Player may place a tile from supply",
+      "player-may-place-a-tile-from-supply": "Žaidėjas gali padėti kortelę iš savo atsargų",
       "player-may-place-an-abbey": "Žaidėjas gali padėti Abatiją",
       "player-must-place-the-tile": "Žaidėjas turi padėti kortelę",
       "siege-player-can-escape-a-besieged-city": "Žaidėjas gali pabėgti iš apgulto miesto",
@@ -189,7 +189,7 @@
       "you-may-move-a-meeple-from-the-market-district-before-final-scoring": "Jūs galite perkelti Miplą iš turgaus rajono prieš galutinį taškų skaičiavimą",
       "you-may-place-a-meeple-in-a-city-district": "Jūs galite padėti Miplą miesto rajone",
       "you-may-place-a-meeple-next-to-already-present-one": "Tu gali padėti dar vieną Miplą prie jau eančio Miplo.",
-      "you-may-place-a-tile-from-supply": "You may place a tile from supply",
+      "you-may-place-a-tile-from-supply": "Jūs galite padėti kortelę iš savo atsargų",
       "you-may-place-an-abbey": "Jūs galite padėti Abatiją",
       "your-action": "Jūsų veiksmas"
     },
@@ -331,7 +331,7 @@
       "open-slot": "Pridėti",
       "remote-player": "nuotolinis žaidėjas",
       "rename-player": "Pervadinti",
-      "waiting-for-player": "waiting for player"
+      "waiting-for-player": "laukiama žaidėjų"
     },
     "game-element-box": {
       "mandatory-for-selected-tiles": "Privaloma pasirinktoms kortelėms",
@@ -533,7 +533,7 @@
       "local-games": "Vietiniai žaidimai",
       "my-favorites": "mano mėgstamiausi",
       "new-game": "Naujas žaidimas",
-      "open-game": "Open game",
+      "open-game": "Atviras žaidimas",
       "title": "Žaidėjui priklausantys žaidimai"
     },
     "online": {
@@ -679,11 +679,11 @@
       "title": "Žaidėjas"
     },
     "system": {
-      "app-channel": "App updates channel",
-      "dev": "Testing new function during implementations",
-      "beta": "Prove that app and new functions are done",
-      "stable": "I want just to play and enjoy the game",
-      "title": "System"
+      "app-channel": "Programėlės atnaujinimų kanalas",
+      "dev": "Naujų funkcijų testavimas diegimo metu",
+      "beta": "Įrodykite, kad programėlė ir naujos funkcijos yra pabaigtos",
+      "stable": "Noriu tiesiog žaisti ir mėgautis žaidimu",
+      "title": "Sistema"
     },
     "title": "Nustatymai"
   },
