@@ -13,6 +13,7 @@ All issues on FanCloisterZone report on [Discord](https://discord.gg/3qpHWN8k)
 * [Meteorites](https://wikicarpedia.com/car/Meteorites_(Fan_Expansion))
 * [Obelisk, The](https://wikicarpedia.com/car/The_Obelisk_(Fan_Expansion))
 * [Robber's Son](https://wikicarpedia.com/car/Robber%27s_Son_(Fan_Expansion))
+* [Village Life](https://wikicarpedia.com/car/Village_Life_(Fan_Expansion))
 * [Wells, The](https://wikicarpedia.com/car/The_Wells_(Fan_Expansion))
 
 ## Engine
