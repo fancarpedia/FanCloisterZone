@@ -215,6 +215,32 @@
         </v-card-actions>
       </v-card>
     </v-dialog>
+
+    <v-dialog
+      v-model="showAlertMessage"
+      max-width="400px"
+    >
+      <v-card>
+        <v-card-title>
+          <span class="headline"></span>
+        </v-card-title>
+        <v-card-text>
+          <v-container>
+            <p>{{ alertMessage.message.message }}</p>
+            <div
+                v-for="link in alertMessage.message.links"
+              >
+                <div><a :href="link.url" target="_blank">{{ link.title }}</a></div>
+            </div>
+          </v-container>
+        </v-card-text>
+        <v-card-actions>
+          <v-spacer />
+          <v-btn text @click="showAlertMessage = false">{{ $t('button.close') }}</v-btn>
+        </v-card-actions>
+      </v-card>
+    </v-dialog>
+
   </div>
 </template>
 
@@ -237,6 +263,7 @@ export default {
 
   data () {
     return {
+      showAlertMessage: true,
       showDeleteDialog: false,
       showDeleteGameId: null,
       showJoinDialog: false,
@@ -247,7 +274,8 @@ export default {
 
   computed: {
     ...mapState({
-      clientId: state =>state.settings.clientId,
+      alertMessage: state => state.online.alertMessage,
+      clientId: state => state.settings.clientId,
       gameList: state => state.online.gameList,
       gamePublicList: state => state.online.gamePublicList,
       playOnlineHostname: state => state.settings.playOnlineUrl.split('/')[0],
