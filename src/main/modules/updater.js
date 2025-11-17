@@ -149,8 +149,7 @@ export default function (settings, appVersion) {
     owner: 'fancarpedia', /* Fan Edition */
     repo: 'FanCloisterZone' /* Fan Edition */
   })
-  // ---- Check for updates ----
-  const channel = settings.devChannel ? settings.devChannel : 'stable'
+  const channel = settings && settings.devChannel ? settings.devChannel : 'stable'
   
   function trySendUpdate() {
     if (win && updateInfo) {
