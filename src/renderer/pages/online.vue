@@ -53,18 +53,12 @@
               <div
                 v-for="s in slots"
                 :key="s.number"
-                :class="'game-slot color color-' + s.number +' ' + ((s.sessionId || s.clientId == clientId) ? '' : 'disconnected')"
+                :class="'game-slot color color-' + s.number + ' ' + ((s.clientId == clientId) ? 'local' : '') + ' ' + ((s.sessionId || s.clientId == clientId) ? '' : 'disconnected')"
                 :title="s.name"
               >
                 <div class="meeple">
                   <Meeple type="SmallFollower" />
                 </div>
-                <v-icon
-                  class="status-icon"
-                  small
-                >
-                  {{ (!s.sessionId && s.clientId != clientId) ? 'fa-user-xmark' : (s.sessionId && s.clientId != clientId) ? 'fa-user-check' : 'fa-user' }}
-                </v-icon>
                 <div class="name">
                   {{ s.name }}
                 </div>
@@ -126,18 +120,12 @@
               <div
                 v-for="s in slots"
                 :key="s.number"
-                :class="'game-slot color color-' + s.number +' ' + ((s.sessionId || s.clientId == clientId) ? '' : 'disconnected')"
+                :class="'game-slot color color-' + s.number + ' ' + ((s.clientId == clientId) ? 'local' : '') + ' ' + ((s.sessionId || s.clientId == clientId) ? '' : 'disconnected')"
                 :title="s.name"
               >
                 <div class="meeple">
                   <Meeple type="SmallFollower" />
                 </div>
-                <v-icon
-                  class="status-icon"
-                  small
-                >
-                  {{ (!s.sessionId && s.clientId != clientId) ? 'fa-user-xmark' : (s.sessionId && s.clientId != clientId) ? 'fa-user-check' : 'fa-user' }}
-                </v-icon>
                 <div class="name">
                   {{ s.name }}
                 </div>
@@ -514,22 +502,16 @@ h2
       height: 36px
       display: block
 
-    /* badge for disconnected user */
-    .status-icon
-      position: absolute
-      top: 0
-      right: 0
-      font-size: 8px
-      z-index: 10
-      border-radius: 50%
-      padding: 2px
-      box-shadow: 0 1px 2px rgba(0,0,0,0.15)
-      pointer-events: none /* lets the title/hover pass through */
-
     /* visual treatment for disconnected slot */
+    &.local
+      color: var(--v-primary-lighten2) !important
+
     &.disconnected
-      opacity: 0.6
       
+      svg.meeple 
+        fill: white
+        filter: invert(1)
+        
 .empty-message
   margin: 30px 0
   text-align: center
