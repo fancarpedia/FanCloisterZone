@@ -105,19 +105,35 @@ Add package manager witch current yarn version
   "packageManager": "yarn@1.22.22"
 ```
 
-## Adding new language
+## Cookbook
 
-### Add plural settings
+### Add new language
+
+* Add plural settings
 `src/renderer/plugins/vuei18n.js`
 
-### Add flag
+* Add flag
 `src/renderer/assets/flags.svg`
 
-### Define new language
+* Define new language
 `src/renderer/constants/locales.js`
 
-### Add new locale files
+* Add new locale files
 `src/renderer/locales/`
 
-### Define new language for compile
+* Define new language for compile
 `src/renferer/nuxt.config.js`
+
+### Use translated texts in Vue
+#### Usage in <template>
+
+#### Usage in <script>
+
+### Add package failed with Webpack 4 or Node 16 (by use babe this.config?.something or this.value ?? failvervalue
+
+* Append file to `babelRequiredFiles` in `src/renderer/nuxt.config.js` as example for `megajs`
+  ```
+  const babelRequiredPaths = [
+    path.resolve(require.resolve('megajs'), '..', '..')
+  ]
+  ```
