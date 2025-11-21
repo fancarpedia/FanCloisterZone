@@ -157,6 +157,21 @@ module.exports = {
       config.externals = {
         fsevents: "require('fsevents')"
       }
+      const babelRequiredPaths = [
+        path.resolve(require.resolve('megajs'), '..', '..'); // points to node_modules/megajs
+      ]
+      if (ctx.isClient && ctx.isDev) {
+        config.module.rules.push({
+          test: /\.js$/,
+          include: babelRequiredPaths, // only transpile megajs
+          use: {
+            loader: 'babel-loader',
+            options: {
+              presets: ['@babel/preset-env']
+            }
+          }
+        });
+      }
     }
   },
   
