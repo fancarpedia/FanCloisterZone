@@ -1,0 +1,17 @@
+{
+  "addons": [
+    {
+      "key": "meteorites",
+      "name": "Meteorites",
+      "description": "Meteorites are striking the peaceful land of Carcassonne, bringing unpredictable chaos and powerful destruction. After the impact, you can settle newly cleared areas and turn them to your advantage! Add a new twist of excitement to Carcassonne with the Meteorites expansion — where luck and strategy collide in a thrilling showdown!",
+      "versions": [
+        {
+          "url": "https://mega.nz/file/CUZ2ERzS#qV_-vulE2QFzuJlMLHimG3ZU67G17ii9MR5C1526szA",
+          "version": 1,
+          "provider": "mega",
+          "fromVersion": "6.0.0"
+        }
+      ]
+    }
+  ]
+}

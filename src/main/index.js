@@ -1,7 +1,7 @@
 /* globals INCLUDE_RESOURCES_PATH */
 import path from 'path'
 
-import { app, BrowserWindow } from 'electron'
+import { app, BrowserWindow, ipcMain } from 'electron'
 import { autoUpdater } from 'electron-updater'
 import electronLogger from 'electron-log'
 import fs from 'fs'
@@ -29,7 +29,21 @@ function getAppVersion() {
   }
   return app.getVersion()
 }
-  
+
+ipcMain.handle("get-app-version", () => {
+  return getAppVersion()
+})
+
+function generateInstanceId() {
+    // Use timestamp + process ID so each instance is unique
+    return `com.myapp.instance.${Date.now()}.${process.pid}`
+}
+app.setAppUserModelId(generateInstanceId()) // Prevent grouping app icons
+
+if (process.platform === 'linux') {
+  app.commandLine.appendSwitch('no-sandbox')
+}
+
 async function createWindow () {
   const win = new BrowserWindow({
     height: 600,

@@ -10,6 +10,10 @@ import unzipper from 'unzipper'
 import sha256File from 'sha256-file'
 import { compare } from 'compare-versions'
 import Vue from 'vue'
+import { File } from 'megajs'
+import { ipcRenderer } from 'electron'
+import fetch from 'node-fetch'
+import semver from 'semver'
 
 import { getAppVersion } from '@/utils/version'
 import { EventsBase } from '@/utils/events'
@@ -28,10 +32,44 @@ class Addons extends EventsBase {
 
     this.ctx = ctx
     this.addons = []
+    this.downloadableInitialized = 0
+    this.downloadable = {}
   }
 
   getDefaultArtworkUrl () {
     return this.AUTO_DOWNLOADED?.classic?.url
+  }
+  
+  async getDownloadable() {
+    if (this.downloadableInitialized == 0 ) {
+      try {
+        let url = `https://github.com/fancarpedia/FanCloisterZone/releases/download/dev/addons.json`
+        const res = await fetch(url)
+        if (res.status === 200) {
+          const addons = await res.json()
+          const appVersion = await ipcRenderer.invoke('get-app-version')
+          const appVer = semver.coerce(appVersion)
+
+          this.downloadable = addons.addons
+          .map(addon => {
+            const compatibleVersions = addon.versions.filter(v => {
+              const fromOk = v.fromVersion ? semver.gte(appVer, semver.coerce(v.fromVersion)) : true
+              const toOk = v.toVersion ? semver.lt(appVer, semver.coerce(v.toVersion)) : true // exclusive upper bound
+              return fromOk && toOk
+            })
+            if (compatibleVersions.length > 0) {
+              return { ...addon, versions: compatibleVersions }
+            }
+            return null
+          })
+          .filter(a => a !== null)
+        }
+        this.downloadableInitialized = 1
+      } catch(err) {
+        // No internet?
+      }
+    }
+    return this.downloadable
   }
 
   async loadAddons () {
@@ -108,12 +146,91 @@ class Addons extends EventsBase {
     await fs.promises.mkdir(addonsFolder, { recursive: true })
     return addonsFolder
   }
+  
+  async installDownloadable(addonKey, version) {
+    const downloadable = await this.getDownloadable()
+    if (!downloadable) return
 
+    const addonDefinition = downloadable.find(a => a.key === addonKey)
+    if (!addonDefinition) return
+
+    if (this.addons.find(a => a.id === addonKey)) return
+
+    const versionDefinition = addonDefinition.versions.find(v => v.version === version)
+    if (!versionDefinition) return
+
+    const downloadedPath = `${addonKey}-v${versionDefinition.version}.jca`
+
+    // MEGA → stream download
+    if (versionDefinition.provider === 'mega') {
+      const file = File.fromURL(versionDefinition.url)
+      return new Promise((resolve, reject) => {
+        file
+          .download()
+          .pipe(fs.createWriteStream(downloadedPath))
+          .on('progress', info => {
+            console.log('Loaded', info.bytesLoaded, 'bytes of', info.bytesTotal)
+          })
+          .on('error', error => {
+            console.error('Download error', error)
+            reject(new Error($nuxt.$t('settings.add-ons.download-error')))
+          })
+          .on('finish', async () => {
+            try {
+              await this.install(downloadedPath)
+              resolve()
+            } catch (e) {
+              reject(e)
+            }
+          })
+      })
+    }
+
+    // HTTPS → fetch download
+    if (versionDefinition.provider === 'https') {
+      const url = versionDefinition.url
+
+      const response = await fetch(url)
+      if (!response.ok) throw new Error(`HTTP ${response.status}`)
+
+      return new Promise((resolve, reject) => {
+        const fileStream = fs.createWriteStream(downloadedPath)
+        const reader = response.body.getReader()
+
+        const pump = async () => {
+          try {
+            const { done, value } = await reader.read()
+            if (done) {
+              fileStream.end()
+              try {
+                await this.install(downloadedPath)
+                resolve()
+              } catch (e) {
+                reject(e)
+              }
+              return
+            }
+            fileStream.write(Buffer.from(value))
+            pump()
+          } catch (err) {
+            reject(err)
+          }
+        }
+
+        pump()
+      })
+    }
+
+    // Unknown provider
+    throw new Error(`Unknown provider: ${versionDefinition.provider}`)
+  }
+    
   async install (filePath) {
     const addonsFolder = await this.mkAddonsFolder()
 
     const tmpFolder = await fs.promises.mkdtemp(path.join(os.tmpdir(), 'addon-'))
     console.log(tmpFolder)
+    console.log(filePath)
 
     // TODO UNPACK FIRST TO TEMP DIR AND VALIDATE
     await fs.createReadStream(filePath)
@@ -142,7 +259,10 @@ class Addons extends EventsBase {
     const enabledArtworks = uniq([...this.ctx.store.state.settings.enabledArtworks, ...addon.json.artworks.map(artwork => `${id}/${artwork}`)])
     await this.ctx.store.dispatch('settings/update', { enabledArtworks })
 
-    this.emitter.emit('change')
+    await new Promise(resolve => {
+      this.emitter.emit('change')
+      resolve()
+    })
   }
 
   async uninstall (addon) {
