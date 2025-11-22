@@ -33,7 +33,7 @@ class Addons extends EventsBase {
     this.ctx = ctx
     this.addons = []
     this.downloadableInitialized = 0
-    this.downloadable = {}
+    this.downloadable = []
   }
 
   getDefaultArtworkUrl () {
@@ -43,7 +43,7 @@ class Addons extends EventsBase {
   async getDownloadable() {
     if (this.downloadableInitialized == 0 ) {
       try {
-        let url = `https://github.com/fancarpedia/FanCloisterZone/releases/download/dev/addons.json`
+        let url = `https://github.com/fancarpedia/FanCloisterZone/releases/download/v6.0.0-all/addons.json`
         const res = await fetch(url)
         if (res.status === 200) {
           const addons = await res.json()
@@ -229,8 +229,6 @@ class Addons extends EventsBase {
     const addonsFolder = await this.mkAddonsFolder()
 
     const tmpFolder = await fs.promises.mkdtemp(path.join(os.tmpdir(), 'addon-'))
-    console.log(tmpFolder)
-    console.log(filePath)
 
     // TODO UNPACK FIRST TO TEMP DIR AND VALIDATE
     await fs.createReadStream(filePath)
