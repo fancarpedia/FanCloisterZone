@@ -160,18 +160,16 @@ module.exports = {
       const babelRequiredPaths = [
         path.resolve(require.resolve('megajs'), '..', '..')
       ]
-      if (ctx.isClient && ctx.isDev) {
-        config.module.rules.push({
-          test: /\.js$/,
-          include: babelRequiredPaths, // only transpile to requested paths
-          use: {
-            loader: 'babel-loader',
+      config.module.rules.push({
+        test: /\.js$/,
+        include: babelRequiredPaths, // only transpile to requested paths
+        use: {
+          loader: 'babel-loader',
             options: {
-              presets: ['@babel/preset-env']
-            }
+            presets: ['@babel/preset-env']
           }
-        })
-      }
+        }
+      })
     }
   },
   
