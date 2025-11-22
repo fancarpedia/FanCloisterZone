@@ -1,6 +1,58 @@
 {
   "addons": [
     {
+      "key": "butterfly-tiles",
+      "name": "Butterfly Tiles",
+      "description": "",
+      "versions": [
+        {
+          "url": "https://mega.nz/file/jcYDVZZB#rSz1yPTYlPByEXIHq__-kFaXjHMBZ4yh4kXsJqZIvbY",
+          "version": 0,
+          "provider": "mega",
+          "fromVersion": "6.0.0"
+        }
+      ]
+    },
+    {
+      "key": "cliffs-and-waterfalls",
+      "name": "Cliffs and Waterfalls",
+      "description": "",
+      "versions": [
+        {
+          "url": "https://mega.nz/file/XBwAnSbY#YUjvcUN1wOkReu_11YFMY17SkHK-6I2PO5Y0nlPdq_o",
+          "version": 0,
+          "provider": "mega",
+          "fromVersion": "6.0.0"
+        }
+      ]
+    },
+    {
+      "key": "family-feud",
+      "name": "Family Feud",
+      "description": "",
+      "versions": [
+        {
+          "url": "https://mega.nz/file/uJAykbqI#XOLENKhOSAZV8v3ikzLDxz2n1YQZeeQYNcwxf8EAJP4",
+          "version": 3,
+          "provider": "mega",
+          "fromVersion": "6.0.0"
+        }
+      ]
+    },
+    {
+      "key": "farmers-heaven",
+      "name": "Farmers Heaven",
+      "description": "",
+      "versions": [
+        {
+          "url": "https://mega.nz/file/LIxlnQLZ#iQDFw_SG3w1WA5FzEcrDuNgmvve2lRNcXHmlsvqatL0",
+          "version": 1,
+          "provider": "mega",
+          "fromVersion": "6.0.0"
+        }
+      ]
+    },
+	{
       "key": "meteorites",
       "name": "Meteorites",
       "description": "Meteorites are striking the peaceful land of Carcassonne, bringing unpredictable chaos and powerful destruction. After the impact, you can settle newly cleared areas and turn them to your advantage! Add a new twist of excitement to Carcassonne with the Meteorites expansion — where luck and strategy collide in a thrilling showdown!",
@@ -8,6 +60,32 @@
         {
           "url": "https://mega.nz/file/CUZ2ERzS#qV_-vulE2QFzuJlMLHimG3ZU67G17ii9MR5C1526szA",
           "version": 1,
+          "provider": "mega",
+          "fromVersion": "6.0.0"
+        }
+      ]
+    },
+	{
+      "key": "robbers-son",
+      "name": "Robber's Son",
+      "description": "",
+      "versions": [
+        {
+          "url": "https://mega.nz/file/HEQgUTyR#6SFf3dhg1AV4VI-WHKkBalj5qL7etgWz310JovNDKJU",
+          "version": 1,
+          "provider": "mega",
+          "fromVersion": "6.0.0"
+        }
+      ]
+    },
+    {
+      "key": "wells",
+      "name": "Wells",
+      "description": "",
+      "versions": [
+        {
+          "url": "https://mega.nz/file/XEZWQLxC#rUcgninl7cTFszLdsP-bOKURNKePF0JzzIbWWbhulYU",
+          "version": 3,
           "provider": "mega",
           "fromVersion": "6.0.0"
         }
