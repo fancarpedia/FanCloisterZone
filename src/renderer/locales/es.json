@@ -613,7 +613,7 @@
       "installation-is-not-allowed-during-game": "Instalación no esta permitida durante una partida.",
       "installed-add-ons": "Add-ons instalados",
       "invalid-add-on-multiple-folders-in-root": "Add-on inválido: el paquete debe contener una sola carpeta en la raíz",
-      "look-at-jcz-for-add-ons": "Visitar {link} para ver los add-ons disponibles.",
+      "look-at-link-for-add-ons": "Visitar {link} para ver los add-ons disponibles.",
       "not-available-new-add-ons": "Sorry there is no new add-on.",
       "please-check-connectivity-and-restart-app": "Comprobar por favor la conexión y reiniciar la aplicación para volver a intentarlo.",
       "title": "Add-ons"

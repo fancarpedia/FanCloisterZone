@@ -613,7 +613,7 @@
       "installation-is-not-allowed-during-game": "Inštalácia nie je povolená počas hry.",
       "installed-add-ons": "Nainštalované doplnky",
       "invalid-add-on-multiple-folders-in-root": "Chybný doplnok: súbor musí obsahovať len jeden hlavný podpriečinok",
-      "look-at-jcz-for-add-ons": "Dostupné doplnky nájdete na stránke {link}.",
+      "look-at-link-for-add-ons": "Dostupné doplnky nájdete na stránke {link}.",
       "not-available-new-add-ons": "Sorry there is no new add-on.",
       "please-check-connectivity-and-restart-app": "Skontrolujte svoje pripojenie, reštartujte aplikáciu a skúste to znova.",
       "title": "Doplnky / Add-ons"

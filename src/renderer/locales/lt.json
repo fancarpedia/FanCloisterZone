@@ -613,7 +613,7 @@
       "installation-is-not-allowed-during-game": "Įdiegimas yra negalimas žaidimo metu.",
       "installed-add-ons": "Įrašyti priedai (add-ons)",
       "invalid-add-on-multiple-folders-in-root": "Neteisingas papildymas (add-on): pakete turi būti tik vienas šakninis aplankas",
-      "look-at-jcz-for-add-ons": "Pažiūrėti  {link} galimiems papildymams (add-ons)",
+      "look-at-link-for-add-ons": "Pažiūrėti  {link} galimiems papildymams (add-ons)",
       "not-available-new-add-ons": "Sorry there is no new add-on.",
       "please-check-connectivity-and-restart-app": "Patikrinkite ryšį ir iš naujo paleiskite programą, kad pabandytumėte dar kartą.",
       "title": "Priedai(Add-ons)"

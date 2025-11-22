@@ -613,7 +613,7 @@
       "installation-is-not-allowed-during-game": "Instalarea nu este permisă în timpul jocului.",
       "installed-add-ons": "Add-on-uri instalate",
       "invalid-add-on-multiple-folders-in-root": "Add-on invalid: pachetul trebuie să conțină un singur director în rădăcină",
-      "look-at-jcz-for-add-ons": "Aruncă o privire la {link} pentru add-on-uri disponibile.",
+      "look-at-link-for-add-ons": "Aruncă o privire la {link} pentru add-on-uri disponibile.",
       "not-available-new-add-ons": "Scuze, nu există niciun add-on nou.",
       "please-check-connectivity-and-restart-app": "Te rugăm să îți verifici conexiunea și să repornești aplicația pentru a încerca din nou.",
       "title": "Add-on-uri"

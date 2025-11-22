@@ -613,7 +613,7 @@
       "installation-is-not-allowed-during-game": "No es permet instal·lar ni desinstal·lar complements durant les partides ni quan la configuració del joc està oberta.",
       "installed-add-ons": "Complements instal·lats",
       "invalid-add-on-multiple-folders-in-root": "Complement no vàlid: el paquet ha de contenir només una carpeta a l'arrel",
-      "look-at-jcz-for-add-ons": "Mireu a {link} si voleu una llista de complements disponibles.",
+      "look-at-link-for-add-ons": "Mireu a {link} si voleu una llista de complements disponibles.",
       "not-available-new-add-ons": "Sorry there is no new add-on.",
       "please-check-connectivity-and-restart-app": "Comproveu la vostra connexió, reinicieu l'aplicació i proveu-ho de nou.",
       "title": "Complements"

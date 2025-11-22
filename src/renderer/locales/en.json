@@ -613,7 +613,7 @@
       "installation-is-not-allowed-during-game": "Installation is not allowed during game.",
       "installed-add-ons": "Installed add-ons",
       "invalid-add-on-multiple-folders-in-root": "Invalid add-on: package must contain only a single folder in the root",
-      "look-at-jcz-for-add-ons": "Look at {link} for available add-ons.",
+      "look-at-link-for-add-ons": "Look at {link} for additional add-ons.",
       "not-available-new-add-ons": "Sorry there is no new add-on.",
       "please-check-connectivity-and-restart-app": "Please check your connectivity and restart the app to try again.",
       "title": "Add-ons"

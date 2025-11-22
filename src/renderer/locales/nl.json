@@ -613,7 +613,7 @@
       "installation-is-not-allowed-during-game": "Installatie is niet toegestaan tijdens het spel.",
       "installed-add-ons": "Geïnstalleerde add-ons",
       "invalid-add-on-multiple-folders-in-root": "Ongeldige add-on: het pakket mag slechts één map in de hoofdmap bevatten",
-      "look-at-jcz-for-add-ons": "Kijk op {link} voor beschikbare add-ons.",
+      "look-at-link-for-add-ons": "Kijk op {link} voor beschikbare add-ons.",
       "not-available-new-add-ons": "Sorry there is no new add-on.",
       "please-check-connectivity-and-restart-app": "Controleer a.j.b. de verbinding en start de app opnieuw op om het opnieuw te proberen.",
       "title": "Add-ons"

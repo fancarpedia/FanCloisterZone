@@ -613,7 +613,7 @@
       "installation-is-not-allowed-during-game": "Instalace není v průběhu spuštěné hry povolena.",
       "installed-add-ons": "Nainstalované doplňky",
       "invalid-add-on-multiple-folders-in-root": "Neplatný doplněk: balíček musí obsahovat v kořenovém adresáři pouze jednu složku.",
-      "look-at-jcz-for-add-ons": "Dostupné doplňky najdete na stránce {link}.",
+      "look-at-link-for-add-ons": "Dostupné doplňky najdete na stránce {link}.",
       "not-available-new-add-ons": "Sorry there is no new add-on.",
       "please-check-connectivity-and-restart-app": "Zkontrolujte své připojení, případně restartujte aplikaci a zkuste to znovu.",
       "title": "Doplňky"

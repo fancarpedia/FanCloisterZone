@@ -613,7 +613,7 @@
       "installation-is-not-allowed-during-game": "Namestitev ni dovoljena med igro.",
       "installed-add-ons": "Nameščeni dodatki",
       "invalid-add-on-multiple-folders-in-root": "Neveljaven dodatek: paket mora vsebovati samo eno mapo v korenu",
-      "look-at-jcz-for-add-ons": "Poglej na {link} za razpoložljive dodatke.",
+      "look-at-link-for-add-ons": "Poglej na {link} za razpoložljive dodatke.",
       "not-available-new-add-ons": "Sorry there is no new add-on.",
       "please-check-connectivity-and-restart-app": "Prosimo, preveri svojo povezavo in ponovno zaženi aplikacijo, da poskusiš znova.",
       "title": "Dodatki"

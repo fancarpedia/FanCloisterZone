@@ -613,7 +613,7 @@
       "installation-is-not-allowed-during-game": "Das Installieren oder Entfernen von Add-Ons ist nicht erlaubt, wenn das Spiel läuft oder das Spiel-Setup geöffnet ist.",
       "installed-add-ons": "Installierte Add-Ons",
       "invalid-add-on-multiple-folders-in-root": "Ungültiges Add-On: Das Paket darf nur einen einzigen Ordner im Stammverzeichnis enthalten.",
-      "look-at-jcz-for-add-ons": "Suche unter {link} nach verfügbaren Add-Ons.",
+      "look-at-link-for-add-ons": "Suche unter {link} nach verfügbaren Add-Ons.",
       "not-available-new-add-ons": "Sorry there is no new add-on.",
       "please-check-connectivity-and-restart-app": "Bitte überprüfe deine Verbindung und starte die App neu, um es erneut zu versuchen.",
       "title": "Add-Ons"

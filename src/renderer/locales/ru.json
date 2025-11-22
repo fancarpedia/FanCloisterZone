@@ -613,7 +613,7 @@
       "installation-is-not-allowed-during-game": "Установка дополнений не разрешена во время игры.",
       "installed-add-ons": "Установленные дополнения",
       "invalid-add-on-multiple-folders-in-root": "Недопустимое дополнение: пакет должен содержать только одну папку в корневом каталоге.",
-      "look-at-jcz-for-add-ons": "Ознакомьтесь с {link} для доступных дополнений.",
+      "look-at-link-for-add-ons": "Ознакомьтесь с {link} для доступных дополнений.",
       "not-available-new-add-ons": "Sorry there is no new add-on.",
       "please-check-connectivity-and-restart-app": "Пожалуйста, проверьте подключение к интернету и перезапустите приложение для повторной попытки.",
       "title": "Дополнения"

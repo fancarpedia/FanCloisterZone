@@ -613,7 +613,7 @@
       "installation-is-not-allowed-during-game": "Instalowanie lub usuwanie dodatków jest zabronione podczas trwania rozgrywki.",
       "installed-add-ons": "Zainstalowane dodatki",
       "invalid-add-on-multiple-folders-in-root": "Niewłaściwy dodatek: pakiet musi zawierać tylko jeden folder w katalogu głównym",
-      "look-at-jcz-for-add-ons": "Więcej dodatków dostępne na: {link}",
+      "look-at-link-for-add-ons": "Więcej dodatków dostępne na: {link}",
       "not-available-new-add-ons": "Sorry there is no new add-on.",
       "please-check-connectivity-and-restart-app": "Sprawdź połączenie z internetem i zrestartuj aplikację, aby spróbować ponownie.",
       "title": "Dodatki"

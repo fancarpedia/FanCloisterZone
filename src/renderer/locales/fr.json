@@ -613,7 +613,7 @@
       "installation-is-not-allowed-during-game": "Toute installation est interdite pendant une partie.",
       "installed-add-ons": "Modules complémentaires installés",
       "invalid-add-on-multiple-folders-in-root": "Module complémentaire invalide : le module ne doit contenir qu’un seul dossier à la racine.",
-      "look-at-jcz-for-add-ons": "Consultez le site {link} pour connaître les modules complémentaires disponibles.",
+      "look-at-link-for-add-ons": "Consultez le site {link} pour connaître les modules complémentaires disponibles.",
       "not-available-new-add-ons": "Sorry there is no new add-on.",
       "please-check-connectivity-and-restart-app": "Veuillez vérifier votre connexion et redémarrer l’application pour essayer à nouveau.",
       "title": "Modules complémentaires"
