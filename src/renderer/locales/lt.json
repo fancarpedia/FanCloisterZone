@@ -108,6 +108,7 @@
     "labyrinth": "Labirintas",
     "mage-and-witch": "Burtininkas ir Ragana",
     "meteorites": "Meteoritai",
+    "meteorites-description": "Meteorites strike Carcassonne, causing chaos and destruction, allowing players to settle cleared areas and turn the chaos into strategic opportunities.",
     "monasteries": "Vienuolynai",
     "princess-and-dragon": "Princesė ir Drakonas",
     "river": "Upė",
@@ -605,6 +606,7 @@
       "add-on-already-installed": "Toks papildymas (add-on) {id} yra jau įrašytas. Jei jūs norite perrašyti papildymą, pradžioje pašalinkite.",
       "add-on-url": "Papildymo (add-on) nuoroda",
       "artwork-not-found-internet-connection-is-needed": "Nepavyko rasti arba atsisiųsti priedo su numatytuoju stiliumi. Norint jį atsisiųsti, būtinas interneto ryšys.",
+      "available-new-add-ons": "Available new add-ons",
       "drag-add-on-here-or-click-here": "Tempkite priedą (add-on .jca filą) arba paspauskite čia ir pasirinkite jį",
       "finish-or-leave-game-to-make-changes": "Prašome pirma pabaigti arba palikti žaidimą jei norite atlikti pakeitimus čia.",
       "install-add-on": "Įrašyti priedą (add-on)",
@@ -612,6 +614,7 @@
       "installed-add-ons": "Įrašyti priedai (add-ons)",
       "invalid-add-on-multiple-folders-in-root": "Neteisingas papildymas (add-on): pakete turi būti tik vienas šakninis aplankas",
       "look-at-jcz-for-add-ons": "Pažiūrėti  {link} galimiems papildymams (add-ons)",
+      "not-available-new-add-ons": "Sorry there is no new add-on.",
       "please-check-connectivity-and-restart-app": "Patikrinkite ryšį ir iš naujo paleiskite programą, kad pabandytumėte dar kartą.",
       "title": "Priedai(Add-ons)"
     },

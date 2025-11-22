@@ -108,6 +108,7 @@
     "labyrinth": "El laberint",
     "mage-and-witch": "El mag i la bruixa",
     "meteorites": "Meteorits",
+    "meteorites-description": "Meteorites strike Carcassonne, causing chaos and destruction, allowing players to settle cleared areas and turn the chaos into strategic opportunities.",
     "monasteries": "Monestirs",
     "princess-and-dragon": "La princesa i el drac",
     "river": "El riu",
@@ -605,6 +606,7 @@
       "add-on-already-installed": "El complement {id} ja està instal·lat. Si el voleu reinstal·lar, primer cal traure'l.",
       "add-on-url": "direcció url del complement",
       "artwork-not-found-internet-connection-is-needed": "No es pot trobar o descarregar el complement amb la xarxa per defecte. Cal una connexió a internet per a descarregar-ho.",
+      "available-new-add-ons": "Available new add-ons",
       "drag-add-on-here-or-click-here": "Arrossegueu el complement aquí (fitxers .jca) o feu clic aquí per a seleccionar-lo.",
       "finish-or-leave-game-to-make-changes": "Acabeu o sortiu de la partida abans de fer canvis.",
       "install-add-on": "Instal·la el complement",
@@ -612,6 +614,7 @@
       "installed-add-ons": "Complements instal·lats",
       "invalid-add-on-multiple-folders-in-root": "Complement no vàlid: el paquet ha de contenir només una carpeta a l'arrel",
       "look-at-jcz-for-add-ons": "Mireu a {link} si voleu una llista de complements disponibles.",
+      "not-available-new-add-ons": "Sorry there is no new add-on.",
       "please-check-connectivity-and-restart-app": "Comproveu la vostra connexió, reinicieu l'aplicació i proveu-ho de nou.",
       "title": "Complements"
     },

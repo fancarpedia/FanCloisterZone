@@ -108,6 +108,7 @@
     "labyrinth": "Das Labyrinth",
     "mage-and-witch": "Magier und Hexe",
     "meteorites": "Meteoriten",
+    "meteorites-description": "Meteorites strike Carcassonne, causing chaos and destruction, allowing players to settle cleared areas and turn the chaos into strategic opportunities.",
     "monasteries": "Besondere Klöster",
     "princess-and-dragon": "Burgfräulein und Drache",
     "river": "Der Fluss",
@@ -530,10 +531,10 @@
       "continue-with-recently-saved-games": "Fahre mit zuletzt gespeicherten Spielen fort",
       "create-directly-from": "Erstelle ein neues Spiel direkt aus",
       "load-game": "Spiel laden",
-      "local-games": "lokale Spiele",
+      "local-games": "offline Spiele",
       "my-favorites": "meinen Favoriten",
       "new-game": "Neues Spiel",
-      "open-game": "Offenes Spiel",
+      "open-game": "öffne Spiel",
       "title": "Vom Spieler gehostete Spiele"
     },
     "online": {
@@ -605,6 +606,7 @@
       "add-on-already-installed": "Das Add-On {id} ist bereits installiert. Wenn du es nochmal installieren möchtest, entferne es bitte zuerst.",
       "add-on-url": "Add-On-URL",
       "artwork-not-found-internet-connection-is-needed": "Add-On mit Standardgrafik kann nicht gefunden oder heruntergeladen werden. Eine Internetverbindung ist beim ersten Mal notwendig, um sie herunterzuladen.",
+      "available-new-add-ons": "Available new add-ons",
       "drag-add-on-here-or-click-here": "Ziehe das Add-On hierher (.jca-Datei) oder klicke hier, um es auszuwählen.",
       "finish-or-leave-game-to-make-changes": "Bitte beende oder verlasse zuerst das Spiel, um hier Änderungen vorzunehmen.",
       "install-add-on": "Add-On installieren",
@@ -612,6 +614,7 @@
       "installed-add-ons": "Installierte Add-Ons",
       "invalid-add-on-multiple-folders-in-root": "Ungültiges Add-On: Das Paket darf nur einen einzigen Ordner im Stammverzeichnis enthalten.",
       "look-at-jcz-for-add-ons": "Suche unter {link} nach verfügbaren Add-Ons.",
+      "not-available-new-add-ons": "Sorry there is no new add-on.",
       "please-check-connectivity-and-restart-app": "Bitte überprüfe deine Verbindung und starte die App neu, um es erneut zu versuchen.",
       "title": "Add-Ons"
     },

@@ -75,7 +75,7 @@
     "special-figures": "Особые фигуры",
     "the-biggest-city": "Самый большой город",
     "the-longest-road": "Самая длинная дорога",
-    "tiles": "Плитки",
+    "tiles": "Тайлы",
     "used-time": "Затраченное время"
   },
   "expansion": {
@@ -108,6 +108,7 @@
     "labyrinth": "Лабиринт",
     "mage-and-witch": "Маг и Ведьма",
     "meteorites": "Метеориты",
+    "meteorites-description": "Meteorites strike Carcassonne, causing chaos and destruction, allowing players to settle cleared areas and turn the chaos into strategic opportunities.",
     "monasteries": "Монастыри",
     "princess-and-dragon": "Принцесса и Дракон",
     "river": "Река",
@@ -131,12 +132,12 @@
   },
   "game": {
     "action": {
-      "bazaar-buy-sell-the-tile-from-to": "Купить/продать плитку у игрока/игроку",
+      "bazaar-buy-sell-the-tile-from-to": "Купить/Продать тайл у игрока/игроку",
       "bazaar-choose-a-tile": "Выбрать плитку",
-      "bazaar-choose-a-tile-and-your-bid": "Выберите плитку и предложите ставку",
-      "bazaar-player-must-buy-sell-the-tile-from-to": "Игрок должен купить/продать плитку у игрока/игроку",
+      "bazaar-choose-a-tile-and-your-bid": "Выберите тайл и предложите ставку",
+      "bazaar-player-must-buy-sell-the-tile-from-to": "Игрок должен купить/продать тайл у игрока/игроку",
       "bazaar-player-must-choose-a-tile": "Игрок должен выбрать плитку",
-      "bazaar-player-must-choose-a-tile-and-bid": "Игрок должен выбрать плитку и сделать ставку",
+      "bazaar-player-must-choose-a-tile-and-bid": "Игрок должен выбрать тайл и сделать ставку",
       "bazaar-player-must-raise-bid-or-pass": "Игрок должен повысить ставку или пропустить",
       "bazaar-raise-bid-or-pass": "Повысить ставку или пропустить",
       "castle-player-is-allowed-to-place": "Игрок может разместить",
@@ -150,7 +151,7 @@
       "crop-circles-player-must-choose": "Игрок должен выбрать: Каждый игрок может разместить или должен удалить своего мипла на/с {feature}.",
       "crop-circles-player-must-return-meeple": "Игрок должен вернуть мипла",
       "crop-circles-you-must-return-meeple": "Вы должны вернуть своего мипла.",
-      "draw-a-tile": "Возьмите плитку",
+      "draw-a-tile": "Возьмите тайл",
       "ferries-place-a-ferry": "Разместите паром",
       "ferries-player-can-move-ferries": "Игрок может перемещать паромы",
       "ferries-player-must-place-a-ferry": "Игрок должен разместить паром",
@@ -166,7 +167,7 @@
       "meteorite-impact": "Падение метеорита",
       "monasteries-how-do-you-want-place-follower": "Как вы хотите разместить мипла на особом монастыре?",
       "or": "или",
-      "place-the-tile": "Поместите плитку",
+      "place-the-tile": "Разместите тайл",
       "player-may-move-a-meeple-from-a-city-district": "Игрок может переместить мипла из городского района.",
       "player-may-move-a-meeple-from-a-city-district-before-final-scoring": "Игрок может переместить мипла из городского района перед окончательным подсчетом очков.",
       "player-may-move-a-meeple-from-the-market-district-before-final-scoring": "Игрок может переместить мипла из рыночного района перед окончательным подсчетом очков.",
@@ -207,7 +208,7 @@
       "castle": "Замок",
       "count": "Граф",
       "decinsky-sneznik": "Дечинский Снежник",
-      "donkey": "Обезьяна",
+      "donkey": "Осёл",
       "donkey-description": "Осёл, как нейтральная фигура, блокирует завершение любой области на тайле, на котором стоит.",
       "dragon": "Дракон",
       "fairy": "Фея",
@@ -225,7 +226,7 @@
       "shepherd": "Пастух",
       "small-follower": "Маленький мипл",
       "tower": "Башня",
-      "traders": "Торговые товары",
+      "traders": "Товары",
       "tunnel": "Туннель",
       "wagon": "Фургон",
       "windmill": "Мельница",
@@ -285,7 +286,7 @@
       "special-monastery": "Специальный монастырь",
       "tower": "Башня",
       "towers": "Башни",
-      "trade-goods": "Торговые товары",
+      "trade-goods": "Товары",
       "vineyard": "Виноградник",
       "vodyanoy": "Водяной",
       "watchtower": "Смотровая башня",
@@ -306,12 +307,12 @@
       "turn-start": "начало хода"
     },
     "tile-pack-dialog": {
-      "disabled-show-remaining": "Игра была создана с опцией, которая не позволяет показывать количество оставшихся плиток.",
+      "disabled-show-remaining": "Игра была создана с опцией, которая не позволяет показывать количество оставшихся тайлов.",
       "game-tiles": "Плитки в игре",
-      "hidden-tiles-under-hill-plural": "Под холмом нет неизвестной плитки. | Не забудьте, что 1 неизвестная плитка из списка скрыта под холмом. | Не забудьте, что {count} неизвестных плиток из списка скрыты под холмами.",
+      "hidden-tiles-under-hill-plural": "Под холмами нет спрятанных тайлов. | Не забудьте, что 1 неизвестный тайл из списка скрыт под холмом. | Не забудьте, что {count} неизвестных тайлов из списка скрыты под холмами.",
       "remaining-tiles": "Оставшиеся плитки",
-      "tiles": "Плитки",
-      "tiles-plural": "плиток | плитка | плитки"
+      "tiles": "Тайлы",
+      "tiles-plural": "тайлов | тайл | тайла | тайлов"
     }
   },
   "game-setup": {
@@ -334,18 +335,18 @@
       "waiting-for-player": "ожидание игрока"
     },
     "game-element-box": {
-      "mandatory-for-selected-tiles": "Обязательно для выбранных плиток",
+      "mandatory-for-selected-tiles": "Обязательно для выбранных тайлов",
       "related-tiles-not-selected": "Связанные плитки не выбраны"
     },
     "header": {
       "components": "Компоненты",
       "rules": "Правила",
-      "tiles": "Плитки",
+      "tiles": "Тайлы",
       "timer": "Таймер"
     },
     "open-game": {
       "assign-all-players-to-start": "Назначить всех игроков на старт",
-      "hide-remaining-tiles-cheat-sheet": "Скрыть обзор оставшихся плиток",
+      "hide-remaining-tiles-cheat-sheet": "Скрыть обзор оставшихся тайлов",
       "name": "Имя",
       "no-player-in-game": "Нет игрока в игре",
       "options": "Опции",
@@ -359,15 +360,15 @@
     "removed-elements": "Удаленные элементы",
     "rules": {
       "acrobats-description": "Размещение мипла в качестве акробата на месте акробатов.",
-      "acrobats-disabled": "В игре нет плитки с местами акробатов.",
+      "acrobats-disabled": "В игре нет тайлов с местами для акробатов.",
       "bazaar-description": "Земельные плитки продается на аукционе, когда в игру вводится базар.",
-      "bazaar-disabled": "В игре нет плитки с базаром.",
+      "bazaar-disabled": "В игре нет тайлов с базаром.",
       "cathedral-description": "Завершенные города с собором умножаются на 3 вместо 2, без очков во время окончательного подсчета.",
-      "cathedral-disabled": "В игре нет плитки с кафедральным комплексом.",
+      "cathedral-disabled": "В игре нет тайлов с Собором.",
       "escape-description": "Побег возможен через соседний монастырь.",
-      "escape-disabled": "В игре нет плитки с осадой.",
+      "escape-disabled": "В игре нет тайлов с осадой.",
       "farmers-description": "Игроки могут размещать миплы на полях.",
-      "festival-description": "С плиткой фестиваля вы можете вернуть одну из своих фигур вместо размещения новой.",
+      "festival-description": "С тайлом фестиваля вы можете вернуть одну из своих фигурок вместо размещения новой.",
       "festival-disabled": "В игре нет плитки с фестивалем.",
       "flowers-description": "Цветы добавляют +3 очка к подсчитанной области, если совпадают с жетоном игрока.",
       "flowers-disabled": "В игре нет тайлов с Цветами.",
@@ -519,7 +520,7 @@
       },
       "wagon-move": {
         "C1": "соединен (пересечение дорог или дорога, ведущая к городу/монастырю) (1-е издание)",
-        "C2": "элемент на той же или соседней плитке (2-е издание)",
+        "C2": "элемент на том же или соседнем тайле (2-е издание)",
         "description": "После подсчета очков, телега можно переместить на соседний незанятый неполный элемент. Соседний означает: {}"
       }
     }
@@ -594,7 +595,7 @@
     "session": "Сессия",
     "settings": "Настройки",
     "show-game-setup": "Показать настройки игры",
-    "tiles": "Плитки",
+    "tiles": "Тайлы",
     "toggle-history": "Переключить историю",
     "undo": "Отменить",
     "zoom-in": "Увеличить",
@@ -605,6 +606,7 @@
       "add-on-already-installed": "Дополнение {id} уже установлено. Если вы хотите переустановить его, сначала удалите текущую версию.",
       "add-on-url": "URL дополнения",
       "artwork-not-found-internet-connection-is-needed": "Не удается найти или загрузить дополнение с исходным искусством. Для загрузки дополнения необходимо подключение к интернету.",
+      "available-new-add-ons": "Available new add-ons",
       "drag-add-on-here-or-click-here": "Перетащите дополнение сюда (файл с расширением .jca) или кликните здесь для выбора.",
       "finish-or-leave-game-to-make-changes": "Сначала завершите или выйдите из текущей игры, чтобы внести изменения.",
       "install-add-on": "Установить дополнение",
@@ -612,6 +614,7 @@
       "installed-add-ons": "Установленные дополнения",
       "invalid-add-on-multiple-folders-in-root": "Недопустимое дополнение: пакет должен содержать только одну папку в корневом каталоге.",
       "look-at-jcz-for-add-ons": "Ознакомьтесь с {link} для доступных дополнений.",
+      "not-available-new-add-ons": "Sorry there is no new add-on.",
       "please-check-connectivity-and-restart-app": "Пожалуйста, проверьте подключение к интернету и перезапустите приложение для повторной попытки.",
       "title": "Дополнения"
     },
@@ -688,9 +691,9 @@
     "title": "Настройка"
   },
   "tile-set": {
-    "abbey-and-mayor-description": "Каждый игрок также может разместить плитку аббатства из своего набора.",
+    "abbey-and-mayor-description": "Каждый игрок также может разместить тайл аббатства из своего запаса.",
     "abbey-and-mayor-release": "Пятое крупное дополнение, выпущенное в 2007 году.",
-    "base-game-description": "Вы можете играть с плитками по правилам 1-й или новой редакции (например, садами). Это можно выбрать на втором шаге настройки игры.",
+    "base-game-description": "Вы можете играть с тайлами по правилам 1-й или новой редакции (например, садами). Это можно выбрать на втором шаге настройки игры.",
     "bridges-castles-and-bazaars-release": "Восьмое крупное дополнение, выпущенное в 2010 году. (Шестое крупное дополнение, Граф, Король и Разбойник, разделено на отдельные малые модули. Седьмое дополнение, Катапульта, явно пропущено)",
     "darmstadt-release": "Первоначально выпущено в 2014 году.",
     "gq11-release": "Первоначально опубликовано в журнале Games Quarterly в 2006 году.",
@@ -701,10 +704,10 @@
     "princess-and-dragon-release": "Третье крупное дополнение, выпущенное в 2005 году.",
     "river-I-release": "Река I - мини-дополнение, выпущенное в 2001 году.",
     "river-II-release": "Река II была выпущена в 2006 году и теперь включена в шестое крупное дополнение Count, King & Robber.",
-    "russian-promos-2013-title": "Плитки из 2013 года",
+    "russian-promos-2013-title": "Тайлы из 2013 года",
     "russian-promos-2016-title": "Плитки из 2016 года",
     "tower-release": "Четвёртое крупное дополнение, выпущенное в 2006 году.",
     "traders-and-builders-release": "Второе крупное дополнение, выпущенное в 2003 году.",
-    "winter-edition-description": "Базовый набор из спин-оффа Зимнее издание. Содержит основную игру, расширенную дополнительными 12 плитками."
+    "winter-edition-description": "Базовый набор из спин-оффа Зимнее издание. Содержит основную игру, дополненную 12 тайлами."
   }
 }

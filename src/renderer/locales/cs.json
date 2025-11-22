@@ -108,6 +108,7 @@
     "labyrinth": "Labyrint",
     "mage-and-witch": "Mág a čarodějnice",
     "meteorites": "Meteority",
+    "meteorites-description": "Meteorites strike Carcassonne, causing chaos and destruction, allowing players to settle cleared areas and turn the chaos into strategic opportunities.",
     "monasteries": "Speciální kláštery",
     "princess-and-dragon": "Princezna a drak",
     "river": "Řeka",
@@ -605,6 +606,7 @@
       "add-on-already-installed": "Doplněk {id} je již nainstalován. Pokud jej chcete nainstalovat znovu, nejprve jej odstraňte.",
       "add-on-url": "Adresa URL grafiky kartiček",
       "artwork-not-found-internet-connection-is-needed": "Nelze najít nebo stáhnout doplněk s výchozí grafikou kartiček.",
+      "available-new-add-ons": "Available new add-ons",
       "drag-add-on-here-or-click-here": "Přetáhněte doplněk sem (soubor .jca) nebo jej vyberte kliknutím sem.",
       "finish-or-leave-game-to-make-changes": "Chcete-li provést změny, nejprve dokončete nebo opusťte hru.",
       "install-add-on": "Nainstalujte doplněk",
@@ -612,6 +614,7 @@
       "installed-add-ons": "Nainstalované doplňky",
       "invalid-add-on-multiple-folders-in-root": "Neplatný doplněk: balíček musí obsahovat v kořenovém adresáři pouze jednu složku.",
       "look-at-jcz-for-add-ons": "Dostupné doplňky najdete na stránce {link}.",
+      "not-available-new-add-ons": "Sorry there is no new add-on.",
       "please-check-connectivity-and-restart-app": "Zkontrolujte své připojení, případně restartujte aplikaci a zkuste to znovu.",
       "title": "Doplňky"
     },

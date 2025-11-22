@@ -108,6 +108,7 @@
     "labyrinth": "Labirynt",
     "mage-and-witch": "Mag i Wiedźma",
     "meteorites": "Meteoryty",
+    "meteorites-description": "Meteorites strike Carcassonne, causing chaos and destruction, allowing players to settle cleared areas and turn the chaos into strategic opportunities.",
     "monasteries": "Klasztory",
     "princess-and-dragon": "Księżniczka i Smok",
     "river": "Rzeka",
@@ -605,6 +606,7 @@
       "add-on-already-installed": "Dodatek {id} jest już zainstalowany. Jeśli chcesz go ponownie zainstalować, najpierw go usuń.",
       "add-on-url": "adres url dodatku",
       "artwork-not-found-internet-connection-is-needed": "Nie można zlokalizować lub pobrać dodatku z domyślną grafiką. Aby go pobrać, konieczne jest połączenie z internetem.",
+      "available-new-add-ons": "Available new add-ons",
       "drag-add-on-here-or-click-here": "Przeciągnij tutaj dodatek (plik .jca) lub kliknij aby go wybrać.",
       "finish-or-leave-game-to-make-changes": "Proszę najpierw zakończyć lub opuścić grę, aby dokonać zmian tutaj.",
       "install-add-on": "Zainstaluj dodatek",
@@ -612,6 +614,7 @@
       "installed-add-ons": "Zainstalowane dodatki",
       "invalid-add-on-multiple-folders-in-root": "Niewłaściwy dodatek: pakiet musi zawierać tylko jeden folder w katalogu głównym",
       "look-at-jcz-for-add-ons": "Więcej dodatków dostępne na: {link}",
+      "not-available-new-add-ons": "Sorry there is no new add-on.",
       "please-check-connectivity-and-restart-app": "Sprawdź połączenie z internetem i zrestartuj aplikację, aby spróbować ponownie.",
       "title": "Dodatki"
     },
@@ -680,9 +683,9 @@
     },
     "system": {
       "app-channel": "Kanał aktualizacji aplikacji",
-      "dev": "Testowanie nowych funkcji podczas wdrażania",
-      "beta": "Dowód, że plikacja i nowe funkcje są gotowe",
-      "stable": "Chcę po prostu grać i cieszyć się grą",
+      "dev": "Dla deweloperów i testerów.",
+      "beta": "Wczesny dostęp do nowych funkcji (może zawierać błędy).",
+      "stable": "Działa dobrze i jest odpowiednia dla każdego.",
       "title": "System"
     },
     "title": "Ustawienia"

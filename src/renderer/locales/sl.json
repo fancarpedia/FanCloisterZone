@@ -108,6 +108,7 @@
     "labyrinth": "Labirint",
     "mage-and-witch": "Čarovnik & Čarovnica",
     "meteorites": "Meteoriti",
+    "meteorites-description": "Meteorites strike Carcassonne, causing chaos and destruction, allowing players to settle cleared areas and turn the chaos into strategic opportunities.",
     "monasteries": "Samostani",
     "princess-and-dragon": "Princesa & Zmaj",
     "river": "Reka",
@@ -605,6 +606,7 @@
       "add-on-already-installed": "Dodatek {id} je že nameščen. Če ga želiš ponovno namestiti, ga najprej odstrani.",
       "add-on-url": "url dodatka",
       "artwork-not-found-internet-connection-is-needed": "Ni mogoče najti ali prenesti dodatka s privzeto grafiko. Pri prvem zagonu je potrebna internetna povezava za prenos.",
+      "available-new-add-ons": "Available new add-ons",
       "drag-add-on-here-or-click-here": "Povleci dodatek sem (datoteka .jca) ali klikni tukaj za izbiro.",
       "finish-or-leave-game-to-make-changes": "Prosimo, najprej zaključi ali zapusti igro, da lahko narediš spremembe tukaj.",
       "install-add-on": "Namesti dodatek",
@@ -612,6 +614,7 @@
       "installed-add-ons": "Nameščeni dodatki",
       "invalid-add-on-multiple-folders-in-root": "Neveljaven dodatek: paket mora vsebovati samo eno mapo v korenu",
       "look-at-jcz-for-add-ons": "Poglej na {link} za razpoložljive dodatke.",
+      "not-available-new-add-ons": "Sorry there is no new add-on.",
       "please-check-connectivity-and-restart-app": "Prosimo, preveri svojo povezavo in ponovno zaženi aplikacijo, da poskusiš znova.",
       "title": "Dodatki"
     },

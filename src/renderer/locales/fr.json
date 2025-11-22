@@ -108,6 +108,7 @@
     "labyrinth": "Le Labyrinthe",
     "mage-and-witch": "Mage et Sorcière",
     "meteorites": "Les Météorites",
+    "meteorites-description": "Meteorites strike Carcassonne, causing chaos and destruction, allowing players to settle cleared areas and turn the chaos into strategic opportunities.",
     "monasteries": "Abbayes",
     "princess-and-dragon": "Princesse et Dragon",
     "river": "La Rivière",
@@ -605,6 +606,7 @@
       "add-on-already-installed": "Le module complémentaire {id} est déjà installé. Si vous voulez le réinstaller, veuillez d’abord le supprimer.",
       "add-on-url": "Lien du module complémentaire",
       "artwork-not-found-internet-connection-is-needed": "Impossible de localiser ou de télécharger le module complémentaire avec les illustrations par défaut. Une connexion Internet est nécessaire au premier lancement pour le télécharger.",
+      "available-new-add-ons": "Available new add-ons",
       "drag-add-on-here-or-click-here": "Faites glisser le module complémentaire ici (fichier .jca) ou cliquez ici pour le sélectionner.",
       "finish-or-leave-game-to-make-changes": "Veuillez terminer ou quitter la partie avant de pouvoir effectuer des changements ici.",
       "install-add-on": "Installer un module complémentaire",
@@ -612,6 +614,7 @@
       "installed-add-ons": "Modules complémentaires installés",
       "invalid-add-on-multiple-folders-in-root": "Module complémentaire invalide : le module ne doit contenir qu’un seul dossier à la racine.",
       "look-at-jcz-for-add-ons": "Consultez le site {link} pour connaître les modules complémentaires disponibles.",
+      "not-available-new-add-ons": "Sorry there is no new add-on.",
       "please-check-connectivity-and-restart-app": "Veuillez vérifier votre connexion et redémarrer l’application pour essayer à nouveau.",
       "title": "Modules complémentaires"
     },
