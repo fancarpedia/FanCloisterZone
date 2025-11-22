@@ -407,6 +407,9 @@ h2
     overflow: auto
     text-align: left
     
+    a
+      color: white
+
     &::-webkit-scrollbar
       width: 8px
       height: 8px
@@ -421,7 +424,7 @@ h2
 
       &:hover
         background: linear-gradient(180deg, #66b2ff, #007bff)
-
+  
   ::v-deep ul
     list-style: none
 

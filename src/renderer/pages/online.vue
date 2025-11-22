@@ -502,16 +502,20 @@ h2
       height: 36px
       display: block
 
-    /* visual treatment for disconnected slot */
     &.local
-      color: var(--v-primary-lighten2) !important
-
+      font-weight: bolder
+      
+      +theme using ($theme)
+        color: map-get($theme, 'local-player-color')
+      
     &.disconnected
       
       svg.meeple 
         fill: white
-        filter: invert(1)
         
+        +theme using ($theme)
+          filter: map-get($theme, 'disconnected-filter')
+
 .empty-message
   margin: 30px 0
   text-align: center

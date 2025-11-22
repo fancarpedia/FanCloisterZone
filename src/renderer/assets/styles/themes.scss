@@ -52,7 +52,9 @@ $theme-light: (
   'slot-open-text': #444,
   'slot-local-text': #444,
   'slot-remote-text': #444,
-  'slot-assign-text': #444
+  'slot-assign-text': #444,
+  'disconnected-filter': invert(0.25),
+  'local-player-color': var(--v-primary-darken2)
 );
 
 
@@ -116,7 +118,9 @@ $theme-dark: (
   'slot-open-text': #bbb,
   'slot-local-text': #dae2ed,
   'slot-remote-text': #bbb,
-  'slot-assign-text': #bbb
+  'slot-assign-text': #bbb,
+  'disconnected-filter': invert(1),
+  'local-player-color': var(--v-primary-lighten2)
 );
 
 @mixin theme {

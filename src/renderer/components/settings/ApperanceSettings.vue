@@ -18,7 +18,7 @@
     </v-radio-group>
 
     <h4>{{ $t('settings.appearance.artworks') }}</h4>
-    <em>{{ $t('settings.appearance.artworks-description') }}</em>
+    <em style="display:none">{{ $t('settings.appearance.artworks-description') }}</em>
 
     <div
       v-for="{ json: artwork } in artworks"
