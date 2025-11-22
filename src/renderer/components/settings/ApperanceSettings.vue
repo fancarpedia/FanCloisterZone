@@ -50,8 +50,10 @@ export default {
     artworks () {
       const artworks = []
       for (const addon of this.$addons.addons) {
-        for (const artwork of addon.artworks) {
-          artworks.push(artwork)
+        if (addon.id == 'classic') {
+          for (const artwork of addon.artworks) {
+            artworks.push(artwork)
+          }
         }
       }
       return artworks

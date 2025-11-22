@@ -32,14 +32,6 @@
       <div v-for="(error, idx) in errors" :key="idx">{{ error }}</div>
     </v-alert>
 
-	<i18n path="settings.add-ons.look-at-jcz-for-add-ons" tag="p" class="info-box">
-	  <template #link>
-	    <a href="https://www.carcassonneforum.cz/thread-4160.html" @click.prevent="openLink">Carcassonne CZ</a><!-- /* Fan Edition */ -->,
-
-	    <a href="https://www.carcassonnecentral.com/community/index.php?action=downloads;cat=30" @click.prevent="openLink">Carcassonne Central Forum</a><!-- /* Fan Edition */ -->
-	  </template>
-    </i18n>
-    
     <h4>{{ $t('settings.add-ons.available-new-add-ons') }}</h4>
     <div
       v-for="addon in availableAddonsList"
@@ -56,6 +48,14 @@
     <div v-if="!availableAddons">
       {{ $t('settings.add-ons.not-available-new-add-ons') }}
     </div>
+    
+	<i18n path="settings.add-ons.look-at-link-for-add-ons" tag="p" class="info-box">
+	  <template #link>
+	    <a href="https://www.carcassonneforum.cz/thread-4160.html" @click.prevent="openLink">Carcassonne CZ</a><!-- /* Fan Edition */ -->,
+
+	    <a href="https://www.carcassonnecentral.com/community/index.php?action=downloads;cat=30" @click.prevent="openLink">Carcassonne Central Forum</a><!-- /* Fan Edition */ -->
+	  </template>
+    </i18n>
     
     <h4>{{ $t('settings.add-ons.installed-add-ons') }}</h4>
 
@@ -181,20 +181,22 @@ export default {
 
     getAddons () {
       // hide default
-      return this.$addons.addons.filter(addon => !addon.hidden)
+      return this.$addons.addons.filter(addon => (!addon.hidden && addon.id != 'classic'))
     },
     
     async loadAvailableAddons () {
       const installed = this.$addons.addons.map(a => a.id)
       const downloadable = await this.$addons.getDownloadable()
 
-      this.availableAddonsList = downloadable
-        .filter(addon => !installed.includes(addon.key))
-        .map(addon => ({
-          ...addon,
-          name: this.$te(`expansion.${addon.key}`) ? this.$t(`expansion.${addon.key}`) : addon.name,
-          description: this.$te(`expansion.${addon.key}-description`) ? this.$t(`expansion.${addon.key}-description`) : addon.description
-        }));
+      if (downloadable) {
+        this.availableAddonsList = downloadable
+          .filter(addon => !installed.includes(addon.key))
+          .map(addon => ({
+            ...addon,
+            name: this.$te(`expansion.${addon.key}`) ? this.$t(`expansion.${addon.key}`) : addon.name,
+            description: this.$te(`expansion.${addon.key}-description`) ? this.$t(`expansion.${addon.key}-description`) : addon.description
+          }))
+      }
     }
   },
   
