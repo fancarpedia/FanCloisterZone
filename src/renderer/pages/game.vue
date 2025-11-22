@@ -219,11 +219,10 @@ export default {
       let icon
       if (Number.isInteger(idx)) {
         const slot = this.$store.state.game.players[idx].slot
-        icon = `p${slot}.png`
+        icon = `p${slot}.ico`
       } else {
-        icon = 'default.png'
+        icon = 'default.ico'
       }
-
       ipcRenderer.invoke('win.setIcon', icon)
     },
 
