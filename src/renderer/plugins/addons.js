@@ -159,7 +159,7 @@ class Addons extends EventsBase {
     const versionDefinition = addonDefinition.versions.find(v => v.version === version)
     if (!versionDefinition) return
 
-    const downloadedPath = `${addonKey}-v${versionDefinition.version}.jca`
+    const downloadedPath = path.join(os.tmpdir(), `${addonKey}-v${versionDefinition.version}.jca`)
 
     // MEGA → stream download
     if (versionDefinition.provider === 'mega') {
