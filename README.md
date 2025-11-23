@@ -148,6 +148,8 @@ Add package manager witch current yarn version
 #### Update package.json for current app version
 
 #### Github stuff for create a release
-  `git push`
-  `git tag -a RELEASE`
-  `git push origin RELEASE`
+  ```
+  git push
+  git tag -a RELEASE
+  git push origin RELEASE
+  ```
