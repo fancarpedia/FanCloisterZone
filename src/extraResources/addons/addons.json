@@ -9,7 +9,7 @@
           "url": "https://mega.nz/file/jcYDVZZB#rSz1yPTYlPByEXIHq__-kFaXjHMBZ4yh4kXsJqZIvbY",
           "version": 0,
           "provider": "mega",
-          "fromVersion": "6.0.0"
+          "fromVersion": "6.1.0"
         }
       ]
     },
@@ -22,7 +22,7 @@
           "url": "https://mega.nz/file/XBwAnSbY#YUjvcUN1wOkReu_11YFMY17SkHK-6I2PO5Y0nlPdq_o",
           "version": 0,
           "provider": "mega",
-          "fromVersion": "6.0.0"
+          "fromVersion": "6.1.0"
         }
       ]
     },
@@ -48,7 +48,7 @@
           "url": "https://mega.nz/file/LIxlnQLZ#iQDFw_SG3w1WA5FzEcrDuNgmvve2lRNcXHmlsvqatL0",
           "version": 1,
           "provider": "mega",
-          "fromVersion": "6.0.0"
+          "fromVersion": "6.1.0"
         }
       ]
     },
