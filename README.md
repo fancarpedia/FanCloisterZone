@@ -137,3 +137,19 @@ Add package manager witch current yarn version
     path.resolve(require.resolve('megajs'), '..', '..')
   ]
   ```
+### Prepare build 
+
+#### Load all locales
+  `yarn locale-updates`
+
+#### Try to build to test installation
+  `yarn build`
+
+#### Update package.json for current app version
+
+#### Github stuff for create a release
+  ```
+  git push
+  git tag -a RELEASE
+  git push origin RELEASE
+  ```
