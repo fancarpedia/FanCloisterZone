@@ -196,9 +196,7 @@ function extractJSON(content) {
  */
 async function processLanguage(lang) {
   const isEnglish = lang === 'en';
-  const pageUrl = isEnglish
-    ? `${BASE_URL}/${WIKI_PATH}/${PAGE_TITLE}?action=raw`
-    : `${BASE_URL}/${WIKI_PATH}/${PAGE_TITLE}/${lang}?action=raw`;
+  const pageUrl = `${BASE_URL}/${WIKI_PATH}/${PAGE_TITLE}/${lang}?action=raw`;
   
   const filename = `${lang}.json`;
   // Resolve OUTPUT_DIR relative to script location, not cwd
