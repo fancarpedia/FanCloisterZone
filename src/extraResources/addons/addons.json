@@ -27,6 +27,19 @@
       ]
     },
     {
+      "key": "decinsky-sneznik",
+      "name": "Decinsky Sneznik",
+      "description": "",
+      "versions": [
+        {
+          "url": "https://mega.nz/file/fNB2UKQb#8CZDygJXSxb7dfDVrQ7cbktTegLB_rDof0qWhCXvY-4",
+          "version": 1,
+          "provider": "mega",
+          "fromVersion": "6.0.0"
+        }
+      ]
+    },
+    {
       "key": "family-feud",
       "name": "Family Feud",
       "description": "",
