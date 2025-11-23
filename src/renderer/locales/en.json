@@ -2,7 +2,7 @@
   "@author": "farin & Scott",
   "@jcz-version": "5.12.1",
   "@fcz-version": "6.0.0",
-  "@version": "0.8.16",
+  "@version": "0.8.17",
   "about": {
     "configuration-file": "Configuration file",
     "jcloisterzone-game-engine": "JCloisterZone Game Engine",
@@ -586,7 +586,7 @@
     "load-setup": "Load Setup",
     "new-game": "New Game",
     "online": "Online",
-    "open-game": "<Open Game",
+    "open-game": "Open Game",
     "playonline-connect": "Play Online",
     "playonline-disconnect": "Disconnect",
     "report-bug": "Report a bug",

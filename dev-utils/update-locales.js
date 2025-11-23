@@ -10,7 +10,7 @@ const WIKI_PATH = 'car'; // URL path component (e.g., 'wiki', 'w', 'mywiki')
 const PAGE_TITLE = 'User:Bumsakalaka/JCloisterZoneLocale'; // MediaWiki page title
 const OUTPUT_DIR = '../src/renderer/locales'; // Output directory for locale files
 
-// Version 18
+// Version 20
 
 /**
  * Discover available language translations from MediaWiki
@@ -157,8 +157,11 @@ function extractJSON(content) {
   // Get content after the marker
   let jsonContent = content.substring(markerIndex + localeMarker.length).trim();
   
-  // Remove all <span...>...</span> tags (untranslated/outdated content)
-  jsonContent = jsonContent.replace(/<span[^>]*>.*?<\/span>/gs, '');
+  // Remove <translate> tags but keep their content
+  jsonContent = jsonContent.replace(/<\/?translate>/g, '');
+  
+  // Remove <span...>...</span> tags but KEEP their content (untranslated/outdated text)
+  jsonContent = jsonContent.replace(/<span[^>]*>/g, '').replace(/<\/span>/g, '');
   
   // Find the JSON object (starts with { and ends with })
   const firstBrace = jsonContent.indexOf('{');
@@ -195,7 +198,7 @@ function extractJSON(content) {
  * Download and process locale for a specific language
  */
 async function processLanguage(lang) {
-  const isEnglish = lang === 'en';
+  // Always fetch from /lang suffix (including /en for English)
   const pageUrl = `${BASE_URL}/${WIKI_PATH}/${PAGE_TITLE}/${lang}?action=raw`;
   
   const filename = `${lang}.json`;
