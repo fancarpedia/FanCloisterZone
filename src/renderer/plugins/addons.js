@@ -1,5 +1,5 @@
 import os from 'os'
-import fs from 'fs'
+import fs from 'fs-extra'
 import path from 'path'
 import https from 'https'
 

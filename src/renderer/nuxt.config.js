@@ -158,7 +158,8 @@ module.exports = {
         fsevents: "require('fsevents')"
       }
       const babelRequiredPaths = [
-        path.resolve(require.resolve('megajs'), '..', '..')
+        path.resolve(require.resolve('megajs'), '..', '..'),
+        path.resolve(require.resolve('fs-extra'), '..', '..')
       ]
       config.module.rules.push({
         test: /\.js$/,
@@ -166,7 +167,18 @@ module.exports = {
         use: {
           loader: 'babel-loader',
             options: {
-            presets: ['@babel/preset-env']
+      presets: [
+        ['@babel/preset-env', {
+          targets: {
+            node: '16'
+          },
+          modules: 'commonjs'
+        }]
+      ],
+      plugins: [
+        '@babel/plugin-proposal-nullish-coalescing-operator',
+        '@babel/plugin-proposal-optional-chaining'
+      ]
           }
         }
       })
