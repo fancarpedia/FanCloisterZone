@@ -65,6 +65,7 @@ function main() {
 
   // Push branch and tags
   console.log('\nPushing to origin...');
+  exec(`git push`);
   exec(`git push origin ${branch}`);
   exec(`git push origin v${version}`);
 
