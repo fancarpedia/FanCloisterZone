@@ -118,7 +118,7 @@
         </v-btn> -->
 
         <v-btn large color="secondary" :disabled="!engine || !engine.ok" @click="loadGame()">
-          {{ $t('index.local.load-game') }}
+          {{ $t('index.local.open-game') }}
         </v-btn>
       </div>
 
