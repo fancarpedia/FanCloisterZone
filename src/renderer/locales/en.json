@@ -2,7 +2,7 @@
   "@author": "farin & Scott",
   "@jcz-version": "5.12.1",
   "@fcz-version": "6.0.0",
-  "@version": "0.8.19",
+  "@version": "0.8.20",
   "about": {
     "configuration-file": "Configuration file",
     "jcloisterzone-game-engine": "JCloisterZone Game Engine",
@@ -47,6 +47,7 @@
     "play-online-fan": "Play Online on Fan Server",
     "plus-description": "Add Multiple Instances",
     "raise": "Raise",
+    "rematch": "Rematch",
     "remove": "Remove",
     "remove-from-favorites": "Remove From Favorites",
     "reset": "Reset",

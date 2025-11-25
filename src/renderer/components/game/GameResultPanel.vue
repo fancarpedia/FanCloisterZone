@@ -18,15 +18,22 @@
     </div>
 
     <div class="buttons">
-      <v-btn large color="secondary" @click="toggleStats">
+      <v-btn large color="secondary" @click="toggleStats" class="toggle-stats">
         <v-icon left>fa-chart-bar</v-icon>
         {{ showGameStats ? $t('button.hide-stats') : $t('button.show-stats') }}
       </v-btn>
-      <v-btn large color="secondary" @click="playAgain">
+
+      <v-btn large color="secondary" @click="playAgain" class="play-again">
         <v-icon left>fas fa-play</v-icon>
         {{ $t('button.play-again') }}
       </v-btn>
-      <v-btn large color="secondary" @click="close">
+
+      <v-btn v-if="!gameKey" large color="primary" @click="rematch" class="rematch">
+        <v-icon left>fas fa-arrows-rotate</v-icon>
+        {{ $t('button.rematch') }}
+      </v-btn>
+
+      <v-btn large color="error" @click="close" class="close">
         <v-icon left>fa-times</v-icon>
         {{ $t('button.close') }}
       </v-btn>
@@ -45,6 +52,7 @@ export default {
 
   computed: {
     ...mapState({
+      gameKey: state => state.game.key,
       showGameStats: state => state.game.showGameStats,
       onlineConnected: state => state.networking.connectionType === 'online'
     }),
@@ -71,6 +79,61 @@ export default {
       this.$store.dispatch('gameSetup/load', setup)
       this.$store.commit('gameSetup/gameAnnotations', gameAnnotations)
       await this.$store.dispatch('gameSetup/createGame')
+    },
+
+    invertOrder(slots) {
+      // Deep copy (keep objects intact but cloned)
+      const result = slots.map(s => {
+        const copy = JSON.parse(JSON.stringify(s))
+
+        if ('gameId' in copy) {
+          copy.gameId = null
+        }
+        if ('sessionId' in copy) {
+          copy.sessionId = null
+        }
+
+        return copy
+      })
+
+      const orderedPlayers = result.filter(s => s.order !== undefined)
+
+      const orders = orderedPlayers.map(s => s.order)
+
+      if (orders.length === 2) {
+        orderedPlayers[0].order = orders[1]
+        orderedPlayers[1].order = orders[0]
+        return result;
+      }
+
+      function shuffle(arr) {
+        for (let i = arr.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1))
+            [arr[i], arr[j]] = [arr[j], arr[i]]
+        }
+        return arr
+      }
+
+      const shuffledOrders = shuffle([...orders])
+
+      orderedPlayers.forEach((player, i) => {
+        player.order = shuffledOrders[i]
+      });
+
+      return result
+    },
+
+    async rematch () {
+      const { setup, gameAnnotations, slots } = this.$store.state.game
+      await this.$store.dispatch('game/close')
+      this.$store.dispatch('gameSetup/load', setup)
+      this.$store.commit('gameSetup/gameAnnotations', gameAnnotations)
+      const revertedSlots = this.invertOrder(slots)
+      console.log(slots,revertedSlots)
+      await this.$store.dispatch('gameSetup/createGame', {
+        loadedSetup: setup,
+        slots: revertedSlots
+      })
     },
 
     toggleStats () {
@@ -120,6 +183,16 @@ svg.meeple
     +theme using ($theme)
       color: map-get($theme, 'gray-text-color')
 
+@media (max-width: 1024px)
+  .close, .play-again, .toggle-stats
+    text-indent: -9999px
+    margin: 0
+    min-width: 0
+	
+    .v-icon
+      font-size: 24px
+      margin: 0
+      
 @media (max-width: 1960px)
   svg.meeple
     width: 40px

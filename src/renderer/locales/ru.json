@@ -47,6 +47,7 @@
     "play-online-fan": "Играть онлайн на фанатском сервере",
     "plus-description": "Добавить больше",
     "raise": "Поднять",
+    "rematch": "Rematch",
     "remove": "Удалить",
     "remove-from-favorites": "Удалить из избранного",
     "reset": "Сбросить",
@@ -183,7 +184,7 @@
       "mage-and-witch-player-must-remove-mage-or-witch": "Игрок должен удалить мага или ведьму.",
       "mage-and-witch-remove-mage-or-witch": "Удалить мага или ведьму.",
       "meteorite-impact": "Падение метеорита",
-      "monasteries-how-do-you-want-place-follower": "Как вы хотите разместить мипла на особом монастыре?",
+      "monasteries-how-do-you-want-place-follower": "��ак вы хотите разместить мипла на особом монастыре?",
       "or": "или",
       "place-the-tile": "Разместите тайл",
       "player-may-move-a-meeple-from-a-city-district": "Игрок может переместить мипла из городского района.",
@@ -424,7 +425,7 @@
     "tiles": {
       "core-sets": "Основные наборы",
       "fan-expansions": "Пользовательские дополнения",
-      "major-expansions": "Основные дополнени��",
+      "major-expansions": "Основные дополнения",
       "minor-expansions": "Минорные дополнения",
       "promos": "Промо-дополнения"
     },

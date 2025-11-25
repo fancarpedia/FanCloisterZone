@@ -228,7 +228,7 @@ export const actions = {
     })
   },
 
-  createGame ({ state, commit, getters, dispatch }, loadedSetup) {
+  async createGame ({ state, commit, getters, dispatch }, { loadedSetup, slots } = {}) {
     const { $tiles } = this._vm
     let setup
 
@@ -273,9 +273,11 @@ export const actions = {
     })
     setup.rules = rules
 
+    const finalSlots = slots || getEmptySlots()
+
     dispatch('networking/startServer', {
       setup,
-      slots: getEmptySlots(),
+      slots: finalSlots,
       gameAnnotations: state.gameAnnotations
     }, { root: true })
   }

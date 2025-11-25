@@ -90,6 +90,7 @@ export default {
 	  }
 	  return 'open'
     }
+    
   },
 
   methods: {
