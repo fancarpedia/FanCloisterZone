@@ -1,3 +1,4 @@
+
 import { Menu, ipcMain } from 'electron'
 import { getSettings } from '../settings'
 
@@ -12,10 +13,10 @@ async function createMenu (win, messages) {
   const isMac = process.platform === 'darwin'
   const sessionSubmenu = [
     { id: 'new-game', label: $t('menu.new-game') || 'New Game', accelerator: 'CommandOrControl+N', click () { win.webContents.send('menu.new-game') } },
-/* Fan Server *///    { id: 'join-game', label: $t('menu.join-game') || 'Join Game', accelerator: 'CommandOrControl+J', click () { win.webContents.send('menu.join-game') } },
+    { id: 'join-game', label: $t('menu.join-game') || 'Join Game', accelerator: 'CommandOrControl+J', click () { win.webContents.send('menu.join-game') } },
     { type: 'separator' },
     { id: 'save-game', label: $t('menu.save-game') || 'Save Game', accelerator: 'CommandOrControl+S', click () { win.webContents.send('menu.save-game') } },
-    { id: 'load-game', label: [$t('menu.open-game'),$t('menu.load-setup')].join(' / ') || 'Open Game / Load Setup', accelerator: 'CommandOrControl+O', click () { win.webContents.send('menu.load-game') } },
+    { id: 'load-game', label: [$t('menu.open-game') || 'Open Game', $t('menu.load-setup') || 'Load Setup'].join(' / '), accelerator: 'CommandOrControl+O', click () { win.webContents.send('menu.load-game') } },
     { type: 'separator' },
     { id: 'settings', label: $t('menu.settings') || 'Settings', accelerator: 'CommandOrControl+,', click () { win.webContents.send('menu.show-settings') } },
     { type: 'separator' },
