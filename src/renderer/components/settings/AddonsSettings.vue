@@ -38,11 +38,24 @@
       class="available-addon"
       @click="installDownloadable(addon.key,addon.versions[0].version)"
     >
-      <div>
-        <strong>{{ addon.name }}</strong> <small class="addon-version">v{{ addon.versions[0].version }}</small>
-      </div>
-      <div>
-        {{ addon.description }}
+      <div class="addon-install" @click.stop="installAddon(addon)">
+         <i v-if="addon.installing" class="fas fa-spinner fa-spin"></i>
+         <i v-else-if="addon.installed" class="fas fa-check" style="color:green;"></i>
+         <i v-else class="fas fa-download"></i>
+       </div>
+      <div class="addon-row">
+        <div class="addon-svg">
+          <img :src="addon.svgUrl" alt="" />
+        </div>
+        <div class="addon-info">
+          <div class="addon-title">
+            {{ addon.name }}
+            <small class="addon-version">v{{ addon.versions[0].version }}</small>
+          </div>
+          <div class="addon-description">
+            {{ addon.description }}
+          </div>
+        </div>
       </div>
     </div>
     <div v-if="!availableAddons">
@@ -140,6 +153,20 @@ export default {
       this.install(filePaths)
     },
 
+    async installAddon(addon) {
+      if (addon.installing) return
+      addon.installing = true
+      try {
+        await this.$addons.installDownloadable(addon.key, addon.versions[0].version)
+        addon.installed = true
+      } catch (e) {
+        this.showAlert = true
+        this.errors.push(e + '')
+      } finally {
+        addon.installing = false
+      }
+    },
+  
     async installDownloadable (addon, version) {
       try {
         await this.$addons.installDownloadable(addon, version)
@@ -191,11 +218,18 @@ export default {
       if (downloadable) {
         this.availableAddonsList = downloadable
           .filter(addon => !installed.includes(addon.key))
-          .map(addon => ({
-            ...addon,
-            name: this.$te(`expansion.${addon.key}`) ? this.$t(`expansion.${addon.key}`) : addon.name,
-            description: this.$te(`expansion.${addon.key}-description`) ? this.$t(`expansion.${addon.key}-description`) : addon.description
-          }))
+          .map(addon => {
+            const blob = new Blob([addon.svg], { type: 'image/svg+xml' })
+            const svgUrl = URL.createObjectURL(blob)
+            return {
+              ...addon,
+              svgUrl,
+              installing: false,
+              installed: false, // Temporary state
+              name: this.$te(`expansion.${addon.key}`) ? this.$t(`expansion.${addon.key}`) : addon.name,
+              description: this.$te(`expansion.${addon.key}-description`) ? this.$t(`expansion.${addon.key}-description`) : addon.description
+            }
+          })
       }
     }
   },
@@ -253,8 +287,51 @@ export default {
   +theme using ($theme)
     background: map-get($theme, 'board-bg')
 
-.addon-version
-  margin-left: 8px
-  opacity: 0.4
+.available-addon
+  border: 1px solid #ccc
+  padding: 10px
+  margin-bottom: 10px
+  cursor: pointer
+  border-radius: 5px
+  position: relative
 
+.addon-row
+  display: flex
+  align-items: flex-start
+
+.addon-svg
+  width: 80px
+  margin-right: 10px
+  flex-shrink: 0
+
+.addon-svg img 
+  width: 100%
+  height: auto
+  display: block
+
+.addon-info
+  flex: 1
+
+.addon-title
+  font-weight: bolder
+  font-size: larger
+
+.addon-version
+  font-size: 0.8em
+  color: #aaa
+  margin-left: 1ex
+
+.addon-description
+  color: #333
+
+.addon-install
+  position: absolute
+  top: 8px
+  right: 8px
+  font-size: 1.2em
+  cursor: pointer
+  color: #007bff
+
+.addon-install:hover
+  color: #0056b3
 </style>

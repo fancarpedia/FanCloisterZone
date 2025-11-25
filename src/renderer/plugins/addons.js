@@ -161,70 +161,46 @@ class Addons extends EventsBase {
 
     const downloadedPath = path.join(os.tmpdir(), `${addonKey}-v${versionDefinition.version}.jca`)
 
-    // MEGA → stream download
+    // Download provider
+    let downloadPromise
     if (versionDefinition.provider === 'mega') {
       const file = File.fromURL(versionDefinition.url)
-      return new Promise((resolve, reject) => {
+      downloadPromise = new Promise((resolve, reject) => {
         file
-          .download()
-          .pipe(fs.createWriteStream(downloadedPath))
-          .on('progress', info => {
-            console.log('Loaded', info.bytesLoaded, 'bytes of', info.bytesTotal)
-          })
-          .on('error', error => {
-            console.error('Download error', error)
-            reject(new Error($nuxt.$t('settings.add-ons.download-error')))
-          })
-          .on('finish', async () => {
-            try {
-              await this.install(downloadedPath)
-              resolve()
-            } catch (e) {
-              reject(e)
-            }
-          })
+        .download()
+        .pipe(fs.createWriteStream(downloadedPath))
+        .on('error', reject)
+        .on('finish', resolve)
       })
-    }
+    } else if (versionDefinition.provider === 'https') {
+      const res = await fetch(versionDefinition.url)
+      if (!res.ok) throw new Error(`HTTP ${res.status}`)
 
-    // HTTPS → fetch download
-    if (versionDefinition.provider === 'https') {
-      const url = versionDefinition.url
-
-      const response = await fetch(url)
-      if (!response.ok) throw new Error(`HTTP ${response.status}`)
-
-      return new Promise((resolve, reject) => {
+      downloadPromise = new Promise((resolve, reject) => {
         const fileStream = fs.createWriteStream(downloadedPath)
-        const reader = response.body.getReader()
-
-        const pump = async () => {
-          try {
-            const { done, value } = await reader.read()
-            if (done) {
-              fileStream.end()
-              try {
-                await this.install(downloadedPath)
-                resolve()
-              } catch (e) {
-                reject(e)
-              }
-              return
-            }
-            fileStream.write(Buffer.from(value))
-            pump()
-          } catch (err) {
-            reject(err)
-          }
-        }
-
-        pump()
+        res.body.pipe(fileStream)
+        fileStream.on('finish', resolve)
+        fileStream.on('error', reject)
       })
+    } else {
+      throw new Error(`Unknown provider: ${versionDefinition.provider}`)
     }
 
-    // Unknown provider
-    throw new Error(`Unknown provider: ${versionDefinition.provider}`)
+    await downloadPromise
+
+    // --- SHA-256 verification ---
+    if (versionDefinition.sha256) {
+      const checksum = sha256File(downloadedPath)
+      if (checksum !== versionDefinition.sha256) {
+        await fs.promises.unlink(downloadedPath)
+        throw new Error(`Downloaded file checksum mismatch for ${addonKey}`)
+      }
+    }
+
+    // Install after verification
+    await this.install(downloadedPath)
   }
-    
+      
   async install (filePath) {
     const addonsFolder = await this.mkAddonsFolder()
 
