@@ -17,6 +17,13 @@ let diffDownHelper = {
   lastSize: 0
 }
 
+marked.setOptions({ // Settings for GitHub Release markdown
+  gfm: true,
+  breaks: true,
+  mangle: false,
+  headerIds: true
+});
+
 let win = null
 let updateInfo = null
 
