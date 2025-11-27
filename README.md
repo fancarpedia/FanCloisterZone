@@ -109,7 +109,7 @@ Add package manager witch current yarn version
 
 ### Setting specific CSS value based on theme
 
-#### Precalculated colors
+#### Set theme specific CSS styles
 
 * Define `new-value-key` in `$theme-light` and `$dark-light` with theme based value in
 `src/renderer/assets/styles/themes.scss`
@@ -120,6 +120,9 @@ element
   +theme using ($theme)
   css-property: map-get($theme, 'new-value-key')
 ``` 
+
+#### Use theme in Vue compoments
+`const theme = this.$vuetify.theme.dark ? 'dark' : 'light'`
 
 ### Add new language
 
