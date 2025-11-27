@@ -59,13 +59,14 @@ function main() {
   console.log(`Pull changes for ${branch}`);
   exec(`git pull`);
 
+  // Push branch and tags
+  console.log('\nPushing to origin...');
+  exec(`git push`);
+
   // Create tag
   console.log(`Creating tag v${version}...`);
   exec(`git tag -a v${version} -m "Release v${version}"`);
 
-  // Push branch and tags
-  console.log('\nPushing to origin...');
-  exec(`git push`);
   exec(`git push origin ${branch}`);
   exec(`git push origin v${version}`);
 
