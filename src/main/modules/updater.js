@@ -57,7 +57,7 @@ async function getLatestReleaseByChannel(channel, currentVersion) {
           dmg: getAsset('.dmg'),
           appImage: getAsset('.AppImage')
         },
-        releaseNotes: (r.body ? marked.parse(r.body || '') : r.tag_name) + ' ' + channel
+        releaseNotes: (r.body ? marked.parse(r.body || '') : r.tag_name)
       }
     })
 

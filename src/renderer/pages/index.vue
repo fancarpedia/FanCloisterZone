@@ -67,7 +67,9 @@
         />
 
         <h4>{{ $t('index.update.release-notes') }}</h4>
-        <div class="update-release-notes" v-html="updateInfo.releaseNotes" />
+        <div class="update-release-notes">
+          <div v-html="updateInfo.releaseNotes" />
+        </div>
       </div>
     </div>
 
@@ -378,22 +380,13 @@ h2
         color: inherit !important
         font-size: inherit !important
 
-.theme--light .update-box
-  background-color: var(--v-primary-darken1)
-  
-  a
-    color: white
-
-.theme--dark .update-box
-  background-color: var(--v-primary-lighten1)
-  
-  a
-    color: white
-
 .update-box
   padding: 20px
   color: black
   text-align: center
+
+  +theme using ($theme)
+    background-color: map-get($theme, 'update-box-backgrouncolor')
 
   .update-action
     margin: 20px 0
@@ -407,9 +400,6 @@ h2
     overflow: auto
     text-align: left
     
-    a
-      color: white
-
     &::-webkit-scrollbar
       width: 8px
       height: 8px
@@ -427,6 +417,9 @@ h2
   
   ::v-deep ul
     list-style: none
+
+  ::v-deep a
+    color: white
 
 .download
   padding: 0 20px
@@ -446,12 +439,6 @@ h2
   img
     max-width: 600px
 
-.theme--light a
-  color: var(--v-primary-darken2)
-
-.theme--dark a
-  color: var(--v-primary-lighten2)
-
 @media (max-height: 1199px)
   .landing-view
     .disclaimer-box
@@ -464,12 +451,4 @@ h2
 
   .landing-view .disclaimer-content p
     margin-bottom: 8px
-</style>
-
-<style lang="sass">
-.landing-view .v-alert__content
-  text-align: center
-
-  a
-    color: white
 </style>
