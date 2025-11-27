@@ -1,7 +1,7 @@
 <template>
   <div
     class="game-chat"
-    :style="{ top: `${position.top}px`, left: `${position.left}px`, display: `${displayChat}` }"
+    :style="positionStyle"
     @mousedown="startDrag"
   >
     <div class="messages-wrapper">
@@ -12,7 +12,7 @@
           <div
             :class="'sender color-bg-important color color-overlay color-'+ getPlayerSlotColor(m.player)"
           >
-            {{ getPlayerName(m.player) }}
+            <!-- {{ getPlayerName(m.player) }} -->
           </div>
           <div class="time">
             {{ getMessageTime(m) }}
@@ -33,6 +33,7 @@
             ref="chatMessage"
             v-model="newMessage"
             :label="$t('game.chat.new-message')"
+            :style="{ width: inputWidth + 'px' }"
             @focus="joinMessage"
             @blur="leaveMessage"
             @keydown="keyDown"
@@ -102,6 +103,25 @@ export default {
         .map((player, index) => ({ player, index }))
         .filter(({ player }) => player.sessionId === this.sessionId)
         .map(({ index }) => index)
+    },
+    
+    positionStyle() {
+      const style = { display: this.displayChat }
+
+      if (this.position.top != null) style.top = this.position.top + 'px'
+      if (this.position.bottom != null) style.bottom = this.position.bottom + 'px'
+      if (this.position.left != null) style.left = this.position.left + 'px'
+      if (this.position.right != null) style.right = this.position.right + 'px'
+
+      return style
+    },
+   
+    inputWidth() {
+      const chatWidth = 400 // or dynamically: this.$el.offsetWidth
+      const buttonWidth = 40 // approximate width of each send button including margin
+      const totalButtonsWidth = this.localPlayers.length * buttonWidth + 10 // add small padding/margin
+      const width = chatWidth - totalButtonsWidth
+      return width > 50 ? width : 50 // minimum width 50px
     }
   },
 
@@ -109,10 +129,14 @@ export default {
     if (this.savedPosition) {
       this.position.top = this.savedPosition.top
       this.position.left = this.savedPosition.left
-      this.$nextTick(this.ensureChatIsVisible())
+      this.position.right = this.savedPosition.right
+      this.position.bottom = this.savedPosition.bottom
     }
-    this.scrollToBottom()
+
     this.displayChat = isArray(this.$store.state.game.gameChat) ? 'block' : 'none'
+    this.$nextTick(() => this.scrollToBottom())
+
+    window.addEventListener('resize', this.onWindowResize)
   },
   
   watch: {
@@ -126,7 +150,8 @@ export default {
   },
 
   beforeDestroy () {
-    this.leaveMessage();
+    this.leaveMessage()
+    window.removeEventListener('resize', this.onWindowResize)
   },
 
   methods: {
@@ -134,12 +159,12 @@ export default {
         this.$store.commit('gameChatEdit', true)
     },
     ensureChatIsVisible() {
-      const chatWidth = 400;  // or get it dynamically if resizable
-      const chatHeight = 200;
-      const margin = 10; // optional margin from edge
+      const chatWidth = 400  // or get it dynamically if resizable
+      const chatHeight = 200
+      const margin = 10 // optional margin from edge
 
-      const windowWidth = window.innerWidth;
-      const windowHeight = window.innerHeight;
+      const windowWidth = window.innerWidth
+      const windowHeight = window.innerHeight
 
       this.position.left = Math.min(Math.max(this.position.left, margin), windowWidth - chatWidth - margin)
       this.position.top = Math.min(Math.max(this.position.top, margin), windowHeight - chatHeight - margin)
@@ -183,7 +208,29 @@ export default {
       }
     },
     startDrag(ev) {
-      this.dragging = true;
+      this.dragging = true
+
+      const chatWidth = this.$el.offsetWidth
+      const chatHeight = this.$el.offsetHeight
+      const windowWidth = window.innerWidth
+      const windowHeight = window.innerHeight
+
+      // If snapped to right/bottom, offset is relative to those
+      this.offset = {
+        x: this.position.left != null
+             ? ev.clientX - this.position.left
+             : ev.clientX - (windowWidth - chatWidth),
+        y: this.position.top != null
+             ? ev.clientY - this.position.top
+             : ev.clientY - (windowHeight - chatHeight)
+      }
+
+      document.addEventListener('mousemove', this.onDrag)
+      document.addEventListener('mouseup', this.stopDrag)
+    },
+    
+    startDrag2(ev) {
+      this.dragging = true
       this.offset = {
         x: ev.clientX - this.position.left,
         y: ev.clientY - this.position.top,
@@ -191,36 +238,109 @@ export default {
       document.addEventListener('mousemove', this.onDrag)
       document.addEventListener('mouseup', this.stopDrag)
     },
+
     onDrag(ev) {
-      if (this.dragging) {
-        const chatWidth = 400; // your fixed width
-        const chatHeight = 200; // your fixed height
-        const margin = 10; // margin from edges
+      if (!this.dragging) return
 
-        let newLeft = ev.clientX - this.offset.x;
-        let newTop = ev.clientY - this.offset.y;
+      const chatWidth = this.$el.offsetWidth
+      const chatHeight = this.$el.offsetHeight
+      const margin = 10
 
-        const windowWidth = window.innerWidth;
-        const windowHeight = window.innerHeight;
+      const windowWidth = window.innerWidth
+      const windowHeight = window.innerHeight
 
+      let newLeft = ev.clientX - this.offset.x
+      let newTop = ev.clientY - this.offset.y
+
+      if (this.position.right === 0) {
+        if (newLeft < windowWidth - chatWidth - margin) {
+          this.position.right = null
+          this.position.left = newLeft
+        }
+      } else {
         newLeft = Math.min(Math.max(newLeft, margin), windowWidth - chatWidth - margin)
-        newTop = Math.min(Math.max(newTop, margin), windowHeight - chatHeight - margin)
+        if (newLeft >= windowWidth - chatWidth - margin - 1) {
+          this.position.left = null
+          this.position.right = margin
+        } else {
+          this.position.left = newLeft
+          this.position.right = null
+        }
+      }
 
-        this.position.left = newLeft;
-        this.position.top = newTop;
+      if (this.position.bottom === 0) {
+        if (newTop < windowHeight - chatHeight - margin) {
+          this.position.bottom = null
+          this.position.top = newTop
+        }
+      } else {
+        newTop = Math.min(Math.max(newTop, margin), windowHeight - chatHeight - margin)
+        if (newTop >= windowHeight - chatHeight - margin - 1) {
+          this.position.top = null
+          this.position.bottom = margin
+        } else {
+          this.position.top = newTop
+          this.position.bottom = null
+        }
       }
     },
     stopDrag() {
-      this.dragging = false;
+      this.dragging = false
       document.removeEventListener('mousemove', this.onDrag)
       document.removeEventListener('mouseup', this.stopDrag)
 
-      if (!isEqual(this.position,this.savedPosition)) {
+      const posToSave = {
+        top: this.position.top,
+        left: this.position.left,
+        right: this.position.right,
+        bottom: this.position.bottom
+      }
+
+      if (!isEqual(posToSave, this.savedPosition)) {
         this.$store.dispatch('settings/update', {
-          chatPosition: { ...this.position },
+          chatPosition: posToSave,
+        })
+      }
+      if (!isEqual(posToSave, this.savedPosition)) {
+        this.$store.dispatch('settings/update', {
+          chatPosition: posToSave,
         })
       }
     },
+
+    onWindowResize() {
+      const chatWidth = this.$el.offsetWidth
+      const chatHeight = this.$el.offsetHeight
+      const margin = 10
+      const windowWidth = window.innerWidth
+      const windowHeight = window.innerHeight
+
+      // Horizontal
+      if (this.position.right === margin) {
+        // keep snapped to right if still fits
+        if (chatWidth + margin > windowWidth) {
+          this.position.right = null
+          this.position.left = Math.max(margin, windowWidth - chatWidth - margin)
+        }
+      } else if (this.position.left != null) {
+        if (this.position.left + chatWidth + margin > windowWidth) {
+          this.position.left = Math.max(margin, windowWidth - chatWidth - margin)
+        }
+      }
+
+      // Vertical
+      if (this.position.bottom === margin) {
+        if (chatHeight + margin > windowHeight) {
+          this.position.bottom = null
+          this.position.top = Math.max(margin, windowHeight - chatHeight - margin)
+        }
+      } else if (this.position.top != null) {
+        if (this.position.top + chatHeight + margin > windowHeight) {
+          this.position.top = Math.max(margin, windowHeight - chatHeight - margin)
+        }
+      }
+    },
+
     scrollToBottom() {
       this.$nextTick(() => {
         const container = this.$refs.gameChatMessages
@@ -240,17 +360,20 @@ export default {
   width: 8px
   height: 8px
 
-::-webkit-scrollbar-track 
-  background: #888
-  border-radius: 2px
+::-webkit-scrollbar
+  width: 8px
+  height: 8px
+
+::-webkit-scrollbar-track
+  background: #f0f0f0
+  border-radius: 10px
 
 ::-webkit-scrollbar-thumb
-  background: #f0f0f0
-  border-radius: 2px
-  margin: 2px
+  background: linear-gradient(180deg, #4e9af1, #0056b3)
+  border-radius: 10px
 
-::-webkit-scrollbar-thumb:hover
-  background: #555
+  &:hover
+    background: linear-gradient(180deg, #66b2ff, #007bff)
 
 .game-chat
   width: 400px
