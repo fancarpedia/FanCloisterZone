@@ -107,6 +107,20 @@ Add package manager witch current yarn version
 
 ## Cookbook
 
+### Setting specific CSS value based on theme
+
+#### Precalculated colors
+
+* Define `new-value-key` in `$theme-light` and `$dark-light` with theme based value in
+`src/renderer/assets/styles/themes.scss`
+
+* Use that value in Vue component
+```
+element
+  +theme using ($theme)
+  css-property: map-get($theme, 'new-value-key')
+``` 
+
 ### Add new language
 
 * Add plural settings
