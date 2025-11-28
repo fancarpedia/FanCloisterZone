@@ -42,7 +42,8 @@ export const state = () => ({
   javaPath: null, // exolicit java path
   playOnlineUrl: 'play.jcloisterzone.com/ws',
   playOnlineFanURL: 'fancarpedia.snazzybee.com:37447',
-  devMode: process.env.NODE_ENV === 'development'
+  devMode: process.env.NODE_ENV === 'development',
+  devChannel: 'stable'
 })
 
 const changeCallbacks = {}
