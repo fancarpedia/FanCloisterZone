@@ -80,7 +80,8 @@ export default {
 
   data () {
     return {
-      showAbout: false
+      showAbout: false,
+      addonsUpdated: false
     }
   },
 
@@ -303,8 +304,8 @@ export default {
     }])
     await this.$store.dispatch('settings/registerChangeCallback', ['dev', () => { this.updateMenu() }])
 
-    this.$addons.on('change', () => {
-      this.loadAddons()
+    this.$addons.on('change', async () => {
+      await this.loadAddons()
     })
   },
   
@@ -316,7 +317,11 @@ export default {
     async loadAddons () {
       await this.$addons.loadAddons()
       await this.$tiles.loadExpansions()
-
+      if (!this.addonsUpdated) {
+        await this.$addons.updateOutdatedAddons()
+        this.addonsUpdated=true
+      }
+      
       // during start up, don't wait for artworks, theme can be loaded in background
       this.$theme.loadArtworks()
     },

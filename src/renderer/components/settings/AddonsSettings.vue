@@ -72,11 +72,16 @@
     
     <h4>{{ $t('settings.add-ons.installed-add-ons') }}</h4>
 
+    <div v-if="getAddons().length === 0" class="no-add-ons-message">
+      {{ $t('settings.add-ons.no-add-ons-installed') }}
+    </div>
+    
     <AddonBox
       v-for="addon in getAddons()"
       :key="addon.id"
       :addon="addon"
       :disabled="gameOpen"
+      :showArtwork="false"
       @uninstall="uninstall(addon)"
     />
   </div>
@@ -225,7 +230,7 @@ export default {
               ...addon,
               svgUrl,
               installing: false,
-              installed: false, // Temporary state
+              installed: false,
               name: this.$te(`expansion.${addon.key}`) ? this.$t(`expansion.${addon.key}`) : addon.name,
               description: this.$te(`expansion.${addon.key}-description`) ? this.$t(`expansion.${addon.key}-description`) : addon.description
             }
@@ -235,9 +240,10 @@ export default {
   },
   
   mounted() {
-    this.$addons.on('change', () => {
-      this.loadAvailableAddons()
+    this.$addons.on('change', async () => {
+      await this.loadAvailableAddons()
     })
+
     this.loadAvailableAddons()
   }
 }
@@ -318,8 +324,7 @@ export default {
 
 .addon-version
   font-size: 0.8em
-  color: #aaa
-  margin-left: 1ex
+  opacity: 0.5
 
 .addon-description
   color: #333
@@ -330,8 +335,4 @@ export default {
   right: 8px
   font-size: 1.2em
   cursor: pointer
-  color: #007bff
-
-.addon-install:hover
-  color: #0056b3
 </style>

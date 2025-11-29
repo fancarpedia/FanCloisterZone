@@ -1,5 +1,7 @@
 <template>
-  <div class="addon-box">
+  <div
+    :class="{ 'with-artwork': showArtwork, 'addon-box': true }"
+  >
     <h5>{{ addon.title || addon.id }} <small class="version">v{{ addon.json.version }}</small></h5>
 
     <div
@@ -17,7 +19,7 @@
       {{ addon.error }}
     </v-alert>
 
-    <div class="items">
+    <div v-if="showArtwork" class="items">
       <div
         v-for="exp in addon.expansions"
         :key="exp.id"
@@ -47,7 +49,8 @@ export default {
 
   props: {
     addon: { type: Object, required: true },
-    disabled: { type: Boolean, default: false }
+    disabled: { type: Boolean, default: false },
+    showArtwork: { type: Boolean, default: true }
   },
 
   computed: {
@@ -74,16 +77,21 @@ export default {
     &:hover i
       +theme using ($theme)
         color: map-get($theme, 'removed-color')
+        
+    .v-icon
+      font-size: 14px
 
-h5
-  font-size: 14px
-  font-weight: 500
-  margin-bottom: 10px
+  h5
+    font-size: 16px
+    font-weight: 500
 
-  .version
-    margin-left: 8px
-    opacity: 0.4
-
+    .version
+      opacity: 0.5
+  
+  &.with-artwork
+    h5
+      margin-bottom: 10px
+  
 .items
   display: flex
 
