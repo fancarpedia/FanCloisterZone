@@ -2,7 +2,7 @@
   "@author": "farin & Scott",
   "@jcz-version": "5.12.1",
   "@fcz-version": "6.0.0",
-  "@version": "0.8.20",
+  "@version": "0.8.21",
   "about": {
     "configuration-file": "Configuration file",
     "jcloisterzone-game-engine": "JCloisterZone Game Engine",
@@ -623,10 +623,13 @@
   },
   "settings": {
     "add-ons": {
+      "add-ons-definition-not-available": "Add-ons definition not available",
       "add-on-already-installed": "Add-on {id} is already installed. If you want to reinstall it, please remove it first.",
       "add-on-url": "add-on url",
       "artwork-not-found-internet-connection-is-needed": "Unable to locate or download add-on with default artwork. An Internet connection is needed at first run to download it.",
       "available-new-add-ons": "Available new add-ons",
+      "download-definition-not-found": "Download definition not found",
+      "downloaded-file-checksum-mismatch": "Downloaded file checksum mismatch",
       "drag-add-on-here-or-click-here": "Drag add-on here (.jca file) or click here to select it.",
       "finish-or-leave-game-to-make-changes": "Please finish or leave the game first to make changes here.",
       "install-add-on": "Install add-on",
@@ -634,6 +637,8 @@
       "installed-add-ons": "Installed add-ons",
       "invalid-add-on-multiple-folders-in-root": "Invalid add-on: package must contain only a single folder in the root",
       "look-at-link-for-add-ons": "Look at {link} for additional add-ons.",
+      "missing-available-version": "Missing available version",
+      "no-add-ons-installed": "No add-ons installed",
       "not-available-new-add-ons": "Sorry there is no new add-on.",
       "please-check-connectivity-and-restart-app": "Please check your connectivity and restart the app to try again.",
       "title": "Add-ons"

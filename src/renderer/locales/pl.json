@@ -623,10 +623,13 @@
   },
   "settings": {
     "add-ons": {
+      "add-ons-definition-not-available": "Add-ons definition not available",
       "add-on-already-installed": "Dodatek {id} jest już zainstalowany. Jeśli chcesz go ponownie zainstalować, najpierw go usuń.",
       "add-on-url": "adres url dodatku",
       "artwork-not-found-internet-connection-is-needed": "Nie można zlokalizować lub pobrać dodatku z domyślną grafiką. Aby go pobrać, konieczne jest połączenie z internetem.",
       "available-new-add-ons": "Available new add-ons",
+      "download-definition-not-found": "Download definition not found",
+      "downloaded-file-checksum-mismatch": "Downloaded file checksum mismatch",
       "drag-add-on-here-or-click-here": "Przeciągnij tutaj dodatek (plik .jca) lub kliknij aby go wybrać.",
       "finish-or-leave-game-to-make-changes": "Proszę najpierw zakończyć lub opuścić grę, aby dokonać zmian tutaj.",
       "install-add-on": "Zainstaluj dodatek",
@@ -634,6 +637,8 @@
       "installed-add-ons": "Zainstalowane dodatki",
       "invalid-add-on-multiple-folders-in-root": "Niewłaściwy dodatek: pakiet musi zawierać tylko jeden folder w katalogu głównym",
       "look-at-link-for-add-ons": "Więcej dodatków dostępne na: {link}",
+      "missing-available-version": "Missing available version",
+      "no-add-ons-installed": "No add-ons installed",
       "not-available-new-add-ons": "Sorry there is no new add-on.",
       "please-check-connectivity-and-restart-app": "Sprawdź połączenie z internetem i zrestartuj aplikację, aby spróbować ponownie.",
       "title": "Dodatki"

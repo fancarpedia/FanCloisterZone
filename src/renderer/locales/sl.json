@@ -623,10 +623,13 @@
   },
   "settings": {
     "add-ons": {
+      "add-ons-definition-not-available": "Add-ons definition not available",
       "add-on-already-installed": "Dodatek {id} je že nameščen. Če ga želiš ponovno namestiti, ga najprej odstrani.",
       "add-on-url": "url dodatka",
       "artwork-not-found-internet-connection-is-needed": "Ni mogoče najti ali prenesti dodatka s privzeto grafiko. Pri prvem zagonu je potrebna internetna povezava za prenos.",
       "available-new-add-ons": "Available new add-ons",
+      "download-definition-not-found": "Download definition not found",
+      "downloaded-file-checksum-mismatch": "Downloaded file checksum mismatch",
       "drag-add-on-here-or-click-here": "Povleci dodatek sem (datoteka .jca) ali klikni tukaj za izbiro.",
       "finish-or-leave-game-to-make-changes": "Prosimo, najprej zaključi ali zapusti igro, da lahko narediš spremembe tukaj.",
       "install-add-on": "Namesti dodatek",
@@ -634,6 +637,8 @@
       "installed-add-ons": "Nameščeni dodatki",
       "invalid-add-on-multiple-folders-in-root": "Neveljaven dodatek: paket mora vsebovati samo eno mapo v korenu",
       "look-at-link-for-add-ons": "Poglej na {link} za razpoložljive dodatke.",
+      "missing-available-version": "Missing available version",
+      "no-add-ons-installed": "No add-ons installed",
       "not-available-new-add-ons": "Sorry there is no new add-on.",
       "please-check-connectivity-and-restart-app": "Prosimo, preveri svojo povezavo in ponovno zaženi aplikacijo, da poskusiš znova.",
       "title": "Dodatki"

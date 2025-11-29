@@ -623,10 +623,13 @@
   },
   "settings": {
     "add-ons": {
+      "add-ons-definition-not-available": "Add-ons definition not available",
       "add-on-already-installed": "Doplnok {id} je už nainštalovaný. Pred jeho preinštalovaním, ho musíte najprv odstrániť.",
       "add-on-url": "Adresa URL grafiky kartičiek",
       "artwork-not-found-internet-connection-is-needed": "Nie je možné nájsť alebo stiahnuť doplnok s predvolenou grafikou kartičiek.",
       "available-new-add-ons": "Dostupné nové doplnky / add-ony",
+      "download-definition-not-found": "Download definition not found",
+      "downloaded-file-checksum-mismatch": "Downloaded file checksum mismatch",
       "drag-add-on-here-or-click-here": "Potiahnite tu doplnok (súbor .jca) alebo ho vyberte kliknutím.",
       "finish-or-leave-game-to-make-changes": "Ak chcete vykonať zmany, najprv dokončite alebo opustite hru.",
       "install-add-on": "Nainštalujte doplnok",
@@ -634,6 +637,8 @@
       "installed-add-ons": "Nainštalované doplnky",
       "invalid-add-on-multiple-folders-in-root": "Chybný doplnok: súbor musí obsahovať len jeden hlavný podpriečinok",
       "look-at-link-for-add-ons": "Ďalšie doplnky nájdete na stránke {link}.",
+      "missing-available-version": "Missing available version",
+      "no-add-ons-installed": "No add-ons installed",
       "not-available-new-add-ons": "Prepáčte aktuálne nie sú dostupné žiadne nové doplnky.",
       "please-check-connectivity-and-restart-app": "Skontrolujte svoje pripojenie, reštartujte aplikáciu a skúste to znova.",
       "title": "Doplnky / Add-ons"

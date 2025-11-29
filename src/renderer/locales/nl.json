@@ -623,10 +623,13 @@
   },
   "settings": {
     "add-ons": {
+      "add-ons-definition-not-available": "Add-ons definition not available",
       "add-on-already-installed": "Add-on {id} is al geïnstalleerd. Als je die opnieuw wilt installeren, dan dien je deze eerst te verwijderen.",
       "add-on-url": "add-on url",
       "artwork-not-found-internet-connection-is-needed": "Kon de add-on met de standaardillustraties niet vinden of downloaden. Er is initieel een internetverbinding nodig om deze te downloaden.",
       "available-new-add-ons": "Available new add-ons",
+      "download-definition-not-found": "Download definition not found",
+      "downloaded-file-checksum-mismatch": "Downloaded file checksum mismatch",
       "drag-add-on-here-or-click-here": "Sleep de add-on hierheen (.jca-bestand) of klik hier om deze te selecteren.",
       "finish-or-leave-game-to-make-changes": "Voltooi of verlaat het spel alvorens hier wijzigingen door te voeren.",
       "install-add-on": "Add-on installeren",
@@ -634,6 +637,8 @@
       "installed-add-ons": "Geïnstalleerde add-ons",
       "invalid-add-on-multiple-folders-in-root": "Ongeldige add-on: het pakket mag slechts één map in de hoofdmap bevatten",
       "look-at-link-for-add-ons": "Kijk op {link} voor beschikbare add-ons.",
+      "missing-available-version": "Missing available version",
+      "no-add-ons-installed": "No add-ons installed",
       "not-available-new-add-ons": "Sorry there is no new add-on.",
       "please-check-connectivity-and-restart-app": "Controleer a.j.b. de verbinding en start de app opnieuw op om het opnieuw te proberen.",
       "title": "Add-ons"

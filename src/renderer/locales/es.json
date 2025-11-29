@@ -623,10 +623,13 @@
   },
   "settings": {
     "add-ons": {
+      "add-ons-definition-not-available": "Add-ons definition not available",
       "add-on-already-installed": "El add-on {id} ya está instalado. Para volver a instalarlo, se debe eliminar primero.",
       "add-on-url": "dirección url del add-on",
       "artwork-not-found-internet-connection-is-needed": "No se puede localizar o descargar el add-on con el estilo gráfico por defecto. Se necesita conexión a Internet en la primera ejecución para descargarlo.",
       "available-new-add-ons": "Available new add-ons",
+      "download-definition-not-found": "Download definition not found",
+      "downloaded-file-checksum-mismatch": "Downloaded file checksum mismatch",
       "drag-add-on-here-or-click-here": "Arrastre el add-on aquí (archivo .jca) o haga clic aquí para seleccionarlo.",
       "finish-or-leave-game-to-make-changes": "Termine o abandone la partida primero para hacer cambios aquí.",
       "install-add-on": "Instalar add-on",
@@ -634,6 +637,8 @@
       "installed-add-ons": "Add-ons instalados",
       "invalid-add-on-multiple-folders-in-root": "Add-on inválido: el paquete debe contener una sola carpeta en la raíz",
       "look-at-link-for-add-ons": "Visitar {link} para ver los add-ons disponibles.",
+      "missing-available-version": "Missing available version",
+      "no-add-ons-installed": "No add-ons installed",
       "not-available-new-add-ons": "Sorry there is no new add-on.",
       "please-check-connectivity-and-restart-app": "Comprobar por favor la conexión y reiniciar la aplicación para volver a intentarlo.",
       "title": "Add-ons"

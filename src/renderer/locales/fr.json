@@ -623,10 +623,13 @@
   },
   "settings": {
     "add-ons": {
+      "add-ons-definition-not-available": "Add-ons definition not available",
       "add-on-already-installed": "Le module complémentaire {id} est déjà installé. Si vous voulez le réinstaller, veuillez d’abord le supprimer.",
       "add-on-url": "Lien du module complémentaire",
       "artwork-not-found-internet-connection-is-needed": "Impossible de localiser ou de télécharger le module complémentaire avec les illustrations par défaut. Une connexion Internet est nécessaire au premier lancement pour le télécharger.",
       "available-new-add-ons": "Nouveaux modules complémentaires disponibles",
+      "download-definition-not-found": "Download definition not found",
+      "downloaded-file-checksum-mismatch": "Downloaded file checksum mismatch",
       "drag-add-on-here-or-click-here": "Faites glisser le module complémentaire ici (fichier .jca) ou cliquez ici pour le sélectionner.",
       "finish-or-leave-game-to-make-changes": "Veuillez terminer ou quitter la partie avant de pouvoir effectuer des changements ici.",
       "install-add-on": "Installer un module complémentaire",
@@ -634,6 +637,8 @@
       "installed-add-ons": "Modules complémentaires installés",
       "invalid-add-on-multiple-folders-in-root": "Module complémentaire invalide : le module ne doit contenir qu’un seul dossier à la racine.",
       "look-at-link-for-add-ons": "Consultez le site {link} pour obtenir des modules complémentaires.",
+      "missing-available-version": "Missing available version",
+      "no-add-ons-installed": "No add-ons installed",
       "not-available-new-add-ons": "Désolé, il n’y a pas de nouveau module complémentaire.",
       "please-check-connectivity-and-restart-app": "Veuillez vérifier votre connexion et redémarrer l’application pour essayer à nouveau.",
       "title": "Modules complémentaires"

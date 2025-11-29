@@ -623,10 +623,13 @@
   },
   "settings": {
     "add-ons": {
+      "add-ons-definition-not-available": "Add-ons definition not available",
       "add-on-already-installed": "Doplněk {id} je již nainstalován. Pokud jej chcete nainstalovat znovu, nejprve jej odstraňte.",
       "add-on-url": "Adresa URL grafiky kartiček",
       "artwork-not-found-internet-connection-is-needed": "Nelze najít nebo stáhnout doplněk s výchozí grafikou kartiček.",
       "available-new-add-ons": "Available new add-ons",
+      "download-definition-not-found": "Download definition not found",
+      "downloaded-file-checksum-mismatch": "Downloaded file checksum mismatch",
       "drag-add-on-here-or-click-here": "Přetáhněte doplněk sem (soubor .jca) nebo jej vyberte kliknutím sem.",
       "finish-or-leave-game-to-make-changes": "Chcete-li provést změny, nejprve dokončete nebo opusťte hru.",
       "install-add-on": "Nainstalujte doplněk",
@@ -634,6 +637,8 @@
       "installed-add-ons": "Nainstalované doplňky",
       "invalid-add-on-multiple-folders-in-root": "Neplatný doplněk: balíček musí obsahovat v kořenovém adresáři pouze jednu složku.",
       "look-at-link-for-add-ons": "Dostupné doplňky najdete na stránce {link}.",
+      "missing-available-version": "Missing available version",
+      "no-add-ons-installed": "No add-ons installed",
       "not-available-new-add-ons": "Sorry there is no new add-on.",
       "please-check-connectivity-and-restart-app": "Zkontrolujte své připojení, případně restartujte aplikaci a zkuste to znovu.",
       "title": "Doplňky"
