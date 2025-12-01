@@ -2,7 +2,7 @@
   "@author": "Kiap1969 & Sinscerly",
   "@jcz-version": "5.12.1",
   "@fcz-version": "6.0.0",
-  "@version": "0.8.13",
+  "@version": "0.8.21",
   "about": {
     "configuration-file": "Configuratiebestand",
     "jcloisterzone-game-engine": "JCloisterZone Spelmachine",
@@ -102,7 +102,7 @@
     "dutch-monasteries": "Nederlandse kloosters",
     "dutch-monasteries-description": "Similar to the German Monasteries, these Dutch Monasteries are intended to replace the cloisters in the base game.",
     "family-feud": "Familiestrijd",
-    "family-feud-description": "Tiles showing blue-and-white and red-and-yellow coats of arms cannot be placed in any way that would cause cities associated with the two different families to connect or join before completion.",
+    "family-feud-description": "Tiles with blue/white and red/yellow coats of arms belong to rival families. No tile may be placed in such a way that cities belonging to rival families become connected.",
     "farmers-heaven": "Boerenhemel",
     "farmers-heaven-description": "Since most of the expansions are mainly focused on the cities, it was time to do something for the farmers.",
     "ferries": "De Veerboten",
