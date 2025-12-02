@@ -233,19 +233,32 @@ async function processLanguage(lang) {
     }
     
     // Write to file with pretty formatting
-    const formatted = JSON.stringify(parsed, null, 2);
-    fs.writeFileSync(filePath, formatted + '\n', 'utf8');
+    const formatted = JSON.stringify(parsed, null, 2) + '\n';
     
+    let update = false
     if (!fileExists) {
-      console.log(`⚠️  NEW LANGUAGE DETECTED: ${lang}.json`);
+      update = true
     } else {
-      console.log(`✓ Updated ${filename}`);
+      current = fs.readFileSync(filePath, 'utf8');
+      if (current !== formatted) {
+        update = true
+      }
+    }
+    if (update) {
+      fs.writeFileSync(filePath, formatted, 'utf8');
+      if (!fileExists) {
+        console.log(`⚠️  NEW LANGUAGE DETECTED: ${lang}.json`);
+      } else {
+        console.log(`✓ Updated ${filename}`);
+      }
+    } else {
+      console.log('No changes. File not written.');
     }
     
-    return { lang, success: true, isNew: !fileExists };
+    return { lang, success: true, updated: update, isNew: !fileExists };
   } catch (error) {
     console.error(`✗ Failed to process ${lang}: ${error.message}`);
-    return { lang, success: false, error: error.message };
+    return { lang, success: false, updated: false, error: error.message };
   }
 }
 
@@ -261,13 +274,18 @@ async function main() {
   
   const results = [];
   const newLanguages = [];
+  const updatedLanguages = [];
   
   for (const lang of languages) {
     const result = await processLanguage(lang);
     results.push(result);
     
-    if (result.success && result.isNew) {
-      newLanguages.push(lang);
+    if (result.success) {
+      if (result.isNew) {
+        newLanguages.push(lang);
+      } else if (result.updated) {
+        updatedLanguages.push(lang);
+      }
     }
     
     // Small delay to avoid overwhelming the server
@@ -281,13 +299,14 @@ async function main() {
   console.log(`Total: ${results.length} languages`);
   console.log(`Successful: ${successful}`);
   console.log(`Failed: ${failed}`);
+  console.log(`✓ Updated: ${updatedLanguages.join(', ')}`);
   
   if (newLanguages.length > 0) {
-    console.log(`\n⚠️  NEW LANGUAGES ADDED: ${newLanguages.join(', ')}`);
+    console.log(`⚠️  NEW LANGUAGES ADDED: ${newLanguages.join(', ')}`);
   }
   
   if (failed > 0) {
-    console.log('\nFailed languages:');
+    console.log('Failed languages:');
     results.filter(r => !r.success).forEach(r => {
       console.log(`  - ${r.lang}: ${r.error}`);
     });
