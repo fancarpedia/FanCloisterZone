@@ -1,10 +1,10 @@
 {
   "name": "fancloisterzone",
-  "version": "6.0.0-rc.16",
+  "version": "6.0.0",
   "description": "FanCloisterZone Edition",
   "repository": "github:fancarpedia/FanCloisterZone",
   "license": "AGPL-3.0-or-later",
-  "author": "Roman Krejcik <farin@farin.cz> and fans",
+  "author": "Roman Krejcik and fans",
   "main": "./dist/main/index.js",
   "scripts": {
     "download-game-engine": "node build-scripts/download-game-engine.js",
