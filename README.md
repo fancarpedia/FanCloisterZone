@@ -2,7 +2,7 @@
 
 Updated original JCloisterZone with many improvements.
 Also support of many fan-expansions, chat during game, lobby.
-All issues on FanCloisterZone report on [Discord](https://discord.gg/3qpHWN8k)
+All issues on FanCloisterZone report on [Discord](https://discord.gg/CswNeVg3eS)
 
 ## Supported Fan Expansions
 * [City Gates, The](https://wikicarpedia.com/car/The_City_Gates_(1st_edition))
