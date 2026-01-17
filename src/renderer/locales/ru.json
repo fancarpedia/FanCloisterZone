@@ -19,7 +19,7 @@
     "title": "Избранные"
   },
   "button": {
-    "add": "Добавить",
+    "add": "До��авить",
     "add-to-favorites": "Добавить в избранное",
     "as-a-abbot": "Как аббат",
     "as-a-monk": "Как монах",
@@ -78,6 +78,14 @@
     "the-longest-road": "Самая длинная дорога",
     "tiles": "Тайлы",
     "used-time": "Затраченное время"
+  },
+  "dialog": {
+    "close-local-game": {
+      "continue-playing": "Continue Playing",
+      "resign-and-close": "Resign and Close",
+      "unfinished-local-game": "Unfinished Local Game",
+      "unfinished-local-game-description": "You have an unfinished local game. If you close the app window, you will resign and lose your progress in this game."
+    }
   },
   "expansion": {
     "-unknown": "Отсутствующее дополнение",
@@ -418,7 +426,7 @@
       "starting-tiles-different-configuration": "Некоторые дополнения предлагают альтернативные конфигурации начальных плиток.",
       "vineyard-description": "Дополнительные очки за близлежащий монастырь.",
       "vineyard-disabled": "В игре нет плитки с виноградником.",
-      "well-description": "Добавляет по одному очку за каждый колодец на дорогах. Дорога с трактиром даёт 2 очка при завершении, но не приносит очков при окончательном подсчёте.",
+      "well-description": "Добавляет по одному очку за каждый колодец на дорогах. Дорога с трактиром даёт 2 очка при завершении, но не приносит очков при окончатель��ом подсчёте.",
       "well-disabled": "В игре нет плитки с колодцем."
     },
     "selected-tiles": "Выбранные плитки",
@@ -566,7 +574,7 @@
       "lobby": "Лобби",
       "no-public-games": "Нет публичных игр",
       "no-random-discovery": "это означает отсутствие случайного обнаружения игроков",
-      "not-yet-started": "Ещё не началась",
+      "not-yet-started": "Ещё не начала��ь",
       "online-storage-description": "При выходе из онлайн-игры она остается в фоновом режиме. Вы можете присоединиться к ней из этого списка в любое время.",
       "paste-a-game-key": "Вставьте ключ игры, предоставленный хостом",
       "public-games": "Публичные игры",

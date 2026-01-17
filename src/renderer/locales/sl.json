@@ -79,6 +79,14 @@
     "tiles": "Ploščice",
     "used-time": "Porabljen čas"
   },
+  "dialog": {
+    "close-local-game": {
+      "continue-playing": "Continue Playing",
+      "resign-and-close": "Resign and Close",
+      "unfinished-local-game": "Unfinished Local Game",
+      "unfinished-local-game-description": "You have an unfinished local game. If you close the app window, you will resign and lose your progress in this game."
+    }
+  },
   "expansion": {
     "-unknown": "Manjkajoča razširitev",
     "abbey-and-mayor": "Opatija & Župan",
@@ -104,7 +112,7 @@
     "family-feud": "Družinski Spor",
     "family-feud-description": "Ploščic z modro-belim in rdeče-rumenim grbom ni dovoljeno postaviti tako, da bi mesta teh dveh družin bila povezana ali združena pred dokončanjem.",
     "farmers-heaven": "Kmečka Nebesa",
-    "farmers-heaven-description": "Ker je večina razširitev osredotočena predvsem na mesta, je bil čas narediti nekaj za kmete.",
+    "farmers-heaven-description": "Ker je večina raz��iritev osredotočena predvsem na mesta, je bil čas narediti nekaj za kmete.",
     "ferries": "Trajekti",
     "festival": "Festival",
     "flier": "Leteči Stroji",

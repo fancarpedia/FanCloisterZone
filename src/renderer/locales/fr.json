@@ -12,7 +12,7 @@
     "version": "version"
   },
   "bookmarks": {
-    "description-end": "le bouton dans la barre latérale d’aperçu.",
+    "description-end": "dans la barre latérale d’aperçu.",
     "description-start": "Vous n’avez pas de partie en cours dans votre liste des favoris. Pour ajouter une partie ici, créez en d’abord une, puis utilisez",
     "nothing-saved": "Rien n’a été sauvegardé.",
     "setups-saved-to-file": "Configurations enregistrées dans un fichier",
@@ -78,6 +78,14 @@
     "the-longest-road": "La route la plus longue",
     "tiles": "Tuiles",
     "used-time": "Temps utilisé"
+  },
+  "dialog": {
+    "close-local-game": {
+      "continue-playing": "Continue Playing",
+      "resign-and-close": "Resign and Close",
+      "unfinished-local-game": "Unfinished Local Game",
+      "unfinished-local-game-description": "You have an unfinished local game. If you close the app window, you will resign and lose your progress in this game."
+    }
   },
   "expansion": {
     "-unknown": "Extension manquante",

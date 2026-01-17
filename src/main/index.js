@@ -2,6 +2,7 @@
 import path from 'path'
 
 import { app, BrowserWindow, ipcMain } from 'electron'
+// import { dialog as dialogElectron } from 'electron'
 import { autoUpdater } from 'electron-updater'
 import electronLogger from 'electron-log'
 import fs from 'fs'
@@ -29,9 +30,15 @@ function getAppVersion() {
   }
   return app.getVersion()
 }
+let hasLocalGame = false
+let isForceClosing = false
 
 ipcMain.handle("get-app-version", () => {
   return getAppVersion()
+})
+
+ipcMain.on('set-local-game', (_, value) => {
+  hasLocalGame = value
 })
 
 function generateInstanceId() {
@@ -74,6 +81,33 @@ async function createWindow () {
     modules.forEach(m => m.winCreated(win))
   })
 
+  win.on('close', (event) => {
+    if (hasLocalGame) {
+      event.preventDefault()
+      if (!isForceClosing) {
+        isForceClosing = true
+     
+        const choice = dialogElectron.showMessageBoxSync(win, {
+          type: 'warning',
+          buttons: [
+            'Resign and Close',
+            'Continue Playing'
+          ],
+          defaultId: 0,
+          cancelId: 1,
+          title: 'Unfinished Local Game',
+          message: 'You have an unfinished local game. If you close the app window, you will resign and lose your progress in this game.',
+        })
+      
+        if (choice === 0) {
+          hasLocalGame = false
+          isForceClosing = false
+          win.close()
+        }
+      }
+    }
+  })
+  
   win.on('closed', ev => {
     // console.log("WIN CLOSED")
     modules.forEach(m => m.winClosed(win))

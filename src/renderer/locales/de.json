@@ -79,6 +79,14 @@
     "tiles": "Plättchen",
     "used-time": "Genutzte Zeit"
   },
+  "dialog": {
+    "close-local-game": {
+      "continue-playing": "Continue Playing",
+      "resign-and-close": "Resign and Close",
+      "unfinished-local-game": "Unfinished Local Game",
+      "unfinished-local-game-description": "You have an unfinished local game. If you close the app window, you will resign and lose your progress in this game."
+    }
+  },
   "expansion": {
     "-unknown": "Fehlende Erweiterung",
     "abbey-and-mayor": "Abtei und Bürgermeister",

@@ -199,6 +199,9 @@ export default {
     this.checkOverflow()
     this.setPlayerIcon(this.activePlayerIdx)
     this.gameId = this.$store.state.game.id
+    if (this.$store.state.networking.connectionType == 'direct' ) {
+      ipcRenderer.send('set-local-game', true)
+    }
   },
 
   beforeDestroy () {
@@ -212,6 +215,7 @@ export default {
     }
     this.$store.commit('showGameTiles', false)
     this.$store.commit('showGameSetup', false)
+    ipcRenderer.send('set-local-game', false)
   },
 
   methods: {

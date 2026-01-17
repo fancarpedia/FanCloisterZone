@@ -9,7 +9,7 @@
     "system-java-version": "Versiunea de Java a sistemului",
     "title": "JCloisterZone",
     "fantitle": "Ediția FanCloisterZone",
-    "version": "versiune"
+    "version": "versiunea"
   },
   "bookmarks": {
     "description-end": "din bara laterală a vizualizării în ansamblu.",
@@ -36,7 +36,7 @@
     "disconnect": "Deconectează-te",
     "grow-the-flock": "Crește turma",
     "hide-stats": "Ascunde statisticile",
-    "join-game": "Alătură-te jocului",
+    "join-game": "Alătură-te unei partide",
     "load": "Încarcă",
     "load-setup-from-file": "Încarcă configurație din fișier",
     "may-deploy": "Există posibilitatea de a plasa",
@@ -78,6 +78,14 @@
     "the-longest-road": "Cel mai lung drum",
     "tiles": "Cartonașe",
     "used-time": "Timp folosit"
+  },
+  "dialog": {
+    "close-local-game": {
+      "continue-playing": "Continue Playing",
+      "resign-and-close": "Resign and Close",
+      "unfinished-local-game": "Unfinished Local Game",
+      "unfinished-local-game-description": "You have an unfinished local game. If you close the app window, you will resign and lose your progress in this game."
+    }
   },
   "expansion": {
     "-unknown": "Extensie lipsă",

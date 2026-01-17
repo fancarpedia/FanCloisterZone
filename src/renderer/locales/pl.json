@@ -79,6 +79,14 @@
     "tiles": "Płytki",
     "used-time": "Wykorzystany czas"
   },
+  "dialog": {
+    "close-local-game": {
+      "continue-playing": "Continue Playing",
+      "resign-and-close": "Resign and Close",
+      "unfinished-local-game": "Unfinished Local Game",
+      "unfinished-local-game-description": "You have an unfinished local game. If you close the app window, you will resign and lose your progress in this game."
+    }
+  },
   "expansion": {
     "-unknown": "Brakujące rozszerzenie",
     "abbey-and-mayor": "Opactwo i burmistrz",
