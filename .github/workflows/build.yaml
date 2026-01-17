@@ -15,7 +15,7 @@ jobs:
         os: [macos-14, ubuntu-latest, windows-latest]
 
     steps:
-      # Step 1: Check out the repository
+      # Step 1: Checkout code
       - name: Check out Git repository
         uses: actions/checkout@v3
 
@@ -26,11 +26,20 @@ jobs:
           node-version: 16
 
       # Step 3: Install dependencies
-      # macOS arm64 runners require x86_64 architecture to make node-sass prebuilt binaries work
+      # macOS arm64: try x86_64 first, fallback to rebuild if needed
       - name: Install dependencies
         run: |
           if [[ "${{ matrix.os }}" == "macos-14" ]]; then
-            arch -x86_64 yarn install --frozen-lockfile
+            echo "Trying x86_64 Yarn install first..."
+            arch -x86_64 yarn install --frozen-lockfile || true
+            # Check if node-sass works
+            if ! node -e "require('node-sass')"; then
+              echo "Prebuilt node-sass failed, rebuilding from source..."
+              brew install python@3.10
+              export PATH="/opt/homebrew/opt/python@3.10/bin:$PATH"
+              rm -rf node_modules/node-sass/vendor
+              npm rebuild node-sass
+            fi
           else
             yarn install --frozen-lockfile
           fi
@@ -40,11 +49,5 @@ jobs:
         uses: samuelmeuli/action-electron-builder@v1
         with:
           args: "-c builder.config.js"
-          # GitHub token, automatically provided to the action
-          # (No need to define this secret in the repo settings)
-          # type: string
           github_token: ${{ secrets.github_token }}
-
-          # If the commit is tagged with a version (e.g. "v1.0.0")
-          # type: boolean
           release: ${{ true }}
