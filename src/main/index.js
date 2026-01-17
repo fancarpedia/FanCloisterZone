@@ -2,7 +2,7 @@
 import path from 'path'
 
 import { app, BrowserWindow, ipcMain } from 'electron'
-// import { dialog as dialogElectron } from 'electron'
+import { dialog as dialogElectron } from 'electron'
 import { autoUpdater } from 'electron-updater'
 import electronLogger from 'electron-log'
 import fs from 'fs'
@@ -99,9 +99,9 @@ async function createWindow () {
           message: 'You have an unfinished local game. If you close the app window, you will resign and lose your progress in this game.',
         })
       
+        isForceClosing = false
         if (choice === 0) {
           hasLocalGame = false
-          isForceClosing = false
           win.close()
         }
       }
