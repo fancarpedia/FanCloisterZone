@@ -172,18 +172,6 @@ export const ESCAPE_VARIANT = Rule.ESCAPE_VARIANT = new Rule('espace-variant', G
   }
 )
 
-export const GQ11_PIG_HERD = Rule.GQ11_PIG_HERD = new Rule('gq11-pig-herd', GAMEPLAY,
-  'Field tile from Game Quarterly 11 expansion {}.',
-  [[GameElement.PIG_HERD, 'gq11']], // array items means AND
-  [
-    { value: 'pig', text: 'contains pig herd', flags: ['house'] },
-    { value: 'nothing', text: 'is just empty field' }
-  ],
-  {
-    link: 'https://wikicarpedia.com/car/Special:MyLanguage/Games_Quarterly_11_(1st_edition)#cite_note-5'
-  }
-)
-
 export const TUNNELIZE_OTHER_EXPANSIONS = Rule.TUNNELIZE_OTHER_EXPANSIONS = new Rule('tunnelize-other-expansions', GAMEPLAY,
   'Apply tunnel rule on tiles from other expansions with depicted tunnels.',
   [GameElement.TUNNEL],
@@ -274,8 +262,8 @@ export const LITTLE_BUILDINGS_SCORING = Rule.LITTLE_BUILDINGS_SCORING = new Rule
   'Assign {} points for tower/house/shed.',
   [GameElement.LITTLE_BUILDINGS],
   [
-    { value: '1/1/1', text: '1/1/1' },
-    { value: '3/2/1', text: '3/2/1' }
+    { value: '3/2/1', text: '3/2/1' },
+    { value: '1/1/1', text: '1/1/1' }
   ],
   {
     link: 'https://wikicarpedia.com/car/Special:MyLanguage/Little_Buildings_(1st_edition)#Variant',

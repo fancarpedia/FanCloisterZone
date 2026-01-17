@@ -15,53 +15,23 @@ jobs:
         os: [macos-13, ubuntu-latest, windows-latest]
 
     steps:
-      # Checkout code
       - name: Check out Git repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v1
 
-      # Install Node.js, NPM, Yarn
       - name: Install Node.js, NPM and Yarn
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v1
         with:
           node-version: 16
 
-      # Install dependencies
-      - name: Install dependencies
-        run: yarn install
+      - name: Build/release Electron app
+        uses: samuelmeuli/action-electron-builder@v1
+        with:
+          args: "-c builder.config.js"
+          # GitHub token, automatically provided to the action
+          # (No need to define this secret in the repo settings)
+          # type: string
+          github_token: ${{ secrets.github_token }}
 
-      # Determine macOS signing identity (macOS only)
-      - name: Determine macOS code signing identity
-        if: matrix.os == 'macos-13'
-        shell: bash
-        id: mac_identity
-        run: |
-          # Allow command to fail if no identity is found
-          IDENTITY=$(security find-identity -v -p codesigning | grep "Developer ID Application" | awk '{print $2}' || true)
-
-          if [ -z "$IDENTITY" ]; then
-            echo "No macOS signing identity found. Will skip code signing."
-            echo "MAC_IDENTITY=null" >> $GITHUB_ENV
-          else
-            echo "Found macOS signing identity: $IDENTITY"
-            echo "MAC_IDENTITY=$IDENTITY" >> $GITHUB_ENV
-
-      # Build macOS app (conditionally signed)
-      - name: Build macOS app
-        if: matrix.os == 'macos-13'
-        shell: bash
-        run: |
-          if [ "$MAC_IDENTITY" = "null" ]; then
-            echo "Building macOS app without code signing..."
-            npx electron-builder -c builder.config.js --mac.identity=null
-          else
-            echo "Building macOS app with code signing..."
-            npx electron-builder -c builder.config.js --mac
-        env:
-          GITHUB_TOKEN: ${{ secrets.github_token }}
-
-      # Build Linux/Windows app
-      - name: Build Linux/Windows app
-        if: matrix.os != 'macos-13'
-        run: npx electron-builder -c builder.config.js
-        env:
-          GITHUB_TOKEN: ${{ secrets.github_token }}
+          # If the commit is tagged with a version (e.g. "v1.0.0")
+          # type: boolean
+          release: ${{ true }}

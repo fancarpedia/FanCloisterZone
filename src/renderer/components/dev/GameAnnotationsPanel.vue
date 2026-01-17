@@ -68,8 +68,10 @@ export default {
   },
 
   methods: {
-    appendTile (tlleId) {
-      this.drawOrder.push(tlleId)
+    appendTile (tileId, maxCount) {
+      if (this.drawOrder.filter(item => item === tileId).length < maxCount) {
+        this.drawOrder.push(tileId)
+      }
     }
   }
 }

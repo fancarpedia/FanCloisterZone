@@ -1,0 +1,525 @@
+{
+  "appVersion": "6.0.0-beta.9",
+  "gameId": "1",
+  "name": "",
+  "initialRandom": 0.03534946994081101,
+  "created": "2025-10-29T21:10:20.062Z",
+  "clock": 95570,
+  "setup": {
+    "options": {},
+    "sets": {
+      "basic:1": 1,
+      "meteorites": 1
+    },
+    "elements": {
+      "small-follower": 9,
+      "farmers": true,
+      "meteorite": true
+    },
+    "rules": {},
+    "timer": null,
+    "start": [
+      {
+        "tile": "BA/RCr",
+        "x": 0,
+        "y": 0,
+        "rotation": 0
+      }
+    ],
+    "addons": {
+      "meteorites": 0
+    }
+  },
+  "players": [
+    {
+      "name": "Betty",
+      "slot": 2
+    },
+    {
+      "name": "John",
+      "slot": 1
+    },
+    {
+      "name": "Ariel",
+      "slot": 0
+    }
+  ],
+  "chat": [],
+  "replay": [
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "BA/CRr",
+        "rotation": "R0",
+        "position": [
+          -1,
+          0
+        ]
+      },
+      "player": 0,
+      "clock": 4214
+    },
+    {
+      "type": "DEPLOY_MEEPLE",
+      "payload": {
+        "pointer": {
+          "position": [
+            -1,
+            0
+          ],
+          "location": "SE",
+          "feature": "Road"
+        },
+        "meepleId": "0.small.1"
+      },
+      "player": 0,
+      "clock": 5766
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.6914882712696351
+      },
+      "player": 0,
+      "clock": 6854
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "BA/Ccc+",
+        "rotation": "R180",
+        "position": [
+          -1,
+          -1
+        ]
+      },
+      "player": 1,
+      "clock": 9199
+    },
+    {
+      "type": "DEPLOY_MEEPLE",
+      "payload": {
+        "pointer": {
+          "position": [
+            -1,
+            -1
+          ],
+          "location": "_N",
+          "feature": "City"
+        },
+        "meepleId": "1.small.1"
+      },
+      "player": 1,
+      "clock": 9702
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.44425318096732336
+      },
+      "player": 1,
+      "clock": 10389
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "BA/L",
+        "rotation": "R0",
+        "position": [
+          -1,
+          -2
+        ]
+      },
+      "player": 2,
+      "clock": 11334
+    },
+    {
+      "type": "DEPLOY_MEEPLE",
+      "payload": {
+        "pointer": {
+          "position": [
+            -1,
+            -2
+          ],
+          "location": "I",
+          "feature": "Monastery"
+        },
+        "meepleId": "2.small.1"
+      },
+      "player": 2,
+      "clock": 11790
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.8107250999678246
+      },
+      "player": 2,
+      "clock": 12862
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "BA/LR",
+        "rotation": "R180",
+        "position": [
+          0,
+          -2
+        ]
+      },
+      "player": 0,
+      "clock": 14342
+    },
+    {
+      "type": "DEPLOY_MEEPLE",
+      "payload": {
+        "pointer": {
+          "position": [
+            0,
+            -2
+          ],
+          "location": "I",
+          "feature": "Monastery"
+        },
+        "meepleId": "0.small.2"
+      },
+      "player": 0,
+      "clock": 16607
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.14567978469522957
+      },
+      "player": 0,
+      "clock": 17815
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "BA/RFr",
+        "rotation": "R90",
+        "position": [
+          1,
+          -2
+        ]
+      },
+      "player": 1,
+      "clock": 19238
+    },
+    {
+      "type": "DEPLOY_MEEPLE",
+      "payload": {
+        "pointer": {
+          "position": [
+            1,
+            -2
+          ],
+          "location": "NS",
+          "feature": "Road"
+        },
+        "meepleId": "1.small.2"
+      },
+      "player": 1,
+      "clock": 19687
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.5508153921739629
+      },
+      "player": 1,
+      "clock": 20423
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "BA/CcRr+",
+        "rotation": "R270",
+        "position": [
+          1,
+          -1
+        ]
+      },
+      "player": 2,
+      "clock": 21943
+    },
+    {
+      "type": "DEPLOY_MEEPLE",
+      "payload": {
+        "pointer": {
+          "position": [
+            1,
+            -1
+          ],
+          "location": "SW",
+          "feature": "City"
+        },
+        "meepleId": "2.small.2"
+      },
+      "player": 2,
+      "clock": 22839
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.7513895519409541
+      },
+      "player": 2,
+      "clock": 23534
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "BA/CRRR",
+        "rotation": "R0",
+        "position": [
+          1,
+          0
+        ]
+      },
+      "player": 0,
+      "clock": 25117
+    },
+    {
+      "type": "DEPLOY_MEEPLE",
+      "payload": {
+        "pointer": {
+          "position": [
+            1,
+            0
+          ],
+          "location": "S",
+          "feature": "Road"
+        },
+        "meepleId": "0.small.3"
+      },
+      "player": 0,
+      "clock": 27734
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.7181181882326473
+      },
+      "player": 0,
+      "clock": 28615
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "BA/L",
+        "rotation": "R0",
+        "position": [
+          0,
+          1
+        ]
+      },
+      "player": 1,
+      "clock": 30279
+    },
+    {
+      "type": "DEPLOY_MEEPLE",
+      "payload": {
+        "pointer": {
+          "position": [
+            0,
+            1
+          ],
+          "location": "I",
+          "feature": "Monastery"
+        },
+        "meepleId": "1.small.3"
+      },
+      "player": 1,
+      "clock": 30911
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.5061529828790379
+      },
+      "player": 1,
+      "clock": 31646
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "BA/CcRr",
+        "rotation": "R90",
+        "position": [
+          -2,
+          -1
+        ]
+      },
+      "player": 2,
+      "clock": 33454
+    },
+    {
+      "type": "DEPLOY_MEEPLE",
+      "payload": {
+        "pointer": {
+          "position": [
+            -2,
+            -1
+          ],
+          "location": "SW",
+          "feature": "Road"
+        },
+        "meepleId": "2.small.3"
+      },
+      "player": 2,
+      "clock": 34063
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.23642039800277126
+      },
+      "player": 2,
+      "clock": 35318
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "BA/RCr",
+        "rotation": "R90",
+        "position": [
+          0,
+          -3
+        ]
+      },
+      "player": 0,
+      "clock": 37184
+    },
+    {
+      "type": "DEPLOY_MEEPLE",
+      "payload": {
+        "pointer": {
+          "position": [
+            0,
+            -3
+          ],
+          "location": "E",
+          "feature": "City"
+        },
+        "meepleId": "0.small.4"
+      },
+      "player": 0,
+      "clock": 38558
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.3194855362464937
+      },
+      "player": 0,
+      "clock": 39951
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "BA/RRR",
+        "rotation": "R0",
+        "position": [
+          2,
+          -1
+        ]
+      },
+      "player": 1,
+      "clock": 42750
+    },
+    {
+      "type": "DEPLOY_MEEPLE",
+      "payload": {
+        "pointer": {
+          "position": [
+            2,
+            -1
+          ],
+          "location": "S",
+          "feature": "Road"
+        },
+        "meepleId": "1.small.4"
+      },
+      "player": 1,
+      "clock": 44767
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.17272654244193553
+      },
+      "player": 1,
+      "clock": 50071
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "meteorites/CCFC",
+        "rotation": "R180",
+        "position": [
+          0,
+          -1
+        ]
+      },
+      "player": 2,
+      "clock": 71028
+    },
+    {
+      "type": "TILE_CONFIRMED",
+      "payload": {
+        "random": 0.628557230233638
+      },
+      "player": 2,
+      "clock": 72084
+    },
+    {
+      "type": "PASS",
+      "payload": {},
+      "player": 2,
+      "clock": 75125
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.1945335570657558
+      },
+      "player": 2,
+      "clock": 75129
+    }
+  ],
+  "gameAnnotations": {
+    "drawOrder": [
+      "BA/CRr",
+      "BA/Ccc+",
+      "BA/L",
+      "BA/LR",
+      "BA/RFr",
+      "BA/CcRr+",
+      "BA/CRRR",
+      "BA/L",
+      "BA/CcRr",
+      "BA/RCr",
+      "BA/RRR",
+      "meteorites/CCFC"
+    ],
+    "endTurn": 12
+  },
+  "test": {
+    "description": "Meteorites Standard 2",
+    "assertions": [
+      "Betty scored road for 3 points.",
+      "Betty scored road for 1 point.",
+      "John scored monastery for 4 points.",
+      "Betty scored city for 1 point.",
+      "Ariel scored monastery for 6 points.",
+      "John scored road for 3 points.",
+      "Ariel scored road for 1 point.",
+      "John scored road for 1 point.",
+      "Betty has 5 points.",
+      "John has 8 points.",
+      "Ariel has 7 points."
+    ]
+  }
+}

@@ -1,5 +1,5 @@
 import os from 'os'
-import fs from 'fs'
+import fs from 'fs-extra'
 import path from 'path'
 import https from 'https'
 
@@ -10,6 +10,10 @@ import unzipper from 'unzipper'
 import sha256File from 'sha256-file'
 import { compare } from 'compare-versions'
 import Vue from 'vue'
+import { File } from 'megajs'
+import { ipcRenderer } from 'electron'
+import fetch from 'node-fetch'
+import semver from 'semver'
 
 import { getAppVersion } from '@/utils/version'
 import { EventsBase } from '@/utils/events'
@@ -28,14 +32,47 @@ class Addons extends EventsBase {
 
     this.ctx = ctx
     this.addons = []
+    this.downloadableInitialized = 0
+    this.downloadable = []
   }
 
   getDefaultArtworkUrl () {
     return this.AUTO_DOWNLOADED?.classic?.url
   }
+  
+  async getDownloadable() {
+    if (this.downloadableInitialized == 0 ) {
+      try {
+        let url = `https://github.com/fancarpedia/FanCloisterZone/releases/download/v6.0.0-all/addons.json`
+        const res = await fetch(url)
+        if (res.status === 200) {
+          const addons = await res.json()
+          const appVersion = await ipcRenderer.invoke('get-app-version')
+          const appVer = semver.coerce(appVersion)
+
+          this.downloadable = addons.addons
+          .map(addon => {
+            const compatibleVersions = addon.versions.filter(v => {
+              const fromOk = v.fromVersion ? semver.gte(appVer, semver.coerce(v.fromVersion)) : true
+              const toOk = v.toVersion ? semver.lt(appVer, semver.coerce(v.toVersion)) : true // exclusive upper bound
+              return fromOk && toOk
+            })
+            if (compatibleVersions.length > 0) {
+              return { ...addon, versions: compatibleVersions }
+            }
+            return null
+          })
+          .filter(a => a !== null)
+        }
+        this.downloadableInitialized = 1
+      } catch(err) {
+        // No internet?
+      }
+    }
+    return this.downloadable
+  }
 
   async loadAddons () {
-    console.log('Looking for installed` addons')
     const { settings } = this.ctx.store.state
     const userDataPath = window.process.argv.find(arg => arg.startsWith('--user-data=')).replace('--user-data=', '')
     const installedAddons = []
@@ -80,7 +117,7 @@ class Addons extends EventsBase {
     await readFolder(process.resourcesPath + '/addons/', { removable: false, hidden: true })
     await readFolder(path.join(userDataPath, 'addons'), { removable: true, hidden: false })
 
-    await this.updateOutdated(installedAddons)
+    await this.updateOutdatedClassic(installedAddons)
 
     // console.log('Installed addons: ', installedAddons.filter(addon => !addon.error))
 
@@ -109,12 +146,81 @@ class Addons extends EventsBase {
     await fs.promises.mkdir(addonsFolder, { recursive: true })
     return addonsFolder
   }
+  
+  async installDownloadable(addonKey, version) {
+    const downloadable = await this.getDownloadable()
+    if (!downloadable) {
+      throw new Error($nuxt.$t('settings.add-ons.add-ons-definition-not-available'))
+    }
+    
+    const addonDefinition = downloadable.find(a => a.key === addonKey)
+    if (!addonDefinition) {
+      throw new Error($nuxt.$t('settings.add-ons.download-definition-not-found'))
+    }
 
+    const versionDefinition = addonDefinition.versions.find(v => v.version === version)
+    if (!versionDefinition) {
+      throw new Error($nuxt.$t('settings.add-ons.missing-available-version'))
+    }
+
+    const downloadedPath = path.join(os.tmpdir(), `${addonKey}-v${versionDefinition.version}.jca`)
+
+    const installed = this.addons.find(a => a.id === addonKey)
+    if (installed) {
+      const installedVersion = installed.json.version
+      const requestedVersion = versionDefinition.version
+
+      if (installedVersion >= requestedVersion) {
+        return
+      }
+      
+      console.log(`Reinstalling ${addonKey}: v${installedVersion} → v${requestedVersion}`)
+      await this.uninstall(installed)
+    }
+
+    // Download provider
+    let downloadPromise
+    if (versionDefinition.provider === 'mega') {
+      const file = File.fromURL(versionDefinition.url)
+      downloadPromise = new Promise((resolve, reject) => {
+        file
+        .download()
+        .pipe(fs.createWriteStream(downloadedPath))
+        .on('error', reject)
+        .on('finish', resolve)
+      })
+    } else if (versionDefinition.provider === 'https') {
+      const res = await fetch(versionDefinition.url)
+      if (!res.ok) throw new Error(`HTTP ${res.status}`)
+
+      downloadPromise = new Promise((resolve, reject) => {
+        const fileStream = fs.createWriteStream(downloadedPath)
+        res.body.pipe(fileStream)
+        fileStream.on('finish', resolve)
+        fileStream.on('error', reject)
+      })
+    } else {
+      throw new Error(`Unknown provider: ${versionDefinition.provider}`)
+    }
+
+    await downloadPromise
+
+    // --- SHA-256 verification ---
+    if (versionDefinition.sha256) {
+      const checksum = sha256File(downloadedPath)
+      if (checksum !== versionDefinition.sha256) {
+        await fs.promises.unlink(downloadedPath)
+        throw new Error($nuxt.$t('settings.add-ons.downloaded-file-checksum-mismatch'))
+      }
+    }
+    // Install after verification
+    await this.install(downloadedPath)
+  }
+      
   async install (filePath) {
     const addonsFolder = await this.mkAddonsFolder()
 
     const tmpFolder = await fs.promises.mkdtemp(path.join(os.tmpdir(), 'addon-'))
-    console.log(tmpFolder)
 
     // TODO UNPACK FIRST TO TEMP DIR AND VALIDATE
     await fs.createReadStream(filePath)
@@ -143,7 +249,10 @@ class Addons extends EventsBase {
     const enabledArtworks = uniq([...this.ctx.store.state.settings.enabledArtworks, ...addon.json.artworks.map(artwork => `${id}/${artwork}`)])
     await this.ctx.store.dispatch('settings/update', { enabledArtworks })
 
-    this.emitter.emit('change')
+    await new Promise(resolve => {
+      this.emitter.emit('change')
+      resolve()
+    })
   }
 
   async uninstall (addon) {
@@ -154,11 +263,15 @@ class Addons extends EventsBase {
       const enabledArtworks = this.ctx.store.state.settings.enabledArtworks.filter(id => !ids.includes(id))
       await this.ctx.store.dispatch('settings/update', { enabledArtworks })
     }
-
-    this.emitter.emit('change')
+    await new Promise(resolve => {
+      this.emitter.emit('change')
+      resolve()
+    })
+    this.addons = this.addons.filter(a => a.id !== addon.id)
+    
   }
 
-  async updateOutdated (installedAddons) {
+  async updateOutdatedClassic (installedAddons) {
     const classicArtwork = installedAddons.find(({ id }) => id === 'classic')
     if (classicArtwork) {
       if (!classicArtwork.outdated && !classicArtwork.error) {
@@ -247,6 +360,46 @@ class Addons extends EventsBase {
     installedAddons.unshift(artwork)
   }
 
+  async updateOutdatedAddons () {
+    const installedAddons = this.addons
+    const downloadable = await this.getDownloadable()
+
+	let updated = false
+
+    for (const installed of installedAddons) {
+        const addon = installed.id
+        const available = downloadable.find(({ key }) => key === addon)
+        
+        if (!available) continue
+
+        // get the highest available version
+        const newest = available.versions.reduce((max, v) => 
+            v.version > max.version ? v : max
+        )
+        if (newest.version > installed.json.version) {
+            console.log(`Updating ${addon}: v${installed.json.version} → v${newest.version}`)
+
+            try {
+              updated = true
+              await this.uninstall(installed)
+              await this.installDownloadable(addon, newest.version)
+            } catch (err) {
+              console.error(`Failed updating ${addon}`, err)
+            }
+        }
+        if (updated) {
+          await this.loadAddons()
+          if (this.$theme) {
+            await this.$theme.loadArtworks()
+          }
+          if (this.$tiles) {
+            await this.$tiles.loadExpansions()
+          }
+        }
+    }    
+    
+  }
+
   findMissingAddons (required) {
     const installed = this.addons.reduce((acc, addon) => {
       acc[addon.id] = addon.json.version
@@ -301,7 +454,6 @@ class Addons extends EventsBase {
             }
           }
         }
-
         return addon
       } catch (e) {
         // unexpected error

@@ -46,7 +46,6 @@ class Theme extends EventsBase {
 
   async loadArtworks () {
     const { settings } = this.ctx.store.state
-    console.log(`Loading enabled artworks. (${settings.enabledArtworks})`)
 
     let resourcesContainer = document.getElementById('theme-resources')
     if (resourcesContainer) {
@@ -71,7 +70,6 @@ class Theme extends EventsBase {
       enabledArtworks.push(artworks['jcz/simplified'])
     }
     const loaded = await (new ArtworkLoader()).loadArworks(enabledArtworks)
-
     this.artworks = loaded.artworks
     this.tiles = loaded.tiles
     this.tileLayers = {}
@@ -334,14 +332,17 @@ class Theme extends EventsBase {
 }
 
 export default (ctx, inject) => {
-  let theme = null
+  let instance = null
 
-  Object.defineProperty(Vue.prototype, '$theme', {
+  const prop = {
     get () {
-      if (theme === null) {
-        theme = new Theme(ctx)
+      if (instance === null) {
+        instance = new Theme(ctx)
       }
-      return theme
+      return instance
     }
-  })
+  }
+  
+  Object.defineProperty(Vue.prototype, '$theme', prop)
+  Object.defineProperty(ctx, '$theme', prop)
 }

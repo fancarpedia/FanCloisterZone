@@ -1,24 +1,34 @@
 <template>
   <div class="test-runner">
-    <div class="close">
-      <NuxtLink to="/">Close</NuxtLink>
-    </div>
-    <v-container>
-      <h1>Test Runner</h1>
 
-      <v-btn color="primary" @click="toggleRunAll">
-        {{ isRunningAll ? 'Stop running all' : 'Run All' }}
-      </v-btn>
+    <v-container class="test-runner-container">
+      <div class="test-runner-header">
+        <h1>Test Runner</h1>
 
-      <v-btn color="secondary" @click="resetAll">
-        Reset All
-      </v-btn>
+        <div>
+          <v-btn color="primary" @click="toggleRunAll">
+            {{ isRunningAll ? 'Stop running all' : 'Run All' }}
+          </v-btn>
 
-      <v-btn color="secondary" @click="resetFailed">
-        Reset Failed
-      </v-btn>
+          <v-btn color="secondary" @click="resetAll">
+            Reset All
+          </v-btn>
 
-      <v-simple-table>
+          <v-btn color="secondary" @click="toggleFinished">
+            {{ !hideFinished ? 'Hide finished' : 'Show All' }}
+          </v-btn>
+
+          <v-btn color="secondary" @click="resetFailed">
+            Reset Failed
+          </v-btn>
+        </div>
+        <v-btn to="/" color="secondary" @click="resetFailed">
+          Close
+        </v-btn>
+
+      </div>
+
+      <v-simple-table class="test-runner-table">
         <template v-slot:default>
           <thead>
             <tr>
@@ -28,8 +38,9 @@
             </tr>
           </thead>
           <tbody>
+           <template v-for="(test, idx) in tests">
             <tr
-              v-for="(test, idx) in tests"
+              v-if="!hideFinished || !test.result || !test.result.ok"
               :key="test.file"
               :class="{ disabled: test.disabled }"
             >
@@ -63,6 +74,7 @@
                 </v-btn>
               </td>
             </tr>
+           </template>
           </tbody>
         </template>
       </v-simple-table>
@@ -80,7 +92,8 @@ import { Expansion } from '@/models/expansions'
 export default {
   data() {
     return {
-      isRunningAll: false,
+      hideFinished: false,
+   	  isRunningAll: false,
       stopRunning: false,
       tests: []
     }
@@ -129,7 +142,9 @@ export default {
         }
       }
     } catch (e) {
-      console.log(`Test folder ${testFolder} does not exist`)
+      const realPath = await fs.promises.realpath('.')
+      const testFolderPath = path.join(realPath, testFolder)
+      console.log(`Test folder ${testFolderPath} does not exist`,e.message)
       return { tests: [] }
     }
 
@@ -178,6 +193,10 @@ export default {
     },
 
     resetAll() {
+      if (this.isRunningAll) {
+        this.toggleRunAll()
+      }
+      this.onlyFailed = false
       this.tests = this.tests.map(test => ({
         ...omit(test, ['result']),
       }))
@@ -194,6 +213,10 @@ export default {
       })
     },
 
+    toggleFinished() {
+      this.hideFinished = !this.hideFinished
+    },
+    
     runTest(file) {
       return new Promise(resolve => {
         const unsubscribe = this.$store.subscribe(async mutation => {
@@ -234,7 +257,43 @@ h1
 .disabled
   opacity: 0.6
 
+.test-runner-container
+  display: flex
+  flex-direction: column
+  height: 100vh
+  overflow: hidden
+
+.test-runner-header
+  position: fixed
+  top: 0
+  left: 0
+  right: 0
+  height: 70px
+  display: flex
+  align-items: center
+  justify-content: space-between
+  padding: 0 20px
+  border-bottom: 1px solid #ddd
+  z-index: 10
+
+.test-runner-header h1
+  margin: 0
+  font-size: 20px
+
+.test-runner-header .buttons
+  display: flex
+  gap: 10px
+
+
+.test-runner-table
+  margin-top: 70px
+  flex: 1
+  overflow-y: auto
+
 .error-message
-  color: orange
   font-size: 0.8em
+
+  +theme using ($theme)
+    color: map-get($theme, '--v-error-base')
+  
 </style>

@@ -1,0 +1,878 @@
+{
+  "appVersion": "6.0.0-rc.3",
+  "gameId": "1",
+  "name": "",
+  "initialRandom": 0.9219329825593017,
+  "created": "2025-11-16T09:37:33.355Z",
+  "clock": 186265,
+  "setup": {
+    "options": {},
+    "sets": {
+      "basic:1": 1,
+      "meteorites": 1
+    },
+    "elements": {
+      "small-follower": 7,
+      "farmers": true,
+      "meteorite": true,
+      "obelisk": 5
+    },
+    "rules": {
+      "meteorite-impact": "combination"
+    },
+    "timer": null,
+    "start": [
+      {
+        "tile": "BA/RCr",
+        "x": 0,
+        "y": 0,
+        "rotation": 0
+      }
+    ],
+    "addons": {
+      "meteorites": 1
+    }
+  },
+  "players": [
+    {
+      "name": "Betty",
+      "slot": 2
+    },
+    {
+      "name": "John",
+      "slot": 1
+    },
+    {
+      "name": "Ariel",
+      "slot": 0
+    }
+  ],
+  "chat": [],
+  "replay": [
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "BA/Rr",
+        "rotation": "R270",
+        "position": [
+          -1,
+          0
+        ]
+      },
+      "player": 0,
+      "clock": 5470
+    },
+    {
+      "type": "PASS",
+      "payload": {},
+      "player": 0,
+      "clock": 6606
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.3377777970962317
+      },
+      "player": 0,
+      "clock": 6612
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "BA/RFr",
+        "rotation": "R0",
+        "position": [
+          -1,
+          -1
+        ]
+      },
+      "player": 1,
+      "clock": 7326
+    },
+    {
+      "type": "PASS",
+      "payload": {},
+      "player": 1,
+      "clock": 8150
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.27779161808998554
+      },
+      "player": 1,
+      "clock": 8154
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "BA/RFr",
+        "rotation": "R0",
+        "position": [
+          -1,
+          -2
+        ]
+      },
+      "player": 2,
+      "clock": 9551
+    },
+    {
+      "type": "PASS",
+      "payload": {},
+      "player": 2,
+      "clock": 10534
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.28783850036054215
+      },
+      "player": 2,
+      "clock": 10538
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "BA/RRR",
+        "rotation": "R0",
+        "position": [
+          0,
+          -2
+        ]
+      },
+      "player": 0,
+      "clock": 11470
+    },
+    {
+      "type": "PASS",
+      "payload": {},
+      "player": 0,
+      "clock": 12166
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.4504775395051366
+      },
+      "player": 0,
+      "clock": 12170
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "BA/RRR",
+        "rotation": "R0",
+        "position": [
+          1,
+          -2
+        ]
+      },
+      "player": 1,
+      "clock": 15831
+    },
+    {
+      "type": "PASS",
+      "payload": {},
+      "player": 1,
+      "clock": 17862
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.2733500595348901
+      },
+      "player": 1,
+      "clock": 17865
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "BA/RFr",
+        "rotation": "R90",
+        "position": [
+          1,
+          -1
+        ]
+      },
+      "player": 2,
+      "clock": 18815
+    },
+    {
+      "type": "PASS",
+      "payload": {},
+      "player": 2,
+      "clock": 20271
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.3591079028672055
+      },
+      "player": 2,
+      "clock": 20274
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "BA/Rr",
+        "rotation": "R90",
+        "position": [
+          1,
+          0
+        ]
+      },
+      "player": 0,
+      "clock": 21358
+    },
+    {
+      "type": "PASS",
+      "payload": {},
+      "player": 0,
+      "clock": 22863
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.27335004319037304
+      },
+      "player": 0,
+      "clock": 22865
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "BA/Rr",
+        "rotation": "R90",
+        "position": [
+          -2,
+          0
+        ]
+      },
+      "player": 1,
+      "clock": 29254
+    },
+    {
+      "type": "PASS",
+      "payload": {},
+      "player": 1,
+      "clock": 30383
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.1336068194945812
+      },
+      "player": 1,
+      "clock": 30385
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "BA/RRRR",
+        "rotation": "R0",
+        "position": [
+          -2,
+          -1
+        ]
+      },
+      "player": 2,
+      "clock": 31591
+    },
+    {
+      "type": "DEPLOY_MEEPLE",
+      "payload": {
+        "pointer": {
+          "position": [
+            -1,
+            0
+          ],
+          "location": "NL.NR.EL.SR.WL.WR",
+          "feature": "Field"
+        },
+        "meepleId": "2.obelisk.1"
+      },
+      "player": 2,
+      "clock": 33440
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.3324200151673953
+      },
+      "player": 2,
+      "clock": 34391
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "BA/Rr",
+        "rotation": "R270",
+        "position": [
+          -2,
+          -2
+        ]
+      },
+      "player": 0,
+      "clock": 35711
+    },
+    {
+      "type": "DEPLOY_MEEPLE",
+      "payload": {
+        "pointer": {
+          "position": [
+            -1,
+            -1
+          ],
+          "location": "NL.NR.EL.WR",
+          "feature": "Field"
+        },
+        "meepleId": "0.obelisk.1"
+      },
+      "player": 0,
+      "clock": 37216
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.9783935013014151
+      },
+      "player": 0,
+      "clock": 39055
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "BA/CRr",
+        "rotation": "R270",
+        "position": [
+          -2,
+          -3
+        ]
+      },
+      "player": 1,
+      "clock": 40231
+    },
+    {
+      "type": "PASS",
+      "payload": {},
+      "player": 1,
+      "clock": 41311
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.09696790191118221
+      },
+      "player": 1,
+      "clock": 41314
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "BA/RCr",
+        "rotation": "R0",
+        "position": [
+          -1,
+          -3
+        ]
+      },
+      "player": 2,
+      "clock": 42335
+    },
+    {
+      "type": "DEPLOY_MEEPLE",
+      "payload": {
+        "pointer": {
+          "position": [
+            -1,
+            -2
+          ],
+          "location": "NL.NR.EL.WR",
+          "feature": "Field"
+        },
+        "meepleId": "2.obelisk.2"
+      },
+      "player": 2,
+      "clock": 44319
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.8887743955198539
+      },
+      "player": 2,
+      "clock": 45896
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "BA/RFr",
+        "rotation": "R0",
+        "position": [
+          0,
+          -3
+        ]
+      },
+      "player": 0,
+      "clock": 46888
+    },
+    {
+      "type": "DEPLOY_MEEPLE",
+      "payload": {
+        "pointer": {
+          "position": [
+            0,
+            -2
+          ],
+          "location": "NL.NR.EL.WR",
+          "feature": "Field"
+        },
+        "meepleId": "0.obelisk.2"
+      },
+      "player": 0,
+      "clock": 48679
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.6268679328173639
+      },
+      "player": 0,
+      "clock": 49743
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "BA/RFr",
+        "rotation": "R0",
+        "position": [
+          1,
+          -3
+        ]
+      },
+      "player": 1,
+      "clock": 50641
+    },
+    {
+      "type": "DEPLOY_MEEPLE",
+      "payload": {
+        "pointer": {
+          "position": [
+            1,
+            -2
+          ],
+          "location": "NL.NR.EL.WR",
+          "feature": "Field"
+        },
+        "meepleId": "1.obelisk.1"
+      },
+      "player": 1,
+      "clock": 52335
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.6383170935228906
+      },
+      "player": 1,
+      "clock": 54552
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "BA/CRRR",
+        "rotation": "R0",
+        "position": [
+          2,
+          -3
+        ]
+      },
+      "player": 2,
+      "clock": 55592
+    },
+    {
+      "type": "PASS",
+      "payload": {},
+      "player": 2,
+      "clock": 56416
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.22473850595021805
+      },
+      "player": 2,
+      "clock": 56418
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "BA/Rr",
+        "rotation": "R90",
+        "position": [
+          2,
+          -2
+        ]
+      },
+      "player": 0,
+      "clock": 59199
+    },
+    {
+      "type": "DEPLOY_MEEPLE",
+      "payload": {
+        "pointer": {
+          "position": [
+            2,
+            -2
+          ],
+          "location": "NL.WR",
+          "feature": "Field"
+        },
+        "meepleId": "0.obelisk.3"
+      },
+      "player": 0,
+      "clock": 61097
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.8722433176223081
+      },
+      "player": 0,
+      "clock": 64866
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "BA/C",
+        "rotation": "R90",
+        "position": [
+          2,
+          -1
+        ]
+      },
+      "player": 1,
+      "clock": 66521
+    },
+    {
+      "type": "DEPLOY_MEEPLE",
+      "payload": {
+        "pointer": {
+          "position": [
+            2,
+            -1
+          ],
+          "location": "NL.NR.SL.SR.WL.WR",
+          "feature": "Field"
+        },
+        "meepleId": "1.obelisk.2"
+      },
+      "player": 1,
+      "clock": 68545
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.15642378422524095
+      },
+      "player": 1,
+      "clock": 71833
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "BA/Rr",
+        "rotation": "R270",
+        "position": [
+          2,
+          0
+        ]
+      },
+      "player": 2,
+      "clock": 73234
+    },
+    {
+      "type": "DEPLOY_MEEPLE",
+      "payload": {
+        "pointer": {
+          "position": [
+            2,
+            0
+          ],
+          "location": "NL.NR.EL.SR.WL.WR",
+          "feature": "Field"
+        },
+        "meepleId": "2.obelisk.3"
+      },
+      "player": 2,
+      "clock": 76025
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.21414086295704648
+      },
+      "player": 2,
+      "clock": 77723
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "BA/Rr",
+        "rotation": "R90",
+        "position": [
+          2,
+          1
+        ]
+      },
+      "player": 0,
+      "clock": 81968
+    },
+    {
+      "type": "PASS",
+      "payload": {},
+      "player": 0,
+      "clock": 91546
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.07890987904456925
+      },
+      "player": 0,
+      "clock": 91550
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "BA/Rr",
+        "rotation": "R270",
+        "position": [
+          1,
+          1
+        ]
+      },
+      "player": 1,
+      "clock": 93425
+    },
+    {
+      "type": "DEPLOY_MEEPLE",
+      "payload": {
+        "pointer": {
+          "position": [
+            2,
+            1
+          ],
+          "location": "NL.WR",
+          "feature": "Field"
+        },
+        "meepleId": "1.obelisk.3"
+      },
+      "player": 1,
+      "clock": 97832
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.186173087588976
+      },
+      "player": 1,
+      "clock": 99074
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "BA/LR",
+        "rotation": "R90",
+        "position": [
+          0,
+          1
+        ]
+      },
+      "player": 2,
+      "clock": 100793
+    },
+    {
+      "type": "DEPLOY_MEEPLE",
+      "payload": {
+        "pointer": {
+          "position": [
+            1,
+            1
+          ],
+          "location": "NL.NR.EL.SR.WL.WR",
+          "feature": "Field"
+        },
+        "meepleId": "2.obelisk.4"
+      },
+      "player": 2,
+      "clock": 102697
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.5177004034965527
+      },
+      "player": 2,
+      "clock": 103818
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "BA/RRR",
+        "rotation": "R180",
+        "position": [
+          -1,
+          1
+        ]
+      },
+      "player": 0,
+      "clock": 106601
+    },
+    {
+      "type": "DEPLOY_MEEPLE",
+      "payload": {
+        "pointer": {
+          "position": [
+            0,
+            1
+          ],
+          "location": "NL.NR.EL.ER.SL.SR.WL.WR",
+          "feature": "Field"
+        },
+        "meepleId": "0.obelisk.4"
+      },
+      "player": 0,
+      "clock": 109162
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.4624525146829612
+      },
+      "player": 0,
+      "clock": 110649
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "BA/RFr",
+        "rotation": "R0",
+        "position": [
+          -2,
+          1
+        ]
+      },
+      "player": 1,
+      "clock": 112537
+    },
+    {
+      "type": "DEPLOY_MEEPLE",
+      "payload": {
+        "pointer": {
+          "position": [
+            -1,
+            1
+          ],
+          "location": "NL.WR",
+          "feature": "Field"
+        },
+        "meepleId": "1.obelisk.4"
+      },
+      "player": 1,
+      "clock": 114987
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.7780494940333522
+      },
+      "player": 1,
+      "clock": 116858
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "meteorites/CRRF",
+        "rotation": "R180",
+        "position": [
+          0,
+          -1
+        ]
+      },
+      "player": 2,
+      "clock": 162720
+    },
+    {
+      "type": "TILE_CONFIRMED",
+      "payload": {
+        "random": 0.059424806300637734
+      },
+      "player": 2,
+      "clock": 164321
+    },
+    {
+      "type": "PASS",
+      "payload": {},
+      "player": 2,
+      "clock": 170802
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.1588334749927851
+      },
+      "player": 2,
+      "clock": 170808
+    }
+  ],
+  "gameAnnotations": {
+    "drawOrder": [
+      "BA/Rr",
+      "BA/RFr",
+      "BA/RFr",
+      "BA/RRR",
+      "BA/RRR",
+      "BA/RFr",
+      "BA/Rr",
+      "BA/Rr",
+      "BA/RRRR",
+      "BA/Rr",
+      "BA/CRr",
+      "BA/RCr",
+      "BA/RFr",
+      "BA/RFr",
+      "BA/CRRR",
+      "BA/Rr",
+      "BA/C",
+      "BA/Rr",
+      "BA/Rr",
+      "BA/Rr",
+      "BA/LR",
+      "BA/RRR",
+      "BA/RFr",
+      "meteorites/CRRF"
+    ],
+    "endTurn": 24
+  },
+  "test": {
+    "description": "Meteorites Obelisk Combined 1",
+    "assertions": [
+      "Ariel scored obelisk for 12 points.",
+      "Betty scored obelisk for 12 points.",
+      "Ariel scored obelisk for 9 points.",
+      "Betty scored obelisk for 12 points.",
+      "John scored obelisk for 12 points.",
+      "Betty scored obelisk for 9 points.",
+      "John scored obelisk for 12 points.",
+      "Ariel scored obelisk for 12 points.",
+      "John scored obelisk for 9 points.",
+      "Ariel scored obelisk for 12 points.",
+      "Betty scored obelisk for 12 points.",
+      "John scored obelisk for 9 points.",
+      "Betty has 45 points.",
+      "John has 42 points.",
+      "Ariel has 45 points."
+    ]
+  }
+}

@@ -1,5 +1,6 @@
 import fs from 'fs'
 import { execFile } from 'child_process'
+import crypto from 'crypto'
 
 export const state = () => ({
   loaded: {
@@ -18,6 +19,7 @@ export const state = () => ({
   showGameSetup: false,
   java: null, // { version, outdated, error }
   engine: null,
+  appSessionId: crypto.randomBytes(16).toString('hex'),
   download: null,
   updateInfo: null,
   updateProgress: null,
@@ -130,7 +132,6 @@ export const actions = {
       const executable = rootState.settings.javaPath || 'java'
       console.log(`Checking ${executable}`)
       execFile(executable, ['-version'], (error, stdout, stderr) => {
-        console.log(stderr)
         if (error) {
           console.error(error)
           const value = { ok: false, error: 'not-found' }

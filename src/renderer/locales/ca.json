@@ -2,14 +2,14 @@
   "@author": "J0anJosep",
   "@jcz-version": "5.12.1",
   "@fcz-version": "6.0.0",
-  "@version": "0.8.6",
+  "@version": "0.8.22",
   "about": {
     "configuration-file": "Fitxer de configuració",
     "jcloisterzone-game-engine": "Motor de joc del JCloisterZone",
     "system-java-version": "Versió del Java del sistema",
     "title": "JCloisterZone",
     "fantitle": "Edició FanCloisterZone",
-    "version": "versió"
+    "version": "Versió"
   },
   "bookmarks": {
     "description-end": "el botó de la barra lateral.",
@@ -47,6 +47,7 @@
     "play-online-fan": "Juga en línia en un servidor fan",
     "plus-description": "Afegeix múltiples instàncies",
     "raise": "Augmenta",
+    "rematch": "Revenja",
     "remove": "Trau",
     "remove-from-favorites": "Trau dels preferits",
     "reset": "Restableix",
@@ -84,7 +85,11 @@
     "basic": "Joc base",
     "besiegers": "Els càtars",
     "bridges-castles-and-bazaars": "Ponts, castells i basars",
+    "butterfly-tiles": "Rajoles papallona",
+    "butterfly-tiles-description": "16 rajoles amb disposicions noves que no existeixen al joc base i les expansions. No inclou elements nous.",
     "cathars": "Els càtars",
+    "cliffs-and-waterfalls": "Penya-segats i cascades",
+    "cliffs-and-waterfalls-description": "Afegeix capes tàctiques noves quan construïu al voltant de penya-segats i cascades. Els penya-segats separen els camps, afegeixen profunditat tàctica i maneres noves de lluitar amb els oponents pel control de les zones.",
     "corn-circles": "Cercles de cultius",
     "crop-circles-I": "Cercles de cultius I",
     "crop-circles-II": "Cercles de cultius II",
@@ -93,9 +98,13 @@
     "cult-places": "Llocs de culte",
     "darmstadt": "Darmstadt",
     "decinsky-sneznik": "Děčínský Sněžník",
+    "decinsky-sneznik-description": "Una figura especial, la torre d'observació, que se situa en un camp i es completa quan queda envoltada de rajoles en totes les direccions cardinals (nord, est, sud i oest).",
     "dutch-monasteries": "Monestirs holandesos",
+    "dutch-monasteries-description": "Els monestirs holandesos, de manera similar als monestirs alemanys, pretenen reemplaçar els monestirs del joc base.",
     "family-feud": "Discussions familiars",
+    "family-feud-description": "Rajoles amb escuts d'armes blaus/blancs i rojos/grocs que pertanyen a famílies rivals. No es poden posar rajoles que connectin dues ciutats que pertanyin a famílies rivals.",
     "farmers-heaven": "El cel dels pagesos",
+    "farmers-heaven-description": "Com la majarona d'expansions se centren en les ciutats, ja era hora que es fes alguna cosa amb els grangers.",
     "ferries": "Els transbordadors",
     "festival": "El festival",
     "flier": "Les màquines voladores",
@@ -108,23 +117,35 @@
     "labyrinth": "El laberint",
     "mage-and-witch": "El mag i la bruixa",
     "meteorites": "Meteorits",
+    "meteorites-description": "Els meteorits cauen sobre Carcassona i provoquen el caos i la destrucció. Els jugadors poden establir-se a les àrees destrossades i convertir el caos en oportunitats estratègiques.",
     "monasteries": "Monestirs",
     "princess-and-dragon": "La princesa i el drac",
     "river": "El riu",
     "river-I": "El riu I",
     "river-II": "El riu II",
+    "robbers-son": "El fill del lladre",
+    "robbers-son-description": "El fill del lladre introdueix una mecànica nova que permet traure qualsevol seguidor dels camins.",
     "russian-promos": "Promos russes",
     "siege": "El setge",
     "spiel-doch": "Spiel Doch!",
+    "the-city-gates": "Portes de la ciutat",
+    "the-city-gates-description": "Permet als jugadors posar un porta de la ciutat a la vora d'una rajola amb una altra porta o bé en un camí o un camp a la vora de la rajola i a l'inrevés.",
     "the-flying-machines-2": "Les màquines voladores 2",
+    "the-flying-machines-2-description": "Pareguda al seu antecessor, però amb ciutats a les rajoles, en lloc de només camins.",
     "the-labyrinths": "Laberints",
+    "the-labyrinths-description": "Afegeix 3 rajoles de laberints, per a fer servir soles o amb la rajola de laberint original. ",
     "tower": "La torre",
     "traders-and-builders": "Comerciants i constructors",
     "tunnel": "El túnel",
+    "ukraine-promo": "Promo d'Ucraïna",
+    "ukraine-promo-description": "Aquesta promo d'edició limitada es va publicar a l'Spiel 22. Els beneficis de la seva venda es van destinar a la fundació NGO Come Back Alive.",
     "under-the-big-top": "Sota la carpa",
+    "under-the-big-top-description": "",
     "village-life": "Vida a la vila",
+    "village-life-description": "",
     "watchtowers": "Les talaies",
     "wells": "Els pous",
+    "wells-description": "Una expansió senzilla on cada pou afegeix 1 punt al valor del camí corresponent o bé 2 punts a un camí amb una taverna completada.",
     "wind-roses": "Les roses del vent",
     "winter": "Hivern"
   },
@@ -171,6 +192,7 @@
       "player-may-move-a-meeple-from-the-market-district-before-final-scoring": "El jugador pot moure un seguidor del districte del mercat abans de la puntuació final.",
       "player-may-place-a-meeple-in-a-city-district": "El jugador pot col·locar un seguidor en un districte de la ciutat.",
       "player-may-place-a-meeple-next-to-already-present-one": "Si hi ha un seguidor col·locat, el jugador en pot col·locar un altre al costat.",
+      "player-may-place-a-tile-from-supply": "El jugador pot col·locar una rajola del subministrament.",
       "player-may-place-an-abbey": "El jugador pot col·locar una abadia",
       "player-must-place-the-tile": "El jugador ha de col·locar la rajola",
       "siege-player-can-escape-a-besieged-city": "El jugador es pot escapar d'una ciutat assetjada.",
@@ -187,8 +209,9 @@
       "you-may-move-a-meeple-from-the-market-district-before-final-scoring": "Podeu moure un seguidor del districte del mercat abans de la puntuació final.",
       "you-may-place-a-meeple-in-a-city-district": "Podeu col·locar un seguidor en un districte de la ciutat.",
       "you-may-place-a-meeple-next-to-already-present-one": "Si hi ha un seguidor col·locat, en podeu col·locar un altre al costat.",
+      "you-may-place-a-tile-from-supply": "Podeu col·locar una rajola del subministrament.",
       "you-may-place-an-abbey": "Podeu col·locar una abadia",
-      "your-action": "la vostra acció"
+      "your-action": "l'acció"
     },
     "chat": {
       "new-message": "Missatge nou"
@@ -327,7 +350,8 @@
       "name": "Nom",
       "open-slot": "ranura oberta",
       "remote-player": "jugador remot",
-      "rename-player": "Canvia el nom de jugador"
+      "rename-player": "Canvia el nom de jugador",
+      "waiting-for-player": "s'espera al jugador"
     },
     "game-element-box": {
       "mandatory-for-selected-tiles": "Obligatori per a les rajoles seleccionades",
@@ -383,7 +407,7 @@
       "pig-herd-disabled": "No hi ha rajoles amb porcades a la partida.",
       "portal-description": "A través del portal màgic es pot posar un seguidor en qualsevol rajola.",
       "portal-disabled": "No hi ha cap rajola amb portals màgics a la partida.",
-      "princess-description": "La princesa pot traure un cavaller d'una ciutat.",
+      "princess-description": "La princesa pot traure un cavaller d'una ciutat.",
       "princess-disabled": "No hi ha rajoles amb la princesa a la partida.",
       "scoring-variants": "Variants de puntuació",
       "shrine-description": "Un santuari i un monestir un al costat de l'altre competeixen. Qui acabi primer, puntua. El segon, no obté cap punt.",
@@ -418,7 +442,7 @@
     "title": "Configuració de la partida",
     "variant": {
       "barn-placement": {
-        "description": "El graner {} posar en un camp on ja hi ha un altre graner.",
+        "description": "El graner {} posar en un camp on ja hi ha un altre graner.",
         "not-occupied": "no es pot",
         "occupied": "es pot"
       },
@@ -443,7 +467,7 @@
       },
       "espace-variant": {
         "any-tile": "de qualsevol rajola",
-        "description": "El monestir s'ha de posar al costat {} d'una ciutat assetjada per a escapar.",
+        "description": "El monestir s'ha de posar al costat {} d'una ciutat assetjada per a escapar.",
         "siege-tile": "d'una rajola de setge"
       },
       "fairy-placement": {
@@ -453,8 +477,8 @@
       },
       "festival-return": {
         "description": "El jugador pot tornar {}.",
-        "follower": "un dels’seus seguidors",
-        "meeple": "una de les seves’pròpies figures"
+        "follower": "un dels seus seguidors",
+        "meeple": "una de les seves pròpies figures"
       },
       "gq11-pig-herd": {
         "description": "La rajola de camp de l'11a expansió de Games Quarterly {}.",
@@ -501,7 +525,7 @@
         "description": "Assigna {} conjunts de fitxes a cada jugador en partides de dos/tres jugadors."
       },
       "princess-action": {
-        "description": "La princesa {} traure un cavaller d'una ciutat.",
+        "description": "La princesa {} traure un cavaller d'una ciutat.",
         "may": "pot",
         "must": "ha de"
       },
@@ -526,11 +550,12 @@
       "continue-with-recently-saved-games": "Continua amb les partides desades recents",
       "create-directly-from": "Crea una partida nova directament des de",
       "load-game": "Carrega partida",
+      "local-games": "Partides locals",
       "my-favorites": "els meus preferits",
       "new-game": "Partida nova",
+      "open-game": "Partida oberta",
       "title": "Partides organitzades pel jugador"
     },
-    "new-version-available": "Hi ha una nova versió del FanCloisterZone disponible.",
     "online": {
       "abandon-game": "Abandona la partida",
       "chat-during-game": "Xat durant la partida",
@@ -552,8 +577,15 @@
       "title-fan": "Partides allotjades en servidors públics fan",
       "you-have-no-game-in-progress": "No teniu cap partida en curs."
     },
-    "release-notes": "Notes de la versió",
-    "update-to": "Actualitza a la versió {version}"
+    "update": {
+      "download": "Descarrega",
+      "download-error": "Error de descàrrega",
+      "install-new-version": "Instal·la una versió nova",
+      "new-version-available": "Hi ha una nova versió del FanCloisterZone disponible.",
+      "release-notes": "Notes de la versió",
+      "starting": "S'inicia",
+      "update-to": "Actualitza a la versió {version}"
+    }
   },
   "join-game": {
     "connect-to-remote-host": "Connecta a un servidor remot amb una partida creada.",
@@ -570,9 +602,10 @@
     "help": "Ajuda",
     "join-game": "Uneix-me a una partida",
     "leave-game": "Surt de la partida",
-    "load-game": "Carrega una partida / configuració",
+    "load-setup": "Carrega una configuració",
     "new-game": "Partida nova",
     "online": "En línia",
+    "open-game": "Obre una partida",
     "playonline-connect": "Juga en línia",
     "playonline-disconnect": "Desconnecta",
     "report-bug": "Informa d'un error",
@@ -590,16 +623,23 @@
   },
   "settings": {
     "add-ons": {
+      "add-ons-definition-not-available": "Definició del complement no disponible",
       "add-on-already-installed": "El complement {id} ja està instal·lat. Si el voleu reinstal·lar, primer cal traure'l.",
       "add-on-url": "direcció url del complement",
       "artwork-not-found-internet-connection-is-needed": "No es pot trobar o descarregar el complement amb la xarxa per defecte. Cal una connexió a internet per a descarregar-ho.",
-      "drag-add-on-here-or-click-here": "Arrossegueu el complement aquí (fitxers .jca) o feu clic aquí per a seleccinar-lo.",
+      "available-new-add-ons": "Complements disponibles",
+      "download-definition-not-found": "No s'ha trobat la definició de descàrrega",
+      "downloaded-file-checksum-mismatch": "Suma de verificació del fitxer descarregat incorrecta",
+      "drag-add-on-here-or-click-here": "Arrossegueu el complement aquí (fitxers .jca) o feu clic aquí per a seleccionar-lo.",
       "finish-or-leave-game-to-make-changes": "Acabeu o sortiu de la partida abans de fer canvis.",
       "install-add-on": "Instal·la el complement",
       "installation-is-not-allowed-during-game": "No es permet instal·lar ni desinstal·lar complements durant les partides ni quan la configuració del joc està oberta.",
       "installed-add-ons": "Complements instal·lats",
       "invalid-add-on-multiple-folders-in-root": "Complement no vàlid: el paquet ha de contenir només una carpeta a l'arrel",
-      "look-at-jcz-for-add-ons": "Mireu a {link} si voleu una llista de complements disponibles.",
+      "look-at-link-for-add-ons": "Mireu a {link} si voleu una llista de complements disponibles.",
+      "missing-available-version": "No es troba la versió disponible",
+      "no-add-ons-installed": "No hi ha complements instal·lats",
+      "not-available-new-add-ons": "No hi ha complements nous.",
       "please-check-connectivity-and-restart-app": "Comproveu la vostra connexió, reinicieu l'aplicació i proveu-ho de nou.",
       "title": "Complements"
     },
@@ -665,6 +705,13 @@
       "preferred-color": "Color preferit",
       "preferred-color-description": "Tria un color automàticament després d'unir-vos a una partida.",
       "title": "Jugador"
+    },
+    "system": {
+      "app-channel": "Canal d'actualitzacions de l'aplicació",
+      "dev": "Proves de noves funcions durant la implementació",
+      "beta": "Proves de les noves funcions de l'aplicació",
+      "stable": "Només vull jugar i gaudir amb el joc",
+      "title": "Sistema"
     },
     "title": "Opcions"
   },

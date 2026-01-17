@@ -1,6 +1,11 @@
 <template>
-  <StandaloneTileImage :tile-id="tileId" :rotation="rotation" :class="{remote: !local}" />
-</template>
+  <StandaloneTileImage
+    :tile-id="tileId"
+    :rotation="rotation"
+    :class="{remote: !local}"
+    @click="onClick"
+  />
+</template> 
 
 <script>
 import LayeredItemMixin from '@/components/game/actions/items/LayeredItemMixin.js'
@@ -45,20 +50,7 @@ export default {
   mounted () {
     this.onRightClick = ev => {
       if (this.local) {
-        const mouseOver = this.$store.state.board.tilePlacementMouseOver
-        if (mouseOver) {
-          const pos = mouseOver[0]
-          const rotations = this.options.find(({ position: p }) => p[0] === pos[0] && p[1] === pos[1])?.rotations
-          if (rotations?.length) {
-            while (true) {
-              this.rotation = getNextRotation(this.rotation)
-              if (rotations.includes(this.rotation)) {
-                return
-              }
-            }
-          }
-        }
-        this.rotation = getNextRotation(this.rotation)
+        this.onClick()
       }
     }
     this.onRotate = r => {
@@ -87,6 +79,23 @@ export default {
           }
         })
       }
+    },
+    onClick () {
+      const mouseOver = this.$store.state.board.tilePlacementMouseOver
+      console.log(mouseOver)
+      if (mouseOver) {
+        const pos = mouseOver[0]
+        const rotations = this.options.find(({ position: p }) => p[0] === pos[0] && p[1] === pos[1])?.rotations
+        if (rotations?.length) {
+          while (true) {
+            this.rotation = getNextRotation(this.rotation)
+            if (rotations.includes(this.rotation)) {
+              return
+            }
+          }
+        }
+      }
+      this.rotation = getNextRotation(this.rotation)
     }
   }
 }

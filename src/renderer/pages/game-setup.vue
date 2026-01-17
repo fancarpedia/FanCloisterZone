@@ -116,9 +116,9 @@ export default {
       await ipcRenderer.emit('menu.leave-game')
     },
 
-    onTileClick (tileId) {
+    onTileClick (tileId, maxCount) {
       if (this.settings.devMode && this.$store.state.networking.connectionType !== 'online') {
-        this.$refs.annotationsPanel.appendTile(tileId)
+        this.$refs.annotationsPanel.appendTile(tileId, maxCount)
       }
     },
 

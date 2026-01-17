@@ -24,7 +24,7 @@
           </p>
         </div>
 
-        <div class="game-list">
+        <div class="game-list public">
           <div
             v-for="{ game, slots, valid, isOwner, isStarted } in verifiedGamePublicList"
             :key="game.gameId"
@@ -53,17 +53,15 @@
               <div
                 v-for="s in slots"
                 :key="s.number"
-                :class="'game-slot color color-' + s.number +' ' + ((s.sessionId || s.clientId == clientId)? '' : 'disconnected')"
+                :class="'game-slot color color-' + s.number + ' ' + ((s.clientId == clientId) ? 'local' : '') + ' ' + ((s.sessionId || s.clientId == clientId) ? '' : 'disconnected')"
                 :title="s.name"
               >
-                <Meeple type="SmallFollower" />
-                <v-icon
-                  v-if="!s.sessionId && s.clientId != clientId"
-                  class="disconnected-icon"
-                  small
-                >
-                  fa-user-slash
-                </v-icon>
+                <div class="meeple">
+                  <Meeple type="SmallFollower" />
+                </div>
+                <div class="name">
+                  {{ s.name }}
+                </div>
               </div>
             </div>
 
@@ -93,7 +91,7 @@
           </p>
         </div>
 
-        <div class="game-list">
+        <div class="game-list player">
           <div
             v-for="{ game, slots, valid, isOwner, isStarted } in verifiedGameList"
             :key="game.gameId"
@@ -122,10 +120,15 @@
               <div
                 v-for="s in slots"
                 :key="s.number"
-                :class="'game-slot color color-' + s.number"
+                :class="'game-slot color color-' + s.number + ' ' + ((s.clientId == clientId) ? 'local' : '') + ' ' + ((s.sessionId || s.clientId == clientId) ? '' : 'disconnected')"
                 :title="s.name"
               >
-                <Meeple type="SmallFollower" />
+                <div class="meeple">
+                  <Meeple type="SmallFollower" />
+                </div>
+                <div class="name">
+                  {{ s.name }}
+                </div>
               </div>
             </div>
 
@@ -174,6 +177,7 @@
 
     <v-dialog
       v-model="showJoinDialog"
+      persistent
       max-width="400px"
     >
       <v-card>
@@ -200,6 +204,32 @@
         </v-card-actions>
       </v-card>
     </v-dialog>
+
+    <v-dialog
+      v-model="showAlertMessage"
+      max-width="400px"
+    >
+      <v-card>
+        <v-card-title>
+          <span class="headline"></span>
+        </v-card-title>
+        <v-card-text>
+          <v-container>
+            <p>{{ getAlertMessageText }}</p>
+            <div
+                v-for="link in getAlertMessageLinks"
+              >
+                <div><a :href="link.url" target="_blank">{{ link.title }}</a></div>
+            </div>
+          </v-container>
+        </v-card-text>
+        <v-card-actions>
+          <v-spacer />
+          <v-btn text @click="hideAlertMessage = true">{{ $t('button.close') }}</v-btn>
+        </v-card-actions>
+      </v-card>
+    </v-dialog>
+
   </div>
 </template>
 
@@ -222,6 +252,7 @@ export default {
 
   data () {
     return {
+      hideAlertMessage: false,
       showDeleteDialog: false,
       showDeleteGameId: null,
       showJoinDialog: false,
@@ -232,13 +263,32 @@ export default {
 
   computed: {
     ...mapState({
-      clientId: state =>state.settings.clientId,
+      alertMessage: state => state.online.alertMessage,
+      clientId: state => state.settings.clientId,
       gameList: state => state.online.gameList,
       gamePublicList: state => state.online.gamePublicList,
       playOnlineHostname: state => state.settings.playOnlineUrl.split('/')[0],
       locale: state => state.settings.locale,
       connected: state => state.networking.connectionStatus === STATUS_CONNECTED
     }),
+
+    getAlertMessageLinks() {
+      return this.alertMessage && this.alertMessage.message.links ? this.alertMessage.message.links : [];
+    },
+    getAlertMessageText() {
+      return this.alertMessage && this.alertMessage.message.message ? this.alertMessage.message.message : '';
+    },
+    showAlertMessage: {
+      get() {
+        return this.alertMessage && this.alertMessage.message && !this.hideAlertMessage;
+      },
+      set(value) {
+        // When dialog is dismissed (value goes false), set hideAlertMessage=true
+        if (!value) {
+          this.hideAlertMessage = true;
+        }
+      }
+    },
 
     verifiedGameList () {
       return this.gameList.map(game => {
@@ -247,7 +297,6 @@ export default {
         const slots = sortBy(game.slots.filter(s => s.clientId), 'order')
         const isOwner = game.owner === this.$store.state.settings.clientId
         const isStarted = !(game.started == null || game.started === '')
-        console.log(game.started)
         return { game, valid, slots, isOwner, isStarted }
       })
     },
@@ -259,7 +308,6 @@ export default {
         const slots = sortBy(game.slots.filter(s => s.clientId), 'order')
         const isOwner = game.owner === this.$store.state.settings.clientId
         const isStarted = !(game.started == null || game.started === '')
-        console.log(game.started)
         return { game, valid, slots, isOwner, isStarted }
       })
     }
@@ -273,6 +321,8 @@ export default {
   },
 
   mounted () {
+  console.log("Initial alertMessage:", this.alertMessage);
+  console.log("Initial showAlertMessage:", this.showAlertMessage);
     if (this.$store.state.networking.connectionStatus === STATUS_CONNECTED) {
       // not reconnecting
       this.$connection.send({ type: 'LIST_GAMES', payload: {} })
@@ -282,6 +332,18 @@ export default {
 
   beforeDestroy () {
     this._onClose && this.$connection.off('close', this._onClose)
+  },
+
+  watch: {
+    alertMessage: {
+      handler(newVal) {
+        // When a new message arrives, show dialog
+        if (newVal && newVal.message) {
+          this.hideAlertMessage = false;
+        }
+      },
+      deep: true
+    }
   },
 
   methods: {
@@ -328,6 +390,7 @@ export default {
       this.showDeleteDialog = false
       await this.$connection.send({ type: 'ABANDON_GAME', payload: { gameId: this.showDeleteGameId } })
       await this.$connection.send({ type: 'LIST_GAMES', payload: {} })
+      await this.$connection.send({ type: 'LIST_PUBLIC_GAMES', payload: {} })
     }
   }
 }
@@ -367,6 +430,12 @@ h2
   padding: 0 20px
   display: flex
   flex-wrap: wrap
+
+  &.player
+    +theme using ($theme)
+      background-color: map-get($theme, 'cards-bg')
+      color: map-get($theme, 'gray-text-color')
+  
 
 .game
   width: 380px
@@ -421,10 +490,11 @@ h2
     flex: 0 0 auto
     position: relative
     width: 36px
-    height: 36px
-    display: inline-flex
+    height: 60px
+    display: inline-block
     align-items: center
     justify-content: center
+    overflow: hidden
 
     /* keep meeple size consistent */
     svg.meeple
@@ -432,22 +502,20 @@ h2
       height: 36px
       display: block
 
-    /* badge for disconnected user */
-    .disconnected-icon
-      position: absolute
-      top: -6px
-      right: -6px
-      font-size: 12px
-      z-index: 10
-      border-radius: 50%
-      padding: 2px
-      box-shadow: 0 1px 2px rgba(0,0,0,0.15)
-      pointer-events: none /* lets the title/hover pass through */
-
-    /* visual treatment for disconnected slot */
-    &.disconnected
-      opacity: 0.6
+    &.local
+      font-weight: bolder
       
+      +theme using ($theme)
+        color: map-get($theme, 'local-player-color')
+      
+    &.disconnected
+      
+      svg.meeple 
+        fill: white
+        
+        +theme using ($theme)
+          filter: map-get($theme, 'disconnected-filter')
+
 .empty-message
   margin: 30px 0
   text-align: center

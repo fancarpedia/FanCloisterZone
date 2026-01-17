@@ -35,6 +35,8 @@ $theme-light: (
   'player-panel-active-name-color': black,
   'player-panel-count-bg': #e3e3e3,
   'player-panel-count-text': black,
+  'player-panel-size-icon': #bbb,
+  'player-panel-size-text': white,
   'overview-tile-bg': #fff,
   'overview-tile-fill': $text-color-light,
   'overview-tile-meeple-fill': #E8F5E9,
@@ -50,7 +52,10 @@ $theme-light: (
   'slot-open-text': #444,
   'slot-local-text': #444,
   'slot-remote-text': #444,
-  'slot-assign-text': #444
+  'slot-assign-text': #444,
+  'disconnected-filter': invert(0.25),
+  'local-player-color': var(--v-primary-darken2),
+  'update-box-backgrouncolor': var(--v-primary-darken1)
 );
 
 
@@ -97,6 +102,8 @@ $theme-dark: (
   'player-panel-active-name-color': white,
   'player-panel-count-bg': #2e2d2d,
   'player-panel-count-text': white,
+  'player-panel-size-icon': #bbb,
+  'player-panel-size-text': black,
   'overview-tile-bg':$cards-bg-dark,
   'overview-tile-fill': rgba(255, 255, 255, 0.8),
   'overview-tile-meeple-fill':#E8F5E9,
@@ -112,7 +119,10 @@ $theme-dark: (
   'slot-open-text': #bbb,
   'slot-local-text': #dae2ed,
   'slot-remote-text': #bbb,
-  'slot-assign-text': #bbb
+  'slot-assign-text': #bbb,
+  'disconnected-filter': invert(1),
+  'local-player-color': var(--v-primary-lighten2),
+  'update-box-backgrouncolor': var(--v-primary-lighten1)
 );
 
 @mixin theme {

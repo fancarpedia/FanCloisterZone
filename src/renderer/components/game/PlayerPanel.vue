@@ -34,12 +34,14 @@
       </div>
 
       <div
-        v-for="({ token, count }) in tokens"
+        v-for="({ token, count, size, fp }) in tokens"
         :key="token"
         class="item item-token"
       >
         <TokenImage
           :token="token" :player="index"
+          @mouseenter.native="onMouseEnterToken(token, fp)"
+          @mouseleave.native="onMouseLeaveToken(token)"
         />
         <TokenImage
           v-if="count === 2 && !stackTwo(token)"
@@ -47,6 +49,7 @@
           :token="token" :player="index"
         />
         <span v-if="(count > 1 && stackTwo(token)) || count > 2" class="count">{{ count }}</span>
+        <span v-if="size != null" class="size"><span class="value">{{ size }}</span> <v-icon class="color-overlay">fas fa-square</v-icon></span>
       </div>
 
       <div
@@ -99,12 +102,15 @@ export default {
       timer: state => state.game.setup.timer,
       turnPlayer: state => state.game.turnPlayer,
       actionPlayer: state => state.game.action?.player,
-      bazaar: state => state.game.bazaar
+      bazaar: state => state.game.bazaar,
+      features: state => state.game.features
     }),
 
     ...mapGetters({
       colorCssClass: 'game/colorCssClass',
-      canPayRansom: 'game/canPayRansom'
+      canPayRansom: 'game/canPayRansom',
+      featureOn: 'game/featureOn',
+      tileOn: 'game/tileOn'
     }),
 
     color () {
@@ -124,8 +130,8 @@ export default {
     },
 
     tokens () {
-      const tokens = Object.entries(this.player.tokens).map(([token, count]) => {
-        return { token, count, ordering: TOKEN_ORDERING[token] }
+      const tokens = Object.entries(this.player.tokens).map(([token, settings]) => {
+        return { token, count: settings.count, size: settings.size ?? null, fp: settings.fp ?? null, ordering: TOKEN_ORDERING[token] }
       })
       tokens.sort((a, b) => a.ordering - b.ordering)
       return tokens
@@ -152,6 +158,37 @@ export default {
 
     stackTwo (token) {
       return !token.startsWith('TUNNEL_')
+    },
+    
+    onMouseEnterToken (token, fp) {
+      let emphasis
+      if (fp != null) {
+        const places = this.features.find(({ places, type }) => {
+          return type == fp.feature && !!places.find(p => p[0] === fp.position[0] && p[1] === fp.position[1] && p[2] === fp.location)
+        }).places.map(p => {
+          return {
+            tile: this.tileOn(p),
+            feature: fp.feature,
+            location: p[2]
+          }
+        });
+        emphasis = {
+          type: 'feature',
+          places: places
+        }
+      }
+      if (emphasis) {
+        this.$store.dispatch('board/showLayer', {
+          layer: 'EmphasizeLayer',
+          props: {
+            emphasis
+          }
+        })
+      }
+    },
+
+    onMouseLeaveToken (token) {
+      this.$store.dispatch('board/hideLayerDebounced', { layer: 'EmphasizeLayer' })
     }
   }
 }
@@ -241,6 +278,32 @@ section
     +theme using ($theme)
       background: map-get($theme, 'player-panel-count-bg')
       color: map-get($theme, 'player-panel-count-text')
+      
+  span.size
+    display: inline-flex
+    justify-content: center
+    align-items: top
+    font-weight: bold
+    font-size: 20px
+    
+    position: relative
+    z-index: 1
+    width: auto
+    left: 0
+    padding: 5px 5px 0 5px
+      
+    +theme using ($theme)
+      color: map-get($theme, 'player-panel-size-text')
+      
+    .value
+      z-index: 2
+      font-size: smaller
+        
+    .v-icon
+      position: absolute
+
+      +theme using ($theme)
+        color: map-get($theme, 'player-panel-size-icon')
 
   .item-follower, .item-prisoner
     margin: 0 2px
@@ -255,6 +318,9 @@ section
     .token-image
       position: relative
       z-index: 2
+      
+      &.token-KING,&.token-ROBBER
+        vertical-align: top
 
     .stacked
       margin-left: -24px
@@ -302,7 +368,7 @@ aside.shrink-0
       left: -8px
       top: -10px
       margin-right: -6px
-
+      
 aside.shrink-1
   section
     padding-top: 10px

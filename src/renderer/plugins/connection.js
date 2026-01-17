@@ -51,6 +51,8 @@ class ConnectionPlugin extends EventsBase {
     console.log('%c client %c connected to ' + this.ws.url, CONSOLE_CLIENT_COLOR, '')
     const appVersion = getAppVersion()
     const engineVersion = this.app.store.state.engine.version
+    const appSessionId = this.app.store.state.appSessionId
+    const gameId = this.app.store.state.game ? this.app.store.state.game.id : null
     const { settings } = this.app.store.state
     this.ws.send(JSON.stringify({
       id: randomId(),
@@ -61,7 +63,11 @@ class ConnectionPlugin extends EventsBase {
         protocolVersion: NETWORK_PROTOCOL_COMPATIBILITY,
         name: settings.nickname,
         clientId: settings.clientId,
-        secret: settings.secret
+        secret: settings.secret,
+        appSessionId: appSessionId,
+        language: settings.locale,
+        gameId: gameId,
+        platform: process.platform
       }
     }))
     this.heartbeat()

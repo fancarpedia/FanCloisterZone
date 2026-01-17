@@ -95,6 +95,10 @@ module.exports = {
       {
         code: 'sk',
         file: 'sk.json'
+      },
+      {
+        code: 'sl',
+        file: 'sl.json'
       }
     ],
     // lazy: true,
@@ -153,6 +157,31 @@ module.exports = {
       config.externals = {
         fsevents: "require('fsevents')"
       }
+      const babelRequiredPaths = [
+        path.resolve(require.resolve('megajs'), '..', '..'),
+        path.resolve(require.resolve('fs-extra'), '..', '..')
+      ]
+      config.module.rules.push({
+        test: /\.js$/,
+        include: babelRequiredPaths, // only transpile to requested paths
+        use: {
+          loader: 'babel-loader',
+            options: {
+      presets: [
+        ['@babel/preset-env', {
+          targets: {
+            node: '16'
+          },
+          modules: 'commonjs'
+        }]
+      ],
+      plugins: [
+        '@babel/plugin-proposal-nullish-coalescing-operator',
+        '@babel/plugin-proposal-optional-chaining'
+      ]
+          }
+        }
+      })
     }
   },
   

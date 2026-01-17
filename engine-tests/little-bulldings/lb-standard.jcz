@@ -20,7 +20,9 @@
       "farmers": true,
       "little-buildings": 1
     },
-    "rules": {},
+    "rules": {
+      "little-buildings-scoring": "1/1/1"
+    },
     "timer": null,
     "start": [
       {

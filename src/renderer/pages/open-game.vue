@@ -14,7 +14,7 @@
 
       <HeaderMessage
         :sets="sets"
-        :info="slotsAssigned ? null : (readOnly ? $t('game-setup.open-game.assign-all-players-to-start') : $t('game-setup.open-game.no-player-in-game') )"
+        :info="slotsReserved ? null : (readOnly ? $t('game-setup.open-game.assign-all-players-to-start') : $t('game-setup.open-game.no-player-in-game') )"
       />
 
       <div v-if="gameKey" class="game-key">
@@ -66,6 +66,7 @@
           :key="slot.number"
           :number="slot.number"
           :owner="slot.sessionId"
+          :client="slot.clientId"
           :name="slot.name"
           :order="slot.order"
           :read-only="readOnly"
@@ -140,7 +141,7 @@ export default {
     return {
       isRenameDialogOpen: false,
       editName: null,
-      // do not updata it after start when gameMessages are set to empty array
+      // do not update it after start when gameMessages are set to empty array
       readOnly: this.$store.state.game.gameMessages !== null
     }
   },
@@ -168,6 +169,10 @@ export default {
       } else {
         return !!this.slots.find(slot => slot.sessionId)
       }
+    },
+
+    slotsReserved () {
+      return !!this.slots.find(slot => slot.clientId)
     },
 
     randomizeSeating: {

@@ -1,6 +1,8 @@
 <template>
   <v-card class="about">
-    <v-card-title class="headline">{{ $t('about.fantitle') /* Fan Edition */ }}</v-card-title>
+    <section class="splash">
+      <img :src="splashImage()" :title="$t('about.fantitle')" />
+    </section>
     <v-card-text>
       <section class="d-flex my-3">
         <div class="meeples d-flex">
@@ -17,8 +19,7 @@
         <div>
           <div class="version">{{ $t('about.version') }} {{ version }}</div>
           Roman Krejčík &amp; fans<br>
-          farin@farin.cz
-          <div class="report-bug" @click="openReportBug">{{ $t('menu.report-bug')}}: Discord</div>
+          <div class="report-bug" @click="openReportBug"><span class="label">{{ $t('menu.report-bug')}}</span>: Discord</div>
         </div>
       </section>
       <hr>
@@ -66,6 +67,10 @@ export default {
     },
     openReportBug () {
       shell.openPath('https://discord.gg/CswNeVg3eS') /* Fan Edition */
+    },
+    splashImage () {
+      const theme = this.$vuetify.theme.dark ? 'dark' : 'light'
+      return require(`@/assets/splash_${theme}.png`)
     }
   }
 }
@@ -74,6 +79,12 @@ export default {
 
 <style lang="sass" scoped>
 .about
+  .splash
+    text-align: center
+    padding-top: 1ex
+    img
+      max-width: 40vw
+    
   .meeples
     margin: 5px 40px 5px 20px
 
@@ -103,6 +114,7 @@ export default {
 
   .label
     margin-top: 5px
+    font-weight: bolder
 
   .value
     margin-left: 20px

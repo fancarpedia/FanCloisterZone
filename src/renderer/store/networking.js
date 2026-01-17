@@ -125,9 +125,11 @@ class ConnectionHandler {
       commit('game/options', { [payload.key]: payload.value }, { root: true })
     } else if (type === 'GAME_CHAT') {
       commit('game/chatCommit', { message: payload }, { root: true })
+    } else if (type === 'ALERT') {
+      commit('online/alertMessage', { message: payload }, { root: true })
     } else {
       console.error(payload)
-      throw new Error(`Unhandled message ${type}`)
+//      throw new Error(`Unhandled message ${type}`)
     }
   }
 

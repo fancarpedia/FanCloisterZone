@@ -1,10 +1,10 @@
 {
   "name": "fancloisterzone",
-  "version": "6.0.0-beta.8",
+  "version": "6.1.0-alpha",
   "description": "FanCloisterZone Edition",
   "repository": "github:fancarpedia/FanCloisterZone",
   "license": "AGPL-3.0-or-later",
-  "author": "Roman Krejcik <farin@farin.cz> and fans",
+  "author": "Roman Krejcik and fans",
   "main": "./dist/main/index.js",
   "scripts": {
     "download-game-engine": "node build-scripts/download-game-engine.js",
@@ -17,7 +17,9 @@
     "preinstall": "node .electron-nuxt/check-engines.js",
     "postinstall": "electron-builder install-app-deps && yarn run download-game-engine",
     "package": "yarn run build && electron-builder -c builder.config.js",
-    "extract": "vue-i18n-extract report --vueFiles './src/{main/modules,renderer}/**/*.?(js|vue)' --languageFiles './src/renderer/locales/*.json'"
+    "extract": "vue-i18n-extract report --vueFiles './src/{main/modules,renderer}/**/*.?(js|vue)' --languageFiles './src/renderer/locales/*.json'",
+    "update-locales": "node ./dev-utils/update-locales.js",
+    "git-release": "node ./dev-utils/git-release.js"
   },
   "build": {
     "provider": "github"
@@ -65,10 +67,14 @@
     "@nuxtjs/style-resources": "^1.2.1",
     "@openfonts/roboto_latin-ext": "^1.44.1",
     "axios": "0.27.2",
+    "babel-loader": "8.2.0",
     "compare-versions": "^5.0.3",
     "electron-log": "^4.4.1",
     "electron-updater": "^4.3.9",
+    "fs-extra": "^11.3.2",
     "lodash": "^4.17.21",
+    "marked": "4.0.18",
+    "megajs": "1.1.2",
     "moment": "^2.29.4",
     "paper": "^0.12.17",
     "portal-vue": "^2.1.7",

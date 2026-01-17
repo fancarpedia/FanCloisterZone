@@ -240,6 +240,7 @@ export default {
     ipcRenderer.off('win.minimize', this._minimized)
     ipcRenderer.off('win.hide', this._minimized)
     ipcRenderer.off('win.blur', this._minimized)
+    this.clearProgress()
   },
 
   methods: {

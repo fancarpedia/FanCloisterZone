@@ -17,16 +17,6 @@
 
     <RuleBox
       :setup="setup"
-      :rules="[Rule.GQ11_PIG_HERD]"
-      :read-only="readOnly"
-    >
-      <template #icon>
-        <StandaloneTileImage tile-id="GQ/F" :size="45" />
-      </template>
-    </RuleBox>
-
-    <RuleBox
-      :setup="setup"
       :rules="[Rule.WAGON_MOVE]"
       :read-only="readOnly"
     >

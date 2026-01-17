@@ -331,7 +331,7 @@ class Tiles extends EventsBase {
       })
     }
 
-    // clean priosly loaded
+    // clean previosly loaded
     Expansion.unregisterAll()
     Expansion.all().forEach(exp => {
       delete exp.requiredBy
@@ -409,13 +409,23 @@ class Tiles extends EventsBase {
       symbolsContainer.innerHTML = this.symbols.join('\n')
     }
 
-    console.log('Expansions definitions loaded.')
     this.ctx.app.store.commit('tilesLoaded')
     this.emit('load')
   }
 }
 
 export default (ctx, inject) => {
-  const $tiles = new Tiles(ctx)
-  Vue.prototype.$tiles = $tiles
+  let instance = null
+
+  const prop = {
+    get () {
+      if (instance === null) {
+        instance = new Tiles(ctx)
+      }
+      return instance
+    }
+  }
+  
+  Object.defineProperty(Vue.prototype, '$tiles', prop)
+  Object.defineProperty(ctx, '$tiles', prop)
 }

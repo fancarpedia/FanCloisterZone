@@ -1,3 +1,4 @@
+
 import { Menu, ipcMain } from 'electron'
 import { getSettings } from '../settings'
 
@@ -12,10 +13,10 @@ async function createMenu (win, messages) {
   const isMac = process.platform === 'darwin'
   const sessionSubmenu = [
     { id: 'new-game', label: $t('menu.new-game') || 'New Game', accelerator: 'CommandOrControl+N', click () { win.webContents.send('menu.new-game') } },
-/* Fan Server *///    { id: 'join-game', label: $t('menu.join-game') || 'Join Game', accelerator: 'CommandOrControl+J', click () { win.webContents.send('menu.join-game') } },
+    { id: 'join-game', label: $t('menu.join-game') || 'Join Game', accelerator: 'CommandOrControl+J', click () { win.webContents.send('menu.join-game') } },
     { type: 'separator' },
     { id: 'save-game', label: $t('menu.save-game') || 'Save Game', accelerator: 'CommandOrControl+S', click () { win.webContents.send('menu.save-game') } },
-    { id: 'load-game', label: $t('menu.load-game') || 'Load Game / Setup', accelerator: 'CommandOrControl+L', click () { win.webContents.send('menu.load-game') } },
+    { id: 'load-game', label: [$t('menu.open-game') || 'Open Game', $t('menu.load-setup') || 'Load Setup'].join(' / '), accelerator: 'CommandOrControl+O', click () { win.webContents.send('menu.load-game') } },
     { type: 'separator' },
     { id: 'settings', label: $t('menu.settings') || 'Settings', accelerator: 'CommandOrControl+,', click () { win.webContents.send('menu.show-settings') } },
     { type: 'separator' },
@@ -63,9 +64,10 @@ async function createMenu (win, messages) {
   ]
 
   if (settings.devMode) {
+    const remoteEngineValue = 'localhost:9001'
     const toggleRemoteEngine = async () => {
       const currValue = (await getSettings()).enginePath
-      win.webContents.send('settings.update', { enginePath: currValue === 'localhost:9000' ? null : 'localhost:9000' })
+      win.webContents.send('settings.update', { enginePath: currValue === remoteEngineValue ? null : remoteEngineValue })
     }
 
     const toggleLocalPlayOnline = async () => {
@@ -78,7 +80,7 @@ async function createMenu (win, messages) {
       submenu: [
         { role: 'toggleDevTools', label: 'Toggle DevTools' },
         { type: 'separator' },
-        { id: 'remote-engine', label: 'Use Remote Engine', type: 'checkbox', checked: settings.enginePath === 'localhost:9000', click () { toggleRemoteEngine() } },
+        { id: 'remote-engine', label: 'Use Remote Engine', type: 'checkbox', checked: settings.enginePath === remoteEngineValue, click () { toggleRemoteEngine() } },
         { id: 'local-play-online', label: 'Use Local Play Online', type: 'checkbox', checked: settings.playOnlineUrl === 'localhost:8000/ws', click () { toggleLocalPlayOnline() } },
         { id: 'dump-server', label: 'Dump Hosted Game Server State', click () { win.webContents.send('menu.dump-server') } },
         { type: 'separator' },
@@ -98,6 +100,7 @@ async function createMenu (win, messages) {
 
 export default function () {
   ipcMain.handle('update-menu', (ev, update) => {
+    const menu = Menu.getApplicationMenu();
     Object.entries(update).forEach(([id, enabled]) => {
       const item = menu.getMenuItemById(id)
       if (item) {

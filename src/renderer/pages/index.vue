@@ -58,7 +58,7 @@
       </div>
       <div v-if="updateInfo" class="update-box">
         <InstallerDownloader
-          :fileURL="updateInfoFile"
+          :fileURL="isWin ? updateInfo.assetUrl.exe : isMac ? updateInfo.assetUrl.dmg : updateInfo.assetUrl.appImage"
           :titleText="$t('index.update.new-version-available')"
           :downloadButtonText="$t('index.update.download')"
           :installButtonText="$t('index.update.install-new-version')"
@@ -67,7 +67,9 @@
         />
 
         <h4>{{ $t('index.update.release-notes') }}</h4>
-        <div class="update-release-notes" v-html="updateInfo.releaseNotes" />
+        <div class="update-release-notes">
+          <div v-html="updateInfo.releaseNotes" />
+        </div>
       </div>
     </div>
 
@@ -118,7 +120,7 @@
         </v-btn> -->
 
         <v-btn large color="secondary" :disabled="!engine || !engine.ok" @click="loadGame()">
-          {{ $t('index.local.load-game') }}
+          {{ $t('index.local.open-game') }}
         </v-btn>
       </div>
 
@@ -149,6 +151,8 @@ import InstallerDownloader from '@/components/InstallerDownloader'
 
 const isMac = process.platform === 'darwin'
 const isWin = process.platform === 'win32'
+
+import { STATUS_CONNECTED } from '@/store/networking'
 
 export default {
   components: {
@@ -182,32 +186,33 @@ export default {
       settingsLoaded: state => state.loaded.settings,
       artworksLoaded: state => state.loaded.artworks,
       hasClassicAddon: state => state.hasClassicAddon,
-      updateInfo: state => {
-        if (process.env.NODE_ENV === 'development') {
-          return {
-            releaseNotes: 'Cool stuff',
-            description: 'Tha description',
-            version: '6.0.0-beta.6',
-            files: [
-              {
-                url: 'fancloisterzone-6.0.0-beta.6.exe'
-              }
-            ]
-          }
-        }
-        return state.updateInfo
-      }
+      connectionStatus: state => state.networking.connectionStatus,
+      updateInfo: state => state.updateInfo
     }),
 
-    updateInfoFile () {
-      if (this.updateInfo) {
-        return `https://github.com/fancarpedia/FanCloisterZone/releases/download/v${this.updateInfo.version}/${this.updateInfo.files[0].url}` /* Fan Edition */
-      }
-      return null
+    connectionStatus() {
+      return this.connectionStatus
     }
   },
 
+/*  created() {
+    if (this.connectionStatus === null) {
+      this.$store.dispatch('networking/connectPlayOnlineFan')
+    } else if (this.connectionStatus === STATUS_CONNECTED) {
+      // not reconnecting
+      this.$connection.send({ type: 'LIST_GAMES', payload: {} })
+      this.$connection.send({ type: 'LIST_PUBLIC_GAMES', payload: {} })
+    }
+  },*/
   watch: {
+/*    connectionStatus(newValue) {
+      if (newValue === null) {
+        this.$store.dispatch('networking/connectPlayOnlineFan')
+      } else if (newValue === STATUS_CONNECTED) {
+        this.$connection.send({ type: 'LIST_GAMES', payload: {} })
+        this.$connection.send({ type: 'LIST_PUBLIC_GAMES', payload: {} })
+      }
+    },*/
     settingsLoaded () {
       this.recentSaves = [...this.$store.state.settings.recentSaves]
     }
@@ -375,22 +380,13 @@ h2
         color: inherit !important
         font-size: inherit !important
 
-.theme--light .update-box
-  background-color: var(--v-primary-darken1)
-  
-  a
-    color: white
-
-.theme--dark .update-box
-  background-color: var(--v-primary-lighten1)
-  
-  a
-    color: white
-
 .update-box
   padding: 20px
   color: black
   text-align: center
+
+  +theme using ($theme)
+    background-color: map-get($theme, 'update-box-backgrouncolor')
 
   .update-action
     margin: 20px 0
@@ -418,9 +414,12 @@ h2
 
       &:hover
         background: linear-gradient(180deg, #66b2ff, #007bff)
-
+  
   ::v-deep ul
     list-style: none
+
+  ::v-deep a
+    color: white
 
 .download
   padding: 0 20px
@@ -440,12 +439,6 @@ h2
   img
     max-width: 600px
 
-.theme--light a
-  color: var(--v-primary-darken2)
-
-.theme--dark a
-  color: var(--v-primary-lighten2)
-
 @media (max-height: 1199px)
   .landing-view
     .disclaimer-box
@@ -458,12 +451,4 @@ h2
 
   .landing-view .disclaimer-content p
     margin-bottom: 8px
-</style>
-
-<style lang="sass">
-.landing-view .v-alert__content
-  text-align: center
-
-  a
-    color: white
 </style>
