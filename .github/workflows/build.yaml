@@ -15,17 +15,27 @@ jobs:
         os: [macos-14, ubuntu-latest, windows-latest]
 
     steps:
+      # Step 1: Check out the repository
       - name: Check out Git repository
         uses: actions/checkout@v3
 
-      - name: Install Node.js, NPM and Yarn
+      # Step 2: Set up Node.js 16
+      - name: Set up Node.js, NPM and Yarn
         uses: actions/setup-node@v3
         with:
           node-version: 16
 
+      # Step 3: Install dependencies
+      # macOS arm64 runners require x86_64 architecture to make node-sass prebuilt binaries work
       - name: Install dependencies
-        run: yarn install --frozen-lockfile
+        run: |
+          if [[ "${{ matrix.os }}" == "macos-14" ]]; then
+            arch -x86_64 yarn install --frozen-lockfile
+          else
+            yarn install --frozen-lockfile
+          fi
 
+      # Step 4: Build/release Electron app
       - name: Build/release Electron app
         uses: samuelmeuli/action-electron-builder@v1
         with:
