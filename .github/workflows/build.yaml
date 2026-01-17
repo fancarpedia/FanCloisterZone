@@ -1,50 +1,30 @@
 name: Build/release
-
 on:
   push:
     tags:
       - 'v*'
-
 jobs:
   release:
     runs-on: ${{ matrix.os }}
-
     strategy:
       fail-fast: false
       matrix:
         os: [macos-14, ubuntu-latest, windows-latest]
-
     steps:
       # Step 1: Checkout code
       - name: Check out Git repository
         uses: actions/checkout@v3
-
-      # Step 2: Set up Node.js 16
+      
+      # Step 2: Set up Node.js
       - name: Set up Node.js, NPM and Yarn
         uses: actions/setup-node@v3
         with:
           node-version: 16
-
+      
       # Step 3: Install dependencies
       - name: Install dependencies
-        run: |
-          if [[ "${{ matrix.os }}" == "macos-14" ]]; then
-            echo "macOS 14 detected — rebuilding node-sass for arm64"
-
-            # Install Python 3.10 with distutils for node-gyp
-            brew install python@3.10
-            export PATH="/opt/homebrew/opt/python@3.10/bin:$PATH"
-
-            # Remove prebuilt node-sass binary and rebuild
-            rm -rf node_modules/node-sass/vendor
-            npm rebuild node-sass
-
-            # Install the rest of dependencies
-            yarn install --frozen-lockfile
-          else
-            yarn install --frozen-lockfile
-          fi
-
+        run: yarn install --frozen-lockfile
+      
       # Step 4: Build/release Electron app
       - name: Build/release Electron app
         uses: samuelmeuli/action-electron-builder@v1
