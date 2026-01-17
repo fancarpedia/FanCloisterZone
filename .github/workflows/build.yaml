@@ -21,11 +21,17 @@ jobs:
         with:
           node-version: 16
       
-      # Step 3: Install dependencies
+      # Step 3: Fix distutils for macOS
+      - name: Install setuptools for node-gyp (macOS)
+        if: runner.os == 'macOS'
+        run: |
+          python3 -m pip install setuptools
+      
+      # Step 4: Install dependencies
       - name: Install dependencies
         run: yarn install --frozen-lockfile
       
-      # Step 4: Build/release Electron app
+      # Step 5: Build/release Electron app
       - name: Build/release Electron app
         uses: samuelmeuli/action-electron-builder@v1
         with:
