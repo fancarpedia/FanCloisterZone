@@ -25,7 +25,7 @@ jobs:
       - name: Install setuptools for node-gyp (macOS)
         if: runner.os == 'macOS'
         run: |
-          python3 -m pip install setuptools
+          python3 -m pip install --break-system-packages setuptools
       
       # Step 4: Install dependencies
       - name: Install dependencies
