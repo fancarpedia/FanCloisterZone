@@ -498,6 +498,11 @@
         "description": "Rozstrzyganie remisu: {} na wzgórzu.",
         "number-of-followers": "ilość podwładnych"
       },
+      "inn-and-cathedral-final-scoring": {
+        "description": "Inns and Cathedrals {} during final scoring.",
+        "ignore": "are ignored",
+        "zero": "score 0 points"
+      },
       "keep-monasteries": {
         "description": "Klasztory specjalne {}.",
         "keep": "są dodane dodatkowo",
@@ -666,7 +671,7 @@
     },
     "game-interface": {
       "active-player-indication": "Wskaźniki tury aktywnego gracza",
-      "always-enabled": "zawsze włączone",
+      "always-enabled": "zawsze wł��czone",
       "beep": "Dźwięk",
       "beep-description": "Sygnalizacja tury dźwiękiem (lub gdy wymagane jest wykonanie czynności podczas ruchu innego gracza).",
       "colored-background-in-right-sidebar": "kolorowe tło w prawym pasku bocznym",

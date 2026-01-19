@@ -1,8 +1,8 @@
 {
   "@author": "Paloi Sciurala",
   "@jcz-version": "5.12.1",
-  "@fcz-version": "6.0.0",
-  "@version": "0.8.22",
+  "@fcz-version": "6.1.0",
+  "@version": "0.9.0",
   "about": {
     "configuration-file": "Fișier de configurație",
     "jcloisterzone-game-engine": "Motorul Jocului JCloisterZone",
@@ -81,10 +81,10 @@
   },
   "dialog": {
     "close-local-game": {
-      "continue-playing": "Continue Playing",
-      "resign-and-close": "Resign and Close",
-      "unfinished-local-game": "Unfinished Local Game",
-      "unfinished-local-game-description": "You have an unfinished local game. If you close the app window, you will resign and lose your progress in this game."
+      "continue-playing": "Continuă să joci",
+      "resign-and-close": "Abandonează și închide",
+      "unfinished-local-game": "Partidă locală neterminată",
+      "unfinished-local-game-description": "Ai o partidă locală neterminată. Dacă închizi fereastra aplicației, vei abandona și îți vei pierde progresul în această partidă."
     }
   },
   "expansion": {
@@ -497,6 +497,11 @@
         "at-least-one-follower": "cel puțin un meeple",
         "description": "Metodă de întrerupere a situației de egalitate la majoritate: {} pe dealuri.",
         "number-of-followers": "numărul de meepleși de pe"
+      },
+      "inn-and-cathedral-final-scoring": {
+        "description": "Inns and Cathedrals {} during final scoring.",
+        "ignore": "are ignored",
+        "zero": "score 0 points"
       },
       "keep-monasteries": {
         "description": "Mănăstirile speciale {}.",

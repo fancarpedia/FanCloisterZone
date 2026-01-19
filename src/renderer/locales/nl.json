@@ -498,6 +498,11 @@
         "description": "Beslismethode: {} op heuvels.",
         "number-of-followers": "aantal meeples"
       },
+      "inn-and-cathedral-final-scoring": {
+        "description": "Inns and Cathedrals {} during final scoring.",
+        "ignore": "are ignored",
+        "zero": "score 0 points"
+      },
       "keep-monasteries": {
         "description": "Bijzondere kloosters {}.",
         "keep": "worden toegevoegd",

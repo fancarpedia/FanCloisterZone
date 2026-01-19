@@ -498,6 +498,11 @@
         "description": "V případě remízy rozhoduje {} na kopcích.",
         "number-of-followers": "počet družiníku"
       },
+      "inn-and-cathedral-final-scoring": {
+        "description": "Inns and Cathedrals {} during final scoring.",
+        "ignore": "are ignored",
+        "zero": "score 0 points"
+      },
       "keep-monasteries": {
         "description": "Speciální kláštery {}.",
         "keep": "přidají se k původním klášterům",
