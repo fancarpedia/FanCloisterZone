@@ -44,6 +44,11 @@ export default {
 
     available () {
       return this.rules.some(r => {
+        if (Array.isArray(r)) {
+          return r.every(rule =>
+            rule.isAvailable(this.$tiles, this.setup)
+          )
+        }
         return r.isAvailable(this.$tiles, this.setup)
       })
     }
