@@ -550,6 +550,9 @@
       "tunnelize-other-expansions": {
         "description": "Aplicar la regla del túnel en losetas de otras expansiones con túneles ilustrados."
       },
+      "vineyards-for-garden": {
+        "description": "Apply vineyards bonus during scoring of completed garden."
+      },
       "wagon-move": {
         "C1": "conectado (cruce de carreteras o carretera que se dirige a una ciudad o monasterio) (1ª ed.)",
         "C2": "una zona en la misma loseta o en una adyacente (2ª ed.)",

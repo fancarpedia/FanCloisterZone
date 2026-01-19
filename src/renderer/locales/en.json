@@ -2,7 +2,7 @@
   "@author": "farin & Scott",
   "@jcz-version": "5.12.1",
   "@fcz-version": "6.1.0",
-  "@version": "0.9.1",
+  "@version": "0.9.2",
   "about": {
     "configuration-file": "Configuration file",
     "jcloisterzone-game-engine": "JCloisterZone Game Engine",
@@ -549,6 +549,9 @@
       },
       "tunnelize-other-expansions": {
         "description": "Apply tunnel rule on tiles from other expansions with depicted tunnels."
+      },
+      "vineyards-for-garden": {
+        "description": "Apply vineyards bonus during scoring of completed garden."
       },
       "wagon-move": {
         "C1": "connected (road crossing or road heading to a city/monastery) (1st ed.)",
