@@ -1,0 +1,307 @@
+{
+  "appVersion": "6.1.0-alpha.10",
+  "gameId": "1",
+  "name": "",
+  "initialRandom": 0.8125101525639711,
+  "created": "2026-01-19T21:15:37.892Z",
+  "clock": 98280,
+  "setup": {
+    "sets": {
+      "basic:2": 1,
+      "hills-and-sheep:2": 1
+    },
+    "elements": {
+      "small-follower": 7,
+      "farmers": true,
+      "shepherd": 1,
+      "hill": true,
+      "vineyard": true,
+      "abbot": 1,
+      "garden": true
+    },
+    "rules": {
+      "vineyards-for-garden": true
+    },
+    "timer": null,
+    "start": [
+      {
+        "tile": "BA/RCr",
+        "x": 0,
+        "y": 0,
+        "rotation": 0
+      }
+    ],
+    "options": {}
+  },
+  "players": [
+    {
+      "name": "Ariel",
+      "slot": 0
+    },
+    {
+      "name": "John",
+      "slot": 1
+    }
+  ],
+  "chat": [],
+  "replay": [
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "BA/CG",
+        "rotation": "R180",
+        "position": [
+          0,
+          -1
+        ]
+      },
+      "player": 0,
+      "clock": 2604
+    },
+    {
+      "type": "DEPLOY_MEEPLE",
+      "payload": {
+        "pointer": {
+          "position": [
+            0,
+            -1
+          ],
+          "location": "I",
+          "feature": "Garden"
+        },
+        "meepleId": "0.abbot.1"
+      },
+      "player": 0,
+      "clock": 4117
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.18905519522830017
+      },
+      "player": 0,
+      "clock": 4389
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "BA/RFrG",
+        "rotation": "R0",
+        "position": [
+          -1,
+          0
+        ]
+      },
+      "player": 1,
+      "clock": 5840
+    },
+    {
+      "type": "DEPLOY_MEEPLE",
+      "payload": {
+        "pointer": {
+          "position": [
+            -1,
+            0
+          ],
+          "location": "I",
+          "feature": "Garden"
+        },
+        "meepleId": "1.abbot.1"
+      },
+      "player": 1,
+      "clock": 8532
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.6242302058539997
+      },
+      "player": 1,
+      "clock": 8913
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "HS/C!.v",
+        "rotation": "R0",
+        "position": [
+          -1,
+          -1
+        ]
+      },
+      "player": 0,
+      "clock": 10293
+    },
+    {
+      "type": "PASS",
+      "payload": {},
+      "player": 0,
+      "clock": 10478
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.7214958775362346
+      },
+      "player": 0,
+      "clock": 10489
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "HS/RCC.v",
+        "rotation": "R180",
+        "position": [
+          -1,
+          -2
+        ]
+      },
+      "player": 1,
+      "clock": 11855
+    },
+    {
+      "type": "PASS",
+      "payload": {},
+      "player": 1,
+      "clock": 11991
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.06858422930388852
+      },
+      "player": 1,
+      "clock": 12001
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "HS/CFC.v",
+        "rotation": "R0",
+        "position": [
+          0,
+          -2
+        ]
+      },
+      "player": 0,
+      "clock": 13243
+    },
+    {
+      "type": "PASS",
+      "payload": {},
+      "player": 0,
+      "clock": 13453
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.8119191410459199
+      },
+      "player": 0,
+      "clock": 13488
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "HS/Cc.v",
+        "rotation": "R0",
+        "position": [
+          1,
+          -2
+        ]
+      },
+      "player": 1,
+      "clock": 14719
+    },
+    {
+      "type": "PASS",
+      "payload": {},
+      "player": 1,
+      "clock": 14857
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.4765669872712617
+      },
+      "player": 1,
+      "clock": 14867
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "BA/L",
+        "rotation": "R0",
+        "position": [
+          1,
+          -1
+        ]
+      },
+      "player": 0,
+      "clock": 16075
+    },
+    {
+      "type": "PASS",
+      "payload": {},
+      "player": 0,
+      "clock": 16229
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.17098136158267807
+      },
+      "player": 0,
+      "clock": 16239
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "BA/LR",
+        "rotation": "R90",
+        "position": [
+          1,
+          0
+        ]
+      },
+      "player": 1,
+      "clock": 17510
+    },
+    {
+      "type": "PASS",
+      "payload": {},
+      "player": 1,
+      "clock": 18044
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.1778889281252729
+      },
+      "player": 1,
+      "clock": 18054
+    }
+  ],
+  "gameAnnotations": {
+    "drawOrder": [
+      "BA/CG",
+      "BA/RFrG",
+      "HS/C!.v",
+      "HS/RCC.v",
+      "HS/CFC.v",
+      "HS/Cc.v",
+      "BA/L",
+      "BA/LR"
+    ],
+    "endTurn": 8
+  },
+  "test": {
+    "description": "Vineyards For Garden Variant",
+    "assertions": [
+      "Ariel scored garden for 21 points.",
+      "John scored garden for 4 points.",
+      "Ariel has 21 points.",
+      "John has 4 points."
+    ]
+  }
+}
