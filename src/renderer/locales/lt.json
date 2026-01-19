@@ -550,6 +550,9 @@
       "tunnelize-other-expansions": {
         "description": "Taikykiti tunelio taisyklę kortelėms iš kitų papildymų su pavaizduotais tuneliais."
       },
+      "vineyards-for-garden": {
+        "description": "Apply vineyards bonus during scoring of completed garden."
+      },
       "wagon-move": {
         "C1": "neužimtą kelią, ar miestą/vienuolyną į kurį veda kelias (1st ed.)",
         "C2": "neužimtą kelią, ar miestą/vienuolyną, kuris yra ant tos pačops arba šalia esančios kortelės (2nd ed.)",
@@ -653,7 +656,7 @@
       "missing-available-version": "Trūksta prieinamos versijos",
       "no-add-ons-installed": "Nėra įdiegtų priedų",
       "not-available-new-add-ons": "Atsiprašome, nėra naujų priedų.",
-      "please-check-connectivity-and-restart-app": "Patikrinkite ryšį ir iš naujo paleiskite programą, kad pabandytumėte dar kartą.",
+      "please-check-connectivity-and-restart-app": "Patikrinkite ry��į ir iš naujo paleiskite programą, kad pabandytumėte dar kartą.",
       "title": "Priedai(Add-ons)"
     },
     "appearance": {

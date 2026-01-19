@@ -550,9 +550,12 @@
       "tunnelize-other-expansions": {
         "description": "Appliquer la règle des tunnels sur les tuiles d’autres extensions avec des illustrations de tunnels."
       },
+      "vineyards-for-garden": {
+        "description": "Apply vineyards bonus during scoring of completed garden."
+      },
       "wagon-move": {
         "C1": "connecté (intersection ou route menant vers une ville ou une abbaye) (1ʳᵉ édition)",
-        "C2": "une zone sur la même tuile ou sur une tuile orthogonalement ou diagonalement adjacente (2��� édition)",
+        "C2": "une zone sur la même tuile ou sur une tuile orthogonalement ou diagonalement adjacente (2ᵉ édition)",
         "description": "Après l’évaluation, le charriot peut être déplacé vers une zone adjacente inoccupée et incomplète. Adjacent signifie : {}"
       }
     }
@@ -637,7 +640,7 @@
   "settings": {
     "add-ons": {
       "add-ons-definition-not-available": "Définition des modules complémentaires non disponible",
-      "add-on-already-installed": "Le module complémentaire {id} est déjà installé. Si vous voulez le réinstaller, veuillez d���abord le supprimer.",
+      "add-on-already-installed": "Le module complémentaire {id} est déjà installé. Si vous voulez le réinstaller, veuillez d’abord le supprimer.",
       "add-on-url": "Lien du module complémentaire",
       "artwork-not-found-internet-connection-is-needed": "Impossible de localiser ou de télécharger le module complémentaire avec les illustrations par défaut. Une connexion Internet est nécessaire au premier lancement pour le télécharger.",
       "available-new-add-ons": "Nouveaux modules complémentaires disponibles",
@@ -746,6 +749,6 @@
     "russian-promos-2016-title": "Tuiles de 2016",
     "tower-release": "La quatrième extension majeure sortie en 2006.",
     "traders-and-builders-release": "La deuxième extension majeure sortie en 2003.",
-    "winter-edition-description": "Jeu de base du jeu dériv�� Édition Hiver. Contient un jeu de base étendu avec 12 tuiles supplémentaires."
+    "winter-edition-description": "Jeu de base du jeu dérivé Édition Hiver. Contient un jeu de base étendu avec 12 tuiles supplémentaires."
   }
 }

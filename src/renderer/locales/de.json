@@ -550,6 +550,9 @@
       "tunnelize-other-expansions": {
         "description": "Wende die Tunnelregel auf Plättchen aus anderen Erweiterungen mit abgebildeten Tunneln an."
       },
+      "vineyards-for-garden": {
+        "description": "Apply vineyards bonus during scoring of completed garden."
+      },
       "wagon-move": {
         "C1": "verbunden (Strassenkreuzung oder Strasse, die zu einer Stadt/einem Kloster führt) (1. Edition)",
         "C2": "Bauwerk auf demselben oder einem angrenzenden Plättchen (Neue Edition)",

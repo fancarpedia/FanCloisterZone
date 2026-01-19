@@ -550,6 +550,9 @@
       "tunnelize-other-expansions": {
         "description": "Tunnelspelregels toepassen op tegels uit andere uitbreidingen waar een tunnel op staat."
       },
+      "vineyards-for-garden": {
+        "description": "Apply vineyards bonus during scoring of completed garden."
+      },
       "wagon-move": {
         "C1": "verbonden (weg kruising of weg naar een stad/klooster) (1e editie)",
         "C2": "een project op een aangrenzende tegel (2e editie)",

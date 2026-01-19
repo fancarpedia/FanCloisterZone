@@ -550,6 +550,9 @@
       "tunnelize-other-expansions": {
         "description": "Zastosuj zasadę tunelu na płytkach z innych rozszerzeń zawierających tunele."
       },
+      "vineyards-for-garden": {
+        "description": "Apply vineyards bonus during scoring of completed garden."
+      },
       "wagon-move": {
         "C1": "połączonym obiekcie (skrzyżowanie lub droga do/z miasta/klasztoru) (C1)",
         "C2": "przyległej płytce (C2)",
@@ -671,7 +674,7 @@
     },
     "game-interface": {
       "active-player-indication": "Wskaźniki tury aktywnego gracza",
-      "always-enabled": "zawsze wł��czone",
+      "always-enabled": "zawsze włączone",
       "beep": "Dźwięk",
       "beep-description": "Sygnalizacja tury dźwiękiem (lub gdy wymagane jest wykonanie czynności podczas ruchu innego gracza).",
       "colored-background-in-right-sidebar": "kolorowe tło w prawym pasku bocznym",

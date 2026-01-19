@@ -550,6 +550,9 @@
       "tunnelize-other-expansions": {
         "description": "Tunelové pravidlo sa aplikuje na kartičky z iných rozšírení s tunelovými cestami."
       },
+      "vineyards-for-garden": {
+        "description": "Apply vineyards bonus during scoring of completed garden."
+      },
       "wagon-move": {
         "C1": "prepojené (cestou alebo cesta smerujúca do mesta/kláštora) (1. vydanie)",
         "C2": "na rovnakej alebo susednej kartičke (2. vydanie)",
