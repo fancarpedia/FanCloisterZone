@@ -550,6 +550,9 @@
       "tunnelize-other-expansions": {
         "description": "Uporabi pravilo tunelov na ploščicah iz drugih razširitev z upodobljenimi tuneli."
       },
+      "vineyards-for-garden": {
+        "description": "Apply vineyards bonus during scoring of completed garden."
+      },
       "wagon-move": {
         "C1": "povezana (križišče ceste ali cesta proti mestu/samostanu) (1. izd.)",
         "C2": "značilnost na isti ali sosednji ploščici (2. izd.)",

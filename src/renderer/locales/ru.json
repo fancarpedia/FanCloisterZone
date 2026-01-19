@@ -550,6 +550,9 @@
       "tunnelize-other-expansions": {
         "description": "Применить правило туннелей на плитках из других дополнений с изображенными туннелями."
       },
+      "vineyards-for-garden": {
+        "description": "Apply vineyards bonus during scoring of completed garden."
+      },
       "wagon-move": {
         "C1": "соединен (пересечение дорог или дорога, ведущая к городу/монастырю) (1-е издание)",
         "C2": "элемент на том же или соседнем тайле (2-е издание)",

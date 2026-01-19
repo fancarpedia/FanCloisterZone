@@ -550,6 +550,9 @@
       "tunnelize-other-expansions": {
         "description": "Použít pravidla tunelu na kartičky s vyobrazenými tunely i v jiných rozšířeních."
       },
+      "vineyards-for-garden": {
+        "description": "Apply vineyards bonus during scoring of completed garden."
+      },
       "wagon-move": {
         "C1": "které přímo navazuje na cestou, město nebo klášter (1. vydání)",
         "C2": "na stejné nebo sousední kartičce (2. vydání)",

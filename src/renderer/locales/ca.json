@@ -550,6 +550,9 @@
       "tunnelize-other-expansions": {
         "description": "Aplica la regla dels túnels a rajoles d'altres expansions que mostrin un túnel."
       },
+      "vineyards-for-garden": {
+        "description": "Apply vineyards bonus during scoring of completed garden."
+      },
       "wagon-move": {
         "C1": "connectat (cruïlla de camins o inici d'un camí que porta a una ciutat o monestir) (1a ed.)",
         "C2": "en un element de la mateixa rajola o rajola adjacent (2a ed.)",

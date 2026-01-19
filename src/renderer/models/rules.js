@@ -169,6 +169,17 @@ export const HILL_TIEBREAKER = Rule.HILL_TIEBREAKER = new Rule('hill-tiebreaker'
   }
 )
 
+export const VINEYARDS_FOR_GARDEN = Rule.VINEYARDS_FOR_GARDEN = new Rule('vineyards-for-garden', GAMEPLAY,
+  'Apply vineyards bonus during scoring of completed garden.',
+  [
+  	[GameElement.VINEYARD,GameElement.GARDEN],
+  ],
+  Boolean,
+  {
+    link: 'https://wikicarpedia.com/car/Special:MyLanguage/Sheep_and_Shepherds#3._Scoring_a_feature_3'
+  }
+)
+
 export const ESCAPE_VARIANT = Rule.ESCAPE_VARIANT = new Rule('espace-variant', GAMEPLAY,
   'Monastery must be placed adjacent to {} of a\u00A0besieged city to espace.',
   [GameElement.ESCAPE],
