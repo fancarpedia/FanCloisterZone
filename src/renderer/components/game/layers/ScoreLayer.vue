@@ -141,4 +141,7 @@ export default {
 .muted
   pointer-events: none
   opacity: 0.3
+  
+.points rect
+  opacity: 0.6
 </style>
