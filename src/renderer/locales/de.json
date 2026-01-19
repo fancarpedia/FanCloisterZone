@@ -498,6 +498,11 @@
         "description": "Mehrheiten-Veränderungs-Methode: {} auf Hügeln.",
         "number-of-followers": "Anzahl der Meeples"
       },
+      "inn-and-cathedral-final-scoring": {
+        "description": "Inns and Cathedrals {} during final scoring.",
+        "ignore": "are ignored",
+        "zero": "score 0 points"
+      },
       "keep-monasteries": {
         "description": "Besondere Klöster {}.",
         "keep": "werden einfach nur hinzugefügt",

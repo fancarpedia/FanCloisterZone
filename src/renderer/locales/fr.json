@@ -1,8 +1,8 @@
 {
   "@author": "Black Bear",
   "@jcz-version": "5.12.1",
-  "@fcz-version": "6.0.0",
-  "@version": "0.8.22",
+  "@fcz-version": "6.1.0",
+  "@version": "0.9.0",
   "about": {
     "configuration-file": "Fichier de configuration",
     "jcloisterzone-game-engine": "Moteur de jeu de JCloisterZone",
@@ -81,10 +81,10 @@
   },
   "dialog": {
     "close-local-game": {
-      "continue-playing": "Continue Playing",
-      "resign-and-close": "Resign and Close",
-      "unfinished-local-game": "Unfinished Local Game",
-      "unfinished-local-game-description": "You have an unfinished local game. If you close the app window, you will resign and lose your progress in this game."
+      "continue-playing": "Continuer à jouer",
+      "resign-and-close": "Abandonner et fermer",
+      "unfinished-local-game": "Partie locale inachevée",
+      "unfinished-local-game-description": "Vous avez une partie locale inachevée. Si vous fermez la fenêtre de l’application, vous abandonnerez et perdrez votre progression."
     }
   },
   "expansion": {
@@ -498,6 +498,11 @@
         "description": "Méthode de départage : {} sur une ou plusieurs collines.",
         "number-of-followers": "Nombre de meeples"
       },
+      "inn-and-cathedral-final-scoring": {
+        "description": "Inns and Cathedrals {} during final scoring.",
+        "ignore": "are ignored",
+        "zero": "score 0 points"
+      },
       "keep-monasteries": {
         "description": "Les nouvelles tuiles Abbayes {}.",
         "keep": "sont juste ajoutées",
@@ -547,7 +552,7 @@
       },
       "wagon-move": {
         "C1": "connecté (intersection ou route menant vers une ville ou une abbaye) (1ʳᵉ édition)",
-        "C2": "une zone sur la même tuile ou sur une tuile orthogonalement ou diagonalement adjacente (2ᵉ édition)",
+        "C2": "une zone sur la même tuile ou sur une tuile orthogonalement ou diagonalement adjacente (2��� édition)",
         "description": "Après l’évaluation, le charriot peut être déplacé vers une zone adjacente inoccupée et incomplète. Adjacent signifie : {}"
       }
     }
@@ -632,7 +637,7 @@
   "settings": {
     "add-ons": {
       "add-ons-definition-not-available": "Définition des modules complémentaires non disponible",
-      "add-on-already-installed": "Le module complémentaire {id} est déjà installé. Si vous voulez le réinstaller, veuillez d’abord le supprimer.",
+      "add-on-already-installed": "Le module complémentaire {id} est déjà installé. Si vous voulez le réinstaller, veuillez d���abord le supprimer.",
       "add-on-url": "Lien du module complémentaire",
       "artwork-not-found-internet-connection-is-needed": "Impossible de localiser ou de télécharger le module complémentaire avec les illustrations par défaut. Une connexion Internet est nécessaire au premier lancement pour le télécharger.",
       "available-new-add-ons": "Nouveaux modules complémentaires disponibles",
@@ -741,6 +746,6 @@
     "russian-promos-2016-title": "Tuiles de 2016",
     "tower-release": "La quatrième extension majeure sortie en 2006.",
     "traders-and-builders-release": "La deuxième extension majeure sortie en 2003.",
-    "winter-edition-description": "Jeu de base du jeu dérivé Édition Hiver. Contient un jeu de base étendu avec 12 tuiles supplémentaires."
+    "winter-edition-description": "Jeu de base du jeu dériv�� Édition Hiver. Contient un jeu de base étendu avec 12 tuiles supplémentaires."
   }
 }

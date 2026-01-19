@@ -19,7 +19,7 @@
     "title": "Избранные"
   },
   "button": {
-    "add": "До��авить",
+    "add": "Добавить",
     "add-to-favorites": "Добавить в избранное",
     "as-a-abbot": "Как аббат",
     "as-a-monk": "Как монах",
@@ -153,7 +153,7 @@
     "village-life-description": "",
     "watchtowers": "Сторожевые башни",
     "wells": "Колодцы",
-    "wells-description": "A simple expansion where each well adds 1 point to the value of a road, or 2 points to a road with a completed inn.",
+    "wells-description": "A simple expansion where each Well adds 1 point to the value of a Road, or 2 points to a road with a completed Inn.",
     "wind-roses": "Розы ветров",
     "winter": "Зима"
   },
@@ -188,7 +188,7 @@
       "hills-and-player-must-choose-grow-or-score-plural": "Игрок должен выбрать: увеличить стадо или подсчитать овец за 0 очков. | Игрок должен выбрать: увеличить стадо или подсчитать овец за {points} очко. | Игрок должен выбрать: увеличить стадо или подсчитать овец за {points} очков.",
       "hills-and-receive-points-plural": "Получить 0 очков | Получить 1 очко | Получить {points} очков",
       "hills-and-sheep-shepherd-fields-was-expanded": "Поле пастуха было расширено.",
-      "hills-and-sheep-tokens-left-plural": "Осталось 0 жетонов | Остался 1 жетон | Осталось {tokens} жетонов",
+      "hills-and-sheep-tokens-left-plural": "Осталось 0 жетонов | Остался 1 жетон | Ос��алось {tokens} жетонов",
       "mage-and-witch-player-must-remove-mage-or-witch": "Игрок должен удалить мага или ведьму.",
       "mage-and-witch-remove-mage-or-witch": "Удалить мага или ведьму.",
       "meteorite-impact": "Падение метеорита",
@@ -426,7 +426,7 @@
       "starting-tiles-different-configuration": "Некоторые дополнения предлагают альтернативные конфигурации начальных плиток.",
       "vineyard-description": "Дополнительные очки за близлежащий монастырь.",
       "vineyard-disabled": "В игре нет плитки с виноградником.",
-      "well-description": "Добавляет по одному очку за каждый колодец на дорогах. Дорога с трактиром даёт 2 очка при завершении, но не приносит очков при окончатель��ом подсчёте.",
+      "well-description": "Добавляет по одному очку за каждый колодец на дорога��. Дорога с трактиром даёт 2 очка при завершении, но не приносит очков при окончательном подсчёте.",
       "well-disabled": "В игре нет плитки с колодцем."
     },
     "selected-tiles": "Выбранные плитки",
@@ -497,6 +497,11 @@
         "at-least-one-follower": "хотя бы одного мипла",
         "description": "Метод разрешения ничьей: {} на холмах.",
         "number-of-followers": "количество миплов"
+      },
+      "inn-and-cathedral-final-scoring": {
+        "description": "Inns and Cathedrals {} during final scoring.",
+        "ignore": "are ignored",
+        "zero": "score 0 points"
       },
       "keep-monasteries": {
         "description": "Особенные монастыри {}.",
@@ -574,7 +579,7 @@
       "lobby": "Лобби",
       "no-public-games": "Нет публичных игр",
       "no-random-discovery": "это означает отсутствие случайного обнаружения игроков",
-      "not-yet-started": "Ещё не начала��ь",
+      "not-yet-started": "Ещё не началась",
       "online-storage-description": "При выходе из онлайн-игры она остается в фоновом режиме. Вы можете присоединиться к ней из этого списка в любое время.",
       "paste-a-game-key": "Вставьте ключ игры, предоставленный хостом",
       "public-games": "Публичные игры",

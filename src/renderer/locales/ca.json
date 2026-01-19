@@ -498,6 +498,11 @@
         "description": "Mètode de desempat: {} als turons.",
         "number-of-followers": "el nombre de seguidors"
       },
+      "inn-and-cathedral-final-scoring": {
+        "description": "Inns and Cathedrals {} during final scoring.",
+        "ignore": "are ignored",
+        "zero": "score 0 points"
+      },
       "keep-monasteries": {
         "description": "Els monestirs especials {}.",
         "keep": "només s'afegeixen",

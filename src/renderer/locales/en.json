@@ -1,8 +1,8 @@
 {
   "@author": "farin & Scott",
   "@jcz-version": "5.12.1",
-  "@fcz-version": "6.0.0",
-  "@version": "0.9.00",
+  "@fcz-version": "6.1.0",
+  "@version": "0.9.1",
   "about": {
     "configuration-file": "Configuration file",
     "jcloisterzone-game-engine": "JCloisterZone Game Engine",
@@ -153,7 +153,7 @@
     "village-life-description": "",
     "watchtowers": "The Watchtowers",
     "wells": "Wells",
-    "wells-description": "A simple expansion where each well adds 1 point to the value of a road, or 2 points to a road with a completed inn.",
+    "wells-description": "A simple expansion where each Well adds 1 point to the value of a Road, or 2 points to a road with a completed Inn.",
     "wind-roses": "The Wind Roses",
     "winter": "Winter"
   },
@@ -390,7 +390,7 @@
       "acrobats-disabled": "No tile with Acrobats space is in game.",
       "bazaar-description": "Land tiles are auctioned when a bazaar comes into play.",
       "bazaar-disabled": "No tile with Bazaar is in the game.",
-      "cathedral-description": "Completed cities with cathedral ×3 instead of ×2, no points during final scoring.",
+      "cathedral-description": "Completed Cities with Cathedral ×3 instead of ×2 and optionally no points during final scoring.",
       "cathedral-disabled": "No tile with Cathedral is in game.",
       "escape-description": "Escape allowed via a neighboring monastery.",
       "escape-disabled": "No tile with Siege is in game.",
@@ -404,7 +404,7 @@
       "garden-disabled": "Abbot is not selected.",
       "hill-description": "Used as a tiebreaker. Also hides one random tile underneath.",
       "hill-disabled": "No tile with Hill is in game.",
-      "inn-description": "Completed roads with Inn ×2, no points during final scoring.",
+      "inn-description": "Completed roads with Inn ×2 and optionally no points during final scoring.",
       "inn-disabled": "No tile with Inn is in the game.",
       "marketplace-description": "Marketplaces connect several roads into a shared network that only completes when all linked roads are closed. When scored, bonus points equal to the length of the other completed roads in that network are given.",
       "marketplace-disabled": "No tile with Marketplace is in the game.",
@@ -426,7 +426,7 @@
       "starting-tiles-different-configuration": "Some expansions provides alternative starting configurations.",
       "vineyard-description": "Additional points for nearby Monastery.",
       "vineyard-disabled": "No tile with Vineyard is in the game.",
-      "well-description": "Add point per well on roads. Roads with Inn get 2 points when completed, but no points on final scoring.",
+      "well-description": "Add point per Well on roads. Roads with Inn get 2 points when completed and optionally no points during final scoring.",
       "well-disabled": "No tile with Well is in the game."
     },
     "selected-tiles": "Selected tiles",
@@ -497,6 +497,11 @@
         "at-least-one-follower": "at least one meeple",
         "description": "Tiebreaker method: {} on hills.",
         "number-of-followers": "number of meeples"
+      },
+      "inn-and-cathedral-final-scoring": {
+        "description": "Inns and Cathedrals {} during final scoring.",
+        "ignore": "are ignored",
+        "zero": "score 0 points"
       },
       "keep-monasteries": {
         "description": "Special monasteries {}.",

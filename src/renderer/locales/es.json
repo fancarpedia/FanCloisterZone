@@ -498,6 +498,11 @@
         "description": "Método de desempate: {} en las colinas.",
         "number-of-followers": "número de seguidores"
       },
+      "inn-and-cathedral-final-scoring": {
+        "description": "Inns and Cathedrals {} during final scoring.",
+        "ignore": "are ignored",
+        "zero": "score 0 points"
+      },
       "keep-monasteries": {
         "description": "Monasterios especiales {}.",
         "keep": "solo son agregados",

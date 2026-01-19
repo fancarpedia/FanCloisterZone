@@ -90,6 +90,15 @@ export function getDefaultRules () {
 export const GAMEPLAY = 'gameplay'
 export const SCORING = 'scoring'
 
+export const INN_AND_CATHEDRAL_FINAL_SCORING = Rule.INN_AND_CATHEDRAL_FINAL_SCORING = new Rule('inn-and-cathedral-final-scoring', GAMEPLAY,
+  'Inns and cathedrals {} during final scoring.',
+  [GameElement.INN, GameElement.CATHEDRAL],
+  [
+    { value: 'zero', text: 'score 0 points' },
+    { value: 'ignore', text: 'are ignored' }
+  ]
+)
+
 export const PRINCESS_ACTION = Rule.PRINCESS_ACTION = new Rule('princess-action', GAMEPLAY,
   'The Princess {} remove knight from a\u00A0city.',
   [GameElement.PRINCESS],

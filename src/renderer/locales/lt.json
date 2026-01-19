@@ -498,6 +498,11 @@
         "description": "Lygiųjų panaikinimo metodas:{} ant kalvos.",
         "number-of-followers": "Miplų skaičius"
       },
+      "inn-and-cathedral-final-scoring": {
+        "description": "Inns and Cathedrals {} during final scoring.",
+        "ignore": "are ignored",
+        "zero": "score 0 points"
+      },
       "keep-monasteries": {
         "description": "Specialieji Vienuolynai {}.",
         "keep": "papildomai prisideda",
