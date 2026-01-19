@@ -9,7 +9,7 @@
     "description": "Cathedral final scoring in ignore variant",
     "assertions": [
       "Alice has 15 points",
-      "Bob has 5 points",
+      "Bob has 2 points",
       "Alice scored city for 15 points",
       "Bob scored city for 2 points"
     ]
