@@ -4,7 +4,9 @@ export function getSelectedEdition (elements) {
 }
 
 export function getStartingTilesOptions (elements, sets) {
-  const river = !elements.fishermen && sets['river/1'] || sets['river/2'] || sets['river/3']
+  console.log(elements)
+  const river = !elements.fishermen && (sets['river/1'] || sets['river/2'] || sets['river/3'])
+  console.log(river)
   const count = !!sets.count
   const windRoses = !!sets['wind-roses']
 
