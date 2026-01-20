@@ -1,0 +1,17 @@
+{
+  "title": "Classic Fixes",
+  "design": "classicfixes",
+  "description": "Fixed classic artwork",
+  "icon": "icon.jpg",
+  "perspective": "rotate",
+  "tileSize": 1000,
+  "resources": [
+  ],
+  "pathsInclude": [
+  ],
+  "featuresInclude": [
+  ],
+  "tilesInclude": [
+    "shapes/RI.json"
+  ]
+}
