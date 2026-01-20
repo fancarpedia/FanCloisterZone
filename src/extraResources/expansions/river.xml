@@ -86,7 +86,9 @@
       <field>WR NL</field>
       <field>NR EL</field>
       <field>ER SL SR WL</field>
-      <river>W N E</river>
+      <river>W</river>
+      <river>N</river>
+      <river>E</river>
     </tile>
     <tile id="RI.2/CIcI" group="river">
       <city>W E</city>
