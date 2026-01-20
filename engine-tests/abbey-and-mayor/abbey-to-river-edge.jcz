@@ -1,0 +1,305 @@
+{
+  "appVersion": "6.1.0-alpha.11",
+  "gameId": "1",
+  "name": "",
+  "initialRandom": 0.004643517846767642,
+  "created": "2026-01-20T20:35:45.853Z",
+  "clock": 224767,
+  "setup": {
+    "options": {},
+    "sets": {
+      "basic:1": 1,
+      "river/2:1": 1
+    },
+    "elements": {
+      "small-follower": 7,
+      "farmers": true,
+      "abbey": 1
+    },
+    "rules": {},
+    "timer": null,
+    "start": [
+      {
+        "tile": "RI/s",
+        "x": 0,
+        "y": 0,
+        "rotation": 0
+      }
+    ]
+  },
+  "players": [
+    {
+      "name": "Betty",
+      "slot": 2
+    },
+    {
+      "name": "John",
+      "slot": 1
+    }
+  ],
+  "chat": [],
+  "replay": [
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "RI.2/III",
+        "rotation": "R180",
+        "position": [
+          1,
+          0
+        ]
+      },
+      "player": 0,
+      "clock": 4836
+    },
+    {
+      "type": "PASS",
+      "payload": {},
+      "player": 0,
+      "clock": 7785
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.7134854514251125
+      },
+      "player": 0,
+      "clock": 7792
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "RI.2/II",
+        "rotation": "R0",
+        "position": [
+          2,
+          0
+        ]
+      },
+      "player": 1,
+      "clock": 9230
+    },
+    {
+      "type": "PASS",
+      "payload": {},
+      "player": 1,
+      "clock": 9452
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.6734726559339284
+      },
+      "player": 1,
+      "clock": 9457
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "RI.2/CIRI",
+        "rotation": "R90",
+        "position": [
+          2,
+          1
+        ]
+      },
+      "player": 0,
+      "clock": 10763
+    },
+    {
+      "type": "DEPLOY_MEEPLE",
+      "payload": {
+        "pointer": {
+          "position": [
+            2,
+            1
+          ],
+          "location": "E",
+          "feature": "City"
+        },
+        "meepleId": "0.small.1"
+      },
+      "player": 0,
+      "clock": 11791
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.050721655691367884
+      },
+      "player": 0,
+      "clock": 12121
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "RI.2/IFC",
+        "rotation": "R90",
+        "position": [
+          2,
+          2
+        ]
+      },
+      "player": 1,
+      "clock": 14629
+    },
+    {
+      "type": "DEPLOY_MEEPLE",
+      "payload": {
+        "pointer": {
+          "position": [
+            2,
+            2
+          ],
+          "location": "S",
+          "feature": "City"
+        },
+        "meepleId": "1.small.1"
+      },
+      "player": 1,
+      "clock": 15535
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.7109139065333385
+      },
+      "player": 1,
+      "clock": 15818
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "BA/L",
+        "rotation": "R0",
+        "position": [
+          1,
+          2
+        ]
+      },
+      "player": 0,
+      "clock": 17899
+    },
+    {
+      "type": "PASS",
+      "payload": {},
+      "player": 0,
+      "clock": 18952
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.6556857967975032
+      },
+      "player": 0,
+      "clock": 18956
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "BA/RFr",
+        "rotation": "R0",
+        "position": [
+          0,
+          1
+        ]
+      },
+      "player": 1,
+      "clock": 20737
+    },
+    {
+      "type": "PASS",
+      "payload": {},
+      "player": 1,
+      "clock": 21387
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.08534515275884136
+      },
+      "player": 1,
+      "clock": 21392
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "AM/A",
+        "rotation": "R0",
+        "position": [
+          1,
+          1
+        ]
+      },
+      "player": 0,
+      "clock": 35559
+    },
+    {
+      "type": "DEPLOY_MEEPLE",
+      "payload": {
+        "pointer": {
+          "position": [
+            1,
+            1
+          ],
+          "location": "I",
+          "feature": "Monastery"
+        },
+        "meepleId": "0.small.2"
+      },
+      "player": 0,
+      "clock": 36496
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.5295814382667836
+      },
+      "player": 0,
+      "clock": 38134
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "BA/L",
+        "rotation": "R0",
+        "position": [
+          0,
+          2
+        ]
+      },
+      "player": 1,
+      "clock": 212471
+    },
+    {
+      "type": "PASS",
+      "payload": {},
+      "player": 1,
+      "clock": 214697
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.7196961419230705
+      },
+      "player": 1,
+      "clock": 214712
+    }
+  ],
+  "gameAnnotations": {
+    "drawOrder": [
+      "RI.2/III",
+      "RI.2/II",
+      "RI.2/CIRI",
+      "RI.2/IFC"
+    ]
+  },
+  "test": {
+    "description": "Abbey To River Edge",
+    "assertions": [
+      "Betty scored monastery for 9 points.",
+      "Betty has 9 points.",
+      "John has 0 points."
+    ]
+  }
+}
