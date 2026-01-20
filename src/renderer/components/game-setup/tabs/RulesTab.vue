@@ -184,6 +184,20 @@
           <template #description>{{ $t('game-setup.rules.meteorite-description') }}</template>
           <template #disabled>{{ $t('game-setup.rules.meteorite-disabled') }}</template>
         </GameMechanicsBox>
+        <GameMechanicsBox :item="GameElement.FISHERMEN">
+          <template #icon>
+            <div class="fishermen">
+              <StandaloneTileImage tile-id="RI.2/RrII" :size="55" />
+              <svg class="meeple" :width="55" :height="55">
+                <g transform="translate(20 35) scale(0.4) translate(-27 -27)">
+                  <use :href="`${MEEPLES_SVG}#small-follower`" />
+                </g>
+              </svg>
+            </div>
+          </template>
+          <template #description>{{ $t('game-setup.rules.fishermen-description') }}</template>
+          <template #disabled>{{ $t('game-setup.rules.fishermen-disabled') }}</template>
+        </GameMechanicsBox>
       </div>
     </ConfigSection>
 
@@ -281,7 +295,7 @@ export default {
   grid-template-columns: repeat(auto-fill, 162px)
   grid-auto-flow: row
 
-  .farmers
+  .farmers, .fishermen
     position: relative
     height: 55px
 

@@ -57,8 +57,9 @@ const TITLE_MAPPING = {
   'obelisk': 'game.element.obelisk',
   'windmill': 'game.element.windmill',
   'decinsky-sneznik': 'game.element.decinsky-sneznik',
-  'flowers': 'game.feature.flowers'
-} 
+  'flowers': 'game.feature.flowers',
+  'river': 'game.feature.fishermen'
+}
 
 const SUBTITLE_MAPPING = {
   'incomplete': 'game.scoring.incomplete',
