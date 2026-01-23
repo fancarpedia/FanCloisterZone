@@ -2,7 +2,7 @@
   "@author": "Black Bear",
   "@jcz-version": "5.12.1",
   "@fcz-version": "6.1.0",
-  "@version": "0.9.0",
+  "@version": "0.9.3",
   "about": {
     "configuration-file": "Fichier de configuration",
     "jcloisterzone-game-engine": "Moteur de jeu de JCloisterZone",
@@ -281,7 +281,7 @@
       "festival": "Festival",
       "field": "Pré",
       "fields": "Prés",
-      "fishermen": "Fishermen",
+      "fishermen": "Pêcheurs",
       "flock": "Troupeau",
       "flowers": "Fleurs",
       "garden": "Jardin",
@@ -391,15 +391,15 @@
       "acrobats-disabled": "Aucune tuile Piste d’Artiste n’est en jeu.",
       "bazaar-description": "Les tuiles Terrain sont vendues aux enchères lorsqu’un bazar entre en jeu.",
       "bazaar-disabled": "Aucune tuile Bazar n’est en jeu.",
-      "cathedral-description": "Villes complétées avec une ou plusieurs cathédrales ×3 au lieu de ×2, aucun point lors de l’évaluation finale.",
+      "cathedral-description": "Villes complétées avec une ou plusieurs cathédrales ×3 au lieu de ×2 et éventuellement aucun point lors de l’évaluation finale.",
       "cathedral-disabled": "Aucune tuile Cathédrale n’est en jeu.",
       "escape-description": "Évasion possible via une abbaye voisine.",
       "escape-disabled": "Aucune tuile Siège n’est en jeu.",
       "farmers-description": "Les joueurs sont autorisés à placer des meeples sur les prés.",
       "festival-description": "Avec une tuile Festival, vous pouvez récupérer une de vos propres pions au lieu d’en poser un.",
       "festival-disabled": "Aucune tuile Festival n’est en jeu.",
-      "fishermen-description": "River as regular feature.",
-      "fishermen-disabled": "No tile with River is in the game.",
+      "fishermen-description": "Rivière comme zone normale.",
+      "fishermen-disabled": "Aucune tuile Rivière n'est en jeu.",
       "flowers-description": "Les fleurs ajoutent 3 points à une zone évaluée lorsqu’elles correspondent au jeton du joueur.",
       "flowers-disabled": "Aucune tuile Fleurs n’est en jeu.",
       "gameplay-variants": "Variantes de jeu",
@@ -407,7 +407,7 @@
       "garden-disabled": "L’abbé n’est pas sélectionné.",
       "hill-description": "Utilisé pour départager les joueurs. Cache également une tuile aléatoire en dessous.",
       "hill-disabled": "Aucune tuile Colline n’est en jeu.",
-      "inn-description": "Routes achevées avec une ou plusieurs auberges au lac ×2, aucun point lors de l’évaluation finale.",
+      "inn-description": "Routes achevées avec une ou plusieurs auberges au lac ×2 et éventuellement aucun point lors de l’évaluation finale.",
       "inn-disabled": "Aucune tuile Auberge au Lac n’est en jeu.",
       "marketplace-description": "Les places du marché relient plusieurs routes pour former un réseau commun qui n’est complété que lorsque toutes les routes reliées sont fermées. Lors de l’évaluation, des points bonus équivalents à la longueur des autres routes complétées dans ce réseau, sont attribués.",
       "marketplace-disabled": "Aucune tuile Place du marché n’est en jeu.",
@@ -429,7 +429,7 @@
       "starting-tiles-different-configuration": "Certaines extensions fournissent des configurations de départ alternatives.",
       "vineyard-description": "Points supplémentaires pour les abbayes situées autour.",
       "vineyard-disabled": "Aucune tuile Vignoble n’est en jeu.",
-      "well-description": "Ajoute un point par puits sur les routes. Une route avec une auberge au lac rapporte 2 points lorsqu’elle est terminée, mais aucun point lors de l'évaluation finale.",
+      "well-description": "Ajoute un point par puits sur les routes. Une route avec une auberge au lac rapporte 2 points lorsqu’elle est terminée et éventuellement aucun point lors de l'évaluation finale.",
       "well-disabled": "Aucune tuile Puits n’est en jeu."
     },
     "selected-tiles": "Tuiles sélectionnées",
@@ -502,9 +502,9 @@
         "number-of-followers": "Nombre de meeples"
       },
       "inn-and-cathedral-final-scoring": {
-        "description": "Inns and Cathedrals {} during final scoring.",
-        "ignore": "are ignored",
-        "zero": "score 0 points"
+        "description": "Auberges et cathédrales {} lors de l'évaluation finale.",
+        "ignore": "sont ignorées",
+        "zero": "ne marquent aucun point"
       },
       "keep-monasteries": {
         "description": "Les nouvelles tuiles Abbayes {}.",
@@ -554,7 +554,7 @@
         "description": "Appliquer la règle des tunnels sur les tuiles d’autres extensions avec des illustrations de tunnels."
       },
       "vineyards-for-garden": {
-        "description": "Apply vineyards bonus during scoring of completed garden."
+        "description": "Appliquer le bonus des vignobles lors du décompte des points pour un jardin complété."
       },
       "wagon-move": {
         "C1": "connecté (intersection ou route menant vers une ville ou une abbaye) (1ʳᵉ édition)",

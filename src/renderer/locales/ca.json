@@ -1,8 +1,8 @@
 {
   "@author": "J0anJosep",
   "@jcz-version": "5.12.1",
-  "@fcz-version": "6.0.0",
-  "@version": "0.8.22",
+  "@fcz-version": "6.1.0",
+  "@version": "0.9.3",
   "about": {
     "configuration-file": "Fitxer de configuració",
     "jcloisterzone-game-engine": "Motor de joc del JCloisterZone",
@@ -81,10 +81,10 @@
   },
   "dialog": {
     "close-local-game": {
-      "continue-playing": "Continue Playing",
-      "resign-and-close": "Resign and Close",
-      "unfinished-local-game": "Unfinished Local Game",
-      "unfinished-local-game-description": "You have an unfinished local game. If you close the app window, you will resign and lose your progress in this game."
+      "continue-playing": "Continua jugant",
+      "resign-and-close": "Renuncia i tanca",
+      "unfinished-local-game": "Partida local no acabada",
+      "unfinished-local-game-description": "Teniu una partida local per acabar. Si tanqueu la finestra de l'aplicació, renunciareu i perdreu la partida."
     }
   },
   "expansion": {
@@ -281,7 +281,7 @@
       "festival": "Festival",
       "field": "Camp",
       "fields": "Camps",
-      "fishermen": "Fishermen",
+      "fishermen": "Pescadors",
       "flock": "Ramat",
       "flowers": "Flors",
       "garden": "Jardí",
@@ -391,15 +391,15 @@
       "acrobats-disabled": "No hi ha rajoles amb acrobàcies a la partida.",
       "bazaar-description": "Les rajoles de terra se subhasten quan el basar entra en joc.",
       "bazaar-disabled": "No hi ha cap rajola amb basars a la partida.",
-      "cathedral-description": "Les ciutats completades amb una catedral ×3, en lloc de  ×2, no es tenen en compte durant la puntuació final.",
+      "cathedral-description": "Les ciutats completades amb una catedral ×3, en lloc de ×2, i opcionalment sense puntuar a la puntuació final.",
       "cathedral-disabled": "No hi ha caselles amb catedrals a la partida.",
       "escape-description": "Escapada permesa a través d'un monestir veí.",
       "escape-disabled": "No hi ha cap rajola amb setges a la partida.",
       "farmers-description": "Els jugadors poden posar seguidors als camps.",
       "festival-description": "Amb una rajola de festival es pot tornar a agafar una de les figures del jugador en lloc de posar-ne una.",
       "festival-disabled": "No hi ha cap casella amb festivals a la partida.",
-      "fishermen-description": "River as regular feature.",
-      "fishermen-disabled": "No tile with River is in the game.",
+      "fishermen-description": "Rius com a elements habituals.",
+      "fishermen-disabled": "No hi ha rajoles amb rius a la partida.",
       "flowers-description": "Les flors donen +3 punts als elements que puntuen quan coincideixen amb les fitxes del jugador.",
       "flowers-disabled": "No hi ha rajoles amb flors a la partida.",
       "gameplay-variants": "Variants de joc",
@@ -407,7 +407,7 @@
       "garden-disabled": "No s'ha triat un abad.",
       "hill-description": "Es fa servir per als desempats. També amaga una rajola a l'atzar a sota.",
       "hill-disabled": "No hi ha cap rajola amb turons a la partida.",
-      "inn-description": "Els camins completats amb una taverna ×2 no es tenen en compte durant la puntuació final.",
+      "inn-description": "Els camins completats amb una taverna puntuen ×2 i opcionalment no es tenen en compte les tavernes a la puntuació final.",
       "inn-disabled": "No hi ha cap rajola amb tavernes a la partida.",
       "marketplace-description": "Els mercats connecten diversos camins en una sola xarxa compartida que es completa quan es tanquen tots els camins involucrats. Quan puntuen, es donen punts de bonificació per la llargada dels altres camins completats.",
       "marketplace-disabled": "No hi ha cap rajola amb mercats a la partida.",
@@ -429,7 +429,7 @@
       "starting-tiles-different-configuration": "Algunes expansions proporcionen configuracions inicials alternatives.",
       "vineyard-description": "Punts addicionals per monestir proper.",
       "vineyard-disabled": "No hi ha cap rajola amb vinyes a la partida.",
-      "well-description": "Un punt addicional per cada pou als camins. Si el camí té una taverna quan es completa ‒no pas en el recompte final de punts‒, s'aconsegueixen 2 punts més.",
+      "well-description": "Un punt addicional per cada pou als camins. Si el camí té una taverna quan es completa, se sumen 2 punts. En el recompte final, es puntuarà per tavernes de manera opcional.",
       "well-disabled": "No hi ha cap rajola amb pous a la partida."
     },
     "selected-tiles": "Rajoles seleccionades",
@@ -502,9 +502,9 @@
         "number-of-followers": "el nombre de seguidors"
       },
       "inn-and-cathedral-final-scoring": {
-        "description": "Inns and Cathedrals {} during final scoring.",
-        "ignore": "are ignored",
-        "zero": "score 0 points"
+        "description": "Les tavernes i catedrals {} durant la puntuació final.",
+        "ignore": "s'ignoren",
+        "zero": "puntuen 0 punts"
       },
       "keep-monasteries": {
         "description": "Els monestirs especials {}.",
@@ -554,7 +554,7 @@
         "description": "Aplica la regla dels túnels a rajoles d'altres expansions que mostrin un túnel."
       },
       "vineyards-for-garden": {
-        "description": "Apply vineyards bonus during scoring of completed garden."
+        "description": "Aplica bonificacions per vinyes durant la puntuació d'un jardí complet."
       },
       "wagon-move": {
         "C1": "connectat (cruïlla de camins o inici d'un camí que porta a una ciutat o monestir) (1a ed.)",
