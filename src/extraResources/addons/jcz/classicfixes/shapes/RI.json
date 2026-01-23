@@ -294,7 +294,7 @@
       "City/NW": "city.NW.03",
       "Field/EL.SR": "field.EL.SR.03",
       "Field/ER.SL": "field.ER.SL.07",
-      "River/SW":{
+      "River/SE":{
         "clip": "M0,620 L380,1000 L620,1000 L570,680 L340,470 L0,380 Z",
         "rotate": 270,
         "point": [
@@ -360,6 +360,14 @@
   "RI.2/II+": {
     "rotation": 0,
     "features": {
+      "River/NW":{
+        "clip": "M0,620 L380,1000 L620,1000 L570,680 L340,470 L0,380 Z",
+        "rotate": 90,
+        "point": [
+          400,
+          600
+        ]
+      },
       "Field/NL.WR":{
         "clip": "M0,0 L0,500 L0,499 L0,380 L70,320 L320,70 L380,0 Z",
         "point": [
@@ -370,14 +378,6 @@
       "Field/NR.EL.ER.SL.SR.WL":{
         "id": "field.NL.NR.EL.ER.SL.WR.02",
         "rotate": 90
-      },
-      "River/SW":{
-        "clip": "M0,620 L380,1000 L620,1000 L570,680 L340,470 L0,380 Z",
-        "rotate": 90,
-        "point": [
-          400,
-          600
-        ]
       }
     },
     "image": "images/RI.2/II+.jpg"

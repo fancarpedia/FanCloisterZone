@@ -139,7 +139,7 @@
     <tile id="RI.2/II+" group="river">
       <field pig-herd="true">WL SL SR EL ER NR</field>
       <field>WR NL</field>
-      <river>W N</river>
+      <river>N W</river>
     </tile>
     <tile id="RI.2/RrII" group="river">
       <road>N E</road>
