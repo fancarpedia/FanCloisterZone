@@ -170,3 +170,9 @@ element
   git tag -a RELEASE
   git push origin RELEASE
   ```
+
+### Adding next Game Mechanics
+
+#### Append elements
+
+`OverviewElementTile.vue`
