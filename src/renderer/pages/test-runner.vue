@@ -10,10 +10,6 @@
             {{ isRunningAll ? 'Stop running all' : 'Run All' }}
           </v-btn>
 
-          <v-btn color="secondary" @click="resetAll">
-            Reset All
-          </v-btn>
-
           <v-btn color="secondary" @click="toggleFinished">
             {{ !hideFinished ? 'Hide finished' : 'Show All' }}
           </v-btn>
@@ -21,8 +17,13 @@
           <v-btn color="secondary" @click="resetFailed">
             Reset Failed
           </v-btn>
+
+          <v-btn color="secondary" @click="resetAll">
+            Reset All
+          </v-btn>
+
         </div>
-        <v-btn to="/" color="secondary" @click="resetFailed">
+        <v-btn to="/" color="secondary" class="error" @click="resetFailed">
           Close
         </v-btn>
 

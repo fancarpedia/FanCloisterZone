@@ -31,6 +31,7 @@ export default {
 <style lang="sass" scoped>
 .test-result
   padding: 30px 50px
+  margin-left: 100px
 
   +theme using ($theme)
     color: map-get($theme, 'cards-text')
