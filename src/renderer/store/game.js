@@ -578,7 +578,7 @@ export const actions = {
         dispatch('game/start', null, { root: true })
       }
       Vue.nextTick(() => {
-        dispatch('settings/addRecentSave', { file: filePath, setup: sg.setup }, { root: true })
+//        dispatch('settings/addRecentSave', { file: filePath, setup: sg.setup }, { root: true })
       })
       resolve(sg)
 
