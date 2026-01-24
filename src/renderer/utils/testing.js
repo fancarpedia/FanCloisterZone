@@ -77,6 +77,127 @@ class PhaseAssert {
   }
 }
 
+class AvailableActionAssert {
+  constructor (state) {
+    this.REGEXP = /Available action (\w+)/
+    this.state = state
+  }
+
+  verify (assertion) {
+    const m = this.REGEXP.exec(assertion)
+    if (m) {
+      let found = false
+      for (const action of this.state.action.items) {
+        if (action.type == m[1]) found = true
+      }
+      return { result: found }
+    }
+  }
+}
+
+class TilePlacementOptionsAssert {
+  constructor (state) {
+    this.REGEXP = /Placement options\: (.*)/;
+    this.state = state
+  }
+
+  posKey([x, y]) {
+    return `${x},${y}`
+  }
+
+  arraysEqualUnordered(a, b) {
+    if (a.length !== b.length) return false
+
+    const map = new Map()
+    for (const v of a) map.set(v, (map.get(v) || 0) + 1)
+    for (const v of b) {
+      if (!map.has(v)) return false
+      map.set(v, map.get(v) - 1)
+      if (map.get(v) === 0) map.delete(v)
+    }
+    return map.size === 0
+  }
+
+  indexByPosition(arr) {
+    const map = new Map()
+    for (const item of arr) {
+      map.set(this.posKey(item.position), item)
+    }
+    return map
+  }
+
+  compareOptions(expected, actual) {
+    const errors = []
+
+    const expectedMap = this.indexByPosition(expected)
+    const actualMap = this.indexByPosition(actual)
+
+    // Missing or mismatched
+    for (const [key, exp] of expectedMap) {
+      if (!actualMap.has(key)) {
+        errors.push({
+          type: "missing",
+          position: exp.position,
+          expectedRotations: exp.rotations
+        })
+        continue
+      }
+
+      const act = actualMap.get(key)
+
+      if (!this.arraysEqualUnordered(exp.rotations, act.rotations)) {
+        errors.push({
+          type: "rotation-mismatch",
+          position: exp.position,
+          expectedRotations: exp.rotations,
+          actualRotations: act.rotations
+        })
+      }
+    }
+
+    // Extra
+    for (const [key, act] of actualMap) {
+      if (!expectedMap.has(key)) {
+        errors.push({
+          type: "extra",
+          position: act.position,
+          actualRotations: act.rotations
+        })
+      }
+    }
+
+    return errors
+  }
+
+  verify (assertion) {
+    const m = this.REGEXP.exec(assertion)
+    if (m) {
+      const ENTRY = /\[\s*(-?\d+)\s*,\s*(-?\d+)\s*\]\s*-\s*\[\s*([-\d,\s]+?)\s*\]/g
+      let result = []
+      for (const match of m[1].matchAll(ENTRY)) {
+        const x = Number(match[1])
+        const y = Number(match[2])
+
+        const rotations = match[3]
+         .split(',')
+         .map(v => Number(v.trim()))
+
+        result.push({
+          position: [x, y],
+          rotations
+        })
+      }
+      const errors = this.compareOptions(result, this.state.action.items[0].options)
+      if (errors.length==0) {
+        return { result: true }
+      } else {
+        console.log('Assert errors: ',errors)
+        return { result: false }
+      }
+    }
+  }
+}
+
 export function verifyScenario (state, { description, assertions }) {
   const result = {
     description,
@@ -87,7 +208,9 @@ export function verifyScenario (state, { description, assertions }) {
     new PointsAssert(state),
     new FeatureScoredAssert(state),
     new PassAssert(state),
-    new PhaseAssert(state)
+    new PhaseAssert(state),
+    new AvailableActionAssert(state),
+    new TilePlacementOptionsAssert(state)
   ]
 
   for (const assertion of assertions) {
