@@ -452,7 +452,7 @@ export const actions = {
           for (const p of gameState.players) {
             content.test.assertions.push(`${playerNameBySlot[p.slot]} has ${p.points} point${p.points !== 1 ? "s" : ""}.`)
           }
-          content.test.assertions.push(`phase is ${gameState.phase}`)
+          content.test.assertions.push(`Phase is ${gameState.phase}`)
           if (!!gameState.action) {
             content.test.assertions.push(`Player ${gameState.action.canPass ? 'can' : 'can\'t'} pass`)
             for (const p of gameState.action.items) {
@@ -468,6 +468,7 @@ export const actions = {
           	  }
           	}
           }
+          content.test.assertions.push(`Undo ${gameState.undo.allowed ? 'is' : 'is not'} allowed`)
           content.gameId = '1'
           fs.writeFile(filePath, JSON.stringify(content, null, 2), err => {
             if (err) {
