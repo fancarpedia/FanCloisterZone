@@ -5,7 +5,7 @@
   "@version": "0.9.3",
   "about": {
     "configuration-file": "Fișier de configurație",
-    "jcloisterzone-game-engine": "Motorul Jocului JCloisterZone",
+    "jcloisterzone-game-engine": "Motorul jocului JCloisterZone",
     "system-java-version": "Versiunea de Java a sistemului",
     "title": "JCloisterZone",
     "fantitle": "Ediția FanCloisterZone",
@@ -29,7 +29,7 @@
     "clear-list": "curăță lista",
     "close": "Închide",
     "confirm": "Confirmă",
-    "connect": "Conectează",
+    "connect": "Conectează-te",
     "create": "Creează",
     "create-game": "Creează partidă",
     "create-public-game": "Creează o partidă publică",
@@ -175,7 +175,7 @@
       "crop-circles-choose-field": "un câmp",
       "crop-circles-choose-one": "Alege una. Fiecare jucător {deploy} sau {remove} un meeple pe/de pe {feature}.",
       "crop-circles-choose-road": "un drum",
-      "crop-circles-player-must-choose": "Jucătorul trebuie să aleagă: Fiecare jucător are posibilitatea de a plasa sau elimina un meeple pe/de pe {feature}.",
+      "crop-circles-player-must-choose": "Jucătorul trebuie să aleagă: fiecare jucător are posibilitatea de a plasa sau elimina un meeple (de) pe {feature}.",
       "crop-circles-player-must-return-meeple": "Jucătorul trebuie să înapoieze un meeple",
       "crop-circles-you-must-return-meeple": "Trebuie să îți iei înapoi unul dintre meepleșii tăi.",
       "draw-a-tile": "Trage un cartonaș",
@@ -348,7 +348,7 @@
     "altered-gameplay": "Desfășurare a jocului alterată",
     "altered-scoring": "Evaluare alterată",
     "components": {
-      "followers": "Meepleșii",
+      "followers": "Meepleși",
       "neutral-figures": "Pioni neutri",
       "rewards": "Recompense",
       "tokens": "Jetoane"
@@ -373,7 +373,7 @@
       "timer": "Cronometru"
     },
     "open-game": {
-      "assign-all-players-to-start": "Atribuie toți jucători pentru a începe",
+      "assign-all-players-to-start": "Atribuie toți jucătorii pentru a începe",
       "hide-remaining-tiles-cheat-sheet": "Ascunde fițuica cartonașelor rămase",
       "name": "Nume",
       "no-player-in-game": "Niciun jucător în partidă",
@@ -413,7 +413,7 @@
       "marketplace-disabled": "Nu există niciun cartonaș cu piață în joc.",
       "meteorite-description": "TBA",
       "meteorite-disabled": "Nu există niciun cartonaș cu crater în joc.",
-      "optional-game-mechanics": "Mecanici de joc opționale",
+      "optional-game-mechanics": "Mecanisme de joc opționale",
       "pig-herd-description": "Valorează drept porc adițional pe câmp (țăranii primesc mai multe puncte).",
       "pig-herd-disabled": "Nu există niciun cartonaș cu turmă de porci în joc.",
       "portal-description": "Printr-un coridor fermecat, un meeple poate fi plasat pe oricare cartonaș.",
@@ -497,9 +497,9 @@
         "pig": "conține o turmă de porci"
       },
       "hill-tiebreaker": {
-        "at-least-one-follower": "cel puțin un meeple",
+        "at-least-one-follower": "cel puțin un singur meeple",
         "description": "Metodă de întrerupere a situației de egalitate la majoritate: {} pe dealuri.",
-        "number-of-followers": "numărul de meepleși de pe"
+        "number-of-followers": "numărul de meepleși de"
       },
       "inn-and-cathedral-final-scoring": {
         "description": "Hanurile și catedralele {} în timpul evaluării finale.",
@@ -541,9 +541,9 @@
         "description": "Distribuie {} seturi de jetoane fiecărui jucător într-un joc în doi/trei jucători."
       },
       "princess-action": {
-        "description": "Prințesa {} îndepărtează un cavaler dintr-un oraș.",
-        "may": "are posibilitatea de a îndepărta",
-        "must": "trebuie să îndepărteze"
+        "description": "Prințesa {} să îndepărteze un cavaler dintr-un oraș.",
+        "may": "are posibilitatea",
+        "must": "trebuie"
       },
       "tiny-city-scoring": {
         "2": "2 puncte",
@@ -551,7 +551,7 @@
         "description": "Orașul mic este evaluat pentru {}."
       },
       "tunnelize-other-expansions": {
-        "description": "Aplică regula tunelului pe cartonașele din alte extensii cu tuneluri reprezentate."
+        "description": "Aplică regula tunelului pe cartonașele din alte extensii cu tuneluri ilustrate."
       },
       "vineyards-for-garden": {
         "description": "Aplică bonusul viilor în timpul evaluării unei grădini finalizate."
@@ -608,9 +608,9 @@
   },
   "join-game": {
     "connect-to-remote-host": "Conectează-te la gazda de la distanță cu partida creată.",
-    "description": "Partida gazdei de la distanță trebuie să fie în faza alegerii culorilor.",
+    "description": "Partida gazdei de la distanță trebuie să fie în faza selectării culorilor.",
     "host": "Gazdă",
-    "title": "Alătură-te partidei de la distanță"
+    "title": "Alătură-te unei partide de la distanță"
   },
   "menu": {
     "about": "Despre",
@@ -706,13 +706,13 @@
       "java-is-required": "Java este necesar pentru a începe o partidă.",
       "java-path-is-not-valid": "Calea ta Java configurată manual nu este validă.",
       "java-version-found": "Java 11 sau mai mult este necesar (s-a găsit {version}) pentru a începe o partidă.",
-      "select-manually": "Sau selectează Java adecvat în {settings}.",
+      "select-manually": "Sau selectează manual Java adecvat din {settings}.",
       "selected": "Selectat: {0}",
       "title": "Java",
       "unable-to-find-java": "Nu se poate localiza Java în sistemul tău.",
       "using-system-default": "Se folosește setarea prestabilită a sistemului.",
       "verify": "Dacă Java este deja instalat, verifică dacă Java a fost adăugat în locația sistemului tău sau selectează Java binar manual în {settings}.",
-      "version": "Versiuna Java {0}",
+      "version": "Versiunea {0} de Java",
       "warning-file-is-not-java-binary": "Fișierul nu arată ca un binar Java.",
       "warning-java-not-found": "Java negăsit.",
       "you-may-set-path": "Poți seta manual calea către {0}"
