@@ -65,7 +65,7 @@ class PassAssert {
 
 class PhaseAssert {
   constructor (state) {
-    this.REGEXP = /phase is (\w+)/
+    this.REGEXP = /phase is (\w+)/i
     this.state = state
   }
 
@@ -199,6 +199,21 @@ class TilePlacementOptionsAssert {
   }
 }
 
+class UndoAssert {
+  constructor (state) {
+    this.state = state
+  }
+
+  verify (assertion) {
+    if (assertion === "Undo is not allowed") {
+      return { result: !this.state.undo.allowed }
+    }
+    if (assertion === 'Undo is allowed') {
+      return { result: this.state.undo.allowed }
+    }
+  }
+}
+
 export function verifyScenario (state, { description, assertions }) {
   const result = {
     description,
@@ -211,7 +226,8 @@ export function verifyScenario (state, { description, assertions }) {
     new PassAssert(state),
     new PhaseAssert(state),
     new AvailableActionAssert(state),
-    new TilePlacementOptionsAssert(state)
+    new TilePlacementOptionsAssert(state),
+    new UndoAssert(state)
   ]
 
   for (const assertion of assertions) {
