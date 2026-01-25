@@ -142,9 +142,13 @@ element
 `src/renferer/nuxt.config.js`
 
 ### Use translated texts in Vue
-#### Usage in <template>
+#### Usage in `<template>`
 
-#### Usage in <script>
+#### Usage in `<script>`
+
+#### Usage in `.js` files
+
+$nuxt.$t('index.local.saved-game')
 
 ### Add package failed with Webpack 4 or Node 16 (by use babe this.config?.something or this.value ?? failvervalue
 
