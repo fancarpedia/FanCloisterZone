@@ -21,6 +21,8 @@ autoUpdater.logger = electronLogger
 autoUpdater.logger.transports.file.level = 'info'
 
 const modules = []
+const dialogLocks = new WeakMap()
+
 function getAppVersion() {
   if (process.env.NODE_ENV === 'development') {
     // Read version from your package.json in development
@@ -39,6 +41,30 @@ ipcMain.handle("get-app-version", () => {
 
 ipcMain.on('set-local-game', (_, value) => {
   hasLocalGame = value
+})
+
+ipcMain.handle('open-load-game-dialog', async (event, options) => {
+  const win = BrowserWindow.fromWebContents(event.sender)
+  if (!win) return { canceled: true }
+
+  // Prevent multiple dialogs per window
+  if (dialogLocks.get(win)) {
+    win.focus();
+    return { canceled: true }
+  }
+
+  dialogLocks.set(win, true)
+
+  try {
+    return await dialogElectron.showOpenDialog(win, {
+      ...options,
+      modal: true,
+      parent: win
+    })
+  } finally {
+    dialogLocks.set(win, false);
+    if (!win.isDestroyed()) win.focus()
+  }
 })
 
 function generateInstanceId() {

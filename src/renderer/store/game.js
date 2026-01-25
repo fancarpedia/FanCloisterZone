@@ -487,12 +487,13 @@ export const actions = {
   async load ({ commit, dispatch, rootState }, { file: filePath, setupOnly = false } = {}) {
     return new Promise(async (resolve, reject) => {
       if (!filePath) {
-        const { filePaths } = await ipcRenderer.invoke('dialog.showOpenDialog', {
+        const { filePaths, canceled } = await ipcRenderer.invoke('open-load-game-dialog', {
           title: 'Load Game',
           filters: SAVED_GAME_FILTERS,
           properties: ['openFile']
         })
-        if (filePaths.length) {
+
+        if (!canceled && filePaths.length) {
           filePath = filePaths[0]
         } else {
           resolve(false)
