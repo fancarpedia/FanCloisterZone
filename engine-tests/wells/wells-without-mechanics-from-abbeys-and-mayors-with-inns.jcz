@@ -1,24 +1,27 @@
 {
   "appVersion": "5.12.1",
-  "gameId": "f7f9f6c151b04f65bbc9a771944f52e9",
+  "gameId": "7b8029919b804a68bc3c7c9d0e2a3155",
   "name": "",
-  "initialRandom": 0.9255699342586401,
-  "created": "2025-04-14T10:05:34.985Z",
-  "clock": 136638,
+  "initialRandom": 0.5446098960213683,
+  "created": "2025-04-14T10:09:09.000Z",
+  "clock": 66502,
   "setup": {
     "options": {},
     "sets": {
       "basic:1": 1,
+      "inns-and-cathedrals:1": 1,
       "abbey-and-mayor:1": 3
     },
     "elements": {
       "small-follower": 7,
       "farmers": true,
+      "big-follower": 1,
+      "cathedral": true,
+      "inn": true,
       "barn": 1,
       "wagon": 1,
       "mayor": 1,
-      "abbey": 1,
-      "well": true
+      "abbey": 1
     },
     "rules": {},
     "timer": null,
@@ -33,13 +36,13 @@
   },
   "players": [
     {
-      "name": "Ariel",
-      "slot": 0,
+      "name": "Andy",
+      "slot": 3,
       "clientId": "fdf7ce65d30449bdbbfdb4fd5360c111"
     },
     {
-      "name": "Betty",
-      "slot": 2,
+      "name": "Zuna",
+      "slot": 7,
       "clientId": "fdf7ce65d30449bdbbfdb4fd5360c111"
     }
   ],
@@ -48,14 +51,14 @@
       "type": "PLACE_TILE",
       "payload": {
         "tileId": "AM/Rrr",
-        "rotation": "R180",
+        "rotation": "R0",
         "position": [
           -1,
           0
         ]
       },
       "player": 0,
-      "clock": 5126
+      "clock": 2521
     },
     {
       "type": "DEPLOY_MEEPLE",
@@ -65,21 +68,21 @@
             -1,
             0
           ],
-          "location": "_N",
+          "location": "_S",
           "feature": "Road"
         },
         "meepleId": "0.small.1"
       },
       "player": 0,
-      "clock": 6211
+      "clock": 3419
     },
     {
       "type": "COMMIT",
       "payload": {
-        "random": 0.7104954822436382
+        "random": 0.3568095770124262
       },
       "player": 0,
-      "clock": 7040
+      "clock": 3569
     },
     {
       "type": "PLACE_TILE",
@@ -92,26 +95,26 @@
         ]
       },
       "player": 1,
-      "clock": 10909
+      "clock": 4953
     },
     {
       "type": "PASS",
       "payload": {},
       "player": 1,
-      "clock": 11355
+      "clock": 5078
     },
     {
       "type": "COMMIT",
       "payload": {
-        "random": 0.3358026803001062
+        "random": 0.7519484834111314
       },
       "player": 1,
-      "clock": 11370
+      "clock": 5087
     },
     {
       "type": "PLACE_TILE",
       "payload": {
-        "tileId": "BA/RRR",
+        "tileId": "IC/RRR.i",
         "rotation": "R0",
         "position": [
           -3,
@@ -119,21 +122,21 @@
         ]
       },
       "player": 0,
-      "clock": 109959
+      "clock": 6719
     },
     {
       "type": "PASS",
       "payload": {},
       "player": 0,
-      "clock": 110899
+      "clock": 6879
     },
     {
       "type": "COMMIT",
       "payload": {
-        "random": 0.4339797030297876
+        "random": 0.9788488604789769
       },
       "player": 0,
-      "clock": 110909
+      "clock": 6887
     },
     {
       "type": "PLACE_TILE",
@@ -146,48 +149,112 @@
         ]
       },
       "player": 1,
-      "clock": 114120
+      "clock": 8627
     },
     {
       "type": "PASS",
       "payload": {},
       "player": 1,
-      "clock": 114452
+      "clock": 8736
     },
     {
       "type": "COMMIT",
       "payload": {
-        "random": 0.09014585343454584
+        "random": 0.842347613212826
       },
       "player": 1,
-      "clock": 114464
+      "clock": 8744
     },
     {
       "type": "PLACE_TILE",
       "payload": {
         "tileId": "BA/RRR",
-        "rotation": "R90",
+        "rotation": "R0",
         "position": [
           -1,
-          1
+          -1
         ]
       },
       "player": 0,
-      "clock": 116701
+      "clock": 10806
     },
     {
       "type": "PASS",
       "payload": {},
       "player": 0,
-      "clock": 118202
+      "clock": 11162
     },
     {
       "type": "COMMIT",
       "payload": {
-        "random": 0.035623126234239244
+        "random": 0.12803841287489814
       },
       "player": 0,
-      "clock": 118219
+      "clock": 11171
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "IC/RFr.i",
+        "rotation": "R0",
+        "position": [
+          -4,
+          0
+        ]
+      },
+      "player": 1,
+      "clock": 13977
+    },
+    {
+      "type": "DEPLOY_MEEPLE",
+      "payload": {
+        "pointer": {
+          "position": [
+            -4,
+            0
+          ],
+          "location": "WE",
+          "feature": "Road"
+        },
+        "meepleId": "1.small.1"
+      },
+      "player": 1,
+      "clock": 15039
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.2209310307764829
+      },
+      "player": 1,
+      "clock": 15150
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "AM/Rrr",
+        "rotation": "R0",
+        "position": [
+          -5,
+          0
+        ]
+      },
+      "player": 0,
+      "clock": 22033
+    },
+    {
+      "type": "PASS",
+      "payload": {},
+      "player": 0,
+      "clock": 22894
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.7980404887450874
+      },
+      "player": 0,
+      "clock": 22910
     },
     {
       "type": "PLACE_TILE",
@@ -200,79 +267,43 @@
         ]
       },
       "player": 1,
-      "clock": 120258
-    },
-    {
-      "type": "DEPLOY_MEEPLE",
-      "payload": {
-        "pointer": {
-          "position": [
-            1,
-            0
-          ],
-          "location": "E",
-          "feature": "Road"
-        },
-        "meepleId": "1.small.1"
-      },
-      "player": 1,
-      "clock": 121454
-    },
-    {
-      "type": "COMMIT",
-      "payload": {
-        "random": 0.09955251563426937
-      },
-      "player": 1,
-      "clock": 121973
-    },
-    {
-      "type": "PLACE_TILE",
-      "payload": {
-        "tileId": "AM/Rrr",
-        "rotation": "R0",
-        "position": [
-          2,
-          0
-        ]
-      },
-      "player": 0,
-      "clock": 123576
+      "clock": 46187
     },
     {
       "type": "PASS",
       "payload": {},
-      "player": 0,
-      "clock": 127272
+      "player": 1,
+      "clock": 46621
     },
     {
       "type": "COMMIT",
       "payload": {
-        "random": 0.4850057867797659
+        "random": 0.6068554444210912
       },
-      "player": 0,
-      "clock": 127282
+      "player": 1,
+      "clock": 46633
     }
   ],
   "gameAnnotations": {
     "drawOrder": [
       "AM/Rrr",
       "AM/Rrr",
+      "IC/RRR.i",
       "BA/RRR",
       "BA/RRR",
-      "BA/RRR",
-      "BA/RRR",
-      "AM/Rrr"
+      "IC/RFr.i",
+      "AM/Rrr",
+      "BA/RRR"
     ],
-    "endTurn": 7
+    "endTurn": 8
   },
   "test": {
-    "description": "Wells From Abbeys And Mayors",
+    "description": "Wells Without Mechanics From Abbeys And Mayors With Inns",
     "assertions": [
-      "Ariel scored road for 9 points.",
-      "Betty scored road for 3 points.",
-      "Ariel has 9 points.",
-      "Betty has 3 points."
+      "Andy scored road for 14 points.",
+      "Zuna scored road for 0 points.",
+      "Andy has 14 points.",
+      "Zuna has 0 points."
     ]
   }
 }
