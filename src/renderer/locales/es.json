@@ -339,6 +339,7 @@
       "game-tiles": "Losetas en la partida",
       "hidden-tiles-under-hill-plural": "No hay ninguna loseta desconocida bajo losetas de colina. | No olvidar que 1 loseta desconocida está oculta bajo una loseta de colina. | No olvidar que {count} losetas desconocidas están ocultas bajo losetas de colina.",
       "remaining-tiles": "Losetas restantes",
+      "removed-tiles": "Removed tiles",
       "tiles": "Losetas",
       "tiles-plural": "losetas | loseta | losetas"
     }

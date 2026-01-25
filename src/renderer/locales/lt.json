@@ -339,6 +339,7 @@
       "game-tiles": "Žaidimo kortelės",
       "hidden-tiles-under-hill-plural": "Po kalva nėra nežinomos kortelės. | Nepamirškite, kad 1 nežinoma kortelė iš sąrašo yra paslėpta po kalva. | Nepamirškite, kad {count} nežinomos kortelės iš sąrašo yra paslėpta po kalva.",
       "remaining-tiles": "Likusios kortelės",
+      "removed-tiles": "Removed tiles",
       "tiles": "Kortelės",
       "tiles-plural": "kortelės | kortelė | kortelės"
     }

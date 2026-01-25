@@ -339,6 +339,7 @@
       "game-tiles": "Tuiles de la partie",
       "hidden-tiles-under-hill-plural": "Il n’y a aucune tuile cachée sous une colline. | N’oubliez pas qu’une tuile inconnue de la liste est cachée sous une colline. | N’oubliez pas que {count} tuiles inconnues de la liste sont cachées sous des collines.",
       "remaining-tiles": "Tuiles restantes",
+      "removed-tiles": "Removed tiles",
       "tiles": "Tuiles",
       "tiles-plural": "tuile | tuile | tuiles"
     }

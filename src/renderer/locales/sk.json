@@ -339,6 +339,7 @@
       "game-tiles": "Hracie kartičky",
       "hidden-tiles-under-hill-plural": "Pod kopcami nie je žiadna kartička. | Nezabudnite, že pod kopcom sa skrýva 1 neznáma kartička zo zoznamu. | Nezabudnite, že pod kopcami sa skrývajú {count} neznáme kartičky zo zoznamu. | Nezabudnite, že pod kopcami sa skrýva {count} neznámych kartičiek zo zoznamu.",
       "remaining-tiles": "Zostávajúce kartičky",
+      "removed-tiles": "Removed tiles",
       "tiles": "Kartičky",
       "tiles-plural": "kartičiek | kartička | kartičky | kartičiek"
     }

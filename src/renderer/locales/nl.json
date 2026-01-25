@@ -339,6 +339,7 @@
       "game-tiles": "Speltegels",
       "hidden-tiles-under-hill-plural": "Er ligt geen gedekte tegel onder een heuvel. |  Vergeet niet dat 1 gedekte tegel uit de lijst verborgen ligt onder een heuvel. | Vergeet niet dat {count} gedekte tegels van de lijst verborgen liggen onder heuvels.",
       "remaining-tiles": "Overgebleven tegels",
+      "removed-tiles": "Removed tiles",
       "tiles": "Tegels",
       "tiles-plural": "tegels | tegel | tegels"
     }

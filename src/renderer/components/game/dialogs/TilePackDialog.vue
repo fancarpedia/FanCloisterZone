@@ -13,7 +13,7 @@
     </v-card-title>
     <v-card-text>
       <template v-if="removedTiles.length">
-        <h2>Removed Tiles</h2>
+        <h2>{{ $t('game.tile-pack-dialog.removed-tiles') }}</h2>
         <div class="removed-tiles-list">
           <div
             v-for="(id, idx) in removedTiles"

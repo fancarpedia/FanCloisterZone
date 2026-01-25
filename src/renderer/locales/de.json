@@ -339,6 +339,7 @@
       "game-tiles": "Spielplättchen",
       "hidden-tiles-under-hill-plural": "Es gibt kein unbekanntes Plättchen unter einem Hügel. | Vergiss nicht, dass 1 unbekanntes Plättchen unter einem Hügel versteckt ist. | Vergiss nicht, dass {count} unbekannte Plättchen aus der Liste unter Hügeln versteckt sind.",
       "remaining-tiles": "Restliche Plättchen",
+      "removed-tiles": "Removed tiles",
       "tiles": "Plättchen",
       "tiles-plural": "Plättchen | Plättchen | Plättchen"
     }

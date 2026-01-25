@@ -339,6 +339,7 @@
       "game-tiles": "Płytki gry",
       "hidden-tiles-under-hill-plural": "Nie ma nieznanych płytek pod wzgórzem. | Nie zapomnij, że {count} nieznana płytka z listy jest ukryta pod wzgórzem. | Nie zapomnij, że {count} nieznane płytki z listy są ukryte pod wzgórzami. | Nie zapomnij, że {count} nieznanych płytek z listy jest ukrytych pod wzgórzami.",
       "remaining-tiles": "Pozostałe płytki",
+      "removed-tiles": "Removed tiles",
       "tiles": "Płytki",
       "tiles-plural": "płytek | płytka | płytki | płytek"
     }
