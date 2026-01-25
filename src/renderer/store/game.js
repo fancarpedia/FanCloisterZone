@@ -453,21 +453,21 @@ export const actions = {
             content.test.assertions.push(`${playerNameBySlot[p.slot]} has ${p.points} point${p.points !== 1 ? "s" : ""}.`)
           }
           content.test.assertions.push(`phase is ${gameState.phase}`)
-          content.test.assertions.push(`Player ${gameState.action.canPass ? 'can' : 'can\'t'} pass`)
-          console.log(content.test)
-          for (const p of gameState.action.items) {
-	        content.test.assertions.push(`Available action ${p.type}`)
-          	switch(p.type) {
-          	  case 'TilePlacement':
-          	  	let options = []
-          	  	for (const o of p.options) {
-          	  		options.push(`[${o.position.join(',')}] - [${o.rotations.join(',')}]`)
-          	  	}
-		        content.test.assertions.push(`Placement options: ${options.join('; ')}`)
-          	  	break;
+          if (!!gameState.action) {
+            content.test.assertions.push(`Player ${gameState.action.canPass ? 'can' : 'can\'t'} pass`)
+            for (const p of gameState.action.items) {
+	          content.test.assertions.push(`Available action ${p.type}`)
+              switch(p.type) {
+                case 'TilePlacement':
+                  let options = []
+          	      for (const o of p.options) {
+          	        options.push(`[${o.position.join(',')}] - [${o.rotations.join(',')}]`)
+          	  	  }
+		          content.test.assertions.push(`Placement options: ${options.join('; ')}`)
+          	  	  break;
+          	  }
           	}
           }
-          console.log(gameState)
           content.gameId = '1'
           fs.writeFile(filePath, JSON.stringify(content, null, 2), err => {
             if (err) {
