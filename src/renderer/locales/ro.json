@@ -2,7 +2,7 @@
   "@author": "Paloi Sciurala",
   "@jcz-version": "5.12.1",
   "@fcz-version": "6.1.0",
-  "@version": "0.9.3",
+  "@version": "0.9.4",
   "about": {
     "configuration-file": "Fișier de configurație",
     "jcloisterzone-game-engine": "Motorul jocului JCloisterZone",
@@ -336,7 +336,7 @@
     },
     "tile-pack-dialog": {
       "disabled-show-remaining": "Partida a fost creată cu o opțiune care nu permite afișarea numărului cartonașelor rămase.",
-      "discarded-tiles": "Discarded tiles",
+      "discarded-tiles": "Cartonașe respinse",
       "game-tiles": "Cartonașe de joc",
       "hidden-tiles-under-hill-plural": "Nu există niciun cartonaș necunoscut sub deal. | Nu uita că 1 cartonaș necunoscut din listă este ascuns sub un deal. | Nu uita că {count} cartonașe necunoscute din listă sunt ascunse sub dealuri. | Nu uita că {count} de cartonașe necunoscute din listă sunt ascunse sub dealuri.",
       "remaining-tiles": "Cartonașe rămase",
