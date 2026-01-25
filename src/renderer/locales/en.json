@@ -336,10 +336,10 @@
     },
     "tile-pack-dialog": {
       "disabled-show-remaining": "The game was created with an option that doesn't allow showing remaining tiles count.",
+      "discarded-tiles": "Discarded tiles",
       "game-tiles": "Game tiles",
       "hidden-tiles-under-hill-plural": "There is no unknown tile under hill. | Don't forget that 1 unknown tile from the list is hidden under a hill. | Don't forget that {count} unknown tiles from the list are hidden under hills.",
       "remaining-tiles": "Remaining tiles",
-      "removed-tiles": "Removed tiles",
       "tiles": "Tiles",
       "tiles-plural": "tiles | tile | tiles"
     }

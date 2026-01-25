@@ -336,10 +336,10 @@
     },
     "tile-pack-dialog": {
       "disabled-show-remaining": "Hra byla nastavena, aby neumožňovala zobrazit zbývající počet kartiček.",
+      "discarded-tiles": "Discarded tiles",
       "game-tiles": "Kartičky ke hře",
       "hidden-tiles-under-hill-plural": "Pod kopcem není žádná kartička. | Nezapomeňte, že pod kopcem se skrývá 1 neznámá kartička ze seznamu. | Nezapomeňte, že pod kopcem se skrývají {count} neznámé kartičky ze seznamu. | Nezapomeňte, že pod kopcem se skrývá {count} neznámých kartiček ze seznamu.",
       "remaining-tiles": "Zbývající kartičky",
-      "removed-tiles": "Removed tiles",
       "tiles": "Kartičky",
       "tiles-plural": "kartiček | kartička | kartičky | kartiček"
     }

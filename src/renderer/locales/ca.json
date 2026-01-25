@@ -336,10 +336,10 @@
     },
     "tile-pack-dialog": {
       "disabled-show-remaining": "La partida fou creada amb l'opció que no permet que es mostri el nombre de rajoles que queden.",
+      "discarded-tiles": "Discarded tiles",
       "game-tiles": "Rajoles de la partida",
       "hidden-tiles-under-hill-plural": "No hi ha cap rajola desconeguda a sota d'un turó. | No oblideu que hi ha una rajola desconeguda d'aquesta llista a sota d'un turó. | No oblideu que hi ha {count} rajoles desconegudes d'aquesta llista a sota de turons.",
       "remaining-tiles": "Caselles restants",
-      "removed-tiles": "Removed tiles",
       "tiles": "Rajoles",
       "tiles-plural": "rajoles | rajola | rajoles"
     }

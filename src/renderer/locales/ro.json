@@ -336,10 +336,10 @@
     },
     "tile-pack-dialog": {
       "disabled-show-remaining": "Partida a fost creată cu o opțiune care nu permite afișarea numărului cartonașelor rămase.",
+      "discarded-tiles": "Discarded tiles",
       "game-tiles": "Cartonașe de joc",
       "hidden-tiles-under-hill-plural": "Nu există niciun cartonaș necunoscut sub deal. | Nu uita că 1 cartonaș necunoscut din listă este ascuns sub un deal. | Nu uita că {count} cartonașe necunoscute din listă sunt ascunse sub dealuri. | Nu uita că {count} de cartonașe necunoscute din listă sunt ascunse sub dealuri.",
       "remaining-tiles": "Cartonașe rămase",
-      "removed-tiles": "Removed tiles",
       "tiles": "Cartonașe",
       "tiles-plural": "cartonașe | cartonaș | cartonașe | de cartonașe"
     }

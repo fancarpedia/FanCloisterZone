@@ -336,10 +336,10 @@
     },
     "tile-pack-dialog": {
       "disabled-show-remaining": "Igra je bila ustvarjena z možnostjo, ki ne dovoljuje prikazovanja števila preostalih ploščic.",
+      "discarded-tiles": "Discarded tiles",
       "game-tiles": "Igralne ploščice",
       "hidden-tiles-under-hill-plural": "Ni neznanih ploščic pod hribom. | Ne pozabi, da je 1 neznana ploščica s seznama skrita pod hribom. | Ne pozabi, da so {count} neznane ploščice s seznama skrite pod hribi.",
       "remaining-tiles": "Preostale ploščice",
-      "removed-tiles": "Removed tiles",
       "tiles": "Ploščice",
       "tiles-plural": "ploščice | ploščica | ploščice"
     }
