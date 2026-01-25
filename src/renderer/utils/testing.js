@@ -106,6 +106,7 @@ class TilePlacementOptionsAssert {
   }
 
   arraysEqualUnordered(a, b) {
+    if (!a || !b) return false
     if (a.length !== b.length) return false
 
     const map = new Map()
