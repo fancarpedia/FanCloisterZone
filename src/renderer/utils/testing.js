@@ -214,6 +214,110 @@ class UndoAssert {
   }
 }
 
+class TunnelTokenPlacementOptionsAssert {
+  constructor(state) {
+    this.state = state
+  }
+
+  // Compare two option objects
+  optionsEqual(a, b) {
+    return (
+      a.feature === b.feature &&
+      a.location === b.location &&
+      a.position.length === b.position.length &&
+      a.position.every((v, i) => v === b.position[i])
+    )
+  }
+
+  // Compare arrays of options, unordered
+  arraysEqualUnordered(a, b) {
+    if (a.length !== b.length) return false
+    const used = new Array(b.length).fill(false)
+    for (const optionA of a) {
+      let found = false
+      for (let i = 0; i < b.length; i++) {
+        if (!used[i] && this.optionsEqual(optionA, b[i])) {
+          used[i] = true
+          found = true
+          break
+        }
+      }
+      if (!found) return false
+    }
+    return true
+  }
+
+  // Parse a single line of assertion text
+  parseAssertionLine(line) {
+    const m = /Tunnel token (\w+) options: (.*)/.exec(line)
+    if (!m) return null
+    const token = m[1]
+    const optionsStr = m[2]
+
+    // Match all {feature,location,[coords]} blocks
+    const optionRegex = /\{([^,]+),([^,]+),\[\s*([^\]]*?)\s*\]\}/g
+    const options = []
+
+    for (const match of optionsStr.matchAll(optionRegex)) {
+      const feature = match[1].trim()
+      const location = match[2].trim()
+      const position = match[3]
+        .split(',')
+        .map(v => v.trim())
+        .filter(v => v !== '')
+        .map(Number)
+      options.push({ feature, location, position })
+    }
+
+    return { token, options }
+  }
+
+  // Find actual item in action.items by token
+  findActualToken(token) {
+    return this.state.action.items.find(item => item.token === token) || null
+  }
+
+  // Verify a single assertion line
+  verifyLine(line) {
+    const expected = this.parseAssertionLine(line)
+    if (!expected) return { result: false, error: "Invalid line format" }
+
+    const actual = this.findActualToken(expected.token)
+    if (!actual) return { result: false, error: `Token ${expected.token} missing` }
+
+    const matched = this.arraysEqualUnordered(expected.options, actual.options)
+    if (!matched) {
+      return {
+        result: false,
+        error: `Options mismatch for token ${expected.token}`,
+        expected: expected.options,
+        actual: actual.options
+      }
+    }
+
+    return { result: true }
+  }
+
+  // Main verify function — accepts a multi-line string directly
+  verify(assertionText) {
+    const lines = assertionText
+      .split("\n")
+      .map(l => l.trim())
+      .filter(l => l.length > 0) // ignore empty lines
+
+    const errors = []
+    for (const line of lines) {
+      const res = this.verifyLine(line)
+      if (!res.result) errors.push(res)
+    }
+
+    if (errors.length === 0) return { result: true }
+
+    console.log("Tunnel token assert errors:", errors)
+    return { result: false }
+  }
+}
+
 export function verifyScenario (state, { description, assertions }) {
   const result = {
     description,
@@ -227,7 +331,8 @@ export function verifyScenario (state, { description, assertions }) {
     new PhaseAssert(state),
     new AvailableActionAssert(state),
     new TilePlacementOptionsAssert(state),
-    new UndoAssert(state)
+    new UndoAssert(state),
+    new TunnelTokenPlacementOptionsAssert(state)
   ]
 
   for (const assertion of assertions) {
