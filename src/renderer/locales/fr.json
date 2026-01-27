@@ -2,7 +2,7 @@
   "@author": "Black Bear",
   "@jcz-version": "5.12.1",
   "@fcz-version": "6.1.0",
-  "@version": "0.9.3",
+  "@version": "0.9.5",
   "about": {
     "configuration-file": "Fichier de configuration",
     "jcloisterzone-game-engine": "Moteur de jeu de JCloisterZone",
@@ -336,7 +336,7 @@
     },
     "tile-pack-dialog": {
       "disabled-show-remaining": "La partie a été créée avec une option qui ne permet pas d’afficher le nombre de tuiles restantes.",
-      "discarded-tiles": "Discarded tiles",
+      "discarded-tiles": "Tuiles défaussées",
       "game-tiles": "Tuiles de la partie",
       "hidden-tiles-under-hill-plural": "Il n’y a aucune tuile cachée sous une colline. | N’oubliez pas qu’une tuile inconnue de la liste est cachée sous une colline. | N’oubliez pas que {count} tuiles inconnues de la liste sont cachées sous des collines.",
       "remaining-tiles": "Tuiles restantes",
@@ -574,7 +574,7 @@
       "my-favorites": "mes favoris",
       "new-game": "Nouvelle partie",
       "open-game": "Ouvrir une partie",
-      "saved-game": "Saved game",
+      "saved-game": "Partie sauvegardée",
       "title": "Parties hébergées par le joueur"
     },
     "online": {
