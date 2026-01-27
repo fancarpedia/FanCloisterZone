@@ -461,6 +461,12 @@ export const actions = {
 	          content.test.assertions.push(`Available action ${i.type}`)
               let options = []
               switch(i.type) {
+          	  	case 'Ferries':
+                  for (const o of i.options) {
+          	        options.push(['{',[o.feature,o.location,['[',o.position.join(','),']'].join('')].join(','),'}'].join(''))
+          	  	  }
+		          content.test.assertions.push(`Ferries options: ${options.join('; ')}`)
+          	  	  break;
                 case 'TilePlacement':
           	      for (const o of i.options) {
           	        options.push(`[${o.position.join(',')}] - [${o.rotations.join(',')}]`)
