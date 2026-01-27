@@ -16,6 +16,9 @@ All issues on FanCloisterZone report on [Discord](https://discord.gg/CswNeVg3eS)
 * [Village Life](https://wikicarpedia.com/car/Village_Life_(Fan_Expansion))
 * [Wells, The](https://wikicarpedia.com/car/The_Wells_(Fan_Expansion))
 
+### Upcomming
+* Fishermen
+
 ## Engine
 
 Engine for game can be found on https://github.com/fancarpedia/JCloisterZoneEngine
