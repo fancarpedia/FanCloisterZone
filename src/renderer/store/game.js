@@ -456,7 +456,6 @@ export const actions = {
           }
           content.test.assertions.push(`Phase is ${gameState.phase}`)
           if (!!gameState.action) {
-          console.log(gameState.action)
             content.test.assertions.push(`Player ${gameState.action.canPass ? 'can' : 'can\'t'} pass`)
             for (const i of gameState.action.items) {
 	          content.test.assertions.push(`Available action ${i.type}`)
