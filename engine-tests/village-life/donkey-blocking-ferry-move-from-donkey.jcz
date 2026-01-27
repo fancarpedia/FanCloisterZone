@@ -66,7 +66,7 @@
     {
       "type": "PLACE_TILE",
       "payload": {
-        "tileId": "FR/RRR",
+        "tileId": "FR/RRRR",
         "rotation": "R0",
         "position": [
           2,
@@ -145,18 +145,18 @@
   "gameAnnotations": {
     "drawOrder": [
       "BA/RRRR",
-      "FR/RRR",
+      "FR/RRRR",
       "BA/RFr"
     ]
   },
   "test": {
-    "description": "Donkey Blocking Ferry Move",
+    "description": "Donkey Blocking Ferry Move From Donkey",
     "assertions": [
       "Ariel has 0 points.",
       "Phase is ChangeFerriesPhase",
       "Player can pass",
       "Available action Ferries",
-      "Ferries options: {Road,SW,[2,0]}",
+      "Ferries options: {Road,SW,[2,0]}; {Road,NW,[2,0]}",
       "Undo is allowed"
     ]
   }
