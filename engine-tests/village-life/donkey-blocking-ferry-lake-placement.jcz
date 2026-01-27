@@ -76,8 +76,8 @@
       "Ariel has 0 points.",
       "Phase is TilePhase",
       "Player can't pass",
-      "Available action TilePlacement",
-      "Placement options: [1,-1] - [0,90,270]; [2,0] - [0,90,180]; [0,1] - [0]; [1,1] - [90,180,270]",
+      "Available action TilePlacement for FR/RRR",
+      "TilePlacement FR/RRR options: [1,-1] - [0,90,270]; [2,0] - [0,90,180]; [0,1] - [0]; [1,1] - [90,180,270]",
       "Undo is not allowed"
     ]
   }

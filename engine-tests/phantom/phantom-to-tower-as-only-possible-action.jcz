@@ -1,21 +1,21 @@
 {
-  "appVersion": "6.1.0-alpha.20",
+  "appVersion": "6.1.0-alpha.21",
   "gameId": "1",
   "name": "",
-  "initialRandom": 0.3503200745116388,
-  "created": "2026-01-27T22:09:18.325Z",
-  "clock": 467904,
+  "initialRandom": 0.22310619253142838,
+  "created": "2026-01-27T21:12:16.728Z",
+  "clock": 372712,
   "setup": {
     "options": {},
     "sets": {
       "basic:1": 1,
-      "tunnel": 1
+      "tower:1": 1
     },
     "elements": {
       "small-follower": 7,
       "farmers": true,
-      "tunnel": 1,
-      "donkey": 1
+      "tower": 1,
+      "phantom": 1
     },
     "rules": {},
     "timer": null,
@@ -39,132 +39,134 @@
     {
       "type": "PLACE_TILE",
       "payload": {
-        "tileId": "BA/RRR",
-        "rotation": "R0",
+        "tileId": "TO/C",
+        "rotation": "R180",
         "position": [
-          1,
-          0
+          0,
+          -1
         ]
       },
       "player": 0,
-      "clock": 4712
-    },
-    {
-      "type": "DEPLOY_MEEPLE",
-      "payload": {
-        "pointer": {
-          "position": [
-            1,
-            0
-          ],
-          "location": "W",
-          "feature": "Road"
-        },
-        "meepleId": "0.small.1"
-      },
-      "player": 0,
-      "clock": 7999
-    },
-    {
-      "type": "COMMIT",
-      "payload": {
-        "random": 0.5833301130235191
-      },
-      "player": 0,
-      "clock": 8501
-    },
-    {
-      "type": "PLACE_TILE",
-      "payload": {
-        "tileId": "TU/RCR",
-        "rotation": "R0",
-        "position": [
-          -1,
-          0
-        ]
-      },
-      "player": 0,
-      "clock": 13832
+      "clock": 2051
     },
     {
       "type": "PLACE_TOKEN",
       "payload": {
-        "token": "TUNNEL_B",
+        "token": "TOWER_PIECE",
         "pointer": {
           "position": [
-            -1,
-            0
+            0,
+            -1
           ],
-          "location": "E",
-          "feature": "Road"
+          "feature": "Tower",
+          "location": "I"
         }
       },
       "player": 0,
-      "clock": 25155
+      "clock": 4044
     },
     {
       "type": "PASS",
       "payload": {},
       "player": 0,
-      "clock": 26448
+      "clock": 10350
     },
     {
       "type": "COMMIT",
       "payload": {
-        "random": 0.18605826951245308
+        "random": 0.09338643913884082
       },
       "player": 0,
-      "clock": 26457
+      "clock": 10361
     },
     {
       "type": "PLACE_TILE",
       "payload": {
-        "tileId": "TU/RRRR",
-        "rotation": "R90",
+        "tileId": "BA/L",
+        "rotation": "R0",
         "position": [
-          -2,
-          0
+          0,
+          1
         ]
       },
       "player": 0,
-      "clock": 34093
+      "clock": 11834
     },
     {
       "type": "DEPLOY_MEEPLE",
       "payload": {
         "pointer": {
           "position": [
-            -2,
-            0
+            0,
+            1
           ],
-          "location": "W",
-          "feature": "Road"
+          "location": "NL.NR.EL.ER.SL.SR.WL.WR",
+          "feature": "Field"
+        },
+        "meepleId": "0.small.1"
+      },
+      "player": 0,
+      "clock": 12899
+    },
+    {
+      "type": "PASS",
+      "payload": {},
+      "player": 0,
+      "clock": 15495
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.983150700737528
+      },
+      "player": 0,
+      "clock": 15500
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "BA/L",
+        "rotation": "R0",
+        "position": [
+          0,
+          2
+        ]
+      },
+      "player": 0,
+      "clock": 18713
+    },
+    {
+      "type": "DEPLOY_MEEPLE",
+      "payload": {
+        "pointer": {
+          "position": [
+            0,
+            2
+          ],
+          "location": "I",
+          "feature": "Monastery"
         },
         "meepleId": "0.small.2"
       },
       "player": 0,
-      "clock": 416309
+      "clock": 25041
     }
   ],
   "gameAnnotations": {
     "drawOrder": [
-      "BA/RRR",
-      "TU/RCR",
-      "TU/RRRR"
+      "TO/C",
+      "BA/L",
+      "BA/L"
     ]
   },
   "test": {
-    "description": "Donkey Blocking Tunnel Completion Tunnel Phase",
+    "description": "Phantom To Tower As Only Possible Action",
     "assertions": [
       "Ariel has 0 points.",
-      "Phase is TunnelPhase",
+      "Phase is PhantomPhase",
       "Player can pass",
-      "Available action Tunnel for TUNNEL_A",
-      "Tunnel token TUNNEL_A options: {Road,N,[-2,0]}; {Road,S,[-2,0]}; {Road,W,[-2,0]}; {Road,W,[-1,0]}",
-      "Available action Tunnel for TUNNEL_B",
-      "Tunnel token TUNNEL_B options: {Road,N,[-2,0]}; {Road,S,[-2,0]}; {Road,W,[-2,0]}",
-      "Available action Tunnel for TUNNEL_C",
-      "Tunnel token TUNNEL_C options: {Road,N,[-2,0]}; {Road,S,[-2,0]}; {Road,W,[-2,0]}; {Road,W,[-1,0]}",
+      "Available action Meeple for Phantom",
+      "Meeple Phantom options: {Tower,I,[0,-1]}",
       "Undo is allowed"
     ]
   }

@@ -68,8 +68,8 @@
       "Ariel has 0 points.",
       "phase is TilePhase",
       "Player can't pass",
-      "Available action TilePlacement",
-      "Placement options: [2,0] - [90]"
+      "Available action TilePlacement for RI.2/RrII",
+      "TilePlacement RI.2/RrII options: [2,0] - [90]"
     ]
   }
 }

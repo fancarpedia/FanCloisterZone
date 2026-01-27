@@ -13,12 +13,12 @@
   },
   "setup": {
     "addons": {
-      "city-gates": 1
+      "the-city-gates": 1
     },
     "options": {},
     "sets": {
       "basic:1": 1,
-      "city-gates": 1
+      "the-city-gates": 1
     },
     "elements": {
       "small-follower": 7,
@@ -50,7 +50,7 @@
     {
       "type": "PLACE_TILE",
       "payload": {
-        "tileId": "City-Gates/ccrg+",
+        "tileId": "the-city-gates/ccrg+",
         "rotation": "R180",
         "position": [
           0,
@@ -131,7 +131,7 @@
     {
       "type": "PLACE_TILE",
       "payload": {
-        "tileId": "City-Gates/fcfg",
+        "tileId": "the-city-gates/fcfg",
         "rotation": "R0",
         "position": [
           2,
@@ -211,10 +211,10 @@
   ],
   "gameAnnotations": {
     "drawOrder": [
-      "City-Gates/ccrg+",
+      "the-city-gates/ccrg+",
       "BA/RFr",
       "BA/RFr",
-      "City-Gates/fcfg",
+      "the-city-gates/fcfg",
       "BA/L"
     ]
   }

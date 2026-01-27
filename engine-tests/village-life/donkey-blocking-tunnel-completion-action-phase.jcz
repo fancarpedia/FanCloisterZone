@@ -138,7 +138,7 @@
     ]
   },
   "test": {
-    "description": "Donkey Blocking Tunnel Completion",
+    "description": "Donkey Blocking Tunnel Completion Action Phase",
     "assertions": [
       "Ariel has 0 points.",
       "Phase is ActionPhase",

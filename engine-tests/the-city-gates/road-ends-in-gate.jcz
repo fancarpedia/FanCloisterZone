@@ -1,23 +1,24 @@
 {
   "appVersion": "5.7.0",
-  "gameId": "1",
+  "gameId": "c187d784e8a14141b293825fc2347430",
   "name": "",
   "initialRandom": 0.0,
-  "created": "2021-07-03T20:16:38.463Z",
-  "clock": 65368,
+  "created": "2021-07-03T20:18:29.317Z",
+  "clock": 42128,
   "test": {
-    "description": "Placed gate ends a road",
+    "description": "Placed road is terminated in already placed gate",
     "assertions": [
-      "Alice has 2 points"
+      "Alice has 4 points",
+      "Bob has 1 points"
     ]
   },
   "setup": {
     "addons": {
-      "city-gates": 1
+      "the-city-gates": 1
     },
     "sets": {
       "basic:1": 1,
-      "city-gates": 1
+      "the-city-gates": 1
     },
     "elements": {
       "small-follower": 7,
@@ -49,31 +50,31 @@
     {
       "type": "PLACE_TILE",
       "payload": {
-        "tileId": "City-Gates/cfrg",
+        "tileId": "the-city-gates/ccrg+",
         "rotation": "R90",
         "position": [
-          1,
-          0
+          0,
+          -1
         ]
       },
       "player": 0,
-      "clock": 2751
+      "clock": 2219
     },
     {
       "type": "DEPLOY_MEEPLE",
       "payload": {
         "pointer": {
           "position": [
-            1,
-            0
+            0,
+            -1
           ],
-          "location": "W",
-          "feature": "Road"
+          "location": "S",
+          "feature": "City"
         },
         "meepleId": "0.small.1"
       },
       "player": 0,
-      "clock": 3790
+      "clock": 6166
     },
     {
       "type": "COMMIT",
@@ -81,26 +82,36 @@
         "random": 0.0
       },
       "player": 0,
-      "clock": 5578
+      "clock": 7082
     },
     {
       "type": "PLACE_TILE",
       "payload": {
-        "tileId": "City-Gates/fcrg",
-        "rotation": "R180",
+        "tileId": "the-city-gates/cgrc+",
+        "rotation": "R0",
         "position": [
-          -1,
-          0
+          0,
+          -2
         ]
       },
       "player": 1,
-      "clock": 10510
+      "clock": 8768
     },
     {
-      "type": "PASS",
-      "payload": {},
+      "type": "DEPLOY_MEEPLE",
+      "payload": {
+        "pointer": {
+          "position": [
+            0,
+            -2
+          ],
+          "location": "S",
+          "feature": "Road"
+        },
+        "meepleId": "1.small.1"
+      },
       "player": 1,
-      "clock": 13299
+      "clock": 9923
     },
     {
       "type": "COMMIT",
@@ -108,13 +119,13 @@
         "random": 0.0
       },
       "player": 1,
-      "clock": 13306
+      "clock": 11148
     }
   ],
   "gameAnnotations": {
     "drawOrder": [
-      "City-Gates/cfrg",
-      "City-Gates/fcrg"
+      "the-city-gates/ccrg+",
+      "the-city-gates/cgrc+"
     ]
   }
 }
