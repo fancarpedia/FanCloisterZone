@@ -1,8 +1,8 @@
 <template>
   <v-card class="test-result">
     <div class="btn-line">
-      <v-btn text @click="$router.push('/test-runner')">back</v-btn>
-      <v-btn text @click="$store.commit('game/testScenarioResult', null)">hide</v-btn>
+      <v-btn @click="$router.push('/test-runner')">test runner</v-btn>
+      <v-btn @click="$store.commit('game/testScenarioResult', null)">hide</v-btn>
     </div>
     <div class="description">
       <b>Test:</b><br>
@@ -32,6 +32,8 @@ export default {
 .test-result
   padding: 30px 50px
   margin-left: 100px
+  max-height: calc( 100% - 100px )
+  overflow-y: scroll
 
   +theme using ($theme)
     color: map-get($theme, 'cards-text')

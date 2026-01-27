@@ -4,13 +4,14 @@ const findPlayerIndex = (state, name) => {
   return state.players.findIndex(p => p.name === name)
 }
 
+// -------------------- Points Assert --------------------
 class PointsAssert {
-  constructor (state) {
+  constructor(state) {
     this.REGEXP = /(\w+) has (-?\d+) points?/
     this.state = state
   }
 
-  verify (assertion) {
+  verify(assertion) {
     const m = this.REGEXP.exec(assertion)
     if (m) {
       const player = this.state.players[findPlayerIndex(this.state, m[1])]
@@ -20,22 +21,21 @@ class PointsAssert {
   }
 }
 
+// -------------------- Feature Scored Assert --------------------
 class FeatureScoredAssert {
-  constructor (state) {
+  constructor(state) {
     this.REGEXP = /(\w+) scored ([\w-]+) for (-?\d+) points?/
     this.state = state
   }
 
-  verify (assertion) {
+  verify(assertion) {
     const m = this.REGEXP.exec(assertion)
     if (m) {
       const playerIdx = findPlayerIndex(this.state, m[1])
       const feature = m[2]
       const points = parseInt(m[3])
 
-      if (!this.state.history) {
-        return { result: false }
-      }
+      if (!this.state.history) return { result: false }
 
       const result = !!this.state.history
         .flatMap(h => h.events)
@@ -48,55 +48,50 @@ class FeatureScoredAssert {
   }
 }
 
+// -------------------- Pass Assert --------------------
 class PassAssert {
-  constructor (state) {
+  constructor(state) {
     this.state = state
   }
 
-  verify (assertion) {
-    if (assertion === "Player can't pass") {
-      return { result: !this.state.action.canPass }
-    }
-    if (assertion === 'Player can pass') {
-      return { result: this.state.action.canPass }
-    }
+  verify(assertion) {
+    if (assertion === "Player can't pass") return { result: !this.state.action.canPass }
+    if (assertion === 'Player can pass') return { result: this.state.action.canPass }
   }
 }
 
+// -------------------- Phase Assert --------------------
 class PhaseAssert {
-  constructor (state) {
+  constructor(state) {
     this.REGEXP = /phase is (\w+)/i
     this.state = state
   }
 
-  verify (assertion) {
+  verify(assertion) {
     const m = this.REGEXP.exec(assertion)
-    if (m) {
-      return { result: this.state.phase === m[1]}
-    }
+    if (m) return { result: this.state.phase === m[1] }
   }
 }
 
+// -------------------- Available Action Assert --------------------
 class AvailableActionAssert {
-  constructor (state) {
+  constructor(state) {
     this.REGEXP = /Available action (\w+)/
     this.state = state
   }
 
-  verify (assertion) {
+  verify(assertion) {
     const m = this.REGEXP.exec(assertion)
     if (m) {
-      let found = false
-      for (const action of this.state.action.items) {
-        if (action.type == m[1]) found = true
-      }
+      const found = this.state.action.items.some(a => a.type === m[1])
       return { result: found }
     }
   }
 }
 
+// -------------------- Tile Placement Options Assert --------------------
 class TilePlacementOptionsAssert {
-  constructor (state) {
+  constructor(state) {
     this.REGEXP = /Placement options\: (.*)/;
     this.state = state
   }
@@ -121,9 +116,7 @@ class TilePlacementOptionsAssert {
 
   indexByPosition(arr) {
     const map = new Map()
-    for (const item of arr) {
-      map.set(this.posKey(item.position), item)
-    }
+    for (const item of arr) map.set(this.posKey(item.position), item)
     return map
   }
 
@@ -133,19 +126,13 @@ class TilePlacementOptionsAssert {
     const expectedMap = this.indexByPosition(expected)
     const actualMap = this.indexByPosition(actual)
 
-    // Missing or mismatched
     for (const [key, exp] of expectedMap) {
       if (!actualMap.has(key)) {
-        errors.push({
-          type: "missing",
-          position: exp.position,
-          expectedRotations: exp.rotations
-        })
+        errors.push({ type: "missing", position: exp.position, expectedRotations: exp.rotations })
         continue
       }
 
       const act = actualMap.get(key)
-
       if (!this.arraysEqualUnordered(exp.rotations, act.rotations)) {
         errors.push({
           type: "rotation-mismatch",
@@ -156,70 +143,55 @@ class TilePlacementOptionsAssert {
       }
     }
 
-    // Extra
     for (const [key, act] of actualMap) {
       if (!expectedMap.has(key)) {
-        errors.push({
-          type: "extra",
-          position: act.position,
-          actualRotations: act.rotations
-        })
+        errors.push({ type: "extra", position: act.position, actualRotations: act.rotations })
       }
     }
 
     return errors
   }
 
-  verify (assertion) {
+  verify(assertion) {
     const m = this.REGEXP.exec(assertion)
-    if (m) {
-      const ENTRY = /\[\s*(-?\d+)\s*,\s*(-?\d+)\s*\]\s*-\s*\[\s*([-\d,\s]+?)\s*\]/g
-      let result = []
-      for (const match of m[1].matchAll(ENTRY)) {
-        const x = Number(match[1])
-        const y = Number(match[2])
+    if (!m) return
 
-        const rotations = match[3]
-         .split(',')
-         .map(v => Number(v.trim()))
+    const ENTRY = /\[\s*(-?\d+)\s*,\s*(-?\d+)\s*\]\s*-\s*\[\s*([-\d,\s]+?)\s*\]/g
+    const expected = []
 
-        result.push({
-          position: [x, y],
-          rotations
-        })
-      }
-      const errors = this.compareOptions(result, this.state.action.items[0].options)
-      if (errors.length==0) {
-        return { result: true }
-      } else {
-        console.log('Assert errors: ',errors)
-        return { result: false }
-      }
+    for (const match of m[1].matchAll(ENTRY)) {
+      expected.push({
+        position: [Number(match[1]), Number(match[2])],
+        rotations: match[3].split(',').map(v => Number(v.trim()))
+      })
     }
+
+    const errors = this.compareOptions(expected, this.state.action.items[0].options)
+    if (errors.length === 0) return { result: true }
+    console.log('Tile placement assert errors:', errors)
+    return { result: false }
   }
 }
 
+// -------------------- Undo Assert --------------------
 class UndoAssert {
-  constructor (state) {
-    this.state = state
-  }
-
-  verify (assertion) {
-    if (assertion === "Undo is not allowed") {
-      return { result: !this.state.undo.allowed }
-    }
-    if (assertion === 'Undo is allowed') {
-      return { result: this.state.undo.allowed }
-    }
-  }
-}
-
-class TunnelTokenPlacementOptionsAssert {
   constructor(state) {
     this.state = state
   }
 
-  // Compare two option objects
+  verify(assertion) {
+    if (assertion === "Undo is not allowed") return { result: !this.state.undo.allowed }
+    if (assertion === 'Undo is allowed') return { result: this.state.undo.allowed }
+  }
+}
+
+// -------------------- Tunnel Token Placement Options --------------------
+class TunnelTokenPlacementOptionsAssert {
+  constructor(state) {
+    this.state = state
+    this.REGEXP = /^Tunnel token (\w+) options: (.*)$/
+  }
+
   optionsEqual(a, b) {
     return (
       a.feature === b.feature &&
@@ -229,7 +201,6 @@ class TunnelTokenPlacementOptionsAssert {
     )
   }
 
-  // Compare arrays of options, unordered
   arraysEqualUnordered(a, b) {
     if (a.length !== b.length) return false
     const used = new Array(b.length).fill(false)
@@ -247,82 +218,110 @@ class TunnelTokenPlacementOptionsAssert {
     return true
   }
 
-  // Parse a single line of assertion text
-  parseAssertionLine(line) {
-    const m = /Tunnel token (\w+) options: (.*)/.exec(line)
-    if (!m) return null
+  verify(assertion) {
+    const m = this.REGEXP.exec(assertion)
+    if (!m) return
+
     const token = m[1]
     const optionsStr = m[2]
 
-    // Match all {feature,location,[coords]} blocks
     const optionRegex = /\{([^,]+),([^,]+),\[\s*([^\]]*?)\s*\]\}/g
-    const options = []
+    const expectedOptions = []
 
     for (const match of optionsStr.matchAll(optionRegex)) {
-      const feature = match[1].trim()
-      const location = match[2].trim()
-      const position = match[3]
-        .split(',')
-        .map(v => v.trim())
-        .filter(v => v !== '')
-        .map(Number)
-      options.push({ feature, location, position })
+      expectedOptions.push({
+        feature: match[1].trim(),
+        location: match[2].trim(),
+        position: match[3].split(',').map(v => Number(v.trim()))
+      })
     }
 
-    return { token, options }
-  }
+    const actual = this.state.action.items.find(item => item.token === token)
+    if (!actual) return { result: false, error: `Token ${token} missing` }
 
-  // Find actual item in action.items by token
-  findActualToken(token) {
-    return this.state.action.items.find(item => item.token === token) || null
-  }
-
-  // Verify a single assertion line
-  verifyLine(line) {
-    const expected = this.parseAssertionLine(line)
-    if (!expected) return { result: false, error: "Invalid line format" }
-
-    const actual = this.findActualToken(expected.token)
-    if (!actual) return { result: false, error: `Token ${expected.token} missing` }
-
-    const matched = this.arraysEqualUnordered(expected.options, actual.options)
-    if (!matched) {
+    if (!this.arraysEqualUnordered(expectedOptions, actual.options)) {
       return {
         result: false,
-        error: `Options mismatch for token ${expected.token}`,
-        expected: expected.options,
+        error: `Options mismatch for token ${token}`,
+        expected: expectedOptions,
         actual: actual.options
       }
     }
 
     return { result: true }
   }
+}
 
-  // Main verify function — accepts a multi-line string directly
-  verify(assertionText) {
-    const lines = assertionText
-      .split("\n")
-      .map(l => l.trim())
-      .filter(l => l.length > 0) // ignore empty lines
+// -------------------- Ferries Placement Options --------------------
+class FerriesPlacementOptionsAssert {
+  constructor(state) {
+    this.state = state
+    this.REGEXP = /^Ferries options:\s*(.*)$/
+  }
 
-    const errors = []
-    for (const line of lines) {
-      const res = this.verifyLine(line)
-      if (!res.result) errors.push(res)
+  optionsEqual(a, b) {
+    return (
+      a.feature === b.feature &&
+      a.location === b.location &&
+      a.position.length === b.position.length &&
+      a.position.every((v, i) => v === b.position[i])
+    )
+  }
+
+  arraysEqualUnordered(a, b) {
+    if (a.length !== b.length) return false
+    const used = new Array(b.length).fill(false)
+    for (const optionA of a) {
+      let found = false
+      for (let i = 0; i < b.length; i++) {
+        if (!used[i] && this.optionsEqual(optionA, b[i])) {
+          used[i] = true
+          found = true
+          break
+        }
+      }
+      if (!found) return false
+    }
+    return true
+  }
+
+  verify(assertion) {
+    const m = this.REGEXP.exec(assertion)
+    if (!m) return
+
+    const optionRegex = /\{([^,]+),([^,]+),\[\s*([^\]]*?)\s*\]\}/g
+    const expectedOptions = []
+
+    for (const match of m[1].matchAll(optionRegex)) {
+      expectedOptions.push({
+        feature: match[1].trim(),
+        location: match[2].trim(),
+        position: match[3].split(',').map(v => Number(v.trim()))
+      })
     }
 
-    if (errors.length === 0) return { result: true }
+    const actual = this.state.action.items.find(item => item.type === 'Ferries')
 
-    console.log("Tunnel token assert errors:", errors)
-    return { result: false }
+    if (!actual) {
+      return { result: false, error: 'No open Ferries exist' }
+    }
+
+    if (!this.arraysEqualUnordered(expectedOptions, actual.options)) {
+      return {
+        result: false,
+        error: 'Options mismatch for Ferries',
+        expected: expectedOptions,
+        actual: actual.options
+      }
+    }
+
+    return { result: true }
   }
 }
 
-export function verifyScenario (state, { description, assertions }) {
-  const result = {
-    description,
-    assertions: []
-  }
+// -------------------- Main verification function --------------------
+export function verifyScenario(state, { description, assertions }) {
+  const result = { description, assertions: [] }
 
   const rules = [
     new PointsAssert(state),
@@ -332,7 +331,8 @@ export function verifyScenario (state, { description, assertions }) {
     new AvailableActionAssert(state),
     new TilePlacementOptionsAssert(state),
     new UndoAssert(state),
-    new TunnelTokenPlacementOptionsAssert(state)
+    new TunnelTokenPlacementOptionsAssert(state),
+    new FerriesPlacementOptionsAssert(state)
   ]
 
   for (const assertion of assertions) {
@@ -340,19 +340,12 @@ export function verifyScenario (state, { description, assertions }) {
     for (const rule of rules) {
       const ruleResult = rule.verify(assertion)
       if (!isNil(ruleResult)) {
-        assertionResult = {
-          assertion,
-          ...ruleResult
-        }
+        assertionResult = { assertion, ...ruleResult }
         break
       }
     }
     if (assertionResult === null) {
-      assertionResult = {
-        assertion,
-        error: 'Unknown assertion',
-        result: false
-      }
+      assertionResult = { assertion, error: 'Unknown assertion', result: false }
     }
     result.assertions.push(assertionResult)
   }
