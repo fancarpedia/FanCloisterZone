@@ -1,0 +1,163 @@
+{
+  "appVersion": "6.1.0-alpha.20",
+  "gameId": "1",
+  "name": "",
+  "initialRandom": 0.014249321088322997,
+  "created": "2026-01-27T14:48:09.194Z",
+  "clock": 690135,
+  "setup": {
+    "options": {},
+    "sets": {
+      "basic:1": 1,
+      "ferries": 1
+    },
+    "elements": {
+      "small-follower": 7,
+      "farmers": true,
+      "ferry": 1,
+      "donkey": 1
+    },
+    "rules": {},
+    "timer": null,
+    "start": [
+      {
+        "tile": "BA/RCr",
+        "x": 0,
+        "y": 0,
+        "rotation": 0
+      }
+    ]
+  },
+  "players": [
+    {
+      "name": "Ariel",
+      "slot": 0
+    }
+  ],
+  "chat": [],
+  "replay": [
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "BA/RRRR",
+        "rotation": "R0",
+        "position": [
+          1,
+          0
+        ]
+      },
+      "player": 0,
+      "clock": 3058
+    },
+    {
+      "type": "PASS",
+      "payload": {},
+      "player": 0,
+      "clock": 5112
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.8257647771596501
+      },
+      "player": 0,
+      "clock": 5127
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "FR/RRR",
+        "rotation": "R0",
+        "position": [
+          2,
+          0
+        ]
+      },
+      "player": 0,
+      "clock": 6683
+    },
+    {
+      "type": "MOVE_NEUTRAL_FIGURE",
+      "payload": {
+        "figureId": "donkey.1",
+        "to": [
+          1,
+          0
+        ]
+      },
+      "player": 0,
+      "clock": 12501
+    },
+    {
+      "type": "PLACE_TOKEN",
+      "payload": {
+        "token": "FERRY",
+        "pointer": {
+          "position": [
+            2,
+            0
+          ],
+          "feature": "Road",
+          "location": "WE"
+        }
+      },
+      "player": 0,
+      "clock": 17945
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.057714327250665054
+      },
+      "player": 0,
+      "clock": 21065
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "BA/RFr",
+        "rotation": "R0",
+        "position": [
+          3,
+          0
+        ]
+      },
+      "player": 0,
+      "clock": 23070
+    },
+    {
+      "type": "DEPLOY_MEEPLE",
+      "payload": {
+        "pointer": {
+          "position": [
+            3,
+            0
+          ],
+          "location": "WE",
+          "feature": "Road"
+        },
+        "meepleId": "0.small.1"
+      },
+      "player": 0,
+      "clock": 265986
+    }
+  ],
+  "gameAnnotations": {
+    "drawOrder": [
+      "BA/RRRR",
+      "FR/RRR",
+      "BA/RFr"
+    ]
+  },
+  "test": {
+    "description": "Donkey Blocking Ferry Move",
+    "assertions": [
+      "Ariel has 0 points.",
+      "Phase is ChangeFerriesPhase",
+      "Player can pass",
+      "Available action Ferries",
+      "Ferries options: {Road,SW,[2,0]}",
+      "Undo is allowed"
+    ]
+  }
+}
