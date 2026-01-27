@@ -21,7 +21,9 @@ import { isSameFeature, generateSaveContent } from '@/utils/gameUtils'
 import { verifyScenario } from '@/utils/testing'
 import { Rule, getDefaultRules } from '@/models/rules'
 
-const SAVED_GAME_FILTERS = [{ name: 'Saved Game', extensions: ['jcz'] }]
+const getSavedGameFilters = () => {
+  return [{ name: $nuxt.$t('index.local.saved-game'), extensions: ['jcz'] }]
+}
 
 const deployedOnField = (state, response) => {
   for (let i = 0; i < response.undo.depth; i++) {
@@ -385,7 +387,7 @@ export const actions = {
     return new Promise(async (resolve, reject) => { /* eslint no-async-promise-executor: 0 */
       let { filePath } = await ipcRenderer.invoke('dialog.showSaveDialog', {
         title: onlySetup ? 'Save Game Setup' : 'Save Game',
-        filters: SAVED_GAME_FILTERS,
+        filters: getSavedGameFilters(),
         properties: ['createDirectory', 'showOverwriteConfirmation']
       })
       if (filePath) {
@@ -454,16 +456,23 @@ export const actions = {
           }
           content.test.assertions.push(`Phase is ${gameState.phase}`)
           if (!!gameState.action) {
+          console.log(gameState.action)
             content.test.assertions.push(`Player ${gameState.action.canPass ? 'can' : 'can\'t'} pass`)
-            for (const p of gameState.action.items) {
-	          content.test.assertions.push(`Available action ${p.type}`)
-              switch(p.type) {
+            for (const i of gameState.action.items) {
+	          content.test.assertions.push(`Available action ${i.type}`)
+              let options = []
+              switch(i.type) {
                 case 'TilePlacement':
-                  let options = []
-          	      for (const o of p.options) {
+          	      for (const o of i.options) {
           	        options.push(`[${o.position.join(',')}] - [${o.rotations.join(',')}]`)
           	  	  }
 		          content.test.assertions.push(`Placement options: ${options.join('; ')}`)
+          	  	  break;
+          	  	case 'Tunnel':
+                  for (const o of i.options) {
+          	        options.push(['{',[o.feature,o.location,['[',o.position.join(','),']'].join('')].join(','),'}'].join(''))
+          	  	  }
+		          content.test.assertions.push(`Tunnel token ${i.token} options: ${options.join('; ')}`)
           	  	  break;
           	  }
           	}
@@ -488,8 +497,8 @@ export const actions = {
     return new Promise(async (resolve, reject) => {
       if (!filePath) {
         const { filePaths, canceled } = await ipcRenderer.invoke('open-load-game-dialog', {
-          title: 'Load Game',
-          filters: SAVED_GAME_FILTERS,
+          title: $nuxt.$t('index.local.open-saved-game'),
+          filters: getSavedGameFilters(), //[{ name: $nuxt.$t('index.local.saved-game'), extensions: ['jcz'] }],
           properties: ['openFile']
         })
 
