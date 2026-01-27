@@ -2,7 +2,7 @@
   "@author": "Paloi Sciurala",
   "@jcz-version": "5.12.1",
   "@fcz-version": "6.1.0",
-  "@version": "0.9.4",
+  "@version": "0.9.5",
   "about": {
     "configuration-file": "Fișier de configurație",
     "jcloisterzone-game-engine": "Motorul jocului JCloisterZone",
@@ -574,7 +574,7 @@
       "my-favorites": "favoritele mele",
       "new-game": "Partidă nouă",
       "open-game": "Deschide partidă",
-      "saved-game": "Saved game",
+      "saved-game": "Partidă salvată",
       "title": "Partide găzduite de jucător"
     },
     "online": {
