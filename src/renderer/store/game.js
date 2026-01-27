@@ -458,22 +458,31 @@ export const actions = {
           if (!!gameState.action) {
             content.test.assertions.push(`Player ${gameState.action.canPass ? 'can' : 'can\'t'} pass`)
             for (const i of gameState.action.items) {
-	          content.test.assertions.push(`Available action ${i.type}`)
               let options = []
               switch(i.type) {
           	  	case 'Ferries':
-                  for (const o of i.options) {
+          	  	  content.test.assertions.push(`Available action ${i.type}`)
+          	  	  for (const o of i.options) {
           	        options.push(['{',[o.feature,o.location,['[',o.position.join(','),']'].join('')].join(','),'}'].join(''))
           	  	  }
 		          content.test.assertions.push(`Ferries options: ${options.join('; ')}`)
           	  	  break;
+          	  	case 'Meeple':
+          	  	  content.test.assertions.push(`Available action ${i.type} for ${i.meeple}`)
+                  for (const o of i.options) {
+          	        options.push(['{',[o.feature,o.location,['[',o.position.join(','),']'].join('')].join(','),'}'].join(''))
+          	  	  }
+		          content.test.assertions.push(`Meeple ${i.meeple} options: ${options.join('; ')}`)
+          	  	  break;
                 case 'TilePlacement':
+          	  	  content.test.assertions.push(`Available action ${i.type} for ${i.tileId}`)
           	      for (const o of i.options) {
           	        options.push(`[${o.position.join(',')}] - [${o.rotations.join(',')}]`)
           	  	  }
-		          content.test.assertions.push(`Placement options: ${options.join('; ')}`)
+		          content.test.assertions.push(`TilePlacement ${i.tileId} options: ${options.join('; ')}`)
           	  	  break;
           	  	case 'Tunnel':
+          	  	  content.test.assertions.push(`Available action ${i.type} for ${i.token}`)
                   for (const o of i.options) {
           	        options.push(['{',[o.feature,o.location,['[',o.position.join(','),']'].join('')].join(','),'}'].join(''))
           	  	  }
