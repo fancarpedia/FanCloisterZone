@@ -19,7 +19,7 @@
       :transform="transformPosition(ferry.position)"
     >
       <line
-        x1="260" y1="500" x2="740" y2="500"
+        x1="260" y1="450" x2="740" y2="450"
         stroke="white"
         stroke-width="100"
         stroke-dasharray="60 20"
@@ -115,11 +115,11 @@ export default {
   methods: {
     ferryTransform (location) {
       if (location === 'WE') return ''
-      if (location === 'NS') return 'rotate(90 500 500)'
-      if (location === 'NW') return 'translate(-140 -140) rotate(-45 500 500)'
-      if (location === 'SW') return 'translate(-140 140) rotate(45 500 500)'
-      if (location === 'NE') return 'translate(140 -140) rotate(45 500 500)'
-      if (location === 'SE') return 'translate(140 140) rotate(-45 500 500)'
+      if (location === 'NS') return 'rotate(90 450 450)'
+      if (location === 'NW') return 'translate(-126 -125) rotate(-45 450 450)'
+      if (location === 'SW') return 'translate(-126 126) rotate(45 450 450)'
+      if (location === 'NE') return 'translate(126 -126) rotate(45 450 450)'
+      if (location === 'SE') return 'translate(126 126) rotate(-45 450 450)'
     }
   }
 }
