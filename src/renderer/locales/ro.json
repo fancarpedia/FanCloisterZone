@@ -495,7 +495,7 @@
       "gq11-pig-herd": {
         "description": "Cartonașul cu câmp din extensia Games Quarterly 11 {}.",
         "nothing": "este doar câmp gol",
-        "pig": "conține o turmă de porci"
+        "pig": "conține turmă de porci"
       },
       "hill-tiebreaker": {
         "at-least-one-follower": "cel puțin un singur meeple",
@@ -574,6 +574,7 @@
       "my-favorites": "favoritele mele",
       "new-game": "Partidă nouă",
       "open-game": "Deschide partidă",
+      "saved-game": "Saved game",
       "title": "Partide găzduite de jucător"
     },
     "online": {
