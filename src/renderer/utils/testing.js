@@ -41,7 +41,12 @@ class FeatureScoredAssert {
         .flatMap(h => h.events)
         .filter(({ type }) => type === 'points')
         .flatMap(ev => ev.points)
-        .find(pts => pts.player === playerIdx && pts.points === points && pts.name.split('.')[0] === feature)
+        .find(
+          pts =>
+            pts.player === playerIdx &&
+            pts.points === points &&
+            pts.name.split('.')[0] === feature
+        )
 
       return { result }
     }
@@ -76,23 +81,40 @@ class PhaseAssert {
 // -------------------- Available Action Assert --------------------
 class AvailableActionAssert {
   constructor(state) {
-    this.REGEXP = /Available action (\w+)/
     this.state = state
+    this.REGEXP = /^Available action\s+(\S+)(?:\s+for\s+(\S+))?$/
   }
 
   verify(assertion) {
     const m = this.REGEXP.exec(assertion)
-    if (m) {
-      const found = this.state.action.items.some(a => a.type === m[1])
-      return { result: found }
+    if (!m) return
+
+    const actionType = m[1]
+    const forId = m[2]
+
+    // Find items of this action type
+    const items = this.state.action.items.filter(a => a.type === actionType)
+    if (!items.length) return { result: false }
+    
+    if (forId) {
+      // Try to match 'tileId', 'token', or 'meeple' properties
+      const match = items.find(
+        a => a.tileId === forId || a.token === forId || a.meeple === forId
+      )
+      return { result: !!match }
     }
+
+    // No 'forId' needed, just check if action exists
+    return { result: true }
+    
   }
 }
 
 // -------------------- Tile Placement Options Assert --------------------
 class TilePlacementOptionsAssert {
   constructor(state) {
-    this.REGEXP = /Placement options\: (.*)/;
+    // Capture tileId (\S+ = any non-space) and everything after "options:"
+    this.REGEXP = /^TilePlacement (\S+) options: (.*)$/
     this.state = state
   }
 
@@ -128,14 +150,14 @@ class TilePlacementOptionsAssert {
 
     for (const [key, exp] of expectedMap) {
       if (!actualMap.has(key)) {
-        errors.push({ type: "missing", position: exp.position, expectedRotations: exp.rotations })
+        errors.push({ type: 'missing', position: exp.position, expectedRotations: exp.rotations })
         continue
       }
 
       const act = actualMap.get(key)
       if (!this.arraysEqualUnordered(exp.rotations, act.rotations)) {
         errors.push({
-          type: "rotation-mismatch",
+          type: 'rotation-mismatch',
           position: exp.position,
           expectedRotations: exp.rotations,
           actualRotations: act.rotations
@@ -145,7 +167,7 @@ class TilePlacementOptionsAssert {
 
     for (const [key, act] of actualMap) {
       if (!expectedMap.has(key)) {
-        errors.push({ type: "extra", position: act.position, actualRotations: act.rotations })
+        errors.push({ type: 'extra', position: act.position, actualRotations: act.rotations })
       }
     }
 
@@ -156,22 +178,38 @@ class TilePlacementOptionsAssert {
     const m = this.REGEXP.exec(assertion)
     if (!m) return
 
+    const tileId = m[1]
+    const positionsStr = m[2]
+
+    // Parse expected positions and rotations
     const ENTRY = /\[\s*(-?\d+)\s*,\s*(-?\d+)\s*\]\s*-\s*\[\s*([-\d,\s]+?)\s*\]/g
     const expected = []
 
-    for (const match of m[1].matchAll(ENTRY)) {
+    for (const match of positionsStr.matchAll(ENTRY)) {
       expected.push({
         position: [Number(match[1]), Number(match[2])],
         rotations: match[3].split(',').map(v => Number(v.trim()))
       })
     }
 
-    const errors = this.compareOptions(expected, this.state.action.items[0].options)
+    // Find the TilePlacement item for this tileId
+    const tilePlacement = this.state.action.items.find(
+      a => a.type === 'TilePlacement' && a.tileId === tileId
+    )
+
+    if (!tilePlacement || !Array.isArray(tilePlacement.options)) {
+      return { result: false }
+    }
+
+    const errors = this.compareOptions(expected, tilePlacement.options)
+
     if (errors.length === 0) return { result: true }
+
     console.log('Tile placement assert errors:', errors)
     return { result: false }
   }
 }
+
 
 // -------------------- Undo Assert --------------------
 class UndoAssert {
@@ -180,7 +218,7 @@ class UndoAssert {
   }
 
   verify(assertion) {
-    if (assertion === "Undo is not allowed") return { result: !this.state.undo.allowed }
+    if (assertion === 'Undo is not allowed') return { result: !this.state.undo.allowed }
     if (assertion === 'Undo is allowed') return { result: this.state.undo.allowed }
   }
 }
@@ -237,18 +275,9 @@ class TunnelTokenPlacementOptionsAssert {
     }
 
     const actual = this.state.action.items.find(item => item.token === token)
-    if (!actual) return { result: false, error: `Token ${token} missing` }
+    if (!actual) return { result: false }
 
-    if (!this.arraysEqualUnordered(expectedOptions, actual.options)) {
-      return {
-        result: false,
-        error: `Options mismatch for token ${token}`,
-        expected: expectedOptions,
-        actual: actual.options
-      }
-    }
-
-    return { result: true }
+    return { result: this.arraysEqualUnordered(expectedOptions, actual.options) }
   }
 }
 
@@ -301,21 +330,67 @@ class FerriesPlacementOptionsAssert {
     }
 
     const actual = this.state.action.items.find(item => item.type === 'Ferries')
+    if (!actual) return { result: false }
 
-    if (!actual) {
-      return { result: false, error: 'No open Ferries exist' }
-    }
+    return { result: this.arraysEqualUnordered(expectedOptions, actual.options) }
+  }
+}
 
-    if (!this.arraysEqualUnordered(expectedOptions, actual.options)) {
-      return {
-        result: false,
-        error: 'Options mismatch for Ferries',
-        expected: expectedOptions,
-        actual: actual.options
+// -------------------- Meeple Placement Options --------------------
+class MeeplePlacementOptionsAssert {
+  constructor(state) {
+    this.state = state
+    this.REGEXP = /^Meeple (\w+) options: (.*)$/
+  }
+
+  optionsEqual(a, b) {
+    return (
+      a.feature === b.feature &&
+      a.location === b.location &&
+      a.position.length === b.position.length &&
+      a.position.every((v, i) => v === b.position[i])
+    )
+  }
+
+  arraysEqualUnordered(a, b) {
+    if (a.length !== b.length) return false
+    const used = new Array(b.length).fill(false)
+    for (const optionA of a) {
+      let found = false
+      for (let i = 0; i < b.length; i++) {
+        if (!used[i] && this.optionsEqual(optionA, b[i])) {
+          used[i] = true
+          found = true
+          break
+        }
       }
+      if (!found) return false
+    }
+    return true
+  }
+
+  verify(assertion) {
+    const m = this.REGEXP.exec(assertion)
+    if (!m) return
+
+    const meeple = m[1]
+    const optionsStr = m[2]
+
+    const optionRegex = /\{([^,]+),([^,]+),\[\s*([^\]]*?)\s*\]\}/g
+    const expectedOptions = []
+
+    for (const match of optionsStr.matchAll(optionRegex)) {
+      expectedOptions.push({
+        feature: match[1].trim(),
+        location: match[2].trim(),
+        position: match[3].split(',').map(v => Number(v.trim()))
+      })
     }
 
-    return { result: true }
+    const actual = this.state.action.items.find(item => item.meeple === meeple)
+    if (!actual) return { result: false }
+
+    return { result: this.arraysEqualUnordered(expectedOptions, actual.options) }
   }
 }
 
@@ -332,11 +407,13 @@ export function verifyScenario(state, { description, assertions }) {
     new TilePlacementOptionsAssert(state),
     new UndoAssert(state),
     new TunnelTokenPlacementOptionsAssert(state),
-    new FerriesPlacementOptionsAssert(state)
+    new FerriesPlacementOptionsAssert(state),
+    new MeeplePlacementOptionsAssert(state)
   ]
 
   for (const assertion of assertions) {
     let assertionResult = null
+
     for (const rule of rules) {
       const ruleResult = rule.verify(assertion)
       if (!isNil(ruleResult)) {
@@ -344,9 +421,11 @@ export function verifyScenario(state, { description, assertions }) {
         break
       }
     }
+
     if (assertionResult === null) {
       assertionResult = { assertion, error: 'Unknown assertion', result: false }
     }
+
     result.assertions.push(assertionResult)
   }
 
