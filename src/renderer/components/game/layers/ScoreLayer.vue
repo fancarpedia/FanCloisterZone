@@ -111,7 +111,7 @@ export default {
         if (typeof ptr.meepleId === 'string' && /\.(obelisk|barn)\./.test(ptr.meepleId)) {
           return this.transformPosition(ptr.featurePointer.position)
         } else {
-          return this.transformPoint(fp)
+          return this.transformPoint(ptr.featurePointer)
         }
       }
       if (ptr.position && !ptr.location) {
