@@ -1,0 +1,168 @@
+{
+  "appVersion": "6.1.0-alpha.24",
+  "gameId": "1",
+  "name": "",
+  "initialRandom": 0.6237422407280706,
+  "created": "2026-01-28T10:14:39.411Z",
+  "clock": 52247,
+  "setup": {
+    "sets": {
+      "basic:1": 1,
+      "village-life": 1
+    },
+    "elements": {
+      "small-follower": 7,
+      "farmers": true,
+      "flowers": true,
+      "marketplace": true,
+      "robber": true
+    },
+    "rules": {
+      "king-and-robber-scoring": "continuously"
+    },
+    "timer": null,
+    "start": [
+      {
+        "tile": "BA/RCr",
+        "x": 0,
+        "y": 0,
+        "rotation": 0
+      }
+    ],
+    "options": {},
+    "addons": {
+      "village-life": 0
+    }
+  },
+  "players": [
+    {
+      "name": "Ariel",
+      "slot": 0
+    }
+  ],
+  "chat": [],
+  "replay": [
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "village-life/rfrf.f3f4m",
+        "rotation": "R90",
+        "position": [
+          -1,
+          0
+        ]
+      },
+      "player": 0,
+      "clock": 4317
+    },
+    {
+      "type": "PASS",
+      "payload": {},
+      "player": 0,
+      "clock": 5891
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.33997802582920755
+      },
+      "player": 0,
+      "clock": 5908
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "BA/RRR",
+        "rotation": "R0",
+        "position": [
+          1,
+          0
+        ]
+      },
+      "player": 0,
+      "clock": 7745
+    },
+    {
+      "type": "PASS",
+      "payload": {},
+      "player": 0,
+      "clock": 8376
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.648603252455175
+      },
+      "player": 0,
+      "clock": 8389
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "BA/RRR",
+        "rotation": "R0",
+        "position": [
+          -2,
+          0
+        ]
+      },
+      "player": 0,
+      "clock": 10085
+    },
+    {
+      "type": "PASS",
+      "payload": {},
+      "player": 0,
+      "clock": 10962
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.8517568311923815
+      },
+      "player": 0,
+      "clock": 10973
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "BA/RRR",
+        "rotation": "R0",
+        "position": [
+          -1,
+          1
+        ]
+      },
+      "player": 0,
+      "clock": 12739
+    },
+    {
+      "type": "PASS",
+      "payload": {},
+      "player": 0,
+      "clock": 13499
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.2565892029843635
+      },
+      "player": 0,
+      "clock": 13508
+    }
+  ],
+  "gameAnnotations": {
+    "drawOrder": [
+      "village-life/rfrf.f3f4m",
+      "BA/RRR",
+      "BA/RRR",
+      "BA/RRR"
+    ]
+  },
+  "test": {
+    "description": "Marketplace Placed Tile Adjacent Error Solving Issue",
+    "assertions": [
+      "Ariel has 0 points."
+    ]
+  }
+}
