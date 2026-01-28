@@ -345,14 +345,12 @@ export default {
             const idx = this.players.findIndex(p => p.index === h.player)
             stats.tiles[idx] += 1
           } else if (ev.type === 'ransom-paid') {
-            console.log(ev.jailer,ev.prisoner,stats.tower);
             const jailerIdx = this.players.findIndex(p => p.index === ev.jailer)
             stats.points.tower[jailerIdx] += 3
             const prisonerIdx = this.players.findIndex(p => p.index === ev.prisoner)
             stats.points.tower[prisonerIdx] -= 3
           } else if (ev.type === 'points') {
             ev.points.forEach(({ name, player, points }) => {
-              console.log(name,points);
               const cat = name.split('.')[0]
               const idx = this.players.findIndex(p => p.index === player)
               if (stats.points[cat]) {
