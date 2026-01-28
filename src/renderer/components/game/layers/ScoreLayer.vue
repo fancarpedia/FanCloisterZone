@@ -148,4 +148,6 @@ export default {
   
 .points rect
   opacity: 0.6
+  stroke: black
+  stroke-width: 10
 </style>
