@@ -34,7 +34,7 @@ jobs:
       # Step 5: Create a config file that embeds the secret
       - name: Create Discord config
         run: |
-          mkdir -p src/config
+          mkdir -p src/main/config
           echo "export const DISCORD_CLIENT_ID = '${{ secrets.DISCORD_CLIENT_ID }}';" > src/main/config/discord.js
         shell: bash
   
