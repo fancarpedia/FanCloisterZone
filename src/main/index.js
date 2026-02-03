@@ -17,10 +17,7 @@ import settingsWatch from './modules/settingsWatch'
 import localServer from './modules/localServer'
 import installer from './modules/installer'
 
-import dotenv from 'dotenv'
 import RPC from 'discord-rpc'
-
-//dotenv.config()  // Load environment variables
 
 autoUpdater.logger = electronLogger
 autoUpdater.logger.transports.file.level = 'info'
@@ -196,42 +193,51 @@ app.on('window-all-closed', function () {
 })
 
 const discordClientId = process.env.DISCORD_CLIENT_ID
-let discordRpc
+let discordRpc = null
 
 if (!discordClientId) {
-  console.warn('DISCORD_CLIENT_ID not set in .env, Discord Rich Presence disabled')
+  console.warn('DISCORD_CLIENT_ID not set, Discord Rich Presence disabled')
 } else {
   try {
+    // Create the RPC client
     discordRpc = new RPC.Client({ transport: 'ipc' })
     RPC.register(discordClientId)
 
+    // Login to Discord
+    discordRpc.login({ clientId: discordClientId }).catch(console.error)
+
+    // Once ready, set initial status
     discordRpc.on('ready', () => {
       console.log('Discord Rich Presence is active!')
 
-      // Initial status
-      discordRpc.setActivity({
+      setDiscordActivity({
         details: 'FanCloisterZone',
-        state: 'Playing',
-        startTimestamp: new Date(),
-        largeImageKey: 'game_icon', // Discord app asset
-        largeImageText: 'FanCloisterZone',
-        buttons: [{ label: 'Join Game', url: 'https://github.com/fancarpedia/FanCloisterZone/releases' }]
+        state: 'Playing'
       })
     })
-    discordRpc.login({ clientId: discordClientId }).catch(console.error)
+
   } catch (e) {
     console.error('Discord RPC initialization failed:', e)
   }
 }
 
-// Optional: helper function to update status dynamically
-export function updateDiscordStatus(details, state) {
+/**
+ * Helper function to set or update Discord Rich Presence
+ * @param {Object} options - { details: string, state: string, largeImageKey?, largeImageText? }
+ */
+export function setDiscordActivity({ details, state, largeImageKey = 'game_icon', largeImageText = 'FanCloisterZone' }) {
   if (!discordRpc) return
-  discordRpc.setActivity({
-    details,
-    state,
-    startTimestamp: new Date(),
-    largeImageKey: 'game_icon',
-    largeImageText: 'FanCloisterZone'
-  })
+  try {
+    discordRpc.setActivity({
+      details,
+      state,
+      startTimestamp: new Date(),
+      largeImageKey,
+      largeImageText,
+      buttons: [{ label: 'Join Game', url: 'https://github.com/fancarpedia/FanCloisterZone/releases' }]
+    })
+  } catch (err) {
+    console.error('Failed to set Discord Rich Presence:', err)
+  }
 }
+
