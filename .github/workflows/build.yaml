@@ -51,6 +51,8 @@ jobs:
       # Step 5: Build/release Electron app
       - name: Build/release Electron app
         uses: samuelmeuli/action-electron-builder@v1
+        env:
+          DISCORD_CLIENT_ID: ${{ secrets.DISCORD_CLIENT_ID }}
         with:
           args: "-c builder.config.js"
           github_token: ${{ secrets.github_token }}

@@ -20,7 +20,7 @@ import installer from './modules/installer'
 import dotenv from 'dotenv'
 import RPC from 'discord-rpc'
 
-dotenv.config()  // Load environment variables
+//dotenv.config()  // Load environment variables
 
 autoUpdater.logger = electronLogger
 autoUpdater.logger.transports.file.level = 'info'
