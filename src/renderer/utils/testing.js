@@ -394,6 +394,23 @@ class MeeplePlacementOptionsAssert {
   }
 }
 
+// -------------------- Token Size Assert --------------------
+class TokenSizeAssert {
+  constructor(state) {
+    this.REGEXP = /(\w+) has (\w+) token with size (\d+)/
+    this.state = state
+  }
+
+  verify(assertion) {
+    const m = this.REGEXP.exec(assertion)
+    if (m) {
+      const player = this.state.players[findPlayerIndex(this.state, m[1])]
+      const size = parseInt(m[3])
+      return { result: player.tokens[m[2]]?.size === size }
+    }
+  }
+}
+
 // -------------------- Main verification function --------------------
 export function verifyScenario(state, { description, assertions }) {
   const result = { description, assertions: [] }
@@ -408,7 +425,8 @@ export function verifyScenario(state, { description, assertions }) {
     new UndoAssert(state),
     new TunnelTokenPlacementOptionsAssert(state),
     new FerriesPlacementOptionsAssert(state),
-    new MeeplePlacementOptionsAssert(state)
+    new MeeplePlacementOptionsAssert(state),
+    new TokenSizeAssert(state)
   ]
 
   for (const assertion of assertions) {

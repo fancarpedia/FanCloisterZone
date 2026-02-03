@@ -453,6 +453,12 @@ export const actions = {
           }
           for (const p of gameState.players) {
             content.test.assertions.push(`${playerNameBySlot[p.slot]} has ${p.points} point${p.points !== 1 ? "s" : ""}.`)
+            if (p.tokens.KING) {
+              content.test.assertions.push(`${playerNameBySlot[p.slot]} has KING token with size ${p.tokens.KING.size}.`)
+            }
+            if (p.tokens.ROBBER) {
+              content.test.assertions.push(`${playerNameBySlot[p.slot]} has ROBBER token with size ${p.tokens.ROBBER.size}.`)
+            }
           }
           content.test.assertions.push(`Phase is ${gameState.phase}`)
           if (!!gameState.action) {
