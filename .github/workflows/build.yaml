@@ -39,10 +39,10 @@ jobs:
       
       # NEW DEBUG STEP
       - name: Debug - Check environment variable
-      run: |
-        echo "Checking DISCORD_CLIENT_ID..."
-        echo "DISCORD_CLIENT_ID=$DISCORD_CLIENT_ID"
-        shell: bash
+        run: |
+          echo "Checking DISCORD_CLIENT_ID..."
+          echo "DISCORD_CLIENT_ID=$DISCORD_CLIENT_ID"
+          shell: bash
   
       # Step 5: Build/release Electron app
       - name: Build/release Electron app
