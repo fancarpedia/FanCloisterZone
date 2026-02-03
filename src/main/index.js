@@ -18,6 +18,8 @@ import localServer from './modules/localServer'
 import installer from './modules/installer'
 
 import RPC from 'discord-rpc'
+import { DISCORD_CLIENT_ID } from './config/discord.js'
+const discordClientId = DISCORD_CLIENT_ID  // Use this instead of process.env
 
 autoUpdater.logger = electronLogger
 autoUpdater.logger.transports.file.level = 'info'
@@ -192,7 +194,6 @@ app.on('window-all-closed', function () {
   app.quit()
 })
 
-const discordClientId = process.env.DISCORD_CLIENT_ID
 let discordRpc = null
 
 if (!discordClientId) {
