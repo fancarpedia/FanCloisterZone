@@ -110,28 +110,26 @@ async function createWindow () {
   })
 
   win.on('close', (event) => {
-    if (hasLocalGame) {
+    if (hasLocalGame && !isForceClosing) {
       event.preventDefault()
-      if (!isForceClosing) {
-        isForceClosing = true
+      isForceClosing = true
 
-        const choice = dialogElectron.showMessageBoxSync(win, {
-          type: 'warning',
-          buttons: [
-            'Resign and Close',
-            'Continue playing'
-          ],
-          defaultId: 0,
-          cancelId: 1,
-          title: 'Unfinished Local Game',
-          message: 'You have an unfinished local game. If you close the app window, you will resign and lose your progress in this game.',
-        })
-      
-        isForceClosing = false
-        if (choice === 0) {
-          hasLocalGame = false
-          win.close()
-        }
+      const choice = dialogElectron.showMessageBoxSync(win, {
+        type: 'warning',
+        buttons: [
+          'Resign and Close',
+          'Continue playing'
+        ],
+        defaultId: 0,
+        cancelId: 1,
+        title: 'Unfinished Local Game',
+        message: 'You have an unfinished local game. If you close the app window, you will resign and lose your progress in this game.',
+      })
+    
+      isForceClosing = false
+      if (choice === 0) {
+        hasLocalGame = false
+        win.destroy() // Force close the window
       }
     }
   })
@@ -180,16 +178,18 @@ app.on('activate', () => {
   }
 })
 
-// // Quit when all windows are closed.
+// Quit when all windows are closed.
 app.on('window-all-closed', function () {
   // console.log('window-all-closed emitted')
-
-  // On macOS it is common for applications and their menu bar
-  // to stay active until the user quits explicitly with Cmd + Q
-  // if (process.platform !== 'darwin') app.quit()
-
-  // fpr now quit it alsi on Mac
+  // Always quit the app when all windows are closed
   app.quit()
+})
+
+app.on('before-quit', () => {
+  // Clean up Discord RPC connection
+  if (discordRpc) {
+    discordRpc.destroy().catch(() => {})
+  }
 })
 
 let discordClientId = null
@@ -245,4 +245,3 @@ export function setDiscordActivity({ details, state, largeImageKey = 'game_icon'
     console.error('Failed to set Discord Rich Presence:', err)
   }
 }
-
