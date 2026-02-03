@@ -18,8 +18,6 @@ import localServer from './modules/localServer'
 import installer from './modules/installer'
 
 import RPC from 'discord-rpc'
-import { DISCORD_CLIENT_ID } from './config/discord.js'
-const discordClientId = DISCORD_CLIENT_ID  // Use this instead of process.env
 
 autoUpdater.logger = electronLogger
 autoUpdater.logger.transports.file.level = 'info'
@@ -193,6 +191,12 @@ app.on('window-all-closed', function () {
   // fpr now quit it alsi on Mac
   app.quit()
 })
+
+let discordClientId = null
+if (process.env.NODE_ENV === 'production') {
+  const { DISCORD_CLIENT_ID } = await import('./config/discord.js')
+  discordClientId = DISCORD_CLIENT_ID
+}
 
 let discordRpc = null
 
