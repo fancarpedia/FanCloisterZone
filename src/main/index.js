@@ -193,16 +193,24 @@ app.on('before-quit', () => {
 })
 
 let discordClientId = null
-if (process.env.NODE_ENV === 'production') {
-  const { DISCORD_CLIENT_ID } = await import('./config/discord.js')
-  discordClientId = DISCORD_CLIENT_ID
-}
-
 let discordRpc = null
 
-if (!discordClientId) {
-  console.warn('DISCORD_CLIENT_ID not set, Discord Rich Presence disabled')
-} else {
+// Initialize Discord RPC asynchronously
+async function initializeDiscordRpc() {
+  if (process.env.NODE_ENV === 'production') {
+    try {
+      const { DISCORD_CLIENT_ID } = await import('./config/discord.js')
+      discordClientId = DISCORD_CLIENT_ID
+    } catch (e) {
+      console.warn('Failed to load Discord config:', e)
+    }
+  }
+
+  if (!discordClientId) {
+    console.warn('DISCORD_CLIENT_ID not set, Discord Rich Presence disabled')
+    return
+  }
+
   try {
     // Create the RPC client
     discordRpc = new RPC.Client({ transport: 'ipc' })
@@ -226,6 +234,9 @@ if (!discordClientId) {
   }
 }
 
+// Call the async function
+initializeDiscordRpc()
+
 /**
  * Helper function to set or update Discord Rich Presence
  * @param {Object} options - { details: string, state: string, largeImageKey?, largeImageText? }
@@ -245,3 +256,4 @@ export function setDiscordActivity({ details, state, largeImageKey = 'game_icon'
     console.error('Failed to set Discord Rich Presence:', err)
   }
 }
+
