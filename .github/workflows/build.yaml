@@ -42,7 +42,7 @@ jobs:
         run: |
           echo "Checking DISCORD_CLIENT_ID..."
           echo "DISCORD_CLIENT_ID=$DISCORD_CLIENT_ID"
-          shell: bash
+        shell: bash
   
       # Step 5: Build/release Electron app
       - name: Build/release Electron app
