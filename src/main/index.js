@@ -18,7 +18,7 @@ import localServer from './modules/localServer'
 import installer from './modules/installer'
 
 import RPC from 'discord-rpc'
-import { DISCORD_CLIENT_ID } from '../config/discord.js'
+import { DISCORD_CLIENT_ID } from './config/discord.js'
 const discordClientId = DISCORD_CLIENT_ID  // Use this instead of process.env
 
 autoUpdater.logger = electronLogger
