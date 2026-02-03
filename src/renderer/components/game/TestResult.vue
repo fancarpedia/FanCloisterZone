@@ -1,11 +1,12 @@
 <template>
   <v-card class="test-result">
     <div class="btn-line">
-      <v-btn @click="$router.push('/test-runner')">test runner</v-btn>
-      <v-btn @click="$store.commit('game/testScenarioResult', null)">hide</v-btn>
+      <v-btn @click="$router.push('/test-runner')">{{ $nuxt.$t('button.test-runner') }}</v-btn>
+      <v-btn @click="$router.push('/')">{{ $nuxt.$t('button.close') }}</v-btn>
+      <v-btn @click="$store.commit('game/testScenarioResult', null)">{{ $nuxt.$t('button.hide') }}</v-btn>
     </div>
     <div class="description">
-      <b>Test:</b><br>
+      <b>{{ $nuxt.$t('dev.test') }}:</b><br>
       {{ result.description }}
     </div>
     <div
@@ -15,7 +16,7 @@
       :class="{ case: true, ok: ar.result, fail: !ar.result  }"
     >
       <span class="flex-grow-1 mr-5">{{ ar.assertion }}</span>
-      <span class="pr-1">{{ ar.result ? 'OK' : ar.error || 'FAIL' }}</span>
+      <span class="pr-1">{{ ar.result ? $nuxt.$t('dev.ok') : ar.error || $nuxt.$t('dev.fail') }}</span>
     </div>
   </v-card>
 </template>

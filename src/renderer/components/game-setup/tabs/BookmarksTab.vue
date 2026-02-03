@@ -77,7 +77,9 @@
           <v-btn
             text
             @click="detailOpen = false"
-          >Close</v-btn>
+          >
+            {{ $nuxt.$t('button.close') }}
+          </v-btn>
         </v-card-actions>
       </v-card>
     </v-dialog>

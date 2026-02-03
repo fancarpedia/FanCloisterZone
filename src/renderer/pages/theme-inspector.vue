@@ -1,8 +1,9 @@
 <template>
   <div v-if="loaded" class="theme-inspector">
     <header>
-      <div class="close">
-        <NuxtLink to="/">Close</NuxtLink>
+      <div class="close"> 
+        <v-btn color="error" @click="$router.push('/test-runner')">{{ $nuxt.$t('button.close') }}</v-btn>
+        <NuxtLink to="/">{{ $nuxt.$t('button.close') }}</NuxtLink>
       </div>
       <v-container>
         <div class="expansions">
@@ -19,7 +20,7 @@
         </div>
         <div class="options">
           <div>
-            Edition:
+            {{ $nuxt.$t('dev.edition') }}:
             <v-btn-toggle v-model="editionIdx" @change="onEditionChange">
               <v-btn>1st</v-btn>
               <v-btn>2nd</v-btn>
@@ -27,7 +28,7 @@
           </div>
 
           <div>
-            Size:
+            {{ $nuxt.$t('dev.size') }}:
             <v-btn-toggle v-model="sizeIdx" @change="onSizeChange">
               <v-btn v-for="s in sizes" :key="s">
                 {{ s }}
@@ -36,12 +37,12 @@
           </div>
 
           <div>
-            Mode:
+			{{ $nuxt.$t('dev.mode') }}:
             <v-btn-toggle v-model="modeIdx" @change="onModeChange">
-              <v-btn>Tiles</v-btn>
-              <v-btn>Strokes</v-btn>
-              <v-btn>Shapes</v-btn>
-              <v-btn>Meeples</v-btn>
+              <v-btn>{{ $nuxt.$t('dev.tiles') }}</v-btn>
+              <v-btn>{{ $nuxt.$t('dev.strokes') }}</v-btn>
+              <v-btn>{{ $nuxt.$t('dev.shapes') }}</v-btn>
+              <v-btn>{{ $nuxt.$t('dev.meeples') }}</v-btn>
             </v-btn-toggle>
           </div>
         </div>
@@ -212,6 +213,7 @@ header
   right: 10px
 
 .expansions
+  max-width: calc(100% - 60px)
   display: flex
   flex-wrap: wrap
   justify-content: center
