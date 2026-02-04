@@ -10,7 +10,7 @@ import fs from 'fs'
 import settings from './settings'
 import menu from './modules/menu'
 import theme from './modules/theme'
-import dialog from './modules/dialog'
+import dialog, { showUnfinishedGameDialog } from './modules/dialog'
 import updater from './modules/updater'
 import winevents from './modules/winevents'
 import settingsWatch from './modules/settingsWatch'
@@ -109,22 +109,12 @@ async function createWindow () {
     modules.forEach(m => m.winCreated(win))
   })
 
-  win.on('close', (event) => {
+  win.on('close', async (event) => {
     if (hasLocalGame && !isForceClosing) {
       event.preventDefault()
       isForceClosing = true
 
-      const choice = dialogElectron.showMessageBoxSync(win, {
-        type: 'warning',
-        buttons: [
-          'Resign and Close',
-          'Continue playing'
-        ],
-        defaultId: 0,
-        cancelId: 1,
-        title: 'Unfinished Local Game',
-        message: 'You have an unfinished local game. If you close the app window, you will resign and lose your progress in this game.',
-      })
+      const choice = await showUnfinishedGameDialog()
     
       isForceClosing = false
       if (choice === 0) {
@@ -266,7 +256,3 @@ export function setDiscordActivity({ details, state, largeImageKey = 'game_icon'
     console.error('Failed to set Discord Rich Presence:', err)
   }
 }
-
-setInterval(() => {
-  console.log(process._getActiveHandles())
-}, 3000)
