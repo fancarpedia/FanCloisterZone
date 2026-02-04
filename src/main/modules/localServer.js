@@ -550,8 +550,8 @@ export default function () {
     await gameServer.start(port)
   })
 
-  ipcMain.handle('localserver.dumo', () => {
-    return this.gameServe && this.gameServer.dump()
+  ipcMain.handle('localserver.dump', () => {
+    return this.gameServer && this.gameServer.dump()
   })
 
   return {
