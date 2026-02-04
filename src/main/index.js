@@ -180,15 +180,25 @@ app.on('activate', () => {
 
 // Quit when all windows are closed.
 app.on('window-all-closed', function () {
-  // console.log('window-all-closed emitted')
+  console.log('window-all-closed emitted')
+
   // Always quit the app when all windows are closed
-  app.quit()
+  if (process.platform === 'win32') {
+    // Force Electron shutdown (bypasses updater / installer hooks)
+    app.exit(0)
+  } else {
+    app.quit()
+  }
 })
 
 app.on('before-quit', () => {
+  autoUpdater.removeAllListeners()
   // Clean up Discord RPC connection
   if (discordRpc) {
-    discordRpc.destroy().catch(() => {})
+    try {
+      discordRpc.removeAllListeners()
+      discordRpc.destroy();
+    } catch {} 
   }
 })
 
@@ -257,3 +267,6 @@ export function setDiscordActivity({ details, state, largeImageKey = 'game_icon'
   }
 }
 
+setInterval(() => {
+  console.log(process._getActiveHandles())
+}, 3000)
