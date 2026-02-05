@@ -23,8 +23,9 @@
           </v-btn>
 
         </div>
-        <v-btn to="/" color="secondary" class="error" @click="resetFailed">
-          {{ $nuxt.$t('button.close') }}
+        <v-btn to="/" color="secondary" class="error close" @click="resetFailed">
+          <v-icon left>fa-times</v-icon>
+          {{ $t('button.close') }}
         </v-btn>
 
       </div>
@@ -254,11 +255,6 @@ export default {
 h1
   margin-bottom: 20px
 
-.close
-  position: absolute
-  top: 10px
-  right: 10px
-
 .disabled
   opacity: 0.6
 
@@ -300,5 +296,20 @@ h1
 
   +theme using ($theme)
     color: map-get($theme, '--v-error-base')
-  
+ 
+.v-btn.close
+  padding-left: 12px
+  padding-right: 12px
+  min-width: inherit
+   
+@media (max-width: 1024px)
+  .close
+    text-indent: -9999px
+    margin: 0
+    min-width: 0
+	
+    .v-icon
+      font-size: 24px
+      margin: 0
+      
 </style>
