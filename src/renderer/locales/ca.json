@@ -424,7 +424,7 @@
       "acrobats-disabled": "No hi ha peces d'acrobàcies a la partida.",
       "bazaar-description": "Les peces de terra se subhasten quan el basar entra en joc.",
       "bazaar-disabled": "A la partida no hi ha cap peça amb basars.",
-      "cathedral-description": "Les ciutats completades amb una catedral ×3, en lloc de ×2, i opcionalment sense puntuar a la puntuació final.",
+      "cathedral-description": "Les ciutats completades amb una catedral ×3, en lloc de ×2, i opcionalment sense puntuar al recompte final.",
       "cathedral-disabled": "No hi ha caselles amb catedrals a la partida.",
       "escape-description": "Escapada permesa a través d'un monestir veí.",
       "escape-disabled": "A la partida no hi ha cap peça amb setges.",
@@ -440,7 +440,7 @@
       "garden-disabled": "No s'ha triat un abad.",
       "hill-description": "Es fa servir per als desempats. També amaga una peça a l'atzar a sota.",
       "hill-disabled": "A la partida no hi ha cap peça amb turons.",
-      "inn-description": "Els camins completats amb una fonda puntuen ×2 i opcionalment no es tenen en compte les fondes a la puntuació final.",
+      "inn-description": "Els camins completats amb una fonda puntuen ×2 i opcionalment no es tenen en compte les fondes al recompte final.",
       "inn-disabled": "A la partida no hi ha cap peça amb fondes.",
       "marketplace-description": "Els mercats connecten diversos camins en una sola xarxa compartida que es completa quan es tanquen tots els camins involucrats. Quan puntuen, es donen punts de bonificació per la llargada dels altres camins completats.",
       "marketplace-disabled": "A la partida no hi ha cap peça amb mercats.",
@@ -535,7 +535,7 @@
         "number-of-followers": "el nombre de seguidors"
       },
       "inn-and-cathedral-final-scoring": {
-        "description": "Les fondes i catedrals {} durant la puntuació final.",
+        "description": "Les fondes i catedrals {} durant el recompte final.",
         "ignore": "s'ignoren",
         "zero": "puntuen 0 punts"
       },
