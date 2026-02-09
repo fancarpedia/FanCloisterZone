@@ -2,8 +2,10 @@
   <div v-if="loaded" class="theme-inspector">
     <header>
       <div class="close"> 
-        <v-btn color="error" @click="$router.push('/test-runner')">{{ $nuxt.$t('button.close') }}</v-btn>
-        <NuxtLink to="/">{{ $nuxt.$t('button.close') }}</NuxtLink>
+        <v-btn color="error closebutton" @click="$router.push('/')">
+          <v-icon left>fa-times</v-icon>
+          {{ $nuxt.$t('button.close') }}
+        </v-btn>
       </div>
       <v-container>
         <div class="expansions">
@@ -211,7 +213,7 @@ header
   position: absolute
   top: 10px
   right: 10px
-
+      
 .expansions
   max-width: calc(100% - 60px)
   display: flex
@@ -272,4 +274,20 @@ h2
   position: fixed
   left: 2px
   bottom: 2px
+
+.v-btn.closebutton
+  padding-left: 12px
+  padding-right: 12px
+  min-width: inherit
+   
+@media (max-width: 1024px)
+  .closebutton
+    text-indent: -9999px
+    margin: 0
+    min-width: 0
+	
+    .v-icon
+      font-size: 24px
+      margin: 0
+
 </style>
