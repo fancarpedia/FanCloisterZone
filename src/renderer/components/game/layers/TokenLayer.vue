@@ -68,9 +68,44 @@
     <g
       v-for=" position in tokens.LB_TOWER"
       :key="'lb-tower-' + positionAsKey(position)"
-      :transform="'translate(500 400) ' + transformPosition(position)"
+      :transform="'translate(500 400) ' + transformPosition(position, 1)"
     >
       <image href="~/assets/figures/lb_tower.png" transform="scale(1.2)" />
+    </g>
+    <g
+      v-for="pointer in tokens.GAMBLERSLUCKSHIELD_0"
+      :key="'gamblers-luck-shield-' + pointerAsKey(pointer)"
+      :transform="'translate(-140 -140) ' + transformPoint(pointer, 1)"
+    >
+      <image href="~/assets/features/C1/gamblers-luck-shield-0.png" transform="scale(4.5)" />
+    </g>
+    <g
+      v-for="pointer in tokens.GAMBLERSLUCKSHIELD_1"
+      :key="'gamblers-luck-shield-' + pointerAsKey(pointer)"
+      :transform="'translate(-140 -140) ' + transformPoint(pointer, 1)"
+    >
+      <image href="~/assets/features/C1/gamblers-luck-shield-1.png" transform="scale(4.5)" />
+    </g>
+    <g
+      v-for="pointer in tokens.GAMBLERSLUCKSHIELD_2"
+      :key="'gamblers-luck-shield-' + pointerAsKey(pointer)"
+      :transform="'translate(-140 -140) ' + transformPoint(pointer, 1)"
+    >
+      <image href="~/assets/features/C1/gamblers-luck-shield-2.png" transform="scale(4.5)" />
+    </g>
+    <g
+      v-for="pointer in tokens.GAMBLERSLUCKSHIELD_3"
+      :key="'gamblers-luck-shield-' + pointerAsKey(pointer)"
+      :transform="'translate(-140 -140) ' + transformPoint(pointer, 1)"
+    >
+      <image href="~/assets/features/C1/gamblers-luck-shield-3.png" transform="scale(4.5)" />
+    </g>
+    <g
+      v-for="pointer in tokens.GAMBLERSLUCKSHIELD_X"
+      :key="'gamblers-luck-shield-' + pointerAsKey(pointer)"
+      :transform="'translate(-140 -140) ' + transformPoint(pointer)"
+    >
+      <image href="~/assets/features/C1/gamblers-luck-shield-X.png" transform="scale(4.5)" />
     </g>
   </g>
 </template>

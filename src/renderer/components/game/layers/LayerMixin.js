@@ -54,13 +54,13 @@ export default {
       return `rotate(${rot} ${c} ${c})`
     },
 
-    transformPoint (ptr) { // ptr is { position, feature, location }
+    transformPoint (ptr, extraRotation) { // ptr is { position, feature, location }, extraRotation for tokens
       const { tile, point, rotation, transform, inverseScaleTransform } = this.getTilePoint(ptr)
       if (!point) {
         console.warn('Point not defined', ptr)
         return ''
       }
-      return `${this.transformPosition(tile.position)} ${this.transformRotation(rotation)} ${transform || ''} translate(${point[0]} ${point[1]}) rotate(${-rotation} 0 0) ${inverseScaleTransform || ''}`
+      return `${this.transformPosition(tile.position)} ${this.transformRotation(rotation + (!!extraRotation ? extraRotation : 0))} ${transform || ''} translate(${point[0]} ${point[1]}) rotate(${-rotation} 0 0) ${inverseScaleTransform || ''}`
     },
 
     transformTunnelEnd (ptr) {
