@@ -57,7 +57,7 @@
 import os from 'os'
 import fs from 'fs'
 import { extname } from 'path'
-import { webFrame, shell, ipcRenderer } from 'electron'
+import { webFrame, shell, ipcRenderer, ipcMain, dialog } from 'electron'
 import { mapState, mapGetters } from 'vuex'
 
 import AboutDialog from '@/components/AboutDialog'
@@ -159,6 +159,24 @@ export default {
   },
 
   created () {
+    ipcRenderer.on('win-close-request', async (hasLocalGame) => {
+      console.log(hasLocalGame)
+      if (!hasLocalGame) {
+        ipcRenderer.send('win-close-allowed')
+        return
+      }
+ 
+      const confirmed = await ipcRenderer.invoke('dialog.showConfirmDialog', {
+        title: $t('dialog.close-local-game.unfinished-local-game'),
+        ok: $t('dialog.close-local-game.resign-and-close'),
+        cancel: $t('dialog.close-local-game.continue-playing')
+      })
+
+      if (confirmed) {
+        ipcRenderer.send('win-close-allowed')
+      }
+    })
+
     ipcRenderer.on('app-update', (event, updateInfo) => {
       this.$store.commit('updateInfo', updateInfo)
     })
