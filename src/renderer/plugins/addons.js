@@ -47,14 +47,18 @@ class Addons extends EventsBase {
         const res = await fetch(url)
         if (res.status === 200) {
           const addons = await res.json()
+          console.log(addons)
           const appVersion = await ipcRenderer.invoke('get-app-version')
+          const isDev = /-alpha/i.test(appVersion)
           const appVer = semver.coerce(appVersion)
 
           this.downloadable = addons.addons
           .map(addon => {
             const compatibleVersions = addon.versions.filter(v => {
-              const fromOk = v.fromVersion ? semver.gte(appVer, semver.coerce(v.fromVersion)) : true
-              const toOk = v.toVersion ? semver.lt(appVer, semver.coerce(v.toVersion)) : true // exclusive upper bound
+              const fromVersion = isDev ? (v.devFromVersion ?? (v.fromVersion ?? null)) : (v.fromVersion ?? null)
+              const fromOk = fromVersion ? semver.gte(appVer, semver.coerce(fromVersion)) : true
+              const toVersion = isDev ? (v.devToVersion ?? (v.toVersion ?? null)) : (v.toVersion ?? null)
+              const toOk = toVersion ? semver.lt(appVer, semver.coerce(toVersion)) : true // exclusive upper bound
               return fromOk && toOk
             })
             if (compatibleVersions.length > 0) {
