@@ -2,7 +2,7 @@
   "@author": "Paloi Sciurala",
   "@jcz-version": "5.12.1",
   "@fcz-version": "6.1.0",
-  "@version": "0.9.6",
+  "@version": "0.9.7",
   "about": {
     "configuration-file": "Fișier de configurație",
     "jcloisterzone-game-engine": "Motorul jocului JCloisterZone",
@@ -215,6 +215,7 @@
       "ferries-player-can-move-ferries": "Jucătorul poate muta bacuri",
       "ferries-player-must-place-a-ferry": "Jucătorul trebuie să plaseze un bac",
       "ferries-you-can-move-ferries": "Poți muta bacuri",
+      "gamblers-luck-outcome": "Rezultatul norocului pariorului",
       "goldmines-place-a-gold-ingot": "Plasează un lingou de aur",
       "goldmines-player-must-place-a-gold-ingot": "Jucătorul trebuie să plaseze un lingou de aur",
       "hills-and-player-must-choose-grow-or-score-plural": "Jucătorul trebuie să aleagă să crească turma sau să evalueze oile pentru 0 puncte. | Jucătorul trebuie să aleagă să crească turma sau să evalueze oi pentru {points} punct. | Jucătorul trebuie să aleagă să crească turma sau să evalueze oi pentru {points} puncte. | Jucătorul trebuie să aleagă să crească turma sau să evalueze oi pentru {points} de puncte.",

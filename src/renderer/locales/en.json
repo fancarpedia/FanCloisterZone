@@ -2,7 +2,7 @@
   "@author": "farin & Scott",
   "@jcz-version": "5.12.1",
   "@fcz-version": "6.1.0",
-  "@version": "0.9.6",
+  "@version": "0.9.7",
   "about": {
     "configuration-file": "Configuration file",
     "jcloisterzone-game-engine": "JCloisterZone Game Engine",
@@ -215,6 +215,7 @@
       "ferries-player-can-move-ferries": "Player can move ferries",
       "ferries-player-must-place-a-ferry": "Player must place a ferry",
       "ferries-you-can-move-ferries": "You can move ferries",
+      "gamblers-luck-outcome": "Gambler’s Luck outcome",
       "goldmines-place-a-gold-ingot": "Place a gold ingot",
       "goldmines-player-must-place-a-gold-ingot": "Player must place a gold ingot",
       "hills-and-player-must-choose-grow-or-score-plural": "Player must choose to grow the flock or score sheep for 0 points. | Player must choose to grow the flock or score sheep for {points} point. | Player must choose to grow the flock or score sheep for {points} points.",

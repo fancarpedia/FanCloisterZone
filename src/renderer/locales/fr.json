@@ -2,7 +2,7 @@
   "@author": "Black Bear",
   "@jcz-version": "5.12.1",
   "@fcz-version": "6.1.0",
-  "@version": "0.9.6",
+  "@version": "0.9.7",
   "about": {
     "configuration-file": "Fichier de configuration",
     "jcloisterzone-game-engine": "Moteur de jeu de JCloisterZone",
@@ -215,6 +215,7 @@
       "ferries-player-can-move-ferries": "Le joueur peut déplacer les bacs",
       "ferries-player-must-place-a-ferry": "Le joueur doit poser un bac",
       "ferries-you-can-move-ferries": "Vous pouvez déplacer les bacs",
+      "gamblers-luck-outcome": "Résultat de la Chance du Joueur",
       "goldmines-place-a-gold-ingot": "Posez un lingot d’or",
       "goldmines-player-must-place-a-gold-ingot": "Le joueur doit poser un lingot d’or",
       "hills-and-player-must-choose-grow-or-score-plural": "Le joueur doit choisir d’agrandir son troupeau ou de l’évaluer pour aucun point. |Le joueur doit choisir d’agrandir son troupeau ou de l’évaluer pour {points} point. | Le joueur doit choisir d’agrandir son troupeau ou de l’évaluer pour {points} points.",

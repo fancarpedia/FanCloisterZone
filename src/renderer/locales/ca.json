@@ -2,7 +2,7 @@
   "@author": "J0anJosep",
   "@jcz-version": "5.12.1",
   "@fcz-version": "6.1.0",
-  "@version": "0.9.6",
+  "@version": "0.9.7",
   "about": {
     "configuration-file": "Fitxer de configuració",
     "jcloisterzone-game-engine": "Motor de joc del JCloisterZone",
@@ -215,6 +215,7 @@
       "ferries-player-can-move-ferries": "El jugador pot moure transbordadors",
       "ferries-player-must-place-a-ferry": "El jugador ha de col·locar un transbordador",
       "ferries-you-can-move-ferries": "Podeu moure transbordadors",
+      "gamblers-luck-outcome": "Resultat de la sort de l'apostador",
       "goldmines-place-a-gold-ingot": "Poseu un lingot d'or",
       "goldmines-player-must-place-a-gold-ingot": "El jugador ha de posar un lingot d'or",
       "hills-and-player-must-choose-grow-or-score-plural": "El jugador ha d'escollir si vol fer créixer el ramat o puntuar les ovelles per 0 punts. | El jugador ha d'escollir si vol fer créixer el ramat o puntuar les ovelles per 1 punt. | El jugador ha d'escollir si vol fer créixer el ramat o puntuar les ovelles per {points} punts.",
