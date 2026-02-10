@@ -41,7 +41,12 @@ const TOKENS = {
   FLOWERS_BLUE: { tag: 'img', src: require('~/assets/features/C1/flowers-blue.png') },
   FLOWERS_VIOLET: { tag: 'img', src: require('~/assets/features/C1/flowers-violet.png') },
   FLOWERS_WHITE: { tag: 'img', src: require('~/assets/features/C1/flowers-white.png') },
-  FLOWERS_YELLOW: { tag: 'img', src: require('~/assets/features/C1/flowers-yellow.png') }
+  FLOWERS_YELLOW: { tag: 'img', src: require('~/assets/features/C1/flowers-yellow.png') },
+  GAMBLERSLUCKSHIELD_0: { tag: 'img', src: require('~/assets/features/C1/gamblers-luck-shield-0.png') },
+  GAMBLERSLUCKSHIELD_1: { tag: 'img', src: require('~/assets/features/C1/gamblers-luck-shield-1.png') },
+  GAMBLERSLUCKSHIELD_2: { tag: 'img', src: require('~/assets/features/C1/gamblers-luck-shield-2.png') },
+  GAMBLERSLUCKSHIELD_3: { tag: 'img', src: require('~/assets/features/C1/gamblers-luck-shield-3.png') },
+  GAMBLERSLUCKSHIELD_X: { tag: 'img', src: require('~/assets/features/C1/gamblers-luck-shield-X.png') }
 }
 
 export default {

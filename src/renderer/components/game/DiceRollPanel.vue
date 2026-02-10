@@ -8,6 +8,10 @@
       <div class="dice">
       	<Dice :value="expr.value" />
       </div>
+      <div v-if="token" class="equal">=</div>
+      <div v-if="token" class="token">
+        <TokenImage :token="token" :height="$vuetify.breakpoint.height > 768 ? 70 : 50" />
+      </div>
     </div>
   </section>
 </template>
@@ -16,14 +20,17 @@
 import { mapGetters } from 'vuex'
 
 import Dice from '@/components/game/tokens/Dice'
+import TokenImage from '@/components/game/TokenImage'
 
 const TITLE_MAPPING = {
+  'gamblers-luck-dice': 'game.action.gamblers-luck-outcome',
   'meteorite-impact': 'game.action.meteorite-impact'
 }
 
 export default {
   components: {
-    Dice
+    Dice,
+    TokenImage
   },
 
   props: {
@@ -35,16 +42,24 @@ export default {
       const action = this.expr.action.split('.')
       let title = TITLE_MAPPING[action[0]]
       if (title) return this.$t(title)
-      return action[0];
+      return action[0]
     },
 
     subtitle () {
       const action = this.expr.action.split('.')
-      if (action[0] == 'meteorite-impact') {
-        return this.$t('game-setup.variant.meteorite-impact.'+action[1]);
-      } else {
-        return action[1] ?? '';
+      switch (action[0]) {
+        case 'meteorite-impact': return this.$t('game-setup.variant.meteorite-impact.'+action[1])
+        case 'gamblers-luck-dice': return ''
       }
+      return action[1] ?? ''
+    },
+    
+    token() {
+      const action = this.expr.action.split('.')
+      switch (action[0]) {
+        case 'gamblers-luck-dice': return action[1]
+      }
+      return ''
     }
   },
 
@@ -59,7 +74,7 @@ export default {
 <style lang="sass" scoped>
 .expr-row
   display: flex
-  align-items: stretch
+  align-items: center
   height: 100%
 
   justify-content: center
@@ -67,6 +82,17 @@ export default {
   .dice
     width: 50px
     border-radius: 23px
+
+  .equal
+    text-align: center
+    font-size: 28px
+    font-weight: 500
+    align-self: center
+    margin-right: 12px
+    margin-left: 12px
+
+    +theme using ($theme)
+      color: map-get($theme, 'gray-text-color')
 
   .expr
     display: flex
