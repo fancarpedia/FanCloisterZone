@@ -105,7 +105,7 @@
       :key="'gamblers-luck-shield-' + pointerAsKey(pointer)"
       :transform="'translate(-140 -140) ' + transformPoint(pointer)"
     >
-      <image href="~/assets/features/C1/gamblers-luck-shield-X.png" transform="scale(4.5)" />
+      <image href="~/assets/features/C1/gamblers-luck-shield-X.png" transform="scale(2.35)" />
     </g>
   </g>
 </template>
