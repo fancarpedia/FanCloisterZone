@@ -297,6 +297,7 @@ export default {
 
     ipcRenderer.on('settings.update', (ev, update) => {
       this.$store.dispatch('settings/update', update)
+      this.$store.dispatch('checkEngineVersion')
     })
     
     try {
