@@ -104,7 +104,7 @@
     <ConfigSection :title="$t('game-setup.components.tokens')">
       <div class="components">
         <GameElementBox :item="GameElement.TOWER">
-          <img src="~/assets/figures/tower-alt.png" height="55">
+          <img src="~/assets/figures/tower.png" height="55">
         </GameElementBox>
         <GameElementBox :item="GameElement.BLACK_TOWER">
           <img src="~/assets/figures/black_tower.png" height="55">
