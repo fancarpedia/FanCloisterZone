@@ -1,0 +1,165 @@
+{
+  "appVersion": "6.1.0-alpha.33",
+  "gameId": "1",
+  "name": "",
+  "initialRandom": 0.471964313714621,
+  "created": "2026-02-13T09:48:15.279Z",
+  "clock": 135393,
+  "setup": {
+    "options": {},
+    "sets": {
+      "basic:1": 1,
+      "gamblers-luck": 1
+    },
+    "elements": {
+      "small-follower": 7,
+      "farmers": true,
+      "mayor": 1
+    },
+    "rules": {},
+    "timer": null,
+    "start": [
+      {
+        "tile": "BA/RCr",
+        "x": 0,
+        "y": 0,
+        "rotation": 0
+      }
+    ],
+    "addons": {
+      "gamblers-luck": 0
+    }
+  },
+  "players": [
+    {
+      "name": "Betty",
+      "slot": 2
+    },
+    {
+      "name": "John",
+      "slot": 1
+    }
+  ],
+  "chat": [],
+  "replay": [
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "BA/Cc+",
+        "rotation": "R270",
+        "position": [
+          0,
+          -1
+        ]
+      },
+      "player": 0,
+      "clock": 16341
+    },
+    {
+      "type": "DEPLOY_MEEPLE",
+      "payload": {
+        "pointer": {
+          "position": [
+            0,
+            -1
+          ],
+          "location": "SW",
+          "feature": "City"
+        },
+        "meepleId": "0.small.1"
+      },
+      "player": 0,
+      "clock": 16799
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.20039336182013967
+      },
+      "player": 0,
+      "clock": 17376
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "BA/CRr",
+        "rotation": "R0",
+        "position": [
+          -1,
+          0
+        ]
+      },
+      "player": 1,
+      "clock": 18671
+    },
+    {
+      "type": "DEPLOY_MEEPLE",
+      "payload": {
+        "pointer": {
+          "position": [
+            -1,
+            0
+          ],
+          "location": "N",
+          "feature": "City"
+        },
+        "meepleId": "1.mayor.1"
+      },
+      "player": 1,
+      "clock": 21288
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.5419951485659591
+      },
+      "player": 1,
+      "clock": 21944
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "gamblers-luck/cfrc.w",
+        "rotation": "R180",
+        "position": [
+          -1,
+          -1
+        ]
+      },
+      "player": 0,
+      "clock": 22770
+    },
+    {
+      "type": "PASS",
+      "payload": {},
+      "player": 0,
+      "clock": 23788
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.12240942141703703
+      },
+      "player": 0,
+      "clock": 23792
+    }
+  ],
+  "gameAnnotations": {
+    "drawOrder": [
+      "BA/Cc+",
+      "BA/CRr",
+      "gamblers-luck/cfrc.w"
+    ],
+    "endTurn": 3
+  },
+  "test": {
+    "description": "Gamblers Luck Mayor Majority",
+    "assertions": [
+      "John scored city for 12 points.",
+      "Betty has 0 points.",
+      "John has 12 points.",
+      "Phase is GameOverPhase",
+      "Undo is not allowed"
+    ]
+  }
+}
