@@ -80,6 +80,7 @@
       <TowerPieceItem
         v-else-if="item.type == 'TowerPiece'"
         :options="item.options"
+        :token="item.token"
         :active="idx === selected"
       />
       <BridgeItem
