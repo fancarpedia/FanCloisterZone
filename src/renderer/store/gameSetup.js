@@ -200,6 +200,14 @@ export const actions = {
       if (config && !(state.elements.abbot > 0)) {
         commit('elementConfig', { id: 'abbot', config: 1 })
       }
+    } else if (id === 'tower') {
+      if (!config && (state.elements['black-tower'] > 0)) {
+        commit('elementConfig', { id: 'black-tower', config: 0 })
+      }
+    } else if (id === 'black-tower') {
+      if (config && !(state.elements.tower > 0)) {
+        commit('elementConfig', { id: 'tower', config: 1 })
+      }
     }
   },
 

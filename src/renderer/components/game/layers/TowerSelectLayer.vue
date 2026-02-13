@@ -1,24 +1,34 @@
 <template>
   <g id="tower-select-layer">
     <g
-      v-for="{ position, reachPolygon } in towers"
+      v-for="{ position, reachPolygon, diagonalPath } in towers"
       :key="positionAsKey(position)"
     >
+    x{{ token }}y
+    
       <circle
         :transform="transformPoint({ position, feature: 'Tower', location: 'I' })"
-        :cx="0" cy="0" :r="BASE_SIZE * 0.42"
+        :cx="0" cy="0" :r="BASE_SIZE * 0.38"
         fill="none"
         stroke="black"
         stroke-width="63"
         :stroke-opacity="mouseOver === position ? 1 : 0.5"
       />
-
       <g
         :transform="transformPosition(position)"
       >
         <polygon
-          v-if="mouseOver === position"
+          v-if="mouseOver === position && token === 'TOWER_PIECE'"
           :points="reachPolygon"
+          fill="red"
+          fill-opacity="0.06"
+          stroke="red"
+          :stroke-width="BASE_SIZE * 0.04"
+          stroke-opacity="0.2"
+        />
+        <path
+          v-if="mouseOver === position && token === 'BLACK_TOWER_PIECE'"
+          :d="diagonalPath"
           fill="red"
           fill-opacity="0.06"
           stroke="red"
@@ -51,7 +61,8 @@ export default {
   mixins: [LayerMixin],
 
   props: {
-    options: { type: Array, required: true }
+    options: { type: Array, required: true },
+    token: { type: String, required: true }
   },
 
   data () {
@@ -73,19 +84,49 @@ export default {
       }
     }),
 
-    towers () {
-      return this.options.map(position => {
-        const h = this.heights[position[0] + ',' + position[1]] + 1
-        const o = BASE_SIZE * 0.02
-        const reachPolygon = `-${o},-${o} -${o},${-o - h * BASE_SIZE} ${BASE_SIZE + o},${-o - h * BASE_SIZE} ${BASE_SIZE + o},-${o} ${o + (h + 1) * BASE_SIZE},-${o} ${o + (h + 1) * BASE_SIZE},${BASE_SIZE + o}, ${BASE_SIZE + o},${BASE_SIZE + o} ${BASE_SIZE + o},${o + (h + 1) * BASE_SIZE} -${o},${o + (h + 1) * BASE_SIZE} -${o},${BASE_SIZE + o} ${-o - h * BASE_SIZE},${BASE_SIZE + o} ${-o - h * BASE_SIZE},-${o}`
-
-        return {
-          position,
-          reachPolygon
-        }
-      })
-    }
+	towers () {
+	  return this.options.map(position => {
+	    const h = this.heights[position[0] + ',' + position[1]] + 1
+	    const o = BASE_SIZE * 0.02
+	    const reachPolygon = `-${o},-${o} -${o},${-o - h * BASE_SIZE} ${BASE_SIZE + o},${-o - h * BASE_SIZE} ${BASE_SIZE + o},-${o} ${o + (h + 1) * BASE_SIZE},-${o} ${o + (h + 1) * BASE_SIZE},${BASE_SIZE + o}, ${BASE_SIZE + o},${BASE_SIZE + o} ${BASE_SIZE + o},${o + (h + 1) * BASE_SIZE} -${o},${o + (h + 1) * BASE_SIZE} -${o},${BASE_SIZE + o} ${-o - h * BASE_SIZE},${BASE_SIZE + o} ${-o - h * BASE_SIZE},-${o}`
+	    
+	    function squarePath(x, y) {
+	      const px = (x - position[0]) * BASE_SIZE  // offset relative to position
+	      const py = (y - position[1]) * BASE_SIZE  // offset relative to position
+	  
+	      return `
+	          M ${px} ${py}
+	          L ${px + BASE_SIZE} ${py}
+	          L ${px + BASE_SIZE} ${py + BASE_SIZE}
+	          L ${px} ${py + BASE_SIZE}
+	          Z
+	      `
+	    }
+	    
+	    const paths = []
+	    // include original position
+	    paths.push(squarePath(position[0], position[1]))
+	    
+	    // diagonal squares
+	    for (let i = 1; i <= h; i++) {
+	      paths.push(
+	          squarePath(position[0] + i, position[1] + i),
+	          squarePath(position[0] + i, position[1] - i),
+	          squarePath(position[0] - i, position[1] + i),
+	          squarePath(position[0] - i, position[1] - i)
+	      )
+	    }
+	    
+	    const diagonalPath = paths.join(' ')
+	    return {
+	      position,
+	      reachPolygon,
+	      diagonalPath
+	    }
+	  })
+	}
   },
+
 
   methods: {
     onMouseOver (pos) {
