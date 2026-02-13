@@ -142,3 +142,6 @@ export const METEORITE = GameElement.METEORITE = new GameElement('meteorite', 'M
 export const FISHERMEN = GameElement.FISHERMEN = new GameElement('fishermen', 'Fishermen', Boolean, {
   selector: 'river'
 })
+export const BLACK_TOWER = GameElement.BLACK_TOWER = new GameElement('black-tower', 'Black & White Tower pieces', Number, {
+  selector: 'tower'
+})

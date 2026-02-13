@@ -80,6 +80,7 @@
       <TowerPieceItem
         v-else-if="item.type == 'TowerPiece'"
         :options="item.options"
+        :token="item.token"
         :active="idx === selected"
       />
       <BridgeItem
@@ -188,6 +189,9 @@ export default {
   watch: {
     action () {
       this.selected = 0
+    },
+    selected (value) {
+      this.$store.commit('currentSelectedAction', value)
     }
   },
 
@@ -197,6 +201,7 @@ export default {
 
   beforeDestroy () {
     this.$root.$off('rclick', this.selectNext)
+    this.$store.commit('currentSelectedAction', null)
   },
 
   methods: {

@@ -11,7 +11,9 @@
     <NeutralFigure v-else-if="element === 'dragon'" figure="dragon" :width="80" :height="40" />
     <NeutralFigure v-else-if="element === 'count'" figure="count" :width="70" :height="70" />
     <StandaloneTileImage v-else-if="element === 'abbey'" tile-id="AM/A" :size="70" />
-    <img v-else-if="element === 'tower'" src="~/assets/figures/tower-alt.png" height="45">
+    <img v-else-if="element === 'tower'" src="~/assets/figures/tower.png" height="45">
+    <img v-else-if="element === 'black-tower'" src="~/assets/figures/black_tower.png" height="45">
+    <img v-else-if="element === 'white-tower'" src="~/assets/figures/white_tower.png" height="45">
     <img v-else-if="element === 'bridge'" src="~/assets/figures/bridge-alt.png" height="45">
     <img v-else-if="element === 'castle'" src="~/assets/figures/castle.png" width="66" height="55">
     <img v-else-if="element === 'little-buildings'" src="~/assets/figures/lb.png" width="70" height="70">
