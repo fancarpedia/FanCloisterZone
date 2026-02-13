@@ -1,0 +1,250 @@
+{
+  "appVersion": "6.1.0-alpha.33",
+  "gameId": "1",
+  "name": "",
+  "initialRandom": 0.10086825476919414,
+  "created": "2026-02-13T10:30:11.517Z",
+  "clock": 99537,
+  "setup": {
+    "options": {},
+    "sets": {
+      "basic:1": 1,
+      "watchtowers": 1,
+      "gamblers-luck": 1
+    },
+    "elements": {
+      "small-follower": 7,
+      "farmers": true
+    },
+    "rules": {},
+    "timer": null,
+    "start": [
+      {
+        "tile": "BA/RCr",
+        "x": 0,
+        "y": 0,
+        "rotation": 0
+      }
+    ],
+    "addons": {
+      "gamblers-luck": 0
+    }
+  },
+  "players": [
+    {
+      "name": "Betty",
+      "slot": 2
+    },
+    {
+      "name": "John",
+      "slot": 1
+    }
+  ],
+  "chat": [],
+  "replay": [
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "BA/CFc+",
+        "rotation": "R90",
+        "position": [
+          0,
+          -1
+        ]
+      },
+      "player": 0,
+      "clock": 1494
+    },
+    {
+      "type": "PASS",
+      "payload": {},
+      "player": 0,
+      "clock": 2691
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.3103974057519978
+      },
+      "player": 0,
+      "clock": 2696
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "WT/FCRC_2T",
+        "rotation": "R90",
+        "position": [
+          -1,
+          -1
+        ]
+      },
+      "player": 1,
+      "clock": 3634
+    },
+    {
+      "type": "DEPLOY_MEEPLE",
+      "payload": {
+        "pointer": {
+          "position": [
+            -1,
+            -1
+          ],
+          "location": "N",
+          "feature": "City"
+        },
+        "meepleId": "1.small.1"
+      },
+      "player": 1,
+      "clock": 4138
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.01562039058477005
+      },
+      "player": 1,
+      "clock": 4841
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "WT/CCRF_2T",
+        "rotation": "R0",
+        "position": [
+          1,
+          -1
+        ]
+      },
+      "player": 0,
+      "clock": 5842
+    },
+    {
+      "type": "DEPLOY_MEEPLE",
+      "payload": {
+        "pointer": {
+          "position": [
+            1,
+            -1
+          ],
+          "location": "N",
+          "feature": "City"
+        },
+        "meepleId": "0.small.1"
+      },
+      "player": 0,
+      "clock": 6436
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.6777647589485516
+      },
+      "player": 0,
+      "clock": 7279
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "gamblers-luck/cfcf",
+        "rotation": "R180",
+        "position": [
+          0,
+          -2
+        ]
+      },
+      "player": 1,
+      "clock": 18545
+    },
+    {
+      "type": "PASS",
+      "payload": {},
+      "player": 1,
+      "clock": 21555
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.5351681893204172
+      },
+      "player": 1,
+      "clock": 21560
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "BA/C",
+        "rotation": "R180",
+        "position": [
+          -1,
+          -2
+        ]
+      },
+      "player": 0,
+      "clock": 27274
+    },
+    {
+      "type": "PASS",
+      "payload": {},
+      "player": 0,
+      "clock": 29467
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.2140889253054168
+      },
+      "player": 0,
+      "clock": 29473
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "BA/C",
+        "rotation": "R180",
+        "position": [
+          1,
+          -2
+        ]
+      },
+      "player": 1,
+      "clock": 30762
+    },
+    {
+      "type": "PASS",
+      "payload": {},
+      "player": 1,
+      "clock": 31890
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.1032763299268622
+      },
+      "player": 1,
+      "clock": 31894
+    }
+  ],
+  "gameAnnotations": {
+    "drawOrder": [
+      "BA/CFc+",
+      "WT/FCRC_2T",
+      "WT/CCRF_2T",
+      "gamblers-luck/cfcf",
+      "BA/C",
+      "BA/C"
+    ],
+    "endTurn": 6
+  },
+  "test": {
+    "description": "Gamblers Luck Watchtowers D6 4value Shields Elimination",
+    "assertions": [
+      "John scored city for 4 points.",
+      "Betty scored city for 4 points.",
+      "Betty has 4 points.",
+      "John has 4 points.",
+      "Phase is GameOverPhase",
+      "Undo is not allowed"
+    ]
+  }
+}
