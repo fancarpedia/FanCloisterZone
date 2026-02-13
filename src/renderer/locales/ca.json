@@ -2,7 +2,7 @@
   "@author": "J0anJosep",
   "@jcz-version": "5.12.1",
   "@fcz-version": "6.1.0",
-  "@version": "0.9.7",
+  "@version": "0.9.8",
   "about": {
     "configuration-file": "Fitxer de configuració",
     "jcloisterzone-game-engine": "Motor de joc del JCloisterZone",
@@ -263,6 +263,7 @@
       "barn": "Graner",
       "big-follower": "Seguidor gran",
       "big-top": "Carpa",
+      "black-tower": "La torre negra",
       "bridge": "Pont",
       "builder": "Constructor",
       "castle": "Castell",

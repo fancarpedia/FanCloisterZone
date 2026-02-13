@@ -2,7 +2,7 @@
   "@author": "Black Bear",
   "@jcz-version": "5.12.1",
   "@fcz-version": "6.1.0",
-  "@version": "0.9.7",
+  "@version": "0.9.8",
   "about": {
     "configuration-file": "Fichier de configuration",
     "jcloisterzone-game-engine": "Moteur de jeu de JCloisterZone",
@@ -263,6 +263,7 @@
       "barn": "Grange",
       "big-follower": "Grand meeple",
       "big-top": "Chapiteau",
+      "black-tower": "La Tour Noire",
       "bridge": "Pont",
       "builder": "Bâtisseur",
       "castle": "Forteresse",

@@ -2,7 +2,7 @@
   "@author": "farin & Scott",
   "@jcz-version": "5.12.1",
   "@fcz-version": "6.1.0",
-  "@version": "0.9.7",
+  "@version": "0.9.8",
   "about": {
     "configuration-file": "Configuration file",
     "jcloisterzone-game-engine": "JCloisterZone Game Engine",
@@ -263,6 +263,7 @@
       "barn": "Barn",
       "big-follower": "Big Meeple",
       "big-top": "Big Top",
+      "black-tower": "Black Tower",
       "bridge": "Bridge",
       "builder": "Builder",
       "castle": "Castle",
