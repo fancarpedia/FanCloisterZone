@@ -47,7 +47,6 @@ class Addons extends EventsBase {
         const res = await fetch(url)
         if (res.status === 200) {
           const addons = await res.json()
-          console.log(addons)
           const appVersion = await ipcRenderer.invoke('get-app-version')
           const isDev = /-alpha/i.test(appVersion)
           const appVer = semver.coerce(appVersion)
