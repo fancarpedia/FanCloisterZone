@@ -7,6 +7,7 @@ export const state = () => ({
   diceRollPanel: null,
   pointsExpression: null,
   returnedMeeplePanel: null,
+  returnedTokenPanel: null,
   layers: {},
   tilePlacementMouseOver: null, // select tile from TilePlacementLayer must be drawn together with regular tils by TileLayer
   zoom: DEFAULT_ZOOM,
@@ -30,6 +31,10 @@ export const mutations = {
 
   returnedMeeplePanel (state, value) {
     state.returnedMeeplePanel = value
+  },
+
+  returnedTokenPanel (state, value) {
+    state.returnedTokenPanel = value
   },
 
   showLayer (state, { layer, props }) {
@@ -76,6 +81,7 @@ export const mutations = {
     state.dragging = null
     state.pointsExpression = null
     state.returnedMeeplePanel = null
+    state.returnedTokenPanel = null
     state.layers = {}
     state.tilePlacementMouseOver = null
     state.zoom = DEFAULT_ZOOM
