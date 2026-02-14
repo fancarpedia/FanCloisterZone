@@ -24,7 +24,10 @@ class Addons extends EventsBase {
 
     this.AUTO_DOWNLOADED = {
       classic: {
-        url: 'https://jcloisterzone.com/packages/classic/classic-6-5.9.0.jca',
+        url: [
+          'https://jcloisterzone.com/packages/classic/classic-6-5.9.0.jca',
+          'https://mega.nz/file/HVJnFQaa#MIMfsuyvFopCeyWZZTcotXQcMpycHqA5UzHE4Fa1RFU'
+        ],
         version: 6,
         sha256: '26b1fc8edc37c9df162b6b5a74164c6ba09951e450df7b62f2568c2db03327b0'
       }
@@ -48,7 +51,7 @@ class Addons extends EventsBase {
         if (res.status === 200) {
           const addons = await res.json()
           const appVersion = await ipcRenderer.invoke('get-app-version')
-          const isDev = /-alpha/i.test(appVersion)
+          const isDev = /-alpha|-beta|-rc/i.test(appVersion)
           const appVer = semver.coerce(appVersion)
 
           this.downloadable = addons.addons
@@ -219,7 +222,43 @@ class Addons extends EventsBase {
     // Install after verification
     await this.install(downloadedPath)
   }
-      
+
+  downloadFromMega (link, zipName, file, resolve, reject) {
+    try {
+      const megaFile = File.fromURL(link)
+      let downloadedBytes = 0
+    
+      // Set total size if available
+      megaFile.loadAttributes().then(() => {
+        this.ctx.app.store.commit('downloadSize', megaFile.size)
+      }).catch(err => console.warn('Could not load Mega file size:', err))
+    
+      megaFile
+        .download()
+        .on('data', chunk => {
+          downloadedBytes += chunk.length
+          this.ctx.app.store.commit('downloadProgress', downloadedBytes)
+        })
+        .pipe(file)
+        .on('error', function (err) {
+          console.error(err)
+          fs.unlink(zipName, unlinkErr => {
+            console.warn(unlinkErr)
+          })
+          reject(err.message)
+        })
+        .on('finish', function () {
+          file.close(resolve)
+        })
+    } catch (error) {
+      console.error(error)
+      fs.unlink(zipName, unlinkErr => {
+        console.warn(unlinkErr)
+      })
+      reject(error.message)
+    }
+  }
+
   async install (filePath) {
     const addonsFolder = await this.mkAddonsFolder()
 
@@ -274,6 +313,39 @@ class Addons extends EventsBase {
     
   }
 
+  async urlExists (url) {
+    // Check if it's a Mega.nz link
+    if (url.includes('mega.nz')) {
+      return await this.checkMegaFile(url)
+    }
+  
+    try {
+      const controller = new AbortController()
+      const timeoutId = setTimeout(() => controller.abort(), 5000) // 5 second timeout
+    
+      const response = await fetch(url, { 
+        method: 'HEAD',
+        signal: controller.signal
+      })
+      clearTimeout(timeoutId)
+    
+      return response.ok
+    } catch (error) {
+      console.warn(`Fetch failed: ${error.message}`)
+      return false
+    }
+  }
+
+  async checkMegaFile (url) {
+    try {
+      const file = File.fromURL(url)
+      await file.loadAttributes()
+      return true
+    } catch (error) {
+      return false
+    }
+  }
+
   async updateOutdatedClassic (installedAddons) {
     const classicArtwork = installedAddons.find(({ id }) => id === 'classic')
     if (classicArtwork) {
@@ -284,8 +356,21 @@ class Addons extends EventsBase {
       installedAddons.splice(installedAddons.indexOf(classicArtwork), 1)
     }
 
-    console.log('Downloading classic artwork.')
-    const link = this.AUTO_DOWNLOADED.classic.url
+    const links = this.getDefaultArtworkUrl()
+    let link = null
+
+    for (let i = 0; i < links.length; i++) {
+      try {
+        const exists = await this.urlExists(links[i])
+        if (exists) {
+          link = links[i]
+          break
+        }
+      } catch (error) {
+        continue
+      }
+    }
+
     this.ctx.app.store.commit('download', {
       name: 'classic.jca',
       description: 'Downloading classic artwork',
@@ -304,35 +389,39 @@ class Addons extends EventsBase {
       // ignore
     }
     const file = fs.createWriteStream(zipName)
-    try {
-      await new Promise((resolve, reject) => {
-        let downloadedBytes = 0
-        // there was troubleswith Rosti.cz cert after server is down although cert is valid, disable as workaround
-        const agent = new https.Agent({ rejectUnauthorized: false })
-        https.get(link, { agent }, response => {
-          const total = parseInt(response.headers['content-length'])
-          this.ctx.app.store.commit('downloadSize', total)
-          response.on('data', chunk => {
-            downloadedBytes += chunk.length
-            this.ctx.app.store.commit('downloadProgress', downloadedBytes)
-          })
-          response.pipe(file)
-
-          file.on('finish', function () {
-            file.close(resolve)
-          })
-        }).on('error', function (err) { // Handle errors
-          console.error(err)
-          fs.unlink(zipName, unlinkErr => {
-            console.warn(unlinkErr)
-          }) // Delete the file async. (But we don't check the result)
-          reject(err.message)
-        })
-      })
-    } catch (e) {
-      this.ctx.app.store.commit('download', null)
-      return
-    }
+	try {
+	  await new Promise((resolve, reject) => {
+	    if (link.includes('mega.nz')) {
+	      // Download from Mega.nz
+	      this.downloadFromMega(link, zipName, file, resolve, reject)
+	    } else {
+	      // Download via HTTPS
+	      let downloadedBytes = 0
+	      const agent = new https.Agent({ rejectUnauthorized: false })
+	      https.get(link, { agent }, response => {
+	        const total = parseInt(response.headers['content-length'])
+	        this.ctx.app.store.commit('downloadSize', total)
+	        response.on('data', chunk => {
+	          downloadedBytes += chunk.length
+	          this.ctx.app.store.commit('downloadProgress', downloadedBytes)
+	        })
+	        response.pipe(file)
+	        file.on('finish', function () {
+	          file.close(resolve)
+	        })
+	      }).on('error', function (err) {
+	        console.error(err)
+	        fs.unlink(zipName, unlinkErr => {
+	          console.warn(unlinkErr)
+	        })
+	        reject(err.message)
+	      })
+	    }
+	  })
+	} catch (e) {
+	  this.ctx.app.store.commit('download', null)
+	  return
+	}
     const checksum = sha256File(zipName)
     if (checksum !== this.AUTO_DOWNLOADED.classic.sha256) {
       console.log('classic.jca checksum mismatch ' + checksum)
