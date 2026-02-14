@@ -675,7 +675,7 @@ export const actions = {
           commit('slot', { ...payload, order: selectedSlot.order })
         } else {
           // take a slot
-          const order = state.slots.filter(s => s.sessionId).length + 1
+          const order = state.slots.filter(s => s.clientId).length + 1
           commit('slot', { ...payload, order })
         }
       } else {
