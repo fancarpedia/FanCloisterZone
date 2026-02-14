@@ -153,6 +153,9 @@ element
 
 $nuxt.$t('index.local.saved-game')
 
+### Mark texts for translation
+`<!-- TRANSLATE -->`
+
 ### Add package failed with Webpack 4 or Node 16 (by use babe this.config?.something or this.value ?? failvervalue
 
 * Append file to `babelRequiredFiles` in `src/renderer/nuxt.config.js` as example for `megajs`
