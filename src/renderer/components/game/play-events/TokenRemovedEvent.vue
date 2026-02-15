@@ -1,6 +1,6 @@
 <template>
   <div
-    class="token-removed points"
+    class="token-removed points align-center"
     :class="{wide: ev.count > 1}"
     @mouseenter="onMouseEnter"
     @mouseleave="onMouseLeave"

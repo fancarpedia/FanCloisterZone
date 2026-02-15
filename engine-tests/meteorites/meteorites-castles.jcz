@@ -1,0 +1,396 @@
+{
+  "appVersion": "6.1.0-alpha.37",
+  "gameId": "1",
+  "name": "",
+  "initialRandom": 0.042805175787919536,
+  "created": "2026-02-15T22:23:44.549Z",
+  "clock": 116179,
+  "setup": {
+    "options": {},
+    "sets": {
+      "basic:1": 1,
+      "meteorites": 1
+    },
+    "elements": {
+      "small-follower": 7,
+      "farmers": true,
+      "meteorite": true,
+      "castle": 1
+    },
+    "rules": {},
+    "timer": null,
+    "start": [
+      {
+        "tile": "BA/RCr",
+        "x": 0,
+        "y": 0,
+        "rotation": 0
+      }
+    ],
+    "addons": {
+      "meteorites": 1
+    }
+  },
+  "players": [
+    {
+      "name": "Ariel",
+      "slot": 0
+    }
+  ],
+  "chat": [],
+  "replay": [
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "BA/CRRR",
+        "rotation": "R180",
+        "position": [
+          0,
+          -1
+        ]
+      },
+      "player": 0,
+      "clock": 4564
+    },
+    {
+      "type": "PASS",
+      "payload": {},
+      "player": 0,
+      "clock": 5002
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.551789003438357
+      },
+      "player": 0,
+      "clock": 5029
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "BA/RFr",
+        "rotation": "R0",
+        "position": [
+          0,
+          1
+        ]
+      },
+      "player": 0,
+      "clock": 6518
+    },
+    {
+      "type": "PASS",
+      "payload": {},
+      "player": 0,
+      "clock": 6785
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.0032627020898137182
+      },
+      "player": 0,
+      "clock": 6798
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "BA/CRr",
+        "rotation": "R0",
+        "position": [
+          -1,
+          -1
+        ]
+      },
+      "player": 0,
+      "clock": 8360
+    },
+    {
+      "type": "DEPLOY_MEEPLE",
+      "payload": {
+        "pointer": {
+          "position": [
+            -1,
+            -1
+          ],
+          "location": "N",
+          "feature": "City"
+        },
+        "meepleId": "0.small.1"
+      },
+      "player": 0,
+      "clock": 9317
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.24996432029405402
+      },
+      "player": 0,
+      "clock": 9585
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "BA/RrC",
+        "rotation": "R180",
+        "position": [
+          -1,
+          1
+        ]
+      },
+      "player": 0,
+      "clock": 11345
+    },
+    {
+      "type": "PASS",
+      "payload": {},
+      "player": 0,
+      "clock": 11943
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.5896420077672433
+      },
+      "player": 0,
+      "clock": 11961
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "BA/CRr",
+        "rotation": "R180",
+        "position": [
+          -1,
+          -2
+        ]
+      },
+      "player": 0,
+      "clock": 14237
+    },
+    {
+      "type": "PASS",
+      "payload": {},
+      "player": 0,
+      "clock": 15102
+    },
+    {
+      "type": "PLACE_TOKEN",
+      "payload": {
+        "token": "CASTLE",
+        "pointer": {
+          "position": [
+            -1,
+            -2
+          ],
+          "location": "S",
+          "feature": "City"
+        }
+      },
+      "player": 0,
+      "clock": 16575
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.598767422270448
+      },
+      "player": 0,
+      "clock": 17022
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "BA/RrC",
+        "rotation": "R0",
+        "position": [
+          -1,
+          2
+        ]
+      },
+      "player": 0,
+      "clock": 20169
+    },
+    {
+      "type": "DEPLOY_MEEPLE",
+      "payload": {
+        "pointer": {
+          "position": [
+            -1,
+            2
+          ],
+          "location": "N",
+          "feature": "City"
+        },
+        "meepleId": "0.small.2"
+      },
+      "player": 0,
+      "clock": 21132
+    },
+    {
+      "type": "PLACE_TOKEN",
+      "payload": {
+        "token": "CASTLE",
+        "pointer": {
+          "position": [
+            -1,
+            2
+          ],
+          "location": "N",
+          "feature": "City"
+        }
+      },
+      "player": 0,
+      "clock": 22483
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.41567521068579083
+      },
+      "player": 0,
+      "clock": 22930
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "meteorites/RRRR",
+        "rotation": "R0",
+        "position": [
+          -1,
+          0
+        ]
+      },
+      "player": 0,
+      "clock": 25657
+    },
+    {
+      "type": "TILE_CONFIRMED",
+      "payload": {
+        "random": 0.6321965420267079
+      },
+      "player": 0,
+      "clock": 43050
+    },
+    {
+      "type": "PASS",
+      "payload": {},
+      "player": 0,
+      "clock": 52771
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.7516177083903406
+      },
+      "player": 0,
+      "clock": 52801
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "BA/LR",
+        "rotation": "R270",
+        "position": [
+          -2,
+          0
+        ]
+      },
+      "player": 0,
+      "clock": 54716
+    },
+    {
+      "type": "PASS",
+      "payload": {},
+      "player": 0,
+      "clock": 55377
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.3993326460608819
+      },
+      "player": 0,
+      "clock": 55393
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "BA/Rr",
+        "rotation": "R0",
+        "position": [
+          1,
+          0
+        ]
+      },
+      "player": 0,
+      "clock": 57045
+    },
+    {
+      "type": "PASS",
+      "payload": {},
+      "player": 0,
+      "clock": 57978
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.6673003493430052
+      },
+      "player": 0,
+      "clock": 57994
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "BA/Rr",
+        "rotation": "R90",
+        "position": [
+          1,
+          1
+        ]
+      },
+      "player": 0,
+      "clock": 59248
+    },
+    {
+      "type": "PASS",
+      "payload": {},
+      "player": 0,
+      "clock": 62926
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.6656243086484075
+      },
+      "player": 0,
+      "clock": 62941
+    }
+  ],
+  "gameAnnotations": {
+    "drawOrder": [
+      "BA/CRRR",
+      "BA/RFr",
+      "BA/CRr",
+      "BA/RrC",
+      "BA/CRr",
+      "BA/RrC",
+      "meteorites/RRRR",
+      "BA/LR",
+      "BA/Rr",
+      "BA/Rr"
+    ],
+    "endTurn": 10
+  },
+  "test": {
+    "description": "Meteorites Castles",
+    "assertions": [
+      "Ariel has 0 points.",
+      "Phase is GameOverPhase",
+      "Undo is not allowed"
+    ]
+  }
+}
