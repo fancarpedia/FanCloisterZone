@@ -43,7 +43,6 @@ export default {
           color = 'white'
           stroke = 'white'
         }
-        console.log(transform)
         return {
           height: t.height,
           tile,
