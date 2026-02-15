@@ -1,0 +1,113 @@
+{
+  "appVersion": "6.1.0-alpha.37",
+  "gameId": "1",
+  "name": "",
+  "initialRandom": 0.25472649601876207,
+  "created": "2026-02-15T22:59:23.710Z",
+  "clock": 53842,
+  "setup": {
+    "sets": {
+      "basic:1": 1,
+      "tower:1": 1
+    },
+    "elements": {
+      "small-follower": 7,
+      "farmers": true,
+      "tower": 1,
+      "black-tower": 1
+    },
+    "rules": {},
+    "timer": null,
+    "start": [
+      {
+        "tile": "BA/RCr",
+        "x": 0,
+        "y": 0,
+        "rotation": 0
+      }
+    ],
+    "options": {}
+  },
+  "players": [
+    {
+      "name": "Ariel",
+      "slot": 0
+    }
+  ],
+  "chat": [],
+  "replay": [
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "TO/RR",
+        "rotation": "R180",
+        "position": [
+          -1,
+          0
+        ]
+      },
+      "player": 0,
+      "clock": 4544
+    },
+    {
+      "type": "PLACE_TOKEN",
+      "payload": {
+        "token": "TOWER_PIECE",
+        "pointer": {
+          "position": [
+            -1,
+            0
+          ],
+          "feature": "Tower",
+          "location": "I"
+        }
+      },
+      "player": 0,
+      "clock": 6577
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.8656191566713527
+      },
+      "player": 0,
+      "clock": 7143
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "TO/RRR",
+        "rotation": "R0",
+        "position": [
+          1,
+          0
+        ]
+      },
+      "player": 0,
+      "clock": 8813
+    }
+  ],
+  "gameAnnotations": {
+    "drawOrder": [
+      "TO/RR",
+      "TO/RRR"
+    ]
+  },
+  "test": {
+    "description": "Tower Black Tower Placements",
+    "assertions": [
+      "Ariel has 0 points.",
+      "Phase is ActionPhase",
+      "Player can pass",
+      "Available action Meeple for SmallFollower",
+      "Meeple SmallFollower options: {Field,ER.SL.SR.WL,[1,0]}; {Field,NL.WR,[1,0]}; {Road,W,[1,0]}; {Road,E,[1,0]}; {Road,N,[1,0]}; {Field,NR.EL,[1,0]}; {Tower,I,[-1,0]}",
+      "Available action TowerPiece for TOWER_PIECE",
+      "Tower piece TOWER_PIECE options: [1,0]; [-1,0]",
+      "Available action TowerPiece for BLACK_TOWER_PIECE",
+      "Tower piece BLACK_TOWER_PIECE options: [1,0]; [-1,0]",
+      "Available action TowerPiece for WHITE_TOWER_PIECE",
+      "Tower piece WHITE_TOWER_PIECE options: [-1,0]",
+      "Undo is allowed"
+    ]
+  }
+}
