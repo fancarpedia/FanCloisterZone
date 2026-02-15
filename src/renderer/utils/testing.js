@@ -488,6 +488,66 @@ class TowerPiecePlacementOptionsAssert {
   }
 }
 
+// -------------------- Capture Follower Options --------------------
+class CaptureFollowerOptionsAssert {
+  constructor(state) {
+    this.state = state
+    this.REGEXP = /^CaptureFollower options: (.*)$/
+  }
+
+  optionsEqual(a, b) {
+    return (
+      a.meepleId === b.meepleId &&
+      a.featurePointer.feature === b.featurePointer.feature &&
+      a.featurePointer.location === b.featurePointer.location &&
+      a.featurePointer.position.length === b.featurePointer.position.length &&
+      a.featurePointer.position.every((v, i) => v === b.featurePointer.position[i])
+    )
+  }
+
+  arraysEqualUnordered(a, b) {
+    if (a.length !== b.length) return false
+    const used = new Array(b.length).fill(false)
+    for (const optionA of a) {
+      let found = false
+      for (let i = 0; i < b.length; i++) {
+        if (!used[i] && this.optionsEqual(optionA, b[i])) {
+          used[i] = true
+          found = true
+          break
+        }
+      }
+      if (!found) return false
+    }
+    return true
+  }
+
+  verify(assertion) {
+    const m = this.REGEXP.exec(assertion)
+    if (!m) return
+
+    const optionsStr = m[1]
+
+    const optionRegex = /\{([^,]+),([^,]+),([^,]+),\[\s*([^\]]*?)\s*\]\}/g
+    const expectedOptions = []
+
+    for (const match of optionsStr.matchAll(optionRegex)) {
+      expectedOptions.push({
+        meepleId: match[1].trim(),
+        featurePointer: {
+          feature: match[2].trim(),
+          location: match[3].trim(),
+          position: match[4].split(',').map(v => Number(v.trim()))
+        }
+      })
+    }
+    const actual = this.state.action.items.find(item => item.type === 'CaptureFollower')
+    if (!actual) return { result: false }
+
+    return { result: this.arraysEqualUnordered(expectedOptions, actual.options) }
+  }
+}
+
 // -------------------- Main verification function --------------------
 export function verifyScenario(state, { description, assertions }) {
   const result = { description, assertions: [] }
@@ -504,7 +564,8 @@ export function verifyScenario(state, { description, assertions }) {
     new FerriesPlacementOptionsAssert(state),
     new MeeplePlacementOptionsAssert(state),
     new TokenSizeAssert(state),
-    new TowerPiecePlacementOptionsAssert(state)
+    new TowerPiecePlacementOptionsAssert(state),
+    new CaptureFollowerOptionsAssert(state)
   ]
 
   for (const assertion of assertions) {

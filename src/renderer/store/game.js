@@ -464,6 +464,13 @@ export const actions = {
             for (const i of gameState.action.items) {
               let options = []
               switch(i.type) {
+                case 'CaptureFollower':
+          	  	  content.test.assertions.push(`Available action ${i.type}`)
+          	  	  for (const o of i.options) {
+          	        options.push(['{',[o.meepleId,o.featurePointer.feature,o.featurePointer.location,['[',o.featurePointer.position.join(','),']'].join('')].join(','),'}'].join(''))
+          	  	  }
+		          content.test.assertions.push(`CaptureFollower options: ${options.join('; ')}`)
+                  break;
           	  	case 'Ferries':
           	  	  content.test.assertions.push(`Available action ${i.type}`)
           	  	  for (const o of i.options) {
