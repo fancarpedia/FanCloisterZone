@@ -12,7 +12,7 @@
           <div>
             <div><span class="label">{{ $t('about.author') }}</span>: Roman Krejčík &amp; fans</div>
             <div class="report-bug" @click="openReportBug"><span class="label">{{ $t('menu.report-bug')}}</span>: Discord</div>
-            <div><span class="label">{{ $t('about.translation') }}</span>: {{ $t('@author') }}</div>
+            <div><span class="label">{{ $t('about.translation') }} ({{ $i18n.locale }})</span>: {{ $t('@author') }}</div>
           </div>
         </div>
       </section>
