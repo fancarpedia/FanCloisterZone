@@ -210,7 +210,6 @@ class TilePlacementOptionsAssert {
   }
 }
 
-
 // -------------------- Undo Assert --------------------
 class UndoAssert {
   constructor(state) {
@@ -411,6 +410,84 @@ class TokenSizeAssert {
   }
 }
 
+// -------------------- Tower Piece Placement Options Assert -------------------- 
+class TowerPiecePlacementOptionsAssert {
+  constructor(state) {
+    // Capture piece type (\S+ = any non-space) and everything after "options:"
+    this.REGEXP = /^Tower piece (\S+) options: (.*)$/
+    this.state = state
+  }
+
+  posKey([x, y]) {
+    return `${x},${y}`
+  }
+
+  indexByPosition(arr) {
+    const map = new Map()
+    for (const item of arr) {
+      // item is the position itself: [x, y]
+      const key = this.posKey(item)
+      map.set(key, item)
+    }
+    return map
+  }
+
+  compareOptions(expected, actual) {
+    const errors = []
+
+    const expectedMap = this.indexByPosition(expected)
+    const actualMap = this.indexByPosition(actual)
+
+    for (const [key, exp] of expectedMap) {
+      if (!actualMap.has(key)) {
+        errors.push({ type: 'extra', position: exp })
+        continue
+      }
+    }
+
+    for (const [key, act] of actualMap) {
+      if (!expectedMap.has(key)) {
+        errors.push({ type: 'missing', position: act })
+      }
+    }
+
+    return errors
+  }
+
+  verify(assertion) {
+    const m = this.REGEXP.exec(assertion)
+    if (!m) return
+
+    const token = m[1]
+    const positionsStr = m[2]
+
+    // Parse expected positions
+    const ENTRY = /\[\s*(-?\d+)\s*,\s*(-?\d+)\s*\]/g
+    const expected = []
+
+    for (const match of positionsStr.matchAll(ENTRY)) {
+      expected.push([Number(match[1]), Number(match[2])])
+    }
+
+    // Find the Tower piece item for this token
+    const towerPiece = this.state.action.items.find(
+      a => a.type === 'TowerPiece' && a.token === token
+    )
+
+    if (!towerPiece || !Array.isArray(towerPiece.options)) {
+      console.error(`Tower piece not found or options not an array:`, towerPiece)
+      return { result: false }
+    }
+
+    const errors = this.compareOptions(expected, towerPiece.options)
+
+    if (errors.length === 0) return { result: true }
+
+    console.log('Tower piece assert errors:', errors)
+    return { result: false }
+  }
+}
+
 // -------------------- Main verification function --------------------
 export function verifyScenario(state, { description, assertions }) {
   const result = { description, assertions: [] }
@@ -426,7 +503,8 @@ export function verifyScenario(state, { description, assertions }) {
     new TunnelTokenPlacementOptionsAssert(state),
     new FerriesPlacementOptionsAssert(state),
     new MeeplePlacementOptionsAssert(state),
-    new TokenSizeAssert(state)
+    new TokenSizeAssert(state),
+    new TowerPiecePlacementOptionsAssert(state)
   ]
 
   for (const assertion of assertions) {
