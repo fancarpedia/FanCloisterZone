@@ -24,8 +24,8 @@
           <div>
             {{ $nuxt.$t('dev.edition') }}:
             <v-btn-toggle v-model="editionIdx" @change="onEditionChange">
-              <v-btn>1st</v-btn>
-              <v-btn>2nd</v-btn>
+              <v-btn>1st<!-- TRANSLATE --></v-btn>
+              <v-btn>2nd<!-- TRANSLATE --></v-btn>
             </v-btn-toggle>
           </div>
 
@@ -92,6 +92,7 @@
 
 <script>
 import { mapGetters, mapState } from 'vuex'
+import isNil from 'lodash/isNil'
 import { Expansion } from '@/models/expansions'
 import ExpansionSymbol from '@/components/ExpansionSymbol'
 import StandaloneTileImage from '@/components/game/StandaloneTileImage'
@@ -112,6 +113,7 @@ export default {
     let selected = null
     for (const expansion of Expansion.all()) {
       for (const release of expansion.releases) {
+        release.title = this.expansionTitle(release.title, !isNil(release.id) ? release.id : release.expansion.name.toLowerCase())
         releases.push(release)
         if (release.title === r) {
           selected = release
@@ -178,6 +180,18 @@ export default {
   methods: {
     showTooltip (loc) {
       this.location = loc
+    },
+
+    expansionTitle (originalTitle, id) {
+      const langId = ['expansion', id].join('.')
+      if (this.$te(langId)) {
+        return this.$t(langId)
+      }
+      const langId_ = langId.replaceAll('_','-')
+      if (this.$te(langId_)) {
+        return this.$t(langId_)
+      }
+      return originalTitle
     },
 
     select (release) {
