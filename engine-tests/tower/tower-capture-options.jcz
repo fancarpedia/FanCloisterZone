@@ -1,0 +1,225 @@
+{
+  "appVersion": "6.1.0-alpha.38",
+  "gameId": "1",
+  "name": "",
+  "initialRandom": 0.9626173852320201,
+  "created": "2026-02-15T23:39:31.127Z",
+  "clock": 138535,
+  "setup": {
+    "options": {},
+    "sets": {
+      "basic:1": 1,
+      "tower:1": 1
+    },
+    "elements": {
+      "small-follower": 7,
+      "farmers": true,
+      "tower": 1
+    },
+    "rules": {},
+    "timer": null,
+    "start": [
+      {
+        "tile": "BA/RCr",
+        "x": 0,
+        "y": 0,
+        "rotation": 0
+      }
+    ]
+  },
+  "players": [
+    {
+      "name": "Ariel",
+      "slot": 0
+    }
+  ],
+  "chat": [],
+  "replay": [
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "TO/F",
+        "rotation": "R0",
+        "position": [
+          0,
+          1
+        ]
+      },
+      "player": 0,
+      "clock": 3892
+    },
+    {
+      "type": "PASS",
+      "payload": {},
+      "player": 0,
+      "clock": 4977
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.05533318886314453
+      },
+      "player": 0,
+      "clock": 4987
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "BA/L",
+        "rotation": "R0",
+        "position": [
+          -1,
+          1
+        ]
+      },
+      "player": 0,
+      "clock": 7167
+    },
+    {
+      "type": "DEPLOY_MEEPLE",
+      "payload": {
+        "pointer": {
+          "position": [
+            -1,
+            1
+          ],
+          "location": "I",
+          "feature": "Monastery"
+        },
+        "meepleId": "0.small.1"
+      },
+      "player": 0,
+      "clock": 8255
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.4203903171483607
+      },
+      "player": 0,
+      "clock": 8673
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "BA/LR",
+        "rotation": "R0",
+        "position": [
+          -2,
+          1
+        ]
+      },
+      "player": 0,
+      "clock": 10279
+    },
+    {
+      "type": "DEPLOY_MEEPLE",
+      "payload": {
+        "pointer": {
+          "position": [
+            -2,
+            1
+          ],
+          "location": "I",
+          "feature": "Monastery"
+        },
+        "meepleId": "0.small.2"
+      },
+      "player": 0,
+      "clock": 11237
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.29042770710232
+      },
+      "player": 0,
+      "clock": 11425
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "BA/LR",
+        "rotation": "R270",
+        "position": [
+          -1,
+          0
+        ]
+      },
+      "player": 0,
+      "clock": 18558
+    },
+    {
+      "type": "DEPLOY_MEEPLE",
+      "payload": {
+        "pointer": {
+          "position": [
+            -1,
+            0
+          ],
+          "location": "I",
+          "feature": "Monastery"
+        },
+        "meepleId": "0.small.3"
+      },
+      "player": 0,
+      "clock": 19529
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.9823450868665036
+      },
+      "player": 0,
+      "clock": 20639
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "TO/RrC",
+        "rotation": "R0",
+        "position": [
+          1,
+          0
+        ]
+      },
+      "player": 0,
+      "clock": 22856
+    },
+    {
+      "type": "PLACE_TOKEN",
+      "payload": {
+        "token": "TOWER_PIECE",
+        "pointer": {
+          "position": [
+            0,
+            1
+          ],
+          "feature": "Tower",
+          "location": "I"
+        }
+      },
+      "player": 0,
+      "clock": 29016
+    }
+  ],
+  "gameAnnotations": {
+    "drawOrder": [
+      "TO/F",
+      "BA/L",
+      "BA/LR",
+      "BA/LR"
+    ]
+  },
+  "test": {
+    "description": "Tower Capture Options",
+    "assertions": [
+      "Ariel has 0 points.",
+      "Phase is TowerCapturePhase",
+      "Player can pass",
+      "Available action CaptureFollower",
+      "CaptureFollower options: {0.small.1,Monastery,I,[-1,1]}",
+      "Undo is allowed"
+    ]
+  }
+}
