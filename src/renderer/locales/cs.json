@@ -4,11 +4,13 @@
   "@fcz-version": "6.0.0",
   "@version": "0.8.22",
   "about": {
+    "author": "Author",
     "configuration-file": "Konfigurační soubor",
+    "fantitle": "FanCloisterZone Edition",
     "jcloisterzone-game-engine": "Herní engine JCloisterZone",
     "system-java-version": "Verze systému Java",
     "title": "JCloisterZone",
-    "fantitle": "FanCloisterZone Edition",
+    "translation": "Translation",
     "version": "verze"
   },
   "bookmarks": {

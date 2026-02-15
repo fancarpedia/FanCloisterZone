@@ -4,11 +4,13 @@
   "@fcz-version": "6.0.0",
   "@version": "0.8.13",
   "about": {
+    "author": "Author",
     "configuration-file": "Файл конфигурации",
+    "fantitle": "FanCloisterZone Edition",
     "jcloisterzone-game-engine": "Игровой движок JCloisterZone",
     "system-java-version": "Версия Java системы",
     "title": "JCloisterZone",
-    "fantitle": "FanCloisterZone Edition",
+    "translation": "Translation",
     "version": "версия"
   },
   "bookmarks": {

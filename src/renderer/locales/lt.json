@@ -4,11 +4,13 @@
   "@fcz-version": "6.0.0",
   "@version": "0.8.22",
   "about": {
+    "author": "Author",
     "configuration-file": "Nustatymų aplankas",
+    "fantitle": "FanCloisterZone Edition",
     "jcloisterzone-game-engine": "JCloisterZone Žaidimo variklis",
     "system-java-version": "Sistemos Java Versija",
     "title": "JCloisterZone",
-    "fantitle": "FanCloisterZone Edition",
+    "translation": "Translation",
     "version": "versija"
   },
   "bookmarks": {

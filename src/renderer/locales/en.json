@@ -2,13 +2,15 @@
   "@author": "farin & Scott",
   "@jcz-version": "5.12.1",
   "@fcz-version": "6.1.0",
-  "@version": "0.9.8",
+  "@version": "0.9.10",
   "about": {
+    "author": "Author",
     "configuration-file": "Configuration file",
+    "fantitle": "FanCloisterZone Edition",
     "jcloisterzone-game-engine": "JCloisterZone Game Engine",
     "system-java-version": "System Java Version",
     "title": "JCloisterZone",
-    "fantitle": "FanCloisterZone Edition",
+    "translation": "Translation",
     "version": "version"
   },
   "bookmarks": {
