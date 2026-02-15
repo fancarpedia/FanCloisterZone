@@ -4,9 +4,7 @@ import { ipcRenderer } from 'electron'
 import { compare } from 'compare-versions'
 
 import difference from 'lodash/difference'
-import pick from 'lodash/pick'
 import sortBy from 'lodash/sortBy'
-import omit from 'lodash/omit'
 import range from 'lodash/range'
 import zip from 'lodash/zip'
 import isNil from 'lodash/isNil'
@@ -19,7 +17,7 @@ import { randomId } from '@/utils/random'
 import { getAppVersion } from '@/utils/version'
 import { isSameFeature, generateSaveContent } from '@/utils/gameUtils'
 import { verifyScenario } from '@/utils/testing'
-import { Rule, getDefaultRules } from '@/models/rules'
+import { getDefaultRules } from '@/models/rules'
 
 const getSavedGameFilters = () => {
   return [{ name: $nuxt.$t('index.local.saved-game'), extensions: ['jcz'] }]
@@ -821,7 +819,6 @@ export const actions = {
   },
 
   close ({ dispatch, commit, rootState }) {
-    console.log('Game close requested')
     commit('id', null)
     if (rootState.networking.connectionType !== 'online') {
       const { $engine } = this._vm
