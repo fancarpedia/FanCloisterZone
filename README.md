@@ -146,6 +146,9 @@ element
 
 ### Use translated texts in Vue
 #### Usage in `<template>`
+As parameter: `:parameter="$t('about.fantitle')"`
+
+As text: `{{ $t('about.fantitle') }}`
 
 #### Usage in `<script>`
 
