@@ -485,6 +485,13 @@ export const actions = {
           	  	  }
 		          content.test.assertions.push(`TilePlacement ${i.tileId} options: ${options.join('; ')}`)
           	  	  break;
+                case 'TowerPiece':
+          	  	  content.test.assertions.push(`Available action ${i.type} for ${i.token}`)
+          	      for (const o of i.options) {
+          	        options.push(`[${o.join(',')}]`)
+          	  	  }
+		          content.test.assertions.push(`Tower piece ${i.token} options: ${options.join('; ')}`)
+          	  	  break;
           	  	case 'Tunnel':
           	  	  content.test.assertions.push(`Available action ${i.type} for ${i.token}`)
                   for (const o of i.options) {
