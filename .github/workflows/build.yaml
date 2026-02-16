@@ -21,6 +21,22 @@ jobs:
         with:
           node-version: 16
       
+      # Step 2.5: List and select older Xcode (macOS only)
+      - name: List installed Xcode versions
+        if: runner.os == 'macOS'
+        run: |
+          echo "Available Xcode versions:"
+          ls /Applications | grep Xcode
+      
+      - name: Select Xcode 14.3.1 (older version)
+        if: runner.os == 'macOS'
+        run: sudo xcode-select --switch /Applications/Xcode_14.3.1.app/Contents/Developer
+        continue-on-error: true
+      
+      - name: Show selected Xcode version
+        if: runner.os == 'macOS'
+        run: xcodebuild -version
+      
       # Step 3: Fix distutils for macOS
       - name: Install setuptools for node-gyp (macOS)
         if: runner.os == 'macOS'
