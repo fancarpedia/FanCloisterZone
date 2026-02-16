@@ -25,6 +25,7 @@ export class Expansion {
     this.enforces = options.enforces || []
     this.implies = options.implies || []
     this.impliesAllowed = options.impliesAllowed || []
+    this.ai = options.ai || false
   }
 
   static register (expansion) {
@@ -59,12 +60,14 @@ export const WINTER = Expansion.WINTER = new Expansion('WINTER', 'Winter')
 
 // $t('expansion.inns-and-cathedrals')
 export const INNS_AND_CATHEDRALS = Expansion.INNS_AND_CATHEDRALS = new Expansion('INNS_AND_CATHEDRALS', 'Inns & Cathedrals', {
-  implies: ['big-follower', 'cathedral', 'inn']
+  implies: ['big-follower', 'cathedral', 'inn'],
+  ai: true
 })
 // $t('expansion.traders-and-builders')
 export const TRADERS_AND_BUILDERS = Expansion.TRADERS_AND_BUILDERS = new Expansion('TRADERS_AND_BUILDERS', 'Traders & Builders', {
   implies: ['builder', 'pig', 'traders'],
-  impliesAllowed: ['pig-herd'] // expansion makes pig-herd enabled but don't automatically allows it
+  impliesAllowed: ['pig-herd'], // expansion makes pig-herd enabled but don't automatically allows it
+  ai: true
 })
 // $t('expansion.princess-and-dragon')
 export const PRINCESS_AND_DRAGON = Expansion.PRINCESS_AND_DRAGON = new Expansion('PRINCESS_AND_DRAGON', 'The Princess & The Dragon', {
@@ -94,12 +97,18 @@ export const UNDER_THE_BIG_TOP = Expansion.UNDER_THE_BIG_TOP = new Expansion('UN
 // $t('expansion.king-and-robber')
 export const KING_AND_ROBBER = Expansion.KING_AND_ROBBER = new Expansion('KING_AND_ROBBER', 'King and Robber', { implies: ['king', 'robber'] })
 // $t('expansion.river')
-export const RIVER = Expansion.RIVER = new Expansion('RIVER', 'The River', { enforces: ['river'] }, [
+export const RIVER = Expansion.RIVER = new Expansion('RIVER', 'The River', { 
+  enforces: ['river'],
+  ai: true
+}, [
   new Release('The River I', ['river/1'], { id: 'river-I' }),
   new Release('The River II', ['river/2'], { id: 'river-II' })
 ])
 // $t('expansion.siege')
-export const SIEGE = Expansion.SIEGE = new Expansion('SIEGE', 'Siege', { implies: ['siege', 'escape'] }, [
+export const SIEGE = Expansion.SIEGE = new Expansion('SIEGE', 'Siege', {
+  implies: ['siege', 'escape'],
+  ai: false
+}, [
   new Release('The Cathars / Siege', ['siege/cathars'], { id: 'cathars', note: 'The Cathars (2004), reprinted as Siege (2008)' }),
   new Release('The Besiegers', ['siege/besiegers'], { id: 'besiegers', note: '(2013)' })
 ])
@@ -109,7 +118,9 @@ export const COUNT = Expansion.COUNT = new Expansion('COUNT', 'The Count of Carc
   new Release('The Count of Carcassonne', ['count'], { id: 'count', max: 1 })
 ])
 // $t('expansion.gq11')
-export const GQ11 = Expansion.GQ11 = new Expansion('GQ11', 'The Mini Expansion (GQ11)', {}, [
+export const GQ11 = Expansion.GQ11 = new Expansion('GQ11', 'The Mini Expansion (GQ11)', {
+  ai: true
+}, [
   new Release('The Mini Expansion (GQ11)', ['gq11', 'gq11/river'], { id: 'gq11' })
 ])
 // $t('expansion.cult')
@@ -128,7 +139,10 @@ export const CORN_CIRCLES = Expansion.CORN_CIRCLES = new Expansion('CORN_CIRCLES
 // $t('expansion.festival')
 export const FESTIVAL = Expansion.FESTIVAL = new Expansion('FESTIVAL', 'The Festival', { implies: ['festival'] })
 // $t('expansion.wind-roses')
-export const WIND_ROSES = Expansion.WIND_ROSES = new Expansion('WIND_ROSES', 'The Wind Roses', { enforces: ['wind-rose'] })
+export const WIND_ROSES = Expansion.WIND_ROSES = new Expansion('WIND_ROSES', 'The Wind Roses', {
+  enforces: ['wind-rose'],
+  ai: true
+})
 // $t('expansion.monasteries')
 export const MONASTERIES = Expansion.MONASTERIES = new Expansion('MONASTERIES', 'Monasteries', { enforces: ['monastery'] })
 
@@ -146,7 +160,10 @@ export const MAGE_AND_WITCH = Expansion.MAGE_AND_WITCH = new Expansion('MAGE_AND
 })
 
 // $t('expansion.watchtowers')
-export const WATCHTOWERS = Expansion.WATCHTOWERS = new Expansion('WATCHTOWERS', 'The Watchtowers', { enforces: ['watchtower'] })
+export const WATCHTOWERS = Expansion.WATCHTOWERS = new Expansion('WATCHTOWERS', 'The Watchtowers', {
+  enforces: ['watchtower'],
+  ai: true
+})
 
 // $t('expansion.russian-promos')
 export const RUSSIAN_PROMOS = Expansion.RUSSIAN_PROMOS = new Expansion('RUSSIAN_PROMOS', 'Russian Promos', { enforces: ['yaga', 'russian-trap'] }, [
@@ -155,6 +172,11 @@ export const RUSSIAN_PROMOS = Expansion.RUSSIAN_PROMOS = new Expansion('RUSSIAN_
 // $t('expansion.labyrinth')
 export const LABYRINTH = Expansion.LABYRINTH = new Expansion('LABYRINTH', 'The Labyrinth', { enforces: ['labyrinth'] })
 // $t('expansion.darmstadt')
-export const DARMSTADT = Expansion.DARMSTADT = new Expansion('DARMSTADT', 'Darmstadt', { enforces: ['church'] })
+export const DARMSTADT = Expansion.DARMSTADT = new Expansion('DARMSTADT', 'Darmstadt', {
+  enforces: ['church'],
+  ai: true
+})
 // $t('expansion.spiel-doch')
-export const SPIEL_DOCH = Expansion.SPIEL_DOCH = new Expansion('SPIEL_DOCH', 'Spiel Doch')
+export const SPIEL_DOCH = Expansion.SPIEL_DOCH = new Expansion('SPIEL_DOCH', 'Spiel Doch', {
+  ai: true
+})

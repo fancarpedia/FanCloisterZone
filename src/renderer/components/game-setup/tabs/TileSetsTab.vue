@@ -51,13 +51,12 @@
     </ConfigSection>
 
     <ConfigSection
-      v-if="$tiles.expansions.length && !ai"
+      v-if="fanExpansions.length > 0"
       :title="$t('game-setup.tiles.fan-expansions')"
     >
       <div class="expansions">
         <ExpansionBox
-          v-for="exp in $tiles.expansions"
-          v-if="!ai"
+          v-for="exp in fanExpansions"
           :key="exp.name"
           :expansion="exp"
           @open-detail="openDetail"
@@ -96,11 +95,17 @@ export default {
     }
   },
 
-  computed: mapState({
-    ai: state => !!state.gameSetup.ai,
-    sets: state => state.gameSetup.sets
-  }),
+  computed: {
+    ...mapState({
+      ai: state => !!state.gameSetup.ai,
+      sets: state => state.gameSetup.sets,
+    }),
 
+    fanExpansions () {
+      return this.$tiles.expansions.filter(e => !this.ai || e.ai)
+    }
+  },
+  
   methods: {
     openDetail (exp) {
       this.detailExpansion = exp

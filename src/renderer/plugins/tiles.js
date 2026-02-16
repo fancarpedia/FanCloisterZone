@@ -3,6 +3,9 @@ import path from 'path'
 
 import Vue from 'vue'
 import sortBy from 'lodash/sortBy'
+import isNil from 'lodash/isNil'
+import semver from 'semver'
+import { ipcRenderer } from 'electron'
 
 import { Expansion, Release } from '@/models/expansions'
 import { GameElement } from '@/models/elements'
@@ -290,6 +293,9 @@ class Tiles extends EventsBase {
         })
         sets[id] = set
       })
+      
+      const appVersion = await ipcRenderer.invoke('get-app-version')
+      const appVer = semver.coerce(appVersion)
 
       doc.querySelectorAll('expansion').forEach(el => {
         const name = el.getAttribute('id')
@@ -303,10 +309,12 @@ class Tiles extends EventsBase {
         const tileSets = Array.from(el.querySelectorAll('ref[tile-set]')).map(ref => ref.getAttribute('tile-set'))
         const enforces = Array.from(el.querySelectorAll('enforces[element]')).map(ref => ref.getAttribute('element'))
         const implies = Array.from(el.querySelectorAll('implies[element]')).map(ref => ref.getAttribute('element'))
+        const minimumVersionForAI = el.querySelector('minimumVersionForAI') || null
+        const ai = isNil(minimumVersionForAI) ? false : semver.gte(appVer, semver.coerce(minimumVersionForAI.textContent))
 
         const svgIcon = el.querySelector('icon svg')
 
-        const exp = new Expansion(name, title, { enforces, implies }, [new Release(name, tileSets)])
+        const exp = new Expansion(name, title, { enforces, implies, ai }, [new Release(name, tileSets)])
         if (svgIcon) {
           this.symbols.push(`<symbol id="expansion-${name}" viewBox="${svgIcon.getAttribute('viewBox')}">${svgIcon.innerHTML}</symbol>`)
           exp.svgIcon = true
