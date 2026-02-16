@@ -299,11 +299,13 @@ async function main() {
   console.log('\n=== Summary ===');
   const successful = results.filter(r => r.success).length;
   const failed = results.filter(r => !r.success).length;
+  const updated = updatedLanguages.length;
   
   console.log(`Total: ${results.length} languages`);
   console.log(`Successful: ${successful}`);
   console.log(`Failed: ${failed}`);
-  console.log(`✓ Updated: ${updatedLanguages.join(', ')}`);
+  console.log(`Updated locales: ${updatedLanguages.join(', ')}`);
+  console.log(`Updated: ${updated}`);
   
   if (newLanguages.length > 0) {
     console.log(`⚠️  NEW LANGUAGES ADDED: ${newLanguages.join(', ')}`);
