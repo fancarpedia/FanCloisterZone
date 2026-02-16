@@ -297,6 +297,9 @@ export default {
 </script>
 
 <style lang="sass" scoped>
+*
+  user-select: none
+
 .landing-view
   position: relative
   display: flex

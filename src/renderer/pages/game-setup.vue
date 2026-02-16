@@ -131,6 +131,9 @@ export default {
 </script>
 
 <style lang="sass" scoped>
+*
+  user-select: none
+
 .detail-pack
   padding: 20px
 

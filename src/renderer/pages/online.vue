@@ -397,6 +397,9 @@ export default {
 </script>
 
 <style lang="sass" scoped>
+*
+  user-select: none
+
 .online-page
   min-height: 100vh
 

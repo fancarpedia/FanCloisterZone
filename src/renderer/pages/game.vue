@@ -285,6 +285,9 @@ export default {
 </script>
 
 <style lang="sass" scoped>
+*
+  user-select: none
+
 .game-view
   position: relative
   display: flex

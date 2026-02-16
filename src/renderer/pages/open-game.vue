@@ -39,7 +39,7 @@
           </template>
           <span>{{ $t('game-setup.open-game.share-the-key') }}</span>
         </v-tooltip>
-        <strong @click="selectOnClick">{{ gameKey }}</strong>
+        <strong class="game-key" @click="selectOnClick">{{ gameKey }}</strong>
       </div>
 
       <HeaderGameButton
@@ -282,6 +282,9 @@ export default {
 </script>
 
 <style lang="sass" scoped>
+*
+  user-select: none
+
 .game-name
   flex-grow: 1
   font-size: 20px
@@ -369,6 +372,9 @@ h2
 .options
   padding: 30px 20px 40px
   order: 2
+
+.game-key
+  user-select: text
 
 @media (max-width: 1079px)
   .slots
