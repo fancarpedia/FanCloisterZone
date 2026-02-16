@@ -31,13 +31,13 @@
       v-show="!pointsExpression && !notifyConnectionClosed && !returnedMeeplePanel && !returnedTokenPanel && !diceRollPanel"
       :action="action"
       :phase="phase"
-      :local="local"
+      :local="local && !ai"
     >
       <template
         v-if="action.canPass"
         #default="{ plain, label }"
       >
-        <template v-if="local">
+        <template v-if="local && !ai">
           <span v-if="plain !== ''" class="skip-text text">{{ $t('game.action.or') }}</span>
           <div class="pass-item">
             <v-btn :large="$vuetify.breakpoint.height > 768" color="secondary" @click="pass">{{ label || $t('game.action.skip-action') }}</v-btn>
