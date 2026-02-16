@@ -398,9 +398,11 @@
     },
     "create": {
       "click-to-assign": "klik om toe te wijzen",
+      "local-ai-player": "local ai player",
       "local-player": "lokale speler",
       "name": "Naam",
       "open-slot": "open plaats",
+      "remote-ai-player": "remote ai player",
       "remote-player": "externe speler",
       "rename-player": "Speler hernoemen",
       "waiting-for-player": "wachten op tegenspeler"
@@ -419,6 +421,7 @@
       "assign-all-players-to-start": "Alle spelers aan het begin toewijzen",
       "hide-remaining-tiles-cheat-sheet": "Afkijklijst met overgebleven tegels verbergen",
       "name": "Naam",
+      "no-ai-in-game": "No AI in game",
       "no-player-in-game": "Er zijn geen spelers",
       "options": "Opties",
       "public-game": "Openbaar spel",
@@ -615,6 +618,7 @@
       "local-games": "Lokale spellen",
       "my-favorites": "mijn favorieten",
       "new-game": "Nieuw spel",
+      "new-game-against-ai": "New game against AI",
       "open-game": "Open spel",
       "saved-game": "Saved game",
       "title": "Door speler georganiseerde spellen"
@@ -667,6 +671,7 @@
     "leave-game": "Spel verlaten",
     "load-setup": "Opzet laden",
     "new-game": "Nieuw spel",
+    "new-game-against-ai": "New Game Against AI",
     "online": "Online",
     "open-game": "Spel openen",
     "playonline-connect": "Online spelen",

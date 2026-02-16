@@ -6,6 +6,7 @@
     }"
   >
     <RuleBox
+      v-if="!setup.ai"
       :setup="setup"
       :rules="[Rule.LITTLE_BUILDINGS_SCORING]"
       :read-only="readOnly"
@@ -16,6 +17,7 @@
     </RuleBox>
 
     <RuleBox
+      v-if="!setup.ai"
       :setup="setup"
       :rules="[Rule.KING_AND_ROBBER_SCORING]"
       :read-only="readOnly"

@@ -398,9 +398,11 @@
     },
     "create": {
       "click-to-assign": "apasă pentru a atribui",
+      "local-ai-player": "local ai player",
       "local-player": "jucător local",
       "name": "Nume",
       "open-slot": "deschide locul",
+      "remote-ai-player": "remote ai player",
       "remote-player": "jucător de la distanță",
       "rename-player": "Redenumește jucătorul",
       "waiting-for-player": "se așteaptă după jucător"
@@ -419,6 +421,7 @@
       "assign-all-players-to-start": "Atribuie toți jucătorii pentru a începe",
       "hide-remaining-tiles-cheat-sheet": "Ascunde fițuica cartonașelor rămase",
       "name": "Nume",
+      "no-ai-in-game": "No AI in game",
       "no-player-in-game": "Niciun jucător în partidă",
       "options": "Opțiuni",
       "public-game": "Partidă publică",
@@ -615,6 +618,7 @@
       "local-games": "Partide locale",
       "my-favorites": "favoritele mele",
       "new-game": "Partidă nouă",
+      "new-game-against-ai": "New game against AI",
       "open-game": "Deschide partidă",
       "saved-game": "Partidă salvată",
       "title": "Partide găzduite de jucător"
@@ -667,6 +671,7 @@
     "leave-game": "Părăsește partida",
     "load-setup": "Încarcă configurație",
     "new-game": "Partidă nouă",
+    "new-game-against-ai": "New Game Against AI",
     "online": "Online",
     "open-game": "Deschide partidă",
     "playonline-connect": "Joacă online",

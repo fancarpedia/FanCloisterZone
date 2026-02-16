@@ -398,11 +398,11 @@
     },
     "create": {
       "click-to-assign": "kliknutím zvoľte",
-      "local-ai-player": "miestne ai",
+      "local-ai-player": "local ai player",
       "local-player": "miestny hráč",
       "name": "Meno",
       "open-slot": "otvorené",
-      "remote-ai-player": "vzdialené ai",
+      "remote-ai-player": "remote ai player",
       "remote-player": "vzdialený hráč",
       "rename-player": "Premenovať hráča",
       "waiting-for-player": "čakáme na hráča"
@@ -421,6 +421,7 @@
       "assign-all-players-to-start": "Priraďte všetkých hráčov, aby začali",
       "hide-remaining-tiles-cheat-sheet": "Skryť zostávajúce kartičky",
       "name": "Názov",
+      "no-ai-in-game": "No AI in game",
       "no-player-in-game": "Žiaden hráč v hre",
       "options": "možnosti",
       "public-game": "Verejná hra",
@@ -617,6 +618,7 @@
       "local-games": "Miestne hry",
       "my-favorites": "moje obľúbené",
       "new-game": "Nová hra",
+      "new-game-against-ai": "New game against AI",
       "open-game": "Otvoriť uloženú hru",
       "saved-game": "Uložené hry",
       "title": "Hry na tomto počítači"
@@ -669,6 +671,7 @@
     "leave-game": "Opustiť hru",
     "load-setup": "Načítať nastavenie",
     "new-game": "Nová hra",
+    "new-game-against-ai": "New Game Against AI",
     "online": "Online",
     "open-game": "Otvoriť uloženú hru",
     "playonline-connect": "Hrajte online",

@@ -398,9 +398,11 @@
     },
     "create": {
       "click-to-assign": "paspausti čia",
+      "local-ai-player": "local ai player",
       "local-player": "vietinis žaidėjas",
       "name": "Vardas",
       "open-slot": "Pridėti",
+      "remote-ai-player": "remote ai player",
       "remote-player": "nuotolinis žaidėjas",
       "rename-player": "Pervadinti",
       "waiting-for-player": "laukiama žaidėjų"
@@ -419,6 +421,7 @@
       "assign-all-players-to-start": "Pradėti žaidimą",
       "hide-remaining-tiles-cheat-sheet": "Paslėpti likusių kortelių sąrašą (špargalkę)",
       "name": "Vardas",
+      "no-ai-in-game": "No AI in game",
       "no-player-in-game": "Žaidimė nėra žaidėjų",
       "options": "Nustatymai",
       "public-game": "Viešas žaidimas",
@@ -615,6 +618,7 @@
       "local-games": "Vietiniai žaidimai",
       "my-favorites": "mano mėgstamiausi",
       "new-game": "Naujas žaidimas",
+      "new-game-against-ai": "New game against AI",
       "open-game": "Atviras žaidimas",
       "saved-game": "Saved game",
       "title": "Žaidėjui priklausantys žaidimai"
@@ -667,6 +671,7 @@
     "leave-game": "Palikti Žaidimą",
     "load-setup": "Įkelti nustatymus",
     "new-game": "Naujas Žaidimas",
+    "new-game-against-ai": "New Game Against AI",
     "online": "Prisijungęs",
     "open-game": "Atidaryti žaidimą",
     "playonline-connect": "Žaisti Internete",

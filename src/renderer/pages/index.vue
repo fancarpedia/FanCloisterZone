@@ -115,6 +115,10 @@
           {{ $t('index.local.new-game') }}
         </v-btn>
 
+        <v-btn v-if="settings.devMode === true" large color="secondary" @click="newGameAI()">
+          {{ $t('index.local.new-game-against-ai') }}
+        </v-btn>
+
         <!-- <v-btn large color="secondary" :disabled="!engine || !engine.ok" @click="joinGame()">
           {{ $t('button.join-game') }}
         </v-btn> -->
@@ -183,6 +187,7 @@ export default {
       java: state => state.java,
       engine: state => state.engine,
       download: state => state.download,
+      settings: state => state.settings,
       settingsLoaded: state => state.loaded.settings,
       artworksLoaded: state => state.loaded.artworks,
       hasClassicAddon: state => state.hasClassicAddon,
@@ -221,6 +226,11 @@ export default {
   methods: {
     newGame (tab) {
       this.$store.dispatch('gameSetup/newGame')
+      this.$router.push('/game-setup' + (tab !== undefined ? `?tab=${tab}` : ''))
+    },
+
+    newGameAI (tab) {
+      this.$store.dispatch('gameSetup/newGameAI')
       this.$router.push('/game-setup' + (tab !== undefined ? `?tab=${tab}` : ''))
     },
 

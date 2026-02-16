@@ -5,7 +5,6 @@
       'read-only': readOnly
     }"
   >
-
     <RuleBox
       :setup="setup"
       :rules="[Rule.INN_AND_CATHEDRAL_FINAL_SCORING]"
@@ -18,6 +17,7 @@
     </RuleBox>
 
     <RuleBox
+      v-if="!setup.ai"
       :setup="setup"
       :rules="[Rule.KEEP_MONASTERIES]"
       :read-only="readOnly"
@@ -28,6 +28,7 @@
     </RuleBox>
 
     <RuleBox
+      v-if="!setup.ai"
       :setup="setup"
       :rules="[Rule.WAGON_MOVE]"
       :read-only="readOnly"
@@ -40,6 +41,7 @@
     </RuleBox>
 
     <RuleBox
+      v-if="!setup.ai"
       :setup="setup"
       :rules="[Rule.BARN_PLACEMENT]"
       :read-only="readOnly"
@@ -52,6 +54,7 @@
     </RuleBox>
 
     <RuleBox
+      v-if="!setup.ai"
       :setup="setup"
       :rules="[Rule.FAIRY_PLACEMENT]"
       :read-only="readOnly"
@@ -62,6 +65,7 @@
     </RuleBox>
 
     <RuleBox
+      v-if="!setup.ai"
       :setup="setup"
       :rules="[Rule.DRAGON_MOVEMENT]"
       :read-only="readOnly"
@@ -72,6 +76,7 @@
     </RuleBox>
 
     <RuleBox
+      v-if="!setup.ai"
       :setup="setup"
       :rules="[Rule.PRINCESS_ACTION]"
       :read-only="readOnly"
@@ -82,6 +87,7 @@
     </RuleBox>
 
     <RuleBox
+      v-if="!setup.ai"
       :setup="setup"
       :rules="[Rule.BAZAAR_NO_AUCTION]"
       :read-only="readOnly"
@@ -92,6 +98,7 @@
     </RuleBox>
 
     <RuleBox
+      v-if="!setup.ai"
       :setup="setup"
       :rules="[Rule.HILL_TIEBREAKER]"
       :read-only="readOnly"
@@ -102,6 +109,7 @@
     </RuleBox>
 
     <RuleBox
+      v-if="!setup.ai"
       :setup="setup"
       :rules="[Rule.VINEYARDS_FOR_GARDEN]"
       :read-only="readOnly"
@@ -114,6 +122,7 @@
 
 
     <RuleBox
+      v-if="!setup.ai"
       :setup="setup"
       :rules="[Rule.FESTIVAL_RETURN]"
       :read-only="readOnly"
@@ -124,6 +133,7 @@
     </RuleBox>
 
     <RuleBox
+      v-if="!setup.ai"
       :setup="setup"
       :rules="[Rule.ESCAPE_VARIANT]"
       :read-only="readOnly"
@@ -134,6 +144,7 @@
     </RuleBox>
 
     <RuleBox
+      v-if="!setup.ai"
       :setup="setup"
       :rules="[Rule.TUNNELIZE_OTHER_EXPANSIONS, Rule.MORE_TUNNEL_TOKENS]"
       :read-only="readOnly"
@@ -144,6 +155,7 @@
     </RuleBox>
 
     <RuleBox
+      v-if="!setup.ai"
       :setup="setup"
       :rules="[Rule.COC_FINAL_SCORING, Rule.COUNT_MOVE]"
       :read-only="readOnly"
@@ -154,6 +166,7 @@
     </RuleBox>
 
     <RuleBox
+      v-if="!setup.ai"
       :setup="setup"
       :rules="[Rule.LABYRINTH_VARIANT]"
       :read-only="readOnly"
@@ -164,6 +177,7 @@
     </RuleBox>
 
     <RuleBox
+      v-if="!setup.ai"
       :setup="setup"
       :rules="[Rule.ROBBERS_SON_ACTION]"
       :read-only="readOnly"
@@ -174,6 +188,7 @@
     </RuleBox>
 
     <RuleBox
+      v-if="!setup.ai"
       :setup="setup"
       :rules="[Rule.METEORITE_IMPACT]"
       :read-only="readOnly"

@@ -398,9 +398,11 @@
     },
     "create": {
       "click-to-assign": "zum Zuweisen hier klicken",
+      "local-ai-player": "local ai player",
       "local-player": "lokaler Spieler",
       "name": "Name",
       "open-slot": "offener Slot",
+      "remote-ai-player": "remote ai player",
       "remote-player": "Remote Spieler",
       "rename-player": "Spieler umbenennen",
       "waiting-for-player": "auf Spieler warten"
@@ -419,6 +421,7 @@
       "assign-all-players-to-start": "Setzen Sie alle Spieler an den Start",
       "hide-remaining-tiles-cheat-sheet": "Liste der verbleibenden Plättchen ausblenden",
       "name": "Name",
+      "no-ai-in-game": "No AI in game",
       "no-player-in-game": "Kein Spieler im Spiel",
       "options": "Optionen",
       "public-game": "Öffentliches Spiel",
@@ -615,6 +618,7 @@
       "local-games": "offline Spiele",
       "my-favorites": "meine Favoriten",
       "new-game": "Neues Spiel",
+      "new-game-against-ai": "New game against AI",
       "open-game": "öffne Spiel",
       "saved-game": "Saved game",
       "title": "Vom Spieler gehostete Spiele"
@@ -667,6 +671,7 @@
     "leave-game": "Spiel verlassen",
     "load-setup": "Lade Setup",
     "new-game": "Neues Spiel",
+    "new-game-against-ai": "New Game Against AI",
     "online": "Online",
     "open-game": "Öffne Spiel",
     "playonline-connect": "Onlinespiel Verbinden",
