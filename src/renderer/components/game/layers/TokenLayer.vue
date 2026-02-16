@@ -19,7 +19,7 @@
       :transform="transformPosition(ferry.position)"
     >
       <line
-        x1="260" y1="500" x2="740" y2="500"
+        x1="260" y1="450" x2="740" y2="450"
         stroke="white"
         stroke-width="100"
         stroke-dasharray="60 20"
@@ -68,9 +68,44 @@
     <g
       v-for=" position in tokens.LB_TOWER"
       :key="'lb-tower-' + positionAsKey(position)"
-      :transform="'translate(500 400) ' + transformPosition(position)"
+      :transform="'translate(500 400) ' + transformPosition(position, 1)"
     >
       <image href="~/assets/figures/lb_tower.png" transform="scale(1.2)" />
+    </g>
+    <g
+      v-for="pointer in tokens.GAMBLERSLUCKSHIELD_0"
+      :key="'gamblers-luck-shield-' + pointerAsKey(pointer)"
+      :transform="'translate(-140 -140) ' + transformPoint(pointer)"
+    >
+      <image href="~/assets/features/C1/gamblers-luck-shield-0.png" transform="scale(2.35)" />
+    </g>
+    <g
+      v-for="pointer in tokens.GAMBLERSLUCKSHIELD_1"
+      :key="'gamblers-luck-shield-' + pointerAsKey(pointer)"
+      :transform="'translate(-140 -140) ' + transformPoint(pointer)"
+    >
+      <image href="~/assets/features/C1/gamblers-luck-shield-1.png" transform="scale(2.35)" />
+    </g>
+    <g
+      v-for="pointer in tokens.GAMBLERSLUCKSHIELD_2"
+      :key="'gamblers-luck-shield-' + pointerAsKey(pointer)"
+      :transform="'translate(-140 -140) ' + transformPoint(pointer)"
+    >
+      <image href="~/assets/features/C1/gamblers-luck-shield-2.png" transform="scale(2.35)" />
+    </g>
+    <g
+      v-for="pointer in tokens.GAMBLERSLUCKSHIELD_3"
+      :key="'gamblers-luck-shield-' + pointerAsKey(pointer)"
+      :transform="'translate(-140 -140) ' + transformPoint(pointer)"
+    >
+      <image href="~/assets/features/C1/gamblers-luck-shield-3.png" transform="scale(2.35)" />
+    </g>
+    <g
+      v-for="pointer in tokens.GAMBLERSLUCKSHIELD_X"
+      :key="'gamblers-luck-shield-' + pointerAsKey(pointer)"
+      :transform="'translate(-140 -140) ' + transformPoint(pointer)"
+    >
+      <image href="~/assets/features/C1/gamblers-luck-shield-X.png" transform="scale(2.35)" />
     </g>
   </g>
 </template>
@@ -115,11 +150,11 @@ export default {
   methods: {
     ferryTransform (location) {
       if (location === 'WE') return ''
-      if (location === 'NS') return 'rotate(90 500 500)'
-      if (location === 'NW') return 'translate(-140 -140) rotate(-45 500 500)'
-      if (location === 'SW') return 'translate(-140 140) rotate(45 500 500)'
-      if (location === 'NE') return 'translate(140 -140) rotate(45 500 500)'
-      if (location === 'SE') return 'translate(140 140) rotate(-45 500 500)'
+      if (location === 'NS') return 'rotate(90 450 450)'
+      if (location === 'NW') return 'translate(-126 -125) rotate(-45 450 450)'
+      if (location === 'SW') return 'translate(-126 126) rotate(45 450 450)'
+      if (location === 'NE') return 'translate(126 -126) rotate(45 450 450)'
+      if (location === 'SE') return 'translate(126 126) rotate(-45 450 450)'
     }
   }
 }

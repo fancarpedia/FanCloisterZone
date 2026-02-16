@@ -7,3 +7,5 @@ node_modules
 temp
 Engine.jar
 .project
+.env
+src/main/config

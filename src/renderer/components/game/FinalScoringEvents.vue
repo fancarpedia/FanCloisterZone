@@ -52,7 +52,6 @@ export default {
           console.log(ev)
           if (ev.type !== 'token-placed' || !ev.token.startsWith('BIGTOP_')) {
             // ignore big top token
-            console.error('Received empty points event', ev)
           }
           return
         }

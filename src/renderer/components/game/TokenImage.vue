@@ -5,7 +5,7 @@
     :class="classes"
     v-bind="attrs"
   >
-    <use v-if="tag === 'svg'" :href="src" />
+    <use v-if="tag === 'svg'" :href="src" :style="getStyles" />
   </component>
 </template>
 
@@ -17,7 +17,9 @@ import AnimalToken from '@/components/game/tokens/AnimalToken'
 const TOKENS_SVG = require('~/assets/tokens.svg')
 
 const TOKENS = {
-  TOWER_PIECE: { tag: 'svg', src: TOKENS_SVG + '#tower', width: 1.512 },
+  TOWER_PIECE: { tag: 'svg', src: TOKENS_SVG + '#tower', fill: 'burlywood', width: 1.512 },
+  BLACK_TOWER_PIECE: { tag: 'svg', src: TOKENS_SVG + '#tower', fill: 'black', width: 1.512 },
+  WHITE_TOWER_PIECE: { tag: 'svg', src: TOKENS_SVG + '#white-tower', fill: 'white', width: 1.512 },
   BRIDGE: { tag: 'svg', src: TOKENS_SVG + '#bridge', width: 1.273 },
   TUNNEL_A: { tag: 'svg', src: TOKENS_SVG + '#tunnel', width: 1 },
   TUNNEL_B: { tag: 'svg', src: TOKENS_SVG + '#tunnel', width: 1 },
@@ -41,7 +43,12 @@ const TOKENS = {
   FLOWERS_BLUE: { tag: 'img', src: require('~/assets/features/C1/flowers-blue.png') },
   FLOWERS_VIOLET: { tag: 'img', src: require('~/assets/features/C1/flowers-violet.png') },
   FLOWERS_WHITE: { tag: 'img', src: require('~/assets/features/C1/flowers-white.png') },
-  FLOWERS_YELLOW: { tag: 'img', src: require('~/assets/features/C1/flowers-yellow.png') }
+  FLOWERS_YELLOW: { tag: 'img', src: require('~/assets/features/C1/flowers-yellow.png') },
+  GAMBLERSLUCKSHIELD_0: { tag: 'img', src: require('~/assets/features/C1/gamblers-luck-shield-0.png') },
+  GAMBLERSLUCKSHIELD_1: { tag: 'img', src: require('~/assets/features/C1/gamblers-luck-shield-1.png') },
+  GAMBLERSLUCKSHIELD_2: { tag: 'img', src: require('~/assets/features/C1/gamblers-luck-shield-2.png') },
+  GAMBLERSLUCKSHIELD_3: { tag: 'img', src: require('~/assets/features/C1/gamblers-luck-shield-3.png') },
+  GAMBLERSLUCKSHIELD_X: { tag: 'img', src: require('~/assets/features/C1/gamblers-luck-shield-X.png') }
 }
 
 export default {
@@ -62,6 +69,10 @@ export default {
       tunnelTokenColorCssClass: 'game/tunnelTokenColorCssClass'
     }),
 
+    getStyles() {
+      return TOKENS[this.token].fill ? { fill: TOKENS[this.token].fill } : {}
+    },
+    
     tag () {
       if (this.token === 'ABBEY_TILE') {
         return StandaloneTileImage

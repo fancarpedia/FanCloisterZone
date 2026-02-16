@@ -1,0 +1,156 @@
+{
+  "appVersion": "6.1.0-alpha.15",
+  "gameId": "1",
+  "name": "",
+  "initialRandom": 0.2640064911119673,
+  "created": "2026-01-24T22:06:34.547Z",
+  "clock": 152587,
+  "setup": {
+    "options": {},
+    "sets": {
+      "basic:1": 1,
+      "river/2:1": 1
+    },
+    "elements": {
+      "small-follower": 7,
+      "farmers": true
+    },
+    "rules": {},
+    "timer": null,
+    "start": [
+      {
+        "tile": "RI/s",
+        "x": 0,
+        "y": 0,
+        "rotation": 0
+      }
+    ]
+  },
+  "players": [
+    {
+      "name": "Ariel",
+      "slot": 0
+    }
+  ],
+  "chat": [],
+  "replay": [
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "RI.2/III",
+        "rotation": "R180",
+        "position": [
+          1,
+          0
+        ]
+      },
+      "player": 0,
+      "clock": 8280
+    },
+    {
+      "type": "PASS",
+      "payload": {},
+      "player": 0,
+      "clock": 10051
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.891670840163276
+      },
+      "player": 0,
+      "clock": 10062
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "RI.2/RrII",
+        "rotation": "R90",
+        "position": [
+          2,
+          0
+        ]
+      },
+      "player": 0,
+      "clock": 78271
+    },
+    {
+      "type": "PASS",
+      "payload": {},
+      "player": 0,
+      "clock": 82448
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.6224288160430747
+      },
+      "player": 0,
+      "clock": 82465
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "RI.2/II",
+        "rotation": "R270",
+        "position": [
+          2,
+          -1
+        ]
+      },
+      "player": 0,
+      "clock": 90017
+    },
+    {
+      "type": "PASS",
+      "payload": {},
+      "player": 0,
+      "clock": 90421
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.12540685710638932
+      },
+      "player": 0,
+      "clock": 90429
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "RI.2/CIRI",
+        "rotation": "R90",
+        "position": [
+          1,
+          1
+        ]
+      },
+      "player": 0,
+      "clock": 92516
+    },
+    {
+      "type": "PASS",
+      "payload": {},
+      "player": 0,
+      "clock": 92746
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.16956443532600818
+      },
+      "player": 0,
+      "clock": 92760
+    }
+  ],
+  "test": {
+    "description": "River II Curve Placement 2",
+    "assertions": [
+      "Ariel has 0 points.",
+      "phase is TilePhase",
+      "Player can't pass",
+      "Available action TilePlacement for RI.2/CcII+",
+      "TilePlacement RI.2/CcII+ options: [1,2] - [180,270]; [3,-1] - [180]"
+    ]
+  }
+}

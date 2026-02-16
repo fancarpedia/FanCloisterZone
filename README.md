@@ -2,7 +2,7 @@
 
 Updated original JCloisterZone with many improvements.
 Also support of many fan-expansions, chat during game, lobby.
-All issues on FanCloisterZone report on [Discord](https://discord.gg/3qpHWN8k)
+All issues on FanCloisterZone report on [Discord](https://discord.gg/CswNeVg3eS)
 
 ## Supported Fan Expansions
 * [City Gates, The](https://wikicarpedia.com/car/The_City_Gates_(1st_edition))
@@ -15,6 +15,9 @@ All issues on FanCloisterZone report on [Discord](https://discord.gg/3qpHWN8k)
 * [Robber's Son](https://wikicarpedia.com/car/Robber%27s_Son_(Fan_Expansion))
 * [Village Life](https://wikicarpedia.com/car/Village_Life_(Fan_Expansion))
 * [Wells, The](https://wikicarpedia.com/car/The_Wells_(Fan_Expansion))
+
+### Upcomming
+* Fishermen
 
 ## Engine
 
@@ -142,9 +145,19 @@ element
 `src/renferer/nuxt.config.js`
 
 ### Use translated texts in Vue
-#### Usage in <template>
+#### Usage in `<template>`
+As parameter: `:parameter="$t('about.fantitle')"`
 
-#### Usage in <script>
+As text: `{{ $t('about.fantitle') }}`
+
+#### Usage in `<script>`
+
+#### Usage in `.js` files
+
+$nuxt.$t('index.local.saved-game')
+
+### Mark texts for translation
+`<!-- TRANSLATE -->`
 
 ### Add package failed with Webpack 4 or Node 16 (by use babe this.config?.something or this.value ?? failvervalue
 
@@ -170,3 +183,9 @@ element
   git tag -a RELEASE
   git push origin RELEASE
   ```
+
+### Adding next Game Mechanics
+
+#### Append elements
+
+`OverviewElementTile.vue`

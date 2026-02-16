@@ -68,6 +68,7 @@ class Theme extends EventsBase {
     // enable system defaults
     if (artworks['jcz/simplified']) {
       enabledArtworks.push(artworks['jcz/simplified'])
+      enabledArtworks.push(artworks['jcz/classicfixes'])
     }
     const loaded = await (new ArtworkLoader()).loadArworks(enabledArtworks)
     this.artworks = loaded.artworks

@@ -243,6 +243,20 @@
         </div>
       </template>
 
+      <template v-if="stats.points['river'].some(p => p)">
+        <div class="header river" :title="$t('game.feature.fishermen')">
+          <StandaloneTileImage tile-id="RI.2/RrII" :size="40" />
+          <svg class="meeple" :width="40" :height="40">
+            <g transform="translate(15 30) scale(0.4) translate(-27 -27)">
+              <use :href="`${MEEPLES_SVG}#small-follower`" />
+            </g>
+          </svg>
+        </div>
+        <div v-for="(val, idx) in stats.points['river']" :key="'decinsky-sneznik-'+idx" class="river value">
+          {{ val }}
+        </div>
+      </template>
+
     </div>
   </div>
 </template>
@@ -321,7 +335,8 @@ export default {
           'marketplace': (new Array(this.players.length)).fill(0),
           'obelisk': (new Array(this.players.length)).fill(0),
           'windmill': (new Array(this.players.length)).fill(0),
-          'decinsky-sneznik': (new Array(this.players.length)).fill(0)
+          'decinsky-sneznik': (new Array(this.players.length)).fill(0),
+          'river': (new Array(this.players.length)).fill(0)
         }
       }
       this.history.forEach(h => {
@@ -330,14 +345,12 @@ export default {
             const idx = this.players.findIndex(p => p.index === h.player)
             stats.tiles[idx] += 1
           } else if (ev.type === 'ransom-paid') {
-            console.log(ev.jailer,ev.prisoner,stats.tower);
             const jailerIdx = this.players.findIndex(p => p.index === ev.jailer)
             stats.points.tower[jailerIdx] += 3
             const prisonerIdx = this.players.findIndex(p => p.index === ev.prisoner)
             stats.points.tower[prisonerIdx] -= 3
           } else if (ev.type === 'points') {
             ev.points.forEach(({ name, player, points }) => {
-              console.log(name,points);
               const cat = name.split('.')[0]
               const idx = this.players.findIndex(p => p.index === player)
               if (stats.points[cat]) {
@@ -444,6 +457,15 @@ svg.meeple
 
 .header.traders, .header.gold
   margin: 10px 0
+
+.header.river
+  position: relative
+  height: 40px
+
+  svg
+    top: 0
+    left: calc(50% - 27px)
+    position: absolute
 
 #app.theme--dark .header img.bw
   filter: invert(1)

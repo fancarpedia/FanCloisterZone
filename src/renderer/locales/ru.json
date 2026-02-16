@@ -4,11 +4,13 @@
   "@fcz-version": "6.0.0",
   "@version": "0.8.13",
   "about": {
+    "author": "Author",
     "configuration-file": "Файл конфигурации",
+    "fantitle": "FanCloisterZone Edition",
     "jcloisterzone-game-engine": "Игровой движок JCloisterZone",
     "system-java-version": "Версия Java системы",
     "title": "JCloisterZone",
-    "fantitle": "FanCloisterZone Edition",
+    "translation": "Translation",
     "version": "версия"
   },
   "bookmarks": {
@@ -35,12 +37,15 @@
     "create-public-game": "Создать Публичную игру",
     "disconnect": "Отключиться",
     "grow-the-flock": "Увеличить стадо",
+    "hide": "Hide",
+    "hide-finished": "Hide Finished",
     "hide-stats": "Скрыть статистику",
     "join-game": "Присоединиться к игре",
     "load": "Загрузить",
     "load-setup-from-file": "Загрузить настройки из файла",
     "may-deploy": "Может разместить",
     "must-remove": "Необходимо убрать",
+    "open": "Open",
     "pass": "Пропустить",
     "play-again": "Играть снова",
     "play-online": "Играть онлайн",
@@ -51,17 +56,24 @@
     "remove": "Удалить",
     "remove-from-favorites": "Удалить из избранного",
     "reset": "Сбросить",
+    "reset-all": "Reset All",
+    "reset-failed": "Reset Failed",
     "resume": "Продолжить",
     "rules": "Правила",
     "rules-1st-edition": "Правила (1-е издание)",
+    "run": "Run",
+    "run-all": "Run All",
     "save-to-file": "Сохранить в файл",
     "score-the-sheep": "Подсчитать очки овец",
     "select": "Выбрать",
     "sell": "Продать",
     "set": "Установить",
+    "show-all": "Show All",
     "show-stats": "Показать статистику",
     "start": "Начать",
-    "undo": "Отменить"
+    "stop-running": "Stop Running",
+    "undo": "Отменить",
+    "test-runner": "Test Runner"
   },
   "core-messages": {
     "bonuses": "Бонусы",
@@ -79,11 +91,43 @@
     "tiles": "Тайлы",
     "used-time": "Затраченное время"
   },
+  "dev": {
+    "actions": "Actions",
+    "dump-hosted-game-server-state": "Dump Hosted Game Server State",
+    "edition": "Edition",
+    "fail": "Fail",
+    "meeples": "Meeples",
+    "mode": "Mode",
+    "ok": "OK",
+    "reload-add-ons": "Reload Add-ons",
+    "result": "Result",
+    "save-test-scenario": "Save Test Scenario",
+    "shapes": "Shapes",
+    "size": "Size",
+    "strokes": "Strokes",
+    "test": "Test",
+    "test-runner": "Test Runner",
+    "theme-inspector": "Theme Inspector",
+    "tiles": "Tiles",
+    "toggle-devtools": "Toggle DevTools",
+    "use-local-play-online": "Use Local Play Online",
+    "use-remote-engine": "Use Remote Engine"
+  },
+  "dialog": {
+    "close-local-game": {
+      "continue-playing": "Continue Playing",
+      "resign-and-close": "Resign and Close",
+      "unfinished-local-game": "Unfinished Local Game",
+      "unfinished-local-game-description": "You have an unfinished local game. If you close the app window, you will resign and lose your progress in this game."
+    }
+  },
   "expansion": {
     "-unknown": "Отсутствующее дополнение",
     "abbey-and-mayor": "Аббатство и мэр",
     "basic": "Основной набор",
     "besiegers": "Осадники",
+    "black-tower": "Black Tower",
+    "black-tower-description": "New black and white tower floors for The Tower expansion, which allows to capture meeples diagonally when using black floor or permanently lock tower with white floor on the top.",
     "bridges-castles-and-bazaars": "Мосты, замки и базары",
     "butterfly-tiles": "Тайлы с бабочками",
     "butterfly-tiles-description": "16 тайлов с новыми комбинациями строений, которых нет в базовой игре и дополнениях. Без новых механик.",
@@ -105,9 +149,13 @@
     "family-feud-description": "Tiles with blue/white and red/yellow coats of arms belong to rival families. No tile may be placed in such a way that cities belonging to rival families become connected.",
     "farmers-heaven": "Фермерский рай",
     "farmers-heaven-description": "Since most of the expansions are mainly focused on the cities, it was time to do something for the farmers.",
+    "fishermen": "Fishermen",
+    "fishermen-description": "",
     "ferries": "Паромы",
     "festival": "Фестиваль",
     "flier": "Летающие машины",
+    "gamblers-luck": "Gambler's Luck",
+    "gamblers-luck-description": "A roll of the die can cause a city to get tokens with additional coat of arms, or nullify existing ones throughout the city.",
     "goldmines": "Золотые шахты",
     "gq11": "Мини-дополнение (GQ11)",
     "heretics-and-shrines": "Еретик и святыни",
@@ -145,7 +193,7 @@
     "village-life-description": "",
     "watchtowers": "Сторожевые башни",
     "wells": "Колодцы",
-    "wells-description": "A simple expansion where each well adds 1 point to the value of a road, or 2 points to a road with a completed inn.",
+    "wells-description": "A simple expansion where each Well adds 1 point to the value of a Road, or 2 points to a road with a completed Inn.",
     "wind-roses": "Розы ветров",
     "winter": "Зима"
   },
@@ -175,6 +223,7 @@
       "ferries-player-can-move-ferries": "Игрок может перемещать паромы",
       "ferries-player-must-place-a-ferry": "Игрок должен разместить паром",
       "ferries-you-can-move-ferries": "Вы можете перемещать паромы",
+      "gamblers-luck-outcome": "Gambler’s Luck outcome",
       "goldmines-place-a-gold-ingot": "Поместите слиток золота",
       "goldmines-player-must-place-a-gold-ingot": "Игрок должен разместить слиток золота",
       "hills-and-player-must-choose-grow-or-score-plural": "Игрок должен выбрать: увеличить стадо или подсчитать овец за 0 очков. | Игрок должен выбрать: увеличить стадо или подсчитать овец за {points} очко. | Игрок должен выбрать: увеличить стадо или подсчитать овец за {points} очков.",
@@ -222,6 +271,7 @@
       "barn": "Амбар",
       "big-follower": "Большой мипл",
       "big-top": "Цирковой купол",
+      "black-tower": "Black Tower",
       "bridge": "Мост",
       "builder": "Строитель",
       "castle": "Замок",
@@ -273,6 +323,7 @@
       "festival": "Фестиваль",
       "field": "Поле",
       "fields": "Поля",
+      "fishermen": "Fishermen",
       "flock": "Стадо",
       "flowers": "Цветы",
       "garden": "Сад",
@@ -327,6 +378,7 @@
     },
     "tile-pack-dialog": {
       "disabled-show-remaining": "Игра была создана с опцией, которая не позволяет показывать количество оставшихся тайлов.",
+      "discarded-tiles": "Discarded tiles",
       "game-tiles": "Плитки в игре",
       "hidden-tiles-under-hill-plural": "Под холмами нет спрятанных тайлов. | Не забудьте, что 1 неизвестный тайл из списка скрыт под холмом. | Не забудьте, что {count} неизвестных тайлов из списка скрыты под холмами.",
       "remaining-tiles": "Оставшиеся плитки",
@@ -389,6 +441,8 @@
       "farmers-description": "Игроки могут размещать миплы на полях.",
       "festival-description": "С тайлом фестиваля вы можете вернуть одну из своих фигурок вместо размещения новой.",
       "festival-disabled": "В игре нет плитки с фестивалем.",
+      "fishermen-description": "River as regular feature.",
+      "fishermen-disabled": "No tile with River is in the game.",
       "flowers-description": "Цветы добавляют +3 очка к подсчитанной области, если совпадают с жетоном игрока.",
       "flowers-disabled": "В игре нет тайлов с Цветами.",
       "gameplay-variants": "Варианты игры",
@@ -490,6 +544,11 @@
         "description": "Метод разрешения ничьей: {} на холмах.",
         "number-of-followers": "количество миплов"
       },
+      "inn-and-cathedral-final-scoring": {
+        "description": "Inns and Cathedrals {} during final scoring.",
+        "ignore": "are ignored",
+        "zero": "score 0 points"
+      },
       "keep-monasteries": {
         "description": "Особенные монастыри {}.",
         "keep": "просто добавляются",
@@ -537,6 +596,9 @@
       "tunnelize-other-expansions": {
         "description": "Применить правило туннелей на плитках из других дополнений с изображенными туннелями."
       },
+      "vineyards-for-garden": {
+        "description": "Apply vineyards bonus during scoring of completed garden."
+      },
       "wagon-move": {
         "C1": "соединен (пересечение дорог или дорога, ведущая к городу/монастырю) (1-е издание)",
         "C2": "элемент на том же или соседнем тайле (2-е издание)",
@@ -554,6 +616,7 @@
       "my-favorites": "мои избранные",
       "new-game": "Новая игра",
       "open-game": "Открыть игру",
+      "saved-game": "Saved game",
       "title": "Игры, созданные игроками"
     },
     "online": {

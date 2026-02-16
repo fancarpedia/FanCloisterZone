@@ -86,7 +86,9 @@
       <field>WR NL</field>
       <field>NR EL</field>
       <field>ER SL SR WL</field>
-      <river>W N E</river>
+      <river>W</river>
+      <river>N</river>
+      <river>E</river>
     </tile>
     <tile id="RI.2/CIcI" group="river">
       <city>W E</city>
@@ -137,7 +139,7 @@
     <tile id="RI.2/II+" group="river">
       <field pig-herd="true">WL SL SR EL ER NR</field>
       <field>WR NL</field>
-      <river>W N</river>
+      <river>N W</river>
     </tile>
     <tile id="RI.2/RrII" group="river">
       <road>N E</road>

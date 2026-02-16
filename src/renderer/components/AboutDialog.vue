@@ -1,25 +1,19 @@
 <template>
   <v-card class="about">
-    <section class="splash">
-      <img :src="splashImage()" :title="$t('about.fantitle')" />
-    </section>
     <v-card-text>
-      <section class="d-flex my-3">
-        <div class="meeples d-flex">
-          <svg class="meeple small-follower" :width="110" :height="110">
-            <use :href="`${MEEPLES_SVG}#small-follower`" />
-          </svg>
-          <svg class="meeple builder" :width="110" :height="110">
-            <use :href="`${MEEPLES_SVG}#builder`" />
-          </svg>
-          <svg class="meeple barn" :width="110" :height="110">
-            <use :href="`${MEEPLES_SVG}#barn`" />
-          </svg>
+      <section class="d-flex flex-fill py-3">
+        <div class="d-flex align-center">
+          <section class="splash">
+            <img :src="splashImage()" :title="$t('about.fantitle')" />
+            <div class="version">{{ $t('about.version') }} {{ version }}</div>
+          </section>
         </div>
-        <div>
-          <div class="version">{{ $t('about.version') }} {{ version }}</div>
-          Roman Krejčík &amp; fans<br>
-          <div class="report-bug" @click="openReportBug"><span class="label">{{ $t('menu.report-bug')}}</span>: Discord</div>
+        <div class="pl-10 d-flex align-center">
+          <div>
+            <div><span class="label">{{ $t('about.author') }}</span>: Roman Krejčík &amp; fans</div>
+            <div class="report-bug" @click="openReportBug"><span class="label">{{ $t('menu.report-bug')}}</span>: Discord</div>
+            <div><span class="label">{{ $t('about.translation') }} ({{ $i18n.locale }})</span>: {{ $t('@author') }}</div>
+          </div>
         </div>
       </section>
       <hr>
@@ -85,25 +79,6 @@ export default {
     img
       max-width: 40vw
     
-  .meeples
-    margin: 5px 40px 5px 20px
-
-  svg.small-follower
-    fill: yellow
-    z-index: 10
-
-  svg.builder
-    fill: #FF5722
-    margin-left: -55px
-    z-index: 9
-
-  svg.barn
-    fill: #2196F3
-    margin-left: -55px
-    z-index: 8
-    position: relative
-    top: 10px
-
   section
     font-size: 16px
 

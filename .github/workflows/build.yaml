@@ -1,37 +1,59 @@
 name: Build/release
-
 on:
   push:
     tags:
       - 'v*'
-
 jobs:
   release:
     runs-on: ${{ matrix.os }}
-
     strategy:
       fail-fast: false
       matrix:
-        os: [macos-13, ubuntu-latest, windows-latest]
-
+        os: [macos-14, ubuntu-latest, windows-latest]
     steps:
+      # Step 1: Checkout code
       - name: Check out Git repository
-        uses: actions/checkout@v1
-
-      - name: Install Node.js, NPM and Yarn
-        uses: actions/setup-node@v1
+        uses: actions/checkout@v3
+      
+      # Step 2: Set up Node.js
+      - name: Set up Node.js, NPM and Yarn
+        uses: actions/setup-node@v3
         with:
           node-version: 16
-
+      
+      # Step 3: Fix distutils for macOS
+      - name: Install setuptools for node-gyp (macOS)
+        if: runner.os == 'macOS'
+        run: |
+          python3 -m pip install --break-system-packages setuptools
+      
+      # Step 4a: Create a config file that embeds the secret
+      - name: Create Discord config
+        run: |
+          mkdir -p src/main/config
+          echo "export const DISCORD_CLIENT_ID = '${{ secrets.DISCORD_CLIENT_ID }}';" > src/main/config/discord.js
+        shell: bash
+  
+      # Step 4b: Verify config file was created
+      - name: Verify Discord config
+        run: |
+          if [ -f src/main/config/discord.js ]; then
+            echo "✓ Config file created successfully"
+            cat src/main/config/discord.js
+          else
+            echo "✗ Config file NOT found!"
+            exit 1
+          fi
+        shell: bash
+      
+      # Step 5: Install dependencies
+      - name: Install dependencies
+        run: yarn install --frozen-lockfile
+      
+      # Step 6: Build/release Electron app
       - name: Build/release Electron app
         uses: samuelmeuli/action-electron-builder@v1
         with:
           args: "-c builder.config.js"
-          # GitHub token, automatically provided to the action
-          # (No need to define this secret in the repo settings)
-          # type: string
           github_token: ${{ secrets.github_token }}
-
-          # If the commit is tagged with a version (e.g. "v1.0.0")
-          # type: boolean
           release: ${{ true }}

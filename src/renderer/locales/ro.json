@@ -1,19 +1,21 @@
 {
   "@author": "Paloi Sciurala",
   "@jcz-version": "5.12.1",
-  "@fcz-version": "6.0.0",
-  "@version": "0.8.22",
+  "@fcz-version": "6.1.0",
+  "@version": "0.9.10",
   "about": {
+    "author": "Autor",
     "configuration-file": "Fișier de configurație",
-    "jcloisterzone-game-engine": "Motorul Jocului JCloisterZone",
+    "fantitle": "Ediția FanCloisterZone",
+    "jcloisterzone-game-engine": "Motorul jocului JCloisterZone",
     "system-java-version": "Versiunea de Java a sistemului",
     "title": "JCloisterZone",
-    "fantitle": "Ediția FanCloisterZone",
-    "version": "versiune"
+    "translation": "Traducere",
+    "version": "versiunea"
   },
   "bookmarks": {
     "description-end": "din bara laterală a vizualizării în ansamblu.",
-    "description-start": "Nu ai nicio configurație de joc în lista favoritelor tale. Pentru a îndrepta această situație, mai întâi creează un joc și apoi selectează",
+    "description-start": "Nu ai nicio configurație de partidă în lista ta de favorite. Pentru a remedia acest lucru, mai întâi creează o partidă și apoi selectează",
     "nothing-saved": "Nimic salvat.",
     "setups-saved-to-file": "Configurații salvate în fișier",
     "title": "Favoritele mele"
@@ -29,18 +31,21 @@
     "clear-list": "curăță lista",
     "close": "Închide",
     "confirm": "Confirmă",
-    "connect": "Conectează",
+    "connect": "Conectează-te",
     "create": "Creează",
-    "create-game": "Creează joc",
+    "create-game": "Creează partidă",
     "create-public-game": "Creează o partidă publică",
     "disconnect": "Deconectează-te",
     "grow-the-flock": "Crește turma",
+    "hide": "Ascunde",
+    "hide-finished": "Ascunde cele finalizate",
     "hide-stats": "Ascunde statisticile",
-    "join-game": "Alătură-te jocului",
+    "join-game": "Alătură-te unei partide",
     "load": "Încarcă",
     "load-setup-from-file": "Încarcă configurație din fișier",
     "may-deploy": "Există posibilitatea de a plasa",
     "must-remove": "Trebuie să elimine",
+    "open": "Deschide",
     "pass": "Omite",
     "play-again": "Joacă din nou",
     "play-online": "Joacă online",
@@ -51,17 +56,24 @@
     "remove": "Elimină",
     "remove-from-favorites": "Elimină din favorite",
     "reset": "Resetează",
+    "reset-all": "Rezetează tot",
+    "reset-failed": "Resetează cele eșuate",
     "resume": "Reia",
     "rules": "Reguli",
     "rules-1st-edition": "Reguli (prima ed.)",
+    "run": "Rulează",
+    "run-all": "Rulează tot",
     "save-to-file": "Salvează în fișier",
     "score-the-sheep": "Evaluează oile",
     "select": "Selectează",
     "sell": "Vinde",
     "set": "Setează",
+    "show-all": "Arată tot",
     "show-stats": "Arată statistici",
     "start": "Începe",
-    "undo": "Anulează"
+    "stop-running": "Oprește rularea",
+    "undo": "Anulează",
+    "test-runner": "Rulator de test"
   },
   "core-messages": {
     "bonuses": "Bonusuri",
@@ -79,11 +91,43 @@
     "tiles": "Cartonașe",
     "used-time": "Timp folosit"
   },
+  "dev": {
+    "actions": "Acțiuni",
+    "dump-hosted-game-server-state": "Golește starea serverului partidei găzduite",
+    "edition": "Ediție",
+    "fail": "Eșec",
+    "meeples": "Meepleși",
+    "mode": "Mod",
+    "ok": "În regulă",
+    "reload-add-ons": "Reîncarcă add-on-urile",
+    "result": "Rezultat",
+    "save-test-scenario": "Salvează scenariul testului",
+    "shapes": "Forme",
+    "size": "Mărime",
+    "strokes": "Linii",
+    "test": "Test",
+    "test-runner": "Rulator de test",
+    "theme-inspector": "Inspector de temă",
+    "tiles": "Cartonașe",
+    "toggle-devtools": "Comută uneltele de dezvoltator",
+    "use-local-play-online": "Folosește jucarea online locală",
+    "use-remote-engine": "Folosește motorul retras"
+  },
+  "dialog": {
+    "close-local-game": {
+      "continue-playing": "Continuă să joci",
+      "resign-and-close": "Abandonează și închide",
+      "unfinished-local-game": "Partidă locală neterminată",
+      "unfinished-local-game-description": "Ai o partidă locală neterminată. Dacă închizi fereastra aplicației, vei abandona și îți vei pierde progresul din această partidă."
+    }
+  },
   "expansion": {
     "-unknown": "Extensie lipsă",
     "abbey-and-mayor": "Abația și primarul",
     "basic": "Jocul de bază",
     "besiegers": "Asediatorii",
+    "black-tower": "Turnul negru",
+    "black-tower-description": "Noi piese de turn, negre și albe, pentru extensia Turnul, care permit capturarea pe diagonală a meepleșilor atunci când se folosește o piesă neagră sau blocarea permanentă a turnului cu o piesă albă în vârf.",
     "bridges-castles-and-bazaars": "Poduri, cetăți și bazaruri",
     "butterfly-tiles": "Cartonașe fluturi",
     "butterfly-tiles-description": "16 cartonașe cu configurații noi care lipsesc din jocul de bază și extensii. Nu se introduc funcții noi.",
@@ -105,9 +149,13 @@
     "family-feud-description": "Cartonașele cu blazoane albastre-albe roșii-galbene aparțin unor familii rivale. Niciun cartonaș nu poate fi plasat în așa fel încât orașe ce aparțin unor familii rivale să devină conectate.",
     "farmers-heaven": "Raiul țăranilor",
     "farmers-heaven-description": "Din moment ce cele mai multe extensii sunt în principal axate pe orașe, este vremea să se facă ceva pentru țărani.",
+    "fishermen": "Pescari",
+    "fishermen-description": "",
     "ferries": "Bacuri",
     "festival": "Festivalul",
     "flier": "Aparate de zbor",
+    "gamblers-luck": "Norocul pariorului",
+    "gamblers-luck-description": "O aruncare a zarului poate face ca un oraș să obțină jetoane cu blazoane adiționale sau să le desființeze pe cele existente de-a lungul orașului.",
     "goldmines": "Minele de aur",
     "gq11": "Miniextensia (GQ11)",
     "heretics-and-shrines": "Eretici și lăcașuri de cult",
@@ -151,7 +199,7 @@
   },
   "game": {
     "action": {
-      "bazaar-buy-sell-the-tile-from-to": "Cumpără/Vine cartonașul de la/către",
+      "bazaar-buy-sell-the-tile-from-to": "Cumpără/Vinde cartonașul de la/către",
       "bazaar-choose-a-tile": "Alege un cartonaș",
       "bazaar-choose-a-tile-and-your-bid": "Alege un cartonaș și fă-ți oferta",
       "bazaar-player-must-buy-sell-the-tile-from-to": "Jucătorul trebuie să cumpere/vândă cartonașul de la/către",
@@ -167,7 +215,7 @@
       "crop-circles-choose-field": "un câmp",
       "crop-circles-choose-one": "Alege una. Fiecare jucător {deploy} sau {remove} un meeple pe/de pe {feature}.",
       "crop-circles-choose-road": "un drum",
-      "crop-circles-player-must-choose": "Jucătorul trebuie să aleagă: Fiecare jucător are posibilitatea de a plasa sau elimina un meeple pe/de pe {feature}.",
+      "crop-circles-player-must-choose": "Jucătorul trebuie să aleagă: fiecare jucător are posibilitatea de a plasa sau elimina un meeple (de) pe {feature}.",
       "crop-circles-player-must-return-meeple": "Jucătorul trebuie să înapoieze un meeple",
       "crop-circles-you-must-return-meeple": "Trebuie să îți iei înapoi unul dintre meepleșii tăi.",
       "draw-a-tile": "Trage un cartonaș",
@@ -175,6 +223,7 @@
       "ferries-player-can-move-ferries": "Jucătorul poate muta bacuri",
       "ferries-player-must-place-a-ferry": "Jucătorul trebuie să plaseze un bac",
       "ferries-you-can-move-ferries": "Poți muta bacuri",
+      "gamblers-luck-outcome": "Rezultatul norocului pariorului",
       "goldmines-place-a-gold-ingot": "Plasează un lingou de aur",
       "goldmines-player-must-place-a-gold-ingot": "Jucătorul trebuie să plaseze un lingou de aur",
       "hills-and-player-must-choose-grow-or-score-plural": "Jucătorul trebuie să aleagă să crească turma sau să evalueze oile pentru 0 puncte. | Jucătorul trebuie să aleagă să crească turma sau să evalueze oi pentru {points} punct. | Jucătorul trebuie să aleagă să crească turma sau să evalueze oi pentru {points} puncte. | Jucătorul trebuie să aleagă să crească turma sau să evalueze oi pentru {points} de puncte.",
@@ -222,6 +271,7 @@
       "barn": "Moșie",
       "big-follower": "Meeple mare",
       "big-top": "Cort de circ",
+      "black-tower": "Turn negru",
       "bridge": "Pod",
       "builder": "Constructor",
       "castle": "Cetate",
@@ -273,6 +323,7 @@
       "festival": "Festival",
       "field": "Câmp",
       "fields": "Câmpuri",
+      "fishermen": "Pescari",
       "flock": "Turmă",
       "flowers": "Flori",
       "garden": "Grădină",
@@ -326,7 +377,8 @@
       "turn-start": "începutul turei"
     },
     "tile-pack-dialog": {
-      "disabled-show-remaining": "Jocul a fost creat cu o opțiune care nu permite afișarea numărului cartonașelor rămase.",
+      "disabled-show-remaining": "Partida a fost creată cu o opțiune care nu permite afișarea numărului cartonașelor rămase.",
+      "discarded-tiles": "Cartonașe respinse",
       "game-tiles": "Cartonașe de joc",
       "hidden-tiles-under-hill-plural": "Nu există niciun cartonaș necunoscut sub deal. | Nu uita că 1 cartonaș necunoscut din listă este ascuns sub un deal. | Nu uita că {count} cartonașe necunoscute din listă sunt ascunse sub dealuri. | Nu uita că {count} de cartonașe necunoscute din listă sunt ascunse sub dealuri.",
       "remaining-tiles": "Cartonașe rămase",
@@ -339,7 +391,7 @@
     "altered-gameplay": "Desfășurare a jocului alterată",
     "altered-scoring": "Evaluare alterată",
     "components": {
-      "followers": "Meepleșii",
+      "followers": "Meepleși",
       "neutral-figures": "Pioni neutri",
       "rewards": "Recompense",
       "tokens": "Jetoane"
@@ -364,17 +416,17 @@
       "timer": "Cronometru"
     },
     "open-game": {
-      "assign-all-players-to-start": "Atribuie toți jucători pentru a începe",
+      "assign-all-players-to-start": "Atribuie toți jucătorii pentru a începe",
       "hide-remaining-tiles-cheat-sheet": "Ascunde fițuica cartonașelor rămase",
       "name": "Nume",
-      "no-player-in-game": "Niciun jucător în joc",
+      "no-player-in-game": "Niciun jucător în partidă",
       "options": "Opțiuni",
       "public-game": "Partidă publică",
       "randomize-seating-order": "Fă aleatorie ordinea turelor jucătorilor",
-      "set-game-title": "Setează titlul jocului",
-      "share-the-key": "Împărtășește cheia cu alți jucători pentru a îi lăsa să se conecteze la joc.",
-      "untitled-game": "joc fără titlu",
-      "waiting-for-host-to-start-the-game": "Se așteaptă ca gazda să înceapă jocul."
+      "set-game-title": "Setează titlul partidei",
+      "share-the-key": "Împărtășește cheia cu alți jucători pentru a îi lăsa să se conecteze la partidă.",
+      "untitled-game": "partidă fără titlu",
+      "waiting-for-host-to-start-the-game": "Se așteaptă ca gazda să înceapă partida."
     },
     "removed-elements": "Elemente eliminate",
     "rules": {
@@ -382,13 +434,15 @@
       "acrobats-disabled": "Nu există niciun cartonaș cu loc pentru artiști în joc.",
       "bazaar-description": "Se licitează cartonașe de teren atunci când un bazar intră în joc.",
       "bazaar-disabled": "Nu există niciun cartonaș cu bazar în joc.",
-      "cathedral-description": "Orașele finalizate cu catedrală ×3 în loc de ×2, niciun punct în timpul evaluării finale.",
+      "cathedral-description": "Orașele finalizate cu catedrală ×3 în loc de ×2 și opțional niciun punct în timpul evaluării finale.",
       "cathedral-disabled": "Nu există niciun cartonaș cu catedrală în joc.",
       "escape-description": "Evadare permisă prin intermediul unei mănăstiri învecinate.",
       "escape-disabled": "Nu există niciun cartonaș cu asediu în joc.",
       "farmers-description": "Jucătorilor le este permis să plaseze meepleși pe câmpuri.",
       "festival-description": "Cu un cartonaș cu festival poți să îți iei înapoi unul dintre proprii tăi pioni în loc de a plasa unul.",
       "festival-disabled": "Nu există niciun cartonaș cu festival în joc.",
+      "fishermen-description": "Râul ca teritoriu obișnuit.",
+      "fishermen-disabled": "Nu există niciun cartonaș de râu în joc.",
       "flowers-description": "Florile adaugă +3 puncte teritoriului evaluat atunci când se potrivesc cu jetonul jucătorului.",
       "flowers-disabled": "Nu există niciun cartonaș cu flori în joc.",
       "gameplay-variants": "Variante de desfășurare a jocului",
@@ -396,13 +450,13 @@
       "garden-disabled": "Abatele nu este selectat.",
       "hill-description": "Folosit drept întrerupător al situațiilor de egalitate la majoritate. Totodată, ascunde un cartonaș aleatoriu dedesubt.",
       "hill-disabled": "Nu există niciun cartonaș cu deal în joc.",
-      "inn-description": "Drumurile finalizate cu han ×2, niciun punct în timpul evaluării finale.",
+      "inn-description": "Drumurile finalizate cu han ×2 și opțional niciun punct în timpul evaluării finale.",
       "inn-disabled": "Nu există niciun cartonaș cu han în joc.",
       "marketplace-description": "Piețele conectează mai multe drumuri într-o rețea împărtășită care se finalizează numai atunci când se închid toate drumurile legate. Atunci când se evaluează, se acordă puncte bonus egale cu lungimea celorlalte drumuri finalizate din acea rețea.",
       "marketplace-disabled": "Nu există niciun cartonaș cu piață în joc.",
       "meteorite-description": "TBA",
       "meteorite-disabled": "Nu există niciun cartonaș cu crater în joc.",
-      "optional-game-mechanics": "Mecanici de joc opționale",
+      "optional-game-mechanics": "Mecanisme de joc opționale",
       "pig-herd-description": "Valorează drept porc adițional pe câmp (țăranii primesc mai multe puncte).",
       "pig-herd-disabled": "Nu există niciun cartonaș cu turmă de porci în joc.",
       "portal-description": "Printr-un coridor fermecat, un meeple poate fi plasat pe oricare cartonaș.",
@@ -418,7 +472,7 @@
       "starting-tiles-different-configuration": "Unele extensii oferă configurații de pornire alternative.",
       "vineyard-description": "Puncte adiționale pentru mănăstire învecinată.",
       "vineyard-disabled": "Nu există niciun cartonaș cu vie în joc.",
-      "well-description": "Adaugă punct per puț de pe drumuri. Drumurile cu han obțin 2 puncte atunci când este finalizat, dar niciun punct la evaluarea finală.",
+      "well-description": "Adaugă punct per puț de pe drumuri. Drumurile cu han obțin 2 puncte atunci când este finalizat și opțional niciun punct în timpul evaluării finale.",
       "well-disabled": "Nu există niciun cartonaș cu puț în joc."
     },
     "selected-tiles": "Cartonașe selectate",
@@ -431,15 +485,15 @@
     },
     "timer": {
       "at-game-start-set-timer-to": "La începutul jocului, setează cronometrul la",
-      "disable-limits": "dezactivează limite",
+      "disable-limits": "dezactivează limitele",
       "do-nothing": "fă nimic",
-      "each-turn-increase-timer-by": "Fiecare tură, mărește cronometrul cu",
+      "each-turn-increase-timer-by": "În fiecare tură, crește durata cronometrului cu",
       "enable-limits": "activează limite",
-      "player-time-limit": "Limita de timp a jucătorului",
+      "player-time-limit": "Limita de timp a jucătorilor",
       "unlimited-time": "timp nelimitat",
       "when-time-is-over": "Atunci când timpul s-a terminat"
     },
-    "title": "Configurarea jocului",
+    "title": "Configurarea partidei",
     "variant": {
       "barn-placement": {
         "description": "Moșia {} fi plasată pe un câmp deja ocupat de altă moșie.",
@@ -451,19 +505,19 @@
       },
       "coc-final-scoring": {
         "any-district": "nu este limitată (C1)",
-        "description": "Mutarea meepleșilor din Orașul Carcassonne înaintea evaluării finale {}.",
+        "description": "Mutarea meepleșilor din orașul Carcassonne înaintea evaluării finale {}.",
         "market-only": "este permisă numai din cartierul piață (C2)"
       },
       "count-move": {
         "by-player": "de jucător",
         "clockwise": "în sensul acelor de ceasornic în următorul cartier",
-        "description": "Atunci când este plasat un meeple în Orașul C., contele este apoi mutat {}.",
+        "description": "Atunci când este plasat un meeple în orașul C., contele este apoi mutat {}.",
         "follow-meeple": "în oricare cartier ca meepleul"
       },
       "dragon-move": {
         "after-scoring": "după evaluare",
         "before-scoring": "înaintea evaluării",
-        "description": "Mutarea dragonului areloc {}."
+        "description": "Mutarea dragonului are loc {}."
       },
       "espace-variant": {
         "any-tile": "oricare cartonaș",
@@ -481,14 +535,19 @@
         "meeple": "pioni de jucător"
       },
       "gq11-pig-herd": {
-        "description": "Cartonașul cu câmp din extensia Game Quarterly 11 {}.",
-        "nothing": "este pur și simplu câmp gol",
-        "pig": "conține o turmă de porci"
+        "description": "Cartonașul cu câmp din extensia Games Quarterly 11 {}.",
+        "nothing": "este doar câmp gol",
+        "pig": "conține turmă de porci"
       },
       "hill-tiebreaker": {
-        "at-least-one-follower": "cel puțin un meeple",
+        "at-least-one-follower": "cel puțin un singur meeple",
         "description": "Metodă de întrerupere a situației de egalitate la majoritate: {} pe dealuri.",
-        "number-of-followers": "numărul de meepleși de pe"
+        "number-of-followers": "numărul de meepleși de"
+      },
+      "inn-and-cathedral-final-scoring": {
+        "description": "Hanurile și catedralele {} în timpul evaluării finale.",
+        "ignore": "sunt ignorate",
+        "zero": "marchează 0 puncte"
       },
       "keep-monasteries": {
         "description": "Mănăstirile speciale {}.",
@@ -525,9 +584,9 @@
         "description": "Distribuie {} seturi de jetoane fiecărui jucător într-un joc în doi/trei jucători."
       },
       "princess-action": {
-        "description": "Prințesa {} îndepărtează un cavaler dintr-un oraș.",
-        "may": "are posibilitatea de a îndepărta",
-        "must": "trebuie să îndepărteze"
+        "description": "Prințesa {} să îndepărteze un cavaler dintr-un oraș.",
+        "may": "are posibilitatea",
+        "must": "trebuie"
       },
       "tiny-city-scoring": {
         "2": "2 puncte",
@@ -535,7 +594,10 @@
         "description": "Orașul mic este evaluat pentru {}."
       },
       "tunnelize-other-expansions": {
-        "description": "Aplică regula tunelului pe cartonașele din alte extensii cu tuneluri reprezentate."
+        "description": "Aplică regula tunelului pe cartonașele din alte extensii cu tuneluri ilustrate."
+      },
+      "vineyards-for-garden": {
+        "description": "Aplică bonusul viilor în timpul evaluării unei grădini finalizate."
       },
       "wagon-move": {
         "C1": "conectat (răscruce de drum sau drum ce duce către un oraș sau o mănăstire) (prima ed.)",
@@ -547,35 +609,36 @@
   "index": {
     "automatic-updates-linux-only": "Actualizările automate sunt momentan suportate numai pe platforma Linux. Te rugăm să descarci versiunea nouă direct și să actualizezi manual.",
     "local": {
-      "continue-with-recently-saved-games": "Continuă cu jocurile salvate recent",
-      "create-directly-from": "Creează un joc nou direct din",
-      "load-game": "Încarcă joc",
+      "continue-with-recently-saved-games": "Continuă cu partide salvate recent",
+      "create-directly-from": "Creează o partidă nouă direct din",
+      "load-game": "Încarcă partidă",
       "local-games": "Partide locale",
       "my-favorites": "favoritele mele",
-      "new-game": "Joc nou",
+      "new-game": "Partidă nouă",
       "open-game": "Deschide partidă",
-      "title": "Jocuri găzduite de jucător"
+      "saved-game": "Partidă salvată",
+      "title": "Partide găzduite de jucător"
     },
     "online": {
-      "abandon-game": "Abandonează jocul",
-      "chat-during-game": "Discută în timpul jocului",
+      "abandon-game": "Abandonează partida",
+      "chat-during-game": "Discută în timpul partidei",
       "connected-to": "Conectat la {0}",
-      "game-id": "ID-ul jocului",
-      "games-in-progress": "Jocuri în curs de jucare",
-      "join-game": "Alătură-te unui joc",
+      "game-id": "ID-ul partidei",
+      "games-in-progress": "Partide în curs de jucare",
+      "join-game": "Alătură-te unei partide",
       "lobby": "Lobby",
       "no-public-games": "Nicio partidă publică",
       "no-random-discovery": "înseamnă că nu se pot descoperi jucători aleatorii",
       "not-yet-started": "Nu a început încă",
-      "online-storage-description": "Părăsirea unei partide online menține jocul neîncheiat în fundal. Poți să i te alături oricând dorești din această listă.",
-      "paste-a-game-key": "Lipește o cheie de joc furnizată de o gazdă",
+      "online-storage-description": "Părăsirea unei partide online menține partida neîncheiată în fundal. Poți să i te alături oricând dorești din această listă.",
+      "paste-a-game-key": "Inserează o cheie de partidă furnizată de o gazdă",
       "public-games": "Partide publice",
       "private-games-only": "Deocamdată sunt suportate numai partide private.",
       "remove-unfinished-game-confirmation": "Vrei să elimini permanent din lista ta această partidă neîncheiată?",
       "some-expansions-are-playable-only-here": "Unele extensii sunt jucabile numai aici",
-      "title": "Jocuri găzduite pe servere publice",
+      "title": "Partide găzduite pe servere publice",
       "title-fan": "Partide găzduite pe serverul fanilor",
-      "you-have-no-game-in-progress": "Nu ai niciun joc în curs de jucare."
+      "you-have-no-game-in-progress": "Nu ai nicio partidă în curs de desfășurare."
     },
     "update": {
       "download": "Descarcă",
@@ -588,22 +651,22 @@
     }
   },
   "join-game": {
-    "connect-to-remote-host": "Conectează-te la gazda de la distanță cu jocul creat.",
-    "description": "Jocul gazdei de la distanță trebuie să fie în faza alegerii culorilor.",
+    "connect-to-remote-host": "Conectează-te la gazda de la distanță cu partida creată.",
+    "description": "Partida gazdei de la distanță trebuie să fie în faza selectării culorilor.",
     "host": "Gazdă",
-    "title": "Alătură-te jocului de la distanță"
+    "title": "Alătură-te unei partide de la distanță"
   },
   "menu": {
     "about": "Despre",
     "exit": "Ieși",
     "farm-hints": "Indicii pentru câmpuri",
     "file": "Fișier",
-    "game": "Joc",
+    "game": "Partidă",
     "help": "Ajutor",
-    "join-game": "Alătură-te jocului",
-    "leave-game": "Părăsește jocul",
+    "join-game": "Alătură-te unei partide",
+    "leave-game": "Părăsește partida",
     "load-setup": "Încarcă configurație",
-    "new-game": "Joc nou",
+    "new-game": "Partidă nouă",
     "online": "Online",
     "open-game": "Deschide partidă",
     "playonline-connect": "Joacă online",
@@ -611,10 +674,10 @@
     "report-bug": "Raportează un bug",
     "rotate": "Rotește",
     "rules": "Reguli",
-    "save-game": "Salvează jocul",
+    "save-game": "Salvează partida",
     "session": "Sesiune",
     "settings": "Setări",
-    "show-game-setup": "Arată configurația jocului",
+    "show-game-setup": "Arată configurația partidei",
     "tiles": "Cartonașe",
     "toggle-history": "Comută istoricul",
     "undo": "Anulează",
@@ -631,7 +694,7 @@
       "download-definition-not-found": "Definiția descărcării nu a fost găsită",
       "downloaded-file-checksum-mismatch": "Nepotrivire la suma de control a fișierului descărcării",
       "drag-add-on-here-or-click-here": "Trage add-on-ul aici (fișier .jca) sau apasă aici pentru a îl selecta.",
-      "finish-or-leave-game-to-make-changes": "Te rugăm ca mai întâi să închei sau să părăsești jocul pentru a face schimbări aici.",
+      "finish-or-leave-game-to-make-changes": "Te rugăm ca mai întâi să închei sau să părăsești partida pentru a face schimbări aici.",
       "install-add-on": "Instalează add-on-ul",
       "installation-is-not-allowed-during-game": "Instalarea nu este permisă în timpul jocului.",
       "installed-add-ons": "Add-on-uri instalate",
@@ -684,23 +747,23 @@
       "java-executable": "Executabil Java",
       "java-is-not-installed": "Java nu este instalat!",
       "java-is-outdated": "Java este învechit!",
-      "java-is-required": "Java este necesar pentru a începe un joc.",
-      "java-path-is-not-valid": "Calea ta Java configrată manual nu este validă.",
-      "java-version-found": "Java 11 sau mai mult este necesar (s-a găsit {version}) pentru a începe un joc.",
-      "select-manually": "Sau selectează Java adecvat în {settings}.",
+      "java-is-required": "Java este necesar pentru a începe o partidă.",
+      "java-path-is-not-valid": "Calea ta Java configurată manual nu este validă.",
+      "java-version-found": "Java 11 sau mai mult este necesar (s-a găsit {version}) pentru a începe o partidă.",
+      "select-manually": "Sau selectează manual Java adecvat din {settings}.",
       "selected": "Selectat: {0}",
       "title": "Java",
       "unable-to-find-java": "Nu se poate localiza Java în sistemul tău.",
       "using-system-default": "Se folosește setarea prestabilită a sistemului.",
       "verify": "Dacă Java este deja instalat, verifică dacă Java a fost adăugat în locația sistemului tău sau selectează Java binar manual în {settings}.",
-      "version": "Versiuna Java {0}",
+      "version": "Versiunea {0} de Java",
       "warning-file-is-not-java-binary": "Fișierul nu arată ca un binar Java.",
       "warning-java-not-found": "Java negăsit.",
       "you-may-set-path": "Poți seta manual calea către {0}"
     },
     "player": {
       "nickname": "Poreclă",
-      "nickname-description": "Poreclă folosită când jucătorul este atribuit unui joc.",
+      "nickname-description": "Poreclă folosită când jucătorul este atribuit unui partide.",
       "none": "Niciuna",
       "preferred-color": "Culoare preferată",
       "preferred-color-description": "Ia automat o culoare după alăturarea la joc.",

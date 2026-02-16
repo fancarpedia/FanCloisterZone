@@ -1,6 +1,6 @@
 {
   "name": "fancloisterzone",
-  "version": "6.1.0-alpha",
+  "version": "6.1.0-alpha.38",
   "description": "FanCloisterZone Edition",
   "repository": "github:fancarpedia/FanCloisterZone",
   "license": "AGPL-3.0-or-later",
@@ -43,6 +43,7 @@
     "browser-env": "3.3.0",
     "cross-env": "7.0.3",
     "deepmerge": "4.3.0",
+    "dotenv": "^17.2.3",
     "electron": "21.1.0",
     "electron-builder": "23.6.0",
     "electron-debug": "3.2.0",
@@ -69,6 +70,7 @@
     "axios": "0.27.2",
     "babel-loader": "8.2.0",
     "compare-versions": "^5.0.3",
+    "discord-rpc": "^4.0.1",
     "electron-log": "^4.4.1",
     "electron-updater": "^4.3.9",
     "fs-extra": "^11.3.2",

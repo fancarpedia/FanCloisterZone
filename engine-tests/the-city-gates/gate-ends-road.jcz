@@ -3,26 +3,25 @@
   "gameId": "1",
   "name": "",
   "initialRandom": 0.0,
-  "created": "2021-07-04T19:30:00.123Z",
-  "clock": 52567,
+  "created": "2021-07-03T20:16:38.463Z",
+  "clock": 65368,
   "test": {
-    "description": "City gates ends bridge",
+    "description": "Placed gate ends a road",
     "assertions": [
-      "Alice has 1 points"
+      "Alice has 2 points"
     ]
   },
   "setup": {
     "addons": {
-      "city-gates": 1
+      "the-city-gates": 1
     },
     "sets": {
       "basic:1": 1,
-      "city-gates": 1
+      "the-city-gates": 1
     },
     "elements": {
       "small-follower": 7,
-      "farmers": true,
-      "bridge": 1
+      "farmers": true
     },
     "rules": {},
     "timer": null,
@@ -50,31 +49,15 @@
     {
       "type": "PLACE_TILE",
       "payload": {
-        "tileId": "BA/RFr",
-        "rotation": "R0",
+        "tileId": "the-city-gates/cfrg",
+        "rotation": "R90",
         "position": [
           1,
           0
         ]
       },
       "player": 0,
-      "clock": 1677
-    },
-    {
-      "type": "PLACE_TOKEN",
-      "payload": {
-        "token": "BRIDGE",
-        "pointer": {
-          "position": [
-            1,
-            0
-          ],
-          "location": "NS",
-          "feature": "Road"
-        }
-      },
-      "player": 0,
-      "clock": 3325
+      "clock": 2751
     },
     {
       "type": "DEPLOY_MEEPLE",
@@ -84,13 +67,13 @@
             1,
             0
           ],
-          "location": "NS",
+          "location": "W",
           "feature": "Road"
         },
         "meepleId": "0.small.1"
       },
       "player": 0,
-      "clock": 4181
+      "clock": 3790
     },
     {
       "type": "COMMIT",
@@ -98,26 +81,26 @@
         "random": 0.0
       },
       "player": 0,
-      "clock": 5553
+      "clock": 5578
     },
     {
       "type": "PLACE_TILE",
       "payload": {
-        "tileId": "City-Gates/cgrr",
-        "rotation": "R90",
+        "tileId": "the-city-gates/fcrg",
+        "rotation": "R180",
         "position": [
-          1,
-          -1
+          -1,
+          0
         ]
       },
       "player": 1,
-      "clock": 7349
+      "clock": 10510
     },
     {
       "type": "PASS",
       "payload": {},
       "player": 1,
-      "clock": 10588
+      "clock": 13299
     },
     {
       "type": "COMMIT",
@@ -125,41 +108,13 @@
         "random": 0.0
       },
       "player": 1,
-      "clock": 10594
-    },
-    {
-      "type": "PLACE_TILE",
-      "payload": {
-        "tileId": "City-Gates/rcrg",
-        "rotation": "R90",
-        "position": [
-          1,
-          1
-        ]
-      },
-      "player": 0,
-      "clock": 13324
-    },
-    {
-      "type": "PASS",
-      "payload": {},
-      "player": 0,
-      "clock": 14766
-    },
-    {
-      "type": "COMMIT",
-      "payload": {
-        "random": 0.0
-      },
-      "player": 0,
-      "clock": 14772
+      "clock": 13306
     }
   ],
   "gameAnnotations": {
     "drawOrder": [
-      "BA/RFr",
-      "City-Gates/cgrr",
-      "City-Gates/rcrg"
+      "the-city-gates/cfrg",
+      "the-city-gates/fcrg"
     ]
   }
 }

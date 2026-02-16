@@ -4,11 +4,13 @@
   "@fcz-version": "6.0.0",
   "@version": "0.8.22",
   "about": {
+    "author": "Author",
     "configuration-file": "Konfigurační soubor",
+    "fantitle": "FanCloisterZone Edition",
     "jcloisterzone-game-engine": "Herní engine JCloisterZone",
     "system-java-version": "Verze systému Java",
     "title": "JCloisterZone",
-    "fantitle": "FanCloisterZone Edition",
+    "translation": "Translation",
     "version": "verze"
   },
   "bookmarks": {
@@ -35,12 +37,15 @@
     "create-public-game": "Vytvořte veřejnou hru",
     "disconnect": "Odpojit",
     "grow-the-flock": "Rozšíření stáda",
+    "hide": "Skrýt",
+    "hide-finished": "Skrýt ukončené",
     "hide-stats": "Skrýt statistiky",
     "join-game": "Připojit se do hry",
     "load": "Načítání",
     "load-setup-from-file": "Načíst nastavení ze souboru",
     "may-deploy": "Může přiložit",
     "must-remove": "Musí odstranit",
+    "open": "Otevři",
     "pass": "Přenechat",
     "play-again": "Hrát znovu",
     "play-online": "Hrát online",
@@ -51,17 +56,24 @@
     "remove": "Odstranit",
     "remove-from-favorites": "Odstranit z oblíbených",
     "reset": "Resetovat",
+    "reset-all": "Obnov všechny",
+    "reset-failed": "Obnov chybné",
     "resume": "Pokračovat",
     "rules": "Pravidla",
     "rules-1st-edition": "Pravidla (1. vydání)",
+    "run": "Spusť",
+    "run-all": "Spusť všechny",
     "save-to-file": "Uložit do souboru",
     "score-the-sheep": "Vyhodnocení stáda",
     "select": "Vyberte",
     "sell": "Prodat",
     "set": "Nastavit",
+    "show-all": "Zobraz všechny",
     "show-stats": "Zobrazit statistiky",
     "start": "Spustit hru",
-    "undo": "vrátit zpět"
+    "stop-running": "Pozastavit",
+    "undo": "vrátit zpět",
+    "test-runner": "Test Runner"
   },
   "core-messages": {
     "bonuses": "Bonusy",
@@ -79,11 +91,43 @@
     "tiles": "Kartičky",
     "used-time": "Použitý čas"
   },
+  "dev": {
+    "actions": "Úkony",
+    "dump-hosted-game-server-state": "Dump Hosted Game Server State",
+    "edition": "Edition",
+    "fail": "Fail",
+    "meeples": "Meeples",
+    "mode": "Mode",
+    "ok": "OK",
+    "reload-add-ons": "Reload Add-ons",
+    "result": "Result",
+    "save-test-scenario": "Save Test Scenario",
+    "shapes": "Shapes",
+    "size": "Size",
+    "strokes": "Strokes",
+    "test": "Test",
+    "test-runner": "Test Runner",
+    "theme-inspector": "Theme Inspector",
+    "tiles": "Tiles",
+    "toggle-devtools": "Toggle DevTools",
+    "use-local-play-online": "Use Local Play Online",
+    "use-remote-engine": "Use Remote Engine"
+  },
+  "dialog": {
+    "close-local-game": {
+      "continue-playing": "Continue Playing",
+      "resign-and-close": "Resign and Close",
+      "unfinished-local-game": "Unfinished Local Game",
+      "unfinished-local-game-description": "You have an unfinished local game. If you close the app window, you will resign and lose your progress in this game."
+    }
+  },
   "expansion": {
     "-unknown": "Chybějící rozšíření",
     "abbey-and-mayor": "Opatství a starosta",
     "basic": "Základní hra",
     "besiegers": "Obléhání",
+    "black-tower": "Black Tower",
+    "black-tower-description": "New black and white tower floors for The Tower expansion, which allows to capture meeples diagonally when using black floor or permanently lock tower with white floor on the top.",
     "bridges-castles-and-bazaars": "Mosty a hrady",
     "butterfly-tiles": "Motýlí kartičky",
     "butterfly-tiles-description": "16 kartiček, které chybí v základní hře a rozšířeních. Nepřidávají žádná nová území nebo herní mechaniky.",
@@ -105,9 +149,13 @@
     "family-feud-description": "Kartičky s modro-bílým a červeno-žlutým erbem patří soupeřícím rodinám. Žádná kartička však nesmí být přiložena tak, aby se spojili města patřící soupeřícím rodinám.",
     "farmers-heaven": "Farmářův ráj",
     "farmers-heaven-description": "Protože většina rozšíření je zaměřena hlavně na města, nastal čas vytvořit něco také pro sedláky a pomoct jim vytvářením obrovských luk.",
+    "fishermen": "Fishermen",
+    "fishermen-description": "",
     "ferries": "Přívozy",
     "festival": "Oslava",
     "flier": "Létající stroje",
+    "gamblers-luck": "Gambler's Luck",
+    "gamblers-luck-description": "A roll of the die can cause a city to get tokens with additional coat of arms, or nullify existing ones throughout the city.",
     "goldmines": "Zlaté doly",
     "gq11": "Games Quarterly 11 (GQ11)",
     "heretics-and-shrines": "Kacíři (5 kartiček)",
@@ -175,6 +223,7 @@
       "ferries-player-can-move-ferries": "Hráč může přesunout přívozy",
       "ferries-player-must-place-a-ferry": "Hráč musí umístit přívoz",
       "ferries-you-can-move-ferries": "Můžete přesunout přívozy",
+      "gamblers-luck-outcome": "Gambler’s Luck outcome",
       "goldmines-place-a-gold-ingot": "Umístěte zlaté cihličky",
       "goldmines-player-must-place-a-gold-ingot": "Hráč musí umístit zlaté cihličky",
       "hills-and-player-must-choose-grow-or-score-plural": "Hráč se musí rozhodnout, zda bude rozšiřovat stádo nebo zažene ovce do ovčince za {points} bodů. | Hráč se musí rozhodnout, zda bude rozšiřovat stádo nebo zažene ovce do ovčince za {points} bod. | Hráč se musí rozhodnout, zda bude rozšiřovat stádo nebo zažene ovce do ovčince za {points} body. | Hráč se musí rozhodnout, zda bude rozšiřovat stádo nebo zažene ovce do ovčince za {points} bodů.",
@@ -222,6 +271,7 @@
       "barn": "Statek",
       "big-follower": "Velký družiník",
       "big-top": "Šapitó",
+      "black-tower": "Black Tower",
       "bridge": "Most",
       "builder": "Stavitel",
       "castle": "Hrad",
@@ -273,6 +323,7 @@
       "festival": "Oslava",
       "field": "Louka",
       "fields": "Louky",
+      "fishermen": "Fishermen",
       "flock": "Stádo",
       "flowers": "Květy",
       "garden": "Zahrada",
@@ -327,6 +378,7 @@
     },
     "tile-pack-dialog": {
       "disabled-show-remaining": "Hra byla nastavena, aby neumožňovala zobrazit zbývající počet kartiček.",
+      "discarded-tiles": "Discarded tiles",
       "game-tiles": "Kartičky ke hře",
       "hidden-tiles-under-hill-plural": "Pod kopcem není žádná kartička. | Nezapomeňte, že pod kopcem se skrývá 1 neznámá kartička ze seznamu. | Nezapomeňte, že pod kopcem se skrývají {count} neznámé kartičky ze seznamu. | Nezapomeňte, že pod kopcem se skrývá {count} neznámých kartiček ze seznamu.",
       "remaining-tiles": "Zbývající kartičky",
@@ -389,6 +441,8 @@
       "farmers-description": "Hráči mohou umístit družiníka na louku.",
       "festival-description": "Pomocí kartičky s oslavou můžete jednu ze svých figurek na herním plánu vrátit zpět do své zásoby.",
       "festival-disabled": "Ve hře není žádná kartička s oslavou.",
+      "fishermen-description": "River as regular feature.",
+      "fishermen-disabled": "No tile with River is in the game.",
       "flowers-description": "Pokud se květiny shodují s žetonem hráče, přidávají 3 body k hodnocenému území.",
       "flowers-disabled": "V hře není je žádná kartička s květinami.",
       "gameplay-variants": "Volitelná pravidla hry",
@@ -490,6 +544,11 @@
         "description": "V případě remízy rozhoduje {} na kopcích.",
         "number-of-followers": "počet družiníku"
       },
+      "inn-and-cathedral-final-scoring": {
+        "description": "Inns and Cathedrals {} during final scoring.",
+        "ignore": "are ignored",
+        "zero": "score 0 points"
+      },
       "keep-monasteries": {
         "description": "Speciální kláštery {}.",
         "keep": "přidají se k původním klášterům",
@@ -537,6 +596,9 @@
       "tunnelize-other-expansions": {
         "description": "Použít pravidla tunelu na kartičky s vyobrazenými tunely i v jiných rozšířeních."
       },
+      "vineyards-for-garden": {
+        "description": "Apply vineyards bonus during scoring of completed garden."
+      },
       "wagon-move": {
         "C1": "které přímo navazuje na cestou, město nebo klášter (1. vydání)",
         "C2": "na stejné nebo sousední kartičce (2. vydání)",
@@ -554,6 +616,7 @@
       "my-favorites": "Moje oblíbené",
       "new-game": "Nová hra",
       "open-game": "Otevřít uloženu hru",
+      "saved-game": "Saved game",
       "title": "Hry na tomto počítači"
     },
     "online": {

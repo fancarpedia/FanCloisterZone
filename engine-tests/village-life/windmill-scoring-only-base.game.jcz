@@ -1,0 +1,469 @@
+{
+  "appVersion": "6.1.0-alpha.16",
+  "gameId": "1",
+  "name": "",
+  "initialRandom": 0.5411154124048232,
+  "created": "2026-01-25T15:26:29.632Z",
+  "clock": 402771,
+  "setup": {
+    "options": {},
+    "sets": {
+      "basic:1": 1
+    },
+    "elements": {
+      "small-follower": 7,
+      "farmers": true,
+      "windmill": 1
+    },
+    "rules": {},
+    "timer": null,
+    "start": [
+      {
+        "tile": "BA/RCr",
+        "x": 0,
+        "y": 0,
+        "rotation": 0
+      }
+    ]
+  },
+  "players": [
+    {
+      "name": "Betty",
+      "slot": 2
+    },
+    {
+      "name": "John",
+      "slot": 1
+    }
+  ],
+  "chat": [],
+  "replay": [
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "BA/RRR",
+        "rotation": "R0",
+        "position": [
+          1,
+          0
+        ]
+      },
+      "player": 0,
+      "clock": 32821
+    },
+    {
+      "type": "DEPLOY_MEEPLE",
+      "payload": {
+        "pointer": {
+          "position": [
+            1,
+            0
+          ],
+          "location": "NL.NR.EL.WR",
+          "feature": "Field"
+        },
+        "meepleId": "0.windmill.1"
+      },
+      "player": 0,
+      "clock": 34573
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.9289324977371272
+      },
+      "player": 0,
+      "clock": 36348
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "BA/RFr",
+        "rotation": "R90",
+        "position": [
+          1,
+          1
+        ]
+      },
+      "player": 1,
+      "clock": 38750
+    },
+    {
+      "type": "PASS",
+      "payload": {},
+      "player": 1,
+      "clock": 39861
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.16968158456526816
+      },
+      "player": 1,
+      "clock": 39864
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "BA/Rr",
+        "rotation": "R90",
+        "position": [
+          1,
+          2
+        ]
+      },
+      "player": 0,
+      "clock": 42535
+    },
+    {
+      "type": "PASS",
+      "payload": {},
+      "player": 0,
+      "clock": 43547
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.38721604906858187
+      },
+      "player": 0,
+      "clock": 43550
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "BA/RFr",
+        "rotation": "R0",
+        "position": [
+          2,
+          0
+        ]
+      },
+      "player": 1,
+      "clock": 45409
+    },
+    {
+      "type": "PASS",
+      "payload": {},
+      "player": 1,
+      "clock": 46239
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.38102461856425185
+      },
+      "player": 1,
+      "clock": 46242
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "BA/CcRr",
+        "rotation": "R90",
+        "position": [
+          3,
+          0
+        ]
+      },
+      "player": 0,
+      "clock": 48247
+    },
+    {
+      "type": "PASS",
+      "payload": {},
+      "player": 0,
+      "clock": 49381
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.8583314237509532
+      },
+      "player": 0,
+      "clock": 49384
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "BA/Cc.1",
+        "rotation": "R270",
+        "position": [
+          3,
+          -1
+        ]
+      },
+      "player": 1,
+      "clock": 53413
+    },
+    {
+      "type": "PASS",
+      "payload": {},
+      "player": 1,
+      "clock": 54730
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.7000148338361132
+      },
+      "player": 1,
+      "clock": 54733
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "BA/RRR",
+        "rotation": "R270",
+        "position": [
+          -1,
+          0
+        ]
+      },
+      "player": 0,
+      "clock": 59053
+    },
+    {
+      "type": "PASS",
+      "payload": {},
+      "player": 0,
+      "clock": 59869
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.7092373208707872
+      },
+      "player": 0,
+      "clock": 59872
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "BA/RCr",
+        "rotation": "R90",
+        "position": [
+          -1,
+          -1
+        ]
+      },
+      "player": 1,
+      "clock": 63028
+    },
+    {
+      "type": "PASS",
+      "payload": {},
+      "player": 1,
+      "clock": 63902
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.879680026129855
+      },
+      "player": 1,
+      "clock": 63904
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "BA/Cccc+",
+        "rotation": "R0",
+        "position": [
+          0,
+          -1
+        ]
+      },
+      "player": 0,
+      "clock": 65398
+    },
+    {
+      "type": "PASS",
+      "payload": {},
+      "player": 0,
+      "clock": 66323
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.22634916627436574
+      },
+      "player": 0,
+      "clock": 66326
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "BA/Cc.1",
+        "rotation": "R180",
+        "position": [
+          0,
+          -2
+        ]
+      },
+      "player": 1,
+      "clock": 67878
+    },
+    {
+      "type": "PASS",
+      "payload": {},
+      "player": 1,
+      "clock": 68498
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.7033578664115767
+      },
+      "player": 1,
+      "clock": 68500
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "BA/Ccc+",
+        "rotation": "R0",
+        "position": [
+          1,
+          -2
+        ]
+      },
+      "player": 0,
+      "clock": 70232
+    },
+    {
+      "type": "PASS",
+      "payload": {},
+      "player": 0,
+      "clock": 71475
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.429024443105924
+      },
+      "player": 0,
+      "clock": 71477
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "BA/C",
+        "rotation": "R180",
+        "position": [
+          1,
+          -3
+        ]
+      },
+      "player": 1,
+      "clock": 76646
+    },
+    {
+      "type": "PASS",
+      "payload": {},
+      "player": 1,
+      "clock": 77292
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.1499574183112462
+      },
+      "player": 1,
+      "clock": 77294
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "BA/CC.2",
+        "rotation": "R270",
+        "position": [
+          2,
+          -2
+        ]
+      },
+      "player": 0,
+      "clock": 81969
+    },
+    {
+      "type": "PASS",
+      "payload": {},
+      "player": 0,
+      "clock": 83978
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.15047889072409637
+      },
+      "player": 0,
+      "clock": 83981
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "BA/CFC.2",
+        "rotation": "R90",
+        "position": [
+          1,
+          -1
+        ]
+      },
+      "player": 1,
+      "clock": 85529
+    },
+    {
+      "type": "DEPLOY_MEEPLE",
+      "payload": {
+        "pointer": {
+          "position": [
+            1,
+            -1
+          ],
+          "location": "NL.NR.SL.SR",
+          "feature": "Field"
+        },
+        "meepleId": "1.windmill.1"
+      },
+      "player": 1,
+      "clock": 88245
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.25992575400628826
+      },
+      "player": 1,
+      "clock": 89412
+    }
+  ],
+  "gameAnnotations": {
+    "drawOrder": [
+      "BA/RRR",
+      "BA/RFr",
+      "BA/Rr",
+      "BA/RFr",
+      "BA/CcRr",
+      "BA/Cc.1",
+      "BA/RRR",
+      "BA/RCr",
+      "BA/Cccc+",
+      "BA/Cc.1",
+      "BA/Ccc+",
+      "BA/C",
+      "BA/CC.2",
+      "BA/CFC.2"
+    ],
+    "endTurn": 14
+  },
+  "test": {
+    "description": "Windmill Scoring Only Base.Game",
+    "assertions": [
+      "Betty scored windmill for 9 points.",
+      "John scored windmill for 8 points.",
+      "Betty has 9 points.",
+      "John has 8 points.",
+      "phase is GameOverPhase"
+    ]
+  }
+}

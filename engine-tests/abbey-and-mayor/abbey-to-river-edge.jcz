@@ -1,0 +1,667 @@
+{
+  "appVersion": "6.1.0-alpha.15",
+  "gameId": "1",
+  "name": "",
+  "initialRandom": 0.7006408411461431,
+  "created": "2026-01-24T22:47:36.146Z",
+  "clock": 90963,
+  "setup": {
+    "options": {},
+    "sets": {
+      "basic:1": 1,
+      "river/2:1": 2
+    },
+    "elements": {
+      "small-follower": 7,
+      "farmers": true,
+      "abbey": 1
+    },
+    "rules": {},
+    "timer": null,
+    "start": [
+      {
+        "tile": "RI/s",
+        "x": 0,
+        "y": 0,
+        "rotation": 0
+      }
+    ]
+  },
+  "players": [
+    {
+      "name": "Ariel",
+      "slot": 0
+    }
+  ],
+  "chat": [],
+  "replay": [
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "RI.2/III",
+        "rotation": "R180",
+        "position": [
+          1,
+          0
+        ]
+      },
+      "player": 0,
+      "clock": 3058
+    },
+    {
+      "type": "PASS",
+      "payload": {},
+      "player": 0,
+      "clock": 3260
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.8143120260237509
+      },
+      "player": 0,
+      "clock": 3272
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "RI.2/LIFI",
+        "rotation": "R0",
+        "position": [
+          2,
+          0
+        ]
+      },
+      "player": 0,
+      "clock": 4566
+    },
+    {
+      "type": "PASS",
+      "payload": {},
+      "player": 0,
+      "clock": 4670
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.8046076671862243
+      },
+      "player": 0,
+      "clock": 4681
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "RI.2/II",
+        "rotation": "R0",
+        "position": [
+          3,
+          0
+        ]
+      },
+      "player": 0,
+      "clock": 7664
+    },
+    {
+      "type": "PASS",
+      "payload": {},
+      "player": 0,
+      "clock": 7749
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.3596908159537979
+      },
+      "player": 0,
+      "clock": 7755
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "RI.2/LIFI",
+        "rotation": "R90",
+        "position": [
+          3,
+          1
+        ]
+      },
+      "player": 0,
+      "clock": 8960
+    },
+    {
+      "type": "PASS",
+      "payload": {},
+      "player": 0,
+      "clock": 9016
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.8130204983974796
+      },
+      "player": 0,
+      "clock": 9028
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "RI.2/II",
+        "rotation": "R90",
+        "position": [
+          3,
+          2
+        ]
+      },
+      "player": 0,
+      "clock": 11236
+    },
+    {
+      "type": "PASS",
+      "payload": {},
+      "player": 0,
+      "clock": 11344
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.5094715423662293
+      },
+      "player": 0,
+      "clock": 11352
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "RI.2/CIcI",
+        "rotation": "R90",
+        "position": [
+          2,
+          2
+        ]
+      },
+      "player": 0,
+      "clock": 12780
+    },
+    {
+      "type": "PASS",
+      "payload": {},
+      "player": 0,
+      "clock": 12879
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.09476939311617394
+      },
+      "player": 0,
+      "clock": 12889
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "RI.2/CIRI",
+        "rotation": "R180",
+        "position": [
+          1,
+          2
+        ]
+      },
+      "player": 0,
+      "clock": 15897
+    },
+    {
+      "type": "PASS",
+      "payload": {},
+      "player": 0,
+      "clock": 17234
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.07983905746081987
+      },
+      "player": 0,
+      "clock": 17251
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "RI.2/CIcI",
+        "rotation": "R90",
+        "position": [
+          0,
+          2
+        ]
+      },
+      "player": 0,
+      "clock": 20453
+    },
+    {
+      "type": "PASS",
+      "payload": {},
+      "player": 0,
+      "clock": 20674
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.803354234249142
+      },
+      "player": 0,
+      "clock": 20683
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "RI.2/RrII",
+        "rotation": "R270",
+        "position": [
+          -1,
+          2
+        ]
+      },
+      "player": 0,
+      "clock": 24582
+    },
+    {
+      "type": "PASS",
+      "payload": {},
+      "player": 0,
+      "clock": 25101
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.370716753997707
+      },
+      "player": 0,
+      "clock": 25110
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "RI.2/IFC",
+        "rotation": "R90",
+        "position": [
+          -1,
+          3
+        ]
+      },
+      "player": 0,
+      "clock": 26607
+    },
+    {
+      "type": "PASS",
+      "payload": {},
+      "player": 0,
+      "clock": 26767
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.7114575083497345
+      },
+      "player": 0,
+      "clock": 26775
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "BA/CFc+",
+        "rotation": "R90",
+        "position": [
+          0,
+          3
+        ]
+      },
+      "player": 0,
+      "clock": 35390
+    },
+    {
+      "type": "PASS",
+      "payload": {},
+      "player": 0,
+      "clock": 35662
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.25820251314988485
+      },
+      "player": 0,
+      "clock": 35680
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "BA/Cc+",
+        "rotation": "R270",
+        "position": [
+          2,
+          1
+        ]
+      },
+      "player": 0,
+      "clock": 40847
+    },
+    {
+      "type": "PASS",
+      "payload": {},
+      "player": 0,
+      "clock": 41459
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.3674274283482095
+      },
+      "player": 0,
+      "clock": 41478
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "BA/CcRr+",
+        "rotation": "R0",
+        "position": [
+          2,
+          3
+        ]
+      },
+      "player": 0,
+      "clock": 43071
+    },
+    {
+      "type": "PASS",
+      "payload": {},
+      "player": 0,
+      "clock": 43214
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.13297966034733388
+      },
+      "player": 0,
+      "clock": 43223
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "BA/CFC.2",
+        "rotation": "R0",
+        "position": [
+          0,
+          4
+        ]
+      },
+      "player": 0,
+      "clock": 46699
+    },
+    {
+      "type": "PASS",
+      "payload": {},
+      "player": 0,
+      "clock": 46828
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.9539595284509388
+      },
+      "player": 0,
+      "clock": 46836
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "BA/Rr",
+        "rotation": "R180",
+        "position": [
+          1,
+          4
+        ]
+      },
+      "player": 0,
+      "clock": 50370
+    },
+    {
+      "type": "PASS",
+      "payload": {},
+      "player": 0,
+      "clock": 50687
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.13171231353007062
+      },
+      "player": 0,
+      "clock": 50707
+    },
+    {
+      "type": "PASS",
+      "payload": {},
+      "player": 0,
+      "clock": 51672
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.6630901676862264
+      },
+      "player": 0,
+      "clock": 51685
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "BA/RFr",
+        "rotation": "R0",
+        "position": [
+          3,
+          3
+        ]
+      },
+      "player": 0,
+      "clock": 53555
+    },
+    {
+      "type": "PASS",
+      "payload": {},
+      "player": 0,
+      "clock": 53684
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.06841452138265103
+      },
+      "player": 0,
+      "clock": 53702
+    },
+    {
+      "type": "PASS",
+      "payload": {},
+      "player": 0,
+      "clock": 54761
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.219788372530352
+      },
+      "player": 0,
+      "clock": 54773
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "BA/CRr",
+        "rotation": "R180",
+        "position": [
+          2,
+          4
+        ]
+      },
+      "player": 0,
+      "clock": 56679
+    },
+    {
+      "type": "PASS",
+      "payload": {},
+      "player": 0,
+      "clock": 56837
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.2414628360839326
+      },
+      "player": 0,
+      "clock": 56845
+    },
+    {
+      "type": "PASS",
+      "payload": {},
+      "player": 0,
+      "clock": 57476
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.4981715055703766
+      },
+      "player": 0,
+      "clock": 57494
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "BA/L",
+        "rotation": "R0",
+        "position": [
+          3,
+          4
+        ]
+      },
+      "player": 0,
+      "clock": 59086
+    },
+    {
+      "type": "PASS",
+      "payload": {},
+      "player": 0,
+      "clock": 59319
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.10711805206050928
+      },
+      "player": 0,
+      "clock": 59328
+    },
+    {
+      "type": "PASS",
+      "payload": {},
+      "player": 0,
+      "clock": 60179
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.39624357297036417
+      },
+      "player": 0,
+      "clock": 60203
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "BA/Ccc",
+        "rotation": "R180",
+        "position": [
+          0,
+          1
+        ]
+      },
+      "player": 0,
+      "clock": 61964
+    },
+    {
+      "type": "PASS",
+      "payload": {},
+      "player": 0,
+      "clock": 62913
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.3502782768187551
+      },
+      "player": 0,
+      "clock": 62926
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "AM/A",
+        "rotation": "R0",
+        "position": [
+          1,
+          1
+        ]
+      },
+      "player": 0,
+      "clock": 77762
+    },
+    {
+      "type": "DEPLOY_MEEPLE",
+      "payload": {
+        "pointer": {
+          "position": [
+            1,
+            1
+          ],
+          "location": "I",
+          "feature": "Monastery"
+        },
+        "meepleId": "0.small.1"
+      },
+      "player": 0,
+      "clock": 79117
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.5781893248910273
+      },
+      "player": 0,
+      "clock": 81801
+    }
+  ],
+  "gameAnnotations": {
+    "drawOrder": [
+      "RI.2/III",
+      "RI.2/LIFI",
+      "RI.2/II",
+      "RI.2/LIFI",
+      "RI.2/II",
+      "RI.2/CIcI",
+      "RI.2/CIRI"
+    ]
+  },
+  "test": {
+    "description": "Abbey To River Edge",
+    "assertions": [
+      "Ariel scored monastery for 9 points.",
+      "Ariel has 9 points.",
+      "phase is TilePhase",
+      "Player can't pass",
+      "Available action TilePlacement for BA/RCr",
+      "TilePlacement BA/RCr options: [1,5] - [180]; [3,5] - [180]; [2,-1] - [0]; [1,-1] - [0]; [0,-1] - [0]; [3,-1] - [0]; [-2,2] - [0,180]; [4,3] - [0,180]; [-1,0] - [270]; [0,5] - [0]; [2,5] - [0]; [-2,3] - [270]; [4,0] - [90]; [-1,1] - [90]; [4,1] - [90]; [4,2] - [90]; [4,4] - [90]"
+    ]
+  }
+}

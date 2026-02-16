@@ -108,7 +108,11 @@ export default {
         return this.transformPosition(ptr) + 'translate(500 500)'
       }
       if (ptr.featurePointer) {
-        return this.transformPoint(ptr.featurePointer)
+        if (typeof ptr.meepleId === 'string' && /\.(obelisk|barn)\./.test(ptr.meepleId)) {
+          return this.transformPosition(ptr.featurePointer.position)
+        } else {
+          return this.transformPoint(ptr.featurePointer)
+        }
       }
       if (ptr.position && !ptr.location) {
         return this.transformPosition(ptr.position) + 'translate(500 500)'
@@ -141,4 +145,9 @@ export default {
 .muted
   pointer-events: none
   opacity: 0.3
+  
+.points rect
+  opacity: 0.6
+  stroke: black
+  stroke-width: 10
 </style>

@@ -216,6 +216,20 @@ export default class ArtworkLoader {
   }
 
   processTile (artwork, tileId, data) {
+    if (artwork.id == 'jcz/classicfixes') {
+      // Some fixes of tiles
+      if (this.tiles[tileId]) {
+        const river = /^River\//
+        Object.entries(data.features).forEach(([loc, f]) => {
+          // Append or fix River shapes
+          if (this.tiles[tileId].features[loc] === undefined) {
+            this.tiles[tileId].features[loc] = f
+          }
+        })
+      }
+      return
+    }
+  
     if (this.tiles[tileId]) {
       // tile already registred by prev artwork
       // currently there is time load fixed order

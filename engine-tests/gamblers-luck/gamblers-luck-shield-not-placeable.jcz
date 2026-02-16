@@ -1,0 +1,108 @@
+{
+  "appVersion": "6.1.0-alpha.30",
+  "gameId": "1",
+  "name": "",
+  "initialRandom": 0.7506147990504417,
+  "created": "2026-02-08T23:19:37.147Z",
+  "clock": 56825,
+  "setup": {
+    "sets": {
+      "basic:1": 1,
+      "gamblers-luck": 1
+    },
+    "elements": {
+      "small-follower": 7,
+      "farmers": true
+    },
+    "rules": {},
+    "timer": null,
+    "start": [
+      {
+        "tile": "BA/RCr",
+        "x": 0,
+        "y": 0,
+        "rotation": 0
+      }
+    ],
+    "options": {},
+    "addons": {
+      "gamblers-luck": 0
+    }
+  },
+  "players": [
+    {
+      "name": "Ariel",
+      "slot": 0
+    }
+  ],
+  "chat": [],
+  "replay": [
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "gamblers-luck/cccc.m",
+        "rotation": "R0",
+        "position": [
+          0,
+          -1
+        ]
+      },
+      "player": 0,
+      "clock": 2325
+    },
+    {
+      "type": "DEPLOY_MEEPLE",
+      "payload": {
+        "pointer": {
+          "position": [
+            0,
+            -1
+          ],
+          "location": "NWSE",
+          "feature": "City"
+        },
+        "meepleId": "0.small.1"
+      },
+      "player": 0,
+      "clock": 3400
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.17603166150757965
+      },
+      "player": 0,
+      "clock": 3662
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "gamblers-luck/cccc",
+        "rotation": "R90",
+        "position": [
+          0,
+          -2
+        ]
+      },
+      "player": 0,
+      "clock": 7102
+    }
+  ],
+  "gameAnnotations": {
+    "drawOrder": [
+      "gamblers-luck/cccc.m",
+      "gamblers-luck/cccc"
+    ]
+  },
+  "test": {
+    "description": "Gamblers Luck Shield Not Placeable",
+    "assertions": [
+      "Ariel has 0 points.",
+      "Phase is ActionPhase",
+      "Player can pass",
+      "Available action Meeple for SmallFollower",
+      "Meeple SmallFollower options: {Field,I,[0,-2]}; {City,E,[0,-2]}; {City,W,[0,-2]}; {Field,II,[0,-2]}",
+      "Undo is allowed"
+    ]
+  }
+}

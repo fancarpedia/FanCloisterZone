@@ -5,6 +5,18 @@
       'read-only': readOnly
     }"
   >
+
+    <RuleBox
+      :setup="setup"
+      :rules="[Rule.INN_AND_CATHEDRAL_FINAL_SCORING]"
+      :read-only="readOnly"
+    >
+      <template #icon>
+        <img src="~/assets/features/C1/cathedral.png" height="45">
+        <img src="~/assets/features/C1/inn.png" height="45">
+      </template>
+    </RuleBox>
+
     <RuleBox
       :setup="setup"
       :rules="[Rule.KEEP_MONASTERIES]"
@@ -88,6 +100,18 @@
         <img src="~/assets/features/C1/hill.png" height="45">
       </template>
     </RuleBox>
+
+    <RuleBox
+      :setup="setup"
+      :rules="[Rule.VINEYARDS_FOR_GARDEN]"
+      :read-only="readOnly"
+    >
+      <template #icon>
+        <img src="~/assets/features/C1/garden.png" height="45">
+        <img src="~/assets/features/C1/vineyard.png" height="45">
+      </template>
+    </RuleBox>
+
 
     <RuleBox
       :setup="setup"

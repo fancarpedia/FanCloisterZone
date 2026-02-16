@@ -1,6 +1,6 @@
 <template>
   <div class="player-clock" :class="{'out-of-time': remainingTimeSec < 0}">
-    <div class="time">{{ sign }}{{ minutes }}&thinsp;:&thinsp;{{ seconds }}</div>
+    <div class="time">{{ sign }}<template v-if="hours>0">{{ hours }}&thinsp;:&thinsp;</template>{{ minutes }}&thinsp;:&thinsp;{{ seconds }}</div>
   </div>
 </template>
 
@@ -41,9 +41,14 @@ export default {
       return this.timer.initial + this.timer.turn * this.playerTurns - Math.round(this.milis / 1000)
     },
 
+    hours () {
+      const h = parseInt(Math.abs(this.remainingTimeSec) / 60 / 60)
+      return h
+    },
+
     minutes () {
-      const m = parseInt(Math.abs(this.remainingTimeSec) / 60)
-      return m
+      const m = parseInt(Math.abs(this.remainingTimeSec) / 60) % 60
+      return `${m < 10 ? '0' : ''}${m}`
     },
 
     seconds () {

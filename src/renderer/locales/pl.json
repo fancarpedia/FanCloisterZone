@@ -4,11 +4,13 @@
   "@fcz-version": "6.0.0",
   "@version": "0.8.22",
   "about": {
+    "author": "Author",
     "configuration-file": "Plik konfiguracyjny",
+    "fantitle": "Edycja FanCloisterZone",
     "jcloisterzone-game-engine": "Silnik gry JCloisterZone",
     "system-java-version": "Wersja systemowa Java",
     "title": "JCloisterZone",
-    "fantitle": "Edycja FanCloisterZone",
+    "translation": "Translation",
     "version": "wersja"
   },
   "bookmarks": {
@@ -35,12 +37,15 @@
     "create-public-game": "Utwórz grę publiczną",
     "disconnect": "Rozłącz",
     "grow-the-flock": "Zwiększ stado",
+    "hide": "Hide",
+    "hide-finished": "Hide Finished",
     "hide-stats": "Ukryj statystyki",
     "join-game": "Dołącz do gry",
     "load": "Wczytaj",
     "load-setup-from-file": "Wczytaj ustawienia z pliku",
     "may-deploy": "Może dodać",
     "must-remove": "Musi usunąć",
+    "open": "Open",
     "pass": "Pasuj",
     "play-again": "Graj ponownie",
     "play-online": "Graj Online",
@@ -51,17 +56,24 @@
     "remove": "Usuń",
     "remove-from-favorites": "Usuń z ulubionych",
     "reset": "Zresetuj",
+    "reset-all": "Reset All",
+    "reset-failed": "Reset Failed",
     "resume": "Wznów",
     "rules": "Zasady",
     "rules-1st-edition": "Zasady (C1)",
+    "run": "Run",
+    "run-all": "Run All",
     "save-to-file": "Zapisz do pliku",
     "score-the-sheep": "Punktuj Owce",
     "select": "Wybierz",
     "sell": "Sprzedaj",
     "set": "Ustal",
+    "show-all": "Show All",
     "show-stats": "Pokaż statystyki",
     "start": "Start",
-    "undo": "Cofnij"
+    "stop-running": "Stop Running",
+    "undo": "Cofnij",
+    "test-runner": "Test Runner"
   },
   "core-messages": {
     "bonuses": "Dodatkowe",
@@ -79,11 +91,43 @@
     "tiles": "Płytki",
     "used-time": "Wykorzystany czas"
   },
+  "dev": {
+    "actions": "Actions",
+    "dump-hosted-game-server-state": "Dump Hosted Game Server State",
+    "edition": "Edition",
+    "fail": "Fail",
+    "meeples": "Meeples",
+    "mode": "Mode",
+    "ok": "OK",
+    "reload-add-ons": "Reload Add-ons",
+    "result": "Result",
+    "save-test-scenario": "Save Test Scenario",
+    "shapes": "Shapes",
+    "size": "Size",
+    "strokes": "Strokes",
+    "test": "Test",
+    "test-runner": "Test Runner",
+    "theme-inspector": "Theme Inspector",
+    "tiles": "Tiles",
+    "toggle-devtools": "Toggle DevTools",
+    "use-local-play-online": "Use Local Play Online",
+    "use-remote-engine": "Use Remote Engine"
+  },
+  "dialog": {
+    "close-local-game": {
+      "continue-playing": "Continue Playing",
+      "resign-and-close": "Resign and Close",
+      "unfinished-local-game": "Unfinished Local Game",
+      "unfinished-local-game-description": "You have an unfinished local game. If you close the app window, you will resign and lose your progress in this game."
+    }
+  },
   "expansion": {
     "-unknown": "Brakujące rozszerzenie",
     "abbey-and-mayor": "Opactwo i burmistrz",
     "basic": "Gra podstawowa",
     "besiegers": "Oblężnicy",
+    "black-tower": "Black Tower",
+    "black-tower-description": "New black and white tower floors for The Tower expansion, which allows to capture meeples diagonally when using black floor or permanently lock tower with white floor on the top.",
     "bridges-castles-and-bazaars": "Mosty, zamki i bazary",
     "butterfly-tiles": "Motyle Płytki",
     "butterfly-tiles-description": "16 płytek z nowymi konfiguracjami, których nie ma w podstawowej wersji gry ani w rozszerzeniach. Nie wprowadzono żadnych nowych zasad.",
@@ -105,9 +149,13 @@
     "family-feud-description": "Płytki z niebiesko-białym i czerwono-żółtym proporcem należą do rywalizujących rodów. Nie można umieszczać płytek w taki sposób, aby miasta należące do rywalizujących rodów były połączone.",
     "farmers-heaven": "Niebo Chłopów",
     "farmers-heaven-description": "Ponieważ większość rozbudowy skupia się głównie na miastach, nadszedł czas, aby zrobić coś dla rolników.",
+    "fishermen": "Fishermen",
+    "fishermen-description": "",
     "ferries": "Promy",
     "festival": "Festiwal",
     "flier": "Maszyny latające",
+    "gamblers-luck": "Gambler's Luck",
+    "gamblers-luck-description": "A roll of the die can cause a city to get tokens with additional coat of arms, or nullify existing ones throughout the city.",
     "goldmines": "Kopalnie złota",
     "gq11": "Mini dodatek (GQ11)",
     "heretics-and-shrines": "Heretyk i Siedziba kultu",
@@ -175,6 +223,7 @@
       "ferries-player-can-move-ferries": "Gracz może przemieścić Promy",
       "ferries-player-must-place-a-ferry": "Gracz musi położyć Prom",
       "ferries-you-can-move-ferries": "Możesz przemieścić Promy",
+      "gamblers-luck-outcome": "Gambler’s Luck outcome",
       "goldmines-place-a-gold-ingot": "Umieść sztabkę złota",
       "goldmines-player-must-place-a-gold-ingot": "Gracz musi umieścić sztabkę złota",
       "hills-and-player-must-choose-grow-or-score-plural": "Gracz musi wybrać, czy chce powiększać stado, czy otrzymać {points} punktów za owcę. | Gracz musi wybrać, czy chce powiększać stado, czy otrzymać {points} punkt za owcę. | Gracz musi wybrać, czy chce powiększać stado, czy otrzymać {points} punkty za owce. | Gracz musi wybrać, czy chce powiększać stado, czy otrzymać {points} punktów za owce.",
@@ -222,6 +271,7 @@
       "barn": "Stodoła",
       "big-follower": "Duży podwładny",
       "big-top": "Cyrk objazdowy",
+      "black-tower": "Black Tower",
       "bridge": "Most",
       "builder": "Budowniczy",
       "castle": "Zamek",
@@ -273,6 +323,7 @@
       "festival": "Festiwal",
       "field": "Pole",
       "fields": "Pola",
+      "fishermen": "Fishermen",
       "flock": "Stado",
       "flowers": "Kwiaty",
       "garden": "Ogród",
@@ -327,6 +378,7 @@
     },
     "tile-pack-dialog": {
       "disabled-show-remaining": "Gra została stworzona z opcją, która nie pozwala na wyświetlanie liczby pozostałych płytek terenu.",
+      "discarded-tiles": "Discarded tiles",
       "game-tiles": "Płytki gry",
       "hidden-tiles-under-hill-plural": "Nie ma nieznanych płytek pod wzgórzem. | Nie zapomnij, że {count} nieznana płytka z listy jest ukryta pod wzgórzem. | Nie zapomnij, że {count} nieznane płytki z listy są ukryte pod wzgórzami. | Nie zapomnij, że {count} nieznanych płytek z listy jest ukrytych pod wzgórzami.",
       "remaining-tiles": "Pozostałe płytki",
@@ -389,6 +441,8 @@
       "farmers-description": "Możliwość umieszczenia chłopów na polach.",
       "festival-description": "Festiwal pozwala na usunięcie z planszy własnego podwładnego.",
       "festival-disabled": "Nie wybrano płytek z festiwalem.",
+      "fishermen-description": "River as regular feature.",
+      "fishermen-disabled": "No tile with River is in the game.",
       "flowers-description": "Kwiaty dodają +3 punkty do punktowanego obszaru gdy gracz posiada odpowiedni żeton kwiatów.",
       "flowers-disabled": "Brak płytek z kwiatami w tej grze.",
       "gameplay-variants": "Warianty zasad",
@@ -490,6 +544,11 @@
         "description": "Rozstrzyganie remisu: {} na wzgórzu.",
         "number-of-followers": "ilość podwładnych"
       },
+      "inn-and-cathedral-final-scoring": {
+        "description": "Inns and Cathedrals {} during final scoring.",
+        "ignore": "are ignored",
+        "zero": "score 0 points"
+      },
       "keep-monasteries": {
         "description": "Klasztory specjalne {}.",
         "keep": "są dodane dodatkowo",
@@ -537,6 +596,9 @@
       "tunnelize-other-expansions": {
         "description": "Zastosuj zasadę tunelu na płytkach z innych rozszerzeń zawierających tunele."
       },
+      "vineyards-for-garden": {
+        "description": "Apply vineyards bonus during scoring of completed garden."
+      },
       "wagon-move": {
         "C1": "połączonym obiekcie (skrzyżowanie lub droga do/z miasta/klasztoru) (C1)",
         "C2": "przyległej płytce (C2)",
@@ -554,6 +616,7 @@
       "my-favorites": "bezpośrednio z ulubionych",
       "new-game": "Nowa gra",
       "open-game": "Otwarta gra",
+      "saved-game": "Saved game",
       "title": "Gry prywatne"
     },
     "online": {

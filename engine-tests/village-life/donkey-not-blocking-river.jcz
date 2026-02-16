@@ -1,0 +1,320 @@
+{
+  "appVersion": "6.1.0-alpha.29",
+  "gameId": "1",
+  "name": "",
+  "initialRandom": 0.6101349802985117,
+  "created": "2026-02-05T22:08:38.956Z",
+  "clock": 89636,
+  "setup": {
+    "sets": {
+      "basic:1": 1,
+      "river/1:1": 1
+    },
+    "elements": {
+      "small-follower": 7,
+      "farmers": true,
+      "donkey": 1
+    },
+    "rules": {},
+    "timer": null,
+    "start": [
+      {
+        "tile": "RI/s",
+        "x": 0,
+        "y": 0,
+        "rotation": 0
+      }
+    ],
+    "options": {}
+  },
+  "players": [
+    {
+      "name": "Ariel",
+      "slot": 0
+    }
+  ],
+  "chat": [],
+  "replay": [
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "RI.1/II",
+        "rotation": "R0",
+        "position": [
+          1,
+          0
+        ]
+      },
+      "player": 0,
+      "clock": 3453
+    },
+    {
+      "type": "PASS",
+      "payload": {},
+      "player": 0,
+      "clock": 3848
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.083489361502183
+      },
+      "player": 0,
+      "clock": 3858
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "RI.1/CICI",
+        "rotation": "R90",
+        "position": [
+          1,
+          1
+        ]
+      },
+      "player": 0,
+      "clock": 5170
+    },
+    {
+      "type": "PASS",
+      "payload": {},
+      "player": 0,
+      "clock": 5325
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.6233042585642734
+      },
+      "player": 0,
+      "clock": 5336
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "RI.1/II",
+        "rotation": "R90",
+        "position": [
+          1,
+          2
+        ]
+      },
+      "player": 0,
+      "clock": 7976
+    },
+    {
+      "type": "PASS",
+      "payload": {},
+      "player": 0,
+      "clock": 8136
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.034070194916746566
+      },
+      "player": 0,
+      "clock": 8145
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "RI.1/CIRI",
+        "rotation": "R0",
+        "position": [
+          0,
+          2
+        ]
+      },
+      "player": 0,
+      "clock": 9389
+    },
+    {
+      "type": "PASS",
+      "payload": {},
+      "player": 0,
+      "clock": 9490
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.3014325918682703
+      },
+      "player": 0,
+      "clock": 9500
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "RI.1/IFI",
+        "rotation": "R0",
+        "position": [
+          -1,
+          2
+        ]
+      },
+      "player": 0,
+      "clock": 10794
+    },
+    {
+      "type": "PASS",
+      "payload": {},
+      "player": 0,
+      "clock": 10897
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.9287948200201386
+      },
+      "player": 0,
+      "clock": 10911
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "RI.1/RrII",
+        "rotation": "R180",
+        "position": [
+          -2,
+          2
+        ]
+      },
+      "player": 0,
+      "clock": 14787
+    },
+    {
+      "type": "PASS",
+      "payload": {},
+      "player": 0,
+      "clock": 15005
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.1021545803110786
+      },
+      "player": 0,
+      "clock": 15014
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "RI.1/CcII",
+        "rotation": "R90",
+        "position": [
+          -2,
+          1
+        ]
+      },
+      "player": 0,
+      "clock": 17855
+    },
+    {
+      "type": "PASS",
+      "payload": {},
+      "player": 0,
+      "clock": 18073
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.9393086468721907
+      },
+      "player": 0,
+      "clock": 18082
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "RI.1/RIrI",
+        "rotation": "R90",
+        "position": [
+          -3,
+          1
+        ]
+      },
+      "player": 0,
+      "clock": 20291
+    },
+    {
+      "type": "PASS",
+      "payload": {},
+      "player": 0,
+      "clock": 20485
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.5398630352652181
+      },
+      "player": 0,
+      "clock": 20496
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "RI.1/LIRI",
+        "rotation": "R0",
+        "position": [
+          -4,
+          1
+        ]
+      },
+      "player": 0,
+      "clock": 27601
+    },
+    {
+      "type": "PASS",
+      "payload": {},
+      "player": 0,
+      "clock": 28149
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.7815051909173765
+      },
+      "player": 0,
+      "clock": 28166
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "RI.1/IFI",
+        "rotation": "R0",
+        "position": [
+          -5,
+          1
+        ]
+      },
+      "player": 0,
+      "clock": 36224
+    },
+    {
+      "type": "PASS",
+      "payload": {},
+      "player": 0,
+      "clock": 36434
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.08954075946674434
+      },
+      "player": 0,
+      "clock": 36443
+    }
+  ],
+  "test": {
+    "description": "Donkey Not Blocking River",
+    "assertions": [
+      "Ariel has 0 points.",
+      "Phase is TilePhase",
+      "Player can't pass",
+      "Available action TilePlacement for RI.1/I.e",
+      "TilePlacement RI.1/I.e options: [-6,1] - [180]",
+      "Undo is not allowed"
+    ]
+  }
+}

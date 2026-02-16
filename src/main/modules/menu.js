@@ -78,17 +78,17 @@ async function createMenu (win, messages) {
     template.push({
       label: 'Dev',
       submenu: [
-        { role: 'toggleDevTools', label: 'Toggle DevTools' },
+        { role: 'toggleDevTools', label: $t('dev.toggle-devtools') || 'Toggle DevTools' },
         { type: 'separator' },
-        { id: 'remote-engine', label: 'Use Remote Engine', type: 'checkbox', checked: settings.enginePath === remoteEngineValue, click () { toggleRemoteEngine() } },
-        { id: 'local-play-online', label: 'Use Local Play Online', type: 'checkbox', checked: settings.playOnlineUrl === 'localhost:8000/ws', click () { toggleLocalPlayOnline() } },
-        { id: 'dump-server', label: 'Dump Hosted Game Server State', click () { win.webContents.send('menu.dump-server') } },
+        { id: 'remote-engine', label: $t('dev.use-remote-engine') || 'Use Remote Engine', type: 'checkbox', checked: settings.enginePath === remoteEngineValue, click () { toggleRemoteEngine() } },
+        { id: 'local-play-online', label: $t('dev.use-local-play-online') || 'Use Local Play Online', type: 'checkbox', checked: settings.playOnlineUrl === 'localhost:8000/ws', click () { toggleLocalPlayOnline() } },
+        { id: 'dump-server', label: $t('dump-hosted-game-server-state') || 'Dump Hosted Game Server State', click () { win.webContents.send('menu.dump-server') } },
         { type: 'separator' },
-        { id: 'test-runner', label: 'Test Runner', click () { win.webContents.send('menu.test-runner') } },
-        { id: 'save-for-test-runner', label: 'Save Scenario for Test Rinner', click () { win.webContents.send('menu.save-for-test-runner') } },
+        { id: 'test-runner', label: $t('dev.test-runner') || 'Test Runner', click () { win.webContents.send('menu.test-runner') } },
+        { id: 'save-for-test-runner', label: $t('dev.save-test-scenario') || 'Save Test Scenario', click () { win.webContents.send('menu.save-for-test-runner') } },
         { type: 'separator' },
-        { label: 'Reload Add-ons', click () { win.webContents.send('menu.reload-addons') } },
-        { id: 'theme-inspector', label: 'Theme inspector', click () { win.webContents.send('menu.theme-inspector') } }
+        { label: $t('dev.reload-add-ons') || 'Reload Add-ons', click () { win.webContents.send('menu.reload-addons') } },
+        { id: 'theme-inspector', label: $t('dev.theme-inspector') || 'Theme Inspector', click () { win.webContents.send('menu.theme-inspector') } }
       ]
     })
   }

@@ -1,14 +1,16 @@
 {
   "@author": "Bumsakalaka",
   "@jcz-version": "5.12.1",
-  "@fcz-version": "6.0.0",
+  "@fcz-version": "6.1.0",
   "@version": "0.8.22",
   "about": {
+    "author": "Autor",
     "configuration-file": "Konfiguračný súbor",
+    "fantitle": "FanCloisterZone Edition",
     "jcloisterzone-game-engine": "Herný engine JCloisterZone",
     "system-java-version": "Verzia systému Java",
     "title": "JCloisterZone",
-    "fantitle": "FanCloisterZone Edition",
+    "translation": "Preklad",
     "version": "verzia"
   },
   "bookmarks": {
@@ -35,12 +37,15 @@
     "create-public-game": "Vytvorte verejnú hru",
     "disconnect": "Odpojiť",
     "grow-the-flock": "Rozšíriť stádo",
+    "hide": "Skry",
+    "hide-finished": "Skry ukončené",
     "hide-stats": "Skryť štatistiky",
     "join-game": "Pripojiť sa do hry",
     "load": "Načítať",
     "load-setup-from-file": "Načítať nastavenie zo súboru",
     "may-deploy": "Môže priložiť",
     "must-remove": "Musí odstrániť",
+    "open": "Otvor",
     "pass": "Prenechať",
     "play-again": "Hrať znova",
     "play-online": "Hrajte online",
@@ -51,17 +56,24 @@
     "remove": "Odstrániť",
     "remove-from-favorites": "Odstrániť z obľúbených",
     "reset": "Resetovať",
+    "reset-all": "Obnov všetky",
+    "reset-failed": "Obnov chybné",
     "resume": "Pokračovať",
     "rules": "Pravidlá",
     "rules-1st-edition": "Pravidlá (1. vydanie)",
+    "run": "Spusť",
+    "run-all": "Spusť všetky",
     "save-to-file": "Uložiť do súboru",
     "score-the-sheep": "Vyhodnotiť ovce",
     "select": "Vybrať",
     "sell": "Predať",
     "set": "Nastaviť",
+    "show-all": "Zobraz všetky",
     "show-stats": "Zobraziť štatistiky",
     "start": "Štart",
-    "undo": "Späť"
+    "stop-running": "Pozastaviť",
+    "undo": "Späť",
+    "test-runner": "Test Runner"
   },
   "core-messages": {
     "bonuses": "Bonusy",
@@ -79,11 +91,43 @@
     "tiles": "Kartičky",
     "used-time": "Využitý čas"
   },
+  "dev": {
+    "actions": "Actions",
+    "dump-hosted-game-server-state": "Dump Hosted Game Server State",
+    "edition": "Edícia",
+    "fail": "Chyba",
+    "meeples": "Figúrky",
+    "mode": "Mód",
+    "ok": "OK",
+    "reload-add-ons": "Reload Add-ons",
+    "result": "Výsledok",
+    "save-test-scenario": "Uložiť testovací scenár",
+    "shapes": "Tvary",
+    "size": "Veľkosť",
+    "strokes": "Obrysy",
+    "test": "Test",
+    "test-runner": "Test Runner",
+    "theme-inspector": "Kontrolór tém",
+    "tiles": "Kartičky",
+    "toggle-devtools": "Skry/Zobraz DevTools",
+    "use-local-play-online": "Use Local Play Online",
+    "use-remote-engine": "Use Remote Engine"
+  },
+  "dialog": {
+    "close-local-game": {
+      "continue-playing": "Pokračuj v hre",
+      "resign-and-close": "Vzdaj sa a Zavri",
+      "unfinished-local-game": "Nedohraná miestna hra",
+      "unfinished-local-game-description": "Máte nedohranú miestnu hru. Ak zatvoríte okno aplikácie, vzdáte sa a stratíte svoj postup v tejto hre."
+    }
+  },
   "expansion": {
     "-unknown": "Chýbajúce rozšírenie",
     "abbey-and-mayor": "Opátstvo a starosta",
     "basic": "Základná hra",
     "besiegers": "Obliehanie",
+    "black-tower": "Black Tower",
+    "black-tower-description": "New black and white tower floors for The Tower expansion, which allows to capture meeples diagonally when using black floor or permanently lock tower with white floor on the top.",
     "bridges-castles-and-bazaars": "Mosty, hrady a bazáre",
     "butterfly-tiles": "Motýlie kartičky",
     "butterfly-tiles-description": "16 kartičiek, ktoré chýbajú v základnej hre a rozšíreniach. Neprinášajú sa žiadne nové územia alebo herné mechaniky.",
@@ -105,9 +149,13 @@
     "family-feud-description": "Kartičky s modro-bielym a červeno-žltým erbom patria súperiacim rodinám. Žiadna kartička však nesmie byť priložená tak, aby sa spojili mestá patriace súperiacim rodinám.",
     "farmers-heaven": "Farmárovo nebo",
     "farmers-heaven-description": "Keďže väčšina rozšírení sa zameriava hlavne na mestá, nastal čas urobiť niečo aj pre farmárov a pomôcť im vytvoriť obrovské lúky.",
+    "fishermen": "Fishermen",
+    "fishermen-description": "",
     "ferries": "Povozy",
     "festival": "Oslava",
     "flier": "Lietacie stroje",
+    "gamblers-luck": "Gambler's Luck",
+    "gamblers-luck-description": "A roll of the die can cause a city to get tokens with additional coat of arms, or nullify existing ones throughout the city.",
     "goldmines": "Zlaté bane",
     "gq11": "Mini rozšírenie (GQ11)",
     "heretics-and-shrines": "Heretici a svätyne",
@@ -175,6 +223,7 @@
       "ferries-player-can-move-ferries": "Hráč môže presunúť privoz",
       "ferries-player-must-place-a-ferry": "Hráč musí umiestniť prievoz",
       "ferries-you-can-move-ferries": "Môžete presunúť prievoz",
+      "gamblers-luck-outcome": "Výsledok hráčovho štastia",
       "goldmines-place-a-gold-ingot": "Položte zlatú tehličku",
       "goldmines-player-must-place-a-gold-ingot": "Hráč musí umiestniť zlatú tehličku",
       "hills-and-player-must-choose-grow-or-score-plural": "Hráč sa musí rozhodnúť rozšíriť stádo alebo získať za ovce 0 bodov. | Hráč sa musí rozhodnúť rozšíriť stádo alebo získať za ovce {points} bod.|Hráč sa musí rozhodnúť rozšíriť stádo alebo získať za ovce {points} body.|Hráč sa musí rozhodnúť rozšíriť stádo alebo získať za ovce {points} bodov.",
@@ -222,6 +271,7 @@
       "barn": "Stodola",
       "big-follower": "Veľký spoločník",
       "big-top": "Cirkus",
+      "black-tower": "Čierna veža",
       "bridge": "Most",
       "builder": "Staviteľ",
       "castle": "Hrad",
@@ -273,6 +323,7 @@
       "festival": "Oslava",
       "field": "Lúka",
       "fields": "Lúky",
+      "fishermen": "Rybári",
       "flock": "Stádo",
       "flowers": "Kvety",
       "garden": "Záhrada",
@@ -327,6 +378,7 @@
     },
     "tile-pack-dialog": {
       "disabled-show-remaining": "Hra bola vytvorená s nastavením, ktoré neumožňuje zobrazenie zostávajúceho počtu kartičiek.",
+      "discarded-tiles": "Vyradené kartičky",
       "game-tiles": "Hracie kartičky",
       "hidden-tiles-under-hill-plural": "Pod kopcami nie je žiadna kartička. | Nezabudnite, že pod kopcom sa skrýva 1 neznáma kartička zo zoznamu. | Nezabudnite, že pod kopcami sa skrývajú {count} neznáme kartičky zo zoznamu. | Nezabudnite, že pod kopcami sa skrýva {count} neznámych kartičiek zo zoznamu.",
       "remaining-tiles": "Zostávajúce kartičky",
@@ -391,6 +443,8 @@
       "farmers-description": "Hráči môžu umiestniť spoločníka na polia.",
       "festival-description": "Pomocou kartičky s oslavou môžete vrátiť jednu zo svojich vlastných figúrok z hry.",
       "festival-disabled": "V hre nie je žiadna kartička s oslavou.",
+      "fishermen-description": "Rieka ako štandardné územie",
+      "fishermen-disabled": "V hre nie je žiadna kartička s riekou.",
       "flowers-description": "Za každé zodpovedajúce kvety farby podľa žetónu získate pri započítaní bodov 3 body.",
       "flowers-disabled": "V hre nie je žiadna kartička s kvetmi.",
       "gameplay-variants": "Varianty hry",
@@ -398,7 +452,7 @@
       "garden-disabled": "Opát nie je vybraný.",
       "hill-description": "Používa sa pri remíze. Zároveň skrýva náhodnú kartičku pod kopcom.",
       "hill-disabled": "V hre nie je žiadna kartička s kopcom.",
-      "inn-description": "Za ukončenú cestu s hostincom sa započítavajú 2 body za kartičku. Pri záverečnom vyhodnotení ale nezískate žiadne body.",
+      "inn-description": "Za ukončenú cestu s hostincom sa započítavajú 2 body za kartičku a voliteľne žiaden bod pri záverečnom vyhodnotení.",
       "inn-disabled": "V hre nie je žiadna kartička s hostincom.",
       "marketplace-description": "Trhovisko spája viaceré cesty tak, že každá z nich je ukončená len vtedy ak sú uzavreté všetky z nich. Pri započítaní bodov každej z nich získate navyše bod za každú kartičku ďalších napojených ciest osobitne.",
       "marketplace-disabled": "V hre nie je žiadna kartička s trhoviskom.",
@@ -420,7 +474,7 @@
       "starting-tiles-different-configuration": "Niektoré rozšírenia poskytujú alternatívne štartovacie konfigurácie.",
       "vineyard-description": "Bonusové body pre ukončený kláštor.",
       "vineyard-disabled": "V hre nie je žiadna kartička s vinicami.",
-      "well-description": "Bonusový bod za každú studňu pri ceste. Na ceste s hostincom 2 body, ak je ukončená ale ak nie je tak 0 bodov.",
+      "well-description": "Bonusový bod za každú studňu pri ceste. Na ceste s hostincom 2 body, ak je ukončená a voliteľne žiaden bod pri záverečnom hodnotení.",
       "well-disabled": "V hre nie je žiadna kartička so studňou."
     },
     "selected-tiles": "Zvolené kartičky",
@@ -492,6 +546,11 @@
         "description": "Rozhodovanie remízy: {} na kopcoch.",
         "number-of-followers": "počet spoločníkov"
       },
+      "inn-and-cathedral-final-scoring": {
+        "description": "Hostince a katedrály {} počas záverečného hodnotenia.",
+        "ignore": "sú ignorované",
+        "zero": "skórujú 0 bodov"
+      },
       "keep-monasteries": {
         "description": "Špeciálne kláštory {}.",
         "keep": "sú pridané do hry",
@@ -518,7 +577,7 @@
         "standard": "Základný",
         "extended": "Silnejší",
         "combination": "Kombinovaný",
-        "description": "dosah pádu meteoritu."
+        "description": "{} dosah pádu meteoritu."
       },
       "more-tunnel-tokens": {
         "1/1": "1/1",
@@ -539,6 +598,9 @@
       "tunnelize-other-expansions": {
         "description": "Tunelové pravidlo sa aplikuje na kartičky z iných rozšírení s tunelovými cestami."
       },
+      "vineyards-for-garden": {
+        "description": "Zarátanie bonus za vinice aj za uzavretú záhradu."
+      },
       "wagon-move": {
         "C1": "prepojené (cestou alebo cesta smerujúca do mesta/kláštora) (1. vydanie)",
         "C2": "na rovnakej alebo susednej kartičke (2. vydanie)",
@@ -556,6 +618,7 @@
       "my-favorites": "moje obľúbené",
       "new-game": "Nová hra",
       "open-game": "Otvoriť uloženú hru",
+      "saved-game": "Uložené hry",
       "title": "Hry na tomto počítači"
     },
     "online": {
@@ -591,7 +654,7 @@
   },
   "join-game": {
     "connect-to-remote-host": "Pripojte sa k vzdialenému hostiteľovi s vytvorenou hrou.",
-    "description": "Hra na vzdialenom hostiteľovi musí byť vo fáze výberu farby hr��čov.",
+    "description": "Hra na vzdialenom hostiteľovi musí byť vo fáze výberu farby hráčov.",
     "host": "Hostiteľ",
     "title": "Pripojte sa k hre na diaľku"
   },

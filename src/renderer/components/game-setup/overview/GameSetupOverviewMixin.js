@@ -48,6 +48,13 @@ export default {
           diff.garden = false
         }
       }
+      if (this.elements.tower) {
+        if (this.elements['black-tower']) {
+          delete diff['black-tower']
+        } else {
+          diff['black-tower'] = false
+        }
+      }
       return Object.entries(diff)
     },
 

@@ -90,6 +90,15 @@ export function getDefaultRules () {
 export const GAMEPLAY = 'gameplay'
 export const SCORING = 'scoring'
 
+export const INN_AND_CATHEDRAL_FINAL_SCORING = Rule.INN_AND_CATHEDRAL_FINAL_SCORING = new Rule('inn-and-cathedral-final-scoring', GAMEPLAY,
+  'Inns and cathedrals {} during final scoring.',
+  [GameElement.INN, GameElement.CATHEDRAL],
+  [
+    { value: 'zero', text: 'score 0 points' },
+    { value: 'ignore', text: 'are ignored' }
+  ]
+)
+
 export const PRINCESS_ACTION = Rule.PRINCESS_ACTION = new Rule('princess-action', GAMEPLAY,
   'The Princess {} remove knight from a\u00A0city.',
   [GameElement.PRINCESS],
@@ -157,6 +166,17 @@ export const HILL_TIEBREAKER = Rule.HILL_TIEBREAKER = new Rule('hill-tiebreaker'
   ],
   {
     link: 'https://wikicarpedia.com/car/Special:MyLanguage/Hills_%26_Sheep_(1st_edition)#cite_note-9'
+  }
+)
+
+export const VINEYARDS_FOR_GARDEN = Rule.VINEYARDS_FOR_GARDEN = new Rule('vineyards-for-garden', GAMEPLAY,
+  'Apply vineyards bonus during scoring of completed garden.',
+  [
+  	[GameElement.VINEYARD,GameElement.GARDEN],
+  ],
+  Boolean,
+  {
+    link: 'https://wikicarpedia.com/car/Special:MyLanguage/Sheep_and_Shepherds#3._Scoring_a_feature_3'
   }
 )
 

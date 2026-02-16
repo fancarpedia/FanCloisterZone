@@ -1,7 +1,8 @@
 /* globals INCLUDE_RESOURCES_PATH */
 import path from 'path'
 
-import { app, BrowserWindow, ipcMain } from 'electron'
+import { app, BrowserWindow, ipcMain, powerMonitor } from 'electron'
+import { dialog as dialogElectron } from 'electron'
 import { autoUpdater } from 'electron-updater'
 import electronLogger from 'electron-log'
 import fs from 'fs'
@@ -9,17 +10,21 @@ import fs from 'fs'
 import settings from './settings'
 import menu from './modules/menu'
 import theme from './modules/theme'
-import dialog from './modules/dialog'
+import dialog, { showUnfinishedGameDialog } from './modules/dialog'
 import updater from './modules/updater'
 import winevents from './modules/winevents'
 import settingsWatch from './modules/settingsWatch'
 import localServer from './modules/localServer'
 import installer from './modules/installer'
 
+import RPC from 'discord-rpc'
+
 autoUpdater.logger = electronLogger
 autoUpdater.logger.transports.file.level = 'info'
 
 const modules = []
+const dialogLocks = new WeakMap()
+
 function getAppVersion() {
   if (process.env.NODE_ENV === 'development') {
     // Read version from your package.json in development
@@ -29,9 +34,39 @@ function getAppVersion() {
   }
   return app.getVersion()
 }
+let hasLocalGame = false
+let isForceClosing = false
 
 ipcMain.handle("get-app-version", () => {
   return getAppVersion()
+})
+
+ipcMain.on('set-local-game', (_, value) => {
+  hasLocalGame = value
+})
+
+ipcMain.handle('open-load-game-dialog', async (event, options) => {
+  const win = BrowserWindow.fromWebContents(event.sender)
+  if (!win) return { canceled: true }
+
+  // Prevent multiple dialogs per window
+  if (dialogLocks.get(win)) {
+    win.focus();
+    return { canceled: true }
+  }
+
+  dialogLocks.set(win, true)
+
+  try {
+    return await dialogElectron.showOpenDialog(win, {
+      ...options,
+      modal: true,
+      parent: win
+    })
+  } finally {
+    dialogLocks.set(win, false);
+    if (!win.isDestroyed()) win.focus()
+  }
 })
 
 function generateInstanceId() {
@@ -74,6 +109,21 @@ async function createWindow () {
     modules.forEach(m => m.winCreated(win))
   })
 
+  win.on('close', async (event) => {
+    if (hasLocalGame && !isForceClosing) {
+      event.preventDefault()
+      isForceClosing = true
+
+      const choice = await showUnfinishedGameDialog()
+    
+      isForceClosing = false
+      if (choice === 0) {
+        hasLocalGame = false
+        win.destroy() // Force close the window
+      }
+    }
+  })
+  
   win.on('closed', ev => {
     // console.log("WIN CLOSED")
     modules.forEach(m => m.winClosed(win))
@@ -118,14 +168,128 @@ app.on('activate', () => {
   }
 })
 
-// // Quit when all windows are closed.
+// Quit when all windows are closed.
 app.on('window-all-closed', function () {
-  // console.log('window-all-closed emitted')
+  console.log('window-all-closed emitted')
 
-  // On macOS it is common for applications and their menu bar
-  // to stay active until the user quits explicitly with Cmd + Q
-  // if (process.platform !== 'darwin') app.quit()
+  // Always quit the app when all windows are closed
+  if (process.platform === 'win32') {
+    // Force Electron shutdown (bypasses updater / installer hooks)
+    app.exit(0)
+  } else {
+    app.quit()
+  }
+})
 
-  // fpr now quit it alsi on Mac
-  app.quit()
+app.on('before-quit', () => {
+  autoUpdater.removeAllListeners()
+  // Clean up Discord RPC connection
+})
+
+let discordClientId = null
+let discordRpc = null
+
+// Destroy Discord RPC
+function destroyRpc() {
+  if (discordRpc) {
+    try {
+      discordRpc.removeAllListeners()
+      discordRpc.destroy();
+    } catch {} 
+  }
+}
+
+// Init Discord RPC asynchronously
+async function initDiscordRpc() {
+  if (!discordRpc) {
+    if (process.env.NODE_ENV === 'production') {
+      try {
+        const { DISCORD_CLIENT_ID } = await import('./config/discord.js')
+        discordClientId = DISCORD_CLIENT_ID
+      } catch (e) {
+        console.warn('Failed to load Discord config:', e)
+      }
+    }
+
+    if (!discordClientId) {
+      console.warn('DISCORD_CLIENT_ID not set, Discord Rich Presence disabled')
+      return
+    }
+
+    try {
+      // Create the RPC client
+      discordRpc = new RPC.Client({ transport: 'ipc' })
+      RPC.register(discordClientId)
+
+      // Login to Discord
+      discordRpc.login({ clientId: discordClientId }).catch(console.error)
+
+    // Once ready, set initial status
+      discordRpc.on('ready', () => {
+        console.log('Discord Rich Presence is active!')
+        setDiscordActivity({
+          details: 'FanCloisterZone',
+          state: 'Playing'
+        })
+      })
+    } catch (e) {
+      console.error('Discord RPC initialization failed:', e)
+    }
+  } else {
+    setDiscordActivity({
+      details: 'FanCloisterZone',
+      state: 'Playing'
+    })
+  }
+}
+
+// Call the async function
+initDiscordRpc()
+
+/**
+ * Helper function to set or update Discord Rich Presence
+ * @param {Object} options - { details: string, state: string, largeImageKey?, largeImageText? }
+ */
+export function setDiscordActivity({ details, state, largeImageKey = 'game_icon', largeImageText = 'FanCloisterZone' }) {
+  if (!discordRpc) return
+  try {
+    discordRpc.setActivity({
+      details,
+      state,
+      startTimestamp: new Date(),
+      largeImageKey,
+      largeImageText,
+      buttons: [{ label: 'Join Game', url: 'https://github.com/fancarpedia/FanCloisterZone/releases' }]
+    })
+  } catch (err) {
+    console.error('Failed to set Discord Rich Presence:', err)
+  }
+}
+
+powerMonitor.on('lock-screen', () => {
+  try {
+    discordRpc.clearActivity().catch(console.error)
+  } catch {}
+})
+
+powerMonitor.on('unlock-screen', () => {
+  try {
+    initDiscordRpc()
+  } catch (e){}
+})
+
+powerMonitor.on('suspend', () => {
+  console.log('System is going to sleep mode/hibernation');
+
+  try {
+    discordRpc.clearActivity().catch(console.error)
+  } catch (e){}
+})
+
+powerMonitor.on('resume', () => {
+  console.log('System is going to resume');
+
+  try {
+    initDiscordRpc()
+  } catch (e){}
 })

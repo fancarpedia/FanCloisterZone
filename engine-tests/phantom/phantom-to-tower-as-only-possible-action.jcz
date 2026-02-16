@@ -1,0 +1,173 @@
+{
+  "appVersion": "6.1.0-alpha.21",
+  "gameId": "1",
+  "name": "",
+  "initialRandom": 0.22310619253142838,
+  "created": "2026-01-27T21:12:16.728Z",
+  "clock": 372712,
+  "setup": {
+    "options": {},
+    "sets": {
+      "basic:1": 1,
+      "tower:1": 1
+    },
+    "elements": {
+      "small-follower": 7,
+      "farmers": true,
+      "tower": 1,
+      "phantom": 1
+    },
+    "rules": {},
+    "timer": null,
+    "start": [
+      {
+        "tile": "BA/RCr",
+        "x": 0,
+        "y": 0,
+        "rotation": 0
+      }
+    ]
+  },
+  "players": [
+    {
+      "name": "Ariel",
+      "slot": 0
+    }
+  ],
+  "chat": [],
+  "replay": [
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "TO/C",
+        "rotation": "R180",
+        "position": [
+          0,
+          -1
+        ]
+      },
+      "player": 0,
+      "clock": 2051
+    },
+    {
+      "type": "PLACE_TOKEN",
+      "payload": {
+        "token": "TOWER_PIECE",
+        "pointer": {
+          "position": [
+            0,
+            -1
+          ],
+          "feature": "Tower",
+          "location": "I"
+        }
+      },
+      "player": 0,
+      "clock": 4044
+    },
+    {
+      "type": "PASS",
+      "payload": {},
+      "player": 0,
+      "clock": 10350
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.09338643913884082
+      },
+      "player": 0,
+      "clock": 10361
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "BA/L",
+        "rotation": "R0",
+        "position": [
+          0,
+          1
+        ]
+      },
+      "player": 0,
+      "clock": 11834
+    },
+    {
+      "type": "DEPLOY_MEEPLE",
+      "payload": {
+        "pointer": {
+          "position": [
+            0,
+            1
+          ],
+          "location": "NL.NR.EL.ER.SL.SR.WL.WR",
+          "feature": "Field"
+        },
+        "meepleId": "0.small.1"
+      },
+      "player": 0,
+      "clock": 12899
+    },
+    {
+      "type": "PASS",
+      "payload": {},
+      "player": 0,
+      "clock": 15495
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.983150700737528
+      },
+      "player": 0,
+      "clock": 15500
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "BA/L",
+        "rotation": "R0",
+        "position": [
+          0,
+          2
+        ]
+      },
+      "player": 0,
+      "clock": 18713
+    },
+    {
+      "type": "DEPLOY_MEEPLE",
+      "payload": {
+        "pointer": {
+          "position": [
+            0,
+            2
+          ],
+          "location": "I",
+          "feature": "Monastery"
+        },
+        "meepleId": "0.small.2"
+      },
+      "player": 0,
+      "clock": 25041
+    }
+  ],
+  "gameAnnotations": {
+    "drawOrder": [
+      "TO/C",
+      "BA/L",
+      "BA/L"
+    ]
+  },
+  "test": {
+    "description": "Phantom To Tower As Only Possible Action",
+    "assertions": [
+      "Ariel has 0 points.",
+      "Phase is PhantomPhase",
+      "Player can pass",
+      "Available action Meeple for Phantom",
+      "Meeple Phantom options: {Tower,I,[0,-1]}",
+      "Undo is allowed"
+    ]
+  }
+}

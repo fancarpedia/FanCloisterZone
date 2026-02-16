@@ -45,7 +45,7 @@ $colors: (
 
     g.points, &.points {
       rect {
-        fill: map-get($slot, primary);
+        fill: map-get($slot, primary)
       }
 
       text {

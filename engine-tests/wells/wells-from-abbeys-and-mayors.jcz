@@ -17,7 +17,8 @@
       "barn": 1,
       "wagon": 1,
       "mayor": 1,
-      "abbey": 1
+      "abbey": 1,
+      "well": true
     },
     "rules": {},
     "timer": null,
@@ -268,10 +269,10 @@
   "test": {
     "description": "Wells From Abbeys And Mayors",
     "assertions": [
-      "Ariel scored road for 7 points.",
-      "Betty scored road for 2 points.",
-      "Ariel has 7 points.",
-      "Betty has 2 points."
+      "Ariel scored road for 9 points.",
+      "Betty scored road for 3 points.",
+      "Ariel has 9 points.",
+      "Betty has 3 points."
     ]
   }
 }

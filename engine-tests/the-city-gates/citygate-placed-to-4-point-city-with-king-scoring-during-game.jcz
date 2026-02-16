@@ -1,0 +1,178 @@
+{
+  "appVersion": "6.1.0-alpha.24",
+  "gameId": "1",
+  "name": "",
+  "initialRandom": 0.28176452035269794,
+  "created": "2026-01-29T08:43:30.542Z",
+  "clock": 119565,
+  "setup": {
+    "sets": {
+      "basic:1": 1,
+      "the-city-gates": 1
+    },
+    "elements": {
+      "small-follower": 7,
+      "farmers": true,
+      "king": true
+    },
+    "rules": {
+      "king-and-robber-scoring": "continuously"
+    },
+    "timer": null,
+    "start": [
+      {
+        "tile": "BA/RCr",
+        "x": 0,
+        "y": 0,
+        "rotation": 0
+      }
+    ],
+    "options": {},
+    "addons": {
+      "the-city-gates": 4
+    }
+  },
+  "players": [
+    {
+      "name": "Ariel",
+      "slot": 0
+    }
+  ],
+  "chat": [],
+  "replay": [
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "the-city-gates/ccfg",
+        "rotation": "R90",
+        "position": [
+          0,
+          -1
+        ]
+      },
+      "player": 0,
+      "clock": 2435
+    },
+    {
+      "type": "DEPLOY_MEEPLE",
+      "payload": {
+        "pointer": {
+          "position": [
+            0,
+            -1
+          ],
+          "location": "S",
+          "feature": "City"
+        },
+        "meepleId": "0.small.1"
+      },
+      "player": 0,
+      "clock": 3180
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.7872054432025557
+      },
+      "player": 0,
+      "clock": 3379
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "the-city-gates/gggg",
+        "rotation": "R0",
+        "position": [
+          1,
+          0
+        ]
+      },
+      "player": 0,
+      "clock": 4877
+    },
+    {
+      "type": "DEPLOY_MEEPLE",
+      "payload": {
+        "pointer": {
+          "position": [
+            1,
+            0
+          ],
+          "location": "I",
+          "feature": "City"
+        },
+        "meepleId": "0.small.1"
+      },
+      "player": 0,
+      "clock": 5753
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.7850129945749098
+      },
+      "player": 0,
+      "clock": 7052
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "the-city-gates/gcgg",
+        "rotation": "R180",
+        "position": [
+          1,
+          -1
+        ]
+      },
+      "player": 0,
+      "clock": 9159
+    },
+    {
+      "type": "DEPLOY_MEEPLE",
+      "payload": {
+        "pointer": {
+          "position": [
+            1,
+            -1
+          ],
+          "location": "W",
+          "feature": "City"
+        },
+        "meepleId": "0.small.1"
+      },
+      "player": 0,
+      "clock": 10440
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.5306853683035286
+      },
+      "player": 0,
+      "clock": 18861
+    }
+  ],
+  "gameAnnotations": {
+    "drawOrder": [
+      "the-city-gates/ccfg",
+      "the-city-gates/gggg",
+      "the-city-gates/gcgg"
+    ]
+  },
+  "test": {
+    "description": "Citygate Placed To 4 Point City With King Scoring During Game",
+    "assertions": [
+      "Ariel scored city for 4 points.",
+      "Ariel scored city for 4 points.",
+      "Ariel scored king for 1 point.",
+      "Ariel scored city for 4 points.",
+      "Ariel scored king for 1 point.",
+      "Ariel has 14 points.",
+      "Phase is TilePhase",
+      "Player can't pass",
+      "Available action TilePlacement for BA/RFr",
+      "TilePlacement BA/RFr options: [2,0] - [0,90,180,270]; [1,1] - [0,90,180,270]; [1,-2] - [0,90,180,270]; [0,-2] - [0,90,180,270]; [2,-1] - [0,90,180,270]; [-1,-1] - [90,270]; [-1,0] - [0,180]; [0,1] - [0,180]",
+      "Undo is not allowed"
+    ]
+  }
+}

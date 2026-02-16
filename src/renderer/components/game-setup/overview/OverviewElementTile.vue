@@ -11,7 +11,9 @@
     <NeutralFigure v-else-if="element === 'dragon'" figure="dragon" :width="80" :height="40" />
     <NeutralFigure v-else-if="element === 'count'" figure="count" :width="70" :height="70" />
     <StandaloneTileImage v-else-if="element === 'abbey'" tile-id="AM/A" :size="70" />
-    <img v-else-if="element === 'tower'" src="~/assets/figures/tower-alt.png" height="45">
+    <img v-else-if="element === 'tower'" src="~/assets/figures/tower.png" height="45">
+    <img v-else-if="element === 'black-tower'" src="~/assets/figures/black_tower.png" height="45">
+    <img v-else-if="element === 'white-tower'" src="~/assets/figures/white_tower.png" height="45">
     <img v-else-if="element === 'bridge'" src="~/assets/figures/bridge-alt.png" height="45">
     <img v-else-if="element === 'castle'" src="~/assets/figures/castle.png" width="66" height="55">
     <img v-else-if="element === 'little-buildings'" src="~/assets/figures/lb.png" width="70" height="70">
@@ -42,6 +44,14 @@
 	<img v-else-if="element === 'marketplace'" src="~/assets/features/C1/marketplace.png" height="55">
     <NeutralFigure v-else-if="element === 'donkey'" figure="donkey" :width="70" :height="70" />
 	<img v-else-if="element === 'meteorite'" src="~/assets/features/C1/crater.png" height="55">
+	<div v-else-if="element === 'fishermen'" class="fishermen">
+	  <StandaloneTileImage tile-id="RI.2/RrII" :size="55" />
+      <svg class="meeple" :width="55" :height="55">
+        <g transform="translate(20 35) scale(0.4) translate(-27 -27)">
+          <use :href="`${MEEPLES_SVG}#small-follower`" />
+        </g>
+      </svg>
+	</div>
     
     <template #quantity>
       <div class="quantity" :class="enabled ? 'addition': 'removal'">
@@ -121,6 +131,15 @@ export default {
 .off
   .tile-img, img
     filter: grayscale(75%)
+
+.fishermen
+  position: relative
+  height: 55px
+
+  svg
+    top: 0
+    left: calc(50% - 27px)
+    position: absolute
 
 #app.theme--dark .icon img.bw
   .tile-img, img

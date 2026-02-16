@@ -16,6 +16,10 @@
       v-else-if="returnedMeeplePanel"
       :expr="returnedMeeplePanel"
     />
+    <ReturnedTokenPanel
+      v-else-if="returnedTokenPanel"
+      :expr="returnedTokenPanel"
+    />
     <DiceRollPanel
       v-else-if="diceRollPanel"
       :expr="diceRollPanel"
@@ -24,7 +28,7 @@
     <component
       :is="actionComponent"
       v-if="action"
-      v-show="!pointsExpression && !notifyConnectionClosed && !returnedMeeplePanel && !diceRollPanel"
+      v-show="!pointsExpression && !notifyConnectionClosed && !returnedMeeplePanel && !returnedTokenPanel && !diceRollPanel"
       :action="action"
       :phase="phase"
       :local="local"
@@ -47,12 +51,12 @@
 
     <GameResultPanel
       v-else-if="phase === 'GameOverPhase'"
-      v-show="!pointsExpression && !returnedMeeplePanel && !diceRollPanel"
+      v-show="!pointsExpression && !returnedMeeplePanel && !returnedTokenPanel && !diceRollPanel"
       class="game-over"
     />
 
     <svg
-      v-if="action && activePlayerIndicatorTriangle && !returnedMeeplePanel && !diceRollPanel"
+      v-if="action && activePlayerIndicatorTriangle && !returnedMeeplePanel && !returnedTokenPanel && !diceRollPanel"
       :class="`active-player-marker ${colorCssClass(action.player)} color-fill`"
       width="42" height="42"
     >
@@ -86,6 +90,7 @@ import GoldPiecePhaseAction from '@/components/game/actions/GoldPiecePhaseAction
 import PointsExpression from '@/components/game/PointsExpression.vue'
 import RemoveMageOrWitchAction from '@/components/game/actions/RemoveMageOrWitchAction.vue'
 import ReturnedMeeplePanel from '@/components/game/ReturnedMeeplePanel.vue'
+import ReturnedTokenPanel from '@/components/game/ReturnedTokenPanel.vue'
 import SelectPrisonerToExchangeAction from '@/components/game/actions/SelectPrisonerToExchangeAction.vue'
 import ShepherdPhaseAction from '@/components/game/actions/ShepherdPhaseAction.vue'
 import TilePhaseAction from '@/components/game/actions/TilePhaseAction.vue'
@@ -123,6 +128,7 @@ export default {
     PointsExpression,
     RemoveMageOrWitchAction,
     ReturnedMeeplePanel,
+    ReturnedTokenPanel,
     SelectPrisonerToExchangeAction,
     ShepherdPhaseAction,
     TilePhaseAction,
@@ -155,6 +161,7 @@ export default {
       diceRollPanel: state => state.board.diceRollPanel,
       pointsExpression: state => state.board.pointsExpression,
       returnedMeeplePanel: state => state.board.returnedMeeplePanel,
+      returnedTokenPanel: state => state.board.returnedTokenPanel,
       beep: state => state.settings.beep,
       activePlayerIndicatorTriangle: state => state.settings.activePlayerIndicatorTriangle
     }),

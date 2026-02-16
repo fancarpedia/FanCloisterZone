@@ -4,11 +4,13 @@
   "@fcz-version": "6.0.0",
   "@version": "0.8.22",
   "about": {
+    "author": "Author",
     "configuration-file": "Archivo de configuración",
+    "fantitle": "Edición FanCloisterZone",
     "jcloisterzone-game-engine": "Motor de juego JCloisterZone",
     "system-java-version": "Versión de Java",
     "title": "JCloisterZone",
-    "fantitle": "Edición FanCloisterZone",
+    "translation": "Translation",
     "version": "versión"
   },
   "bookmarks": {
@@ -35,12 +37,15 @@
     "create-public-game": "Crear partida pública",
     "disconnect": "Desconectar",
     "grow-the-flock": "Crecer el rebaño",
+    "hide": "Hide",
+    "hide-finished": "Hide Finished",
     "hide-stats": "Ocultar estadísticas",
     "join-game": "Unirse a partida",
     "load": "Cargar",
     "load-setup-from-file": "Cargar configuración desde archivo",
     "may-deploy": "Puede colocar",
     "must-remove": "Debe remover",
+    "open": "Open",
     "pass": "Pasar",
     "play-again": "Jugar otra vez",
     "play-online": "Jugar online",
@@ -51,17 +56,24 @@
     "remove": "Remover",
     "remove-from-favorites": "Remover de favoritos",
     "reset": "Restablecer",
+    "reset-all": "Reset All",
+    "reset-failed": "Reset Failed",
     "resume": "Continuar",
     "rules": "Reglas",
     "rules-1st-edition": "Reglas (1ª ed.)",
+    "run": "Run",
+    "run-all": "Run All",
     "save-to-file": "Guardar en archivo",
     "score-the-sheep": "Puntuar las ovejas",
     "select": "Seleccionar",
     "sell": "Vender",
     "set": "Establecer",
+    "show-all": "Show All",
     "show-stats": "Mostrar estadísticas",
     "start": "Comenzar",
-    "undo": "Deshacer"
+    "stop-running": "Stop Running",
+    "undo": "Deshacer",
+    "test-runner": "Test Runner"
   },
   "core-messages": {
     "bonuses": "Bonificaciones",
@@ -79,11 +91,43 @@
     "tiles": "Losetas",
     "used-time": "Tiempo total"
   },
+  "dev": {
+    "actions": "Actions",
+    "dump-hosted-game-server-state": "Dump Hosted Game Server State",
+    "edition": "Edition",
+    "fail": "Fail",
+    "meeples": "Meeples",
+    "mode": "Mode",
+    "ok": "OK",
+    "reload-add-ons": "Reload Add-ons",
+    "result": "Result",
+    "save-test-scenario": "Save Test Scenario",
+    "shapes": "Shapes",
+    "size": "Size",
+    "strokes": "Strokes",
+    "test": "Test",
+    "test-runner": "Test Runner",
+    "theme-inspector": "Theme Inspector",
+    "tiles": "Tiles",
+    "toggle-devtools": "Toggle DevTools",
+    "use-local-play-online": "Use Local Play Online",
+    "use-remote-engine": "Use Remote Engine"
+  },
+  "dialog": {
+    "close-local-game": {
+      "continue-playing": "Continue Playing",
+      "resign-and-close": "Resign and Close",
+      "unfinished-local-game": "Unfinished Local Game",
+      "unfinished-local-game-description": "You have an unfinished local game. If you close the app window, you will resign and lose your progress in this game."
+    }
+  },
   "expansion": {
     "-unknown": "Expansión no encontrada",
     "abbey-and-mayor": "La Abadía y el Alcalde",
     "basic": "Juego base",
     "besiegers": "El Asedio",
+    "black-tower": "Black Tower",
+    "black-tower-description": "New black and white tower floors for The Tower expansion, which allows to capture meeples diagonally when using black floor or permanently lock tower with white floor on the top.",
     "bridges-castles-and-bazaars": "Mercados y Puentes",
     "butterfly-tiles": "Losetas Mariposa",
     "butterfly-tiles-description": "16 losetas con configuraciones que no existen en el juego base ni en expansiones. No se añaden nuevos tipos de zona.",
@@ -105,9 +149,13 @@
     "family-feud-description": "Las losetas con escudos azules/blancos y rojos/amarillos pertenecen a familias rivales. No se puede colocar ninguna loseta de forma que las ciudades pertenecientes a familias rivales queden conectadas.",
     "farmers-heaven": "Cielo de los Campesino",
     "farmers-heaven-description": "Dado que la mayoría de las expansiones se centran principalmente en las ciudades, era hora de hacer algo por los campesinos.",
+    "fishermen": "Fishermen",
+    "fishermen-description": "",
     "ferries": "Transbordadores",
     "festival": "El festival",
     "flier": "Máquinas Voladoras",
+    "gamblers-luck": "Gambler's Luck",
+    "gamblers-luck-description": "A roll of the die can cause a city to get tokens with additional coat of arms, or nullify existing ones throughout the city.",
     "goldmines": "Minas de Oro",
     "gq11": "La mini expansión (GQ11)",
     "heretics-and-shrines": "Herejes y Altares",
@@ -175,6 +223,7 @@
       "ferries-player-can-move-ferries": "Jugador puede mover un transbordador",
       "ferries-player-must-place-a-ferry": "Jugador debe colocar un transbordador",
       "ferries-you-can-move-ferries": "Puede mover un transbordador",
+      "gamblers-luck-outcome": "Gambler’s Luck outcome",
       "goldmines-place-a-gold-ingot": "Coloque un lingote de oro",
       "goldmines-player-must-place-a-gold-ingot": "Jugador debe colocar un lingote de oro",
       "hills-and-player-must-choose-grow-or-score-plural": "El jugador debe elegir entre hacer ampliar el rebaño o puntuar las ovejas por 0 puntos. | El jugador debe elegir entre ampliar el rebaño o puntuar la oveja por {points} punto. | El jugador debe elegir entre ampliar el rebaño o puntuar las ovejas por {points} puntos.",
@@ -222,6 +271,7 @@
       "barn": "Granero",
       "big-follower": "Seguidor mayor",
       "big-top": "Carpa",
+      "black-tower": "Black Tower",
       "bridge": "Puente",
       "builder": "Constructor",
       "castle": "Castillo",
@@ -273,6 +323,7 @@
       "festival": "Festival",
       "field": "Campo",
       "fields": "Campos",
+      "fishermen": "Fishermen",
       "flock": "Rebaño",
       "flowers": "Flores",
       "garden": "Jardín",
@@ -327,6 +378,7 @@
     },
     "tile-pack-dialog": {
       "disabled-show-remaining": "La partida fue creada con una opción que no permite mostrar el número de losetas restantes.",
+      "discarded-tiles": "Discarded tiles",
       "game-tiles": "Losetas en la partida",
       "hidden-tiles-under-hill-plural": "No hay ninguna loseta desconocida bajo losetas de colina. | No olvidar que 1 loseta desconocida está oculta bajo una loseta de colina. | No olvidar que {count} losetas desconocidas están ocultas bajo losetas de colina.",
       "remaining-tiles": "Losetas restantes",
@@ -389,6 +441,8 @@
       "farmers-description": "Los jugadores pueden colocar seguidores en los campos.",
       "festival-description": "Con la loseta de festival se puede retirar una figura del jugador activo en lugar de colocar una.",
       "festival-disabled": "No hay ninguna loseta con Festival en la partida.",
+      "fishermen-description": "River as regular feature.",
+      "fishermen-disabled": "No tile with River is in the game.",
       "flowers-description": "Las flores añaden +3 puntos a la zona puntuada cuando coinciden con la ficha del flor del jugador.",
       "flowers-disabled": "No hay losetas con Flores en la partida.",
       "gameplay-variants": "Variantes de juego",
@@ -490,6 +544,11 @@
         "description": "Método de desempate: {} en las colinas.",
         "number-of-followers": "número de seguidores"
       },
+      "inn-and-cathedral-final-scoring": {
+        "description": "Inns and Cathedrals {} during final scoring.",
+        "ignore": "are ignored",
+        "zero": "score 0 points"
+      },
       "keep-monasteries": {
         "description": "Monasterios especiales {}.",
         "keep": "solo son agregados",
@@ -537,6 +596,9 @@
       "tunnelize-other-expansions": {
         "description": "Aplicar la regla del túnel en losetas de otras expansiones con túneles ilustrados."
       },
+      "vineyards-for-garden": {
+        "description": "Apply vineyards bonus during scoring of completed garden."
+      },
       "wagon-move": {
         "C1": "conectado (cruce de carreteras o carretera que se dirige a una ciudad o monasterio) (1ª ed.)",
         "C2": "una zona en la misma loseta o en una adyacente (2ª ed.)",
@@ -554,6 +616,7 @@
       "my-favorites": "mis favoritos",
       "new-game": "Nueva partida",
       "open-game": "Abrir partida",
+      "saved-game": "Saved game",
       "title": "Partidas organizadas por el jugador"
     },
     "online": {

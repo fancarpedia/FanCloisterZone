@@ -1,0 +1,90 @@
+{
+  "appVersion": "6.1.0-alpha.29",
+  "gameId": "1",
+  "name": "",
+  "initialRandom": 0.17442958482030013,
+  "created": "2026-02-05T22:10:04.231Z",
+  "clock": 29964,
+  "setup": {
+    "sets": {
+      "basic:1": 1,
+      "river/1:1": 1
+    },
+    "elements": {
+      "small-follower": 7,
+      "farmers": true,
+      "donkey": 1,
+      "fishermen": true
+    },
+    "rules": {},
+    "timer": null,
+    "start": [
+      {
+        "tile": "BA/RCr",
+        "x": 0,
+        "y": 0,
+        "rotation": 0
+      }
+    ],
+    "options": {}
+  },
+  "players": [
+    {
+      "name": "Ariel",
+      "slot": 0
+    }
+  ],
+  "chat": [],
+  "replay": [
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "RI/s",
+        "rotation": "R0",
+        "position": [
+          0,
+          1
+        ]
+      },
+      "player": 0,
+      "clock": 3033
+    },
+    {
+      "type": "MOVE_NEUTRAL_FIGURE",
+      "payload": {
+        "figureId": "donkey.1",
+        "to": [
+          0,
+          1
+        ]
+      },
+      "player": 0,
+      "clock": 4670
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.3393404675047864
+      },
+      "player": 0,
+      "clock": 5810
+    }
+  ],
+  "gameAnnotations": {
+    "drawOrder": [
+      "RI/s",
+      "RI.1/I.e"
+    ]
+  },
+  "test": {
+    "description": "Donkey Blocking Fishermen",
+    "assertions": [
+      "Ariel has 0 points.",
+      "Phase is TilePhase",
+      "Player can't pass",
+      "Available action TilePlacement for RI.1/I.e",
+      "TilePlacement RI.1/I.e options: [-1,1] - [0,90,270]; [0,2] - [0,180,270]",
+      "Undo is not allowed"
+    ]
+  }
+}

@@ -4,9 +4,7 @@ import { ipcRenderer } from 'electron'
 import { compare } from 'compare-versions'
 
 import difference from 'lodash/difference'
-import pick from 'lodash/pick'
 import sortBy from 'lodash/sortBy'
-import omit from 'lodash/omit'
 import range from 'lodash/range'
 import zip from 'lodash/zip'
 import isNil from 'lodash/isNil'
@@ -19,9 +17,11 @@ import { randomId } from '@/utils/random'
 import { getAppVersion } from '@/utils/version'
 import { isSameFeature, generateSaveContent } from '@/utils/gameUtils'
 import { verifyScenario } from '@/utils/testing'
-import { Rule, getDefaultRules } from '@/models/rules'
+import { getDefaultRules } from '@/models/rules'
 
-const SAVED_GAME_FILTERS = [{ name: 'Saved Game', extensions: ['jcz'] }]
+const getSavedGameFilters = () => {
+  return [{ name: $nuxt.$t('index.local.saved-game'), extensions: ['jcz'] }]
+}
 
 const deployedOnField = (state, response) => {
   for (let i = 0; i < response.undo.depth; i++) {
@@ -401,7 +401,7 @@ export const actions = {
     return new Promise(async (resolve, reject) => { /* eslint no-async-promise-executor: 0 */
       let { filePath } = await ipcRenderer.invoke('dialog.showSaveDialog', {
         title: onlySetup ? 'Save Game Setup' : 'Save Game',
-        filters: SAVED_GAME_FILTERS,
+        filters: getSavedGameFilters(),
         properties: ['createDirectory', 'showOverwriteConfirmation']
       })
       if (filePath) {
@@ -456,7 +456,6 @@ export const actions = {
             description: parse(filePath).name.replace(/[-_]/g, ' ').replace(/\b\w/g, char => char.toUpperCase()),
             assertions: []
           }
-          const asserts = []
           for (const step of gameState.history) {
             for (const event of step.events) {
               if (event.points) {
@@ -468,7 +467,65 @@ export const actions = {
           }
           for (const p of gameState.players) {
             content.test.assertions.push(`${playerNameBySlot[p.slot]} has ${p.points} point${p.points !== 1 ? "s" : ""}.`)
+            if (p.tokens.KING) {
+              content.test.assertions.push(`${playerNameBySlot[p.slot]} has KING token with size ${p.tokens.KING.size}.`)
+            }
+            if (p.tokens.ROBBER) {
+              content.test.assertions.push(`${playerNameBySlot[p.slot]} has ROBBER token with size ${p.tokens.ROBBER.size}.`)
+            }
           }
+          content.test.assertions.push(`Phase is ${gameState.phase}`)
+          if (!!gameState.action) {
+            content.test.assertions.push(`Player ${gameState.action.canPass ? 'can' : 'can\'t'} pass`)
+            for (const i of gameState.action.items) {
+              let options = []
+              switch(i.type) {
+                case 'CaptureFollower':
+          	  	  content.test.assertions.push(`Available action ${i.type}`)
+          	  	  for (const o of i.options) {
+          	        options.push(['{',[o.meepleId,o.featurePointer.feature,o.featurePointer.location,['[',o.featurePointer.position.join(','),']'].join('')].join(','),'}'].join(''))
+          	  	  }
+		          content.test.assertions.push(`CaptureFollower options: ${options.join('; ')}`)
+                  break;
+          	  	case 'Ferries':
+          	  	  content.test.assertions.push(`Available action ${i.type}`)
+          	  	  for (const o of i.options) {
+          	        options.push(['{',[o.feature,o.location,['[',o.position.join(','),']'].join('')].join(','),'}'].join(''))
+          	  	  }
+		          content.test.assertions.push(`Ferries options: ${options.join('; ')}`)
+          	  	  break;
+          	  	case 'Meeple':
+          	  	  content.test.assertions.push(`Available action ${i.type} for ${i.meeple}`)
+                  for (const o of i.options) {
+          	        options.push(['{',[o.feature,o.location,['[',o.position.join(','),']'].join('')].join(','),'}'].join(''))
+          	  	  }
+		          content.test.assertions.push(`Meeple ${i.meeple} options: ${options.join('; ')}`)
+          	  	  break;
+                case 'TilePlacement':
+          	  	  content.test.assertions.push(`Available action ${i.type} for ${i.tileId}`)
+          	      for (const o of i.options) {
+          	        options.push(`[${o.position.join(',')}] - [${o.rotations.join(',')}]`)
+          	  	  }
+		          content.test.assertions.push(`TilePlacement ${i.tileId} options: ${options.join('; ')}`)
+          	  	  break;
+                case 'TowerPiece':
+          	  	  content.test.assertions.push(`Available action ${i.type} for ${i.token}`)
+          	      for (const o of i.options) {
+          	        options.push(`[${o.join(',')}]`)
+          	  	  }
+		          content.test.assertions.push(`Tower piece ${i.token} options: ${options.join('; ')}`)
+          	  	  break;
+          	  	case 'Tunnel':
+          	  	  content.test.assertions.push(`Available action ${i.type} for ${i.token}`)
+                  for (const o of i.options) {
+          	        options.push(['{',[o.feature,o.location,['[',o.position.join(','),']'].join('')].join(','),'}'].join(''))
+          	  	  }
+		          content.test.assertions.push(`Tunnel token ${i.token} options: ${options.join('; ')}`)
+          	  	  break;
+          	  }
+          	}
+          }
+          content.test.assertions.push(`Undo ${gameState.undo.allowed ? 'is' : 'is not'} allowed`)
           content.gameId = '1'
           fs.writeFile(filePath, JSON.stringify(content, null, 2), err => {
             if (err) {
@@ -487,12 +544,13 @@ export const actions = {
   async load ({ commit, dispatch, rootState }, { file: filePath, setupOnly = false } = {}) {
     return new Promise(async (resolve, reject) => {
       if (!filePath) {
-        const { filePaths } = await ipcRenderer.invoke('dialog.showOpenDialog', {
-          title: 'Load Game',
-          filters: SAVED_GAME_FILTERS,
+        const { filePaths, canceled } = await ipcRenderer.invoke('open-load-game-dialog', {
+          title: $nuxt.$t('index.local.open-saved-game'),
+          filters: getSavedGameFilters(), //[{ name: $nuxt.$t('index.local.saved-game'), extensions: ['jcz'] }],
           properties: ['openFile']
         })
-        if (filePaths.length) {
+
+        if (!canceled && filePaths.length) {
           filePath = filePaths[0]
         } else {
           resolve(false)
@@ -595,7 +653,7 @@ export const actions = {
         dispatch('game/start', null, { root: true })
       }
       Vue.nextTick(() => {
-        dispatch('settings/addRecentSave', { file: filePath, setup: sg.setup }, { root: true })
+//        dispatch('settings/addRecentSave', { file: filePath, setup: sg.setup }, { root: true })
       })
       resolve(sg)
 
@@ -646,7 +704,7 @@ export const actions = {
           commit('slot', { ...payload, order: selectedSlot.order })
         } else {
           // take a slot
-          const order = state.slots.filter(s => s.sessionId).length + 1
+          const order = state.slots.filter(s => s.clientId).length + 1
           commit('slot', { ...payload, order })
         }
       } else {
@@ -799,7 +857,6 @@ export const actions = {
   },
 
   close ({ dispatch, commit, rootState }) {
-    console.log('Game close requested')
     commit('id', null)
     if (rootState.networking.connectionType !== 'online') {
       const { $engine } = this._vm

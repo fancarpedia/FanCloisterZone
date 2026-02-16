@@ -186,6 +186,7 @@ module.exports = {
   },
   
   watch: isDev ? [
+  	path.resolve(__dirname, 'package.json'),
   	path.resolve(__dirname, 'src/render/store/board.js'),
   	path.resolve(__dirname, 'src/render/store/game.js'),
   	path.resolve(__dirname, 'src/render/store/gameSetup.js'),

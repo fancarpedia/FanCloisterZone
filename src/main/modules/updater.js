@@ -32,7 +32,16 @@ let updateInfo = null
  * @param {string} channel - 'stable' | 'beta' | 'alpha'
  * @param {string} currentVersion - app.getVersion()
  */
+/**
+ * Get the newest release according to channel and SemVer rules
+ * @param {string} channel - 'stable' | 'beta' | 'dev'
+ * @param {string} currentVersion - app.getVersion()
+ */
 async function getLatestReleaseByChannel(channel, currentVersion) {
+  const isCurrentAlpha = /-alpha/i.test(currentVersion)
+  const isCurrentBeta = /-beta/i.test(currentVersion)
+  const isCurrentRc = /-rc/i.test(currentVersion)
+  
   const res = await fetch('https://api.github.com/repos/fancarpedia/FanCloisterZone/releases') /* Fan Edition */
   const releases = await res.json()
   const parsed = releases
@@ -63,28 +72,37 @@ async function getLatestReleaseByChannel(channel, currentVersion) {
 
   parsed.sort((a, b) => compareVersions(b.version, a.version))
 
-  const pickNewer = predicate =>
-    parsed.find(v => predicate(v) && compareVersions(v.version, currentVersion) > 0) || null
-
   let candidate = null
 
+  // Adjust channel based on current version type
+  if (isCurrentAlpha) {
+    channel = 'dev'
+  }
+  if ((isCurrentBeta || isCurrentRc) && channel === 'stable') {
+    channel = 'beta'
+  }
+  
   switch (channel) {
-    case 'beta':
-      candidate =
-        pickNewer(v => !v.prerelease || v.rc || v.beta ) ||       // stable, rc or beta
-        pickNewer(v => v.alpha)                // alpha fallback
+    case 'dev':
+      // Show any version newer than current
+      candidate = parsed.find(v => compareVersions(v.version, currentVersion) > 0) || null
       break
 
-    case 'dev':
-      candidate = parsed.find(v => compareVersions(v.version, currentVersion) > 0) || null
+    case 'beta':
+      // Show newest beta or stable (no alpha, no rc)
+      candidate = parsed.find(v => 
+        compareVersions(v.version, currentVersion) > 0 && 
+        (!v.prerelease || v.beta)
+      ) || null
       break
 
     case 'stable':
     default:
-      candidate =
-        pickNewer(v => !v.prerelease) ||       // stable
-        pickNewer(v => v.rc || v.beta) ||      // rc / beta fallback
-        pickNewer(v => v.alpha)                // alpha fallback
+      // Show only stable releases (no pre-releases)
+      candidate = parsed.find(v => 
+        compareVersions(v.version, currentVersion) > 0 && 
+        !v.prerelease
+      ) || null
       break
   }
   return candidate

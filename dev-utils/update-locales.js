@@ -125,6 +125,9 @@ function fetchPage(url) {
     protocol.get(url, (res) => {
       let data = '';
       
+      // Explicitly set encoding to UTF-8
+      res.setEncoding('utf8')
+      
       res.on('data', (chunk) => {
         data += chunk;
       });
@@ -232,18 +235,19 @@ async function processLanguage(lang) {
       throw new Error('JSON must be an object, not an array or primitive');
     }
     
-    // Write to file with pretty formatting
-    const formatted = JSON.stringify(parsed, null, 2) + '\n';
+    // Write to file with pretty formatting and explicit UTF-8 encoding
+    const formatted = JSON.stringify(parsed, null, 2) + '\n'
     
     let update = false
     if (!fileExists) {
       update = true
     } else {
-      current = fs.readFileSync(filePath, 'utf8');
+      const current = fs.readFileSync(filePath, 'utf8')
       if (current !== formatted) {
         update = true
       }
     }
+    
     if (update) {
       fs.writeFileSync(filePath, formatted, 'utf8');
       if (!fileExists) {

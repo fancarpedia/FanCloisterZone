@@ -4,11 +4,13 @@
   "@fcz-version": "6.0.0",
   "@version": "0.8.22",
   "about": {
+    "author": "Author",
     "configuration-file": "Konfiguracijska datoteka",
+    "fantitle": "FanCloisterZone Edition",
     "jcloisterzone-game-engine": "JCloisterZone Igralni Pogon",
     "system-java-version": "Sistemska Java Verzija",
     "title": "JCloisterZone Fan Izdaja",
-    "fantitle": "FanCloisterZone Edition",
+    "translation": "Translation",
     "version": "verzija"
   },
   "bookmarks": {
@@ -35,12 +37,15 @@
     "create-public-game": "Ustvari javno igro",
     "disconnect": "Prekini povezavo",
     "grow-the-flock": "Rasti Čredo",
+    "hide": "Hide",
+    "hide-finished": "Hide Finished",
     "hide-stats": "Skrij Statistiko",
     "join-game": "Pridruži se Igri",
     "load": "Naloži",
     "load-setup-from-file": "Naloži Nastavitve Iz Datoteke",
     "may-deploy": "Lahko postaviš",
     "must-remove": "Moraš odstraniti",
+    "open": "Open",
     "pass": "Preskoči",
     "play-again": "Igraj ponovno",
     "play-online": "Igraj Online",
@@ -51,17 +56,24 @@
     "remove": "Odstrani",
     "remove-from-favorites": "Odstrani Iz Priljubljenih",
     "reset": "Ponastavi",
+    "reset-all": "Reset All",
+    "reset-failed": "Reset Failed",
     "resume": "Nadaljuj",
     "rules": "Pravila",
     "rules-1st-edition": "Pravila (1. izd.)",
+    "run": "Run",
+    "run-all": "Run All",
     "save-to-file": "Shrani V Datoteko",
     "score-the-sheep": "Točkuj Ovce",
     "select": "Izberi",
     "sell": "Prodaj",
     "set": "Nastavi",
+    "show-all": "Show All",
     "show-stats": "Prikaži Statistiko",
     "start": "Začni",
-    "undo": "Razveljavi"
+    "stop-running": "Stop Running",
+    "undo": "Razveljavi",
+    "test-runner": "Test Runner"
   },
   "core-messages": {
     "bonuses": "Bonusi",
@@ -79,11 +91,43 @@
     "tiles": "Ploščice",
     "used-time": "Porabljen čas"
   },
+  "dev": {
+    "actions": "Actions",
+    "dump-hosted-game-server-state": "Dump Hosted Game Server State",
+    "edition": "Edition",
+    "fail": "Fail",
+    "meeples": "Meeples",
+    "mode": "Mode",
+    "ok": "OK",
+    "reload-add-ons": "Reload Add-ons",
+    "result": "Result",
+    "save-test-scenario": "Save Test Scenario",
+    "shapes": "Shapes",
+    "size": "Size",
+    "strokes": "Strokes",
+    "test": "Test",
+    "test-runner": "Test Runner",
+    "theme-inspector": "Theme Inspector",
+    "tiles": "Tiles",
+    "toggle-devtools": "Toggle DevTools",
+    "use-local-play-online": "Use Local Play Online",
+    "use-remote-engine": "Use Remote Engine"
+  },
+  "dialog": {
+    "close-local-game": {
+      "continue-playing": "Continue Playing",
+      "resign-and-close": "Resign and Close",
+      "unfinished-local-game": "Unfinished Local Game",
+      "unfinished-local-game-description": "You have an unfinished local game. If you close the app window, you will resign and lose your progress in this game."
+    }
+  },
   "expansion": {
     "-unknown": "Manjkajoča razširitev",
     "abbey-and-mayor": "Opatija & Župan",
     "basic": "Osnovna igra",
     "besiegers": "Oblegovalci",
+    "black-tower": "Black Tower",
+    "black-tower-description": "New black and white tower floors for The Tower expansion, which allows to capture meeples diagonally when using black floor or permanently lock tower with white floor on the top.",
     "bridges-castles-and-bazaars": "Mostovi, Gradovi in Bazarji",
     "butterfly-tiles": "Metulje ploščice",
     "butterfly-tiles-description": "16 ploščic z novimi postavitvami, ki manjkajo v osnovni igri in razširitvah. Novih mehanik ni.",
@@ -105,9 +149,13 @@
     "family-feud-description": "Ploščic z modro-belim in rdeče-rumenim grbom ni dovoljeno postaviti tako, da bi mesta teh dveh družin bila povezana ali združena pred dokončanjem.",
     "farmers-heaven": "Kmečka Nebesa",
     "farmers-heaven-description": "Ker je večina razširitev osredotočena predvsem na mesta, je bil čas narediti nekaj za kmete.",
+    "fishermen": "Fishermen",
+    "fishermen-description": "",
     "ferries": "Trajekti",
     "festival": "Festival",
     "flier": "Leteči Stroji",
+    "gamblers-luck": "Gambler's Luck",
+    "gamblers-luck-description": "A roll of the die can cause a city to get tokens with additional coat of arms, or nullify existing ones throughout the city.",
     "goldmines": "Zlati Rudniki",
     "gq11": "Mini Razširitev (GQ11)",
     "heretics-and-shrines": "Krivoverci in Svetišča",
@@ -175,6 +223,7 @@
       "ferries-player-can-move-ferries": "Igralec lahko premakne trajekte",
       "ferries-player-must-place-a-ferry": "Igralec mora postaviti trajekt",
       "ferries-you-can-move-ferries": "Lahko premakneš trajekte",
+      "gamblers-luck-outcome": "Gambler’s Luck outcome",
       "goldmines-place-a-gold-ingot": "Postavi zlato palico",
       "goldmines-player-must-place-a-gold-ingot": "Igralec mora postaviti zlato palico",
       "hills-and-player-must-choose-grow-or-score-plural": "Igralec mora izbrati, ali rasti čredo ali točkovati ovce za 0 točk. | Igralec mora izbrati, ali rasti čredo ali točkovati ovce za {points} točko. | Igralec mora izbrati, ali rasti čredo ali točkovati ovce za {points} točk.",
@@ -222,6 +271,7 @@
       "barn": "Skedenj",
       "big-follower": "Veliki Človeček",
       "big-top": "Veliki Šotor",
+      "black-tower": "Black Tower",
       "bridge": "Most",
       "builder": "Graditelj",
       "castle": "Grad",
@@ -273,6 +323,7 @@
       "festival": "Festival",
       "field": "Polje",
       "fields": "Polja",
+      "fishermen": "Fishermen",
       "flock": "Čreda",
       "flowers": "Rože",
       "garden": "Vrt",
@@ -327,6 +378,7 @@
     },
     "tile-pack-dialog": {
       "disabled-show-remaining": "Igra je bila ustvarjena z možnostjo, ki ne dovoljuje prikazovanja števila preostalih ploščic.",
+      "discarded-tiles": "Discarded tiles",
       "game-tiles": "Igralne ploščice",
       "hidden-tiles-under-hill-plural": "Ni neznanih ploščic pod hribom. | Ne pozabi, da je 1 neznana ploščica s seznama skrita pod hribom. | Ne pozabi, da so {count} neznane ploščice s seznama skrite pod hribi.",
       "remaining-tiles": "Preostale ploščice",
@@ -389,6 +441,8 @@
       "farmers-description": "Igralci lahko postavijo človeščke na polja.",
       "festival-description": "S festivalsko ploščico lahko vrneš eno od svojih figur namesto da jo postaviš.",
       "festival-disabled": "Nobena ploščica s festivalom ni v igri.",
+      "fishermen-description": "River as regular feature.",
+      "fishermen-disabled": "No tile with River is in the game.",
       "flowers-description": "Še ni na voljo",
       "flowers-disabled": "Nobena ploščica z rožami ni v igri.",
       "gameplay-variants": "Variante igranja",
@@ -490,6 +544,11 @@
         "description": "Metoda za prekinitev neodločenega izida: {} na hribih.",
         "number-of-followers": "število človeščkov"
       },
+      "inn-and-cathedral-final-scoring": {
+        "description": "Inns and Cathedrals {} during final scoring.",
+        "ignore": "are ignored",
+        "zero": "score 0 points"
+      },
       "keep-monasteries": {
         "description": "Posebni samostani {}.",
         "keep": "so samo dodani",
@@ -537,6 +596,9 @@
       "tunnelize-other-expansions": {
         "description": "Uporabi pravilo tunelov na ploščicah iz drugih razširitev z upodobljenimi tuneli."
       },
+      "vineyards-for-garden": {
+        "description": "Apply vineyards bonus during scoring of completed garden."
+      },
       "wagon-move": {
         "C1": "povezana (križišče ceste ali cesta proti mestu/samostanu) (1. izd.)",
         "C2": "značilnost na isti ali sosednji ploščici (2. izd.)",
@@ -554,6 +616,7 @@
       "my-favorites": "mojih priljubljenih",
       "new-game": "Nova igra",
       "open-game": "Odpri igro",
+      "saved-game": "Saved game",
       "title": "Igre gostovane pri igralcu"
     },
     "online": {

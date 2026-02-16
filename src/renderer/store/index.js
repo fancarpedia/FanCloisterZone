@@ -170,7 +170,7 @@ export const actions = {
 
   async checkEngineVersion ({ state, commit, rootState }) {
     if (state.engine !== null) {
-      return state.engine
+      // return state.engine
     }
     return new Promise(async (resolve, reject) => {
       const { $engine } = this._vm

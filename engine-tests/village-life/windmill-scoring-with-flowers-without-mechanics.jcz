@@ -1,0 +1,473 @@
+{
+  "appVersion": "6.1.0-alpha.16",
+  "gameId": "1",
+  "name": "",
+  "initialRandom": 0.7936594096956611,
+  "created": "2026-01-25T15:51:13.198Z",
+  "clock": 214570,
+  "setup": {
+    "options": {},
+    "sets": {
+      "basic:1": 1,
+      "village-life": 1
+    },
+    "elements": {
+      "small-follower": 7,
+      "farmers": true,
+      "windmill": 1
+    },
+    "rules": {},
+    "timer": null,
+    "start": [
+      {
+        "tile": "BA/RCr",
+        "x": 0,
+        "y": 0,
+        "rotation": 0
+      }
+    ],
+    "addons": {
+      "village-life": 0
+    }
+  },
+  "players": [
+    {
+      "name": "Betty",
+      "slot": 2
+    },
+    {
+      "name": "John",
+      "slot": 1
+    }
+  ],
+  "chat": [],
+  "replay": [
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "village-life/rrbr.wf2f3",
+        "rotation": "R180",
+        "position": [
+          1,
+          0
+        ]
+      },
+      "player": 0,
+      "clock": 25513
+    },
+    {
+      "type": "DEPLOY_MEEPLE",
+      "payload": {
+        "pointer": {
+          "position": [
+            1,
+            0
+          ],
+          "location": "NL.WR",
+          "feature": "Field"
+        },
+        "meepleId": "0.windmill.1"
+      },
+      "player": 0,
+      "clock": 30609
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.6548945143872604
+      },
+      "player": 0,
+      "clock": 31419
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "village-life/rrbr.f1f4",
+        "rotation": "R270",
+        "position": [
+          1,
+          1
+        ]
+      },
+      "player": 1,
+      "clock": 34270
+    },
+    {
+      "type": "PASS",
+      "payload": {},
+      "player": 1,
+      "clock": 35777
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.8693124884759762
+      },
+      "player": 1,
+      "clock": 35780
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "BA/Rr",
+        "rotation": "R90",
+        "position": [
+          1,
+          2
+        ]
+      },
+      "player": 0,
+      "clock": 37119
+    },
+    {
+      "type": "PASS",
+      "payload": {},
+      "player": 0,
+      "clock": 38535
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.6509551850770858
+      },
+      "player": 0,
+      "clock": 38538
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "village-life/rbrb.f1f3",
+        "rotation": "R90",
+        "position": [
+          2,
+          0
+        ]
+      },
+      "player": 1,
+      "clock": 41033
+    },
+    {
+      "type": "PASS",
+      "payload": {},
+      "player": 1,
+      "clock": 42192
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.2946634531264216
+      },
+      "player": 1,
+      "clock": 42195
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "BA/CcRr",
+        "rotation": "R90",
+        "position": [
+          3,
+          0
+        ]
+      },
+      "player": 0,
+      "clock": 43265
+    },
+    {
+      "type": "PASS",
+      "payload": {},
+      "player": 0,
+      "clock": 43975
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.5487524725914732
+      },
+      "player": 0,
+      "clock": 43977
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "BA/Cc.1",
+        "rotation": "R270",
+        "position": [
+          3,
+          -1
+        ]
+      },
+      "player": 1,
+      "clock": 46373
+    },
+    {
+      "type": "PASS",
+      "payload": {},
+      "player": 1,
+      "clock": 47797
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.7578978562121463
+      },
+      "player": 1,
+      "clock": 47799
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "BA/RRR",
+        "rotation": "R270",
+        "position": [
+          -1,
+          0
+        ]
+      },
+      "player": 0,
+      "clock": 49633
+    },
+    {
+      "type": "PASS",
+      "payload": {},
+      "player": 0,
+      "clock": 50397
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.5439418280756192
+      },
+      "player": 0,
+      "clock": 50399
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "village-life/crbr.gf2",
+        "rotation": "R90",
+        "position": [
+          -1,
+          -1
+        ]
+      },
+      "player": 1,
+      "clock": 51542
+    },
+    {
+      "type": "PASS",
+      "payload": {},
+      "player": 1,
+      "clock": 52649
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.7541484274945998
+      },
+      "player": 1,
+      "clock": 52651
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "BA/Cccc+",
+        "rotation": "R0",
+        "position": [
+          0,
+          -1
+        ]
+      },
+      "player": 0,
+      "clock": 53523
+    },
+    {
+      "type": "PASS",
+      "payload": {},
+      "player": 0,
+      "clock": 54671
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.020713723958132535
+      },
+      "player": 0,
+      "clock": 54673
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "BA/Cc.1",
+        "rotation": "R180",
+        "position": [
+          0,
+          -2
+        ]
+      },
+      "player": 1,
+      "clock": 56592
+    },
+    {
+      "type": "PASS",
+      "payload": {},
+      "player": 1,
+      "clock": 57265
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.6843128704602142
+      },
+      "player": 1,
+      "clock": 57267
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "BA/CccR+",
+        "rotation": "R0",
+        "position": [
+          1,
+          -2
+        ]
+      },
+      "player": 0,
+      "clock": 58169
+    },
+    {
+      "type": "PASS",
+      "payload": {},
+      "player": 0,
+      "clock": 59323
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.47472153040384724
+      },
+      "player": 0,
+      "clock": 59325
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "BA/C",
+        "rotation": "R180",
+        "position": [
+          1,
+          -3
+        ]
+      },
+      "player": 1,
+      "clock": 60151
+    },
+    {
+      "type": "PASS",
+      "payload": {},
+      "player": 1,
+      "clock": 61762
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.9724697090493093
+      },
+      "player": 1,
+      "clock": 61764
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "BA/CC.2",
+        "rotation": "R270",
+        "position": [
+          2,
+          -2
+        ]
+      },
+      "player": 0,
+      "clock": 63385
+    },
+    {
+      "type": "PASS",
+      "payload": {},
+      "player": 0,
+      "clock": 66305
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.9671210604171958
+      },
+      "player": 0,
+      "clock": 66309
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "village-life/fcrc.f2w",
+        "rotation": "R180",
+        "position": [
+          1,
+          -1
+        ]
+      },
+      "player": 1,
+      "clock": 68677
+    },
+    {
+      "type": "DEPLOY_MEEPLE",
+      "payload": {
+        "pointer": {
+          "position": [
+            1,
+            -1
+          ],
+          "location": "NR",
+          "feature": "Field"
+        },
+        "meepleId": "1.windmill.1"
+      },
+      "player": 1,
+      "clock": 80555
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.4728261783854877
+      },
+      "player": 1,
+      "clock": 85733
+    }
+  ],
+  "gameAnnotations": {
+    "drawOrder": [
+      "village-life/rrbr.wf2f3",
+      "village-life/rrbr.f1f4",
+      "BA/Rr",
+      "village-life/rbrb.f1f3",
+      "BA/CcRr",
+      "BA/Cc.1",
+      "BA/RRR",
+      "village-life/crbr.gf2",
+      "BA/Cccc+",
+      "BA/Cc.1",
+      "BA/CccR+",
+      "BA/C",
+      "BA/CC.2",
+      "village-life/fcrc.f2w"
+    ],
+    "endTurn": 14
+  },
+  "test": {
+    "description": "Windmill Scoring With Flowers Without Mechanics",
+    "assertions": [
+      "Betty scored windmill for 9 points.",
+      "John scored windmill for 8 points.",
+      "Betty has 9 points.",
+      "John has 8 points.",
+      "phase is GameOverPhase"
+    ]
+  }
+}

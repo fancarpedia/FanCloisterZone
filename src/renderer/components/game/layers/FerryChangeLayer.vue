@@ -8,59 +8,59 @@
       <rect
         v-if="WE"
         :class="{area: true, 'over-only': NS, mouseover: isMouseOver(position, 'WE')}"
-        x="70" y="430" width="860" height="140"
+        x="63" y="387" width="774" height="126"
       />
       <rect
         v-if="NS"
         :class="{area: true, 'over-only': WE, mouseover: isMouseOver(position, 'NS')}"
-        x="430" y="70" width="140" height="860"
+        x="387" y="63" width="126" height="774"
       />
 
       <g v-if="WE && NS">
         <rect
-          x="570" y="430" width="360" height="140"
+          x="513" y="387" width="324" height="126"
           :class="{'out-only': true, mouseover: isMouseOver(position, 'WE')}"
         />
         <rect
-          x="70" y="430" width="360" height="140"
+          x="63" y="387" width="324" height="126"
           :class="{'out-only': true, mouseover: isMouseOver(position, 'WE')}"
         />
         <rect
-          x="430" y="570" width="140" height="360"
+          x="387" y="513" width="126" height="324"
           :class="{'out-only': true, mouseover: isMouseOver(position, 'NS')}"
         />
         <rect
-          x="430" y="70" width="140" height="360"
+          x="387" y="63" width="126" height="324"
           :class="{'out-only': true, mouseover: isMouseOver(position, 'NS')}"
         />
         <rect
-          x="430" y="430" width="140" height="140"
+          x="387" y="387" width="126" height="126"
           :class="{'out-only': true, mouseover: isMouseOver(position, 'NS') || isMouseOver(position, 'WE')}"
         />
 
         <rect
-          x="570" y="430" width="360" height="140"
+          x="513" y="387" width="324" height="126"
           class="tracking-area"
           @mouseenter="onMouseOver(position, 'WE')"
           @mouseleave="onMouseLeave"
           @click="ev => onClick(ev, position, 'WE')"
         />
         <rect
-          x="70" y="430" width="360" height="140"
+          x="63" y="387" width="324" height="126"
           class="tracking-area"
           @mouseenter="onMouseOver(position, 'WE')"
           @mouseleave="onMouseLeave"
           @click="ev => onClick(ev, position, 'WE')"
         />
         <rect
-          x="430" y="570" width="140" height="360"
+          x="387" y="513" width="126" height="324"
           class="tracking-area"
           @mouseenter="onMouseOver(position, 'NS')"
           @mouseleave="onMouseLeave"
           @click="ev => onClick(ev, position, 'NS')"
         />
         <rect
-          x="430" y="70" width="140" height="360"
+          x="387" y="63" width="126" height="324"
           class="tracking-area"
           @mouseenter="onMouseOver(position, 'NS')"
           @mouseleave="onMouseLeave"
@@ -70,7 +70,7 @@
       <g v-else>
         <rect
           v-if="WE"
-          x="70" y="430" width="860" height="140"
+          x="63" y="387" width="774" height="126"
           class="tracking-area"
           @mouseenter="onMouseOver(position, 'WE')"
           @mouseleave="onMouseLeave"
@@ -78,7 +78,7 @@
         />
         <rect
           v-if="NS"
-          x="430" y="70" width="140" height="860"
+          x="387" y="63" width="126" height="774"
           class="tracking-area"
           @mouseenter="onMouseOver(position, 'NS')"
           @mouseleave="onMouseLeave"
@@ -88,7 +88,7 @@
 
       <path
         v-if="NW"
-        d="M 70 430 l -140 0 A 500 500 0 0 1 430 -70 l 0 140 A 360 360 0 0 0 70 430 Z"
+        d="M 63 387 l -126 0 A 450 450 0 0 1 387 -63 l 0 126 A 324 324 0 0 0 63 387 Z"
         :class="{ area: true, mouseover: isMouseOver(position, 'NW')}"
         @mouseenter="onMouseOver(position, 'NW')"
         @mouseleave="onMouseLeave"
@@ -96,8 +96,8 @@
       />
       <path
         v-if="NE"
-        d="M 70 430 l -140 0 A 500 500 0 0 1 430 -70 l 0 140 A 360 360 0 0 0 70 430 Z"
-        transform="rotate(90 500 500)"
+        d="M 63 387 l -126 0 A 450 450 0 0 1 387 -63 l 0 126 A 324 324 0 0 0 63 387 Z"
+        transform="rotate(90 450 450)"
         :class="{ area: true, mouseover: isMouseOver(position, 'NE')}"
         @mouseenter="onMouseOver(position, 'NE')"
         @mouseleave="onMouseLeave"
@@ -105,8 +105,8 @@
       />
       <path
         v-if="SE"
-        d="M 70 430 l -140 0 A 500 500 0 0 1 430 -70 l 0 140 A 360 360 0 0 0 70 430 Z"
-        transform="rotate(180 500 500)"
+        d="M 63 387 l -126 0 A 450 450 0 0 1 387 -63 l 0 126 A 324 324 0 0 0 63 387 Z"
+        transform="rotate(180 450 450)"
         :class="{ area: true, mouseover: isMouseOver(position, 'SE')}"
         @mouseenter="onMouseOver(position, 'SE')"
         @mouseleave="onMouseLeave"
@@ -114,8 +114,8 @@
       />
       <path
         v-if="SW"
-        d="M 70 430 l -140 0 A 500 500 0 0 1 430 -70 l 0 140 A 360 360 0 0 0 70 430 Z"
-        transform="rotate(270 500 500)"
+        d="M 63 387 l -126 0 A 450 450 0 0 1 387 -63 l 0 126 A 324 324 0 0 0 63 387 Z"
+        transform="rotate(270 450 450)"
         :class="{ area: true, mouseover: isMouseOver(position, 'SW')}"
         @mouseenter="onMouseOver(position, 'SW')"
         @mouseleave="onMouseLeave"

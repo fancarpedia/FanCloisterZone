@@ -54,7 +54,7 @@
         <span class="text">{{ $t('game-setup.open-game.waiting-for-host-to-start-the-game') }}</span>
       </template>
 
-      <HeaderLeaveGameButton :title="$t('button.leave-game')" @click="leaveGame" />
+      <HeaderLeaveGameButton :title="$t('button.close-game')" @click="leaveGame" />
 
     </template>
 

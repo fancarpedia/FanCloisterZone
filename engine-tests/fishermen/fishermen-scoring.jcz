@@ -1,0 +1,229 @@
+{
+  "appVersion": "6.1.0-alpha.11",
+  "gameId": "1",
+  "name": "",
+  "initialRandom": 0.9685323329208972,
+  "created": "2026-01-20T20:10:03.013Z",
+  "clock": 57178,
+  "setup": {
+    "sets": {
+      "basic:1": 1,
+      "river/1:1": 1,
+      "river/2:1": 1
+    },
+    "elements": {
+      "small-follower": 7,
+      "farmers": true,
+      "fishermen": true
+    },
+    "rules": {},
+    "timer": null,
+    "start": [
+      {
+        "tile": "BA/RCr",
+        "x": 0,
+        "y": 0,
+        "rotation": 0
+      }
+    ],
+    "options": {}
+  },
+  "players": [
+    {
+      "name": "Ariel",
+      "slot": 0
+    },
+    {
+      "name": "John",
+      "slot": 1
+    }
+  ],
+  "chat": [],
+  "replay": [
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "RI.2/IFC",
+        "rotation": "R0",
+        "position": [
+          0,
+          1
+        ]
+      },
+      "player": 0,
+      "clock": 5935
+    },
+    {
+      "type": "DEPLOY_MEEPLE",
+      "payload": {
+        "pointer": {
+          "position": [
+            0,
+            1
+          ],
+          "location": "W",
+          "feature": "River"
+        },
+        "meepleId": "0.small.1"
+      },
+      "player": 0,
+      "clock": 6939
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.02639680835912639
+      },
+      "player": 0,
+      "clock": 7544
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "RI.1/IFI",
+        "rotation": "R0",
+        "position": [
+          -1,
+          1
+        ]
+      },
+      "player": 1,
+      "clock": 9728
+    },
+    {
+      "type": "PASS",
+      "payload": {},
+      "player": 1,
+      "clock": 10136
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.08160172674238808
+      },
+      "player": 1,
+      "clock": 10150
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "RI.2/I.v",
+        "rotation": "R180",
+        "position": [
+          -2,
+          1
+        ]
+      },
+      "player": 0,
+      "clock": 12498
+    },
+    {
+      "type": "PASS",
+      "payload": {},
+      "player": 0,
+      "clock": 15036
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.036960137695303485
+      },
+      "player": 0,
+      "clock": 15053
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "RI.2/LIFI",
+        "rotation": "R90",
+        "position": [
+          -3,
+          1
+        ]
+      },
+      "player": 1,
+      "clock": 18673
+    },
+    {
+      "type": "DEPLOY_MEEPLE",
+      "payload": {
+        "pointer": {
+          "position": [
+            -3,
+            1
+          ],
+          "location": "NS",
+          "feature": "River"
+        },
+        "meepleId": "1.small.1"
+      },
+      "player": 1,
+      "clock": 20016
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.4942446216359708
+      },
+      "player": 1,
+      "clock": 20300
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "RI.2/III",
+        "rotation": "R90",
+        "position": [
+          -3,
+          0
+        ]
+      },
+      "player": 0,
+      "clock": 21792
+    },
+    {
+      "type": "DEPLOY_MEEPLE",
+      "payload": {
+        "pointer": {
+          "position": [
+            -3,
+            0
+          ],
+          "location": "N",
+          "feature": "River"
+        },
+        "meepleId": "0.small.1"
+      },
+      "player": 0,
+      "clock": 23727
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.937048625235037
+      },
+      "player": 0,
+      "clock": 26392
+    }
+  ],
+  "gameAnnotations": {
+    "drawOrder": [
+      "RI.2/IFC",
+      "RI.1/IFI",
+      "RI.2/I.v",
+      "RI.2/LIFI",
+      "RI.2/III"
+    ],
+    "endTurn": 5
+  },
+  "test": {
+    "description": "Fishermen Scoring",
+    "assertions": [
+      "Ariel scored river for 6 points.",
+      "Ariel scored river for 1 point.",
+      "John scored river for 2 points.",
+      "Ariel has 7 points.",
+      "John has 2 points."
+    ]
+  }
+}

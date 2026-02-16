@@ -3,27 +3,29 @@
 
     <v-container class="test-runner-container">
       <div class="test-runner-header">
-        <h1>Test Runner</h1>
+        <h1>{{ $nuxt.$t('dev.test-runner') }}</h1>
 
         <div>
           <v-btn color="primary" @click="toggleRunAll">
-            {{ isRunningAll ? 'Stop running all' : 'Run All' }}
-          </v-btn>
-
-          <v-btn color="secondary" @click="resetAll">
-            Reset All
+            {{ isRunningAll ? $nuxt.$t('button.stop-running') : $nuxt.$t('button.run-all') }}
           </v-btn>
 
           <v-btn color="secondary" @click="toggleFinished">
-            {{ !hideFinished ? 'Hide finished' : 'Show All' }}
+            {{ !hideFinished ? $nuxt.$t('button.hide-finished') : $nuxt.$t('button.show-all') }}
           </v-btn>
 
           <v-btn color="secondary" @click="resetFailed">
-            Reset Failed
+            {{ $nuxt.$t('button.reset-failed') }}
           </v-btn>
+
+          <v-btn color="secondary" @click="resetAll">
+            {{ $nuxt.$t('button.reset-all') }}
+          </v-btn>
+
         </div>
-        <v-btn to="/" color="secondary" @click="resetFailed">
-          Close
+        <v-btn to="/" color="secondary" class="error close" @click="resetFailed">
+          <v-icon left>fa-times</v-icon>
+          {{ $t('button.close') }}
         </v-btn>
 
       </div>
@@ -32,9 +34,9 @@
         <template v-slot:default>
           <thead>
             <tr>
-              <th class="text-left">Test</th>
-              <th class="text-left">Result</th>
-              <th class="text-left">Actions</th>
+              <th class="text-left">{{ $nuxt.$t('dev.test') }}</th>
+              <th class="text-left">{{ $nuxt.$t('dev.result') }}</th>
+              <th class="text-left">{{ $nuxt.$t('dev.actions') }}</th>
             </tr>
           </thead>
           <tbody>
@@ -51,9 +53,9 @@
                 </div>
               </td>
               <td>
-                <span v-if="test.result && test.result.ok">✅ OK</span>
+                <span v-if="test.result && test.result.ok">✅ {{ $nuxt.$t('dev.ok') }}</span>
                 <span v-else-if="test.result && test.result.error">❌ {{ test.result.error }}</span>
-                <span v-else-if="test.result && !test.result.ok">❌ FAIL</span>
+                <span v-else-if="test.result && !test.result.ok">❌ {{ $nuxt.$t('dev.fail') }}</span>
               </td>
               <td>
                 <v-btn
@@ -62,7 +64,7 @@
                   @click="run(test, idx)"
                   :disabled="test.disabled"
                 >
-                  Run
+                  {{ $nuxt.$t('button.run') }}
                 </v-btn>
                 <v-btn
                   small
@@ -70,7 +72,7 @@
                   @click="open(test)"
                   :disabled="test.disabled"
                 >
-                  Open
+                  {{ $nuxt.$t('button.open') }}
                 </v-btn>
               </td>
             </tr>
@@ -114,30 +116,34 @@ export default {
         for (const f of files) {
           const filePath = path.join(testFolder, subfolder, f)
           let disabled = false
-          let error = null
+          let error = []
 
           try {
             const fileContent = await fs.promises.readFile(filePath, 'utf-8')
             const json = JSON.parse(fileContent)
             const setsRaw = json?.setup?.sets
+            if (!json.hasOwnProperty('test')) {
+              disabled = true
+              error.push(`Save file has no test defined`)
+            }
             const requiredSets = Object.keys(setsRaw).map(set =>
               set.split(/:|,v|\//)[0].toLowerCase().replace(/_/g, '-')
             );
             const missing = requiredSets.filter(set => !installedSets.includes(set))
             if (missing.length > 0) {
               disabled = true
-              error = `Missing expansions: ${missing.join(', ')}`
+              error.push(`Missing expansions: ${missing.join(', ')}`)
             }
           } catch (err) {
             disabled = true
-            error = `Invalid test file: ${err.message}`
+            error.push(`Invalid test file: ${err.message}`)
           }
 
           tests.push({
             name: path.join(subfolder, f).replace('.jcz', ''),
             file: filePath,
             disabled,
-            error
+            error: error.join(', ')
           })
         }
       }
@@ -249,11 +255,6 @@ export default {
 h1
   margin-bottom: 20px
 
-.close
-  position: absolute
-  top: 10px
-  right: 10px
-
 .disabled
   opacity: 0.6
 
@@ -295,5 +296,20 @@ h1
 
   +theme using ($theme)
     color: map-get($theme, '--v-error-base')
-  
+ 
+.v-btn.close
+  padding-left: 12px
+  padding-right: 12px
+  min-width: inherit
+   
+@media (max-width: 1024px)
+  .close
+    text-indent: -9999px
+    margin: 0
+    min-width: 0
+	
+    .v-icon
+      font-size: 24px
+      margin: 0
+      
 </style>

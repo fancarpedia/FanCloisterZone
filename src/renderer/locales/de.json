@@ -4,11 +4,13 @@
   "@fcz-version": "6.0.0",
   "@version": "0.8.22",
   "about": {
+    "author": "Author",
     "configuration-file": "Konfigurationsdatei",
+    "fantitle": "FanCloisterZone Edition",
     "jcloisterzone-game-engine": "JCloisterZone Spiel-Engine",
     "system-java-version": "System-Java-Version",
     "title": "JCloisterZone",
-    "fantitle": "FanCloisterZone Edition",
+    "translation": "Translation",
     "version": "Version"
   },
   "bookmarks": {
@@ -35,12 +37,15 @@
     "create-public-game": "Öffentliches Spiel erstellen",
     "disconnect": "Trennen",
     "grow-the-flock": "Die Herde vergrößern",
+    "hide": "Hide",
+    "hide-finished": "Hide Finished",
     "hide-stats": "Statistiken ausblenden",
     "join-game": "dem Spiel beitreten",
     "load": "Laden",
     "load-setup-from-file": "Setup aus Datei laden",
     "may-deploy": "Darf einsetzen",
     "must-remove": "Muss entfernen",
+    "open": "Open",
     "pass": "Passen",
     "play-again": "Nochmal spielen",
     "play-online": "Online spielen",
@@ -51,17 +56,24 @@
     "remove": "Entfernen",
     "remove-from-favorites": "Aus Favoriten entfernen",
     "reset": "Zurücksetzen",
+    "reset-all": "Reset All",
+    "reset-failed": "Reset Failed",
     "resume": "Weitermachen",
     "rules": "Regeln",
     "rules-1st-edition": "Regeln (1. Ed.)",
+    "run": "Run",
+    "run-all": "Run All",
     "save-to-file": "Auf Datenträger speichern",
     "score-the-sheep": "Schafe werten",
     "select": "Auswählen",
     "sell": "Verkaufen",
     "set": "Einsetzen",
+    "show-all": "Show All",
     "show-stats": "Statistiken anzeigen",
     "start": "Start",
-    "undo": "Rückgängig machen"
+    "stop-running": "Stop Running",
+    "undo": "Rückgängig machen",
+    "test-runner": "Test Runner"
   },
   "core-messages": {
     "bonuses": "Boni",
@@ -79,11 +91,43 @@
     "tiles": "Plättchen",
     "used-time": "Genutzte Zeit"
   },
+  "dev": {
+    "actions": "Actions",
+    "dump-hosted-game-server-state": "Dump Hosted Game Server State",
+    "edition": "Edition",
+    "fail": "Fail",
+    "meeples": "Meeples",
+    "mode": "Mode",
+    "ok": "OK",
+    "reload-add-ons": "Reload Add-ons",
+    "result": "Result",
+    "save-test-scenario": "Save Test Scenario",
+    "shapes": "Shapes",
+    "size": "Size",
+    "strokes": "Strokes",
+    "test": "Test",
+    "test-runner": "Test Runner",
+    "theme-inspector": "Theme Inspector",
+    "tiles": "Tiles",
+    "toggle-devtools": "Toggle DevTools",
+    "use-local-play-online": "Use Local Play Online",
+    "use-remote-engine": "Use Remote Engine"
+  },
+  "dialog": {
+    "close-local-game": {
+      "continue-playing": "Continue Playing",
+      "resign-and-close": "Resign and Close",
+      "unfinished-local-game": "Unfinished Local Game",
+      "unfinished-local-game-description": "You have an unfinished local game. If you close the app window, you will resign and lose your progress in this game."
+    }
+  },
   "expansion": {
     "-unknown": "Fehlende Erweiterung",
     "abbey-and-mayor": "Abtei und Bürgermeister",
     "basic": "Grundspiel",
     "besiegers": "Die Belagerer",
+    "black-tower": "Black Tower",
+    "black-tower-description": "New black and white tower floors for The Tower expansion, which allows to capture meeples diagonally when using black floor or permanently lock tower with white floor on the top.",
     "bridges-castles-and-bazaars": "Brücken, Burgen und Basare",
     "butterfly-tiles": "Zusatzplättchen",
     "butterfly-tiles-description": "16 Plättchen mit neuen Zusammensetzungen, die im Grundspiel und den Erweiterungen fehlen. Es gibt keine neuen Regeln/Funktionen.",
@@ -105,9 +149,13 @@
     "family-feud-description": "Plättchen mit blau-weißen und rot-gelben Wappen gehören rivalisierenden Familien. Kein Plättchen darf so platziert werden, dass Städte rivalisierender Familien miteinander verbunden werden.",
     "farmers-heaven": "Bauernzuflucht",
     "farmers-heaven-description": "Da die meisten Erweiterungen sich auf Städte konzentrieren, war es Zeit, mal was für die Bauern zu tun.",
+    "fishermen": "Fishermen",
+    "fishermen-description": "",
     "ferries": "Die Fähren",
     "festival": "Das Fest",
     "flier": "Die Fluggeräte",
+    "gamblers-luck": "Gambler's Luck",
+    "gamblers-luck-description": "A roll of the die can cause a city to get tokens with additional coat of arms, or nullify existing ones throughout the city.",
     "goldmines": "Die Goldminen",
     "gq11": "Die GAMES QUARTERLY #11 Mini-Erweiterung",
     "heretics-and-shrines": "Die Kultstätte (und der Ketzer) (5 Plättchen)",
@@ -175,6 +223,7 @@
       "ferries-player-can-move-ferries": "Der Spieler darf Fähren umlegen",
       "ferries-player-must-place-a-ferry": "Der Spieler muss eine Fähre legen",
       "ferries-you-can-move-ferries": "Du darfst Fähren umlegen",
+      "gamblers-luck-outcome": "Gambler’s Luck outcome",
       "goldmines-place-a-gold-ingot": "Lege ein Goldstück",
       "goldmines-player-must-place-a-gold-ingot": "Der Spieler muss ein Goldstück legen",
       "hills-and-player-must-choose-grow-or-score-plural": "Der Spieler muss wählen, ob er die Schafherde erweitert oder die Herde in den Stall treibt für 0 Punkte. | Der Spieler muss wählen, ob er die Schafherde erweitert oder die Herde in den Stall treibt für {points} Punkt. | Der Spieler muss wählen, ob er die Schafherde erweitert oder die Herde in den Stall treibt für {points} Punkte.",
@@ -222,6 +271,7 @@
       "barn": "Gutshof",
       "big-follower": "Großer Meeple",
       "big-top": "Zirkuszelt",
+      "black-tower": "Black Tower",
       "bridge": "Brücke",
       "builder": "Baumeister",
       "castle": "Burg",
@@ -273,6 +323,7 @@
       "festival": "Fest",
       "field": "Wiese",
       "fields": "Wiesen",
+      "fishermen": "Fishermen",
       "flock": "Herde",
       "flowers": "Blumen",
       "garden": "Garten",
@@ -327,6 +378,7 @@
     },
     "tile-pack-dialog": {
       "disabled-show-remaining": "Für das Spiel wurde die Option gewählt, daß die Anzahl der restlichen Plättchen nicht angezeigt werden darf.",
+      "discarded-tiles": "Discarded tiles",
       "game-tiles": "Spielplättchen",
       "hidden-tiles-under-hill-plural": "Es gibt kein unbekanntes Plättchen unter einem Hügel. | Vergiss nicht, dass 1 unbekanntes Plättchen unter einem Hügel versteckt ist. | Vergiss nicht, dass {count} unbekannte Plättchen aus der Liste unter Hügeln versteckt sind.",
       "remaining-tiles": "Restliche Plättchen",
@@ -389,6 +441,8 @@
       "farmers-description": "Spieler dürfen Meeples auf Wiesen setzen.",
       "festival-description": "Mit einem Festplättchen kann man eine eigene Figur zurückholen, anstatt eine einzusetzen.",
       "festival-disabled": "Kein Festplättchen ist im Spiel.",
+      "fishermen-description": "River as regular feature.",
+      "fishermen-disabled": "No tile with River is in the game.",
       "flowers-description": "Wenn ein Bauwerk gewertet wird, erhält jeder daran beteiligte Spieler, unabhängig von der Mehrheit, 3 Punkte, wenn er den entsprechenden Blumenmarker hat.",
       "flowers-disabled": "Kein Blumenmarker ist im Spiel.",
       "gameplay-variants": "Spielvarianten",
@@ -490,6 +544,11 @@
         "description": "Mehrheiten-Veränderungs-Methode: {} auf Hügeln.",
         "number-of-followers": "Anzahl der Meeples"
       },
+      "inn-and-cathedral-final-scoring": {
+        "description": "Inns and Cathedrals {} during final scoring.",
+        "ignore": "are ignored",
+        "zero": "score 0 points"
+      },
       "keep-monasteries": {
         "description": "Besondere Klöster {}.",
         "keep": "werden einfach nur hinzugefügt",
@@ -537,6 +596,9 @@
       "tunnelize-other-expansions": {
         "description": "Wende die Tunnelregel auf Plättchen aus anderen Erweiterungen mit abgebildeten Tunneln an."
       },
+      "vineyards-for-garden": {
+        "description": "Apply vineyards bonus during scoring of completed garden."
+      },
       "wagon-move": {
         "C1": "verbunden (Strassenkreuzung oder Strasse, die zu einer Stadt/einem Kloster führt) (1. Edition)",
         "C2": "Bauwerk auf demselben oder einem angrenzenden Plättchen (Neue Edition)",
@@ -554,6 +616,7 @@
       "my-favorites": "meine Favoriten",
       "new-game": "Neues Spiel",
       "open-game": "öffne Spiel",
+      "saved-game": "Saved game",
       "title": "Vom Spieler gehostete Spiele"
     },
     "online": {
