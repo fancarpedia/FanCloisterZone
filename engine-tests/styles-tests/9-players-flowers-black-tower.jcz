@@ -1,0 +1,119 @@
+{
+  "appVersion": "6.1.0-alpha.40",
+  "gameId": "74f12c07ba1d46fb80d3ee595ba2b316",
+  "name": "",
+  "initialRandom": 0.45360215334053544,
+  "created": "2026-02-16T13:44:06.515Z",
+  "clock": 32721,
+  "setup": {
+    "sets": {
+      "basic:2": 1,
+      "tower:2": 1,
+      "tunnel": 1,
+      "village-life": 1
+    },
+    "elements": {
+      "small-follower": 7,
+      "farmers": true,
+      "tower": 1,
+      "tunnel": 1,
+      "windmill": 1,
+      "donkey": 1,
+      "flowers": true,
+      "marketplace": true,
+      "abbot": 1,
+      "garden": true,
+      "phantom": 1,
+      "big-follower": 1,
+      "builder": 1,
+      "shepherd": 1,
+      "barn": 1,
+      "wagon": 1,
+      "mayor": 1,
+      "pig": 1,
+      "ringmaster": 1,
+      "obelisk": 1,
+      "decinsky-sneznik": 1,
+      "black-tower": 1,
+      "abbey": 1,
+      "bridge": 1,
+      "castle": 1,
+      "little-buildings": 1,
+      "king": true,
+      "robber": true
+    },
+    "rules": {},
+    "timer": null,
+    "start": [
+      {
+        "tile": "BA/RCr",
+        "x": 0,
+        "y": 0,
+        "rotation": 0
+      }
+    ],
+    "ai": false,
+    "options": {},
+    "addons": {
+      "village-life": 0
+    }
+  },
+  "players": [
+    {
+      "name": "stano",
+      "slot": 0,
+      "ai": false,
+      "clientId": "89068bf8db7f48ed97fe1c2e879e169e"
+    },
+    {
+      "name": "stano",
+      "slot": 1,
+      "ai": false,
+      "clientId": "89068bf8db7f48ed97fe1c2e879e169e"
+    },
+    {
+      "name": "stano",
+      "slot": 2,
+      "ai": false,
+      "clientId": "89068bf8db7f48ed97fe1c2e879e169e"
+    },
+    {
+      "name": "stano",
+      "slot": 5,
+      "ai": false,
+      "clientId": "89068bf8db7f48ed97fe1c2e879e169e"
+    },
+    {
+      "name": "stano",
+      "slot": 4,
+      "ai": false,
+      "clientId": "89068bf8db7f48ed97fe1c2e879e169e"
+    },
+    {
+      "name": "stano",
+      "slot": 3,
+      "ai": false,
+      "clientId": "89068bf8db7f48ed97fe1c2e879e169e"
+    },
+    {
+      "name": "stano",
+      "slot": 6,
+      "ai": false,
+      "clientId": "89068bf8db7f48ed97fe1c2e879e169e"
+    },
+    {
+      "name": "stano",
+      "slot": 7,
+      "ai": false,
+      "clientId": "89068bf8db7f48ed97fe1c2e879e169e"
+    },
+    {
+      "name": "stano",
+      "slot": 8,
+      "ai": false,
+      "clientId": "89068bf8db7f48ed97fe1c2e879e169e"
+    }
+  ],
+  "chat": [],
+  "replay": []
+}
