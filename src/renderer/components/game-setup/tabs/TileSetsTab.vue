@@ -20,33 +20,33 @@
       </div>
     </ConfigSection>
 
-    <ConfigSection v-if="!ai" :title="$t('game-setup.tiles.minor-expansions')">
+    <ConfigSection :title="$t('game-setup.tiles.minor-expansions')">
       <div class="expansions">
         <ExpansionBox v-if="!ai" :expansion="Expansion.KING_AND_ROBBER" @open-detail="openDetail" />
-        <ExpansionBox v-if="!ai" :expansion="Expansion.RIVER" @open-detail="openDetail" />
+        <ExpansionBox :expansion="Expansion.RIVER" @open-detail="openDetail" />
         <ExpansionBox v-if="!ai" :expansion="Expansion.SIEGE" @open-detail="openDetail" />
         <ExpansionBox v-if="!ai" :expansion="Expansion.COUNT" @open-detail="openDetail" />
-        <ExpansionBox v-if="!ai" :expansion="Expansion.GQ11" @open-detail="openDetail" />
-        <ExpansionBox v-if="!ai" :expansion="Expansion.CULT" @open-detail="openDetail" />
+        <ExpansionBox :expansion="Expansion.GQ11" @open-detail="openDetail" />
+        <ExpansionBox :expansion="Expansion.CULT" @open-detail="openDetail" />
         <ExpansionBox v-if="!ai" :expansion="Expansion.TUNNEL" @open-detail="openDetail" />
         <ExpansionBox v-if="!ai" :expansion="Expansion.CORN_CIRCLES" @open-detail="openDetail" />
         <ExpansionBox v-if="!ai" :expansion="Expansion.FESTIVAL" @open-detail="openDetail" />
-        <ExpansionBox v-if="!ai" :expansion="Expansion.WIND_ROSES" @open-detail="openDetail" />
+        <ExpansionBox :expansion="Expansion.WIND_ROSES" @open-detail="openDetail" />
         <ExpansionBox v-if="!ai" :expansion="Expansion.MONASTERIES" @open-detail="openDetail" />
         <ExpansionBox v-if="!ai" :expansion="Expansion.FLIER" @open-detail="openDetail" />
         <ExpansionBox v-if="!ai" :expansion="Expansion.FERRIES" @open-detail="openDetail" />
         <ExpansionBox v-if="!ai" :expansion="Expansion.GOLDMINES" @open-detail="openDetail" />
         <ExpansionBox v-if="!ai" :expansion="Expansion.MAGE_AND_WITCH" @open-detail="openDetail" />
-        <ExpansionBox v-if="!ai" :expansion="Expansion.WATCHTOWERS" @open-detail="openDetail" />
+        <ExpansionBox :expansion="Expansion.WATCHTOWERS" @open-detail="openDetail" />
       </div>
     </ConfigSection>
 
-    <ConfigSection v-if="!ai" :title="$t('game-setup.tiles.promos')">
+    <ConfigSection :title="$t('game-setup.tiles.promos')">
       <div class="expansions">
         <ExpansionBox v-if="!ai" :expansion="Expansion.RUSSIAN_PROMOS" @open-detail="openDetail" />
-        <ExpansionBox v-if="!ai" :expansion="Expansion.DARMSTADT" @open-detail="openDetail" />
-        <ExpansionBox v-if="!ai" :expansion="Expansion.LABYRINTH" @open-detail="openDetail" />
-        <ExpansionBox v-if="!ai" :expansion="Expansion.SPIEL_DOCH" @open-detail="openDetail" />
+        <ExpansionBox :expansion="Expansion.DARMSTADT" @open-detail="openDetail" />
+        <ExpansionBox :expansion="Expansion.LABYRINTH" @open-detail="openDetail" />
+        <ExpansionBox :expansion="Expansion.SPIEL_DOCH" @open-detail="openDetail" />
       </div>
     </ConfigSection>
 
