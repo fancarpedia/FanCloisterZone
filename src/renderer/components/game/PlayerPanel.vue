@@ -12,6 +12,19 @@
       <div class="points">
         <div>{{ player.points }}</div>
       </div>
+      <div class="player-tokens">
+       <div
+        v-for="({ token, count, size, fp }) in playerTokens"
+        :key="token"
+        class="player-token"
+      >
+        <TokenImage
+          :token="token" :player="index"
+          @mouseenter.native="onMouseEnterToken(token, fp)"
+          @mouseleave.native="onMouseLeaveToken(token)"
+        />
+       </div>
+      </div>
       <div class="name">
         <div>
           <span class="name-label">{{ player.name }}<v-icon v-if="player.ai">fa-solid fa-robot</v-icon></span>
@@ -130,9 +143,25 @@ export default {
     },
 
     tokens () {
-      const tokens = Object.entries(this.player.tokens).map(([token, settings]) => {
+      const tokens = Object.entries(this.player.tokens)
+        .filter(([token, settings]) => !(token === 'FLOWERS_YELLOW' || token === 'FLOWERS_BLUE' || token === 'FLOWERS_VIOLET' || token === 'FLOWERS_WHITE'))
+      	.map(([token, settings]) => 
+      {
         return { token, count: settings.count, size: settings.size ?? null, fp: settings.fp ?? null, ordering: TOKEN_ORDERING[token] }
       })
+      tokens.sort((a, b) => a.ordering - b.ordering)
+      return tokens
+    },
+
+    playerTokens () {
+      const tokens = Object.entries(this.player.tokens)
+        .filter(([token, settings]) => (token === 'FLOWERS_YELLOW' || token === 'FLOWERS_BLUE' || token === 'FLOWERS_VIOLET' || token === 'FLOWERS_WHITE'))
+      	.map(([token, settings]) =>
+      {
+        console.warn(token)
+        return { token, count: settings.count, size: settings.size ?? null, fp: settings.fp ?? null, ordering: TOKEN_ORDERING[token] }
+      })
+      tokens.filter
       tokens.sort((a, b) => a.ordering - b.ordering)
       return tokens
     },
@@ -203,10 +232,25 @@ section
     background: map-get($theme, 'opaque-bg')
 
 .name-box
+  display: flex
+  align-items: center
   position: relative
 
   +theme using ($theme)
     background: map-get($theme, 'player-panel-name-bg')
+
+.player-tokens
+  display: flex
+  justify-content: flex-start
+  align-items: center
+  word-wrap: none
+  white-space: nowrap
+  margin-left: 65px
+  line-height: 1
+  max-height: auto
+  
+  img, svg
+    max-height: 54px
 
 .name
   display: flex
@@ -345,7 +389,7 @@ aside.shrink-0
 
   .name
     font-size: 18px
-    margin-left: 65px
+    margin-left: 0px
 
     .offline-label
       font-size: 14px
@@ -376,9 +420,15 @@ aside.shrink-1
   .name-box, .name, .points
     height: 50px
 
+  .player-tokens
+    margin-left: 55px
+    
+    img, svg
+      max-height: 45px
+
   .name
     font-size: 16px
-    margin-left: 55px
+    margin-left: 0px
 
     .offline-label
       font-size: 13px
@@ -403,6 +453,13 @@ aside.shrink-1
       top: -6px
       margin-right: -14px
 
+aside.shrink-2
+  .player-tokens
+    margin-left: 45px
+    
+    img, svg
+      max-height: 35px
+
 aside.shrink-2, aside.shrink-3
   section
     padding-top: 5px
@@ -412,7 +469,7 @@ aside.shrink-2, aside.shrink-3
 
   .name
     font-size: 14px
-    margin-left: 45px
+    margin-left: 0px
 
     .offline-label
       font-size: 11px
@@ -444,6 +501,12 @@ aside.shrink-3
   section
     margin-bottom: 2px
 
+  .player-tokens
+    margin-left: 25px
+    
+    img, svg
+      max-height: 30px
+
   .name-box
     display: inline-block
     float: left
@@ -467,5 +530,5 @@ aside.shrink-3
     padding: 3px 2px 3px 6px
 
     .item:first-child
-      padding-left: 25px
+      padding-left: 0px
 </style>
