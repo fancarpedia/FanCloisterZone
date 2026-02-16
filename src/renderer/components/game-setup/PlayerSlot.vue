@@ -12,7 +12,9 @@
     <div class="state">
       <template v-if="slotState === 'open'">{{ $t('game-setup.create.open-slot') }}</template>
       <template v-if="slotState === 'local'">{{ $t('game-setup.create.local-player') }}</template>
+      <template v-if="slotState === 'localai'">{{ $t('game-setup.create.local-ai-player') }}</template>
       <template v-if="slotState === 'remote'">{{ $t('game-setup.create.remote-player') }}</template>
+      <template v-if="slotState === 'remoteai'">{{ $t('game-setup.create.remote-ai-player') }}</template>
       <template v-if="slotState === 'waiting'">{{ $t('game-setup.create.waiting-for-player') }}</template>
     </div>
     <div
@@ -59,6 +61,7 @@ export default {
     owner: { type: String, default: null },
     client: { type: String, default: null },
     name: { type: String, default: null },
+    ai: { type: Boolean },
     order: { type: Number, default: null },
     readOnly: { type: Boolean }
   },
@@ -67,7 +70,8 @@ export default {
     return {
       MEEPLES_SVG,
       edit: false,
-      editName: null
+      editName: null,
+      ai: null
     }
   },
 
@@ -80,25 +84,27 @@ export default {
 
     slotState () {
       if (this.owner === this.sessionId) {
-        return 'local'
+        return 'local' + (this.ai ? 'ai' : '')
       }
       if (this.owner) {
-        return 'remote' 
+        return 'remote' + (this.ai ? 'ai' : '')
       }
       if (this.gameKey) {
 	    return this.client ? 'waiting' : 'open'
 	  }
 	  return 'open'
     }
-    
   },
 
   methods: {
     toggle () {
       const { number } = this
       if (this.slotState === 'local') {
+        this.$store.dispatch('gameSetup/changeSlotToAi', { number })
+      } else if (this.slotState === 'localai') {
         this.$store.dispatch('gameSetup/releaseSlot', { number })
       } else if (this.slotState === 'open') {
+        this.ai = false;
         this.$store.dispatch('gameSetup/takeSlot', { number })
       }
     },
@@ -187,18 +193,18 @@ export default {
       +theme using ($theme)
         color: map-get($theme, 'slot-assign-text')
 
-  &.open, &.local
+  &.open, &.local, &.localai
     cursor: pointer
 
-  &.local, &.remote, &.waiting
+  &.local, &.localai, &.remote, &.remoteai, &.waiting
     box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.15), 0 3px 10px 0 rgba(0, 0, 0, 0.10)
 
-  &.local
+  &.local, &.localai
     +theme using ($theme)
       background: map-get($theme, 'slot-local-bg')
       color: map-get($theme, 'slot-local-text')
 
-  &.remote, &.waiting
+  &.remote, &.remoteai, &.waiting
     +theme using ($theme)
       background: map-get($theme, 'slot-remote-bg')
       color: map-get($theme, 'slot-remote-text')

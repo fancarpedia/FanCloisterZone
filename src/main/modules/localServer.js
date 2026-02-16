@@ -166,7 +166,6 @@ class GameServer {
         return
       }
       this.receivedMessageIds.add(id)
-
       if (ENGINE_MESSAGES.has(type)) {
         if (this.status !== 'started') {
           this.send(ws, { type: 'ERR', code: 'illegal-game-state', message: 'Game is not started' })
@@ -385,9 +384,78 @@ class GameServer {
     if (this.status === 'new') {
       slot.name = name || ws.name || ''
       slot.order = this.order++
+      slot.ai = false
     }
     slot.sessionId = ws.sessionId
     slot.clientId = ws.clientId
+    slot.ai = false
+    this.broadcast({
+      type: 'SLOT',
+      payload: { ...slot, gameId: this.game.gameId }
+    })
+  }
+
+  async handleAiSlot (ws, { payload: { number, name } }) {
+    if (this.status === 'started') {
+      this.send(ws, { type: 'ERR', code: 'illegal-game-state', message: 'Game already started' })
+      return
+    }
+
+    const slot = this.game.slots.find(s => s.number === number)
+    if (!slot) {
+      this.send(ws, { type: 'ERR', code: 'bad-slot', message: "Slot doesn't exist" })
+      return
+    }
+    if (slot.sessionId !== ws.sessionId) {
+      this.send(ws, { type: 'ERR', code: 'slot-owner', message: 'Slot is not assigned to your session' })
+      return
+    }
+    if (this.status !== 'new') {
+      this.send(ws, { type: 'ERR', code: 'slot-reaonly', message: "Can't update slot" })
+      return
+    }
+
+    slot.ai = true
+    this.broadcast({
+      type: 'SLOT',
+      payload: { ...slot, gameId: this.game.gameId }
+    })
+  }
+
+  async handleChangeSlotToAi (ws, { payload: { number } }) {
+    if (this.status === 'started') {
+      this.send(ws, { type: 'ERR', code: 'illegal-game-state', message: 'Game is already started' })
+      return
+    }
+
+    const slot = this.game.slots.find(s => s.number === number)
+    if (!slot) {
+      this.send(ws, { type: 'ERR', code: 'bad-slot', message: "Slot doesn't exist" })
+      return
+    }
+    if (slot.sessionId !== ws.sessionId) {
+      this.send(ws, { type: 'ERR', code: 'slot-owner', message: 'Slot is not assigned to your session' })
+      return
+    }
+    if (this.status !== 'new') {
+      this.send(ws, { type: 'ERR', code: 'slot-reaonly', message: "Can't update slot" })
+      return
+    }
+
+	const names = [
+		'Adda1',
+		'Adda2',
+		'Adda3',
+		'Adda4',
+		'Adda5',
+		'Adda6',
+		'Adda7',
+		'Adda8',
+		'Adda9'
+	]
+	const ais = this.game.slots.filter(s => s.ai).length
+    slot.name = names[ais]
+    slot.ai = true
     this.broadcast({
       type: 'SLOT',
       payload: { ...slot, gameId: this.game.gameId }
@@ -510,6 +578,8 @@ class GameServer {
     const msg = { id, type, payload, player, seq, clock: Date.now() - this.startedAt }
     if (type === 'UNDO') {
       this.replay.pop()
+    } else if ( type === 'AI' ) {
+      // Skip storing
     } else {
       this.replay.push(msg)
     }

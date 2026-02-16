@@ -152,7 +152,8 @@ export default {
   computed: {
     ...mapGetters({
       colorCssClass: 'game/colorCssClass',
-      local: 'game/isActionLocal'
+      local: 'game/isActionLocal',
+      ai: 'game/isActionAi'
     }),
 
     ...mapState({

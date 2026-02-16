@@ -67,6 +67,7 @@ export const state = () => ({
   name: null,
   lastMessageId: null,
   owner: null,
+  ai: null,
   setup: null,
   packSize: null,
   slots: null,
@@ -106,6 +107,7 @@ export const mutations = {
     state.name = null
     state.lastMessageId = null
     state.owner = null
+    state.ai = null
     state.setup = null
     state.packSize = null
     state.slots = null
@@ -162,6 +164,10 @@ export const mutations = {
 
   owner (state, value) {
     state.owner = value
+  },
+
+  ai (state, value) {
+    state.ai = value
   },
 
   setup (state, value) {
@@ -347,6 +353,16 @@ export const getters = {
     const clientSessionId = rootState.networking.sessionId
     const actionSessionId = state.players[state.action.player].sessionId
     return clientSessionId === actionSessionId
+  },
+
+  isActionAi (state, getters, rootState) {
+    if (!state.action) {
+      return false
+    }
+    const clientSessionId = rootState.networking.sessionId
+    const actionSessionId = state.players[state.action.player].sessionId
+    const aiPlayer = state.players[state.action.player].ai
+    return clientSessionId === actionSessionId && aiPlayer
   },
 
   localPlayers (state, getters, rootState) {
@@ -602,6 +618,7 @@ export const actions = {
             name: p.name,
             clientId: p.clientId,
             sessionId: null,
+            ai: p.ai,
             order: i + 1
           }
         })
@@ -830,6 +847,13 @@ export const actions = {
     }
 
     commit('lockUi', false)
+    console.log('handleStartMessage end')
+    const aiPlayer = state.players[state.action?.player].ai && rootState.networking.sessionId === state.players[state.action?.player]?.sessionId
+    
+    if (aiPlayer) {
+          await dispatch('aiEngineRequest', { })
+    }
+    console.log('isaiplayer',aiPlayer,state)
   },
 
   close ({ dispatch, commit, rootState }) {
@@ -863,7 +887,8 @@ export const actions = {
   },
 
   async handleEngineMessage ({ state, commit, dispatch, rootState }, message) {
-    if (message.seq !== 1 + state.gameMessages.length) {
+    console.log('message',message)
+    if (message.seq !== (1 + state.gameMessages.length)) {
       console.warn(`Seq doesn't match ${message.seq} != ${1 + state.gameMessages.length}`)
       const { $connection } = this._vm
       $connection.send({ type: 'SYNC_GAME' })
@@ -871,16 +896,57 @@ export const actions = {
     }
     const engine = this._vm.$engine.get()
     const { response, hash } = await engine.writeMessage(message)
-    commit('appendMessage', message)
+    if (message.type == 'AI' && response.type == 'AI_MESSAGE') {
+//      console.log('THIS IS SPARTA - ops AI')
+ //     return
+  //  } else if (message.type == 'AI_MESSAGE') {
+      // Response from engine with AI suggestion
+      console.log('AI Response message',response,state.gameMessages.length)
+      const { $connection } = this._vm
+      const aiPlayerResponse = {
+      	type: response.payload.type,
+      	payload: response.payload.payload,
+      	gameId: state.id,
+      	player: response.payload.player,
+      	seq: (state.gameMessages.length+1),
+      	clock: computeClock(state.players.length, state.gameMessages)
+      }
+      await dispatch('apply', response.payload);
+      
+      console.log('AI Response message',aiPlayerResponse)
+//      await dispatch('applyEngineResponse', { response, hash, message, allowAutoCommit: true })
+ //     $connection.send(aiPlayerResponse)
+      
+      return
+    }
+    
+    if (message.type != 'AI') {
+	  commit('appendMessage', message)
+	}
     commit('lastMessageId', message.id)
     commit('updateClock', { player: state.action?.player, clock: message.clock || 0 })
+    console.log('BEFORE 1 applyEngineResponse : ',response)
     await dispatch('applyEngineResponse', { response, hash, message, allowAutoCommit: true })
+    console.log('AFTER 1 applyEngineResponse : ',response)
+    console.log('Engine response: ',response)
+    console.log('Current player: ', state.action?.player)
+    console.log('Response player: ', response.action?.player)
+    const aiPlayer = state.players[response.action?.player].ai && rootState.networking.sessionId === state.players[response.action?.player]?.sessionId
+    console.log('AI: ',aiPlayer)
+    if (aiPlayer) {
+      console.log('BEFORE 2 aiEngineRequest: ',response)
+      await dispatch('aiEngineRequest', { })
+      console.log('AFTER 2 aiEngineRequest: ',response)
+    }
+    console.log('handleEngineMessage end')
   },
 
   async applyEngineResponse ({ state, commit, dispatch, rootState }, { response, hash, message, allowAutoCommit }) {
+    console.log('APPLY ENGINE RESPONSE',response?.type,message?.type)
     const local = rootState.networking.sessionId === state.players[response.action?.player]?.sessionId
+    const aiPlayer = state.players[response.action?.player]?.ai && rootState.networking.sessionId === state.players[response.action?.player]?.sessionId
     let autoCommit = false
-    if (local && allowAutoCommit) {
+    if (local && !aiPlayer && allowAutoCommit) {
       const itemType = response.action.items.length ? response.action.items[0].type : null
       if (itemType === 'Confirm') {
         let confirm = response.undo.allowed && message?.type !== 'PASS' && message?.type !== 'EXCHANGE_FOLLOWER'
@@ -894,6 +960,7 @@ export const actions = {
         autoCommit = true
       }
     }
+    console.log('This is before autocommit',autoCommit)
     if (autoCommit) {
       dispatch('apply', { type: 'COMMIT', payload: { gameId: state.id }, force: true })
     } else {
@@ -913,8 +980,23 @@ export const actions = {
           },
           force: true
         })
+      } else {
+        console.log('Game is not yet finished')
       }
     }
+    console.log('AIPlayer',aiPlayer)
+    console.log('This is after autocommit',autoCommit)
+  },
+
+  async aiEngineRequest ({ state, commit, dispatch, rootState }, { }) {
+    console.log('AI Request')
+    await dispatch('apply', {
+      type: 'AI',
+      payload: {
+        gameId: state.id
+      },
+      force: true
+    })
   },
 
   async undo ({ getters, dispatch }) {

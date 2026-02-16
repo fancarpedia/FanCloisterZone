@@ -37,6 +37,7 @@ export function generateSaveContent(state, onlySetup = false) {
       players: state.players.map(p => ({
         name: p.name,
         slot: p.slot,
+        ai: p.ai,
         clientId: p.clientId
       })),
       chat: (state.gameChat || []).map(m => {

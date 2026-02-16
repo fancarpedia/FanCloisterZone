@@ -70,6 +70,7 @@
           :name="slot.name"
           :order="slot.order"
           :read-only="readOnly"
+          :ai="slot.ai"
         />
       </div>
 
