@@ -11,46 +11,52 @@ jobs:
       matrix:
         os: [macos-14, ubuntu-latest, windows-latest]
     steps:
-      # Step 1: Checkout code
       - name: Check out Git repository
         uses: actions/checkout@v3
       
-      # Step 2: Set up Node.js
       - name: Set up Node.js, NPM and Yarn
         uses: actions/setup-node@v3
         with:
           node-version: 16
       
-      # Step 2.5: List and select older Xcode (macOS only)
+      # NEW: List available Xcode versions
       - name: List installed Xcode versions
         if: runner.os == 'macOS'
         run: |
           echo "Available Xcode versions:"
-          ls /Applications | grep Xcode
+          ls /Applications | grep Xcode || echo "No Xcode folders found"
+          echo "---"
+          xcode-select -p
       
-      - name: Select Xcode 14.3.1 (older version)
+      # NEW: Select older Xcode with fallback
+      - name: Select older Xcode if available
         if: runner.os == 'macOS'
-        run: sudo xcode-select --switch /Applications/Xcode_14.3.1.app/Contents/Developer
-        continue-on-error: true
+        run: |
+          # Try Xcode 14.2 first
+          if [ -d /Applications/Xcode_14.2.app ]; then
+            echo "Switching to Xcode 14.2"
+            sudo xcode-select --switch /Applications/Xcode_14.2.app/Contents/Developer
+          # Try Xcode 14.1
+          elif [ -d /Applications/Xcode_14.1.app ]; then
+            echo "Switching to Xcode 14.1"
+            sudo xcode-select --switch /Applications/Xcode_14.1.app/Contents/Developer
+          # Fall back to default (latest)
+          else
+            echo "Using default latest Xcode"
+          fi
+          echo "Current Xcode: $(xcodebuild -version)"
       
-      - name: Show selected Xcode version
-        if: runner.os == 'macOS'
-        run: xcodebuild -version
-      
-      # Step 3: Fix distutils for macOS
       - name: Install setuptools for node-gyp (macOS)
         if: runner.os == 'macOS'
         run: |
           python3 -m pip install --break-system-packages setuptools
       
-      # Step 4a: Create a config file that embeds the secret
       - name: Create Discord config
         run: |
           mkdir -p src/main/config
           echo "export const DISCORD_CLIENT_ID = '${{ secrets.DISCORD_CLIENT_ID }}';" > src/main/config/discord.js
         shell: bash
   
-      # Step 4b: Verify config file was created
       - name: Verify Discord config
         run: |
           if [ -f src/main/config/discord.js ]; then
@@ -62,11 +68,9 @@ jobs:
           fi
         shell: bash
       
-      # Step 5: Install dependencies
       - name: Install dependencies
         run: yarn install --frozen-lockfile
       
-      # Step 6: Build/release Electron app
       - name: Build/release Electron app
         uses: samuelmeuli/action-electron-builder@v1
         with:
