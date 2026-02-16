@@ -847,8 +847,7 @@ export const actions = {
     }
 
     commit('lockUi', false)
-    console.log('handleStartMessage end')
-    const aiPlayer = state.players[state.action?.player].ai && rootState.networking.sessionId === state.players[state.action?.player]?.sessionId
+    const aiPlayer = state.players[state.action?.player]?.ai && rootState.networking.sessionId === state.players[state.action?.player]?.sessionId
     
     if (aiPlayer) {
           await dispatch('aiEngineRequest', { })
