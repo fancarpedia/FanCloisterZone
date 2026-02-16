@@ -14,7 +14,7 @@
 
       <HeaderMessage
         :sets="sets"
-        :info="slotsReserved ? null : (readOnly ? $t('game-setup.open-game.assign-all-players-to-start') : $t('game-setup.open-game.no-player-in-game') )"
+        :info="slotsReserved ? (!ai || slotsReservedByAI ? null : $t('game-setup.open-game.no-ai-in-game') ): (readOnly ? $t('game-setup.open-game.assign-all-players-to-start') : $t('game-setup.open-game.no-player-in-game') )"
       />
 
       <div v-if="gameKey" class="game-key">
@@ -46,7 +46,7 @@
         v-if="isOwner"
         :title="$t('button.start')"
         :sets="sets"
-        :disabled="!slotsAssigned"
+        :disabled="!slotsAssigned || (ai && !slotsReservedByAI)"
         @click="startGame"
       />
 
@@ -54,7 +54,7 @@
         <span class="text">{{ $t('game-setup.open-game.waiting-for-host-to-start-the-game') }}</span>
       </template>
 
-      <HeaderLeaveGameButton :title="$t('button.close-game')" @click="leaveGame" />
+      <HeaderLeaveGameButton :title="$t('menu.leave-game')" @click="leaveGame" />
 
     </template>
 
@@ -148,6 +148,7 @@ export default {
 
   computed: {
     ...mapState({
+      ai: state => state.game.setup?.ai,
       gameKey: state => state.game.key,
       setup: state => state.game.setup,
       sets: state => state.game.setup?.sets,
@@ -172,7 +173,11 @@ export default {
     },
 
     slotsReserved () {
-      return !!this.slots.find(slot => slot.clientId)
+      return !!this.slots.find(slot => slot.clientId && !slot.ai)
+    },
+
+    slotsReservedByAI () {
+      return !!this.slots.find(slot => slot.clientId && slot.ai)
     },
 
     randomizeSeating: {

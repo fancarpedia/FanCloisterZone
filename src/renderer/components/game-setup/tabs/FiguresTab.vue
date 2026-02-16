@@ -7,12 +7,12 @@
             <use :href="`${MEEPLES_SVG}#small-follower`" />
           </svg>
         </GameElementBox>
-        <GameElementBox :item="GameElement.ABBOT" :max="9">
+        <GameElementBox v-if="!ai" :item="GameElement.ABBOT" :max="9">
           <svg class="meeple" :width="55" :height="55">
             <use :href="`${MEEPLES_SVG}#abbot`" />
           </svg>
         </GameElementBox>
-        <GameElementBox :item="GameElement.PHANTOM" :max="9">
+        <GameElementBox v-if="!ai" :item="GameElement.PHANTOM" :max="9">
           <svg class="meeple" :width="55" :height="55">
             <use :href="`${MEEPLES_SVG}#phantom`" />
           </svg>
@@ -32,42 +32,42 @@
             <use :href="`${MEEPLES_SVG}#pig`" />
           </svg>
         </GameElementBox>
-        <GameElementBox :item="GameElement.MAYOR" :max="9">
+        <GameElementBox v-if="!ai":item="GameElement.MAYOR" :max="9">
           <svg class="meeple" :width="55" :height="55">
             <use :href="`${MEEPLES_SVG}#mayor`" />
           </svg>
         </GameElementBox>
-        <GameElementBox :item="GameElement.WAGON" :max="9">
+        <GameElementBox v-if="!ai" :item="GameElement.WAGON" :max="9">
           <svg class="meeple" :width="55" :height="55">
             <use :href="`${MEEPLES_SVG}#wagon`" />
           </svg>
         </GameElementBox>
-        <GameElementBox :item="GameElement.BARN" :max="9">
+        <GameElementBox v-if="!ai" :item="GameElement.BARN" :max="9">
           <svg class="meeple" :width="55" :height="55">
             <use :href="`${MEEPLES_SVG}#barn`" />
           </svg>
         </GameElementBox>
-        <GameElementBox :item="GameElement.SHEPHERD" :max="9">
+        <GameElementBox v-if="!ai" :item="GameElement.SHEPHERD" :max="9">
           <svg class="meeple" :width="55" :height="55">
             <use :href="`${MEEPLES_SVG}#shepherd`" />
           </svg>
         </GameElementBox>
-        <GameElementBox :item="GameElement.RINGMASTER" :max="9">
+        <GameElementBox v-if="!ai" :item="GameElement.RINGMASTER" :max="9">
           <svg class="meeple" :width="55" :height="55">
             <use :href="`${MEEPLES_SVG}#ringmaster`" />
           </svg>
         </GameElementBox>
-        <GameElementBox :item="GameElement.OBELISK" :max="9">
+        <GameElementBox v-if="!ai" :item="GameElement.OBELISK" :max="9">
           <svg class="meeple" :width="55" :height="55">
             <use :href="`${MEEPLES_SVG}#obelisk`" />
           </svg>
         </GameElementBox>
-        <GameElementBox :item="GameElement.WINDMILL" :max="9">
+        <GameElementBox v-if="!ai" :item="GameElement.WINDMILL" :max="9">
           <svg class="meeple" :width="55" :height="55">
             <use :href="`${MEEPLES_SVG}#windmill`" />
           </svg>
         </GameElementBox>
-        <GameElementBox :item="GameElement.DECINSKY_SNEZNIK" :max="9">
+        <GameElementBox v-if="!ai" :item="GameElement.DECINSKY_SNEZNIK" :max="9">
           <svg class="meeple" :width="55" :height="55">
             <use :href="`${MEEPLES_SVG}#decinsky-sneznik`" />
           </svg>
@@ -75,7 +75,7 @@
       </div>
     </ConfigSection>
 
-    <ConfigSection :title="$t('game-setup.components.neutral-figures')">
+    <ConfigSection v-if="!ai" :title="$t('game-setup.components.neutral-figures')">
       <div class="components">
         <GameElementBox :item="GameElement.FAIRY">
           <NeutralFigure figure="fairy" :width="55" :height="55" />
@@ -101,7 +101,7 @@
       </div>
     </ConfigSection>
 
-    <ConfigSection :title="$t('game-setup.components.tokens')">
+    <ConfigSection v-if="!ai" :title="$t('game-setup.components.tokens')">
       <div class="components">
         <GameElementBox :item="GameElement.TOWER">
           <img src="~/assets/figures/tower.png" height="55">
@@ -142,13 +142,13 @@
             <img src="~/assets/figures/trade.png" height="45">
           </div>
         </GameElementBox>
-        <GameElementBox :item="GameElement.KING">
+        <GameElementBox v-if="!ai" :item="GameElement.KING">
           <img src="~/assets/figures/king.png" width="55" height="55">
         </GameElementBox>
-        <GameElementBox :item="GameElement.ROBBER">
+        <GameElementBox v-if="!ai" :item="GameElement.ROBBER">
           <img src="~/assets/figures/robber.png" width="55" height="55">
         </GameElementBox>
-        <GameElementBox :item="GameElement.GOLD">
+        <GameElementBox v-if="!ai" :item="GameElement.GOLD">
           <div class="icon-wrapper">
             <img src="~/assets/figures/gold.png" height="40">
           </div>
@@ -186,6 +186,7 @@ export default {
   },
 
   computed: mapState({
+    ai: state => !!state.gameSetup.ai,
     detail: state => state.gameSetup.detail,
     figures: state => state.gameSetup.figures
   })

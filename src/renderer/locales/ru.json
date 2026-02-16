@@ -398,9 +398,11 @@
     },
     "create": {
       "click-to-assign": "нажмите, чтобы назначить",
+      "local-ai-player": "local ai player",
       "local-player": "локальный игрок",
       "name": "Имя",
       "open-slot": "открытое место",
+      "remote-ai-player": "remote ai player",
       "remote-player": "удаленный игрок",
       "rename-player": "Переименовать игрока",
       "waiting-for-player": "ожидание игрока"
@@ -419,6 +421,7 @@
       "assign-all-players-to-start": "Назначить всех игроков на старт",
       "hide-remaining-tiles-cheat-sheet": "Скрыть обзор оставшихся тайлов",
       "name": "Имя",
+      "no-ai-in-game": "No AI in game",
       "no-player-in-game": "Нет игрока в игре",
       "options": "Опции",
       "public-game": "Публичная игра",
@@ -615,6 +618,7 @@
       "local-games": "Локальные игры",
       "my-favorites": "мои избранные",
       "new-game": "Новая игра",
+      "new-game-against-ai": "New game against AI",
       "open-game": "Открыть игру",
       "saved-game": "Saved game",
       "title": "Игры, созданные игроками"
@@ -667,6 +671,7 @@
     "leave-game": "Выйти из игры",
     "load-setup": "Загрузить расстановку",
     "new-game": "Новая игра",
+    "new-game-against-ai": "New Game Against AI",
     "online": "Онлайн",
     "open-game": "Открыть игру",
     "playonline-connect": "Играть онлайн",

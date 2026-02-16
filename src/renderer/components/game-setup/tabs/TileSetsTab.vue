@@ -3,7 +3,7 @@
     <ConfigSection :title="$t('game-setup.tiles.core-sets')">
       <div class="expansions">
         <ExpansionBox :expansion="Expansion.BASIC" @open-detail="openDetail" />
-        <ExpansionBox :expansion="Expansion.WINTER" @open-detail="openDetail" />
+        <ExpansionBox v-if="!ai" :expansion="Expansion.WINTER" @open-detail="openDetail" />
       </div>
     </ConfigSection>
 
@@ -11,52 +11,53 @@
       <div class="expansions">
         <ExpansionBox :expansion="Expansion.INNS_AND_CATHEDRALS" @open-detail="openDetail" />
         <ExpansionBox :expansion="Expansion.TRADERS_AND_BUILDERS" @open-detail="openDetail" />
-        <ExpansionBox :expansion="Expansion.PRINCESS_AND_DRAGON" @open-detail="openDetail" />
-        <ExpansionBox :expansion="Expansion.TOWER" @open-detail="openDetail" />
-        <ExpansionBox :expansion="Expansion.ABBEY_AND_MAYOR" @open-detail="openDetail" />
-        <ExpansionBox :expansion="Expansion.BRIDGES_CASTLES_AND_BAZAARS" @open-detail="openDetail" />
-        <ExpansionBox :expansion="Expansion.HILLS_AND_SHEEP" @open-detail="openDetail" />
-        <ExpansionBox :expansion="Expansion.UNDER_THE_BIG_TOP" @open-detail="openDetail" />
+        <ExpansionBox v-if="!ai" :expansion="Expansion.PRINCESS_AND_DRAGON" @open-detail="openDetail" />
+        <ExpansionBox v-if="!ai" :expansion="Expansion.TOWER" @open-detail="openDetail" />
+        <ExpansionBox v-if="!ai" :expansion="Expansion.ABBEY_AND_MAYOR" @open-detail="openDetail" />
+        <ExpansionBox v-if="!ai" :expansion="Expansion.BRIDGES_CASTLES_AND_BAZAARS" @open-detail="openDetail" />
+        <ExpansionBox v-if="!ai" :expansion="Expansion.HILLS_AND_SHEEP" @open-detail="openDetail" />
+        <ExpansionBox v-if="!ai" :expansion="Expansion.UNDER_THE_BIG_TOP" @open-detail="openDetail" />
       </div>
     </ConfigSection>
 
-    <ConfigSection :title="$t('game-setup.tiles.minor-expansions')">
+    <ConfigSection v-if="!ai" :title="$t('game-setup.tiles.minor-expansions')">
       <div class="expansions">
-        <ExpansionBox :expansion="Expansion.KING_AND_ROBBER" @open-detail="openDetail" />
-        <ExpansionBox :expansion="Expansion.RIVER" @open-detail="openDetail" />
-        <ExpansionBox :expansion="Expansion.SIEGE" @open-detail="openDetail" />
-        <ExpansionBox :expansion="Expansion.COUNT" @open-detail="openDetail" />
-        <ExpansionBox :expansion="Expansion.GQ11" @open-detail="openDetail" />
-        <ExpansionBox :expansion="Expansion.CULT" @open-detail="openDetail" />
-        <ExpansionBox :expansion="Expansion.TUNNEL" @open-detail="openDetail" />
-        <ExpansionBox :expansion="Expansion.CORN_CIRCLES" @open-detail="openDetail" />
-        <ExpansionBox :expansion="Expansion.FESTIVAL" @open-detail="openDetail" />
-        <ExpansionBox :expansion="Expansion.WIND_ROSES" @open-detail="openDetail" />
-        <ExpansionBox :expansion="Expansion.MONASTERIES" @open-detail="openDetail" />
-        <ExpansionBox :expansion="Expansion.FLIER" @open-detail="openDetail" />
-        <ExpansionBox :expansion="Expansion.FERRIES" @open-detail="openDetail" />
-        <ExpansionBox :expansion="Expansion.GOLDMINES" @open-detail="openDetail" />
-        <ExpansionBox :expansion="Expansion.MAGE_AND_WITCH" @open-detail="openDetail" />
-        <ExpansionBox :expansion="Expansion.WATCHTOWERS" @open-detail="openDetail" />
+        <ExpansionBox v-if="!ai" :expansion="Expansion.KING_AND_ROBBER" @open-detail="openDetail" />
+        <ExpansionBox v-if="!ai" :expansion="Expansion.RIVER" @open-detail="openDetail" />
+        <ExpansionBox v-if="!ai" :expansion="Expansion.SIEGE" @open-detail="openDetail" />
+        <ExpansionBox v-if="!ai" :expansion="Expansion.COUNT" @open-detail="openDetail" />
+        <ExpansionBox v-if="!ai" :expansion="Expansion.GQ11" @open-detail="openDetail" />
+        <ExpansionBox v-if="!ai" :expansion="Expansion.CULT" @open-detail="openDetail" />
+        <ExpansionBox v-if="!ai" :expansion="Expansion.TUNNEL" @open-detail="openDetail" />
+        <ExpansionBox v-if="!ai" :expansion="Expansion.CORN_CIRCLES" @open-detail="openDetail" />
+        <ExpansionBox v-if="!ai" :expansion="Expansion.FESTIVAL" @open-detail="openDetail" />
+        <ExpansionBox v-if="!ai" :expansion="Expansion.WIND_ROSES" @open-detail="openDetail" />
+        <ExpansionBox v-if="!ai" :expansion="Expansion.MONASTERIES" @open-detail="openDetail" />
+        <ExpansionBox v-if="!ai" :expansion="Expansion.FLIER" @open-detail="openDetail" />
+        <ExpansionBox v-if="!ai" :expansion="Expansion.FERRIES" @open-detail="openDetail" />
+        <ExpansionBox v-if="!ai" :expansion="Expansion.GOLDMINES" @open-detail="openDetail" />
+        <ExpansionBox v-if="!ai" :expansion="Expansion.MAGE_AND_WITCH" @open-detail="openDetail" />
+        <ExpansionBox v-if="!ai" :expansion="Expansion.WATCHTOWERS" @open-detail="openDetail" />
       </div>
     </ConfigSection>
 
-    <ConfigSection :title="$t('game-setup.tiles.promos')">
+    <ConfigSection v-if="!ai" :title="$t('game-setup.tiles.promos')">
       <div class="expansions">
-        <ExpansionBox :expansion="Expansion.RUSSIAN_PROMOS" @open-detail="openDetail" />
-        <ExpansionBox :expansion="Expansion.DARMSTADT" @open-detail="openDetail" />
-        <ExpansionBox :expansion="Expansion.LABYRINTH" @open-detail="openDetail" />
-        <ExpansionBox :expansion="Expansion.SPIEL_DOCH" @open-detail="openDetail" />
+        <ExpansionBox v-if="!ai" :expansion="Expansion.RUSSIAN_PROMOS" @open-detail="openDetail" />
+        <ExpansionBox v-if="!ai" :expansion="Expansion.DARMSTADT" @open-detail="openDetail" />
+        <ExpansionBox v-if="!ai" :expansion="Expansion.LABYRINTH" @open-detail="openDetail" />
+        <ExpansionBox v-if="!ai" :expansion="Expansion.SPIEL_DOCH" @open-detail="openDetail" />
       </div>
     </ConfigSection>
 
     <ConfigSection
-      v-if="$tiles.expansions.length"
+      v-if="$tiles.expansions.length && !ai"
       :title="$t('game-setup.tiles.fan-expansions')"
     >
       <div class="expansions">
         <ExpansionBox
           v-for="exp in $tiles.expansions"
+          v-if="!ai"
           :key="exp.name"
           :expansion="exp"
           @open-detail="openDetail"
@@ -96,6 +97,7 @@ export default {
   },
 
   computed: mapState({
+    ai: state => !!state.gameSetup.ai,
     sets: state => state.gameSetup.sets
   }),
 

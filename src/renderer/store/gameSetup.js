@@ -37,6 +37,7 @@ export const state = () => ({
   rules: null,
   start: null,
   timer: null,
+  ai: false,
   gameAnnotations: {}
 })
 
@@ -50,6 +51,11 @@ export const mutations = {
     state.start = null
     state.timer = null
     state.gameAnnotations = {}
+    state.ai = false
+  },
+  
+  setAI (state) {
+    state.ai = true
   },
 
   setup (state, setup) {
@@ -106,6 +112,11 @@ export const mutations = {
 export const actions = {
   newGame ({ commit }) {
     commit('clear')
+  },
+
+  newGameAI ({ commit }) {
+    commit('clear')
+    commit('setAI')
   },
 
   load ({ commit }, setup) {
@@ -271,6 +282,7 @@ export const actions = {
         rules: state.rules,
         timer: state.timer,
         start: getters.selectedStartingTiles.value,
+        ai: state.ai,
         options: {}
       }
 

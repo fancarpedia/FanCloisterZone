@@ -398,9 +398,11 @@
     },
     "create": {
       "click-to-assign": "kliknij, aby przydzielić",
+      "local-ai-player": "local ai player",
       "local-player": "gracz lokalny",
       "name": "Nazwa",
       "open-slot": "Wolne miejsce",
+      "remote-ai-player": "remote ai player",
       "remote-player": "gracz zdalny",
       "rename-player": "Zmień nazwę",
       "waiting-for-player": "oczekiwanie na gracza"
@@ -419,6 +421,7 @@
       "assign-all-players-to-start": "Przydziel wszystkich graczy by zacząć",
       "hide-remaining-tiles-cheat-sheet": "Ukryj listę pozostałych płytek",
       "name": "Nazwa",
+      "no-ai-in-game": "No AI in game",
       "no-player-in-game": "Brak graczy",
       "options": "Opcje",
       "public-game": "Gra publiczna",
@@ -615,6 +618,7 @@
       "local-games": "Gry lokalne",
       "my-favorites": "bezpośrednio z ulubionych",
       "new-game": "Nowa gra",
+      "new-game-against-ai": "New game against AI",
       "open-game": "Otwarta gra",
       "saved-game": "Saved game",
       "title": "Gry prywatne"
@@ -667,6 +671,7 @@
     "leave-game": "Opuść grę",
     "load-setup": "Załaduj konfigurację",
     "new-game": "Nowa gra",
+    "new-game-against-ai": "New Game Against AI",
     "online": "Online",
     "open-game": "Otwórz grę",
     "playonline-connect": "Graj online",

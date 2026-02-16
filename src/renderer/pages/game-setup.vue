@@ -11,12 +11,12 @@
           {{ $t('game-setup.header.components') }}
         </v-tab>
         <v-tab><v-icon small class="icon">fas fa-book</v-icon>{{ $t('game-setup.header.rules') }}</v-tab>
-        <v-tab><v-icon small class="icon">far fa-clock</v-icon>{{ $t('game-setup.header.timer') }}</v-tab>
+        <v-tab v-if="!ai"><v-icon small class="icon">far fa-clock</v-icon>{{ $t('game-setup.header.timer') }}</v-tab>
       </v-tabs>
 
       <HeaderMessage v-if="tab > 0" :sets="sets" />
       <HeaderGameButton v-if="tab > 0" :title="$t('button.create')" :sets="sets" @click="createGame" />
-      <HeaderLeaveGameButton :title="$t('button.close-game')" @click="leaveGame" />
+      <HeaderLeaveGameButton :title="$t('menu.leave-game')" @click="leaveGame" />
       
     </template>
 
@@ -25,7 +25,7 @@
       <TileSetsTab v-show="tab === 1" />
       <FiguresTab v-show="tab === 2" />
       <RulesTab v-show="tab === 3" />
-      <TimerTab v-show="tab === 4" />
+      <TimerTab v-if="!ai" v-show="tab === 4" />
     </template>
 
     <template #detail>
@@ -86,6 +86,7 @@ export default {
 
   computed: {
     ...mapState({
+      ai: state => state.gameSetup.ai,
       sets: state => state.gameSetup.sets,
       rules: state => state.gameSetup.rules,
       detail: state => state.gameSetup.detail,

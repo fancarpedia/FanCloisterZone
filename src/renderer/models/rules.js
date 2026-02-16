@@ -14,6 +14,11 @@ export class Rule {
     } else {
       this.default = values === Boolean ? false : values[0].value
     }
+    if (options.ai !== undefined) {
+      this.ai = options.ai
+    } else {
+      this.ai = false
+    }    
     this.options = options
   }
 
@@ -96,7 +101,8 @@ export const INN_AND_CATHEDRAL_FINAL_SCORING = Rule.INN_AND_CATHEDRAL_FINAL_SCOR
   [
     { value: 'zero', text: 'score 0 points' },
     { value: 'ignore', text: 'are ignored' }
-  ]
+  ],
+  { ai: true }
 )
 
 export const PRINCESS_ACTION = Rule.PRINCESS_ACTION = new Rule('princess-action', GAMEPLAY,
@@ -125,7 +131,7 @@ export const DRAGON_MOVEMENT = Rule.DRAGON_MOVEMENT = new Rule('dragon-move', GA
     { value: 'before-scoring', text: 'before', flags: ['HiG', 'ZMG'] },
     { value: 'after-scoring', text: 'after', flags: ['RGG'] }
   ],
-  { style: 'short' }
+  { style: 'short', ai: true }
 )
 
 export const BARN_PLACEMENT = Rule.BARN_PLACEMENT = new Rule('barn-placement', GAMEPLAY,

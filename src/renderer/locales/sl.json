@@ -398,9 +398,11 @@
     },
     "create": {
       "click-to-assign": "klikni za dodelitev",
+      "local-ai-player": "local ai player",
       "local-player": "lokalni igralec",
       "name": "Ime",
       "open-slot": "odprta pozicija",
+      "remote-ai-player": "remote ai player",
       "remote-player": "oddaljeni igralec",
       "rename-player": "Preimenuj Igralca",
       "waiting-for-player": "čakanje na igralca"
@@ -419,6 +421,7 @@
       "assign-all-players-to-start": "Dodeli vse igralce za začetek",
       "hide-remaining-tiles-cheat-sheet": "Skrij preostale ploščice",
       "name": "Ime",
+      "no-ai-in-game": "No AI in game",
       "no-player-in-game": "Ni igralcev v igri",
       "options": "Možnosti",
       "public-game": "Javna igra",
@@ -615,6 +618,7 @@
       "local-games": "Lokalne igre",
       "my-favorites": "mojih priljubljenih",
       "new-game": "Nova igra",
+      "new-game-against-ai": "New game against AI",
       "open-game": "Odpri igro",
       "saved-game": "Saved game",
       "title": "Igre gostovane pri igralcu"
@@ -667,6 +671,7 @@
     "leave-game": "Zapusti Igro",
     "load-setup": "Naloži nastavitev",
     "new-game": "Nova Igra",
+    "new-game-against-ai": "New Game Against AI",
     "online": "Preko spleta",
     "open-game": "Odpri igro",
     "playonline-connect": "Igraj Online",

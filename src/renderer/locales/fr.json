@@ -398,9 +398,11 @@
     },
     "create": {
       "click-to-assign": "cliquer pour attribuer",
+      "local-ai-player": "local ai player",
       "local-player": "joueur local",
       "name": "Nom",
       "open-slot": "ouvrir emplacement",
+      "remote-ai-player": "remote ai player",
       "remote-player": "joueur à distance",
       "rename-player": "Renommer le joueur",
       "waiting-for-player": "en attente de joueur"
@@ -419,6 +421,7 @@
       "assign-all-players-to-start": "Répartir tous les joueurs pour commencer",
       "hide-remaining-tiles-cheat-sheet": "Cacher l’aide-mémoire des tuiles restantes",
       "name": "Nom",
+      "no-ai-in-game": "No AI in game",
       "no-player-in-game": "Aucun joueur en jeu",
       "options": "Options",
       "public-game": "Partie publique",
@@ -615,6 +618,7 @@
       "local-games": "Parties locales",
       "my-favorites": "mes favoris",
       "new-game": "Nouvelle partie",
+      "new-game-against-ai": "New game against AI",
       "open-game": "Ouvrir une partie",
       "saved-game": "Partie sauvegardée",
       "title": "Parties hébergées par le joueur"
@@ -667,6 +671,7 @@
     "leave-game": "Quitter la partie",
     "load-setup": "Charger la configuration",
     "new-game": "Nouvelle partie",
+    "new-game-against-ai": "New Game Against AI",
     "online": "En ligne",
     "open-game": "Ouvrir une partie",
     "playonline-connect": "Jouer en ligne",

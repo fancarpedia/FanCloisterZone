@@ -398,9 +398,11 @@
     },
     "create": {
       "click-to-assign": "feu clic per a assignar",
+      "local-ai-player": "local ai player",
       "local-player": "jugador local",
       "name": "Nom",
       "open-slot": "ranura oberta",
+      "remote-ai-player": "remote ai player",
       "remote-player": "jugador remot",
       "rename-player": "Canvia el nom de jugador",
       "waiting-for-player": "s'espera al jugador"
@@ -419,6 +421,7 @@
       "assign-all-players-to-start": "Assigneu tots els jugadors per a començar",
       "hide-remaining-tiles-cheat-sheet": "Amaga la llista de peces que queden per jugar",
       "name": "Nom",
+      "no-ai-in-game": "No AI in game",
       "no-player-in-game": "No hi ha jugadors a la partida",
       "options": "Opcions",
       "public-game": "Partida pública",
@@ -615,6 +618,7 @@
       "local-games": "Partides locals",
       "my-favorites": "els meus preferits",
       "new-game": "Partida nova",
+      "new-game-against-ai": "New game against AI",
       "open-game": "Partida oberta",
       "saved-game": "Partida desada",
       "title": "Partides organitzades pel jugador"
@@ -667,6 +671,7 @@
     "leave-game": "Surt de la partida",
     "load-setup": "Carrega una configuració",
     "new-game": "Partida nova",
+    "new-game-against-ai": "New Game Against AI",
     "online": "En línia",
     "open-game": "Obre una partida",
     "playonline-connect": "Juga en línia",

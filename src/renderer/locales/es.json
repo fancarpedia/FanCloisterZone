@@ -398,9 +398,11 @@
     },
     "create": {
       "click-to-assign": "clic para asignar",
+      "local-ai-player": "local ai player",
       "local-player": "jugador local",
       "name": "Nombre",
       "open-slot": "puesto disponible",
+      "remote-ai-player": "remote ai player",
       "remote-player": "jugador remoto",
       "rename-player": "Renombrar jugador",
       "waiting-for-player": "esperando a jugador"
@@ -419,6 +421,7 @@
       "assign-all-players-to-start": "Asignar todos los jugadores a la salida",
       "hide-remaining-tiles-cheat-sheet": "Ocultar referencia con las losetas restantes",
       "name": "Nombre",
+      "no-ai-in-game": "No AI in game",
       "no-player-in-game": "Ningún jugador en la partida",
       "options": "Opciones",
       "public-game": "Partida pública",
@@ -615,6 +618,7 @@
       "local-games": "Partidas locales",
       "my-favorites": "mis favoritos",
       "new-game": "Nueva partida",
+      "new-game-against-ai": "New game against AI",
       "open-game": "Abrir partida",
       "saved-game": "Saved game",
       "title": "Partidas organizadas por el jugador"
@@ -667,6 +671,7 @@
     "leave-game": "Abandonar la partida",
     "load-setup": "Cargar Configuración",
     "new-game": "Nueva partida",
+    "new-game-against-ai": "New Game Against AI",
     "online": "En línea",
     "open-game": "Abrir Juego",
     "playonline-connect": "Jugar en línea",

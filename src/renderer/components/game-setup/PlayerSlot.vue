@@ -61,7 +61,7 @@ export default {
     owner: { type: String, default: null },
     client: { type: String, default: null },
     name: { type: String, default: null },
-    ai: { type: Boolean },
+    ai: { type: Boolean, default: false },
     order: { type: Number, default: null },
     readOnly: { type: Boolean }
   },
@@ -70,13 +70,13 @@ export default {
     return {
       MEEPLES_SVG,
       edit: false,
-      editName: null,
-      ai: null
+      editName: null
     }
   },
 
   computed: {
     ...mapState({
+      setupAi: state => state.game.setup.ai,
       sessionId: state => state.networking.sessionId,
       randomized: state => state.game.setup.options.randomizeSeating,
       gameKey: state => state.game.key
@@ -99,9 +99,9 @@ export default {
   methods: {
     toggle () {
       const { number } = this
-      if (this.slotState === 'local') {
+      if (this.slotState === 'local' && this.setupAi) {
         this.$store.dispatch('gameSetup/changeSlotToAi', { number })
-      } else if (this.slotState === 'localai') {
+      } else if (this.slotState === 'localai' || (this.slotState === 'local' && !this.setupAi)) {
         this.$store.dispatch('gameSetup/releaseSlot', { number })
       } else if (this.slotState === 'open') {
         this.ai = false;

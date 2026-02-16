@@ -2,7 +2,7 @@
   "@author": "farin & Scott",
   "@jcz-version": "5.12.1",
   "@fcz-version": "6.1.0",
-  "@version": "0.9.10",
+  "@version": "0.9.12",
   "about": {
     "author": "Author",
     "configuration-file": "Configuration file",
@@ -398,12 +398,12 @@
     },
     "create": {
       "click-to-assign": "click to assign",
-      "local-ai-player": "local ai",
+      "local-ai-player": "local ai player",
       "local-player": "local player",
       "name": "Name",
       "open-slot": "open slot",
+      "remote-ai-player": "remote ai player",
       "remote-player": "remote player",
-      "remote-ai-player": "remote ai",
       "rename-player": "Rename Player",
       "waiting-for-player": "waiting for player"
     },
@@ -421,6 +421,7 @@
       "assign-all-players-to-start": "Assign all players to start",
       "hide-remaining-tiles-cheat-sheet": "Hide remaining tiles cheat sheet",
       "name": "Name",
+      "no-ai-in-game": "No AI in game",
       "no-player-in-game": "No player in game",
       "options": "Options",
       "public-game": "Public game",
@@ -617,6 +618,7 @@
       "local-games": "Local games",
       "my-favorites": "my favorites",
       "new-game": "New game",
+      "new-game-against-ai": "New game against AI",
       "open-game": "Open game",
       "saved-game": "Saved game",
       "title": "Player hosted games"
@@ -669,6 +671,7 @@
     "leave-game": "Leave Game",
     "load-setup": "Load Setup",
     "new-game": "New Game",
+    "new-game-against-ai": "New Game Against AI",
     "online": "Online",
     "open-game": "Open Game",
     "playonline-connect": "Play Online",
