@@ -22,7 +22,7 @@
 
       <div />
       <div v-for="p in players" :key="'name-'+p.index" class="name">
-        {{ p.name }}
+        {{ p.name }}<v-icon v-if="p.ai">fa-solid fa-robot</v-icon>
       </div>
 
       <div class="header tiles" :title="$t('core-messages.tiles')"><v-icon>far fa-square</v-icon></div>
@@ -467,6 +467,10 @@ svg.meeple
     left: calc(50% - 27px)
     position: absolute
 
+.v-icon
+  font-size: 12px
+  margin-left: 0.5ex
+  
 #app.theme--dark .header img.bw
   filter: invert(1)
 </style>
