@@ -4,7 +4,6 @@
       v-for="{ position, reachPolygon, diagonalPath } in towers"
       :key="positionAsKey(position)"
     >
-    x{{ token }}y
     
       <circle
         :transform="transformPoint({ position, feature: 'Tower', location: 'I' })"
