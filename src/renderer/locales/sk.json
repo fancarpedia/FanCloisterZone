@@ -11,7 +11,7 @@
     "system-java-version": "Verzia systému Java",
     "title": "JCloisterZone",
     "translation": "Preklad",
-    "version": "verzia"
+    "version": "Verzia"
   },
   "bookmarks": {
     "description-end": "na bočnom paneli prehľadu.",
@@ -442,8 +442,8 @@
       "escape-description": "Útek z obliehaného mesta povolený cez susedný kláštor.",
       "escape-disabled": "V hre nie je žiadna kartička s obliehaním.",
       "farmers-description": "Hráči môžu umiestniť spoločníka na polia.",
-      "families-description": "Two families can not join in the city.",
-      "families-disabled": "No tile with different Family pennant is in the game.",
+      "families-description": "Nie je možné spojiť dve rodiny do jedného mesta.",
+      "families-disabled": "V hre nie je žiadna kartička s odlišným erbom rodiny.",
       "festival-description": "Pomocou kartičky s oslavou môžete vrátiť jednu zo svojich vlastných figúrok z hry.",
       "festival-disabled": "V hre nie je žiadna kartička s oslavou.",
       "fishermen-description": "Rieka ako štandardné územie",
@@ -469,7 +469,7 @@
       "princess-description": "Princezná môže odstrániť rytiera z mesta.",
       "princess-disabled": "V hre nie je žiadna kartička s princeznou.",
       "robbers-son-description": "Robber's Son can remove a thief from a road.",
-      "robbers-son-disabled": "No tile with Robber's Son is in the game.",
+      "robbers-son-disabled": "V hre nie je žiadna kartička s lúpežníkovým synom.",
       "scoring-variants": "Varianty bodovania",
       "shrine-description": "Svätyňa umiestnená vedľa kláštora súťaží, kto ukončí územie ako prvý.",
       "shrine-disabled": "V hre nie je žiadna kartička so svätyňou.",

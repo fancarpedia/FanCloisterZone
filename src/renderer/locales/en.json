@@ -2,7 +2,7 @@
   "@author": "farin & Scott",
   "@jcz-version": "5.12.1",
   "@fcz-version": "6.1.0",
-  "@version": "0.9.13",
+  "@version": "0.9.14",
   "about": {
     "author": "Author",
     "configuration-file": "Configuration file",
@@ -11,7 +11,7 @@
     "system-java-version": "System Java Version",
     "title": "JCloisterZone",
     "translation": "Translation",
-    "version": "version"
+    "version": "Version"
   },
   "bookmarks": {
     "description-end": "button in overview sidebar.",
