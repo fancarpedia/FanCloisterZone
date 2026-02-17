@@ -5,18 +5,14 @@
         <div class="d-flex align-center">
           <section class="splash">
             <img :src="splashImage()" :title="$t('about.fantitle')" />
-            <div class="version">{{ $t('about.version') }} {{ version }}</div>
           </section>
         </div>
-        <div class="pl-10 d-flex align-center">
-          <div>
-            <div><span class="label">{{ $t('about.author') }}</span>: Roman Krejčík &amp; fans</div>
-            <div class="report-bug" @click="openReportBug"><span class="label">{{ $t('menu.report-bug')}}</span>: Discord</div>
-            <div><span class="label">{{ $t('about.translation') }} ({{ $i18n.locale }})</span>: {{ $t('@author') }}</div>
-          </div>
-        </div>
       </section>
-      <hr>
+      <section class="d-flex justify-space-between">
+        <div><span class="label">{{ $t('about.author') }}</span>: Roman Krejčík &amp; fans</div>
+        <div><span class="label">{{ $t('about.translation') }} ({{ $i18n.locale }})</span>: {{ $t('@author') }}</div>
+      </section>
+      <hr class="my-3">
       <section class="my-3">
         <div class="label">{{ $t('about.configuration-file') }}</div>
         <div class="value config-file" @click="openConfig">{{ $store.state.settings.file }}</div>
@@ -26,11 +22,13 @@
         <div class="value">{{ engine ? engine.path : '' }}</div>
         <div class="value">{{ engine ? engine.version : '' }}</div>
       </section>
+      <hr class="my-3">
+      <section class="d-flex justify-space-between align-center">
+        <div><span class="label">{{ $t('about.version') }}:</span> {{ version }}</div>
+        <div class="report-bug" @click="openReportBug"><span class="label">{{ $t('menu.report-bug')}}</span>: <v-icon class="color-overlay">fab fa-discord</v-icon></div>
+        <v-btn text @click="$emit('close')">{{ $t('button.close') }}</v-btn>
+      </section>
     </v-card-text>
-    <v-card-actions>
-      <v-spacer />
-      <v-btn text @click="$emit('close')">{{ $t('button.close') }}</v-btn>
-    </v-card-actions>
   </v-card>
 </template>
 
@@ -74,8 +72,7 @@ export default {
 <style lang="sass" scoped>
 .about
   .splash
-    text-align: center
-    padding-top: 1ex
+    justify-content: center
     img
       max-width: 40vw
     
