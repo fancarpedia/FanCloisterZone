@@ -512,6 +512,7 @@ class GameServer {
       }
       slot.sessionId = null
       slot.clientId = null
+      slot.ai = false
       this.broadcast({
         type: 'SLOT',
         payload: { ...slot, gameId: this.game.gameId }
