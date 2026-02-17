@@ -5,10 +5,13 @@ Also support of many fan-expansions, chat during game, lobby.
 All issues on FanCloisterZone report on [Discord](https://discord.gg/CswNeVg3eS)
 
 ## Supported Fan Expansions
+* [Black Tower](https://wikicarpedia.com/car/Black_Tower_(Fan_Expansion))
 * [City Gates, The](https://wikicarpedia.com/car/The_City_Gates_(1st_edition))
 * [Decinsky Sneznik](https://wikicarpedia.com/car/D%C4%9B%C4%8D%C3%ADnsk%C3%BD_Sn%C4%9B%C5%BEn%C3%ADk_(Fan_Expansion))
 * [Family Feud](https://wikicarpedia.com/car/Family_Feud_(Fan_Expansion))
+* [Fishermen](https://wikicarpedia.com/car/Fishermen_(Fan_Expansion))
 * [Flying Machines 2, The](https://wikicarpedia.com/car/The_Flying_Machines_2_(Fan_Expansion))
+* [Gambler's Luck](https://wikicarpedia.com/car/Gambler's_Luck_(Fan_Expansion))
 * [Labyrinths, The](https://wikicarpedia.com/car/The_Labyrinths_(Fan_Expansion))
 * [Meteorites](https://wikicarpedia.com/car/Meteorites_(Fan_Expansion))
 * [Obelisk, The](https://wikicarpedia.com/car/The_Obelisk_(Fan_Expansion))
