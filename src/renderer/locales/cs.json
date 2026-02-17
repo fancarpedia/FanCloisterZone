@@ -2,7 +2,7 @@
   "@author": "Peťul",
   "@jcz-version": "5.12.1",
   "@fcz-version": "6.1.0",
-  "@version": "0.9.13",
+  "@version": "0.9.14",
   "about": {
     "author": "Autor",
     "configuration-file": "Konfigurační soubor",
@@ -11,7 +11,7 @@
     "system-java-version": "Verze systému Java",
     "title": "JCloisterZone",
     "translation": "Překlad",
-    "version": "verze"
+    "version": "Verze"
   },
   "bookmarks": {
     "description-end": "v postranním panelu přehledu.",
@@ -596,7 +596,7 @@
         "must": "musí"
       },
       "robbers-son-action": {
-        "description": "Lupičův syn odstranil {} lupiče z cesty.",
+        "description": "Lupičův syn {} odstranit lupiče z cesty.",
         "may": "může",
         "must": "musí"
       },

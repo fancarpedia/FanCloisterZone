@@ -2,7 +2,7 @@
   "@author": "Paloi Sciurala",
   "@jcz-version": "5.12.1",
   "@fcz-version": "6.1.0",
-  "@version": "0.9.13",
+  "@version": "0.9.14",
   "about": {
     "author": "Autor",
     "configuration-file": "Fișier de configurație",
@@ -11,7 +11,7 @@
     "system-java-version": "Versiunea de Java a sistemului",
     "title": "JCloisterZone",
     "translation": "Traducere",
-    "version": "versiunea"
+    "version": "Versiunea"
   },
   "bookmarks": {
     "description-end": "din bara laterală a vizualizării în ansamblu.",

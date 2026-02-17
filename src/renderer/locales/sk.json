@@ -2,7 +2,7 @@
   "@author": "Bumsakalaka",
   "@jcz-version": "5.12.1",
   "@fcz-version": "6.1.0",
-  "@version": "0.9.12",
+  "@version": "0.9.14",
   "about": {
     "author": "Autor",
     "configuration-file": "Konfiguračný súbor",
@@ -468,7 +468,7 @@
       "portal-disabled": "V hre nie je žiadna kartička s tajnou chodbou.",
       "princess-description": "Princezná môže odstrániť rytiera z mesta.",
       "princess-disabled": "V hre nie je žiadna kartička s princeznou.",
-      "robbers-son-description": "Robber's Son can remove a thief from a road.",
+      "robbers-son-description": "Lupičov syn môže odstrániť lupiča z cesty.",
       "robbers-son-disabled": "V hre nie je žiadna kartička s lúpežníkovým synom.",
       "scoring-variants": "Varianty bodovania",
       "shrine-description": "Svätyňa umiestnená vedľa kláštora súťaží, kto ukončí územie ako prvý.",
@@ -596,9 +596,9 @@
         "must": "musí"
       },
       "robbers-son-action": {
-        "description": "Robber's Son {} remove a thief from a road.",
-        "may": "may",
-        "must": "must"
+        "description": "Lupičov syn {} odstrániť lupiča z cesty.",
+        "may": "môže",
+        "must": "musí"
       },
       "tiny-city-scoring": {
         "2": "2 body",
