@@ -2,7 +2,7 @@
   <v-card class="about">
     <v-card-text>
       <section class="d-flex flex-fill py-3">
-        <div class="d-flex align-center">
+        <div class="d-flex justify-content-center">
           <section class="splash">
             <img :src="splashImage()" :title="$t('about.fantitle')" />
           </section>
