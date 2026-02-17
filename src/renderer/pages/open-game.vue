@@ -46,7 +46,7 @@
         v-if="isOwner"
         :title="$t('button.start')"
         :sets="sets"
-        :disabled="!slotsAssigned || (ai && !slotsReservedByAI)"
+        :disabled="(!ai && !slotsAssigned) || (ai && (!slotsReservedByAI || !slotsReserved))"
         @click="startGame"
       />
 
@@ -70,7 +70,7 @@
           :name="slot.name"
           :order="slot.order"
           :read-only="readOnly"
-          :ai="slot.ai"
+          :ai="slot.ai || false"
         />
       </div>
 
