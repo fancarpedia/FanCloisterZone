@@ -442,6 +442,8 @@
       "escape-description": "Flucht ist erlaubt über ein benachbartes Kloster.",
       "escape-disabled": "Kein Plättchen mit Belagerung ist im Spiel.",
       "farmers-description": "Spieler dürfen Meeples auf Wiesen setzen.",
+      "families-description": "Two families can not join in the city.",
+      "families-disabled": "No tile with different Family pennant is in the game.",
       "festival-description": "Mit einem Festplättchen kann man eine eigene Figur zurückholen, anstatt eine einzusetzen.",
       "festival-disabled": "Kein Festplättchen ist im Spiel.",
       "fishermen-description": "River as regular feature.",
@@ -466,6 +468,8 @@
       "portal-disabled": "Kein Plättchen mit Zaubergang ist im Spiel.",
       "princess-description": "Burgfräulein kann Ritter aus einer Stadt entfernen.",
       "princess-disabled": "Kein Plättchen mit Burgfräulein ist im Spiel.",
+      "robbers-son-description": "Robber's Son can remove a thief from a road.",
+      "robbers-son-disabled": "No tile with Robber's Son is in the game.",
       "scoring-variants": "Wertungsvarianten",
       "shrine-description": "Neben einem Kloster platzierte Kultstätte bedeutet Herausforderung, wer als Erster das Gebäude fertigstellt. Der Zweite bekommt keine Punkte.",
       "shrine-disabled": "Kein Plättchen mit Kultstätte ist im Spiel.",
@@ -590,6 +594,11 @@
         "description": "Das Burgfräulein {} Ritter aus einer Stadt entfernen.",
         "may": "kann",
         "must": "muss"
+      },
+      "robbers-son-action": {
+        "description": "Robber's Son {} removes a thief from a road.",
+        "may": "may",
+        "must": "must"
       },
       "tiny-city-scoring": {
         "2": "2 Punkte",

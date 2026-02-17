@@ -442,6 +442,8 @@
       "escape-description": "Pobeg dovoljen preko sosednjega samostana.",
       "escape-disabled": "Nobena ploščica z obleganjem ni v igri.",
       "farmers-description": "Igralci lahko postavijo človeščke na polja.",
+      "families-description": "Two families can not join in the city.",
+      "families-disabled": "No tile with different Family pennant is in the game.",
       "festival-description": "S festivalsko ploščico lahko vrneš eno od svojih figur namesto da jo postaviš.",
       "festival-disabled": "Nobena ploščica s festivalom ni v igri.",
       "fishermen-description": "River as regular feature.",
@@ -466,6 +468,8 @@
       "portal-disabled": "Nobena ploščica s čarobnim portalom ni v igri.",
       "princess-description": "Princesa lahko odstrani viteza iz mesta.",
       "princess-disabled": "Nobena ploščica s princeso ni v igri.",
+      "robbers-son-description": "Robber's Son can remove a thief from a road.",
+      "robbers-son-disabled": "No tile with Robber's Son is in the game.",
       "scoring-variants": "Variante točkovanja",
       "shrine-description": "Svetišče postavljeno poleg samostana tekmuje, kdo bo prvi dokončal značilnost. (drugi ne dobi točk)",
       "shrine-disabled": "Nobena ploščica s svetiščem ni v igri.",
@@ -590,6 +594,11 @@
         "description": "Princesa {} odstraniti viteza iz mesta.",
         "may": "lahko",
         "must": "mora"
+      },
+      "robbers-son-action": {
+        "description": "Robber's Son {} removes a thief from a road.",
+        "may": "may",
+        "must": "must"
       },
       "tiny-city-scoring": {
         "2": "2 točki",

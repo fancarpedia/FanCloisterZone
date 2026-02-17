@@ -442,6 +442,8 @@
       "escape-description": "Galima pabėgti per šalia esantį vienuolyną",
       "escape-disabled": "Kortelių su Apgultimi nėra šiame žaidime",
       "farmers-description": "Žaidėjams leidžiama Miplą dėti ant laukų",
+      "families-description": "Two families can not join in the city.",
+      "families-disabled": "No tile with different Family pennant is in the game.",
       "festival-description": "Naudodami festivalio kortelę galite susigrąžinti vieną iš savo figūrėlių, jei nededate ant kortelės figurėlės.",
       "festival-disabled": "Kortelių su Festivaliu nėra šiame žaidime",
       "fishermen-description": "River as regular feature.",
@@ -466,6 +468,8 @@
       "portal-disabled": "Žaidime nėra kortelių su Magišku Portalu.",
       "princess-description": "Princesė gali pašalinti riterį iš miesto.",
       "princess-disabled": "Žaidime nėra kortelių su Princese.",
+      "robbers-son-description": "Robber's Son can remove a thief from a road.",
+      "robbers-son-disabled": "No tile with Robber's Son is in the game.",
       "scoring-variants": "Taškų skaičiavimo pasirinkimai",
       "shrine-description": "Šventykla pastatyta šalia Vienuolyno varžosi, kas pirmas užbaigs objektą. (antrasis užbaigęs negauna taškų)",
       "shrine-disabled": "Žaidime nėra kortelių su Šventykla.",
@@ -590,6 +594,11 @@
         "description": "Princesė {} pašalina Riterį iš miesto.",
         "may": "gali",
         "must": "turi"
+      },
+      "robbers-son-action": {
+        "description": "Robber's Son {} removes a thief from a road.",
+        "may": "may",
+        "must": "must"
       },
       "tiny-city-scoring": {
         "2": "2 taškai",

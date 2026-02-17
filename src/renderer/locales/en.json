@@ -2,7 +2,7 @@
   "@author": "farin & Scott",
   "@jcz-version": "5.12.1",
   "@fcz-version": "6.1.0",
-  "@version": "0.9.12",
+  "@version": "0.9.13",
   "about": {
     "author": "Author",
     "configuration-file": "Configuration file",
@@ -442,6 +442,8 @@
       "escape-description": "Escape allowed via a neighboring monastery.",
       "escape-disabled": "No tile with Siege is in game.",
       "farmers-description": "Players are allowed to place meeples on fields.",
+      "families-description": "Two families can not join in the city.",
+      "families-disabled": "No tile with different Family pennant is in the game.",
       "festival-description": "With a festival tile you can return one of your own figures instead of placing one.",
       "festival-disabled": "No tile with Festival is in game.",
       "fishermen-description": "River as regular feature.",
@@ -466,6 +468,8 @@
       "portal-disabled": "No tile with Magic Portal is in the game.",
       "princess-description": "Princess can remove a knight from a city.",
       "princess-disabled": "No tile with Princess is in the game.",
+      "robbers-son-description": "Robber's Son can remove a thief from a road.",
+      "robbers-son-disabled": "No tile with Robber's Son is in the game.",
       "scoring-variants": "Scoring variants",
       "shrine-description": "Shrine placed next to a monastery competes to finish first. (second gets no points)",
       "shrine-disabled": "No tile with Shrine is in the game.",
@@ -588,6 +592,11 @@
       },
       "princess-action": {
         "description": "The Princess {} removes a knight from a city.",
+        "may": "may",
+        "must": "must"
+      },
+      "robbers-son-action": {
+        "description": "Robber's Son {} removes a thief from a road.",
         "may": "may",
         "must": "must"
       },
