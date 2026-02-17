@@ -1,0 +1,967 @@
+{
+  "appVersion": "6.1.0-alpha.24",
+  "gameId": "f7123f74d90f4fde9628693aeb37a8f8",
+  "name": "",
+  "initialRandom": 0.2060036446575162,
+  "created": "2026-01-28T10:11:02.180Z",
+  "clock": 191391,
+  "setup": {
+    "sets": {
+      "basic:1": 1,
+      "the-city-gates": 1,
+      "village-life": 1
+    },
+    "elements": {
+      "small-follower": 7,
+      "farmers": true,
+      "robber": true,
+      "windmill": 1,
+      "donkey": 1,
+      "flowers": true,
+      "marketplace": true
+    },
+    "rules": {
+      "king-and-robber-scoring": "continuously"
+    },
+    "timer": null,
+    "start": [
+      {
+        "tile": "BA/RCr",
+        "x": 0,
+        "y": 0,
+        "rotation": 0
+      }
+    ],
+    "options": {},
+    "addons": {
+      "the-city-gates": 4,
+      "village-life": 0
+    }
+  },
+  "players": [
+    {
+      "name": "AAAAAAAAAA",
+      "slot": 0,
+      "clientId": "c89ca82c7d5247f690289fdf67698041"
+    }
+  ],
+  "chat": [],
+  "replay": [
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "BA/CcRr",
+        "rotation": "R180",
+        "position": [
+          0,
+          -1
+        ]
+      },
+      "player": 0,
+      "clock": 2115
+    },
+    {
+      "type": "PASS",
+      "payload": {},
+      "player": 0,
+      "clock": 2347
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.5824583647104409
+      },
+      "player": 0,
+      "clock": 2355
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "BA/RrC",
+        "rotation": "R0",
+        "position": [
+          1,
+          0
+        ]
+      },
+      "player": 0,
+      "clock": 3738
+    },
+    {
+      "type": "PASS",
+      "payload": {},
+      "player": 0,
+      "clock": 4070
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.6694644739710365
+      },
+      "player": 0,
+      "clock": 4077
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "the-city-gates/cgfr",
+        "rotation": "R0",
+        "position": [
+          -1,
+          0
+        ]
+      },
+      "player": 0,
+      "clock": 7286
+    },
+    {
+      "type": "MOVE_NEUTRAL_FIGURE",
+      "payload": {
+        "figureId": "donkey.1",
+        "to": [
+          0,
+          -1
+        ]
+      },
+      "player": 0,
+      "clock": 10029
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.9624343850227699
+      },
+      "player": 0,
+      "clock": 10346
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "village-life/rrbr.wf2f3",
+        "rotation": "R180",
+        "position": [
+          1,
+          1
+        ]
+      },
+      "player": 0,
+      "clock": 12703
+    },
+    {
+      "type": "PASS",
+      "payload": {},
+      "player": 0,
+      "clock": 13377
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.709370482992177
+      },
+      "player": 0,
+      "clock": 13388
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "the-city-gates/crgc+",
+        "rotation": "R0",
+        "position": [
+          -2,
+          0
+        ]
+      },
+      "player": 0,
+      "clock": 16622
+    },
+    {
+      "type": "PASS",
+      "payload": {},
+      "player": 0,
+      "clock": 17177
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.7094875529211071
+      },
+      "player": 0,
+      "clock": 17190
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "the-city-gates/cgrr",
+        "rotation": "R270",
+        "position": [
+          0,
+          1
+        ]
+      },
+      "player": 0,
+      "clock": 19927
+    },
+    {
+      "type": "PASS",
+      "payload": {},
+      "player": 0,
+      "clock": 20920
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.32865671259682916
+      },
+      "player": 0,
+      "clock": 20928
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "BA/L",
+        "rotation": "R0",
+        "position": [
+          -2,
+          1
+        ]
+      },
+      "player": 0,
+      "clock": 24937
+    },
+    {
+      "type": "PASS",
+      "payload": {},
+      "player": 0,
+      "clock": 25008
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.858670142631353
+      },
+      "player": 0,
+      "clock": 25014
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "village-life/crrc.f4+",
+        "rotation": "R270",
+        "position": [
+          -1,
+          -1
+        ]
+      },
+      "player": 0,
+      "clock": 28252
+    },
+    {
+      "type": "PASS",
+      "payload": {},
+      "player": 0,
+      "clock": 28352
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.2226543086809334
+      },
+      "player": 0,
+      "clock": 28360
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "BA/CcRr",
+        "rotation": "R180",
+        "position": [
+          -2,
+          -1
+        ]
+      },
+      "player": 0,
+      "clock": 30444
+    },
+    {
+      "type": "PASS",
+      "payload": {},
+      "player": 0,
+      "clock": 30529
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.9328142469213005
+      },
+      "player": 0,
+      "clock": 30540
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "village-life/rfbr.wf1f4",
+        "rotation": "R0",
+        "position": [
+          -1,
+          -2
+        ]
+      },
+      "player": 0,
+      "clock": 38073
+    },
+    {
+      "type": "PASS",
+      "payload": {},
+      "player": 0,
+      "clock": 38242
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.8388110401848246
+      },
+      "player": 0,
+      "clock": 38251
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "village-life/crbf.f1",
+        "rotation": "R0",
+        "position": [
+          -2,
+          -2
+        ]
+      },
+      "player": 0,
+      "clock": 40613
+    },
+    {
+      "type": "PASS",
+      "payload": {},
+      "player": 0,
+      "clock": 41998
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.5640476532676733
+      },
+      "player": 0,
+      "clock": 42006
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "BA/Rr",
+        "rotation": "R180",
+        "position": [
+          -3,
+          -1
+        ]
+      },
+      "player": 0,
+      "clock": 45656
+    },
+    {
+      "type": "PASS",
+      "payload": {},
+      "player": 0,
+      "clock": 45745
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.13953702402374413
+      },
+      "player": 0,
+      "clock": 45757
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "BA/CRRR",
+        "rotation": "R0",
+        "position": [
+          -1,
+          -3
+        ]
+      },
+      "player": 0,
+      "clock": 47509
+    },
+    {
+      "type": "PASS",
+      "payload": {},
+      "player": 0,
+      "clock": 50042
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.951643496874446
+      },
+      "player": 0,
+      "clock": 50053
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "village-life/rrbf.wf3f4",
+        "rotation": "R90",
+        "position": [
+          0,
+          -3
+        ]
+      },
+      "player": 0,
+      "clock": 52351
+    },
+    {
+      "type": "PASS",
+      "payload": {},
+      "player": 0,
+      "clock": 53527
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.7891191365879728
+      },
+      "player": 0,
+      "clock": 53536
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "the-city-gates/gcrc",
+        "rotation": "R90",
+        "position": [
+          -2,
+          -3
+        ]
+      },
+      "player": 0,
+      "clock": 56691
+    },
+    {
+      "type": "PASS",
+      "payload": {},
+      "player": 0,
+      "clock": 56894
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.21078181844596822
+      },
+      "player": 0,
+      "clock": 56904
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "BA/Cc.1",
+        "rotation": "R180",
+        "position": [
+          -3,
+          0
+        ]
+      },
+      "player": 0,
+      "clock": 59250
+    },
+    {
+      "type": "PASS",
+      "payload": {},
+      "player": 0,
+      "clock": 59342
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.5600281286315665
+      },
+      "player": 0,
+      "clock": 59349
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "BA/Rr",
+        "rotation": "R0",
+        "position": [
+          -3,
+          -2
+        ]
+      },
+      "player": 0,
+      "clock": 60839
+    },
+    {
+      "type": "PASS",
+      "payload": {},
+      "player": 0,
+      "clock": 60929
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.2089839651387746
+      },
+      "player": 0,
+      "clock": 60942
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "BA/Cc.1",
+        "rotation": "R180",
+        "position": [
+          -1,
+          1
+        ]
+      },
+      "player": 0,
+      "clock": 62900
+    },
+    {
+      "type": "PASS",
+      "payload": {},
+      "player": 0,
+      "clock": 63012
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.8790673442038774
+      },
+      "player": 0,
+      "clock": 63021
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "village-life/crrr.f1",
+        "rotation": "R180",
+        "position": [
+          -2,
+          -4
+        ]
+      },
+      "player": 0,
+      "clock": 67728
+    },
+    {
+      "type": "PASS",
+      "payload": {},
+      "player": 0,
+      "clock": 68663
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.9311163696269904
+      },
+      "player": 0,
+      "clock": 68676
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "village-life/rbrb.f1f3",
+        "rotation": "R0",
+        "position": [
+          -3,
+          -4
+        ]
+      },
+      "player": 0,
+      "clock": 71145
+    },
+    {
+      "type": "PASS",
+      "payload": {},
+      "player": 0,
+      "clock": 71256
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.3942546154047726
+      },
+      "player": 0,
+      "clock": 71267
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "BA/RCr",
+        "rotation": "R180",
+        "position": [
+          -1,
+          -4
+        ]
+      },
+      "player": 0,
+      "clock": 72894
+    },
+    {
+      "type": "PASS",
+      "payload": {},
+      "player": 0,
+      "clock": 73005
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.9836038879535138
+      },
+      "player": 0,
+      "clock": 73015
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "village-life/rrrr.f2f4",
+        "rotation": "R0",
+        "position": [
+          -2,
+          -5
+        ]
+      },
+      "player": 0,
+      "clock": 76482
+    },
+    {
+      "type": "PASS",
+      "payload": {},
+      "player": 0,
+      "clock": 76631
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.12379199292663112
+      },
+      "player": 0,
+      "clock": 76639
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "BA/CFc.1",
+        "rotation": "R90",
+        "position": [
+          2,
+          0
+        ]
+      },
+      "player": 0,
+      "clock": 79280
+    },
+    {
+      "type": "PASS",
+      "payload": {},
+      "player": 0,
+      "clock": 79444
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.8112720455143825
+      },
+      "player": 0,
+      "clock": 79453
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "the-city-gates/gggg",
+        "rotation": "R0",
+        "position": [
+          -3,
+          -3
+        ]
+      },
+      "player": 0,
+      "clock": 82988
+    },
+    {
+      "type": "PASS",
+      "payload": {},
+      "player": 0,
+      "clock": 86177
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.9353056103652255
+      },
+      "player": 0,
+      "clock": 86192
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "village-life/frrr.f1f4m",
+        "rotation": "R0",
+        "position": [
+          -3,
+          -5
+        ]
+      },
+      "player": 0,
+      "clock": 88728
+    },
+    {
+      "type": "PASS",
+      "payload": {},
+      "player": 0,
+      "clock": 91681
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.13745194040908792
+      },
+      "player": 0,
+      "clock": 91699
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "BA/CRRR",
+        "rotation": "R0",
+        "position": [
+          -4,
+          -5
+        ]
+      },
+      "player": 0,
+      "clock": 94639
+    },
+    {
+      "type": "PASS",
+      "payload": {},
+      "player": 0,
+      "clock": 98484
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.09598861114306434
+      },
+      "player": 0,
+      "clock": 98502
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "BA/CFC.2",
+        "rotation": "R0",
+        "position": [
+          -4,
+          -6
+        ]
+      },
+      "player": 0,
+      "clock": 103410
+    },
+    {
+      "type": "PASS",
+      "payload": {},
+      "player": 0,
+      "clock": 103519
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.3598241097057149
+      },
+      "player": 0,
+      "clock": 103532
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "BA/LR",
+        "rotation": "R90",
+        "position": [
+          -1,
+          -5
+        ]
+      },
+      "player": 0,
+      "clock": 106755
+    },
+    {
+      "type": "PASS",
+      "payload": {},
+      "player": 0,
+      "clock": 106870
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.30874610483810105
+      },
+      "player": 0,
+      "clock": 106893
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "BA/Cccc+",
+        "rotation": "R0",
+        "position": [
+          1,
+          -1
+        ]
+      },
+      "player": 0,
+      "clock": 109816
+    },
+    {
+      "type": "PASS",
+      "payload": {},
+      "player": 0,
+      "clock": 109894
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.9657132496001888
+      },
+      "player": 0,
+      "clock": 109949
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "village-life/rrbr.f1f4",
+        "rotation": "R90",
+        "position": [
+          0,
+          -2
+        ]
+      },
+      "player": 0,
+      "clock": 112436
+    },
+    {
+      "type": "PASS",
+      "payload": {},
+      "player": 0,
+      "clock": 112624
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.4181346684845575
+      },
+      "player": 0,
+      "clock": 112634
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "BA/RFr",
+        "rotation": "R90",
+        "position": [
+          -2,
+          -6
+        ]
+      },
+      "player": 0,
+      "clock": 115931
+    },
+    {
+      "type": "PASS",
+      "payload": {},
+      "player": 0,
+      "clock": 116013
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.5049179929485796
+      },
+      "player": 0,
+      "clock": 116023
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "BA/RRR",
+        "rotation": "R0",
+        "position": [
+          -2,
+          -7
+        ]
+      },
+      "player": 0,
+      "clock": 117768
+    },
+    {
+      "type": "PASS",
+      "payload": {},
+      "player": 0,
+      "clock": 118955
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.3386828587300661
+      },
+      "player": 0,
+      "clock": 118970
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "BA/L",
+        "rotation": "R0",
+        "position": [
+          -3,
+          -6
+        ]
+      },
+      "player": 0,
+      "clock": 121169
+    },
+    {
+      "type": "PASS",
+      "payload": {},
+      "player": 0,
+      "clock": 121285
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.1553184912540735
+      },
+      "player": 0,
+      "clock": 121295
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "BA/CRr",
+        "rotation": "R180",
+        "position": [
+          -4,
+          -4
+        ]
+      },
+      "player": 0,
+      "clock": 122689
+    },
+    {
+      "type": "PASS",
+      "payload": {},
+      "player": 0,
+      "clock": 122766
+    }
+  ]
+}

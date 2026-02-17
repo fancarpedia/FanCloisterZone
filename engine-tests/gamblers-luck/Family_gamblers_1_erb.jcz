@@ -1,0 +1,254 @@
+{
+  "appVersion": "6.1.0-alpha.33",
+  "gameId": "1",
+  "name": "",
+  "initialRandom": 0.3178977468553623,
+  "created": "2026-02-11T21:53:42.011Z",
+  "clock": 66939,
+  "setup": {
+    "options": {},
+    "sets": {
+      "basic:1": 1,
+      "family-feud": 1,
+      "gamblers-luck": 1
+    },
+    "elements": {
+      "small-follower": 7,
+      "farmers": true,
+      "families": true
+    },
+    "rules": {},
+    "timer": null,
+    "start": [
+      {
+        "tile": "BA/RCr",
+        "x": 0,
+        "y": 0,
+        "rotation": 0
+      }
+    ],
+    "addons": {
+      "family-feud": 3,
+      "gamblers-luck": 0
+    }
+  },
+  "players": [
+    {
+      "name": "Betty",
+      "slot": 2
+    },
+    {
+      "name": "John",
+      "slot": 1
+    }
+  ],
+  "chat": [],
+  "replay": [
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "family-feud/rcrc.2.=",
+        "rotation": "R90",
+        "position": [
+          0,
+          -1
+        ]
+      },
+      "player": 0,
+      "clock": 1559
+    },
+    {
+      "type": "DEPLOY_MEEPLE",
+      "payload": {
+        "pointer": {
+          "position": [
+            0,
+            -1
+          ],
+          "location": "NS",
+          "feature": "City"
+        },
+        "meepleId": "0.small.1"
+      },
+      "player": 0,
+      "clock": 2107
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.7967498480806121
+      },
+      "player": 0,
+      "clock": 3321
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "BA/RFr",
+        "rotation": "R0",
+        "position": [
+          -1,
+          0
+        ]
+      },
+      "player": 1,
+      "clock": 4105
+    },
+    {
+      "type": "PASS",
+      "payload": {},
+      "player": 1,
+      "clock": 4976
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.19392891749780916
+      },
+      "player": 1,
+      "clock": 4980
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "BA/RCr",
+        "rotation": "R0",
+        "position": [
+          -2,
+          0
+        ]
+      },
+      "player": 0,
+      "clock": 5933
+    },
+    {
+      "type": "PASS",
+      "payload": {},
+      "player": 0,
+      "clock": 6827
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.7960257761200917
+      },
+      "player": 0,
+      "clock": 6830
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "BA/CFc+",
+        "rotation": "R90",
+        "position": [
+          -2,
+          -1
+        ]
+      },
+      "player": 1,
+      "clock": 7801
+    },
+    {
+      "type": "DEPLOY_MEEPLE",
+      "payload": {
+        "pointer": {
+          "position": [
+            -2,
+            -1
+          ],
+          "location": "NS",
+          "feature": "City"
+        },
+        "meepleId": "1.small.1"
+      },
+      "player": 1,
+      "clock": 9792
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.8026603716831484
+      },
+      "player": 1,
+      "clock": 10492
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "family-feud/crrc.g=",
+        "rotation": "R270",
+        "position": [
+          0,
+          -2
+        ]
+      },
+      "player": 0,
+      "clock": 12095
+    },
+    {
+      "type": "PASS",
+      "payload": {},
+      "player": 0,
+      "clock": 13131
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.17741264954673275
+      },
+      "player": 0,
+      "clock": 13134
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "gamblers-luck/fcrc",
+        "rotation": "R0",
+        "position": [
+          -1,
+          -2
+        ]
+      },
+      "player": 1,
+      "clock": 49546
+    },
+    {
+      "type": "PASS",
+      "payload": {},
+      "player": 1,
+      "clock": 50312
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.04484987039065902
+      },
+      "player": 1,
+      "clock": 50317
+    }
+  ],
+  "gameAnnotations": {
+    "drawOrder": [
+      "family-feud/rcrc.2.=",
+      "BA/RFr",
+      "BA/RCr",
+      "BA/CFc+",
+      "family-feud/crrc.g=",
+      "gamblers-luck/fcrc",
+      "BA/Cc+"
+    ],
+    "endTurn": 7
+  },
+  "test": {
+    "description": "Family Gamblers 1 Erb",
+    "assertions": [
+      "Betty has 0 points.",
+      "John has 0 points.",
+      "Phase is TilePhase",
+      "Player can't pass",
+      "Available action TilePlacement for BA/Cc+",
+      "TilePlacement BA/Cc+ options: [-2,1] - [180,270]; [-1,1] - [180,270]; [0,1] - [180,270]; [-1,-3] - [0,90]; [-3,-1] - [0,270]",
+      "Undo is not allowed"
+    ]
+  }
+}
