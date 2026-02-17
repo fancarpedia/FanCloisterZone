@@ -50,7 +50,7 @@ export default {
       }
       if (this.elements.tower) {
         if (this.elements['black-tower']) {
-          delete diff['black-tower']
+
         } else {
           diff['black-tower'] = false
         }

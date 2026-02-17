@@ -143,5 +143,6 @@ export const FISHERMEN = GameElement.FISHERMEN = new GameElement('fishermen', 'F
   selector: 'river'
 })
 export const BLACK_TOWER = GameElement.BLACK_TOWER = new GameElement('black-tower', 'Black & White Tower pieces', Number, {
-  selector: 'tower'
+  selector: 'tower',
+  default: 0
 })

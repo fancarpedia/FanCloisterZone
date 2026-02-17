@@ -12,8 +12,7 @@
     <NeutralFigure v-else-if="element === 'count'" figure="count" :width="70" :height="70" />
     <StandaloneTileImage v-else-if="element === 'abbey'" tile-id="AM/A" :size="70" />
     <img v-else-if="element === 'tower'" src="~/assets/figures/tower.png" height="45">
-    <img v-else-if="element === 'black-tower'" src="~/assets/figures/black_tower.png" height="45">
-    <img v-else-if="element === 'white-tower'" src="~/assets/figures/white_tower.png" height="45">
+    <img v-else-if="element === 'black-tower'" src="~/assets/figures/black_and_white_tower.png" height="45">
     <img v-else-if="element === 'bridge'" src="~/assets/figures/bridge-alt.png" height="45">
     <img v-else-if="element === 'castle'" src="~/assets/figures/castle.png" width="66" height="55">
     <img v-else-if="element === 'little-buildings'" src="~/assets/figures/lb.png" width="70" height="70">
@@ -44,14 +43,7 @@
 	<img v-else-if="element === 'marketplace'" src="~/assets/features/C1/marketplace.png" height="55">
     <NeutralFigure v-else-if="element === 'donkey'" figure="donkey" :width="70" :height="70" />
 	<img v-else-if="element === 'meteorite'" src="~/assets/features/C1/crater.png" height="55">
-	<div v-else-if="element === 'fishermen'" class="fishermen">
-	  <StandaloneTileImage tile-id="RI.2/RrII" :size="55" />
-      <svg class="meeple" :width="55" :height="55">
-        <g transform="translate(20 35) scale(0.4) translate(-27 -27)">
-          <use :href="`${MEEPLES_SVG}#small-follower`" />
-        </g>
-      </svg>
-	</div>
+	<img v-else-if="element === 'fishermen'" src="~/assets/features/C1/fishermen.png" height="55">
     
     <template #quantity>
       <div class="quantity" :class="enabled ? 'addition': 'removal'">
@@ -73,7 +65,7 @@ import StandaloneTileImage from '@/components/game/StandaloneTileImage'
 import TokenImage from '@/components/game/TokenImage'
 
 const MEEPLES_SVG = require('~/assets/meeples.svg')
-const MEEPLES = ['small-follower', 'abbot', 'phantom', 'big-follower', 'builder', 'pig', 'mayor', 'wagon', 'barn', 'shepherd', 'obelisk', 'windmill', 'decinsky-sneznik' ]
+const MEEPLES = ['small-follower', 'abbot', 'phantom', 'big-follower', 'builder', 'pig', 'mayor', 'wagon', 'barn', 'shepherd', 'ringmaster', 'obelisk', 'windmill', 'decinsky-sneznik' ]
 
 export default {
   components: {

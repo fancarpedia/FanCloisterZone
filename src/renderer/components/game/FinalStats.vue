@@ -243,16 +243,10 @@
         </div>
       </template>
 
+
       <template v-if="stats.points['river'].some(p => p)">
-        <div class="header river" :title="$t('game.feature.fishermen')">
-          <StandaloneTileImage tile-id="RI.2/RrII" :size="40" />
-          <svg class="meeple" :width="40" :height="40">
-            <g transform="translate(15 30) scale(0.4) translate(-27 -27)">
-              <use :href="`${MEEPLES_SVG}#small-follower`" />
-            </g>
-          </svg>
-        </div>
-        <div v-for="(val, idx) in stats.points['river']" :key="'decinsky-sneznik-'+idx" class="river value">
+        <div class="header river" :title="$t('game.feature.fishermen')"><img src="~/assets/features/C1/fishermen.png" height="40"></div>
+        <div v-for="(val, idx) in stats.points['river']" :key="'river-'+idx" class="river value">
           {{ val }}
         </div>
       </template>
