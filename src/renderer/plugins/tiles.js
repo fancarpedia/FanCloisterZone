@@ -187,7 +187,7 @@ class Tiles extends EventsBase {
   }
 
   isElementEnabled (ge, enabledSets, enabledElements) {
-    return ge.default !== undefined || Object.keys(enabledSets).find(id => {
+    return (ge.default !== undefined && ge.selector === undefined) || Object.keys(enabledSets).find(id => {
       const set = this.sets[id] || this.sets[id + ':1'] || this.sets[id + ':2']
       return set.allows.includes(ge.id) || set.implies.includes(ge.id)
     }) !== undefined
