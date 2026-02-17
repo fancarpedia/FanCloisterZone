@@ -57,23 +57,23 @@
     "remove-from-favorites": "Удалить из избранного",
     "reset": "Сбросить",
     "reset-all": "Сбросить всё",
-    "reset-failed": "Reset Failed",
+    "reset-failed": "Перезапустить проваленные",
     "resume": "Продолжить",
     "rules": "Правила",
     "rules-1st-edition": "Правила (1-е издание)",
-    "run": "Run",
-    "run-all": "Run All",
+    "run": "Запустить",
+    "run-all": "Запустить все",
     "save-to-file": "Сохранить в файл",
     "score-the-sheep": "Подсчитать очки овец",
     "select": "Выбрать",
     "sell": "Продать",
     "set": "Установить",
-    "show-all": "Show All",
+    "show-all": "Показать все",
     "show-stats": "Показать статистику",
     "start": "Начать",
-    "stop-running": "Stop Running",
+    "stop-running": "Остановить запущенные",
     "undo": "Отменить",
-    "test-runner": "Test Runner"
+    "test-runner": "Тестер"
   },
   "core-messages": {
     "bonuses": "Бонусы",
@@ -92,33 +92,33 @@
     "used-time": "Затраченное время"
   },
   "dev": {
-    "actions": "Actions",
-    "dump-hosted-game-server-state": "Dump Hosted Game Server State",
-    "edition": "Edition",
-    "fail": "Fail",
-    "meeples": "Meeples",
-    "mode": "Mode",
-    "ok": "OK",
-    "reload-add-ons": "Reload Add-ons",
-    "result": "Result",
-    "save-test-scenario": "Save Test Scenario",
-    "shapes": "Shapes",
-    "size": "Size",
+    "actions": "Действия",
+    "dump-hosted-game-server-state": "Дамп состояния игрового сервера",
+    "edition": "Издание",
+    "fail": "Провал",
+    "meeples": "Миплы",
+    "mode": "Режим",
+    "ok": "Ок",
+    "reload-add-ons": "Перезагрузить дополнения",
+    "result": "Результат",
+    "save-test-scenario": "Сохранить тестовый сценарий",
+    "shapes": "Формы",
+    "size": "Размер",
     "strokes": "Strokes",
-    "test": "Test",
-    "test-runner": "Test Runner",
-    "theme-inspector": "Theme Inspector",
-    "tiles": "Tiles",
-    "toggle-devtools": "Toggle DevTools",
-    "use-local-play-online": "Use Local Play Online",
-    "use-remote-engine": "Use Remote Engine"
+    "test": "Тест",
+    "test-runner": "Тестер",
+    "theme-inspector": "Проверка тем",
+    "tiles": "Тайлы",
+    "toggle-devtools": "Переключить DevTools",
+    "use-local-play-online": "Использовать локальную онлайн игру",
+    "use-remote-engine": "Использовать сторонний движок"
   },
   "dialog": {
     "close-local-game": {
-      "continue-playing": "Continue Playing",
-      "resign-and-close": "Resign and Close",
-      "unfinished-local-game": "Unfinished Local Game",
-      "unfinished-local-game-description": "You have an unfinished local game. If you close the app window, you will resign and lose your progress in this game."
+      "continue-playing": "Продолжить играть",
+      "resign-and-close": "Сдаться и закрыть",
+      "unfinished-local-game": "Незавершённая локальная игра",
+      "unfinished-local-game-description": "У вас есть незавершённая локальная игра. Если вы закроете окно приложения, вы выйдете из игры и потеряете весь прогресс."
     }
   },
   "expansion": {
@@ -126,7 +126,7 @@
     "abbey-and-mayor": "Аббатство и мэр",
     "basic": "Основной набор",
     "besiegers": "Осадники",
-    "black-tower": "Black Tower",
+    "black-tower": "Чёрная башня",
     "black-tower-description": "New black and white tower floors for The Tower expansion, which allows to capture meeples diagonally when using black floor or permanently lock tower with white floor on the top.",
     "bridges-castles-and-bazaars": "Мосты, замки и базары",
     "butterfly-tiles": "Тайлы с бабочками",
@@ -149,12 +149,12 @@
     "family-feud-description": "Tiles with blue/white and red/yellow coats of arms belong to rival families. No tile may be placed in such a way that cities belonging to rival families become connected.",
     "farmers-heaven": "Фермерский рай",
     "farmers-heaven-description": "Since most of the expansions are mainly focused on the cities, it was time to do something for the farmers.",
-    "fishermen": "Fishermen",
+    "fishermen": "Рыбак",
     "fishermen-description": "",
     "ferries": "Паромы",
     "festival": "Фестиваль",
     "flier": "Летающие машины",
-    "gamblers-luck": "Gambler's Luck",
+    "gamblers-luck": "Удача игрока",
     "gamblers-luck-description": "A roll of the die can cause a city to get tokens with additional coat of arms, or nullify existing ones throughout the city.",
     "goldmines": "Золотые шахты",
     "gq11": "Мини-дополнение (GQ11)",
@@ -200,10 +200,10 @@
   "game": {
     "action": {
       "bazaar-buy-sell-the-tile-from-to": "Купить/Продать тайл у игрока/игроку",
-      "bazaar-choose-a-tile": "Выбрать плитку",
+      "bazaar-choose-a-tile": "Выбрать тайл",
       "bazaar-choose-a-tile-and-your-bid": "Выберите тайл и предложите ставку",
       "bazaar-player-must-buy-sell-the-tile-from-to": "Игрок должен купить/продать тайл у игрока/игроку",
-      "bazaar-player-must-choose-a-tile": "Игрок должен выбрать плитку",
+      "bazaar-player-must-choose-a-tile": "Игрок должен выбрать тайл",
       "bazaar-player-must-choose-a-tile-and-bid": "Игрок должен выбрать тайл и сделать ставку",
       "bazaar-player-must-raise-bid-or-pass": "Игрок должен повысить ставку или пропустить",
       "bazaar-raise-bid-or-pass": "Повысить ставку или пропустить",
@@ -243,7 +243,7 @@
       "player-may-place-a-meeple-next-to-already-present-one": "Игрок может разместить мипла рядом с уже присутствующим.",
       "player-may-place-a-tile-from-supply": "Игрок может выложить тайл из запаса.",
       "player-may-place-an-abbey": "Игрок может разместить аббатство",
-      "player-must-place-the-tile": "Игрок должен поместить плитку",
+      "player-must-place-the-tile": "Игрок должен поместить тайл",
       "siege-player-can-escape-a-besieged-city": "Игрок может выбраться из осажденного города.",
       "siege-you-can-escape-a-besieged-city": "Вы можете выбраться из осажденного города.",
       "skip-action": "Пропустить действие",
@@ -271,7 +271,7 @@
       "barn": "Амбар",
       "big-follower": "Большой мипл",
       "big-top": "Цирковой купол",
-      "black-tower": "Black Tower",
+      "black-tower": "Чёрная башня",
       "bridge": "Мост",
       "builder": "Строитель",
       "castle": "Замок",
@@ -323,7 +323,7 @@
       "festival": "Фестиваль",
       "field": "Поле",
       "fields": "Поля",
-      "fishermen": "Fishermen",
+      "fishermen": "Рыбак",
       "flock": "Стадо",
       "flowers": "Цветы",
       "garden": "Сад",
@@ -378,10 +378,10 @@
     },
     "tile-pack-dialog": {
       "disabled-show-remaining": "Игра была создана с опцией, которая не позволяет показывать количество оставшихся тайлов.",
-      "discarded-tiles": "Discarded tiles",
-      "game-tiles": "Плитки в игре",
+      "discarded-tiles": "Сброшенные тайлы",
+      "game-tiles": "Тайлы в игре",
       "hidden-tiles-under-hill-plural": "Под холмами нет спрятанных тайлов. | Не забудьте, что 1 неизвестный тайл из списка скрыт под холмом. | Не забудьте, что {count} неизвестных тайлов из списка скрыты под холмами.",
-      "remaining-tiles": "Оставшиеся плитки",
+      "remaining-tiles": "Оставшиеся тайлы",
       "tiles": "Тайлы",
       "tiles-plural": "тайлов | тайл | тайла | тайлов"
     }
@@ -398,18 +398,18 @@
     },
     "create": {
       "click-to-assign": "нажмите, чтобы назначить",
-      "local-ai-player": "local ai player",
+      "local-ai-player": "локальный ИИ игрок",
       "local-player": "локальный игрок",
       "name": "Имя",
       "open-slot": "открытое место",
-      "remote-ai-player": "remote ai player",
+      "remote-ai-player": "удалённый ИИ игрок",
       "remote-player": "удаленный игрок",
       "rename-player": "Переименовать игрока",
       "waiting-for-player": "ожидание игрока"
     },
     "game-element-box": {
       "mandatory-for-selected-tiles": "Обязательно для выбранных тайлов",
-      "related-tiles-not-selected": "Связанные плитки не выбраны"
+      "related-tiles-not-selected": "Связанные тайлы не выбраны"
     },
     "header": {
       "components": "Компоненты",
@@ -421,7 +421,7 @@
       "assign-all-players-to-start": "Назначить всех игроков на старт",
       "hide-remaining-tiles-cheat-sheet": "Скрыть обзор оставшихся тайлов",
       "name": "Имя",
-      "no-ai-in-game": "No AI in game",
+      "no-ai-in-game": "Игра без ИИ",
       "no-player-in-game": "Нет игрока в игре",
       "options": "Опции",
       "public-game": "Публичная игра",
@@ -435,9 +435,9 @@
     "rules": {
       "acrobats-description": "Размещение мипла в качестве акробата на месте акробатов.",
       "acrobats-disabled": "В игре нет тайлов с местами для акробатов.",
-      "bazaar-description": "Земельные плитки продается на аукционе, когда в игру вводится базар.",
+      "bazaar-description": "Земельные тайлы продается на аукционе, когда в игру вводится базар.",
       "bazaar-disabled": "В игре нет тайлов с базаром.",
-      "cathedral-description": "Завершенные города с собором умножаются на 3 вместо 2, без очков во время окончательного подсчета.",
+      "cathedral-description": "Завершенные города с собором умножаются на 3 вместо 2 и опционально без очков во время окончательного подсчета.",
       "cathedral-disabled": "В игре нет тайлов с Собором.",
       "escape-description": "Побег возможен через соседний монастырь.",
       "escape-disabled": "В игре нет тайлов с осадой.",
@@ -445,44 +445,44 @@
       "families-description": "Two families can not join in the city.",
       "families-disabled": "No tile with different Family pennant is in the game.",
       "festival-description": "С тайлом фестиваля вы можете вернуть одну из своих фигурок вместо размещения новой.",
-      "festival-disabled": "В игре нет плитки с фестивалем.",
+      "festival-disabled": "В игре нет тайла с фестивалем.",
       "fishermen-description": "River as regular feature.",
-      "fishermen-disabled": "No tile with River is in the game.",
+      "fishermen-disabled": "В игре нет тайлов с рекой.",
       "flowers-description": "Цветы добавляют +3 очка к подсчитанной области, если совпадают с жетоном игрока.",
-      "flowers-disabled": "В игре нет тайлов с Цветами.",
+      "flowers-disabled": "В игре нет тайлов с цветами.",
       "gameplay-variants": "Варианты игры",
       "garden-description": "Может быть занят аббатом.",
       "garden-disabled": "Аббат не выбран.",
-      "hill-description": "Используется в качестве разрешающего элемента. Также скрывает одну случайную плитку под собой.",
-      "hill-disabled": "В игре нет плитки с холмом.",
-      "inn-description": "Завершенные дороги с постоялым двором умножаются на 2, без очков во время окончательного подсчета.",
-      "inn-disabled": "В игре нет плитки с постоялым двором.",
+      "hill-description": "Используется в качестве разрешающего элемента. Также скрывает один случайный тайл под собой.",
+      "hill-disabled": "В игре нет тайла с холмом.",
+      "inn-description": "Завершенные дороги с постоялым двором умножаются на 2 и опционально без очков во время окончательного подсчета.",
+      "inn-disabled": "В игре нет тайла с таверной.",
       "marketplace-description": "Рынки соединяют несколько дорог в единую сеть, которая считается завершённой только тогда, когда закрыты все связанные дороги. При подсчёте начисляются бонусные очки, равные длине остальных завершённых дорог в этой сети.",
-      "marketplace-disabled": "В игре нет тайлов с Рынком.",
+      "marketplace-disabled": "В игре нет тайлов с рынком.",
       "meteorite-description": "TBA",
       "meteorite-disabled": "В игре нет тайлов с Кратером.",
       "optional-game-mechanics": "Дополнительные игровые механики",
       "pig-herd-description": "Считается дополнительной свиньей на поле (фермеры получают больше очков).",
-      "pig-herd-disabled": "В игре нет плитки с свинным стадом.",
-      "portal-description": "Через магический портал мипл может быть размещен на любой плитке.",
-      "portal-disabled": "В игре нет плитки с магическим порталом.",
+      "pig-herd-disabled": "В игре нет тайла со свиным стадом.",
+      "portal-description": "Через магический портал мипл может быть размещён на любом тайле.",
+      "portal-disabled": "В игре нет тайла с магическим порталом.",
       "princess-description": "Принцесса может удалить рыцаря из города.",
-      "princess-disabled": "В игре нет плитки с принцессой.",
-      "robbers-son-description": "Robber's Son can remove a thief from a road.",
-      "robbers-son-disabled": "No tile with Robber's Son is in the game.",
+      "princess-disabled": "В игре нет тайла с принцессой.",
+      "robbers-son-description": "Сын разбойника может убрать разбойника с дороги.",
+      "robbers-son-disabled": "В игре нет тайлов с сыном разбойника.",
       "scoring-variants": "Варианты подсчета очков",
       "shrine-description": "Святилище, размещенное рядом с монастырем, соревнуется, кто первым закончит объект. (второй не получает очков)",
-      "shrine-disabled": "В игре нет плитки со святилищем.",
+      "shrine-disabled": "В игре нет тайла со святилищем.",
       "siege-description": "Осажденные города менее ценны.",
-      "siege-disabled": "В игре нет плитки с осадой.",
-      "starting-tiles-configuration": "Конфигурация начальных плиток",
-      "starting-tiles-different-configuration": "Некоторые дополнения предлагают альтернативные конфигурации начальных плиток.",
+      "siege-disabled": "В игре нет тайла с осадой.",
+      "starting-tiles-configuration": "Конфигурация начальных тайлов",
+      "starting-tiles-different-configuration": "Некоторые дополнения предлагают альтернативные конфигурации начальных тайлов.",
       "vineyard-description": "Дополнительные очки за близлежащий монастырь.",
-      "vineyard-disabled": "В игре нет плитки с виноградником.",
-      "well-description": "Добавляет по одному очку за каждый колодец на дорогах. Дорога с трактиром даёт 2 очка при завершении, но не приносит очков при окончательном подсчёте.",
-      "well-disabled": "В игре нет плитки с колодцем."
+      "vineyard-disabled": "В игре нет тайлов с виноградником.",
+      "well-description": "Добавляет по одному очку за каждый колодец на дорогах. Дорога с трактиром даёт 2 очка при завершении и опционально не приносит очков при окончательном подсчёте.",
+      "well-disabled": "В игре нет тайла с колодцем."
     },
-    "selected-tiles": "Выбранные плитки",
+    "selected-tiles": "Выбранные тайлы",
     "tiles": {
       "core-sets": "Основные наборы",
       "fan-expansions": "Пользовательские дополнения",
@@ -508,7 +508,7 @@
         "occupied": "может"
       },
       "bazaar-no-auction": {
-        "description": "Отсутствует аукцион на базаре. Каждый игрок просто выбирает одну плитку."
+        "description": "Отсутствует аукцион на базаре. Каждый игрок просто выбирает один тайл."
       },
       "coc-final-scoring": {
         "any-district": "не ограничено (C1)",
@@ -527,14 +527,14 @@
         "description": "Перемещение дракона происходит {} подсчета очков."
       },
       "espace-variant": {
-        "any-tile": "любой плитки",
+        "any-tile": "любой тайл",
         "description": "Чтобы сбежать, монастырь должен быть размещен рядом с {} из осажденного города.",
-        "siege-tile": "плитки осады"
+        "siege-tile": "тайлы осады"
       },
       "fairy-placement": {
         "description": "Фея размещается {}.",
         "next-follower": "рядом с миплом",
-        "on-tile": "на плитке"
+        "on-tile": "на тайле"
       },
       "festival-return": {
         "description": "Игрок может вернуть одного из своих {}.",
@@ -552,9 +552,9 @@
         "number-of-followers": "количество миплов"
       },
       "inn-and-cathedral-final-scoring": {
-        "description": "Inns and Cathedrals {} during final scoring.",
-        "ignore": "are ignored",
-        "zero": "score 0 points"
+        "description": "Таверны и соборы {} во время финального подсчёта.",
+        "ignore": "игнорируются",
+        "zero": "дают 0 очков"
       },
       "keep-monasteries": {
         "description": "Особенные монастыри {}.",
@@ -596,9 +596,9 @@
         "must": "должна"
       },
       "robbers-son-action": {
-        "description": "Robber's Son {} removes a thief from a road.",
-        "may": "may",
-        "must": "must"
+        "description": "Сын разбойника {} убирать разбойника с дороги.",
+        "may": "может",
+        "must": "должен"
       },
       "tiny-city-scoring": {
         "2": "2 очка",
@@ -606,10 +606,10 @@
         "description": "Маленький город оценивается на {}."
       },
       "tunnelize-other-expansions": {
-        "description": "Применить правило туннелей на плитках из других дополнений с изображенными туннелями."
+        "description": "Применить правило туннелей на тайлах из других дополнений с изображёнными туннелями."
       },
       "vineyards-for-garden": {
-        "description": "Apply vineyards bonus during scoring of completed garden."
+        "description": "Применять бонус за виноградники при подсчете за завершённый сад."
       },
       "wagon-move": {
         "C1": "соединен (пересечение дорог или дорога, ведущая к городу/монастырю) (1-е издание)",
@@ -627,9 +627,9 @@
       "local-games": "Локальные игры",
       "my-favorites": "мои избранные",
       "new-game": "Новая игра",
-      "new-game-against-ai": "New game against AI",
+      "new-game-against-ai": "Новая игра против ИИ",
       "open-game": "Открыть игру",
-      "saved-game": "Saved game",
+      "saved-game": "Сохранённая игра",
       "title": "Игры, созданные игроками"
     },
     "online": {
@@ -680,7 +680,7 @@
     "leave-game": "Выйти из игры",
     "load-setup": "Загрузить расстановку",
     "new-game": "Новая игра",
-    "new-game-against-ai": "New Game Against AI",
+    "new-game-against-ai": "Новая игра против ИИ",
     "online": "Онлайн",
     "open-game": "Открыть игру",
     "playonline-connect": "Играть онлайн",
@@ -700,13 +700,13 @@
   },
   "settings": {
     "add-ons": {
-      "add-ons-definition-not-available": "Add-ons definition not available",
+      "add-ons-definition-not-available": "Определение дополнений недоступно",
       "add-on-already-installed": "Дополнение {id} уже установлено. Если вы хотите переустановить его, сначала удалите текущую версию.",
       "add-on-url": "URL дополнения",
       "artwork-not-found-internet-connection-is-needed": "Не удается найти или загрузить дополнение со стандартной графикой. Для загрузки дополнения необходимо подключение к интернету.",
       "available-new-add-ons": "Новые доступные дополнения",
-      "download-definition-not-found": "Download definition not found",
-      "downloaded-file-checksum-mismatch": "Downloaded file checksum mismatch",
+      "download-definition-not-found": "Определение загрузки не найдено",
+      "downloaded-file-checksum-mismatch": "Несоответствие контрольной суммы загруженного файла",
       "drag-add-on-here-or-click-here": "Перетащите дополнение сюда (файл с расширением .jca) или кликните здесь для выбора.",
       "finish-or-leave-game-to-make-changes": "Сначала завершите или выйдите из текущей игры, чтобы внести изменения.",
       "install-add-on": "Установить дополнение",
@@ -714,7 +714,7 @@
       "installed-add-ons": "Установленные дополнения",
       "invalid-add-on-multiple-folders-in-root": "Недопустимое дополнение: пакет должен содержать только одну папку в корневом каталоге.",
       "look-at-link-for-add-ons": "Ознакомьтесь с {link} для дополнительных дополнений.",
-      "missing-available-version": "Missing available version",
+      "missing-available-version": "Отсутствует доступная версия",
       "no-add-ons-installed": "Нет установленных дополнений",
       "not-available-new-add-ons": "Извините, новые дополнения отсутствуют.",
       "please-check-connectivity-and-restart-app": "Пожалуйста, проверьте подключение к интернету и перезапустите приложение для повторной попытки.",
@@ -807,7 +807,7 @@
     "river-I-release": "Река I - мини-дополнение, выпущенное в 2001 году.",
     "river-II-release": "Река II была выпущена в 2006 году и теперь включена в шестое крупное дополнение Count, King & Robber.",
     "russian-promos-2013-title": "Тайлы из 2013 года",
-    "russian-promos-2016-title": "Плитки из 2016 года",
+    "russian-promos-2016-title": "Тайлы из 2016 года",
     "tower-release": "Четвёртое крупное дополнение, выпущенное в 2006 году.",
     "traders-and-builders-release": "Второе крупное дополнение, выпущенное в 2003 году.",
     "winter-edition-description": "Базовый набор из спин-оффа Зимнее издание. Содержит основную игру, дополненную 12 тайлами."
