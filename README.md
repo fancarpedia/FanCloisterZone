@@ -20,7 +20,9 @@ All issues on FanCloisterZone report on [Discord](https://discord.gg/CswNeVg3eS)
 * [Wells, The](https://wikicarpedia.com/car/The_Wells_(Fan_Expansion))
 
 ### Upcomming
-* Fishermen
+* The Courier
+* The Carousel
+* Castle Lords
 
 ## Engine
 
