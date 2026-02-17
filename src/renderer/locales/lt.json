@@ -596,7 +596,7 @@
         "must": "turi"
       },
       "robbers-son-action": {
-        "description": "Robber's Son {} removes a thief from a road.",
+        "description": "Robber's Son {} remove a thief from a road.",
         "may": "may",
         "must": "must"
       },

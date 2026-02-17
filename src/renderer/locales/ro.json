@@ -2,7 +2,7 @@
   "@author": "Paloi Sciurala",
   "@jcz-version": "5.12.1",
   "@fcz-version": "6.1.0",
-  "@version": "0.9.12",
+  "@version": "0.9.13",
   "about": {
     "author": "Autor",
     "configuration-file": "Fișier de configurație",
@@ -442,8 +442,8 @@
       "escape-description": "Evadare permisă prin intermediul unei mănăstiri învecinate.",
       "escape-disabled": "Nu există niciun cartonaș cu asediu în joc.",
       "farmers-description": "Jucătorilor le este permis să plaseze meepleși pe câmpuri.",
-      "families-description": "Two families can not join in the city.",
-      "families-disabled": "No tile with different Family pennant is in the game.",
+      "families-description": "Nu se pot alătura în oraș două familii.",
+      "families-disabled": "Nu există niciun cartonaș cu blazon de familie diferită în joc.",
       "festival-description": "Cu un cartonaș cu festival poți să îți iei înapoi unul dintre proprii tăi pioni în loc de a plasa unul.",
       "festival-disabled": "Nu există niciun cartonaș cu festival în joc.",
       "fishermen-description": "Râul ca teritoriu obișnuit.",
@@ -468,8 +468,8 @@
       "portal-disabled": "Nu există niciun cartonaș cu coridor fermecat în joc.",
       "princess-description": "Prințesa poate îndepărta un cavaler dintr-un oraș.",
       "princess-disabled": "Nu există niciun cartonaș cu prințesă în joc.",
-      "robbers-son-description": "Robber's Son can remove a thief from a road.",
-      "robbers-son-disabled": "No tile with Robber's Son is in the game.",
+      "robbers-son-description": "Fiul jefuitorului poate îndepărta un tâlhar de pe un drum.",
+      "robbers-son-disabled": "Nu există niciun cartonaș cu fiul jefuitorului în joc.",
       "scoring-variants": "Variante de evaluare",
       "shrine-description": "Un lăcaș de cult plasat lângă o mănăstire concurează să se finalizeze primul (cel de pe locul doi nu încasează puncte).",
       "shrine-disabled": "Nu există niciun cartonaș cu lăcaș de cult în joc.",
@@ -596,9 +596,9 @@
         "must": "trebuie"
       },
       "robbers-son-action": {
-        "description": "Robber's Son {} removes a thief from a road.",
-        "may": "may",
-        "must": "must"
+        "description": "Prințesa {} să îndepărteze un cavaler dintr-un oraș.",
+        "may": "are posibilitatea",
+        "must": "trebuie"
       },
       "tiny-city-scoring": {
         "2": "2 puncte",

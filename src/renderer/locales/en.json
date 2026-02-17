@@ -591,12 +591,12 @@
         "description": "Assign {} token sets to each player in a two/three player game."
       },
       "princess-action": {
-        "description": "The Princess {} removes a knight from a city.",
+        "description": "The Princess {} remove a knight from a city.",
         "may": "may",
         "must": "must"
       },
       "robbers-son-action": {
-        "description": "Robber's Son {} removes a thief from a road.",
+        "description": "Robber's Son {} remove a thief from a road.",
         "may": "may",
         "must": "must"
       },

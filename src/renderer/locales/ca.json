@@ -2,7 +2,7 @@
   "@author": "J0anJosep",
   "@jcz-version": "5.12.1",
   "@fcz-version": "6.1.0",
-  "@version": "0.9.12",
+  "@version": "0.9.13",
   "about": {
     "author": "Autor",
     "configuration-file": "Fitxer de configuració",
@@ -442,8 +442,8 @@
       "escape-description": "Escapada permesa a través d'un monestir veí.",
       "escape-disabled": "A la partida no hi ha cap peça amb setges.",
       "farmers-description": "Els jugadors poden posar seguidors als camps.",
-      "families-description": "Two families can not join in the city.",
-      "families-disabled": "No tile with different Family pennant is in the game.",
+      "families-description": "No es poden unir dues famílies a la mateixa ciutat.",
+      "families-disabled": "No hi ha cap peça amb escuts familiars diferents a la partida.",
       "festival-description": "Amb una peça de festival es pot tornar a agafar una de les figures del jugador en lloc de posar-ne una.",
       "festival-disabled": "No hi ha cap casella amb festivals a la partida.",
       "fishermen-description": "Rius com a elements habituals.",
@@ -468,8 +468,8 @@
       "portal-disabled": "A la partida no hi ha cap peça amb portals màgics.",
       "princess-description": "La princesa pot traure un cavaller d'una ciutat.",
       "princess-disabled": "A la partida no hi ha peces amb la princesa.",
-      "robbers-son-description": "Robber's Son can remove a thief from a road.",
-      "robbers-son-disabled": "No tile with Robber's Son is in the game.",
+      "robbers-son-description": "El fill del viatjant pot traure un lladre del camí.",
+      "robbers-son-disabled": "No hi ha cap peça amb el fill del viatjant a la partida.",
       "scoring-variants": "Variants de puntuació",
       "shrine-description": "Un santuari i un monestir un al costat de l'altre competeixen. Qui acabi primer, puntua. El segon, no obté cap punt.",
       "shrine-disabled": "No hi ha caselles amb santuaris a la partida.",
@@ -596,9 +596,9 @@
         "must": "ha de"
       },
       "robbers-son-action": {
-        "description": "Robber's Son {} removes a thief from a road.",
-        "may": "may",
-        "must": "must"
+        "description": "El fill del viatjant {} trau un lladre del camí.",
+        "may": "pot",
+        "must": "ha de"
       },
       "tiny-city-scoring": {
         "2": "2 punts",
