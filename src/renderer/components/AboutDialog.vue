@@ -1,12 +1,8 @@
 <template>
   <v-card class="about">
     <v-card-text>
-      <section class="d-flex flex-fill py-3">
-        <div class="d-flex justify-content-center">
-          <section class="splash">
-            <img :src="splashImage()" :title="$t('about.fantitle')" />
-          </section>
-        </div>
+      <section class="d-flex justify center py-10 splash">
+        <img :src="splashImage()" :title="$t('about.fantitle')" />
       </section>
       <section class="d-flex justify-space-between">
         <div><span class="label">{{ $t('about.author') }}</span>: Roman Krejčík &amp; fans</div>
@@ -72,9 +68,8 @@ export default {
 <style lang="sass" scoped>
 .about
   .splash
-    justify-content: center
     img
-      max-width: 40vw
+      max-width: 75%
     
   section
     font-size: 16px
