@@ -571,6 +571,19 @@ export const actions = {
           reject(msg)
           return
         }
+        
+        if (rootState.networking.connectionType=='online') {
+          if (sg.test !== undefined) {
+            const msg = `Saved game contains tests. It is not possible to open in online mode.`
+            commit('errorMessage', { title: 'Load Error', content: msg }, { root: true })
+            return
+          }
+          if (sg.replay.length>0) {
+            const msg = `Saved game contains game history. It is not possible to open in online mode.`
+            commit('errorMessage', { title: 'Load Error', content: msg }, { root: true })
+            return
+          }
+        }
 
         if (sg.setup) {
           if (sg.setup.addons) {
