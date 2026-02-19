@@ -166,7 +166,6 @@
     </RuleBox>
 
     <RuleBox
-      v-if="!setup.ai"
       :setup="setup"
       :rules="[Rule.LABYRINTH_VARIANT]"
       :read-only="readOnly"
