@@ -6,6 +6,7 @@
   "about": {
     "author": "Author",
     "configuration-file": "Konfiguracijska datoteka",
+    "corrections": "Corrections",
     "fantitle": "FanCloisterZone Edition",
     "jcloisterzone-game-engine": "JCloisterZone Igralni Pogon",
     "system-java-version": "Sistemska Java Verzija",
@@ -181,7 +182,7 @@
     "the-flying-machines-2": "Leteči Stroji 2",
     "the-flying-machines-2-description": "Podobno kot predhodnik, vendar zdaj s mesti na ploščicah namesto samo cest.",
     "the-labyrinths": "Labirinti",
-    "the-labyrinths-description": "Doda 3 labirintne ploščice, ki jih lahko uporabljaš samostojno ali skupaj z izvirno labirintno ploščico. ",
+    "the-labyrinths-description": "Doda 3 labirintne ploščice, ki jih lahko uporabljaš samostojno ali skupaj z izvirno labirintno ploščico.",
     "tower": "Stolp",
     "traders-and-builders": "Trgovci & Graditelji",
     "tunnel": "Tunel",

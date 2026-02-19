@@ -6,6 +6,7 @@
   "about": {
     "author": "Autor",
     "configuration-file": "Fișier de configurație",
+    "corrections": "Corrections",
     "fantitle": "Ediția FanCloisterZone",
     "jcloisterzone-game-engine": "Motorul jocului JCloisterZone",
     "system-java-version": "Versiunea de Java a sistemului",
@@ -181,7 +182,7 @@
     "the-flying-machines-2": "Aparate de zbor 2",
     "the-flying-machines-2-description": "Asemănător cu predecesorul său, dar acum cu orașe pe cartonașe în loc de doar drumuri.",
     "the-labyrinths": "Labirinturi",
-    "the-labyrinths-description": "Adaugă 3 cartonașe cu labirint, de folosit singure sau în conjuncție cu cartonașul original cu labirint. ",
+    "the-labyrinths-description": "Adaugă 3 cartonașe cu labirint, de folosit singure sau în conjuncție cu cartonașul original cu labirint.",
     "tower": "Turnul",
     "traders-and-builders": "Negustori și constructori",
     "tunnel": "Tunelul",

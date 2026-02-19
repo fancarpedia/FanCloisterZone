@@ -2,16 +2,17 @@
   "@author": "Black Bear",
   "@jcz-version": "5.12.1",
   "@fcz-version": "6.1.0",
-  "@version": "0.9.13",
+  "@version": "0.9.14",
   "about": {
     "author": "Auteur",
     "configuration-file": "Fichier de configuration",
+    "corrections": "Corrections",
     "fantitle": "Édition FanCloisterZone",
     "jcloisterzone-game-engine": "Moteur de jeu de JCloisterZone",
     "system-java-version": "Version Java du système",
     "title": "JCloisterZone",
     "translation": "Traduction",
-    "version": "version"
+    "version": "Version"
   },
   "bookmarks": {
     "description-end": "dans la barre latérale d’aperçu.",
@@ -181,7 +182,7 @@
     "the-flying-machines-2": "Les Ornithoptères 2",
     "the-flying-machines-2-description": "Semblable à son prédécesseur, mais avec désormais des villes sur les tuiles au lieu de simples routes.",
     "the-labyrinths": "Les Labyrinthes",
-    "the-labyrinths-description": "Ajoute 3 tuiles Labyrinthe, à utiliser seules ou en combinaison avec la tuile Labyrinthe d’origine. ",
+    "the-labyrinths-description": "Ajoute 3 tuiles Labyrinthe, à utiliser seules ou en combinaison avec la tuile Labyrinthe d’origine.",
     "tower": "La Tour",
     "traders-and-builders": "Marchands et Bâtisseurs",
     "tunnel": "Le Tunnel",

@@ -6,6 +6,7 @@
   "about": {
     "author": "Author",
     "configuration-file": "Plik konfiguracyjny",
+    "corrections": "Corrections",
     "fantitle": "Edycja FanCloisterZone",
     "jcloisterzone-game-engine": "Silnik gry JCloisterZone",
     "system-java-version": "Wersja systemowa Java",
@@ -181,7 +182,7 @@
     "the-flying-machines-2": "Maszyny Latające 2",
     "the-flying-machines-2-description": "Podobny do oficjalnego rozszerzenia, ale teraz zamiast dróg na płytkach znajdują się miasta.",
     "the-labyrinths": "Labirynty",
-    "the-labyrinths-description": "Dodaje 3 płytki Labiryntu, które można używać samodzielnie lub w połączeniu z oryginalną płytką Labiryntu. ",
+    "the-labyrinths-description": "Dodaje 3 płytki Labiryntu, które można używać samodzielnie lub w połączeniu z oryginalną płytką Labiryntu.",
     "tower": "Wieża",
     "traders-and-builders": "Kupcy i Budowniczowie",
     "tunnel": "Tunel",

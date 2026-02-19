@@ -6,6 +6,7 @@
   "about": {
     "author": "Author",
     "configuration-file": "Nustatymų aplankas",
+    "corrections": "Corrections",
     "fantitle": "FanCloisterZone Edition",
     "jcloisterzone-game-engine": "JCloisterZone Žaidimo variklis",
     "system-java-version": "Sistemos Java Versija",
@@ -181,7 +182,7 @@
     "the-flying-machines-2": "Skraidančios mašinos 2",
     "the-flying-machines-2-description": "Panašus į ankstesnį žaidimą, tik dabar ant kortelių yra miestai, o ne tik keliai.",
     "the-labyrinths": "Labirintai",
-    "the-labyrinths-description": "Pridedamos 3 labirinto kortelės, kurias galima naudoti atskirai arba kartu su originalia labirinto plytele. ",
+    "the-labyrinths-description": "Pridedamos 3 labirinto kortelės, kurias galima naudoti atskirai arba kartu su originalia labirinto plytele.",
     "tower": "Bokštas",
     "traders-and-builders": "Prekiautojai ir statybininkai",
     "tunnel": "Tunelis",

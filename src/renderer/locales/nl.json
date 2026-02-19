@@ -6,6 +6,7 @@
   "about": {
     "author": "Author",
     "configuration-file": "Configuratiebestand",
+    "corrections": "Corrections",
     "fantitle": "FanCloisterZone Editie",
     "jcloisterzone-game-engine": "JCloisterZone Spelmachine",
     "system-java-version": "Java Versie van het systeem",
@@ -181,7 +182,7 @@
     "the-flying-machines-2": "Vliegtuigen 2",
     "the-flying-machines-2-description": "Vergelijkbaar met zijn voorganger, maar nu met steden op de tegels in plaats van alleen wegen.",
     "the-labyrinths": "Labyrinths",
-    "the-labyrinths-description": "Voegt 3 doolhoftegels toen, die apart of samen met de oorspronkelijke doolhoftegel gebruikt kunnen worden. ",
+    "the-labyrinths-description": "Voegt 3 doolhoftegels toen, die apart of samen met de oorspronkelijke doolhoftegel gebruikt kunnen worden.",
     "tower": "De Toren",
     "traders-and-builders": "Kooplieden en Bouwmeesters",
     "tunnel": "De Tunnel",

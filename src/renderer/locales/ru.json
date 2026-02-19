@@ -6,6 +6,7 @@
   "about": {
     "author": "Автор",
     "configuration-file": "Файл конфигурации",
+    "corrections": "Corrections",
     "fantitle": "FanCloisterZone Edition",
     "jcloisterzone-game-engine": "Игровой движок JCloisterZone",
     "system-java-version": "Версия Java системы",
@@ -181,7 +182,7 @@
     "the-flying-machines-2": "Летательные аппараты 2",
     "the-flying-machines-2-description": "Similar to its predecessor, but now with cities on the tiles instead of just roads.",
     "the-labyrinths": "Лабиринты",
-    "the-labyrinths-description": "Adds 3 Labyrinth tiles, to be used alone or in conjunction with the original Labyrinth tile. ",
+    "the-labyrinths-description": "Adds 3 Labyrinth tiles, to be used alone or in conjunction with the original Labyrinth tile.",
     "tower": "Башня",
     "traders-and-builders": "Торговцы и строители",
     "tunnel": "Туннель",

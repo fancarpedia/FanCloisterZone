@@ -6,6 +6,7 @@
   "about": {
     "author": "Autor",
     "configuration-file": "Konfigurační soubor",
+    "corrections": "Corrections",
     "fantitle": "FanCloisterZone Edition",
     "jcloisterzone-game-engine": "Herní engine JCloisterZone",
     "system-java-version": "Verze systému Java",
@@ -181,7 +182,7 @@
     "the-flying-machines-2": "Létající stroje 2",
     "the-flying-machines-2-description": "Podobně jako předchozí, ale tentokrát na kartičkách s městy místo pouze s cestami.",
     "the-labyrinths": "Labyrinty",
-    "the-labyrinths-description": "Přidává 3 kartičky Labyrintů, které je možné použít samostatně nebo spolu s původní kartičkou Labyrintu. ",
+    "the-labyrinths-description": "Přidává 3 kartičky Labyrintů, které je možné použít samostatně nebo spolu s původní kartičkou Labyrintu.",
     "tower": "Věž",
     "traders-and-builders": "Kupci a stavitelé",
     "tunnel": "Tunel",

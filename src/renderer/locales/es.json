@@ -6,6 +6,7 @@
   "about": {
     "author": "Author",
     "configuration-file": "Archivo de configuración",
+    "corrections": "Corrections",
     "fantitle": "Edición FanCloisterZone",
     "jcloisterzone-game-engine": "Motor de juego JCloisterZone",
     "system-java-version": "Versión de Java",
@@ -181,7 +182,7 @@
     "the-flying-machines-2": "Máquinas Voladoras 2",
     "the-flying-machines-2-description": "Similar a su predecesora, pero ahora con ciudades en las losetas en lugar de solo caminos.",
     "the-labyrinths": "Laberintos",
-    "the-labyrinths-description": "Añade 3 losetas de laberinto, que se pueden usar solas o junto con la loseta de laberinto original. ",
+    "the-labyrinths-description": "Añade 3 losetas de laberinto, que se pueden usar solas o junto con la loseta de laberinto original.",
     "tower": "La Torre",
     "traders-and-builders": "Constructores y Comerciantes",
     "tunnel": "El Túnel",
