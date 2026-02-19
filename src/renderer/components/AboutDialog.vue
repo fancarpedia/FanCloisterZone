@@ -1,7 +1,7 @@
 <template>
   <v-card class="about">
     <v-card-text>
-      <section class="d-flex justify center py-10 splash">
+      <section class="d-flex justify-center py-10 splash">
         <img :src="splashImage()" :title="$t('about.fantitle')" />
       </section>
       <section class="d-flex justify-space-between">
