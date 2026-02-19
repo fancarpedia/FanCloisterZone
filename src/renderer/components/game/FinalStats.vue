@@ -8,7 +8,10 @@
     >
       <div />
       <div v-for="p in players" :key="'rank-'+p.index" class="rank">
-        {{ p.rank }}
+        <template v-if="p.rank == 1">🥇</template>
+        <template v-else-if="p.rank == 2">🥈</template>
+        <template v-else-if="p.rank == 3">🥉</template>
+        <template v-else>{{ p.rank }}</template>
       </div>
 
       <div />

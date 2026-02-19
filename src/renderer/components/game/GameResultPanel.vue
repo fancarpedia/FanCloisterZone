@@ -7,7 +7,7 @@
         class="rank"
       >
         <template v-if="r.rank == 1">
-          <div class="num">{{ r.rank }}</div>
+          <div class="num">🥇</div>
           <div
             v-for="p in r.players"
             :key="p.index"
