@@ -6,7 +6,11 @@
       </section>
       <section class="d-flex justify-space-between">
         <div><span class="label">{{ $t('about.author') }}</span>: Roman Krejčík &amp; fans</div>
-        <div><span class="label">{{ $t('about.translation') }} ({{ $i18n.locale }})</span>: {{ $t('@author') }}</div>
+        <div>
+          <span class="label"><template v-if="$i18n.locale == 'en'">{{ $t('about.corrections') }}</template><template v-else>
+              {{ $t('about.translation') }} ({{ $i18n.locale }})</template></span>:
+          {{ $t('@author') }}
+        </div>
       </section>
       <hr class="my-3">
       <section class="my-3">
