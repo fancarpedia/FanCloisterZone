@@ -6,14 +6,16 @@
         :key="r.rank"
         class="rank"
       >
-        <div class="num">{{ r.rank }}</div>
-        <div
-          v-for="p in r.players"
-          :key="p.index"
-          :class="colorCssClass(p.index)"
-        >
-          <Meeple type="SmallFollower" />
-        </div>
+        <template v-if="r.rank == 1">
+          <div class="num">{{ r.rank }}</div>
+          <div
+            v-for="p in r.players"
+            :key="p.index"
+            :class="colorCssClass(p.index)"
+          >
+            <Meeple type="SmallFollower" />
+          </div>
+        </template>
       </div>
     </div>
 
