@@ -84,6 +84,7 @@ export default {
     },
 
     invertOrder(slots) {
+
       // Deep copy (keep objects intact but cloned)
       const result = slots.map(s => {
         const copy = JSON.parse(JSON.stringify(s))
@@ -97,7 +98,6 @@ export default {
 
         return copy
       })
-
       const orderedPlayers = result.filter(s => s.order !== undefined)
 
       const orders = orderedPlayers.map(s => s.order)
@@ -110,7 +110,7 @@ export default {
 
       function shuffle(arr) {
         for (let i = arr.length - 1; i > 0; i--) {
-            const j = Math.floor(Math.random() * (i + 1))
+            const j = Math.floor(Math.random() * (i + 1)); // without this is generating JS Error
             [arr[i], arr[j]] = [arr[j], arr[i]]
         }
         return arr
@@ -131,7 +131,7 @@ export default {
       this.$store.dispatch('gameSetup/load', setup)
       this.$store.commit('gameSetup/gameAnnotations', gameAnnotations)
       const revertedSlots = this.invertOrder(slots)
-      console.log(slots,revertedSlots)
+      
       await this.$store.dispatch('gameSetup/createGame', {
         loadedSetup: setup,
         slots: revertedSlots
