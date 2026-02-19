@@ -464,7 +464,10 @@ svg.meeple
 .v-icon
   font-size: 12px
   margin-left: 0.5ex
-  
+
+.header.tiles .v-icon
+  margin-left: 0
+
 #app.theme--dark .header img.bw
   filter: invert(1)
 </style>
