@@ -326,13 +326,19 @@ export default {
   font-size: 0.8em
   opacity: 0.5
 
-.addon-description
-  color: #333
-
 .addon-install
   position: absolute
   top: 8px
   right: 8px
   font-size: 1.2em
   cursor: pointer
+  
+.v-application.theme--dark
+
+  .addon-svg img 
+    background: lightgray
+    border: 1px solid black
+    border-radius: 5px
+    padding: 5px
+  
 </style>
