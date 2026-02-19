@@ -510,6 +510,7 @@ aside.shrink-3
   .name-box
     display: inline-block
     float: left
+    background: transparent !important
 
   .name
     display: none
