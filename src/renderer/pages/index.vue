@@ -356,7 +356,7 @@ h2
 
 .online-hosted-fan
   +theme using ($theme)
-    background: map-get($theme, 'opaque-bg')
+    background: none
 
 
 .player-hosted
