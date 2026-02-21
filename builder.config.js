@@ -6,7 +6,6 @@ const windowsOS = {
     publisherName: 'farin',
     target: 'nsis'
   },
-
   nsis: {
     differentialPackage: true
   }
@@ -23,12 +22,14 @@ const macOS = {
   mac: {
     target: [
       {
-        target: "dmg",
-        arch: ["universal"]
-      },
+        target: 'dmg',
+        arch: ['universal']
+      }
     ],
     icon: ICONS_DIR + 'fcz-icon.icns',
-    minimumSystemVersion: '10.13.6'
+    minimumSystemVersion: '10.13.6',
+    identity: null,             // disable code signing on CI
+    singleArchFiles: '**/*.a',  // ← THE FIX: .a files differ per arch, don't require them to match
   },
   dmg: {
     contents: [
@@ -55,7 +56,6 @@ module.exports = {
   directories: {
     output: 'build'
   },
-  // default files: https://www.electron.build/configuration/contents
   files: [
     'package.json',
     {
@@ -71,10 +71,14 @@ module.exports = {
       to: 'dist/resources/'
     }
   ],
-  extraResources: ['Engine.jar', 'icons', {
-    from: 'src/extraResources/',
-    to: ''
-  }],
+  extraResources: [
+    'Engine.jar',
+    'icons',
+    {
+      from: 'src/extraResources/',
+      to: ''
+    }
+  ],
   ...windowsOS,
   ...linuxOS,
   ...macOS
