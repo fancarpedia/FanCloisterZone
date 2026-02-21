@@ -19,15 +19,6 @@ jobs:
         with:
           node-version: 16
       
-      # NEW: List available Xcode versions
-      - name: List installed Xcode versions
-        if: runner.os == 'macOS'
-        run: |
-          echo "Available Xcode versions:"
-          ls /Applications | grep Xcode || echo "No Xcode folders found"
-          echo "---"
-          xcode-select -p
-      
       # NEW: Select older Xcode with fallback
       - name: Select older Xcode if available
         if: runner.os == 'macOS'
@@ -46,19 +37,6 @@ jobs:
           fi
           echo "Current Xcode: $(xcodebuild -version)"
       
-      # NEW: List available Xcode versions
-      - name: Setup Xcode
-        if: runner.os == 'macOS'
-        run: |
-          # Use whatever Xcode is available
-          XCODE=$(ls /Applications | grep "^Xcode" | sort -V | tail -1)
-          echo "Using: $XCODE"
-          sudo xcode-select --switch /Applications/$XCODE/Contents/Developer
-          sudo xcodebuild -license accept || true
-          echo "lipo path: $(which lipo)"
-          echo "lipo version: $(lipo -version)"
-          lipo -help 2>&1 | head -1 || true   # lipo has no -version flag
-          
       - name: Install setuptools for node-gyp (macOS)
         if: runner.os == 'macOS'
         run: |
