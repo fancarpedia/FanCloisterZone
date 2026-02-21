@@ -20,6 +20,18 @@ jobs:
           node-version: 16
       
       # NEW: List available Xcode versions
+      - name: Setup Xcode
+        if: runner.os == 'macOS'
+        run: |
+          # Use whatever Xcode is available
+          XCODE=$(ls /Applications | grep "^Xcode" | sort -V | tail -1)
+          echo "Using: $XCODE"
+          sudo xcode-select --switch /Applications/$XCODE/Contents/Developer
+          sudo xcodebuild -license accept || true
+          echo "lipo path: $(which lipo)"
+          echo "lipo version: $(lipo -version)"
+          
+      # NEW: List available Xcode versions
       - name: List installed Xcode versions
         if: runner.os == 'macOS'
         run: |
