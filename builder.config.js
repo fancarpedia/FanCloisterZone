@@ -54,12 +54,15 @@ function removeByExtension(baseDir, ext) {
 
 const windowsOS = {
   win: {
-    icon: ICONS_DIR + 'win-icon-fan-6.1.ico',
+    icon: ICONS_DIR + 'win-icon-fan-6.1.ico', // App Icon
     publisherName: 'farin',
     target: 'nsis'
   },
   nsis: {
-    differentialPackage: true
+    differentialPackage: true,
+    installerIcon: ICONS_DIR + 'win-icon-fan-6.1.ico',    // Installer Icon
+    uninstallerIcon: ICONS_DIR + 'win-icon-fan-6.1.ico',  // Uninstaller icon
+    installerHeaderIcon: ICONS_DIR + 'win-icon-fan-6.1.ico' // Small Header Icon
   }
 }
 
