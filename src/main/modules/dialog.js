@@ -86,3 +86,10 @@ export default function () {
     }
   }
 }
+
+ipcMain.handle('confirm-leave-game', async () => {
+  const choice = await showUnfinishedGameDialog()
+  // choice === 0 → user confirmed leaving
+  return choice === 0
+})
+

@@ -376,7 +376,7 @@ export default {
       document.title = this.onlineConnected ? 'FanCloisterZone Edition @ fanserver' /* + this.$store.state.onlineHostName */ : 'FanCloisterZone Edition' /* Fan Edition */
     },
 
-    leaveGame () {
+    async leaveGame () {
       if (this.onlineConnected) {
         const { $connection } = this
         const gameId = this.$store.state.game.id
@@ -387,6 +387,9 @@ export default {
         }
         this.$router.push('/online')
       } else {
+        const confirmed = await ipcRenderer.invoke('confirm-leave-game')
+        if (!confirmed) return
+ 
         this.$store.dispatch('game/close')
         this.$router.push('/')
       }
