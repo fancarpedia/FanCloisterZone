@@ -1,4 +1,27 @@
+const path = require('path')
+const fs = require('fs')
+
 const ICONS_DIR = 'build/icons/'
+
+// afterPack hook: remove arch-specific .a files that would cause
+// universal build SHA mismatch (register-scheme/nothing.a)
+async function afterPack(context) {
+  if (context.electronPlatformName !== 'darwin') return
+
+  const filesToRemove = [
+    path.join(
+      context.appOutDir,
+      'FanCloisterZone.app/Contents/Resources/app/node_modules/register-scheme/build/Release/nothing.a'
+    )
+  ]
+
+  for (const f of filesToRemove) {
+    if (fs.existsSync(f)) {
+      fs.rmSync(f)
+      console.log(`Removed arch-specific file: ${f}`)
+    }
+  }
+}
 
 const windowsOS = {
   win: {
@@ -28,8 +51,7 @@ const macOS = {
     ],
     icon: ICONS_DIR + 'fcz-icon.icns',
     minimumSystemVersion: '10.13.6',
-    identity: null,             // disable code signing on CI
-    singleArchFiles: '**/*.a',  // ← THE FIX: .a files differ per arch, don't require them to match
+    identity: null
   },
   dmg: {
     contents: [
@@ -79,6 +101,9 @@ module.exports = {
       to: ''
     }
   ],
+
+  afterPack,
+
   ...windowsOS,
   ...linuxOS,
   ...macOS
