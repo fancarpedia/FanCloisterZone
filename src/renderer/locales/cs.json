@@ -2,11 +2,11 @@
   "@author": "Peťul",
   "@jcz-version": "5.12.1",
   "@fcz-version": "6.1.0",
-  "@version": "0.9.14",
+  "@version": "0.9.15",
   "about": {
     "author": "Autor",
     "configuration-file": "Konfigurační soubor",
-    "corrections": "Corrections",
+    "corrections": "Korekce",
     "fantitle": "FanCloisterZone Edition",
     "jcloisterzone-game-engine": "Herní engine JCloisterZone",
     "system-java-version": "Verze systému Java",
