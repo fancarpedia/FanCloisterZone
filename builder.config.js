@@ -21,7 +21,12 @@ const linuxOS = {
 
 const macOS = {
   mac: {
-    target: 'dmg',
+    target: [
+      {
+        target: "dmg",
+        arch: ["universal"]
+      },
+    ],
     icon: ICONS_DIR + 'fcz-icon.icns',
     minimumSystemVersion: '10.13.6'
   },

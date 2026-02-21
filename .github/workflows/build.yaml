@@ -71,9 +71,19 @@ jobs:
       - name: Install dependencies
         run: yarn install --frozen-lockfile
       
-      - name: Build/release Electron app
+      - name: Build/release Electron app (macOS universal)
+        if: runner.os == 'macOS'
+        uses: samuelmeuli/action-electron-builder@v1
+        with:
+          args: "-c builder.config.js --universal"
+          github_token: ${{ secrets.github_token }}
+          release: ${{ true }}
+
+      - name: Build/release Electron app (non-macOS)
+        if: runner.os != 'macOS'
         uses: samuelmeuli/action-electron-builder@v1
         with:
           args: "-c builder.config.js"
           github_token: ${{ secrets.github_token }}
           release: ${{ true }}
+ 
