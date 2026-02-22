@@ -1,7 +1,7 @@
 <template>
   <section class="tile-pack-size">
     <v-icon>fas fa-layer-group</v-icon>
-    <span class="size">{{ size }}</span>
+    <span class="size"><span class="cca" v-if="setupPhase">≈</span>{{ size }}</span>
     <div v-if="removedTilesSize" class="removed-tiles">
       <div class="ico-wrapper">
         <v-icon>fas fa-square</v-icon>
@@ -15,6 +15,7 @@
 <script>
 export default {
   props: {
+    setupPhase: { type: Boolean, default: false },
     size: { type: Number, required: true },
     removedTilesSize: { type: Number, default: 0 }
   }
@@ -38,6 +39,10 @@ section
 
   +theme using ($theme)
     color: map-get($theme, 'gray-text-color')
+    
+.cca
+  font-weight: normal
+  padding-right: 0.25ex
 
 .removed-tiles
   position: absolute

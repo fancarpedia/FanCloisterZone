@@ -5,7 +5,7 @@
     </header>
 
     <header class="tiles-header">
-      <TilePackSize v-if="showPackSize" :size="packSize" />
+      <TilePackSize v-if="showPackSize" :size="packSize" :setupPhase="true" />
     </header>
 
     <main>
@@ -57,6 +57,10 @@ export default {
   ::v-deep .tile-pack-size
     .v-icon, .size
       font-size: 36px !important
+
+    .size .v-icon
+      font-size: 15px !important
+      margin-bottom: 5px
 
 header
   display: flex
