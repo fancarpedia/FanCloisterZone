@@ -1,0 +1,164 @@
+{
+  "appVersion": "6.1.0-beta.5",
+  "gameId": "1",
+  "name": "",
+  "initialRandom": 0.7095714843804835,
+  "created": "2026-02-21T14:15:45.004Z",
+  "clock": 30383,
+  "setup": {
+    "sets": {
+      "basic:1": 1,
+      "river/1:1": 1,
+      "goldmines": 1
+    },
+    "elements": {
+      "small-follower": 7,
+      "farmers": true,
+      "gold": true,
+      "fishermen": true
+    },
+    "rules": {},
+    "timer": null,
+    "start": [
+      {
+        "tile": "BA/RCr",
+        "x": 0,
+        "y": 0,
+        "rotation": 0
+      }
+    ],
+    "ai": false,
+    "options": {}
+  },
+  "players": [
+    {
+      "name": "Betty",
+      "slot": 2,
+      "ai": false
+    }
+  ],
+  "chat": [],
+  "replay": [
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "RI/s",
+        "rotation": "R0",
+        "position": [
+          0,
+          1
+        ]
+      },
+      "player": 0,
+      "clock": 2097
+    },
+    {
+      "type": "DEPLOY_MEEPLE",
+      "payload": {
+        "pointer": {
+          "position": [
+            0,
+            1
+          ],
+          "location": "E",
+          "feature": "River"
+        },
+        "meepleId": "0.small.1"
+      },
+      "player": 0,
+      "clock": 3363
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.9914428986583559
+      },
+      "player": 0,
+      "clock": 3607
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "GO/LRr",
+        "rotation": "R90",
+        "position": [
+          -1,
+          1
+        ]
+      },
+      "player": 0,
+      "clock": 5073
+    },
+    {
+      "type": "PLACE_TOKEN",
+      "payload": {
+        "token": "GOLD",
+        "pointer": [
+          0,
+          1
+        ]
+      },
+      "player": 0,
+      "clock": 6184
+    },
+    {
+      "type": "PASS",
+      "payload": {},
+      "player": 0,
+      "clock": 6485
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.06390814120303712
+      },
+      "player": 0,
+      "clock": 6503
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "RI.1/I.e",
+        "rotation": "R0",
+        "position": [
+          1,
+          1
+        ]
+      },
+      "player": 0,
+      "clock": 7916
+    },
+    {
+      "type": "PASS",
+      "payload": {},
+      "player": 0,
+      "clock": 8357
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.061949954500946536
+      },
+      "player": 0,
+      "clock": 8364
+    }
+  ],
+  "gameAnnotations": {
+    "drawOrder": [
+      "RI/s",
+      "GO/LRr",
+      "RI.1/I.e"
+    ],
+    "endTurn": 3
+  },
+  "test": {
+    "description": "Fishermen Goldmines",
+    "assertions": [
+      "Betty scored river for 4 points.",
+      "Betty scored gold for 1 point.",
+      "Betty has 5 points.",
+      "Phase is GameOverPhase",
+      "Undo is not allowed"
+    ]
+  }
+}

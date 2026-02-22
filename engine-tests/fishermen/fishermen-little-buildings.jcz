@@ -1,0 +1,130 @@
+{
+  "appVersion": "6.1.0-beta.5",
+  "gameId": "1",
+  "name": "",
+  "initialRandom": 0.35435465340215,
+  "created": "2026-02-21T14:11:58.298Z",
+  "clock": 62693,
+  "setup": {
+    "sets": {
+      "basic:1": 1,
+      "river/1:1": 1
+    },
+    "elements": {
+      "small-follower": 7,
+      "farmers": true,
+      "little-buildings": 1,
+      "fishermen": true
+    },
+    "rules": {},
+    "timer": null,
+    "start": [
+      {
+        "tile": "BA/RCr",
+        "x": 0,
+        "y": 0,
+        "rotation": 0
+      }
+    ],
+    "ai": false,
+    "options": {}
+  },
+  "players": [
+    {
+      "name": "Betty",
+      "slot": 2,
+      "ai": false
+    }
+  ],
+  "chat": [],
+  "replay": [
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "RI/s",
+        "rotation": "R0",
+        "position": [
+          0,
+          1
+        ]
+      },
+      "player": 0,
+      "clock": 2758
+    },
+    {
+      "type": "DEPLOY_MEEPLE",
+      "payload": {
+        "pointer": {
+          "position": [
+            0,
+            1
+          ],
+          "location": "E",
+          "feature": "River"
+        },
+        "meepleId": "0.small.1"
+      },
+      "player": 0,
+      "clock": 5440
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.6882808932353537
+      },
+      "player": 0,
+      "clock": 5954
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "RI.1/I.e",
+        "rotation": "R0",
+        "position": [
+          1,
+          1
+        ]
+      },
+      "player": 0,
+      "clock": 7436
+    },
+    {
+      "type": "PLACE_TOKEN",
+      "payload": {
+        "token": "LB_TOWER",
+        "pointer": [
+          1,
+          1
+        ]
+      },
+      "player": 0,
+      "clock": 12209
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.7190478232626023
+      },
+      "player": 0,
+      "clock": 13520
+    }
+  ],
+  "gameAnnotations": {
+    "drawOrder": [
+      "RI/s",
+      "RI.1/I.e"
+    ]
+  },
+  "test": {
+    "description": "Fishermen Little Buildings",
+    "assertions": [
+      "Betty scored river for 7 points.",
+      "Betty has 7 points.",
+      "Phase is TilePhase",
+      "Player can't pass",
+      "Available action TilePlacement for BA/RRRR",
+      "TilePlacement BA/RRRR options: [-1,0] - [0,90,180,270]",
+      "Undo is not allowed"
+    ]
+  }
+}
