@@ -410,7 +410,7 @@
     },
     "game-element-box": {
       "mandatory-for-selected-tiles": "Obligatoriu pentru cartonașele selectate",
-      "related-tiles-not-selected": "Cartonașe asociate neselectate"
+      "related-tiles-not-selected": "Cartonașe aferente neselectate"
     },
     "header": {
       "components": "Componente",

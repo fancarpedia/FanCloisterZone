@@ -2,11 +2,11 @@
   "@author": "TileLord | Erol",
   "@jcz-version": "5.12.1",
   "@fcz-version": "6.1.0",
-  "@version": "0.8.22",
+  "@version": "0.9.15",
   "about": {
     "author": "Avtor",
     "configuration-file": "Konfiguracijska datoteka",
-    "corrections": "Corrections",
+    "corrections": "Popravki",
     "fantitle": "FanCloisterZone Edition",
     "jcloisterzone-game-engine": "JCloisterZone Igralni Pogon",
     "system-java-version": "Sistemska Java Verzija",
@@ -444,7 +444,7 @@
       "escape-disabled": "Nobena ploščica z obleganjem ni v igri.",
       "farmers-description": "Igralci lahko postavijo človeščke na polja.",
       "families-description": "Dve družini se ne moreta združiti v mestu.",
-      "families-disabled": "No tile with different Family pennant is in the game.",
+      "families-disabled": "V igri ni nobene ploščice z drugačnim družinskim praporom.",
       "festival-description": "S festivalsko ploščico lahko vrneš eno od svojih figur namesto da jo postaviš.",
       "festival-disabled": "Nobena ploščica s festivalom ni v igri.",
       "fishermen-description": "Reka kot običajna značilnost.",
@@ -469,8 +469,8 @@
       "portal-disabled": "Nobena ploščica s čarobnim portalom ni v igri.",
       "princess-description": "Princesa lahko odstrani viteza iz mesta.",
       "princess-disabled": "Nobena ploščica s princeso ni v igri.",
-      "robbers-son-description": "Robber's Son can remove a thief from a road.",
-      "robbers-son-disabled": "No tile with Robber's Son is in the game.",
+      "robbers-son-description": "Razbojnikov sin lahko odstrani tatu s ceste.",
+      "robbers-son-disabled": "V igri ni nobene ploščice z Razbojnikovim sinom.",
       "scoring-variants": "Variante točkovanja",
       "shrine-description": "Svetišče postavljeno poleg samostana tekmuje, kdo bo prvi dokončal značilnost. (drugi ne dobi točk)",
       "shrine-disabled": "Nobena ploščica s svetiščem ni v igri.",
@@ -597,9 +597,9 @@
         "must": "mora"
       },
       "robbers-son-action": {
-        "description": "Robber's Son {} remove a thief from a road.",
-        "may": "may",
-        "must": "must"
+        "description": "Razbojnikov sin {} odstrani tatu s ceste.",
+        "may": "lahko",
+        "must": "mora"
       },
       "tiny-city-scoring": {
         "2": "2 točki",
