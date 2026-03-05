@@ -39,6 +39,7 @@ export default {
         if (t.lastPiece == 'WHITE_TOWER_PIECE') {
           fill = 'white'
           color = 'transparent'
+          outline = false
         } else if (t.lastPiece == 'BLACK_TOWER_PIECE') {
           fill = 'black'
           color = 'white'
