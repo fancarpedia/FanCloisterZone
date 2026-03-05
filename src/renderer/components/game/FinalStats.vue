@@ -28,11 +28,6 @@
         {{ p.name }}<v-icon v-if="p.ai">fa-solid fa-robot</v-icon>
       </div>
 
-      <div class="header tiles" :title="$t('core-messages.tiles')"><v-icon>far fa-square</v-icon></div>
-      <div v-for="(val, idx) in stats.tiles" :key="'tiles-'+idx" class="tiles value">
-        {{ val }}
-      </div>
-
       <div />
       <div v-for="p in players" :key="'points-'+p.index" class="points" :class="colorCssClass(p.index)">
         <div>
@@ -44,6 +39,11 @@
       <div v-for="(val, idx) in stats.clock" :key="'clock-'+idx" class="clock value">
         {{ val }}
       </div> -->
+
+      <div class="header tiles" :title="$t('core-messages.tiles')"><v-icon>far fa-square</v-icon></div>
+      <div v-for="(val, idx) in stats.tiles" :key="'tiles-'+idx" class="tiles value">
+        {{ val }}
+      </div>
 
       <div class="header roads" :title="$t('game.feature.roads')"><StandaloneTileImage tile-id="BA/RFr" :size="40" /></div>
       <div v-for="(val, idx) in stats.points.road" :key="'roads-'+idx" class="roads value">
