@@ -25,7 +25,7 @@ class Addons extends EventsBase {
     this.AUTO_DOWNLOADED = {
       classic: {
         url: [
-          'https://jcloisterzone.com/packages/classic/classic-6-5.9.0.jca',
+//          'https://jcloisterzone.com/packages/classic/classic-6-5.9.0.jca',
           'https://mega.nz/file/HVJnFQaa#MIMfsuyvFopCeyWZZTcotXQcMpycHqA5UzHE4Fa1RFU'
         ],
         version: 6,
@@ -350,10 +350,23 @@ class Addons extends EventsBase {
     const classicArtwork = installedAddons.find(({ id }) => id === 'classic')
     if (classicArtwork) {
       if (!classicArtwork.outdated && !classicArtwork.error) {
-        //
         return
       }
       installedAddons.splice(installedAddons.indexOf(classicArtwork), 1)
+    }
+
+    const addonsFolder = await this.mkAddonsFolder()
+    const fullPath = path.join(addonsFolder, 'classic')
+
+    try {
+      const stat = await fs.promises.stat(fullPath)
+      if (stat.isDirectory() && !classicArtwork?.outdated && !classicArtwork?.error) {
+        const artwork = await this._readAddon('classic', fullPath)
+        installedAddons.unshift(artwork)
+        return
+      }
+    } catch {
+      // fullPath doesn't exist yet, proceed with download
     }
 
     const links = this.getDefaultArtworkUrl()
@@ -379,7 +392,6 @@ class Addons extends EventsBase {
       link
     })
 
-    const addonsFolder = await this.mkAddonsFolder()
     const zipName = path.join(addonsFolder, 'classic.jca')
     try {
       if ((await fs.promises.stat(zipName)).isFile()) {
@@ -389,39 +401,40 @@ class Addons extends EventsBase {
       // ignore
     }
     const file = fs.createWriteStream(zipName)
-	try {
-	  await new Promise((resolve, reject) => {
-	    if (link.includes('mega.nz')) {
-	      // Download from Mega.nz
-	      this.downloadFromMega(link, zipName, file, resolve, reject)
-	    } else {
-	      // Download via HTTPS
-	      let downloadedBytes = 0
-	      const agent = new https.Agent({ rejectUnauthorized: false })
-	      https.get(link, { agent }, response => {
-	        const total = parseInt(response.headers['content-length'])
-	        this.ctx.app.store.commit('downloadSize', total)
-	        response.on('data', chunk => {
-	          downloadedBytes += chunk.length
-	          this.ctx.app.store.commit('downloadProgress', downloadedBytes)
-	        })
-	        response.pipe(file)
-	        file.on('finish', function () {
-	          file.close(resolve)
-	        })
-	      }).on('error', function (err) {
-	        console.error(err)
-	        fs.unlink(zipName, unlinkErr => {
-	          console.warn(unlinkErr)
-	        })
-	        reject(err.message)
-	      })
-	    }
-	  })
-	} catch (e) {
-	  this.ctx.app.store.commit('download', null)
-	  return
-	}
+    try {
+      await new Promise((resolve, reject) => {
+        if (link.includes('mega.nz')) {
+          // Download from Mega.nz
+          this.downloadFromMega(link, zipName, file, resolve, reject)
+        } else {
+          // Download via HTTPS
+          let downloadedBytes = 0
+          const agent = new https.Agent({ rejectUnauthorized: false })
+          https.get(link, { agent }, response => {
+            const total = parseInt(response.headers['content-length'])
+            this.ctx.app.store.commit('downloadSize', total)
+            response.on('data', chunk => {
+              downloadedBytes += chunk.length
+              this.ctx.app.store.commit('downloadProgress', downloadedBytes)
+            })
+            response.pipe(file)
+            file.on('finish', function () {
+              file.close(resolve)
+            })
+          }).on('error', function (err) {
+            console.error(err)
+            fs.unlink(zipName, unlinkErr => {
+              console.warn(unlinkErr)
+            })
+            reject(err.message)
+          })
+        }
+      })
+    } catch (e) {
+      this.ctx.app.store.commit('download', null)
+      return
+    }
+
     const checksum = sha256File(zipName)
     if (checksum !== this.AUTO_DOWNLOADED.classic.sha256) {
       console.log('classic.jca checksum mismatch ' + checksum)
@@ -433,22 +446,21 @@ class Addons extends EventsBase {
         link
       })
       await fs.promises.unlink(zipName)
-    } else {
-      console.log('classic.jca downloaded. sha256: ' + checksum)
-      if (classicArtwork?.outdated) {
-        console.log('Removing outdated artwork ' + classicArtwork.folder)
-        await fs.promises.rmdir(classicArtwork.folder, { recursive: true })
-      }
-      await fs.createReadStream(zipName)
-        .pipe(unzipper.Extract({ path: addonsFolder }))
-        .promise()
-      await fs.promises.unlink(zipName)
-      this.ctx.app.store.commit('download', null)
+      return
     }
 
-    const fullPath = path.join(addonsFolder, 'classic')
-    const artwork = await this._readAddon('classic', fullPath)
+    console.log('classic.jca downloaded. sha256: ' + checksum)
+    if (classicArtwork?.outdated) {
+      console.log('Removing outdated artwork ' + classicArtwork.folder)
+      await fs.promises.rmdir(classicArtwork.folder, { recursive: true })
+    }
+    await fs.createReadStream(zipName)
+      .pipe(unzipper.Extract({ path: addonsFolder }))
+      .promise()
+    await fs.promises.unlink(zipName)
+    this.ctx.app.store.commit('download', null)
 
+    const artwork = await this._readAddon('classic', fullPath)
     installedAddons.unshift(artwork)
   }
 
@@ -456,7 +468,7 @@ class Addons extends EventsBase {
     const installedAddons = this.addons
     const downloadable = await this.getDownloadable()
 
-	let updated = false
+    let updated = false
 
     for (const installed of installedAddons) {
         const addon = installed.id
