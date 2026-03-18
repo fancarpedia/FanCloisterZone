@@ -699,6 +699,9 @@
     "zoom-in": "Inzoomen",
     "zoom-out": "Uitzoomen"
   },
+  "server": {
+    "translate": "Update to v%VERSION% is required."
+  },
   "settings": {
     "add-ons": {
       "add-ons-definition-not-available": "Add-on definitie niet beschikbaar",

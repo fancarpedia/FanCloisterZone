@@ -699,6 +699,9 @@
     "zoom-in": "Artyn",
     "zoom-out": "Tolyn"
   },
+  "server": {
+    "translate": "Update to v%VERSION% is required."
+  },
   "settings": {
     "add-ons": {
       "add-ons-definition-not-available": "Priedų apibrėžimas nepasiekiamas",

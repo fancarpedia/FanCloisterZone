@@ -699,6 +699,9 @@
     "zoom-in": "Acercar",
     "zoom-out": "Alejar"
   },
+  "server": {
+    "translate": "Update to v%VERSION% is required."
+  },
   "settings": {
     "add-ons": {
       "add-ons-definition-not-available": "Definición de add-ons no disponible",

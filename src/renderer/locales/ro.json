@@ -2,7 +2,7 @@
   "@author": "Paloi Sciurala",
   "@jcz-version": "5.12.1",
   "@fcz-version": "6.1.0",
-  "@version": "0.9.15",
+  "@version": "0.10.1",
   "about": {
     "author": "Autor",
     "configuration-file": "Fișier de configurație",
@@ -698,6 +698,9 @@
     "undo": "Anulează",
     "zoom-in": "Mărește",
     "zoom-out": "Micșorează"
+  },
+  "server": {
+    "translate": "Este necesară actualizarea la v%VERSION%."
   },
   "settings": {
     "add-ons": {

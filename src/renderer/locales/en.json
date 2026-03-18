@@ -2,7 +2,7 @@
   "@author": "farin & Scott",
   "@jcz-version": "5.12.1",
   "@fcz-version": "6.1.0",
-  "@version": "0.9.15",
+  "@version": "0.10.1",
   "about": {
     "author": "Author",
     "configuration-file": "Configuration file",
@@ -698,6 +698,9 @@
     "undo": "Undo",
     "zoom-in": "Zoom In",
     "zoom-out": "Zoom Out"
+  },
+  "server": {
+    "translate": "Update to v%VERSION% is required."
   },
   "settings": {
     "add-ons": {

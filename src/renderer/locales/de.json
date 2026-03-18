@@ -699,6 +699,9 @@
     "zoom-in": "Vergrößern",
     "zoom-out": "Verkleinern"
   },
+  "server": {
+    "translate": "Update to v%VERSION% is required."
+  },
   "settings": {
     "add-ons": {
       "add-ons-definition-not-available": "Die Add-On Definition ist nicht verfügbar",

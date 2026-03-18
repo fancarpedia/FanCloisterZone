@@ -699,6 +699,9 @@
     "zoom-in": "Povečaj",
     "zoom-out": "Pomanjšaj"
   },
+  "server": {
+    "translate": "Update to v%VERSION% is required."
+  },
   "settings": {
     "add-ons": {
       "add-ons-definition-not-available": "Definicija dodatkov ni na voljo",

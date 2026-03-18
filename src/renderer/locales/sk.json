@@ -2,7 +2,7 @@
   "@author": "Bumsakalaka",
   "@jcz-version": "5.12.1",
   "@fcz-version": "6.1.0",
-  "@version": "0.9.15",
+  "@version": "0.10.1",
   "about": {
     "author": "Autor",
     "configuration-file": "Konfiguračný súbor",
@@ -698,6 +698,9 @@
     "undo": "Späť",
     "zoom-in": "Priblížiť",
     "zoom-out": "Oddialiť"
+  },
+  "server": {
+    "translate": "Je nevyhnutná aktualizácia na verziu %VERSION%."
   },
   "settings": {
     "add-ons": {
