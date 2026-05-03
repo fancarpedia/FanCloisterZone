@@ -11,6 +11,20 @@ async function createMenu (win, messages) {
   const settings = await getSettings()
 
   const isMac = process.platform === 'darwin'
+  const subMenuEdit = {
+    label: 'Edit',
+    submenu: [
+      { type: 'separator' },
+      { label: 'Cut', accelerator: 'Command+X', selector: 'cut:' },
+      { label: 'Copy', accelerator: 'Command+C', selector: 'copy:' },
+      { label: 'Paste', accelerator: 'Command+V', selector: 'paste:' },
+      {
+        label: 'Select All',
+        accelerator: 'Command+A',
+        selector: 'selectAll:'
+      }
+    ]
+  };
   const sessionSubmenu = [
     { id: 'new-game', label: $t('menu.new-game') || 'New Game', accelerator: 'CommandOrControl+N', click () { win.webContents.send('menu.new-game') } },
     { id: 'join-game', label: $t('menu.join-game') || 'Join Game', accelerator: 'CommandOrControl+J', click () { win.webContents.send('menu.join-game') } },
@@ -27,6 +41,10 @@ async function createMenu (win, messages) {
     {
       label: $t('menu.file') || 'File',
       submenu: sessionSubmenu
+    },
+    {
+      label: $t('menu.edit') || 'Edit',
+      submenu: subMenuEdit.submenu
     },
     {
       label: $t('menu.online') || 'Online',
