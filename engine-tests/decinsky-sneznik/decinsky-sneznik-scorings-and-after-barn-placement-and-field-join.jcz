@@ -1,0 +1,332 @@
+{
+  "appVersion": "6.1.1",
+  "gameId": "1",
+  "name": "",
+  "initialRandom": 0.48831058669246885,
+  "created": "2026-05-03T13:54:45.336Z",
+  "clock": 203125,
+  "setup": {
+    "options": {},
+    "sets": {
+      "basic:1": 1,
+      "abbey-and-mayor:1": 1
+    },
+    "elements": {
+      "small-follower": 7,
+      "farmers": true,
+      "barn": 1,
+      "wagon": 1,
+      "mayor": 1,
+      "abbey": 1,
+      "decinsky-sneznik": 1
+    },
+    "rules": {},
+    "timer": null,
+    "start": [
+      {
+        "tile": "BA/RCr",
+        "x": 0,
+        "y": 0,
+        "rotation": 0
+      }
+    ],
+    "ai": false
+  },
+  "players": [
+    {
+      "name": "Betty",
+      "slot": 2,
+      "ai": false
+    },
+    {
+      "name": "John",
+      "slot": 1,
+      "ai": false
+    }
+  ],
+  "chat": [],
+  "replay": [
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "BA/Rr",
+        "rotation": "R90",
+        "position": [
+          1,
+          0
+        ]
+      },
+      "player": 0,
+      "clock": 3765
+    },
+    {
+      "type": "DEPLOY_MEEPLE",
+      "payload": {
+        "pointer": {
+          "position": [
+            1,
+            0
+          ],
+          "location": "NL.WR",
+          "feature": "Field"
+        },
+        "meepleId": "0.decinskysneznik.1"
+      },
+      "player": 0,
+      "clock": 5796
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.3897879316625317
+      },
+      "player": 0,
+      "clock": 6733
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "BA/C",
+        "rotation": "R90",
+        "position": [
+          2,
+          0
+        ]
+      },
+      "player": 1,
+      "clock": 9533
+    },
+    {
+      "type": "PASS",
+      "payload": {},
+      "player": 1,
+      "clock": 20270
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.23805619879845596
+      },
+      "player": 1,
+      "clock": 20277
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "BA/Rr",
+        "rotation": "R0",
+        "position": [
+          2,
+          1
+        ]
+      },
+      "player": 0,
+      "clock": 25813
+    },
+    {
+      "type": "PASS",
+      "payload": {},
+      "player": 0,
+      "clock": 28501
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.9828776887835942
+      },
+      "player": 0,
+      "clock": 28506
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "BA/Rr",
+        "rotation": "R270",
+        "position": [
+          1,
+          1
+        ]
+      },
+      "player": 1,
+      "clock": 29439
+    },
+    {
+      "type": "DEPLOY_MEEPLE",
+      "payload": {
+        "pointer": {
+          "position": [
+            1,
+            1
+          ],
+          "location": "NL.NR.EL.SR.WL.WR",
+          "feature": "Field"
+        },
+        "meepleId": "1.decinskysneznik.1"
+      },
+      "player": 1,
+      "clock": 30879
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.05655226534651847
+      },
+      "player": 1,
+      "clock": 32247
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "BA/Rr",
+        "rotation": "R180",
+        "position": [
+          1,
+          2
+        ]
+      },
+      "player": 0,
+      "clock": 33990
+    },
+    {
+      "type": "PASS",
+      "payload": {},
+      "player": 0,
+      "clock": 35142
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.1987496349153277
+      },
+      "player": 0,
+      "clock": 35144
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "BA/Rr",
+        "rotation": "R90",
+        "position": [
+          2,
+          2
+        ]
+      },
+      "player": 1,
+      "clock": 35997
+    },
+    {
+      "type": "PASS",
+      "payload": {},
+      "player": 1,
+      "clock": 41535
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.9613693703561792
+      },
+      "player": 1,
+      "clock": 41539
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "BA/Cc+",
+        "rotation": "R270",
+        "position": [
+          0,
+          1
+        ]
+      },
+      "player": 0,
+      "clock": 42853
+    },
+    {
+      "type": "DEPLOY_MEEPLE",
+      "payload": {
+        "pointer": {
+          "position": [
+            1,
+            1
+          ],
+          "location": "NL.NR.EL.SR.WL.WR",
+          "feature": "Field"
+        },
+        "meepleId": "0.barn.1"
+      },
+      "player": 0,
+      "clock": 46110
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.0049023356917374805
+      },
+      "player": 0,
+      "clock": 52335
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "BA/LR",
+        "rotation": "R0",
+        "position": [
+          1,
+          -1
+        ]
+      },
+      "player": 1,
+      "clock": 54886
+    },
+    {
+      "type": "DEPLOY_MEEPLE",
+      "payload": {
+        "pointer": {
+          "position": [
+            1,
+            -1
+          ],
+          "location": "NL.NR.EL.ER.SL.SR.WL.WR",
+          "feature": "Field"
+        },
+        "meepleId": "1.decinskysneznik.1"
+      },
+      "player": 1,
+      "clock": 82455
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.2881390743969716
+      },
+      "player": 1,
+      "clock": 84912
+    }
+  ],
+  "gameAnnotations": {
+    "drawOrder": [
+      "BA/Rr",
+      "BA/C",
+      "BA/Rr",
+      "BA/Rr",
+      "BA/Rr",
+      "BA/Rr",
+      "BA/Cc+",
+      "BA/LR"
+    ],
+    "endTurn": 8
+  },
+  "test": {
+    "description": "Decinsky Sneznik Scorings And After Barn Placement And Field Join",
+    "assertions": [
+      "John scored decinsky-sneznik for 5 points.",
+      "Betty scored decinsky-sneznik for 5 points.",
+      "Betty scored field for 0 points.",
+      "John scored decinsky-sneznik for 0 points.",
+      "Betty has 5 points.",
+      "John has 5 points.",
+      "Phase is GameOverPhase",
+      "Undo is not allowed"
+    ]
+  }
+}
