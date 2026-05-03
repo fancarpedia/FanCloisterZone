@@ -310,11 +310,12 @@ class Tiles extends EventsBase {
         const enforces = Array.from(el.querySelectorAll('enforces[element]')).map(ref => ref.getAttribute('element'))
         const implies = Array.from(el.querySelectorAll('implies[element]')).map(ref => ref.getAttribute('element'))
         const minimumVersionForAI = el.querySelector('minimumVersionForAI') || null
+        const maxSets = el.querySelector('maxSets') || null
         const ai = isNil(minimumVersionForAI) ? false : semver.gte(appVer, semver.coerce(minimumVersionForAI.textContent))
 
         const svgIcon = el.querySelector('icon svg')
 
-        const exp = new Expansion(name, title, { enforces, implies, ai }, [new Release(name, tileSets)])
+        const exp = new Expansion(name, title, { enforces, implies, ai }, [new Release(name, tileSets, { max: maxSets } )])
         if (svgIcon) {
           this.symbols.push(`<symbol id="expansion-${name}" viewBox="${svgIcon.getAttribute('viewBox')}">${svgIcon.innerHTML}</symbol>`)
           exp.svgIcon = true
