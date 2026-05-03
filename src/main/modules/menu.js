@@ -6,7 +6,7 @@ let _win
 let menu
 const enabledState = {}
 
-async function createMenu (win, messages) {
+async function createMenu(win, messages) {
   const $t = key => messages[key.replace('menu.', '')]
   const settings = await getSettings()
 
@@ -26,13 +26,13 @@ async function createMenu (win, messages) {
     ]
   };
   const sessionSubmenu = [
-    { id: 'new-game', label: $t('menu.new-game') || 'New Game', accelerator: 'CommandOrControl+N', click () { win.webContents.send('menu.new-game') } },
-    { id: 'join-game', label: $t('menu.join-game') || 'Join Game', accelerator: 'CommandOrControl+J', click () { win.webContents.send('menu.join-game') } },
+    { id: 'new-game', label: $t('menu.new-game') || 'New Game', accelerator: 'CommandOrControl+N', click() { win.webContents.send('menu.new-game') } },
+    { id: 'join-game', label: $t('menu.join-game') || 'Join Game', accelerator: 'CommandOrControl+J', click() { win.webContents.send('menu.join-game') } },
     { type: 'separator' },
-    { id: 'save-game', label: $t('menu.save-game') || 'Save Game', accelerator: 'CommandOrControl+S', click () { win.webContents.send('menu.save-game') } },
-    { id: 'load-game', label: [$t('menu.open-game') || 'Open Game', $t('menu.load-setup') || 'Load Setup'].join(' / '), accelerator: 'CommandOrControl+O', click () { win.webContents.send('menu.load-game') } },
+    { id: 'save-game', label: $t('menu.save-game') || 'Save Game', accelerator: 'CommandOrControl+S', click() { win.webContents.send('menu.save-game') } },
+    { id: 'load-game', label: [$t('menu.open-game') || 'Open Game', $t('menu.load-setup') || 'Load Setup'].join(' / '), accelerator: 'CommandOrControl+O', click() { win.webContents.send('menu.load-game') } },
     { type: 'separator' },
-    { id: 'settings', label: $t('menu.settings') || 'Settings', accelerator: 'CommandOrControl+,', click () { win.webContents.send('menu.show-settings') } },
+    { id: 'settings', label: $t('menu.settings') || 'Settings', accelerator: 'CommandOrControl+,', click() { win.webContents.send('menu.show-settings') } },
     { type: 'separator' },
     isMac ? { role: 'close', label: $t('menu.exit') } : { role: 'quit', label: $t('menu.exit') }
   ]
@@ -49,34 +49,34 @@ async function createMenu (win, messages) {
     {
       label: $t('menu.online') || 'Online',
       submenu: [
-        { id: 'playonline-connect', label: $t('menu.playonline-connect') || 'Play Online', accelerator: 'CommandOrControl+P', click () { win.webContents.send('menu.playonline-connect') } },
-        { id: 'playonline-disconnect', label: $t('menu.playonline-disconnect') || 'Disconnect', click () { win.webContents.send('menu.playonline-disconnect') } },
+        { id: 'playonline-connect', label: $t('menu.playonline-connect') || 'Play Online', accelerator: 'CommandOrControl+P', click() { win.webContents.send('menu.playonline-connect') } },
+        { id: 'playonline-disconnect', label: $t('menu.playonline-disconnect') || 'Disconnect', click() { win.webContents.send('menu.playonline-disconnect') } },
       ]
     },
     {
       label: $t('menu.game') || 'Game',
       submenu: [
-        { id: 'undo', label: $t('menu.undo') || 'Undo', accelerator: 'CommandOrControl+Z', click () { win.webContents.send('menu.undo') } },
+        { id: 'undo', label: $t('menu.undo') || 'Undo', accelerator: 'CommandOrControl+Z', click() { win.webContents.send('menu.undo') } },
         { type: 'separator' },
-        { id: 'leave-game', label: $t('menu.leave-game') || 'Leave Game', accelerator: 'CommandOrControl+W', click () { win.webContents.send('menu.leave-game') } },
+        { id: 'leave-game', label: $t('menu.leave-game') || 'Leave Game', accelerator: 'CommandOrControl+W', click() { win.webContents.send('menu.leave-game') } },
         { type: 'separator' },
-        { id: 'game-setup', label: $t('menu.show-game-setup') || 'Show game setup', click () { win.webContents.send('menu.game-setup') } },
+        { id: 'game-setup', label: $t('menu.show-game-setup') || 'Show game setup', click() { win.webContents.send('menu.game-setup') } },
         { type: 'separator' },
-        { id: 'zoom-in', label: $t('menu.zoom-in') || 'Zoom In', accelerator: 'numadd', registerAccelerator: false, click () { win.webContents.send('menu.zoom-in') } },
-        { id: 'zoom-out', label: $t('menu.zoom-out') || 'Zoom Out', accelerator: 'numsub', registerAccelerator: false, click () { win.webContents.send('menu.zoom-out') } },
-        { id: 'rotate', label: $t('menu.rotate') || 'Rotate', accelerator: 'r', registerAccelerator: false, click () { win.webContents.send('menu.rotate') } },
+        { id: 'zoom-in', label: $t('menu.zoom-in') || 'Zoom In', accelerator: 'numadd', registerAccelerator: false, click() { win.webContents.send('menu.zoom-in') } },
+        { id: 'zoom-out', label: $t('menu.zoom-out') || 'Zoom Out', accelerator: 'numsub', registerAccelerator: false, click() { win.webContents.send('menu.zoom-out') } },
+        { id: 'rotate', label: $t('menu.rotate') || 'Rotate', accelerator: 'r', registerAccelerator: false, click() { win.webContents.send('menu.rotate') } },
         { type: 'separator' },
-        { id: 'game-tiles', label: $t('menu.tiles') || 'Tiles', click () { win.webContents.send('menu.game-tiles') } },
-        { id: 'game-farm-hints', label: $t('menu.farm-hints') || 'Farm Hints', click () { win.webContents.send('menu.game-farm-hints') } },
-        { id: 'toggle-history', label: $t('menu.toggle-history') || 'Toggle History', accelerator: 'h', registerAccelerator: false, click () { win.webContents.send('menu.game-history') } }
+        { id: 'game-tiles', label: $t('menu.tiles') || 'Tiles', click() { win.webContents.send('menu.game-tiles') } },
+        { id: 'game-farm-hints', label: $t('menu.farm-hints') || 'Farm Hints', click() { win.webContents.send('menu.game-farm-hints') } },
+        { id: 'toggle-history', label: $t('menu.toggle-history') || 'Toggle History', accelerator: 'h', registerAccelerator: false, click() { win.webContents.send('menu.game-history') } }
       ]
     }, {
       label: $t('menu.help') || 'Help',
       submenu: [
-        { label: ($t('menu.rules') || 'Rules') + ' (WikiCarpedia)', click () { win.webContents.send('menu.rules') } },
-        { label: ($t('menu.report-bug') || 'Report a bug'), click () { win.webContents.send('menu.report-bug') } },
+        { label: ($t('menu.rules') || 'Rules') + ' (WikiCarpedia)', click() { win.webContents.send('menu.rules') } },
+        { label: ($t('menu.report-bug') || 'Report a bug'), click() { win.webContents.send('menu.report-bug') } },
         { type: 'separator' },
-        { label: $t('menu.about') || 'About', click () { win.webContents.send('menu.about') } }
+        { label: $t('menu.about') || 'About', click() { win.webContents.send('menu.about') } }
       ]
     }
   ]
@@ -98,15 +98,15 @@ async function createMenu (win, messages) {
       submenu: [
         { role: 'toggleDevTools', label: $t('dev.toggle-devtools') || 'Toggle DevTools' },
         { type: 'separator' },
-        { id: 'remote-engine', label: $t('dev.use-remote-engine') || 'Use Remote Engine', type: 'checkbox', checked: settings.enginePath === remoteEngineValue, click () { toggleRemoteEngine() } },
-        { id: 'local-play-online', label: $t('dev.use-local-play-online') || 'Use Local Play Online', type: 'checkbox', checked: settings.playOnlineUrl === 'localhost:8000/ws', click () { toggleLocalPlayOnline() } },
-        { id: 'dump-server', label: $t('dump-hosted-game-server-state') || 'Dump Hosted Game Server State', click () { win.webContents.send('menu.dump-server') } },
+        { id: 'remote-engine', label: $t('dev.use-remote-engine') || 'Use Remote Engine', type: 'checkbox', checked: settings.enginePath === remoteEngineValue, click() { toggleRemoteEngine() } },
+        { id: 'local-play-online', label: $t('dev.use-local-play-online') || 'Use Local Play Online', type: 'checkbox', checked: settings.playOnlineUrl === 'localhost:8000/ws', click() { toggleLocalPlayOnline() } },
+        { id: 'dump-server', label: $t('dump-hosted-game-server-state') || 'Dump Hosted Game Server State', click() { win.webContents.send('menu.dump-server') } },
         { type: 'separator' },
-        { id: 'test-runner', label: $t('dev.test-runner') || 'Test Runner', click () { win.webContents.send('menu.test-runner') } },
-        { id: 'save-for-test-runner', label: $t('dev.save-test-scenario') || 'Save Test Scenario', click () { win.webContents.send('menu.save-for-test-runner') } },
+        { id: 'test-runner', label: $t('dev.test-runner') || 'Test Runner', click() { win.webContents.send('menu.test-runner') } },
+        { id: 'save-for-test-runner', label: $t('dev.save-test-scenario') || 'Save Test Scenario', click() { win.webContents.send('menu.save-for-test-runner') } },
         { type: 'separator' },
-        { label: $t('dev.reload-add-ons') || 'Reload Add-ons', click () { win.webContents.send('menu.reload-addons') } },
-        { id: 'theme-inspector', label: $t('dev.theme-inspector') || 'Theme Inspector', click () { win.webContents.send('menu.theme-inspector') } }
+        { label: $t('dev.reload-add-ons') || 'Reload Add-ons', click() { win.webContents.send('menu.reload-addons') } },
+        { id: 'theme-inspector', label: $t('dev.theme-inspector') || 'Theme Inspector', click() { win.webContents.send('menu.theme-inspector') } }
       ]
     })
   }
@@ -141,11 +141,11 @@ export default function () {
   })
 
   return {
-    winCreated (win) {
+    winCreated(win) {
       _win = win
       createMenu(win, {})
     },
-    winClosed (win) {
+    winClosed(win) {
       _win = null
     }
   }
