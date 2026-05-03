@@ -9,3 +9,4 @@ Engine.jar
 .project
 .env
 src/main/config
+src/renderer/.DS_Store
