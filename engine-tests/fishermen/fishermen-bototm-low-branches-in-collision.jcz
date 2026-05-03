@@ -1,0 +1,694 @@
+{
+  "appVersion": "6.1.0-beta.6",
+  "gameId": "51ef2ac0600a40d18231bfaa1826f1de",
+  "name": "",
+  "initialRandom": 0.3597059612938316,
+  "created": "2026-02-23T09:44:17.864Z",
+  "clock": 93702,
+  "setup": {
+    "sets": {
+      "basic:1": 1,
+      "river/1:1": 1,
+      "river/2:1": 1,
+      "fishermen": 1
+    },
+    "elements": {
+      "small-follower": 7,
+      "farmers": true
+    },
+    "rules": {},
+    "timer": null,
+    "start": [
+      {
+        "tile": "RI/s",
+        "x": 0,
+        "y": 0,
+        "rotation": 0
+      }
+    ],
+    "ai": false,
+    "options": {},
+    "addons": {
+      "fishermen": 0
+    }
+  },
+  "players": [
+    {
+      "name": "stano",
+      "slot": 2,
+      "ai": false,
+      "clientId": "edc5783b3e1b4feab9443a36439508b2"
+    }
+  ],
+  "chat": [],
+  "replay": [
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "fishermen/iifi",
+        "rotation": "R180",
+        "position": [
+          1,
+          0
+        ]
+      },
+      "player": 0,
+      "clock": 3913
+    },
+    {
+      "type": "PASS",
+      "payload": {},
+      "player": 0,
+      "clock": 4369
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.5002273800239374
+      },
+      "player": 0,
+      "clock": 4381
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "fishermen/icic",
+        "rotation": "R0",
+        "position": [
+          1,
+          1
+        ]
+      },
+      "player": 0,
+      "clock": 6204
+    },
+    {
+      "type": "PASS",
+      "payload": {},
+      "player": 0,
+      "clock": 6279
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.20025741279671383
+      },
+      "player": 0,
+      "clock": 6288
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "RI.2/CIcI",
+        "rotation": "R90",
+        "position": [
+          2,
+          0
+        ]
+      },
+      "player": 0,
+      "clock": 7526
+    },
+    {
+      "type": "PASS",
+      "payload": {},
+      "player": 0,
+      "clock": 7564
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.9257195441484356
+      },
+      "player": 0,
+      "clock": 7568
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "fishermen/iiii",
+        "rotation": "R0",
+        "position": [
+          3,
+          0
+        ]
+      },
+      "player": 0,
+      "clock": 9268
+    },
+    {
+      "type": "PASS",
+      "payload": {},
+      "player": 0,
+      "clock": 9333
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.6347030986879394
+      },
+      "player": 0,
+      "clock": 9342
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "fishermen/iirr",
+        "rotation": "R270",
+        "position": [
+          1,
+          2
+        ]
+      },
+      "player": 0,
+      "clock": 13612
+    },
+    {
+      "type": "PASS",
+      "payload": {},
+      "player": 0,
+      "clock": 13756
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.6461220381692736
+      },
+      "player": 0,
+      "clock": 13763
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "fishermen/iri4",
+        "rotation": "R0",
+        "position": [
+          3,
+          1
+        ]
+      },
+      "player": 0,
+      "clock": 15515
+    },
+    {
+      "type": "PASS",
+      "payload": {},
+      "player": 0,
+      "clock": 15559
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.5746706882190231
+      },
+      "player": 0,
+      "clock": 15564
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "fishermen/ifif3",
+        "rotation": "R90",
+        "position": [
+          4,
+          0
+        ]
+      },
+      "player": 0,
+      "clock": 17014
+    },
+    {
+      "type": "PASS",
+      "payload": {},
+      "player": 0,
+      "clock": 17077
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.6834074969047959
+      },
+      "player": 0,
+      "clock": 17082
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "fishermen/irir",
+        "rotation": "R0",
+        "position": [
+          3,
+          -1
+        ]
+      },
+      "player": 0,
+      "clock": 18428
+    },
+    {
+      "type": "PASS",
+      "payload": {},
+      "player": 0,
+      "clock": 18475
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.3304096951541273
+      },
+      "player": 0,
+      "clock": 18479
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "RI.2/RrII",
+        "rotation": "R270",
+        "position": [
+          3,
+          -2
+        ]
+      },
+      "player": 0,
+      "clock": 21264
+    },
+    {
+      "type": "PASS",
+      "payload": {},
+      "player": 0,
+      "clock": 21354
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.4728158132283635
+      },
+      "player": 0,
+      "clock": 21360
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "fishermen/fiic",
+        "rotation": "R180",
+        "position": [
+          4,
+          -2
+        ]
+      },
+      "player": 0,
+      "clock": 23330
+    },
+    {
+      "type": "PASS",
+      "payload": {},
+      "player": 0,
+      "clock": 23411
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.06562986845306873
+      },
+      "player": 0,
+      "clock": 23414
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "RI.1/IFI",
+        "rotation": "R90",
+        "position": [
+          3,
+          2
+        ]
+      },
+      "player": 0,
+      "clock": 27057
+    },
+    {
+      "type": "PASS",
+      "payload": {},
+      "player": 0,
+      "clock": 27110
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.3816130200688941
+      },
+      "player": 0,
+      "clock": 27119
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "fishermen/ciir",
+        "rotation": "R90",
+        "position": [
+          5,
+          0
+        ]
+      },
+      "player": 0,
+      "clock": 32409
+    },
+    {
+      "type": "PASS",
+      "payload": {},
+      "player": 0,
+      "clock": 32477
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.6757298547325052
+      },
+      "player": 0,
+      "clock": 32480
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "fishermen/irir2",
+        "rotation": "R0",
+        "position": [
+          4,
+          -3
+        ]
+      },
+      "player": 0,
+      "clock": 34223
+    },
+    {
+      "type": "PASS",
+      "payload": {},
+      "player": 0,
+      "clock": 34261
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.9828056352353463
+      },
+      "player": 0,
+      "clock": 34264
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "fishermen/iiri",
+        "rotation": "R180",
+        "position": [
+          4,
+          -4
+        ]
+      },
+      "player": 0,
+      "clock": 36925
+    },
+    {
+      "type": "PASS",
+      "payload": {},
+      "player": 0,
+      "clock": 37013
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.31912184079615935
+      },
+      "player": 0,
+      "clock": 37017
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "RI.2/LIFI",
+        "rotation": "R0",
+        "position": [
+          3,
+          -4
+        ]
+      },
+      "player": 0,
+      "clock": 39430
+    },
+    {
+      "type": "PASS",
+      "payload": {},
+      "player": 0,
+      "clock": 39486
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.06895050199493413
+      },
+      "player": 0,
+      "clock": 39489
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "RI.1/IFI",
+        "rotation": "R0",
+        "position": [
+          0,
+          2
+        ]
+      },
+      "player": 0,
+      "clock": 41878
+    },
+    {
+      "type": "PASS",
+      "payload": {},
+      "player": 0,
+      "clock": 41941
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.6256302447257602
+      },
+      "player": 0,
+      "clock": 41947
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "fishermen/iirc",
+        "rotation": "R0",
+        "position": [
+          2,
+          -4
+        ]
+      },
+      "player": 0,
+      "clock": 49120
+    },
+    {
+      "type": "PASS",
+      "payload": {},
+      "player": 0,
+      "clock": 49255
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.02753886138703754
+      },
+      "player": 0,
+      "clock": 49265
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "RI.1/CIRI",
+        "rotation": "R90",
+        "position": [
+          2,
+          -5
+        ]
+      },
+      "player": 0,
+      "clock": 50679
+    },
+    {
+      "type": "PASS",
+      "payload": {},
+      "player": 0,
+      "clock": 50739
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.6437802333004983
+      },
+      "player": 0,
+      "clock": 50742
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "fishermen/irif",
+        "rotation": "R90",
+        "position": [
+          -1,
+          2
+        ]
+      },
+      "player": 0,
+      "clock": 52125
+    },
+    {
+      "type": "PASS",
+      "payload": {},
+      "player": 0,
+      "clock": 52178
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.17833132222096792
+      },
+      "player": 0,
+      "clock": 52181
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "RI.2/CIRI",
+        "rotation": "R0",
+        "position": [
+          5,
+          -4
+        ]
+      },
+      "player": 0,
+      "clock": 53614
+    },
+    {
+      "type": "PASS",
+      "payload": {},
+      "player": 0,
+      "clock": 53647
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.4948583803026898
+      },
+      "player": 0,
+      "clock": 53654
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "fishermen/fiir",
+        "rotation": "R180",
+        "position": [
+          6,
+          -4
+        ]
+      },
+      "player": 0,
+      "clock": 55478
+    },
+    {
+      "type": "PASS",
+      "payload": {},
+      "player": 0,
+      "clock": 55516
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.6149073608152018
+      },
+      "player": 0,
+      "clock": 55522
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "fishermen/iiff",
+        "rotation": "R90",
+        "position": [
+          6,
+          -5
+        ]
+      },
+      "player": 0,
+      "clock": 57693
+    },
+    {
+      "type": "PASS",
+      "payload": {},
+      "player": 0,
+      "clock": 57791
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.6337262699344932
+      },
+      "player": 0,
+      "clock": 57795
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "fishermen/irir3",
+        "rotation": "R0",
+        "position": [
+          5,
+          1
+        ]
+      },
+      "player": 0,
+      "clock": 60475
+    },
+    {
+      "type": "PASS",
+      "payload": {},
+      "player": 0,
+      "clock": 60516
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.34484212430651207
+      },
+      "player": 0,
+      "clock": 60520
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "fishermen/ciic",
+        "rotation": "R270",
+        "position": [
+          3,
+          3
+        ]
+      },
+      "player": 0,
+      "clock": 61985
+    },
+    {
+      "type": "PASS",
+      "payload": {},
+      "player": 0,
+      "clock": 62098
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.43238944783864697
+      },
+      "player": 0,
+      "clock": 62102
+    }
+  ]
+}

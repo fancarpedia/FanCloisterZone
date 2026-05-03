@@ -1,0 +1,78 @@
+{
+  "appVersion": "6.1.0-beta.6",
+  "gameId": "cd85ffe13c3a43a9a0d9af1f150b1ca1",
+  "name": "",
+  "initialRandom": 0.5582742129029341,
+  "created": "2026-02-23T07:51:48.294Z",
+  "clock": 51461,
+  "setup": {
+    "sets": {
+      "basic:1": 1,
+      "river/1:1": 1,
+      "fishermen": 1
+    },
+    "elements": {
+      "small-follower": 7,
+      "farmers": true
+    },
+    "rules": {},
+    "timer": null,
+    "start": [
+      {
+        "tile": "RI/s",
+        "x": 0,
+        "y": 0,
+        "rotation": 0
+      }
+    ],
+    "ai": false,
+    "options": {},
+    "addons": {
+      "fishermen": 0
+    }
+  },
+  "players": [
+    {
+      "name": "stano",
+      "slot": 2,
+      "ai": false,
+      "clientId": "edc5783b3e1b4feab9443a36439508b2"
+    }
+  ],
+  "chat": [],
+  "replay": [
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "fishermen/iifi2",
+        "rotation": "R270",
+        "position": [
+          1,
+          0
+        ]
+      },
+      "player": 0,
+      "clock": 3439
+    },
+    {
+      "type": "PASS",
+      "payload": {},
+      "player": 0,
+      "clock": 4165
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.31960215867471375
+      },
+      "player": 0,
+      "clock": 4173
+    }
+  ],
+  "gameAnnotations": {
+    "drawOrder": [
+      "fishermen/iifi2",
+      "fishermen/iiii"
+    ]
+  }
+}
