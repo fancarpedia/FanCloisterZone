@@ -15,6 +15,7 @@ const RECENT_SETUP_FILE_COUNT = 9
 export const state = () => ({
   file: null,
   userAddons: [],
+  addonsManifestUrl: null,
   enabledArtworks: ['classic/classic'],
   lastGameSetup: null,
   mySetups: [],

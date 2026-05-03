@@ -1,5 +1,5 @@
 import os from 'os'
-import fs from 'fs-extra'
+import fs from 'fs'
 import path from 'path'
 import https from 'https'
 
@@ -18,67 +18,137 @@ import semver from 'semver'
 import { getAppVersion } from '@/utils/version'
 import { EventsBase } from '@/utils/events'
 
+const CLASSIC_ADDON_KEY = 'classic'
+const MEGA_PROVIDER = 'mega'
+const HTTPS_PROVIDER = 'https'
+
 class Addons extends EventsBase {
-  constructor (ctx) {
+  constructor(ctx) {
     super()
 
-    this.AUTO_DOWNLOADED = {
-      classic: {
-        url: [
-//          'https://jcloisterzone.com/packages/classic/classic-6-5.9.0.jca',
-          'https://mega.nz/file/HVJnFQaa#MIMfsuyvFopCeyWZZTcotXQcMpycHqA5UzHE4Fa1RFU'
-        ],
-        version: 6,
-        sha256: '26b1fc8edc37c9df162b6b5a74164c6ba09951e450df7b62f2568c2db03327b0'
-      }
-    }
-
+    this.AUTO_DOWNLOADED = null
     this.ctx = ctx
     this.addons = []
     this.downloadableInitialized = 0
+    this.downloadableManifestUrl = null
+    this.downloadableManifestError = null
     this.downloadable = []
   }
 
-  getDefaultArtworkUrl () {
-    return this.AUTO_DOWNLOADED?.classic?.url
+  async _ensureAutoDownloaded() {
+    if (this.AUTO_DOWNLOADED === null) {
+      this.AUTO_DOWNLOADED = await ipcRenderer.invoke('get-addon-defaults')
+    }
   }
-  
-  async getDownloadable() {
-    if (this.downloadableInitialized == 0 ) {
-      try {
-        let url = `https://github.com/fancarpedia/FanCloisterZone/releases/download/v6.0.0-all/addons.json`
-        const res = await fetch(url)
-        if (res.status === 200) {
-          const addons = await res.json()
-          const appVersion = await ipcRenderer.invoke('get-app-version')
-          const isDev = /-alpha|-beta|-rc/i.test(appVersion)
-          const appVer = semver.coerce(appVersion)
 
-          this.downloadable = addons.addons
+  async _getManifestUrl() {
+    await this._ensureAutoDownloaded()
+
+    const configuredUrl = this.ctx.store.state.settings.addonsManifestUrl
+    const normalizedUrl = typeof configuredUrl === 'string' ? configuredUrl.trim() : ''
+    return normalizedUrl || this.AUTO_DOWNLOADED?.addonsManifestUrl
+  }
+
+  _getLatestVersionDefinition(addonDefinition) {
+    if (!addonDefinition?.versions?.length) {
+      return null
+    }
+
+    return addonDefinition.versions.reduce((latestVersion, version) => (
+      !latestVersion || version.version > latestVersion.version ? version : latestVersion
+    ), null)
+  }
+
+  _reportManifestError(message) {
+    if (this.downloadableManifestError === message) {
+      return
+    }
+
+    this.downloadableManifestError = message
+    this.ctx.app.store.commit('errorMessage', {
+      title: 'Invalid add-ons manifest',
+      content: message
+    }, { root: true })
+  }
+
+  async getDefaultArtworkUrl() {
+    const downloadable = await this.getDownloadable()
+    const classic = downloadable.find(({ key }) => key === CLASSIC_ADDON_KEY)
+    const versionDefinition = this._getLatestVersionDefinition(classic)
+    if (versionDefinition) {
+      const urls = Array.isArray(versionDefinition.url) ? versionDefinition.url : [versionDefinition.url]
+      return urls.filter(Boolean)
+    }
+
+    return []
+  }
+
+  async getDownloadable() {
+    const manifestUrl = await this._getManifestUrl()
+    const needsRefresh = this.downloadableInitialized === 0 || this.downloadableManifestUrl !== manifestUrl
+    if (!needsRefresh) {
+      return this.downloadable
+    }
+
+    if (this.downloadableManifestUrl !== manifestUrl) {
+      this.downloadable = []
+      this.downloadableManifestUrl = manifestUrl
+      this.downloadableManifestError = null
+    }
+
+    if (!manifestUrl) {
+      return this.downloadable
+    }
+
+    try {
+      const res = await fetch(manifestUrl)
+      if (res.status === 200) {
+        const addons = await res.json()
+        const appVersion = await ipcRenderer.invoke('get-app-version')
+        const isDev = /-alpha|-beta|-rc/i.test(appVersion)
+        const appVer = semver.coerce(appVersion)
+
+        this.downloadable = (addons.addons || [])
           .map(addon => {
-            const compatibleVersions = addon.versions.filter(v => {
-              const fromVersion = isDev ? (v.devFromVersion ?? (v.fromVersion ?? null)) : (v.fromVersion ?? null)
+            const addonVersions = Array.isArray(addon.versions) ? addon.versions : []
+            const compatibleVersions = addonVersions.filter(version => {
+              const fromVersion = isDev ? (version.devFromVersion ?? (version.fromVersion ?? null)) : (version.fromVersion ?? null)
               const fromOk = fromVersion ? semver.gte(appVer, semver.coerce(fromVersion)) : true
-              const toVersion = isDev ? (v.devToVersion ?? (v.toVersion ?? null)) : (v.toVersion ?? null)
+              const toVersion = isDev ? (version.devToVersion ?? (version.toVersion ?? null)) : (version.toVersion ?? null)
               const toOk = toVersion ? semver.lt(appVer, semver.coerce(toVersion)) : true // exclusive upper bound
               return fromOk && toOk
             })
             if (compatibleVersions.length > 0) {
-              return { ...addon, versions: compatibleVersions }
+              return { ...addon, autoUpdate: addon.autoUpdate !== false, versions: compatibleVersions }
             }
             return null
           })
-          .filter(a => a !== null)
+          .filter(addon => addon !== null)
+
+        const classicAddon = this.downloadable.find(({ key }) => key === CLASSIC_ADDON_KEY)
+        const classicVersionDefinition = this._getLatestVersionDefinition(classicAddon)
+        console.debug('Classic add-on version definition from manifest:', classicVersionDefinition)
+        if (!classicVersionDefinition) {
+          this._reportManifestError('Add-ons manifest must contain a compatible classic add-on.')
+          this.downloadableInitialized = 1
+          return this.downloadable
         }
+
+        if (!classicVersionDefinition.sha256) {
+          this._reportManifestError('Classic add-on entry in manifest must include sha256.')
+          this.downloadableInitialized = 1
+          return this.downloadable
+        }
+
         this.downloadableInitialized = 1
-      } catch(err) {
-        // No internet?
       }
+    } catch (err) {
+      // No internet?
     }
     return this.downloadable
   }
 
-  async loadAddons () {
+  async loadAddons() {
     const { settings } = this.ctx.store.state
     const userDataPath = window.process.argv.find(arg => arg.startsWith('--user-data=')).replace('--user-data=', '')
     const installedAddons = []
@@ -99,7 +169,7 @@ class Addons extends EventsBase {
           const fullPath = path.join(folder, id)
           const addon = await this._readAddon(id, fullPath)
           if (addon) {
-            addon.removable = removable && id !== 'classic'
+            addon.removable = removable && id !== CLASSIC_ADDON_KEY
             addon.hidden = hidden
             installedAddons.push(addon)
             installedAddonsIds.add(id)
@@ -140,25 +210,25 @@ class Addons extends EventsBase {
       }
     }
 
-    this.ctx.app.store.commit('hasClassicAddon', !!installedAddons.find(a => a.id === 'classic' && !a.error))
+    this.ctx.app.store.commit('hasClassicAddon', !!installedAddons.find(a => a.id === CLASSIC_ADDON_KEY && !a.error))
 
     this.addons = sortBy(installedAddons, ['removable', 'id'])
     this.ctx.app.store.commit('addonsLoaded')
   }
 
-  async mkAddonsFolder () {
+  async mkAddonsFolder() {
     const userDataPath = window.process.argv.find(arg => arg.startsWith('--user-data=')).replace('--user-data=', '')
     const addonsFolder = path.join(userDataPath, 'addons')
     await fs.promises.mkdir(addonsFolder, { recursive: true })
     return addonsFolder
   }
-  
+
   async installDownloadable(addonKey, version) {
     const downloadable = await this.getDownloadable()
     if (!downloadable) {
       throw new Error($nuxt.$t('settings.add-ons.add-ons-definition-not-available'))
     }
-    
+
     const addonDefinition = downloadable.find(a => a.key === addonKey)
     if (!addonDefinition) {
       throw new Error($nuxt.$t('settings.add-ons.download-definition-not-found'))
@@ -171,6 +241,11 @@ class Addons extends EventsBase {
 
     const downloadedPath = path.join(os.tmpdir(), `${addonKey}-v${versionDefinition.version}.jca`)
 
+    const downloadUrl = await this.resolveDownloadUrl(versionDefinition.url)
+    if (!downloadUrl) {
+      throw new Error($nuxt.$t('settings.add-ons.download-definition-not-found'))
+    }
+
     const installed = this.addons.find(a => a.id === addonKey)
     if (installed) {
       const installedVersion = installed.json.version
@@ -179,37 +254,13 @@ class Addons extends EventsBase {
       if (installedVersion >= requestedVersion) {
         return
       }
-      
+
       console.log(`Reinstalling ${addonKey}: v${installedVersion} → v${requestedVersion}`)
       await this.uninstall(installed)
     }
 
     // Download provider
-    let downloadPromise
-    if (versionDefinition.provider === 'mega') {
-      const file = File.fromURL(versionDefinition.url)
-      downloadPromise = new Promise((resolve, reject) => {
-        file
-        .download()
-        .pipe(fs.createWriteStream(downloadedPath))
-        .on('error', reject)
-        .on('finish', resolve)
-      })
-    } else if (versionDefinition.provider === 'https') {
-      const res = await fetch(versionDefinition.url)
-      if (!res.ok) throw new Error(`HTTP ${res.status}`)
-
-      downloadPromise = new Promise((resolve, reject) => {
-        const fileStream = fs.createWriteStream(downloadedPath)
-        res.body.pipe(fileStream)
-        fileStream.on('finish', resolve)
-        fileStream.on('error', reject)
-      })
-    } else {
-      throw new Error(`Unknown provider: ${versionDefinition.provider}`)
-    }
-
-    await downloadPromise
+    await this.downloadAddonFile(versionDefinition.provider, downloadUrl, downloadedPath)
 
     // --- SHA-256 verification ---
     if (versionDefinition.sha256) {
@@ -223,43 +274,100 @@ class Addons extends EventsBase {
     await this.install(downloadedPath)
   }
 
-  downloadFromMega (link, zipName, file, resolve, reject) {
+  async resolveDownloadUrl(urls) {
+    if (!Array.isArray(urls)) {
+      return urls || null
+    }
+
+    for (const currentUrl of urls.filter(Boolean)) {
+      try {
+        if (await this.urlExists(currentUrl)) {
+          return currentUrl
+        }
+      } catch (error) {
+        continue
+      }
+    }
+
+    return null
+  }
+
+  async downloadAddonFile(provider, link, downloadFileName) {
+    try {
+      await fs.promises.unlink(downloadFileName)
+    } catch {
+      // file does not exist, no need to delete
+    }
+
+    let fileStream
+    try {
+      fileStream = fs.createWriteStream(downloadFileName)
+    } catch (err) {
+      console.warn(`Error creating write stream for ${downloadFileName}:`, err)
+      throw new Error($nuxt.$t('settings.add-ons.download-file-write-error'))
+    }
+
+    try {
+      await new Promise((resolve, reject) => {
+        switch (provider) {
+          case MEGA_PROVIDER:
+            this.downloadFromMega(link, fileStream, downloadFileName, resolve, reject)
+            break;
+          case HTTPS_PROVIDER:
+            this.downloadFileFromUrl(link, fileStream, downloadFileName, resolve, reject)
+            break;
+          default:
+            throw new Error(`Unknown provider: ${provider}`)
+        }
+      });
+    } catch (e) {
+      console.error(`Error downloading add-on file (${downloadFileName}) with provider ${provider}:`, e)
+      await fs.promises
+        .unlink(downloadFileName)
+        .catch(err => {
+          console.warn(`Error deleting incomplete add-on file (${downloadFileName}):`, err)
+        })
+      throw e
+    }
+  }
+
+  downloadFromMega(link, fileStream, downloadFileName, resolve, reject) {
     try {
       const megaFile = File.fromURL(link)
       let downloadedBytes = 0
-    
+
       // Set total size if available
       megaFile.loadAttributes().then(() => {
         this.ctx.app.store.commit('downloadSize', megaFile.size)
       }).catch(err => console.warn('Could not load Mega file size:', err))
-    
+
       megaFile
         .download()
         .on('data', chunk => {
           downloadedBytes += chunk.length
           this.ctx.app.store.commit('downloadProgress', downloadedBytes)
         })
-        .pipe(file)
+        .pipe(fileStream)
         .on('error', function (err) {
           console.error(err)
-          fs.unlink(zipName, unlinkErr => {
+          fs.unlink(downloadFileName, unlinkErr => {
             console.warn(unlinkErr)
           })
           reject(err.message)
         })
         .on('finish', function () {
-          file.close(resolve)
+          fileStream.close(resolve)
         })
     } catch (error) {
       console.error(error)
-      fs.unlink(zipName, unlinkErr => {
+      fs.unlink(downloadFileName, unlinkErr => {
         console.warn(unlinkErr)
       })
       reject(error.message)
     }
   }
 
-  async install (filePath) {
+  async install(filePath) {
     const addonsFolder = await this.mkAddonsFolder()
 
     const tmpFolder = await fs.promises.mkdtemp(path.join(os.tmpdir(), 'addon-'))
@@ -297,7 +405,7 @@ class Addons extends EventsBase {
     })
   }
 
-  async uninstall (addon) {
+  async uninstall(addon) {
     await fs.promises.rmdir(addon.folder, { recursive: true })
 
     if (addon.artworks?.length) { // may be undefined for invalid artwork
@@ -310,25 +418,25 @@ class Addons extends EventsBase {
       resolve()
     })
     this.addons = this.addons.filter(a => a.id !== addon.id)
-    
+
   }
 
-  async urlExists (url) {
+  async urlExists(url) {
     // Check if it's a Mega.nz link
     if (url.includes('mega.nz')) {
       return await this.checkMegaFile(url)
     }
-  
+
     try {
       const controller = new AbortController()
       const timeoutId = setTimeout(() => controller.abort(), 5000) // 5 second timeout
-    
-      const response = await fetch(url, { 
+
+      const response = await fetch(url, {
         method: 'HEAD',
         signal: controller.signal
       })
       clearTimeout(timeoutId)
-    
+
       return response.ok
     } catch (error) {
       console.warn(`Fetch failed: ${error.message}`)
@@ -336,32 +444,46 @@ class Addons extends EventsBase {
     }
   }
 
-  async checkMegaFile (url) {
+  async checkMegaFile(url) {
     try {
       const file = File.fromURL(url)
       await file.loadAttributes()
       return true
     } catch (error) {
+      console.warn(`Error checking URL ${url}: ${error.message}`)
       return false
     }
   }
 
-  async updateOutdatedClassic (installedAddons) {
-    const classicArtwork = installedAddons.find(({ id }) => id === 'classic')
+  async updateOutdatedClassic(installedAddons) {
+    const downloadable = await this.getDownloadable()
+    const classicDownloadable = downloadable.find(({ key }) => key === CLASSIC_ADDON_KEY)
+    const classicVersionDefinition = this._getLatestVersionDefinition(classicDownloadable)
+
+    if (!classicVersionDefinition) {
+      return
+    }
+
+    const classicAutoUpdate = classicDownloadable.autoUpdate !== false
+
+    const classicArtwork = installedAddons.find(({ id }) => id === CLASSIC_ADDON_KEY)
     if (classicArtwork) {
       if (!classicArtwork.outdated && !classicArtwork.error) {
+        return
+      }
+      if (!classicAutoUpdate) {
         return
       }
       installedAddons.splice(installedAddons.indexOf(classicArtwork), 1)
     }
 
     const addonsFolder = await this.mkAddonsFolder()
-    const fullPath = path.join(addonsFolder, 'classic')
+    const fullPath = path.join(addonsFolder, CLASSIC_ADDON_KEY)
 
     try {
       const stat = await fs.promises.stat(fullPath)
       if (stat.isDirectory() && !classicArtwork?.outdated && !classicArtwork?.error) {
-        const artwork = await this._readAddon('classic', fullPath)
+        const artwork = await this._readAddon(CLASSIC_ADDON_KEY, fullPath)
         installedAddons.unshift(artwork)
         return
       }
@@ -369,83 +491,51 @@ class Addons extends EventsBase {
       // fullPath doesn't exist yet, proceed with download
     }
 
-    const links = this.getDefaultArtworkUrl()
-    let link = null
+    const links = Array.isArray(classicVersionDefinition.url)
+      ? classicVersionDefinition.url
+      : [classicVersionDefinition.url]
+    const downloadUrl = await this.resolveDownloadUrl(links)
 
-    for (let i = 0; i < links.length; i++) {
-      try {
-        const exists = await this.urlExists(links[i])
-        if (exists) {
-          link = links[i]
-          break
-        }
-      } catch (error) {
-        continue
-      }
+    if (!downloadUrl) {
+      this.ctx.app.store.commit('download', null)
+      return
     }
+
+    console.log('Updating classic artwork, download link: ' + downloadUrl)
+    console.log('expected sha256: ' + classicVersionDefinition.sha256)
+    console.log('Downloading to ' + fullPath)
 
     this.ctx.app.store.commit('download', {
       name: 'classic.jca',
       description: 'Downloading classic artwork',
       progress: null,
       size: null,
-      link
+      link: downloadUrl
     })
 
-    const zipName = path.join(addonsFolder, 'classic.jca')
-    try {
-      if ((await fs.promises.stat(zipName)).isFile()) {
-        await fs.promises.unlink(zipName)
-      }
-    } catch {
-      // ignore
-    }
-    const file = fs.createWriteStream(zipName)
-    try {
-      await new Promise((resolve, reject) => {
-        if (link.includes('mega.nz')) {
-          // Download from Mega.nz
-          this.downloadFromMega(link, zipName, file, resolve, reject)
-        } else {
-          // Download via HTTPS
-          let downloadedBytes = 0
-          const agent = new https.Agent({ rejectUnauthorized: false })
-          https.get(link, { agent }, response => {
-            const total = parseInt(response.headers['content-length'])
-            this.ctx.app.store.commit('downloadSize', total)
-            response.on('data', chunk => {
-              downloadedBytes += chunk.length
-              this.ctx.app.store.commit('downloadProgress', downloadedBytes)
-            })
-            response.pipe(file)
-            file.on('finish', function () {
-              file.close(resolve)
-            })
-          }).on('error', function (err) {
-            console.error(err)
-            fs.unlink(zipName, unlinkErr => {
-              console.warn(unlinkErr)
-            })
-            reject(err.message)
-          })
-        }
-      })
-    } catch (e) {
+    const downloadedPath = path.join(addonsFolder, 'classic.jca')
+    const downloadProvider = classicVersionDefinition.provider || HTTPS_PROVIDER
+    await this.downloadAddonFile(downloadProvider, downloadUrl, downloadedPath)
+
+    const expectedChecksum = classicVersionDefinition.sha256
+    if (!expectedChecksum) {
+      this._reportManifestError('Classic add-on entry in manifest must include sha256.')
       this.ctx.app.store.commit('download', null)
+      await fs.promises.unlink(downloadedPath)
       return
     }
 
-    const checksum = sha256File(zipName)
-    if (checksum !== this.AUTO_DOWNLOADED.classic.sha256) {
+    const checksum = sha256File(downloadedPath)
+    if (checksum !== expectedChecksum) {
       console.log('classic.jca checksum mismatch ' + checksum)
       this.ctx.app.store.commit('download', {
         name: 'classic.jca',
         description: 'Error: Downloaded file has invalid checksum',
         progress: 0,
-        size: this.AUTO_DOWNLOADED.classic.size,
-        link
+        size: null,
+        link: downloadUrl
       })
-      await fs.promises.unlink(zipName)
+      await fs.promises.unlink(downloadedPath)
       return
     }
 
@@ -454,57 +544,128 @@ class Addons extends EventsBase {
       console.log('Removing outdated artwork ' + classicArtwork.folder)
       await fs.promises.rmdir(classicArtwork.folder, { recursive: true })
     }
-    await fs.createReadStream(zipName)
+    await fs.createReadStream(downloadedPath)
       .pipe(unzipper.Extract({ path: addonsFolder }))
       .promise()
-    await fs.promises.unlink(zipName)
+    await fs.promises.unlink(downloadedPath)
     this.ctx.app.store.commit('download', null)
 
-    const artwork = await this._readAddon('classic', fullPath)
+    const artwork = await this._readAddon(CLASSIC_ADDON_KEY, fullPath)
     installedAddons.unshift(artwork)
   }
 
-  async updateOutdatedAddons () {
+  downloadFileFromUrl(link, downloadStream, downloadFileName, resolve, reject, redirectCount = 0) {
+    let downloadedBytes = 0
+    let completed = false
+
+    const finishWithError = (error) => {
+      if (completed) {
+        return
+      }
+      completed = true
+      console.error(error)
+      fs.unlink(downloadFileName, unlinkErr => {
+        console.warn(unlinkErr)
+      })
+      reject(error.message)
+    }
+
+    const agent = new https.Agent({ rejectUnauthorized: false })
+
+    https.get(link, { agent }, response => {
+      const statusCode = response.statusCode || 0
+      const location = response.headers.location
+
+      if (statusCode >= 300 && statusCode < 400 && location) {
+        if (redirectCount >= 10) {
+          response.resume()
+          finishWithError(new Error(`Too many redirects while downloading ${downloadFileName}`))
+          return
+        }
+
+        const nextLink = new URL(location, link).toString()
+        console.log(`Redirecting download ${statusCode} -> ${nextLink}`)
+        response.resume()
+        this.downloadFileFromUrl(nextLink, downloadStream, downloadFileName, resolve, reject, redirectCount + 1)
+        return
+      }
+
+      const totalHeader = response.headers['content-length']
+      const total = totalHeader ? parseInt(totalHeader, 10) : NaN
+      const hasKnownSize = Number.isFinite(total) && total > 0
+
+      this.ctx.app.store.commit('downloadSize', hasKnownSize ? total : null)
+      console.log(hasKnownSize ? `Total size: ${total} bytes` : `Total size unavailable for ${link}`)
+
+      response.on('data', chunk => {
+        downloadedBytes += chunk.length
+        if (hasKnownSize) {
+          console.log(`Downloaded ${downloadedBytes} of ${total} bytes`)
+        }
+        this.ctx.app.store.commit('downloadProgress', downloadedBytes)
+      })
+
+      const responseErrorHandler = err => finishWithError(err)
+      response.on('error', responseErrorHandler)
+      downloadStream.on('error', responseErrorHandler)
+
+      response.pipe(downloadStream)
+      downloadStream.on('finish', function () {
+        if (completed) {
+          return
+        }
+        completed = true
+        console.log('Download finished, file saved to ' + downloadFileName)
+        downloadStream.close(resolve)
+      })
+    }).on('error', function (err) {
+      finishWithError(err)
+    })
+  }
+
+  async updateOutdatedAddons() {
     const installedAddons = this.addons
     const downloadable = await this.getDownloadable()
 
     let updated = false
 
     for (const installed of installedAddons) {
-        const addon = installed.id
-        const available = downloadable.find(({ key }) => key === addon)
-        
-        if (!available) continue
+      const addon = installed.id
+      const available = downloadable.find(({ key }) => key === addon)
 
-        // get the highest available version
-        const newest = available.versions.reduce((max, v) => 
-            v.version > max.version ? v : max
-        )
-        if (newest.version > installed.json.version) {
-            console.log(`Updating ${addon}: v${installed.json.version} → v${newest.version}`)
+      if (!available) continue
 
-            try {
-              updated = true
-              await this.uninstall(installed)
-              await this.installDownloadable(addon, newest.version)
-            } catch (err) {
-              console.error(`Failed updating ${addon}`, err)
-            }
+      if (available.autoUpdate === false) continue
+
+      // get the highest available version
+      const newest = available.versions.reduce((max, v) =>
+        v.version > max.version ? v : max
+      )
+      if (newest.version > installed.json.version) {
+        console.log(`Updating ${addon}: v${installed.json.version} → v${newest.version}`)
+
+        try {
+          updated = true
+          await this.uninstall(installed)
+          await this.installDownloadable(addon, newest.version)
+        } catch (err) {
+          console.error(`Failed updating ${addon}`, err)
         }
-        if (updated) {
-          await this.loadAddons()
-          if (this.$theme) {
-            await this.$theme.loadArtworks()
-          }
-          if (this.$tiles) {
-            await this.$tiles.loadExpansions()
-          }
+      }
+      if (updated) {
+        await this.loadAddons()
+        if (this.$theme) {
+          await this.$theme.loadArtworks()
         }
-    }    
-    
+        if (this.$tiles) {
+          await this.$tiles.loadExpansions()
+        }
+      }
+    }
+
   }
 
-  findMissingAddons (required) {
+  findMissingAddons(required) {
     const installed = this.addons.reduce((acc, addon) => {
       acc[addon.id] = addon.json.version
       return acc
@@ -520,7 +681,7 @@ class Addons extends EventsBase {
     return missing
   }
 
-  async _readAddon (id, fullPath) {
+  async _readAddon(id, fullPath) {
     const stats = await fs.promises.stat(fullPath)
     if (stats.isDirectory()) {
       const jsonPath = path.join(fullPath, 'jcz-addon.json')
@@ -533,12 +694,13 @@ class Addons extends EventsBase {
       }
       try {
         json.id = id
+        const remoteDownloadable = (await this.getDownloadable()).find(({ key }) => key === id)
         const addon = {
           id,
           title: json.title,
           folder: fullPath,
           json,
-          remote: this.AUTO_DOWNLOADED[id] || null
+          remote: this._getLatestVersionDefinition(remoteDownloadable)
         }
         if (!isNumber(addon.json.version)) {
           addon.error = 'Invalid add-on. Expecting number as version found string.'
@@ -567,7 +729,7 @@ class Addons extends EventsBase {
     return null
   }
 
-  async _readArtwork (id, fullPath) {
+  async _readArtwork(id, fullPath) {
     const stats = await fs.promises.stat(fullPath)
     if (stats.isDirectory()) {
       const jsonPath = path.join(fullPath, 'artwork.json')
@@ -601,7 +763,7 @@ class Addons extends EventsBase {
 export default (ctx, inject) => {
   let instance = null
   const prop = {
-    get () {
+    get() {
       if (instance === null) {
         instance = new Addons(ctx)
       }

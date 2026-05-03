@@ -315,6 +315,11 @@ export default {
 
     await this.$store.dispatch('settings/registerChangeCallback', ['theme', onThemeChange])
     await this.$store.dispatch('settings/registerChangeCallback', ['userAddons', () => { this.loadAddons() }])
+    await this.$store.dispatch('settings/registerChangeCallback', ['addonsManifestUrl', async () => {
+      this.addonsUpdated = false
+      await this.loadAddons()
+      this.$addons.emit('change')
+    }])
     await this.$store.dispatch('settings/registerChangeCallback', ['enabledArtworks', (_, source) => {
       if (source === 'load') {
         // load only when triggered by manual user change, otherwise it's cause by addon install/uninstall and reloaed from her

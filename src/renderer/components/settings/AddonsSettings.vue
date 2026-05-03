@@ -2,6 +2,28 @@
   <div>
     <h3 class="mt-2 mb-4">{{ $t('settings.add-ons.title') }}</h3>
 
+    <h4>Add-ons manifest</h4>
+    <em>Leave empty to use the built-in manifest shipped with the app.</em>
+    <v-text-field
+      v-model.lazy="addonsManifestUrl"
+      class="manifest-url"
+      clearable
+      dense
+      hide-details
+      outlined
+      label="Manifest URL"
+      placeholder="Built-in default"
+      @click:clear="addonsManifestUrl = null"
+    />
+    <v-btn
+      class="mt-2"
+      small
+      text
+      @click="resetManifestUrl"
+    >
+      Use built-in default
+    </v-btn>
+
     <v-alert
       v-if="gameOpen"
       type="warning"
@@ -111,6 +133,14 @@ export default {
   },
 
   computed: {
+    addonsManifestUrl: {
+      get () { return this.$store.state.settings.addonsManifestUrl || '' },
+      set (val) {
+        const normalized = typeof val === 'string' ? val.trim() : ''
+        this.$store.dispatch('settings/update', { addonsManifestUrl: normalized || null })
+      }
+    },
+
     availableAddons() {
       return this.availableAddonsList.length>0
     },
@@ -127,6 +157,10 @@ export default {
   },
 
   methods: {
+    resetManifestUrl () {
+      this.addonsManifestUrl = null
+    },
+
     onDragover () {
       this.dragover = true
     },
@@ -159,8 +193,10 @@ export default {
     },
 
     async installAddon(addon) {
-      if (addon.installing) return
+      if (addon.installing)
+        return
       addon.installing = true
+      this.errors = []
       try {
         await this.$addons.installDownloadable(addon.key, addon.versions[0].version)
         addon.installed = true
@@ -175,7 +211,7 @@ export default {
     async installDownloadable (addon, version) {
       try {
         await this.$addons.installDownloadable(addon, version)
-	    this.loadAvailableAddons()
+	      this.loadAvailableAddons()
       } catch (e) {
         this.showAlert = true
         this.errors.push(e + '')
@@ -213,7 +249,7 @@ export default {
 
     getAddons () {
       // hide default
-      return this.$addons.addons.filter(addon => (!addon.hidden && addon.id != 'classic'))
+      return this.$addons.addons.filter(addon => !addon.hidden)
     },
     
     async loadAvailableAddons () {

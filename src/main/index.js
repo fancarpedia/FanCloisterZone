@@ -16,6 +16,7 @@ import winevents from './modules/winevents'
 import settingsWatch from './modules/settingsWatch'
 import localServer from './modules/localServer'
 import installer from './modules/installer'
+import addonDefaults from './modules/addonDefaults'
 
 import RPC from 'discord-rpc'
 
@@ -152,6 +153,7 @@ app.whenReady().then(() => {
     const appVersion = getAppVersion()
     modules.push(updater(settings, appVersion))
     modules.push(installer())
+    addonDefaults()
 
     if (process.env.NODE_ENV === 'production') {
       modules.push(updater(settings))

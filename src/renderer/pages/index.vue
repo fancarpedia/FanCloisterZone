@@ -47,7 +47,9 @@
       <v-alert v-if="artworksLoaded && !hasClassicAddon" type="warning">
         {{ $t('settings.add-ons.artwork-not-found-internet-connection-is-needed') }}<br>
         {{ $t('settings.add-ons.please-check-connectivity-and-restart-app') }}<br>
-        <small>{{ $t('settings.add-ons.add-on-url') }}: <a :href="$addons.getDefaultArtworkUrl()" @click.prevent="openLink($addons.getDefaultArtworkUrl())">>{{ $addons.getDefaultArtworkUrl() }}</a></small>
+        <small v-if="classicAddonUrl">
+          {{ $t('settings.add-ons.add-on-url') }}: <a :href="classicAddonUrl" @click.prevent="openLink(classicAddonUrl)">{{ classicAddonUrl }}</a>
+        </small>
       </v-alert>
       <div v-if="download" class="download">
         <v-progress-linear
@@ -174,6 +176,7 @@ export default {
       // do not bind it to store
       recentSaves: [...this.$store.state.settings.recentSaves],
       updating: false,
+      classicAddonUrl: '',
       showRecentSetupMenu: false,
       menuX: null,
       menuY: null,
@@ -220,7 +223,15 @@ export default {
     },*/
     settingsLoaded () {
       this.recentSaves = [...this.$store.state.settings.recentSaves]
+    },
+
+    'settings.addonsManifestUrl' () {
+      this.refreshClassicAddonUrl()
     }
+  },
+
+  async mounted () {
+    await this.refreshClassicAddonUrl()
   },
 
   methods: {
@@ -279,7 +290,16 @@ export default {
     },
 
     afterAddonsReloaded () {
-      // DEL ?
+      this.refreshClassicAddonUrl()
+    },
+
+    async refreshClassicAddonUrl () {
+      try {
+        const urls = await this.$addons.getDefaultArtworkUrl()
+        this.classicAddonUrl = Array.isArray(urls) ? (urls.find(Boolean) || '') : (urls || '')
+      } catch {
+        this.classicAddonUrl = ''
+      }
     },
 
     showRecentSetup (e, idx) {
