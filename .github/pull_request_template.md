@@ -6,6 +6,11 @@
 
 ---
 
+## Before You Start
+- [ ] I discussed this change on Discord before implementation (if applicable)
+
+---
+
 ## Checklist
 
 ### Scope
@@ -36,11 +41,6 @@
 - [ ] All text uses the i18n system
 - [ ] New translation keys are added where needed
 - [ ] English translation is provided
-
----
-
-## Before You Start
-- [ ] I discussed this change on Discord before implementation (if applicable)
 
 ---
 
