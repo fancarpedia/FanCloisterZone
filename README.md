@@ -2,9 +2,11 @@
 
 Updated original JCloisterZone with many improvements.
 Also support of many fan-expansions, chat during game, lobby.
-All issues on FanCloisterZone report on [Discord](https://discord.gg/CswNeVg3eS)
+All issues on FanCloisterZone report on [Discord](htt
+ps://discord.gg/CswNeVg3eS)
 
 ## Supported Fan Expansions
+
 * [Black Tower](https://wikicarpedia.com/car/Black_Tower_(Fan_Expansion))
 * [City Gates, The](https://wikicarpedia.com/car/The_City_Gates_(1st_edition))
 * [Decinsky Sneznik](https://wikicarpedia.com/car/D%C4%9B%C4%8D%C3%ADnsk%C3%BD_Sn%C4%9B%C5%BEn%C3%ADk_(Fan_Expansion))
@@ -20,20 +22,21 @@ All issues on FanCloisterZone report on [Discord](https://discord.gg/CswNeVg3eS)
 * [Wells, The](https://wikicarpedia.com/car/The_Wells_(Fan_Expansion))
 
 ### Upcomming
+
 * The Courier
 * The Carousel
 * Castle Lords
 
 ## Engine
 
-Engine for game can be found on https://github.com/fancarpedia/JCloisterZoneEngine
-
+Engine for game can be found on [JCloisterZoneEngine](https://github.com/fancarpedia/JCloisterZoneEngine)
 
 ## I want to help
 
 There is several options how you halp help this open-source project. You can ask on our [Discord](https://discord.gg/3qpHWN8k)
 
 ### How I can help
+
 * Better UI
 * Better AI/Bot answers / quicker response
 * Creating addons for new fan expansions - tile shapes and/or game mechanics
@@ -43,7 +46,7 @@ There is several options how you halp help this open-source project. You can ask
 
 #### Build Setup
 
-``` bash
+```sh
 # install dependencies
 yarn install
 
@@ -61,7 +64,7 @@ yarn run lint
 
 Engine.jar is not included in repository. Download latest with
 
-``` bash
+```sh
 yarn download-game-engine
 ```
 
@@ -71,26 +74,29 @@ Another option is running against dev version of engine.
 Run engine listening to socket. It will be usualy started using Java IDE.
 Add program args to run configuration
 
-```
+```sh
 java -Dorg.slf4j.simpleLogger.log.AIRanking=debug -ea -jar build\Engine.jar -port 9001
 ```
 
 Add engine's socket address to jcz-config.json (you can find location in Main menu / Help / About)
-```
+
+```sh
 "enginePath": "localhost:9001",
 ```
 
 ### Run second client with different config in dev
 
-```
+```sh
 JCZ_CONFIG=/home/user/.config/Electron/jcz-config-2.json JCZ_NETWORK_DELAY=1-50 yarn dev
 ```
 
 ## Special downgrades
+
 Envoronment requires node 16, yarn 1, java 17
 
 ### On Mac
-```
+
+```sh
 corepack disable
 npm uninstall -g yarn
 npm install -g yarn@1
@@ -99,17 +105,22 @@ yarn --version
 ```
 
 ### Every Operating Systems
+
 Check if version is 1.22.x
-```
+
+```sh
 nvm install 16
 nvm use 16
 node --version
 ```
-Check if version is 16.x.x 
+
+Check if version is 16.x.x
 
 ### Update package.json (macOS)
+
 Add package manager witch current yarn version
-```
+
+```json
   "packageManager": "yarn@1.22.22"
 ```
 
@@ -123,13 +134,15 @@ Add package manager witch current yarn version
 `src/renderer/assets/styles/themes.scss`
 
 * Use that value in Vue component
-```
+
+```js
 element
   +theme using ($theme)
   css-property: map-get($theme, 'new-value-key')
-``` 
+```
 
 #### Use theme in Vue compoments
+
 `const theme = this.$vuetify.theme.dark ? 'dark' : 'light'`
 
 ### Add new language
@@ -150,7 +163,9 @@ element
 `src/renferer/nuxt.config.js`
 
 ### Use translated texts in Vue
+
 #### Usage in `<template>`
+
 As parameter: `:parameter="$t('about.fantitle')"`
 
 As text: `{{ $t('about.fantitle') }}`
@@ -162,28 +177,34 @@ As text: `{{ $t('about.fantitle') }}`
 $nuxt.$t('index.local.saved-game')
 
 ### Mark texts for translation
+
 `<!-- TRANSLATE -->`
 
 ### Add package failed with Webpack 4 or Node 16 (by use babe this.config?.something or this.value ?? failvervalue
 
 * Append file to `babelRequiredFiles` in `src/renderer/nuxt.config.js` as example for `megajs`
-  ```
+
+  ```js
   const babelRequiredPaths = [
     path.resolve(require.resolve('megajs'), '..', '..')
   ]
   ```
-### Prepare build 
+
+### Prepare build
 
 #### Load all locales
+
   `yarn locale-updates`
 
 #### Try to build to test installation
+
   `yarn build`
 
 #### Update package.json for current app version
 
 #### Github stuff for create a release
-  ```
+  
+  ```sh
   git push
   git tag -a RELEASE
   git push origin RELEASE
