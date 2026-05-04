@@ -2,7 +2,8 @@
 
 Updated original JCloisterZone with many improvements.
 Also support of many fan-expansions, chat during game, lobby.
-All issues on FanCloisterZone report on [Discord](https://discord.gg/CswNeVg3eS)
+All issues on FanCloisterZone report on [Discord](htt
+ps://discord.gg/CswNeVg3eS)
 
 ## Supported Fan Expansions
 
@@ -45,7 +46,7 @@ There is several options how you halp help this open-source project. You can ask
 
 #### Build Setup
 
-``` bash
+```sh
 # install dependencies
 yarn install
 
@@ -63,7 +64,7 @@ yarn run lint
 
 Engine.jar is not included in repository. Download latest with
 
-``` bash
+```sh
 yarn download-game-engine
 ```
 
