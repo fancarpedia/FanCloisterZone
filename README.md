@@ -128,7 +128,9 @@ Add package manager witch current yarn version
 
 ### Pull Request Guidelines
 
-Avoid mistakes by submitting clean, focused, and ready-to-merge pull requests.
+To avoid mistakes, submit clean, focused, and ready-to-merge pull requests.
+
+Before starting work, discuss your idea on our Discord server.
 
 #### One Idea per Pull Request
 
