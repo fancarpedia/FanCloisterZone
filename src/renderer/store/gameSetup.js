@@ -37,8 +37,9 @@ export const state = () => ({
   rules: null,
   start: null,
   timer: null,
+  gameAnnotations: {},
   ai: false,
-  gameAnnotations: {}
+  editingGameId: null
 })
 
 export const mutations = {
@@ -52,12 +53,17 @@ export const mutations = {
     state.timer = null
     state.gameAnnotations = {}
     state.ai = false
+    state.editingGameId = null
   },
   
   setAI (state) {
     state.ai = true
   },
 
+  setEditingGameId (state, id) {
+    state.editingGameId = id
+  },
+  
   setup (state, setup) {
     state.sets = setup.sets
     state.excludedSets = setup.excludedSets
@@ -66,6 +72,7 @@ export const mutations = {
     state.start = setup.start
     state.timer = setup.timer
     state.gameAnnotations = {}
+    state.ai = setup.ai
   },
 
   gameAnnotations (state, gameAnnotations) {
@@ -253,6 +260,15 @@ export const actions = {
       payload: { gameId: rootState.game.id, number }
     })
   },
+  
+  async changeGameSetup ({ state, commit, rootState, dispatch }) {
+    const existingSetup = rootState.game.setup
+    const existingGameId = rootState.game.id
+
+    commit('setEditingGameId', existingGameId)
+    await dispatch('load', existingSetup)
+    this.$router.push('/game-setup')
+  },
 
   async createGame ({ state, commit, getters, dispatch }, { loadedSetup, slots } = {}) {
     const { $tiles } = this._vm
@@ -300,13 +316,22 @@ export const actions = {
     })
     setup.rules = rules
 
-    const finalSlots = slots || getEmptySlots()
+    if (state.editingGameId) {
+      // Update existing game instead of creating a new one
+      this._vm.$connection.send({
+        type: 'UPDATE_GAME_SETUP',
+        payload: { gameId: state.editingGameId, setup }
+      })
+      commit('setEditingGameId', null)
+    } else {
+      const finalSlots = slots || getEmptySlots()
 
-    dispatch('networking/startServer', {
-      setup,
-      slots: finalSlots,
-      gameAnnotations: state.gameAnnotations
-    }, { root: true })
+      dispatch('networking/startServer', {
+        setup,
+        slots: finalSlots,
+        gameAnnotations: state.gameAnnotations
+      }, { root: true })
+    }
   }
 }
 

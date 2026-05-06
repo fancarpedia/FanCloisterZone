@@ -42,6 +42,12 @@
         <strong class="game-key" @click="selectOnClick">{{ gameKey }}</strong>
       </div>
 
+      <HeaderChangeSetupButton
+        v-if="isOwner"
+        :title="$t('button.change')"
+        @click="changeGameSetup"
+      />
+
       <HeaderGameButton
         v-if="isOwner"
         :title="$t('button.start')"
@@ -123,6 +129,7 @@ import { mapGetters, mapState } from 'vuex'
 import GameSetupOverview from '@/components/game-setup/overview/GameSetupOverview'
 import GameSetupGrid from '@/components/game-setup/GameSetupGrid'
 import HeaderGameButton from '@/components/game-setup/HeaderGameButton'
+import HeaderChangeSetupButton from '@/components/game-setup/HeaderChangeSetupButton'
 import HeaderLeaveGameButton from '@/components/game-setup/HeaderLeaveGameButton'
 import HeaderMessage from '@/components/game-setup/HeaderMessage'
 import PlayerSlot from '@/components/game-setup/PlayerSlot'
@@ -131,6 +138,7 @@ export default {
   components: {
     GameSetupOverview,
     GameSetupGrid,
+    HeaderChangeSetupButton,
     HeaderGameButton,
     HeaderLeaveGameButton,
     HeaderMessage,
@@ -250,6 +258,10 @@ export default {
   methods: {
     startGame () {
       this.$store.dispatch('game/start')
+    },
+
+    async changeGameSetup () {
+      await this.$store.dispatch('gameSetup/changeGameSetup')
     },
 
     async leaveGame () {

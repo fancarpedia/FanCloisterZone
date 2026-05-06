@@ -22,9 +22,6 @@ export const actions = {
     commit('alertMessage', null),
     commit('gameList', []),
     commit('gamePublicList', [])
-  },
-
-  gameUpdate ({ state, commit }, payload) {
-    console.log('TODO handle GAME_UPDATE', payload)
   }
+
 }

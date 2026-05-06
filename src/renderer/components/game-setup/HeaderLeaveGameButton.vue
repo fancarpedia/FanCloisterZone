@@ -18,7 +18,6 @@ export default {
 .header-leavegame-button
   display: flex
   align-items: center
-  padding-left: 1ex
   
   button.v-btn
     padding: 0

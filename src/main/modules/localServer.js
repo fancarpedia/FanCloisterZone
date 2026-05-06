@@ -365,6 +365,30 @@ class GameServer {
     this.send(ws, this.createGameMessage())
   }
 
+  async handleUpdateGameSetup (ws, { payload: { gameId, setup } }) {
+    if (this.status === 'started') {
+      this.send(ws, { type: 'ERR', code: 'illegal-game-state', message: 'Game is already started' })
+      return
+    }
+
+    if (this.game.owner !== ws.clientId) {
+      this.send(ws, { type: 'ERR', code: 'game-owner', message: 'Not a game owner' })
+      return
+    }
+
+    if (this.game.gameId !== gameId ) {
+      this.send(ws, { type: 'ERR', code: 'illegal-game', message: 'Illegal update game request' })
+      return
+    }
+
+    this.game.setup = setup
+
+    this.broadcast({
+      type: 'GAME_UPDATE',
+      payload: { gameId: this.game.gameId, setup }
+    })
+  }
+
   async handleTakeSlot (ws, { payload: { number, name } }) {
     if (this.status === 'started') {
       this.send(ws, { type: 'ERR', code: 'illegal-game-state', message: 'Game is already started' })

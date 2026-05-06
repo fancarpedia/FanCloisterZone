@@ -57,6 +57,14 @@ const computeClock = (playersCount, messages) => {
   return clocks
 }
 
+const applySetup = (state, value, vm) => {
+  const { $tiles } = vm
+  state.setup = value
+  if (value) {
+    state.packSize = $tiles.getPackSize(value.sets, value.rules)
+  }
+}
+
 // chiild process can't be part of store itself, because it's internals are mutated be own
 // causing Error: [vuex] do not mutate vuex store state outside mutation handlers
 // theme $engine is used instead to store engine instance
@@ -170,12 +178,14 @@ export const mutations = {
     state.ai = value
   },
 
+  updateSetup (state, value) {
+    const options = state.setup.options
+    value.options = options
+    applySetup(state, value, this._vm)
+  },
+  
   setup (state, value) {
-    const { $tiles } = this._vm
-    state.setup = value
-    if (value) {
-      state.packSize = $tiles.getPackSize(value.sets, value.rules)
-    }
+    applySetup(state, value, this._vm)
   },
 
   options (state, options) {

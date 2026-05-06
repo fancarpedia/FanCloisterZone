@@ -15,7 +15,12 @@
       </v-tabs>
 
       <HeaderMessage v-if="tab > 0" :sets="sets" />
-      <HeaderGameButton v-if="tab > 0" :title="$t('button.create')" :sets="sets" @click="createGame" />
+      <HeaderGameButton
+        v-if="tab > 0"
+        :title="$t(gameId !== null ? 'button.continue' : 'button.create')"
+        :sets="sets"
+        @click="createGame"
+      />
       <HeaderLeaveGameButton :title="$t('menu.leave-game')" @click="leaveGame" />
       
     </template>
@@ -87,6 +92,7 @@ export default {
   computed: {
     ...mapState({
       ai: state => state.gameSetup.ai,
+      gameId: state => state.game.id,
       sets: state => state.gameSetup.sets,
       rules: state => state.gameSetup.rules,
       detail: state => state.gameSetup.detail,

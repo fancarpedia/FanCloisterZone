@@ -35,4 +35,5 @@ export default {
 .header-game-button
   display: flex
   align-items: center
+  padding-right: 1ex
 </style>
