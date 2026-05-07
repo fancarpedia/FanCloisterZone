@@ -4,7 +4,7 @@
       v-for="{id, count, remainingCount, rotation } in tiles"
       :key="id"
       class="tile"
-      :class="{noleft: remainingCount === 0}"
+      :class="{noleft: remainingCount === 0 && remaining}"
     >
       <StandaloneTileImage
         :tile-id="id"
