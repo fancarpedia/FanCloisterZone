@@ -12,7 +12,11 @@
         :rotation="rotation"
         @click.native="$emit('tile-click', id, count)"
       />
-      <div class="count">{{ remainingCount }} <span v-if="!availableOnly" class="total">/ {{ count }}</span></div>
+      <div class="count">
+        <span v-if="remaining">{{ remainingCount }}</span>
+        <span v-if="remaining && !availableOnly" class="total">/</span>
+        <span v-if="!availableOnly">{{ count }}</span>
+      </div>
     </div>
 
     <div v-if="sets.count && !availableOnly" class="tile noleft">
@@ -41,7 +45,8 @@ export default {
     sets: { type: Object, required: true },
     rules: { type: Object, default: null },
     tileSize: { type: Number, default: 100 },
-    availableOnly: { type: Boolean, default: false }
+    availableOnly: { type: Boolean, default: false },
+    remaining: { type: Boolean, default: true }
   },
 
   computed: {
@@ -117,7 +122,7 @@ export default {
     padding: 4px 0
     margin-bottom: 10px
     font-weight: 300
-    font-size: 26px
+    font-size: 20px
 
     .total
       font-size: 16px

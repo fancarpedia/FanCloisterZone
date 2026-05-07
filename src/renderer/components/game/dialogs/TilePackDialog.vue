@@ -31,7 +31,7 @@
       <template v-if="options.puristTiles">
         <h2>{{ $t('game.tile-pack-dialog.game-tiles') }}</h2>
         <p>{{ $t('game.tile-pack-dialog.disabled-show-remaining') }}</p>
-        <TileDistribution :sets="sets" :rules="rules" />
+        <TileDistributionLive :sets="sets" :rules="rules" :remaining="false" />
       </template>
       <template v-else>
         <h2>{{ $t('game.tile-pack-dialog.remaining-tiles') }}</h2>
@@ -45,8 +45,7 @@
             {{ $tc('game.tile-pack-dialog.hidden-tiles-under-hill-plural', underHills) }}
           </p>
         </div>
-
-        <TileDistributionLive :sets="sets" :rules="rules" :available-only="showAvailableOnly" />
+        <TileDistributionLive :sets="sets" :rules="rules" :remaining="true" :available-only="showAvailableOnly" />
       </template>
     </v-card-text>
     <v-card-actions>
@@ -63,13 +62,11 @@
 import { mapState } from 'vuex'
 
 import TileDistributionLive from '@/components/game/dialogs/TileDistributionLive'
-import TileDistribution from '@/components/TileDistribution'
 import StandaloneTileImage from '@/components/game/StandaloneTileImage'
 
 export default {
   components: {
     StandaloneTileImage,
-    TileDistribution,
     TileDistributionLive
   },
 
