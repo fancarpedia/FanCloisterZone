@@ -49,7 +49,7 @@ async function createMenu(win, messages) {
         { id: 'rotate', label: $t('menu.rotate') || 'Rotate', accelerator: 'r', registerAccelerator: false, click() { win.webContents.send('menu.rotate') } },
         { type: 'separator' },
         { id: 'game-tiles', label: $t('menu.tiles') || 'Tiles', click() { win.webContents.send('menu.game-tiles') } },
-        { id: 'game-farm-hints', label: $t('menu.farm-hints') || 'Farm Hints', click() { win.webContents.send('menu.game-farm-hints') } },
+        { id: 'game-farm-hints', label: $t('menu.farm-hints') || 'Farm Hints', accelerator: 'f', registerAccelerator: false, click() { win.webContents.send('menu.game-farm-hints') } },
         { id: 'toggle-history', label: $t('menu.toggle-history') || 'Toggle History', accelerator: 'h', registerAccelerator: false, click() { win.webContents.send('menu.game-history') } }
       ]
     }, {

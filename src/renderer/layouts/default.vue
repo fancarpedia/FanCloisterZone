@@ -226,14 +226,7 @@ export default {
       this.$store.commit('showGameTiles', !this.$store.state.showGameTiles)
     })
     ipcRenderer.on('menu.game-farm-hints', () => {
-      if (this.$store.state.board.layers.FarmHintsLayer) {
-        this.$store.dispatch('board/hideLayer', { layer: 'FarmHintsLayer' })
-      } else {
-        this.$store.dispatch('board/showLayer', {
-          layer: 'FarmHintsLayer',
-          props: {}
-        })
-      }
+      this.$store.commit('toggleGameFarmHints')
     })
     ipcRenderer.on('menu.game-history', () => {
       this.$store.commit('toggleGameHistory')

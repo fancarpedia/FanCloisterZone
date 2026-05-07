@@ -178,6 +178,7 @@ export default {
     } else {
       this.offsetY = ACTION_PANEL_HEIGHT + parseInt((rect.height - this.boardHeight - ACTION_PANEL_HEIGHT) / 2)
     }
+    	
 
     this.pressedKeys = {}
     // this._onKeyDown = this.onKeyDown.bind(this)
@@ -201,6 +202,16 @@ export default {
     this.$root.$off('request-rotate', this.onRequestRotate)
   },
 
+  watch: {
+    '$store.state.showGameFarmHints' (value) {
+      if (value) {
+        this.$store.dispatch('board/showLayer', { layer: 'FarmHintsLayer', props: {} })
+      } else {
+        this.$store.dispatch('board/hideLayer', { layer: 'FarmHintsLayer' })
+      }
+    }
+  },  
+  
   methods: {
     onKeyDown (ev) {
       if (['a', 's', 'd', 'w', 'r', 't', 'h', 'f'].includes(ev.key) && !this.$store.state.gameDialog && !this.$store.state.gameChatEdit) {
@@ -232,7 +243,7 @@ export default {
               pressed = true
             }
             if (this.pressedKeys.f) {
-              console.log('Pressed f')
+              this.$store.commit('toggleGameFarmHints')
             }
             if (this.pressedKeys.h) {
               this.$store.commit('toggleGameHistory')
@@ -362,7 +373,7 @@ export default {
       this.rotate = rotate
       this.adjustAfterMove()
     },
-
+    
   }
 }
 </script>
