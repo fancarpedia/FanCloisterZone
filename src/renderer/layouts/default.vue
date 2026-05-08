@@ -498,6 +498,9 @@ svg, g, use
   &.donkey
     fill: $donkey-color
 
+  &.courier
+    fill: $courier-color
+
 .settings-dialog
   height: 80vh
   display: grid
