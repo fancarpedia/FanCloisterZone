@@ -2,8 +2,7 @@
 
 Updated original JCloisterZone with many improvements.
 Also support of many fan-expansions, chat during game, lobby.
-All issues on FanCloisterZone report on [Discord](htt
-ps://discord.gg/CswNeVg3eS)
+All issues on FanCloisterZone report on [Discord](https://discord.gg/CswNeVg3eS)
 
 ## Supported Fan Expansions
 
