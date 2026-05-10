@@ -1,7 +1,9 @@
 # FanCloisterZone Edition
 
-Updated original JCloisterZone with many improvements.
+Enhanced original [JCloisterZone](https://github.com/farin/JCloisterZone-Client) with many improvements.
+
 Also support of many fan-expansions, chat during game, lobby.
+
 All issues on FanCloisterZone report on [Discord](https://discord.gg/CswNeVg3eS)
 
 ## Supported Fan Expansions
