@@ -3,30 +3,47 @@
 
     <v-container class="test-runner-container">
       <div class="test-runner-header">
-        <h1>{{ $nuxt.$t('dev.test-runner') }}</h1>
+        <div class="test-runner-header-topbar">
+          <h1>{{ $nuxt.$t('dev.test-runner') }}</h1>
 
-        <div>
-          <v-btn color="primary" @click="toggleRunAll">
-            {{ isRunningAll ? $nuxt.$t('button.stop-running') : $nuxt.$t('button.run-all') }}
-          </v-btn>
+          <div class="middle">
+            <v-btn color="primary" @click="toggleRunAll">
+              {{ isRunningAll ? $nuxt.$t('button.stop-running') : $nuxt.$t('button.run-all') }}
+            </v-btn>
 
-          <v-btn color="secondary" @click="toggleFinished">
-            {{ !hideFinished ? $nuxt.$t('button.hide-finished') : $nuxt.$t('button.show-all') }}
-          </v-btn>
+            <v-btn color="secondary" @click="toggleFinished">
+              {{ !hideFinished ? $nuxt.$t('button.hide-finished') : $nuxt.$t('button.show-all') }}
+            </v-btn>
 
-          <v-btn color="secondary" @click="resetFailed">
-            {{ $nuxt.$t('button.reset-failed') }}
-          </v-btn>
+            <v-btn color="secondary" @click="resetFailed">
+              {{ $nuxt.$t('button.reset-failed') }}
+            </v-btn>
 
-          <v-btn color="secondary" @click="resetAll">
-            {{ $nuxt.$t('button.reset-all') }}
-          </v-btn>
+            <v-btn color="secondary" @click="resetAll">
+              {{ $nuxt.$t('button.reset-all') }}
+            </v-btn>
+          </div>
 
+          <div>
+            <v-btn to="/" color="secondary" class="error close" @click="resetFailed">
+              <v-icon left>fa-times</v-icon>
+              {{ $t('button.close') }}
+            </v-btn>
+          </div>
         </div>
-        <v-btn to="/" color="secondary" class="error close" @click="resetFailed">
-          <v-icon left>fa-times</v-icon>
-          {{ $t('button.close') }}
-        </v-btn>
+
+        <div class="expansions">
+          <div
+            v-for="expansion in expansions"
+            :key="expansion.name"
+            class="set"
+            :class="{ selected: selectedExpansions.includes(expansion.name.toLowerCase().replace(/_/g, '-')) }"
+            :title="expansion.name"
+            @click="toggleExpansion(expansion)"
+          >
+            <ExpansionSymbol :expansion="expansion" />
+          </div>
+        </div>
 
       </div>
 
@@ -40,7 +57,7 @@
             </tr>
           </thead>
           <tbody>
-           <template v-for="(test, idx) in tests">
+           <template v-for="(test, idx) in filteredTests">
             <tr
               v-if="!hideFinished || !test.result || !test.result.ok"
               :key="test.file"
@@ -90,14 +107,30 @@ import path from 'path'
 import Vue from 'vue'
 import omit from 'lodash/omit'
 import { Expansion } from '@/models/expansions'
+import ExpansionSymbol from '@/components/ExpansionSymbol'
 
 export default {
+  components: {
+    ExpansionSymbol
+  },
+
   data() {
     return {
       hideFinished: false,
-   	  isRunningAll: false,
+      isRunningAll: false,
       stopRunning: false,
-      tests: []
+      tests: [],
+      selectedExpansions: [],
+      expansions: Expansion.all()
+    }
+  },
+
+  computed: {
+    filteredTests () {
+      if (this.selectedExpansions.length === 0) return this.tests
+      return this.tests.filter(test =>
+        this.selectedExpansions.every(exp => test.requiredSets && test.requiredSets.includes(exp))
+      )
     }
   },
 
@@ -117,6 +150,7 @@ export default {
           const filePath = path.join(testFolder, subfolder, f)
           let disabled = false
           let error = []
+          let requiredSets = []
 
           try {
             const fileContent = await fs.promises.readFile(filePath, 'utf-8')
@@ -126,7 +160,7 @@ export default {
               disabled = true
               error.push(`Save file has no test defined`)
             }
-            const requiredSets = Object.keys(setsRaw).map(set =>
+            requiredSets = Object.keys(setsRaw).map(set =>
               set.split(/:|,v|\//)[0].toLowerCase().replace(/_/g, '-')
             );
             const missing = requiredSets.filter(set => !installedSets.includes(set))
@@ -143,7 +177,8 @@ export default {
             name: path.join(subfolder, f).replace('.jcz', ''),
             file: filePath,
             disabled,
-            error: error.join(', ')
+            error: error.join(', '),
+            requiredSets
           })
         }
       }
@@ -166,6 +201,16 @@ export default {
   },
 
   methods: {
+    toggleExpansion (expansion) {
+      const name = expansion.name.toLowerCase().replace(/_/g, '-')
+      const idx = this.selectedExpansions.indexOf(name)
+      if (idx === -1) {
+        this.selectedExpansions.push(name)
+      } else {
+        this.selectedExpansions.splice(idx, 1)
+      }
+    },
+
     open({ file }) {
       this.$store.commit('runningTests', false)
       this.$store.dispatch('game/load', { file })
@@ -173,9 +218,10 @@ export default {
 
     async run(test, idx) {
       if (test.disabled) return
-      Vue.set(this.tests, idx, omit(test, ['result']))
+      const globalIdx = this.tests.indexOf(test)
+      Vue.set(this.tests, globalIdx, omit(test, ['result']))
       const result = await this.runTest(test.file)
-      Vue.set(this.tests, idx, { ...test, result })
+      Vue.set(this.tests, globalIdx, { ...test, result })
     },
 
     async toggleRunAll() {
@@ -183,12 +229,13 @@ export default {
         this.isRunningAll = true
         this.stopRunning = false
 
-        for (let idx = 0; idx < this.tests.length; idx++) {
-          const test = this.tests[idx]
+        for (let idx = 0; idx < this.filteredTests.length; idx++) {
+          const test = this.filteredTests[idx]
           if (this.stopRunning) break
           if (test.disabled || test.result) continue
+          const globalIdx = this.tests.indexOf(test)
           const result = await this.runTest(test.file)
-          Vue.set(this.tests, idx, { ...test, result })
+          Vue.set(this.tests, globalIdx, { ...test, result })
         }
 
         this.isRunningAll = false
@@ -252,9 +299,6 @@ export default {
 </script>
 
 <style lang="sass" scoped>
-h1
-  margin-bottom: 20px
-
 .disabled
   opacity: 0.6
 
@@ -265,29 +309,52 @@ h1
   overflow: hidden
 
 .test-runner-header
-  position: fixed
-  top: 0
-  left: 0
-  right: 0
-  height: 70px
-  display: flex
+  height: auto
+  min-height: 70px
   align-items: center
-  justify-content: space-between
-  padding: 0 20px
+  justify-content: center
+  gap: 8px
+  padding: 10px 20px
   border-bottom: 1px solid #ddd
   z-index: 10
 
-.test-runner-header h1
-  margin: 0
-  font-size: 20px
+  > div:not(.expansions)
+    display: flex
+    align-items: center
+    gap: 8px
 
-.test-runner-header .buttons
+.test-runner-header-topbar
   display: flex
-  gap: 10px
+  
+  .middle
+    text-align: center
 
+  div:not(.middle), h1
+    flex: 0 0 auto
+    
+  div.middle
+    flex: 1
+
+.expansions
+  display: flex
+  flex-wrap: wrap
+  justify-content: center
+  margin-top: 5px
+
+  svg
+    cursor: pointer
+    width: 32px
+    height: 32px
+    margin: 2px
+
+    +theme using ($theme)
+      fill: map-get($theme, 'text-color')
+
+  .selected svg
+    +theme using ($theme)
+      fill: var(--v-primary-base)
 
 .test-runner-table
-  margin-top: 70px
   flex: 1
   overflow-y: auto
 
