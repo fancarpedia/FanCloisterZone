@@ -17,10 +17,10 @@
     >
       <polygon
         :transform="transformPosition(targetPosition)"
-        points="-50,-50, 950,-50, 950,950, -50,950"
+        points="-25,-25, 925,-25, 925,925, -25,925"
         fill="none"
         stroke="red"
-        stroke-width="40"
+        stroke-width="50"
         stroke-opacity="0.8"
       />
     </g>
@@ -46,9 +46,15 @@ export default {
     },
 
     targetPosition () {
-      const item = this.$store.state.game.action.items[0]
+      let item = null
+      try {
+        item = this.$store.state.game.action.items[0]
+      } catch {}
       if (!item) return null
-      return item.options[0]?.position
+      try {
+        return item.options[0]?.position
+      } catch {}
+        return null
     }
   }
 }

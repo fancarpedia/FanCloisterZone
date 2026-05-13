@@ -39,7 +39,7 @@
     <div
       v-for="(item, idx) in items"
       :key="action.phase + item.type + (item.meeple || item.figureId || item.token)"
-      :class="{'action-item': true, active: idx === selected }"
+      :class="{'action-item': true, active: idx === selected && local }"
       @click="select(idx)"
     >
       <MeeplePlacementItem
@@ -49,69 +49,69 @@
         :options="item.options"
         :origin="item.origin"
         :phase="phase"
-        :active="idx === selected"
+        :active="idx === selected && local"
         :coc="phase === 'CocScoringPhase' || phase === 'CocFinalScoringPhase'"
       />
       <MoveFairyNextToItem
         v-else-if="item.type == 'MoveFairyNextTo'"
         :figure-id="item.figureId"
         :options="item.options"
-        :active="idx === selected"
+        :active="idx === selected && local"
       />
       <MoveFairyOnTileItem
         v-else-if="item.type == 'MoveFairyOnTile'"
         :figure-id="item.figureId"
         :options="item.options"
-        :active="idx === selected"
+        :active="idx === selected && local"
       />
       <NeutralFigureItem
         v-else-if="item.type == 'NeutralFigure'"
         :figure-id="item.figureId"
         :options="item.options"
-        :active="idx === selected"
+        :active="idx === selected && local"
       />
       <ReturnMeepleItem
         v-else-if="item.type == 'ReturnMeeple'"
         :player="action.player"
         :source="item.source"
         :options="item.options"
-        :active="idx === selected"
+        :active="idx === selected && local"
       />
       <TowerPieceItem
         v-else-if="item.type == 'TowerPiece'"
         :options="item.options"
         :token="item.token"
-        :active="idx === selected"
+        :active="idx === selected && local"
       />
       <BridgeItem
         v-else-if="item.type == 'Bridge'"
         :options="item.options"
-        :active="idx === selected"
+        :active="idx === selected && local"
       />
       <TunnelItem
         v-else-if="item.type == 'Tunnel'"
         :player="action.player"
         :token="item.token"
         :options="item.options"
-        :active="idx === selected"
+        :active="idx === selected && local"
       />
       <LittleBuildingItem
         v-else-if="item.type == 'LittleBuilding'"
         :token="item.token"
         :position="item.position"
-        :active="idx === selected"
+        :active="idx === selected && local"
       />
       <ScoreAcrobatsItem
         v-else-if="item.type == 'ScoreAcrobats'"
         :player="action.player"
         :options="item.options"
-        :active="idx === selected"
+        :active="idx === selected && local"
       />
       <MoveDonkeyOnTileItem
         v-else-if="item.type == 'MoveDonkeyOnTile'"
         :figure-id="item.figureId"
         :options="item.options"
-        :active="idx === selected"
+        :active="idx === selected && local"
       />
       <div v-else>{{ item.type }}</div>
     </div>
@@ -204,6 +204,8 @@ export default {
     select (idx) {
       if (this.local) {
         this.selected = idx
+      } else {
+        this.selected = null
       }
     },
 
