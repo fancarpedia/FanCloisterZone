@@ -1,0 +1,324 @@
+{
+  "appVersion": "6.2.0-alpha.4",
+  "gameId": "1",
+  "name": "",
+  "initialRandom": 0.28456487309839185,
+  "created": "2026-05-12T17:02:59.925Z",
+  "clock": 241515,
+  "setup": {
+    "options": {},
+    "sets": {
+      "basic:2": 1,
+      "abbey-and-mayor:2": 1,
+      "the-courier": 1
+    },
+    "elements": {
+      "small-follower": 7,
+      "farmers": true,
+      "barn": 1,
+      "wagon": 1,
+      "mayor": 1,
+      "abbey": 1,
+      "abbot": 1,
+      "garden": true
+    },
+    "rules": {},
+    "timer": null,
+    "start": [
+      {
+        "tile": "BA/RCr",
+        "x": 0,
+        "y": 0,
+        "rotation": 0
+      }
+    ],
+    "ai": false,
+    "addons": {
+      "the-courier": 0
+    }
+  },
+  "players": [
+    {
+      "name": "Betty",
+      "slot": 2,
+      "ai": false
+    },
+    {
+      "name": "John",
+      "slot": 1,
+      "ai": false
+    }
+  ],
+  "chat": [],
+  "replay": [
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "BA/RRR",
+        "rotation": "R0",
+        "position": [
+          1,
+          0
+        ]
+      },
+      "player": 0,
+      "clock": 4559
+    },
+    {
+      "type": "PASS",
+      "payload": {},
+      "player": 0,
+      "clock": 5568
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.7870257796330986
+      },
+      "player": 0,
+      "clock": 5574
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "BA/RRR",
+        "rotation": "R0",
+        "position": [
+          -1,
+          0
+        ]
+      },
+      "player": 1,
+      "clock": 7535
+    },
+    {
+      "type": "PASS",
+      "payload": {},
+      "player": 1,
+      "clock": 8504
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.8106161971028754
+      },
+      "player": 1,
+      "clock": 8509
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "the-courier/rfrf.m",
+        "rotation": "R90",
+        "position": [
+          2,
+          0
+        ]
+      },
+      "player": 0,
+      "clock": 9824
+    },
+    {
+      "type": "DEPLOY_MEEPLE",
+      "payload": {
+        "pointer": {
+          "position": [
+            2,
+            0
+          ],
+          "location": "WE",
+          "feature": "Road"
+        },
+        "meepleId": "0.small.1"
+      },
+      "player": 0,
+      "clock": 10520
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.8375007885488115
+      },
+      "player": 0,
+      "clock": 12096
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "BA/CC.2",
+        "rotation": "R0",
+        "position": [
+          1,
+          -1
+        ]
+      },
+      "player": 1,
+      "clock": 14016
+    },
+    {
+      "type": "DEPLOY_MEEPLE",
+      "payload": {
+        "pointer": {
+          "position": [
+            1,
+            -1
+          ],
+          "location": "W",
+          "feature": "City"
+        },
+        "meepleId": "1.wagon.1"
+      },
+      "player": 1,
+      "clock": 15800
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.509274078411617
+      },
+      "player": 1,
+      "clock": 16930
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "BA/Cc.1",
+        "rotation": "R180",
+        "position": [
+          1,
+          -2
+        ]
+      },
+      "player": 0,
+      "clock": 18847
+    },
+    {
+      "type": "PASS",
+      "payload": {},
+      "player": 0,
+      "clock": 19816
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.30881501511442333
+      },
+      "player": 0,
+      "clock": 19819
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "BA/CccR",
+        "rotation": "R0",
+        "position": [
+          2,
+          -2
+        ]
+      },
+      "player": 1,
+      "clock": 21097
+    },
+    {
+      "type": "PASS",
+      "payload": {},
+      "player": 1,
+      "clock": 24697
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.7204473564599092
+      },
+      "player": 1,
+      "clock": 24703
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "BA/Cc+",
+        "rotation": "R180",
+        "position": [
+          0,
+          -1
+        ]
+      },
+      "player": 0,
+      "clock": 26472
+    },
+    {
+      "type": "DEPLOY_MEEPLE",
+      "payload": {
+        "pointer": {
+          "position": [
+            0,
+            -1
+          ],
+          "location": "NL.NR.WL.WR",
+          "feature": "Field"
+        },
+        "meepleId": "0.small.2"
+      },
+      "player": 0,
+      "clock": 30920
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.1401016510725761
+      },
+      "player": 0,
+      "clock": 35833
+    },
+    {
+      "type": "DEPLOY_MEEPLE",
+      "payload": {
+        "pointer": {
+          "position": [
+            2,
+            -2
+          ],
+          "location": "_S",
+          "feature": "City"
+        },
+        "meepleId": "1.wagon.1"
+      },
+      "player": 1,
+      "clock": 38928
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.4058566076363761
+      },
+      "player": 1,
+      "clock": 42257
+    }
+  ],
+  "gameAnnotations": {
+    "drawOrder": [
+      "BA/RRR",
+      "BA/RRR",
+      "the-courier/rfrf.m",
+      "BA/CC.2",
+      "BA/Cc.1",
+      "BA/CccR",
+      "BA/Cc+"
+    ]
+  },
+  "test": {
+    "description": "Courier Wagon",
+    "assertions": [
+      "Betty scored road for 2 points.",
+      "John scored city for 8 points.",
+      "John scored city for 3 points.",
+      "Betty has 2 points.",
+      "John has 11 points.",
+      "Phase is TilePhase",
+      "Player can't pass",
+      "Available action TilePlacement for BA/CcRr",
+      "TilePlacement BA/CcRr options: [3,-2] - [0,270]; [-2,0] - [0,270]; [2,-3] - [180,270]; [3,0] - [90,180]; [-1,1] - [180,270]; [1,1] - [180,270]",
+      "Undo is not allowed"
+    ]
+  }
+}

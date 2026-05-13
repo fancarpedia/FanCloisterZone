@@ -1,0 +1,312 @@
+{
+  "appVersion": "6.2.0-alpha.4",
+  "gameId": "1",
+  "name": "",
+  "initialRandom": 0.7621179297846721,
+  "created": "2026-05-12T17:13:34.731Z",
+  "clock": 236204,
+  "setup": {
+    "options": {},
+    "sets": {
+      "basic:1": 1,
+      "princess-and-dragon:1": 1,
+      "the-courier": 1
+    },
+    "elements": {
+      "small-follower": 7,
+      "farmers": true,
+      "dragon": 1,
+      "fairy": 1,
+      "princess": true,
+      "portal": true,
+      "phantom": 1,
+      "big-follower": 1
+    },
+    "rules": {},
+    "timer": null,
+    "start": [
+      {
+        "tile": "BA/RCr",
+        "x": 0,
+        "y": 0,
+        "rotation": 0
+      }
+    ],
+    "ai": false,
+    "addons": {
+      "the-courier": 0
+    }
+  },
+  "players": [
+    {
+      "name": "Betty",
+      "slot": 2,
+      "ai": false
+    },
+    {
+      "name": "John",
+      "slot": 1,
+      "ai": false
+    }
+  ],
+  "chat": [],
+  "replay": [
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "the-courier/ffff.me.w",
+        "rotation": "R0",
+        "position": [
+          1,
+          0
+        ]
+      },
+      "player": 0,
+      "clock": 3188
+    },
+    {
+      "type": "PASS",
+      "payload": {},
+      "player": 0,
+      "clock": 5173
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.39755199027887755
+      },
+      "player": 0,
+      "clock": 5179
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "DG/R.v",
+        "rotation": "R90",
+        "position": [
+          0,
+          1
+        ]
+      },
+      "player": 1,
+      "clock": 6676
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.5256294162539599
+      },
+      "player": 1,
+      "clock": 7893
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "BA/RFr",
+        "rotation": "R0",
+        "position": [
+          -1,
+          1
+        ]
+      },
+      "player": 0,
+      "clock": 10020
+    },
+    {
+      "type": "PASS",
+      "payload": {},
+      "player": 0,
+      "clock": 15830
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.9789794803733003
+      },
+      "player": 0,
+      "clock": 15835
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "BA/RFr",
+        "rotation": "R0",
+        "position": [
+          -2,
+          1
+        ]
+      },
+      "player": 1,
+      "clock": 17124
+    },
+    {
+      "type": "PASS",
+      "payload": {},
+      "player": 1,
+      "clock": 19997
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.40366066772492415
+      },
+      "player": 1,
+      "clock": 20001
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "BA/Rr",
+        "rotation": "R270",
+        "position": [
+          0,
+          2
+        ]
+      },
+      "player": 0,
+      "clock": 23269
+    },
+    {
+      "type": "PASS",
+      "payload": {},
+      "player": 0,
+      "clock": 27509
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.08802646922505564
+      },
+      "player": 0,
+      "clock": 27514
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "DG/Rr.d",
+        "rotation": "R0",
+        "position": [
+          1,
+          2
+        ]
+      },
+      "player": 1,
+      "clock": 29334
+    },
+    {
+      "type": "PASS",
+      "payload": {},
+      "player": 1,
+      "clock": 44950
+    },
+    {
+      "type": "MOVE_NEUTRAL_FIGURE",
+      "payload": {
+        "figureId": "dragon.1",
+        "to": [
+          -1,
+          1
+        ]
+      },
+      "player": 1,
+      "clock": 45901
+    },
+    {
+      "type": "MOVE_NEUTRAL_FIGURE",
+      "payload": {
+        "figureId": "dragon.1",
+        "to": [
+          -2,
+          1
+        ]
+      },
+      "player": 0,
+      "clock": 46814
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.4672325878675547
+      },
+      "player": 0,
+      "clock": 46816
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "DG/CRr.g",
+        "rotation": "R270",
+        "position": [
+          -1,
+          0
+        ]
+      },
+      "player": 0,
+      "clock": 48813
+    },
+    {
+      "type": "DEPLOY_MEEPLE",
+      "payload": {
+        "pointer": {
+          "position": [
+            1,
+            2
+          ],
+          "location": "SW",
+          "feature": "Road"
+        },
+        "meepleId": "0.big.1"
+      },
+      "player": 0,
+      "clock": 52589
+    },
+    {
+      "type": "DEPLOY_MEEPLE",
+      "payload": {
+        "pointer": {
+          "position": [
+            -1,
+            0
+          ],
+          "location": "NE",
+          "feature": "Road"
+        },
+        "meepleId": "0.phantom.1"
+      },
+      "player": 0,
+      "clock": 58605
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.9177277739589484
+      },
+      "player": 0,
+      "clock": 60545
+    }
+  ],
+  "gameAnnotations": {
+    "drawOrder": [
+      "the-courier/ffff.me.w",
+      "DG/R.v",
+      "BA/RFr",
+      "BA/RFr",
+      "BA/Rr",
+      "DG/Rr.d",
+      "DG/CRr.g"
+    ]
+  },
+  "test": {
+    "description": "Courier Choose First Placed By Portal Not Phantom",
+    "assertions": [
+      "Betty scored road for 2 points.",
+      "Betty has 2 points.",
+      "John has 0 points.",
+      "Phase is TilePhase",
+      "Player can't pass",
+      "Available action TilePlacement for DG/CRcr.d",
+      "TilePlacement DG/CRcr.d options: [1,-1] - [0,180]; [-1,-1] - [0,180]; [0,3] - [0,180]; [1,3] - [0,180]; [0,-1] - [90,270]; [2,0] - [90,270]; [-3,1] - [90,270]",
+      "Undo is not allowed"
+    ]
+  }
+}
