@@ -58,7 +58,8 @@ const TITLE_MAPPING = {
   'windmill': 'game.element.windmill',
   'decinsky-sneznik': 'game.element.decinsky-sneznik',
   'flowers': 'game.feature.flowers',
-  'river': 'game.feature.fishermen'
+  'river': 'game.feature.fishermen',
+  'courier': 'game.element.courier'
 }
 
 const SUBTITLE_MAPPING = {
@@ -105,7 +106,9 @@ export default {
       if (title !== undefined) return '(' + this.$t(title) + ')'
       const key = this.expr.name.split('.')[1]
       if (!key) return null
-      return SUBTITLE_MAPPING[key] !== undefined ? '(' + this.$t(SUBTITLE_MAPPING[key]) + ')' : key
+      if (SUBTITLE_MAPPING[key] !== undefined) return '(' + this.$t(SUBTITLE_MAPPING[key]) + ')'
+      if (this.expr.name.split('.')[0] === 'courier') return '(' + (TITLE_MAPPING[this.expr.name.split('.')[1]] !== undefined ? this.$t(TITLE_MAPPING[this.expr.name.split('.')[1]]) : '') + ')'
+      return key
     }
   },
 
