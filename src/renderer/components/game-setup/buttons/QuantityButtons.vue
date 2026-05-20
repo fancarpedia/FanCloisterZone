@@ -91,9 +91,7 @@ export default {
         return
       }
       if (this.value) {
-        if (this.hasBooleanInterface) {
-          this.removeAll()
-        }
+        this.removeAll()
       } else {
         this.add()
       }
@@ -197,7 +195,8 @@ export default {
 
   &.at-max
     .add
-      visibility: hidden
+      opacity: 0.5
+      /*visibility: hidden*/
 
   &.switch
     .add, .remove
