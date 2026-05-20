@@ -1,0 +1,181 @@
+{
+  "appVersion": "6.2.0-alpha.4",
+  "gameId": "1",
+  "name": "",
+  "initialRandom": 0.1843265130764633,
+  "created": "2026-05-14T18:06:28.593Z",
+  "clock": 27493,
+  "setup": {
+    "sets": {
+      "basic:1": 1
+    },
+    "elements": {
+      "small-follower": 7,
+      "farmers": true,
+      "wagon": 1
+    },
+    "rules": {},
+    "timer": null,
+    "start": [
+      {
+        "tile": "BA/RCr",
+        "x": 0,
+        "y": 0,
+        "rotation": 0
+      }
+    ],
+    "ai": false,
+    "options": {}
+  },
+  "players": [
+    {
+      "name": "Betty",
+      "slot": 2,
+      "ai": false
+    },
+    {
+      "name": "John",
+      "slot": 1,
+      "ai": false
+    }
+  ],
+  "chat": [],
+  "replay": [
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "BA/CcRr",
+        "rotation": "R270",
+        "position": [
+          0,
+          -1
+        ]
+      },
+      "player": 0,
+      "clock": 2674
+    },
+    {
+      "type": "DEPLOY_MEEPLE",
+      "payload": {
+        "pointer": {
+          "position": [
+            0,
+            -1
+          ],
+          "location": "SW",
+          "feature": "City"
+        },
+        "meepleId": "0.wagon.1"
+      },
+      "player": 0,
+      "clock": 4114
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.24259385680309453
+      },
+      "player": 0,
+      "clock": 4533
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "BA/RCr",
+        "rotation": "R0",
+        "position": [
+          -1,
+          0
+        ]
+      },
+      "player": 1,
+      "clock": 6031
+    },
+    {
+      "type": "DEPLOY_MEEPLE",
+      "payload": {
+        "pointer": {
+          "position": [
+            -1,
+            0
+          ],
+          "location": "N",
+          "feature": "City"
+        },
+        "meepleId": "1.wagon.1"
+      },
+      "player": 1,
+      "clock": 7520
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.6300075875524398
+      },
+      "player": 1,
+      "clock": 7836
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "BA/CC.2",
+        "rotation": "R180",
+        "position": [
+          -1,
+          -1
+        ]
+      },
+      "player": 0,
+      "clock": 9019
+    },
+    {
+      "type": "PASS",
+      "payload": {},
+      "player": 0,
+      "clock": 10252
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.8256243821503939
+      },
+      "player": 0,
+      "clock": 10264
+    },
+    {
+      "type": "DEPLOY_MEEPLE",
+      "payload": {
+        "pointer": {
+          "position": [
+            0,
+            0
+          ],
+          "location": "WE",
+          "feature": "Road"
+        },
+        "meepleId": "0.wagon.1"
+      },
+      "player": 0,
+      "clock": 14517
+    }
+  ],
+  "gameAnnotations": {
+    "drawOrder": [
+      "BA/CcRr",
+      "BA/RCr",
+      "BA/CC.2"
+    ]
+  },
+  "test": {
+    "description": "Wagon Placement Confirmation",
+    "assertions": [
+      "John scored city for 4 points.",
+      "Betty scored city for 6 points.",
+      "Betty has 6 points.",
+      "John has 4 points.",
+      "Phase is WagonPhase",
+      "Player can't pass",
+      "Undo is allowed"
+    ]
+  }
+}
