@@ -2,7 +2,7 @@
   "@author": "Peťul",
   "@jcz-version": "5.12.1",
   "@fcz-version": "6.1.0",
-  "@version": "0.9.15",
+  "@version": "0.10.1",
   "about": {
     "author": "Autor",
     "configuration-file": "Konfigurační soubor",
@@ -33,6 +33,7 @@
     "close": "Zavřít",
     "confirm": "Potvrdit",
     "connect": "Připojit se",
+    "continue": "Continue",
     "create": "Vytvořit hru",
     "create-game": "Vytvořit hru",
     "create-public-game": "Vytvořte veřejnou hru",
@@ -151,7 +152,7 @@
     "farmers-heaven": "Farmářův ráj",
     "farmers-heaven-description": "Protože většina rozšíření je zaměřena hlavně na města, nastal čas vytvořit něco také pro sedláky a pomoct jim vytvářením obrovských luk.",
     "fishermen": "Rybáři",
-    "fishermen-description": "{{TranslatedSegment|User:Bumsakalaka/JCloisterZoneLocale/756}}",
+    "fishermen-description": "River tiles are shuffled into the regular tile stack. Players may place a meeple on a river segment as on any other scoreable feature, score points when the river is completed.",
     "ferries": "Přívozy",
     "festival": "Oslava",
     "flier": "Létající stroje",
@@ -245,6 +246,7 @@
       "player-may-place-a-tile-from-supply": "Hráč může umístit kartičku ze zásoby",
       "player-may-place-an-abbey": "Hráč může přiložit opatství",
       "player-must-place-the-tile": "Hráč musí přiložit kartičku",
+      "shepherde-placement": "Shepherd placement",
       "siege-player-can-escape-a-besieged-city": "Hráč může uniknout z obléhaného města.",
       "siege-you-can-escape-a-besieged-city": "Můžete uniknout z obléhaného města.",
       "skip-action": "Přeskočit úkon",
@@ -281,6 +283,7 @@
       "donkey": "Osel",
       "donkey-description": "Osel je neutrální figurka, která blokuje ukončení libovolného území na kartičce kde je umístněný.",
       "dragon": "Drak",
+      "courier": "Courier",
       "fairy": "Víla",
       "ferry": "Přívoz",
       "gold": "Zlato",
@@ -700,7 +703,7 @@
     "zoom-out": "Oddálit"
   },
   "server": {
-    "translate": "Update to v%VERSION% is required."
+    "translate": "Nevyhnutná aktualizace na verzi %VERSION%."
   },
   "settings": {
     "add-ons": {

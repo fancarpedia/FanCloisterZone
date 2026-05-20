@@ -1,8 +1,8 @@
 {
   "@author": "Bumsakalaka",
   "@jcz-version": "5.12.1",
-  "@fcz-version": "6.1.0",
-  "@version": "0.10.1",
+  "@fcz-version": "6.2.0",
+  "@version": "0.10.2",
   "about": {
     "author": "Autor",
     "configuration-file": "Konfiguračný súbor",
@@ -33,6 +33,7 @@
     "close": "Zavrieť",
     "confirm": "Potvrdiť",
     "connect": "Pripojiť sa",
+    "continue": "Pokračovať",
     "create": "Vytvoriť",
     "create-game": "Vytvoriť hru",
     "create-public-game": "Vytvorte verejnú hru",
@@ -151,7 +152,7 @@
     "farmers-heaven": "Farmárovo nebo",
     "farmers-heaven-description": "Keďže väčšina rozšírení sa zameriava hlavne na mestá, nastal čas urobiť niečo aj pre farmárov a pomôcť im vytvoriť obrovské lúky.",
     "fishermen": "Rybári",
-    "fishermen-description": "{{TranslatedSegment|User:Bumsakalaka/JCloisterZoneLocale/756}}",
+    "fishermen-description": "River tiles are shuffled into the regular tile stack. Players may place a meeple on a river segment as on any other scoreable feature, score points when the river is completed.",
     "ferries": "Povozy",
     "festival": "Oslava",
     "flier": "Lietacie stroje",
@@ -245,6 +246,7 @@
       "player-may-place-a-tile-from-supply": "Hráč môže umiestniť kartičku zo zásoby",
       "player-may-place-an-abbey": "Hráč môže umiestniť opátstvo",
       "player-must-place-the-tile": "Hráč musí priložiť kartičku",
+      "shepherde-placement": "Umiestnenie pastiera",
       "siege-player-can-escape-a-besieged-city": "Hráč môže uniknúť z obliehaného mesta.",
       "siege-you-can-escape-a-besieged-city": "Môžete uniknúť z obliehaného mesta.",
       "skip-action": "Preskočiť akciu",
@@ -281,6 +283,7 @@
       "donkey": "Somár",
       "donkey-description": "Somár je neutrálna figúrka, ktorá blokuje ukončenie ľubovoľného územia zasahujúceho kartičku, na ktorej je umiestnený.",
       "dragon": "Drak",
+      "courier": "Posol",
       "fairy": "Víla",
       "ferry": "Priezov",
       "gold": "Zlato",
@@ -389,7 +392,7 @@
   },
   "game-setup": {
     "additional-elements": "Dodatočné prvky",
-    "altered-gameplay": "Zmenená hrateľnosť",
+    "altered-gameplay": "Pozmenené varianty",
     "altered-scoring": "Zmenené skóre",
     "components": {
       "followers": "Spoločníci",
