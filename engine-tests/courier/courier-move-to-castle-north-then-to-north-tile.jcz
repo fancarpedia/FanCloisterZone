@@ -1,0 +1,299 @@
+{
+  "appVersion": "6.2.0-alpha.4",
+  "gameId": "1",
+  "name": "",
+  "initialRandom": 0.9170639684690538,
+  "created": "2026-05-20T15:31:25.024Z",
+  "clock": 266379,
+  "setup": {
+    "options": {},
+    "sets": {
+      "basic:1": 1,
+      "bridges-castles-and-bazaars:1": 1,
+      "the-courier": 1
+    },
+    "elements": {
+      "small-follower": 7,
+      "farmers": true,
+      "bridge": 1,
+      "castle": 1,
+      "bazaar": true
+    },
+    "rules": {},
+    "timer": null,
+    "start": [
+      {
+        "tile": "BA/RCr",
+        "x": 0,
+        "y": 0,
+        "rotation": 0
+      }
+    ],
+    "ai": false,
+    "addons": {
+      "the-courier": 0
+    }
+  },
+  "players": [
+    {
+      "name": "Betty",
+      "slot": 2,
+      "ai": false
+    },
+    {
+      "name": "John",
+      "slot": 1,
+      "ai": false
+    }
+  ],
+  "chat": [],
+  "replay": [
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "BB/LRFr",
+        "rotation": "R0",
+        "position": [
+          1,
+          0
+        ]
+      },
+      "player": 0,
+      "clock": 2456
+    },
+    {
+      "type": "DEPLOY_MEEPLE",
+      "payload": {
+        "pointer": {
+          "position": [
+            1,
+            0
+          ],
+          "location": "I",
+          "feature": "Monastery"
+        },
+        "meepleId": "0.small.1"
+      },
+      "player": 0,
+      "clock": 2856
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.5130156238170385
+      },
+      "player": 0,
+      "clock": 3761
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "BA/C",
+        "rotation": "R0",
+        "position": [
+          1,
+          -1
+        ]
+      },
+      "player": 1,
+      "clock": 5104
+    },
+    {
+      "type": "DEPLOY_MEEPLE",
+      "payload": {
+        "pointer": {
+          "position": [
+            1,
+            -1
+          ],
+          "location": "N",
+          "feature": "City"
+        },
+        "meepleId": "1.small.1"
+      },
+      "player": 1,
+      "clock": 7128
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.058512378212693505
+      },
+      "player": 1,
+      "clock": 8145
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "the-courier/rfrf.m",
+        "rotation": "R90",
+        "position": [
+          -1,
+          0
+        ]
+      },
+      "player": 0,
+      "clock": 9319
+    },
+    {
+      "type": "PASS",
+      "payload": {},
+      "player": 0,
+      "clock": 11345
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.40089260556661177
+      },
+      "player": 0,
+      "clock": 11349
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "BA/C",
+        "rotation": "R180",
+        "position": [
+          0,
+          -1
+        ]
+      },
+      "player": 1,
+      "clock": 12336
+    },
+    {
+      "type": "DEPLOY_MEEPLE",
+      "payload": {
+        "pointer": {
+          "position": [
+            0,
+            -1
+          ],
+          "location": "S",
+          "feature": "City"
+        },
+        "meepleId": "1.small.2"
+      },
+      "player": 1,
+      "clock": 14423
+    },
+    {
+      "type": "PLACE_TOKEN",
+      "payload": {
+        "token": "CASTLE",
+        "pointer": {
+          "position": [
+            0,
+            -1
+          ],
+          "location": "S",
+          "feature": "City"
+        }
+      },
+      "player": 1,
+      "clock": 15591
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.9765214406201326
+      },
+      "player": 1,
+      "clock": 16321
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "BA/Rr",
+        "rotation": "R90",
+        "position": [
+          2,
+          0
+        ]
+      },
+      "player": 0,
+      "clock": 17399
+    },
+    {
+      "type": "PASS",
+      "payload": {},
+      "player": 0,
+      "clock": 19560
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.44793831461345746
+      },
+      "player": 0,
+      "clock": 19563
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "BA/Rr",
+        "rotation": "R270",
+        "position": [
+          2,
+          -1
+        ]
+      },
+      "player": 1,
+      "clock": 20240
+    },
+    {
+      "type": "DEPLOY_MEEPLE",
+      "payload": {
+        "pointer": {
+          "position": [
+            2,
+            -1
+          ],
+          "location": "SE",
+          "feature": "Road"
+        },
+        "meepleId": "1.small.3"
+      },
+      "player": 1,
+      "clock": 21072
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.7230497832803533
+      },
+      "player": 1,
+      "clock": 23688
+    }
+  ],
+  "gameAnnotations": {
+    "drawOrder": [
+      "BB/LRFr",
+      "BA/C",
+      "the-courier/rfrf.m",
+      "BA/C",
+      "BA/Rr",
+      "BA/Rr"
+    ],
+    "endTurn": 6
+  },
+  "test": {
+    "description": "Courier Move To Castle North Then To North Tile",
+    "assertions": [
+      "John scored courier for 4 points.",
+      "John scored courier for 1 point.",
+      "John scored courier for 6 points.",
+      "John scored courier for 1 point.",
+      "John scored courier for 5 points.",
+      "John scored road for 5 points.",
+      "Betty scored monastery for 6 points.",
+      "John scored city for 1 point.",
+      "John scored castle for 0 points.",
+      "Betty has 6 points.",
+      "John has 23 points.",
+      "Phase is GameOverPhase",
+      "Undo is not allowed"
+    ]
+  }
+}

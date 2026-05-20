@@ -1,0 +1,313 @@
+{
+  "appVersion": "6.2.0-alpha.4",
+  "gameId": "1",
+  "name": "",
+  "initialRandom": 0.037947115812990706,
+  "created": "2026-05-20T15:25:46.640Z",
+  "clock": 112737,
+  "setup": {
+    "options": {},
+    "sets": {
+      "basic:1": 1,
+      "bridges-castles-and-bazaars:1": 1,
+      "the-courier": 1
+    },
+    "elements": {
+      "small-follower": 7,
+      "farmers": true,
+      "bridge": 1,
+      "castle": 1,
+      "bazaar": true
+    },
+    "rules": {},
+    "timer": null,
+    "start": [
+      {
+        "tile": "BA/RCr",
+        "x": 0,
+        "y": 0,
+        "rotation": 0
+      }
+    ],
+    "ai": false,
+    "addons": {
+      "the-courier": 0
+    }
+  },
+  "players": [
+    {
+      "name": "Betty",
+      "slot": 2,
+      "ai": false
+    },
+    {
+      "name": "John",
+      "slot": 1,
+      "ai": false
+    }
+  ],
+  "chat": [],
+  "replay": [
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "BB/LRFr",
+        "rotation": "R0",
+        "position": [
+          1,
+          0
+        ]
+      },
+      "player": 0,
+      "clock": 2638
+    },
+    {
+      "type": "DEPLOY_MEEPLE",
+      "payload": {
+        "pointer": {
+          "position": [
+            1,
+            0
+          ],
+          "location": "I",
+          "feature": "Monastery"
+        },
+        "meepleId": "0.small.1"
+      },
+      "player": 0,
+      "clock": 3070
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.3847141929305624
+      },
+      "player": 0,
+      "clock": 4272
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "BA/C",
+        "rotation": "R0",
+        "position": [
+          1,
+          -1
+        ]
+      },
+      "player": 1,
+      "clock": 4999
+    },
+    {
+      "type": "DEPLOY_MEEPLE",
+      "payload": {
+        "pointer": {
+          "position": [
+            1,
+            -1
+          ],
+          "location": "N",
+          "feature": "City"
+        },
+        "meepleId": "1.small.1"
+      },
+      "player": 1,
+      "clock": 5358
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.2778942794218884
+      },
+      "player": 1,
+      "clock": 6502
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "the-courier/rfrf.m",
+        "rotation": "R90",
+        "position": [
+          -1,
+          0
+        ]
+      },
+      "player": 0,
+      "clock": 8183
+    },
+    {
+      "type": "PASS",
+      "payload": {},
+      "player": 0,
+      "clock": 18840
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.5833694562590253
+      },
+      "player": 0,
+      "clock": 18848
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "BA/C",
+        "rotation": "R180",
+        "position": [
+          0,
+          -1
+        ]
+      },
+      "player": 1,
+      "clock": 20095
+    },
+    {
+      "type": "DEPLOY_MEEPLE",
+      "payload": {
+        "pointer": {
+          "position": [
+            0,
+            -1
+          ],
+          "location": "S",
+          "feature": "City"
+        },
+        "meepleId": "1.small.2"
+      },
+      "player": 1,
+      "clock": 20679
+    },
+    {
+      "type": "PLACE_TOKEN",
+      "payload": {
+        "token": "CASTLE",
+        "pointer": {
+          "position": [
+            0,
+            -1
+          ],
+          "location": "S",
+          "feature": "City"
+        }
+      },
+      "player": 1,
+      "clock": 22089
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.19693396990179135
+      },
+      "player": 1,
+      "clock": 23313
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "BA/Rr",
+        "rotation": "R90",
+        "position": [
+          2,
+          0
+        ]
+      },
+      "player": 0,
+      "clock": 34656
+    },
+    {
+      "type": "DEPLOY_MEEPLE",
+      "payload": {
+        "pointer": {
+          "position": [
+            2,
+            0
+          ],
+          "location": "NW",
+          "feature": "Road"
+        },
+        "meepleId": "0.small.2"
+      },
+      "player": 0,
+      "clock": 36015
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.9384726691098251
+      },
+      "player": 0,
+      "clock": 37937
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "BA/Rr",
+        "rotation": "R270",
+        "position": [
+          2,
+          -1
+        ]
+      },
+      "player": 1,
+      "clock": 39104
+    },
+    {
+      "type": "DEPLOY_MEEPLE",
+      "payload": {
+        "pointer": {
+          "position": [
+            2,
+            -1
+          ],
+          "location": "NL.NR.EL.SR.WL.WR",
+          "feature": "Field"
+        },
+        "meepleId": "1.small.3"
+      },
+      "player": 1,
+      "clock": 51976
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.21289669947504963
+      },
+      "player": 1,
+      "clock": 56040
+    }
+  ],
+  "gameAnnotations": {
+    "drawOrder": [
+      "BB/LRFr",
+      "BA/C",
+      "the-courier/rfrf.m",
+      "BA/C",
+      "BA/Rr",
+      "BA/Rr"
+    ],
+    "endTurn": 6
+  },
+  "test": {
+    "description": "Courier Move To Castle North Then To South Tile",
+    "assertions": [
+      "John scored courier for 4 points.",
+      "John scored courier for 1 point.",
+      "Betty scored courier for 5 points.",
+      "Betty scored courier for 1 point.",
+      "Betty scored courier for 4 points.",
+      "John scored courier for 6 points.",
+      "John scored courier for 1 point.",
+      "John scored courier for 5 points.",
+      "Betty scored road for 5 points.",
+      "Betty scored monastery for 6 points.",
+      "John scored city for 1 point.",
+      "John scored castle for 0 points.",
+      "John scored field for 4 points.",
+      "Betty has 21 points.",
+      "John has 22 points.",
+      "Phase is GameOverPhase",
+      "Undo is not allowed"
+    ]
+  }
+}

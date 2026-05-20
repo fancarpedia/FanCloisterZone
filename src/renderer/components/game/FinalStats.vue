@@ -246,12 +246,18 @@
         </div>
       </template>
 
-
       <template v-if="stats.points['river'].some(p => p)">
         <div class="header river" :title="$t('game.feature.fishermen')"><img src="~/assets/features/C1/fishermen.png" height="40"></div>
         <div v-for="(val, idx) in stats.points['river']" :key="'river-'+idx" class="river value">
           {{ val }}
         </div>
+      </template>
+
+      <template v-if="stats.points['courier'].some(p => p)">
+        <div class="header courier" :title="$t('game.figure.courier')"><NeutralFigure figure="courier" :width="40" :height="40" /></div>
+        <div v-for="(val, idx) in stats.points['courier']" :key="'courier-'+idx" class="courier value">
+          {{ val }}
+	        </div>
       </template>
 
     </div>
@@ -333,7 +339,8 @@ export default {
           'obelisk': (new Array(this.players.length)).fill(0),
           'windmill': (new Array(this.players.length)).fill(0),
           'decinsky-sneznik': (new Array(this.players.length)).fill(0),
-          'river': (new Array(this.players.length)).fill(0)
+          'river': (new Array(this.players.length)).fill(0),
+          'courier': (new Array(this.players.length)).fill(0)
         }
       }
       this.history.forEach(h => {
@@ -413,7 +420,7 @@ export default {
     .header
       svg.meeple, svg.neutral
         +theme using ($theme)
-          fill: map-get($theme, 'gray-text-color')
+          /* fill: map-get($theme, 'gray-text-color') */
 
 svg.meeple
   width: 40px

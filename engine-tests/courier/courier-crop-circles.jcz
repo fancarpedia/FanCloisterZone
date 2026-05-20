@@ -1,0 +1,259 @@
+{
+  "appVersion": "6.2.0-alpha.4",
+  "gameId": "1",
+  "name": "",
+  "initialRandom": 0.940983787441722,
+  "created": "2026-05-12T17:29:09.237Z",
+  "clock": 99826,
+  "setup": {
+    "options": {},
+    "sets": {
+      "basic:1": 1,
+      "corn-circles/1": 1,
+      "the-courier": 1
+    },
+    "elements": {
+      "small-follower": 7,
+      "farmers": true
+    },
+    "rules": {},
+    "timer": null,
+    "start": [
+      {
+        "tile": "BA/RCr",
+        "x": 0,
+        "y": 0,
+        "rotation": 0
+      }
+    ],
+    "ai": false,
+    "addons": {
+      "the-courier": 0
+    }
+  },
+  "players": [
+    {
+      "name": "Betty",
+      "slot": 2,
+      "ai": false
+    },
+    {
+      "name": "John",
+      "slot": 1,
+      "ai": false
+    }
+  ],
+  "chat": [],
+  "replay": [
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "BA/L",
+        "rotation": "R0",
+        "position": [
+          0,
+          1
+        ]
+      },
+      "player": 0,
+      "clock": 2983
+    },
+    {
+      "type": "DEPLOY_MEEPLE",
+      "payload": {
+        "pointer": {
+          "position": [
+            0,
+            1
+          ],
+          "location": "I",
+          "feature": "Monastery"
+        },
+        "meepleId": "0.small.1"
+      },
+      "player": 0,
+      "clock": 3910
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.9230116597708113
+      },
+      "player": 0,
+      "clock": 5103
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "BA/Rr",
+        "rotation": "R270",
+        "position": [
+          0,
+          2
+        ]
+      },
+      "player": 1,
+      "clock": 8519
+    },
+    {
+      "type": "PASS",
+      "payload": {},
+      "player": 1,
+      "clock": 13016
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.7445886890409281
+      },
+      "player": 1,
+      "clock": 13023
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "BA/Rr",
+        "rotation": "R0",
+        "position": [
+          1,
+          2
+        ]
+      },
+      "player": 0,
+      "clock": 14375
+    },
+    {
+      "type": "DEPLOY_MEEPLE",
+      "payload": {
+        "pointer": {
+          "position": [
+            1,
+            2
+          ],
+          "location": "SW",
+          "feature": "Road"
+        },
+        "meepleId": "0.small.2"
+      },
+      "player": 0,
+      "clock": 14968
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.9234853679054176
+      },
+      "player": 0,
+      "clock": 16184
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "the-courier/crrr.m",
+        "rotation": "R180",
+        "position": [
+          1,
+          0
+        ]
+      },
+      "player": 1,
+      "clock": 18016
+    },
+    {
+      "type": "PASS",
+      "payload": {},
+      "player": 1,
+      "clock": 19632
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.4874026990484106
+      },
+      "player": 1,
+      "clock": 19635
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "CC.1/Rr",
+        "rotation": "R180",
+        "position": [
+          0,
+          3
+        ]
+      },
+      "player": 0,
+      "clock": 22656
+    },
+    {
+      "type": "PASS",
+      "payload": {},
+      "player": 0,
+      "clock": 23791
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.04937238807183286
+      },
+      "player": 0,
+      "clock": 23794
+    },
+    {
+      "type": "CIRCLE_REMOVE_OR_DEPLOY",
+      "payload": {
+        "value": "DEPLOY"
+      },
+      "player": 0,
+      "clock": 25248
+    },
+    {
+      "type": "DEPLOY_MEEPLE",
+      "payload": {
+        "pointer": {
+          "position": [
+            1,
+            2
+          ],
+          "location": "SW",
+          "feature": "Road"
+        },
+        "meepleId": "0.small.3"
+      },
+      "player": 0,
+      "clock": 26719
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.40042163008177645
+      },
+      "player": 0,
+      "clock": 29128
+    }
+  ],
+  "gameAnnotations": {
+    "drawOrder": [
+      "BA/L",
+      "BA/Rr",
+      "BA/Rr",
+      "the-courier/crrr.m",
+      "CC.1/Rr"
+    ]
+  },
+  "test": {
+    "description": "Courier Crop Circles",
+    "assertions": [
+      "Betty scored courier for 5 points.",
+      "Betty scored courier for 3 points.",
+      "Betty has 8 points.",
+      "John has 0 points.",
+      "Phase is TilePhase",
+      "Player can't pass",
+      "Available action TilePlacement for BA/Ccc",
+      "TilePlacement BA/Ccc options: [0,-1] - [90,180,270]; [0,4] - [180]; [-1,1] - [270]; [2,2] - [90]; [-1,2] - [270]; [-1,3] - [270]",
+      "Undo is not allowed"
+    ]
+  }
+}

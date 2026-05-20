@@ -124,10 +124,10 @@
         :class="n.type"
       >
         <use
-          :width="BASE_SIZE * 0.42"
-          :height="BASE_SIZE * 0.42"
-          :x="-BASE_SIZE * 0.21"
-          :y="-BASE_SIZE * 0.21"
+          :width="BASE_SIZE * (n.sizeCoeficient ? n.sizeCoeficient : 0.42)"
+          :height="BASE_SIZE * (n.sizeCoeficient ? n.sizeCoeficient : 0.42)"
+          :x="-BASE_SIZE * (n.sizeCoeficient ? n.sizeCoeficient : 0.42) / 2"
+          :y="-BASE_SIZE * (n.sizeCoeficient ? n.sizeCoeficient : 0.42) / 2"
           :href="`${NEUTRAL_SVG}#${n.type === 'bigtop' ? 'big-top' : n.type}`"
         />
       </g>
@@ -211,7 +211,7 @@ import { FOLLOWER_ORDERING } from '@/constants/ordering'
 
 const MEEPLES_SVG = require('~/assets/meeples.svg')
 const NEUTRAL_SVG = require('~/assets/neutral.svg')
-const NEUTRAL_FIGURES = ['count', 'mage', 'witch', 'bigtop' ]
+const NEUTRAL_FIGURES = ['count', 'mage', 'witch', 'bigtop', 'courier' ]
 
 export default {
   components: {
@@ -246,6 +246,7 @@ export default {
         const bt = state.game.neutralFigures.bigtop
         return bt ? { placement: { position: bt.placement, feature: 'Circus', location: 'I' } } : null
       },
+      courier: state => state.game.neutralFigures.courier,
       donkey: state => state.game.neutralFigures.donkey,
       meepleSelect: state => state.board.layers.MeepleSelectLayer,
       rotate: state => state.board.rotate
@@ -303,6 +304,14 @@ export default {
               return -1
             }
           }
+          if (this.courier) {
+            if (this.courier.placement.meepleId === a.id) {
+              return 1
+            }
+            if (this.courier.placement.meepleId === b.id) {
+              return -1
+            }
+          }
           return FOLLOWER_ORDERING[a.type] - FOLLOWER_ORDERING[b.type]
         })
 
@@ -337,14 +346,29 @@ export default {
           x += BASE_SIZE * 0.14
           y += BASE_SIZE * 0.02
         }
+        
+        if (this.courier) {
+          x += BASE_SIZE * 0.04
+          y += BASE_SIZE * 0.02
+        }
+        console.log(NEUTRAL_FIGURES)
+
         NEUTRAL_FIGURES.forEach(figure => {
+          console.log(figure)
           if (!this[figure]) {
             return
           }
           const { placement } = this[figure]
           if (isSameFeature(placement, sample) && !(this.isDeployedOnBridge(placement) ^ this.deployedOnBridge)) {
             neutralInGroup[figure] = true
-            group.neutral.push({ type: figure, x, y })
+            let sizeCoeficient = 0.42
+            switch(figure) {
+              case 'courier':
+                sizeCoeficient = 0.32
+                break
+            }
+            console.log(sizeCoeficient)
+            group.neutral.push({ type: figure, x, y, sizeCoeficient })
             x += BASE_SIZE * 0.14
             y += BASE_SIZE * 0.02
           }
@@ -356,11 +380,17 @@ export default {
         if (this[figure] && !neutralInGroup[figure]) {
           const { placement } = this[figure]
           if (!this.isDeployedOnBridge(placement) ^ this.deployedOnBridge) {
+            let sizeCoeficient = 0.42
+            switch(figure) {
+              case 'courier':
+                sizeCoeficient = 0.32
+                break
+            }
             groups.push({
               key: getGroupKey(placement),
               ...placement,
               meeples: [],
-              neutral: [{ type: figure, x: 0, y: 0 }]
+              neutral: [{ type: figure, x: 0, y: 0, sizeCoeficient }]
             })
           }
         }
@@ -461,7 +491,7 @@ export default {
 </script>
 
 <style lang="sass" scoped>
-.fairy
+.fairy, .courier
   opacity: 0.9
 
 .dragon

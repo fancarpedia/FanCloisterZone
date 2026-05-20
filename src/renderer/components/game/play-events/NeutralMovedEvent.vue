@@ -1,6 +1,6 @@
 <template>
   <div
-    class="neutral-moved"
+    class="neutral-moved one-square"
     @mouseenter="onMouseEnter"
     @mouseleave="onMouseLeave"
   >
