@@ -2,7 +2,7 @@
   "@author": "farin & Scott",
   "@jcz-version": "5.12.1",
   "@fcz-version": "6.2.0",
-  "@version": "0.10.5",
+  "@version": "0.10.6",
   "about": {
     "author": "Author",
     "configuration-file": "Configuration file",
@@ -354,6 +354,7 @@
       "robbers-son": "Robber's Son",
       "sheep": "Sheep",
       "shrine": "Shrine",
+      "shrine-challenge": "Monastery/Shrine challenges",
       "shrines": "Shrines",
       "siege": "Siege",
       "special-monasteries": "Special Monasteries",
