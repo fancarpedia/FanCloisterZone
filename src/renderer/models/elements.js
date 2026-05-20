@@ -100,7 +100,7 @@ export const HILL = GameElement.HILL = new GameElement('hill', 'Hills', Boolean,
 export const VINEYARD = GameElement.VINEYARD = new GameElement('vineyard', 'Vineyards', Boolean, {
   selector: 'vineyard'
 })
-export const SHRINE = GameElement.SHRINE = new GameElement('shrine', 'Monastery/Shrine challenges', Boolean, {
+export const SHRINE = GameElement.SHRINE = new GameElement('shrine-challenge', 'Monastery/Shrine challenges', Boolean, {
   selector: 'monastery[shrine]'
 })
 export const FESTIVAL = GameElement.FESTIVAL = new GameElement('festival', 'Festival', Boolean, {
