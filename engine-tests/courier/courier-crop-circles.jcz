@@ -245,8 +245,8 @@
   "test": {
     "description": "Courier Crop Circles",
     "assertions": [
-      "Betty scored monastery for 5 points.",
-      "Betty scored road for 3 points.",
+      "Betty scored courier for 5 points.",
+      "Betty scored courier for 3 points.",
       "Betty has 8 points.",
       "John has 0 points.",
       "Phase is TilePhase",

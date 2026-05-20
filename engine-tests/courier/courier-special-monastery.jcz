@@ -335,8 +335,8 @@
   "test": {
     "description": "Courier Special Monastery",
     "assertions": [
-      "Betty scored road for 4 points.",
-      "Betty scored road for 6 points.",
+      "Betty scored courier for 4 points.",
+      "Betty scored courier for 6 points.",
       "Betty has 10 points.",
       "John has 0 points.",
       "Phase is TilePhase",

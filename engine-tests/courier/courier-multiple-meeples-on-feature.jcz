@@ -2,14 +2,13 @@
   "appVersion": "6.2.0-alpha.4",
   "gameId": "1",
   "name": "",
-  "initialRandom": 0.23889585562043414,
-  "created": "2026-05-12T17:27:31.042Z",
-  "clock": 133981,
+  "initialRandom": 0.6371309869427444,
+  "created": "2026-05-20T15:14:58.877Z",
+  "clock": 78595,
   "setup": {
     "options": {},
     "sets": {
       "basic:1": 1,
-      "flier:1": 1,
       "the-courier": 1
     },
     "elements": {
@@ -48,116 +47,15 @@
     {
       "type": "PLACE_TILE",
       "payload": {
-        "tileId": "BA/L",
-        "rotation": "R0",
-        "position": [
-          0,
-          1
-        ]
-      },
-      "player": 0,
-      "clock": 3040
-    },
-    {
-      "type": "DEPLOY_MEEPLE",
-      "payload": {
-        "pointer": {
-          "position": [
-            0,
-            1
-          ],
-          "location": "I",
-          "feature": "Monastery"
-        },
-        "meepleId": "0.small.1"
-      },
-      "player": 0,
-      "clock": 3832
-    },
-    {
-      "type": "COMMIT",
-      "payload": {
-        "random": 0.6426196225680991
-      },
-      "player": 0,
-      "clock": 4696
-    },
-    {
-      "type": "PLACE_TILE",
-      "payload": {
-        "tileId": "BA/L",
-        "rotation": "R0",
-        "position": [
-          1,
-          1
-        ]
-      },
-      "player": 1,
-      "clock": 11217
-    },
-    {
-      "type": "DEPLOY_MEEPLE",
-      "payload": {
-        "pointer": {
-          "position": [
-            1,
-            1
-          ],
-          "location": "I",
-          "feature": "Monastery"
-        },
-        "meepleId": "1.small.1"
-      },
-      "player": 1,
-      "clock": 16105
-    },
-    {
-      "type": "COMMIT",
-      "payload": {
-        "random": 0.517307652984454
-      },
-      "player": 1,
-      "clock": 17081
-    },
-    {
-      "type": "PLACE_TILE",
-      "payload": {
-        "tileId": "the-courier/rfrf.m",
-        "rotation": "R90",
-        "position": [
-          1,
-          0
-        ]
-      },
-      "player": 0,
-      "clock": 18736
-    },
-    {
-      "type": "PASS",
-      "payload": {},
-      "player": 0,
-      "clock": 20777
-    },
-    {
-      "type": "COMMIT",
-      "payload": {
-        "random": 0.3819707935403531
-      },
-      "player": 0,
-      "clock": 20781
-    },
-    {
-      "type": "PLACE_TILE",
-      "payload": {
-        "tileId": "BA/CFC.2",
-        "rotation": "R0",
+        "tileId": "BA/CccR+",
+        "rotation": "R270",
         "position": [
           0,
           -1
         ]
       },
-      "player": 1,
-      "clock": 22176
+      "player": 0,
+      "clock": 4899
     },
     {
       "type": "DEPLOY_MEEPLE",
@@ -167,34 +65,172 @@
             0,
             -1
           ],
-          "location": "EL.ER.WL.WR",
-          "feature": "Field"
+          "location": "_E",
+          "feature": "City"
         },
-        "meepleId": "1.small.2"
+        "meepleId": "0.small.1"
       },
-      "player": 1,
-      "clock": 23593
+      "player": 0,
+      "clock": 7845
     },
     {
       "type": "COMMIT",
       "payload": {
-        "random": 0.34219607069970737
+        "random": 0.044612219744065484
       },
-      "player": 1,
-      "clock": 25258
+      "player": 0,
+      "clock": 9724
     },
     {
       "type": "PLACE_TILE",
       "payload": {
-        "tileId": "FL/F.d",
+        "tileId": "BA/CRr",
+        "rotation": "R0",
+        "position": [
+          -1,
+          0
+        ]
+      },
+      "player": 1,
+      "clock": 10972
+    },
+    {
+      "type": "DEPLOY_MEEPLE",
+      "payload": {
+        "pointer": {
+          "position": [
+            -1,
+            0
+          ],
+          "location": "N",
+          "feature": "City"
+        },
+        "meepleId": "1.small.1"
+      },
+      "player": 1,
+      "clock": 12493
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.7144031667044495
+      },
+      "player": 1,
+      "clock": 14356
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "BA/L",
+        "rotation": "R0",
+        "position": [
+          -2,
+          0
+        ]
+      },
+      "player": 0,
+      "clock": 15708
+    },
+    {
+      "type": "DEPLOY_MEEPLE",
+      "payload": {
+        "pointer": {
+          "position": [
+            -2,
+            0
+          ],
+          "location": "I",
+          "feature": "Monastery"
+        },
+        "meepleId": "0.small.2"
+      },
+      "player": 0,
+      "clock": 16412
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.6632665490089673
+      },
+      "player": 0,
+      "clock": 17492
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "BA/Rr",
+        "rotation": "R90",
+        "position": [
+          1,
+          0
+        ]
+      },
+      "player": 1,
+      "clock": 19572
+    },
+    {
+      "type": "DEPLOY_MEEPLE",
+      "payload": {
+        "pointer": {
+          "position": [
+            1,
+            0
+          ],
+          "location": "NW",
+          "feature": "Road"
+        },
+        "meepleId": "1.small.2"
+      },
+      "player": 1,
+      "clock": 25580
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.7203856293413713
+      },
+      "player": 1,
+      "clock": 26908
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "the-courier/ffrr.me.m",
+        "rotation": "R0",
+        "position": [
+          1,
+          -1
+        ]
+      },
+      "player": 0,
+      "clock": 28692
+    },
+    {
+      "type": "PASS",
+      "payload": {},
+      "player": 0,
+      "clock": 32237
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.6412274490714149
+      },
+      "player": 0,
+      "clock": 32245
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "BA/CcRr+",
         "rotation": "R180",
         "position": [
           -1,
           -1
         ]
       },
-      "player": 0,
-      "clock": 51146
+      "player": 1,
+      "clock": 35068
     },
     {
       "type": "DEPLOY_MEEPLE",
@@ -204,60 +240,45 @@
             -1,
             -1
           ],
-          "location": "I",
-          "feature": "FlyingMachine"
+          "location": "NW",
+          "feature": "Road"
         },
-        "meepleId": "0.small.2",
-        "random": 0.49495914993031165
+        "meepleId": "1.small.3"
       },
-      "player": 0,
-      "clock": 52987
-    },
-    {
-      "type": "DEPLOY_MEEPLE",
-      "payload": {
-        "pointer": {
-          "position": [
-            1,
-            1
-          ],
-          "location": "I",
-          "feature": "Monastery"
-        },
-        "meepleId": "0.small.2"
-      },
-      "player": 0,
-      "clock": 55515
+      "player": 1,
+      "clock": 36837
     },
     {
       "type": "COMMIT",
       "payload": {
-        "random": 0.7926097976885609
+        "random": 0.8785208448152404
       },
-      "player": 0,
-      "clock": 61202
+      "player": 1,
+      "clock": 39485
     }
   ],
   "gameAnnotations": {
     "drawOrder": [
+      "BA/CccR+",
+      "BA/CRr",
       "BA/L",
-      "BA/L",
-      "the-courier/rfrf.m",
-      "BA/CFC.2",
-      "FL/F.d"
+      "BA/Rr",
+      "the-courier/ffrr.me.m",
+      "BA/CcRr+"
     ]
   },
   "test": {
-    "description": "Courier Flying Machines",
+    "description": "Courier Multiple Meeples On Feature",
     "assertions": [
-      "Betty scored courier for 4 points.",
-      "Betty scored courier for 4 points.",
-      "Betty has 8 points.",
-      "John has 0 points.",
+      "John scored courier for 6 points.",
+      "John scored courier for 3 points.",
+      "John scored courier for 1 point.",
+      "Betty has 0 points.",
+      "John has 10 points.",
       "Phase is TilePhase",
       "Player can't pass",
       "Available action TilePlacement for BA/Rr",
-      "TilePlacement BA/Rr options: [2,1] - [180,270]; [-1,-2] - [90,180]; [-2,-1] - [0,90]; [-1,0] - [270]; [2,0] - [0,90]; [-1,1] - [0,90]; [0,2] - [0,270]; [1,2] - [0,270]; [1,-1] - [180]",
+      "TilePlacement BA/Rr options: [1,-2] - [90,180]; [2,-1] - [180,270]; [-2,-1] - [180]; [2,0] - [180,270]; [-1,1] - [90,180]; [-3,0] - [0,90]; [-1,-2] - [0,270]; [-2,1] - [0,270]; [0,1] - [0,270]; [1,1] - [0,270]",
       "Undo is not allowed"
     ]
   }

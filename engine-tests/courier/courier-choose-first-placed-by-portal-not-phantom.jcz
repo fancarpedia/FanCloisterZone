@@ -299,7 +299,7 @@
   "test": {
     "description": "Courier Choose First Placed By Portal Not Phantom",
     "assertions": [
-      "Betty scored road for 2 points.",
+      "Betty scored courier for 2 points.",
       "Betty has 2 points.",
       "John has 0 points.",
       "Phase is TilePhase",

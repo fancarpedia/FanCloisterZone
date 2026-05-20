@@ -309,9 +309,9 @@
   "test": {
     "description": "Courier Wagon",
     "assertions": [
-      "Betty scored road for 2 points.",
+      "Betty scored courier for 2 points.",
       "John scored city for 8 points.",
-      "John scored city for 3 points.",
+      "John scored courier for 3 points.",
       "Betty has 2 points.",
       "John has 11 points.",
       "Phase is TilePhase",

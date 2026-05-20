@@ -350,11 +350,11 @@
   "test": {
     "description": "Courier Next To Tower Meeple",
     "assertions": [
-      "Betty scored monastery for 4 points.",
-      "Betty scored monastery for 5 points.",
-      "Betty scored city for 1 point.",
-      "John scored city for 1 point.",
-      "John scored city for 1 point.",
+      "Betty scored courier for 4 points.",
+      "Betty scored courier for 5 points.",
+      "Betty scored courier for 1 point.",
+      "John scored courier for 1 point.",
+      "John scored courier for 1 point.",
       "Betty has 10 points.",
       "John has 2 points.",
       "Phase is TilePhase",
