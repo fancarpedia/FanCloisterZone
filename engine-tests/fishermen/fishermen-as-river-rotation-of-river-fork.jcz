@@ -1,11 +1,12 @@
 {
   "appVersion": "6.1.0-beta.6",
-  "gameId": "cd85ffe13c3a43a9a0d9af1f150b1ca1",
+  "gameId": "1",
   "name": "",
   "initialRandom": 0.5582742129029341,
-  "created": "2026-02-23T07:51:48.294Z",
-  "clock": 51461,
+  "created": "2026-05-21T13:34:24.539Z",
+  "clock": 1048360,
   "setup": {
+    "options": {},
     "sets": {
       "basic:1": 1,
       "river/1:1": 1,
@@ -26,17 +27,15 @@
       }
     ],
     "ai": false,
-    "options": {},
     "addons": {
       "fishermen": 0
     }
   },
   "players": [
     {
-      "name": "stano",
+      "name": "Betty",
       "slot": 2,
-      "ai": false,
-      "clientId": "edc5783b3e1b4feab9443a36439508b2"
+      "ai": false
     }
   ],
   "chat": [],
@@ -73,6 +72,17 @@
     "drawOrder": [
       "fishermen/iifi2",
       "fishermen/iiii"
+    ]
+  },
+  "test": {
+    "description": "Fishermen As River Rotation Of River Fork",
+    "assertions": [
+      "Betty has 0 points.",
+      "Phase is TilePhase",
+      "Player can't pass",
+      "Available action TilePlacement for fishermen/fi.sri.e",
+      "TilePlacement fishermen/fi.sri.e options: [1,-1] - [90,270]; [1,1] - [90,270]",
+      "Undo is not allowed"
     ]
   }
 }
