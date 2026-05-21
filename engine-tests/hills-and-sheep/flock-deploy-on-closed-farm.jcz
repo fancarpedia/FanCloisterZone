@@ -8,7 +8,7 @@
   "test": {
     "description": "Shepherd deployed on closed farm",
     "assertions": [
-      "Bob has 2 points"
+      "Bob has 3 points"
     ]
   },
   "setup": {
@@ -155,6 +155,14 @@
       },
       "player": 1,
       "clock": 8553
+    },
+    {
+      "type": "SHEPHERD_CONFIRM",
+      "payload": {
+        "random": 0.5167765165381588
+      },
+      "player": 1,
+      "clock": 8560
     },
     {
       "type": "COMMIT",

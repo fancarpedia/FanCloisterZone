@@ -103,6 +103,14 @@
       "clock": 5184
     },
     {
+      "type": "SHEPHERD_CONFIRM",
+      "payload": {
+        "random": 0.2871258536493768
+      },
+      "player": 1,
+      "clock": 5190
+    },
+    {
       "type": "COMMIT",
       "payload": {
         "random": 0.9363003271811956
