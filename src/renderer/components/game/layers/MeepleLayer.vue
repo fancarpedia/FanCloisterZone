@@ -351,10 +351,8 @@ export default {
           x += BASE_SIZE * 0.04
           y += BASE_SIZE * 0.02
         }
-        console.log(NEUTRAL_FIGURES)
 
         NEUTRAL_FIGURES.forEach(figure => {
-          console.log(figure)
           if (!this[figure]) {
             return
           }
@@ -367,7 +365,6 @@ export default {
                 sizeCoeficient = 0.32
                 break
             }
-            console.log(sizeCoeficient)
             group.neutral.push({ type: figure, x, y, sizeCoeficient })
             x += BASE_SIZE * 0.14
             y += BASE_SIZE * 0.02
