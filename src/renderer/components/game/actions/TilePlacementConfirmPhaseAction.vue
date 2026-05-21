@@ -43,7 +43,7 @@ export default {
     async confirm () {
       if (this.local) {
         await this.$store.dispatch('game/apply', {
-          type: 'TILE_CONFIRMED',
+          type: 'TILE_CONFIRM',
           payload: {}
         })
       }

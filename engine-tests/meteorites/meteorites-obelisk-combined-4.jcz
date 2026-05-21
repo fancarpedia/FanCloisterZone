@@ -804,7 +804,7 @@
       "clock": 167396
     },
     {
-      "type": "TILE_CONFIRMED",
+      "type": "TILE_CONFIRM",
       "payload": {
         "random": 0.5515851064010293
       },
