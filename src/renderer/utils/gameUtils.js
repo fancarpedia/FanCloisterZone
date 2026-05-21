@@ -3,7 +3,7 @@ import { Rule } from '@/models/rules';
 import { pick, omit } from 'lodash';
 
 export function isSameFeature (f1, f2) {
-  return f1.position[0] === f2.position[0] && f1.position[1] === f2.position[1] && f1.location === f2.location
+  return f1.feature === f2.feature && f1.position[0] === f2.position[0] && f1.position[1] === f2.position[1] && f1.location === f2.location
 }
 
 export function getMeeplePlayer (meepleId) {
