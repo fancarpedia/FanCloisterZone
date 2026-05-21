@@ -43,7 +43,7 @@
       </div>
 
       <HeaderChangeSetupButton
-        v-if="isOwner"
+        v-if="isOwner && !readOnly"
         :title="$t('button.change')"
         @click="changeGameSetup"
       />
@@ -261,7 +261,8 @@ export default {
     },
 
     async changeGameSetup () {
-      await this.$store.dispatch('gameSetup/changeGameSetup')
+    	console.log(this)
+    //  await this.$store.dispatch('gameSetup/changeGameSetup')
     },
 
     async leaveGame () {
