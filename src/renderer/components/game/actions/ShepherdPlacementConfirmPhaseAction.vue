@@ -43,7 +43,7 @@ export default {
     async confirm () {
       if (this.local) {
         await this.$store.dispatch('game/apply', {
-          type: 'SHEPHERD_CONFIRMED',
+          type: 'SHEPHERD_CONFIRM',
           payload: {}
         })
       }
