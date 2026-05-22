@@ -2,8 +2,8 @@
   <div class="view game-view">
     <template v-if="phase">
       <div v-if="forcedDraw" class="forced-draw">
-        Game was created in development mode.<br>
-        Tile draw order is predefined.
+        {{ $t('dev.game-created-in-development-mode') }}<br />
+        {{ $t('dev.tile-draw-order-is-predefined') }}
       </div>
       <TestResult v-if="testScenarioResult" :result="testScenarioResult" />
       <Board />
@@ -119,9 +119,9 @@ export default {
       removedTilesSize: state => state.game.discardedTiles.length,
       testScenarioResult: state => state.game.testScenarioResult,
       forcedDraw: state => {
-        if (process.env.NODE_ENV === 'development') {
-          return false
-        }
+//        if (process.env.NODE_ENV === 'development') {
+//          return false
+//        }
         const { drawOrder, endTurn } = state.game.gameAnnotations
         return !!(drawOrder || endTurn)
       },

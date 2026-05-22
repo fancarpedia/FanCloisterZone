@@ -410,7 +410,7 @@ export const actions = {
   async save ({ state, dispatch }, { onlySetup = false } = {}) {
     return new Promise(async (resolve, reject) => { /* eslint no-async-promise-executor: 0 */
       let { filePath } = await ipcRenderer.invoke('dialog.showSaveDialog', {
-        title: onlySetup ? 'Save Game Setup' : 'Save Game',
+        title: onlySetup ? $nuxt.$t('file.save-game-setup') : $nuxt.$t('file.save-game'),
         filters: getSavedGameFilters(),
         properties: ['createDirectory', 'showOverwriteConfirmation']
       })
@@ -440,8 +440,8 @@ export const actions = {
   async savescenario ({ state, dispatch }, {} = {}) {
     return new Promise(async (resolve, reject) => { /* eslint no-async-promise-executor: 0 */
       let { filePath } = await ipcRenderer.invoke('dialog.showSaveDialog', {
-        title: 'Save Test runner Scenario',
-        filters: [{ name: 'Test scenarios', extensions: ['jcz'] }],
+        title: $nuxt.$t('dev.save-test-runner-scenario'),
+        filters: [{ name: $nuxt.$t('dev.test-scenarios'), extensions: ['jcz'] }],
         properties: ['createDirectory', 'showOverwriteConfirmation']
       })
       if (filePath) {
@@ -572,25 +572,27 @@ export const actions = {
         try {
           sg = JSON.parse(data)
         } catch (err) {
-          commit('errorMessage', { title: 'File is not valid', content: err + '' }, { root: true })
+          commit('errorMessage', { title: $nuxt.$t('file.file-is-not-valid'), content: err + '' }, { root: true })
           reject(err)
         }
         if (compare(sg.appVersion, SAVED_GAME_COMPATIBILITY, '<')) {
-          const msg = `Saves created prior ${SAVED_GAME_COMPATIBILITY} are not supported.`
-          commit('errorMessage', { title: 'Load Error', content: msg }, { root: true })
+          const msg = $nuxt.$t('file.save-created-prior-version-is-not-supported', { version: SAVED_GAME_COMPATIBILITY})
+		  commit('errorMessage', { title: $nuxt.$t('file.load-error'), content: msg }, { root: true })
           reject(msg)
           return
         }
         
         if (rootState.networking.connectionType=='online') {
           if (sg.test !== undefined) {
-            const msg = `Saved game contains tests. It is not possible to open in online mode.`
-            commit('errorMessage', { title: 'Load Error', content: msg }, { root: true })
+            const msg = [$nuxt.$t(`dev.saved-game-contains-tests'),$nuxt.$t('dev.not-possible-in-online-mode`)].join(' ')
+//			const msg = [$nuxt.$t(`Saved game contains tests.'),$nuxt.$t('It is not possible to open in online mode.`)].join(' ')
+            commit('errorMessage', { title: $nuxt.$t('file.load-error'), content: msg }, { root: true })
             return
           }
           if (sg.replay.length>0) {
-            const msg = `Saved game contains game history. It is not possible to open in online mode.`
-            commit('errorMessage', { title: 'Load Error', content: msg }, { root: true })
+			const msg = [$nuxt.$t(`dev.saved-game-contains-game-history'),$nuxt.$t('dev.not-possible-in-online-mode`)].join(' ')
+//			const msg = [$nuxt.$t(`Saved game contains game history.'),$nuxt.$t('It is not possible to open in online mode.`)].join(' ')
+            commit('errorMessage', { title: $nuxt.$t('file.load-error'), content: msg }, { root: true })
             return
           }
         }
@@ -602,8 +604,9 @@ export const actions = {
               const missing = $addons.findMissingAddons(sg.setup.addons)
 
               if (missing.length) {
-                const msg = `Saved game (or setup) requires addon(s) which are not installed:\n\n${missing.join(', ')}`
-                commit('errorMessage', { title: 'Load Error', content: msg }, { root: true })
+                const msg = $nuxt.$t('file.missing-addons', { addons: missing.join(', ') })
+				//`Saved game (or setup) requires addon(s) which are not installed:\n\n${missing.join(', ')}`
+                commit('errorMessage', { title: $nuxt.$t('file.load-error'), content: msg }, { root: true })
                 reject(msg)
                 return
               }
@@ -794,7 +797,7 @@ export const actions = {
     const loggingEnabled = rootState.settings.devMode
     const engine = this._vm.$engine.spawn({ loggingEnabled })
     engine.on('error', data => {
-      commit('errorMessage', { title: 'Engine error', content: data + '' }, { root: true })
+      commit('errorMessage', { title: $nuxt.$t('game.engine-error'), content: data + '' }, { root: true })
     })
 
     // if (state.originAppVersion && state.originAppVersion !== getAppVersion()) {

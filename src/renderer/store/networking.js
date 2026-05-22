@@ -208,7 +208,8 @@ export const actions = {
         payload: {
           name: '',
           setup: game.setup,
-          slots: game.slots.length
+          slots: game.slots.length,
+		  gameAnnotations: game.gameAnnotations || null
         }
       })
     } else {
