@@ -138,7 +138,6 @@ export default {
     const testFolder = path.normalize(
       store.state.settings?.testRunnerFolder || 'engine-tests'
     )
-    console.log(testFolder)
     const tests = []
 
     const installedSets = Expansion.all().map(e =>
