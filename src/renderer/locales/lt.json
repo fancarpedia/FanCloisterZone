@@ -81,6 +81,7 @@
     "bonuses": "Bonusai",
     "choose": "Rinktis",
     "done": "Atlikta",
+    "engine-error": "Engine error",
     "game-engine-not-available": "Žaidimo variklis nėra prieinamas",
     "incomplete-features": "Nepabaigti objektai",
     "no-core-set": "Nepasirinktas pagrindas",
@@ -97,6 +98,7 @@
     "actions": "Veiksmai",
     "dump-hosted-game-server-state": "Išmesti pradįto žaidimų serverio būseną",
     "edition": "Leidimas",
+    "game-created-in-development-mode": "Game in Development mode",
     "fail": "Nesekmė",
     "meeples": "Miplai",
     "mode": "Režimas",
@@ -110,6 +112,7 @@
     "test": "Bandymas",
     "test-runner": "Tikrinimas",
     "theme-inspector": "Temos inspektorius",
+    "tile-draw-order-is-predefined": "Tile draw order is predefined",
     "tiles": "Plytelės",
     "toggle-devtools": "Perjungti kūrėjo įrankius",
     "use-local-play-online": "Naudoti vietinį žaidimą internete",
@@ -198,6 +201,19 @@
     "wells-description": "Paprastas išplėtimas, kai kiekvienas šulinys prideda 1 tašką prie kelio vertės arba 2 taškus prie kelio su užbaigta užeiga.",
     "wind-roses": "Vėjų Rožės",
     "winter": "Žiema"
+  },
+  "file": {
+    "file-is-not-valid": "File is not valid",
+    "load-error": "Load error",
+    "not-possible-in-online-mode": "It is not possible to open in online mode",
+    "save-created-prior-version-is-not-supported": "Save created prior version {version} is not supported",
+    "saved-game-contains-game-history": "Saved game contains game history",
+    "saved-game-contains-missing-addons": "Saved game contains missing addons: {missing}",
+    "saved-game-contains-tests": "Saved game contains tests",
+    "save-game-setup": "Save Game Setup",
+    "save-game": "Save Game",
+    "save-test-runner-scenario": "Save Test Runner Scenario",
+    "test-scenarios": "Test Scenarios"
   },
   "game": {
     "action": {

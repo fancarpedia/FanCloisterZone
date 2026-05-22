@@ -81,6 +81,7 @@
     "bonuses": "Bonussen",
     "choose": "Kies",
     "done": "Klaar",
+    "engine-error": "Engine error",
     "game-engine-not-available": "Spelmachine niet beschikbaar.",
     "incomplete-features": "Onafgebouwde projecten",
     "no-core-set": "Er is geen hoofdset!",
@@ -97,6 +98,7 @@
     "actions": "Acties",
     "dump-hosted-game-server-state": "Spelserver-toestand dumpen",
     "edition": "Editie",
+    "game-created-in-development-mode": "Game in Development mode",
     "fail": "Mislukken",
     "meeples": "Meeples",
     "mode": "Modus",
@@ -110,6 +112,7 @@
     "test": "Test",
     "test-runner": "Uitvoering testen",
     "theme-inspector": "Thema-inspecteur",
+    "tile-draw-order-is-predefined": "Tile draw order is predefined",
     "tiles": "Tegels",
     "toggle-devtools": "Ontwikkeltools wisselen",
     "use-local-play-online": "Lokaal spel online gebruiken",
@@ -198,6 +201,19 @@
     "wells-description": "Een eenvoudige uitbreiding waarbij elke put 1 punt toevoegt aan de waarde van een weg, of 2 punten aan een weg met een afgebouwde herberg.",
     "wind-roses": "De Windrozen",
     "winter": "Winter"
+  },
+  "file": {
+    "file-is-not-valid": "File is not valid",
+    "load-error": "Load error",
+    "not-possible-in-online-mode": "It is not possible to open in online mode",
+    "save-created-prior-version-is-not-supported": "Save created prior version {version} is not supported",
+    "saved-game-contains-game-history": "Saved game contains game history",
+    "saved-game-contains-missing-addons": "Saved game contains missing addons: {missing}",
+    "saved-game-contains-tests": "Saved game contains tests",
+    "save-game-setup": "Save Game Setup",
+    "save-game": "Save Game",
+    "save-test-runner-scenario": "Save Test Runner Scenario",
+    "test-scenarios": "Test Scenarios"
   },
   "game": {
     "action": {

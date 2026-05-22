@@ -81,6 +81,7 @@
     "bonuses": "Bonusi",
     "choose": "Izberi",
     "done": "Končano",
+    "engine-error": "Engine error",
     "game-engine-not-available": "Igralni pogon ni na voljo.",
     "incomplete-features": "Nedokončane značilnosti",
     "no-core-set": "Ni osnovnega seta!",
@@ -97,6 +98,7 @@
     "actions": "Dejanja",
     "dump-hosted-game-server-state": "Izpiši stanje gostovanega strežnika igre",
     "edition": "Izdaja",
+    "game-created-in-development-mode": "Game in Development mode",
     "fail": "Neuspeh",
     "meeples": "Meepli",
     "mode": "Način",
@@ -110,6 +112,7 @@
     "test": "Test",
     "test-runner": "Izvajalnik testov",
     "theme-inspector": "Pregledovalnik teme",
+    "tile-draw-order-is-predefined": "Tile draw order is predefined",
     "tiles": "Ploščice",
     "toggle-devtools": "Preklopi razvijalska orodja",
     "use-local-play-online": "Uporabi lokalno igro prek spleta",
@@ -198,6 +201,19 @@
     "wells-description": "Preprosta razširitev, kjer vsak vodnjak doda 1 točko vrednosti ceste ali 2 točki cesti z dokončano gostilno.",
     "wind-roses": "Vetrne Rože",
     "winter": "Zima"
+  },
+  "file": {
+    "file-is-not-valid": "File is not valid",
+    "load-error": "Load error",
+    "not-possible-in-online-mode": "It is not possible to open in online mode",
+    "save-created-prior-version-is-not-supported": "Save created prior version {version} is not supported",
+    "saved-game-contains-game-history": "Saved game contains game history",
+    "saved-game-contains-missing-addons": "Saved game contains missing addons: {missing}",
+    "saved-game-contains-tests": "Saved game contains tests",
+    "save-game-setup": "Save Game Setup",
+    "save-game": "Save Game",
+    "save-test-runner-scenario": "Save Test Runner Scenario",
+    "test-scenarios": "Test Scenarios"
   },
   "game": {
     "action": {

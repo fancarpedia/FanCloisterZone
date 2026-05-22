@@ -81,6 +81,7 @@
     "bonuses": "Dodatkowe",
     "choose": "Wybierz",
     "done": "Gotowe",
+    "engine-error": "Engine error",
     "game-engine-not-available": "Silnik gry niedostępny.",
     "incomplete-features": "Nieukończone obszary",
     "no-core-set": "Brak gry podstawowej!",
@@ -97,6 +98,7 @@
     "actions": "Akcje",
     "dump-hosted-game-server-state": "Zrzuć Stan Serwera Hostowanych Gier",
     "edition": "Edycja",
+    "game-created-in-development-mode": "Game in Development mode",
     "fail": "Niepowodzenie",
     "meeples": "Podwładni",
     "mode": "Tryb",
@@ -110,6 +112,7 @@
     "test": "Test",
     "test-runner": "Tester",
     "theme-inspector": "Inspektor motywów",
+    "tile-draw-order-is-predefined": "Tile draw order is predefined",
     "tiles": "Płytki",
     "toggle-devtools": "Narzędzia Programistyczne",
     "use-local-play-online": "Korzystaj z lokalnej gry online",
@@ -198,6 +201,19 @@
     "wells-description": "Proste rozszerzenie, w którym każda studnia dodaje 1 punkt do wartości drogi lub 2 punkty do drogi z ukończoną karczmą.",
     "wind-roses": "Róża wiatrów",
     "winter": "Zima"
+  },
+  "file": {
+    "file-is-not-valid": "File is not valid",
+    "load-error": "Load error",
+    "not-possible-in-online-mode": "It is not possible to open in online mode",
+    "save-created-prior-version-is-not-supported": "Save created prior version {version} is not supported",
+    "saved-game-contains-game-history": "Saved game contains game history",
+    "saved-game-contains-missing-addons": "Saved game contains missing addons: {missing}",
+    "saved-game-contains-tests": "Saved game contains tests",
+    "save-game-setup": "Save Game Setup",
+    "save-game": "Save Game",
+    "save-test-runner-scenario": "Save Test Runner Scenario",
+    "test-scenarios": "Test Scenarios"
   },
   "game": {
     "action": {

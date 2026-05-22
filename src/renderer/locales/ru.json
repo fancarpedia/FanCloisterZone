@@ -81,6 +81,7 @@
     "bonuses": "Бонусы",
     "choose": "Выбрать",
     "done": "Готово",
+    "engine-error": "Engine error",
     "game-engine-not-available": "Игровой движок недоступен.",
     "incomplete-features": "Незавершенные функции",
     "no-core-set": "Отсутствует основной набор!",
@@ -97,6 +98,7 @@
     "actions": "Действия",
     "dump-hosted-game-server-state": "Дамп состояния игрового сервера",
     "edition": "Издание",
+    "game-created-in-development-mode": "Game in Development mode",
     "fail": "Провал",
     "meeples": "Миплы",
     "mode": "Режим",
@@ -110,6 +112,7 @@
     "test": "Тест",
     "test-runner": "Тестер",
     "theme-inspector": "Проверка тем",
+    "tile-draw-order-is-predefined": "Tile draw order is predefined",
     "tiles": "Тайлы",
     "toggle-devtools": "Переключить DevTools",
     "use-local-play-online": "Использовать локальную онлайн игру",
@@ -198,6 +201,19 @@
     "wells-description": "Каждый колодец добавляет 1 очко к стоимости дороги или 2 очка к дороге с завершённой гостиницей.",
     "wind-roses": "Розы ветров",
     "winter": "Зима"
+  },
+  "file": {
+    "file-is-not-valid": "File is not valid",
+    "load-error": "Load error",
+    "not-possible-in-online-mode": "It is not possible to open in online mode",
+    "save-created-prior-version-is-not-supported": "Save created prior version {version} is not supported",
+    "saved-game-contains-game-history": "Saved game contains game history",
+    "saved-game-contains-missing-addons": "Saved game contains missing addons: {missing}",
+    "saved-game-contains-tests": "Saved game contains tests",
+    "save-game-setup": "Save Game Setup",
+    "save-game": "Save Game",
+    "save-test-runner-scenario": "Save Test Runner Scenario",
+    "test-scenarios": "Test Scenarios"
   },
   "game": {
     "action": {

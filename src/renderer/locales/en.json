@@ -2,7 +2,7 @@
   "@author": "farin & Scott",
   "@jcz-version": "5.12.1",
   "@fcz-version": "6.2.0",
-  "@version": "0.10.7",
+  "@version": "0.10.8",
   "about": {
     "author": "Author",
     "configuration-file": "Configuration file",
@@ -81,6 +81,7 @@
     "bonuses": "Bonuses",
     "choose": "Choose",
     "done": "Done",
+    "engine-error": "Engine error",
     "game-engine-not-available": "Game engine not available.",
     "incomplete-features": "Incomplete features",
     "no-core-set": "No Core set!",
@@ -97,6 +98,7 @@
     "actions": "Actions",
     "dump-hosted-game-server-state": "Dump Hosted Game Server State",
     "edition": "Edition",
+    "game-created-in-development-mode": "Game in Development mode",
     "fail": "Fail",
     "meeples": "Meeples",
     "mode": "Mode",
@@ -110,6 +112,7 @@
     "test": "Test",
     "test-runner": "Test Runner",
     "theme-inspector": "Theme Inspector",
+    "tile-draw-order-is-predefined": "Tile draw order is predefined",
     "tiles": "Tiles",
     "toggle-devtools": "Toggle DevTools",
     "use-local-play-online": "Use Local Play Online",
@@ -198,6 +201,19 @@
     "wells-description": "A simple expansion where each Well adds 1 point to the value of a Road, or 2 points to a road with a completed Inn.",
     "wind-roses": "The Wind Roses",
     "winter": "Winter"
+  },
+  "file": {
+    "file-is-not-valid": "File is not valid",
+    "load-error": "Load error",
+    "not-possible-in-online-mode": "It is not possible to open in online mode",
+    "save-created-prior-version-is-not-supported": "Save created prior version {version} is not supported",
+    "saved-game-contains-game-history": "Saved game contains game history",
+    "saved-game-contains-missing-addons": "Saved game contains missing addons: {missing}",
+    "saved-game-contains-tests": "Saved game contains tests",
+    "save-game-setup": "Save Game Setup",
+    "save-game": "Save Game",
+    "save-test-runner-scenario": "Save Test Runner Scenario",
+    "test-scenarios": "Test Scenarios"
   },
   "game": {
     "action": {

@@ -81,6 +81,7 @@
     "bonuses": "Bonificacions",
     "choose": "Tria",
     "done": "Fet",
+    "engine-error": "Engine error",
     "game-engine-not-available": "El motor del joc no està disponible.",
     "incomplete-features": "Elements incomplets",
     "no-core-set": "No hi ha cap joc base!",
@@ -97,6 +98,7 @@
     "actions": "Accions",
     "dump-hosted-game-server-state": "Bolca l'estat del servidor de la partida de l'amfitrió",
     "edition": "Edició",
+    "game-created-in-development-mode": "Game in Development mode",
     "fail": "Error",
     "meeples": "Seguidors",
     "mode": "Mode",
@@ -110,6 +112,7 @@
     "test": "Prova",
     "test-runner": "Execució de proves",
     "theme-inspector": "Inspector de temes",
+    "tile-draw-order-is-predefined": "Tile draw order is predefined",
     "tiles": "Peces",
     "toggle-devtools": "Commuta les DevTools",
     "use-local-play-online": "Fes servir la partida local en línia",
@@ -198,6 +201,19 @@
     "wells-description": "Una expansió senzilla on cada pou afegeix 1 punt al valor del camí corresponent o bé 2 punts a un camí amb una fonda completada.",
     "wind-roses": "Les roses del vent",
     "winter": "Hivern"
+  },
+  "file": {
+    "file-is-not-valid": "File is not valid",
+    "load-error": "Load error",
+    "not-possible-in-online-mode": "It is not possible to open in online mode",
+    "save-created-prior-version-is-not-supported": "Save created prior version {version} is not supported",
+    "saved-game-contains-game-history": "Saved game contains game history",
+    "saved-game-contains-missing-addons": "Saved game contains missing addons: {missing}",
+    "saved-game-contains-tests": "Saved game contains tests",
+    "save-game-setup": "Save Game Setup",
+    "save-game": "Save Game",
+    "save-test-runner-scenario": "Save Test Runner Scenario",
+    "test-scenarios": "Test Scenarios"
   },
   "game": {
     "action": {

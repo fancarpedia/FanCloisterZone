@@ -81,6 +81,7 @@
     "bonuses": "Bonusy",
     "choose": "Vyberte si",
     "done": "hotovo",
+    "engine-error": "Engine error",
     "game-engine-not-available": "Herný engine nie je k dispozícii.",
     "incomplete-features": "Neukončené územia",
     "no-core-set": "Žiadna zakladná hra!",
@@ -97,6 +98,7 @@
     "actions": "Akcie",
     "dump-hosted-game-server-state": "Dump Stavu herného servera",
     "edition": "Edícia",
+    "game-created-in-development-mode": "Game in Development mode",
     "fail": "Chyba",
     "meeples": "Figúrky",
     "mode": "Mód",
@@ -110,6 +112,7 @@
     "test": "Test",
     "test-runner": "Test Runner",
     "theme-inspector": "Kontrolór tém",
+    "tile-draw-order-is-predefined": "Tile draw order is predefined",
     "tiles": "Kartičky",
     "toggle-devtools": "Skry/Zobraz DevTools",
     "use-local-play-online": "Použi lokálny online server",
@@ -198,6 +201,19 @@
     "wells-description": "Jednoduché rozšírenie, kde každá studňa pridáva 1 bod k hodnote cesty alebo 2 body k uzavretej ceste s hostincom.",
     "wind-roses": "Veterné ruže",
     "winter": "Zimná edícia"
+  },
+  "file": {
+    "file-is-not-valid": "File is not valid",
+    "load-error": "Load error",
+    "not-possible-in-online-mode": "It is not possible to open in online mode",
+    "save-created-prior-version-is-not-supported": "Save created prior version {version} is not supported",
+    "saved-game-contains-game-history": "Saved game contains game history",
+    "saved-game-contains-missing-addons": "Saved game contains missing addons: {missing}",
+    "saved-game-contains-tests": "Saved game contains tests",
+    "save-game-setup": "Save Game Setup",
+    "save-game": "Save Game",
+    "save-test-runner-scenario": "Save Test Runner Scenario",
+    "test-scenarios": "Test Scenarios"
   },
   "game": {
     "action": {

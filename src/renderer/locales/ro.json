@@ -81,6 +81,7 @@
     "bonuses": "Bonusuri",
     "choose": "Alege",
     "done": "Realizat",
+    "engine-error": "Engine error",
     "game-engine-not-available": "Motorul jocului nu este disponibil.",
     "incomplete-features": "Teritorii nefinalizate",
     "no-core-set": "Niciun set de bază!",
@@ -97,6 +98,7 @@
     "actions": "Acțiuni",
     "dump-hosted-game-server-state": "Golește starea serverului partidei găzduite",
     "edition": "Ediție",
+    "game-created-in-development-mode": "Game in Development mode",
     "fail": "Eșec",
     "meeples": "Meepleși",
     "mode": "Mod",
@@ -110,6 +112,7 @@
     "test": "Test",
     "test-runner": "Rulator de test",
     "theme-inspector": "Inspector de temă",
+    "tile-draw-order-is-predefined": "Tile draw order is predefined",
     "tiles": "Cartonașe",
     "toggle-devtools": "Comută uneltele de dezvoltator",
     "use-local-play-online": "Folosește jucarea online locală",
@@ -198,6 +201,19 @@
     "wells-description": "O extensie simplă în care fiecare puț adaugă 1 punct valorii unui drum sau 2 puncte unui drum finalizat cu han.",
     "wind-roses": "Rozele vântului",
     "winter": "Iarnă"
+  },
+  "file": {
+    "file-is-not-valid": "File is not valid",
+    "load-error": "Load error",
+    "not-possible-in-online-mode": "It is not possible to open in online mode",
+    "save-created-prior-version-is-not-supported": "Save created prior version {version} is not supported",
+    "saved-game-contains-game-history": "Saved game contains game history",
+    "saved-game-contains-missing-addons": "Saved game contains missing addons: {missing}",
+    "saved-game-contains-tests": "Saved game contains tests",
+    "save-game-setup": "Save Game Setup",
+    "save-game": "Save Game",
+    "save-test-runner-scenario": "Save Test Runner Scenario",
+    "test-scenarios": "Test Scenarios"
   },
   "game": {
     "action": {

@@ -81,6 +81,7 @@
     "bonuses": "Bonificaciones",
     "choose": "Elegir",
     "done": "Hecho",
+    "engine-error": "Engine error",
     "game-engine-not-available": "Motor de juego no disponible.",
     "incomplete-features": "Elementos incompletos",
     "no-core-set": "¡No hay conjunto básico!",
@@ -97,6 +98,7 @@
     "actions": "Acciones",
     "dump-hosted-game-server-state": "Volcar Estado del Servidor de Juegos Alojado",
     "edition": "Edición",
+    "game-created-in-development-mode": "Game in Development mode",
     "fail": "Fallo",
     "meeples": "Seguidores",
     "mode": "Modo",
@@ -110,6 +112,7 @@
     "test": "Prueba",
     "test-runner": "Probador",
     "theme-inspector": "Inspector de Tema",
+    "tile-draw-order-is-predefined": "Tile draw order is predefined",
     "tiles": "Losetas",
     "toggle-devtools": "Activar/Desactivar DevTools",
     "use-local-play-online": "Usar Juego Local Online",
@@ -198,6 +201,19 @@
     "wells-description": "Una expansión sencilla en la que cada pozo añade 1 punto al valor de un camino, o 2 puntos a un camino completo con una posada.",
     "wind-roses": "La rosa de los vientos",
     "winter": "Invierno"
+  },
+  "file": {
+    "file-is-not-valid": "File is not valid",
+    "load-error": "Load error",
+    "not-possible-in-online-mode": "It is not possible to open in online mode",
+    "save-created-prior-version-is-not-supported": "Save created prior version {version} is not supported",
+    "saved-game-contains-game-history": "Saved game contains game history",
+    "saved-game-contains-missing-addons": "Saved game contains missing addons: {missing}",
+    "saved-game-contains-tests": "Saved game contains tests",
+    "save-game-setup": "Save Game Setup",
+    "save-game": "Save Game",
+    "save-test-runner-scenario": "Save Test Runner Scenario",
+    "test-scenarios": "Test Scenarios"
   },
   "game": {
     "action": {

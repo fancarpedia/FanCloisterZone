@@ -81,6 +81,7 @@
     "bonuses": "Boni",
     "choose": "Wählen",
     "done": "Erledigt",
+    "engine-error": "Engine error",
     "game-engine-not-available": "Spiel-Engine nicht verfügbar.",
     "incomplete-features": "Unvollständige Gebiete",
     "no-core-set": "Kein Basispaket!",
@@ -97,6 +98,7 @@
     "actions": "Aktionen",
     "dump-hosted-game-server-state": "Dump Hosted Game Server State",
     "edition": "Edition",
+    "game-created-in-development-mode": "Game in Development mode",
     "fail": "Fehlschlag",
     "meeples": "Meeple",
     "mode": "Modus",
@@ -110,6 +112,7 @@
     "test": "Test",
     "test-runner": "Testläufer",
     "theme-inspector": "Theme Inspector",
+    "tile-draw-order-is-predefined": "Tile draw order is predefined",
     "tiles": "Plättchen",
     "toggle-devtools": "Entwicklertools an/aus",
     "use-local-play-online": "Use Local Play Online",
@@ -198,6 +201,19 @@
     "wells-description": "Eine einfache Erweiterung in der jeder Brunnen 1 Punkt zum Wert der Straße hinzufügt, bzw. 2 Punkte zu einer fertiggestellten Straße mit einem Wirtshaus.",
     "wind-roses": "Die Windrosen",
     "winter": "Winter"
+  },
+  "file": {
+    "file-is-not-valid": "File is not valid",
+    "load-error": "Load error",
+    "not-possible-in-online-mode": "It is not possible to open in online mode",
+    "save-created-prior-version-is-not-supported": "Save created prior version {version} is not supported",
+    "saved-game-contains-game-history": "Saved game contains game history",
+    "saved-game-contains-missing-addons": "Saved game contains missing addons: {missing}",
+    "saved-game-contains-tests": "Saved game contains tests",
+    "save-game-setup": "Save Game Setup",
+    "save-game": "Save Game",
+    "save-test-runner-scenario": "Save Test Runner Scenario",
+    "test-scenarios": "Test Scenarios"
   },
   "game": {
     "action": {
