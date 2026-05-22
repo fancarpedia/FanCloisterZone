@@ -134,58 +134,72 @@ export default {
     }
   },
 
-  async asyncData() {
-    const testFolder = path.join('engine-tests')
+  async asyncData({ store }) {
+    const testFolder = path.normalize(
+      store.state.settings?.testRunnerFolder || 'engine-tests'
+    )
+    console.log(testFolder)
     const tests = []
 
     const installedSets = Expansion.all().map(e =>
       e.name.toLowerCase().replace(/_/g, '-')
     )
 
-    try {
-      const listing = await fs.promises.readdir(testFolder)
-      for (const subfolder of listing) {
-        const files = await fs.promises.readdir(path.join(testFolder, subfolder))
-        for (const f of files) {
-          const filePath = path.join(testFolder, subfolder, f)
-          let disabled = false
-          let error = []
-          let requiredSets = []
+    const processFile = async (filePath, relativeName) => {
+      let disabled = false
+      let error = []
+      let requiredSets = []
 
-          try {
-            const fileContent = await fs.promises.readFile(filePath, 'utf-8')
-            const json = JSON.parse(fileContent)
-            const setsRaw = json?.setup?.sets
-            if (!json.hasOwnProperty('test')) {
-              disabled = true
-              error.push(`Save file has no test defined`)
-            }
-            requiredSets = Object.keys(setsRaw).map(set =>
-              set.split(/:|,v|\//)[0].toLowerCase().replace(/_/g, '-')
-            );
-            const missing = requiredSets.filter(set => !installedSets.includes(set))
-            if (missing.length > 0) {
-              disabled = true
-              error.push(`Missing expansions: ${missing.join(', ')}`)
-            }
-          } catch (err) {
-            disabled = true
-            error.push(`Invalid test file: ${err.message}`)
-          }
+      try {
+        const fileContent = await fs.promises.readFile(filePath, 'utf-8')
+        const json = JSON.parse(fileContent)
+        const setsRaw = json?.setup?.sets
+        if (!json.hasOwnProperty('test')) {
+          disabled = true
+          error.push(`Save file has no test defined`)
+        }
+        requiredSets = Object.keys(setsRaw).map(set =>
+          set.split(/:|,v|\//)[0].toLowerCase().replace(/_/g, '-')
+        )
+        const missing = requiredSets.filter(set => !installedSets.includes(set))
+        if (missing.length > 0) {
+          disabled = true
+          error.push(`Missing expansions: ${missing.join(', ')}`)
+        }
+      } catch (err) {
+        disabled = true
+        error.push(`Invalid test file: ${err.message}`)
+      }
 
-          tests.push({
-            name: path.join(subfolder, f).replace('.jcz', ''),
-            file: filePath,
-            disabled,
-            error: error.join(', '),
-            requiredSets
-          })
+      tests.push({
+        name: relativeName.replace('.jcz', ''),
+        file: filePath,
+        disabled,
+        error: error.join(', '),
+        requiredSets
+      })
+    }
+  
+    const processFolder = async (folderPath, relativePath) => {
+      const listing = await fs.promises.readdir(folderPath)
+      for (const entry of listing) {
+        const fullPath = path.join(folderPath, entry)
+        const relPath = relativePath ? path.join(relativePath, entry) : entry
+        const stat = await fs.promises.stat(fullPath)
+        if (stat.isDirectory()) {
+          await processFolder(fullPath, relPath)  // recurse into subdir
+        } else {
+          await processFile(fullPath, relPath)    // process file directly
         }
       }
+    }
+    
+    try {
+      await processFolder(testFolder, '')
     } catch (e) {
       const realPath = await fs.promises.realpath('.')
       const testFolderPath = path.join(realPath, testFolder)
-      console.log(`Test folder ${testFolderPath} does not exist`,e.message)
+      console.log(`Test folder ${testFolderPath} does not exist`, e.message)
       return { tests: [] }
     }
 
