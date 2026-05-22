@@ -793,9 +793,12 @@
     },
     "system": {
       "app-channel": "Kanał aktualizacji aplikacji",
-      "dev": "Dla deweloperów i testerów.",
       "beta": "Wczesny dostęp do nowych funkcji (może zawierać błędy).",
+      "dev": "Dla deweloperów i testerów.",
+      "folder-does-not-exists": "Folder does not exists",
       "stable": "Działa dobrze i jest odpowiednia dla każdego.",
+      "path-is-not-directory": "Path is not directory",
+      "test-runner-folder": "Test Runner Folder",
       "title": "System"
     },
     "title": "Ustawienia"

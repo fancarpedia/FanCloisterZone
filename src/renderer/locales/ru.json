@@ -793,9 +793,12 @@
     },
     "system": {
       "app-channel": "Канал обновлений приложения",
-      "dev": "Тестирование новой функции во время её внедрения",
       "beta": "Подтвердить, что приложение и новые функции готовы",
+      "dev": "Тестирование новой функции во время её внедрения",
+      "folder-does-not-exists": "Folder does not exists",
       "stable": "Я просто хочу играть и наслаждаться игрой",
+      "path-is-not-directory": "Path is not directory",
+      "test-runner-folder": "Test Runner Folder",
       "title": "Система"
     },
     "title": "Настройка"

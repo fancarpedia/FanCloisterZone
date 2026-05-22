@@ -2,7 +2,7 @@
   "@author": "farin & Scott",
   "@jcz-version": "5.12.1",
   "@fcz-version": "6.2.0",
-  "@version": "0.10.6",
+  "@version": "0.10.7",
   "about": {
     "author": "Author",
     "configuration-file": "Configuration file",
@@ -793,9 +793,12 @@
     },
     "system": {
       "app-channel": "App updates channel",
-      "dev": "Testing new function during implementations",
       "beta": "Prove that app and new functions are done",
+      "dev": "Testing new function during implementations",
+      "folder-does-not-exists": "Folder does not exists",
       "stable": "I want just to play and enjoy the game",
+      "path-is-not-directory": "Path is not directory",
+      "test-runner-folder": "Test Runner Folder",
       "title": "System"
     },
     "title": "Settings"

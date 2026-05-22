@@ -793,9 +793,12 @@
     },
     "system": {
       "app-channel": "Kanál pre aktualizácie",
-      "dev": "Testovanie nových možností počas ich programovania",
       "beta": "Otestuj, že nové funkcie v aplikácii sú hotové",
+      "dev": "Testovanie nových možností počas ich programovania",
+      "folder-does-not-exists": "Folder does not exists",
       "stable": "Chcem len hrať a užívať si hru",
+      "path-is-not-directory": "Path is not directory",
+      "test-runner-folder": "Test Runner Folder",
       "title": "Systém"
     },
     "title": "Nastavenia"

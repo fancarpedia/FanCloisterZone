@@ -793,9 +793,12 @@
     },
     "system": {
       "app-channel": "Canal de actualizaciones de la App",
-      "dev": "Probando nueva función durante implementaciones",
       "beta": "Confirma que la App y las nuevas funciones se han completado",
+      "dev": "Probando nueva función durante implementaciones",
+      "folder-does-not-exists": "Folder does not exists",
       "stable": "Solo quiero jugar y disfrutar del juego",
+      "path-is-not-directory": "Path is not directory",
+      "test-runner-folder": "Test Runner Folder",
       "title": "Sistema"
     },
     "title": "Ajustes"

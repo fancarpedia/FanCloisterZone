@@ -793,9 +793,12 @@
     },
     "system": {
       "app-channel": "Programėlės atnaujinimų kanalas",
-      "dev": "Naujų funkcijų testavimas diegimo metu",
       "beta": "Įrodykite, kad programėlė ir naujos funkcijos yra pabaigtos",
+      "dev": "Naujų funkcijų testavimas diegimo metu",
+      "folder-does-not-exists": "Folder does not exists",
       "stable": "Noriu tiesiog žaisti ir mėgautis žaidimu",
+      "path-is-not-directory": "Path is not directory",
+      "test-runner-folder": "Test Runner Folder",
       "title": "Sistema"
     },
     "title": "Nustatymai"

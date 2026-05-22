@@ -2,7 +2,7 @@
   "@author": "Paloi Sciurala",
   "@jcz-version": "5.12.1",
   "@fcz-version": "6.2.0",
-  "@version": "0.10.6",
+  "@version": "0.10.7",
   "about": {
     "author": "Autor",
     "configuration-file": "Fișier de configurație",
@@ -793,9 +793,12 @@
     },
     "system": {
       "app-channel": "Canalul actualizărilor aplicației",
-      "dev": "Se testează funcții noi în timpul implementării",
       "beta": "Dovedește că aplicația și noile funcții sunt realizate",
+      "dev": "Se testează funcții noi în timpul implementării",
+      "folder-does-not-exists": "Directorul nu există",
       "stable": "Vreau doar să joc și să mă bucur de joc",
+      "path-is-not-directory": "Calea nu este un director",
+      "test-runner-folder": "Test de director de rulare",
       "title": "Sistem"
     },
     "title": "Setări"

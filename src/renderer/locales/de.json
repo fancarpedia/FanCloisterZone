@@ -793,9 +793,12 @@
     },
     "system": {
       "app-channel": "App Updates Kanal",
-      "dev": "Test neuer Funktionen während der Implementierung",
       "beta": "Beweis, dass App und neue Funktionen fertig sind",
+      "dev": "Test neuer Funktionen während der Implementierung",
+      "folder-does-not-exists": "Folder does not exists",
       "stable": "Ich möchte nur spielen und das Spiel genießen",
+      "path-is-not-directory": "Path is not directory",
+      "test-runner-folder": "Test Runner Folder",
       "title": "System"
     },
     "title": "Einstellungen"
