@@ -440,8 +440,8 @@ export const actions = {
   async savescenario ({ state, dispatch }, {} = {}) {
     return new Promise(async (resolve, reject) => { /* eslint no-async-promise-executor: 0 */
       let { filePath } = await ipcRenderer.invoke('dialog.showSaveDialog', {
-        title: $nuxt.$t('dev.save-test-runner-scenario'),
-        filters: [{ name: $nuxt.$t('dev.test-scenarios'), extensions: ['jcz'] }],
+        title: $nuxt.$t('file.save-test-runner-scenario'),
+        filters: [{ name: $nuxt.$t('file.test-scenarios'), extensions: ['jcz'] }],
         properties: ['createDirectory', 'showOverwriteConfirmation']
       })
       if (filePath) {
@@ -555,8 +555,8 @@ export const actions = {
     return new Promise(async (resolve, reject) => {
       if (!filePath) {
         const { filePaths, canceled } = await ipcRenderer.invoke('open-load-game-dialog', {
-          title: $nuxt.$t('index.local.open-saved-game'),
-          filters: getSavedGameFilters(), //[{ name: $nuxt.$t('index.local.saved-game'), extensions: ['jcz'] }],
+          title: $nuxt.$t('index.local.open-game'),
+          filters: getSavedGameFilters(),
           properties: ['openFile']
         })
 
@@ -584,14 +584,12 @@ export const actions = {
         
         if (rootState.networking.connectionType=='online') {
           if (sg.test !== undefined) {
-            const msg = [$nuxt.$t(`dev.saved-game-contains-tests'),$nuxt.$t('dev.not-possible-in-online-mode`)].join(' ')
-//			const msg = [$nuxt.$t(`Saved game contains tests.'),$nuxt.$t('It is not possible to open in online mode.`)].join(' ')
+            const msg = [$nuxt.$t(`file.saved-game-contains-tests'),$nuxt.$t('file.not-possible-in-online-mode`)].join(' ')
             commit('errorMessage', { title: $nuxt.$t('file.load-error'), content: msg }, { root: true })
             return
           }
           if (sg.replay.length>0) {
-			const msg = [$nuxt.$t(`dev.saved-game-contains-game-history'),$nuxt.$t('dev.not-possible-in-online-mode`)].join(' ')
-//			const msg = [$nuxt.$t(`Saved game contains game history.'),$nuxt.$t('It is not possible to open in online mode.`)].join(' ')
+			const msg = [$nuxt.$t(`file.saved-game-contains-game-history'),$nuxt.$t('file.not-possible-in-online-mode`)].join(' ')
             commit('errorMessage', { title: $nuxt.$t('file.load-error'), content: msg }, { root: true })
             return
           }
@@ -604,8 +602,7 @@ export const actions = {
               const missing = $addons.findMissingAddons(sg.setup.addons)
 
               if (missing.length) {
-                const msg = $nuxt.$t('file.missing-addons', { addons: missing.join(', ') })
-				//`Saved game (or setup) requires addon(s) which are not installed:\n\n${missing.join(', ')}`
+                const msg = $nuxt.$t('file.saved-game-contains-missing-addons', { addons: missing.join(', ') })
                 commit('errorMessage', { title: $nuxt.$t('file.load-error'), content: msg }, { root: true })
                 reject(msg)
                 return
@@ -797,7 +794,7 @@ export const actions = {
     const loggingEnabled = rootState.settings.devMode
     const engine = this._vm.$engine.spawn({ loggingEnabled })
     engine.on('error', data => {
-      commit('errorMessage', { title: $nuxt.$t('game.engine-error'), content: data + '' }, { root: true })
+      commit('errorMessage', { title: $nuxt.$t('core-messages.engine-error'), content: data + '' }, { root: true })
     })
 
     // if (state.originAppVersion && state.originAppVersion !== getAppVersion()) {
