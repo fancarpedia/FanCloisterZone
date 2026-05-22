@@ -470,37 +470,39 @@ class Addons extends EventsBase {
 
     let updated = false
 
-    for (const installed of installedAddons) {
-        const addon = installed.id
-        const available = downloadable.find(({ key }) => key === addon)
-        
-        if (!available) continue
-
-        // get the highest available version
-        const newest = available.versions.reduce((max, v) => 
-            v.version > max.version ? v : max
-        )
-        if (newest.version > installed.json.version) {
-            console.log(`Updating ${addon}: v${installed.json.version} → v${newest.version}`)
-
-            try {
-              updated = true
-              await this.uninstall(installed)
-              await this.installDownloadable(addon, newest.version)
-            } catch (err) {
-              console.error(`Failed updating ${addon}`, err)
-            }
+    for (const available of downloadable) {
+      const installed = installedAddons.find(({ id }) => id === available.key)
+      // get the highest available version
+      const newest = available.versions.reduce((max, v) => 
+        v.version > max.version ? v : max
+      )
+      if (!installed) {
+        console.log(`Installing new addon ${available.key}: v${newest.version}`)
+        try {
+          updated = true
+          await this.installDownloadable(available.key, newest.version)
+        } catch (err) {
+          console.error(`Failed installing ${available.key}`, err)
         }
-        if (updated) {
-          await this.loadAddons()
-          if (this.$theme) {
-            await this.$theme.loadArtworks()
-          }
-          if (this.$tiles) {
-            await this.$tiles.loadExpansions()
-          }
+      } else if (newest.version > installed.json.version) {
+        console.log(`Updating ${addon}: v${installed.json.version} → v${newest.version}`)
+        try {
+          updated = true
+          await this.installDownloadable(available.key, newest.version)
+        } catch (err) {
+          console.error(`Failed updating ${addon}`, err)
         }
+      }
     }    
+	if (updated) {
+	  await this.loadAddons()
+	  if (this.ctx.$theme) {
+	    await this.ctx.$theme.loadArtworks()
+	  }
+	  if (this.ctx.$tiles) {
+	    await this.ctx.$tiles.loadExpansions()
+	  }
+	}
     
   }
 
