@@ -257,7 +257,14 @@
         <div class="header courier" :title="$t('game.figure.courier')"><NeutralFigure figure="courier" :width="40" :height="40" /></div>
         <div v-for="(val, idx) in stats.points['courier']" :key="'courier-'+idx" class="courier value">
           {{ val }}
-	        </div>
+        </div>
+      </template>
+
+      <template v-if="stats.points['fish-hut'].some(p => p)">
+        <div class="header fish-hut" :title="$t('game.feature.fishhut')"><img src="~/assets/features/C1/fishhut.png" height="40"></div>
+        <div v-for="(val, idx) in stats.points['fish-hut']" :key="'river-'+idx" class="fish-hut value">
+          {{ val }}
+        </div>
       </template>
 
     </div>
@@ -340,7 +347,8 @@ export default {
           'windmill': (new Array(this.players.length)).fill(0),
           'decinsky-sneznik': (new Array(this.players.length)).fill(0),
           'river': (new Array(this.players.length)).fill(0),
-          'courier': (new Array(this.players.length)).fill(0)
+          'courier': (new Array(this.players.length)).fill(0),
+          'fish-hut': (new Array(this.players.length)).fill(0)
         }
       }
       this.history.forEach(h => {

@@ -59,7 +59,8 @@ const TITLE_MAPPING = {
   'decinsky-sneznik': 'game.element.decinsky-sneznik',
   'flowers': 'game.feature.flowers',
   'river': 'game.feature.fishermen',
-  'courier': 'game.element.courier'
+  'courier': 'game.element.courier',
+  'fish-hut': 'game.feature.fish-hut',
 }
 
 const SUBTITLE_MAPPING = {

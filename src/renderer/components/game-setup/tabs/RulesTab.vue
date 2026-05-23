@@ -198,6 +198,15 @@
           <template #description>{{ $t('game-setup.rules.fishermen-description') }}</template>
           <template #disabled>{{ $t('game-setup.rules.fishermen-disabled') }}</template>
         </GameMechanicsBox>
+
+        <GameMechanicsBox v-if="!ai" :item="GameElement.FISHHUT">
+          <template #icon>
+            <img src="~/assets/features/C1/fishhut.png" height="55">
+          </template>
+          <template #description>{{ $t('game-setup.rules.fish-hut-description') }}</template>
+          <template #disabled>{{ $t('game-setup.rules.fish-hut-disabled') }}</template>
+        </GameMechanicsBox>
+
       </div>
     </ConfigSection>
 
