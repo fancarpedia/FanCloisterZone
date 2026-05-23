@@ -1,10 +1,18 @@
-
 import { Menu, ipcMain } from 'electron'
 import { getSettings } from '../settings'
 
 let _win
 let menu
 const enabledState = {}
+let devToolsListenersAttached = false
+
+function updateDevToolsCheck() {
+  const currentMenu = Menu.getApplicationMenu()
+  const item = (currentMenu ? currentMenu.getMenuItemById('toggle-devtools') : null)
+  if (item) {
+    item.checked = _win.webContents.isDevToolsOpened()
+  }
+}
 
 async function createMenu(win, messages) {
   const $t = key => messages[key.replace('menu.', '')]
@@ -78,7 +86,13 @@ async function createMenu(win, messages) {
     template.push({
       label: 'Dev',
       submenu: [
-        { role: 'toggleDevTools', label: $t('dev.toggle-devtools') || 'Toggle DevTools' },
+        {
+          id: 'toggle-devtools',
+          role: 'toggleDevTools',
+          label: $t('dev.toggle-devtools') || 'Toggle DevTools',
+          type: 'checkbox',
+          checked: win.webContents.isDevToolsOpened()
+        },
         { type: 'separator' },
         { id: 'remote-engine', label: $t('dev.use-remote-engine') || 'Use Remote Engine', type: 'checkbox', checked: settings.enginePath === remoteEngineValue, click() { toggleRemoteEngine() } },
         { id: 'local-play-online', label: $t('dev.use-local-play-online') || 'Use Local Play Online', type: 'checkbox', checked: settings.playOnlineUrl === 'localhost:8000/ws', click() { toggleLocalPlayOnline() } },
@@ -94,7 +108,6 @@ async function createMenu(win, messages) {
   }
 
   menu = Menu.buildFromTemplate(template)
-  // this.updateMenu()
   Menu.setApplicationMenu(menu)
 }
 
@@ -126,9 +139,18 @@ export default function () {
     winCreated(win) {
       _win = win
       createMenu(win, {})
+
+      // Attach DevTools listeners only once per window to keep the
+      // checkbox in sync regardless of how DevTools are toggled
+      if (!devToolsListenersAttached) {
+        win.webContents.on('devtools-opened', updateDevToolsCheck)
+        win.webContents.on('devtools-closed', updateDevToolsCheck)
+        devToolsListenersAttached = true
+      }
     },
     winClosed(win) {
       _win = null
+      devToolsListenersAttached = false
     }
   }
 }
