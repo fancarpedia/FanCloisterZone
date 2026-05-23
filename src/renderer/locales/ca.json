@@ -77,11 +77,16 @@
     "undo": "Desfés",
     "test-runner": "Execució de proves"
   },
+  "chat": {
+    "chat": "Chat",
+    "new-message": "Missatge nou"
+  },
   "core-messages": {
     "bonuses": "Bonificacions",
     "choose": "Tria",
     "done": "Fet",
     "engine-error": "Engine error",
+    "field-is-required": "{field} is required",
     "game-engine-not-available": "El motor del joc no està disponible.",
     "incomplete-features": "Elements incomplets",
     "no-core-set": "No hi ha cap joc base!",
@@ -282,9 +287,6 @@
       "you-may-place-a-tile-from-supply": "Podeu col·locar una peça del subministrament.",
       "you-may-place-an-abbey": "Podeu col·locar una abadia",
       "your-action": "l'acció"
-    },
-    "chat": {
-      "new-message": "Missatge nou"
     },
     "element": {
       "abbey": "Abat",

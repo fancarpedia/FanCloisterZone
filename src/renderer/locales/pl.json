@@ -77,11 +77,16 @@
     "undo": "Cofnij",
     "test-runner": "Przetestuj"
   },
+  "chat": {
+    "chat": "Chat",
+    "new-message": "Nowa wiadomość"
+  },
   "core-messages": {
     "bonuses": "Dodatkowe",
     "choose": "Wybierz",
     "done": "Gotowe",
     "engine-error": "Engine error",
+    "field-is-required": "{field} is required",
     "game-engine-not-available": "Silnik gry niedostępny.",
     "incomplete-features": "Nieukończone obszary",
     "no-core-set": "Brak gry podstawowej!",
@@ -282,9 +287,6 @@
       "you-may-place-a-tile-from-supply": "Możesz położyć płytkę z zasobu",
       "you-may-place-an-abbey": "Możesz umieścić Opactwo",
       "your-action": "twoja czynność"
-    },
-    "chat": {
-      "new-message": "Nowa wiadomość"
     },
     "element": {
       "abbey": "Opactwo",

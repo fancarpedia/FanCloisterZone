@@ -2,7 +2,7 @@
   "@author": "farin & Scott",
   "@jcz-version": "5.12.1",
   "@fcz-version": "6.2.0",
-  "@version": "0.10.9",
+  "@version": "0.10.10",
   "about": {
     "author": "Author",
     "configuration-file": "Configuration file",
@@ -77,12 +77,16 @@
     "undo": "Undo",
     "test-runner": "Test Runner"
   },
+  "chat": {
+    "chat": "Chat",
+    "new-message": "New message"
+  },
   "core-messages": {
     "bonuses": "Bonuses",
     "choose": "Choose",
     "done": "Done",
     "engine-error": "Engine error",
-	"field-is-required": "{field} is required",
+    "field-is-required": "{field} is required",
     "game-engine-not-available": "Game engine not available.",
     "incomplete-features": "Incomplete features",
     "no-core-set": "No Core set!",
@@ -283,9 +287,6 @@
       "you-may-place-a-tile-from-supply": "You may place a tile from supply",
       "you-may-place-an-abbey": "You may place an abbey",
       "your-action": "your action"
-    },
-    "chat": {
-      "new-message": "New message"
     },
     "element": {
       "abbey": "Abbey",

@@ -77,11 +77,16 @@
     "undo": "Annuler",
     "test-runner": "Exécuteur de tests"
   },
+  "chat": {
+    "chat": "Chat",
+    "new-message": "Nouveau message"
+  },
   "core-messages": {
     "bonuses": "Bonus",
     "choose": "Choisir",
     "done": "Terminé",
     "engine-error": "Engine error",
+    "field-is-required": "{field} is required",
     "game-engine-not-available": "Moteur de jeu non disponible.",
     "incomplete-features": "Zones incomplètes",
     "no-core-set": "Pas de jeu de base !",
@@ -282,9 +287,6 @@
       "you-may-place-a-tile-from-supply": "Vous pouvez placer une tuile provenant de la réserve",
       "you-may-place-an-abbey": "Vous pouvez placer un monastère",
       "your-action": "votre action"
-    },
-    "chat": {
-      "new-message": "Nouveau message"
     },
     "element": {
       "abbey": "Monastère",

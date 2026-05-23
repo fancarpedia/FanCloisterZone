@@ -77,11 +77,16 @@
     "undo": "Razveljavi",
     "test-runner": "Izvajalnik testov"
   },
+  "chat": {
+    "chat": "Chat",
+    "new-message": "Novo sporočilo"
+  },
   "core-messages": {
     "bonuses": "Bonusi",
     "choose": "Izberi",
     "done": "Končano",
     "engine-error": "Engine error",
+    "field-is-required": "{field} is required",
     "game-engine-not-available": "Igralni pogon ni na voljo.",
     "incomplete-features": "Nedokončane značilnosti",
     "no-core-set": "Ni osnovnega seta!",
@@ -282,9 +287,6 @@
       "you-may-place-a-tile-from-supply": "Lahko postaviš ploščico iz zaloge",
       "you-may-place-an-abbey": "Lahko postaviš opatijo",
       "your-action": "tvoja poteza"
-    },
-    "chat": {
-      "new-message": "Novo sporočilo"
     },
     "element": {
       "abbey": "Opatija",

@@ -77,11 +77,16 @@
     "undo": "Отменить",
     "test-runner": "Тестер"
   },
+  "chat": {
+    "chat": "Chat",
+    "new-message": "Новое сообщение"
+  },
   "core-messages": {
     "bonuses": "Бонусы",
     "choose": "Выбрать",
     "done": "Готово",
     "engine-error": "Engine error",
+    "field-is-required": "{field} is required",
     "game-engine-not-available": "Игровой движок недоступен.",
     "incomplete-features": "Незавершенные функции",
     "no-core-set": "Отсутствует основной набор!",
@@ -282,9 +287,6 @@
       "you-may-place-a-tile-from-supply": "Вы можете выложить тайл из запаса",
       "you-may-place-an-abbey": "Вы можете разместить аббатство",
       "your-action": "ваш ход"
-    },
-    "chat": {
-      "new-message": "Новое сообщение"
     },
     "element": {
       "abbey": "Аббатство",

@@ -77,11 +77,16 @@
     "undo": "vrátit zpět",
     "test-runner": "Test Runner"
   },
+  "chat": {
+    "chat": "Chat",
+    "new-message": "Nový dopis"
+  },
   "core-messages": {
     "bonuses": "Bonusy",
     "choose": "Vybrat",
     "done": "Hotovo",
     "engine-error": "Engine error",
+    "field-is-required": "{field} is required",
     "game-engine-not-available": "Herní engine nebyl nalezen.",
     "incomplete-features": "Nedokončená území",
     "no-core-set": "Nevybrána žádná základní sada!",
@@ -282,9 +287,6 @@
       "you-may-place-a-tile-from-supply": "Můžete umístit kartičku ze zásoby",
       "you-may-place-an-abbey": "Můžete přiložit opatství",
       "your-action": "provedený úkon"
-    },
-    "chat": {
-      "new-message": "Nový dopis"
     },
     "element": {
       "abbey": "Opatství",

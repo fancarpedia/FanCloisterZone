@@ -77,11 +77,16 @@
     "undo": "Atšaukti",
     "test-runner": "Išbandyti"
   },
+  "chat": {
+    "chat": "Chat",
+    "new-message": "Naujas pranešimas"
+  },
   "core-messages": {
     "bonuses": "Bonusai",
     "choose": "Rinktis",
     "done": "Atlikta",
     "engine-error": "Engine error",
+    "field-is-required": "{field} is required",
     "game-engine-not-available": "Žaidimo variklis nėra prieinamas",
     "incomplete-features": "Nepabaigti objektai",
     "no-core-set": "Nepasirinktas pagrindas",
@@ -282,9 +287,6 @@
       "you-may-place-a-tile-from-supply": "Jūs galite padėti kortelę iš savo atsargų",
       "you-may-place-an-abbey": "Jūs galite padėti Abatiją",
       "your-action": "Jūsų veiksmas"
-    },
-    "chat": {
-      "new-message": "Naujas pranešimas"
     },
     "element": {
       "abbey": "Abatija",

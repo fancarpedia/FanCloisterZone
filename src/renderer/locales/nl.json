@@ -77,11 +77,16 @@
     "undo": "Ongedaan maken",
     "test-runner": "Uitvoering testen"
   },
+  "chat": {
+    "chat": "Chat",
+    "new-message": "Nieuw bericht"
+  },
   "core-messages": {
     "bonuses": "Bonussen",
     "choose": "Kies",
     "done": "Klaar",
     "engine-error": "Engine error",
+    "field-is-required": "{field} is required",
     "game-engine-not-available": "Spelmachine niet beschikbaar.",
     "incomplete-features": "Onafgebouwde projecten",
     "no-core-set": "Er is geen hoofdset!",
@@ -282,9 +287,6 @@
       "you-may-place-a-tile-from-supply": "Je mag een tegel uit de voorraad pakken",
       "you-may-place-an-abbey": "Je mag een abdij leggen",
       "your-action": "jouw actie"
-    },
-    "chat": {
-      "new-message": "Nieuw bericht"
     },
     "element": {
       "abbey": "Abdij",

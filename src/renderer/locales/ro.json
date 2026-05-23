@@ -77,11 +77,16 @@
     "undo": "Anulează",
     "test-runner": "Rulator de test"
   },
+  "chat": {
+    "chat": "Chat",
+    "new-message": "Mesaj nou"
+  },
   "core-messages": {
     "bonuses": "Bonusuri",
     "choose": "Alege",
     "done": "Realizat",
     "engine-error": "Eroare de motor",
+    "field-is-required": "{field} is required",
     "game-engine-not-available": "Motorul jocului nu este disponibil.",
     "incomplete-features": "Teritorii nefinalizate",
     "no-core-set": "Niciun set de bază!",
@@ -112,7 +117,7 @@
     "test": "Test",
     "test-runner": "Rulator de test",
     "theme-inspector": "Inspector de temă",
-    "tile-draw-order-is-predefined": "Tile draw order is predefined",
+    "tile-draw-order-is-predefined": "Ordinea de tragere a cartonașelor este predefinită",
     "tiles": "Cartonașe",
     "toggle-devtools": "Comută uneltele de dezvoltator",
     "use-local-play-online": "Folosește jucarea online locală",
@@ -154,8 +159,8 @@
     "family-feud-description": "Cartonașele cu blazoane albastre-albe roșii-galbene aparțin unor familii rivale. Niciun cartonaș nu poate fi plasat în așa fel încât orașe ce aparțin unor familii rivale să devină conectate.",
     "farmers-heaven": "Raiul țăranilor",
     "farmers-heaven-description": "Din moment ce cele mai multe extensii sunt în principal axate pe orașe, este vremea să se facă ceva pentru țărani.",
-    "fish-huts": "Fish Huts",
-    "fish-huts-description": "Make the River move valuable. A meeple can also be placed to the fish-smoking hut as a poissonnier (French for a person whose job is to prepare fish) and score additional points.",
+    "fish-huts": "Colibe pescărești",
+    "fish-huts-description": "Face râul mai valoros. Un meeple poate fi plasat și pe coliba de afumat pește drept poissonnier (cuvânt francez pentru o persoană a cărei slujbă este să prepare pește) și să încaseze puncte adiționale.",
     "fishermen": "Pescari",
     "fishermen-description": "Cartonașele de râu sunt amestecate în teancul de cartonașe obișnuite. Jucătorii pot plasa meepleși pe un segment de râu ca pe oircare alt teritoriu evaluabil, pentru a încasa puncte atunci când râul este finalizat.",
     "ferries": "Bacuri",
@@ -205,9 +210,9 @@
     "winter": "Iarnă"
   },
   "file": {
-    "file-is-not-valid": "File is not valid",
-    "load-error": "Load error",
-    "not-possible-in-online-mode": "It is not possible to open in online mode",
+    "file-is-not-valid": "Fișierul nu este valid",
+    "load-error": "Eroare de încărcare",
+    "not-possible-in-online-mode": "Nu este posibil de deschis în modul online",
     "save-created-prior-version-is-not-supported": "Save created prior version {version} is not supported",
     "saved-game-contains-game-history": "Saved game contains game history",
     "saved-game-contains-missing-addons": "Saved game contains missing addons: {missing}",
@@ -215,7 +220,7 @@
     "save-game-setup": "Save Game Setup",
     "save-game": "Save Game",
     "save-test-runner-scenario": "Save Test Runner Scenario",
-    "test-scenarios": "Test Scenarios"
+    "test-scenarios": "Scenarii de test"
   },
   "game": {
     "action": {
@@ -283,9 +288,6 @@
       "you-may-place-an-abbey": "Poți plasa o abație",
       "your-action": "acțiunea ta"
     },
-    "chat": {
-      "new-message": "Mesaj nou"
-    },
     "element": {
       "abbey": "Abație",
       "abbot": "Abate",
@@ -345,7 +347,7 @@
       "festival": "Festival",
       "field": "Câmp",
       "fields": "Câmpuri",
-      "fish-hut": "Fish Hut",
+      "fish-hut": "Colibă pescărească",
       "fishermen": "Pescari",
       "flock": "Turmă",
       "flowers": "Flori",
@@ -470,8 +472,8 @@
       "families-disabled": "Nu există niciun cartonaș cu blazon de familie diferită în joc.",
       "festival-description": "Cu un cartonaș cu festival poți să îți iei înapoi unul dintre proprii tăi pioni în loc de a plasa unul.",
       "festival-disabled": "Nu există niciun cartonaș cu festival în joc.",
-      "fish-huts-description": "Fish Hut feature.",
-      "fish-huts-disabled": "No tile with Fish Hut is in the game.",
+      "fish-huts-description": "Teritoriul colibă pescărească.",
+      "fish-huts-disabled": "Nu există niciun cartonaș cu colibă pescărească în joc.",
       "fishermen-description": "Râul ca teritoriu obișnuit.",
       "fishermen-disabled": "Nu există niciun cartonaș de râu în joc.",
       "flowers-description": "Florile adaugă +3 puncte teritoriului evaluat atunci când se potrivesc cu jetonul jucătorului.",

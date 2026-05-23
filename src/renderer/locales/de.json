@@ -77,11 +77,16 @@
     "undo": "Rückgängig machen",
     "test-runner": "Testläufer"
   },
+  "chat": {
+    "chat": "Chat",
+    "new-message": "Neue Nachricht"
+  },
   "core-messages": {
     "bonuses": "Boni",
     "choose": "Wählen",
     "done": "Erledigt",
     "engine-error": "Engine error",
+    "field-is-required": "{field} is required",
     "game-engine-not-available": "Spiel-Engine nicht verfügbar.",
     "incomplete-features": "Unvollständige Gebiete",
     "no-core-set": "Kein Basispaket!",
@@ -282,9 +287,6 @@
       "you-may-place-a-tile-from-supply": "Du darfst ein Plättchen aus dem Vorrat legen",
       "you-may-place-an-abbey": "Du darfst eine Abtei einsetzen",
       "your-action": "deiner Aktion"
-    },
-    "chat": {
-      "new-message": "Neue Nachricht"
     },
     "element": {
       "abbey": "Abtei",

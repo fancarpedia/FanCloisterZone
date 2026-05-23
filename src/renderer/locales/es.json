@@ -77,11 +77,16 @@
     "undo": "Deshacer",
     "test-runner": "Probador"
   },
+  "chat": {
+    "chat": "Chat",
+    "new-message": "Nuevo mensaje"
+  },
   "core-messages": {
     "bonuses": "Bonificaciones",
     "choose": "Elegir",
     "done": "Hecho",
     "engine-error": "Engine error",
+    "field-is-required": "{field} is required",
     "game-engine-not-available": "Motor de juego no disponible.",
     "incomplete-features": "Elementos incompletos",
     "no-core-set": "¡No hay conjunto básico!",
@@ -282,9 +287,6 @@
       "you-may-place-a-tile-from-supply": "Puede colocar una loseta de su reserva",
       "you-may-place-an-abbey": "Puede colocar una abadía",
       "your-action": "su acción"
-    },
-    "chat": {
-      "new-message": "Nuevo mensaje"
     },
     "element": {
       "abbey": "Abadía",
