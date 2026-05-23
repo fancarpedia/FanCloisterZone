@@ -30,7 +30,7 @@
             class="edit-message"
             ref="chatInput"
             v-model="newMessage"
-            :label="$t('game.chat.new-message')"
+            :label="$t('chat.new-message')"
             :style="{ width: inputWidth + 'px' }"
             @focus="joinMessage"
             @blur="leaveMessage"
