@@ -94,6 +94,32 @@
       </div>
     </section>
 
+    <v-dialog v-model="isNicknameDialogOpen" max-width="500px" persistent>
+      <v-card>
+        <v-card-title>
+          <span class="headline">{{ $t('settings.player.nickname') }}</span>
+        </v-card-title>
+        <v-card-text>
+          <v-container>
+            <em>{{ $t('settings.player.nickname-description') }}</em>
+            <v-text-field
+              ref="nicknameInput"
+              v-model="pendingNickname"
+              :label="$t('settings.player.nickname')"
+              :error-messages="nicknameError"
+              class="mt-3"
+              @keydown.enter="confirmNickname"
+            />
+          </v-container>
+        </v-card-text>
+        <v-card-actions>
+          <v-spacer />
+          <v-btn text @click="isNicknameDialogOpen = false">{{ $t('button.cancel') }}</v-btn>
+          <v-btn text color="secondary" @click="confirmNickname">{{ $t('button.confirm') }}</v-btn>
+        </v-card-actions>
+      </v-card>
+    </v-dialog>
+
     <!-- <section class="online-hosted">
       <div>
         <h2>{{ $t('index.online.title') }}</h2>
@@ -177,7 +203,10 @@ export default {
       showRecentSetupMenu: false,
       menuX: null,
       menuY: null,
-      menuItemIdx: null
+      menuItemIdx: null,
+      isNicknameDialogOpen: false,
+      pendingNickname: '',
+      nicknameError: ''
     }
   },
 
@@ -243,6 +272,30 @@ export default {
     },
 
     playOnlineFan () {
+      const nickname = this.$store.state.settings.nickname
+      if (!nickname || !nickname.trim()) {
+        this.pendingNickname = nickname || ''
+        this.nicknameError = ''
+        this.isNicknameDialogOpen = true
+        this.$nextTick(() => {
+          this.$refs.nicknameInput && this.$refs.nicknameInput.focus()
+        })
+        return
+      }
+      this.$store.dispatch('networking/connectPlayOnlineFan')
+    },
+
+    async confirmNickname () {
+      const trimmed = this.pendingNickname.trim()
+      if (!trimmed) {
+        this.nicknameError = this.nicknameError = this.$t('core-messages.field-is-required', {
+          field: this.$t('settings.player.nickname')
+        })
+        return
+      }
+      this.nicknameError = ''
+      await this.$store.dispatch('settings/update', { nickname: trimmed })
+      this.isNicknameDialogOpen = false
       this.$store.dispatch('networking/connectPlayOnlineFan')
     },
 
