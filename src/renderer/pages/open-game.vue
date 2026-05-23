@@ -1,4 +1,5 @@
 <template>
+  <div class="open-game-view view">
   <GameSetupGrid v-if="loaded && gameId" :sets="sets" :rules="rules">
     <template #header>
       <div
@@ -120,6 +121,8 @@
       <GameSetupOverview :setup="setup" />
     </template>
   </GameSetupGrid>
+  <OpenGameChat />
+  </div>
 </template>
 
 <script>
@@ -132,6 +135,7 @@ import HeaderGameButton from '@/components/game-setup/HeaderGameButton'
 import HeaderChangeSetupButton from '@/components/game-setup/HeaderChangeSetupButton'
 import HeaderLeaveGameButton from '@/components/game-setup/HeaderLeaveGameButton'
 import HeaderMessage from '@/components/game-setup/HeaderMessage'
+import OpenGameChat from '@/components/game-setup/OpenGameChat'
 import PlayerSlot from '@/components/game-setup/PlayerSlot'
 
 export default {
@@ -142,6 +146,7 @@ export default {
     HeaderGameButton,
     HeaderLeaveGameButton,
     HeaderMessage,
+    OpenGameChat,
     PlayerSlot
   },
 
@@ -261,8 +266,7 @@ export default {
     },
 
     async changeGameSetup () {
-    	console.log(this)
-    //  await this.$store.dispatch('gameSetup/changeGameSetup')
+      await this.$store.dispatch('gameSetup/changeGameSetup')
     },
 
     async leaveGame () {
@@ -297,6 +301,14 @@ export default {
 <style lang="sass" scoped>
 *
   user-select: none
+
+.open-game-view
+  position: relative
+  height: 100vh
+  overflow: hidden
+
+  ::v-deep .game-setup-grid
+    height: 100%
 
 .game-name
   flex-grow: 1
