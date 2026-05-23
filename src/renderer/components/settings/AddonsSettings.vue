@@ -36,7 +36,7 @@
     <div
       v-for="addon in availableAddonsList"
       class="available-addon"
-      @click="installDownloadable(addon.key,addon.versions[0].version)"
+      @click="installAddon(addon)"
     >
       <div class="addon-install" @click.stop="installAddon(addon)">
          <i v-if="addon.installing" class="fas fa-spinner fa-spin"></i>
@@ -159,26 +159,16 @@ export default {
     },
 
     async installAddon(addon) {
-      if (addon.installing) return
+      if (addon.installing || addon.installed) return
       addon.installing = true
       try {
         await this.$addons.installDownloadable(addon.key, addon.versions[0].version)
-        addon.installed = true
+        this.availableAddonsList = this.availableAddonsList.filter(a => a.key !== addon.key)
       } catch (e) {
         this.showAlert = true
         this.errors.push(e + '')
       } finally {
         addon.installing = false
-      }
-    },
-  
-    async installDownloadable (addon, version) {
-      try {
-        await this.$addons.installDownloadable(addon, version)
-	    this.loadAvailableAddons()
-      } catch (e) {
-        this.showAlert = true
-        this.errors.push(e + '')
       }
     },
 
