@@ -14,7 +14,10 @@
         />
         <div class="time">{{ getMessageTime(m) }}</div>
         <div class="message-text">
-          <span class="sender-name">{{ getSenderName(m.player) }}</span>
+          <span
+            class="sender-name"
+            :class="{ 'player-changed': isPlayerChanged(m) }"
+          >{{ m.name || getSenderName(m.player) }}</span>
           {{ m.message }}
         </div>
       </div>
@@ -100,6 +103,12 @@ export default {
   },
 
   methods: {
+    isPlayerChanged (message) {
+      if (!message.clientId || !this.slots) return false
+      const slot = this.slots.find(s => s.number === message.player)
+      return slot ? slot.clientId !== message.clientId : false
+    },
+
     getSenderName (slotNumber) {
       if (!this.slots) return ''
       const slot = this.slots.find(s => s.number === slotNumber)
@@ -138,7 +147,7 @@ export default {
     sendMessageBySlot (slot) {
       const message = this.newMessage.trim()
       if (message.length > 0) {
-        this.$store.dispatch('game/chat', { player: slot.number, message })
+        this.$store.dispatch('game/chat', { player: slot.number, slot: slot.number, clientId: slot.clientId, name: slot.name, message })
         this.newMessage = ''
       }
     },
@@ -243,6 +252,10 @@ export default {
       .sender-name
         font-weight: 600
         margin-right: 3px
+
+        &.player-changed
+          text-decoration: line-through
+          opacity: 0.6
 
   .theme--dark .message .message-text
     color: white

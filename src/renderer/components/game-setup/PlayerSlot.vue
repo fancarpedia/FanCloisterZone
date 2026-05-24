@@ -1,5 +1,5 @@
 <template>
-  <div :class="`player-slot color-${number} ${slotState} ${readOnly ? '' : 'editable'}`" @click="toggle">
+  <div :class="`player-slot color-${number} ${slotState} ${readOnly || (slotState === 'open' && limitReached) ? '' : 'editable'}`" @click="toggle">
     <div
       v-if="order !== null && (readOnly || !randomized)"
       :class="`order order-${order}`"
@@ -26,7 +26,16 @@
       <v-icon v-if="slotState === 'local' && !readOnly">fas fa-pencil-alt</v-icon>
     </div>
     <div v-else class="name">
-      <template v-if="slotState === 'open' && !readOnly">{{ $t('game-setup.create.click-to-assign') }}</template>
+      <template v-if="slotState === 'open' && !readOnly && !limitReached">{{ $t('game-setup.create.click-to-assign') }}</template>
+      <v-tooltip v-else-if="slotState === 'open' && !readOnly && limitReached" bottom>
+        <template #activator="{ on }">
+          <span class="limit-reached" v-on="on">
+            {{ $t('game-setup.create.local-limit-reached') }}
+            <v-icon small>fas fa-question-circle</v-icon>
+          </span>
+        </template>
+        <span>{{ $t('game-setup.create.local-limit-reached-tooltip', { limit: localLimit }) }}</span>
+      </v-tooltip>
       <template v-else>{{ name }}</template>
     </div>
 
@@ -63,7 +72,9 @@ export default {
     name: { type: String, default: null },
     ai: { type: Boolean, default: false },
     order: { type: Number, default: null },
-    readOnly: { type: Boolean }
+    readOnly: { type: Boolean },
+    limitReached: { type: Boolean, default: false },
+    localLimit: { type: Number, default: null }
   },
 
   data () {
@@ -104,6 +115,7 @@ export default {
       } else if (this.slotState === 'localai' || (this.slotState === 'local' && !this.setupAi)) {
         this.$store.dispatch('gameSetup/releaseSlot', { number })
       } else if (this.slotState === 'open') {
+        if (this.limitReached) return
         this.ai = false;
         this.$store.dispatch('gameSetup/takeSlot', { number })
       }
@@ -192,6 +204,14 @@ export default {
 
       +theme using ($theme)
         color: map-get($theme, 'slot-assign-text')
+
+  .limit-reached
+    font-size: 14px
+    font-style: italic
+    display: flex
+    align-items: center
+    gap: 4px
+    cursor: help
 
   &.open, &.local, &.localai
     cursor: pointer

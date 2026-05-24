@@ -69,6 +69,8 @@
           :order="slot.order"
           :read-only="readOnly"
           :ai="slot.ai || false"
+          :limit-reached="!!gameKey && localSlotsCount >= LOCAL_PLAYERS_LIMIT"
+          :local-limit="LOCAL_PLAYERS_LIMIT"
         />
       </div>
 
@@ -96,7 +98,7 @@
         <h2>{{ $t('game-setup.open-game.options') }}</h2>
         <v-checkbox
           class="public-game"
-          v-if="!readOnly"
+          v-if="gameKey && !readOnly"
           v-model="publicGame"
           dense hide-details
           :label="$t('game-setup.open-game.public-game')"
@@ -119,7 +121,7 @@
 
       <GameSetupOverview :setup="setup" />
 
-      <div class="chat-section">
+      <div v-if="gameKey" class="chat-section">
         <h2>{{ $t('chat.chat') }}</h2>
         <OpenGameChat />
       </div>
@@ -141,6 +143,8 @@ import HeaderMessage from '@/components/game-setup/HeaderMessage'
 import OpenGameChat from '@/components/game-setup/OpenGameChat'
 import PlayerSlot from '@/components/game-setup/PlayerSlot'
 
+const LOCAL_PLAYERS_LIMIT = 4
+
 export default {
   components: {
     GameSetupOverview,
@@ -155,6 +159,7 @@ export default {
 
   data () {
     return {
+      LOCAL_PLAYERS_LIMIT,
       isRenameDialogOpen: false,
       editName: null,
       // do not update it after start when gameMessages are set to empty array
@@ -173,7 +178,8 @@ export default {
       name: state => state.game.name,
       options: state => state.game.setup?.options,
       slots: state => state.game.slots,
-      isOwner: state => state.game.owner === state.settings.clientId
+      isOwner: state => state.game.owner === state.settings.clientId,
+      sessionId: state => state.networking.sessionId
     }),
 
     ...mapGetters({
@@ -194,6 +200,11 @@ export default {
 
     slotsReservedByAI () {
       return !!this.slots.find(slot => slot.clientId && slot.ai)
+    },
+
+    localSlotsCount () {
+      if (!this.slots || !this.sessionId) return 0
+      return this.slots.filter(s => s.sessionId === this.sessionId).length
     },
 
     randomizeSeating: {
