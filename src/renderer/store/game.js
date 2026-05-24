@@ -602,7 +602,7 @@ export const actions = {
               const missing = $addons.findMissingAddons(sg.setup.addons)
 
               if (missing.length) {
-                const msg = $nuxt.$t('file.saved-game-requires-missing-addons', { missing: missing.join(', ') })
+                const msg = $nuxt.$t('file.saved-game-requires-missing-add-ons', { missing: missing.join(', ') })
                 commit('errorMessage', { title: $nuxt.$t('file.load-error'), content: msg }, { root: true })
                 reject(msg)
                 return
