@@ -84,7 +84,7 @@ async function createMenu(win, messages) {
     }
 
     template.push({
-      label: 'Dev',
+      label: $t('dev.dev') || 'Dev',
       submenu: [
         {
           id: 'toggle-devtools',
