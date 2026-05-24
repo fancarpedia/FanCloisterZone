@@ -1,10 +1,10 @@
 <template>
   <div class="test-runner">
-
     <v-container class="test-runner-container">
       <div class="test-runner-header">
         <div class="test-runner-header-topbar">
-          <h1>{{ $nuxt.$t('dev.test-runner') }}</h1>
+
+          <h1>{{ $nuxt.$t('dev.test-runner') }} <span class="timer">{{ timerDisplay }}</span></h1>
 
           <div class="middle">
             <v-btn color="primary" @click="toggleRunAll">
@@ -44,7 +44,6 @@
             <ExpansionSymbol :expansion="expansion" />
           </div>
         </div>
-
       </div>
 
       <v-simple-table class="test-runner-table">
@@ -121,7 +120,9 @@ export default {
       stopRunning: false,
       tests: [],
       selectedExpansions: [],
-      expansions: Expansion.all()
+      expansions: Expansion.all(),
+      timerSeconds: 0,
+      timerInterval: null,
     }
   },
 
@@ -131,6 +132,12 @@ export default {
       return this.tests.filter(test =>
         this.selectedExpansions.every(exp => test.requiredSets && test.requiredSets.includes(exp))
       )
+    },
+
+    timerDisplay () {
+      const mins = Math.floor(this.timerSeconds / 60)
+      const secs = this.timerSeconds % 60
+      return `${mins}:${String(secs).padStart(2, '0')}`
     }
   },
 
@@ -186,9 +193,9 @@ export default {
         const relPath = relativePath ? path.join(relativePath, entry) : entry
         const stat = await fs.promises.stat(fullPath)
         if (stat.isDirectory()) {
-          await processFolder(fullPath, relPath)  // recurse into subdir
+          await processFolder(fullPath, relPath)
         } else {
-          await processFile(fullPath, relPath)    // process file directly
+          await processFile(fullPath, relPath)
         }
       }
     }
@@ -211,9 +218,24 @@ export default {
 
   beforeDestroy() {
     this.$store.commit('runningTests', false)
+    this.stopTimer()
   },
 
   methods: {
+    startTimer () {
+      this.timerSeconds = 0
+      this.timerInterval = setInterval(() => {
+        this.timerSeconds++
+      }, 1000)
+    },
+
+    stopTimer () {
+      if (this.timerInterval) {
+        clearInterval(this.timerInterval)
+        this.timerInterval = null
+      }
+    },
+
     toggleExpansion (expansion) {
       const name = expansion.name.toLowerCase().replace(/_/g, '-')
       const idx = this.selectedExpansions.indexOf(name)
@@ -241,6 +263,7 @@ export default {
       if (!this.isRunningAll) {
         this.isRunningAll = true
         this.stopRunning = false
+        this.startTimer()
 
         for (let idx = 0; idx < this.filteredTests.length; idx++) {
           const test = this.filteredTests[idx]
@@ -251,10 +274,12 @@ export default {
           Vue.set(this.tests, globalIdx, { ...test, result })
         }
 
+        this.stopTimer()
         this.isRunningAll = false
       } else {
         this.stopRunning = true
         this.isRunningAll = false
+        this.stopTimer()
       }
     },
 
@@ -348,6 +373,12 @@ export default {
   div.middle
     flex: 1
 
+.timer
+  font-size: 0.75em
+  opacity: 0.75
+  margin-left: 10px
+  letter-spacing: 0.05em
+
 .expansions
   display: flex
   flex-wrap: wrap
@@ -391,5 +422,4 @@ export default {
     .v-icon
       font-size: 24px
       margin: 0
-      
 </style>
