@@ -2,7 +2,7 @@
   "@author": "Paloi Sciurala",
   "@jcz-version": "5.12.1",
   "@fcz-version": "6.2.0",
-  "@version": "0.10.14",
+  "@version": "0.10.16",
   "about": {
     "author": "Autor",
     "configuration-file": "Fișier de configurație",
@@ -203,6 +203,8 @@
     "ukraine-promo-description": "Acest cartonaș promoțional limitat a fost lansat la Spiel 22. Încasările vânzărilor s-au dus către ONG-ului Come Back Alive.",
     "under-the-big-top": "În arena circului",
     "under-the-big-top-description": "",
+    "under-the-big-top-c1": "Under The Big Top",
+    "under-the-big-top-c1-description": "",
     "village-life": "Viața la sat",
     "village-life-description": "",
     "watchtowers": "Turnurile de veghe",
@@ -426,10 +428,10 @@
     },
     "create": {
       "click-to-assign": "apasă pentru a atribui",
-      "kick-player": "Kick player",
+      "kick-player": "Dă jucătorul afară",
       "local-ai-player": "jucător local cu IA",
-      "local-limit-reached": "Limit reached",
-      "local-limit-reached-tooltip": "Maximum {limit} local players allowed",
+      "local-limit-reached": "Limita a fost atinsă",
+      "local-limit-reached-tooltip": "Se permit maxim {limit} jucători locali",
       "local-player": "jucător local",
       "name": "Nume",
       "open-slot": "deschide locul",
@@ -849,6 +851,7 @@
     "russian-promos-2016-title": "Cartonașele din 2016",
     "tower-release": "A patra extensie majoră lansată în 2006.",
     "traders-and-builders-release": "A doua extensie majoră lansată în 2003",
+    "under-the-big-top-c1-release": "The tenth major expansion, released in 2017. C1 Art made by PresetM carcassone-forum.de member.",
     "winter-edition-description": "Set simplu din spin-off-ul Ediția de iarnă. Conține jocul de bază extins cu 12 cartonașe adiționale."
   }
 }

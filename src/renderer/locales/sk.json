@@ -2,7 +2,7 @@
   "@author": "Bumsakalaka",
   "@jcz-version": "5.12.1",
   "@fcz-version": "6.2.0",
-  "@version": "0.10.14",
+  "@version": "0.10.17",
   "about": {
     "author": "Autor",
     "configuration-file": "Konfiguračný súbor",
@@ -203,6 +203,8 @@
     "ukraine-promo-description": "Táto limitovaná promo kartička bola vydaná na výstave Spiel 22. Výťažok z predaja išiel neziskovej organizácii Come Back Alive.",
     "under-the-big-top": "Cirkus",
     "under-the-big-top-description": "",
+    "under-the-big-top-c1": "Cirkus",
+    "under-the-big-top-c1-description": "",
     "village-life": "Dedinský život",
     "village-life-description": "",
     "watchtowers": "Strážne veže",
@@ -426,10 +428,10 @@
     },
     "create": {
       "click-to-assign": "kliknutím zvoľte",
-      "kick-player": "Kick player",
+      "kick-player": "Odpojiť hráča",
       "local-ai-player": "miestny AI hráč",
-      "local-limit-reached": "Limit reached",
-      "local-limit-reached-tooltip": "Maximum {limit} local players allowed",
+      "local-limit-reached": "Dosiahnutý limit",
+      "local-limit-reached-tooltip": "Povolený je maximálny limit {limit} lokálnych hráčov.",
       "local-player": "miestny hráč",
       "name": "Meno",
       "open-slot": "otvorené",
@@ -849,6 +851,7 @@
     "russian-promos-2016-title": "Kartičky z roku 2016",
     "tower-release": "Štvrté veľké rozšírenie vydané v roku 2006.",
     "traders-and-builders-release": "Druhé veľké rozšírenie vydané v roku 2003",
+    "under-the-big-top-c1-release": "10 veľké rozšírenie, vydané v roku 2017. C1 edíciu vytvoril PresetM z carcassonne-forum.de",
     "winter-edition-description": "Základná sada kartičiek zimnej edície."
   }
 }
