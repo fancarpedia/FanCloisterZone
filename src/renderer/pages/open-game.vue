@@ -19,15 +19,6 @@
       />
 
       <div v-if="gameKey" class="game-key">
-        <v-checkbox
-          class="public-game"
-          v-if="!readOnly"
-          v-model="publicGame"
-          dense hide-details
-          :label="$t('game-setup.open-game.public-game')"
-          :disabled="!isOwner"
-        />
-        
         <v-tooltip bottom :open-delay="200">
           <template #activator="{ on, attrs }">
             <span
@@ -104,6 +95,14 @@
       <div class="options">
         <h2>{{ $t('game-setup.open-game.options') }}</h2>
         <v-checkbox
+          class="public-game"
+          v-if="!readOnly"
+          v-model="publicGame"
+          dense hide-details
+          :label="$t('game-setup.open-game.public-game')"
+          :disabled="!isOwner"
+        />
+        <v-checkbox
           v-if="!readOnly"
           v-model="randomizeSeating"
           dense hide-details
@@ -119,9 +118,13 @@
       </div>
 
       <GameSetupOverview :setup="setup" />
+
+      <div class="chat-section">
+        <h2>{{ $t('chat.chat') }}</h2>
+        <OpenGameChat />
+      </div>
     </template>
   </GameSetupGrid>
-  <OpenGameChat />
   </div>
 </template>
 
@@ -310,6 +313,25 @@ export default {
   ::v-deep .game-setup-grid
     height: 100%
 
+  ::v-deep aside
+    display: flex
+    flex-direction: column
+    height: 100%
+    overflow: hidden
+
+  @media (max-width: 1164px)
+    ::v-deep aside
+      flex-direction: row
+      height: 33.333vh
+      overflow: visible
+
+    .options,
+    .game-setup-overview,
+    .chat-section
+      flex: 0 0 33.333%
+      height: 33.333vh
+      overflow-y: auto
+
 .game-name
   flex-grow: 1
   font-size: 20px
@@ -351,8 +373,6 @@ export default {
       color: map-get($theme, 'text-color')
       background: map-get($theme, 'cards-selected-bg')
 
-.public-game
-  margin-right: 2ex
     
 header .v-alert
   position: relative
@@ -372,8 +392,26 @@ main
   justify-content: center
   margin-top: 40px
 
+h2
+  font-weight: 300
+  font-size: 16px
+  text-transform: uppercase
+  text-align: center
+
+  +theme using ($theme)
+    color: map-get($theme, 'gray-text-color')
+
+.options
+  flex: 0 0 33.333%
+  padding: 30px 20px 20px
+  order: 2
+  overflow-y: auto
+  box-sizing: border-box
+
 .game-setup-overview
-  margin-bottom: 20px
+  flex: 0 0 33.333%
+  overflow-y: auto
+  box-sizing: border-box
 
   +theme using ($theme)
     background: map-get($theme, 'cards-bg')
@@ -385,18 +423,18 @@ main
     h2
       margin-right: -20px
 
-h2
-  font-weight: 300
-  font-size: 16px
-  text-transform: uppercase
-  text-align: center
+.chat-section
+  flex: 0 0 33.333%
+  order: 3
+  padding: 30px 20px 20px
+  overflow: hidden
+  box-sizing: border-box
+  display: flex
+  flex-direction: column
 
-  +theme using ($theme)
-    color: map-get($theme, 'gray-text-color')
-
-.options
-  padding: 30px 20px 40px
-  order: 2
+  .open-game-chat
+    flex: 1 1 0
+    min-height: 0
 
 .game-key
   user-select: text
@@ -416,5 +454,8 @@ h2
 
   .options
     order: 1
+    padding-top: 15px
+
+  .chat-section
     padding-top: 15px
 </style>
