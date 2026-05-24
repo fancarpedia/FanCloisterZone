@@ -79,7 +79,8 @@
   },
   "chat": {
     "chat": "Chat",
-    "new-message": "Missatge nou"
+    "new-message": "Missatge nou",
+    "take-slot-hint": "Take a slot to start chat"
   },
   "core-messages": {
     "bonuses": "Bonificacions",
@@ -425,7 +426,10 @@
     },
     "create": {
       "click-to-assign": "feu clic per a assignar",
+      "kick-player": "Kick player",
       "local-ai-player": "jugador ia local",
+      "local-limit-reached": "Limit reached",
+      "local-limit-reached-tooltip": "Maximum {limit} local players allowed",
       "local-player": "jugador local",
       "name": "Nom",
       "open-slot": "ranura oberta",

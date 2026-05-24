@@ -79,7 +79,8 @@
   },
   "chat": {
     "chat": "Chat",
-    "new-message": "Nuevo mensaje"
+    "new-message": "Nuevo mensaje",
+    "take-slot-hint": "Take a slot to start chat"
   },
   "core-messages": {
     "bonuses": "Bonificaciones",
@@ -425,7 +426,10 @@
     },
     "create": {
       "click-to-assign": "clic para asignar",
+      "kick-player": "Kick player",
       "local-ai-player": "jugador IA local",
+      "local-limit-reached": "Limit reached",
+      "local-limit-reached-tooltip": "Maximum {limit} local players allowed",
       "local-player": "jugador local",
       "name": "Nombre",
       "open-slot": "puesto disponible",

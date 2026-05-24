@@ -2,7 +2,7 @@
   "@author": "Paloi Sciurala",
   "@jcz-version": "5.12.1",
   "@fcz-version": "6.2.0",
-  "@version": "0.10.11",
+  "@version": "0.10.14",
   "about": {
     "author": "Autor",
     "configuration-file": "Fișier de configurație",
@@ -79,7 +79,8 @@
   },
   "chat": {
     "chat": "Chat",
-    "new-message": "Mesaj nou"
+    "new-message": "Mesaj nou",
+    "take-slot-hint": "Ia un loc pentru a începe să conversezi"
   },
   "core-messages": {
     "bonuses": "Bonusuri",
@@ -101,7 +102,7 @@
   },
   "dev": {
     "actions": "Acțiuni",
-    "dev": "Dev",
+    "dev": "Dez",
     "dump-hosted-game-server-state": "Golește starea serverului partidei găzduite",
     "edition": "Ediție",
     "game-created-in-development-mode": "Partidă în modul de dezvoltare",
@@ -220,7 +221,7 @@
     "save-test-runner-scenario": "Salvează scenariul derulatorului de test",
     "saved-game-contains-game-history": "Partida salvată conține istoricul partidei",
     "saved-game-contains-tests": "Partida salvată conține teste",
-    "saved-game-requires-missing-add-ons": "Partida salvată conține add-on-uri lipsă: {missing}",
+    "saved-game-requires-missing-add-ons": "Partida salvată are nevoie de add-on-uri lipsă: {missing}",
     "test-scenarios": "Scenarii de test"
   },
   "game": {
@@ -425,7 +426,10 @@
     },
     "create": {
       "click-to-assign": "apasă pentru a atribui",
+      "kick-player": "Kick player",
       "local-ai-player": "jucător local cu IA",
+      "local-limit-reached": "Limit reached",
+      "local-limit-reached-tooltip": "Maximum {limit} local players allowed",
       "local-player": "jucător local",
       "name": "Nume",
       "open-slot": "deschide locul",

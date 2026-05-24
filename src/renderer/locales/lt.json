@@ -79,7 +79,8 @@
   },
   "chat": {
     "chat": "Chat",
-    "new-message": "Naujas pranešimas"
+    "new-message": "Naujas pranešimas",
+    "take-slot-hint": "Take a slot to start chat"
   },
   "core-messages": {
     "bonuses": "Bonusai",
@@ -425,7 +426,10 @@
     },
     "create": {
       "click-to-assign": "paspausti čia",
+      "kick-player": "Kick player",
       "local-ai-player": "vietinis DI žaidėjas",
+      "local-limit-reached": "Limit reached",
+      "local-limit-reached-tooltip": "Maximum {limit} local players allowed",
       "local-player": "vietinis žaidėjas",
       "name": "Vardas",
       "open-slot": "Pridėti",

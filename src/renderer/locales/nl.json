@@ -79,7 +79,8 @@
   },
   "chat": {
     "chat": "Chat",
-    "new-message": "Nieuw bericht"
+    "new-message": "Nieuw bericht",
+    "take-slot-hint": "Take a slot to start chat"
   },
   "core-messages": {
     "bonuses": "Bonussen",
@@ -425,7 +426,10 @@
     },
     "create": {
       "click-to-assign": "klik om toe te wijzen",
+      "kick-player": "Kick player",
       "local-ai-player": "lokale ai-speler",
+      "local-limit-reached": "Limit reached",
+      "local-limit-reached-tooltip": "Maximum {limit} local players allowed",
       "local-player": "lokale speler",
       "name": "Naam",
       "open-slot": "open plaats",

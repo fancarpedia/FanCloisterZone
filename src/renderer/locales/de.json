@@ -79,7 +79,8 @@
   },
   "chat": {
     "chat": "Chat",
-    "new-message": "Neue Nachricht"
+    "new-message": "Neue Nachricht",
+    "take-slot-hint": "Take a slot to start chat"
   },
   "core-messages": {
     "bonuses": "Boni",
@@ -425,7 +426,10 @@
     },
     "create": {
       "click-to-assign": "zum Zuweisen hier klicken",
+      "kick-player": "Kick player",
       "local-ai-player": "Lokaler Computergegner",
+      "local-limit-reached": "Limit reached",
+      "local-limit-reached-tooltip": "Maximum {limit} local players allowed",
       "local-player": "lokaler Spieler",
       "name": "Name",
       "open-slot": "offener Slot",

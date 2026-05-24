@@ -79,7 +79,8 @@
   },
   "chat": {
     "chat": "Chat",
-    "new-message": "Новое сообщение"
+    "new-message": "Новое сообщение",
+    "take-slot-hint": "Take a slot to start chat"
   },
   "core-messages": {
     "bonuses": "Бонусы",
@@ -425,7 +426,10 @@
     },
     "create": {
       "click-to-assign": "нажмите, чтобы назначить",
+      "kick-player": "Kick player",
       "local-ai-player": "локальный ИИ игрок",
+      "local-limit-reached": "Limit reached",
+      "local-limit-reached-tooltip": "Maximum {limit} local players allowed",
       "local-player": "локальный игрок",
       "name": "Имя",
       "open-slot": "открытое место",

@@ -2,7 +2,7 @@
   "@author": "farin & Scott",
   "@jcz-version": "5.12.1",
   "@fcz-version": "6.2.0",
-  "@version": "0.10.13",
+  "@version": "0.10.16",
   "about": {
     "author": "Author",
     "configuration-file": "Configuration file",
@@ -79,7 +79,8 @@
   },
   "chat": {
     "chat": "Chat",
-    "new-message": "New message"
+    "new-message": "New message",
+    "take-slot-hint": "Take a slot to start chat"
   },
   "core-messages": {
     "bonuses": "Bonuses",
@@ -425,7 +426,10 @@
     },
     "create": {
       "click-to-assign": "click to assign",
+      "kick-player": "Kick player",
       "local-ai-player": "local ai player",
+      "local-limit-reached": "Limit reached",
+      "local-limit-reached-tooltip": "Maximum {limit} local players allowed",
       "local-player": "local player",
       "name": "Name",
       "open-slot": "open slot",

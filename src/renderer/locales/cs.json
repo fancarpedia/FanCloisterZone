@@ -79,7 +79,8 @@
   },
   "chat": {
     "chat": "Chat",
-    "new-message": "Nový dopis"
+    "new-message": "Nový dopis",
+    "take-slot-hint": "Take a slot to start chat"
   },
   "core-messages": {
     "bonuses": "Bonusy",
@@ -425,7 +426,10 @@
     },
     "create": {
       "click-to-assign": "Kliknutím přidáte hráče",
+      "kick-player": "Kick player",
       "local-ai-player": "místní AI hráč",
+      "local-limit-reached": "Limit reached",
+      "local-limit-reached-tooltip": "Maximum {limit} local players allowed",
       "local-player": "místní hráč",
       "name": "Jméno",
       "open-slot": "Volná pozice",

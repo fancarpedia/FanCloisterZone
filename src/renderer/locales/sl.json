@@ -79,7 +79,8 @@
   },
   "chat": {
     "chat": "Chat",
-    "new-message": "Novo sporočilo"
+    "new-message": "Novo sporočilo",
+    "take-slot-hint": "Take a slot to start chat"
   },
   "core-messages": {
     "bonuses": "Bonusi",
@@ -425,7 +426,10 @@
     },
     "create": {
       "click-to-assign": "klikni za dodelitev",
+      "kick-player": "Kick player",
       "local-ai-player": "Lokalni AI igralec",
+      "local-limit-reached": "Limit reached",
+      "local-limit-reached-tooltip": "Maximum {limit} local players allowed",
       "local-player": "lokalni igralec",
       "name": "Ime",
       "open-slot": "odprta pozicija",
