@@ -101,6 +101,7 @@
   },
   "dev": {
     "actions": "Úkony",
+    "dev": "Dev",
     "dump-hosted-game-server-state": "Dump Stavu herného serveru",
     "edition": "Edice",
     "game-created-in-development-mode": "Game in Development mode",
@@ -214,12 +215,12 @@
     "load-error": "Load error",
     "not-possible-in-online-mode": "It is not possible to open in online mode",
     "save-created-prior-version-is-not-supported": "Save created prior version {version} is not supported",
-    "saved-game-contains-game-history": "Saved game contains game history",
-    "saved-game-contains-missing-addons": "Saved game contains missing addons: {missing}",
-    "saved-game-contains-tests": "Saved game contains tests",
     "save-game-setup": "Save Game Setup",
     "save-game": "Save Game",
     "save-test-runner-scenario": "Save Test Runner Scenario",
+    "saved-game-contains-game-history": "Saved game contains game history",
+    "saved-game-contains-tests": "Saved game contains tests",
+    "saved-game-requires-missing-add-ons": "Saved game requires missing add-ons: {missing}",
     "test-scenarios": "Test Scenarios"
   },
   "game": {
@@ -269,7 +270,7 @@
       "player-may-place-a-tile-from-supply": "Hráč může umístit kartičku ze zásoby",
       "player-may-place-an-abbey": "Hráč může přiložit opatství",
       "player-must-place-the-tile": "Hráč musí přiložit kartičku",
-      "shepherde-placement": "Umíestění pastýře",
+      "shepherd-placement": "Umíestění pastýře",
       "siege-player-can-escape-a-besieged-city": "Hráč může uniknout z obléhaného města.",
       "siege-you-can-escape-a-besieged-city": "Můžete uniknout z obléhaného města.",
       "skip-action": "Přeskočit úkon",

@@ -101,6 +101,7 @@
   },
   "dev": {
     "actions": "Actions",
+    "dev": "Dev",
     "dump-hosted-game-server-state": "Vider l’état du serveur de parties hébergées",
     "edition": "Édition",
     "game-created-in-development-mode": "Game in Development mode",
@@ -214,12 +215,12 @@
     "load-error": "Load error",
     "not-possible-in-online-mode": "It is not possible to open in online mode",
     "save-created-prior-version-is-not-supported": "Save created prior version {version} is not supported",
-    "saved-game-contains-game-history": "Saved game contains game history",
-    "saved-game-contains-missing-addons": "Saved game contains missing addons: {missing}",
-    "saved-game-contains-tests": "Saved game contains tests",
     "save-game-setup": "Save Game Setup",
     "save-game": "Save Game",
     "save-test-runner-scenario": "Save Test Runner Scenario",
+    "saved-game-contains-game-history": "Saved game contains game history",
+    "saved-game-contains-tests": "Saved game contains tests",
+    "saved-game-requires-missing-add-ons": "Saved game requires missing add-ons: {missing}",
     "test-scenarios": "Test Scenarios"
   },
   "game": {
@@ -269,7 +270,7 @@
       "player-may-place-a-tile-from-supply": "Le joueur peut placer une tuile provenant de la réserve",
       "player-may-place-an-abbey": "Le joueur peut placer un monastère",
       "player-must-place-the-tile": "Le joueur doit placer la tuile",
-      "shepherde-placement": "Pose du berger",
+      "shepherd-placement": "Pose du berger",
       "siege-player-can-escape-a-besieged-city": "Le joueur peut s’échapper d’une ville assiégée.",
       "siege-you-can-escape-a-besieged-city": "Vous pouvez vous échapper d’une ville assiégée.",
       "skip-action": "Sauter l’action",
