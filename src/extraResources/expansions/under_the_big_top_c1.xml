@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="utf-8"?>
+<defs>
+  <tiles>
+    <tile id="ubtc1/cfcf.top">
+      <city>N</city>
+      <city>S</city>
+      <field city="N S">WL WR</field>
+      <field city="N S">EL ER</field>
+      <circus>I</circus>
+    </tile>
+    <tile id="ubtc1/cfff.top">
+      <city>N</city>
+      <field city="N">EL ER SL SR WL WR</field>
+      <circus>I</circus>
+    </tile>
+    <tile id="ubtc1/cffr.top.1">
+      <city>N</city>
+      <field city="N">WR</field>
+      <field city="N">EL ER SL SR WL</field>
+      <circus>I</circus>
+      <road>W</road>
+    </tile>
+    <tile id="ubtc1/cffr.top.2">
+      <city>N</city>
+      <field city="N">WR</field>
+      <field city="N">EL ER SL SR WL</field>
+      <circus>I</circus>
+      <road>W</road>
+    </tile>
+    <tile id="ubtc1/cfrf.top">
+      <city>N</city>
+      <field city="N">SR WL WR</field>
+      <field city="N">EL ER SL</field>
+      <circus>I</circus>
+      <road>S</road>
+    </tile>
+    <tile id="ubtc1/crfc.top">
+      <city>N</city>
+      <city>W</city>
+      <field city="N">EL</field>
+      <field city="W">ER SL SR</field>
+      <circus>I</circus>
+      <road>E</road>
+    </tile>
+    <tile id="ubtc1/crfr.top">
+      <city>N</city>
+      <field city="N">WR</field>
+      <field city="N">EL</field>
+      <field>ER SL SR WL</field>
+      <circus>I</circus>
+      <road wagon-move="a">W</road>
+      <road wagon-move="a">E</road>
+    </tile>
+    <tile id="ubtc1/crrc.top">
+      <city>N W</city>
+      <field city="N W">EL</field>
+      <field>ER SL</field>
+      <field city="N W">SR</field>
+      <road wagon-move="a">S</road>
+      <road wagon-move="a">E</road>
+      <circus>I</circus>
+    </tile>
+    <tile id="ubtc1/ffff.g.ac">
+      <garden>I</garden>
+      <field>NL NR EL ER SL SR WL WR</field>
+      <acrobats direction="NE">I</acrobats>
+    </tile>
+    <tile id="ubtc1/ffrf.ac">
+      <acrobats direction="NW">I</acrobats>
+      <field>NL NR EL ER SL SR WL WR</field>
+      <road>S</road>
+    </tile>
+    <tile id="ubtc1/ffrf.top">
+      <circus>I</circus>
+      <field>NL NR EL ER SL SR WL WR</field>
+      <road>S</road>
+    </tile>
+    <tile id="ubtc1/ffrr.acw">
+      <well road="S" field="Field/SR.WL">I</well>
+      <field>NL NR EL ER SL WR</field>
+      <field wells="1" well="I">SR WL</field>
+      <acrobats direction="NE">I</acrobats>
+      <road wells="1" well="I" wagon-move="a">S</road>
+      <road wagon-move="a">W</road>
+    </tile>
+    <tile id="ubtc1/ffrr.ac.1">
+      <field>NL NR EL ER SL WR</field>
+      <field>SR WL</field>
+      <acrobats direction="NW">I</acrobats>
+      <road wagon-move="a">S</road>
+      <road wagon-move="a">W</road>
+    </tile>
+    <tile id="ubtc1/ffrr.ac.2">
+      <field>SR WL</field>
+      <field>NL NR EL ER SL WR</field>
+      <acrobats direction="NE">I</acrobats>
+      <road wagon-move="a">S</road>
+      <road wagon-move="a">W</road>
+    </tile>
+    <tile id="ubtc1/frfr.top">
+      <field>NL NR EL WR</field>
+      <field>ER SL SR WL</field>
+      <circus>I</circus>
+      <road wagon-move="a">E</road>
+      <road wagon-move="a">W</road>
+    </tile>
+    <tile id="ubtc1/frrf.ac">
+      <field>ER SL</field>
+      <field>NL NR EL SR WL WR</field>
+      <acrobats direction="NE">I</acrobats>
+      <road wagon-move="a">S</road>
+      <road wagon-move="a">E</road>
+    </tile>
+    <tile id="ubtc1/frrf.g.top">
+      <garden>I</garden>
+      <field>ER SL</field>
+      <field>NL NR EL SR WL WR</field>
+      <circus>I</circus>
+      <road wagon-move="a">S</road>
+      <road wagon-move="a">E</road>
+    </tile>
+    <tile id="ubtc1/frrr.top">
+      <field>NL NR EL WR</field>
+      <field>ER SL</field>
+      <field>SR WL</field>
+      <road wagon-move="a b">S</road>
+      <road wagon-move="a c">E</road>
+      <road wagon-move="b c">W</road>
+      <circus>I</circus>
+    </tile>
+    <tile id="ubtc1/rfrf.ac.1">
+      <field>NR EL ER SL</field>
+      <field>NL SR WL WR</field>
+      <road wagon-move="a">S</road>
+      <road wagon-move="a">N</road>
+      <acrobats direction="NE">I</acrobats>
+    </tile>
+    <tile id="ubtc1/rfrf.ac.2">
+      <field>NR EL ER SL</field>
+      <field>NL SR WL WR</field>
+      <road wagon-move="a">S</road>
+      <road wagon-move="a">N</road>
+      <acrobats direction="NE">I</acrobats>
+    </tile>
+  </tiles>
+  <sets>
+    <tile-set id="under-the-big-top-c1">
+      <ref count="1" tile="ubtc1/cfcf.top" />
+      <ref count="1" tile="ubtc1/cfff.top" />
+      <ref count="1" tile="ubtc1/cffr.top.1" />
+      <ref count="1" tile="ubtc1/cffr.top.2" />
+      <ref count="1" tile="ubtc1/cfrf.top" />
+      <ref count="1" tile="ubtc1/crfc.top" />
+      <ref count="1" tile="ubtc1/crfr.top" />
+      <ref count="1" tile="ubtc1/crrc.top" />
+      <ref count="1" tile="ubtc1/ffff.g.ac" />
+      <ref count="1" tile="ubtc1/ffrf.ac" />
+      <ref count="1" tile="ubtc1/ffrf.top" />
+      <ref count="1" tile="ubtc1/ffrr.acw" />
+      <ref count="1" tile="ubtc1/ffrr.ac.1" />
+      <ref count="1" tile="ubtc1/ffrr.ac.2" />
+      <ref count="1" tile="ubtc1/frfr.top" />
+      <ref count="1" tile="ubtc1/frrf.ac" />
+      <ref count="1" tile="ubtc1/frrf.g.top" />
+      <ref count="1" tile="ubtc1/frrr.top" />
+      <ref count="1" tile="ubtc1/rfrf.ac.1" />
+      <ref count="1" tile="ubtc1/rfrf.ac.2" />
+    </tile-set>
+  </sets>
+</defs>

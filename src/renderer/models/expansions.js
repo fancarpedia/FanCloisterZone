@@ -94,6 +94,10 @@ export const UNDER_THE_BIG_TOP = Expansion.UNDER_THE_BIG_TOP = new Expansion('UN
   implies: ['big-top', 'ringmaster', 'acrobats']
 })
 
+export const UNDER_THE_BIG_TOP_C1 = Expansion.UNDER_THE_BIG_TOP_C1 = new Expansion('UNDER_THE_BIG_TOP_C1', 'Under The Big Top C1', {
+  implies: ['big-top', 'ringmaster', 'acrobats']
+})
+
 // $t('expansion.king-and-robber')
 export const KING_AND_ROBBER = Expansion.KING_AND_ROBBER = new Expansion('KING_AND_ROBBER', 'King and Robber', { implies: ['king', 'robber'] })
 // $t('expansion.river')

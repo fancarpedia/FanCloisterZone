@@ -27,7 +27,7 @@
       <template v-else-if="item.name === 'little-buildings'"><img src="~/assets/figures/lb.png" width="40" height="40"></template>
       <template v-else-if="item.name === 'mage'"><NeutralFigure figure="mage" :width="40" :height="40" /></template>
       <template v-else-if="item.name === 'witch'"><NeutralFigure figure="witch" :width="40" :height="40" /></template>
-      <template v-else-if="item.name === 'circus'"><ExpansionSymbol :expansion="Expansion.UNDER_THE_BIG_TOP" :style="{ width: 40, height: 40 }" /></template>
+      <template v-else-if="item.name === 'circus'"><ExpansionSymbol :expansion="Expansion.UNDER_THE_BIG_TOP_C1" :style="{ width: 40, height: 40 }" /></template>
       <template v-else-if="item.name === 'acrobats'">
         <svg class="meeple" width="40" height="40" viewBox="0 0 55 55">
           <g transform="scale(0.55)">
