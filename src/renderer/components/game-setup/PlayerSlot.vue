@@ -39,6 +39,22 @@
       <template v-else>{{ name }}</template>
     </div>
 
+    <div
+      v-if="isOwner && !readOnly && (slotState === 'remote' || slotState === 'remoteai' || slotState === 'waiting')"
+      class="kick-wrapper"
+      @click.stop
+    >
+      <v-btn
+        class="kick-btn"
+        x-small
+        color="error"
+        @click.stop="kickPlayer"
+      >
+        <v-icon x-small left>fas fa-times</v-icon>
+        {{ $t('game-setup.create.kick-player') }}
+      </v-btn>
+    </div>
+
     <v-dialog v-model="edit" max-width="600px">
       <v-card>
         <v-card-title>
@@ -74,7 +90,8 @@ export default {
     order: { type: Number, default: null },
     readOnly: { type: Boolean },
     limitReached: { type: Boolean, default: false },
-    localLimit: { type: Number, default: null }
+    localLimit: { type: Number, default: null },
+    isOwner: { type: Boolean, default: false }
   },
 
   data () {
@@ -121,6 +138,11 @@ export default {
       }
     },
 
+    kickPlayer () {
+      if (!this.isOwner) return
+      this.$store.dispatch('gameSetup/releaseSlot', { number: this.number })
+    },
+
     openEdit () {
       if (!this.readOnly) {
         this.editName = this.name
@@ -149,7 +171,6 @@ export default {
   display: flex
   flex-direction: column
   align-items: center
-  overflow: hidden
 
   +theme using ($theme)
     background: map-get($theme, 'slot-open-bg')
@@ -204,6 +225,19 @@ export default {
 
       +theme using ($theme)
         color: map-get($theme, 'slot-assign-text')
+
+  .kick-wrapper
+    position: absolute
+    bottom: 8px
+    z-index: 2
+    transition: transform 0.15s, filter 0.15s
+
+    &:hover
+      transform: scale(1.08)
+      filter: brightness(1.15) drop-shadow(0 3px 6px rgba(0, 0, 0, 0.35))
+
+  .kick-btn
+    position: static
 
   .limit-reached
     font-size: 14px

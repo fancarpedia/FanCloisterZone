@@ -69,6 +69,7 @@
           :order="slot.order"
           :read-only="readOnly"
           :ai="slot.ai || false"
+          :is-owner="isOwner"
           :limit-reached="!!gameKey && localSlotsCount >= LOCAL_PLAYERS_LIMIT"
           :local-limit="LOCAL_PLAYERS_LIMIT"
         />
