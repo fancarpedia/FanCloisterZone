@@ -1,0 +1,174 @@
+{
+  "appVersion": "6.2.0",
+  "gameId": "1",
+  "name": "",
+  "initialRandom": 0.37235795327977184,
+  "created": "2026-05-24T16:39:00.317Z",
+  "clock": 67192,
+  "setup": {
+    "sets": {
+      "basic:1": 1,
+      "flier:1": 1,
+      "the-courier": 1
+    },
+    "elements": {
+      "small-follower": 7,
+      "farmers": true
+    },
+    "rules": {},
+    "timer": null,
+    "start": [
+      {
+        "tile": "BA/RCr",
+        "x": 0,
+        "y": 0,
+        "rotation": 0
+      }
+    ],
+    "ai": false,
+    "options": {},
+    "addons": {
+      "the-courier": 0
+    }
+  },
+  "players": [
+    {
+      "name": "Betty",
+      "slot": 2,
+      "ai": false
+    }
+  ],
+  "chat": [],
+  "replay": [
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "the-courier/rfrf.m",
+        "rotation": "R90",
+        "position": [
+          0,
+          1
+        ]
+      },
+      "player": 0,
+      "clock": 4570
+    },
+    {
+      "type": "PASS",
+      "payload": {},
+      "player": 0,
+      "clock": 6373
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.49604145010455825
+      },
+      "player": 0,
+      "clock": 6391
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "the-courier/ffrr.me.m",
+        "rotation": "R180",
+        "position": [
+          -1,
+          1
+        ]
+      },
+      "player": 0,
+      "clock": 9626
+    },
+    {
+      "type": "PASS",
+      "payload": {},
+      "player": 0,
+      "clock": 10208
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.4368512995918583
+      },
+      "player": 0,
+      "clock": 10220
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "the-courier/ffff.me.w",
+        "rotation": "R0",
+        "position": [
+          1,
+          1
+        ]
+      },
+      "player": 0,
+      "clock": 13005
+    },
+    {
+      "type": "PASS",
+      "payload": {},
+      "player": 0,
+      "clock": 13961
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.9386274671997323
+      },
+      "player": 0,
+      "clock": 13979
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "FL/Rr.NW.o",
+        "rotation": "R0",
+        "position": [
+          2,
+          1
+        ]
+      },
+      "player": 0,
+      "clock": 18230
+    },
+    {
+      "type": "DEPLOY_MEEPLE",
+      "payload": {
+        "pointer": {
+          "position": [
+            2,
+            1
+          ],
+          "location": "I",
+          "feature": "FlyingMachine"
+        },
+        "meepleId": "0.small.1",
+        "random": 0.34935221399784044
+      },
+      "player": 0,
+      "clock": 19231
+    }
+  ],
+  "gameAnnotations": {
+    "drawOrder": [
+      "the-courier/rfrf.m",
+      "the-courier/ffrr.me.m",
+      "the-courier/ffff.me.w",
+      "FL/Rr.NW.o"
+    ]
+  },
+  "test": {
+    "description": "Courierletter Not Available For Flyier",
+    "assertions": [
+      "Betty has 0 points.",
+      "Phase is ActionPhase",
+      "Player can't pass",
+      "Available action Meeple for SmallFollower",
+      "Meeple SmallFollower options: {Road,WE,[0,1]}",
+      "Undo is not allowed"
+    ]
+  }
+}
