@@ -16,7 +16,7 @@
         <ExpansionBox v-if="!ai" :expansion="Expansion.ABBEY_AND_MAYOR" @open-detail="openDetail" />
         <ExpansionBox v-if="!ai" :expansion="Expansion.BRIDGES_CASTLES_AND_BAZAARS" @open-detail="openDetail" />
         <ExpansionBox v-if="!ai" :expansion="Expansion.HILLS_AND_SHEEP" @open-detail="openDetail" />
-        <ExpansionBox v-if="!ai" :expansion="Expansion.UNDER_THE_BIG_TOP" @open-detail="openDetail" />
+        <ExpansionBox v-if="!ai" :expansion="Expansion.UNDER_THE_BIG_TOP_C1" @open-detail="openDetail" />
       </div>
     </ConfigSection>
 
