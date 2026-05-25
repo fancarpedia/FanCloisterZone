@@ -26,10 +26,10 @@ class Addons extends EventsBase {
       classic: {
         url: [
 //          'https://jcloisterzone.com/packages/classic/classic-6-5.9.0.jca',
-          'https://mega.nz/file/HVJnFQaa#MIMfsuyvFopCeyWZZTcotXQcMpycHqA5UzHE4Fa1RFU'
+          'https://mega.nz/file/LFYy0SLZ#CJLVOJ1ZfB_vAcmQI75MPykgsAAE9CUtP2lMnubaZAU'
         ],
-        version: 6,
-        sha256: '26b1fc8edc37c9df162b6b5a74164c6ba09951e450df7b62f2568c2db03327b0'
+        version: 7,
+        sha256: '5f047f59e9fcd1d227136e04b2e19476a066f0ccf705ab633e7f02ab2b520d15'
       }
     }
 
@@ -455,7 +455,7 @@ class Addons extends EventsBase {
       await fs.promises.rmdir(classicArtwork.folder, { recursive: true })
     }
     await fs.createReadStream(zipName)
-      .pipe(unzipper.Extract({ path: addonsFolder }))
+      .pipe(unzipper.Extract({ path: path.join(addonsFolder, 'classic') }))
       .promise()
     await fs.promises.unlink(zipName)
     this.ctx.app.store.commit('download', null)
