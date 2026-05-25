@@ -98,6 +98,9 @@
         <GameElementBox :item="GameElement.DONKEY">
           <NeutralFigure figure="donkey" :width="55" :height="55" />
         </GameElementBox>
+        <GameElementBox :item="GameElement.COURIER">
+          <NeutralFigure figure="courier" :width="55" :height="55" />
+        </GameElementBox>
       </div>
     </ConfigSection>
 

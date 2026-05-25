@@ -152,3 +152,4 @@ export const FISHHUT = GameElement.FISHHUT = new GameElement('fishhut', 'Fish Hu
   selector: 'fishhut'
 })
 
+export const COURIER = GameElement.COURIER = new GameElement('courier', 'Courier', Number, { selector: 'courier' })
