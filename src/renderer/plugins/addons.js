@@ -548,14 +548,14 @@ class Addons extends EventsBase {
           addon.error = `Invalid add-on. Expecting integer number as version, found ${addon.json.version}`
         } else if (!addon.json.minimumJczVersion) {
           addon.error = 'Invalid add-on. Missing minimumJczVersion.'
-        } else if (compare(getAppVersion(), addon.json.minimumJczVersion, '<')) {
+        } else if (compare(getAppVersion().split('-')[0], addon.json.minimumJczVersion, '<')) {
           addon.error = `Add-on requires JCZ ${addon.json.minimumJczVersion} or higher`
         } else if (addon.remote) {
           if (addon.json.version !== addon.remote.version) {
             const currentVersion = addon.json.version
             const requiredVersion = addon.remote.version
             if (currentVersion < requiredVersion) {
-              console.log(`Artwork ${id} is outdated (current ${currentVersion}, reqired ${requiredVersion})`)
+              console.log(`Artwork ${id} is outdated (current ${currentVersion}, required ${requiredVersion})`)
               addon.outdated = true
             }
           }
