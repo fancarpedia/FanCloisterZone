@@ -238,7 +238,10 @@ export default {
       shell.openExternal('https://wikicarpedia.com/car/Special:MyLanguage/Main_Page')
     })
     ipcRenderer.on('menu.report-bug', () => {
-      shell.openExternal('https://discord.gg/CswNeVg3eS') /* Fan Edition */
+      shell.openExternal('https://discord.gg/CswNeVg3eS')
+    })
+    ipcRenderer.on('menu.discord', () => {
+      shell.openExternal('https://discord.gg/CswNeVg3eS')
     })
     ipcRenderer.on('menu.about', () => {
       this.showAbout = true
