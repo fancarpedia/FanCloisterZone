@@ -261,7 +261,7 @@
       </template>
 
       <template v-if="stats.points['fish-hut'].some(p => p)">
-        <div class="header fish-hut" :title="$t('game.feature.fishhut')"><img src="~/assets/features/C1/fishhut.png" height="40"></div>
+        <div class="header fish-hut" :title="$t('game.feature.fish-hut')"><img src="~/assets/features/C1/fishhut.png" height="40"></div>
         <div v-for="(val, idx) in stats.points['fish-hut']" :key="'river-'+idx" class="fish-hut value">
           {{ val }}
         </div>
