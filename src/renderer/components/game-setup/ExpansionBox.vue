@@ -13,12 +13,14 @@
     </a>
 
     <template v-if="expansion.releases.length === 1">
-      <ReleaseButtons :release="expansion.releases[0]">
-        <div class="exp-title">
-          <ExpansionSymbol :expansion="expansion" />
-          <h3>{{ title(expansion.title, expansion.name.toLowerCase().replaceAll('_','-')) }}</h3>
-        </div>
-      </ReleaseButtons>
+      <div @click.capture="onSingleSetClick">
+        <ReleaseButtons :release="expansion.releases[0]">
+          <div class="exp-title">
+            <ExpansionSymbol :expansion="expansion" />
+            <h3>{{ title(expansion.title, expansion.name.toLowerCase().replaceAll('_','-')) }}</h3>
+          </div>
+        </ReleaseButtons>
+      </div>
     </template>
     <template v-else>
       <div class="exp-title" @click="onMultisetTitleClick">
@@ -35,6 +37,16 @@
         </ReleaseButtons>
       </div>
     </template>
+
+    <div v-if="showWarning && hasMissingRequirements" class="requirement-warning">
+      <v-icon small>fas fa-exclamation-triangle</v-icon>
+      <span v-if="missingRequirements.named.length">
+        {{ $t('game-setup.requires-expansion', { expansions: missingRequirements.named.map(expansionTitle).join(', ') }) }}
+      </span>
+      <span v-for="group in missingRequirements.groups" :key="group">
+        {{ $t('game-setup.requires-one-from-group', { groups: groupMemberTitles(group).join(', ') }) }}
+      </span>
+    </div>
   </div>
 </template>
 
@@ -53,6 +65,22 @@ export default {
     expansion: { type: Object, required: true }
   },
 
+  data () {
+    return {
+      showWarning: false
+    }
+  },
+
+  watch: {
+    selected (val, oldVal) {
+      if (val) {
+        this.showWarning = false
+      } else if (oldVal && this.hasMissingRequirements) {
+        this.showWarning = true
+      }
+    }
+  },
+
   computed: {
     ...mapState({
       sets: state => state.gameSetup.sets || {}
@@ -61,12 +89,42 @@ export default {
     selected () {
       for (const release of this.expansion.releases) {
         for (const id of release.sets) {
-          if (this.sets[id]) {
-            return true
-          }
+          if (this.sets[id]) return true
         }
       }
       return false
+    },
+
+    missingRequirements () {
+      const edition = this.$store.state.gameSetup.rules?.edition || '2'
+      const currentExpansions = this.$tiles.getExpansions(this.sets, edition)
+      const missingNamed = new Set()
+      const missingGroups = new Set()
+
+      for (const release of this.expansion.releases) {
+        for (const id of release.sets) {
+          const set = this.$tiles.sets[id] || this.$tiles.sets[id + ':1'] || this.$tiles.sets[id + ':2']
+          const deps = set?.dependencies
+
+          for (const dep of deps?.expansion || []) {
+            if (!(dep in currentExpansions)) missingNamed.add(dep)
+          }
+
+          for (const group of deps?.groups || []) {
+            const members = this.$tiles.expansionGroups?.[group] || []
+            if (!members.some(m => m in currentExpansions)) missingGroups.add(group)
+          }
+        }
+      }
+
+      return {
+        named: Array.from(missingNamed),
+        groups: Array.from(missingGroups)
+      }
+    },
+
+    hasMissingRequirements () {
+      return this.missingRequirements.named.length > 0 || this.missingRequirements.groups.length > 0
     }
   },
 
@@ -75,23 +133,36 @@ export default {
       this.$emit('open-detail', this.expansion)
     },
 
+    onSingleSetClick () {
+      if (this.selected) { this.showWarning = false; return }
+      this.$nextTick(() => { if (!this.selected) this.showWarning = true })
+    },
+
     onMultisetTitleClick () {
       if (this.selected) {
+        this.showWarning = false
         for (const release of this.expansion.releases) {
           this.$store.dispatch('gameSetup/setReleaseQuantity', { release, quantity: 0 })
         }
       } else {
         this.$store.dispatch('gameSetup/setReleaseQuantity', { release: this.expansion.releases[0], quantity: 1 })
+        this.$nextTick(() => { if (!this.selected) this.showWarning = true })
       }
+    },
+
+    expansionTitle (name) {
+      const langId = 'expansion.' + name.toLowerCase().replaceAll('_', '-')
+      return this.$te(langId) ? this.$t(langId) : (this.$tiles.expansions.find(e => e.name === name)?.title || name)
+    },
+
+    groupMemberTitles (group) {
+      const members = this.$tiles.expansionGroups?.[group] || []
+      return members.map(this.expansionTitle)
     },
 
     title (originalTitle, id) {
       const langId = ['expansion', id].join('.')
-      if (this.$te(langId)) {
-        return this.$t(langId)
-      } else {
-        return originalTitle
-      }
+      return this.$te(langId) ? this.$t(langId) : originalTitle
     }
   }
 }
@@ -193,9 +264,27 @@ export default {
     text-align: center
     font-weight: 400
 
-// .exp-box.multiset-3
-//   .tile-set-row
-//     .tile-set-buttons
-//       height: 48px
+.requirement-warning
+  position: absolute
+  bottom: 0
+  left: 0
+  right: 0
+  font-size: 0.8em
+  font-weight: 400
+  text-align: center
+  padding: 6px 10px 8px
+  display: flex
+  align-items: center
+  justify-content: center
+  gap: 5px
+  z-index: 1
+
+  +theme using ($theme)
+    color: map-get($theme, 'cards-text')
+    background-color: rgba(map-get($theme, 'cards-bg'), 0.92)
+    border-top: 1px solid #{map-get($theme, 'line-color-light')}
+
+  .v-icon
+    font-size: 0.9em
 
 </style>

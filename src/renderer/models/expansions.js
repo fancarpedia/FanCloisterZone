@@ -26,6 +26,7 @@ export class Expansion {
     this.implies = options.implies || []
     this.impliesAllowed = options.impliesAllowed || []
     this.ai = options.ai || false
+	this.groups = options.groups || []
   }
 
   static register (expansion) {
@@ -101,13 +102,16 @@ export const UNDER_THE_BIG_TOP_C1 = Expansion.UNDER_THE_BIG_TOP_C1 = new Expansi
 // $t('expansion.king-and-robber')
 export const KING_AND_ROBBER = Expansion.KING_AND_ROBBER = new Expansion('KING_AND_ROBBER', 'King and Robber', { implies: ['king', 'robber'] })
 // $t('expansion.river')
+
 export const RIVER = Expansion.RIVER = new Expansion('RIVER', 'The River', { 
   enforces: ['river'],
-  ai: true
+  ai: true,
+  groups: ['river']
 }, [
   new Release('The River I', ['river/1'], { id: 'river-I' }),
   new Release('The River II', ['river/2'], { id: 'river-II' })
 ])
+
 // $t('expansion.siege')
 export const SIEGE = Expansion.SIEGE = new Expansion('SIEGE', 'Siege', {
   implies: ['siege', 'escape'],

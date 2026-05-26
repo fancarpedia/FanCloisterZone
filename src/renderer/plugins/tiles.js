@@ -60,6 +60,7 @@ class Tiles extends EventsBase {
     this.ctx = ctx
     this.tiles = {}
     this.sets = {}
+    this.expansionGroups = {}
     this.loaded = false
     this.expansions = []
     this.symbols = []
@@ -83,8 +84,19 @@ class Tiles extends EventsBase {
 
   isTileSetExcluded (id, expansions, edition) {
     const set = this.sets[id] || this.sets[id + ':' + edition]
-    const expDeps = set.dependencies?.expansion
-    return expDeps && !expDeps.every(d => d in expansions)
+    const deps = set?.dependencies
+    if (!deps) return false
+
+    if (deps.expansion?.length && !deps.expansion.every(d => d in expansions)) return true
+
+    if (deps.groups?.length) {
+      for (const group of deps.groups) {
+        const members = this.expansionGroups[group] || []
+        if (!members.some(m => m in expansions)) return true
+      }
+    }
+
+    return false
   }
 
   getTilesCounts (sets, rules, edition, start = null) {
@@ -213,6 +225,7 @@ class Tiles extends EventsBase {
     const xmls = []
 
     const expansionRequiredBy = {}
+    const expansionGroups = {}
     const tileAllows = {}
 
     const parser = new DOMParser()
@@ -287,6 +300,9 @@ class Tiles extends EventsBase {
             if (!expansionRequiredBy[subj.value]) expansionRequiredBy[subj.value] = []
             deps.expansion.push(subj.value)
             expansionRequiredBy[subj.value].push(id)
+          } else if (subj && subj.name === 'group') {
+            if (!deps.groups) deps.groups = []
+            deps.groups.push(subj.value)
           } else {
             console.error('Invalid requires', el)
           }
@@ -315,7 +331,10 @@ class Tiles extends EventsBase {
 
         const svgIcon = el.querySelector('icon svg')
 
+        const groups = Array.from(el.querySelectorAll(':scope > group[id]')).map(g => g.getAttribute('id'))
+
         const exp = new Expansion(name, title, { enforces, implies, ai }, [new Release(name, tileSets, { max: maxSets } )])
+        if (groups.length) exp.groups = groups
         if (svgIcon) {
           this.symbols.push(`<symbol id="expansion-${name}" viewBox="${svgIcon.getAttribute('viewBox')}">${svgIcon.innerHTML}</symbol>`)
           exp.svgIcon = true
@@ -337,6 +356,17 @@ class Tiles extends EventsBase {
         Expansion.register(exp)
         expansions.push(exp)
         addon?.expansions.push(exp)
+      })
+
+      doc.querySelectorAll('expansion-groups > group[id]').forEach(groupEl => {
+        const groupId = groupEl.getAttribute('id')
+        if (!expansionGroups[groupId]) expansionGroups[groupId] = []
+        groupEl.querySelectorAll('member[expansion]').forEach(member => {
+          const expName = member.getAttribute('expansion')
+          if (!expansionGroups[groupId].includes(expName)) {
+            expansionGroups[groupId].push(expName)
+          }
+        })
       })
     }
 
@@ -402,9 +432,22 @@ class Tiles extends EventsBase {
       edge: '****'
     }
 
+    // Merge groups from hardcoded JS expansions (exp.groups set via constructor options)
+    // XML expansions already populated expansionGroups during parseXml via <group id="...">
+    // and <expansion-groups> blocks — this picks up what JS-defined expansions contribute
+    Expansion.all().forEach(exp => {
+      for (const group of (exp.groups || [])) {
+        if (!expansionGroups[group]) expansionGroups[group] = []
+        if (!expansionGroups[group].includes(exp.name)) {
+          expansionGroups[group].push(exp.name)
+        }
+      }
+    })
+
     this.xmls = xmls
     this.tiles = tiles
     this.sets = sets
+    this.expansionGroups = expansionGroups
     this.expansions = sortBy(expansions, 'name')
     this.loaded = true
 
