@@ -179,9 +179,23 @@ class Addons extends EventsBase {
       if (installedVersion >= requestedVersion) {
         return
       }
-      
+
       console.log(`Reinstalling ${addonKey}: v${installedVersion} → v${requestedVersion}`)
       await this.uninstall(installed)
+    } else {
+      // Not in memory — check disk directly to avoid re-downloading already installed addons
+      const addonsFolder = await this.mkAddonsFolder()
+      const destPath = path.join(addonsFolder, addonKey)
+      try {
+        const existing = await this._readAddon(addonKey, destPath)
+        if (existing && !existing.error && existing.json.version >= versionDefinition.version) {
+          console.log(`${addonKey} already installed at v${existing.json.version}, skipping download`)
+          this.addons.push(existing)
+          return
+        }
+      } catch {
+        // not on disk, proceed with download
+      }
     }
 
     // Download provider
@@ -274,9 +288,6 @@ class Addons extends EventsBase {
       throw new Error($nuxt.$t('settings.add-ons.invalid-add-on-multiple-folders-in-root'))
     }
     const id = listing[0]
-    if (this.addons.find(addon => addon.id === id)) {
-      throw new Error($nuxt.$t('settings.add-ons.add-on-already-installed', { id: id }))
-    }
 
     const tmpAddonPath = path.join(tmpFolder, id)
     const addon = await this._readAddon(id, tmpAddonPath)
@@ -284,9 +295,25 @@ class Addons extends EventsBase {
       throw new Error(addon.error)
     }
 
-    await fs.promises.rename(tmpAddonPath, path.join(addonsFolder, id))
+    const destPath = path.join(addonsFolder, id)
+    try {
+      await fs.promises.access(destPath)
+      throw new Error($nuxt.$t('settings.add-ons.add-on-already-installed', { id }))
+    } catch (err) {
+      if (err.code !== 'ENOENT') throw err
+      // directory does not exist yet — safe to proceed
+    }
 
+    await fs.promises.rename(tmpAddonPath, destPath)
     await fs.promises.rmdir(tmpFolder, { recursive: true })
+
+    // Re-read from final location and update in-memory list immediately
+    const installedAddon = await this._readAddon(id, destPath)
+    if (installedAddon && !installedAddon.error) {
+      installedAddon.removable = true
+      installedAddon.hidden = false
+      this.addons.push(installedAddon)
+    }
 
     const enabledArtworks = uniq([...this.ctx.store.state.settings.enabledArtworks, ...addon.json.artworks.map(artwork => `${id}/${artwork}`)])
     await this.ctx.store.dispatch('settings/update', { enabledArtworks })
