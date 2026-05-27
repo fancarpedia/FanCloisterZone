@@ -203,8 +203,8 @@
           <template #icon>
             <img src="~/assets/features/C1/fishhut.png" height="55">
           </template>
-          <template #description>{{ $t('game-setup.rules.fish-hut-description') }}</template>
-          <template #disabled>{{ $t('game-setup.rules.fish-hut-disabled') }}</template>
+          <template #description>{{ $t('game-setup.rules.fishhut-description') }}</template>
+          <template #disabled>{{ $t('game-setup.rules.fishhut-disabled') }}</template>
         </GameMechanicsBox>
 
       </div>

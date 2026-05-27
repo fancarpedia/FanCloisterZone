@@ -60,7 +60,7 @@ const TITLE_MAPPING = {
   'flowers': 'game.feature.flowers',
   'river': 'game.feature.fishermen',
   'courier': 'game.element.courier',
-  'fish-hut': 'game.feature.fish-hut',
+  'fish-hut': 'game.feature.fishhut',
 }
 
 const SUBTITLE_MAPPING = {
