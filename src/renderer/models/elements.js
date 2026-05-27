@@ -148,8 +148,10 @@ export const BLACK_TOWER = GameElement.BLACK_TOWER = new GameElement('black-towe
   default: 0
 })
 
-export const FISHHUT = GameElement.FISHHUT = new GameElement('fish-hut', 'Fish Hut', Boolean, {
+export const FISHHUT = GameElement.FISHHUT = new GameElement('fishhut', 'Fish Hut', Boolean, {
   selector: 'fishhut'
 })
 
-export const COURIER = GameElement.COURIER = new GameElement('courier', 'Courier', Number, { selector: 'courier' })
+export const COURIER = GameElement.COURIER = new GameElement('courier', 'Courier', Number, {
+  selector: 'courier-letter'
+ })
