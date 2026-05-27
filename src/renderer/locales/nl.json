@@ -464,6 +464,9 @@
       "untitled-game": "naamloos spel",
       "waiting-for-host-to-start-the-game": "Wacht op host om het spel te starten."
     },
+    "required-expansion": "Required expansion {expansions}",
+    "requires-expansion": "Requires expasion {expansions}",
+    "requires-one-from-group": "Requires one from the group {groups}",
     "removed-elements": "Verwijderde elementen",
     "rules": {
       "acrobats-description": "Meeples mogen op artiestenvelden worden gezet.",
@@ -479,8 +482,8 @@
       "families-disabled": "Er zijn geen tegels met een ander familiewapen in het spel.",
       "festival-description": "Met een feesttegel mag je één van je eigen speelstukken terugnemen in plaats van er één te zetten.",
       "festival-disabled": "Er zijn geen feesttegels in het spel.",
-      "fish-huts-description": "Fish Hut feature.",
-      "fish-huts-disabled": "No tile with Fish Hut is in the game.",
+      "fishhut-description": "Fish Hut feature.",
+      "fishhut-disabled": "No tile with Fish Hut is in the game.",
       "fishermen-description": "Rivier als gewoon project.",
       "fishermen-disabled": "Er zijn geen tegels met een rivier in het spel",
       "flowers-description": "Bloemen leveren +3 punten per geteld project op mits ze overeenkomen met het fiche van de speler.",
@@ -706,6 +709,7 @@
   },
   "menu": {
     "about": "Info",
+    "discord": "Discord",
     "exit": "Afsluiten",
     "farm-hints": "Weide-wenken",
     "file": "Bestand",

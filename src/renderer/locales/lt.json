@@ -464,6 +464,9 @@
       "untitled-game": "Nepavadintas žaidimas",
       "waiting-for-host-to-start-the-game": "Laukiama, kol šeimininkas pradės žaidimą."
     },
+    "required-expansion": "Required expansion {expansions}",
+    "requires-expansion": "Requires expasion {expansions}",
+    "requires-one-from-group": "Requires one from the group {groups}",
     "removed-elements": "Pašalinti elementai",
     "rules": {
       "acrobats-description": "Miplo dėjimas kaip Akrobato į Akrobato erdvę",
@@ -479,8 +482,8 @@
       "families-disabled": "Žaidime nėra plytelės su skirtingu šeimos vimpeliu.",
       "festival-description": "Naudodami festivalio kortelę galite susigrąžinti vieną iš savo figūrėlių, jei nededate ant kortelės figurėlės.",
       "festival-disabled": "Kortelių su Festivaliu nėra šiame žaidime",
-      "fish-huts-description": "Fish Hut feature.",
-      "fish-huts-disabled": "No tile with Fish Hut is in the game.",
+      "fishhut-description": "Fish Hut feature.",
+      "fishhut-disabled": "No tile with Fish Hut is in the game.",
       "fishermen-description": "Upė kaip įprastas elementas.",
       "fishermen-disabled": "Žaidime nėra plytelės su upe.",
       "flowers-description": "Gėlės prideda +3 taškus prie vertinamo elemento, kai jos sutampa su žaidėjo žetonu.",
@@ -706,6 +709,7 @@
   },
   "menu": {
     "about": "Apie",
+    "discord": "Discord",
     "exit": "Išeiti",
     "farm-hints": "Parodyti Laukus",
     "file": "Aplankas",

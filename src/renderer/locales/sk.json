@@ -464,6 +464,9 @@
       "untitled-game": "nepomenovaná hra",
       "waiting-for-host-to-start-the-game": "Čaká sa, kým hostiteľ spustí hru."
     },
+    "required-expansion": "Required expansion {expansions}",
+    "requires-expansion": "Requires expasion {expansions}",
+    "requires-one-from-group": "Requires one from the group {groups}",
     "removed-elements": "Odstránené prvky",
     "rules": {
       "acrobats-description": "Umiestnenie spoločníka ako akrobata na cvičisko akrobatov.",
@@ -479,8 +482,8 @@
       "families-disabled": "V hre nie je žiadna kartička s odlišným erbom rodiny.",
       "festival-description": "Pomocou kartičky s oslavou môžete vrátiť jednu zo svojich vlastných figúrok z hry.",
       "festival-disabled": "V hre nie je žiadna kartička s oslavou.",
-      "fish-huts-description": "Udiareň rýb",
-      "fish-huts-disabled": "V hre nie je žiadna kartička s udiarňami rýb.",
+      "fishhut-description": "Udiareň rýb",
+      "fishhut-disabled": "V hre nie je žiadna kartička s udiarňami rýb.",
       "fishermen-description": "Rieka ako štandardné územie",
       "fishermen-disabled": "V hre nie je žiadna kartička s riekou.",
       "flowers-description": "Za každé zodpovedajúce kvety farby podľa žetónu získate pri započítaní bodov 3 body.",
@@ -706,6 +709,7 @@
   },
   "menu": {
     "about": "O aplikácii",
+    "discord": "Discord",
     "exit": "Ukončiť",
     "farm-hints": "Zafarbenie fariem",
     "file": "Súbor",

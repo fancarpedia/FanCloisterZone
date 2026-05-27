@@ -464,6 +464,9 @@
       "untitled-game": "partida sense nom",
       "waiting-for-host-to-start-the-game": "S'espera que l'amfitrió comenci la partida."
     },
+    "required-expansion": "Required expansion {expansions}",
+    "requires-expansion": "Requires expasion {expansions}",
+    "requires-one-from-group": "Requires one from the group {groups}",
     "removed-elements": "Elements trets",
     "rules": {
       "acrobats-description": "En un lloc d'acrobàcies es posa un seguidor acròbata.",
@@ -479,8 +482,8 @@
       "families-disabled": "No hi ha cap peça amb escuts familiars diferents a la partida.",
       "festival-description": "Amb una peça de festival es pot tornar a agafar una de les figures del jugador en lloc de posar-ne una.",
       "festival-disabled": "No hi ha cap casella amb festivals a la partida.",
-      "fish-huts-description": "Fish Hut feature.",
-      "fish-huts-disabled": "No tile with Fish Hut is in the game.",
+      "fishhut-description": "Fish Hut feature.",
+      "fishhut-disabled": "No tile with Fish Hut is in the game.",
       "fishermen-description": "Rius com a elements habituals.",
       "fishermen-disabled": "A la partida no hi ha peces amb rius.",
       "flowers-description": "Les flors donen +3 punts als elements que puntuen quan coincideixen amb les fitxes del jugador.",
@@ -706,6 +709,7 @@
   },
   "menu": {
     "about": "Quant a",
+    "discord": "Discord",
     "exit": "Surt",
     "farm-hints": "Suggeriments de granges",
     "file": "Fitxer",

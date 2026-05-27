@@ -464,6 +464,9 @@
       "untitled-game": "unbenanntes Spiel",
       "waiting-for-host-to-start-the-game": "Warten, dass der Host das Spiel startet."
     },
+    "required-expansion": "Required expansion {expansions}",
+    "requires-expansion": "Requires expasion {expansions}",
+    "requires-one-from-group": "Requires one from the group {groups}",
     "removed-elements": "Entfernte Elemente",
     "rules": {
       "acrobats-description": "Meeple als Artist auf das Artistenplättchen setzen.",
@@ -479,8 +482,8 @@
       "families-disabled": "Es ist kein Plättchen mit einem anderen Familienwappen im Spiel.",
       "festival-description": "Mit einem Festplättchen kann man eine eigene Figur zurückholen, anstatt eine einzusetzen.",
       "festival-disabled": "Kein Festplättchen ist im Spiel.",
-      "fish-huts-description": "Fish Hut feature.",
-      "fish-huts-disabled": "No tile with Fish Hut is in the game.",
+      "fishhut-description": "Fish Hut feature.",
+      "fishhut-disabled": "No tile with Fish Hut is in the game.",
       "fishermen-description": "Der Fluss als normaler Landschaftsteil.",
       "fishermen-disabled": "Kein Flussplättchen im Spiel.",
       "flowers-description": "Wenn ein Bauwerk gewertet wird, erhält jeder daran beteiligte Spieler, unabhängig von der Mehrheit, 3 Punkte, wenn er den entsprechenden Blumenmarker hat.",
@@ -706,6 +709,7 @@
   },
   "menu": {
     "about": "Über",
+    "discord": "Discord",
     "exit": "Exit",
     "farm-hints": "Wiesen-Anzeige",
     "file": "Datei",

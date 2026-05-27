@@ -464,6 +464,9 @@
       "untitled-game": "neimenovana igra",
       "waiting-for-host-to-start-the-game": "Čakanje na gostitelja, da začne igro."
     },
+    "required-expansion": "Required expansion {expansions}",
+    "requires-expansion": "Requires expasion {expansions}",
+    "requires-one-from-group": "Requires one from the group {groups}",
     "removed-elements": "Odstranjeni Elementi",
     "rules": {
       "acrobats-description": "Postavljanje človeščka kot akrobata na akrobatski prostor.",
@@ -479,8 +482,8 @@
       "families-disabled": "V igri ni nobene ploščice z drugačnim družinskim praporom.",
       "festival-description": "S festivalsko ploščico lahko vrneš eno od svojih figur namesto da jo postaviš.",
       "festival-disabled": "Nobena ploščica s festivalom ni v igri.",
-      "fish-huts-description": "Fish Hut feature.",
-      "fish-huts-disabled": "No tile with Fish Hut is in the game.",
+      "fishhut-description": "Fish Hut feature.",
+      "fishhut-disabled": "No tile with Fish Hut is in the game.",
       "fishermen-description": "Reka kot običajna značilnost.",
       "fishermen-disabled": "V igri ni nobene ploščice z reko.",
       "flowers-description": "Še ni na voljo",
@@ -706,6 +709,7 @@
   },
   "menu": {
     "about": "O programu",
+    "discord": "Discord",
     "exit": "Izhod",
     "farm-hints": "Namigi za polje",
     "file": "Datoteka",

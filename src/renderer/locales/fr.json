@@ -464,6 +464,9 @@
       "untitled-game": "partie sans titre",
       "waiting-for-host-to-start-the-game": "En attente de l’hôte pour commencer la partie."
     },
+    "required-expansion": "Required expansion {expansions}",
+    "requires-expansion": "Requires expasion {expansions}",
+    "requires-one-from-group": "Requires one from the group {groups}",
     "removed-elements": "Éléments retirés",
     "rules": {
       "acrobats-description": "Poser un meeple en tant qu’artiste sur une piste d’artiste.",
@@ -479,8 +482,8 @@
       "families-disabled": "Aucune tuile avec un blason de famille différent n’est en jeu.",
       "festival-description": "Avec une tuile Festival, vous pouvez récupérer une de vos propres pions au lieu d’en poser un.",
       "festival-disabled": "Aucune tuile Festival n’est en jeu.",
-      "fish-huts-description": "Zone de cabane de pêche.",
-      "fish-huts-disabled": "Aucune tuile Cabane de pêche n’est en jeu.",
+      "fishhut-description": "Zone de cabane de pêche.",
+      "fishhut-disabled": "Aucune tuile Cabane de pêche n’est en jeu.",
       "fishermen-description": "Rivière comme zone normale.",
       "fishermen-disabled": "Aucune tuile Rivière n'est en jeu.",
       "flowers-description": "Les fleurs ajoutent 3 points à une zone évaluée lorsqu’elles correspondent au jeton du joueur.",
@@ -706,6 +709,7 @@
   },
   "menu": {
     "about": "À propos",
+    "discord": "Discord",
     "exit": "Quitter FanCloisterZone",
     "farm-hints": "Délimiter les prés",
     "file": "Fichier",

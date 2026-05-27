@@ -464,6 +464,9 @@
       "untitled-game": "Игра без названия",
       "waiting-for-host-to-start-the-game": "Ожидание хоста, чтобы начать игру."
     },
+    "required-expansion": "Required expansion {expansions}",
+    "requires-expansion": "Requires expasion {expansions}",
+    "requires-one-from-group": "Requires one from the group {groups}",
     "removed-elements": "Удаленные элементы",
     "rules": {
       "acrobats-description": "Размещение мипла в качестве акробата на месте акробатов.",
@@ -479,8 +482,8 @@
       "families-disabled": "В игре нет тайлов с вымпелом другой семьи.",
       "festival-description": "С тайлом фестиваля вы можете вернуть одну из своих фигурок вместо размещения новой.",
       "festival-disabled": "В игре нет тайла с фестивалем.",
-      "fish-huts-description": "Fish Hut feature.",
-      "fish-huts-disabled": "No tile with Fish Hut is in the game.",
+      "fishhut-description": "Fish Hut feature.",
+      "fishhut-disabled": "No tile with Fish Hut is in the game.",
       "fishermen-description": "Река как обычный элемент.",
       "fishermen-disabled": "В игре нет тайлов с рекой.",
       "flowers-description": "Цветы добавляют +3 очка к подсчитанной области, если совпадают с жетоном игрока.",
@@ -706,6 +709,7 @@
   },
   "menu": {
     "about": "О программе",
+    "discord": "Discord",
     "exit": "Выход",
     "farm-hints": "Подсказки для ферм",
     "file": "Файл",

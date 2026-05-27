@@ -464,6 +464,9 @@
       "untitled-game": "gra bez nazwy",
       "waiting-for-host-to-start-the-game": "Czekanie na rozpoczęcie gry przez gospodarza."
     },
+    "required-expansion": "Required expansion {expansions}",
+    "requires-expansion": "Requires expasion {expansions}",
+    "requires-one-from-group": "Requires one from the group {groups}",
     "removed-elements": "Wykluczone elementy",
     "rules": {
       "acrobats-description": "Możliwość umieszczenia akrobatów na polu artystów cyrkowych.",
@@ -479,8 +482,8 @@
       "families-disabled": "W grze nie ma płytek z proporcem innej rodziny.",
       "festival-description": "Festiwal pozwala na usunięcie z planszy własnego podwładnego.",
       "festival-disabled": "Nie wybrano płytek z festiwalem.",
-      "fish-huts-description": "Fish Hut feature.",
-      "fish-huts-disabled": "No tile with Fish Hut is in the game.",
+      "fishhut-description": "Fish Hut feature.",
+      "fishhut-disabled": "No tile with Fish Hut is in the game.",
       "fishermen-description": "Rzeka jako zwykły element krajobrazu.",
       "fishermen-disabled": "Nie wybrano płytek z rzeką.",
       "flowers-description": "Kwiaty dodają +3 punkty do punktowanego obszaru gdy gracz posiada odpowiedni żeton kwiatów.",
@@ -706,6 +709,7 @@
   },
   "menu": {
     "about": "Informacje",
+    "discord": "Discord",
     "exit": "Wyjdź",
     "farm-hints": "Podpowiedźi pól",
     "file": "Plik",

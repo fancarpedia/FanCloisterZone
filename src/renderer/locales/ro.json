@@ -2,7 +2,7 @@
   "@author": "Paloi Sciurala",
   "@jcz-version": "5.12.1",
   "@fcz-version": "6.2.0",
-  "@version": "0.10.17",
+  "@version": "0.10.20",
   "about": {
     "author": "Autor",
     "configuration-file": "Fișier de configurație",
@@ -464,6 +464,9 @@
       "untitled-game": "partidă fără titlu",
       "waiting-for-host-to-start-the-game": "Se așteaptă ca gazda să înceapă partida."
     },
+    "required-expansion": "Este necesară extensia {expansions}",
+    "requires-expansion": "Este necesară extensia {expansions}",
+    "requires-one-from-group": "Este necesară una din grupul {groups}",
     "removed-elements": "Elemente eliminate",
     "rules": {
       "acrobats-description": "Plasarea unui meeple ca artist pe un loc pentru artiști.",
@@ -479,8 +482,8 @@
       "families-disabled": "Nu există niciun cartonaș cu blazon de familie diferită în joc.",
       "festival-description": "Cu un cartonaș cu festival poți să îți iei înapoi unul dintre proprii tăi pioni în loc de a plasa unul.",
       "festival-disabled": "Nu există niciun cartonaș cu festival în joc.",
-      "fish-huts-description": "Teritoriul colibă pescărească.",
-      "fish-huts-disabled": "Nu există niciun cartonaș cu colibă pescărească în joc.",
+      "fishhut-description": "Teritoriul colibă pescărească.",
+      "fishhut-disabled": "Nu există niciun cartonaș cu colibă pescărească în joc.",
       "fishermen-description": "Râul ca teritoriu obișnuit.",
       "fishermen-disabled": "Nu există niciun cartonaș de râu în joc.",
       "flowers-description": "Florile adaugă +3 puncte teritoriului evaluat atunci când se potrivesc cu jetonul jucătorului.",
@@ -706,6 +709,7 @@
   },
   "menu": {
     "about": "Despre",
+    "discord": "Discord",
     "exit": "Ieși",
     "farm-hints": "Indicii pentru câmpuri",
     "file": "Fișier",

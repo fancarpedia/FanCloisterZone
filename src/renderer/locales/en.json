@@ -2,7 +2,7 @@
   "@author": "farin & Scott",
   "@jcz-version": "5.12.1",
   "@fcz-version": "6.2.0",
-  "@version": "0.10.17",
+  "@version": "0.10.20",
   "about": {
     "author": "Author",
     "configuration-file": "Configuration file",
@@ -464,6 +464,9 @@
       "untitled-game": "untitled game",
       "waiting-for-host-to-start-the-game": "Waiting for host to start the game."
     },
+    "required-expansion": "Required expansion {expansions}",
+    "requires-expansion": "Requires expasion {expansions}",
+    "requires-one-from-group": "Requires one from the group {groups}",
     "removed-elements": "Removed Elements",
     "rules": {
       "acrobats-description": "Placing meeple as an acrobat on acrobat space.",
@@ -479,8 +482,8 @@
       "families-disabled": "No tile with different Family pennant is in the game.",
       "festival-description": "With a festival tile you can return one of your own figures instead of placing one.",
       "festival-disabled": "No tile with Festival is in game.",
-      "fish-huts-description": "Fish Hut feature.",
-      "fish-huts-disabled": "No tile with Fish Hut is in the game.",
+      "fishhut-description": "Fish Hut feature.",
+      "fishhut-disabled": "No tile with Fish Hut is in the game.",
       "fishermen-description": "River as regular feature.",
       "fishermen-disabled": "No tile with River is in the game.",
       "flowers-description": "Flowers add +3 points to scored feature when they match player's token.",
@@ -706,6 +709,7 @@
   },
   "menu": {
     "about": "About",
+    "discord": "Discord",
     "exit": "Exit",
     "farm-hints": "Farm hints",
     "file": "File",

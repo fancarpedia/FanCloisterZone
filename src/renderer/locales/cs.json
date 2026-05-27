@@ -464,6 +464,9 @@
       "untitled-game": "nepojmenovaná hra",
       "waiting-for-host-to-start-the-game": "Čeká se, až hostitel spustí hru."
     },
+    "required-expansion": "Required expansion {expansions}",
+    "requires-expansion": "Requires expasion {expansions}",
+    "requires-one-from-group": "Requires one from the group {groups}",
     "removed-elements": "Odebrané prvky",
     "rules": {
       "acrobats-description": "Umístění družiníka jako artisty na Cvičiště artistů.",
@@ -479,8 +482,8 @@
       "families-disabled": "Ve hře není žádná kartička s odlišným erbem rodiny.",
       "festival-description": "Pomocí kartičky s oslavou můžete jednu ze svých figurek na herním plánu vrátit zpět do své zásoby.",
       "festival-disabled": "Ve hře není žádná kartička s oslavou.",
-      "fish-huts-description": "Fish Hut feature.",
-      "fish-huts-disabled": "No tile with Fish Hut is in the game.",
+      "fishhut-description": "Fish Hut feature.",
+      "fishhut-disabled": "No tile with Fish Hut is in the game.",
       "fishermen-description": "Řeka jako standardní území",
       "fishermen-disabled": "Ve hře není žádná kartička s řekou.",
       "flowers-description": "Pokud se květiny shodují s žetonem hráče, přidávají 3 body k hodnocenému území.",
@@ -706,6 +709,7 @@
   },
   "menu": {
     "about": "O aplikaci",
+    "discord": "Discord",
     "exit": "Ukončit",
     "farm-hints": "Zvýraznit louky",
     "file": "Soubor",
