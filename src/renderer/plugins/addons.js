@@ -188,13 +188,22 @@ class Addons extends EventsBase {
       const destPath = path.join(addonsFolder, addonKey)
       try {
         const existing = await this._readAddon(addonKey, destPath)
-        if (existing && !existing.error && existing.json.version >= versionDefinition.version) {
-          console.log(`${addonKey} already installed at v${existing.json.version}, skipping download`)
-          this.addons.push(existing)
-          return
+        if (existing && !existing.error) {
+          if (existing.json.version >= versionDefinition.version) {
+            console.log(`${addonKey} already installed at v${existing.json.version}, skipping download`)
+            this.addons.push(existing)
+            return
+          } else {
+            // Outdated version is on disk but not tracked in memory — remove it so install() can proceed
+            console.log(`${addonKey} on disk at v${existing.json.version}, removing before update to v${versionDefinition.version}`)
+            await fs.promises.rm(destPath, { recursive: true, force: true })
+          }
         }
-      } catch {
-        // not on disk, proceed with download
+      } catch (e) {
+        if (e.code !== 'ENOENT') {
+          console.warn(`Could not check existing addon at ${destPath}:`, e)
+        }
+        // not on disk or unreadable, proceed with download
       }
     }
 
@@ -305,7 +314,7 @@ class Addons extends EventsBase {
     }
 
     await fs.promises.rename(tmpAddonPath, destPath)
-    await fs.promises.rmdir(tmpFolder, { recursive: true })
+    await fs.promises.rm(tmpFolder, { recursive: true, force: true })
 
     // Re-read from final location and update in-memory list immediately
     const installedAddon = await this._readAddon(id, destPath)
@@ -325,7 +334,7 @@ class Addons extends EventsBase {
   }
 
   async uninstall (addon) {
-    await fs.promises.rmdir(addon.folder, { recursive: true })
+    await fs.promises.rm(addon.folder, { recursive: true, force: true })
 
     if (addon.artworks?.length) { // may be undefined for invalid artwork
       const ids = addon.artworks.map(a => a.id)
@@ -479,7 +488,7 @@ class Addons extends EventsBase {
     console.log('classic.jca downloaded. sha256: ' + checksum)
     if (classicArtwork?.outdated) {
       console.log('Removing outdated artwork ' + classicArtwork.folder)
-      await fs.promises.rmdir(classicArtwork.folder, { recursive: true })
+      await fs.promises.rm(classicArtwork.folder, { recursive: true, force: true })
     }
     await fs.createReadStream(zipName)
       .pipe(unzipper.Extract({ path: path.join(addonsFolder, 'classic') }))
@@ -512,12 +521,12 @@ class Addons extends EventsBase {
           console.error(`Failed installing ${available.key}`, err)
         }
       } else if (newest.version > installed.json.version) {
-        console.log(`Updating ${addon}: v${installed.json.version} → v${newest.version}`)
+        console.log(`Updating ${available.key}: v${installed.json.version} → v${newest.version}`)
         try {
           updated = true
           await this.installDownloadable(available.key, newest.version)
         } catch (err) {
-          console.error(`Failed updating ${addon}`, err)
+          console.error(`Failed updating ${available.key}`, err)
         }
       }
     }    
