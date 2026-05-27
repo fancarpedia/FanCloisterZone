@@ -99,7 +99,7 @@
 
         <GameMechanicsBox v-if="!ai" :item="GameElement.SHRINE">
           <template #icon>
-            <img src="~/assets/features/C1/shrine.jpg" height="55">
+            <img src="~/assets/features/C1/shrine-challenge.png" height="55">
           </template>
           <template #description>{{ $t('game-setup.rules.shrine-description') }}</template>
           <template #disabled>{{ $t('game-setup.rules.shrine-disabled') }}</template>
