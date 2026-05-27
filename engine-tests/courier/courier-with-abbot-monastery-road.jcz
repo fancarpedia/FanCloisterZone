@@ -15,7 +15,8 @@
       "small-follower": 7,
       "farmers": true,
       "abbot": 1,
-      "garden": true
+      "garden": true,
+      "courier": 1
     },
     "rules": {},
     "timer": null,

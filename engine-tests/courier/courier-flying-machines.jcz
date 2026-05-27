@@ -14,7 +14,8 @@
     },
     "elements": {
       "small-follower": 7,
-      "farmers": true
+      "farmers": true,
+      "courier": 1
     },
     "rules": {},
     "timer": null,

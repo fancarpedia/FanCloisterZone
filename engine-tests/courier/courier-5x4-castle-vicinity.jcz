@@ -21,6 +21,7 @@
       "farmers": true,
       "bridge": 1,
       "castle": 1,
+      "courier": 1,
       "bazaar": true,
       "builder": 1,
       "pig": 1,

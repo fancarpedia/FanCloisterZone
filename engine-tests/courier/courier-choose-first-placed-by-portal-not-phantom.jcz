@@ -20,7 +20,8 @@
       "princess": true,
       "portal": true,
       "phantom": 1,
-      "big-follower": 1
+      "big-follower": 1,
+      "courier": 1
     },
     "rules": {},
     "timer": null,

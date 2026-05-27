@@ -20,7 +20,8 @@
       "mayor": 1,
       "abbey": 1,
       "abbot": 1,
-      "garden": true
+      "garden": true,
+      "courier": 1
     },
     "rules": {},
     "timer": null,

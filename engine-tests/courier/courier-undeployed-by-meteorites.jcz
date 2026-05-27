@@ -15,7 +15,8 @@
     "elements": {
       "small-follower": 7,
       "farmers": true,
-      "meteorite": true
+      "meteorite": true,
+      "courier": 1
     },
     "rules": {},
     "timer": null,

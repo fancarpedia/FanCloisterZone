@@ -17,7 +17,8 @@
       "farmers": true,
       "bridge": 1,
       "castle": 1,
-      "bazaar": true
+      "bazaar": true,
+      "courier": 1
     },
     "rules": {},
     "timer": null,

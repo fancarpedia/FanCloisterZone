@@ -16,7 +16,8 @@
       "farmers": true,
       "ringmaster": 1,
       "big-top": 1,
-      "acrobats": true
+      "acrobats": true,
+      "courier": 1
     },
     "rules": {},
     "timer": null,

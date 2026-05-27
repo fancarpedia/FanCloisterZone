@@ -28,7 +28,8 @@
       "inn": true,
       "abbot": 2,
       "garden": true,
-      "phantom": 1
+      "phantom": 1,
+      "courier": 1
     },
     "rules": {},
     "timer": null,
