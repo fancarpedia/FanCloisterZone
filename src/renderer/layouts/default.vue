@@ -330,6 +330,7 @@ export default {
 
   methods: {
     async loadAddons () {
+      await this.$addons.loadAddons()
       await this.$tiles.loadExpansions()
       if (!this.addonsUpdated) {
         await this.$addons.updateOutdatedAddons()
