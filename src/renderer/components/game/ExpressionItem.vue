@@ -56,7 +56,7 @@
       <template v-else-if="item.name === 'flowers.FLOWERS_WHITE'"><TokenImage token="FLOWERS_WHITE" :height="40" /></template>
       <template v-else-if="item.name === 'flowers.FLOWERS_YELLOW'"><TokenImage token="FLOWERS_YELLOW" :height="40" /></template>
       <template v-else-if="item.name.startsWith('marketplace.')"><img src="~/assets/features/C1/marketplace.png" height="40" /></template>
-      <template v-else-if="item.name === 'fish-hut'"><img src="~/assets/features/C1/fishhut.png" width="40" height="40"></template>
+      <template v-else-if="item.name === 'fishhut'"><img src="~/assets/features/C1/fishhut.png" width="40" height="40"></template>
       <template v-else-if="item.name === 'river-tiles'"><img src="~/assets/features/C1/river.png" width="40" height="40"></template>
 
       <!-- TODO images, also imprev tile image (green field ?)-->

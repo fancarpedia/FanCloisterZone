@@ -44,7 +44,7 @@
     <NeutralFigure v-else-if="element === 'donkey'" figure="donkey" :width="70" :height="70" />
 	<img v-else-if="element === 'meteorite'" src="~/assets/features/C1/crater.png" height="55">
 	<img v-else-if="element === 'fishermen'" src="~/assets/features/C1/fishermen.png" height="55">
-	<img v-else-if="element === 'fish-hut'" src="~/assets/features/C1/fishhut.png" height="55">
+	<img v-else-if="element === 'fishhut'" src="~/assets/features/C1/fishhut.png" height="55">
     
     <template #quantity>
       <div class="quantity" :class="enabled ? 'addition': 'removal'">

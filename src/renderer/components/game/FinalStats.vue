@@ -260,9 +260,9 @@
         </div>
       </template>
 
-      <template v-if="stats.points['fish-hut'].some(p => p)">
-        <div class="header fish-hut" :title="$t('game.feature.fish-hut')"><img src="~/assets/features/C1/fishhut.png" height="40"></div>
-        <div v-for="(val, idx) in stats.points['fish-hut']" :key="'river-'+idx" class="fish-hut value">
+      <template v-if="stats.points['fishhut'].some(p => p)">
+        <div class="header fishhut" :title="$t('game.feature.fishhut')"><img src="~/assets/features/C1/fishhut.png" height="40"></div>
+        <div v-for="(val, idx) in stats.points['fishhut']" :key="'river-'+idx" class="fishhut value">
           {{ val }}
         </div>
       </template>
@@ -348,7 +348,7 @@ export default {
           'decinsky-sneznik': (new Array(this.players.length)).fill(0),
           'river': (new Array(this.players.length)).fill(0),
           'courier': (new Array(this.players.length)).fill(0),
-          'fish-hut': (new Array(this.players.length)).fill(0)
+          'fishhut': (new Array(this.players.length)).fill(0)
         }
       }
       this.history.forEach(h => {
