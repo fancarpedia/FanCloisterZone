@@ -1,8 +1,8 @@
 {
   "@author": "Kiap1969 & Sinscerly",
   "@jcz-version": "5.12.1",
-  "@fcz-version": "6.1.0",
-  "@version": "0.9.15",
+  "@fcz-version": "6.2.0",
+  "@version": "0.10.22",
   "about": {
     "author": "Auteur",
     "configuration-file": "Configuratiebestand",
@@ -33,7 +33,7 @@
     "close": "Sluiten",
     "confirm": "Bevestigen",
     "connect": "Verbinden",
-    "continue": "Continue",
+    "continue": "Doorgaan",
     "create": "Maken",
     "create-game": "Spel maken",
     "create-public-game": "Openbaar spel maken",
@@ -80,14 +80,14 @@
   "chat": {
     "chat": "Chat",
     "new-message": "Nieuw bericht",
-    "take-slot-hint": "Take a slot to start chat"
+    "take-slot-hint": "Neem een plaats om een chat te starten"
   },
   "core-messages": {
     "bonuses": "Bonussen",
     "choose": "Kies",
     "done": "Klaar",
-    "engine-error": "Engine error",
-    "field-is-required": "{field} is required",
+    "engine-error": "Programmafout",
+    "field-is-required": "{field} is verplicht",
     "game-engine-not-available": "Spelmachine niet beschikbaar.",
     "incomplete-features": "Onafgebouwde projecten",
     "no-core-set": "Er is geen hoofdset!",
@@ -102,10 +102,10 @@
   },
   "dev": {
     "actions": "Acties",
-    "dev": "Dev",
+    "dev": "Ontw",
     "dump-hosted-game-server-state": "Spelserver-toestand dumpen",
     "edition": "Editie",
-    "game-created-in-development-mode": "Game in Development mode",
+    "game-created-in-development-mode": "Spel in ontwikkelstand",
     "fail": "Mislukken",
     "meeples": "Meeples",
     "mode": "Modus",
@@ -119,7 +119,7 @@
     "test": "Test",
     "test-runner": "Uitvoering testen",
     "theme-inspector": "Thema-inspecteur",
-    "tile-draw-order-is-predefined": "Tile draw order is predefined",
+    "tile-draw-order-is-predefined": "Tegeltrekvolgorde is voorgedefinieerd",
     "tiles": "Tegels",
     "toggle-devtools": "Ontwikkeltools wisselen",
     "use-local-play-online": "Lokaal spel online gebruiken",
@@ -161,10 +161,10 @@
     "family-feud-description": "Tegels met blauw/witte en rood/gele wapens behoren tot rivaliserende families. Tegels mogen niet zo aangelegd worden dat steden van rivaliserende families met elkaar verbonden worden.",
     "farmers-heaven": "Boerenhemel",
     "farmers-heaven-description": "Aangezien de meeste uitbreidingen zich vooral op de steden richten, was het tijd om eens iets voor de boeren te doen.",
-    "fishhuts": "Fish Huts",
-    "fishhuts-description": "Make the River move valuable. A meeple can also be placed to the fish-smoking hut as a poissonnier (French for a person whose job is to prepare fish) and score additional points.",
+    "fishhuts": "Vissershutten",
+    "fishhuts-description": "Maak de rivieer waardevoller. Een meeple mag ook op de visrookhut gezet worden als poissonnier (Frans voor iemand wiens taak het is om vis te bereiden) en krijg extra punten.",
     "fishermen": "Vissers",
-    "fishermen-description": "River tiles are shuffled into the regular tile stack. Players may place a meeple on a river segment as on any other scoreable feature, score points when the river is completed.",
+    "fishermen-description": "De riviertegels worden door de gewone tegelstapels gemengd. De spelers mogen een meeple op een rivierdeel zetten net als op andere projecten waar je punten voor kunt krijgen, die punten krijgen ze wanneer de rivier is afgebouwd.",
     "ferries": "De Veerboten",
     "festival": "Het Feest",
     "flier": "De Vliegtuigen",
@@ -203,7 +203,7 @@
     "ukraine-promo-description": "Deze in beperkte oplage gemaakte promotegel werd uitgebracht tijdens Spiel 22. De opbrengst van de verkoop ging naar de NGO 'Come Back Alive'.",
     "under-the-big-top": "Het Circus",
     "under-the-big-top-description": "",
-    "under-the-big-top-c1": "Under The Big Top",
+    "under-the-big-top-c1": "Het Circus",
     "under-the-big-top-c1-description": "",
     "village-life": "Dorpsleven",
     "village-life-description": "",
@@ -214,17 +214,17 @@
     "winter": "Winter"
   },
   "file": {
-    "file-is-not-valid": "File is not valid",
-    "load-error": "Load error",
-    "not-possible-in-online-mode": "It is not possible to open in online mode",
-    "save-created-prior-version-is-not-supported": "Save created prior version {version} is not supported",
-    "save-game-setup": "Save Game Setup",
-    "save-game": "Save Game",
-    "save-test-runner-scenario": "Save Test Runner Scenario",
-    "saved-game-contains-game-history": "Saved game contains game history",
-    "saved-game-contains-tests": "Saved game contains tests",
-    "saved-game-requires-missing-add-ons": "Saved game requires missing add-ons: {missing}",
-    "test-scenarios": "Test Scenarios"
+    "file-is-not-valid": "Bestand is ongeldig",
+    "load-error": "Fout bij laden",
+    "not-possible-in-online-mode": "Het is niet mogelijk om in online modus te openen",
+    "save-created-prior-version-is-not-supported": "Opgeslagen bestand van vóór versie {version} wordt niet ondersteund",
+    "save-game-setup": "Spelopzet opslaan",
+    "save-game": "Spel opslaan",
+    "save-test-runner-scenario": "Testuitvoering scenario opslaan",
+    "saved-game-contains-game-history": "Opgeslagen spel bevat spelgeschiedenis",
+    "saved-game-contains-tests": "Opgeslagen spel bevat tests",
+    "saved-game-requires-missing-add-ons": "Opgeslagen spel vereist ontbrekende uitbreidingen: {missing}",
+    "test-scenarios": "Testscenario's"
   },
   "game": {
     "action": {
@@ -273,7 +273,7 @@
       "player-may-place-a-tile-from-supply": "Speler mag een tegel uit de voorraad plaatsen",
       "player-may-place-an-abbey": "Speler mag een adbij leggen",
       "player-must-place-the-tile": "Speler moet de tegel aanleggen",
-      "shepherd-placement": "Shepherd placement",
+      "shepherd-placement": "Herder zetten",
       "siege-player-can-escape-a-besieged-city": "Speler mag een belegerde stad ontvluchten.",
       "siege-you-can-escape-a-besieged-city": "Je mag een belegerde stad ontvluchten.",
       "skip-action": "Actie overslaan",
@@ -307,7 +307,7 @@
       "donkey": "Ezel",
       "donkey-description": "De ezel is een neutraal speelstuk die het afbouwen van projecten op de tegel waar hij op staat blokkeert.",
       "dragon": "Draak",
-      "courier": "Courier",
+      "courier": "Koerier",
       "fairy": "Fee",
       "ferry": "Veerboot",
       "gold": "Goud",
@@ -351,7 +351,7 @@
       "festival": "Feest",
       "field": "Weide",
       "fields": "Weiden",
-      "fishhut": "Fish Hut",
+      "fishhut": "Vissershut",
       "fishermen": "Vissers",
       "flock": "Kudde",
       "flowers": "Bloemen",
@@ -379,7 +379,7 @@
       "robbers-son": "Roverszoon",
       "sheep": "Schaap",
       "shrine": "Cultusplaats",
-      "shrine-challenge": "Monastery/Shrine challenge",
+      "shrine-challenge": "Klooster/cultusplaats uitdaging",
       "shrines": "Cultusplaats",
       "siege": "Belegering",
       "special-monasteries": "Bijzondere kloosters",
@@ -428,10 +428,10 @@
     },
     "create": {
       "click-to-assign": "klik om toe te wijzen",
-      "kick-player": "Kick player",
+      "kick-player": "Speler schoppen",
       "local-ai-player": "lokale ai-speler",
-      "local-limit-reached": "Limit reached",
-      "local-limit-reached-tooltip": "Maximum {limit} local players allowed",
+      "local-limit-reached": "Limiet bereikt",
+      "local-limit-reached-tooltip": "Er zijn maximaal {limit} lokale spelers toegestaan",
       "local-player": "lokale speler",
       "name": "Naam",
       "open-slot": "open plaats",
@@ -464,9 +464,9 @@
       "untitled-game": "naamloos spel",
       "waiting-for-host-to-start-the-game": "Wacht op host om het spel te starten."
     },
-    "required-expansion": "Required expansion {expansions}",
-    "requires-expansion": "Requires expasion {expansions}",
-    "requires-one-from-group": "Requires one from the group {groups}",
+    "required-expansion": "Vereiste uitbreiding {expanstions}",
+    "requires-expansion": "Vereist uitbreiding {expansions}",
+    "requires-one-from-group": "Vereist één uit de groep {groups}",
     "removed-elements": "Verwijderde elementen",
     "rules": {
       "acrobats-description": "Meeples mogen op artiestenvelden worden gezet.",
@@ -482,8 +482,8 @@
       "families-disabled": "Er zijn geen tegels met een ander familiewapen in het spel.",
       "festival-description": "Met een feesttegel mag je één van je eigen speelstukken terugnemen in plaats van er één te zetten.",
       "festival-disabled": "Er zijn geen feesttegels in het spel.",
-      "fishhut-description": "Fish Hut feature.",
-      "fishhut-disabled": "No tile with Fish Hut is in the game.",
+      "fishhut-description": "Vissershut-project.",
+      "fishhut-disabled": "Er zijn geen tegels met vissershutten in het spel.",
       "fishermen-description": "Rivier als gewoon project.",
       "fishermen-disabled": "Er zijn geen tegels met een rivier in het spel",
       "flowers-description": "Bloemen leveren +3 punten per geteld project op mits ze overeenkomen met het fiche van de speler.",
@@ -738,7 +738,7 @@
     "zoom-out": "Uitzoomen"
   },
   "server": {
-    "translate": "Update to v%VERSION% is required."
+    "translate": "Update naar v%VERSION% is vereist."
   },
   "settings": {
     "add-ons": {
@@ -829,10 +829,10 @@
       "app-channel": "App-updatekanaal",
       "beta": "Bewijs dat de app en de nieuwe functies klaar zijn",
       "dev": "Nieuwe functies testen tijdens implementaties",
-      "folder-does-not-exists": "Folder does not exists",
+      "folder-does-not-exists": "Map bestaat niet",
       "stable": "Ik wil spelen en genieten van het spel",
-      "path-is-not-directory": "Path is not directory",
-      "test-runner-folder": "Test Runner Folder",
+      "path-is-not-directory": "Pad is geen directory",
+      "test-runner-folder": "Test uitvoering map",
       "title": "Systeem"
     },
     "title": "Instellingen"
@@ -855,7 +855,7 @@
     "russian-promos-2016-title": "Tegels uit 2016",
     "tower-release": "De vierde grote uitbreiding uitgebracht in 2006.",
     "traders-and-builders-release": "De tweede grote uitbreiding, uitgebracht in 2003",
-    "under-the-big-top-c1-release": "The tenth major expansion, released in 2017. C1 Art made by PresetM carcassone-forum.de member.",
+    "under-the-big-top-c1-release": "De tiende grote uitbreiding, uitgebracht in 2017. C1 illustraties gemaakt door carcassonne-forum.de lid PresetM.",
     "winter-edition-description": "Basisset uit de spin-off Winter Editie. Bevat het basisspel uitgebreid met 12 extra tegels."
   }
 }

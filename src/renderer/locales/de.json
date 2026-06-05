@@ -1,12 +1,12 @@
 {
   "@author": "Challa007 & Bombur",
   "@jcz-version": "5.12.1",
-  "@fcz-version": "6.1.0",
-  "@version": "0.9.15",
+  "@fcz-version": "6.2.0",
+  "@version": "0.10.22",
   "about": {
     "author": "Autor",
     "configuration-file": "Konfigurationsdatei",
-    "corrections": "Corrections",
+    "corrections": "Korrekturen",
     "fantitle": "FanCloisterZone Edition",
     "jcloisterzone-game-engine": "JCloisterZone Spiel-Engine",
     "system-java-version": "System-Java-Version",
@@ -33,7 +33,7 @@
     "close": "Schliessen",
     "confirm": "Bestätigen",
     "connect": "Verbinde",
-    "continue": "Continue",
+    "continue": "Fortfahren",
     "create": "Erstelle",
     "create-game": "Spiel erstellen",
     "create-public-game": "Öffentliches Spiel erstellen",
@@ -80,14 +80,14 @@
   "chat": {
     "chat": "Chat",
     "new-message": "Neue Nachricht",
-    "take-slot-hint": "Take a slot to start chat"
+    "take-slot-hint": "Nimm einen Slot zum Start des Chats"
   },
   "core-messages": {
     "bonuses": "Boni",
     "choose": "Wählen",
     "done": "Erledigt",
-    "engine-error": "Engine error",
-    "field-is-required": "{field} is required",
+    "engine-error": "Engine Fehler",
+    "field-is-required": "{field} ist notwendig",
     "game-engine-not-available": "Spiel-Engine nicht verfügbar.",
     "incomplete-features": "Unvollständige Gebiete",
     "no-core-set": "Kein Basispaket!",
@@ -105,7 +105,7 @@
     "dev": "Dev",
     "dump-hosted-game-server-state": "Dump Hosted Game Server State",
     "edition": "Edition",
-    "game-created-in-development-mode": "Game in Development mode",
+    "game-created-in-development-mode": "Spiel in Entwicklungs-Modus",
     "fail": "Fehlschlag",
     "meeples": "Meeple",
     "mode": "Modus",
@@ -119,18 +119,18 @@
     "test": "Test",
     "test-runner": "Testläufer",
     "theme-inspector": "Theme Inspector",
-    "tile-draw-order-is-predefined": "Tile draw order is predefined",
+    "tile-draw-order-is-predefined": "Die Zugreihenfolge der Plättchen ist vordefiniert",
     "tiles": "Plättchen",
     "toggle-devtools": "Entwicklertools an/aus",
-    "use-local-play-online": "Use Local Play Online",
-    "use-remote-engine": "Use Remote Engine"
+    "use-local-play-online": "Benutze lokales Online Spiel",
+    "use-remote-engine": "Benutze die Remote Engine"
   },
   "dialog": {
     "close-local-game": {
       "continue-playing": "Weiterspielen",
       "resign-and-close": "Aufgeben und schließen",
       "unfinished-local-game": "Unbeendetes lokales Spiel",
-      "unfinished-local-game-description": "You have an unfinished local game. If you close the app window, you will resign and lose your progress in this game."
+      "unfinished-local-game-description": "Du hast ein unfertiges lokales Spiel. Wenn du das App-Fenster schließt, loggst du dich aus und verlierst deinen Fortschritt in diesem Spiel."
     }
   },
   "expansion": {
@@ -139,7 +139,7 @@
     "basic": "Grundspiel",
     "besiegers": "Die Belagerer",
     "black-tower": "Schwarzer Turm",
-    "black-tower-description": "Neue schwarze und weiße Turmteile für den Turm,. Die schwarzen erlauben es, Meeple diagonal gefangenzunehmen, weiße schließen den Turm ab.",
+    "black-tower-description": "Neue schwarze und weiße Turmteile für den Turm,. Die schwarzen erlauben es, Meeple diagonal gefangenzunehmen, weiße oben auf dem Turm schließen den Turm ab.",
     "bridges-castles-and-bazaars": "Brücken, Burgen und Basare",
     "butterfly-tiles": "Zusatzplättchen",
     "butterfly-tiles-description": "16 Plättchen mit neuen Zusammensetzungen, die im Grundspiel und den Erweiterungen fehlen. Es gibt keine neuen Regeln/Funktionen.",
@@ -161,10 +161,10 @@
     "family-feud-description": "Plättchen mit blau-weißen und rot-gelben Wappen gehören rivalisierenden Familien. Kein Plättchen darf so platziert werden, dass Städte rivalisierender Familien miteinander verbunden werden.",
     "farmers-heaven": "Bauernzuflucht",
     "farmers-heaven-description": "Da die meisten Erweiterungen sich auf Städte konzentrieren, war es Zeit, mal was für die Bauern zu tun.",
-    "fishhuts": "Fish Huts",
-    "fishhuts-description": "Make the River move valuable. A meeple can also be placed to the fish-smoking hut as a poissonnier (French for a person whose job is to prepare fish) and score additional points.",
+    "fishhuts": "Fischerhütten",
+    "fishhuts-description": "Mache deinen Fluss wertvoller. Ein Meeple kann auch auf die Räucherfischhütte gesetzt werden als Fischhändler (eine Person, die Fisch zubereitet) und zusätzliche Punkte erhalten.",
     "fishermen": "Fischer",
-    "fishermen-description": "River tiles are shuffled into the regular tile stack. Players may place a meeple on a river segment as on any other scoreable feature, score points when the river is completed.",
+    "fishermen-description": "Die Flussplättchen werden unter die regulären Plättchen gemischt. Spieler dürfen einen Meeple auf einen Flussabschnitt setzen genauso wie auf jedes andere wertungsfähige Gebiet; bekomme Punkte wenn der Fluß abgeschlossen ist.",
     "ferries": "Die Fähren",
     "festival": "Das Fest",
     "flier": "Die Fluggeräte",
@@ -179,7 +179,7 @@
     "labyrinth": "Das Labyrinth",
     "mage-and-witch": "Magier und Hexe",
     "meteorites": "Meteoriten",
-    "meteorites-description": "Meteoriten schlagen in",
+    "meteorites-description": "Meteoriten schlagen in Carcassonne ein und verursachen Chaos und Zerstörung, die den Spielern erlauben, frei gewordenen Gebiete zu besetzen und strategische Möglichkeiten im Chaos zu ergreifen.",
     "monasteries": "Besondere Klöster",
     "princess-and-dragon": "Burgfräulein und Drache",
     "river": "Der Fluss",
@@ -189,11 +189,11 @@
     "robbers-son-description": "Der Räubersohn führt eine neue Spielmechanik ein, mit der man beliebige Meeple von Straßen entfernen kann.",
     "russian-promos": "Russische Sonderplättchen",
     "siege": "Belagerung",
-    "spiel-doch": "Spiel Doch",
+    "spiel-doch": "Spiel Doch!",
     "the-city-gates": "Stadttore",
     "the-city-gates-description": "Spieler können Stadttore am Rand eines Plättchens an ein anderes Stadttor am Rand eines anderen Plättchens anlegen, aber auch an eine Wiese oder eine Straße (oder umgekehrt)",
     "the-flying-machines-2": "Die Flugmaschinen 2",
-    "the-flying-machines-2-description": "Änlich wie sein Vorgängern, nur jetzt mit Städten auf den Plättchen anstatt nur Straßen.",
+    "the-flying-machines-2-description": "Änlich wie sein Vorgänger, nur jetzt mit Städten auf den Plättchen anstatt nur Straßen.",
     "the-labyrinths": "Labyrinthe",
     "the-labyrinths-description": "Fügt 3 Labyrinth Plättchen hinzu, die alleine oder zusammen mit dem Original-Labyrinth-Plättchen genutzt werden können.",
     "tower": "Der Turm",
@@ -203,28 +203,28 @@
     "ukraine-promo-description": "Dieses limitierte Promoplättchen wurde auf der SPIEL 22 veröffentlicht. Die Einnahmen wurden der Organisation Come Back Alive gespendet.",
     "under-the-big-top": "Manege frei!",
     "under-the-big-top-description": "",
-    "under-the-big-top-c1": "Under The Big Top",
+    "under-the-big-top-c1": "Manege Frei!",
     "under-the-big-top-c1-description": "",
     "village-life": "Dorfleben",
     "village-life-description": "",
     "watchtowers": "Die Wachtürme",
     "wells": "Brunnen",
-    "wells-description": "Eine einfache Erweiterung in der jeder Brunnen 1 Punkt zum Wert der Straße hinzufügt, bzw. 2 Punkte zu einer fertiggestellten Straße mit einem Wirtshaus.",
+    "wells-description": "Eine einfache Erweiterung, in der jeder Brunnen 1 Punkt zum Wert der Straße hinzufügt, bzw. 2 Punkte zu einer fertiggestellten Straße mit einem Wirtshaus.",
     "wind-roses": "Die Windrosen",
     "winter": "Winter"
   },
   "file": {
-    "file-is-not-valid": "File is not valid",
-    "load-error": "Load error",
-    "not-possible-in-online-mode": "It is not possible to open in online mode",
-    "save-created-prior-version-is-not-supported": "Save created prior version {version} is not supported",
-    "save-game-setup": "Save Game Setup",
-    "save-game": "Save Game",
-    "save-test-runner-scenario": "Save Test Runner Scenario",
-    "saved-game-contains-game-history": "Saved game contains game history",
-    "saved-game-contains-tests": "Saved game contains tests",
-    "saved-game-requires-missing-add-ons": "Saved game requires missing add-ons: {missing}",
-    "test-scenarios": "Test Scenarios"
+    "file-is-not-valid": "Die Datei ist nicht gültig",
+    "load-error": "Ladefehler",
+    "not-possible-in-online-mode": "Es kann nicht im Online-Modus geöffnet werden",
+    "save-created-prior-version-is-not-supported": "Die für eine frühere Version {version} gespeicherte Datei wird nicht unterstützt",
+    "save-game-setup": "Spiel-Setup speichern",
+    "save-game": "Spiel speichern",
+    "save-test-runner-scenario": "Testläufer Szenario speichern",
+    "saved-game-contains-game-history": "Das gespeicherte Spiel enthält Spielhistorie",
+    "saved-game-contains-tests": "Das gespeicherte Spiel enthält Tests",
+    "saved-game-requires-missing-add-ons": "Das gespeicherte Spiel benötigt fehlende Add-Ons: {missing}",
+    "test-scenarios": "Testszenarien"
   },
   "game": {
     "action": {
@@ -273,7 +273,7 @@
       "player-may-place-a-tile-from-supply": "Der Spieler darf ein Plättchen aus dem Vorrat einsetzen",
       "player-may-place-an-abbey": "Der Spieler darf eine Abtei einsetzen",
       "player-must-place-the-tile": "Der Spieler muss das Plättchen legen",
-      "shepherd-placement": "Shepherd placement",
+      "shepherd-placement": "Platzierung des Schäfers",
       "siege-player-can-escape-a-besieged-city": "Der Spieler kann aus einer belagerten Stadt fliehen.",
       "siege-you-can-escape-a-besieged-city": "Du kannst aus einer belagerten Stadt fliehen.",
       "skip-action": "Aktion überspringen",
@@ -307,7 +307,7 @@
       "donkey": "Esel",
       "donkey-description": "Der Esel als neutrale Figur blockiert die Fertigstellung jedes Gebiets, das sich auf dem Plättchen befindet, auf dem er steht.",
       "dragon": "Drache",
-      "courier": "Courier",
+      "courier": "Courier (Bote)",
       "fairy": "Fee",
       "ferry": "Fähre",
       "gold": "Goldstücke",
@@ -351,7 +351,7 @@
       "festival": "Fest",
       "field": "Wiese",
       "fields": "Wiesen",
-      "fishhut": "Fish Hut",
+      "fishhut": "Fischerhütte",
       "fishermen": "Fischer",
       "flock": "Herde",
       "flowers": "Blumen",
@@ -379,7 +379,7 @@
       "robbers-son": "Räubersohn",
       "sheep": "Schafe",
       "shrine": "Kultstätte",
-      "shrine-challenge": "Monastery/Shrine challenge",
+      "shrine-challenge": "Kloster/Kultstätte Herausforderung",
       "shrines": "Kultstätten",
       "siege": "Belagerung",
       "special-monasteries": "Besondere Klöster",
@@ -428,10 +428,10 @@
     },
     "create": {
       "click-to-assign": "zum Zuweisen hier klicken",
-      "kick-player": "Kick player",
+      "kick-player": "Spieler entfernen",
       "local-ai-player": "Lokaler Computergegner",
-      "local-limit-reached": "Limit reached",
-      "local-limit-reached-tooltip": "Maximum {limit} local players allowed",
+      "local-limit-reached": "Limit erreicht",
+      "local-limit-reached-tooltip": "Es sind maximal {limit} lokale Spieler erlaubt",
       "local-player": "lokaler Spieler",
       "name": "Name",
       "open-slot": "offener Slot",
@@ -464,9 +464,9 @@
       "untitled-game": "unbenanntes Spiel",
       "waiting-for-host-to-start-the-game": "Warten, dass der Host das Spiel startet."
     },
-    "required-expansion": "Required expansion {expansions}",
-    "requires-expansion": "Requires expasion {expansions}",
-    "requires-one-from-group": "Requires one from the group {groups}",
+    "required-expansion": "Benötigte Erweiterung {expansions}",
+    "requires-expansion": "Benötigt Erweiterung {expansions}",
+    "requires-one-from-group": "Benötigt eins der Gruppe {groups}",
     "removed-elements": "Entfernte Elemente",
     "rules": {
       "acrobats-description": "Meeple als Artist auf das Artistenplättchen setzen.",
@@ -482,8 +482,8 @@
       "families-disabled": "Es ist kein Plättchen mit einem anderen Familienwappen im Spiel.",
       "festival-description": "Mit einem Festplättchen kann man eine eigene Figur zurückholen, anstatt eine einzusetzen.",
       "festival-disabled": "Kein Festplättchen ist im Spiel.",
-      "fishhut-description": "Fish Hut feature.",
-      "fishhut-disabled": "No tile with Fish Hut is in the game.",
+      "fishhut-description": "Fischerhütte Element",
+      "fishhut-disabled": "Im Spiel ist kein Plättchen mit Fischerhütte.",
       "fishermen-description": "Der Fluss als normaler Landschaftsteil.",
       "fishermen-disabled": "Kein Flussplättchen im Spiel.",
       "flowers-description": "Wenn ein Bauwerk gewertet wird, erhält jeder daran beteiligte Spieler, unabhängig von der Mehrheit, 3 Punkte, wenn er den entsprechenden Blumenmarker hat.",
@@ -738,7 +738,7 @@
     "zoom-out": "Verkleinern"
   },
   "server": {
-    "translate": "Update to v%VERSION% is required."
+    "translate": "Update auf v%VERSION% ist notwendig."
   },
   "settings": {
     "add-ons": {
@@ -829,10 +829,10 @@
       "app-channel": "App Updates Kanal",
       "beta": "Beweis, dass App und neue Funktionen fertig sind",
       "dev": "Test neuer Funktionen während der Implementierung",
-      "folder-does-not-exists": "Folder does not exists",
+      "folder-does-not-exists": "Der Ordner existiert nicht",
       "stable": "Ich möchte nur spielen und das Spiel genießen",
       "path-is-not-directory": "Path is not directory",
-      "test-runner-folder": "Test Runner Folder",
+      "test-runner-folder": "Test Runner Ordner",
       "title": "System"
     },
     "title": "Einstellungen"
@@ -855,7 +855,7 @@
     "russian-promos-2016-title": "Plättchen von 2016",
     "tower-release": "Die vierte große Erweiterung, die 2006 veröffentlicht wurde.",
     "traders-and-builders-release": "Die zweite große Erweiterung, die 2003 veröffentlicht wurde.",
-    "under-the-big-top-c1-release": "The tenth major expansion, released in 2017. C1 Art made by PresetM carcassone-forum.de member.",
+    "under-the-big-top-c1-release": "Die 10. Haupterweiterung, veröffentlicht 2017. Das C1-Design ist von PresetM, Mitglied von carcassonne-forum.de.",
     "winter-edition-description": "Basis-Set aus der Winter-Edition (Spin-Off). Enthält das Basisspiel und 12 zusätzliche Plättchen."
   }
 }

@@ -1,8 +1,8 @@
 {
   "@author": "TileLord | Erol",
   "@jcz-version": "5.12.1",
-  "@fcz-version": "6.1.0",
-  "@version": "0.9.15",
+  "@fcz-version": "6.2.0",
+  "@version": "0.10.22",
   "about": {
     "author": "Avtor",
     "configuration-file": "Konfiguracijska datoteka",
@@ -33,7 +33,7 @@
     "close": "Zapri",
     "confirm": "Potrdi",
     "connect": "Poveži se",
-    "continue": "Continue",
+    "continue": "Nadaljuj",
     "create": "Ustvari",
     "create-game": "Ustvari Igro",
     "create-public-game": "Ustvari javno igro",
@@ -78,16 +78,16 @@
     "test-runner": "Izvajalnik testov"
   },
   "chat": {
-    "chat": "Chat",
+    "chat": "Klepet",
     "new-message": "Novo sporočilo",
-    "take-slot-hint": "Take a slot to start chat"
+    "take-slot-hint": "Zasedite mesto za začetek klepeta"
   },
   "core-messages": {
     "bonuses": "Bonusi",
     "choose": "Izberi",
     "done": "Končano",
-    "engine-error": "Engine error",
-    "field-is-required": "{field} is required",
+    "engine-error": "Napaka motorja",
+    "field-is-required": "{field} je obvezno",
     "game-engine-not-available": "Igralni pogon ni na voljo.",
     "incomplete-features": "Nedokončane značilnosti",
     "no-core-set": "Ni osnovnega seta!",
@@ -102,10 +102,10 @@
   },
   "dev": {
     "actions": "Dejanja",
-    "dev": "Dev",
+    "dev": "Razvoj",
     "dump-hosted-game-server-state": "Izpiši stanje gostovanega strežnika igre",
     "edition": "Izdaja",
-    "game-created-in-development-mode": "Game in Development mode",
+    "game-created-in-development-mode": "Igra v načinu razvoja",
     "fail": "Neuspeh",
     "meeples": "Meepli",
     "mode": "Način",
@@ -119,7 +119,7 @@
     "test": "Test",
     "test-runner": "Izvajalnik testov",
     "theme-inspector": "Pregledovalnik teme",
-    "tile-draw-order-is-predefined": "Tile draw order is predefined",
+    "tile-draw-order-is-predefined": "Vrstni red risanja ploščic je vnaprej določen",
     "tiles": "Ploščice",
     "toggle-devtools": "Preklopi razvijalska orodja",
     "use-local-play-online": "Uporabi lokalno igro prek spleta",
@@ -161,10 +161,10 @@
     "family-feud-description": "Ploščic z modro-belim in rdeče-rumenim grbom ni dovoljeno postaviti tako, da bi mesta teh dveh družin bila povezana ali združena pred dokončanjem.",
     "farmers-heaven": "Kmečka Nebesa",
     "farmers-heaven-description": "Ker je večina razširitev osredotočena predvsem na mesta, je bil čas narediti nekaj za kmete.",
-    "fishhuts": "Fish Huts",
-    "fishhuts-description": "Make the River move valuable. A meeple can also be placed to the fish-smoking hut as a poissonnier (French for a person whose job is to prepare fish) and score additional points.",
+    "fishhuts": "Ribje koče",
+    "fishhuts-description": "Naredite reko dragoceno. Figurico lahko postavite tudi v kočo za kajenje rib kot ribarja (francoski izraz za osebo, katere delo je priprava rib) in dosežete dodatne točke.",
     "fishermen": "Ribiči",
-    "fishermen-description": "River tiles are shuffled into the regular tile stack. Players may place a meeple on a river segment as on any other scoreable feature, score points when the river is completed.",
+    "fishermen-description": "Ploščice reke se premešajo v navadni kup ploščic. Igralci lahko postavijo figurico na odsek reke kot na katero koli drugo točkovano značilnost in dosežejo točke, ko se reka zaključi.",
     "ferries": "Trajekti",
     "festival": "Festival",
     "flier": "Leteči Stroji",
@@ -203,7 +203,7 @@
     "ukraine-promo-description": "Ta omejena promocijska ploščica je izšla na Spiel 22. Prihodki od prodaje so šli nevladni organizaciji Come Back Alive.",
     "under-the-big-top": "Pod Velikim Šotorom",
     "under-the-big-top-description": "",
-    "under-the-big-top-c1": "Under The Big Top",
+    "under-the-big-top-c1": "Pod velikim šotorom",
     "under-the-big-top-c1-description": "",
     "village-life": "Vaško življenje",
     "village-life-description": "",
@@ -214,17 +214,17 @@
     "winter": "Zima"
   },
   "file": {
-    "file-is-not-valid": "File is not valid",
-    "load-error": "Load error",
-    "not-possible-in-online-mode": "It is not possible to open in online mode",
-    "save-created-prior-version-is-not-supported": "Save created prior version {version} is not supported",
-    "save-game-setup": "Save Game Setup",
-    "save-game": "Save Game",
-    "save-test-runner-scenario": "Save Test Runner Scenario",
-    "saved-game-contains-game-history": "Saved game contains game history",
-    "saved-game-contains-tests": "Saved game contains tests",
-    "saved-game-requires-missing-add-ons": "Saved game requires missing add-ons: {missing}",
-    "test-scenarios": "Test Scenarios"
+    "file-is-not-valid": "Datoteka ni veljavna",
+    "load-error": "Napaka pri nalaganju",
+    "not-possible-in-online-mode": "To ni mogoče v načinu na spletu",
+    "save-created-prior-version-is-not-supported": "Shranjena igra, ki je bila ustvarjena v starejši različici {version}, ni podprta.",
+    "save-game-setup": "Shrani nastavitev igre",
+    "save-game": "Shrani igro",
+    "save-test-runner-scenario": "Shrani scenarij preizkuševalnika testov",
+    "saved-game-contains-game-history": "Shranjena igra vsebuje zgodovino igre",
+    "saved-game-contains-tests": "Shranjena igra vsebuje teste",
+    "saved-game-requires-missing-add-ons": "Shranjena igra zahteva manjkajoče dodatke: {missing}",
+    "test-scenarios": "Scenariji preizkušanja"
   },
   "game": {
     "action": {
@@ -273,7 +273,7 @@
       "player-may-place-a-tile-from-supply": "Igralec lahko postavi ploščico iz zaloge",
       "player-may-place-an-abbey": "Igralec lahko postavi opatijo",
       "player-must-place-the-tile": "Igralec mora postaviti ploščico",
-      "shepherd-placement": "Shepherd placement",
+      "shepherd-placement": "Postavitev pastirja",
       "siege-player-can-escape-a-besieged-city": "Igralec lahko pobegne iz oblegnega mesta.",
       "siege-you-can-escape-a-besieged-city": "Lahko pobegneš iz oblegnega mesta.",
       "skip-action": "Preskoči dejanje",
@@ -307,7 +307,7 @@
       "donkey": "Osel",
       "donkey-description": "Osel kot nevtralna figura blokira dokončanje katere koli značilnosti ploščice, na kateri stoji.",
       "dragon": "Zmaj",
-      "courier": "Courier",
+      "courier": "Kurir",
       "fairy": "Vila",
       "ferry": "Trajekt",
       "gold": "Zlato",
@@ -351,7 +351,7 @@
       "festival": "Festival",
       "field": "Polje",
       "fields": "Polja",
-      "fishhut": "Fish Hut",
+      "fishhut": "Ribja koča",
       "fishermen": "Ribiči",
       "flock": "Čreda",
       "flowers": "Rože",
@@ -379,7 +379,7 @@
       "robbers-son": "Razbojnikov sin",
       "sheep": "Ovce",
       "shrine": "Svetišče",
-      "shrine-challenge": "Monastery/Shrine challenge",
+      "shrine-challenge": "Izziv Samostana/Svetišča",
       "shrines": "Svetišča",
       "siege": "Obleganje",
       "special-monasteries": "Posebni samostani",
@@ -428,10 +428,10 @@
     },
     "create": {
       "click-to-assign": "klikni za dodelitev",
-      "kick-player": "Kick player",
+      "kick-player": "Izključi igralca",
       "local-ai-player": "Lokalni AI igralec",
-      "local-limit-reached": "Limit reached",
-      "local-limit-reached-tooltip": "Maximum {limit} local players allowed",
+      "local-limit-reached": "Omejitev dosežena",
+      "local-limit-reached-tooltip": "Največ {limit} lokalnih igralcev je dovoljeno",
       "local-player": "lokalni igralec",
       "name": "Ime",
       "open-slot": "odprta pozicija",
@@ -464,9 +464,9 @@
       "untitled-game": "neimenovana igra",
       "waiting-for-host-to-start-the-game": "Čakanje na gostitelja, da začne igro."
     },
-    "required-expansion": "Required expansion {expansions}",
-    "requires-expansion": "Requires expasion {expansions}",
-    "requires-one-from-group": "Requires one from the group {groups}",
+    "required-expansion": "Zahtevana razširitev {expansions}",
+    "requires-expansion": "Zahteva razširitev {expansions}",
+    "requires-one-from-group": "Zahteva eno od skupine {groups}",
     "removed-elements": "Odstranjeni Elementi",
     "rules": {
       "acrobats-description": "Postavljanje človeščka kot akrobata na akrobatski prostor.",
@@ -482,8 +482,8 @@
       "families-disabled": "V igri ni nobene ploščice z drugačnim družinskim praporom.",
       "festival-description": "S festivalsko ploščico lahko vrneš eno od svojih figur namesto da jo postaviš.",
       "festival-disabled": "Nobena ploščica s festivalom ni v igri.",
-      "fishhut-description": "Fish Hut feature.",
-      "fishhut-disabled": "No tile with Fish Hut is in the game.",
+      "fishhut-description": "Značilnost ribje koče.",
+      "fishhut-disabled": "V igri ni nobene ploščice z ribjo kočo.",
       "fishermen-description": "Reka kot običajna značilnost.",
       "fishermen-disabled": "V igri ni nobene ploščice z reko.",
       "flowers-description": "Še ni na voljo",
@@ -738,7 +738,7 @@
     "zoom-out": "Pomanjšaj"
   },
   "server": {
-    "translate": "Update to v%VERSION% is required."
+    "translate": "Posodobitev na v%VERSION% je obavezna."
   },
   "settings": {
     "add-ons": {
@@ -829,10 +829,10 @@
       "app-channel": "Kanal posodobitev aplikacije",
       "beta": "Dokaži da sta aplikacija in nove funkcije zaključene",
       "dev": "Testiranje nove funkcije med izvajanjem",
-      "folder-does-not-exists": "Folder does not exists",
+      "folder-does-not-exists": "Mapa ne obstaja",
       "stable": "Želim samo igrati in uživati v igri",
-      "path-is-not-directory": "Path is not directory",
-      "test-runner-folder": "Test Runner Folder",
+      "path-is-not-directory": "Pot ni direktorij",
+      "test-runner-folder": "Mapa preizkuševalnika testov",
       "title": "Sistem"
     },
     "title": "Nastavitve"
@@ -855,7 +855,7 @@
     "russian-promos-2016-title": "Ploščice iz leta 2016",
     "tower-release": "Četrta velika razširitev izdana leta 2006.",
     "traders-and-builders-release": "Druga velika razširitev izdana leta 2003",
-    "under-the-big-top-c1-release": "The tenth major expansion, released in 2017. C1 Art made by PresetM carcassone-forum.de member.",
+    "under-the-big-top-c1-release": "Deseta velika razširitev, izdana leta 2017. Umetnost C1 je naredil PresetM, član foruma carcassonne-forum.de",
     "winter-edition-description": "Osnovni set iz zimske izdaje spin-off. Vsebuje osnovno igro razširjeno z dodatnimi 12 ploščicami."
   }
 }

@@ -2,7 +2,7 @@
   "@author": "Black Bear",
   "@jcz-version": "5.12.1",
   "@fcz-version": "6.2.0",
-  "@version": "0.10.14",
+  "@version": "0.10.22",
   "about": {
     "author": "Auteur",
     "configuration-file": "Fichier de configuration",
@@ -203,7 +203,7 @@
     "ukraine-promo-description": "Cette tuile promotionnelle en édition limitée a été lancée lors du salon Spiel 22. Les recettes des ventes ont été reversées à l’ONG Come Back Alive.",
     "under-the-big-top": "Tous en Piste !",
     "under-the-big-top-description": "",
-    "under-the-big-top-c1": "Under The Big Top",
+    "under-the-big-top-c1": "Tous en Piste !",
     "under-the-big-top-c1-description": "",
     "village-life": "La Vie au Village",
     "village-life-description": "",
@@ -428,10 +428,10 @@
     },
     "create": {
       "click-to-assign": "cliquer pour attribuer",
-      "kick-player": "Kick player",
+      "kick-player": "Exclure un joueur",
       "local-ai-player": "joueur IA local",
-      "local-limit-reached": "Limit reached",
-      "local-limit-reached-tooltip": "Maximum {limit} local players allowed",
+      "local-limit-reached": "Limite atteinte",
+      "local-limit-reached-tooltip": "{limit} joueurs locaux au maximum autorisés",
       "local-player": "joueur local",
       "name": "Nom",
       "open-slot": "ouvrir emplacement",
@@ -464,9 +464,9 @@
       "untitled-game": "partie sans titre",
       "waiting-for-host-to-start-the-game": "En attente de l’hôte pour commencer la partie."
     },
-    "required-expansion": "Required expansion {expansions}",
-    "requires-expansion": "Requires expasion {expansions}",
-    "requires-one-from-group": "Requires one from the group {groups}",
+    "required-expansion": "Extension {expansions} requise",
+    "requires-expansion": "Nécessite une extension {expansions}",
+    "requires-one-from-group": "Nécessite un parmi le groupe {groups}",
     "removed-elements": "Éléments retirés",
     "rules": {
       "acrobats-description": "Poser un meeple en tant qu’artiste sur une piste d’artiste.",
@@ -855,7 +855,7 @@
     "russian-promos-2016-title": "Tuiles de 2016",
     "tower-release": "La quatrième extension majeure sortie en 2006.",
     "traders-and-builders-release": "La deuxième extension majeure sortie en 2003.",
-    "under-the-big-top-c1-release": "The tenth major expansion, released in 2017. C1 Art made by PresetM carcassone-forum.de member.",
+    "under-the-big-top-c1-release": "La dixième extension majeure, sortie en 2017. Illustration C1 réalisée par PresetM, membre du forum carcassonne-forum.de.",
     "winter-edition-description": "Jeu de base du jeu dérivé Édition Hiver. Contient un jeu de base étendu avec 12 tuiles supplémentaires."
   }
 }

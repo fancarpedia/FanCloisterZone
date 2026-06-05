@@ -2,7 +2,7 @@
   "@author": "Paloi Sciurala",
   "@jcz-version": "5.12.1",
   "@fcz-version": "6.2.0",
-  "@version": "0.10.20",
+  "@version": "0.10.22",
   "about": {
     "author": "Autor",
     "configuration-file": "Fișier de configurație",
@@ -217,7 +217,7 @@
     "file-is-not-valid": "Fișierul nu este valid",
     "load-error": "Eroare de încărcare",
     "not-possible-in-online-mode": "Nu este posibil de deschis în modul online",
-    "save-created-prior-version-is-not-supported": "Salvarea creată înainte de versiunea {version} nu este suportată",
+    "save-created-prior-version-is-not-supported": "Fișierul salvat creat pentru versiunea anterioară {version} nu este suportat",
     "save-game-setup": "Salvează configurația partidei",
     "save-game": "Salvează partida",
     "save-test-runner-scenario": "Salvează scenariul derulatorului de test",
@@ -855,7 +855,7 @@
     "russian-promos-2016-title": "Cartonașele din 2016",
     "tower-release": "A patra extensie majoră lansată în 2006.",
     "traders-and-builders-release": "A doua extensie majoră lansată în 2003",
-    "under-the-big-top-c1-release": "A zecea extensie majoră, lansată în 2017. Arta C1 făcută de membrul carcassone-forum.de PresetM.",
+    "under-the-big-top-c1-release": "A zecea extensie majoră, lansată în 2017. Arta C1 făcută de membrul carcassonne-forum.de PresetM.",
     "winter-edition-description": "Set simplu din spin-off-ul Ediția de iarnă. Conține jocul de bază extins cu 12 cartonașe adiționale."
   }
 }

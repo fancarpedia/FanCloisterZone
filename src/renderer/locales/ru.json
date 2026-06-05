@@ -1,7 +1,7 @@
 {
   "@author": "pOison & Dextea & SonicDC",
   "@jcz-version": "5.12.1",
-  "@fcz-version": "6.1.0",
+  "@fcz-version": "6.2.0",
   "@version": "0.9.15",
   "about": {
     "author": "Автор",
@@ -33,7 +33,7 @@
     "close": "Закрыть",
     "confirm": "Подтвердить",
     "connect": "Подключиться",
-    "continue": "Continue",
+    "continue": "Продолжить",
     "create": "Создать",
     "create-game": "Создать игру",
     "create-public-game": "Создать Публичную игру",
@@ -78,16 +78,16 @@
     "test-runner": "Тестер"
   },
   "chat": {
-    "chat": "Chat",
+    "chat": "Чат",
     "new-message": "Новое сообщение",
-    "take-slot-hint": "Take a slot to start chat"
+    "take-slot-hint": "Займите слот чтобы начать общение"
   },
   "core-messages": {
     "bonuses": "Бонусы",
     "choose": "Выбрать",
     "done": "Готово",
-    "engine-error": "Engine error",
-    "field-is-required": "{field} is required",
+    "engine-error": "Ошибка движка",
+    "field-is-required": "необходим {field}",
     "game-engine-not-available": "Игровой движок недоступен.",
     "incomplete-features": "Незавершенные функции",
     "no-core-set": "Отсутствует основной набор!",
@@ -105,7 +105,7 @@
     "dev": "Dev",
     "dump-hosted-game-server-state": "Дамп состояния игрового сервера",
     "edition": "Издание",
-    "game-created-in-development-mode": "Game in Development mode",
+    "game-created-in-development-mode": "Игра в режиме разработки",
     "fail": "Провал",
     "meeples": "Миплы",
     "mode": "Режим",
@@ -119,7 +119,7 @@
     "test": "Тест",
     "test-runner": "Тестер",
     "theme-inspector": "Проверка тем",
-    "tile-draw-order-is-predefined": "Tile draw order is predefined",
+    "tile-draw-order-is-predefined": "Порядок тайлов предопределён",
     "tiles": "Тайлы",
     "toggle-devtools": "Переключить DevTools",
     "use-local-play-online": "Использовать локальную онлайн игру",
@@ -136,7 +136,7 @@
   "expansion": {
     "-unknown": "Отсутствующее дополнение",
     "abbey-and-mayor": "Аббатство и мэр",
-    "basic": "Основной набор",
+    "basic": "Базовая игра",
     "besiegers": "Осадники",
     "black-tower": "Чёрная башня",
     "black-tower-description": "Новые чёрные и белые этажи башни для дополнения «Башня»: чёрный этаж позволяет захватывать миплов по диагонали, а белый этаж навсегда блокирует башню, если размещён сверху.",
@@ -162,7 +162,7 @@
     "farmers-heaven": "Фермерский рай",
     "farmers-heaven-description": "Поскольку большинство дополнений в основном сосредоточены на городах, пришло время сделать что-то и для фермеров.",
     "fishhuts": "Fish Huts",
-    "fishhuts-description": "Make the River move valuable. A meeple can also be placed to the fish-smoking hut as a poissonnier (French for a person whose job is to prepare fish) and score additional points.",
+    "fishhuts-description": "Make the River more valuable. A meeple can also be placed to the fish-smoking hut as a poissonnier (French for a person whose job is to prepare fish) and score additional points.",
     "fishermen": "Рыбак",
     "fishermen-description": "River tiles are shuffled into the regular tile stack. Players may place a meeple on a river segment as on any other scoreable feature, score points when the river is completed.",
     "ferries": "Паромы",
@@ -203,7 +203,7 @@
     "ukraine-promo-description": "Каждый колодец добавляет 1 очко к стоимости дороги или 2 очка к дороге с завершённой гостиницей.",
     "under-the-big-top": "Цирк",
     "under-the-big-top-description": "",
-    "under-the-big-top-c1": "Under The Big Top",
+    "under-the-big-top-c1": "Бродячий цирк",
     "under-the-big-top-c1-description": "",
     "village-life": "Деревенская жизнь",
     "village-life-description": "",
@@ -214,17 +214,17 @@
     "winter": "Зима"
   },
   "file": {
-    "file-is-not-valid": "File is not valid",
-    "load-error": "Load error",
-    "not-possible-in-online-mode": "It is not possible to open in online mode",
-    "save-created-prior-version-is-not-supported": "Save created prior version {version} is not supported",
-    "save-game-setup": "Save Game Setup",
-    "save-game": "Save Game",
-    "save-test-runner-scenario": "Save Test Runner Scenario",
+    "file-is-not-valid": "Файл недействителен",
+    "load-error": "Ошибка загрузки",
+    "not-possible-in-online-mode": "Невозможно это открыть в онлайн режиме",
+    "save-created-prior-version-is-not-supported": "Saved file created for prior version {version} is not supported",
+    "save-game-setup": "Сохранить настройки игры",
+    "save-game": "Сохранить игру",
+    "save-test-runner-scenario": "Сохранить сценарий Тестера",
     "saved-game-contains-game-history": "Saved game contains game history",
     "saved-game-contains-tests": "Saved game contains tests",
-    "saved-game-requires-missing-add-ons": "Saved game requires missing add-ons: {missing}",
-    "test-scenarios": "Test Scenarios"
+    "saved-game-requires-missing-add-ons": "Сохранённая игры требует отсутствующие дополнения: {missing}",
+    "test-scenarios": "Сценарии тестов"
   },
   "game": {
     "action": {
@@ -273,7 +273,7 @@
       "player-may-place-a-tile-from-supply": "Игрок может выложить тайл из запаса.",
       "player-may-place-an-abbey": "Игрок может разместить аббатство",
       "player-must-place-the-tile": "Игрок должен поместить тайл",
-      "shepherd-placement": "Shepherd placement",
+      "shepherd-placement": "Размещение пастуха",
       "siege-player-can-escape-a-besieged-city": "Игрок может выбраться из осажденного города.",
       "siege-you-can-escape-a-besieged-city": "Вы можете выбраться из осажденного города.",
       "skip-action": "Пропустить действие",
@@ -351,7 +351,7 @@
       "festival": "Фестиваль",
       "field": "Поле",
       "fields": "Поля",
-      "fishhut": "Fish Hut",
+      "fishhut": "Хижина рыбака",
       "fishermen": "Рыбак",
       "flock": "Стадо",
       "flowers": "Цветы",
@@ -378,9 +378,9 @@
       "robber": "Грабитель-барон",
       "robbers-son": "Сын грабителя",
       "sheep": "Овца",
-      "shrine": "Святыня",
-      "shrine-challenge": "Monastery/Shrine challenge",
-      "shrines": "Святыни",
+      "shrine": "Капище",
+      "shrine-challenge": "Противостояние Монастырей и Капищ",
+      "shrines": "Капища",
       "siege": "Осада",
       "special-monasteries": "Специальные монастыри",
       "special-monastery": "Специальный монастырь",
@@ -428,10 +428,10 @@
     },
     "create": {
       "click-to-assign": "нажмите, чтобы назначить",
-      "kick-player": "Kick player",
+      "kick-player": "Выгнать игрока",
       "local-ai-player": "локальный ИИ игрок",
-      "local-limit-reached": "Limit reached",
-      "local-limit-reached-tooltip": "Maximum {limit} local players allowed",
+      "local-limit-reached": "Достигнут лимит",
+      "local-limit-reached-tooltip": "Максимум локальных игроков разрешено: {limit}",
       "local-player": "локальный игрок",
       "name": "Имя",
       "open-slot": "открытое место",
@@ -465,7 +465,7 @@
       "waiting-for-host-to-start-the-game": "Ожидание хоста, чтобы начать игру."
     },
     "required-expansion": "Required expansion {expansions}",
-    "requires-expansion": "Requires expasion {expansions}",
+    "requires-expansion": "Requires expansion {expansions}",
     "requires-one-from-group": "Requires one from the group {groups}",
     "removed-elements": "Удаленные элементы",
     "rules": {
@@ -738,7 +738,7 @@
     "zoom-out": "Уменьшить"
   },
   "server": {
-    "translate": "Update to v%VERSION% is required."
+    "translate": "Требуется обновление до версии %VERSION%."
   },
   "settings": {
     "add-ons": {
@@ -829,10 +829,10 @@
       "app-channel": "Канал обновлений приложения",
       "beta": "Подтвердить, что приложение и новые функции готовы",
       "dev": "Тестирование новой функции во время её внедрения",
-      "folder-does-not-exists": "Folder does not exists",
+      "folder-does-not-exists": "Папка не существует",
       "stable": "Я просто хочу играть и наслаждаться игрой",
-      "path-is-not-directory": "Path is not directory",
-      "test-runner-folder": "Test Runner Folder",
+      "path-is-not-directory": "Путь не является каталогом",
+      "test-runner-folder": "Папка Тестера",
       "title": "Система"
     },
     "title": "Настройка"
@@ -855,7 +855,7 @@
     "russian-promos-2016-title": "Тайлы из 2016 года",
     "tower-release": "Четвёртое крупное дополнение, выпущенное в 2006 году.",
     "traders-and-builders-release": "Второе крупное дополнение, выпущенное в 2003 году.",
-    "under-the-big-top-c1-release": "The tenth major expansion, released in 2017. C1 Art made by PresetM carcassone-forum.de member.",
+    "under-the-big-top-c1-release": "The tenth major expansion, released in 2017. C1 Art made by PresetM carcassonne-forum.de member.",
     "winter-edition-description": "Базовый набор из спин-оффа Зимнее издание. Содержит основную игру, дополненную 12 тайлами."
   }
 }

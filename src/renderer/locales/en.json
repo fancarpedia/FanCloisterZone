@@ -2,7 +2,7 @@
   "@author": "farin & Scott",
   "@jcz-version": "5.12.1",
   "@fcz-version": "6.2.0",
-  "@version": "0.10.20",
+  "@version": "0.10.22",
   "about": {
     "author": "Author",
     "configuration-file": "Configuration file",
@@ -162,7 +162,7 @@
     "farmers-heaven": "Farmers Heaven",
     "farmers-heaven-description": "Since most of the expansions are mainly focused on the cities, it was time to do something for the farmers.",
     "fishhuts": "Fish Huts",
-    "fishhuts-description": "Make the River move valuable. A meeple can also be placed to the fish-smoking hut as a poissonnier (French for a person whose job is to prepare fish) and score additional points.",
+    "fishhuts-description": "Make the River more valuable. A meeple can also be placed to the fish-smoking hut as a poissonnier (French for a person whose job is to prepare fish) and score additional points.",
     "fishermen": "Fishermen",
     "fishermen-description": "River tiles are shuffled into the regular tile stack. Players may place a meeple on a river segment as on any other scoreable feature, score points when the river is completed.",
     "ferries": "The Ferries",
@@ -217,7 +217,7 @@
     "file-is-not-valid": "File is not valid",
     "load-error": "Load error",
     "not-possible-in-online-mode": "It is not possible to open in online mode",
-    "save-created-prior-version-is-not-supported": "Save created prior version {version} is not supported",
+    "save-created-prior-version-is-not-supported": "Saved file created for prior version {version} is not supported",
     "save-game-setup": "Save Game Setup",
     "save-game": "Save Game",
     "save-test-runner-scenario": "Save Test Runner Scenario",
@@ -465,7 +465,7 @@
       "waiting-for-host-to-start-the-game": "Waiting for host to start the game."
     },
     "required-expansion": "Required expansion {expansions}",
-    "requires-expansion": "Requires expasion {expansions}",
+    "requires-expansion": "Requires expansion {expansions}",
     "requires-one-from-group": "Requires one from the group {groups}",
     "removed-elements": "Removed Elements",
     "rules": {
@@ -855,7 +855,7 @@
     "russian-promos-2016-title": "Tiles from 2016",
     "tower-release": "The fourth major expansion released in 2006.",
     "traders-and-builders-release": "The second major expansion released in 2003",
-    "under-the-big-top-c1-release": "The tenth major expansion, released in 2017. C1 Art made by PresetM carcassone-forum.de member.",
+    "under-the-big-top-c1-release": "The tenth major expansion, released in 2017. C1 Art made by PresetM carcassonne-forum.de member.",
     "winter-edition-description": "Basic set from Winter Edition spin-off. Contains basic game extended with 12 additional tiles."
   }
 }

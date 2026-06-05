@@ -1,8 +1,8 @@
 {
   "@author": "Snearone",
   "@jcz-version": "5.12.1",
-  "@fcz-version": "6.1.0",
-  "@version": "0.9.15",
+  "@fcz-version": "6.2.0",
+  "@version": "0.10.20",
   "about": {
     "author": "Autor",
     "configuration-file": "Plik konfiguracyjny",
@@ -33,7 +33,7 @@
     "close": "Zamknij",
     "confirm": "Potwierdź",
     "connect": "Połącz",
-    "continue": "Continue",
+    "continue": "Kontynuuj",
     "create": "Utwórz",
     "create-game": "Utwórz grę",
     "create-public-game": "Utwórz grę publiczną",
@@ -78,16 +78,16 @@
     "test-runner": "Przetestuj"
   },
   "chat": {
-    "chat": "Chat",
+    "chat": "Czat",
     "new-message": "Nowa wiadomość",
-    "take-slot-hint": "Take a slot to start chat"
+    "take-slot-hint": "Wybierz miejsce by rozpocząć czat"
   },
   "core-messages": {
     "bonuses": "Dodatkowe",
     "choose": "Wybierz",
     "done": "Gotowe",
-    "engine-error": "Engine error",
-    "field-is-required": "{field} is required",
+    "engine-error": "Błąd silnika",
+    "field-is-required": "{field} jest wymagane",
     "game-engine-not-available": "Silnik gry niedostępny.",
     "incomplete-features": "Nieukończone obszary",
     "no-core-set": "Brak gry podstawowej!",
@@ -105,7 +105,7 @@
     "dev": "Dev",
     "dump-hosted-game-server-state": "Zrzuć Stan Serwera Hostowanych Gier",
     "edition": "Edycja",
-    "game-created-in-development-mode": "Game in Development mode",
+    "game-created-in-development-mode": "Gra w trybie deweloperskim",
     "fail": "Niepowodzenie",
     "meeples": "Podwładni",
     "mode": "Tryb",
@@ -119,7 +119,7 @@
     "test": "Test",
     "test-runner": "Tester",
     "theme-inspector": "Inspektor motywów",
-    "tile-draw-order-is-predefined": "Tile draw order is predefined",
+    "tile-draw-order-is-predefined": "Kolejność płytek jest ustalona",
     "tiles": "Płytki",
     "toggle-devtools": "Narzędzia Programistyczne",
     "use-local-play-online": "Korzystaj z lokalnej gry online",
@@ -161,10 +161,10 @@
     "family-feud-description": "Płytki z niebiesko-białym i czerwono-żółtym proporcem należą do rywalizujących rodów. Nie można umieszczać płytek w taki sposób, aby miasta należące do rywalizujących rodów były połączone.",
     "farmers-heaven": "Niebo Chłopów",
     "farmers-heaven-description": "Ponieważ większość rozbudowy skupia się głównie na miastach, nadszedł czas, aby zrobić coś dla rolników.",
-    "fishhuts": "Fish Huts",
-    "fishhuts-description": "Make the River move valuable. A meeple can also be placed to the fish-smoking hut as a poissonnier (French for a person whose job is to prepare fish) and score additional points.",
+    "fishhuts": "Haty Rybackie",
+    "fishhuts-description": "Spraw, by rzeka przyniosła korzyści. Podwładnych można również umieścić w wędzarni ryb jako „poissonnier” (z francuskiego: osoba zajmująca się przygotowywaniem ryb) i zdobyć dodatkowe punkty.",
     "fishermen": "Rybacy",
-    "fishermen-description": "River tiles are shuffled into the regular tile stack. Players may place a meeple on a river segment as on any other scoreable feature, score points when the river is completed.",
+    "fishermen-description": "Płytki rzeki należy wmieszać do zwykłego stosu płytek. Gracze mogą umieścić podwładnego na odcinku rzeki tak samo jak na każdym innym elemencie punktowanym i zdobyć punkty po ukończeniu rzeki.",
     "ferries": "Promy",
     "festival": "Festiwal",
     "flier": "Maszyny latające",
@@ -203,7 +203,7 @@
     "ukraine-promo-description": "Ta limitowana płytka promocyjna została wydana podczas targów Spiel 22. Dochód ze sprzedaży został przekazany organizacji pozarządowej Come Back Alive.",
     "under-the-big-top": "Cyrk Objazdowy",
     "under-the-big-top-description": "",
-    "under-the-big-top-c1": "Under The Big Top",
+    "under-the-big-top-c1": "Cyrk Objazdowy",
     "under-the-big-top-c1-description": "",
     "village-life": "Wiejskie Życie",
     "village-life-description": "",
@@ -214,17 +214,17 @@
     "winter": "Zima"
   },
   "file": {
-    "file-is-not-valid": "File is not valid",
-    "load-error": "Load error",
-    "not-possible-in-online-mode": "It is not possible to open in online mode",
-    "save-created-prior-version-is-not-supported": "Save created prior version {version} is not supported",
-    "save-game-setup": "Save Game Setup",
-    "save-game": "Save Game",
-    "save-test-runner-scenario": "Save Test Runner Scenario",
-    "saved-game-contains-game-history": "Saved game contains game history",
-    "saved-game-contains-tests": "Saved game contains tests",
-    "saved-game-requires-missing-add-ons": "Saved game requires missing add-ons: {missing}",
-    "test-scenarios": "Test Scenarios"
+    "file-is-not-valid": "Plik nie jest poprawny",
+    "load-error": "Błąd wczytywania",
+    "not-possible-in-online-mode": "Nie jest możliwe otworzyć w trybię online",
+    "save-created-prior-version-is-not-supported": "Zapis wykonany w wersji {version} nie jest wspierany",
+    "save-game-setup": "Zapisz ustawienia gry",
+    "save-game": "Zapisz grę",
+    "save-test-runner-scenario": "Zapisz scenariusz testera",
+    "saved-game-contains-game-history": "Zapisana gra zawiera historię gry",
+    "saved-game-contains-tests": "Zapisana gra zawiera testy",
+    "saved-game-requires-missing-add-ons": "Zapisana gra wymaga brakujących rozszerzeń: {missing}",
+    "test-scenarios": "Scenariusze testowe"
   },
   "game": {
     "action": {
@@ -273,7 +273,7 @@
       "player-may-place-a-tile-from-supply": "Gracz może położyć płytkę z zasobu",
       "player-may-place-an-abbey": "Gracz może umieścić Opactwo",
       "player-must-place-the-tile": "Gracz musi umieścić płytkę",
-      "shepherd-placement": "Shepherd placement",
+      "shepherd-placement": "Umiejscowienie pasterza",
       "siege-player-can-escape-a-besieged-city": "Gracz może uciec z oblężonego miasta.",
       "siege-you-can-escape-a-besieged-city": "Możesz uciec z oblężonego miasta.",
       "skip-action": "pomiń czynność",
@@ -307,7 +307,7 @@
       "donkey": "Osioł",
       "donkey-description": "Osioł jako neutralna figura, blokuje możliwość ukończenia obszarów na płytce na której się znajduję.",
       "dragon": "Smok",
-      "courier": "Courier",
+      "courier": "Kurier",
       "fairy": "Wróżka",
       "ferry": "Prom",
       "gold": "Złoto",
@@ -351,7 +351,7 @@
       "festival": "Festiwal",
       "field": "Pole",
       "fields": "Pola",
-      "fishhut": "Fish Hut",
+      "fishhut": "Hata rybacka",
       "fishermen": "Rybacy",
       "flock": "Stado",
       "flowers": "Kwiaty",
@@ -379,7 +379,7 @@
       "robbers-son": "Syn Rabusia",
       "sheep": "Owce",
       "shrine": "Siedziba Kultu",
-      "shrine-challenge": "Monastery/Shrine challenge",
+      "shrine-challenge": "Wyzwanie Klasztor/Siedziba kultu",
       "shrines": "Siedziby Kultu",
       "siege": "Oblężenie",
       "special-monasteries": "Klasztory specjalne",
@@ -428,10 +428,10 @@
     },
     "create": {
       "click-to-assign": "kliknij, aby przydzielić",
-      "kick-player": "Kick player",
+      "kick-player": "Wyrzuć gracza",
       "local-ai-player": "lokalny gracz AI",
-      "local-limit-reached": "Limit reached",
-      "local-limit-reached-tooltip": "Maximum {limit} local players allowed",
+      "local-limit-reached": "Limit osiągnięty",
+      "local-limit-reached-tooltip": "Maksymalnie {limit} lokalnych graczy dozwolonych",
       "local-player": "gracz lokalny",
       "name": "Nazwa",
       "open-slot": "Wolne miejsce",
@@ -464,9 +464,9 @@
       "untitled-game": "gra bez nazwy",
       "waiting-for-host-to-start-the-game": "Czekanie na rozpoczęcie gry przez gospodarza."
     },
-    "required-expansion": "Required expansion {expansions}",
-    "requires-expansion": "Requires expasion {expansions}",
-    "requires-one-from-group": "Requires one from the group {groups}",
+    "required-expansion": "Wymagane rozszerzenie {expansions}",
+    "requires-expansion": "Wymaga rozszerzenia {expansions}",
+    "requires-one-from-group": "Wymaga jednego z grupy {groups}",
     "removed-elements": "Wykluczone elementy",
     "rules": {
       "acrobats-description": "Możliwość umieszczenia akrobatów na polu artystów cyrkowych.",
@@ -482,8 +482,8 @@
       "families-disabled": "W grze nie ma płytek z proporcem innej rodziny.",
       "festival-description": "Festiwal pozwala na usunięcie z planszy własnego podwładnego.",
       "festival-disabled": "Nie wybrano płytek z festiwalem.",
-      "fishhut-description": "Fish Hut feature.",
-      "fishhut-disabled": "No tile with Fish Hut is in the game.",
+      "fishhut-description": "element Haty rybackiej",
+      "fishhut-disabled": "Nie wybrano płytek z chatą rybacką.",
       "fishermen-description": "Rzeka jako zwykły element krajobrazu.",
       "fishermen-disabled": "Nie wybrano płytek z rzeką.",
       "flowers-description": "Kwiaty dodają +3 punkty do punktowanego obszaru gdy gracz posiada odpowiedni żeton kwiatów.",
@@ -738,7 +738,7 @@
     "zoom-out": "Oddal"
   },
   "server": {
-    "translate": "Update to v%VERSION% is required."
+    "translate": "Aktualizacja do wersji v%VERSION% wymagana."
   },
   "settings": {
     "add-ons": {
@@ -829,10 +829,10 @@
       "app-channel": "Kanał aktualizacji aplikacji",
       "beta": "Wczesny dostęp do nowych funkcji (może zawierać błędy).",
       "dev": "Dla deweloperów i testerów.",
-      "folder-does-not-exists": "Folder does not exists",
+      "folder-does-not-exists": "Folder nie istnieje",
       "stable": "Działa dobrze i jest odpowiednia dla każdego.",
-      "path-is-not-directory": "Path is not directory",
-      "test-runner-folder": "Test Runner Folder",
+      "path-is-not-directory": "Ścieżka nie jest katalogiem",
+      "test-runner-folder": "Folder testera",
       "title": "System"
     },
     "title": "Ustawienia"
@@ -855,7 +855,7 @@
     "russian-promos-2016-title": "Płytki z 2016 roku",
     "tower-release": "Czwarte duże rozszerzenie wydane w 2006 roku.",
     "traders-and-builders-release": "Drugie duże rozszerzenie wydane w 2003 roku.",
-    "under-the-big-top-c1-release": "The tenth major expansion, released in 2017. C1 Art made by PresetM carcassone-forum.de member.",
+    "under-the-big-top-c1-release": "The tenth major expansion, released in 2017. C1 Art made by PresetM carcassonne-forum.de member.",
     "winter-edition-description": "Zawiera grę podstawową rozszerzoną o dodatkowe 12 płytek z Edycji Zimowej."
   }
 }

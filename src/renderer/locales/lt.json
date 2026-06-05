@@ -162,7 +162,7 @@
     "farmers-heaven": "Ūkininkų rojus",
     "farmers-heaven-description": "Kadangi dauguma plėtinių daugiausia skirti miestams, atėjo laikas ką nors padaryti dėl ūkininkų.",
     "fishhuts": "Fish Huts",
-    "fishhuts-description": "Make the River move valuable. A meeple can also be placed to the fish-smoking hut as a poissonnier (French for a person whose job is to prepare fish) and score additional points.",
+    "fishhuts-description": "Make the River more valuable. A meeple can also be placed to the fish-smoking hut as a poissonnier (French for a person whose job is to prepare fish) and score additional points.",
     "fishermen": "Žvejys",
     "fishermen-description": "River tiles are shuffled into the regular tile stack. Players may place a meeple on a river segment as on any other scoreable feature, score points when the river is completed.",
     "ferries": "Prieplaukos",
@@ -217,7 +217,7 @@
     "file-is-not-valid": "File is not valid",
     "load-error": "Load error",
     "not-possible-in-online-mode": "It is not possible to open in online mode",
-    "save-created-prior-version-is-not-supported": "Save created prior version {version} is not supported",
+    "save-created-prior-version-is-not-supported": "Saved file created for prior version {version} is not supported",
     "save-game-setup": "Save Game Setup",
     "save-game": "Save Game",
     "save-test-runner-scenario": "Save Test Runner Scenario",
@@ -465,7 +465,7 @@
       "waiting-for-host-to-start-the-game": "Laukiama, kol šeimininkas pradės žaidimą."
     },
     "required-expansion": "Required expansion {expansions}",
-    "requires-expansion": "Requires expasion {expansions}",
+    "requires-expansion": "Requires expansion {expansions}",
     "requires-one-from-group": "Requires one from the group {groups}",
     "removed-elements": "Pašalinti elementai",
     "rules": {
@@ -855,7 +855,7 @@
     "russian-promos-2016-title": "Kortelės iš 2016",
     "tower-release": "Ketvirtasis didysis papildymas išleistas 2006",
     "traders-and-builders-release": "Antrasis didysis papildymas išleistas 2003",
-    "under-the-big-top-c1-release": "The tenth major expansion, released in 2017. C1 Art made by PresetM carcassone-forum.de member.",
+    "under-the-big-top-c1-release": "The tenth major expansion, released in 2017. C1 Art made by PresetM carcassonne-forum.de member.",
     "winter-edition-description": "Pagrindinis komplektas iš Žiemos versijos praplėtimo yra pagrindinis žaidimas, papildytas papildomomis 12 kortelių."
   }
 }

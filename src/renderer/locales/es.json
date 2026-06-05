@@ -1,8 +1,8 @@
 {
   "@author": "Carlium & Meepledrone",
   "@jcz-version": "5.12.1",
-  "@fcz-version": "6.1.0",
-  "@version": "0.9.15",
+  "@fcz-version": "6.2.0",
+  "@version": "0.10.22",
   "about": {
     "author": "Autor",
     "configuration-file": "Archivo de configuración",
@@ -33,7 +33,7 @@
     "close": "Cerrar",
     "confirm": "Confirmar",
     "connect": "Conectar",
-    "continue": "Continue",
+    "continue": "Continuar",
     "create": "Crear",
     "create-game": "Crear partida",
     "create-public-game": "Crear partida pública",
@@ -78,16 +78,16 @@
     "test-runner": "Probador"
   },
   "chat": {
-    "chat": "Chat",
+    "chat": "Conversar",
     "new-message": "Nuevo mensaje",
-    "take-slot-hint": "Take a slot to start chat"
+    "take-slot-hint": "Selecciona un puesto para iniciar conversación"
   },
   "core-messages": {
     "bonuses": "Bonificaciones",
     "choose": "Elegir",
     "done": "Hecho",
-    "engine-error": "Engine error",
-    "field-is-required": "{field} is required",
+    "engine-error": "Error de motor",
+    "field-is-required": "{field} es requerido",
     "game-engine-not-available": "Motor de juego no disponible.",
     "incomplete-features": "Elementos incompletos",
     "no-core-set": "¡No hay conjunto básico!",
@@ -102,10 +102,10 @@
   },
   "dev": {
     "actions": "Acciones",
-    "dev": "Dev",
+    "dev": "Desarrollo",
     "dump-hosted-game-server-state": "Volcar Estado del Servidor de Juegos Alojado",
     "edition": "Edición",
-    "game-created-in-development-mode": "Game in Development mode",
+    "game-created-in-development-mode": "Partida en modo Desarrollo",
     "fail": "Fallo",
     "meeples": "Seguidores",
     "mode": "Modo",
@@ -119,7 +119,7 @@
     "test": "Prueba",
     "test-runner": "Probador",
     "theme-inspector": "Inspector de Tema",
-    "tile-draw-order-is-predefined": "Tile draw order is predefined",
+    "tile-draw-order-is-predefined": "El orden de robo de losetas está predefinido",
     "tiles": "Losetas",
     "toggle-devtools": "Activar/Desactivar DevTools",
     "use-local-play-online": "Usar Juego Local Online",
@@ -161,10 +161,10 @@
     "family-feud-description": "Las losetas con escudos azules/blancos y rojos/amarillos pertenecen a familias rivales. No se puede colocar ninguna loseta de forma que las ciudades pertenecientes a familias rivales queden conectadas.",
     "farmers-heaven": "Cielo de los Campesino",
     "farmers-heaven-description": "Dado que la mayoría de las expansiones se centran principalmente en las ciudades, era hora de hacer algo por los campesinos.",
-    "fishhuts": "Fish Huts",
-    "fishhuts-description": "Make the River move valuable. A meeple can also be placed to the fish-smoking hut as a poissonnier (French for a person whose job is to prepare fish) and score additional points.",
+    "fishhuts": "Cabañas de Pescadores",
+    "fishhuts-description": "Hace que el río sea más valioso. También puedes colocar un seguidor en la cabaña de ahumado de pescado como «poissonnier» (término francés que designa a la persona encargada de preparar el pescado) y sumar puntos adicionales.",
     "fishermen": "Pescadores",
-    "fishermen-description": "River tiles are shuffled into the regular tile stack. Players may place a meeple on a river segment as on any other scoreable feature, score points when the river is completed.",
+    "fishermen-description": "Las losetas de río se barajan y se añaden a la pila de losetas normal. Los jugadores pueden colocar un seguidor  en un segmento de río como en cualquier otra zona puntuable, y obtienen puntos cuando se completa el río.",
     "ferries": "Transbordadores",
     "festival": "El festival",
     "flier": "Máquinas Voladoras",
@@ -203,7 +203,7 @@
     "ukraine-promo-description": "Esta loseta promocional limitada se lanzó en el Spiel 22. Los ingresos de las ventas se destinaron a la ONG Come Back Alive.",
     "under-the-big-top": "El Circo",
     "under-the-big-top-description": "",
-    "under-the-big-top-c1": "Under The Big Top",
+    "under-the-big-top-c1": "El Circo",
     "under-the-big-top-c1-description": "",
     "village-life": "Vida Rural",
     "village-life-description": "",
@@ -214,17 +214,17 @@
     "winter": "Invierno"
   },
   "file": {
-    "file-is-not-valid": "File is not valid",
-    "load-error": "Load error",
-    "not-possible-in-online-mode": "It is not possible to open in online mode",
-    "save-created-prior-version-is-not-supported": "Save created prior version {version} is not supported",
-    "save-game-setup": "Save Game Setup",
-    "save-game": "Save Game",
-    "save-test-runner-scenario": "Save Test Runner Scenario",
-    "saved-game-contains-game-history": "Saved game contains game history",
-    "saved-game-contains-tests": "Saved game contains tests",
-    "saved-game-requires-missing-add-ons": "Saved game requires missing add-ons: {missing}",
-    "test-scenarios": "Test Scenarios"
+    "file-is-not-valid": "El fichero no es válido",
+    "load-error": "Error de carga",
+    "not-possible-in-online-mode": "No se puede abrir en modo en línea",
+    "save-created-prior-version-is-not-supported": "El fichero guardado para versión previa {version} no es compatible",
+    "save-game-setup": "Guardar Configuración de Partida",
+    "save-game": "Guardar Partida",
+    "save-test-runner-scenario": "Guardar Escenario de Ejecutor de Pruebas",
+    "saved-game-contains-game-history": "La partida guardada contiene la historia de la partida",
+    "saved-game-contains-tests": "La partida guardada contiene pruebas",
+    "saved-game-requires-missing-add-ons": "La partida guardada requiere add-ons que faltan: {missing}",
+    "test-scenarios": "Escenarios de Prueba"
   },
   "game": {
     "action": {
@@ -273,7 +273,7 @@
       "player-may-place-a-tile-from-supply": "Jugador puede colocar una loseta de su reserva",
       "player-may-place-an-abbey": "Jugador puede colocar una abadía",
       "player-must-place-the-tile": "Jugador debe colocar una loseta",
-      "shepherd-placement": "Shepherd placement",
+      "shepherd-placement": "Colocación del pastor",
       "siege-player-can-escape-a-besieged-city": "Jugador puede escapar de una ciudad sitiada.",
       "siege-you-can-escape-a-besieged-city": "Puede escapar de una ciudad sitiada.",
       "skip-action": "Saltar acción",
@@ -307,7 +307,7 @@
       "donkey": "Burro",
       "donkey-description": "El burro, como figura neutral, no permite que se complete ninguna zona de la loseta donde está situado.",
       "dragon": "Dragón",
-      "courier": "Courier",
+      "courier": "Correo",
       "fairy": "Hada",
       "ferry": "Transbordador",
       "gold": "Oro",
@@ -351,7 +351,7 @@
       "festival": "Festival",
       "field": "Campo",
       "fields": "Campos",
-      "fishhut": "Fish Hut",
+      "fishhut": "Cabañas de Pescadores",
       "fishermen": "Pescadores",
       "flock": "Rebaño",
       "flowers": "Flores",
@@ -379,7 +379,7 @@
       "robbers-son": "Hijo del Ladrón",
       "sheep": "Oveja",
       "shrine": "Santuario",
-      "shrine-challenge": "Monastery/Shrine challenge",
+      "shrine-challenge": "Reto Monasterio/Lugar de culto",
       "shrines": "Santuarios",
       "siege": "Asedio",
       "special-monasteries": "Monasterios especiales",
@@ -428,10 +428,10 @@
     },
     "create": {
       "click-to-assign": "clic para asignar",
-      "kick-player": "Kick player",
+      "kick-player": "Echar jugador",
       "local-ai-player": "jugador IA local",
-      "local-limit-reached": "Limit reached",
-      "local-limit-reached-tooltip": "Maximum {limit} local players allowed",
+      "local-limit-reached": "Límite alcanzado",
+      "local-limit-reached-tooltip": "Máximo de {limit} jugadores locales permitido",
       "local-player": "jugador local",
       "name": "Nombre",
       "open-slot": "puesto disponible",
@@ -464,9 +464,9 @@
       "untitled-game": "partida sin título",
       "waiting-for-host-to-start-the-game": "Esperando a que el servidor inicie la partida."
     },
-    "required-expansion": "Required expansion {expansions}",
-    "requires-expansion": "Requires expasion {expansions}",
-    "requires-one-from-group": "Requires one from the group {groups}",
+    "required-expansion": "Se requiere expansión {expansions}",
+    "requires-expansion": "Se requiere expansión {expansions}",
+    "requires-one-from-group": "Se requiere uno del grupo {groups}",
     "removed-elements": "Elementos eliminados",
     "rules": {
       "acrobats-description": "Colocación de seguidor como acróbata en el espacio para acróbatas.",
@@ -482,8 +482,8 @@
       "families-disabled": "No hay ninguna loseta con un escudo de familia diferente en la partida.",
       "festival-description": "Con la loseta de festival se puede retirar una figura del jugador activo en lugar de colocar una.",
       "festival-disabled": "No hay ninguna loseta con Festival en la partida.",
-      "fishhut-description": "Fish Hut feature.",
-      "fishhut-disabled": "No tile with Fish Hut is in the game.",
+      "fishhut-description": "Cabaña de Pescadores.",
+      "fishhut-disabled": "No hay ninguna loseta con Cabaña de Pescadores en la partida.",
       "fishermen-description": "Río como zona normal.",
       "fishermen-disabled": "No hay losetas de río en la partida.",
       "flowers-description": "Las flores añaden +3 puntos a la zona puntuada cuando coinciden con la ficha del flor del jugador.",
@@ -738,7 +738,7 @@
     "zoom-out": "Alejar"
   },
   "server": {
-    "translate": "Update to v%VERSION% is required."
+    "translate": "Es necesario actualizar a la versión v%VERSION%."
   },
   "settings": {
     "add-ons": {
@@ -829,10 +829,10 @@
       "app-channel": "Canal de actualizaciones de la App",
       "beta": "Confirma que la App y las nuevas funciones se han completado",
       "dev": "Probando nueva función durante implementaciones",
-      "folder-does-not-exists": "Folder does not exists",
+      "folder-does-not-exists": "La carpeta no existe",
       "stable": "Solo quiero jugar y disfrutar del juego",
-      "path-is-not-directory": "Path is not directory",
-      "test-runner-folder": "Test Runner Folder",
+      "path-is-not-directory": "La ruta no es un directorio",
+      "test-runner-folder": "Carpeta de Ejecutor de Pruebas",
       "title": "Sistema"
     },
     "title": "Ajustes"
@@ -855,7 +855,7 @@
     "russian-promos-2016-title": "Losetas del 2016",
     "tower-release": "Cuarta expansión mayor lanzada en 2006.",
     "traders-and-builders-release": "Segunda expansión mayor lanzada en 2003.",
-    "under-the-big-top-c1-release": "The tenth major expansion, released in 2017. C1 Art made by PresetM carcassone-forum.de member.",
+    "under-the-big-top-c1-release": "La décima gran expansión, lanzada en 2017. Ilustración de C1 realizada por PresetM, miembro de carcassonne-forum.de.",
     "winter-edition-description": "Set básico de la edición de Invierno. Contiene el juego básico ampliado con 12 losetas adicionales."
   }
 }
