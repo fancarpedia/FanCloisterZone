@@ -33,7 +33,7 @@ export default {
   },
 
   methods: {
-    onMouseEnter () {
+    onMouseEnter () { 
       if (this.ev.feature) {
         const feature = this.featureOn(this.ev.feature)
         const places = feature.places.map(p => {
@@ -49,6 +49,16 @@ export default {
             emphasis: {
               type: 'feature',
               places
+            }
+          }
+        })
+      } else if (this.ev.positions) {
+        this.$store.dispatch('board/showLayer', {
+          layer: 'EmphasizeLayer',
+          props: {
+            emphasis: {
+              type: 'tiles',
+              positions: this.ev.positions
             }
           }
         })
