@@ -18,5 +18,6 @@ export const ENGINE_MESSAGES = new Set([
   'SCORE_ACROBATS',
   'UNDO',
   'TILE_CONFIRM',
-  'SHEPHERD_CONFIRM'
+  'SHEPHERD_CONFIRM',
+  'ERROR'
 ])
