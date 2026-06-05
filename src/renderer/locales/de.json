@@ -162,7 +162,7 @@
     "farmers-heaven": "Bauernzuflucht",
     "farmers-heaven-description": "Da die meisten Erweiterungen sich auf Städte konzentrieren, war es Zeit, mal was für die Bauern zu tun.",
     "fishhuts": "Fischerhütten",
-    "fishhuts-description": "Mache deinen Fluss wertvoller. Ein Meeple kann auch auf die Räucherfischhütte gesetzt werden als Fischhändler (eine Person, die Fisch zubereitet) und zusätzliche Punkte erhalten.",
+    "fishhuts-description": "Mache deinen Fluss wertvoller. Ein Meeple kann auch auf die Fischerhütte gesetzt werden als Fischer (eine Person, die Fische veredelt wie z.B. durch Räuchern), um zusätzliche Punkte zu erhalten.",
     "fishermen": "Fischer",
     "fishermen-description": "Die Flussplättchen werden unter die regulären Plättchen gemischt. Spieler dürfen einen Meeple auf einen Flussabschnitt setzen genauso wie auf jedes andere wertungsfähige Gebiet; bekomme Punkte wenn der Fluß abgeschlossen ist.",
     "ferries": "Die Fähren",
@@ -307,7 +307,7 @@
       "donkey": "Esel",
       "donkey-description": "Der Esel als neutrale Figur blockiert die Fertigstellung jedes Gebiets, das sich auf dem Plättchen befindet, auf dem er steht.",
       "dragon": "Drache",
-      "courier": "Courier (Bote)",
+      "courier": "Bote",
       "fairy": "Fee",
       "ferry": "Fähre",
       "gold": "Goldstücke",
@@ -435,7 +435,7 @@
       "local-player": "lokaler Spieler",
       "name": "Name",
       "open-slot": "offener Slot",
-      "remote-ai-player": "Computergegner übers Netz",
+      "remote-ai-player": "Remote Computergegner",
       "remote-player": "Remote Spieler",
       "rename-player": "Spieler umbenennen",
       "waiting-for-player": "auf Spieler warten"
@@ -483,9 +483,9 @@
       "festival-description": "Mit einem Festplättchen kann man eine eigene Figur zurückholen, anstatt eine einzusetzen.",
       "festival-disabled": "Kein Festplättchen ist im Spiel.",
       "fishhut-description": "Fischerhütte Element",
-      "fishhut-disabled": "Im Spiel ist kein Plättchen mit Fischerhütte.",
-      "fishermen-description": "Der Fluss als normaler Landschaftsteil.",
-      "fishermen-disabled": "Kein Flussplättchen im Spiel.",
+      "fishhut-disabled": "Kein Plättchen mit Fischerhütte ist im Spiel.",
+      "fishermen-description": "Der reguläre Fluss.",
+      "fishermen-disabled": "Kein Flussplättchen ist im Spiel.",
       "flowers-description": "Wenn ein Bauwerk gewertet wird, erhält jeder daran beteiligte Spieler, unabhängig von der Mehrheit, 3 Punkte, wenn er den entsprechenden Blumenmarker hat.",
       "flowers-disabled": "Kein Blumenmarker ist im Spiel.",
       "gameplay-variants": "Spielvarianten",
@@ -504,10 +504,10 @@
       "pig-herd-disabled": "Kein Plättchen mit Schweineherde ist im Spiel.",
       "portal-description": "Durch einen Zaubergang können Meeple auf jedes Plättchen gesetzt werden.",
       "portal-disabled": "Kein Plättchen mit Zaubergang ist im Spiel.",
-      "princess-description": "Burgfräulein kann Ritter aus einer Stadt entfernen.",
+      "princess-description": "Das Burgfräulein kann Ritter aus einer Stadt entfernen.",
       "princess-disabled": "Kein Plättchen mit Burgfräulein ist im Spiel.",
-      "robbers-son-description": "Der Sohn des Räubers kann einen Wegelagerer von der Straße entfernen.",
-      "robbers-son-disabled": "Kein Plättchen mit den Sohn ds Räubers im Spiel.",
+      "robbers-son-description": "Der Räubersohn kann einen Wegelagerer von der Straße entfernen.",
+      "robbers-son-disabled": "Kein Plättchen mit Räubersohn ist im Spiel.",
       "scoring-variants": "Wertungsvarianten",
       "shrine-description": "Neben einem Kloster platzierte Kultstätte bedeutet Herausforderung, wer als Erster das Gebäude fertigstellt. Der Zweite bekommt keine Punkte.",
       "shrine-disabled": "Kein Plättchen mit Kultstätte ist im Spiel.",
@@ -550,7 +550,7 @@
       },
       "coc-final-scoring": {
         "any-district": "ist nicht begrenzt (C1)",
-        "description": "Umsiedeln von Meeples aus der Stadt Carcassonne vor der Schlusswertung {}.",
+        "description": "Meeples aus der Stadt Carcassonne vor der Schlusswertung herausnehmen {}.",
         "market-only": "ist nur vom Markt (C2) erlaubt"
       },
       "count-move": {
@@ -634,7 +634,7 @@
         "must": "muss"
       },
       "robbers-son-action": {
-        "description": "Der Sohn des Räubers {} einen Wegelagerer von der Straße entfernen.",
+        "description": "Der Räubersohn {} einen Wegelagerer von der Straße entfernen.",
         "may": "kann",
         "must": "muss"
       },
@@ -662,7 +662,7 @@
       "continue-with-recently-saved-games": "Fahre mit zuletzt gespeicherten Spielen fort",
       "create-directly-from": "Erstelle ein neues Spiel direkt aus",
       "load-game": "Spiel laden",
-      "local-games": "offline Spiele",
+      "local-games": "Lokale Spiele",
       "my-favorites": "meine Favoriten",
       "new-game": "Neues Spiel",
       "new-game-against-ai": "Neues Spiel gegen den Computer",
@@ -831,8 +831,8 @@
       "dev": "Test neuer Funktionen während der Implementierung",
       "folder-does-not-exists": "Der Ordner existiert nicht",
       "stable": "Ich möchte nur spielen und das Spiel genießen",
-      "path-is-not-directory": "Path is not directory",
-      "test-runner-folder": "Test Runner Ordner",
+      "path-is-not-directory": "Du hast einen Dateinamen eingegeben, nicht einen Verzeichnispfad",
+      "test-runner-folder": "Testläufer Ordner",
       "title": "System"
     },
     "title": "Einstellungen"
