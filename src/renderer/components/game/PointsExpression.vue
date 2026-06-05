@@ -104,7 +104,10 @@ export default {
 
     subtitle () {
       const title = SUBTITLE_MAPPING[this.expr.name]
-      if (title !== undefined) return '(' + this.$t(title) + ')'
+      if (title !== undefined) {
+        if (title === null) return ''
+        return '(' + this.$t(title) + ')'
+      }
       const key = this.expr.name.split('.')[1]
       if (!key) return null
       if (SUBTITLE_MAPPING[key] !== undefined) return '(' + this.$t(SUBTITLE_MAPPING[key]) + ')'
