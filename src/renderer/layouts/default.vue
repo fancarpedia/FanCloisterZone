@@ -251,7 +251,10 @@ export default {
       this.dumpServer()
     })
     ipcRenderer.on('menu.save-for-test-runner', () => {
-      this.$store.dispatch('game/savescenario')
+      this.$store.dispatch('game/savescenario', { endGame: false} )
+    })
+    ipcRenderer.on('menu.save-for-test-runner-end-game', () => {
+      this.$store.dispatch('game/savescenario', { endGame: true} )
     })
     ipcRenderer.on('menu.test-runner', () => {
       this.$router.push('/test-runner')

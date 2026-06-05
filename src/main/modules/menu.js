@@ -101,6 +101,7 @@ async function createMenu(win, messages) {
         { type: 'separator' },
         { id: 'test-runner', label: $t('dev.test-runner') || 'Test Runner', click() { win.webContents.send('menu.test-runner') } },
         { id: 'save-for-test-runner', label: $t('dev.save-test-scenario') || 'Save Test Scenario', click() { win.webContents.send('menu.save-for-test-runner') } },
+		{ id: 'save-for-test-runner-end-game', label: $t('dev.save-test-scenario-end-game') || 'Save Test Scenario End Game', click() { win.webContents.send('menu.save-for-test-runner-end-game') } },
         { type: 'separator' },
         { label: $t('dev.reload-add-ons') || 'Reload Add-ons', click() { win.webContents.send('menu.reload-addons') } },
         { id: 'theme-inspector', label: $t('dev.theme-inspector') || 'Theme Inspector', click() { win.webContents.send('menu.theme-inspector') } }

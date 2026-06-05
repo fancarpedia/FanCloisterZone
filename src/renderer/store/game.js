@@ -437,7 +437,7 @@ export const actions = {
     })
   },
 
-  async savescenario ({ state, dispatch }, {} = {}) {
+  async savescenario ({ state, dispatch }, { endGame = false } = {}) {
     return new Promise(async (resolve, reject) => { /* eslint no-async-promise-executor: 0 */
       let { filePath } = await ipcRenderer.invoke('dialog.showSaveDialog', {
         title: $nuxt.$t('file.save-test-runner-scenario'),
@@ -477,15 +477,24 @@ export const actions = {
           }
           for (const p of gameState.players) {
             content.test.assertions.push(`${playerNameBySlot[p.slot]} has ${p.points} point${p.points !== 1 ? "s" : ""}.`)
-            if (p.tokens.KING) {
-              content.test.assertions.push(`${playerNameBySlot[p.slot]} has KING token with size ${p.tokens.KING.size}.`)
-            }
-            if (p.tokens.ROBBER) {
-              content.test.assertions.push(`${playerNameBySlot[p.slot]} has ROBBER token with size ${p.tokens.ROBBER.size}.`)
-            }
+			if (!endGame) {
+              if (p.tokens.KING) {
+                content.test.assertions.push(`${playerNameBySlot[p.slot]} has KING token with size ${p.tokens.KING.size}.`)
+              }
+              if (p.tokens.ROBBER) {
+                content.test.assertions.push(`${playerNameBySlot[p.slot]} has ROBBER token with size ${p.tokens.ROBBER.size}.`)
+              }
+	  	      if (p.tokens.GOLD) {
+			    content.test.assertions.push(`${playerNameBySlot[p.slot]} has GOLD token with count ${p.tokens.GOLD.count}.`)
+			  }
+			}
           }
-          content.test.assertions.push(`Phase is ${gameState.phase}`)
-          if (!!gameState.action) {
+		  let gamePhase = gameState.phase
+		  if (endGame) {
+			gamePhase = 'GameOverPhase'
+		  }
+          content.test.assertions.push(`Phase is ${gamePhase}`)
+          if (!endGame && !!gameState.action) {
             content.test.assertions.push(`Player ${gameState.action.canPass ? 'can' : 'can\'t'} pass`)
             for (const i of gameState.action.items) {
               let options = []
@@ -535,8 +544,20 @@ export const actions = {
           	  }
           	}
           }
-          content.test.assertions.push(`Undo ${gameState.undo.allowed ? 'is' : 'is not'} allowed`)
+		  if (!endGame) {
+            content.test.assertions.push(`Undo ${gameState.undo.allowed ? 'is' : 'is not'} allowed`)
+		  }
           content.gameId = '1'
+		  if (endGame) {
+			if (!content.gameAnnotations) {
+				content.gameAnnotations = {}
+			}
+			let endTurn = gameState.history.length;
+			if (endTurn>0) {
+				endTurn--;
+			}
+			content.gameAnnotations.endTurn = endTurn
+		  }
           fs.writeFile(filePath, JSON.stringify(content, null, 2), err => {
             if (err) {
               reject(err)
@@ -859,6 +880,15 @@ export const actions = {
       // TODO shift local
       commit('updateClock', { player: null, clock: lastMessage.clock, shiftLocal: lastMessage.clock - message.clock })
       const { response, hash } = await engine.disableBulkMode()
+	  // Check if response is an error
+	  if (response.type === 'ERROR') {
+	      commit('errorMessage', { 
+	          title: 'Bulk Mode Error', 
+	          content: response.payload.message 
+	      }, { root: true })
+	      // Response should also include the game state as second output
+	      return
+	  }
       await dispatch('applyEngineResponse', { response, hash, message: lastMessage, allowAutoCommit: false })
     } else {
       commit('updateClock', { player: null, clock: 0 })
@@ -908,6 +938,13 @@ export const actions = {
   },
 
   async handleEngineMessage ({ state, commit, dispatch, rootState }, message) {
+	if (message.type === 'ERROR') {
+	    commit('errorMessage', { 
+	      title: 'Invalid Action', 
+	      content: message.payload.message 
+	    }, { root: true })
+	    return
+    }
     if (message.seq !== (1 + state.gameMessages.length)) {
       console.warn(`Seq doesn't match ${message.seq} != ${1 + state.gameMessages.length}`)
       const { $connection } = this._vm
