@@ -6,7 +6,7 @@
   "created": "2021-05-22T14:30:57.308Z",
   "clock": 1,
   "test": {
-    "description": "Inns scoring",
+    "description": "Tiny City with Pennant",
     "assertions": [
       "Wendy has 3 points",
       "Wendy scored city for 3 points"
