@@ -19,6 +19,6 @@ function download (url, w) {
 
 fs.access('Engine.jar', fs.F_OK, err => {
   if (err) {
-    download('https://github.com/fancarpedia/JCloisterZoneEngine/releases/download/v6.2.6/Engine.jar', fs.createWriteStream('Engine.jar'))
+    download('https://github.com/fancarpedia/JCloisterZoneEngine/releases/download/v6.2.7/Engine.jar', fs.createWriteStream('Engine.jar'))
   }
 })
