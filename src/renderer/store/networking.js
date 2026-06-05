@@ -35,6 +35,15 @@ class ConnectionHandler {
   async processMessage (message) {
     const { commit, state, dispatch, rootState } = this.ctx
     const { type, payload } = message
+	if (type === 'ERROR') {
+	  // Handle engine error gracefully
+	  const { commit } = this.ctx
+	  commit('errorMessage', { 
+	    title: 'Game Error', 
+	    content: payload.message 
+	  }, { root: true })
+	  return
+	}
 	if (ENGINE_MESSAGES.has(type)) {
       await dispatch('game/handleEngineMessage', message, { root: true })
     } else if (type === 'WELCOME') {
