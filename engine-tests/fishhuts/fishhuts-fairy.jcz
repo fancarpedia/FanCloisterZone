@@ -1,0 +1,312 @@
+{
+  "appVersion": "6.2.0-beta.2",
+  "gameId": "1",
+  "name": "",
+  "initialRandom": 0.37656291608124093,
+  "created": "2026-06-05T11:28:23.645Z",
+  "clock": 46500,
+  "setup": {
+    "sets": {
+      "basic:1": 1,
+      "river/2:1": 1,
+      "fishhuts/river": 1
+    },
+    "elements": {
+      "small-follower": 7,
+      "farmers": true,
+      "fishhut": true,
+      "fairy": 1
+    },
+    "rules": {},
+    "timer": null,
+    "start": [
+      {
+        "tile": "RI/s",
+        "x": 0,
+        "y": 0,
+        "rotation": 0
+      }
+    ],
+    "ai": false,
+    "options": {},
+    "addons": {
+      "fishhuts": 0
+    }
+  },
+  "players": [
+    {
+      "name": "Betty",
+      "slot": 2,
+      "ai": false
+    },
+    {
+      "name": "John",
+      "slot": 1,
+      "ai": false
+    }
+  ],
+  "chat": [],
+  "replay": [
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "RI.2/III",
+        "rotation": "R0",
+        "position": [
+          1,
+          0
+        ]
+      },
+      "player": 0,
+      "clock": 3272
+    },
+    {
+      "type": "PASS",
+      "payload": {},
+      "player": 0,
+      "clock": 4114
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.01461849572049001
+      },
+      "player": 0,
+      "clock": 4124
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "fishhuts/fishhuts-FIRI",
+        "rotation": "R90",
+        "position": [
+          1,
+          -1
+        ]
+      },
+      "player": 1,
+      "clock": 5757
+    },
+    {
+      "type": "DEPLOY_MEEPLE",
+      "payload": {
+        "pointer": {
+          "position": [
+            1,
+            -1
+          ],
+          "location": "I",
+          "feature": "FishHut"
+        },
+        "meepleId": "1.small.1"
+      },
+      "player": 1,
+      "clock": 6757
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.5570750149274983
+      },
+      "player": 1,
+      "clock": 6922
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "fishhuts/fishhuts-IIFI",
+        "rotation": "R180",
+        "position": [
+          1,
+          -2
+        ]
+      },
+      "player": 0,
+      "clock": 9700
+    },
+    {
+      "type": "DEPLOY_MEEPLE",
+      "payload": {
+        "pointer": {
+          "position": [
+            1,
+            -2
+          ],
+          "location": "I",
+          "feature": "FishHut"
+        },
+        "meepleId": "0.small.1"
+      },
+      "player": 0,
+      "clock": 11138
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.7190059671174727
+      },
+      "player": 0,
+      "clock": 11277
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "fishhuts/fishhuts-FIFI",
+        "rotation": "R0",
+        "position": [
+          0,
+          -2
+        ]
+      },
+      "player": 1,
+      "clock": 12876
+    },
+    {
+      "type": "MOVE_NEUTRAL_FIGURE",
+      "payload": {
+        "figureId": "fairy.1",
+        "to": {
+          "featurePointer": {
+            "position": [
+              1,
+              -1
+            ],
+            "location": "I",
+            "feature": "FishHut"
+          },
+          "meepleId": "1.small.1"
+        }
+      },
+      "player": 1,
+      "clock": 14547
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.005364920862481082
+      },
+      "player": 1,
+      "clock": 14785
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "fishhuts/fishhuts-IFIF",
+        "rotation": "R90",
+        "position": [
+          2,
+          -2
+        ]
+      },
+      "player": 0,
+      "clock": 16496
+    },
+    {
+      "type": "PASS",
+      "payload": {},
+      "player": 0,
+      "clock": 17567
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.13367588606996295
+      },
+      "player": 0,
+      "clock": 17584
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "fishhuts/fishhuts-IFIF_2",
+        "rotation": "R90",
+        "position": [
+          2,
+          0
+        ]
+      },
+      "player": 1,
+      "clock": 22241
+    },
+    {
+      "type": "PASS",
+      "payload": {},
+      "player": 1,
+      "clock": 22599
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.8515446160923763
+      },
+      "player": 1,
+      "clock": 22614
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "RI.2/RIrI",
+        "rotation": "R90",
+        "position": [
+          -1,
+          -2
+        ]
+      },
+      "player": 0,
+      "clock": 24804
+    },
+    {
+      "type": "MOVE_NEUTRAL_FIGURE",
+      "payload": {
+        "figureId": "fairy.1",
+        "to": {
+          "featurePointer": {
+            "position": [
+              1,
+              -2
+            ],
+            "location": "I",
+            "feature": "FishHut"
+          },
+          "meepleId": "0.small.1"
+        }
+      },
+      "player": 0,
+      "clock": 26916
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.8510129610618216
+      },
+      "player": 0,
+      "clock": 27516
+    }
+  ],
+  "gameAnnotations": {
+    "drawOrder": [
+      "RI.2/III",
+      "fishhuts/fishhuts-FIRI",
+      "fishhuts/fishhuts-IIFI",
+      "fishhuts/fishhuts-FIFI",
+      "fishhuts/fishhuts-IFIF",
+      "fishhuts/fishhuts-IFIF_2",
+      "RI.2/RIrI"
+    ],
+    "endTurn": 7
+  },
+  "test": {
+    "description": "Fishhuts Fairy",
+    "assertions": [
+      "John scored fairy for 1 point.",
+      "John scored fishhut for 15 points.",
+      "John scored fairy for 3 points.",
+      "Betty scored fishhut for 0 points.",
+      "Betty scored fairy for 3 points.",
+      "Betty has 3 points.",
+      "John has 19 points.",
+      "Phase is GameOverPhase",
+      "Undo is not allowed"
+    ]
+  }
+}

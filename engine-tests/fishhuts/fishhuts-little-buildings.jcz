@@ -1,0 +1,313 @@
+{
+  "appVersion": "6.2.0-beta.2",
+  "gameId": "1",
+  "name": "",
+  "initialRandom": 0.19619470249201076,
+  "created": "2026-06-05T12:00:06.185Z",
+  "clock": 204054,
+  "setup": {
+    "options": {},
+    "sets": {
+      "basic:1": 1,
+      "river/2:1": 1,
+      "fishhuts/river": 1
+    },
+    "elements": {
+      "small-follower": 7,
+      "farmers": true,
+      "fishhut": true,
+      "little-buildings": 1
+    },
+    "rules": {},
+    "timer": null,
+    "start": [
+      {
+        "tile": "RI/s",
+        "x": 0,
+        "y": 0,
+        "rotation": 0
+      }
+    ],
+    "ai": false,
+    "addons": {
+      "fishhuts": 0
+    }
+  },
+  "players": [
+    {
+      "name": "Betty",
+      "slot": 2,
+      "ai": false
+    },
+    {
+      "name": "John",
+      "slot": 1,
+      "ai": false
+    }
+  ],
+  "chat": [],
+  "replay": [
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "RI.2/III",
+        "rotation": "R0",
+        "position": [
+          1,
+          0
+        ]
+      },
+      "player": 0,
+      "clock": 2261
+    },
+    {
+      "type": "PLACE_TOKEN",
+      "payload": {
+        "token": "LB_SHED",
+        "pointer": [
+          1,
+          0
+        ]
+      },
+      "player": 0,
+      "clock": 4195
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.06921406594846768
+      },
+      "player": 0,
+      "clock": 5851
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "fishhuts/fishhuts-FIRI",
+        "rotation": "R90",
+        "position": [
+          1,
+          -1
+        ]
+      },
+      "player": 1,
+      "clock": 7509
+    },
+    {
+      "type": "DEPLOY_MEEPLE",
+      "payload": {
+        "pointer": {
+          "position": [
+            1,
+            -1
+          ],
+          "location": "I",
+          "feature": "FishHut"
+        },
+        "meepleId": "1.small.1"
+      },
+      "player": 1,
+      "clock": 8515
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.339471990894485
+      },
+      "player": 1,
+      "clock": 9230
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "fishhuts/fishhuts-IIFI",
+        "rotation": "R180",
+        "position": [
+          1,
+          -2
+        ]
+      },
+      "player": 0,
+      "clock": 12154
+    },
+    {
+      "type": "DEPLOY_MEEPLE",
+      "payload": {
+        "pointer": {
+          "position": [
+            1,
+            -2
+          ],
+          "location": "I",
+          "feature": "FishHut"
+        },
+        "meepleId": "0.small.1"
+      },
+      "player": 0,
+      "clock": 14090
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.2104669151570624
+      },
+      "player": 0,
+      "clock": 14524
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "fishhuts/fishhuts-RIIR",
+        "rotation": "R270",
+        "position": [
+          0,
+          -2
+        ]
+      },
+      "player": 1,
+      "clock": 19734
+    },
+    {
+      "type": "PLACE_TOKEN",
+      "payload": {
+        "token": "LB_SHED",
+        "pointer": [
+          0,
+          -2
+        ]
+      },
+      "player": 1,
+      "clock": 21899
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.13160637147358756
+      },
+      "player": 1,
+      "clock": 22374
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "fishhuts/fishhuts-IFIF",
+        "rotation": "R0",
+        "position": [
+          0,
+          -3
+        ]
+      },
+      "player": 0,
+      "clock": 24704
+    },
+    {
+      "type": "PLACE_TOKEN",
+      "payload": {
+        "token": "LB_TOWER",
+        "pointer": [
+          0,
+          -3
+        ]
+      },
+      "player": 0,
+      "clock": 28020
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.6127279440596234
+      },
+      "player": 0,
+      "clock": 28687
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "fishhuts/fishhuts-FIFI",
+        "rotation": "R0",
+        "position": [
+          2,
+          -2
+        ]
+      },
+      "player": 1,
+      "clock": 30212
+    },
+    {
+      "type": "PLACE_TOKEN",
+      "payload": {
+        "token": "LB_HOUSE",
+        "pointer": [
+          2,
+          -2
+        ]
+      },
+      "player": 1,
+      "clock": 32063
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.11329682190639012
+      },
+      "player": 1,
+      "clock": 32403
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "RI.2/RIrI",
+        "rotation": "R90",
+        "position": [
+          2,
+          0
+        ]
+      },
+      "player": 0,
+      "clock": 34084
+    },
+    {
+      "type": "PLACE_TOKEN",
+      "payload": {
+        "token": "LB_TOWER",
+        "pointer": [
+          2,
+          0
+        ]
+      },
+      "player": 0,
+      "clock": 37482
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.48629093060929485
+      },
+      "player": 0,
+      "clock": 39249
+    }
+  ],
+  "gameAnnotations": {
+    "drawOrder": [
+      "RI.2/III",
+      "fishhuts/fishhuts-FIRI",
+      "fishhuts/fishhuts-IIFI",
+      "fishhuts/fishhuts-RIIR",
+      "fishhuts/fishhuts-IFIF",
+      "fishhuts/fishhuts-FIFI",
+      "RI.2/RIrI"
+    ],
+    "endTurn": 7
+  },
+  "test": {
+    "description": "Fishhuts Little Buildings",
+    "assertions": [
+      "John scored fishhut for 21 points.",
+      "Betty scored fishhut for 3 points.",
+      "Betty has 3 points.",
+      "John has 21 points.",
+      "Phase is GameOverPhase",
+      "Undo is not allowed"
+    ]
+  }
+}

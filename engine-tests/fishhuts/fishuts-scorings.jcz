@@ -1,0 +1,810 @@
+{
+  "appVersion": "6.2.0-beta.2",
+  "gameId": "1",
+  "name": "",
+  "initialRandom": 0.31691417749200523,
+  "created": "2026-06-05T13:09:41.183Z",
+  "clock": 352876,
+  "setup": {
+    "options": {},
+    "sets": {
+      "basic:1": 1,
+      "river/1:1": 1,
+      "fishhuts/river": 1
+    },
+    "elements": {
+      "small-follower": 7,
+      "farmers": true,
+      "fishhut": true
+    },
+    "rules": {},
+    "timer": null,
+    "start": [
+      {
+        "tile": "RI/s",
+        "x": 0,
+        "y": 0,
+        "rotation": 0
+      }
+    ],
+    "ai": false,
+    "addons": {
+      "fishhuts": 0
+    }
+  },
+  "players": [
+    {
+      "name": "Ariel",
+      "slot": 0,
+      "ai": false
+    },
+    {
+      "name": "John",
+      "slot": 1,
+      "ai": false
+    },
+    {
+      "name": "Betty",
+      "slot": 2,
+      "ai": false
+    }
+  ],
+  "chat": [],
+  "replay": [
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "fishhuts/fishhuts-IIFI",
+        "rotation": "R0",
+        "position": [
+          1,
+          0
+        ]
+      },
+      "player": 0,
+      "clock": 7025
+    },
+    {
+      "type": "DEPLOY_MEEPLE",
+      "payload": {
+        "pointer": {
+          "position": [
+            1,
+            0
+          ],
+          "location": "I",
+          "feature": "FishHut"
+        },
+        "meepleId": "0.small.1"
+      },
+      "player": 0,
+      "clock": 8174
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.10013472765029197
+      },
+      "player": 0,
+      "clock": 8677
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "fishhuts/fishhuts-FIRI",
+        "rotation": "R90",
+        "position": [
+          1,
+          -1
+        ]
+      },
+      "player": 1,
+      "clock": 11985
+    },
+    {
+      "type": "DEPLOY_MEEPLE",
+      "payload": {
+        "pointer": {
+          "position": [
+            1,
+            -1
+          ],
+          "location": "I",
+          "feature": "FishHut"
+        },
+        "meepleId": "1.small.1"
+      },
+      "player": 1,
+      "clock": 12939
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.25138199741481215
+      },
+      "player": 1,
+      "clock": 13287
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "fishhuts/fishhuts-IFIF",
+        "rotation": "R90",
+        "position": [
+          2,
+          0
+        ]
+      },
+      "player": 2,
+      "clock": 15047
+    },
+    {
+      "type": "DEPLOY_MEEPLE",
+      "payload": {
+        "pointer": {
+          "position": [
+            2,
+            0
+          ],
+          "location": "I",
+          "feature": "FishHut"
+        },
+        "meepleId": "2.small.1"
+      },
+      "player": 2,
+      "clock": 18488
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.6295056309892642
+      },
+      "player": 2,
+      "clock": 19584
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "fishhuts/fishhuts-FIFI",
+        "rotation": "R90",
+        "position": [
+          1,
+          -2
+        ]
+      },
+      "player": 0,
+      "clock": 23371
+    },
+    {
+      "type": "PASS",
+      "payload": {},
+      "player": 0,
+      "clock": 23604
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.5905546500929659
+      },
+      "player": 0,
+      "clock": 23617
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "fishhuts/fishhuts-IFIF_2",
+        "rotation": "R90",
+        "position": [
+          3,
+          0
+        ]
+      },
+      "player": 1,
+      "clock": 24959
+    },
+    {
+      "type": "PASS",
+      "payload": {},
+      "player": 1,
+      "clock": 25521
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.4423551891086013
+      },
+      "player": 1,
+      "clock": 25531
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "fishhuts/fishhuts-IIFF",
+        "rotation": "R180",
+        "position": [
+          1,
+          -3
+        ]
+      },
+      "player": 2,
+      "clock": 28925
+    },
+    {
+      "type": "PASS",
+      "payload": {},
+      "player": 2,
+      "clock": 29132
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.10986757007880854
+      },
+      "player": 2,
+      "clock": 29143
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "RI.1/CIRI",
+        "rotation": "R0",
+        "position": [
+          0,
+          -3
+        ]
+      },
+      "player": 0,
+      "clock": 30234
+    },
+    {
+      "type": "PASS",
+      "payload": {},
+      "player": 0,
+      "clock": 30281
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.7183626717757949
+      },
+      "player": 0,
+      "clock": 30294
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "RI.1/RIrI",
+        "rotation": "R90",
+        "position": [
+          -1,
+          -3
+        ]
+      },
+      "player": 1,
+      "clock": 31434
+    },
+    {
+      "type": "PASS",
+      "payload": {},
+      "player": 1,
+      "clock": 31524
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.1893988380816063
+      },
+      "player": 1,
+      "clock": 31531
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "RI.1/CcII",
+        "rotation": "R0",
+        "position": [
+          -2,
+          -3
+        ]
+      },
+      "player": 2,
+      "clock": 32966
+    },
+    {
+      "type": "PASS",
+      "payload": {},
+      "player": 2,
+      "clock": 33003
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.2004825718622396
+      },
+      "player": 2,
+      "clock": 33015
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "RI.1/IFI",
+        "rotation": "R90",
+        "position": [
+          -2,
+          -2
+        ]
+      },
+      "player": 0,
+      "clock": 34328
+    },
+    {
+      "type": "PASS",
+      "payload": {},
+      "player": 0,
+      "clock": 34377
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.19553055666785912
+      },
+      "player": 0,
+      "clock": 34384
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "RI.1/IFI",
+        "rotation": "R90",
+        "position": [
+          -2,
+          -1
+        ]
+      },
+      "player": 1,
+      "clock": 35658
+    },
+    {
+      "type": "PASS",
+      "payload": {},
+      "player": 1,
+      "clock": 35708
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.5879659167703046
+      },
+      "player": 1,
+      "clock": 35727
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "RI.1/RrII",
+        "rotation": "R90",
+        "position": [
+          -2,
+          0
+        ]
+      },
+      "player": 2,
+      "clock": 37193
+    },
+    {
+      "type": "PASS",
+      "payload": {},
+      "player": 2,
+      "clock": 37274
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.9582823896108261
+      },
+      "player": 2,
+      "clock": 37281
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "fishhuts/fishhuts-RIIR",
+        "rotation": "R0",
+        "position": [
+          -3,
+          0
+        ]
+      },
+      "player": 0,
+      "clock": 41065
+    },
+    {
+      "type": "PASS",
+      "payload": {},
+      "player": 0,
+      "clock": 41154
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.34477558526502716
+      },
+      "player": 0,
+      "clock": 41162
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "RI.1/II",
+        "rotation": "R90",
+        "position": [
+          -3,
+          1
+        ]
+      },
+      "player": 1,
+      "clock": 42480
+    },
+    {
+      "type": "PASS",
+      "payload": {},
+      "player": 1,
+      "clock": 42595
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.2734674117881155
+      },
+      "player": 1,
+      "clock": 42606
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "RI.1/II",
+        "rotation": "R0",
+        "position": [
+          4,
+          0
+        ]
+      },
+      "player": 2,
+      "clock": 44403
+    },
+    {
+      "type": "PASS",
+      "payload": {},
+      "player": 2,
+      "clock": 44448
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.9327685761002686
+      },
+      "player": 2,
+      "clock": 44465
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "fishhuts/fishhuts-ICIC",
+        "rotation": "R0",
+        "position": [
+          4,
+          1
+        ]
+      },
+      "player": 0,
+      "clock": 45743
+    },
+    {
+      "type": "PASS",
+      "payload": {},
+      "player": 0,
+      "clock": 45837
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.2538586744134059
+      },
+      "player": 0,
+      "clock": 45844
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "RI.1/CICI",
+        "rotation": "R90",
+        "position": [
+          4,
+          2
+        ]
+      },
+      "player": 1,
+      "clock": 47456
+    },
+    {
+      "type": "PASS",
+      "payload": {},
+      "player": 1,
+      "clock": 47553
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.2149812696668365
+      },
+      "player": 1,
+      "clock": 47626
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "RI.1/LIRI",
+        "rotation": "R90",
+        "position": [
+          4,
+          3
+        ]
+      },
+      "player": 2,
+      "clock": 50404
+    },
+    {
+      "type": "PASS",
+      "payload": {},
+      "player": 2,
+      "clock": 50476
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.691490742815067
+      },
+      "player": 2,
+      "clock": 50484
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "fishhuts/fishhuts-IFFF",
+        "rotation": "R0",
+        "position": [
+          4,
+          4
+        ]
+      },
+      "player": 0,
+      "clock": 52807
+    },
+    {
+      "type": "PASS",
+      "payload": {},
+      "player": 0,
+      "clock": 52885
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.16843148184599088
+      },
+      "player": 0,
+      "clock": 52892
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "fishhuts/fishhuts-FCCI",
+        "rotation": "R180",
+        "position": [
+          -4,
+          1
+        ]
+      },
+      "player": 1,
+      "clock": 56248
+    },
+    {
+      "type": "PASS",
+      "payload": {},
+      "player": 1,
+      "clock": 81026
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.45806335627312955
+      },
+      "player": 1,
+      "clock": 81033
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "BA/Ccc+",
+        "rotation": "R180",
+        "position": [
+          2,
+          1
+        ]
+      },
+      "player": 2,
+      "clock": 86174
+    },
+    {
+      "type": "PASS",
+      "payload": {},
+      "player": 2,
+      "clock": 93509
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.2407021987082163
+      },
+      "player": 2,
+      "clock": 93520
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "BA/CRr",
+        "rotation": "R90",
+        "position": [
+          0,
+          1
+        ]
+      },
+      "player": 0,
+      "clock": 98071
+    },
+    {
+      "type": "PASS",
+      "payload": {},
+      "player": 0,
+      "clock": 107629
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.8730263224052259
+      },
+      "player": 0,
+      "clock": 107640
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "BA/Rr",
+        "rotation": "R180",
+        "position": [
+          0,
+          -1
+        ]
+      },
+      "player": 1,
+      "clock": 112361
+    },
+    {
+      "type": "PASS",
+      "payload": {},
+      "player": 1,
+      "clock": 118298
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.6882666735077694
+      },
+      "player": 1,
+      "clock": 118306
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "BA/RFr",
+        "rotation": "R90",
+        "position": [
+          0,
+          -2
+        ]
+      },
+      "player": 2,
+      "clock": 120590
+    },
+    {
+      "type": "PASS",
+      "payload": {},
+      "player": 2,
+      "clock": 126491
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.737474540029436
+      },
+      "player": 2,
+      "clock": 126503
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "BA/RFr",
+        "rotation": "R90",
+        "position": [
+          2,
+          -2
+        ]
+      },
+      "player": 0,
+      "clock": 128646
+    },
+    {
+      "type": "PASS",
+      "payload": {},
+      "player": 0,
+      "clock": 137082
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.8793997840658039
+      },
+      "player": 0,
+      "clock": 137095
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "BA/Rr",
+        "rotation": "R180",
+        "position": [
+          2,
+          -1
+        ]
+      },
+      "player": 1,
+      "clock": 143773
+    },
+    {
+      "type": "PASS",
+      "payload": {},
+      "player": 1,
+      "clock": 146493
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.8582311311191402
+      },
+      "player": 1,
+      "clock": 146506
+    }
+  ],
+  "gameAnnotations": {
+    "drawOrder": [
+      "fishhuts/fishhuts-IIFI",
+      "fishhuts/fishhuts-FIRI",
+      "fishhuts/fishhuts-IFIF",
+      "fishhuts/fishhuts-FIFI",
+      "fishhuts/fishhuts-IFIF_2",
+      "fishhuts/fishhuts-IIFF"
+    ],
+    "endTurn": 26
+  },
+  "test": {
+    "description": "Fishuts Scorings",
+    "assertions": [
+      "John scored fishhut for 11 points.",
+      "Ariel scored fishhut for 7 points.",
+      "Betty scored fishhut for 0 points.",
+      "Ariel has 7 points.",
+      "John has 11 points.",
+      "Betty has 0 points.",
+      "Phase is GameOverPhase"
+    ]
+  }
+}

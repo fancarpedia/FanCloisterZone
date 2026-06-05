@@ -1,20 +1,12 @@
 {
-  "appVersion": "6.2.0",
+  "appVersion": "6.2.0-beta.2",
   "gameId": "1",
   "name": "",
-  "initialRandom": 0.0,
-  "created": "2026-01-16T00:00:00.000Z",
-  "clock": 1,
-  "test": {
-    "description": "Cathedral final scoring in ignore variant",
-    "assertions": [
-      "Alice has 15 points",
-      "Bob has 2 points",
-      "Alice scored city for 15 points",
-      "Bob scored city for 2 points"
-    ]
-  },
+  "initialRandom": 0,
+  "created": "2026-06-04T17:51:56.903Z",
+  "clock": 35070,
   "setup": {
+    "options": {},
     "sets": {
       "basic:1": 1,
       "inns-and-cathedrals:1": 1
@@ -22,13 +14,9 @@
     "elements": {
       "small-follower": 7,
       "farmers": true,
-      "big-follower": 1,
-      "cathedral": false,
-      "inn": false
+      "big-follower": 1
     },
-    "rules": {
-      "inn-and-cathedral-final-scoring": "ignore"
-    },
+    "rules": {},
     "timer": null,
     "start": [
       {
@@ -37,19 +25,19 @@
         "y": 0,
         "rotation": 0
       }
-    ],
-    "options": {}
+    ]
   },
   "players": [
     {
-      "name": "Alice",
+      "name": "Ariel",
       "slot": 0
     },
     {
-      "name": "Bob",
+      "name": "John",
       "slot": 1
     }
   ],
+  "chat": [],
   "replay": [
     {
       "type": "PLACE_TILE",
@@ -83,7 +71,7 @@
     {
       "type": "COMMIT",
       "payload": {
-        "random": 0.0
+        "random": 0
       },
       "player": 0,
       "clock": 2144
@@ -110,7 +98,7 @@
     {
       "type": "COMMIT",
       "payload": {
-        "random": 0.0
+        "random": 0
       },
       "player": 1,
       "clock": 3928
@@ -137,7 +125,7 @@
     {
       "type": "COMMIT",
       "payload": {
-        "random": 0.0
+        "random": 0
       },
       "player": 0,
       "clock": 5330
@@ -174,7 +162,7 @@
     {
       "type": "COMMIT",
       "payload": {
-        "random": 0.0
+        "random": 0
       },
       "player": 1,
       "clock": 6855
@@ -201,7 +189,7 @@
     {
       "type": "COMMIT",
       "payload": {
-        "random": 0.0
+        "random": 0
       },
       "player": 0,
       "clock": 8565
@@ -217,5 +205,16 @@
       "BA/C"
     ],
     "endTurn": 5
+  },
+  "test": {
+    "description": "Cathedrals No Cathedrals Scoring",
+    "assertions": [
+      "Ariel scored city for 10 points.",
+      "John scored city for 2 points.",
+      "Ariel has 10 points.",
+      "John has 2 points.",
+      "Phase is GameOverPhase",
+      "Undo is not allowed"
+    ]
   }
 }
