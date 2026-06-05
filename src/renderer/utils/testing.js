@@ -396,7 +396,7 @@ class MeeplePlacementOptionsAssert {
 // -------------------- Token Size Assert --------------------
 class TokenSizeAssert {
   constructor(state) {
-    this.REGEXP = /(\w+) has (\w+) token with size (\d+)/
+    this.REGEXP = /(\w+) has (\w+) token with (size|count) (\d+)/
     this.state = state
   }
 
@@ -404,8 +404,15 @@ class TokenSizeAssert {
     const m = this.REGEXP.exec(assertion)
     if (m) {
       const player = this.state.players[findPlayerIndex(this.state, m[1])]
-      const size = parseInt(m[3])
-      return { result: player.tokens[m[2]]?.size === size }
+      const value = parseInt(m[4])
+	  switch(m[3]) {
+		case 'size':
+          return { result: player.tokens[m[2]]?.size === value }
+		case 'count':
+          return { result: player.tokens[m[2]]?.count === value }
+		default:
+          return { result: false }
+	  }
     }
   }
 }
