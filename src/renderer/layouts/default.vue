@@ -367,7 +367,8 @@ export default {
         'game-setup': gameRunning,
         'dump-server': this.$server.isRunning(),
         'theme-inspector': !gameOpen,
-        'save-for-test-runner': gameRunning
+        'save-for-test-runner': gameRunning,
+        'save-for-test-runner-end-game': gameRunning
       })
     },
     
