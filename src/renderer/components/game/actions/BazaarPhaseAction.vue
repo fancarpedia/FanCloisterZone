@@ -1,8 +1,8 @@
 <template>
   <section :class="{['action-' + actionItem.type]: true, local}">
     <span class="text">
-      <template v-if="actionItem.type === 'BazaarSelectTile' && !noAuction">{{ local ? $t('game.action.bazaar-choose-a-tile-and-your-bid') : $t('game.action.bazaar-player-must-choose-a-tile-and-bid')}}</template>
-      <template v-else-if="actionItem.type === 'BazaarSelectTile' && noAuction">{{ local ? $t('game.action.bazaar-choose-a-tile') : $t('game.action.bazaar-player-must-choose-a-tile') }}</template>
+      <template v-if="actionItem.type === 'BazaarSelectTile' && !actionItem.noAuction">{{ local ? $t('game.action.bazaar-choose-a-tile-and-your-bid') : $t('game.action.bazaar-player-must-choose-a-tile-and-bid')}}</template>
+      <template v-else-if="actionItem.type === 'BazaarSelectTile' && actionItem.noAuction">{{ local ? $t('game.action.bazaar-choose-a-tile') : $t('game.action.bazaar-player-must-choose-a-tile') }}</template>
       <template v-else-if="actionItem.type === 'BazaarBid'">{{ local ? $t('game.action.bazaar-raise-bid-or-pass') : $t('game.action.bazaar-player-must-raise-bid-or-pass') }}</template>
       <template v-else-if="actionItem.type === 'BazaarSelectBuyOrSell'">
         {{ local ? $t('game.action.bazaar-buy-sell-the-tile-from-to') : $t('game.action.bazaar-player-must-buy-sell-the-tile-from-to') }}
@@ -41,7 +41,7 @@
           v-if="selected === idx"
           class="auction"
         >
-          <template v-if="!noAuction">
+          <template v-if="!actionItem.noAuction">
             <BidPriceInput v-if="local && actionItem.type !== 'BazaarSelectBuyOrSell'" v-model="bid" :min="actionItem.type === 'BazaarBid' ? bi.price + 1 : bi.price" :max="999" />
             <span v-else class="bid-price">{{ bid }}</span>
           </template>
@@ -113,8 +113,7 @@ export default {
     }),
 
     ...mapState({
-      bazaar: state => state.game.bazaar,
-      noAuction: state => state.game.setup.rules['bazaar-no-auction']
+      bazaar: state => state.game.bazaar
     }),
 
     actionItem () {
