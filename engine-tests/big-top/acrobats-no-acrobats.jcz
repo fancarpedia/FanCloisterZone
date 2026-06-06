@@ -1,0 +1,73 @@
+{
+  "appVersion": "6.2.0-beta.3",
+  "gameId": "1",
+  "name": "",
+  "initialRandom": 0.888542760702485,
+  "created": "2026-06-06T13:40:15.833Z",
+  "clock": 12961,
+  "setup": {
+    "sets": {
+      "basic:1": 1,
+      "under-the-big-top-c1": 1
+    },
+    "elements": {
+      "small-follower": 7,
+      "farmers": true,
+      "ringmaster": 1,
+      "big-top": 1
+    },
+    "rules": {},
+    "timer": null,
+    "start": [
+      {
+        "tile": "BA/RCr",
+        "x": 0,
+        "y": 0,
+        "rotation": 0
+      }
+    ],
+    "ai": false,
+    "options": {}
+  },
+  "players": [
+    {
+      "name": "Betty",
+      "slot": 2,
+      "ai": false
+    }
+  ],
+  "chat": [],
+  "replay": [
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "ubtc1/ffff.g.ac",
+        "rotation": "R0",
+        "position": [
+          0,
+          1
+        ]
+      },
+      "player": 0,
+      "clock": 2292
+    }
+  ],
+  "gameAnnotations": {
+    "drawOrder": [
+      "ubtc1/ffff.g.ac"
+    ]
+  },
+  "test": {
+    "description": "Acrobats No Acrobats",
+    "assertions": [
+      "Betty has 0 points.",
+      "Phase is ActionPhase",
+      "Player can pass",
+      "Available action Meeple for SmallFollower",
+      "Meeple SmallFollower options: {Field,NL.NR.EL.ER.SL.SR.WL.WR,[0,1]}",
+      "Available action Meeple for Ringmaster",
+      "Meeple Ringmaster options: {Field,NL.NR.EL.ER.SL.SR.WL.WR,[0,1]}",
+      "Undo is allowed"
+    ]
+  }
+}

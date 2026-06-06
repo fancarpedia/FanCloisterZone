@@ -1,0 +1,109 @@
+{
+  "appVersion": "6.2.0-beta.3",
+  "gameId": "1",
+  "name": "",
+  "initialRandom": 0.6475117413775435,
+  "created": "2026-06-06T13:28:27.620Z",
+  "clock": 31204,
+  "setup": {
+    "sets": {
+      "basic:1": 1,
+      "meteorites": 1
+    },
+    "elements": {
+      "small-follower": 7,
+      "farmers": true,
+      "meteorite": true
+    },
+    "rules": {},
+    "timer": null,
+    "start": [
+      {
+        "tile": "BA/RCr",
+        "x": 0,
+        "y": 0,
+        "rotation": 0
+      }
+    ],
+    "ai": false,
+    "options": {},
+    "addons": {
+      "meteorites": 1
+    }
+  },
+  "players": [
+    {
+      "name": "Betty",
+      "slot": 2,
+      "ai": false
+    }
+  ],
+  "chat": [],
+  "replay": [
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "BA/L",
+        "rotation": "R0",
+        "position": [
+          0,
+          1
+        ]
+      },
+      "player": 0,
+      "clock": 2411
+    },
+    {
+      "type": "DEPLOY_MEEPLE",
+      "payload": {
+        "pointer": {
+          "position": [
+            0,
+            1
+          ],
+          "location": "I",
+          "feature": "Monastery"
+        },
+        "meepleId": "0.small.1"
+      },
+      "player": 0,
+      "clock": 3223
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.5753368988024148
+      },
+      "player": 0,
+      "clock": 3404
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "meteorites/FFFR",
+        "rotation": "R90",
+        "position": [
+          1,
+          1
+        ]
+      },
+      "player": 0,
+      "clock": 4719
+    }
+  ],
+  "gameAnnotations": {
+    "drawOrder": [
+      "BA/L",
+      "meteorites/FFFR"
+    ]
+  },
+  "test": {
+    "description": "Meteorites Tile Placement Confirmation",
+    "assertions": [
+      "Betty has 0 points.",
+      "Phase is TilePlacementConfirmPhase",
+      "Player can't pass",
+      "Undo is allowed"
+    ]
+  }
+}

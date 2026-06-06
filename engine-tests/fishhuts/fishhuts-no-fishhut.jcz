@@ -1,0 +1,73 @@
+{
+  "appVersion": "6.2.0-beta.3",
+  "gameId": "1",
+  "name": "",
+  "initialRandom": 0.4766828150619564,
+  "created": "2026-06-06T13:30:38.107Z",
+  "clock": 29290,
+  "setup": {
+    "sets": {
+      "basic:1": 1,
+      "river/1:1": 1,
+      "fishhuts/river": 1
+    },
+    "elements": {
+      "small-follower": 7,
+      "farmers": true
+    },
+    "rules": {},
+    "timer": null,
+    "start": [
+      {
+        "tile": "RI/s",
+        "x": 0,
+        "y": 0,
+        "rotation": 0
+      }
+    ],
+    "ai": false,
+    "options": {},
+    "addons": {
+      "fishhuts": 0
+    }
+  },
+  "players": [
+    {
+      "name": "Betty",
+      "slot": 2,
+      "ai": false
+    }
+  ],
+  "chat": [],
+  "replay": [
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "fishhuts/fishhuts-IIFI",
+        "rotation": "R0",
+        "position": [
+          1,
+          0
+        ]
+      },
+      "player": 0,
+      "clock": 2451
+    }
+  ],
+  "gameAnnotations": {
+    "drawOrder": [
+      "fishhuts/fishhuts-IIFI"
+    ]
+  },
+  "test": {
+    "description": "Fishhuts No Fishhut",
+    "assertions": [
+      "Betty has 0 points.",
+      "Phase is ActionPhase",
+      "Player can pass",
+      "Available action Meeple for SmallFollower",
+      "Meeple SmallFollower options: {Field,ER.SL.SR.WL,[1,0]}; {Field,NL.WR,[1,0]}; {Field,NR.EL,[1,0]}",
+      "Undo is allowed"
+    ]
+  }
+}

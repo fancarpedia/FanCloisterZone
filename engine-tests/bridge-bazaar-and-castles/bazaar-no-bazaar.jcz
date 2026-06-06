@@ -1,0 +1,91 @@
+{
+  "appVersion": "6.2.0-beta.3",
+  "gameId": "1",
+  "name": "",
+  "initialRandom": 0.9542598485125591,
+  "created": "2026-06-06T12:17:20.291Z",
+  "clock": 10313,
+  "setup": {
+    "sets": {
+      "basic:1": 1,
+      "bridges-castles-and-bazaars:1": 1
+    },
+    "elements": {
+      "small-follower": 7,
+      "farmers": true,
+      "bridge": 1,
+      "castle": 1
+    },
+    "rules": {},
+    "timer": null,
+    "start": [
+      {
+        "tile": "BA/RCr",
+        "x": 0,
+        "y": 0,
+        "rotation": 0
+      }
+    ],
+    "ai": false,
+    "options": {}
+  },
+  "players": [
+    {
+      "name": "Betty",
+      "slot": 2,
+      "ai": false
+    },
+    {
+      "name": "John",
+      "slot": 1,
+      "ai": false
+    }
+  ],
+  "chat": [],
+  "replay": [
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "BB/CFc.b",
+        "rotation": "R90",
+        "position": [
+          0,
+          -1
+        ]
+      },
+      "player": 0,
+      "clock": 2276
+    },
+    {
+      "type": "PASS",
+      "payload": {},
+      "player": 0,
+      "clock": 2820
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.9318118277184366
+      },
+      "player": 0,
+      "clock": 2838
+    }
+  ],
+  "gameAnnotations": {
+    "drawOrder": [
+      "BB/CFc.b"
+    ]
+  },
+  "test": {
+    "description": "Bazaar No Bazaar",
+    "assertions": [
+      "Betty has 0 points.",
+      "John has 0 points.",
+      "Phase is TilePhase",
+      "Player can't pass",
+      "Available action TilePlacement for BB/F.b",
+      "TilePlacement BB/F.b options: [0,1] - [0,90,180,270]; [1,-1] - [0,90,180,270]; [-1,-1] - [0,90,180,270]; [-1,0] - [0,90,180,270]; [1,0] - [0,90,180,270]",
+      "Undo is not allowed"
+    ]
+  }
+}

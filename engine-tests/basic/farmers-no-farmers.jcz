@@ -1,0 +1,67 @@
+{
+  "appVersion": "6.2.0-beta.3",
+  "gameId": "1",
+  "name": "",
+  "initialRandom": 0.10364043595031425,
+  "created": "2026-06-06T13:22:45.295Z",
+  "clock": 19180,
+  "setup": {
+    "sets": {
+      "basic:1": 1
+    },
+    "elements": {
+      "small-follower": 7
+    },
+    "rules": {},
+    "timer": null,
+    "start": [
+      {
+        "tile": "BA/RCr",
+        "x": 0,
+        "y": 0,
+        "rotation": 0
+      }
+    ],
+    "ai": false,
+    "options": {}
+  },
+  "players": [
+    {
+      "name": "Betty",
+      "slot": 2,
+      "ai": false
+    }
+  ],
+  "chat": [],
+  "replay": [
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "BA/RCr",
+        "rotation": "R180",
+        "position": [
+          0,
+          -1
+        ]
+      },
+      "player": 0,
+      "clock": 2446
+    }
+  ],
+  "gameAnnotations": {
+    "drawOrder": [
+      "BA/RCr"
+    ]
+  },
+  "test": {
+    "description": "Farmers No Farmers",
+    "assertions": [
+      "Betty has 0 points.",
+      "Phase is ActionPhase",
+      "Player can pass",
+      "Available action Meeple for SmallFollower",
+      "Meeple SmallFollower options: {City,S,[0,-1]}; {Road,WE,[0,-1]}",
+      "Undo is allowed"
+    ]
+  }
+}

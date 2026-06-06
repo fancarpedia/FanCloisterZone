@@ -1,0 +1,110 @@
+{
+  "appVersion": "6.2.0-beta.3",
+  "gameId": "1",
+  "name": "",
+  "initialRandom": 0.03691044064547966,
+  "created": "2026-06-06T13:27:34.548Z",
+  "clock": 25524,
+  "setup": {
+    "sets": {
+      "basic:1": 1,
+      "meteorites": 1
+    },
+    "elements": {
+      "small-follower": 7,
+      "farmers": true
+    },
+    "rules": {},
+    "timer": null,
+    "start": [
+      {
+        "tile": "BA/RCr",
+        "x": 0,
+        "y": 0,
+        "rotation": 0
+      }
+    ],
+    "ai": false,
+    "options": {},
+    "addons": {
+      "meteorites": 1
+    }
+  },
+  "players": [
+    {
+      "name": "Betty",
+      "slot": 2,
+      "ai": false
+    }
+  ],
+  "chat": [],
+  "replay": [
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "BA/L",
+        "rotation": "R0",
+        "position": [
+          0,
+          1
+        ]
+      },
+      "player": 0,
+      "clock": 2389
+    },
+    {
+      "type": "DEPLOY_MEEPLE",
+      "payload": {
+        "pointer": {
+          "position": [
+            0,
+            1
+          ],
+          "location": "I",
+          "feature": "Monastery"
+        },
+        "meepleId": "0.small.1"
+      },
+      "player": 0,
+      "clock": 3154
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.503157317630325
+      },
+      "player": 0,
+      "clock": 3525
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "meteorites/FFFR",
+        "rotation": "R90",
+        "position": [
+          1,
+          1
+        ]
+      },
+      "player": 0,
+      "clock": 4949
+    }
+  ],
+  "gameAnnotations": {
+    "drawOrder": [
+      "BA/L",
+      "meteorites/FFFR"
+    ]
+  },
+  "test": {
+    "description": "Meteorites No Meteorite",
+    "assertions": [
+      "Betty has 0 points.",
+      "Phase is ActionPhase",
+      "Player can pass",
+      "Available action Meeple for SmallFollower",
+      "Meeple SmallFollower options: {Field,NL.NR.EL.ER.SL.SR.WL.WR,[1,1]}; {Road,N,[1,1]}",
+      "Undo is allowed"
+    ]
+  }
+}

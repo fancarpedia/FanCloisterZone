@@ -1,0 +1,113 @@
+{
+  "appVersion": "6.2.0-beta.3",
+  "gameId": "1",
+  "name": "",
+  "initialRandom": 0.9948197290075438,
+  "created": "2026-06-06T07:36:42.129Z",
+  "clock": 44154,
+  "setup": {
+    "options": {},
+    "sets": {
+      "basic:1": 1,
+      "robbers-son": 1
+    },
+    "elements": {
+      "small-follower": 7,
+      "farmers": true,
+      "robbers-son": true
+    },
+    "rules": {
+      "robbers-son-action": "must"
+    },
+    "timer": null,
+    "start": [
+      {
+        "tile": "BA/RCr",
+        "x": 0,
+        "y": 0,
+        "rotation": 0
+      }
+    ],
+    "ai": false,
+    "addons": {
+      "robbers-son": 1
+    }
+  },
+  "players": [
+    {
+      "name": "Betty",
+      "slot": 2,
+      "ai": false
+    }
+  ],
+  "chat": [],
+  "replay": [
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "BA/RrC",
+        "rotation": "R180",
+        "position": [
+          -1,
+          0
+        ]
+      },
+      "player": 0,
+      "clock": 2339
+    },
+    {
+      "type": "DEPLOY_MEEPLE",
+      "payload": {
+        "pointer": {
+          "position": [
+            -1,
+            0
+          ],
+          "location": "NE",
+          "feature": "Road"
+        },
+        "meepleId": "0.small.1"
+      },
+      "player": 0,
+      "clock": 2964
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.5377237373528323
+      },
+      "player": 0,
+      "clock": 3389
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "robbers-son/rfff.i",
+        "rotation": "R180",
+        "position": [
+          -1,
+          -1
+        ]
+      },
+      "player": 0,
+      "clock": 4901
+    }
+  ],
+  "gameAnnotations": {
+    "drawOrder": [
+      "BA/RrC",
+      "robbers-son/rfff.i"
+    ]
+  },
+  "test": {
+    "description": "Robbers Son Variant Must",
+    "assertions": [
+      "Betty has 0 points.",
+      "Phase is ActionPhase",
+      "Player can't pass",
+      "Available action ReturnMeeple for ROBBERS_SON",
+      "ReturnMeeple ROBBERS_SON options: {0.small.1,Road,NE,[-1,0]}",
+      "Undo is allowed"
+    ]
+  }
+}

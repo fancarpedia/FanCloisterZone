@@ -1,0 +1,111 @@
+{
+  "appVersion": "6.2.0-beta.3",
+  "gameId": "1",
+  "name": "",
+  "initialRandom": 0.9262748661622062,
+  "created": "2026-06-06T07:36:14.521Z",
+  "clock": 15519,
+  "setup": {
+    "sets": {
+      "basic:1": 1,
+      "robbers-son": 1
+    },
+    "elements": {
+      "small-follower": 1,
+      "farmers": true,
+      "robbers-son": true
+    },
+    "rules": {},
+    "timer": null,
+    "start": [
+      {
+        "tile": "BA/RCr",
+        "x": 0,
+        "y": 0,
+        "rotation": 0
+      }
+    ],
+    "ai": false,
+    "options": {},
+    "addons": {
+      "robbers-son": 2
+    }
+  },
+  "players": [
+    {
+      "name": "Betty",
+      "slot": 2,
+      "ai": false
+    }
+  ],
+  "chat": [],
+  "replay": [
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "BA/RFr",
+        "rotation": "R0",
+        "position": [
+          -1,
+          0
+        ]
+      },
+      "player": 0,
+      "clock": 2393
+    },
+    {
+      "type": "DEPLOY_MEEPLE",
+      "payload": {
+        "pointer": {
+          "position": [
+            -1,
+            0
+          ],
+          "location": "WE",
+          "feature": "Road"
+        },
+        "meepleId": "0.small.1"
+      },
+      "player": 0,
+      "clock": 3130
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.2721560703440924
+      },
+      "player": 0,
+      "clock": 3427
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "robbers-son/rfff.i",
+        "rotation": "R90",
+        "position": [
+          -2,
+          0
+        ]
+      },
+      "player": 0,
+      "clock": 4740
+    }
+  ],
+  "gameAnnotations": {
+    "drawOrder": [
+      "BA/RFr",
+      "robbers-son/rfff.i"
+    ]
+  },
+  "test": {
+    "description": "Robbers Son Variant May",
+    "assertions": [
+      "Betty has 0 points.",
+      "Phase is ActionPhase",
+      "Player can pass",
+      "Available action ReturnMeeple for ROBBERS_SON",
+      "ReturnMeeple ROBBERS_SON options: {0.small.1,Road,WE,[-1,0]}",
+      "Undo is allowed"
+    ]
+  }
+}

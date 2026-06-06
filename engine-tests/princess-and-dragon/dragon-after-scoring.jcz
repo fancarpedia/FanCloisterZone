@@ -1,0 +1,118 @@
+{
+  "appVersion": "6.2.0-beta.3",
+  "gameId": "1",
+  "name": "",
+  "initialRandom": 0.8654123244042153,
+  "created": "2026-06-06T13:08:54.470Z",
+  "clock": 16622,
+  "setup": {
+    "sets": {
+      "basic:1": 1,
+      "princess-and-dragon:1": 1
+    },
+    "elements": {
+      "small-follower": 7,
+      "farmers": true,
+      "dragon": 1,
+      "fairy": 1
+    },
+    "rules": {
+      "dragon-move": "after-scoring"
+    },
+    "timer": null,
+    "start": [
+      {
+        "tile": "BA/RCr",
+        "x": 0,
+        "y": 0,
+        "rotation": 0
+      }
+    ],
+    "ai": false,
+    "options": {}
+  },
+  "players": [
+    {
+      "name": "Betty",
+      "slot": 2,
+      "ai": false
+    }
+  ],
+  "chat": [],
+  "replay": [
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "DG/C.v",
+        "rotation": "R180",
+        "position": [
+          0,
+          1
+        ]
+      },
+      "player": 0,
+      "clock": 2529
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.8258561609263011
+      },
+      "player": 0,
+      "clock": 4228
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "DG/RrC.d",
+        "rotation": "R180",
+        "position": [
+          0,
+          -1
+        ]
+      },
+      "player": 0,
+      "clock": 5803
+    },
+    {
+      "type": "DEPLOY_MEEPLE",
+      "payload": {
+        "pointer": {
+          "position": [
+            0,
+            -1
+          ],
+          "location": "S",
+          "feature": "City"
+        },
+        "meepleId": "0.small.1"
+      },
+      "player": 0,
+      "clock": 6483
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.3064294599701347
+      },
+      "player": 0,
+      "clock": 7005
+    }
+  ],
+  "gameAnnotations": {
+    "drawOrder": [
+      "DG/C.v",
+      "DG/RrC.d"
+    ]
+  },
+  "test": {
+    "description": "Dragon After Scoring",
+    "assertions": [
+      "Betty scored city for 4 points.",
+      "Betty has 4 points.",
+      "Phase is DragonMovePhase",
+      "Player can't pass",
+      "Undo is not allowed"
+    ]
+  }
+}

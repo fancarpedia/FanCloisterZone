@@ -1,0 +1,65 @@
+{
+  "appVersion": "6.2.0-beta.3",
+  "gameId": "1",
+  "name": "",
+  "initialRandom": 0.6155982383246072,
+  "created": "2026-06-05T21:43:33.294Z",
+  "clock": 12280,
+  "setup": {
+    "options": {},
+    "sets": {
+      "basic:1": 1,
+      "tunnel": 1
+    },
+    "elements": {
+      "small-follower": 7,
+      "farmers": true,
+      "tunnel": 1
+    },
+    "rules": {
+      "more-tunnel-tokens": "2/1"
+    },
+    "timer": null,
+    "start": [
+      {
+        "tile": "BA/RCr",
+        "x": 0,
+        "y": 0,
+        "rotation": 0
+      }
+    ],
+    "ai": false
+  },
+  "players": [
+    {
+      "name": "Betty",
+      "slot": 2,
+      "ai": false
+    },
+    {
+      "name": "John",
+      "slot": 1,
+      "ai": false
+    }
+  ],
+  "chat": [],
+  "replay": [],
+  "test": {
+    "description": "Tunnel Variant 2 1",
+    "assertions": [
+      "Betty has 0 points.",
+      "Betty has TUNNEL_A token with count 2.",
+      "Betty has TUNNEL_B token with count 2.",
+      "Betty has TUNNEL_C token with count 0.",
+      "John has 0 points.",
+      "John has TUNNEL_A token with count 2.",
+      "John has TUNNEL_B token with count 2.",
+      "John has TUNNEL_C token with count 0.",
+      "Phase is TilePhase",
+      "Player can't pass",
+      "Available action TilePlacement for BA/RFr",
+      "TilePlacement BA/RFr options: [-1,0] - [0,180]; [1,0] - [0,180]; [0,1] - [0,180]",
+      "Undo is not allowed"
+    ]
+  }
+}

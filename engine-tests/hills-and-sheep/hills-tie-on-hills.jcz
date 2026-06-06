@@ -1,0 +1,269 @@
+{
+  "appVersion": "6.2.0-beta.3",
+  "gameId": "1",
+  "name": "",
+  "initialRandom": 0.27367715848017604,
+  "created": "2026-06-06T12:12:21.790Z",
+  "clock": 38531,
+  "setup": {
+    "sets": {
+      "basic:1": 1,
+      "hills-and-sheep:1": 1
+    },
+    "elements": {
+      "small-follower": 7,
+      "farmers": true,
+      "hill": true,
+      "vineyard": true
+    },
+    "rules": {},
+    "timer": null,
+    "start": [
+      {
+        "tile": "BA/RCr",
+        "x": 0,
+        "y": 0,
+        "rotation": 0
+      }
+    ],
+    "ai": false,
+    "options": {}
+  },
+  "players": [
+    {
+      "name": "Betty",
+      "slot": 2,
+      "ai": false
+    },
+    {
+      "name": "John",
+      "slot": 1,
+      "ai": false
+    },
+    {
+      "name": "Ariel",
+      "slot": 0,
+      "ai": false
+    }
+  ],
+  "chat": [],
+  "replay": [
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "HS/CFC.h",
+        "rotation": "R0",
+        "position": [
+          0,
+          -1
+        ]
+      },
+      "player": 0,
+      "clock": 2054
+    },
+    {
+      "type": "DEPLOY_MEEPLE",
+      "payload": {
+        "pointer": {
+          "position": [
+            0,
+            -1
+          ],
+          "location": "N",
+          "feature": "City"
+        },
+        "meepleId": "0.small.1"
+      },
+      "player": 0,
+      "clock": 3068
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.46807169077367927
+      },
+      "player": 0,
+      "clock": 3529
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "HS/CC.h.2",
+        "rotation": "R90",
+        "position": [
+          1,
+          -1
+        ]
+      },
+      "player": 1,
+      "clock": 6612
+    },
+    {
+      "type": "DEPLOY_MEEPLE",
+      "payload": {
+        "pointer": {
+          "position": [
+            1,
+            -1
+          ],
+          "location": "N",
+          "feature": "City"
+        },
+        "meepleId": "1.small.1"
+      },
+      "player": 1,
+      "clock": 7898
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.11019959203654905
+      },
+      "player": 1,
+      "clock": 8971
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "HS/Cc.v",
+        "rotation": "R0",
+        "position": [
+          2,
+          -1
+        ]
+      },
+      "player": 2,
+      "clock": 10414
+    },
+    {
+      "type": "DEPLOY_MEEPLE",
+      "payload": {
+        "pointer": {
+          "position": [
+            2,
+            -1
+          ],
+          "location": "NW",
+          "feature": "City"
+        },
+        "meepleId": "2.small.1"
+      },
+      "player": 2,
+      "clock": 11148
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.8487350580453996
+      },
+      "player": 2,
+      "clock": 11600
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "BA/Cc.1",
+        "rotation": "R180",
+        "position": [
+          0,
+          -2
+        ]
+      },
+      "player": 0,
+      "clock": 14163
+    },
+    {
+      "type": "PASS",
+      "payload": {},
+      "player": 0,
+      "clock": 14496
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.41268988551531227
+      },
+      "player": 0,
+      "clock": 14510
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "BA/CccR",
+        "rotation": "R180",
+        "position": [
+          1,
+          -2
+        ]
+      },
+      "player": 1,
+      "clock": 16177
+    },
+    {
+      "type": "PASS",
+      "payload": {},
+      "player": 1,
+      "clock": 16457
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.06017896511004861
+      },
+      "player": 1,
+      "clock": 16472
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "BA/Cc+",
+        "rotation": "R270",
+        "position": [
+          2,
+          -2
+        ]
+      },
+      "player": 2,
+      "clock": 17756
+    },
+    {
+      "type": "PASS",
+      "payload": {},
+      "player": 2,
+      "clock": 18085
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.6307776904350162
+      },
+      "player": 2,
+      "clock": 18097
+    }
+  ],
+  "gameAnnotations": {
+    "drawOrder": [
+      "HS/CFC.h",
+      "HS/CC.h.2",
+      "HS/Cc.v",
+      "BA/Cc.1",
+      "BA/CccR",
+      "BA/Cc+"
+    ]
+  },
+  "test": {
+    "description": "Hills Tie On Hills",
+    "assertions": [
+      "Betty scored city for 14 points.",
+      "John scored city for 14 points.",
+      "Betty has 14 points.",
+      "John has 14 points.",
+      "Ariel has 0 points.",
+      "Phase is TilePhase",
+      "Player can't pass",
+      "Available action TilePlacement for BA/RRR",
+      "TilePlacement BA/RRR options: [2,-3] - [180]; [0,-3] - [180]; [1,-3] - [0,90,270]; [-1,0] - [0,180,270]; [1,0] - [0]; [2,0] - [0]; [0,1] - [0]; [3,-2] - [270]; [3,-1] - [270]; [-1,-2] - [90]; [-1,-1] - [90]",
+      "Undo is not allowed"
+    ]
+  }
+}

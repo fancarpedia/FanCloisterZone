@@ -1,0 +1,70 @@
+{
+  "appVersion": "6.2.0-beta.3",
+  "gameId": "1",
+  "name": "",
+  "initialRandom": 0.6532172489531756,
+  "created": "2026-06-06T13:39:32.858Z",
+  "clock": 37976,
+  "setup": {
+    "sets": {
+      "basic:1": 1,
+      "under-the-big-top-c1": 1
+    },
+    "elements": {
+      "small-follower": 7,
+      "farmers": true,
+      "abbot": 1
+    },
+    "rules": {},
+    "timer": null,
+    "start": [
+      {
+        "tile": "BA/RCr",
+        "x": 0,
+        "y": 0,
+        "rotation": 0
+      }
+    ],
+    "ai": false,
+    "options": {}
+  },
+  "players": [
+    {
+      "name": "Betty",
+      "slot": 2,
+      "ai": false
+    }
+  ],
+  "chat": [],
+  "replay": [
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "ubtc1/ffff.g.ac",
+        "rotation": "R0",
+        "position": [
+          0,
+          1
+        ]
+      },
+      "player": 0,
+      "clock": 2742
+    }
+  ],
+  "gameAnnotations": {
+    "drawOrder": [
+      "ubtc1/ffff.g.ac"
+    ]
+  },
+  "test": {
+    "description": "Big Top Garden Tile No Garden",
+    "assertions": [
+      "Betty has 0 points.",
+      "Phase is ActionPhase",
+      "Player can pass",
+      "Available action Meeple for SmallFollower",
+      "Meeple SmallFollower options: {Field,NL.NR.EL.ER.SL.SR.WL.WR,[0,1]}",
+      "Undo is allowed"
+    ]
+  }
+}

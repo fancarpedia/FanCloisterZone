@@ -1,0 +1,266 @@
+{
+  "appVersion": "6.2.0-beta.3",
+  "gameId": "1",
+  "name": "",
+  "initialRandom": 0.9963255501490074,
+  "created": "2026-06-06T13:16:08.346Z",
+  "clock": 67727,
+  "setup": {
+    "sets": {
+      "basic:1": 1,
+      "princess-and-dragon:1": 1
+    },
+    "elements": {
+      "small-follower": 7,
+      "farmers": true,
+      "fairy": 1,
+      "portal": true
+    },
+    "rules": {
+      "fairy-placement": "on-tile"
+    },
+    "timer": null,
+    "start": [
+      {
+        "tile": "BA/RCr",
+        "x": 0,
+        "y": 0,
+        "rotation": 0
+      }
+    ],
+    "ai": false,
+    "options": {}
+  },
+  "players": [
+    {
+      "name": "Betty",
+      "slot": 2,
+      "ai": false
+    },
+    {
+      "name": "John",
+      "slot": 1,
+      "ai": false
+    }
+  ],
+  "chat": [],
+  "replay": [
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "BA/CRRR",
+        "rotation": "R90",
+        "position": [
+          1,
+          0
+        ]
+      },
+      "player": 0,
+      "clock": 3553
+    },
+    {
+      "type": "DEPLOY_MEEPLE",
+      "payload": {
+        "pointer": {
+          "position": [
+            1,
+            0
+          ],
+          "location": "E",
+          "feature": "City"
+        },
+        "meepleId": "0.small.1"
+      },
+      "player": 0,
+      "clock": 4147
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.2973813389885087
+      },
+      "player": 0,
+      "clock": 4408
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "DG/RrC.g",
+        "rotation": "R180",
+        "position": [
+          -1,
+          0
+        ]
+      },
+      "player": 1,
+      "clock": 6684
+    },
+    {
+      "type": "DEPLOY_MEEPLE",
+      "payload": {
+        "pointer": {
+          "position": [
+            1,
+            0
+          ],
+          "location": "W",
+          "feature": "Road"
+        },
+        "meepleId": "1.small.1"
+      },
+      "player": 1,
+      "clock": 8738
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.1344057998033792
+      },
+      "player": 1,
+      "clock": 9052
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "BA/CFc+",
+        "rotation": "R0",
+        "position": [
+          2,
+          0
+        ]
+      },
+      "player": 0,
+      "clock": 10649
+    },
+    {
+      "type": "MOVE_NEUTRAL_FIGURE",
+      "payload": {
+        "figureId": "fairy.1",
+        "to": [
+          1,
+          0
+        ]
+      },
+      "player": 0,
+      "clock": 12884
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.03060286194684747
+      },
+      "player": 0,
+      "clock": 13266
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "BA/CFc+",
+        "rotation": "R0",
+        "position": [
+          3,
+          0
+        ]
+      },
+      "player": 1,
+      "clock": 15084
+    },
+    {
+      "type": "PASS",
+      "payload": {},
+      "player": 1,
+      "clock": 21781
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.3111361759282685
+      },
+      "player": 1,
+      "clock": 21794
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "BA/C",
+        "rotation": "R270",
+        "position": [
+          4,
+          0
+        ]
+      },
+      "player": 0,
+      "clock": 24300
+    },
+    {
+      "type": "PASS",
+      "payload": {},
+      "player": 0,
+      "clock": 24668
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.9556027337990636
+      },
+      "player": 0,
+      "clock": 24676
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "BA/RRR",
+        "rotation": "R90",
+        "position": [
+          -1,
+          -1
+        ]
+      },
+      "player": 1,
+      "clock": 29291
+    },
+    {
+      "type": "PASS",
+      "payload": {},
+      "player": 1,
+      "clock": 30530
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.6854947900723418
+      },
+      "player": 1,
+      "clock": 30542
+    }
+  ],
+  "gameAnnotations": {
+    "drawOrder": [
+      "BA/CRRR",
+      "DG/RrC.g",
+      "BA/CFc+",
+      "BA/CFc+",
+      "BA/C",
+      "BA/RRR"
+    ]
+  },
+  "test": {
+    "description": "Fairy On Tile",
+    "assertions": [
+      "John scored fairy for 1 point.",
+      "Betty scored fairy for 1 point.",
+      "Betty scored city for 12 points.",
+      "Betty scored fairy for 3 points.",
+      "John scored fairy for 1 point.",
+      "John scored road for 4 points.",
+      "John scored fairy for 3 points.",
+      "Betty has 16 points.",
+      "John has 9 points.",
+      "Phase is TilePhase",
+      "Player can't pass",
+      "Available action TilePlacement for BA/RrC",
+      "TilePlacement BA/RrC options: [0,-1] - [180]; [-2,-1] - [180,270]; [5,0] - [180]; [1,1] - [90,180]; [2,-1] - [90]; [4,-1] - [90]; [3,-1] - [90]; [-1,-2] - [0,270]; [1,-1] - [0,270]; [-2,0] - [0]; [-1,1] - [0]; [3,1] - [270]; [4,1] - [270]; [0,1] - [270]; [2,1] - [270]",
+      "Undo is not allowed"
+    ]
+  }
+}

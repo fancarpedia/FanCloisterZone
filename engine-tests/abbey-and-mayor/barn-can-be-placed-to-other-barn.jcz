@@ -1,0 +1,180 @@
+{
+  "appVersion": "6.2.0-beta.3",
+  "gameId": "1",
+  "name": "",
+  "initialRandom": 0.12204650532025507,
+  "created": "2026-06-05T21:53:05.308Z",
+  "clock": 30024,
+  "setup": {
+    "sets": {
+      "basic:1": 1
+    },
+    "elements": {
+      "farmers": true,
+      "barn": 1
+    },
+    "rules": {
+      "barn-placement": "occupied"
+    },
+    "timer": null,
+    "start": [
+      {
+        "tile": "BA/RCr",
+        "x": 0,
+        "y": 0,
+        "rotation": 0
+      }
+    ],
+    "ai": false,
+    "options": {}
+  },
+  "players": [
+    {
+      "name": "Betty",
+      "slot": 2,
+      "ai": false
+    },
+    {
+      "name": "John",
+      "slot": 1,
+      "ai": false
+    }
+  ],
+  "chat": [],
+  "replay": [
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "BA/RFr",
+        "rotation": "R0",
+        "position": [
+          -1,
+          0
+        ]
+      },
+      "player": 0,
+      "clock": 2039
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.4096987243125205
+      },
+      "player": 0,
+      "clock": 2093
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "BA/RFr",
+        "rotation": "R0",
+        "position": [
+          -2,
+          0
+        ]
+      },
+      "player": 1,
+      "clock": 3457
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.13031605933824286
+      },
+      "player": 1,
+      "clock": 3604
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "BA/RFr",
+        "rotation": "R0",
+        "position": [
+          0,
+          1
+        ]
+      },
+      "player": 0,
+      "clock": 4841
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.36311412849192704
+      },
+      "player": 0,
+      "clock": 4988
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "BA/RFr",
+        "rotation": "R0",
+        "position": [
+          -1,
+          1
+        ]
+      },
+      "player": 1,
+      "clock": 6172
+    },
+    {
+      "type": "DEPLOY_MEEPLE",
+      "payload": {
+        "pointer": {
+          "position": [
+            0,
+            1
+          ],
+          "location": "NL.NR.EL.WR",
+          "feature": "Field"
+        },
+        "meepleId": "1.barn.1"
+      },
+      "player": 1,
+      "clock": 7240
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.8264506674514898
+      },
+      "player": 1,
+      "clock": 7657
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "BA/RFr",
+        "rotation": "R0",
+        "position": [
+          -2,
+          1
+        ]
+      },
+      "player": 0,
+      "clock": 9176
+    }
+  ],
+  "gameAnnotations": {
+    "drawOrder": [
+      "BA/RFr",
+      "BA/RFr",
+      "BA/RFr",
+      "BA/RFr",
+      "BA/RFr"
+    ]
+  },
+  "test": {
+    "description": "Barn Can Be Placed To Other Barn",
+    "assertions": [
+      "Betty has 0 points.",
+      "John has 0 points.",
+      "Phase is ActionPhase",
+      "Player can pass",
+      "Available action Meeple for Barn",
+      "Meeple Barn options: {Field,NL.NR.EL.WR,[-1,1]}",
+      "Undo is allowed"
+    ]
+  }
+}

@@ -1,0 +1,108 @@
+{
+  "appVersion": "6.2.0-beta.3",
+  "gameId": "1",
+  "name": "",
+  "initialRandom": 0.7684856298137741,
+  "created": "2026-06-05T20:46:51.122Z",
+  "clock": 30770,
+  "setup": {
+    "sets": {
+      "basic:1": 1,
+      "robbers-son": 1
+    },
+    "elements": {
+      "farmers": true,
+      "small-follower": 1
+    },
+    "rules": {},
+    "timer": null,
+    "start": [
+      {
+        "tile": "BA/RCr",
+        "x": 0,
+        "y": 0,
+        "rotation": 0
+      }
+    ],
+    "ai": false,
+    "options": {},
+    "addons": {
+      "robbers-son": 1
+    }
+  },
+  "players": [
+    {
+      "name": "Betty",
+      "slot": 2,
+      "ai": false
+    }
+  ],
+  "chat": [],
+  "replay": [
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "BA/RrC",
+        "rotation": "R180",
+        "position": [
+          -1,
+          0
+        ]
+      },
+      "player": 0,
+      "clock": 2273
+    },
+    {
+      "type": "DEPLOY_MEEPLE",
+      "payload": {
+        "pointer": {
+          "position": [
+            -1,
+            0
+          ],
+          "location": "NE",
+          "feature": "Road"
+        },
+        "meepleId": "0.small.1"
+      },
+      "player": 0,
+      "clock": 3791
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.5585496145904973
+      },
+      "player": 0,
+      "clock": 4966
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "robbers-son/crrc",
+        "rotation": "R90",
+        "position": [
+          -1,
+          -1
+        ]
+      },
+      "player": 0,
+      "clock": 7390
+    }
+  ],
+  "gameAnnotations": {
+    "drawOrder": [
+      "BA/RrC",
+      "robbers-son/crrc"
+    ]
+  },
+  "test": {
+    "description": "Robbers Son No Robbers Son",
+    "assertions": [
+      "Betty has 0 points.",
+      "Phase is CommitActionPhase",
+      "Player can't pass",
+      "Undo is allowed"
+    ]
+  }
+}

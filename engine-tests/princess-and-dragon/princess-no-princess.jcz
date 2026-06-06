@@ -1,0 +1,105 @@
+{
+  "appVersion": "6.2.0-beta.3",
+  "gameId": "1",
+  "name": "",
+  "initialRandom": 0.67184192719452,
+  "created": "2026-06-05T22:07:54.193Z",
+  "clock": 28125,
+  "setup": {
+    "sets": {
+      "basic:1": 1,
+      "princess-and-dragon:1": 1
+    },
+    "elements": {
+      "small-follower": 1,
+      "farmers": true
+    },
+    "rules": {},
+    "timer": null,
+    "start": [
+      {
+        "tile": "BA/RCr",
+        "x": 0,
+        "y": 0,
+        "rotation": 0
+      }
+    ],
+    "ai": false,
+    "options": {}
+  },
+  "players": [
+    {
+      "name": "Betty",
+      "slot": 2,
+      "ai": false
+    }
+  ],
+  "chat": [],
+  "replay": [
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "BA/Cccc+",
+        "rotation": "R0",
+        "position": [
+          0,
+          -1
+        ]
+      },
+      "player": 0,
+      "clock": 2226
+    },
+    {
+      "type": "DEPLOY_MEEPLE",
+      "payload": {
+        "pointer": {
+          "position": [
+            0,
+            -1
+          ],
+          "location": "NWSE",
+          "feature": "City"
+        },
+        "meepleId": "0.small.1"
+      },
+      "player": 0,
+      "clock": 2859
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.07767108549058377
+      },
+      "player": 0,
+      "clock": 3844
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "DG/Ccc.p",
+        "rotation": "R0",
+        "position": [
+          -1,
+          -1
+        ]
+      },
+      "player": 0,
+      "clock": 6114
+    }
+  ],
+  "gameAnnotations": {
+    "drawOrder": [
+      "BA/Cccc+",
+      "DG/Ccc.p"
+    ]
+  },
+  "test": {
+    "description": "Princess No Princess",
+    "assertions": [
+      "Betty has 0 points.",
+      "Phase is CommitActionPhase",
+      "Player can't pass",
+      "Undo is allowed"
+    ]
+  }
+}

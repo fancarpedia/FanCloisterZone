@@ -1,0 +1,153 @@
+{
+  "appVersion": "6.2.0-beta.3",
+  "gameId": "1",
+  "name": "",
+  "initialRandom": 0.20849877825703778,
+  "created": "2026-06-06T12:01:08.476Z",
+  "clock": 29020,
+  "setup": {
+    "sets": {
+      "basic:1": 1,
+      "siege/cathars": 1
+    },
+    "elements": {
+      "small-follower": 7,
+      "farmers": true,
+      "siege": true,
+      "escape": true
+    },
+    "rules": {
+      "espace-variant": "siege-tile"
+    },
+    "timer": null,
+    "start": [
+      {
+        "tile": "BA/RCr",
+        "x": 0,
+        "y": 0,
+        "rotation": 0
+      }
+    ],
+    "ai": false,
+    "options": {}
+  },
+  "players": [
+    {
+      "name": "Betty",
+      "slot": 2,
+      "ai": false
+    }
+  ],
+  "chat": [],
+  "replay": [
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "BA/LR",
+        "rotation": "R90",
+        "position": [
+          1,
+          0
+        ]
+      },
+      "player": 0,
+      "clock": 2508
+    },
+    {
+      "type": "PASS",
+      "payload": {},
+      "player": 0,
+      "clock": 2744
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.8257245763820518
+      },
+      "player": 0,
+      "clock": 2756
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "BA/CFc+",
+        "rotation": "R90",
+        "position": [
+          0,
+          -1
+        ]
+      },
+      "player": 0,
+      "clock": 3986
+    },
+    {
+      "type": "DEPLOY_MEEPLE",
+      "payload": {
+        "pointer": {
+          "position": [
+            0,
+            -1
+          ],
+          "location": "NS",
+          "feature": "City"
+        },
+        "meepleId": "0.small.1"
+      },
+      "player": 0,
+      "clock": 5702
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.305697161822273
+      },
+      "player": 0,
+      "clock": 5908
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "SI.CA/Cc",
+        "rotation": "R270",
+        "position": [
+          0,
+          -2
+        ]
+      },
+      "player": 0,
+      "clock": 7857
+    },
+    {
+      "type": "PASS",
+      "payload": {},
+      "player": 0,
+      "clock": 8773
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.9244914583608947
+      },
+      "player": 0,
+      "clock": 8786
+    }
+  ],
+  "gameAnnotations": {
+    "drawOrder": [
+      "BA/LR",
+      "BA/CFc+",
+      "SI.CA/Cc"
+    ]
+  },
+  "test": {
+    "description": "Escape Adjacent To Besieged",
+    "assertions": [
+      "Betty has 0 points.",
+      "Phase is TilePhase",
+      "Player can't pass",
+      "Available action TilePlacement for BA/RrC",
+      "TilePlacement BA/RrC options: [-1,-2] - [90]; [-1,-1] - [0]; [1,-2] - [180]; [-1,0] - [180,270]; [2,0] - [180]; [0,1] - [270]; [1,1] - [270]; [0,-3] - [90]",
+      "Undo is not allowed"
+    ]
+  }
+}

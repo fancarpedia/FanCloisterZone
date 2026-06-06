@@ -1,0 +1,139 @@
+{
+  "appVersion": "6.2.0-beta.3",
+  "gameId": "1",
+  "name": "",
+  "initialRandom": 0.5418745799929077,
+  "created": "2026-06-06T13:37:06.311Z",
+  "clock": 49503,
+  "setup": {
+    "sets": {
+      "basic:1": 1
+    },
+    "elements": {
+      "small-follower": 7,
+      "farmers": true,
+      "abbot": 1
+    },
+    "rules": {},
+    "timer": null,
+    "start": [
+      {
+        "tile": "BA/RCr",
+        "x": 0,
+        "y": 0,
+        "rotation": 0
+      }
+    ],
+    "ai": false,
+    "options": {}
+  },
+  "players": [
+    {
+      "name": "Betty",
+      "slot": 2,
+      "ai": false
+    }
+  ],
+  "chat": [],
+  "replay": [
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "BA/Cc.1",
+        "rotation": "R180",
+        "position": [
+          0,
+          -1
+        ]
+      },
+      "player": 0,
+      "clock": 2446
+    },
+    {
+      "type": "PASS",
+      "payload": {},
+      "player": 0,
+      "clock": 2757
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.6097155618700403
+      },
+      "player": 0,
+      "clock": 2771
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "BA/Cc.1",
+        "rotation": "R0",
+        "position": [
+          1,
+          -1
+        ]
+      },
+      "player": 0,
+      "clock": 3964
+    },
+    {
+      "type": "PASS",
+      "payload": {},
+      "player": 0,
+      "clock": 4115
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.7190843442148871
+      },
+      "player": 0,
+      "clock": 4124
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "BA/Cc.1",
+        "rotation": "R180",
+        "position": [
+          1,
+          -2
+        ]
+      },
+      "player": 0,
+      "clock": 7472
+    },
+    {
+      "type": "PASS",
+      "payload": {},
+      "player": 0,
+      "clock": 10495
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.43596378508840616
+      },
+      "player": 0,
+      "clock": 10507
+    }
+  ],
+  "gameAnnotations": {
+    "drawOrder": [
+      "BA/Cc.1",
+      "BA/Cc.1",
+      "BA/Cc.1"
+    ]
+  },
+  "test": {
+    "description": "Abbot No Garden 3 Base Game Tiles Without Garden Test",
+    "assertions": [
+      "Betty has 0 points.",
+      "Phase is TilePhase",
+      "Player can't pass",
+      "Available action TilePlacement for BA/Ccc+",
+      "TilePlacement BA/Ccc+ options: [1,-3] - [0]; [2,-2] - [0,180,270]; [-1,-1] - [270]; [0,1] - [180]; [2,-1] - [90]",
+      "Undo is not allowed"
+    ]
+  }
+}

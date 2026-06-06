@@ -1,0 +1,79 @@
+{
+  "appVersion": "6.2.0-beta.3",
+  "gameId": "1",
+  "name": "",
+  "initialRandom": 0.1290118120363919,
+  "created": "2026-06-05T21:46:01.191Z",
+  "clock": 26099,
+  "setup": {
+    "sets": {
+      "basic:1": 1,
+      "princess-and-dragon:1": 1,
+      "tunnel": 1
+    },
+    "elements": {
+      "farmers": true,
+      "princess": true,
+      "portal": true,
+      "tunnel": 1
+    },
+    "rules": {},
+    "timer": null,
+    "start": [
+      {
+        "tile": "BA/RCr",
+        "x": 0,
+        "y": 0,
+        "rotation": 0
+      }
+    ],
+    "ai": false,
+    "options": {}
+  },
+  "players": [
+    {
+      "name": "Betty",
+      "slot": 2,
+      "ai": false
+    }
+  ],
+  "chat": [],
+  "replay": [
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "DG/CRcr.d",
+        "rotation": "R90",
+        "position": [
+          0,
+          -1
+        ]
+      },
+      "player": 0,
+      "clock": 3481
+    }
+  ],
+  "gameAnnotations": {
+    "drawOrder": [
+      "DG/CRcr.d"
+    ]
+  },
+  "test": {
+    "description": "Tunnel Tunnelize Undersurface Roads",
+    "assertions": [
+      "Betty has 0 points.",
+      "Betty has TUNNEL_A token with count 2.",
+      "Betty has TUNNEL_B token with count 2.",
+      "Betty has TUNNEL_C token with count 2.",
+      "Phase is ActionPhase",
+      "Player can pass",
+      "Available action Tunnel for TUNNEL_A",
+      "Tunnel token TUNNEL_A options: {Road,W,[0,-1]}; {Road,E,[0,-1]}",
+      "Available action Tunnel for TUNNEL_B",
+      "Tunnel token TUNNEL_B options: {Road,W,[0,-1]}; {Road,E,[0,-1]}",
+      "Available action Tunnel for TUNNEL_C",
+      "Tunnel token TUNNEL_C options: {Road,W,[0,-1]}; {Road,E,[0,-1]}",
+      "Undo is allowed"
+    ]
+  }
+}

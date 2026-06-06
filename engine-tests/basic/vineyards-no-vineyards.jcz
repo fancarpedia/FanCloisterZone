@@ -1,0 +1,345 @@
+{
+  "appVersion": "6.2.0-beta.3",
+  "gameId": "1",
+  "name": "",
+  "initialRandom": 0.8533192340869085,
+  "created": "2026-06-06T13:25:41.766Z",
+  "clock": 48542,
+  "setup": {
+    "sets": {
+      "basic:1": 1,
+      "hills-and-sheep:1": 1
+    },
+    "elements": {
+      "small-follower": 7,
+      "farmers": true,
+      "shepherd": 1
+    },
+    "rules": {},
+    "timer": null,
+    "start": [
+      {
+        "tile": "BA/RCr",
+        "x": 0,
+        "y": 0,
+        "rotation": 0
+      }
+    ],
+    "ai": false,
+    "options": {}
+  },
+  "players": [
+    {
+      "name": "Betty",
+      "slot": 2,
+      "ai": false
+    }
+  ],
+  "chat": [],
+  "replay": [
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "BA/L",
+        "rotation": "R0",
+        "position": [
+          0,
+          1
+        ]
+      },
+      "player": 0,
+      "clock": 3157
+    },
+    {
+      "type": "DEPLOY_MEEPLE",
+      "payload": {
+        "pointer": {
+          "position": [
+            0,
+            1
+          ],
+          "location": "I",
+          "feature": "Monastery"
+        },
+        "meepleId": "0.small.1"
+      },
+      "player": 0,
+      "clock": 4074
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.2160003146576006
+      },
+      "player": 0,
+      "clock": 4522
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "HS/RRr.v",
+        "rotation": "R0",
+        "position": [
+          1,
+          0
+        ]
+      },
+      "player": 0,
+      "clock": 6705
+    },
+    {
+      "type": "PASS",
+      "payload": {},
+      "player": 0,
+      "clock": 7161
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.6604175885035837
+      },
+      "player": 0,
+      "clock": 7172
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "BA/RFr",
+        "rotation": "R0",
+        "position": [
+          -1,
+          0
+        ]
+      },
+      "player": 0,
+      "clock": 8682
+    },
+    {
+      "type": "PASS",
+      "payload": {},
+      "player": 0,
+      "clock": 8965
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.46214698631575635
+      },
+      "player": 0,
+      "clock": 8976
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "BA/Rr",
+        "rotation": "R0",
+        "position": [
+          -1,
+          1
+        ]
+      },
+      "player": 0,
+      "clock": 11035
+    },
+    {
+      "type": "PASS",
+      "payload": {},
+      "player": 0,
+      "clock": 11320
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.3921092428486872
+      },
+      "player": 0,
+      "clock": 11335
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "BA/Rr",
+        "rotation": "R180",
+        "position": [
+          1,
+          1
+        ]
+      },
+      "player": 0,
+      "clock": 12695
+    },
+    {
+      "type": "PASS",
+      "payload": {},
+      "player": 0,
+      "clock": 13093
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.5565435422316551
+      },
+      "player": 0,
+      "clock": 13109
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "HS/C!.v",
+        "rotation": "R90",
+        "position": [
+          0,
+          2
+        ]
+      },
+      "player": 0,
+      "clock": 17368
+    },
+    {
+      "type": "PASS",
+      "payload": {},
+      "player": 0,
+      "clock": 17790
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.8121353564502638
+      },
+      "player": 0,
+      "clock": 17801
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "HS/Cc.v",
+        "rotation": "R270",
+        "position": [
+          1,
+          2
+        ]
+      },
+      "player": 0,
+      "clock": 19426
+    },
+    {
+      "type": "PASS",
+      "payload": {},
+      "player": 0,
+      "clock": 19887
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.9492739078450889
+      },
+      "player": 0,
+      "clock": 19897
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "HS/CFC.v",
+        "rotation": "R90",
+        "position": [
+          1,
+          3
+        ]
+      },
+      "player": 0,
+      "clock": 23354
+    },
+    {
+      "type": "PASS",
+      "payload": {},
+      "player": 0,
+      "clock": 24404
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.26430505479748656
+      },
+      "player": 0,
+      "clock": 24415
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "BA/Cc.1",
+        "rotation": "R90",
+        "position": [
+          2,
+          2
+        ]
+      },
+      "player": 0,
+      "clock": 26750
+    },
+    {
+      "type": "PASS",
+      "payload": {},
+      "player": 0,
+      "clock": 26934
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.7834320627839244
+      },
+      "player": 0,
+      "clock": 26951
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "BA/Rr",
+        "rotation": "R90",
+        "position": [
+          -1,
+          2
+        ]
+      },
+      "player": 0,
+      "clock": 28514
+    },
+    {
+      "type": "PASS",
+      "payload": {},
+      "player": 0,
+      "clock": 31331
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.9620349991052373
+      },
+      "player": 0,
+      "clock": 31346
+    }
+  ],
+  "gameAnnotations": {
+    "drawOrder": [
+      "BA/L",
+      "HS/RRr.v",
+      "BA/RFr",
+      "BA/Rr",
+      "BA/Rr",
+      "HS/C!.v",
+      "HS/Cc.v",
+      "HS/CFC.v"
+    ]
+  },
+  "test": {
+    "description": "Vineyards No Vineyards",
+    "assertions": [
+      "Betty scored monastery for 9 points.",
+      "Betty has 9 points.",
+      "Phase is TilePhase",
+      "Player can't pass",
+      "Available action TilePlacement for HS/RFR.h",
+      "TilePlacement HS/RFR.h options: [1,-1] - [90,270]; [-1,-1] - [90,270]; [2,0] - [90,270]; [-2,0] - [90,270]; [-2,1] - [90,270]; [-2,2] - [90,270]; [-1,3] - [90,270]",
+      "Undo is not allowed"
+    ]
+  }
+}

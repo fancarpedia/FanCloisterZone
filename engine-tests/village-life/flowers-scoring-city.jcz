@@ -1,0 +1,396 @@
+{
+  "appVersion": "6.2.0-beta.3",
+  "gameId": "1",
+  "name": "",
+  "initialRandom": 0.592804809486726,
+  "created": "2026-06-06T14:07:17.699Z",
+  "clock": 58913,
+  "setup": {
+    "sets": {
+      "basic:1": 1,
+      "village-life": 1
+    },
+    "elements": {
+      "small-follower": 7,
+      "farmers": true,
+      "flowers": true
+    },
+    "rules": {},
+    "timer": null,
+    "start": [
+      {
+        "tile": "BA/RCr",
+        "x": 0,
+        "y": 0,
+        "rotation": 0
+      }
+    ],
+    "ai": false,
+    "options": {},
+    "addons": {
+      "village-life": 0
+    }
+  },
+  "players": [
+    {
+      "name": "Betty",
+      "slot": 2,
+      "ai": false
+    },
+    {
+      "name": "John",
+      "slot": 1,
+      "ai": false
+    },
+    {
+      "name": "Ariel",
+      "slot": 0,
+      "ai": false
+    },
+    {
+      "name": "Andy",
+      "slot": 3,
+      "ai": false
+    }
+  ],
+  "chat": [],
+  "replay": [
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "BA/CRr",
+        "rotation": "R0",
+        "position": [
+          -1,
+          0
+        ]
+      },
+      "player": 0,
+      "clock": 2676
+    },
+    {
+      "type": "DEPLOY_MEEPLE",
+      "payload": {
+        "pointer": {
+          "position": [
+            -1,
+            0
+          ],
+          "location": "N",
+          "feature": "City"
+        },
+        "meepleId": "0.small.1"
+      },
+      "player": 0,
+      "clock": 3371
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.8695234260277436
+      },
+      "player": 0,
+      "clock": 3509
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "BA/RrC",
+        "rotation": "R0",
+        "position": [
+          1,
+          0
+        ]
+      },
+      "player": 1,
+      "clock": 4793
+    },
+    {
+      "type": "DEPLOY_MEEPLE",
+      "payload": {
+        "pointer": {
+          "position": [
+            1,
+            0
+          ],
+          "location": "N",
+          "feature": "City"
+        },
+        "meepleId": "1.small.1"
+      },
+      "player": 1,
+      "clock": 5771
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.34125424829708084
+      },
+      "player": 1,
+      "clock": 5893
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "village-life/ccbr.f2",
+        "rotation": "R90",
+        "position": [
+          -1,
+          -1
+        ]
+      },
+      "player": 2,
+      "clock": 7933
+    },
+    {
+      "type": "PASS",
+      "payload": {},
+      "player": 2,
+      "clock": 8346
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.4854216526759205
+      },
+      "player": 2,
+      "clock": 8359
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "BA/CcRr",
+        "rotation": "R270",
+        "position": [
+          1,
+          -1
+        ]
+      },
+      "player": 3,
+      "clock": 10130
+    },
+    {
+      "type": "PASS",
+      "payload": {},
+      "player": 3,
+      "clock": 10321
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.073456314317768
+      },
+      "player": 3,
+      "clock": 10330
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "BA/RFr",
+        "rotation": "R90",
+        "position": [
+          -2,
+          -1
+        ]
+      },
+      "player": 0,
+      "clock": 11839
+    },
+    {
+      "type": "PASS",
+      "payload": {},
+      "player": 0,
+      "clock": 12005
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.05092720850956378
+      },
+      "player": 0,
+      "clock": 12019
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "BA/RFr",
+        "rotation": "R0",
+        "position": [
+          2,
+          -1
+        ]
+      },
+      "player": 1,
+      "clock": 13618
+    },
+    {
+      "type": "PASS",
+      "payload": {},
+      "player": 1,
+      "clock": 13805
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.16083064252533474
+      },
+      "player": 1,
+      "clock": 13818
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "BA/RCr",
+        "rotation": "R90",
+        "position": [
+          -1,
+          -2
+        ]
+      },
+      "player": 2,
+      "clock": 16390
+    },
+    {
+      "type": "DEPLOY_MEEPLE",
+      "payload": {
+        "pointer": {
+          "position": [
+            -1,
+            -2
+          ],
+          "location": "E",
+          "feature": "City"
+        },
+        "meepleId": "2.small.1"
+      },
+      "player": 2,
+      "clock": 18164
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.5011143257956403
+      },
+      "player": 2,
+      "clock": 18411
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "BA/RCr",
+        "rotation": "R270",
+        "position": [
+          1,
+          -2
+        ]
+      },
+      "player": 3,
+      "clock": 19922
+    },
+    {
+      "type": "DEPLOY_MEEPLE",
+      "payload": {
+        "pointer": {
+          "position": [
+            1,
+            -2
+          ],
+          "location": "W",
+          "feature": "City"
+        },
+        "meepleId": "3.small.1"
+      },
+      "player": 3,
+      "clock": 20832
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.5707778015550939
+      },
+      "player": 3,
+      "clock": 20984
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "BA/Ccc",
+        "rotation": "R180",
+        "position": [
+          0,
+          -2
+        ]
+      },
+      "player": 0,
+      "clock": 22987
+    },
+    {
+      "type": "PASS",
+      "payload": {},
+      "player": 0,
+      "clock": 23431
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.8214471042686831
+      },
+      "player": 0,
+      "clock": 23443
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "BA/Cccc+",
+        "rotation": "R0",
+        "position": [
+          0,
+          -1
+        ]
+      },
+      "player": 1,
+      "clock": 24835
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.249034941001391
+      },
+      "player": 1,
+      "clock": 29017
+    }
+  ],
+  "gameAnnotations": {
+    "drawOrder": [
+      "BA/CRr",
+      "BA/RrC",
+      "village-life/ccbr.f2",
+      "BA/CcRr",
+      "BA/RFr",
+      "BA/RFr",
+      "BA/RCr",
+      "BA/RCr",
+      "BA/Ccc",
+      "BA/Cccc+"
+    ]
+  },
+  "test": {
+    "description": "Flowers Scoring City",
+    "assertions": [
+      "Betty scored city for 20 points.",
+      "John scored city for 20 points.",
+      "Ariel scored city for 20 points.",
+      "Andy scored city for 20 points.",
+      "Ariel scored flowers for 3 points.",
+      "Betty has 20 points.",
+      "John has 20 points.",
+      "Ariel has 23 points.",
+      "Andy has 20 points.",
+      "Phase is TilePhase",
+      "Player can't pass",
+      "Available action TilePlacement for BA/Cc.1",
+      "TilePlacement BA/Cc.1 options: [2,0] - [180]; [0,1] - [180,270]; [-3,-1] - [0,270]; [0,-3] - [0,90]; [2,-2] - [90]",
+      "Undo is not allowed"
+    ]
+  }
+}

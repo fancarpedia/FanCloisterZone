@@ -1,0 +1,75 @@
+{
+  "appVersion": "6.2.0-beta.3",
+  "gameId": "1",
+  "name": "",
+  "initialRandom": 0.73161830998636,
+  "created": "2026-06-05T21:47:00.040Z",
+  "clock": 20602,
+  "setup": {
+    "sets": {
+      "basic:1": 1,
+      "princess-and-dragon:1": 1,
+      "tunnel": 1
+    },
+    "elements": {
+      "farmers": true,
+      "princess": true,
+      "portal": true,
+      "tunnel": 1
+    },
+    "rules": {
+      "tunnelize-other-expansions": false
+    },
+    "timer": null,
+    "start": [
+      {
+        "tile": "BA/RCr",
+        "x": 0,
+        "y": 0,
+        "rotation": 0
+      }
+    ],
+    "ai": false,
+    "options": {}
+  },
+  "players": [
+    {
+      "name": "Betty",
+      "slot": 2,
+      "ai": false
+    }
+  ],
+  "chat": [],
+  "replay": [
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "DG/CRcr.d",
+        "rotation": "R90",
+        "position": [
+          0,
+          -1
+        ]
+      },
+      "player": 0,
+      "clock": 2677
+    }
+  ],
+  "gameAnnotations": {
+    "drawOrder": [
+      "DG/CRcr.d"
+    ]
+  },
+  "test": {
+    "description": "Tunnel No Tunnelize Undersurface Roads",
+    "assertions": [
+      "Betty has 0 points.",
+      "Betty has TUNNEL_A token with count 2.",
+      "Betty has TUNNEL_B token with count 2.",
+      "Betty has TUNNEL_C token with count 2.",
+      "Phase is CommitActionPhase",
+      "Player can't pass",
+      "Undo is allowed"
+    ]
+  }
+}

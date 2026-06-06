@@ -1,0 +1,105 @@
+{
+  "appVersion": "6.2.0-beta.3",
+  "gameId": "1",
+  "name": "",
+  "initialRandom": 0.9399095309897769,
+  "created": "2026-06-05T21:28:04.000Z",
+  "clock": 16471,
+  "setup": {
+    "sets": {
+      "basic:1": 1,
+      "festival": 1
+    },
+    "elements": {
+      "small-follower": 1,
+      "farmers": true
+    },
+    "rules": {},
+    "timer": null,
+    "start": [
+      {
+        "tile": "BA/RCr",
+        "x": 0,
+        "y": 0,
+        "rotation": 0
+      }
+    ],
+    "ai": false,
+    "options": {}
+  },
+  "players": [
+    {
+      "name": "Betty",
+      "slot": 2,
+      "ai": false
+    }
+  ],
+  "chat": [],
+  "replay": [
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "BA/RFr",
+        "rotation": "R0",
+        "position": [
+          -1,
+          0
+        ]
+      },
+      "player": 0,
+      "clock": 2173
+    },
+    {
+      "type": "DEPLOY_MEEPLE",
+      "payload": {
+        "pointer": {
+          "position": [
+            -1,
+            0
+          ],
+          "location": "WE",
+          "feature": "Road"
+        },
+        "meepleId": "0.small.1"
+      },
+      "player": 0,
+      "clock": 2873
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.9665222550700898
+      },
+      "player": 0,
+      "clock": 3533
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "FE/RrC",
+        "rotation": "R180",
+        "position": [
+          -2,
+          0
+        ]
+      },
+      "player": 0,
+      "clock": 5475
+    }
+  ],
+  "gameAnnotations": {
+    "drawOrder": [
+      "BA/RFr",
+      "FE/RrC"
+    ]
+  },
+  "test": {
+    "description": "Festival No Festival",
+    "assertions": [
+      "Betty has 0 points.",
+      "Phase is CommitActionPhase",
+      "Player can't pass",
+      "Undo is allowed"
+    ]
+  }
+}

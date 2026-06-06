@@ -1,0 +1,249 @@
+{
+  "appVersion": "6.2.0-beta.3",
+  "gameId": "1",
+  "name": "",
+  "initialRandom": 0.7406879379629461,
+  "created": "2026-06-06T11:27:14.872Z",
+  "clock": 120617,
+  "setup": {
+    "options": {},
+    "sets": {
+      "basic:1": 1,
+      "festival": 1
+    },
+    "elements": {
+      "small-follower": 7,
+      "farmers": true,
+      "festival": true,
+      "shepherd": 1
+    },
+    "rules": {
+      "festival-return": "follower"
+    },
+    "timer": null,
+    "start": [
+      {
+        "tile": "BA/RCr",
+        "x": 0,
+        "y": 0,
+        "rotation": 0
+      }
+    ],
+    "ai": false
+  },
+  "players": [
+    {
+      "name": "John",
+      "slot": 1,
+      "ai": false
+    },
+    {
+      "name": "Betty",
+      "slot": 2,
+      "ai": false
+    }
+  ],
+  "chat": [],
+  "replay": [
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "BA/RFr",
+        "rotation": "R0",
+        "position": [
+          -1,
+          0
+        ]
+      },
+      "player": 0,
+      "clock": 2314
+    },
+    {
+      "type": "DEPLOY_MEEPLE",
+      "payload": {
+        "pointer": {
+          "position": [
+            -1,
+            0
+          ],
+          "location": "WE",
+          "feature": "Road"
+        },
+        "meepleId": "0.small.1"
+      },
+      "player": 0,
+      "clock": 3835
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.05333434284295557
+      },
+      "player": 0,
+      "clock": 4105
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "BA/RFr",
+        "rotation": "R0",
+        "position": [
+          1,
+          0
+        ]
+      },
+      "player": 1,
+      "clock": 5733
+    },
+    {
+      "type": "DEPLOY_MEEPLE",
+      "payload": {
+        "pointer": {
+          "position": [
+            1,
+            0
+          ],
+          "location": "NL.NR.EL.WR",
+          "feature": "Field"
+        },
+        "meepleId": "1.shepherd.1"
+      },
+      "player": 1,
+      "clock": 8107
+    },
+    {
+      "type": "SHEPHERD_CONFIRM",
+      "payload": {
+        "random": 0.04570159108272609
+      },
+      "player": 1,
+      "clock": 8575
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.6740400393494559
+      },
+      "player": 1,
+      "clock": 8595
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "BA/RFr",
+        "rotation": "R0",
+        "position": [
+          1,
+          1
+        ]
+      },
+      "player": 0,
+      "clock": 12434
+    },
+    {
+      "type": "DEPLOY_MEEPLE",
+      "payload": {
+        "pointer": {
+          "position": [
+            1,
+            1
+          ],
+          "location": "NL.NR.EL.WR",
+          "feature": "Field"
+        },
+        "meepleId": "0.shepherd.1"
+      },
+      "player": 0,
+      "clock": 18478
+    },
+    {
+      "type": "SHEPHERD_CONFIRM",
+      "payload": {
+        "random": 0.44284735171976464
+      },
+      "player": 0,
+      "clock": 19279
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.15337002024305924
+      },
+      "player": 0,
+      "clock": 19295
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "BA/RFr",
+        "rotation": "R0",
+        "position": [
+          0,
+          1
+        ]
+      },
+      "player": 1,
+      "clock": 21296
+    },
+    {
+      "type": "DEPLOY_MEEPLE",
+      "payload": {
+        "pointer": {
+          "position": [
+            0,
+            1
+          ],
+          "location": "WE",
+          "feature": "Road"
+        },
+        "meepleId": "1.small.1"
+      },
+      "player": 1,
+      "clock": 22256
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.8137398391488255
+      },
+      "player": 1,
+      "clock": 22687
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "FE/RrC",
+        "rotation": "R180",
+        "position": [
+          -2,
+          0
+        ]
+      },
+      "player": 0,
+      "clock": 103212
+    }
+  ],
+  "gameAnnotations": {
+    "drawOrder": [
+      "BA/RFr",
+      "BA/RFr",
+      "BA/RFr",
+      "BA/RFr",
+      "FE/RrC"
+    ]
+  },
+  "test": {
+    "description": "Festival Meeples",
+    "assertions": [
+      "John has 0 points.",
+      "Betty has 0 points.",
+      "Phase is ActionPhase",
+      "Player can pass",
+      "Available action Meeple for SmallFollower",
+      "Meeple SmallFollower options: {City,S,[-2,0]}; {Field,NR.EL,[-2,0]}; {Field,NL.ER.WL.WR,[-2,0]}",
+      "Available action ReturnMeeple for FESTIVAL",
+      "ReturnMeeple FESTIVAL options: {0.small.1,Road,WE,[-1,0]}",
+      "Undo is allowed"
+    ]
+  }
+}
