@@ -78,6 +78,22 @@ class PhaseAssert {
   }
 }
 
+// -------------------- Bazaar No Auction Assert --------------------
+class BazaarNoAuctionAssert {
+  constructor(state) {
+    this.REGEXP = /Bazaar noAuction: (\w+)/i
+    this.state = state
+  }
+
+  verify(assertion) {
+    const m = this.REGEXP.exec(assertion)
+    if (m) {
+      const value = (m[1] === 'true' ? true : false)
+	  return { result: this.state.action.items[0].noAuction === value }
+	}
+  }
+}
+
 // -------------------- Available Action Assert --------------------
 class AvailableActionAssert {
   constructor(state) {
@@ -99,7 +115,13 @@ class AvailableActionAssert {
     if (forId) {
       // Try to match 'tileId', 'token', or 'meeple' properties
       const match = items.find(
-        a => a.tileId === forId || a.token === forId || a.meeple === forId
+        a => (actionType === 'TilePlacement' && a.tileId === forId)
+		 || 
+		 	((actionType === 'TowerPiece' || actionType === 'Tunnel') && a.token === forId)
+		 ||
+		 	(actionType === 'Meeple' && a.meeple === forId)
+		 ||
+		 	(actionType === 'ReturnMeeple' && a.source === forId)
       )
       return { result: !!match }
     }
@@ -393,6 +415,67 @@ class MeeplePlacementOptionsAssert {
   }
 }
 
+// -------------------- ReturnMeeple Options --------------------
+class ReturnMeepleOptionsAssert {
+  constructor(state) {
+    this.state = state
+    this.REGEXP = /^ReturnMeeple (\w+) options: (.*)$/
+  }
+
+  optionsEqual(a, b) {
+    return (
+      a.meepleId === b.meepleId &&
+      a.featurePointer.feature === b.featurePointer.feature &&
+      a.featurePointer.location === b.featurePointer.location &&
+      a.featurePointer.position.length === b.featurePointer.position.length &&
+      a.featurePointer.position.every((v, i) => v === b.featurePointer.position[i])
+    )
+  }
+
+  arraysEqualUnordered(a, b) {
+    if (a.length !== b.length) return false
+    const used = new Array(b.length).fill(false)
+    for (const optionA of a) {
+      let found = false
+      for (let i = 0; i < b.length; i++) {
+        if (!used[i] && this.optionsEqual(optionA, b[i])) {
+          used[i] = true
+          found = true
+          break
+        }
+      }
+      if (!found) return false
+    }
+    return true
+  }
+
+  verify(assertion) {
+    const m = this.REGEXP.exec(assertion)
+    if (!m) return
+
+    const source = m[1]
+    const optionsStr = m[2]
+
+    const optionRegex = /\{([^,]+),([^,]+),([^,]+),\[\s*([^\]]*?)\s*\]\}/g
+    const expectedOptions = []
+
+    for (const match of optionsStr.matchAll(optionRegex)) {
+      expectedOptions.push({
+		meepleId: match[1].trim(),
+		featurePointer: {
+          feature: match[2].trim(),
+          location: match[3].trim(),
+          position: match[4].split(',').map(v => Number(v.trim()))
+		}
+      })
+    }
+    const actual = this.state.action.items.find(item => item.type === 'ReturnMeeple' && item.source === source)
+    if (!actual) return { result: false }
+
+    return { result: this.arraysEqualUnordered(expectedOptions, actual.options) }
+  }
+}
+
 // -------------------- Token Size Assert --------------------
 class TokenSizeAssert {
   constructor(state) {
@@ -407,9 +490,9 @@ class TokenSizeAssert {
       const value = parseInt(m[4])
 	  switch(m[3]) {
 		case 'size':
-          return { result: player.tokens[m[2]]?.size === value }
+          return { result: ( player.tokens[m[2]]?.size ?? 0 ) === value }
 		case 'count':
-          return { result: player.tokens[m[2]]?.count === value }
+          return { result: ( player.tokens[m[2]]?.count ?? 0 ) === value }
 		default:
           return { result: false }
 	  }
@@ -564,12 +647,14 @@ export function verifyScenario(state, { description, assertions }) {
     new FeatureScoredAssert(state),
     new PassAssert(state),
     new PhaseAssert(state),
+	new BazaarNoAuctionAssert(state),
     new AvailableActionAssert(state),
     new TilePlacementOptionsAssert(state),
     new UndoAssert(state),
     new TunnelTokenPlacementOptionsAssert(state),
     new FerriesPlacementOptionsAssert(state),
     new MeeplePlacementOptionsAssert(state),
+	new ReturnMeepleOptionsAssert(state),
     new TokenSizeAssert(state),
     new TowerPiecePlacementOptionsAssert(state),
     new CaptureFollowerOptionsAssert(state)

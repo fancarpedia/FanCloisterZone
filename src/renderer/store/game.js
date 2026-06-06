@@ -487,6 +487,11 @@ export const actions = {
 	  	      if (p.tokens.GOLD) {
 			    content.test.assertions.push(`${playerNameBySlot[p.slot]} has GOLD token with count ${p.tokens.GOLD.count}.`)
 			  }
+		      if (p.tokens.TUNNEL_A || p.tokens.TUNNEL_B || p.tokens.TUNNEL_C) {
+		        content.test.assertions.push(`${playerNameBySlot[p.slot]} has TUNNEL_A token with count ${p.tokens.TUNNEL_A?.count ?? 0}.`)
+			    content.test.assertions.push(`${playerNameBySlot[p.slot]} has TUNNEL_B token with count ${p.tokens.TUNNEL_B?.count ?? 0}.`)
+			    content.test.assertions.push(`${playerNameBySlot[p.slot]} has TUNNEL_C token with count ${p.tokens.TUNNEL_C?.count ?? 0}.`)
+			  }
 			}
           }
 		  let gamePhase = gameState.phase
@@ -499,6 +504,10 @@ export const actions = {
             for (const i of gameState.action.items) {
               let options = []
               switch(i.type) {
+				case 'BazaarSelectTile':
+				  content.test.assertions.push(`Available action ${i.type}`)
+				  content.test.assertions.push(`Bazaar noAuction: ${i.noAuction}`)
+				  break;
                 case 'CaptureFollower':
           	  	  content.test.assertions.push(`Available action ${i.type}`)
           	  	  for (const o of i.options) {
@@ -520,6 +529,13 @@ export const actions = {
           	  	  }
 		          content.test.assertions.push(`Meeple ${i.meeple} options: ${options.join('; ')}`)
           	  	  break;
+				case 'ReturnMeeple':
+			      content.test.assertions.push(`Available action ${i.type} for ${i.source}`)
+				  for (const o of i.options) {
+					options.push(['{',[o.meepleId,o.featurePointer.feature,o.featurePointer.location,['[',o.featurePointer.position.join(','),']'].join('')].join(','),'}'].join(''))
+			      }
+				  content.test.assertions.push(`ReturnMeeple ${i.source} options: ${options.join('; ')}`)
+			      break;
                 case 'TilePlacement':
           	  	  content.test.assertions.push(`Available action ${i.type} for ${i.tileId}`)
           	      for (const o of i.options) {
