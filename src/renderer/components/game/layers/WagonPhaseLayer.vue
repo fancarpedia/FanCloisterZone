@@ -40,8 +40,8 @@ export default {
         // const feature = this.$store.state.game.features.find(({ type, places }) => {
         //   return type !== 'Farm' && !!places.find(p => p[0] === position[0] && p[1] === position[1] && p[2] === location)
         // })
-        // TODO INSTEAD polygin render lines, XOR rectangle sides to get perimeter only
-        return '-20,-20, 1020,-20, 1020,1020, -20,1020'
+        // TODO INSTEAD polygon render lines, XOR rectangle sides to get perimeter only
+        return '-20,-20, 920,-20, 920,920, -20,920'
       } else {
         return '-1020,-1020 2020,-1020, 2020,2020 -1020,2020'
       }
