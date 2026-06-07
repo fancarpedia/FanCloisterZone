@@ -151,7 +151,10 @@
 
       <template v-if="stats.points.ringmaster.some(p => p)">
         <div class="header ringmaster" :title="$t('game.feature.ringmaster')">
-          <Meeple type="Ringmaster" />
+          <Meeple
+            type="Ringmaster"
+          	class="color color-7"
+          />
         </div>
         <div v-for="(val, idx) in stats.points.ringmaster" :key="'ringmaster-'+idx" class="ringmaster value">
           {{ val }}
@@ -221,7 +224,10 @@
 
       <template v-if="stats.points.obelisk.some(p => p)">
         <div class="header obelisk" :title="$t('game.element.obelisk')">
-          <Meeple type="Obelisk" />
+          <Meeple
+            type="Obelisk"
+          	class="color color-7"
+          />
         </div>
         <div v-for="(val, idx) in stats.points.obelisk" :key="'obelisk-'+idx" class="obelisk value">
           {{ val }}
@@ -230,7 +236,10 @@
 
       <template v-if="stats.points.windmill.some(p => p)">
         <div class="header windmill" :title="$t('game.element.windmill')">
-          <Meeple type="Windmill" />
+          <Meeple
+            type="Windmill"
+          	class="color color-7"
+          />
         </div>
         <div v-for="(val, idx) in stats.points.windmill" :key="'windmill-'+idx" class="windmill value">
           {{ val }}
@@ -239,7 +248,10 @@
 
       <template v-if="stats.points['decinsky-sneznik'].some(p => p)">
         <div class="header decinsky-sneznik" :title="$t('game.element.decinsky-sneznik')">
-          <Meeple type="Decinsky-Sneznik" />
+          <Meeple
+            type="Decinsky-Sneznik"
+          	class="color color-7"
+          />
         </div>
         <div v-for="(val, idx) in stats.points['decinsky-sneznik']" :key="'decinsky-sneznik-'+idx" class="decinky-sneznik value">
           {{ val }}
