@@ -1,0 +1,246 @@
+{
+  "appVersion": "6.2.0-beta.4",
+  "gameId": "1",
+  "name": "",
+  "initialRandom": 0.7548898462496259,
+  "created": "2026-06-10T20:20:06.875Z",
+  "clock": 133282,
+  "setup": {
+    "options": {},
+    "sets": {
+      "basic:2": 1,
+      "bridges-castles-and-bazaars:2": 1,
+      "princess-and-dragon:2": 1
+    },
+    "elements": {
+      "small-follower": 7,
+      "farmers": true,
+      "bridge": 1,
+      "castle": 1,
+      "bazaar": true,
+      "dragon": 1,
+      "fairy": 1,
+      "princess": true,
+      "portal": true,
+      "phantom": 1,
+      "abbot": 1,
+      "garden": true
+    },
+    "rules": {},
+    "timer": null,
+    "start": [
+      {
+        "tile": "BA/RCr",
+        "x": 0,
+        "y": 0,
+        "rotation": 0
+      }
+    ],
+    "ai": false
+  },
+  "players": [
+    {
+      "name": "Betty",
+      "slot": 2,
+      "ai": false
+    },
+    {
+      "name": "John",
+      "slot": 1,
+      "ai": false
+    },
+    {
+      "name": "Ariel",
+      "slot": 0,
+      "ai": false
+    }
+  ],
+  "chat": [],
+  "replay": [
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "BA/C",
+        "rotation": "R180",
+        "position": [
+          0,
+          -1
+        ]
+      },
+      "player": 0,
+      "clock": 1552
+    },
+    {
+      "type": "DEPLOY_MEEPLE",
+      "payload": {
+        "pointer": {
+          "position": [
+            0,
+            -1
+          ],
+          "location": "S",
+          "feature": "City"
+        },
+        "meepleId": "0.small.1"
+      },
+      "player": 0,
+      "clock": 2064
+    },
+    {
+      "type": "PASS",
+      "payload": {},
+      "player": 0,
+      "clock": 2761
+    },
+    {
+      "type": "PLACE_TOKEN",
+      "payload": {
+        "token": "CASTLE",
+        "pointer": {
+          "position": [
+            0,
+            -1
+          ],
+          "location": "S",
+          "feature": "City"
+        }
+      },
+      "player": 0,
+      "clock": 4249
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.875504078093114
+      },
+      "player": 0,
+      "clock": 5120
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "BB/CFR!G",
+        "rotation": "R180",
+        "position": [
+          1,
+          0
+        ]
+      },
+      "player": 1,
+      "clock": 6880
+    },
+    {
+      "type": "DEPLOY_MEEPLE",
+      "payload": {
+        "pointer": {
+          "position": [
+            1,
+            0
+          ],
+          "location": "W",
+          "feature": "Road"
+        },
+        "meepleId": "1.small.1"
+      },
+      "player": 1,
+      "clock": 9752
+    },
+    {
+      "type": "PASS",
+      "payload": {},
+      "player": 1,
+      "clock": 13041
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.41134229683090306
+      },
+      "player": 1,
+      "clock": 13046
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "BA/CRRR",
+        "rotation": "R0",
+        "position": [
+          -1,
+          0
+        ]
+      },
+      "player": 2,
+      "clock": 15040
+    },
+    {
+      "type": "DEPLOY_MEEPLE",
+      "payload": {
+        "pointer": {
+          "position": [
+            -1,
+            0
+          ],
+          "location": "N",
+          "feature": "City"
+        },
+        "meepleId": "2.small.1"
+      },
+      "player": 2,
+      "clock": 18793
+    },
+    {
+      "type": "PASS",
+      "payload": {},
+      "player": 2,
+      "clock": 20921
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.5364730359192096
+      },
+      "player": 2,
+      "clock": 20925
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "DG/CcRr.g",
+        "rotation": "R0",
+        "position": [
+          2,
+          0
+        ]
+      },
+      "player": 0,
+      "clock": 23169
+    }
+  ],
+  "gameAnnotations": {
+    "drawOrder": [
+      "BA/C",
+      "BB/CFR!G",
+      "BA/CRRR",
+      "DG/CcRr.g"
+    ]
+  },
+  "test": {
+    "description": "Magic Portal Not Available Empty Castle",
+    "assertions": [
+      "John scored road for 3 points.",
+      "Betty scored castle for 3 points.",
+      "Betty has 3 points.",
+      "John has 3 points.",
+      "Ariel has 0 points.",
+      "Phase is ActionPhase",
+      "Player can pass",
+      "Available action Meeple for SmallFollower",
+      "Meeple SmallFollower options: {Field,WL,[1,0]}; {Field,SR.WL,[-1,0]}; {Field,NL.NR.WR,[1,0]}; {Field,EL.SR,[2,0]}; {Field,EL.WR,[0,0]}; {Field,EL.WR,[-1,0]}; {City,NW,[2,0]}; {City,E,[1,0]}; {Field,NL.NR.EL.ER.WL.WR,[0,-1]}; {Field,SL.SR,[1,0]}; {Road,S,[-1,0]}; {Road,SE,[2,0]}; {Road,W,[-1,0]}; {Field,ER.SL,[2,0]}; {Field,ER.SL,[-1,0]}; {Field,ER.SL.SR.WL,[0,0]}",
+      "Available action Meeple for Abbot",
+      "Meeple Abbot options: {Garden,I,[1,0]}",
+      "Available action Meeple for Phantom",
+      "Meeple Phantom options: {Field,WL,[1,0]}; {Field,SR.WL,[-1,0]}; {Field,NL.NR.WR,[1,0]}; {Field,EL.SR,[2,0]}; {Field,EL.WR,[0,0]}; {Field,EL.WR,[-1,0]}; {City,NW,[2,0]}; {City,E,[1,0]}; {Field,NL.NR.EL.ER.WL.WR,[0,-1]}; {Field,SL.SR,[1,0]}; {Road,S,[-1,0]}; {Road,SE,[2,0]}; {Road,W,[-1,0]}; {Field,ER.SL,[2,0]}; {Field,ER.SL,[-1,0]}; {Field,ER.SL.SR.WL,[0,0]}",
+      "Undo is allowed"
+    ]
+  }
+}

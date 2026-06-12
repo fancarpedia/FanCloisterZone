@@ -1,0 +1,191 @@
+{
+  "appVersion": "6.2.0-beta.4",
+  "gameId": "1",
+  "name": "",
+  "initialRandom": 0.856695355894409,
+  "created": "2026-06-10T20:16:23.813Z",
+  "clock": 74018,
+  "setup": {
+    "options": {},
+    "sets": {
+      "basic:1": 1,
+      "princess-and-dragon:1": 1,
+      "under-the-big-top-c1": 1
+    },
+    "elements": {
+      "small-follower": 7,
+      "farmers": true,
+      "dragon": 1,
+      "fairy": 1,
+      "princess": true,
+      "portal": true,
+      "ringmaster": 1,
+      "big-top": 1,
+      "acrobats": true
+    },
+    "rules": {},
+    "timer": null,
+    "start": [
+      {
+        "tile": "BA/RCr",
+        "x": 0,
+        "y": 0,
+        "rotation": 0
+      }
+    ],
+    "ai": false,
+    "addons": {}
+  },
+  "players": [
+    {
+      "name": "Betty",
+      "slot": 2,
+      "ai": false
+    },
+    {
+      "name": "John",
+      "slot": 1,
+      "ai": false
+    },
+    {
+      "name": "Ariel",
+      "slot": 0,
+      "ai": false
+    }
+  ],
+  "chat": [],
+  "replay": [
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "under-the-big-top-c1/rfrf.ac.1",
+        "rotation": "R90",
+        "position": [
+          1,
+          0
+        ]
+      },
+      "player": 0,
+      "clock": 2357
+    },
+    {
+      "type": "DEPLOY_MEEPLE",
+      "payload": {
+        "pointer": {
+          "position": [
+            1,
+            0
+          ],
+          "location": "I",
+          "feature": "Acrobats"
+        },
+        "meepleId": "0.small.1"
+      },
+      "player": 0,
+      "clock": 4629
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.4057536399184414
+      },
+      "player": 0,
+      "clock": 5445
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "BA/RRR",
+        "rotation": "R180",
+        "position": [
+          1,
+          -1
+        ]
+      },
+      "player": 1,
+      "clock": 8269
+    },
+    {
+      "type": "DEPLOY_MEEPLE",
+      "payload": {
+        "pointer": {
+          "position": [
+            1,
+            0
+          ],
+          "location": "I",
+          "feature": "Acrobats"
+        },
+        "meepleId": "1.small.1"
+      },
+      "player": 1,
+      "clock": 9261
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.388852104087239
+      },
+      "player": 1,
+      "clock": 10157
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "DG/RRR.g",
+        "rotation": "R0",
+        "position": [
+          -1,
+          0
+        ]
+      },
+      "player": 2,
+      "clock": 11445
+    },
+    {
+      "type": "DEPLOY_MEEPLE",
+      "payload": {
+        "pointer": {
+          "position": [
+            1,
+            0
+          ],
+          "location": "I",
+          "feature": "Acrobats"
+        },
+        "meepleId": "2.small.1"
+      },
+      "player": 2,
+      "clock": 13261
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.6331649600827851
+      },
+      "player": 2,
+      "clock": 16469
+    }
+  ],
+  "gameAnnotations": {
+    "drawOrder": [
+      "ubtc1/rfrf.ac.1",
+      "BA/RRR",
+      "DG/RRR.g"
+    ],
+    "endTurn": 3
+  },
+  "test": {
+    "description": "Magic Portal To Acrobats Space",
+    "assertions": [
+      "Betty scored acrobats for 5 points.",
+      "John scored acrobats for 5 points.",
+      "Ariel scored acrobats for 5 points.",
+      "Betty has 5 points.",
+      "John has 5 points.",
+      "Ariel has 5 points.",
+      "Phase is GameOverPhase",
+      "Undo is not allowed"
+    ]
+  }
+}

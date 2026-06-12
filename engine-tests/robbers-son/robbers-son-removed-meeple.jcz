@@ -1,0 +1,209 @@
+{
+  "appVersion": "6.2.0-beta.4",
+  "gameId": "1",
+  "name": "",
+  "initialRandom": 0.3855615431466892,
+  "created": "2026-06-10T20:26:19.141Z",
+  "clock": 66482,
+  "setup": {
+    "options": {},
+    "sets": {
+      "basic:1": 1,
+      "robbers-son": 1
+    },
+    "elements": {
+      "small-follower": 7,
+      "farmers": true,
+      "robbers-son": true
+    },
+    "rules": {},
+    "timer": null,
+    "start": [
+      {
+        "tile": "BA/RCr",
+        "x": 0,
+        "y": 0,
+        "rotation": 0
+      }
+    ],
+    "ai": false,
+    "addons": {
+      "robbers-son": 2
+    }
+  },
+  "players": [
+    {
+      "name": "Betty",
+      "slot": 2,
+      "ai": false
+    },
+    {
+      "name": "John",
+      "slot": 1,
+      "ai": false
+    }
+  ],
+  "chat": [],
+  "replay": [
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "BA/CccR",
+        "rotation": "R270",
+        "position": [
+          -1,
+          0
+        ]
+      },
+      "player": 0,
+      "clock": 1600
+    },
+    {
+      "type": "DEPLOY_MEEPLE",
+      "payload": {
+        "pointer": {
+          "position": [
+            -1,
+            0
+          ],
+          "location": "E",
+          "feature": "Road"
+        },
+        "meepleId": "0.small.1"
+      },
+      "player": 0,
+      "clock": 2056
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.4312729761421148
+      },
+      "player": 0,
+      "clock": 2784
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "BA/LR",
+        "rotation": "R270",
+        "position": [
+          0,
+          1
+        ]
+      },
+      "player": 1,
+      "clock": 4711
+    },
+    {
+      "type": "DEPLOY_MEEPLE",
+      "payload": {
+        "pointer": {
+          "position": [
+            0,
+            1
+          ],
+          "location": "E",
+          "feature": "Road"
+        },
+        "meepleId": "1.small.1"
+      },
+      "player": 1,
+      "clock": 5480
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.8773565200565869
+      },
+      "player": 1,
+      "clock": 6744
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "BA/CRr",
+        "rotation": "R90",
+        "position": [
+          1,
+          0
+        ]
+      },
+      "player": 0,
+      "clock": 8824
+    },
+    {
+      "type": "PASS",
+      "payload": {},
+      "player": 0,
+      "clock": 10562
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.7662021270227648
+      },
+      "player": 0,
+      "clock": 10567
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "robbers-son/crrr",
+        "rotation": "R90",
+        "position": [
+          1,
+          1
+        ]
+      },
+      "player": 1,
+      "clock": 12233
+    },
+    {
+      "type": "RETURN_MEEPLE",
+      "payload": {
+        "source": "ROBBERS_SON",
+        "pointer": {
+          "featurePointer": {
+            "position": [
+              -1,
+              0
+            ],
+            "location": "E",
+            "feature": "Road"
+          },
+          "meepleId": "0.small.1"
+        }
+      },
+      "player": 1,
+      "clock": 17920
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.5863442060745587
+      },
+      "player": 1,
+      "clock": 19561
+    }
+  ],
+  "gameAnnotations": {
+    "drawOrder": [
+      "BA/CccR",
+      "BA/LR",
+      "BA/CRr",
+      "robbers-son/crrr"
+    ],
+    "endTurn": 4
+  },
+  "test": {
+    "description": "Robbers Son Removed Meeple",
+    "assertions": [
+      "John scored road for 5 points.",
+      "Betty has 0 points.",
+      "John has 5 points.",
+      "Phase is GameOverPhase",
+      "Undo is not allowed"
+    ]
+  }
+}

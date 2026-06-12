@@ -1,0 +1,268 @@
+{
+  "appVersion": "6.2.0-beta.4",
+  "gameId": "1",
+  "name": "",
+  "initialRandom": 0.25148443202838133,
+  "created": "2026-06-11T20:04:27.128Z",
+  "clock": 193560,
+  "setup": {
+    "options": {},
+    "sets": {
+      "basic:1": 1,
+      "bridges-castles-and-bazaars:1": 1
+    },
+    "elements": {
+      "small-follower": 7,
+      "farmers": true,
+      "bridge": 1,
+      "castle": 1,
+      "bazaar": true
+    },
+    "rules": {},
+    "timer": null,
+    "start": [
+      {
+        "tile": "BA/RCr",
+        "x": 0,
+        "y": 0,
+        "rotation": 0
+      }
+    ],
+    "ai": false
+  },
+  "players": [
+    {
+      "name": "Betty",
+      "slot": 2,
+      "ai": false
+    },
+    {
+      "name": "John",
+      "slot": 1,
+      "ai": false
+    }
+  ],
+  "chat": [],
+  "replay": [
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "BA/RFr",
+        "rotation": "R90",
+        "position": [
+          1,
+          0
+        ]
+      },
+      "player": 0,
+      "clock": 4048
+    },
+    {
+      "type": "DEPLOY_MEEPLE",
+      "payload": {
+        "pointer": {
+          "position": [
+            1,
+            0
+          ],
+          "location": "WE",
+          "feature": "Road"
+        },
+        "meepleId": "0.small.1"
+      },
+      "player": 0,
+      "clock": 4951
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.687053788141275
+      },
+      "player": 0,
+      "clock": 5792
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "BA/Rr",
+        "rotation": "R90",
+        "position": [
+          2,
+          0
+        ]
+      },
+      "player": 1,
+      "clock": 6928
+    },
+    {
+      "type": "PASS",
+      "payload": {},
+      "player": 1,
+      "clock": 8136
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.31816264937678773
+      },
+      "player": 1,
+      "clock": 8140
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "BA/Rr",
+        "rotation": "R0",
+        "position": [
+          2,
+          -1
+        ]
+      },
+      "player": 0,
+      "clock": 9560
+    },
+    {
+      "type": "PASS",
+      "payload": {},
+      "player": 0,
+      "clock": 10369
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.887842669079062
+      },
+      "player": 0,
+      "clock": 10372
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "BA/Rr",
+        "rotation": "R270",
+        "position": [
+          1,
+          -1
+        ]
+      },
+      "player": 1,
+      "clock": 11032
+    },
+    {
+      "type": "PASS",
+      "payload": {},
+      "player": 1,
+      "clock": 11728
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.4129476377493533
+      },
+      "player": 1,
+      "clock": 11730
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "BA/RRRR",
+        "rotation": "R0",
+        "position": [
+          1,
+          1
+        ]
+      },
+      "player": 0,
+      "clock": 12488
+    },
+    {
+      "type": "PASS",
+      "payload": {},
+      "player": 0,
+      "clock": 13136
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.17962535052526807
+      },
+      "player": 0,
+      "clock": 13139
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "BA/LR",
+        "rotation": "R270",
+        "position": [
+          -1,
+          0
+        ]
+      },
+      "player": 1,
+      "clock": 15537
+    },
+    {
+      "type": "PLACE_TOKEN",
+      "payload": {
+        "token": "BRIDGE",
+        "pointer": {
+          "position": [
+            -1,
+            0
+          ],
+          "location": "NS",
+          "feature": "Road"
+        }
+      },
+      "player": 1,
+      "clock": 21208
+    },
+    {
+      "type": "DEPLOY_MEEPLE",
+      "payload": {
+        "pointer": {
+          "position": [
+            -1,
+            0
+          ],
+          "location": "NS",
+          "feature": "Road"
+        },
+        "meepleId": "1.small.1"
+      },
+      "player": 1,
+      "clock": 22808
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.36296476081476836
+      },
+      "player": 1,
+      "clock": 26008
+    }
+  ],
+  "gameAnnotations": {
+    "drawOrder": [
+      "BA/RFr",
+      "BA/Rr",
+      "BA/Rr",
+      "BA/Rr",
+      "BA/RRRR",
+      "BA/LR"
+    ],
+    "endTurn": 6
+  },
+  "test": {
+    "description": "Bridge Over Own Road",
+    "assertions": [
+      "Betty scored road for 7 points.",
+      "John scored road for 1 point.",
+      "Betty has 7 points.",
+      "John has 1 point.",
+      "Phase is GameOverPhase",
+      "Undo is not allowed"
+    ]
+  }
+}

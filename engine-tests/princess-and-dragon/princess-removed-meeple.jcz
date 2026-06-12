@@ -1,0 +1,223 @@
+{
+  "appVersion": "6.2.0-beta.4",
+  "gameId": "1",
+  "name": "",
+  "initialRandom": 0.14819922602357138,
+  "created": "2026-06-10T20:17:31.345Z",
+  "clock": 115163,
+  "setup": {
+    "options": {},
+    "sets": {
+      "basic:1": 1,
+      "princess-and-dragon:1": 1
+    },
+    "elements": {
+      "small-follower": 7,
+      "farmers": true,
+      "dragon": 1,
+      "fairy": 1,
+      "princess": true,
+      "portal": true
+    },
+    "rules": {},
+    "timer": null,
+    "start": [
+      {
+        "tile": "BA/RCr",
+        "x": 0,
+        "y": 0,
+        "rotation": 0
+      }
+    ],
+    "ai": false
+  },
+  "players": [
+    {
+      "name": "Ariel",
+      "slot": 0,
+      "ai": false
+    },
+    {
+      "name": "John",
+      "slot": 1,
+      "ai": false
+    }
+  ],
+  "chat": [],
+  "replay": [
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "DG/Cc!.p",
+        "rotation": "R180",
+        "position": [
+          0,
+          -1
+        ]
+      },
+      "player": 0,
+      "clock": 1870
+    },
+    {
+      "type": "DEPLOY_MEEPLE",
+      "payload": {
+        "pointer": {
+          "position": [
+            0,
+            -1
+          ],
+          "location": "SE",
+          "feature": "City"
+        },
+        "meepleId": "0.small.1"
+      },
+      "player": 0,
+      "clock": 2967
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.3804360473194688
+      },
+      "player": 0,
+      "clock": 4326
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "BA/CcRr",
+        "rotation": "R90",
+        "position": [
+          1,
+          0
+        ]
+      },
+      "player": 1,
+      "clock": 5582
+    },
+    {
+      "type": "DEPLOY_MEEPLE",
+      "payload": {
+        "pointer": {
+          "position": [
+            1,
+            0
+          ],
+          "location": "NE",
+          "feature": "City"
+        },
+        "meepleId": "1.small.1"
+      },
+      "player": 1,
+      "clock": 6662
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.22296446445434603
+      },
+      "player": 1,
+      "clock": 7366
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "BA/CccR",
+        "rotation": "R180",
+        "position": [
+          1,
+          -1
+        ]
+      },
+      "player": 0,
+      "clock": 9630
+    },
+    {
+      "type": "MOVE_NEUTRAL_FIGURE",
+      "payload": {
+        "figureId": "fairy.1",
+        "to": {
+          "featurePointer": {
+            "position": [
+              0,
+              -1
+            ],
+            "location": "SE",
+            "feature": "City"
+          },
+          "meepleId": "0.small.1"
+        }
+      },
+      "player": 0,
+      "clock": 18254
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.06887844662261866
+      },
+      "player": 0,
+      "clock": 19807
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "DG/Cc.p",
+        "rotation": "R270",
+        "position": [
+          2,
+          -1
+        ]
+      },
+      "player": 1,
+      "clock": 37968
+    },
+    {
+      "type": "RETURN_MEEPLE",
+      "payload": {
+        "source": "PRINCESS",
+        "pointer": {
+          "featurePointer": {
+            "position": [
+              1,
+              0
+            ],
+            "location": "NE",
+            "feature": "City"
+          },
+          "meepleId": "1.small.1"
+        }
+      },
+      "player": 1,
+      "clock": 43368
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.7989544739219097
+      },
+      "player": 1,
+      "clock": 45025
+    }
+  ],
+  "gameAnnotations": {
+    "drawOrder": [
+      "DG/Cc!.p",
+      "BA/CcRr",
+      "BA/CccR",
+      "DG/Cc.p"
+    ],
+    "endTurn": 4
+  },
+  "test": {
+    "description": "Princess Removed Meeple",
+    "assertions": [
+      "Ariel scored city for 5 points.",
+      "Ariel scored fairy for 3 points.",
+      "Ariel has 8 points.",
+      "John has 0 points.",
+      "Phase is GameOverPhase",
+      "Undo is not allowed"
+    ]
+  }
+}

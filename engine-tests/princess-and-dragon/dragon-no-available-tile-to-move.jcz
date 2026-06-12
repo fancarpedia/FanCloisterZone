@@ -1,0 +1,252 @@
+{
+  "appVersion": "6.2.0-beta.4",
+  "gameId": "1",
+  "name": "",
+  "initialRandom": 0.8042363672815607,
+  "created": "2026-06-10T20:29:58.240Z",
+  "clock": 217872,
+  "setup": {
+    "options": {},
+    "sets": {
+      "basic:2": 1,
+      "princess-and-dragon:2": 1
+    },
+    "elements": {
+      "small-follower": 7,
+      "farmers": true,
+      "dragon": 1,
+      "fairy": 1,
+      "princess": true,
+      "portal": true,
+      "abbot": 1,
+      "garden": true,
+      "phantom": 1
+    },
+    "rules": {},
+    "timer": null,
+    "start": [
+      {
+        "tile": "BA/RCr",
+        "x": 0,
+        "y": 0,
+        "rotation": 0
+      }
+    ],
+    "ai": false
+  },
+  "players": [
+    {
+      "name": "Betty",
+      "slot": 2,
+      "ai": false
+    },
+    {
+      "name": "John",
+      "slot": 1,
+      "ai": false
+    }
+  ],
+  "chat": [],
+  "replay": [
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "DG/R.v",
+        "rotation": "R90",
+        "position": [
+          0,
+          1
+        ]
+      },
+      "player": 0,
+      "clock": 4711
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.016925260275138188
+      },
+      "player": 0,
+      "clock": 5958
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "BA/LR",
+        "rotation": "R270",
+        "position": [
+          -1,
+          1
+        ]
+      },
+      "player": 1,
+      "clock": 7231
+    },
+    {
+      "type": "DEPLOY_MEEPLE",
+      "payload": {
+        "pointer": {
+          "position": [
+            -1,
+            1
+          ],
+          "location": "I",
+          "feature": "Monastery"
+        },
+        "meepleId": "1.abbot.1"
+      },
+      "player": 1,
+      "clock": 9119
+    },
+    {
+      "type": "DEPLOY_MEEPLE",
+      "payload": {
+        "pointer": {
+          "position": [
+            -1,
+            1
+          ],
+          "location": "NL.NR.EL.ER.SL.SR.WL.WR",
+          "feature": "Field"
+        },
+        "meepleId": "1.phantom.1"
+      },
+      "player": 1,
+      "clock": 13447
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.1790646185983218
+      },
+      "player": 1,
+      "clock": 14527
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "BA/RFr",
+        "rotation": "R0",
+        "position": [
+          -1,
+          0
+        ]
+      },
+      "player": 0,
+      "clock": 16143
+    },
+    {
+      "type": "DEPLOY_MEEPLE",
+      "payload": {
+        "pointer": {
+          "position": [
+            -1,
+            0
+          ],
+          "location": "WE",
+          "feature": "Road"
+        },
+        "meepleId": "0.small.1"
+      },
+      "player": 0,
+      "clock": 19487
+    },
+    {
+      "type": "PASS",
+      "payload": {},
+      "player": 0,
+      "clock": 20512
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.2921947703276364
+      },
+      "player": 0,
+      "clock": 20515
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "DG/LRRR.d",
+        "rotation": "R270",
+        "position": [
+          1,
+          1
+        ]
+      },
+      "player": 1,
+      "clock": 23224
+    },
+    {
+      "type": "DEPLOY_MEEPLE",
+      "payload": {
+        "pointer": {
+          "position": [
+            1,
+            1
+          ],
+          "location": "I",
+          "feature": "Monastery"
+        },
+        "meepleId": "1.small.1"
+      },
+      "player": 1,
+      "clock": 28775
+    },
+    {
+      "type": "MOVE_NEUTRAL_FIGURE",
+      "payload": {
+        "figureId": "dragon.1",
+        "to": [
+          -1,
+          1
+        ]
+      },
+      "player": 1,
+      "clock": 32655
+    },
+    {
+      "type": "MOVE_NEUTRAL_FIGURE",
+      "payload": {
+        "figureId": "dragon.1",
+        "to": [
+          -1,
+          0
+        ]
+      },
+      "player": 0,
+      "clock": 33815
+    },
+    {
+      "type": "MOVE_NEUTRAL_FIGURE",
+      "payload": {
+        "figureId": "dragon.1",
+        "to": [
+          0,
+          0
+        ]
+      },
+      "player": 1,
+      "clock": 34679
+    }
+  ],
+  "gameAnnotations": {
+    "drawOrder": [
+      "DG/R.v",
+      "BA/LR",
+      "BA/RFr",
+      "DG/LRRR.d"
+    ]
+  },
+  "test": {
+    "description": "Dragon No Available Tile To Move",
+    "assertions": [
+      "Betty has 0 points.",
+      "John has 0 points.",
+      "Phase is CommitActionPhase",
+      "Player can't pass",
+      "Undo is not allowed"
+    ]
+  }
+}

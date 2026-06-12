@@ -1,0 +1,350 @@
+{
+  "appVersion": "6.2.0-beta.4",
+  "gameId": "1",
+  "name": "",
+  "initialRandom": 0.2307762700772915,
+  "created": "2026-06-10T20:34:29.174Z",
+  "clock": 182899,
+  "setup": {
+    "options": {},
+    "sets": {
+      "basic:2": 1,
+      "under-the-big-top-c1": 1,
+      "bridges-castles-and-bazaars:2": 1
+    },
+    "elements": {
+      "small-follower": 7,
+      "farmers": true,
+      "ringmaster": 2,
+      "big-top": 1,
+      "acrobats": true,
+      "abbot": 1,
+      "garden": true,
+      "phantom": 1,
+      "bridge": 1,
+      "castle": 1,
+      "bazaar": true
+    },
+    "rules": {},
+    "timer": null,
+    "start": [
+      {
+        "tile": "BA/RCr",
+        "x": 0,
+        "y": 0,
+        "rotation": 0
+      }
+    ],
+    "ai": false,
+    "addons": {}
+  },
+  "players": [
+    {
+      "name": "Betty",
+      "slot": 2,
+      "ai": false
+    },
+    {
+      "name": "John",
+      "slot": 1,
+      "ai": false
+    }
+  ],
+  "chat": [],
+  "replay": [
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "BA/RRR",
+        "rotation": "R0",
+        "position": [
+          1,
+          0
+        ]
+      },
+      "player": 0,
+      "clock": 1768
+    },
+    {
+      "type": "PASS",
+      "payload": {},
+      "player": 0,
+      "clock": 2697
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.974995580763875
+      },
+      "player": 0,
+      "clock": 2703
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "BA/RRR",
+        "rotation": "R0",
+        "position": [
+          2,
+          0
+        ]
+      },
+      "player": 1,
+      "clock": 3568
+    },
+    {
+      "type": "PASS",
+      "payload": {},
+      "player": 1,
+      "clock": 4185
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.7887092881825544
+      },
+      "player": 1,
+      "clock": 4187
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "ubtc1/frrr.top",
+        "rotation": "R0",
+        "position": [
+          -1,
+          0
+        ]
+      },
+      "player": 0,
+      "clock": 5320
+    },
+    {
+      "type": "PASS",
+      "payload": {},
+      "player": 0,
+      "clock": 5872
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.7327281888094495
+      },
+      "player": 0,
+      "clock": 5875
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "BA/C",
+        "rotation": "R180",
+        "position": [
+          0,
+          -1
+        ]
+      },
+      "player": 1,
+      "clock": 6889
+    },
+    {
+      "type": "DEPLOY_MEEPLE",
+      "payload": {
+        "pointer": {
+          "position": [
+            0,
+            -1
+          ],
+          "location": "S",
+          "feature": "City"
+        },
+        "meepleId": "1.small.1"
+      },
+      "player": 1,
+      "clock": 8376
+    },
+    {
+      "type": "PASS",
+      "payload": {},
+      "player": 1,
+      "clock": 9176
+    },
+    {
+      "type": "PLACE_TOKEN",
+      "payload": {
+        "token": "CASTLE",
+        "pointer": {
+          "position": [
+            0,
+            -1
+          ],
+          "location": "S",
+          "feature": "City"
+        }
+      },
+      "player": 1,
+      "clock": 9881
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.4243190574950937
+      },
+      "player": 1,
+      "clock": 10825
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "BA/C",
+        "rotation": "R270",
+        "position": [
+          0,
+          1
+        ]
+      },
+      "player": 0,
+      "clock": 13361
+    },
+    {
+      "type": "DEPLOY_MEEPLE",
+      "payload": {
+        "pointer": {
+          "position": [
+            0,
+            1
+          ],
+          "location": "W",
+          "feature": "City"
+        },
+        "meepleId": "0.ringmaster.1"
+      },
+      "player": 0,
+      "clock": 14985
+    },
+    {
+      "type": "PASS",
+      "payload": {},
+      "player": 0,
+      "clock": 15650
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.5143321362967974
+      },
+      "player": 0,
+      "clock": 15652
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "BA/RCr",
+        "rotation": "R90",
+        "position": [
+          -1,
+          1
+        ]
+      },
+      "player": 1,
+      "clock": 16665
+    },
+    {
+      "type": "PASS",
+      "payload": {},
+      "player": 1,
+      "clock": 20049
+    },
+    {
+      "type": "PLACE_TOKEN",
+      "payload": {
+        "token": "CASTLE",
+        "pointer": {
+          "position": [
+            -1,
+            1
+          ],
+          "location": "E",
+          "feature": "City"
+        }
+      },
+      "player": 0,
+      "clock": 21642
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.1273218167829604
+      },
+      "player": 0,
+      "clock": 21645
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "ubtc1/ffrf.top",
+        "rotation": "R90",
+        "position": [
+          3,
+          0
+        ]
+      },
+      "player": 0,
+      "clock": 24161
+    },
+    {
+      "type": "PLACE_TOKEN",
+      "payload": {
+        "token": "BRIDGE",
+        "pointer": {
+          "position": [
+            3,
+            0
+          ],
+          "location": "NS",
+          "feature": "Road"
+        }
+      },
+      "player": 0,
+      "clock": 28737
+    },
+    {
+      "type": "PASS",
+      "payload": {},
+      "player": 0,
+      "clock": 31122
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.09560796399272053
+      },
+      "player": 0,
+      "clock": 31126
+    }
+  ],
+  "gameAnnotations": {
+    "drawOrder": [
+      "BA/RRR",
+      "BA/RRR",
+      "ubtc1/frrr.top",
+      "BA/C",
+      "BA/C",
+      "BA/RCr",
+      "ubtc1/ffrf.top"
+    ]
+  },
+  "test": {
+    "description": "Bigtop Bonus To Castle Meeples",
+    "assertions": [
+      "John scored bigtop for 3 points.",
+      "Betty scored bigtop for 3 points.",
+      "Betty has 3 points.",
+      "John has 3 points.",
+      "Phase is TilePhase",
+      "Player can't pass",
+      "Available action TilePlacement for BB/LCFc",
+      "TilePlacement BB/LCFc options: [-2,0] - [90,270]; [4,0] - [90,270]; [-2,1] - [90,270]; [3,-1] - [0,180]; [2,1] - [0,180]; [3,1] - [0,180]; [-1,2] - [0,180]; [0,-2] - [0,180]; [2,-1] - [0,180]; [0,2] - [0,180]",
+      "Undo is not allowed"
+    ]
+  }
+}

@@ -1,10 +1,10 @@
 {
-  "appVersion": "6.2.0-beta.3",
-  "gameId": "e3dd25d028884e7199d9d74a69c6819f",
+  "appVersion": "6.2.0-beta.4",
+  "gameId": "1",
   "name": "",
-  "initialRandom": 0.8340234350895719,
-  "created": "2026-06-06T11:36:37.522Z",
-  "clock": 35348,
+  "initialRandom": 0.40968358398249705,
+  "created": "2026-06-11T19:20:08.153Z",
+  "clock": 15660,
   "setup": {
     "sets": {
       "basic:1": 1,
@@ -30,10 +30,9 @@
   },
   "players": [
     {
-      "name": "stano",
+      "name": "Betty",
       "slot": 2,
-      "ai": false,
-      "clientId": "89068bf8db7f48ed97fe1c2e879e169e"
+      "ai": false
     }
   ],
   "chat": [],
@@ -49,7 +48,7 @@
         ]
       },
       "player": 0,
-      "clock": 2183
+      "clock": 2271
     },
     {
       "type": "DEPLOY_MEEPLE",
@@ -65,15 +64,15 @@
         "meepleId": "0.small.1"
       },
       "player": 0,
-      "clock": 2807
+      "clock": 2867
     },
     {
       "type": "COMMIT",
       "payload": {
-        "random": 0.00024839248473540465
+        "random": 0.4807607500126969
       },
       "player": 0,
-      "clock": 3086
+      "clock": 3088
     },
     {
       "type": "PLACE_TILE",
@@ -86,55 +85,66 @@
         ]
       },
       "player": 0,
-      "clock": 4560
+      "clock": 4266
     },
     {
       "type": "PASS",
       "payload": {},
       "player": 0,
-      "clock": 4912
+      "clock": 4533
     },
     {
       "type": "COMMIT",
       "payload": {
-        "random": 0.7613535036702137
+        "random": 0.22739853419787948
       },
       "player": 0,
-      "clock": 4926
+      "clock": 4540
     },
     {
       "type": "PLACE_TILE",
       "payload": {
-        "tileId": "SI.CA/C",
-        "rotation": "R180",
+        "tileId": "SI.CA/CcRr",
+        "rotation": "R270",
         "position": [
           0,
           -2
         ]
       },
       "player": 0,
-      "clock": 7471
+      "clock": 6296
     },
     {
       "type": "PASS",
       "payload": {},
       "player": 0,
-      "clock": 14953
+      "clock": 6513
     },
     {
       "type": "COMMIT",
       "payload": {
-        "random": 0.31731934275718077
+        "random": 0.3148360334977276
       },
       "player": 0,
-      "clock": 14969
+      "clock": 6517
     }
   ],
   "gameAnnotations": {
     "drawOrder": [
       "BA/CFc+",
       "BA/L",
-      "SI.CA/C"
+      "SI.CA/CcRr"
+    ]
+  },
+  "test": {
+    "description": "Besieded No Escape",
+    "assertions": [
+      "Betty has 0 points.",
+      "Phase is TilePhase",
+      "Player can't pass",
+      "Available action TilePlacement for BA/Cc.1",
+      "TilePlacement BA/Cc.1 options: [-1,-2] - [90,180]; [2,-1] - [90,180]; [0,1] - [180,270]; [-1,-1] - [0,270]",
+      "Undo is not allowed"
     ]
   }
 }

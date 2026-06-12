@@ -1,0 +1,302 @@
+{
+  "appVersion": "6.2.0-beta.4",
+  "gameId": "1",
+  "name": "",
+  "initialRandom": 0.23518374533317,
+  "created": "2026-06-10T20:25:21.636Z",
+  "clock": 149118,
+  "setup": {
+    "options": {},
+    "sets": {
+      "basic:2": 1,
+      "princess-and-dragon:2": 1
+    },
+    "elements": {
+      "small-follower": 7,
+      "farmers": true,
+      "dragon": 1,
+      "fairy": 1,
+      "princess": true,
+      "portal": true,
+      "abbot": 1,
+      "garden": true,
+      "phantom": 1
+    },
+    "rules": {
+      "fairy-placement": "on-tile"
+    },
+    "timer": null,
+    "start": [
+      {
+        "tile": "BA/RCr",
+        "x": 0,
+        "y": 0,
+        "rotation": 0
+      }
+    ],
+    "ai": false
+  },
+  "players": [
+    {
+      "name": "Betty",
+      "slot": 2,
+      "ai": false
+    },
+    {
+      "name": "John",
+      "slot": 1,
+      "ai": false
+    }
+  ],
+  "chat": [],
+  "replay": [
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "BA/RFr",
+        "rotation": "R0",
+        "position": [
+          1,
+          0
+        ]
+      },
+      "player": 0,
+      "clock": 1888
+    },
+    {
+      "type": "DEPLOY_MEEPLE",
+      "payload": {
+        "pointer": {
+          "position": [
+            1,
+            0
+          ],
+          "location": "WE",
+          "feature": "Road"
+        },
+        "meepleId": "0.small.1"
+      },
+      "player": 0,
+      "clock": 2529
+    },
+    {
+      "type": "PASS",
+      "payload": {},
+      "player": 0,
+      "clock": 4560
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.9347472669711163
+      },
+      "player": 0,
+      "clock": 4564
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "DG/CRRR.p",
+        "rotation": "R0",
+        "position": [
+          -1,
+          0
+        ]
+      },
+      "player": 1,
+      "clock": 8296
+    },
+    {
+      "type": "DEPLOY_MEEPLE",
+      "payload": {
+        "pointer": {
+          "position": [
+            -1,
+            0
+          ],
+          "location": "N",
+          "feature": "City"
+        },
+        "meepleId": "1.small.1"
+      },
+      "player": 1,
+      "clock": 9937
+    },
+    {
+      "type": "PASS",
+      "payload": {},
+      "player": 1,
+      "clock": 10825
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.5772414508845265
+      },
+      "player": 1,
+      "clock": 10827
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "BA/RCr",
+        "rotation": "R0",
+        "position": [
+          -2,
+          0
+        ]
+      },
+      "player": 0,
+      "clock": 13825
+    },
+    {
+      "type": "DEPLOY_MEEPLE",
+      "payload": {
+        "pointer": {
+          "position": [
+            -2,
+            0
+          ],
+          "location": "N",
+          "feature": "City"
+        },
+        "meepleId": "0.small.2"
+      },
+      "player": 0,
+      "clock": 18377
+    },
+    {
+      "type": "PASS",
+      "payload": {},
+      "player": 0,
+      "clock": 19234
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.9448598089801066
+      },
+      "player": 0,
+      "clock": 19237
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "DG/Rr.v",
+        "rotation": "R0",
+        "position": [
+          2,
+          0
+        ]
+      },
+      "player": 1,
+      "clock": 21625
+    },
+    {
+      "type": "MOVE_NEUTRAL_FIGURE",
+      "payload": {
+        "figureId": "fairy.1",
+        "to": [
+          -1,
+          0
+        ]
+      },
+      "player": 1,
+      "clock": 22937
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.5826698499979936
+      },
+      "player": 1,
+      "clock": 25145
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "DG/CRcr.d",
+        "rotation": "R90",
+        "position": [
+          -3,
+          0
+        ]
+      },
+      "player": 0,
+      "clock": 27337
+    },
+    {
+      "type": "MOVE_NEUTRAL_FIGURE",
+      "payload": {
+        "figureId": "fairy.1",
+        "to": [
+          -2,
+          0
+        ]
+      },
+      "player": 0,
+      "clock": 45121
+    },
+    {
+      "type": "PASS",
+      "payload": {},
+      "player": 0,
+      "clock": 48003
+    },
+    {
+      "type": "MOVE_NEUTRAL_FIGURE",
+      "payload": {
+        "figureId": "dragon.1",
+        "to": [
+          1,
+          0
+        ]
+      },
+      "player": 0,
+      "clock": 49850
+    },
+    {
+      "type": "MOVE_NEUTRAL_FIGURE",
+      "payload": {
+        "figureId": "dragon.1",
+        "to": [
+          0,
+          0
+        ]
+      },
+      "player": 1,
+      "clock": 50713
+    },
+    {
+      "type": "MOVE_NEUTRAL_FIGURE",
+      "payload": {
+        "figureId": "dragon.1",
+        "to": [
+          -1,
+          0
+        ]
+      },
+      "player": 0,
+      "clock": 51578
+    }
+  ],
+  "gameAnnotations": {
+    "drawOrder": [
+      "BA/RFr",
+      "DG/CRRR.p",
+      "BA/RCr",
+      "DG/Rr.v",
+      "DG/CRcr.d"
+    ]
+  },
+  "test": {
+    "description": "Fairy Associated To Tile As Dragon Protection",
+    "assertions": [
+      "Betty has 0 points.",
+      "John has 0 points.",
+      "Phase is CommitActionPhase",
+      "Player can't pass",
+      "Undo is not allowed"
+    ]
+  }
+}
