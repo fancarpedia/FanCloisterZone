@@ -1,0 +1,1068 @@
+{
+  "appVersion": "6.2.0",
+  "gameId": "1",
+  "name": "",
+  "initialRandom": 0.9467421907608011,
+  "created": "2026-06-12T12:42:55.019Z",
+  "clock": 256971,
+  "setup": {
+    "options": {},
+    "sets": {
+      "basic:1": 1,
+      "tower:1": 1
+    },
+    "elements": {
+      "farmers": true,
+      "phantom": 1,
+      "tower": 1
+    },
+    "rules": {},
+    "timer": null,
+    "start": [
+      {
+        "tile": "BA/RCr",
+        "x": 0,
+        "y": 0,
+        "rotation": 0
+      }
+    ],
+    "ai": false
+  },
+  "players": [
+    {
+      "name": "Betty",
+      "slot": 2,
+      "ai": false
+    },
+    {
+      "name": "John",
+      "slot": 1,
+      "ai": false
+    }
+  ],
+  "chat": [],
+  "replay": [
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "BA/CRr",
+        "rotation": "R180",
+        "position": [
+          0,
+          -1
+        ]
+      },
+      "player": 0,
+      "clock": 3019
+    },
+    {
+      "type": "DEPLOY_MEEPLE",
+      "payload": {
+        "pointer": {
+          "position": [
+            0,
+            -1
+          ],
+          "location": "S",
+          "feature": "City"
+        },
+        "meepleId": "0.phantom.1"
+      },
+      "player": 0,
+      "clock": 28200
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.5028874212216359
+      },
+      "player": 0,
+      "clock": 28426
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "TO/RrC",
+        "rotation": "R180",
+        "position": [
+          -1,
+          0
+        ]
+      },
+      "player": 1,
+      "clock": 30995
+    },
+    {
+      "type": "PASS",
+      "payload": {},
+      "player": 1,
+      "clock": 32068
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.8742756297276177
+      },
+      "player": 1,
+      "clock": 32073
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "BA/L",
+        "rotation": "R0",
+        "position": [
+          -2,
+          0
+        ]
+      },
+      "player": 0,
+      "clock": 34715
+    },
+    {
+      "type": "DEPLOY_MEEPLE",
+      "payload": {
+        "pointer": {
+          "position": [
+            -2,
+            0
+          ],
+          "location": "I",
+          "feature": "Monastery"
+        },
+        "meepleId": "0.phantom.1"
+      },
+      "player": 0,
+      "clock": 37781
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.2988163321618367
+      },
+      "player": 0,
+      "clock": 38560
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "BA/L",
+        "rotation": "R0",
+        "position": [
+          0,
+          1
+        ]
+      },
+      "player": 1,
+      "clock": 40528
+    },
+    {
+      "type": "PLACE_TOKEN",
+      "payload": {
+        "token": "TOWER_PIECE",
+        "pointer": {
+          "position": [
+            -1,
+            0
+          ],
+          "feature": "Tower",
+          "location": "I"
+        }
+      },
+      "player": 1,
+      "clock": 43376
+    },
+    {
+      "type": "CAPTURE_FOLLOWER",
+      "payload": {
+        "pointer": {
+          "featurePointer": {
+            "position": [
+              -2,
+              0
+            ],
+            "location": "I",
+            "feature": "Monastery"
+          },
+          "meepleId": "0.phantom.1"
+        }
+      },
+      "player": 1,
+      "clock": 44351
+    },
+    {
+      "type": "PASS",
+      "payload": {},
+      "player": 1,
+      "clock": 44924
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.27564809715689864
+      },
+      "player": 1,
+      "clock": 44927
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "BA/L",
+        "rotation": "R0",
+        "position": [
+          1,
+          1
+        ]
+      },
+      "player": 0,
+      "clock": 48358
+    },
+    {
+      "type": "PLACE_TOKEN",
+      "payload": {
+        "token": "TOWER_PIECE",
+        "pointer": {
+          "position": [
+            -1,
+            0
+          ],
+          "feature": "Tower",
+          "location": "I"
+        }
+      },
+      "player": 0,
+      "clock": 49748
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.26049438503129685
+      },
+      "player": 0,
+      "clock": 49998
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "BA/L",
+        "rotation": "R0",
+        "position": [
+          2,
+          1
+        ]
+      },
+      "player": 1,
+      "clock": 51674
+    },
+    {
+      "type": "PLACE_TOKEN",
+      "payload": {
+        "token": "TOWER_PIECE",
+        "pointer": {
+          "position": [
+            -1,
+            0
+          ],
+          "feature": "Tower",
+          "location": "I"
+        }
+      },
+      "player": 1,
+      "clock": 52891
+    },
+    {
+      "type": "PASS",
+      "payload": {},
+      "player": 1,
+      "clock": 53122
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.6216222770121647
+      },
+      "player": 1,
+      "clock": 53125
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "TO/F",
+        "rotation": "R0",
+        "position": [
+          3,
+          1
+        ]
+      },
+      "player": 0,
+      "clock": 55869
+    },
+    {
+      "type": "PLACE_TOKEN",
+      "payload": {
+        "token": "TOWER_PIECE",
+        "pointer": {
+          "position": [
+            -1,
+            0
+          ],
+          "feature": "Tower",
+          "location": "I"
+        }
+      },
+      "player": 0,
+      "clock": 56964
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.5591633704759422
+      },
+      "player": 0,
+      "clock": 57076
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "TO/L",
+        "rotation": "R0",
+        "position": [
+          4,
+          1
+        ]
+      },
+      "player": 1,
+      "clock": 58605
+    },
+    {
+      "type": "PLACE_TOKEN",
+      "payload": {
+        "token": "TOWER_PIECE",
+        "pointer": {
+          "position": [
+            -1,
+            0
+          ],
+          "feature": "Tower",
+          "location": "I"
+        }
+      },
+      "player": 1,
+      "clock": 59801
+    },
+    {
+      "type": "PASS",
+      "payload": {},
+      "player": 1,
+      "clock": 60072
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.0975168985044208
+      },
+      "player": 1,
+      "clock": 60075
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "BA/RFr",
+        "rotation": "R0",
+        "position": [
+          1,
+          0
+        ]
+      },
+      "player": 0,
+      "clock": 61504
+    },
+    {
+      "type": "PASS",
+      "payload": {},
+      "player": 0,
+      "clock": 61611
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.5880464321707517
+      },
+      "player": 0,
+      "clock": 61614
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "BA/RFr",
+        "rotation": "R0",
+        "position": [
+          2,
+          0
+        ]
+      },
+      "player": 1,
+      "clock": 64531
+    },
+    {
+      "type": "PLACE_TOKEN",
+      "payload": {
+        "token": "TOWER_PIECE",
+        "pointer": {
+          "position": [
+            -1,
+            0
+          ],
+          "feature": "Tower",
+          "location": "I"
+        }
+      },
+      "player": 1,
+      "clock": 65601
+    },
+    {
+      "type": "PASS",
+      "payload": {},
+      "player": 1,
+      "clock": 65915
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.012222117446655023
+      },
+      "player": 1,
+      "clock": 65919
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "BA/RFr",
+        "rotation": "R0",
+        "position": [
+          3,
+          0
+        ]
+      },
+      "player": 0,
+      "clock": 69102
+    },
+    {
+      "type": "PLACE_TOKEN",
+      "payload": {
+        "token": "TOWER_PIECE",
+        "pointer": {
+          "position": [
+            -1,
+            0
+          ],
+          "feature": "Tower",
+          "location": "I"
+        }
+      },
+      "player": 0,
+      "clock": 71112
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.7161030932184753
+      },
+      "player": 0,
+      "clock": 71251
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "BA/RFr",
+        "rotation": "R0",
+        "position": [
+          4,
+          0
+        ]
+      },
+      "player": 1,
+      "clock": 73618
+    },
+    {
+      "type": "PLACE_TOKEN",
+      "payload": {
+        "token": "TOWER_PIECE",
+        "pointer": {
+          "position": [
+            -1,
+            0
+          ],
+          "feature": "Tower",
+          "location": "I"
+        }
+      },
+      "player": 1,
+      "clock": 74829
+    },
+    {
+      "type": "PASS",
+      "payload": {},
+      "player": 1,
+      "clock": 75005
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.1627382775097348
+      },
+      "player": 1,
+      "clock": 75008
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "BA/RFr",
+        "rotation": "R0",
+        "position": [
+          5,
+          0
+        ]
+      },
+      "player": 0,
+      "clock": 76433
+    },
+    {
+      "type": "PLACE_TOKEN",
+      "payload": {
+        "token": "TOWER_PIECE",
+        "pointer": {
+          "position": [
+            -1,
+            0
+          ],
+          "feature": "Tower",
+          "location": "I"
+        }
+      },
+      "player": 0,
+      "clock": 77703
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.18360551538936964
+      },
+      "player": 0,
+      "clock": 77941
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "BA/RFr",
+        "rotation": "R0",
+        "position": [
+          5,
+          -1
+        ]
+      },
+      "player": 1,
+      "clock": 81679
+    },
+    {
+      "type": "PLACE_TOKEN",
+      "payload": {
+        "token": "TOWER_PIECE",
+        "pointer": {
+          "position": [
+            -1,
+            0
+          ],
+          "feature": "Tower",
+          "location": "I"
+        }
+      },
+      "player": 1,
+      "clock": 83669
+    },
+    {
+      "type": "PASS",
+      "payload": {},
+      "player": 1,
+      "clock": 83940
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.6922610660875848
+      },
+      "player": 1,
+      "clock": 83944
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "BA/RFr",
+        "rotation": "R0",
+        "position": [
+          5,
+          -2
+        ]
+      },
+      "player": 0,
+      "clock": 88310
+    },
+    {
+      "type": "PLACE_TOKEN",
+      "payload": {
+        "token": "TOWER_PIECE",
+        "pointer": {
+          "position": [
+            -1,
+            0
+          ],
+          "feature": "Tower",
+          "location": "I"
+        }
+      },
+      "player": 0,
+      "clock": 90194
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.2972947145518574
+      },
+      "player": 0,
+      "clock": 90830
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "BA/RFr",
+        "rotation": "R0",
+        "position": [
+          5,
+          -3
+        ]
+      },
+      "player": 1,
+      "clock": 94167
+    },
+    {
+      "type": "PLACE_TOKEN",
+      "payload": {
+        "token": "TOWER_PIECE",
+        "pointer": {
+          "position": [
+            -1,
+            0
+          ],
+          "feature": "Tower",
+          "location": "I"
+        }
+      },
+      "player": 1,
+      "clock": 95672
+    },
+    {
+      "type": "PASS",
+      "payload": {},
+      "player": 1,
+      "clock": 95906
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.5314657041705617
+      },
+      "player": 1,
+      "clock": 95913
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "BA/Rr",
+        "rotation": "R90",
+        "position": [
+          6,
+          0
+        ]
+      },
+      "player": 0,
+      "clock": 98242
+    },
+    {
+      "type": "PLACE_TOKEN",
+      "payload": {
+        "token": "TOWER_PIECE",
+        "pointer": {
+          "position": [
+            -1,
+            0
+          ],
+          "feature": "Tower",
+          "location": "I"
+        }
+      },
+      "player": 0,
+      "clock": 99577
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.6081854550426147
+      },
+      "player": 0,
+      "clock": 99802
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "BA/Rr",
+        "rotation": "R0",
+        "position": [
+          6,
+          -1
+        ]
+      },
+      "player": 1,
+      "clock": 101566
+    },
+    {
+      "type": "PLACE_TOKEN",
+      "payload": {
+        "token": "TOWER_PIECE",
+        "pointer": {
+          "position": [
+            -1,
+            0
+          ],
+          "feature": "Tower",
+          "location": "I"
+        }
+      },
+      "player": 1,
+      "clock": 102880
+    },
+    {
+      "type": "PASS",
+      "payload": {},
+      "player": 1,
+      "clock": 103131
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.4317756282197913
+      },
+      "player": 1,
+      "clock": 103133
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "BA/Rr",
+        "rotation": "R180",
+        "position": [
+          4,
+          -1
+        ]
+      },
+      "player": 0,
+      "clock": 105130
+    },
+    {
+      "type": "PLACE_TOKEN",
+      "payload": {
+        "token": "TOWER_PIECE",
+        "pointer": {
+          "position": [
+            -1,
+            0
+          ],
+          "feature": "Tower",
+          "location": "I"
+        }
+      },
+      "player": 0,
+      "clock": 106566
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.1500578910647148
+      },
+      "player": 0,
+      "clock": 106860
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "BA/Rr",
+        "rotation": "R270",
+        "position": [
+          4,
+          -2
+        ]
+      },
+      "player": 1,
+      "clock": 109526
+    },
+    {
+      "type": "PLACE_TOKEN",
+      "payload": {
+        "token": "TOWER_PIECE",
+        "pointer": {
+          "position": [
+            -1,
+            0
+          ],
+          "feature": "Tower",
+          "location": "I"
+        }
+      },
+      "player": 1,
+      "clock": 111694
+    },
+    {
+      "type": "PASS",
+      "payload": {},
+      "player": 1,
+      "clock": 111967
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.37282003070128433
+      },
+      "player": 1,
+      "clock": 111977
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "BA/Rr",
+        "rotation": "R90",
+        "position": [
+          6,
+          -2
+        ]
+      },
+      "player": 0,
+      "clock": 114434
+    },
+    {
+      "type": "PLACE_TOKEN",
+      "payload": {
+        "token": "TOWER_PIECE",
+        "pointer": {
+          "position": [
+            -1,
+            0
+          ],
+          "feature": "Tower",
+          "location": "I"
+        }
+      },
+      "player": 0,
+      "clock": 116658
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.611747371731943
+      },
+      "player": 0,
+      "clock": 116878
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "BA/Rr",
+        "rotation": "R0",
+        "position": [
+          6,
+          -3
+        ]
+      },
+      "player": 1,
+      "clock": 119534
+    },
+    {
+      "type": "PLACE_TOKEN",
+      "payload": {
+        "token": "TOWER_PIECE",
+        "pointer": {
+          "position": [
+            -1,
+            0
+          ],
+          "feature": "Tower",
+          "location": "I"
+        }
+      },
+      "player": 1,
+      "clock": 121812
+    },
+    {
+      "type": "PASS",
+      "payload": {},
+      "player": 1,
+      "clock": 122069
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.43038757787118276
+      },
+      "player": 1,
+      "clock": 122073
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "BA/Ccc",
+        "rotation": "R270",
+        "position": [
+          -1,
+          1
+        ]
+      },
+      "player": 0,
+      "clock": 124796
+    },
+    {
+      "type": "PLACE_TOKEN",
+      "payload": {
+        "token": "TOWER_PIECE",
+        "pointer": {
+          "position": [
+            -1,
+            0
+          ],
+          "feature": "Tower",
+          "location": "I"
+        }
+      },
+      "player": 0,
+      "clock": 125915
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.8556273177901339
+      },
+      "player": 0,
+      "clock": 127996
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "TO/CRcr",
+        "rotation": "R90",
+        "position": [
+          -1,
+          2
+        ]
+      },
+      "player": 1,
+      "clock": 130981
+    },
+    {
+      "type": "DEPLOY_MEEPLE",
+      "payload": {
+        "pointer": {
+          "position": [
+            -1,
+            0
+          ],
+          "location": "I",
+          "feature": "Tower"
+        },
+        "meepleId": "1.phantom.1"
+      },
+      "player": 1,
+      "clock": 132463
+    },
+    {
+      "type": "COMMIT",
+      "payload": {
+        "random": 0.9171852320059277
+      },
+      "player": 1,
+      "clock": 132752
+    },
+    {
+      "type": "PLACE_TILE",
+      "payload": {
+        "tileId": "TO/CccR",
+        "rotation": "R0",
+        "position": [
+          0,
+          -2
+        ]
+      },
+      "player": 0,
+      "clock": 137244
+    },
+    {
+      "type": "PLACE_TOKEN",
+      "payload": {
+        "token": "TOWER_PIECE",
+        "pointer": {
+          "position": [
+            -1,
+            2
+          ],
+          "feature": "Tower",
+          "location": "I"
+        }
+      },
+      "player": 0,
+      "clock": 146438
+    },
+    {
+      "type": "PAY_RANSOM",
+      "payload": {
+        "meepleId": "0.phantom.1"
+      },
+      "player": 0,
+      "clock": 245161
+    }
+  ],
+  "gameAnnotations": {
+    "drawOrder": [
+      "BA/CRr",
+      "TO/RrC",
+      "BA/L",
+      "BA/L",
+      "BA/L",
+      "BA/L",
+      "TO/F",
+      "TO/L",
+      "BA/RFr",
+      "BA/RFr",
+      "BA/RFr",
+      "BA/RFr",
+      "BA/RFr",
+      "BA/RFr",
+      "BA/RFr",
+      "BA/RFr",
+      "BA/Rr",
+      "BA/Rr",
+      "BA/Rr",
+      "BA/Rr",
+      "BA/Rr",
+      "BA/Rr"
+    ]
+  },
+  "test": {
+    "description": "Tower Ransom Pay Of Phantom Rewind Phantom Action",
+    "assertions": [
+      "Betty scored city for 4 points.",
+      "Betty has 1 point.",
+      "John has 3 points.",
+      "Phase is ActionPhase",
+      "Player can pass",
+      "Available action Meeple for Phantom",
+      "Meeple Phantom options: {Road,S,[0,-2]}; {Tower,I,[-1,2]}; {Field,SR,[0,-2]}; {Field,SL,[0,-2]}; {City,_S,[0,-2]}",
+      "Undo is allowed"
+    ]
+  }
+}

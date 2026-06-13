@@ -1,10 +1,10 @@
 {
-  "appVersion": "6.3.0",
+  "appVersion": "6.2.0-beta.4",
   "gameId": "1",
   "name": "",
   "initialRandom": 0.9467421907608011,
-  "created": "2026-06-12T09:57:45.882Z",
-  "clock": 226261,
+  "created": "2026-06-12T12:42:06.915Z",
+  "clock": 1450410,
   "setup": {
     "options": {},
     "sets": {
@@ -989,41 +989,12 @@
       "clock": 132752
     },
     {
-      "type": "PLACE_TILE",
-      "payload": {
-        "tileId": "TO/CccR",
-        "rotation": "R0",
-        "position": [
-          0,
-          -2
-        ]
-      },
-      "player": 0,
-      "clock": 137244
-    },
-    {
-      "type": "PLACE_TOKEN",
-      "payload": {
-        "token": "TOWER_PIECE",
-        "pointer": {
-          "position": [
-            -1,
-            2
-          ],
-          "feature": "Tower",
-          "location": "I"
-        }
-      },
-      "player": 0,
-      "clock": 146438
-    },
-    {
       "type": "PAY_RANSOM",
       "payload": {
         "meepleId": "0.phantom.1"
       },
       "player": 0,
-      "clock": 166323
+      "clock": 1381740
     }
   ],
   "gameAnnotations": {
@@ -1053,15 +1024,15 @@
     ]
   },
   "test": {
-    "description": "Tower Random Pay Of Phantom Rewind Phantom Action",
+    "description": "Tower Ransom Pay During Tilephase",
     "assertions": [
       "Betty scored city for 4 points.",
       "Betty has 1 point.",
       "John has 3 points.",
-      "Phase is ActionPhase",
-      "Player can pass",
-      "Available action Meeple for Phantom",
-      "Meeple Phantom options: {Road,S,[0,-2]}; {Tower,I,[-1,2]}; {Field,SR,[0,-2]}; {Field,SL,[0,-2]}; {City,_S,[0,-2]}",
+      "Phase is TilePhase",
+      "Player can't pass",
+      "Available action TilePlacement for TO/CccR",
+      "TilePlacement TO/CccR options: [0,-2] - [0]; [-1,3] - [0,90,270]; [-2,2] - [270]",
       "Undo is allowed"
     ]
   }
