@@ -1,8 +1,8 @@
 {
   "@author": "farin & Scott",
   "@jcz-version": "5.12.1",
-  "@fcz-version": "6.2.0",
-  "@version": "0.10.22",
+  "@fcz-version": "6.3.0",
+  "@version": "0.11.0",
   "about": {
     "author": "Author",
     "configuration-file": "Configuration file",
@@ -273,6 +273,7 @@
       "player-may-place-a-tile-from-supply": "Player may place a tile from supply",
       "player-may-place-an-abbey": "Player may place an abbey",
       "player-must-place-the-tile": "Player must place the tile",
+      "ransom-paid": "Random paid",
       "shepherd-placement": "Shepherd placement",
       "siege-player-can-escape-a-besieged-city": "Player can escape a besieged city.",
       "siege-you-can-escape-a-besieged-city": "You can escape a besieged city.",
