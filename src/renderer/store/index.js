@@ -160,7 +160,12 @@ export const actions = {
         return
       }
 
-      execFile(executable, [...args, '--version'], (error, stdout, stderr) => {
+      execFile(executable, [...args, '--version'], {
+        // In a packaged app `executable` is process.execPath (the app's own .exe). Without
+        // ELECTRON_RUN_AS_NODE it would relaunch the FULL APP instead of running Node on the
+        // engine bundle — and since each launch runs this probe again, that fork-bombs.
+        env: { ...window.process.env, ELECTRON_RUN_AS_NODE: '1' }
+      }, (error, stdout, stderr) => {
         if (error) {
           console.error(error)
           const value = {
