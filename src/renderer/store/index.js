@@ -18,7 +18,6 @@ export const state = () => ({
   showGameHistory: true,
   showGameTiles: false,
   showGameSetup: false,
-  java: null, // { version, outdated, error }
   engine: null,
   appSessionId: crypto.randomBytes(16).toString('hex'),
   download: null,
@@ -81,10 +80,6 @@ export const mutations = {
     state.showGameSetup = value
   },
 
-  java (state, value) {
-    state.java = value
-  },
-
   engine (state, value) {
     state.engine = value
   },
@@ -128,51 +123,6 @@ export const getters = {
 
 export const actions = {
 
-  async checkJavaVersion ({ state, commit, rootState }, forceCheck = false) {
-    if (state.java !== null && !forceCheck) {
-      return state.java
-    }
-
-    return new Promise((resolve, reject) => {
-      const executable = rootState.settings.javaPath || 'java'
-      console.log(`Checking ${executable}`)
-      execFile(executable, ['-version'], (error, stdout, stderr) => {
-        if (error) {
-          console.error(error)
-          const value = { ok: false, error: 'not-found' }
-          commit('java', value)
-          reject(value)
-        } else {
-          const ident = stderr.split('\n')[0]
-          let vendor = null
-          let version = null
-
-          let m = ident.match(/^(\w+) version "1\.(\d)\.[^"]*"/)
-          if (m) {
-            vendor = m[1]
-            version = parseInt(m[2])
-          } else {
-            m = ident.match(/^(\w+) version "(\d+)/)
-            if (m) {
-              vendor = m[1]
-              version = parseInt(m[2])
-            }
-          }
-
-          const outdated = !!version && version < 17
-          const value = {
-            version,
-            vendor,
-            ok: !outdated,
-            error: outdated ? 'outdated' : null
-          }
-          commit('java', value)
-          resolve(value)
-        }
-      })
-    })
-  },
-
   async checkEngineVersion ({ state, commit, rootState }) {
     if (state.engine !== null) {
       // return state.engine
@@ -192,9 +142,8 @@ export const actions = {
         return
       }
 
-      const executable = rootState.settings.javaPath || 'java'
-      const args = $engine.getJavaArgs()
-      args[args.length - 1] = args[args.length - 1]
+      const executable = $engine.getEngineExecutable()
+      const args = $engine.getEngineArgs()
       const enginePath = args[args.length - 1]
 
       try {

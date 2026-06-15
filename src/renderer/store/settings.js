@@ -39,7 +39,6 @@ export const state = () => ({
   theme: 'light',
   locale: null,
   enginePath: null, // explicit engine path
-  javaPath: null, // exolicit java path
   playOnlineUrl: 'play.jcloisterzone.com/ws',
   playOnlineFanURL: 'fancarpedia.snazzybee.com:37447',
   devMode: process.env.NODE_ENV === 'development',

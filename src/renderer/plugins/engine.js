@@ -211,22 +211,34 @@ export default ({ app }, inject) => {
   const basePath = path.dirname(appPath)
 
   Vue.prototype.$engine = {
-    getJavaExecutable () {
-      const { settings } = app.store.state
-      return settings.javaPath || 'java'
-    },
-
-    getJavaArgs () {
+    // The engine artifact to run: an explicit override (a .jar or .js path), else the
+    // single-file TypeScript engine bundle (jcz-engine.js) shipped with the app. A
+    // host:port enginePath is handled earlier by isRemote().
+    getEngineArtifact () {
       const { settings } = app.store.state
       if (settings.enginePath) {
-        return ['-jar', settings.enginePath]
+        return settings.enginePath
       }
-      // Run against local engine
+      // jcz-engine.js bundle: dev → project root (downloaded by download-game-engine.js);
+      // packaged app → resources dir (bundled via builder.config extraResources)
       if (process.env.NODE_ENV === 'development') {
-        return ['-jar', 'Engine.jar']
+        return path.join(window.process.cwd(), 'jcz-engine.js')
       }
+      return path.join(basePath, 'jcz-engine.js')
+    },
 
-      return ['-jar', path.join(basePath, 'Engine.jar')]
+    getEngineExecutable () {
+      const { settings } = app.store.state
+      const artifact = this.getEngineArtifact()
+      // .js → Node. A packaged app can't assume the user has Node installed, so run the
+      // bundled engine with Electron's own Node runtime (process.execPath, behaving as
+      // Node via the ELECTRON_RUN_AS_NODE env set in spawn()).
+      return process.env.NODE_ENV === 'development' ? 'node' : window.process.execPath
+    },
+
+    getEngineArgs () {
+      const artifact = this.getEngineArtifact()
+      return artifact.endsWith('.jar') ? ['-jar', artifact] : [artifact]
     },
 
     isRemote () {
@@ -245,7 +257,11 @@ export default ({ app }, inject) => {
         s.connect(remote.port, remote.host)
         spawnedEngine = new SocketEngine(s, loggingEnabled)
       } else {
-        spawnedEngine = new Engine(spawn(this.getJavaExecutable(), this.getJavaArgs()), loggingEnabled)
+        // run the engine bundle as a child process (.js → Node/Electron-as-Node)
+        spawnedEngine = new Engine(spawn(this.getEngineExecutable(), this.getEngineArgs(), {
+          // when the executable is Electron's binary, this makes it behave as plain Node
+          env: { ...window.process.env, ELECTRON_RUN_AS_NODE: '1' }
+        }), loggingEnabled)
       }
       spawnedEngine.on('exit', () => {
         spawnedEngine = null

@@ -19,7 +19,6 @@ export default {
 
   computed: {
     ...mapState({
-      java: state => state.java,
       engine: state => state.engine
     }),
 

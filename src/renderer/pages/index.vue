@@ -1,38 +1,6 @@
 <template>
   <div class="landing-view view">
     <div>
-      <v-alert v-if="java && java.error === 'not-found' && !javaSelectedByUser" type="warning">
-        {{ $t('settings.java.unable-to-find-java') }}<br>
-        <br>
-        {{ $t('settings.java.java-is-required') }}<br>
-        <a href="#" @click="openLink('https://www.oracle.com/java/technologies/javase-jdk14-downloads.html')">{{ $t('settings.java.download-java') }}</a><br>
-        <i18n tag="span" path="settings.java.verify">
-          <template #settings>
-            <a href @click.prevent="() => $store.commit('showSettings', true)">{{ $t('settings.title') }}</a>
-          </template>
-        </i18n>
-      </v-alert>
-      <v-alert v-if="java && java.error === 'not-found' && javaSelectedByUser" type="warning">
-        {{ $t('settings.java.java-path-is-not-valid') }}<br>
-        <br>
-        <i18n tag="span" path="settings.java.change-in-settings">
-          <template #settings>
-            <a href @click.prevent="() => $store.commit('showSettings', true)">{{ $t('settings.title') }}</a>
-          </template>
-        </i18n>
-      </v-alert>
-      <v-alert v-if="java && java.error === 'outdated'" type="warning">
-        {{ $t('settings.java.java-is-outdated') }}<br>
-        <br>
-        {{ $t('settings.java.java-version-found', { version: java.version } ) }}
-        <br>
-        <a href="#" @click="openLink('https://www.oracle.com/java/technologies/javase-jdk14-downloads.html')">{{ $t('settings.java.download-java') }}</a><br>
-        <i18n tag="span" path="settings.java.select-manually">
-          <template #settings>
-            <a href @click.prevent="() => $store.commit('showSettings', true)">{{ $t('settings.title') }}</a>
-          </template>
-        </i18n>
-      </v-alert>
       <v-alert v-if="engine && engine.error === 'not-found'" type="warning">
         <i18n tag="span" path="settings.engine.engine-path-not-exists">
           <template #path>
@@ -212,8 +180,6 @@ export default {
 
   computed: {
     ...mapState({
-      javaSelectedByUser: state => state.settings.javaPath,
-      java: state => state.java,
       engine: state => state.engine,
       download: state => state.download,
       settings: state => state.settings,

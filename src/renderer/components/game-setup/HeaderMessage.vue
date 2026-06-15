@@ -1,12 +1,6 @@
 <template>
   <div class="header-message">
-    <div v-if="java && java.error === 'not-found'" class="warning-text">
-      {{ $t('settings.java.java-is-not-installed') }}
-    </div>
-    <div v-else-if="java && java.error === 'outdated'" class="warning-text">
-      {{ $t('settings.java.java-is-outdated') }}
-    </div>
-    <div v-else-if="engine && engine.error" class="warning-text">
+    <div v-if="engine && engine.error" class="warning-text">
       {{ $t('core-messages.game-engine-not-available') }}
     </div>
     <div v-else-if="!containsCoreSet" class="info-text">
@@ -29,7 +23,6 @@ export default {
 
   computed: {
     ...mapState({
-      java: state => state.java,
       engine: state => state.engine
     }),
 

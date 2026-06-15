@@ -87,7 +87,6 @@ export default {
 
   computed: {
     ...mapState({
-      java: state => state.java,
       engine: state => state.engine,
       connectionState: state => state.networking.connectionStatus,
       onlineConnected: state => state.networking.connectionType === 'online',
@@ -299,14 +298,7 @@ export default {
       this.$store.dispatch('checkEngineVersion')
     })
     
-    try {
-      await this.$store.dispatch('checkJavaVersion')
-      if (this.java?.ok) {
-        this.$store.dispatch('checkEngineVersion')
-      }
-    } catch {
-      // do nothing, state flags asre set
-    }
+    this.$store.dispatch('checkEngineVersion')
 
     await this.loadAddons()
 
@@ -420,7 +412,6 @@ export default {
         engineVersion: this.$store.state.engine?.version,
         date: (new Date()).toISOString(),
         os: `${os.platform()} ${os.release()}`,
-        java: this.java ? `${this.java.vendor} ${this.java.version}` : '',
         ...(await this.$server.dump())
       }
 

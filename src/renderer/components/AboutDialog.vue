@@ -16,8 +16,6 @@
       <section class="my-3">
         <div class="label">{{ $t('about.configuration-file') }}</div>
         <div class="value config-file" @click="openConfig">{{ $store.state.settings.file }}</div>
-        <div class="label">{{ $t('about.system-java-version') }}</div>
-        <div class="value">{{ java ? (java.version || '') : '' }}</div>
         <div class="label">{{ $t('about.jcloisterzone-game-engine') }}</div>
         <div class="value">{{ engine ? engine.path : '' }}</div>
         <div class="value">{{ engine ? engine.version : '' }}</div>
@@ -49,7 +47,6 @@ export default {
   },
 
   computed: mapState({
-    java: state => state.java,
     engine: state => state.engine
   }),
 
