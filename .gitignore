@@ -5,7 +5,8 @@ build/*
 !build/icons
 node_modules
 temp
-Engine.jar
+jcz-engine.js
+.engine-version
 .project
 .env
 src/main/config

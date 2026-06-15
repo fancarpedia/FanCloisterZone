@@ -108,7 +108,7 @@ module.exports = {
     { from: 'src/resources/', to: 'dist/resources/' }
   ],
   extraResources: [
-    'Engine.jar',
+    'jcz-engine.js',
     'icons',
     { from: 'src/extraResources/', to: '' }
   ],
