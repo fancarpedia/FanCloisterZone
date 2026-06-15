@@ -93,11 +93,16 @@ const macOS = {
   }
 }
 
+// Build channel: `FCZ_CHANNEL=alpha yarn package` produces a SEPARATE app
+// (distinct appId + productName) that installs alongside the stable build with its own
+// install dir, shortcuts and userData. Default (unset) = stable.
+const isAlpha = process.env.FCZ_CHANNEL === 'alpha'
+
 module.exports = {
   asar: false,
-  productName: 'FanCloisterZone',
-  appId: 'com.jcloisterzone.fan',
-  artifactName: 'fancloisterzone-${version}.${ext}',
+  productName: isAlpha ? 'FanCloisterZone Alpha' : 'FanCloisterZone',
+  appId: isAlpha ? 'com.jcloisterzone.fan.alpha' : 'com.jcloisterzone.fan',
+  artifactName: 'fancloisterzone' + (isAlpha ? '-alpha' : '') + '-${version}.${ext}',
   directories: {
     output: 'build'
   },

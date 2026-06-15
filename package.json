@@ -1,7 +1,7 @@
 {
   "name": "fancloisterzone",
-  "version": "6.3.0-alpha.1",
-  "description": "FanCloisterZone Edition",
+  "version": "6.3.0-alpha.2",
+  "description": "FanCloisterZone",
   "repository": "github:fancarpedia/FanCloisterZone",
   "license": "AGPL-3.0-or-later",
   "author": "Roman Krejcik and fans",
@@ -17,6 +17,7 @@
     "preinstall": "node .electron-nuxt/check-engines.js",
     "postinstall": "electron-builder install-app-deps && yarn run download-game-engine",
     "package": "yarn run build && electron-builder -c builder.config.js",
+    "package:alpha": "cross-env FCZ_CHANNEL=alpha yarn run package",
     "extract": "vue-i18n-extract report --vueFiles './src/{main/modules,renderer}/**/*.?(js|vue)' --languageFiles './src/renderer/locales/*.json'",
     "update-locales": "node ./dev-utils/update-locales.js",
     "git-release": "node ./dev-utils/git-release.js"

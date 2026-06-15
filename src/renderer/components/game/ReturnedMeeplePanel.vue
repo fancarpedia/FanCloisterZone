@@ -27,17 +27,6 @@ const TITLE_MAPPING = {
   'SIEGE_ESCAPE': 'game.feature.escape'
 }
 
-const SUBTITLE_MAPPING = {
-  'incomplete': 'game.scoring.incomplete',
-  'challenged': 'game.scoring.challenged',
-  'empty': 'game.scoring.empty',
-  'city.tiny': null,
-  'fairy.completed': 'game.scoring.feature-scored',
-  'fairy.turn': 'game.scoring.turn-start',
-  'barn-placed': 'game.scoring.barn-placed',
-  'barn-connected': 'game.scoring.barn-connected'
-}
-
 export default {
   components: {
     Meeple,

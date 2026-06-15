@@ -87,6 +87,10 @@ async function createWindow () {
     webPreferences: {
       zoomFactor: 1,
       webSecurity: false,
+      // keep timers/JS running at full speed when the window is unfocused or hidden,
+      // otherwise Chromium throttles background renderers and the Test Runner (timers,
+      // run loop) stalls until the window regains focus
+      backgroundThrottling: false,
       nodeIntegration: true, // allow loading modules via the require () function
       contextIsolation: false,
       additionalArguments: [

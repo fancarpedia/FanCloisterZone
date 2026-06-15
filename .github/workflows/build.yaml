@@ -6,6 +6,13 @@ on:
 jobs:
   release:
     runs-on: ${{ matrix.os }}
+    # Only `-alpha` tags (e.g. v6.3.0-alpha.1) build the SEPARATE "FanCloisterZone Alpha"
+    # app (distinct appId/productName/installer, installs alongside stable). Stable
+    # (v6.2.0) AND beta/rc (v6.3.0-beta.1) tags both build the normal app identity — beta
+    # is just a prerelease version of the same app, delivered via the updater's beta
+    # channel (see updater.js getLatestReleaseByChannel). The channel is read by builder.config.js.
+    env:
+      FCZ_CHANNEL: ${{ contains(github.ref_name, 'alpha') && 'alpha' || '' }}
     strategy:
       fail-fast: false
       matrix:

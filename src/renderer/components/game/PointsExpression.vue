@@ -61,6 +61,7 @@ const TITLE_MAPPING = {
   'river': 'game.feature.fishermen',
   'courier': 'game.element.courier',
   'fishhut': 'game.feature.fishhut',
+  'ransompaid': 'game.action.ransom-paid'
 }
 
 const SUBTITLE_MAPPING = {
@@ -71,7 +72,9 @@ const SUBTITLE_MAPPING = {
   'fairy.completed': 'game.scoring.feature-scored',
   'fairy.turn': 'game.scoring.turn-start',
   'barn-placed': 'game.scoring.barn-placed',
-  'barn-connected': 'game.scoring.barn-connected'
+  'barn-connected': 'game.scoring.barn-connected',
+  'payment': 'game.scoring.payment',
+  'income': 'game.scoring.income'
 }
 
 export default {
