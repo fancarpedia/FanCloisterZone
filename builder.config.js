@@ -103,6 +103,14 @@ module.exports = {
   productName: isAlpha ? 'FanCloisterZone Alpha' : 'FanCloisterZone',
   appId: isAlpha ? 'com.jcloisterzone.fan.alpha' : 'com.jcloisterzone.fan',
   artifactName: 'fancloisterzone' + (isAlpha ? '-alpha' : '') + '-${version}.${ext}',
+  // The productName above only names the installer/exe. At RUNTIME Electron derives
+  // userData (%APPDATA%/<app.getName()>) from the *packaged package.json*, which has
+  // name:"fancloisterzone" and no productName — so without this the Alpha app shares
+  // %APPDATA%/fancloisterzone (jcz-config.json, addons, cache) with stable. extraMetadata
+  // injects productName into the packaged package.json so app.getName() — hence userData —
+  // becomes "FanCloisterZone Alpha". ALPHA ONLY: stable must keep deriving from name
+  // ("fancloisterzone") so existing installs don't lose their config folder.
+  ...(isAlpha ? { extraMetadata: { productName: 'FanCloisterZone Alpha' } } : {}),
   directories: {
     output: 'build'
   },
