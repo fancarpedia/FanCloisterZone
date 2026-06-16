@@ -38,7 +38,15 @@ export default {
   methods: {
     onMouseEnter (points) {
       this.persistBreakdown = false
-      const { ptr } = points
+      const { ptr, meeples } = points
+      if (meeples && meeples.length) {
+        // followers were returned to supply when the feature scored — draw them
+        // back at their original positions so the player can see who scored.
+        this.$store.dispatch('board/showLayer', {
+          layer: 'EventMeeplesLayer',
+          props: { meeples }
+        })
+      }
       if (ptr) {
         if (Array.isArray(ptr)) {
           this.showTile(ptr)
@@ -103,6 +111,7 @@ export default {
 
     onMouseLeave () {
       this.$store.dispatch('board/hideLayerDebounced', { layer: 'EmphasizeLayer' })
+      this.$store.dispatch('board/hideLayerDebounced', { layer: 'EventMeeplesLayer' })
       if (!this.persistBreakdown) {
         this.$store.commit('board/pointsExpression', null)
       }
