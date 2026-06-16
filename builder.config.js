@@ -103,14 +103,18 @@ module.exports = {
   productName: isAlpha ? 'FanCloisterZone Alpha' : 'FanCloisterZone',
   appId: isAlpha ? 'com.jcloisterzone.fan.alpha' : 'com.jcloisterzone.fan',
   artifactName: 'fancloisterzone' + (isAlpha ? '-alpha' : '') + '-${version}.${ext}',
-  // The productName above only names the installer/exe. At RUNTIME Electron derives
-  // userData (%APPDATA%/<app.getName()>) from the *packaged package.json*, which has
-  // name:"fancloisterzone" and no productName — so without this the Alpha app shares
-  // %APPDATA%/fancloisterzone (jcz-config.json, addons, cache) with stable. extraMetadata
-  // injects productName into the packaged package.json so app.getName() — hence userData —
-  // becomes "FanCloisterZone Alpha". ALPHA ONLY: stable must keep deriving from name
-  // ("fancloisterzone") so existing installs don't lose their config folder.
-  ...(isAlpha ? { extraMetadata: { productName: 'FanCloisterZone Alpha' } } : {}),
+  // Two roots must both be isolated for a side-by-side Alpha app:
+  //  * userData (%APPDATA%/<app.getName()>) → app.getName() prefers `productName`.
+  //  * install dir (%LOCALAPPDATA%/Programs/<name>) → derived from package.json `name`.
+  // The packaged package.json has name:"fancloisterzone" and no productName, so without
+  // overriding BOTH the Alpha app would share stable's userData AND its install dir (and
+  // thus everything in resources/: jcz-engine.js, built-in addons, expansions, icons,
+  // renderer code). extraMetadata injects both into the packaged package.json:
+  //   name        → install dir becomes %LOCALAPPDATA%/Programs/fancloisterzone-alpha
+  //   productName → app.getName()/userData becomes "FanCloisterZone Alpha"
+  // ALPHA ONLY: stable keeps name "fancloisterzone" so existing installs keep their
+  // install dir and config folder.
+  ...(isAlpha ? { extraMetadata: { name: 'fancloisterzone-alpha', productName: 'FanCloisterZone Alpha' } } : {}),
   directories: {
     output: 'build'
   },
