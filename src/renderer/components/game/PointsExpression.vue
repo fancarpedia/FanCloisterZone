@@ -20,6 +20,19 @@
         {{ expr.points }}
       </div>
     </div>
+    <div v-if="majority.length" class="majority">
+      <div class="majority-label">{{ $t('game.scoring.majority') }}</div>
+      <div class="majority-shares">
+        <div
+          v-for="(share, idx) in majority"
+          :key="idx"
+          :class="['share', 'color-bg', 'color-overlay', colorCssClass(share.player), { winner: share.winner }]"
+          :title="share.winner ? $t('game.scoring.majority') : $t('game.scoring.no-majority')"
+        >
+          {{ share.power }}
+        </div>
+      </div>
+    </div>
   </section>
 </template>
 
@@ -117,6 +130,10 @@ export default {
       if (SUBTITLE_MAPPING[key] !== undefined) return '(' + this.$t(SUBTITLE_MAPPING[key]) + ')'
       if (this.expr.name.split('.')[0] === 'courier') return '(' + (TITLE_MAPPING[this.expr.name.split('.')[1]] !== undefined ? this.$t(TITLE_MAPPING[this.expr.name.split('.')[1]]) : '') + ')'
       return key
+    },
+
+    majority () {
+      return this.expr.majority || []
     }
   },
 
@@ -178,4 +195,39 @@ export default {
   .sub
     font-size: 16px
     margin-top: 4px
+
+.majority
+  position: absolute
+  right: 0
+  height: var(--action-bar-height)
+  display: flex
+  flex-direction: column
+  justify-content: center
+  align-items: flex-end
+  padding-right: 20px
+
+  .majority-label
+    font-size: 16px
+    font-weight: 300
+    margin-bottom: 4px
+
+  .majority-shares
+    display: flex
+
+  .share
+    min-width: 28px
+    height: 28px
+    padding: 0 6px
+    border-radius: 14px
+    margin-left: 6px
+    display: flex
+    align-items: center
+    justify-content: center
+    font-size: 17px
+    font-weight: 500
+    opacity: 0.4
+
+    &.winner
+      opacity: 1
+      box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.85)
 </style>

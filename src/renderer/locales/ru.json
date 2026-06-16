@@ -406,6 +406,7 @@
       "feature-scored": "функция набрана очков",
       "income": "income",
       "incomplete": "неполный",
+      "majority": "majority",
       "no-majority": "no majority",
       "payment": "payment",
       "turn-start": "начало хода"

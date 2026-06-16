@@ -406,6 +406,7 @@
       "feature-scored": "project geteld",
       "income": "income",
       "incomplete": "onafgebouwd",
+      "majority": "majority",
       "no-majority": "no majority",
       "payment": "payment",
       "turn-start": "start beurt"

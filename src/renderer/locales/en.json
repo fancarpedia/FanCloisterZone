@@ -2,7 +2,7 @@
   "@author": "farin & Scott",
   "@jcz-version": "5.12.1",
   "@fcz-version": "6.3.0",
-  "@version": "0.11.0",
+  "@version": "0.11.1",
   "about": {
     "author": "Author",
     "configuration-file": "Configuration file",
@@ -406,6 +406,7 @@
       "feature-scored": "feature scored",
       "income": "income",
       "incomplete": "incomplete",
+      "majority": "majority",
       "no-majority": "no majority",
       "payment": "payment",
       "turn-start": "turn start"

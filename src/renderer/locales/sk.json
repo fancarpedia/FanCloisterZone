@@ -406,7 +406,8 @@
       "feature-scored": "skórovanie",
       "income": "income",
       "incomplete": "neukočené",
-      "no-majority": "no majority",
+      "majority": "prevaha",
+      "no-majority": "bez prevahy",
       "payment": "payment",
       "turn-start": "začiatok ťahu"
     },
