@@ -273,7 +273,7 @@
       "player-may-place-a-tile-from-supply": "Player may place a tile from supply",
       "player-may-place-an-abbey": "Player may place an abbey",
       "player-must-place-the-tile": "Player must place the tile",
-      "ransom-paid": "Random paid",
+      "ransom-paid": "Ransom paid",
       "shepherd-placement": "Shepherd placement",
       "siege-player-can-escape-a-besieged-city": "Player can escape a besieged city.",
       "siege-you-can-escape-a-besieged-city": "You can escape a besieged city.",
@@ -404,7 +404,10 @@
       "challenged": "challenged",
       "empty": "empty",
       "feature-scored": "feature scored",
+      "income": "income",
       "incomplete": "incomplete",
+      "no-majority": "no majority",
+      "payment": "payment",
       "turn-start": "turn start"
     },
     "tile-pack-dialog": {

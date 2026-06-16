@@ -68,6 +68,7 @@ const SUBTITLE_MAPPING = {
   'incomplete': 'game.scoring.incomplete',
   'challenged': 'game.scoring.challenged',
   'empty': 'game.scoring.empty',
+  'no-majority': 'game.scoring.no-majority',
   'city.tiny': null,
   'fairy.completed': 'game.scoring.feature-scored',
   'fairy.turn': 'game.scoring.turn-start',

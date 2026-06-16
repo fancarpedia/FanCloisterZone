@@ -273,7 +273,7 @@
       "player-may-place-a-tile-from-supply": "Hráč môže umiestniť kartičku zo zásoby",
       "player-may-place-an-abbey": "Hráč môže umiestniť opátstvo",
       "player-must-place-the-tile": "Hráč musí priložiť kartičku",
-      "ransom-paid": "Random paid",
+      "ransom-paid": "Ransom paid",
       "shepherd-placement": "Umiestnenie pastiera",
       "siege-player-can-escape-a-besieged-city": "Hráč môže uniknúť z obliehaného mesta.",
       "siege-you-can-escape-a-besieged-city": "Môžete uniknúť z obliehaného mesta.",
@@ -404,7 +404,10 @@
       "challenged": "vyzvanie",
       "empty": "prázdny",
       "feature-scored": "skórovanie",
+      "income": "income",
       "incomplete": "neukočené",
+      "no-majority": "no majority",
+      "payment": "payment",
       "turn-start": "začiatok ťahu"
     },
     "tile-pack-dialog": {

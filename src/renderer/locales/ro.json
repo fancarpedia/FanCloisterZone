@@ -1,8 +1,8 @@
 {
   "@author": "Paloi Sciurala",
   "@jcz-version": "5.12.1",
-  "@fcz-version": "6.2.0",
-  "@version": "0.10.22",
+  "@fcz-version": "6.3.0",
+  "@version": "0.11.0",
   "about": {
     "author": "Autor",
     "configuration-file": "Fișier de configurație",
@@ -273,7 +273,7 @@
       "player-may-place-a-tile-from-supply": "Jucătorul are posibilitatea de a plasa un cartonaș din rezervă",
       "player-may-place-an-abbey": "Jucătorul poate plasa o abație",
       "player-must-place-the-tile": "Jucătorul trebuie să plaseze cartonașul",
-      "ransom-paid": "Random paid",
+      "ransom-paid": "Răscumpărare plătită",
       "shepherd-placement": "Plasarea oierului",
       "siege-player-can-escape-a-besieged-city": "Jucătorul poate scăpa dintr-un oraș asediat.",
       "siege-you-can-escape-a-besieged-city": "Poți evada dintr-un oraș asediat.",
@@ -404,7 +404,10 @@
       "challenged": "provocat",
       "empty": "gol",
       "feature-scored": "teritoriu evaluat",
+      "income": "încasare",
       "incomplete": "nefinalizat",
+      "no-majority": "no majority",
+      "payment": "plată",
       "turn-start": "începutul turei"
     },
     "tile-pack-dialog": {

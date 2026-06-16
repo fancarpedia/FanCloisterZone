@@ -273,7 +273,7 @@
       "player-may-place-a-tile-from-supply": "Игрок может выложить тайл из запаса.",
       "player-may-place-an-abbey": "Игрок может разместить аббатство",
       "player-must-place-the-tile": "Игрок должен выложить тайл",
-      "ransom-paid": "Random paid",
+      "ransom-paid": "Ransom paid",
       "shepherd-placement": "Размещение пастуха",
       "siege-player-can-escape-a-besieged-city": "Игрок может выбраться из осажденного города.",
       "siege-you-can-escape-a-besieged-city": "Вы можете выбраться из осажденного города.",
@@ -404,7 +404,10 @@
       "challenged": "подвергается вызову",
       "empty": "пусто",
       "feature-scored": "функция набрана очков",
+      "income": "income",
       "incomplete": "неполный",
+      "no-majority": "no majority",
+      "payment": "payment",
       "turn-start": "начало хода"
     },
     "tile-pack-dialog": {
