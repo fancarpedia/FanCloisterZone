@@ -19,6 +19,12 @@
           :height="MEEPLE_SIZE"
           :href="`${MEEPLES_SVG}#${svgMeepleId(meeple)}`"
         />
+        <path
+          v-if="meeple.winner"
+          class="majority-crown"
+          :d="CROWN_PATH"
+          :transform="crownTransform"
+        />
       </g>
     </g>
   </g>
@@ -27,9 +33,9 @@
 <script>
 // Temporary layer shown while hovering a play event, to draw the meeple(s) the event
 // concerns at their board positions (type + owner colour). Used by:
-//   - PointsEvent / score bullets � the followers that scored a feature (returned to
+//   - PointsEvent / score bullets — the followers that scored a feature (returned to
 //     supply, so this redraws their original positions)
-//   - MeepleDeployedEvent � the meeple that was just deployed
+//   - MeepleDeployedEvent — the meeple that was just deployed
 import { mapState } from 'vuex'
 import groupBy from 'lodash/groupBy'
 import kebabCase from 'lodash/kebabCase'
@@ -39,17 +45,23 @@ import { BASE_SIZE } from '@/constants/ui'
 
 const MEEPLES_SVG = require('~/assets/meeples.svg')
 
+// 3-peak crown in a 0..24 wide / 0..18 tall box, drawn above the meeple's head.
+const CROWN_PATH = 'M1 17 L1 5 L6.5 9.5 L12 1 L17.5 9.5 L23 5 L23 17 Z'
+
 export default {
   mixins: [LayerMixin],
 
   props: {
     // each: { type, player, position, feature, location }
-    meeples: { type: Array, required: true }
+    meeples: { type: Array, required: true },
+    // player indices that hold the majority (winners) — their meeples get a crown
+    winners: { type: Array, default: () => [] }
   },
 
   data () {
     return {
       MEEPLES_SVG,
+      CROWN_PATH,
       BASE_SIZE,
       MEEPLE_SIZE: BASE_SIZE * 0.32
     }
@@ -59,6 +71,15 @@ export default {
     ...mapState({
       rotate: state => state.board.rotate
     }),
+
+    // place the crown centred above the meeple's head (crown box is 24 wide / 18 tall)
+    crownTransform () {
+      const cw = this.MEEPLE_SIZE * 0.7
+      const s = cw / 24
+      const x = -12 * s
+      const y = -this.MEEPLE_SIZE / 2 - 18 * s - this.MEEPLE_SIZE * 0.08
+      return `translate(${x} ${y}) scale(${s})`
+    },
 
     groups () {
       const getGroupKey = ptr => `${ptr.position[0]},${ptr.position[1]},${ptr.feature}/${ptr.location}`
@@ -78,6 +99,7 @@ export default {
               ...m,
               x,
               y,
+              winner: this.winners.includes(m.player),
               rotate90: m.location === 'AS_ABBOT' ||
                 (deployedOnFarm && !['Shepherd', 'Pig', 'DecinskySneznik', 'Windmill'].includes(m.type))
             }
@@ -115,4 +137,9 @@ export default {
     opacity: 0.9
   100%
     opacity: 0.45
+
+.majority-crown
+  fill: #f1c40f
+  stroke: #b8860b
+  stroke-width: 0.6
 </style>

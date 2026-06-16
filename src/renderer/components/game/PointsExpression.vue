@@ -26,10 +26,15 @@
         <div
           v-for="(share, idx) in majority"
           :key="idx"
-          :class="['share', 'color-bg', 'color-overlay', colorCssClass(share.player), { winner: share.winner }]"
+          :class="['share', { winner: share.winner }]"
           :title="share.winner ? $t('game.scoring.majority') : $t('game.scoring.no-majority')"
         >
-          {{ share.power }}
+          <v-icon v-if="share.winner" class="crown">fas fa-crown</v-icon>
+          <span v-else class="crown-spacer" />
+          <div class="meeple-wrap" :class="colorCssClass(share.player)">
+            <Meeple type="SmallFollower" />
+          </div>
+          <div class="power">{{ share.power }}</div>
         </div>
       </div>
     </div>
@@ -41,6 +46,7 @@ import { mapGetters } from 'vuex'
 
 import { Expansion } from '@/models/expansions'
 import ExpressionItem from '@/components/game/ExpressionItem'
+import Meeple from '@/components/game/Meeple'
 
 const TITLE_MAPPING = {
   'acrobats': 'game.feature.acrobats',
@@ -93,7 +99,8 @@ const SUBTITLE_MAPPING = {
 
 export default {
   components: {
-    ExpressionItem
+    ExpressionItem,
+    Meeple
   },
 
   props: {
@@ -133,7 +140,8 @@ export default {
     },
 
     majority () {
-      return this.expr.majority || []
+      // winners first, then strongest to weakest
+      return [...(this.expr.majority || [])].sort((a, b) => (b.winner - a.winner) || (b.power - a.power))
     }
   },
 
@@ -204,30 +212,53 @@ export default {
   flex-direction: column
   justify-content: center
   align-items: flex-end
-  padding-right: 20px
+  padding-right: 18px
 
   .majority-label
-    font-size: 16px
+    font-size: 14px
     font-weight: 300
-    margin-bottom: 4px
+    opacity: 0.7
+    margin-bottom: 2px
 
   .majority-shares
     display: flex
+    align-items: flex-end
 
   .share
-    min-width: 28px
-    height: 28px
-    padding: 0 6px
-    border-radius: 14px
-    margin-left: 6px
     display: flex
+    flex-direction: column
     align-items: center
-    justify-content: center
-    font-size: 17px
-    font-weight: 500
+    margin-left: 10px
     opacity: 0.4
+    filter: grayscale(0.45)
+    transition: opacity 0.15s ease
 
     &.winner
       opacity: 1
-      box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.85)
+      filter: none
+
+    .crown
+      font-size: 13px
+      height: 15px
+      color: #f1c40f
+
+    .crown-spacer
+      height: 15px
+
+    .meeple-wrap
+      width: 30px
+      height: 30px
+      display: flex
+      align-items: center
+      justify-content: center
+
+      svg.meeple
+        width: 30px
+        height: 30px
+
+    .power
+      font-size: 16px
+      font-weight: 600
+      line-height: 1
+      margin-top: 1px
 </style>

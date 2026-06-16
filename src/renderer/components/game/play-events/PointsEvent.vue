@@ -38,13 +38,15 @@ export default {
   methods: {
     onMouseEnter (points) {
       this.persistBreakdown = false
-      const { ptr, meeples } = points
+      const { ptr, meeples, majority } = points
       if (meeples && meeples.length) {
         // followers were returned to supply when the feature scored — draw them
-        // back at their original positions so the player can see who scored.
+        // back at their original positions so the player can see who scored, and crown
+        // the meeples of the majority winners.
+        const winners = (majority || []).filter(s => s.winner).map(s => s.player)
         this.$store.dispatch('board/showLayer', {
           layer: 'EventMeeplesLayer',
-          props: { meeples }
+          props: { meeples, winners }
         })
       }
       if (ptr) {
