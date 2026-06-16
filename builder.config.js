@@ -6,9 +6,20 @@ const ICONS_DIR = 'build/icons/'
 async function afterPack(context) {
   if (context.electronPlatformName !== 'darwin') return
 
+  // The .app bundle is named after productName, which differs between channels
+  // (e.g. "FanCloisterZone.app" vs "FanCloisterZone Alpha.app"). Hardcoding the
+  // name made this hook silently no-op on alpha builds, so the .a cleanup below
+  // never ran and the universal merge failed on register-scheme/.../nothing.a.
+  // Find the actual bundle instead so it works for every channel/arch.
+  const appBundle = fs
+    .readdirSync(context.appOutDir)
+    .find((name) => name.endsWith('.app'))
+  if (!appBundle) return
+
   const appResources = path.join(
     context.appOutDir,
-    'FanCloisterZone.app/Contents/Resources/app'
+    appBundle,
+    'Contents/Resources/app'
   )
 
   // Remove all node_gyp_bins folders (contain arch-specific python symlinks)
@@ -83,7 +94,13 @@ const macOS = {
     ],
     icon: ICONS_DIR + 'fcz-icon.icns',
     minimumSystemVersion: '10.13.6',
-    identity: null  // disable code signing on CI
+    identity: null,  // disable code signing on CI
+    // Safety net for the universal merge: tolerate arch-differing static-library
+    // archives (e.g. node-gyp's throwaway nothing.a) instead of aborting with
+    // "Expected all non-binary files to have identical SHAs". afterPack already
+    // strips .a files per-arch; this stops a single stray leftover from failing
+    // the whole build.
+    x64ArchFiles: '**/*.a'
   },
   dmg: {
     contents: [
