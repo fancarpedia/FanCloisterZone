@@ -37,6 +37,10 @@
     />
     <g :transform="transform">
       <ScoreLayer />
+      <EventMeeplesLayer
+        v-if="layers.EventMeeplesLayer"
+        v-bind="layers.EventMeeplesLayer"
+      />
       <FeatureSelectLayer
         v-if="layers.FeatureSelectLayer"
         v-bind="layers.FeatureSelectLayer"
@@ -89,6 +93,7 @@ import FlierLayer from '@/components/game/layers/FlierLayer'
 import TokenLayer from '@/components/game/layers/TokenLayer'
 import TowerLayer from '@/components/game/layers/TowerLayer'
 import FeatureSelectLayer from '@/components/game/layers/FeatureSelectLayer'
+import EventMeeplesLayer from '@/components/game/layers/EventMeeplesLayer'
 import MeepleLayer from '@/components/game/layers/MeepleLayer'
 import ScoreLayer from '@/components/game/layers/ScoreLayer'
 import TileLayer from '@/components/game/layers/TileLayer'
@@ -114,6 +119,7 @@ export default {
     FeatureSelectLayer,
     FerryChangeLayer,
     FlierLayer,
+    EventMeeplesLayer,
     MeepleLayer,
     ScoreLayer,
     TileLayer,
