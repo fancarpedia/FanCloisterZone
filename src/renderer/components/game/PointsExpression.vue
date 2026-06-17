@@ -35,6 +35,10 @@
             <Meeple type="SmallFollower" />
           </div>
           <div class="power">{{ share.power }}</div>
+          <div v-if="showHills(share)" class="hills">
+            <img src="~/assets/features/C2/hill.png" class="hill-img">
+            <span v-if="expr.hillMode === 'number-of-followers'" class="hill-count">&times;{{ share.hills }}</span>
+          </div>
         </div>
       </div>
     </div>
@@ -146,6 +150,14 @@ export default {
   },
 
   methods: {
+    // Hills & Sheep: show the hill marker when hills affected this player's majority —
+    // in the "number-of-followers" variant for anyone standing on hills (with the count),
+    // in the tie-break variant only for the winner(s) who hold a hill.
+    showHills (share) {
+      if (!this.expr.hillMode || !share.hills) return false
+      return this.expr.hillMode === 'number-of-followers' || share.winner
+    },
+
     onClick () {
       this.$store.commit('board/pointsExpression', null)
     }
@@ -209,16 +221,15 @@ export default {
   right: 0
   height: var(--action-bar-height)
   display: flex
-  flex-direction: column
-  justify-content: center
-  align-items: flex-end
+  flex-direction: row
+  align-items: center
   padding-right: 18px
 
   .majority-label
     font-size: 14px
     font-weight: 300
     opacity: 0.7
-    margin-bottom: 2px
+    margin-right: 12px
 
   .majority-shares
     display: flex
@@ -261,4 +272,19 @@ export default {
       font-weight: 600
       line-height: 1
       margin-top: 1px
+
+    .hills
+      display: flex
+      align-items: center
+      gap: 1px
+      margin-top: 2px
+
+      .hill-img
+        width: 18px
+        height: 18px
+        border-radius: 3px
+
+      .hill-count
+        font-size: 13px
+        font-weight: 500
 </style>

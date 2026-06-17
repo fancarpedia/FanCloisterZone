@@ -22,10 +22,18 @@ class PointsAssert {
 }
 
 // -------------------- Feature Scored Assert --------------------
+// "<player> scored <feature> for <n> points" with an optional scoring-bullet position
+// "... at [x,y]" (the position of the meeple the bullet is shown on).
 class FeatureScoredAssert {
   constructor(state) {
-    this.REGEXP = /(\w+) scored ([\w-]+) for (-?\d+) points?/
+    this.REGEXP = /(\w+) scored ([\w-]+) for (-?\d+) points?(?: at \[\s*(-?\d+)\s*,\s*(-?\d+)\s*\])?/
     this.state = state
+  }
+
+  bulletPosition(ptr) {
+    if (!ptr) return null
+    // plain FeaturePointer { position, ... } or ScorePositionsFeaturePointer { featurePointer }
+    return ptr.position || (ptr.featurePointer && ptr.featurePointer.position) || null
   }
 
   verify(assertion) {
@@ -34,6 +42,7 @@ class FeatureScoredAssert {
       const playerIdx = findPlayerIndex(this.state, m[1])
       const feature = m[2]
       const points = parseInt(m[3])
+      const expectedPos = m[4] !== undefined ? [parseInt(m[4]), parseInt(m[5])] : null
 
       if (!this.state.history) return { result: false }
 
@@ -41,12 +50,14 @@ class FeatureScoredAssert {
         .flatMap(h => h.events)
         .filter(({ type }) => type === 'points')
         .flatMap(ev => ev.points)
-        .find(
-          pts =>
-            pts.player === playerIdx &&
-            pts.points === points &&
-            pts.name.split('.')[0] === feature
-        )
+        .find(pts => {
+          if (pts.player !== playerIdx || pts.points !== points || pts.name.split('.')[0] !== feature) {
+            return false
+          }
+          if (!expectedPos) return true
+          const pos = this.bulletPosition(pts.ptr)
+          return !!pos && pos[0] === expectedPos[0] && pos[1] === expectedPos[1]
+        })
 
       return { result }
     }

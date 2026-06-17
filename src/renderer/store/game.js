@@ -470,7 +470,10 @@ export const actions = {
             for (const event of step.events) {
               if (event.points) {
                 for (const p of event.points) {
-                  content.test.assertions.push(`${content.players[p.player].name} scored ${p.name.split('.')[0]} for ${p.points} point${p.points !== 1 ? "s" : ""}.`)
+                  // scoring-bullet position: plain FeaturePointer or ScorePositionsFeaturePointer
+                  const pos = p.ptr ? (p.ptr.position || (p.ptr.featurePointer && p.ptr.featurePointer.position)) : null
+                  const at = pos ? ` at [${pos[0]},${pos[1]}]` : ''
+                  content.test.assertions.push(`${content.players[p.player].name} scored ${p.name.split('.')[0]} for ${p.points} point${p.points !== 1 ? "s" : ""}${at}.`)
                 }
               }
             }
