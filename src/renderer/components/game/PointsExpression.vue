@@ -246,7 +246,9 @@ export default {
 
   .majority-shares
     display: flex
-    align-items: flex-end
+    // top-align so the crown / meeple / power rows line up across shares; the optional
+    // hills marker hangs below and doesn't push the meeples out of their shared row
+    align-items: flex-start
 
   .share
     display: flex
