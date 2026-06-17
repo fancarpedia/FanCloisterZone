@@ -4,6 +4,14 @@ import { getSettings } from '../settings'
 let _win
 let menu
 const enabledState = {}
+// checked state of the view toggle items — kept in sync with the renderer store, and
+// re-applied after the menu is rebuilt (e.g. on locale change). Defaults match the store.
+const checkedState = {
+  'game-farm-hints': false,
+  'game-feature-hints': false,
+  'game-potential-score': true,
+  'toggle-history': true
+}
 let devToolsListenersAttached = false
 
 function updateDevToolsCheck() {
@@ -57,9 +65,10 @@ async function createMenu(win, messages) {
         { id: 'rotate', label: $t('menu.rotate') || 'Rotate', accelerator: 'r', registerAccelerator: false, click() { win.webContents.send('menu.rotate') } },
         { type: 'separator' },
         { id: 'game-tiles', label: $t('menu.tiles') || 'Tiles', click() { win.webContents.send('menu.game-tiles') } },
-        { id: 'game-farm-hints', label: $t('menu.farm-hints') || 'Farm Hints', accelerator: 'f', registerAccelerator: false, click() { win.webContents.send('menu.game-farm-hints') } },
-        { id: 'game-feature-hints', label: $t('menu.feature-hints') || 'Feature Hints', accelerator: 't', registerAccelerator: false, click() { win.webContents.send('menu.game-feature-hints') } },
-        { id: 'toggle-history', label: $t('menu.toggle-history') || 'Toggle History', accelerator: 'h', registerAccelerator: false, click() { win.webContents.send('menu.game-history') } }
+        { id: 'game-farm-hints', label: $t('menu.farm-hints') || 'Farm Hints', accelerator: 'f', registerAccelerator: false, type: 'checkbox', checked: checkedState['game-farm-hints'], click() { win.webContents.send('menu.game-farm-hints') } },
+        { id: 'game-feature-hints', label: $t('menu.feature-hints') || 'Feature Hints', accelerator: 't', registerAccelerator: false, type: 'checkbox', checked: checkedState['game-feature-hints'], click() { win.webContents.send('menu.game-feature-hints') } },
+        { id: 'game-potential-score', label: $t('menu.potential-score') || 'Potential Final Score', type: 'checkbox', checked: checkedState['game-potential-score'], click() { win.webContents.send('menu.game-potential-score') } },
+        { id: 'toggle-history', label: $t('menu.toggle-history') || 'Toggle History', accelerator: 'h', registerAccelerator: false, type: 'checkbox', checked: checkedState['toggle-history'], click() { win.webContents.send('menu.game-history') } }
       ]
     }, {
       label: $t('menu.help') || 'Help',
@@ -126,6 +135,17 @@ export default function () {
     Object.assign(enabledState, update)
   })
 
+  ipcMain.handle('set-menu-checked', (ev, update) => {
+    const menu = Menu.getApplicationMenu()
+    Object.entries(update).forEach(([id, checked]) => {
+      const item = menu.getMenuItemById(id)
+      if (item) {
+        item.checked = checked
+      }
+      checkedState[id] = checked
+    })
+  })
+
   ipcMain.handle('translate-menu', (ev, messages) => {
     if (_win) {
       createMenu(_win, messages)
@@ -133,6 +153,12 @@ export default function () {
         const item = menu.getMenuItemById(id)
         if (item) {
           item.enabled = enabled
+        }
+      })
+      Object.entries(checkedState).forEach(([id, checked]) => {
+        const item = menu.getMenuItemById(id)
+        if (item) {
+          item.checked = checked
         }
       })
     }

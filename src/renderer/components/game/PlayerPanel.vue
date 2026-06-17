@@ -9,8 +9,8 @@
     }"
   >
     <div :class="'name-box '+ color">
-      <div class="points">
-        <div>{{ player.points }}</div>
+      <div class="points" :title="showFinalPoints ? $t('core-messages.potential-final-score') : null">
+        <div>{{ player.points }}<span v-if="showFinalPoints" class="final">/{{ player.finalPoints }}</span></div>
       </div>
       <div class="player-tokens">
        <div
@@ -116,7 +116,8 @@ export default {
       turnPlayer: state => state.game.turnPlayer,
       actionPlayer: state => state.game.action?.player,
       bazaar: state => state.game.bazaar,
-      features: state => state.game.features
+      features: state => state.game.features,
+      showPotentialScore: state => state.showPotentialScore
     }),
 
     ...mapGetters({
@@ -128,6 +129,12 @@ export default {
 
     color () {
       return this.colorCssClass(this.index)
+    },
+
+    // projected final score (what the player would have if the game ended now); shown as
+    // "score/final" whenever the toggle is on
+    showFinalPoints () {
+      return this.showPotentialScore && this.player.finalPoints != null
     },
 
     slot () {
@@ -299,8 +306,14 @@ section
   > div
     flex: 1
     text-align: right
-    padding: 0 18px
+    padding: 0 14px
     font-weight: 500
+    white-space: nowrap
+
+    .final
+      font-size: 0.5em
+      font-weight: 500
+      opacity: 0.7
 
 .resources
   display: flex

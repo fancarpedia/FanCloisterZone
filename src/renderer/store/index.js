@@ -16,6 +16,7 @@ export const state = () => ({
   showSettings: false,
   showGameFarmHints: false,
   showGameFeatureHints: false,
+  showPotentialScore: true,
   showGameHistory: true,
   showGameTiles: false,
   showGameSetup: false,
@@ -71,6 +72,10 @@ export const mutations = {
 
   toggleGameFeatureHints (state) {
     state.showGameFeatureHints = !state.showGameFeatureHints
+  },
+
+  togglePotentialScore (state) {
+    state.showPotentialScore = !state.showPotentialScore
   },
 
   toggleGameHistory (state) {

@@ -90,7 +90,11 @@ export default {
       engine: state => state.engine,
       connectionState: state => state.networking.connectionStatus,
       onlineConnected: state => state.networking.connectionType === 'online',
-      errorMessage: state => state.errorMessage
+      errorMessage: state => state.errorMessage,
+      showGameFarmHints: state => state.showGameFarmHints,
+      showGameFeatureHints: state => state.showGameFeatureHints,
+      showPotentialScore: state => state.showPotentialScore,
+      showGameHistory: state => state.showGameHistory
     }),
 
     ...mapGetters({
@@ -154,6 +158,22 @@ export default {
 
     engine () {
       this.updateMenu()
+    },
+
+    showGameFarmHints () {
+      this.syncMenuChecks()
+    },
+
+    showGameFeatureHints () {
+      this.syncMenuChecks()
+    },
+
+    showPotentialScore () {
+      this.syncMenuChecks()
+    },
+
+    showGameHistory () {
+      this.syncMenuChecks()
     }
   },
 
@@ -230,6 +250,9 @@ export default {
     ipcRenderer.on('menu.game-feature-hints', () => {
       this.$store.commit('toggleGameFeatureHints')
     })
+    ipcRenderer.on('menu.game-potential-score', () => {
+      this.$store.commit('togglePotentialScore')
+    })
     ipcRenderer.on('menu.game-history', () => {
       this.$store.commit('toggleGameHistory')
     })
@@ -287,6 +310,7 @@ export default {
     onThemeChange(this.$store.state.settings.theme)
     this.$i18n.setLocale(this.$store.state.settings.locale)
     this.updateMenu()
+    this.syncMenuChecks()
 
     ipcRenderer.on('error', (ev, value) => {
       this.$store.commit('errorMessage', value)
@@ -360,11 +384,21 @@ export default {
         'game-tiles': gameRunning,
         'game-farm-hints': gameRunning,
         'game-feature-hints': gameRunning,
+        'game-potential-score': gameRunning,
         'game-setup': gameRunning,
         'dump-server': this.$server.isRunning(),
         'theme-inspector': !gameOpen,
         'save-for-test-runner': gameRunning,
         'save-for-test-runner-end-game': gameRunning
+      })
+    },
+
+    syncMenuChecks () {
+      ipcRenderer.invoke('set-menu-checked', {
+        'game-farm-hints': this.showGameFarmHints,
+        'game-feature-hints': this.showGameFeatureHints,
+        'game-potential-score': this.showPotentialScore,
+        'toggle-history': this.showGameHistory
       })
     },
     
