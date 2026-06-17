@@ -13,6 +13,7 @@
       <TileLayer />
     </g>
     <FarmHintsLayer v-if="layers.FarmHintsLayer" :global-transform="transform" />
+    <FeatureHintsLayer v-if="layers.FeatureHintsLayer" :global-transform="transform" />
     <g :transform="transform">
       <TilePlacementLayer
         v-if="layers.TilePlacementLayer"
@@ -88,6 +89,7 @@ import CastleBaseSelectLayer from '@/components/game/layers/CastleBaseSelectLaye
 import DragonMoveLayer from '@/components/game/layers/DragonMoveLayer'
 import EmphasizeLayer from '@/components/game/layers/EmphasizeLayer'
 import FarmHintsLayer from '@/components/game/layers/FarmHintsLayer'
+import FeatureHintsLayer from '@/components/game/layers/FeatureHintsLayer'
 import FerryChangeLayer from '@/components/game/layers/FerryChangeLayer'
 import FlierLayer from '@/components/game/layers/FlierLayer'
 import TokenLayer from '@/components/game/layers/TokenLayer'
@@ -116,6 +118,7 @@ export default {
     DragonMoveLayer,
     EmphasizeLayer,
     FarmHintsLayer,
+    FeatureHintsLayer,
     FeatureSelectLayer,
     FerryChangeLayer,
     FlierLayer,
@@ -215,8 +218,16 @@ export default {
       } else {
         this.$store.dispatch('board/hideLayer', { layer: 'FarmHintsLayer' })
       }
+    },
+
+    '$store.state.showGameFeatureHints' (value) {
+      if (value) {
+        this.$store.dispatch('board/showLayer', { layer: 'FeatureHintsLayer', props: {} })
+      } else {
+        this.$store.dispatch('board/hideLayer', { layer: 'FeatureHintsLayer' })
+      }
     }
-  },  
+  },
   
   methods: {
     onKeyDown (ev) {
@@ -255,7 +266,7 @@ export default {
               this.$store.commit('toggleGameHistory')
             }
             if (this.pressedKeys.t) {
-              console.log('Pressed t')
+              this.$store.commit('toggleGameFeatureHints')
             }
             if (pressed) {
               this.adjustAfterMove()

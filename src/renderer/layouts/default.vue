@@ -227,6 +227,9 @@ export default {
     ipcRenderer.on('menu.game-farm-hints', () => {
       this.$store.commit('toggleGameFarmHints')
     })
+    ipcRenderer.on('menu.game-feature-hints', () => {
+      this.$store.commit('toggleGameFeatureHints')
+    })
     ipcRenderer.on('menu.game-history', () => {
       this.$store.commit('toggleGameHistory')
     })
@@ -356,6 +359,7 @@ export default {
         'toggle-history': gameRunning,
         'game-tiles': gameRunning,
         'game-farm-hints': gameRunning,
+        'game-feature-hints': gameRunning,
         'game-setup': gameRunning,
         'dump-server': this.$server.isRunning(),
         'theme-inspector': !gameOpen,

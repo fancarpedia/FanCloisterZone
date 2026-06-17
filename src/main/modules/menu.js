@@ -58,6 +58,7 @@ async function createMenu(win, messages) {
         { type: 'separator' },
         { id: 'game-tiles', label: $t('menu.tiles') || 'Tiles', click() { win.webContents.send('menu.game-tiles') } },
         { id: 'game-farm-hints', label: $t('menu.farm-hints') || 'Farm Hints', accelerator: 'f', registerAccelerator: false, click() { win.webContents.send('menu.game-farm-hints') } },
+        { id: 'game-feature-hints', label: $t('menu.feature-hints') || 'Feature Hints', accelerator: 't', registerAccelerator: false, click() { win.webContents.send('menu.game-feature-hints') } },
         { id: 'toggle-history', label: $t('menu.toggle-history') || 'Toggle History', accelerator: 'h', registerAccelerator: false, click() { win.webContents.send('menu.game-history') } }
       ]
     }, {
