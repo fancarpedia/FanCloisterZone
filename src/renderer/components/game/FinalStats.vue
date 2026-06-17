@@ -45,96 +45,96 @@
         {{ val }}
       </div>
 
-      <div class="header roads" :title="$t('game.feature.roads')"><StandaloneTileImage tile-id="BA/RFr" :size="40" /></div>
+      <div class="header roads" :title="$t('game.feature.roads')"><ScoringIcon name="road" :size="40" /></div>
       <div v-for="(val, idx) in stats.points.road" :key="'roads-'+idx" class="roads value">
         {{ val }}
       </div>
 
-      <div class="header cities" :title="$t('game.feature.cities')"><StandaloneTileImage tile-id="BA/Cccc+" :size="40" /></div>
+      <div class="header cities" :title="$t('game.feature.cities')"><ScoringIcon name="city" :size="40" /></div>
       <div v-for="(val, idx) in stats.points.city" :key="'cities-'+idx" class="cities value">
         {{ val }}
       </div>
 
-      <div class="header monasteries" :title="$t('game.feature.monasteries')"><img src="~/assets/features/C1/cloister.png" height="40"></div>
+      <div class="header monasteries" :title="$t('game.feature.monasteries')"><ScoringIcon name="monastery" :size="40" /></div>
       <div v-for="(val, idx) in stats.points.monastery" :key="'monasteries-'+idx" class="monasteries value">
         {{ val }}
       </div>
 
-      <div class="header garden" :title="$t('game.feature.gardens')"><img src="~/assets/features/C1/garden.png" height="40"></div>
+      <div class="header garden" :title="$t('game.feature.gardens')"><ScoringIcon name="garden" :size="40" /></div>
       <div v-for="(val, idx) in stats.points.garden" :key="'garden-'+idx" class="garden value">
         {{ val }}
       </div>
 
-      <div class="header fields" :title="$t('game.feature.fields')"><StandaloneTileImage tile-id="GQ/F" :size="40" /></div>
+      <div class="header fields" :title="$t('game.feature.fields')"><ScoringIcon name="field" :size="40" /></div>
       <div v-for="(val, idx) in stats.points.field" :key="'fields-'+idx" class="fields value">
         {{ val }}
       </div>
 
       <template v-if="stats.points['special-monastery'].some(p => p)">
-        <div class="header special-monasteries" :title="$t('game.feature.special-monasteries')"><StandaloneTileImage tile-id="MO/M1" :size="40" /></div>
+        <div class="header special-monasteries" :title="$t('game.feature.special-monasteries')"><ScoringIcon name="special-monastery" :size="40" /></div>
         <div v-for="(val, idx) in stats.points['special-monastery']" :key="'special-monasteries-'+idx" class="special-monasteries value">
           {{ val }}
         </div>
       </template>
 
       <template v-if="stats.points.castle.some(p => p)">
-        <div class="header castle" :title="$t('game.feature.castles')"><img src="~/assets/figures/castle.png" height="40"></div>
+        <div class="header castle" :title="$t('game.feature.castles')"><ScoringIcon name="castle" :size="40" /></div>
         <div v-for="(val, idx) in stats.points.castle" :key="'castles-'+idx" class="castles value">
           {{ val }}
         </div>
       </template>
 
       <template v-if="stats.points.watchtower.some(p => p)">
-        <div class="header watchtowers" :title="$t('game.feature.watchtowers')"><StandaloneTileImage tile-id="WT/CFff_3C" :size="40" /></div>
+        <div class="header watchtowers" :title="$t('game.feature.watchtowers')"><ScoringIcon name="watchtower" :size="40" /></div>
         <div v-for="(val, idx) in stats.points.watchtower" :key="'watchtowers-'+idx" class="watchtowers value">
           {{ val }}
         </div>
       </template>
 
       <template v-if="stats.points['trade-goods'].some(p => p)">
-        <div class="header traders" :title="$t('game.feature.trade-goods')"><img src="~/assets/figures/trade.png" height="20"></div>
+        <div class="header traders" :title="$t('game.feature.trade-goods')"><ScoringIcon name="trade-goods" :size="20" /></div>
         <div v-for="(val, idx) in stats.points['trade-goods']" :key="'traders-'+idx" class="traders value">
           {{ val }}
         </div>
       </template>
 
       <template v-if="stats.points.shrine.some(p => p)">
-        <div class="header shrine" :title="$t('game.feature.shrines')"><img src="~/assets/features/C1/shrine.jpg" height="40"></div>
+        <div class="header shrine" :title="$t('game.feature.shrines')"><ScoringIcon name="shrine" :size="40" /></div>
         <div v-for="(val, idx) in stats.points.shrine" :key="'shrine-'+idx" class="shrine value">
           {{ val }}
         </div>
       </template>
 
       <template v-if="stats.points.king.some(p => p)">
-        <div class="header king" :title="$t('core-messages.the-biggest-city')"><img src="~/assets/figures/king.png" height="40"></div>
+        <div class="header king" :title="$t('core-messages.the-biggest-city')"><ScoringIcon name="king" :size="40" /></div>
         <div v-for="(val, idx) in stats.points.king" :key="'king-'+idx" class="king value">
           {{ val }}
         </div>
       </template>
 
       <template v-if="stats.points.robber.some(p => p)">
-        <div class="header robber" :title="$t('core-messages.the-longest-road')"><img src="~/assets/figures/robber.png" height="40"></div>
+        <div class="header robber" :title="$t('core-messages.the-longest-road')"><ScoringIcon name="robber" :size="40" /></div>
         <div v-for="(val, idx) in stats.points.robber" :key="'robber-'+idx" class="robber value">
           {{ val }}
         </div>
       </template>
 
       <template v-if="stats.points.gold.some(p => p)">
-        <div class="header gold" :title="$t('game.feature.gold')"><img src="~/assets/figures/gold.png" height="20"></div>
+        <div class="header gold" :title="$t('game.feature.gold')"><ScoringIcon name="gold" :size="20" /></div>
         <div v-for="(val, idx) in stats.points.gold" :key="'gold-'+idx" class="gold value">
           {{ val }}
         </div>
       </template>
 
       <template v-if="stats.points.fairy.some(p => p)">
-        <div class="header fairy" :title="$t('game.feature.fairy')"><NeutralFigure figure="fairy" :width="40" :height="40" /></div>
+        <div class="header fairy" :title="$t('game.feature.fairy')"><ScoringIcon name="fairy" :size="40" /></div>
         <div v-for="(val, idx) in stats.points.fairy" :key="'fairy-'+idx" class="fairy value">
           {{ val }}
         </div> 
       </template>
 
       <template v-if="stats.points.tower.some(p => p)">
-        <div class="header tower" :title="$t('game.feature.towers')"><StandaloneTileImage tile-id="TO/F" :size="40" /></div>
+        <div class="header tower" :title="$t('game.feature.towers')"><ScoringIcon name="tower" :size="40" /></div>
         <div v-for="(val, idx) in stats.points.tower" :key="'tower-'+idx" class="tower value">
           {{ val }}
         </div> 
@@ -142,7 +142,7 @@
 
       <template v-if="stats.points.flock.some(p => p)">
         <div class="header sheep" :title="$t('game.feature.sheep')">
-          <TokenImage token="SHEEP_3X" :height="40" />
+          <ScoringIcon name="flock" :size="40" />
         </div>
         <div v-for="(val, idx) in stats.points.flock" :key="'flock-'+idx" class="sheep value">
           {{ val }}
@@ -151,10 +151,7 @@
 
       <template v-if="stats.points.ringmaster.some(p => p)">
         <div class="header ringmaster" :title="$t('game.feature.ringmaster')">
-          <Meeple
-            type="Ringmaster"
-          	class="color color-7"
-          />
+          <ScoringIcon name="ringmaster" :size="40" />
         </div>
         <div v-for="(val, idx) in stats.points.ringmaster" :key="'ringmaster-'+idx" class="ringmaster value">
           {{ val }}
@@ -163,7 +160,7 @@
 
       <template v-if="stats.points.bigtop.some(p => p)">
         <div class="header bigtop" :title="$t('game.feature.big-top')">
-          <NeutralFigure figure="big-top" :width="40" :height="40" />
+          <ScoringIcon name="bigtop" :size="40" />
         </div>
         <div v-for="(val, idx) in stats.points.bigtop" :key="'bigtop-'+idx" class="bigtop value">
           {{ val }}
@@ -172,13 +169,7 @@
 
       <template v-if="stats.points.acrobats.some(p => p)">
         <div class="header acrobats" :title="$t('game.feature.acrobats')">
-          <svg class="meeple" width="40" height="40">
-            <g transform="scale(0.40)">
-              <use :href="`${MEEPLES_SVG}#small-follower`" x="22" y="0" />
-              <use :href="`${MEEPLES_SVG}#small-follower`" x="-1" y="41" />
-              <use :href="`${MEEPLES_SVG}#small-follower`" x="46" y="41" />
-            </g>
-          </svg>
+          <ScoringIcon name="acrobats" :size="40" />
         </div>
         <div v-for="(val, idx) in stats.points.acrobats" :key="'acrobats-'+idx" class="acrobats value">
           {{ val }}
@@ -186,28 +177,28 @@
       </template>
 
       <template v-if="stats.points['wind-rose'].some(p => p)">
-        <div class="header wind-rose" :title="$t('game.feature.wind-roses')"><StandaloneTileImage tile-id="WR/Rr" :size="40" /></div>
+        <div class="header wind-rose" :title="$t('game.feature.wind-roses')"><ScoringIcon name="wind-rose" :size="40" /></div>
         <div v-for="(val, idx) in stats.points['wind-rose']" :key="'special-monasteries-'+idx" class="wind-rose value">
           {{ val }}
         </div>
       </template>
 
       <template v-if="stats.points['church'].some(p => p)">
-        <div class="header church" :title="$t('game.feature.church-bonus')"><StandaloneTileImage tile-id="DA/LRRRR" :size="40" /></div>
+        <div class="header church" :title="$t('game.feature.church-bonus')"><ScoringIcon name="church" :size="40" /></div>
         <div v-for="(val, idx) in stats.points['church']" :key="'church-'+idx" class="church value">
           {{ val }}
         </div>
       </template>
 
       <template v-if="stats.points['yaga-hut'].some(p => p)">
-        <div class="header yaga-hut" :title="$t('game.feature.yaga-hut')"><StandaloneTileImage tile-id="RU/L" :size="40" /></div>
+        <div class="header yaga-hut" :title="$t('game.feature.yaga-hut')"><ScoringIcon name="yaga-hut" :size="40" /></div>
         <div v-for="(val, idx) in stats.points['yaga-hut']" :key="'yaga-hut-'+idx" class="yaga-hut value">
           {{ val }}
         </div>
       </template>
 
       <template v-if="stats.points.vodyanoy.some(p => p)">
-        <div class="header vodyanoy" :title="$t('game.feature.vodyanoy')"><StandaloneTileImage tile-id="RU/V" :size="40" /></div>
+        <div class="header vodyanoy" :title="$t('game.feature.vodyanoy')"><ScoringIcon name="vodyanoy" :size="40" /></div>
         <div v-for="(val, idx) in stats.points.vodyanoy" :key="'vodyanoy-'+idx" class="vodyanoy value">
           {{ val }}
         </div>
@@ -215,7 +206,7 @@
 
       <template v-if="stats.points.flowers.some(p => p)">
         <div class="header flowers" :title="$t('game.feature.flowers')">
-          <TokenImage token="FLOWERS_YELLOW" :height="40" />
+          <ScoringIcon name="flowers" :size="40" />
         </div>
         <div v-for="(val, idx) in stats.points.flowers" :key="'flowers-'+idx" class="flowers value">
           {{ val }}
@@ -224,10 +215,7 @@
 
       <template v-if="stats.points.obelisk.some(p => p)">
         <div class="header obelisk" :title="$t('game.element.obelisk')">
-          <Meeple
-            type="Obelisk"
-          	class="color color-7"
-          />
+          <ScoringIcon name="obelisk" :size="40" />
         </div>
         <div v-for="(val, idx) in stats.points.obelisk" :key="'obelisk-'+idx" class="obelisk value">
           {{ val }}
@@ -236,10 +224,7 @@
 
       <template v-if="stats.points.windmill.some(p => p)">
         <div class="header windmill" :title="$t('game.element.windmill')">
-          <Meeple
-            type="Windmill"
-          	class="color color-7"
-          />
+          <ScoringIcon name="windmill" :size="40" />
         </div>
         <div v-for="(val, idx) in stats.points.windmill" :key="'windmill-'+idx" class="windmill value">
           {{ val }}
@@ -248,10 +233,7 @@
 
       <template v-if="stats.points['decinsky-sneznik'].some(p => p)">
         <div class="header decinsky-sneznik" :title="$t('game.element.decinsky-sneznik')">
-          <Meeple
-            type="Decinsky-Sneznik"
-          	class="color color-7"
-          />
+          <ScoringIcon name="decinsky-sneznik" :size="40" />
         </div>
         <div v-for="(val, idx) in stats.points['decinsky-sneznik']" :key="'decinsky-sneznik-'+idx" class="decinky-sneznik value">
           {{ val }}
@@ -259,21 +241,21 @@
       </template>
 
       <template v-if="stats.points['river'].some(p => p)">
-        <div class="header river" :title="$t('game.feature.fishermen')"><img src="~/assets/features/C1/fishermen.png" height="40"></div>
+        <div class="header river" :title="$t('game.feature.fishermen')"><ScoringIcon name="river" :size="40" /></div>
         <div v-for="(val, idx) in stats.points['river']" :key="'river-'+idx" class="river value">
           {{ val }}
         </div>
       </template>
 
       <template v-if="stats.points['courier'].some(p => p)">
-        <div class="header courier" :title="$t('game.figure.courier')"><NeutralFigure figure="courier" :width="40" :height="40" /></div>
+        <div class="header courier" :title="$t('game.figure.courier')"><ScoringIcon name="courier" :size="40" /></div>
         <div v-for="(val, idx) in stats.points['courier']" :key="'courier-'+idx" class="courier value">
           {{ val }}
         </div>
       </template>
 
       <template v-if="stats.points['fishhut'].some(p => p)">
-        <div class="header fishhut" :title="$t('game.feature.fishhut')"><img src="~/assets/features/C1/fishhut.png" height="40"></div>
+        <div class="header fishhut" :title="$t('game.feature.fishhut')"><ScoringIcon name="fishhut" :size="40" /></div>
         <div v-for="(val, idx) in stats.points['fishhut']" :key="'river-'+idx" class="fishhut value">
           {{ val }}
         </div>
@@ -290,23 +272,16 @@ import flatten from 'lodash/flatten'
 import debounce from 'lodash/debounce'
 
 import Meeple from '@/components/game/Meeple'
-import NeutralFigure from '@/components/game/NeutralFigure'
-import StandaloneTileImage from '@/components/game/StandaloneTileImage'
-import TokenImage from '@/components/game/TokenImage'
-
-const MEEPLES_SVG = require('~/assets/meeples.svg')
+import ScoringIcon from '@/components/game/ScoringIcon'
 
 export default {
   components: {
     Meeple,
-    NeutralFigure,
-    StandaloneTileImage,
-    TokenImage,
+    ScoringIcon
   },
 
   data () {
     return {
-      MEEPLES_SVG,
       width: 0
     }
   },

@@ -1,8 +1,11 @@
 <template>
   <section @click="onClick">
     <div class="expr-title">
-      <div>{{ title }}</div>
-      <div v-if="subtitle" class="sub">{{ subtitle }}</div>
+      <ScoringIcon :name="expr.name" :size="36" class="title-icon" />
+      <div class="title-text">
+        <div>{{ title }}</div>
+        <div v-if="subtitle" class="sub">{{ subtitle }}</div>
+      </div>
     </div>
     <div class="expr-row">
       <div class="expr">
@@ -51,6 +54,7 @@ import { mapGetters } from 'vuex'
 import { Expansion } from '@/models/expansions'
 import ExpressionItem from '@/components/game/ExpressionItem'
 import Meeple from '@/components/game/Meeple'
+import ScoringIcon from '@/components/game/ScoringIcon'
 
 const TITLE_MAPPING = {
   'acrobats': 'game.feature.acrobats',
@@ -104,7 +108,8 @@ const SUBTITLE_MAPPING = {
 export default {
   components: {
     ExpressionItem,
-    Meeple
+    Meeple,
+    ScoringIcon
   },
 
   props: {
@@ -202,15 +207,23 @@ export default {
 .expr-title
   position: absolute
   left: 0
-  max-width: 210px
+  max-width: 250px
   height: var(--action-bar-height)
   line-height: 1
   display: flex
-  flex-direction: column
-  justify-content: center
+  flex-direction: row
+  align-items: center
+  gap: 10px
   padding-left: 20px
   font-size: 20px
   font-weight: 300
+
+  .title-icon
+    flex: none
+
+  .title-text
+    display: flex
+    flex-direction: column
 
   .sub
     font-size: 16px
