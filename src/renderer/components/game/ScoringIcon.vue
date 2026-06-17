@@ -1,6 +1,7 @@
 <template>
   <span v-if="icon" class="scoring-icon">
     <StandaloneTileImage v-if="icon.kind === 'tile'" :tile-id="icon.value" :size="iconSize" />
+    <img v-else-if="icon.kind === 'tile-back'" class="tile-back" :src="icon.value" :width="iconSize" :height="iconSize">
     <img v-else-if="icon.kind === 'img'" :src="icon.value" :height="iconSize">
     <TokenImage v-else-if="icon.kind === 'token'" :token="icon.value" :height="iconSize" />
     <NeutralFigure v-else-if="icon.kind === 'figure'" :figure="icon.value" :width="iconSize" :height="iconSize" />
@@ -28,6 +29,7 @@ import TokenImage from '@/components/game/TokenImage'
 const MEEPLES_SVG = require('~/assets/meeples.svg')
 
 const MAPPING = {
+  'tiles': { kind: 'tile-back', value: require('~/assets/icons/back.svg') },
   'road': { kind: 'tile', value: 'BA/RFr' },
   'city': { kind: 'tile', value: 'BA/Cccc+' },
   'monastery': { kind: 'img', value: require('~/assets/features/C1/cloister.png') },
@@ -107,4 +109,12 @@ export default {
   display: inline-flex
   align-items: center
   justify-content: center
+
+  .tile-back
+    object-fit: contain
+    border-radius: 2px
+
+// the tile back is black art — invert it in dark mode so it stays visible
+#app.theme--dark .tile-back
+  filter: invert(1)
 </style>

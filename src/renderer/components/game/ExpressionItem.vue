@@ -1,8 +1,8 @@
 <template>
-  <div class="expr-item" :class="{'has-count': hasCount}">
+  <div class="expr-item" :class="{'has-count': hasCount && !iconOnly}">
     <div class="icon">
-      <span v-if="hasCount" class="count">{{ item.count }}&times;</span>
-      <template v-if="item.name === 'tiles'"><v-icon :title="$t('core-messages.tiles')">fas fa-square</v-icon></template>
+      <span v-if="hasCount && !iconOnly" class="count">{{ item.count }}&times;</span>
+      <template v-if="item.name === 'tiles'"><ScoringIcon name="tiles" :size="40" :title="$t('core-messages.tiles')" /></template>
       <template v-else-if="item.name === 'pennants'"><img :title="$t('game.feature.coat-of-arms')" src="~/assets/icons/shield.png" height="40"></template>
       <template v-else-if="item.name === 'inn'"><img :title="$t('game.feature.inn')" src="~/assets/features/C1/inn.png" height="40"></template>
       <template v-else-if="item.name === 'cathedral'"><img :title="$t('game.feature.cathedral')" src="~/assets/features/C1/cathedral.png" height="40"></template>
@@ -76,7 +76,7 @@
         <v-icon :title="item.name">fas fa-question</v-icon> {{ item.name }}
       </template>
     </div>
-    <div class="points">{{ points }}</div>
+    <div v-if="!iconOnly" class="points">{{ points }}</div>
   </div>
 </template>
 
@@ -86,6 +86,7 @@ import isNil from 'lodash/isNil'
 import { Expansion } from '@/models/expansions'
 import NeutralFigure from '@/components/game/NeutralFigure'
 import ExpansionSymbol from '@/components/ExpansionSymbol'
+import ScoringIcon from '@/components/game/ScoringIcon'
 import TokenImage from '@/components/game/TokenImage'
 
 const MEEPLES_SVG = require('~/assets/meeples.svg')
@@ -94,12 +95,15 @@ export default {
   components: {
     NeutralFigure,
     ExpansionSymbol,
+    ScoringIcon,
     TokenImage
   },
 
   props: {
     item: { type: Object, required: true },
-    index: { type: Number, required: true }
+    index: { type: Number, default: 0 },
+    // render only the item's icon (no count, no points) — used for the breakdown rows
+    iconOnly: { type: Boolean, default: false }
   },
 
   data () {

@@ -2,265 +2,73 @@
   <div
     class="final-stats"
   >
-    <div
-      class="grid"
-      :style="`width: ${width}px; grid-template-columns: 60px repeat(${players.length}, 1fr)`"
-    >
-      <div />
-      <div v-for="p in players" :key="'rank-'+p.index" class="rank">
-        <template v-if="p.rank == 1">🥇</template>
-        <template v-else-if="p.rank == 2">🥈</template>
-        <template v-else-if="p.rank == 3">🥉</template>
-        <template v-else>{{ p.rank }}</template>
+    <div class="grid-wrap" :style="`width: ${width}px`">
+      <div class="grid summary" :style="cols">
+        <div />
+        <div v-for="p in players" :key="'rank-'+p.index" class="rank">
+          <template v-if="p.rank == 1">🥇</template>
+          <template v-else-if="p.rank == 2">🥈</template>
+          <template v-else-if="p.rank == 3">🥉</template>
+          <template v-else>{{ p.rank }}</template>
+        </div>
+
+        <div />
+        <div
+          v-for="p in players"
+          :key="'ico-'+p.index"
+          :class="colorCssClass(p.index)"
+        >
+          <Meeple type="SmallFollower" />
+        </div>
+
+        <div />
+        <div v-for="p in players" :key="'name-'+p.index" class="name">
+          {{ p.name }}<v-icon v-if="p.ai">fa-solid fa-robot</v-icon>
+        </div>
+
+        <div />
+        <div v-for="p in players" :key="'points-'+p.index" class="points" :class="colorCssClass(p.index)">
+          <div>
+            {{ p.points }}
+          </div>
+        </div>
+
+        <div class="header tiles" :title="$t('core-messages.tiles')"><ScoringIcon name="tiles" :size="42" /></div>
+        <div v-for="(val, idx) in stats.tiles" :key="'tiles-'+idx" class="tiles value">
+          {{ val }}
+        </div>
       </div>
 
-      <div />
       <div
-        v-for="p in players"
-        :key="'ico-'+p.index"
-        :class="colorCssClass(p.index)"
+        v-for="cat in categories"
+        :key="cat.name"
+        class="grid category"
+        :class="{ 'has-items': cat.items.length }"
+        :style="cols"
       >
-        <Meeple type="SmallFollower" />
+        <div class="header" :title="$t(cat.title)"><ScoringIcon :name="cat.name" :size="40" /></div>
+        <div
+          v-for="(val, idx) in stats.points[cat.name]"
+          :key="cat.name + '-' + idx"
+          class="value"
+        >
+          {{ val }}
+        </div>
+
+        <template v-for="item in cat.items">
+          <div :key="cat.name + '-' + item.name + '-h'" class="header item-header">
+            <ScoringIcon v-if="item.name === 'tiles'" name="tiles" :size="40" />
+            <ExpressionItem v-else :item="{ name: item.name }" icon-only />
+          </div>
+          <div
+            v-for="(val, idx) in item.points"
+            :key="cat.name + '-' + item.name + '-' + idx"
+            class="value item-value"
+          >
+            {{ val }}
+          </div>
+        </template>
       </div>
-
-      <div />
-      <div v-for="p in players" :key="'name-'+p.index" class="name">
-        {{ p.name }}<v-icon v-if="p.ai">fa-solid fa-robot</v-icon>
-      </div>
-
-      <div />
-      <div v-for="p in players" :key="'points-'+p.index" class="points" :class="colorCssClass(p.index)">
-        <div>
-          {{ p.points }}
-        </div>
-      </div>
-
-      <!-- <div class="header" :title="$t('core-messages.used-time')"><v-icon>fa-stopwatch</v-icon></div>
-      <div v-for="(val, idx) in stats.clock" :key="'clock-'+idx" class="clock value">
-        {{ val }}
-      </div> -->
-
-      <div class="header tiles" :title="$t('core-messages.tiles')"><v-icon>far fa-square</v-icon></div>
-      <div v-for="(val, idx) in stats.tiles" :key="'tiles-'+idx" class="tiles value">
-        {{ val }}
-      </div>
-
-      <div class="header roads" :title="$t('game.feature.roads')"><ScoringIcon name="road" :size="40" /></div>
-      <div v-for="(val, idx) in stats.points.road" :key="'roads-'+idx" class="roads value">
-        {{ val }}
-      </div>
-
-      <div class="header cities" :title="$t('game.feature.cities')"><ScoringIcon name="city" :size="40" /></div>
-      <div v-for="(val, idx) in stats.points.city" :key="'cities-'+idx" class="cities value">
-        {{ val }}
-      </div>
-
-      <div class="header monasteries" :title="$t('game.feature.monasteries')"><ScoringIcon name="monastery" :size="40" /></div>
-      <div v-for="(val, idx) in stats.points.monastery" :key="'monasteries-'+idx" class="monasteries value">
-        {{ val }}
-      </div>
-
-      <div class="header garden" :title="$t('game.feature.gardens')"><ScoringIcon name="garden" :size="40" /></div>
-      <div v-for="(val, idx) in stats.points.garden" :key="'garden-'+idx" class="garden value">
-        {{ val }}
-      </div>
-
-      <div class="header fields" :title="$t('game.feature.fields')"><ScoringIcon name="field" :size="40" /></div>
-      <div v-for="(val, idx) in stats.points.field" :key="'fields-'+idx" class="fields value">
-        {{ val }}
-      </div>
-
-      <template v-if="stats.points['special-monastery'].some(p => p)">
-        <div class="header special-monasteries" :title="$t('game.feature.special-monasteries')"><ScoringIcon name="special-monastery" :size="40" /></div>
-        <div v-for="(val, idx) in stats.points['special-monastery']" :key="'special-monasteries-'+idx" class="special-monasteries value">
-          {{ val }}
-        </div>
-      </template>
-
-      <template v-if="stats.points.castle.some(p => p)">
-        <div class="header castle" :title="$t('game.feature.castles')"><ScoringIcon name="castle" :size="40" /></div>
-        <div v-for="(val, idx) in stats.points.castle" :key="'castles-'+idx" class="castles value">
-          {{ val }}
-        </div>
-      </template>
-
-      <template v-if="stats.points.watchtower.some(p => p)">
-        <div class="header watchtowers" :title="$t('game.feature.watchtowers')"><ScoringIcon name="watchtower" :size="40" /></div>
-        <div v-for="(val, idx) in stats.points.watchtower" :key="'watchtowers-'+idx" class="watchtowers value">
-          {{ val }}
-        </div>
-      </template>
-
-      <template v-if="stats.points['trade-goods'].some(p => p)">
-        <div class="header traders" :title="$t('game.feature.trade-goods')"><ScoringIcon name="trade-goods" :size="20" /></div>
-        <div v-for="(val, idx) in stats.points['trade-goods']" :key="'traders-'+idx" class="traders value">
-          {{ val }}
-        </div>
-      </template>
-
-      <template v-if="stats.points.shrine.some(p => p)">
-        <div class="header shrine" :title="$t('game.feature.shrines')"><ScoringIcon name="shrine" :size="40" /></div>
-        <div v-for="(val, idx) in stats.points.shrine" :key="'shrine-'+idx" class="shrine value">
-          {{ val }}
-        </div>
-      </template>
-
-      <template v-if="stats.points.king.some(p => p)">
-        <div class="header king" :title="$t('core-messages.the-biggest-city')"><ScoringIcon name="king" :size="40" /></div>
-        <div v-for="(val, idx) in stats.points.king" :key="'king-'+idx" class="king value">
-          {{ val }}
-        </div>
-      </template>
-
-      <template v-if="stats.points.robber.some(p => p)">
-        <div class="header robber" :title="$t('core-messages.the-longest-road')"><ScoringIcon name="robber" :size="40" /></div>
-        <div v-for="(val, idx) in stats.points.robber" :key="'robber-'+idx" class="robber value">
-          {{ val }}
-        </div>
-      </template>
-
-      <template v-if="stats.points.gold.some(p => p)">
-        <div class="header gold" :title="$t('game.feature.gold')"><ScoringIcon name="gold" :size="20" /></div>
-        <div v-for="(val, idx) in stats.points.gold" :key="'gold-'+idx" class="gold value">
-          {{ val }}
-        </div>
-      </template>
-
-      <template v-if="stats.points.fairy.some(p => p)">
-        <div class="header fairy" :title="$t('game.feature.fairy')"><ScoringIcon name="fairy" :size="40" /></div>
-        <div v-for="(val, idx) in stats.points.fairy" :key="'fairy-'+idx" class="fairy value">
-          {{ val }}
-        </div> 
-      </template>
-
-      <template v-if="stats.points.tower.some(p => p)">
-        <div class="header tower" :title="$t('game.feature.towers')"><ScoringIcon name="tower" :size="40" /></div>
-        <div v-for="(val, idx) in stats.points.tower" :key="'tower-'+idx" class="tower value">
-          {{ val }}
-        </div> 
-      </template>
-
-      <template v-if="stats.points.flock.some(p => p)">
-        <div class="header sheep" :title="$t('game.feature.sheep')">
-          <ScoringIcon name="flock" :size="40" />
-        </div>
-        <div v-for="(val, idx) in stats.points.flock" :key="'flock-'+idx" class="sheep value">
-          {{ val }}
-        </div>
-      </template>
-
-      <template v-if="stats.points.ringmaster.some(p => p)">
-        <div class="header ringmaster" :title="$t('game.feature.ringmaster')">
-          <ScoringIcon name="ringmaster" :size="40" />
-        </div>
-        <div v-for="(val, idx) in stats.points.ringmaster" :key="'ringmaster-'+idx" class="ringmaster value">
-          {{ val }}
-        </div>
-      </template>
-
-      <template v-if="stats.points.bigtop.some(p => p)">
-        <div class="header bigtop" :title="$t('game.feature.big-top')">
-          <ScoringIcon name="bigtop" :size="40" />
-        </div>
-        <div v-for="(val, idx) in stats.points.bigtop" :key="'bigtop-'+idx" class="bigtop value">
-          {{ val }}
-        </div>
-      </template>
-
-      <template v-if="stats.points.acrobats.some(p => p)">
-        <div class="header acrobats" :title="$t('game.feature.acrobats')">
-          <ScoringIcon name="acrobats" :size="40" />
-        </div>
-        <div v-for="(val, idx) in stats.points.acrobats" :key="'acrobats-'+idx" class="acrobats value">
-          {{ val }}
-        </div>
-      </template>
-
-      <template v-if="stats.points['wind-rose'].some(p => p)">
-        <div class="header wind-rose" :title="$t('game.feature.wind-roses')"><ScoringIcon name="wind-rose" :size="40" /></div>
-        <div v-for="(val, idx) in stats.points['wind-rose']" :key="'special-monasteries-'+idx" class="wind-rose value">
-          {{ val }}
-        </div>
-      </template>
-
-      <template v-if="stats.points['church'].some(p => p)">
-        <div class="header church" :title="$t('game.feature.church-bonus')"><ScoringIcon name="church" :size="40" /></div>
-        <div v-for="(val, idx) in stats.points['church']" :key="'church-'+idx" class="church value">
-          {{ val }}
-        </div>
-      </template>
-
-      <template v-if="stats.points['yaga-hut'].some(p => p)">
-        <div class="header yaga-hut" :title="$t('game.feature.yaga-hut')"><ScoringIcon name="yaga-hut" :size="40" /></div>
-        <div v-for="(val, idx) in stats.points['yaga-hut']" :key="'yaga-hut-'+idx" class="yaga-hut value">
-          {{ val }}
-        </div>
-      </template>
-
-      <template v-if="stats.points.vodyanoy.some(p => p)">
-        <div class="header vodyanoy" :title="$t('game.feature.vodyanoy')"><ScoringIcon name="vodyanoy" :size="40" /></div>
-        <div v-for="(val, idx) in stats.points.vodyanoy" :key="'vodyanoy-'+idx" class="vodyanoy value">
-          {{ val }}
-        </div>
-      </template>
-
-      <template v-if="stats.points.flowers.some(p => p)">
-        <div class="header flowers" :title="$t('game.feature.flowers')">
-          <ScoringIcon name="flowers" :size="40" />
-        </div>
-        <div v-for="(val, idx) in stats.points.flowers" :key="'flowers-'+idx" class="flowers value">
-          {{ val }}
-        </div>
-      </template>
-
-      <template v-if="stats.points.obelisk.some(p => p)">
-        <div class="header obelisk" :title="$t('game.element.obelisk')">
-          <ScoringIcon name="obelisk" :size="40" />
-        </div>
-        <div v-for="(val, idx) in stats.points.obelisk" :key="'obelisk-'+idx" class="obelisk value">
-          {{ val }}
-        </div>
-      </template>
-
-      <template v-if="stats.points.windmill.some(p => p)">
-        <div class="header windmill" :title="$t('game.element.windmill')">
-          <ScoringIcon name="windmill" :size="40" />
-        </div>
-        <div v-for="(val, idx) in stats.points.windmill" :key="'windmill-'+idx" class="windmill value">
-          {{ val }}
-        </div>
-      </template>
-
-      <template v-if="stats.points['decinsky-sneznik'].some(p => p)">
-        <div class="header decinsky-sneznik" :title="$t('game.element.decinsky-sneznik')">
-          <ScoringIcon name="decinsky-sneznik" :size="40" />
-        </div>
-        <div v-for="(val, idx) in stats.points['decinsky-sneznik']" :key="'decinsky-sneznik-'+idx" class="decinky-sneznik value">
-          {{ val }}
-        </div>
-      </template>
-
-      <template v-if="stats.points['river'].some(p => p)">
-        <div class="header river" :title="$t('game.feature.fishermen')"><ScoringIcon name="river" :size="40" /></div>
-        <div v-for="(val, idx) in stats.points['river']" :key="'river-'+idx" class="river value">
-          {{ val }}
-        </div>
-      </template>
-
-      <template v-if="stats.points['courier'].some(p => p)">
-        <div class="header courier" :title="$t('game.figure.courier')"><ScoringIcon name="courier" :size="40" /></div>
-        <div v-for="(val, idx) in stats.points['courier']" :key="'courier-'+idx" class="courier value">
-          {{ val }}
-        </div>
-      </template>
-
-      <template v-if="stats.points['fishhut'].some(p => p)">
-        <div class="header fishhut" :title="$t('game.feature.fishhut')"><ScoringIcon name="fishhut" :size="40" /></div>
-        <div v-for="(val, idx) in stats.points['fishhut']" :key="'river-'+idx" class="fishhut value">
-          {{ val }}
-        </div>
-      </template>
-
     </div>
   </div>
 </template>
@@ -271,11 +79,48 @@ import { mapGetters, mapState } from 'vuex'
 import flatten from 'lodash/flatten'
 import debounce from 'lodash/debounce'
 
+import ExpressionItem from '@/components/game/ExpressionItem'
 import Meeple from '@/components/game/Meeple'
 import ScoringIcon from '@/components/game/ScoringIcon'
 
+// scoring categories in display order; `always` ones show even at 0 points, the rest only
+// when scored. Each row shows the category total plus a sub-row per contributing item.
+const CATEGORIES = [
+  { name: 'road', title: 'game.feature.roads', always: true },
+  { name: 'city', title: 'game.feature.cities', always: true },
+  { name: 'monastery', title: 'game.feature.monasteries', always: true },
+  { name: 'garden', title: 'game.feature.gardens', always: true },
+  { name: 'field', title: 'game.feature.fields', always: true },
+  { name: 'special-monastery', title: 'game.feature.special-monasteries' },
+  { name: 'castle', title: 'game.feature.castles' },
+  { name: 'watchtower', title: 'game.feature.watchtowers' },
+  { name: 'trade-goods', title: 'game.feature.trade-goods' },
+  { name: 'shrine', title: 'game.feature.shrines' },
+  { name: 'king', title: 'core-messages.the-biggest-city' },
+  { name: 'robber', title: 'core-messages.the-longest-road' },
+  { name: 'gold', title: 'game.feature.gold' },
+  { name: 'fairy', title: 'game.feature.fairy' },
+  { name: 'tower', title: 'game.feature.towers' },
+  { name: 'flock', title: 'game.feature.sheep' },
+  { name: 'ringmaster', title: 'game.feature.ringmaster' },
+  { name: 'bigtop', title: 'game.feature.big-top' },
+  { name: 'acrobats', title: 'game.feature.acrobats' },
+  { name: 'wind-rose', title: 'game.feature.wind-roses' },
+  { name: 'church', title: 'game.feature.church-bonus' },
+  { name: 'yaga-hut', title: 'game.feature.yaga-hut' },
+  { name: 'vodyanoy', title: 'game.feature.vodyanoy' },
+  { name: 'flowers', title: 'game.feature.flowers' },
+  { name: 'obelisk', title: 'game.element.obelisk' },
+  { name: 'windmill', title: 'game.element.windmill' },
+  { name: 'decinsky-sneznik', title: 'game.element.decinsky-sneznik' },
+  { name: 'river', title: 'game.feature.fishermen' },
+  { name: 'courier', title: 'game.figure.courier' },
+  { name: 'fishhut', title: 'game.feature.fishhut' }
+]
+
 export default {
   components: {
+    ExpressionItem,
     Meeple,
     ScoringIcon
   },
@@ -298,6 +143,10 @@ export default {
 
     players () {
       return flatten(this.ranks.map(r => r.players.map(p => ({ ...p, rank: r.rank }))))
+    },
+
+    cols () {
+      return `grid-template-columns: 60px repeat(${this.players.length}, 1fr)`
     },
 
     stats () {
@@ -336,7 +185,9 @@ export default {
           'river': (new Array(this.players.length)).fill(0),
           'courier': (new Array(this.players.length)).fill(0),
           'fishhut': (new Array(this.players.length)).fill(0)
-        }
+        },
+        // per-category item breakdown: { category: { itemName: [pointsPerPlayer] } }
+        items: {}
       }
       this.history.forEach(h => {
         h.events.forEach(ev => {
@@ -349,14 +200,19 @@ export default {
             const prisonerIdx = this.players.findIndex(p => p.index === ev.prisoner)
             stats.points.tower[prisonerIdx] -= 3
           } else if (ev.type === 'points') {
-            ev.points.forEach(({ name, player, points }) => {
+            ev.points.forEach(({ name, player, points, items }) => {
               const cat = name.split('.')[0]
               const idx = this.players.findIndex(p => p.index === player)
               if (stats.points[cat]) {
                 stats.points[cat][idx] += points
-              } else {
-                // empty
-                // console.log(name, points)
+                // accumulate the item-level breakdown (tiles / pennants / cathedral / ...)
+                ;(items || []).forEach(it => {
+                  if (!stats.items[cat]) stats.items[cat] = {}
+                  if (!stats.items[cat][it.name]) {
+                    stats.items[cat][it.name] = (new Array(this.players.length)).fill(0)
+                  }
+                  stats.items[cat][it.name][idx] += it.points
+                })
               }
             })
           }
@@ -364,6 +220,21 @@ export default {
       })
       // console.log(stats)
       return stats
+    },
+
+    // visible categories (always-shown + scored optional ones), each with its ordered,
+    // non-zero item breakdown rows
+    categories () {
+      const s = this.stats
+      return CATEGORIES
+        .filter(c => c.always || s.points[c.name].some(p => p))
+        .map(c => ({
+          name: c.name,
+          title: c.title,
+          items: Object.entries(s.items[c.name] || {})
+            .filter(([, pts]) => pts.some(p => p))
+            .map(([name, points]) => ({ name, points }))
+        }))
     }
   },
 
@@ -405,9 +276,13 @@ export default {
   +theme using ($theme)
     background: map-get($theme, 'opaque-bg')
 
+  .grid-wrap
+    display: flex
+    flex-direction: column
+    gap: 5px
+
   .grid
     display: grid
-    justify-content: center
     justify-items: center
     align-items: center
     grid-gap: 5px 0
@@ -416,6 +291,26 @@ export default {
       svg.meeple, svg.neutral
         +theme using ($theme)
           /* fill: map-get($theme, 'gray-text-color') */
+
+    // item breakdown sub-rows: smaller icon and faded smaller value
+    .header.item-header
+      transform: scale(0.6)
+
+      .expr-item
+        margin-right: 0
+
+    .value.item-value
+      font-size: 0.7em
+      opacity: 0.7
+
+  // a category that has a sub-feature breakdown is boxed together as one group
+  // (neutral tint works in both light and dark themes)
+  .grid.category.has-items
+    border-radius: 8px
+    padding: 4px 0 6px
+    grid-gap: 3px 0
+    background: rgba(128, 128, 128, 0.1)
+    box-shadow: inset 0 0 0 1px rgba(128, 128, 128, 0.25)
 
 svg.meeple
   width: 40px
@@ -450,29 +345,7 @@ svg.meeple
     text-align: center
     font-weight: 500
 
-.header.tiles
-  .v-icon
-    font-size: 45px
-
-.header.traders, .header.gold
-  margin: 10px 0
-
-.header.river
-  position: relative
-  height: 40px
-
-  svg
-    top: 0
-    left: calc(50% - 27px)
-    position: absolute
-
 .v-icon
   font-size: 12px
   margin-left: 0.5ex
-
-.header.tiles .v-icon
-  margin-left: 0
-
-#app.theme--dark .header img.bw
-  filter: invert(1)
 </style>
