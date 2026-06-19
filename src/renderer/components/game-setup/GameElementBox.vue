@@ -11,6 +11,7 @@
       :mutable="mutable && enabled"
       :item="item"
       :max="max"
+      :min="min"
       :reset="reset"
     >
       <div class="box-title">
@@ -42,6 +43,7 @@ export default {
     item: { type: Object, required: true },
     mutable: { type: Boolean, default: true },
     max: { type: Number, default: 1 },
+    min: { type: Number, default: 1 },
     reset: { type: Number, default: null }
   },
 
