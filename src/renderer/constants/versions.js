@@ -1,2 +1,2 @@
-export const SAVED_GAME_COMPATIBILITY = '6.2.0-alpha.1'
+export const SAVED_GAME_COMPATIBILITY = '6.2.1'
 export const NETWORK_PROTOCOL_COMPATIBILITY = '6.2.0'
