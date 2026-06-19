@@ -4,6 +4,7 @@
       <div class="expansions">
         <ExpansionBox :expansion="Expansion.BASIC" @open-detail="openDetail" />
         <ExpansionBox v-if="!ai" :expansion="Expansion.WINTER" @open-detail="openDetail" />
+        <ExpansionBox :expansion="Expansion.START" @open-detail="openDetail" />
       </div>
     </ConfigSection>
 

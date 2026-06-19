@@ -35,7 +35,8 @@ export default {
 
     containsCoreSet () {
       return this.sets.basic || this.sets['basic:1'] || this.sets['basic:2'] ||
-        this.sets.winter || this.sets['winter:1'] || this.sets['winter:2']
+        this.sets.winter || this.sets['winter:1'] || this.sets['winter:2'] ||
+        this.sets.start
     }
   }
 }

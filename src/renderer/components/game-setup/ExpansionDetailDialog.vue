@@ -44,6 +44,7 @@ import RiverDetail from '@/components/game-setup/details/RiverDetail'
 import RussianPromosDetail from '@/components/game-setup/details/RussianPromosDetail'
 import SiegeDetail from '@/components/game-setup/details/SiegeDetail'
 import SpielDochDetail from '@/components/game-setup/details/SpielDochDetail'
+import StartDetail from '@/components/game-setup/details/StartDetail'
 import TunnelDetail from '@/components/game-setup/details/TunnelDetail'
 import TowerDetail from '@/components/game-setup/details/TowerDetail'
 import TradersAndBuildersDetail from '@/components/game-setup/details/TradersAndBuildersDetail'
@@ -86,6 +87,7 @@ export default {
         RUSSIAN_PROMOS: RussianPromosDetail,
         SIEGE: SiegeDetail,
         SPIEL_DOCH: SpielDochDetail,
+        START: StartDetail,
         TOWER: TowerDetail,
         TUNNEL: TunnelDetail,
         TRADERS_AND_BUILDERS: TradersAndBuildersDetail,

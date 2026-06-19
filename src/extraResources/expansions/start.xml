@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<defs>
+  <tiles>
+  </tiles>
+  <sets>
+    <tile-set id="start">
+      <ref count="1" tile="BA/RCr" />
+    </tile-set>
+  </sets>
+</defs>

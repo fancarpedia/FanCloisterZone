@@ -3,6 +3,7 @@ export class Release {
   constructor (title, sets, options = {}) {
     this.title = title
     this.sets = sets
+	this.min = options.min || null
     this.max = options.max || null
     this.note = options.note || null
     this.expansion = null
@@ -58,6 +59,11 @@ Expansion._UNKNOWN.releases = [{ title: 'Missing expansion', sets: [], expansion
 export const BASIC = Expansion.BASIC = new Expansion('BASIC', 'Base game')
 // $t('expansion.winter')
 export const WINTER = Expansion.WINTER = new Expansion('WINTER', 'Winter')
+// $t('expansion.start')
+export const START = Expansion.START = new Expansion('START', 'Start', {}, [
+  new Release('Start', ['start'], { id: 'start', min: 2 })
+])
+
 
 // $t('expansion.inns-and-cathedrals')
 export const INNS_AND_CATHEDRALS = Expansion.INNS_AND_CATHEDRALS = new Expansion('INNS_AND_CATHEDRALS', 'Inns & Cathedrals', {
