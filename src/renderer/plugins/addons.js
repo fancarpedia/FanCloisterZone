@@ -250,27 +250,39 @@ class Addons extends EventsBase {
     try {
       const megaFile = File.fromURL(link)
       let downloadedBytes = 0
-    
+      let settled = false
+
+      const fail = err => {
+        if (settled) return
+        settled = true
+        console.error(err)
+        file.destroy()
+        fs.unlink(zipName, unlinkErr => {
+          if (unlinkErr && unlinkErr.code !== 'ENOENT') console.warn(unlinkErr)
+        })
+        reject(err && err.message ? err.message : String(err))
+      }
+
       // Set total size if available
       megaFile.loadAttributes().then(() => {
         this.ctx.app.store.commit('downloadSize', megaFile.size)
       }).catch(err => console.warn('Could not load Mega file size:', err))
-    
-      megaFile
-        .download()
+
+      const downloadStream = megaFile.download()
+      downloadStream
         .on('data', chunk => {
           downloadedBytes += chunk.length
           this.ctx.app.store.commit('downloadProgress', downloadedBytes)
         })
+        // The download (read) stream is where Mega's 509 / connection-reset
+        // errors surface. Without this listener an unhandled 'error' event
+        // crashes the renderer (blank white screen).
+        .on('error', fail)
         .pipe(file)
-        .on('error', function (err) {
-          console.error(err)
-          fs.unlink(zipName, unlinkErr => {
-            console.warn(unlinkErr)
-          })
-          reject(err.message)
-        })
+        .on('error', fail)
         .on('finish', function () {
+          if (settled) return
+          settled = true
           file.close(resolve)
         })
     } catch (error) {
