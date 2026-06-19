@@ -71,7 +71,7 @@
       <river>W S</river>
     </tile>
 
-    <tile id="RI.2/IFC" group="river">
+    <tile id="RI.2/IFC" group="river-lake">
       <city>E</city>
       <field city="E">NL NR WR</field>
       <field city="E">SL SR WL</field>
