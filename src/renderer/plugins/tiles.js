@@ -112,10 +112,13 @@ class Tiles extends EventsBase {
       if (set !== UNKWNOWN_SET) { 
         Object.entries(set.tiles).forEach(([tileId, tileCount]) => {
           counts[tileId] = (counts[tileId] || 0) + setCount * tileCount
-          const { max } = this.tiles[tileId]
+          const { max, min } = this.tiles[tileId]
           if (max) {
             counts[tileId] = Math.min(counts[tileId], max)
           }
+		  if (min) {
+		    counts[tileId] = Math.max(counts[tileId], min)
+		  }
         })
         if (set.remove) {
           set.remove.forEach(id => { remove[id] = true })
@@ -260,6 +263,11 @@ class Tiles extends EventsBase {
           tile.max = parseInt(mx)
         }
 
+		const mn = t.getAttribute('min')
+		if (mn) {
+		  tile.min = parseInt(mn)
+		}
+
         tiles[id] = tile
 
         const allows = tileAllows[id] = new Set([])
@@ -277,6 +285,7 @@ class Tiles extends EventsBase {
       doc.querySelectorAll('tile-set[id]').forEach(ts => {
         const id = ts.getAttribute('id')
         const max = ts.getAttribute('max')
+		const min = ts.getAttribute('min')
         const setTiles = {}
         ts.querySelectorAll('ref').forEach(ref => {
           const count = ref.getAttribute('count')
@@ -286,6 +295,9 @@ class Tiles extends EventsBase {
         if (max) {
           set.max = parseInt(max)
         }
+		if (min) {
+		  set.min = parseInt(min)
+		}
         const remove = Array.from(ts.querySelectorAll('remove')).map(r => r.getAttribute('tile'))
         if (remove.length) {
           set.remove = remove
@@ -327,13 +339,14 @@ class Tiles extends EventsBase {
         const implies = Array.from(el.querySelectorAll('implies[element]')).map(ref => ref.getAttribute('element'))
         const minimumVersionForAI = el.querySelector('minimumVersionForAI') || null
         const maxSets = el.querySelector('maxSets') || null
+		const minSets = el.querySelector('minSets') || null
         const ai = isNil(minimumVersionForAI) ? false : semver.gte(appVer, semver.coerce(minimumVersionForAI.textContent))
 
         const svgIcon = el.querySelector('icon svg')
 
         const groups = Array.from(el.querySelectorAll(':scope > group[id]')).map(g => g.getAttribute('id'))
 
-        const exp = new Expansion(name, title, { enforces, implies, ai }, [new Release(name, tileSets, { max: maxSets } )])
+        const exp = new Expansion(name, title, { enforces, implies, ai }, [new Release(name, tileSets, { max: maxSets, min: minSets } )])
         if (groups.length) exp.groups = groups
         if (svgIcon) {
           this.symbols.push(`<symbol id="expansion-${name}" viewBox="${svgIcon.getAttribute('viewBox')}">${svgIcon.innerHTML}</symbol>`)

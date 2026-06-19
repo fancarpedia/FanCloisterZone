@@ -1,6 +1,7 @@
 <template>
   <QuantityButtons
     v-model="quantity"
+    :min="min || 1"
     :max="max || 3"
     :mutable="mutable"
   >
@@ -14,6 +15,7 @@ import isNil from 'lodash/isNil'
 import QuantityButtons from '@/components/game-setup/buttons/QuantityButtons'
 
 const DEFAULT_MAX = 3
+const DEFAULT_MIN = 1
 
 export default {
   components: {
@@ -34,6 +36,16 @@ export default {
         }
       })
       return mx
+    },
+
+    min () {
+      let mn = isNil(this.release.min) ? DEFAULT_MIN : this.release.min
+      this.release.sets.forEach(s => {
+        if (!isNil(s.min)) {
+          mn = Math.min(mn, s.min)
+        }
+      })
+      return mn
     },
 
     quantity: {

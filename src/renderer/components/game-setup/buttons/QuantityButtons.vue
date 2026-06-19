@@ -42,6 +42,7 @@ export default {
   props: {
     value: { type: [Number, Boolean], required: true },
     max: { type: Number, required: true },
+    min: { type: Number, required: false, default: 1 },
     mutable: { type: Boolean, default: true },
     reset: { type: Number, default: null }
   },
@@ -67,7 +68,8 @@ export default {
   methods: {
     add () {
       if (this.mutable && this.canAdd) {
-        this.$emit('input', this.isBoolean ? true : this.value + 1)
+        const required = this.value + 1
+        this.$emit('input', this.isBoolean ? true : (this.min > required ? this.min : required))
       }
     },
 
@@ -79,7 +81,7 @@ export default {
 
     removeOne () {
       if (this.mutable && this.value > 0) {
-        this.$emit('input', this.isBoolean ? false : this.value - 1)
+        this.$emit('input', this.isBoolean ? false : (this.value == this.min ? 0 : this.value - 1))
       }
     },
 

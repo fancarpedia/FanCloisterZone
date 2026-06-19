@@ -11,6 +11,7 @@
       :mutable="mutable && enabled"
       :item="item"
       :max="max"
+      :min="min"
       :reset="reset"
     >
       <div class="box-title">
