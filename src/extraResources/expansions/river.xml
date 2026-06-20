@@ -177,8 +177,6 @@
     </tile-set>
 
     <tile-set id="river/2:1">
-      <remove tile="RI.1/I.e" />
-
       <ref count="1" tile="RI/s" />
       <ref count="1" tile="RI.2/IFC" />
       <ref count="1" tile="RI.2/I.v" />
@@ -193,8 +191,6 @@
       <ref count="1" tile="RI.2/RrII" />
     </tile-set>
     <tile-set id="river/2:2">
-      <remove tile="RI.1/I.e" />
-
       <ref count="1" tile="RI/s" />
       <ref count="1" tile="RI.2/IFC" />
       <ref count="1" tile="RI.2/I.v" />
