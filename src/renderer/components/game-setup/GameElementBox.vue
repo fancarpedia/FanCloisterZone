@@ -42,6 +42,7 @@ export default {
   props: {
     item: { type: Object, required: true },
     mutable: { type: Boolean, default: true },
+    min: { type: Number, default: 1 },
     max: { type: Number, default: 1 },
     reset: { type: Number, default: null }
   },
