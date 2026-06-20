@@ -132,4 +132,8 @@ export default {
   svg.meeple
     width: 34px
     height: 34px
+
+  .token-image:not(.tunnel):not(.token-BRIDGE)
+    +theme using ($theme)
+      fill: map-get($theme, 'text-color')
 </style>
