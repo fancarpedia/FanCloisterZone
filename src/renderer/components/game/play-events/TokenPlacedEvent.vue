@@ -77,7 +77,7 @@ export default {
 </script>
 
 <style lang="sass" scoped>
-.token-image:not(.tunnel)
+.token-image:not(.tunnel):not(.token-BRIDGE)
   +theme using ($theme)
     fill: map-get($theme, 'text-color')
 
