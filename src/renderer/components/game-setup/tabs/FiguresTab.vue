@@ -112,7 +112,7 @@
         <GameElementBox :item="GameElement.BLACK_TOWER">
           <img src="~/assets/figures/black_and_white_tower.png" height="55">
         </GameElementBox>
-        <GameElementBox :item="GameElement.ABBEY">
+        <GameElementBox :item="GameElement.ABBEY" :max="9">
           <StandaloneTileImage tile-id="AM/A" :size="55" />
         </GameElementBox>
         <GameElementBox :item="GameElement.BRIDGE">

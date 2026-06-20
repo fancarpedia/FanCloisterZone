@@ -1,7 +1,7 @@
 <template>
   <section>
-    <span v-if="actionItem.tileId == 'AM/A'" class="text">
-      {{ local ? $t('game.action.you-may-place-an-abbey') : $t('game.action.player-may-place-an-abbey') }}
+    <span v-if="phase === 'TileFromSupplyPhase'" class="text">
+      {{ local ? $t('game.action.you-may-place-a-tile-from-supply') : $t('game.action.player-may-place-a-tile-from-supply') }}
     </span>
     <span v-else class="text">
       {{ local ? $t('game.action.place-the-tile') : $t('game.action.player-must-place-the-tile') }}
@@ -12,7 +12,7 @@
       active
       :local="local"
     />
-    <slot :label="phase === 'AbbeyPhase' ? $t('game.action.draw-a-tile') : null" />
+    <slot :label="phase === 'TileFromSupplyPhase' ? $t('game.action.draw-a-tile') : null" />
   </section>
 </template>
 
