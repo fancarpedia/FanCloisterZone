@@ -8,11 +8,11 @@
       [color.replaceAll('color', 'panel-color')]: true
     }"
   >
-    <div :class="'name-box '+ color">
-      <div class="points" :title="showFinalPoints ? $t('core-messages.potential-final-score') : null">
-        <div>{{ player.points }}<span v-if="showFinalPoints" class="final">/{{ player.finalPoints }}</span></div>
-      </div>
-      <div class="player-tokens">
+  <div :class="'name-box '+ color">
+    <div class="points" :title="showFinalPoints ? $t('core-messages.potential-final-score') : null">
+      <div><span class="stack"><span class="pts">{{ player.points }}</span><span v-if="showFinalPoints" class="final">{{ player.finalPoints }}</span></span></div>
+    </div>
+    <div class="player-tokens">
        <div
         v-for="({ token, count, size, fp }) in playerTokens"
         :key="token"
@@ -306,15 +306,22 @@ section
   > div
     flex: 1
     text-align: right
-    padding: 0 14px
+    padding: 0 8px
     font-weight: 500
     white-space: nowrap
+
+    .stack
+      display: inline-flex
+      flex-direction: column
+      align-items: center    // centers .final under .pts
+      line-height: 1         // <-- this is what was missing: kills the gap + keeps it in the pill
 
     .final
       font-size: 0.5em
       font-weight: 500
       opacity: 0.7
-
+      margin-top: -0.05em      
+      
 .resources
   display: flex
   flex-wrap: wrap
