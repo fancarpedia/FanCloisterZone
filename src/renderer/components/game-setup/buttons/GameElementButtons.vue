@@ -5,6 +5,7 @@
     :min="min"
     :mutable="mutable"
     :reset="reset"
+    :show-number="showNumber"
   >
     <slot />
 
@@ -28,7 +29,8 @@ export default {
     mutable: { type: Boolean, default: true },
     min: { type: Number, required: false, default: 1 },
     max: { type: Number, required: true },
-    reset: { type: Number, default: null }
+    reset: { type: Number, default: null },
+    showNumber: { type: Boolean, default: false }
   },
 
   computed: {
