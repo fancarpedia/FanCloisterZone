@@ -45,8 +45,8 @@ export default {
     min: { type: Number, required: false, default: 1 },
     mutable: { type: Boolean, default: true },
     reset: { type: Number, default: null },
-    // when true, always render the numeric value (show "1" instead of a check icon)
-    showNumber: { type: Boolean, default: false }
+    showNumber: { type: Boolean, default: false },
+    defaultValue: { type: Number, default: null }
   },
 
   computed: {
@@ -70,6 +70,10 @@ export default {
   methods: {
     add () {
       if (this.mutable && this.canAdd) {
+        if (!this.value && !this.isBoolean && this.defaultValue != null) {
+          this.$emit('input', this.defaultValue)
+          return
+        }
         const required = this.value + 1
         this.$emit('input', this.isBoolean ? true : (this.min > required ? this.min : required))
       }

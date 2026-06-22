@@ -2,24 +2,30 @@
   <div
     :class="{
       'element-box': true,
-      'disabled': !enabled,
+      'disabled': !enabled || !!blockedReason,
       'mandatory': mandatory,
       'selected': selected,
     }"
   >
     <GameElementButtons
-      :mutable="mutable && enabled"
+      :mutable="mutable && enabled && !blockedReason"
       :item="item"
       :max="max"
       :min="min"
       :reset="reset"
+      :show-number="showNumber"
+      :default-value="defaultValue"
     >
       <div class="box-title">
         <slot />
         <h3>{{ $t(['game.element',item.id].join('.')) }}</h3>
       </div>
 
-      <template v-if="!enabled" #hover>
+      <template v-if="blockedReason" #hover>
+        <div class="text text-disabled">{{ blockedReason }}</div>
+      </template>
+
+      <template v-else-if="!enabled" #hover>
         <div class="text text-disabled">{{ $t('game-setup.game-element-box.related-tiles-not-selected') }}</div>
       </template>
 
@@ -44,7 +50,10 @@ export default {
     mutable: { type: Boolean, default: true },
     min: { type: Number, default: 1 },
     max: { type: Number, default: 1 },
-    reset: { type: Number, default: null }
+    reset: { type: Number, default: null },
+    blockedReason: { type: String, default: null },
+    showNumber: { type: Boolean, default: false },
+    defaultValue: { type: Number, default: null }
   },
 
   computed: {
