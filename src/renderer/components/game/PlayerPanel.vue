@@ -311,10 +311,10 @@ section
     white-space: nowrap
 
     .stack
-      display: inline-flex
+      display: flex
       flex-direction: column
-      align-items: center    // centers .final under .pts
-      line-height: 1         // <-- this is what was missing: kills the gap + keeps it in the pill
+      align-items: center
+      line-height: 1
 
     .final
       font-size: 0.5em
