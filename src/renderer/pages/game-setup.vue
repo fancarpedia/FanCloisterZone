@@ -1,4 +1,5 @@
 <template>
+  <div class="game-setup-page">
   <GameSetupGrid v-if="loaded" :sets="sets" :rules="rules" :show-detail="tab > 0" :show-pack-size="tab > 0">
     <template #header>
       <v-tabs v-model="tab" @change="onTabChange">
@@ -46,6 +47,8 @@
       </div>
     </template>
   </GameSetupGrid>
+  <GlobalChat />
+  </div>
 </template>
 
 <script>
@@ -64,6 +67,7 @@ import TileDistribution from '@/components/TileDistribution'
 import TileSetsTab from '@/components/game-setup/tabs/TileSetsTab'
 import TimerTab from '@/components/game-setup/tabs/TimerTab'
 import RulesTab from '@/components/game-setup/tabs/RulesTab'
+import GlobalChat from '@/components/GlobalChat'
 
 export default {
   components: {
@@ -78,7 +82,8 @@ export default {
     TileDistribution,
     TileSetsTab,
     TimerTab,
-    RulesTab
+    RulesTab,
+    GlobalChat
   },
 
   data () {
@@ -139,6 +144,10 @@ export default {
 <style lang="sass" scoped>
 *
   user-select: none
+
+// transparent wrapper (added only to host the floating GlobalChat bullet) — no layout impact
+.game-setup-page
+  display: contents
 
 .detail-pack
   padding: 20px

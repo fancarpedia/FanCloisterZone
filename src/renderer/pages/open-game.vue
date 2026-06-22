@@ -128,6 +128,7 @@
       </div>
     </template>
   </GameSetupGrid>
+  <GlobalChat />
   </div>
 </template>
 
@@ -143,6 +144,7 @@ import HeaderLeaveGameButton from '@/components/game-setup/HeaderLeaveGameButton
 import HeaderMessage from '@/components/game-setup/HeaderMessage'
 import OpenGameChat from '@/components/game-setup/OpenGameChat'
 import PlayerSlot from '@/components/game-setup/PlayerSlot'
+import GlobalChat from '@/components/GlobalChat'
 
 const LOCAL_PLAYERS_LIMIT = 4
 
@@ -155,7 +157,8 @@ export default {
     HeaderLeaveGameButton,
     HeaderMessage,
     OpenGameChat,
-    PlayerSlot
+    PlayerSlot,
+    GlobalChat
   },
 
   data () {
@@ -316,6 +319,16 @@ export default {
 <style lang="sass" scoped>
 *
   user-select: none
+
+.predraw-notice
+  margin: 0 0 12px 0
+  padding: 8px 12px
+  border-radius: 6px
+  font-size: 13px
+  text-align: center
+  +theme using ($theme)
+    color: map-get($theme, 'cards-text')
+    background-color: map-get($theme, 'cards-bg')
 
 .open-game-view
   position: relative

@@ -14,6 +14,7 @@
         {{ $t('button.disconnect') }}
       </v-btn>
     </header>
+    <div class="online-body">
     <main>
       <div class="lobby">
         <h2>{{ $t('index.online.lobby') }}</h2>
@@ -145,6 +146,12 @@
       </div>
     </main>
 
+    <aside class="global-chat-aside">
+      <h2>{{ $t('global-chat.title') }}</h2>
+      <GlobalChat inline />
+    </aside>
+    </div>
+
     <v-dialog
       v-model="showDeleteDialog"
       persistent
@@ -240,6 +247,7 @@ import sortBy from 'lodash/sortBy'
 import GameSetupOverviewInline from '@/components/game-setup/overview/GameSetupOverviewInline'
 import OnlineStatus from '@/components/OnlineStatus'
 import Meeple from '@/components/game/Meeple'
+import GlobalChat from '@/components/GlobalChat'
 
 import { STATUS_CONNECTED } from '@/store/networking'
 
@@ -247,7 +255,8 @@ export default {
   components: {
     GameSetupOverviewInline,
     OnlineStatus,
-    Meeple
+    Meeple,
+    GlobalChat
   },
 
   data () {
@@ -401,7 +410,10 @@ export default {
   user-select: none
 
 .online-page
-  min-height: 100vh
+  height: 100vh
+  display: flex
+  flex-direction: column
+  overflow: hidden
 
   +theme using ($theme)
     background: map-get($theme, 'board-bg')
@@ -522,4 +534,45 @@ h2
 .empty-message
   margin: 30px 0
   text-align: center
+
+.online-body
+  flex: 1 1 auto
+  min-height: 0
+  display: flex
+  overflow: hidden
+
+  main
+    flex: 1 1 auto
+    min-width: 0
+    overflow-y: auto
+
+.global-chat-aside
+  flex: 0 0 340px
+  height: 100%
+  display: flex
+  flex-direction: column
+  padding: 16px 16px 20px
+  box-sizing: border-box
+  overflow: hidden
+
+  +theme using ($theme)
+    background-color: map-get($theme, 'cards-bg')
+
+  h2
+    margin-top: 0
+    flex: 0 0 auto
+
+  ::v-deep .global-chat-root
+    flex: 1 1 0
+    min-height: 0
+    display: flex
+
+@media (max-width: 919px)
+  .online-body
+    flex-direction: column
+
+  .global-chat-aside
+    flex: 0 0 340px
+    width: 100%
+    height: 340px
 </style>
