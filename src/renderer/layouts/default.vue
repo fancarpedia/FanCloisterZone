@@ -403,7 +403,8 @@ export default {
     },
     
     updateTitle() {
-      document.title = this.onlineConnected ? 'FanCloisterZone Edition @ fanserver' /* + this.$store.state.onlineHostName */ : 'FanCloisterZone Edition' /* Fan Edition */
+      const server = this.$store.getters['settings/isLocalPlayOnline'] ? 'dev local' : 'fanserver'
+      document.title = this.onlineConnected ? ('FanCloisterZone Edition @ ' + server) /* + this.$store.state.onlineHostName */ : 'FanCloisterZone Edition' /* Fan Edition */
     },
 
     async leaveGame () {

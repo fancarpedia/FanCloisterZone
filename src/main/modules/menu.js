@@ -89,9 +89,10 @@ async function createMenu(win, messages) {
       win.webContents.send('settings.update', { enginePath: currValue === remoteEngineValue ? null : remoteEngineValue })
     }
 
+    const localPlayOnlineUrl = 'localhost:8000/ws'
     const toggleLocalPlayOnline = async () => {
-      const currValue = (await getSettings()).playOnlineUrl
-      win.webContents.send('settings.update', { playOnlineUrl: currValue === 'localhost:8000/ws' ? 'play-online.jcloisterzone.com/ws' : 'localhost:8000/ws' })
+      const enabling = !(await getSettings()).localPlayOnline
+      win.webContents.send('settings.update', { localPlayOnline: enabling, localPlayOnlineUrl })
     }
 
     template.push({
@@ -106,7 +107,7 @@ async function createMenu(win, messages) {
         },
         { type: 'separator' },
         { id: 'remote-engine', label: $t('dev.use-remote-engine') || 'Use Remote Engine', type: 'checkbox', checked: settings.enginePath === remoteEngineValue, click() { toggleRemoteEngine() } },
-        { id: 'local-play-online', label: $t('dev.use-local-play-online') || 'Use Local Play Online', type: 'checkbox', checked: settings.playOnlineUrl === 'localhost:8000/ws', click() { toggleLocalPlayOnline() } },
+        { id: 'local-play-online', label: $t('dev.use-local-play-online') || 'Use Local Play Online', type: 'checkbox', checked: !!settings.localPlayOnline, click() { toggleLocalPlayOnline() } },
         { id: 'dump-server', label: $t('dev.dump-hosted-game-server-state') || 'Dump Hosted Game Server State', click() { win.webContents.send('menu.dump-server') } },
         { type: 'separator' },
         { id: 'test-runner', label: $t('dev.test-runner') || 'Test Runner', click() { win.webContents.send('menu.test-runner') } },

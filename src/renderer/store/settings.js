@@ -41,6 +41,8 @@ export const state = () => ({
   enginePath: null, // explicit engine path
   playOnlineUrl: 'play.jcloisterzone.com/ws',
   playOnlineFanURL: 'fancarpedia.snazzybee.com:37447',
+  localPlayOnline: false,
+  localPlayOnlineUrl: 'localhost:8000/ws',
   devMode: process.env.NODE_ENV === 'development',
   devChannel: 'stable'
 })
@@ -94,7 +96,8 @@ export const getters = {
     const bareSetup = { ...setup }
     delete bareSetup.options
     return !!state.mySetups.find(s => isEqual(s.setup, bareSetup))
-  }
+  },
+  isLocalPlayOnline: state => state.localPlayOnline === true
 }
 
 export const actions = {

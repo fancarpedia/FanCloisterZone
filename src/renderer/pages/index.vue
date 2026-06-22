@@ -47,9 +47,9 @@
 
     <section class="online-hosted-fan">
       <div>
-        <h2>{{ $t('index.online.title-fan') }}</h2>
+        <h2>{{ $t(isLocalPlayOnline ? 'index.online.title-fan-local' : 'index.online.title-fan') }}</h2>
         <v-btn large color="secondary" :disabled="!engine || !engine.ok" @click="playOnlineFan()">
-          {{ $t('button.play-online-fan') }}
+          {{ $t(isLocalPlayOnline ? 'button.play-online-fan-local' : 'button.play-online-fan') }}
           <v-icon right>fa-cloud</v-icon>
         </v-btn>
         <!-- <div class="subsection">
@@ -192,6 +192,10 @@ export default {
 
     connectionStatus() {
       return this.connectionStatus
+    },
+
+    isLocalPlayOnline () {
+      return this.settings.localPlayOnline === true
     }
   },
 
