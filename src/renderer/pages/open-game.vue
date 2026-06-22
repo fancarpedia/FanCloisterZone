@@ -58,6 +58,7 @@
 
     <template #main>
 
+      <div v-if="preDraw" class="predraw-notice">{{ $t('predraw.one-seat-notice') }}</div>
       <div class="slots">
         <PlayerSlot
           v-for="slot in slots"
@@ -209,6 +210,10 @@ export default {
     localSlotsCount () {
       if (!this.slots || !this.sessionId) return 0
       return this.slots.filter(s => s.sessionId === this.sessionId).length
+    },
+
+    preDraw () {
+      return !!(this.setup && this.setup.elements && this.setup.elements['pre-draw'])
     },
 
     randomizeSeating: {

@@ -47,7 +47,7 @@ export default {
         }
       })
       // also draw the actual meeple (type + owner colour) at the deployed spot.
-      // Barn/Obelisk are corner-placed (no feature point) � keep the circle only.
+      // Barn/Obelisk are corner-placed (no feature point) — keep the circle only.
       const { to, meeple, player } = this.ev
       if (to && to.location && meeple !== 'Barn' && meeple !== 'Obelisk') {
         this.$store.dispatch('board/showLayer', {

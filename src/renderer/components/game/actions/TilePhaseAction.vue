@@ -6,10 +6,15 @@
     <span v-else class="text">
       {{ local ? $t('game.action.place-the-tile') : $t('game.action.player-must-place-the-tile') }}
     </span>
+    <!-- A real supply tile (abbey / bazaar). A pre-draw tile is NOT here — its action is opaque
+         (the engine can't see the secret hand); it is placed from the hand tray (PreDrawHand.vue).
+         While the player has picked a pre-draw tile to place, this (abbey) ghost yields the board so
+         only one placement ghost is active at a time. -->
     <TilePlacementItem
-      :tile-id="actionItem.tileId"
-      :options="actionItem.options"
-      active
+      v-if="tilePlacement"
+      :tile-id="tilePlacement.tileId"
+      :options="tilePlacement.options"
+      :active="!preDrawSelected"
       :local="local"
     />
     <slot :label="phase === 'TileFromSupplyPhase' ? $t('game.action.draw-a-tile') : null" />
@@ -31,8 +36,16 @@ export default {
   },
 
   computed: {
-    actionItem () {
-      return this.action.items[0]
+    tilePlacement () {
+      const item = this.action.items.find(i => i.type === 'TilePlacement') || null
+      // Pre-draw: once the abbey is passed this turn, the player declined it — don't offer it for
+      // placement (the server also refuses a PLACE_TILE for it). 'AM/A' is the engine's abbey tile id.
+      if (item && item.tileId === 'AM/A' && this.$store.state.predraw.abbeyPassed) return null
+      return item
+    },
+    // When the player has picked a pre-draw tile to place, let it own the board ghost.
+    preDrawSelected () {
+      return !!this.$store.state.predraw.selected
     }
   }
 }

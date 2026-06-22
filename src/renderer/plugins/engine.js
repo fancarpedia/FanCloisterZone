@@ -40,6 +40,19 @@ class BaseEngine {
       this._write(JSON.stringify(message))
     })
   }
+
+  // Send a raw `%`-directive and await its single-line JSON response. Used for non-mutating
+  // queries like `%placements <tileId>` (pre-draw needs the legal placements of a secret hand
+  // tile, which the shared engine state can't expose). Does NOT change game state.
+  query (cmd) {
+    return new Promise((resolve, reject) => {
+      if (this.onMessage) {
+        console.error('unresolved onMessage')
+      }
+      this.onMessage = { resolve, reject }
+      this._write(cmd)
+    })
+  }
 }
 
 class Engine extends BaseEngine {

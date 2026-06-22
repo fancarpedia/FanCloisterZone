@@ -27,7 +27,10 @@ export default {
     tileId: { type: String, required: true },
     options: { type: Array, required: true },
     active: { type: Boolean },
-    local: { type: Boolean }
+    local: { type: Boolean },
+    // Engine message dispatched on placement. Defaults to a normal draw placement; pre-draw uses
+    // PLACE_PREDRAWN so the server validates the tile against the player's secret hand and reveals it.
+    placeMessageType: { type: String, default: 'PLACE_TILE' }
   },
 
   data () {
@@ -71,7 +74,7 @@ export default {
     async onSelect ({ position, rotation }) {
       if (this.active && this.local) {
         await this.$store.dispatch('game/apply', {
-          type: 'PLACE_TILE',
+          type: this.placeMessageType,
           payload: {
             tileId: this.tileId,
             rotation: 'R' + rotation,

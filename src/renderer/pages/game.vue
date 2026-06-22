@@ -30,8 +30,10 @@
         :phase="phase"
         :action="action"
       />
+      <PreDrawHand />
       <PlayEvents />
       <GameChat />
+      <GlobalChat right="calc(var(--aside-width-plus-gap) + 84px)" />
       <FinalScoringEvents v-if="phase === 'GameOverPhase'" />
       <FinalStats v-if="showGameStats" />
       <div
@@ -84,6 +86,8 @@ import TestResult from '@/components/game/TestResult.vue'
 import TilePackDialog from '@/components/game/dialogs/TilePackDialog.vue'
 import TilePackSize from '@/components/game/TilePackSize.vue'
 import GameSetupDialog from '@/components/game/dialogs/GameSetupDialog.vue'
+import PreDrawHand from '@/components/game/PreDrawHand.vue'
+import GlobalChat from '@/components/GlobalChat.vue'
 
 export default {
   components: {
@@ -94,8 +98,10 @@ export default {
     FinalStats,
     GameChat,
     GameSetupDialog,
+    GlobalChat,
     PlayerPanel,
     PlayEvents,
+    PreDrawHand,
     TestResult,
     TilePackDialog,
     TilePackSize
@@ -113,6 +119,7 @@ export default {
       action: state => state.game.action,
       activePlayerIdx: state => state.game.action?.player,
       gameDialog: state => state.gameDialog,
+      online: state => state.networking.connectionType === 'online',
       phase: state => state.game.phase,
       players: state => state.game.players,
       tilePackSize: state => state.game.tilePack.size,

@@ -13,6 +13,7 @@ export const ENGINE_MESSAGES = new Set([
   'PASS',
   'PAY_RANSOM',
   'PLACE_TILE',
+  'PLACE_PREDRAWN',
   'PLACE_TOKEN',
   'RETURN_MEEPLE',
   'SCORE_ACROBATS',

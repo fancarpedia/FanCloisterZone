@@ -64,6 +64,21 @@ export const TUNNEL = GameElement.TUNNEL = new GameElement('tunnel', 'Tunnel tok
 export const FERRY = GameElement.FERRY = new GameElement('ferry', 'Ferries', Number, { selector: 'ferry' })
 export const LITTLE_BUILDINGS = GameElement.LITTLE_BUILDINGS = new GameElement('little-buildings', 'Little Buildings', Number, { default: 0 })
 
+// Variants
+// Pre-draw: private hand of up to N regular tiles (server-authoritative, online only).
+// See PREDRAW_RULES.md / PREDRAW_DESIGN.md in the engine repo.
+export const PRE_DRAW = GameElement.PRE_DRAW = new GameElement('pre-draw', 'Pre-draw hand', Number, { default: 0 })
+
+// Pre-draw needs an ordered tile pack + simple round-robin turns, so it is mutually exclusive with
+// expansions that change tile-draw order (River/Fishermen, Dragon, Crop Circles), grant extra
+// turns/placements (Wagon, Builder, Castle, Shepherd, Escape), or draw extra tiles (Bazaar, Count).
+// Enforced in store/gameSetup.js and surfaced in the setup UI. Keep in sync with the PHP server's
+// predrawAllowed().
+export const PRE_DRAW_INCOMPATIBLE = [
+  // Bazaar is NOT here — it's allowed with pre-draw (it just reserves one pre-draw slot → auto-draw N-1).
+  'builder', 'dragon', 'wagon', 'castle', 'shepherd', 'river', 'fishermen', 'escape', 'count', 'corn-circle'
+]
+
 // Rewards
 export const TRADERS = GameElement.TRADERS = new GameElement('traders', 'Trade goods', Boolean, { selector: 'city[resource]' })
 export const KING = GameElement.KING = new GameElement('king', 'King', Boolean, { default: false })

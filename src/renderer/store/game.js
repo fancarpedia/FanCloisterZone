@@ -18,9 +18,32 @@ import { getAppVersion } from '@/utils/version'
 import { isSameFeature, generateSaveContent } from '@/utils/gameUtils'
 import { verifyScenario } from '@/utils/testing'
 import { getDefaultRules } from '@/models/rules'
+import { getSelectedEdition, getSelectedStartingTiles } from '@/utils/gameSetupUtils'
 
 const getSavedGameFilters = () => {
   return [{ name: $nuxt.$t('index.local.saved-game'), extensions: ['jcz'] }]
+}
+
+// Flat list of drawable deck tile ids for a pre-draw game, mirroring TilePackDialog's source
+// ($tiles.getTilesCounts), minus the pre-placed starting tile(s). Composition is public.
+const buildPreDrawDeck = ($tiles, setup) => {
+  const { elements, sets, rules, start } = setup
+  const edition = getSelectedEdition(elements)
+  const startTiles = getSelectedStartingTiles(elements, sets, start)
+  const counts = { ...$tiles.getTilesCounts(sets, rules, edition, startTiles) }
+  if (startTiles && startTiles.value) {
+    startTiles.value.forEach(({ tile }) => {
+      if (counts[tile]) {
+        counts[tile] -= 1
+        if (counts[tile] <= 0) delete counts[tile]
+      }
+    })
+  }
+  const deck = []
+  Object.entries(counts).forEach(([id, count]) => {
+    for (let i = 0; i < count; i++) deck.push(id)
+  })
+  return deck
 }
 
 const deployedOnField = (state, response) => {
@@ -786,8 +809,16 @@ export const actions = {
   },
 
   async start ({ state }) {
-    const { $connection } = this._vm
-    $connection.send({ type: 'START', payload: { gameId: state.id } })
+    const { $connection, $tiles } = this._vm
+    const payload = { gameId: state.id }
+    // Pre-draw: the secret deck is dealt by the (engine-less) server, so the owner sends the deck
+    // tile list at start. The COMPOSITION is public (it's exactly what TilePackDialog shows — every
+    // player already knows which tiles are in the game); only the server-side SHUFFLE/deal stays
+    // secret. Sending real ids lets each client's engine place a revealed pre-drawn tile by id.
+    if (state.setup?.elements && state.setup.elements['pre-draw']) {
+      payload.deck = buildPreDrawDeck($tiles, state.setup)
+    }
+    $connection.send({ type: 'START', payload })
   },
 
   async rename ({ state }, name) {

@@ -2,7 +2,7 @@ import Vue from 'vue'
 import uniq from 'lodash/uniq'
 import mapKeys from 'lodash/mapKeys'
 
-import { GameElement, isConfigValueEnabled } from '@/models/elements'
+import { GameElement, isConfigValueEnabled, PRE_DRAW_INCOMPATIBLE } from '@/models/elements'
 import { Rule, getDefaultRules } from '@/models/rules'
 import { Expansion } from '@/models/expansions'
 import { getSelectedEdition, getSelectedStartingTiles, getStartingTilesOptions } from '@/utils/gameSetupUtils'
@@ -39,7 +39,8 @@ export const state = () => ({
   timer: null,
   gameAnnotations: {},
   ai: false,
-  editingGameId: null
+  editingGameId: null,
+  preDrawSuspended: null // pre-draw value stashed while an incompatible expansion is selected
 })
 
 export const mutations = {
@@ -54,8 +55,9 @@ export const mutations = {
     state.gameAnnotations = {}
     state.ai = false
     state.editingGameId = null
+    state.preDrawSuspended = null
   },
-  
+
   setAI (state) {
     state.ai = true
   },
@@ -73,10 +75,15 @@ export const mutations = {
     state.timer = setup.timer
     state.gameAnnotations = {}
     state.ai = setup.ai
+    state.preDrawSuspended = null
   },
 
   gameAnnotations (state, gameAnnotations) {
     state.gameAnnotations = gameAnnotations
+  },
+
+  preDrawSuspended (state, value) {
+    state.preDrawSuspended = value
   },
 
   tileSetQuantity (state, { id, quantity }) {
@@ -151,7 +158,7 @@ export const actions = {
     })
   },
 
-  setReleaseQuantity ({ state, getters, commit }, { release, quantity }) {
+  setReleaseQuantity ({ state, getters, commit, dispatch }, { release, quantity }) {
     const { $tiles } = this._vm
     const enabledStateChanged = (!!release.sets.find(id => !!state.sets[id])) !== (quantity > 0)
     const before = enabledStateChanged ? $tiles.getDefaultElements(state.sets) : null
@@ -200,9 +207,29 @@ export const actions = {
         }
       })
     }
+
+    // A set may have enforced/removed an expansion (in)compatible with pre-draw — suspend or restore.
+    dispatch('reconcilePreDraw')
   },
 
-  setElementConfig ({ commit, state }, { id, config }) {
+  // Suspend pre-draw (remembering its value) while an incompatible expansion is selected, and restore
+  // it to that value once they are all removed. Keeps it unset if it was never set.
+  reconcilePreDraw ({ commit, state }) {
+    const eff = this._vm.$tiles.getFullSetup({ sets: state.sets, elements: state.elements }).elements
+    const blocked = PRE_DRAW_INCOMPATIBLE.some(k => !!eff[k])
+    const current = state.elements['pre-draw']
+    if (blocked) {
+      if (current) {
+        commit('preDrawSuspended', current) // remember the setting
+        commit('elementConfig', { id: 'pre-draw', config: 0 })
+      }
+    } else if (state.preDrawSuspended && !current) {
+      commit('elementConfig', { id: 'pre-draw', config: state.preDrawSuspended }) // restore it
+      commit('preDrawSuspended', null)
+    }
+  },
+
+  setElementConfig ({ commit, state, dispatch }, { id, config }) {
     commit('elementConfig', { id, config })
     
     const linkedPairs = {
@@ -227,6 +254,19 @@ export const actions = {
         commit('elementConfig', { id: 'tower', config: 1 })
       }
     }
+
+    // Pre-draw is mutually exclusive with expansions that change tile-draw or turn order.
+    if (id === 'pre-draw') {
+      // include enforced-by-set elements (River, Crop Circles, …), not just directly-set ones
+      const eff = this._vm.$tiles.getFullSetup({ sets: state.sets, elements: state.elements }).elements
+      if (isConfigValueEnabled(config) && PRE_DRAW_INCOMPATIBLE.some(k => !!eff[k])) {
+        commit('elementConfig', { id: 'pre-draw', config: 0 }) // refuse — an incompatible expansion is on
+      } else {
+        commit('preDrawSuspended', null) // explicit user choice; forget any stashed value
+      }
+    } else if (PRE_DRAW_INCOMPATIBLE.includes(id)) {
+      dispatch('reconcilePreDraw') // suspend on turning one on, restore once all are off
+    }
   },
 
   setRuleConfig ({ commit }, { id, config }) {
@@ -234,9 +274,15 @@ export const actions = {
   },
 
   takeSlot ({ rootState }, { number, name }) {
+    const g = rootState.game
+    // Pre-draw is one-seat-per-app (the secret-hand redaction boundary): refuse a 2nd local slot.
+    if (g.setup && g.setup.elements && g.setup.elements['pre-draw']) {
+      const mySession = rootState.networking.sessionId
+      if ((g.slots || []).some(s => s.sessionId === mySession)) return
+    }
     this._vm.$connection.send({
       type: 'TAKE_SLOT',
-      payload: { gameId: rootState.game.id, number, name }
+      payload: { gameId: g.id, number, name }
     })
   },
 

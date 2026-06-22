@@ -26,7 +26,12 @@ class ConnectionHandler {
     if (!this.onMessageLock) {
       this.onMessageLock = true
       while (this.messageBuffer.length) {
-        await this.processMessage(this.messageBuffer.shift())
+        const m = this.messageBuffer.shift()
+        try {
+          await this.processMessage(m)
+        } catch (e) {
+          console.error('processMessage error', e)
+        }
       }
       this.onMessageLock = false
     }
@@ -45,12 +50,19 @@ class ConnectionHandler {
 	  return
 	}
 	if (ENGINE_MESSAGES.has(type)) {
+      if (type === 'PLACE_PREDRAWN') {
+        // reveal of a pre-drawn tile: update the secret-hand UI, then let the engine place it
+        await dispatch('predraw/handlePlaced', { player: message.player, tileId: payload.tileId }, { root: true })
+      }
       await dispatch('game/handleEngineMessage', message, { root: true })
     } else if (type === 'WELCOME') {
       const reconnected = !!state.reconnectAttempt
       commit('sessionId', payload.sessionId)
       commit('connectionStatus', STATUS_CONNECTED)
       commit('reconnectAttempt', null)
+      if (!reconnected) {
+        commit('globalChat/reset', null, { root: true }) // fresh connect: start with an empty lobby chat
+      }
       if (state.connectionType === 'online') {
         if (reconnected && rootState.game.id) {
           const payload = { gameId: rootState.game.id }
@@ -111,11 +123,13 @@ class ConnectionHandler {
         if (!rootState.runningTests) {
           if (this.$router.currentRoute.path !== '/game') {
             commit('board/reset', null, { root: true })
+            commit('predraw/reset', null, { root: true })
             this.$router.push('/game')
           }
         }
       } else {
         commit('board/reset', null, { root: true })
+        commit('predraw/reset', null, { root: true })
         if (!rootState.runningTests) {
           this.$router.push('/open-game')
           const { preferredColor } = rootState.settings
@@ -128,6 +142,10 @@ class ConnectionHandler {
           }
         }
       }
+      // Pre-draw: seed the secret-hand UI from the redacted GAME (our own myHand + public counts/handMax).
+      if (payload.preDraw) {
+        await dispatch('predraw/handleGame', payload, { root: true })
+      }
     } else if (type === 'GAME_UPDATE') {
       commit('game/updateSetup', payload.setup, { root: true })
       this.$router.push('/open-game')
@@ -135,8 +153,16 @@ class ConnectionHandler {
       commit('game/options', { [payload.key]: payload.value }, { root: true })
     } else if (type === 'GAME_CHAT') {
       commit('game/chatCommit', { message: payload }, { root: true })
+    } else if (type === 'GLOBAL_CHAT') {
+      await dispatch('globalChat/handleMessage', payload, { root: true })
     } else if (type === 'ALERT') {
       commit('online/alertMessage', { message: payload }, { root: true })
+    } else if (type === 'PRE_DRAW_RESULT') {
+      await dispatch('predraw/handleResult', payload, { root: true })
+    } else if (type === 'PRE_DRAW_PUBLIC') {
+      await dispatch('predraw/handlePublic', payload, { root: true })
+    } else if (type === 'PASS_ABBEY_PUBLIC') {
+      await dispatch('predraw/handlePassAbbey', payload, { root: true })
     } else {
       console.error(payload)
 //      throw new Error(`Unhandled message ${type}`)
@@ -223,6 +249,11 @@ export const actions = {
       })
     } else {
       const { $server } = this._vm
+      // Pre-draw is server-authoritative (online-only); never run it on the embedded local server.
+      if (game.setup && game.setup.elements && game.setup.elements['pre-draw']) {
+        game = { ...game, setup: { ...game.setup, elements: { ...game.setup.elements } } }
+        delete game.setup.elements['pre-draw']
+      }
       await $server.start(game)
       try {
         await dispatch('connect', { host: 'localhost', connectionType: 'direct' })
@@ -263,7 +294,9 @@ export const actions = {
   },
 
   async connectPlayOnline ({ dispatch, commit, rootState }) {
-    const host = rootState.settings.playOnlineUrl
+    const s = rootState.settings
+    // dev "Use Local Play Online": go to the local server when on, else the configured URL.
+    const host = s.localPlayOnline ? s.localPlayOnlineUrl : s.playOnlineUrl
     if (host) {
       try {
         await dispatch('connect', { host, connectionType: 'online' })
@@ -277,7 +310,9 @@ export const actions = {
   },
 
   async connectPlayOnlineFan ({ dispatch, commit, rootState }) {
-    const host = rootState.settings.playOnlineFanURL
+    const s = rootState.settings
+    // dev "Use Local Play Online": go to the local server when on, else the configured Fan URL.
+    const host = s.localPlayOnline ? s.localPlayOnlineUrl : s.playOnlineFanURL
     if (host) {
       try {
         await dispatch('connect', { host, connectionType: 'online' })

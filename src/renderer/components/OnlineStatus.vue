@@ -1,17 +1,18 @@
 <template>
   <div class="online-status">
-    <span class="text">{{ $t('index.online.connected-to', ['fanserver'/*playOnlineHostname*/]) }}</span><!-- /* Fan Edition */ -->
+    <span class="text">{{ $t('index.online.connected-to', [isLocalPlayOnline ? 'dev local' : 'fanserver'/*playOnlineHostname*/]) }}</span><!-- /* Fan Edition */ -->
   </div>
 </template>
 
 <script>
-import { mapState } from 'vuex'
+import { mapState, mapGetters } from 'vuex'
 
 export default {
   computed: {
     ...mapState({
       playOnlineHostname: state => state.onlineHostName
-    })
+    }),
+    ...mapGetters('settings', ['isLocalPlayOnline'])
   }
 }
 </script>

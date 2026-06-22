@@ -213,7 +213,8 @@ class Tiles extends EventsBase {
     const elements = { ...setup.elements }
 
     Object.keys(setup.sets).forEach(id => {
-      this.sets[id].enforces.forEach(id => { elements[id] = true })
+      const set = this.sets[id] || this.sets[id + ':1'] || this.sets[id + ':2']
+      ;(set?.enforces || []).forEach(id => { elements[id] = true })
     })
 
     return { ...setup, elements }
