@@ -22,6 +22,7 @@ module.exports = {
     '~/plugins/engine',
     '~/plugins/server',
     '~/plugins/connection',
+    '~/plugins/windowing',
     '~/plugins/addons',
     '~/plugins/tiles',
     '~/plugins/theme',
