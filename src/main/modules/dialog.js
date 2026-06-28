@@ -1,6 +1,5 @@
-import { dialog, ipcMain } from 'electron'
+import { dialog, ipcMain, BrowserWindow } from 'electron'
 
-let _win
 let messages = {}
 
 /**
@@ -21,24 +20,31 @@ function getTranslation (dialogKey, key, fallback) {
  * Show the "unfinished game" confirmation dialog with translated texts
  * Can be called from main process directly
  */
-export async function showUnfinishedGameDialog () {
-  if (!_win) return 1
-
+// `win` is the window the dialog belongs to (the one being closed / leaving the game). Parenting the
+// dialog to the actual window — instead of a shared module-level reference — is required for multiple
+// game windows: otherwise once one window closes, the shared reference is gone and every later close
+// short-circuits to "continue playing" and can never close.
+export async function showUnfinishedGameDialog (win) {
   const resignLabel = getTranslation('close-local-game','resign-and-close', 'Resign and Close')
   const continueLabel = getTranslation('close-local-game','continue-playing', 'Continue playing')
   const title = getTranslation('close-local-game','unfinished-local-game', 'Unfinished Local Game')
   const message = getTranslation('close-local-game','unfinished-local-game-description',
     'You have an unfinished local game. If you close the app window, you will resign and lose your progress in this game.')
 
+  const opts = {
+    type: 'warning',
+    buttons: [resignLabel, continueLabel],
+    defaultId: 0,
+    cancelId: 1,
+    title,
+    message
+  }
+
   try {
-    const result = await dialog.showMessageBox(_win, {
-      type: 'warning',
-      buttons: [resignLabel, continueLabel],
-      defaultId: 0,
-      cancelId: 1,
-      title,
-      message
-    })
+    const target = win && !win.isDestroyed() ? win : null
+    const result = target
+      ? await dialog.showMessageBox(target, opts)
+      : await dialog.showMessageBox(opts)
     return result.response
   } catch (err) {
     console.error('Dialog error:', err)
@@ -74,21 +80,17 @@ export default function () {
    * Can be called via IPC from renderer process
    */
   ipcMain.handle('dialog.showUnfinishedGameDialog', async (ev) => {
-    return await showUnfinishedGameDialog()
+    return await showUnfinishedGameDialog(BrowserWindow.fromWebContents(ev.sender))
   })
 
   return {
-    winCreated (win) {
-      _win = win
-    },
-    winClosed (win) {
-      _win = null
-    }
+    winCreated () {},
+    winClosed () {}
   }
 }
 
-ipcMain.handle('confirm-leave-game', async () => {
-  const choice = await showUnfinishedGameDialog()
+ipcMain.handle('confirm-leave-game', async (ev) => {
+  const choice = await showUnfinishedGameDialog(BrowserWindow.fromWebContents(ev.sender))
   // choice === 0 → user confirmed leaving
   return choice === 0
 })
