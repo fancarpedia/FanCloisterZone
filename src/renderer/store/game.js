@@ -614,6 +614,48 @@ export const actions = {
     })
   },
 
+  // Show the open-file dialog in the CURRENT window and validate the picked file is a usable game
+  // save (parses, compatible version, no missing add-ons) BEFORE a game window is opened — so we
+  // never pop an empty window just to cancel a dialog or bounce on an invalid file.
+  // Returns the file path on success, or null (errors are surfaced via errorMessage).
+  async chooseSaveFile ({ commit }) {
+    const { filePaths, canceled } = await ipcRenderer.invoke('open-load-game-dialog', {
+      title: $nuxt.$t('index.local.open-game'),
+      filters: getSavedGameFilters(),
+      properties: ['openFile']
+    })
+    if (canceled || !filePaths || !filePaths.length) return null
+    const filePath = filePaths[0]
+    try {
+      const data = await fs.promises.readFile(filePath)
+      let sg
+      try {
+        sg = JSON.parse(data)
+      } catch (err) {
+        commit('errorMessage', { title: $nuxt.$t('file.file-is-not-valid'), content: err + '' }, { root: true })
+        return null
+      }
+      if (compare(sg.appVersion, SAVED_GAME_COMPATIBILITY, '<')) {
+        const msg = $nuxt.$t('file.save-created-prior-version-is-not-supported', { version: SAVED_GAME_COMPATIBILITY })
+        commit('errorMessage', { title: $nuxt.$t('file.load-error'), content: msg }, { root: true })
+        return null
+      }
+      if (sg.setup && sg.setup.addons) {
+        const { $addons } = this._vm
+        const missing = $addons.findMissingAddons(sg.setup.addons)
+        if (missing.length) {
+          const msg = $nuxt.$t('file.saved-game-requires-missing-add-ons', { missing: missing.join(', ') })
+          commit('errorMessage', { title: $nuxt.$t('file.load-error'), content: msg }, { root: true })
+          return null
+        }
+      }
+      return filePath
+    } catch (err) {
+      commit('errorMessage', { title: $nuxt.$t('file.load-error'), content: err + '' }, { root: true })
+      return null
+    }
+  },
+
   async load ({ commit, dispatch, rootState }, { file: filePath, setupOnly = false } = {}) {
     return new Promise(async (resolve, reject) => {
       if (!filePath) {
