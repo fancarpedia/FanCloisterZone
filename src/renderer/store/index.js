@@ -16,7 +16,7 @@ export const state = () => ({
   showSettings: false,
   showGameFarmHints: false,
   showGameFeatureHints: false,
-  showPotentialScore: true,
+  showPotentialScore: false,
   showGameHistory: true,
   showGameTiles: false,
   showGameSetup: false,
