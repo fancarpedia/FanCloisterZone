@@ -99,8 +99,10 @@ class GameServer {
         port,
         perMessageDeflate
       }, () => {
-        console.log(`embedded server %c started (${this.status} game)`)
-        resolve()
+        // port may be 0 (OS-assigned) so each game window gets its own free port — read it back.
+        const boundPort = this.wss.address().port
+        console.log(`embedded server %c started on ${boundPort} (${this.status} game)`)
+        resolve(boundPort)
       })
       this.wss.on('connection', ws => this.onConnection(ws))
       this.wss.on('error', err => {
@@ -612,45 +614,53 @@ class GameServer {
   }
 }
 
-let win = null
-
 export default function () {
-  let gameServer = null
+  // One embedded server per game window, keyed by the renderer's webContents.id, each on its own
+  // OS-assigned port. This lets several local games run side by side in separate windows.
+  const servers = new Map() // webContents.id -> GameServer
 
-  async function stop () {
+  async function stopFor (wcId) {
+    const gameServer = servers.get(wcId)
     if (gameServer) {
+      servers.delete(wcId)
       await gameServer.stop()
-      gameServer = null
     }
   }
 
-  ipcMain.handle('localserver.stop', stop)
-  ipcMain.handle('localserver.start', async (ev, { game, port, clientId, appVersion, engineVersion }) => {
-    await stop()
-    gameServer = new GameServer(game, clientId, {
-      appVersion,
-      engineVersion
-    })
+  ipcMain.handle('localserver.stop', (event) => stopFor(event.sender.id))
+
+  ipcMain.handle('localserver.start', async (event, { game, clientId, appVersion, engineVersion }) => {
+    const wcId = event.sender.id
+    await stopFor(wcId)
+    const gameServer = new GameServer(game, clientId, { appVersion, engineVersion })
     gameServer.on('error', err => {
       console.error(err)
       let msg
       if (err.errno === 'EADDRINUSE') {
-        msg = 'Have you alredy created game from another app instance?'
+        msg = 'Have you already created game from another app instance?'
       } else {
         msg = err.message || '' + err
       }
-      win.webContents.send('error', { title: `Can't start server on port ${port}`, content: msg })
+      if (!event.sender.isDestroyed()) {
+        event.sender.send('error', { title: `Can't start local game server`, content: msg })
+      }
     })
-
-    await gameServer.start(port)
+    servers.set(wcId, gameServer)
+    const boundPort = await gameServer.start(0) // 0 = OS picks a free port (per window)
+    return { port: boundPort }
   })
 
-  ipcMain.handle('localserver.dump', () => {
-    return this.gameServer && this.gameServer.dump()
+  ipcMain.handle('localserver.dump', (event) => {
+    const gameServer = servers.get(event.sender.id)
+    return gameServer ? gameServer.dump() : null
   })
 
   return {
-    winCreated (_win) { win = _win },
-    winClosed (_win) { win = null }
+    winCreated (win) {
+      // Safety net: tear down this window's server if it goes away without calling stop.
+      const wcId = win.webContents.id
+      win.webContents.on('destroyed', () => stopFor(wcId))
+    },
+    winClosed () {}
   }
 }

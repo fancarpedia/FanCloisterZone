@@ -8,6 +8,8 @@ export default ({ app }, inject) => {
   let running = false
 
   Vue.prototype.$server = {
+    port: null,
+
     async start (game) {
       const { settings } = app.store.state
       const appVersion = getAppVersion()
@@ -16,14 +18,16 @@ export default ({ app }, inject) => {
         game = { gameId: randomId(), ...game }
       }
 
-      await ipcRenderer.invoke('localserver.start', {
+      // Main assigns a free port per window and returns it so this window connects to its own server.
+      const { port } = await ipcRenderer.invoke('localserver.start', {
         game,
-        port: settings.port,
         clientId: settings.clientId,
         appVersion,
         engineVersion
       })
+      this.port = port
       running = true
+      return { port }
     },
 
     async stop () {
