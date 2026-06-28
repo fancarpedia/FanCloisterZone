@@ -34,15 +34,25 @@ function getAppVersion() {
   }
   return app.getVersion()
 }
-let hasLocalGame = false
-let isForceClosing = false
+// Per-window state, keyed by webContents.id. Each window is either the 'main' lobby window or a
+// dedicated 'game' window (one game per window). Every launch opens a new window — no de-duping.
+const winState = new Map() // webContents.id -> { role, intent, gameId, hasLocalGame, isForceClosing }
+
+function stateFor (wc) {
+  let s = winState.get(wc.id)
+  if (!s) {
+    s = { role: 'main', intent: null, gameId: null, hasLocalGame: false, isForceClosing: false }
+    winState.set(wc.id, s)
+  }
+  return s
+}
 
 ipcMain.handle("get-app-version", () => {
   return getAppVersion()
 })
 
-ipcMain.on('set-local-game', (_, value) => {
-  hasLocalGame = value
+ipcMain.on('set-local-game', (event, value) => {
+  stateFor(event.sender).hasLocalGame = value
 })
 
 ipcMain.handle('open-load-game-dialog', async (event, options) => {
@@ -79,7 +89,7 @@ if (process.platform === 'linux') {
   app.commandLine.appendSwitch('no-sandbox')
 }
 
-async function createWindow () {
+function buildWindow ({ role = 'main' } = {}) {
   const win = new BrowserWindow({
     height: 600,
     width: 1000,
@@ -95,46 +105,102 @@ async function createWindow () {
       contextIsolation: false,
       additionalArguments: [
         '--user-data=' + app.getPath('userData'),
-        '--app-version=' + getAppVersion()
+        '--app-version=' + getAppVersion(),
+        // The renderer reads this to decide whether it is the lobby ('main') or a dedicated
+        // single-game window ('game'); a game window asks for its intent via game-window.ready.
+        '--window-role=' + role
       ],
       devTools: !process.env.SPECTRON // disable on e2e test environment
     }
   })
 
-  // console.log('BrowserWindow created')
+  const wcId = win.webContents.id
+  stateFor(win.webContents).role = role
+
   win.loadURL(process.env.NODE_ENV === 'development' ? process.env.DEV_SERVER_URL : 'app://./index.html')
-  // console.log('BrowserWindow loadURL called')
 
   win.once('ready-to-show', () => {
-    // console.log('BrowserWindow ready to show')
     win.maximize()
-
-    // console.log('winCreated notification for modules')
     modules.forEach(m => m.winCreated(win))
   })
 
   win.on('close', async (event) => {
-    if (hasLocalGame && !isForceClosing) {
+    const st = winState.get(wcId)
+    if (st && st.hasLocalGame && !st.isForceClosing) {
       event.preventDefault()
-      isForceClosing = true
+      st.isForceClosing = true
 
-      const choice = await showUnfinishedGameDialog()
-    
-      isForceClosing = false
+      const choice = await showUnfinishedGameDialog(win)
+
+      st.isForceClosing = false
       if (choice === 0) {
-        hasLocalGame = false
+        st.hasLocalGame = false
         win.destroy() // Force close the window
       }
     }
   })
-  
+
   win.on('closed', ev => {
-    // console.log("WIN CLOSED")
     modules.forEach(m => m.winClosed(win))
+    const st = winState.get(wcId)
+    winState.delete(wcId)
+    // Closing the lobby quits the app (and with it any remaining game windows).
+    if (st && st.role === 'main') {
+      app.quit()
+    } else {
+      // When a game window closes, bring the main (lobby) window back into focus.
+      const mainWin = BrowserWindow.getAllWindows().find(w => {
+        const s = winState.get(w.webContents.id)
+        return s && s.role === 'main'
+      })
+      if (mainWin && !mainWin.isDestroyed()) mainWin.focus()
+    }
   })
 
   return win
 }
+
+function createWindow () {
+  return buildWindow({ role: 'main' })
+}
+
+// Open a dedicated window for one game. Always opens a NEW window — joining an online game that is
+// already open in another window opens another one (no focus-existing / de-dupe).
+function openGameWindow (intent) {
+  const win = buildWindow({ role: 'game' })
+  const st = stateFor(win.webContents)
+  st.intent = intent || null
+  const gameId = intent && intent.gameId
+  if (gameId) st.gameId = gameId // tracked for the title/debug indicator only
+  return win
+}
+
+// --- game-window IPC -----------------------------------------------------------------------------
+// A game-window renderer signals it is ready → hand it its launch intent.
+ipcMain.on('game-window.ready', (event) => {
+  const st = stateFor(event.sender)
+  event.sender.send('game-window.init', { role: st.role, intent: st.intent })
+})
+
+// A renderer (lobby, or test runner) asks to open/focus a game in its own window.
+ipcMain.handle('open-game-window', (event, intent) => {
+  openGameWindow(intent)
+})
+
+// A game window reports the gameId it ended up running (used for the title/debug indicator).
+ipcMain.on('game-window.set-gameid', (event, gameId) => {
+  stateFor(event.sender).gameId = gameId || null
+})
+
+// In-game "close/leave" → close just this window (the renderer has already confirmed and cleaned up).
+// Clear hasLocalGame so the main-process close guard doesn't show a second confirmation dialog.
+ipcMain.on('close-self-window', (event) => {
+  const win = BrowserWindow.fromWebContents(event.sender)
+  if (win && !win.isDestroyed()) {
+    stateFor(event.sender).hasLocalGame = false
+    win.close()
+  }
+})
 
 app.disableHardwareAcceleration()
 
