@@ -66,6 +66,8 @@ class ConnectionPlugin extends EventsBase {
         secret: settings.secret,
         appSessionId: appSessionId,
         language: settings.locale,
+        // OS/system locale (e.g. "en-US"), independent of the in-app language setting above.
+        systemLanguage: (typeof navigator !== 'undefined' && (navigator.language || (navigator.languages && navigator.languages[0]))) || null,
         gameId: gameId,
         platform: process.platform
       }
@@ -168,8 +170,19 @@ class ConnectionPlugin extends EventsBase {
 
   disconnect () {
     if (this.ws) {
-      this.ws.close()
+      // Deliberate disconnect: detach handlers and drop the socket reference *before* closing.
+      // The plugin keeps a single `this.ws`, so if we reconnect right away (e.g. switching servers)
+      // the old socket's late `onclose` would otherwise fire against the NEW socket and tear it down.
+      const ws = this.ws
+      ws.onopen = null
+      ws.onmessage = null
+      ws.onclose = null
+      this.ws = null
+      this.callbacks = null
       this.recentlyUsedSourceHash = null
+      clearTimeout(this.pingTimeout)
+      clearTimeout(this.pongTimeout)
+      ws.close()
     }
   }
 
