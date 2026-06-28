@@ -25,7 +25,7 @@
           </div>
 
           <div>
-            <v-btn to="/" color="secondary" class="error close" @click="resetFailed">
+            <v-btn color="secondary" class="error close" :loading="closing" @click="close">
               <v-icon left>fa-times</v-icon>
               {{ $t('button.close') }}
             </v-btn>
@@ -118,6 +118,8 @@ export default {
       hideFinished: false,
       isRunningAll: false,
       stopRunning: false,
+      runningPromise: null,
+      closing: false,
       tests: [],
       selectedExpansions: [],
       expansions: Expansion.all(),
@@ -141,79 +143,23 @@ export default {
     }
   },
 
-  async asyncData({ store }) {
-    const testFolder = path.normalize(
-      store.state.settings?.testRunnerFolder || 'engine-tests'
-    )
-    const tests = []
-
-    const installedSets = Expansion.all().map(e =>
-      e.name.toLowerCase().replace(/_/g, '-')
-    )
-
-    const processFile = async (filePath, relativeName) => {
-      let disabled = false
-      let error = []
-      let requiredSets = []
-
-      try {
-        const fileContent = await fs.promises.readFile(filePath, 'utf-8')
-        const json = JSON.parse(fileContent)
-        const setsRaw = json?.setup?.sets
-        if (!json.hasOwnProperty('test')) {
-          disabled = true
-          error.push(`Save file has no test defined`)
-        }
-        requiredSets = Object.keys(setsRaw).map(set =>
-          set.split(/:|,v|\//)[0].toLowerCase().replace(/_/g, '-')
-        )
-        const missing = requiredSets.filter(set => !installedSets.includes(set))
-        if (missing.length > 0) {
-          disabled = true
-          error.push(`Missing expansions: ${missing.join(', ')}`)
-        }
-      } catch (err) {
-        disabled = true
-        error.push(`Invalid test file: ${err.message}`)
-      }
-
-      tests.push({
-        name: relativeName.replace('.jcz', ''),
-        file: filePath,
-        disabled,
-        error: error.join(', '),
-        requiredSets
-      })
-    }
-  
-    const processFolder = async (folderPath, relativePath) => {
-      const listing = await fs.promises.readdir(folderPath)
-      for (const entry of listing) {
-        const fullPath = path.join(folderPath, entry)
-        const relPath = relativePath ? path.join(relativePath, entry) : entry
-        const stat = await fs.promises.stat(fullPath)
-        if (stat.isDirectory()) {
-          await processFolder(fullPath, relPath)
-        } else {
-          await processFile(fullPath, relPath)
-        }
-      }
-    }
-    
-    try {
-      await processFolder(testFolder, '')
-    } catch (e) {
-      const realPath = await fs.promises.realpath('.')
-      const testFolderPath = path.join(realPath, testFolder)
-      console.log(`Test folder ${testFolderPath} does not exist`, e.message)
-      return { tests: [] }
-    }
-
-    return { tests }
-  },
-
   mounted() {
     this.$store.commit('runningTests', true)
+    this.loadTests()
+  },
+
+  watch: {
+    // Re-scan when the engine-tests folder setting changes while the runner stays open
+    // (e.g. it started empty/invalid and the user pointed it at a real folder).
+    '$store.state.settings.testRunnerFolder': async function () {
+      if (this.isRunningAll) {
+        this.stopRunning = true
+        try {
+          await this.runningPromise
+        } catch (e) { /* ignore, we're reloading */ }
+      }
+      this.loadTests()
+    }
   },
 
   beforeDestroy() {
@@ -222,6 +168,78 @@ export default {
   },
 
   methods: {
+    async loadTests () {
+      const testFolder = path.normalize(
+        this.$store.state.settings?.testRunnerFolder || 'engine-tests'
+      )
+      const tests = []
+
+      const installedSets = Expansion.all().map(e =>
+        e.name.toLowerCase().replace(/_/g, '-')
+      )
+
+      const processFile = async (filePath, relativeName) => {
+        let disabled = false
+        let error = []
+        let requiredSets = []
+
+        try {
+          const fileContent = await fs.promises.readFile(filePath, 'utf-8')
+          const json = JSON.parse(fileContent)
+          const setsRaw = json?.setup?.sets
+          if (!json.hasOwnProperty('test')) {
+            disabled = true
+            error.push(`Save file has no test defined`)
+          }
+          requiredSets = Object.keys(setsRaw).map(set =>
+            set.split(/:|,v|\//)[0].toLowerCase().replace(/_/g, '-')
+          )
+          const missing = requiredSets.filter(set => !installedSets.includes(set))
+          if (missing.length > 0) {
+            disabled = true
+            error.push(`Missing expansions: ${missing.join(', ')}`)
+          }
+        } catch (err) {
+          disabled = true
+          error.push(`Invalid test file: ${err.message}`)
+        }
+
+        tests.push({
+          name: relativeName.replace('.jcz', ''),
+          file: filePath,
+          disabled,
+          error: error.join(', '),
+          requiredSets
+        })
+      }
+
+      const processFolder = async (folderPath, relativePath) => {
+        const listing = await fs.promises.readdir(folderPath)
+        for (const entry of listing) {
+          const fullPath = path.join(folderPath, entry)
+          const relPath = relativePath ? path.join(relativePath, entry) : entry
+          const stat = await fs.promises.stat(fullPath)
+          if (stat.isDirectory()) {
+            await processFolder(fullPath, relPath)
+          } else if (entry.toLowerCase().endsWith('.jcz')) {
+            await processFile(fullPath, relPath)
+          }
+        }
+      }
+
+      try {
+        await processFolder(testFolder, '')
+      } catch (e) {
+        const realPath = await fs.promises.realpath('.')
+        const testFolderPath = path.join(realPath, testFolder)
+        console.log(`Test folder ${testFolderPath} does not exist`, e.message)
+        this.tests = []
+        return
+      }
+
+      this.tests = tests
+    },
+
     startTimer () {
       this.timerSeconds = 0
       this.timerInterval = setInterval(() => {
@@ -247,8 +265,9 @@ export default {
     },
 
     open({ file }) {
-      this.$store.commit('runningTests', false)
-      this.$store.dispatch('game/load', { file })
+      // Open the test as a playable local game in its OWN window (force past the runningTests gate,
+      // which is set while the Test Runner is mounted). Batch runs keep running in the background here.
+      this.$windows.openGame({ kind: 'load', payload: { file } }, { force: true })
     },
 
     async run(test, idx) {
@@ -259,28 +278,46 @@ export default {
       Vue.set(this.tests, globalIdx, { ...test, result })
     },
 
-    async toggleRunAll() {
+    toggleRunAll() {
       if (!this.isRunningAll) {
-        this.isRunningAll = true
-        this.stopRunning = false
-        this.startTimer()
-
-        for (let idx = 0; idx < this.filteredTests.length; idx++) {
-          const test = this.filteredTests[idx]
-          if (this.stopRunning) break
-          if (test.disabled || test.result) continue
-          const globalIdx = this.tests.indexOf(test)
-          const result = await this.runTest(test.file)
-          Vue.set(this.tests, globalIdx, { ...test, result })
-        }
-
-        this.stopTimer()
-        this.isRunningAll = false
+        this.runningPromise = this.runAll()
       } else {
         this.stopRunning = true
-        this.isRunningAll = false
-        this.stopTimer()
       }
+    },
+
+    async runAll() {
+      this.isRunningAll = true
+      this.stopRunning = false
+      this.startTimer()
+
+      for (let idx = 0; idx < this.filteredTests.length; idx++) {
+        const test = this.filteredTests[idx]
+        if (this.stopRunning) break
+        if (test.disabled || test.result) continue
+        const globalIdx = this.tests.indexOf(test)
+        const result = await this.runTest(test.file)
+        Vue.set(this.tests, globalIdx, { ...test, result })
+      }
+
+      this.stopTimer()
+      this.isRunningAll = false
+    },
+
+    async close() {
+      // Stop a running batch first, then leave once it has actually stopped.
+      if (this.isRunningAll) {
+        this.closing = true
+        this.stopRunning = true
+        try {
+          await this.runningPromise
+        } catch (e) {
+          // ignore — we're closing anyway
+        }
+        this.closing = false
+      }
+      this.resetFailed()
+      this.$router.push('/')
     },
 
     resetAll() {
