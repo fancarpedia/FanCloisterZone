@@ -224,11 +224,13 @@ export default {
 
   methods: {
     newGame (tab) {
+      if (this.$windows.openGame({ kind: 'new-local', payload: { tab } })) return
       this.$store.dispatch('gameSetup/newGame')
       this.$router.push('/game-setup' + (tab !== undefined ? `?tab=${tab}` : ''))
     },
 
     newGameAI (tab) {
+      if (this.$windows.openGame({ kind: 'new-local', payload: { ai: true, tab } })) return
       this.$store.dispatch('gameSetup/newGameAI')
       this.$router.push('/game-setup' + (tab !== undefined ? `?tab=${tab}` : ''))
     },
@@ -269,11 +271,16 @@ export default {
       this.$store.dispatch('networking/connectPlayOnlineFan')
     },
 
-    loadGame () {
-      this.$store.dispatch('game/load')
+    async loadGame () {
+      // Pick + validate the file in THIS window first, then open a window for the confirmed save.
+      const file = await this.$store.dispatch('game/chooseSaveFile')
+      if (!file) return
+      if (this.$windows.openGame({ kind: 'load', payload: { file } })) return
+      this.$store.dispatch('game/load', { file })
     },
 
     async loadSavedGame (file) {
+      if (this.$windows.openGame({ kind: 'load', payload: { file } })) return
       try {
         await this.$store.dispatch('game/load', { file })
       } catch {
@@ -283,6 +290,7 @@ export default {
     },
 
     loadSetup (setup) {
+      if (this.$windows.openGame({ kind: 'load-setup', payload: { setup } })) return
       this.$store.dispatch('gameSetup/load', setup)
       this.$router.push('/game-setup')
     },
