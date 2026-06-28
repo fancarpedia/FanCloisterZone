@@ -1,20 +1,22 @@
 import path from 'path'
-import { ipcMain, app } from 'electron'
-
-let win = null
+import { ipcMain, app, BrowserWindow } from 'electron'
 
 export default function () {
-  ipcMain.handle('win.isVisible', () => {
+  // These IPCs act on the window that sent them, so they work with any number of windows.
+  ipcMain.handle('win.isVisible', (event) => {
+    const win = BrowserWindow.fromWebContents(event.sender)
     return win && !win.isMinimized() && !win.isVisible()
   })
 
-  ipcMain.handle('win.setProgressBar', async (ev, args) => {
+  ipcMain.handle('win.setProgressBar', async (event, args) => {
+    const win = BrowserWindow.fromWebContents(event.sender)
     if (win) {
       win.setProgressBar(...args)
     }
   })
 
-  ipcMain.handle('win.setIcon', async (ev, icon) => {
+  ipcMain.handle('win.setIcon', async (event, icon) => {
+    const win = BrowserWindow.fromWebContents(event.sender)
     if (win) {
       if (process.env.NODE_ENV === 'development') {
         win.setIcon(path.join('icons', icon))
@@ -26,17 +28,15 @@ export default function () {
   })
 
   return {
-    winCreated (_win) {
-      win = _win
-      win.on('restore', ev => win.webContents.send('win.restore'))
-      win.on('show', ev => win.webContents.send('win.show'))
-      win.on('focus', ev => win.webContents.send('win.focus'))
-      win.on('minimize', ev => win.webContents.send('win.minimize'))
-      win.on('hide', ev => win.webContents.send('win.hide'))
-      win.on('blur', ev => win.webContents.send('win.blur'))
+    // Bind listeners to THIS window so each window notifies its own renderer (no shared module state).
+    winCreated (win) {
+      win.on('restore', () => win.webContents.send('win.restore'))
+      win.on('show', () => win.webContents.send('win.show'))
+      win.on('focus', () => win.webContents.send('win.focus'))
+      win.on('minimize', () => win.webContents.send('win.minimize'))
+      win.on('hide', () => win.webContents.send('win.hide'))
+      win.on('blur', () => win.webContents.send('win.blur'))
     },
-    winClosed (_win) {
-      win = null
-    }
+    winClosed () {}
   }
 }
