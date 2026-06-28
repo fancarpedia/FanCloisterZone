@@ -213,7 +213,8 @@ export const state = () => ({
   sessionId: null,
   connectionType: null, // direct / online
   connectionStatus: null,
-  reconnectAttempt: null
+  reconnectAttempt: null,
+  onlineEntry: null // 'fan' / 'plain' — which online entry point opened the current connection (for reconnect)
 })
 
 export const mutations = {
@@ -231,6 +232,10 @@ export const mutations = {
 
   reconnectAttempt (state, value) {
     state.reconnectAttempt = value
+  },
+
+  onlineEntry (state, value) {
+    state.onlineEntry = value
   }
 }
 
@@ -254,9 +259,10 @@ export const actions = {
         game = { ...game, setup: { ...game.setup, elements: { ...game.setup.elements } } }
         delete game.setup.elements['pre-draw']
       }
-      await $server.start(game)
+      const { port } = await $server.start(game)
       try {
-        await dispatch('connect', { host: 'localhost', connectionType: 'direct' })
+        // Connect to the per-window embedded server on the port it was assigned.
+        await dispatch('connect', { host: 'localhost:' + port, connectionType: 'direct' })
       } catch (err) {
         console.error(err)
         commit('errorMessage', { title: 'Engine error', content: err.message || err + '' }, { root: true })
@@ -295,6 +301,7 @@ export const actions = {
 
   async connectPlayOnline ({ dispatch, commit, rootState }) {
     const s = rootState.settings
+    commit('onlineEntry', 'plain')
     // dev "Use Local Play Online": go to the local server when on, else the configured URL.
     const host = s.localPlayOnline ? s.localPlayOnlineUrl : s.playOnlineUrl
     if (host) {
@@ -311,6 +318,7 @@ export const actions = {
 
   async connectPlayOnlineFan ({ dispatch, commit, rootState }) {
     const s = rootState.settings
+    commit('onlineEntry', 'fan')
     // dev "Use Local Play Online": go to the local server when on, else the configured Fan URL.
     const host = s.localPlayOnline ? s.localPlayOnlineUrl : s.playOnlineFanURL
     if (host) {
@@ -325,6 +333,19 @@ export const actions = {
     }
   },
 
+  // Bounce the current online connection to whatever the online target now resolves to
+  // (used when the dev "Use Local Play Online" toggle changes the target server).
+  async reconnectOnline ({ state, dispatch }) {
+    if (state.connectionType !== 'online') return
+    const entry = state.onlineEntry
+    await dispatch('close')
+    if (entry === 'plain') {
+      await dispatch('connectPlayOnline')
+    } else {
+      await dispatch('connectPlayOnlineFan')
+    }
+  },
+
   close ({ commit, rootState }) {
     const { $server, $connection } = this._vm
     if (reconnectTimeout) {
@@ -336,6 +357,7 @@ export const actions = {
     commit('connectionType', null)
     commit('connectionStatus', null)
     commit('reconnectAttempt', null)
+    commit('onlineEntry', null)
     if (!rootState.runningTests) {
       this.$router.push('/')
     }
