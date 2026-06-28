@@ -45,7 +45,8 @@
 	<img v-else-if="element === 'meteorite'" src="~/assets/features/C1/crater.png" height="55">
 	<img v-else-if="element === 'fishermen'" src="~/assets/features/C1/fishermen.png" height="55">
 	<img v-else-if="element === 'fishhut'" src="~/assets/features/C1/fishhut.png" height="55">
-    
+    <div v-else-if="element === 'pre-draw'" class="predraw-icon">⤵<span>hand</span></div>
+
     <template #quantity>
       <div class="quantity" :class="enabled ? 'addition': 'removal'">
         {{ label }}
@@ -118,6 +119,18 @@ export default {
 </script>
 
 <style lang="sass" scoped>
+.predraw-icon
+  display: flex
+  flex-direction: column
+  align-items: center
+  justify-content: center
+  width: 70px
+  height: 70px
+  font-size: 28px
+
+  span
+    font-size: 11px
+
 .tile-img, img
   filter: grayscale(100%)
   
