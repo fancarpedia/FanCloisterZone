@@ -2,7 +2,7 @@
 
 Enhanced original [JCloisterZone](https://github.com/farin/JCloisterZone-Client) with many improvements.
 
-Also support of many fan-expansions, chat during game, lobby.
+Also support of many fan-expansions, chat during game, lobby, multiple concurrently games, global chat.
 
 All issues on FanCloisterZone report on [Discord](https://discord.gg/CswNeVg3eS)
 
