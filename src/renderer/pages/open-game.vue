@@ -129,7 +129,8 @@
       </div>
     </template>
   </GameSetupGrid>
-  <GlobalChat />
+  <!-- bottom-left so the bullet clears the chat send button (chat lives in the right column) -->
+  <GlobalChat left="20px" />
   </div>
 </template>
 

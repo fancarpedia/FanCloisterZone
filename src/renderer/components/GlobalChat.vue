@@ -1,7 +1,7 @@
 <template>
   <!-- inline: an always-open panel (lobby). overlay: a blue launcher ("bullet") that opens the panel
        — drop <GlobalChat /> on any online page; it hides itself when not connected online. -->
-  <div v-if="visible" :class="['global-chat-root', inline ? 'inline' : 'overlay']" :style="overlayVars">
+  <div v-if="visible" :class="['global-chat-root', inline ? 'inline' : 'overlay', { 'overlay-left': !inline && left }]" :style="overlayVars">
     <button
       v-if="!inline"
       v-show="!open"
@@ -59,7 +59,10 @@ export default {
     // inline = always-open panel (lobby); otherwise a collapsible blue overlay ("bullet").
     inline: { type: Boolean, default: false },
     // CSS `right` offset for the overlay bullet/panel (e.g. in-game: left of the red game-chat button).
-    right: { type: String, default: '20px' }
+    right: { type: String, default: '20px' },
+    // When set, anchor the overlay bullet/panel to the bottom-LEFT at this offset instead of the
+    // bottom-right (e.g. take-slots page, where the chat send button occupies the bottom-right).
+    left: { type: String, default: null }
   },
 
   data () {
@@ -80,7 +83,8 @@ export default {
     },
 
     overlayVars () {
-      return this.inline ? {} : { '--gc-right': this.right }
+      if (this.inline) return {}
+      return this.left ? { '--gc-left': this.left } : { '--gc-right': this.right }
     },
 
     unread () {
@@ -195,6 +199,12 @@ $gc-blue: #2196f3
     border-radius: 8px
     background: rgba(0,0,0,0.6)
     box-shadow: 0 2px 10px rgba(0,0,0,0.4)
+
+// anchor to the bottom-left instead of bottom-right (overrides the .overlay right offset)
+.overlay-left
+  .gc-launcher, .gc-panel
+    right: auto
+    left: var(--gc-left, 20px)
 
 .inline
   // fills its container (e.g. the lobby's right-hand aside) rather than a fixed height
