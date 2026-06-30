@@ -146,6 +146,28 @@ function fetchPage(url) {
 }
 
 /**
+ * Build a helpful error message for a JSON parse failure, showing the
+ * characters surrounding the reported error position.
+ */
+function describeJsonError(jsonContent, parseError) {
+  const posMatch = parseError.message.match(/position (\d+)/);
+  if (!posMatch) {
+    return parseError.message;
+  }
+
+  const pos = parseInt(posMatch[1], 10);
+  const start = Math.max(0, pos - 10);
+  const end = Math.min(jsonContent.length, pos + 10);
+  const context = jsonContent.slice(start, end);
+
+  // Show where the error is, with whitespace made visible
+  const visible = context.replace(/\n/g, '\\n').replace(/\r/g, '\\r').replace(/\t/g, '\\t');
+
+  return `${parseError.message}\n` +
+    `  context (10 chars before/after position ${pos}): ...${visible}...`;
+}
+
+/**
  * Extract JSON content from MediaWiki page
  */
 function extractJSON(content) {
@@ -193,7 +215,7 @@ function extractJSON(content) {
     JSON.parse(jsonContent);
     return jsonContent;
   } catch (e) {
-    throw new Error(`Invalid JSON: ${e.message}`);
+    throw new Error(`Invalid JSON: ${describeJsonError(jsonContent, e)}`);
   }
 }
 
@@ -227,7 +249,7 @@ async function processLanguage(lang) {
     try {
       parsed = JSON.parse(jsonContent);
     } catch (parseError) {
-      throw new Error(`Invalid JSON structure: ${parseError.message}`);
+      throw new Error(`Invalid JSON structure: ${describeJsonError(jsonContent, parseError)}`);
     }
     
     // Additional validation: check if it's an object
