@@ -159,7 +159,7 @@
           :x="BASE_SIZE * 0.45"
           :y="BASE_SIZE * 0.55"
           :font-size="150"
-          :fill="white"
+          fill="white"
         >
           {{ dragon.remaining }}
         </text>
