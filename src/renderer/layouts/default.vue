@@ -133,6 +133,44 @@ export default {
 
     notifyConnectionReconnecting () {
       return this.connectionState === 'reconnecting'
+    },
+
+    // Effective game setup for this window (the running game, else the setup being edited). Reported
+    // to the main process so the lobby's open-windows list can render a setup overview.
+    gameWindowSetup () {
+      const g = this.$store.state.game
+      if (g && g.setup && g.setup.sets && g.setup.elements) {
+        return { sets: g.setup.sets, elements: g.setup.elements }
+      }
+      const gs = this.$store.state.gameSetup
+      if (gs && gs.sets && gs.elements) {
+        return { sets: gs.sets, elements: gs.elements }
+      }
+      return null
+    },
+
+    // Tile progress ({ used, total }) of this window's running game — the same placed/total count
+    // the server stores from the COMMIT message. Reported for the lobby's open-windows list.
+    gameWindowProgress () {
+      const g = this.$store.state.game
+      if (g && g.tilePack && typeof g.packSize === 'number') {
+        return { used: g.packSize - g.tilePack.size, total: g.packSize }
+      }
+      return null
+    },
+
+    // Active player ({ slot, isMe }) of this window's running game, so the lobby's open-windows
+    // bullet can show that player's colour and blink when it is my turn.
+    gameWindowActive () {
+      const g = this.$store.state.game
+      if (!g || !g.action || !g.players) {
+        return null
+      }
+      const p = g.players[g.action.player]
+      if (!p) {
+        return null
+      }
+      return { slot: p.slot, isMe: this.$store.getters['game/isActionLocal'] }
     }
   },
 
@@ -183,6 +221,48 @@ export default {
         this.$windows.setGameId(id)
       }
       this.updateTitle()
+    },
+
+    // In a game window, report the online game key so the lobby's open-windows list can show it.
+    '$store.state.game.key': {
+      handler (key) {
+        if (this.$windows.isGameWindow()) {
+          this.$windows.setKey(key)
+        }
+      },
+      immediate: true
+    },
+
+    // In a game window, report the setup so the lobby's open-windows list shows a setup overview.
+    gameWindowSetup: {
+      handler (setup) {
+        if (this.$windows.isGameWindow()) {
+          this.$windows.setSetup(setup)
+        }
+      },
+      deep: true,
+      immediate: true
+    },
+
+    // In a game window, report tile progress so the lobby's open-windows list shows placed/total.
+    gameWindowProgress: {
+      handler (progress) {
+        if (this.$windows.isGameWindow()) {
+          this.$windows.setProgress(progress)
+        }
+      },
+      immediate: true
+    },
+
+    // In a game window, report the active player so the lobby's open-windows bullet shows its colour.
+    gameWindowActive: {
+      handler (active) {
+        if (this.$windows.isGameWindow()) {
+          this.$windows.setActive(active)
+        }
+      },
+      deep: true,
+      immediate: true
     }
   },
 

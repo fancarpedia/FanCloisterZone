@@ -1,5 +1,7 @@
 <template>
   <div class="landing-view view">
+    <div class="landing-layout">
+      <main class="landing-main">
     <div>
       <v-alert v-if="engine && engine.error === 'not-found'" type="warning">
         <i18n tag="span" path="settings.engine.engine-path-not-exists">
@@ -135,6 +137,13 @@
         </div>
       </div>
     </section>
+      </main>
+
+      <aside class="open-windows-aside">
+        <h2>{{ $t('open-windows.title') }}</h2>
+        <OpenGameWindows class="open-windows-list" />
+      </aside>
+    </div>
   </div>
 </template>
 
@@ -146,6 +155,7 @@ import { mapState } from 'vuex'
 
 import AddonsReloadObserverMixin from '@/components/AddonsReloadObserverMixin'
 import InstallerDownloader from '@/components/InstallerDownloader'
+import OpenGameWindows from '@/components/OpenGameWindows'
 
 const isMac = process.platform === 'darwin'
 const isWin = process.platform === 'win32'
@@ -154,7 +164,8 @@ import { STATUS_CONNECTED } from '@/store/networking'
 
 export default {
   components: {
-    InstallerDownloader
+    InstallerDownloader,
+    OpenGameWindows
   },
 
   mixins: [
@@ -389,6 +400,41 @@ h2
   +theme using ($theme)
     background: none
 
+
+.landing-layout
+  display: flex
+  align-items: flex-start
+
+.landing-main
+  flex: 1 1 auto
+  min-width: 0
+  display: flex
+  flex-direction: column
+
+.open-windows-aside
+  flex: 0 0 320px
+  align-self: stretch
+  position: sticky
+  top: 0
+  max-height: 100vh
+  display: flex
+  flex-direction: column
+  padding: 20px 16px
+  box-sizing: border-box
+  overflow: hidden
+
+  +theme using ($theme)
+    background-color: map-get($theme, 'cards-bg')
+
+  h2
+    margin: 0 0 16px
+    font-size: 18px
+    text-align: center
+
+  .open-windows-list
+    flex: 1 1 auto
+    min-height: 0
+    overflow-y: auto
 
 .player-hosted
   padding: 30px 0

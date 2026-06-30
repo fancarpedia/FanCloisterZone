@@ -164,6 +164,8 @@
     </main>
 
     <aside class="global-chat-aside">
+      <h2>{{ $t('open-windows.title') }}</h2>
+      <OpenGameWindows class="open-windows-block" />
       <h2>{{ $t('global-chat.title') }}</h2>
       <GlobalChat inline />
     </aside>
@@ -265,6 +267,7 @@ import GameSetupOverviewInline from '@/components/game-setup/overview/GameSetupO
 import OnlineStatus from '@/components/OnlineStatus'
 import Meeple from '@/components/game/Meeple'
 import GlobalChat from '@/components/GlobalChat'
+import OpenGameWindows from '@/components/OpenGameWindows'
 
 import { STATUS_CONNECTED } from '@/store/networking'
 
@@ -273,7 +276,8 @@ export default {
     GameSetupOverviewInline,
     OnlineStatus,
     Meeple,
-    GlobalChat
+    GlobalChat,
+    OpenGameWindows
   },
 
   data () {
@@ -617,6 +621,14 @@ h2
   h2
     margin-top: 0
     flex: 0 0 auto
+
+    & ~ h2
+      margin-top: 20px
+
+  .open-windows-block
+    flex: 0 0 auto
+    max-height: 35%
+    margin-bottom: 4px
 
   ::v-deep .global-chat-root
     flex: 1 1 0

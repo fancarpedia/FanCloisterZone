@@ -41,10 +41,70 @@ const winState = new Map() // webContents.id -> { role, intent, gameId, hasLocal
 function stateFor (wc) {
   let s = winState.get(wc.id)
   if (!s) {
-    s = { role: 'main', intent: null, gameId: null, hasLocalGame: false, isForceClosing: false }
+    s = { role: 'main', intent: null, gameId: null, key: null, setup: null, progress: null, active: null, hasLocalGame: false, isForceClosing: false }
     winState.set(wc.id, s)
   }
   return s
+}
+
+// --- open game-windows registry (for the lobby's "open windows" list) -----------------------------
+// A window counts as a listable game window once it is a 'game' window AND has been handed a launch
+// intent (so the hidden pre-warmed game window, which has no intent yet, is excluded).
+function isListableGameState (st) {
+  return !!(st && st.role === 'game' && st.intent != null)
+}
+
+function isLocalIntent (intent) {
+  const kind = intent && intent.kind
+  return kind === 'new-local' || kind === 'load' || kind === 'load-setup'
+}
+
+// Best-effort English fallback title; the renderer localises via intentKind, but keep a readable
+// label here for any window whose kind we don't recognise.
+function deriveWindowTitle (st) {
+  const intent = st.intent || {}
+  const payload = intent.payload || {}
+  switch (intent.kind) {
+    case 'new-local': return payload.ai ? 'Local game vs AI' : 'Local game'
+    case 'load':
+    case 'load-setup': return payload.file ? `Local game — ${path.basename(payload.file)}` : 'Local game'
+    case 'create-online':
+    case 'join-online': return 'Online game'
+    default: return st.gameId ? `Game ${st.gameId}` : 'Game'
+  }
+}
+
+function findWindowByWcId (id) {
+  return BrowserWindow.getAllWindows().find(w => !w.isDestroyed() && w.webContents.id === id) || null
+}
+
+function serializeGameWindows () {
+  const out = []
+  for (const win of BrowserWindow.getAllWindows()) {
+    if (win.isDestroyed()) continue
+    const st = winState.get(win.webContents.id)
+    if (!isListableGameState(st)) continue
+    out.push({
+      id: win.webContents.id,
+      gameId: st.gameId || null,
+      key: st.key || null,
+      setup: st.setup || null,
+      progress: st.progress || null,
+      active: st.active || null,
+      intentKind: (st.intent && st.intent.kind) || null,
+      isLocal: isLocalIntent(st.intent),
+      title: deriveWindowTitle(st)
+    })
+  }
+  return out
+}
+
+// Push the current list of open game windows to every window (lobby + game windows).
+function broadcastGameWindows () {
+  const list = serializeGameWindows()
+  for (const win of BrowserWindow.getAllWindows()) {
+    if (!win.isDestroyed()) win.webContents.send('game-windows.changed', list)
+  }
 }
 
 ipcMain.handle("get-app-version", () => {
@@ -159,6 +219,7 @@ function buildWindow ({ role = 'main', hidden = false } = {}) {
     modules.forEach(m => m.winClosed(win))
     const st = winState.get(wcId)
     winState.delete(wcId)
+    broadcastGameWindows() // a window vanished → refresh the lobby's open-windows list
     // Clean up warm window reference if this was the warm window
     if (warmWin === win) {
       warmWin = null
@@ -225,6 +286,7 @@ function openGameWindow (intent) {
   }
   const gameId = intent && intent.gameId
   if (gameId) stateFor(win.webContents).gameId = gameId
+  broadcastGameWindows() // a new game window appeared (intent set) → refresh the list
   return win
 }
 
@@ -248,6 +310,7 @@ ipcMain.on('game-window.ready', (event) => {
     win.maximize()
     win.show()
   }
+  broadcastGameWindows() // window is now shown with its intent → refresh the list
 })
 
 // A renderer (lobby, or test runner) asks to open/focus a game in its own window.
@@ -258,6 +321,54 @@ ipcMain.handle('open-game-window', (event, intent) => {
 // A game window reports the gameId it ended up running (used for the title/debug indicator).
 ipcMain.on('game-window.set-gameid', (event, gameId) => {
   stateFor(event.sender).gameId = gameId || null
+  broadcastGameWindows() // gameId changed → refresh the list label
+})
+
+// A game window reports its online game key (e.g. "ABC-123") so the lobby can show it.
+ipcMain.on('game-window.set-key', (event, key) => {
+  stateFor(event.sender).key = key || null
+  broadcastGameWindows() // key changed → refresh the list
+})
+
+// A game window reports its active player ({ slot, isMe }) so the lobby can colour/blink the bullet.
+ipcMain.on('game-window.set-active', (event, active) => {
+  stateFor(event.sender).active = active || null
+  broadcastGameWindows() // active player changed → refresh the bullet
+})
+
+// A game window reports its setup ({ sets, elements }) so the lobby can show a setup overview.
+ipcMain.on('game-window.set-setup', (event, setup) => {
+  stateFor(event.sender).setup = setup || null
+  broadcastGameWindows() // setup changed → refresh the list
+})
+
+// A game window reports its tile progress ({ used, total }) so the lobby can show placed/total tiles.
+ipcMain.on('game-window.set-progress', (event, progress) => {
+  stateFor(event.sender).progress = progress || null
+  broadcastGameWindows() // progress changed → refresh the list
+})
+
+// --- open-windows list IPC -----------------------------------------------------------------------
+// The lobby pages (index/online) query and act on the set of open game windows.
+ipcMain.handle('list-game-windows', () => serializeGameWindows())
+
+// A renderer asks for its own webContents id so it can exclude itself from the list.
+ipcMain.handle('get-my-window-id', (event) => event.sender.id)
+
+// Bring a game window to the front.
+ipcMain.on('focus-game-window', (event, id) => {
+  const win = findWindowByWcId(id)
+  if (win) {
+    if (win.isMinimized()) win.restore()
+    win.show()
+    win.focus()
+  }
+})
+
+// Close a game window from the list (goes through the window's own close guard).
+ipcMain.on('close-game-window', (event, id) => {
+  const win = findWindowByWcId(id)
+  if (win) win.close()
 })
 
 // In-game "close/leave" → close just this window (the renderer has already confirmed and cleaned up).
