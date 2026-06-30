@@ -89,10 +89,11 @@ if (process.platform === 'linux') {
   app.commandLine.appendSwitch('no-sandbox')
 }
 
-function buildWindow ({ role = 'main' } = {}) {
+function buildWindow ({ role = 'main', hidden = false } = {}) {
   const win = new BrowserWindow({
     height: 600,
     width: 1000,
+    show: !hidden,
     icon: path.join(__dirname, '..', 'resources', 'icon.ico'),
     webPreferences: {
       zoomFactor: 1,
@@ -119,10 +120,12 @@ function buildWindow ({ role = 'main' } = {}) {
 
   win.loadURL(process.env.NODE_ENV === 'development' ? process.env.DEV_SERVER_URL : 'app://./index.html')
 
-  win.once('ready-to-show', () => {
-    win.maximize()
-    modules.forEach(m => m.winCreated(win))
-  })
+  if (!hidden) {
+    win.once('ready-to-show', () => {
+      win.maximize()
+      modules.forEach(m => m.winCreated(win))
+    })
+  }
 
   win.on('close', async (event) => {
     const st = winState.get(wcId)
@@ -144,6 +147,11 @@ function buildWindow ({ role = 'main' } = {}) {
     modules.forEach(m => m.winClosed(win))
     const st = winState.get(wcId)
     winState.delete(wcId)
+    // Clean up warm window reference if this was the warm window
+    if (warmWin === win) {
+      warmWin = null
+      warmWinReady = false
+    }
     // Closing the lobby quits the app (and with it any remaining game windows).
     if (st && st.role === 'main') {
       app.quit()
@@ -161,25 +169,73 @@ function buildWindow ({ role = 'main' } = {}) {
 }
 
 function createWindow () {
-  return buildWindow({ role: 'main' })
+  const win = buildWindow({ role: 'main' })
+  // Pre-warm one hidden game window so the first "New Game" click is near-instant.
+  spawnWarmWindow()
+  return win
+}
+
+// --- warm window pool ----------------------------------------------------------------------------
+// One hidden game window is kept booted in the background. When the user opens a game we hand it
+// the intent immediately (or fall back to a fresh window if warmup isn't done yet).
+let warmWin = null      // BrowserWindow | null
+let warmWinReady = false // true once the warm window's renderer has finished mounting
+
+function spawnWarmWindow () {
+  if (warmWin && !warmWin.isDestroyed()) return // already warming or ready
+  warmWin = buildWindow({ role: 'game', hidden: true })
+  warmWinReady = false
 }
 
 // Open a dedicated window for one game. Always opens a NEW window — joining an online game that is
 // already open in another window opens another one (no focus-existing / de-dupe).
 function openGameWindow (intent) {
-  const win = buildWindow({ role: 'game' })
-  const st = stateFor(win.webContents)
-  st.intent = intent || null
+  let win
+  if (warmWin && !warmWin.isDestroyed()) {
+    // Claim the warm window (ready or still loading)
+    win = warmWin
+    warmWin = null
+    const st = stateFor(win.webContents)
+    st.intent = intent || null
+    if (warmWinReady) {
+      // Already booted — deliver intent immediately and show
+      win.webContents.send('game-window.init', { role: 'game', intent: intent || null })
+      win.maximize()
+      win.show()
+    }
+    // else: still loading — game-window.ready handler will deliver intent + show it
+    warmWinReady = false
+    spawnWarmWindow() // start warming the next one
+  } else {
+    win = buildWindow({ role: 'game' })
+    const st = stateFor(win.webContents)
+    st.intent = intent || null
+  }
   const gameId = intent && intent.gameId
-  if (gameId) st.gameId = gameId // tracked for the title/debug indicator only
+  if (gameId) stateFor(win.webContents).gameId = gameId
   return win
 }
 
 // --- game-window IPC -----------------------------------------------------------------------------
 // A game-window renderer signals it is ready → hand it its launch intent.
 ipcMain.on('game-window.ready', (event) => {
-  const st = stateFor(event.sender)
-  event.sender.send('game-window.init', { role: st.role, intent: st.intent })
+  const wc = event.sender
+  const st = stateFor(wc)
+
+  // Warm window not yet claimed: just mark it ready and wait silently for openGameWindow to claim it.
+  if (warmWin && !warmWin.isDestroyed() && warmWin.webContents.id === wc.id) {
+    warmWinReady = true
+    return
+  }
+
+  // Claimed warm window that fired ready AFTER being claimed (still hidden): deliver intent + show.
+  // Regular new window: deliver intent (window is already visible via ready-to-show).
+  wc.send('game-window.init', { role: st.role, intent: st.intent })
+  const win = BrowserWindow.fromWebContents(wc)
+  if (win && !win.isDestroyed() && !win.isVisible()) {
+    win.maximize()
+    win.show()
+  }
 })
 
 // A renderer (lobby, or test runner) asks to open/focus a game in its own window.
