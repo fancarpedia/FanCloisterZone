@@ -61,7 +61,7 @@ export const BASIC = Expansion.BASIC = new Expansion('BASIC', 'Base game')
 export const WINTER = Expansion.WINTER = new Expansion('WINTER', 'Winter')
 // $t('expansion.start')
 export const START = Expansion.START = new Expansion('START', 'Start', {}, [
-  new Release('Start', ['start'], { id: 'start', min: 2 })
+  new Release('Start', ['start'], { id: 'start' })
 ])
 
 
