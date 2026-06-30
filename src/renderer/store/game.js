@@ -460,7 +460,7 @@ export const actions = {
     })
   },
 
-  async savescenario ({ state, dispatch }, { endGame = false } = {}) {
+  async savescenario ({ state, commit, dispatch }, { endGame = false } = {}) {
     return new Promise(async (resolve, reject) => { /* eslint no-async-promise-executor: 0 */
       let { filePath } = await ipcRenderer.invoke('dialog.showSaveDialog', {
         title: $nuxt.$t('file.save-test-runner-scenario'),
@@ -474,6 +474,7 @@ export const actions = {
 
         const gameState = state
         if (gameState.id) {
+          try {
           let content = generateSaveContent( gameState, false)
           const names = { 0: 'Ariel', 1: 'John', 2: 'Betty', 3: 'Andy', 4: 'Marie', 5: 'Freddy', 6: 'Mustafa', 7: 'Zuna', 8: 'Sigma' }
           content.players = content.players.map(player => ({
@@ -491,7 +492,7 @@ export const actions = {
           }
           for (const step of gameState.history) {
             for (const event of step.events) {
-              if (event.points) {
+              if (event.points && Array.isArray(event.points)) {
                 for (const p of event.points) {
                   // scoring-bullet position: plain FeaturePointer or ScorePositionsFeaturePointer
                   const pos = p.ptr ? (p.ptr.position || (p.ptr.featurePointer && p.ptr.featurePointer.position)) : null
@@ -525,6 +526,12 @@ export const actions = {
 			gamePhase = 'GameOverPhase'
 		  }
           content.test.assertions.push(`Phase is ${gamePhase}`)
+          if (gameState.turnPlayer != null && content.players[gameState.turnPlayer]) {
+            content.test.assertions.push(`Turn player is ${content.players[gameState.turnPlayer].name}`)
+          }
+          if (!endGame && !!gameState.action && gameState.action.player != null && content.players[gameState.action.player]) {
+            content.test.assertions.push(`Active player is ${content.players[gameState.action.player].name}`)
+          }
           if (!endGame && !!gameState.action) {
             content.test.assertions.push(`Player ${gameState.action.canPass ? 'can' : 'can\'t'} pass`)
             for (const i of gameState.action.items) {
@@ -607,6 +614,14 @@ export const actions = {
               resolve(filePath)
             }
           })
+          } catch (err) {
+            // surface the failure instead of dying silently — the file was NOT written
+            commit('errorMessage', {
+              title: $nuxt.$t('file.load-error'),
+              content: 'Test scenario was not saved: ' + ((err && err.message) ? err.message : String(err))
+            }, { root: true })
+            reject(err)
+          }
         } else {
           resolve(null)
         }

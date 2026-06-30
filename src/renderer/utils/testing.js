@@ -94,6 +94,49 @@ class PhaseAssert {
   }
 }
 
+// -------------------- Turn Player Assert --------------------
+// "Turn player is <player>" — the player whose turn it is (state.turnPlayer index).
+class TurnPlayerAssert {
+  constructor(state) {
+    this.REGEXP = /^Turn player is (\w+)$/
+    this.state = state
+  }
+
+  verify(assertion) {
+    const m = this.REGEXP.exec(assertion)
+    if (m) {
+      const idx = this.state.turnPlayer
+      if (isNil(idx) || !this.state.players[idx]) {
+        return { result: false, error: `TurnPlayerAssert: no turn player in current state` }
+      }
+      return { result: this.state.players[idx].name === m[1] }
+    }
+  }
+}
+
+// -------------------- Active Player Assert --------------------
+// "Active player is <player>" — the player who must act now (state.action.player index).
+class ActivePlayerAssert {
+  constructor(state) {
+    this.REGEXP = /^Active player is (\w+)$/
+    this.state = state
+  }
+
+  verify(assertion) {
+    const m = this.REGEXP.exec(assertion)
+    if (m) {
+      if (this.state.action == null) {
+        return { result: false, error: `ActivePlayerAssert: state.action is null — no active player` }
+      }
+      const idx = this.state.action.player
+      if (isNil(idx) || !this.state.players[idx]) {
+        return { result: false, error: `ActivePlayerAssert: no active player in current action` }
+      }
+      return { result: this.state.players[idx].name === m[1] }
+    }
+  }
+}
+
 // -------------------- Bazaar No Auction Assert --------------------
 class BazaarNoAuctionAssert {
   constructor(state) {
@@ -698,6 +741,8 @@ export function verifyScenario(state, { description, assertions }) {
     new FeatureScoredAssert(state),
     new PassAssert(state),
     new PhaseAssert(state),
+    new TurnPlayerAssert(state),
+    new ActivePlayerAssert(state),
 	new BazaarNoAuctionAssert(state),
     new AvailableActionAssert(state),
     new TilePlacementOptionsAssert(state),
