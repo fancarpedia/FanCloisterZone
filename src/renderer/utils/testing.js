@@ -71,8 +71,13 @@ class PassAssert {
   }
 
   verify(assertion) {
-    if (assertion === "Player can't pass") return { result: !this.state.action.canPass }
-    if (assertion === 'Player can pass') return { result: this.state.action.canPass }
+    const isPass = assertion === 'Player can pass'
+    const isCant = assertion === "Player can't pass"
+    if (!isPass && !isCant) return undefined
+    if (this.state.action == null) {
+      return { result: false, error: `PassAssert: state.action is null — no action in current state` }
+    }
+    return { result: isPass ? this.state.action.canPass : !this.state.action.canPass }
   }
 }
 
@@ -100,6 +105,9 @@ class BazaarNoAuctionAssert {
     const m = this.REGEXP.exec(assertion)
     if (m) {
       const value = (m[1] === 'true' ? true : false)
+      if (this.state.action == null) {
+        return { result: false, error: `BazaarNoAuctionAssert: state.action is null` }
+      }
 	  return { result: this.state.action.items[0].noAuction === value }
 	}
   }
@@ -118,6 +126,10 @@ class AvailableActionAssert {
 
     const actionType = m[1]
     const forId = m[2]
+
+    if (this.state.action == null) {
+      return { result: false, error: `AvailableActionAssert: state.action is null — no action in current state (looking for "${actionType}")` }
+    }
 
     // Find items of this action type
     const items = this.state.action.items.filter(a => a.type === actionType)
@@ -225,6 +237,10 @@ class TilePlacementOptionsAssert {
       })
     }
 
+    if (this.state.action == null) {
+      return { result: false, error: `TilePlacementOptionsAssert: state.action is null` }
+    }
+
     // Find the TilePlacement item for this tileId
     const tilePlacement = this.state.action.items.find(
       a => a.type === 'TilePlacement' && a.tileId === tileId
@@ -306,6 +322,10 @@ class TunnelTokenPlacementOptionsAssert {
       })
     }
 
+    if (this.state.action == null) {
+      return { result: false, error: `TunnelTokenPlacementOptionsAssert: state.action is null` }
+    }
+
     const actual = this.state.action.items.find(item => item.token === token)
     if (!actual) return { result: false }
 
@@ -359,6 +379,10 @@ class FerriesPlacementOptionsAssert {
         location: match[2].trim(),
         position: match[3].split(',').map(v => Number(v.trim()))
       })
+    }
+
+    if (this.state.action == null) {
+      return { result: false, error: `FerriesPlacementOptionsAssert: state.action is null` }
     }
 
     const actual = this.state.action.items.find(item => item.type === 'Ferries')
@@ -417,6 +441,10 @@ class MeeplePlacementOptionsAssert {
         location: match[2].trim(),
         position: match[3].split(',').map(v => Number(v.trim()))
       })
+    }
+
+    if (this.state.action == null) {
+      return { result: false, error: `MeeplePlacementOptionsAssert: state.action is null — no action in current state (looking for meeple "${meeple}")` }
     }
 
     const actual = this.state.action.items.find(item => item.meeple === meeple)
@@ -480,6 +508,10 @@ class ReturnMeepleOptionsAssert {
 		}
       })
     }
+    if (this.state.action == null) {
+      return { result: false, error: `ReturnMeepleOptionsAssert: state.action is null — no action in current state (looking for source "${source}")` }
+    }
+
     const actual = this.state.action.items.find(item => item.type === 'ReturnMeeple' && item.source === source)
     if (!actual) return { result: false }
 
@@ -570,6 +602,10 @@ class TowerPiecePlacementOptionsAssert {
       expected.push([Number(match[1]), Number(match[2])])
     }
 
+    if (this.state.action == null) {
+      return { result: false, error: `TowerPiecePlacementOptionsAssert: state.action is null` }
+    }
+
     // Find the Tower piece item for this token
     const towerPiece = this.state.action.items.find(
       a => a.type === 'TowerPiece' && a.token === token
@@ -642,6 +678,10 @@ class CaptureFollowerOptionsAssert {
         }
       })
     }
+    if (this.state.action == null) {
+      return { result: false, error: `CaptureFollowerOptionsAssert: state.action is null` }
+    }
+
     const actual = this.state.action.items.find(item => item.type === 'CaptureFollower')
     if (!actual) return { result: false }
 
