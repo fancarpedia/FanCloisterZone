@@ -71,6 +71,7 @@
     "select": "Selectează",
     "sell": "Vinde",
     "set": "Setează",
+    "show": "Show",
     "show-all": "Arată tot",
     "show-stats": "Arată statistici",
     "start": "Începe",
@@ -754,6 +755,18 @@
     "undo": "Anulează",
     "zoom-in": "Mărește",
     "zoom-out": "Micșorează"
+  },
+  "open-windows": {
+    "title": "Open game windows",
+    "empty": "No game windows open",
+    "focus": "Bring window to front",
+    "close": "Close window",
+    "progress": "Placed tiles / total",
+    "kind": {
+      "local": "Local game",
+      "online": "Online game",
+      "game": "Game"
+    }
   },
   "predraw": {
     "your-hand": "Mâna ta",

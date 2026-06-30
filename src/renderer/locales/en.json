@@ -2,7 +2,7 @@
   "@author": "farin & Scott",
   "@jcz-version": "5.12.1",
   "@fcz-version": "6.3.0",
-  "@version": "0.11.5",
+  "@version": "0.11.6",
   "about": {
     "author": "Author",
     "configuration-file": "Configuration file",
@@ -71,6 +71,7 @@
     "select": "Select",
     "sell": "Sell",
     "set": "Set",
+    "show": "Show",
     "show-all": "Show All",
     "show-stats": "Show Stats",
     "start": "Start",
@@ -754,6 +755,18 @@
     "undo": "Undo",
     "zoom-in": "Zoom In",
     "zoom-out": "Zoom Out"
+  },
+  "open-windows": {
+    "title": "Open game windows",
+    "empty": "No game windows open",
+    "focus": "Bring window to front",
+    "close": "Close window",
+    "progress": "Placed tiles / total",
+    "kind": {
+      "local": "Local game",
+      "online": "Online game",
+      "game": "Game"
+    }
   },
   "predraw": {
     "your-hand": "Your hand",

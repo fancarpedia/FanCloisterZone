@@ -71,6 +71,7 @@
     "select": "Sel·lecciona",
     "sell": "Ven",
     "set": "Estableix",
+    "show": "Show",
     "show-all": "Mostra'ls tots",
     "show-stats": "Mostra les estadístiques",
     "start": "Comença",
@@ -754,6 +755,18 @@
     "undo": "Desfés",
     "zoom-in": "Apropa",
     "zoom-out": "Allunya"
+  },
+  "open-windows": {
+    "title": "Open game windows",
+    "empty": "No game windows open",
+    "focus": "Bring window to front",
+    "close": "Close window",
+    "progress": "Placed tiles / total",
+    "kind": {
+      "local": "Local game",
+      "online": "Online game",
+      "game": "Game"
+    }
   },
   "predraw": {
     "your-hand": "Your hand",

@@ -71,6 +71,7 @@
     "select": "Выбрать",
     "sell": "Продать",
     "set": "Установить",
+    "show": "Show",
     "show-all": "Показать все",
     "show-stats": "Показать статистику",
     "start": "Начать",
@@ -754,6 +755,18 @@
     "undo": "Отменить",
     "zoom-in": "Увеличить",
     "zoom-out": "Уменьшить"
+  },
+  "open-windows": {
+    "title": "Open game windows",
+    "empty": "No game windows open",
+    "focus": "Bring window to front",
+    "close": "Close window",
+    "progress": "Placed tiles / total",
+    "kind": {
+      "local": "Local game",
+      "online": "Online game",
+      "game": "Game"
+    }
   },
   "predraw": {
     "your-hand": "Your hand",

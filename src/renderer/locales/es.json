@@ -71,6 +71,7 @@
     "select": "Seleccionar",
     "sell": "Vender",
     "set": "Establecer",
+    "show": "Show",
     "show-all": "Mostrar Todo",
     "show-stats": "Mostrar estadísticas",
     "start": "Comenzar",
@@ -754,6 +755,18 @@
     "undo": "Deshacer",
     "zoom-in": "Acercar",
     "zoom-out": "Alejar"
+  },
+  "open-windows": {
+    "title": "Open game windows",
+    "empty": "No game windows open",
+    "focus": "Bring window to front",
+    "close": "Close window",
+    "progress": "Placed tiles / total",
+    "kind": {
+      "local": "Local game",
+      "online": "Online game",
+      "game": "Game"
+    }
   },
   "predraw": {
     "your-hand": "Your hand",

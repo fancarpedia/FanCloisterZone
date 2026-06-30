@@ -71,6 +71,7 @@
     "select": "Pasirinkti",
     "sell": "Parduoti",
     "set": "Nustatyti",
+    "show": "Show",
     "show-all": "Parodyti viską",
     "show-stats": "Rodyti statistiką",
     "start": "Pradėti",
@@ -754,6 +755,18 @@
     "undo": "Atšaukti",
     "zoom-in": "Artyn",
     "zoom-out": "Tolyn"
+  },
+  "open-windows": {
+    "title": "Open game windows",
+    "empty": "No game windows open",
+    "focus": "Bring window to front",
+    "close": "Close window",
+    "progress": "Placed tiles / total",
+    "kind": {
+      "local": "Local game",
+      "online": "Online game",
+      "game": "Game"
+    }
   },
   "predraw": {
     "your-hand": "Your hand",

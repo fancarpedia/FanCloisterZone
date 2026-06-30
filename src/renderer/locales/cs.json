@@ -71,6 +71,7 @@
     "select": "Vyberte",
     "sell": "Prodat",
     "set": "Nastavit",
+    "show": "Show",
     "show-all": "Zobraz všechny",
     "show-stats": "Zobrazit statistiky",
     "start": "Spustit hru",
@@ -754,6 +755,18 @@
     "undo": "Krok zpět",
     "zoom-in": "Přiblížit",
     "zoom-out": "Oddálit"
+  },
+  "open-windows": {
+    "title": "Open game windows",
+    "empty": "No game windows open",
+    "focus": "Bring window to front",
+    "close": "Close window",
+    "progress": "Placed tiles / total",
+    "kind": {
+      "local": "Local game",
+      "online": "Online game",
+      "game": "Game"
+    }
   },
   "predraw": {
     "your-hand": "Your hand",
