@@ -218,7 +218,7 @@ class ConnectionPlugin extends EventsBase {
           resolve()
         }
       } else {
-        reject(new Error('not connected'))
+        resolve()
       }
     })
   }
