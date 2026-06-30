@@ -18,6 +18,10 @@ const GAME_ROUTES = ['/game', '/open-game', '/game-setup']
 
 export default ({ app }, inject) => {
   const role = readRole()
+  // Our own webContents id, used to exclude this window from the open-windows list. Resolved async
+  // on boot; null until the main process answers (the lobby/'main' window is never in the list anyway).
+  let myWindowId = null
+  ipcRenderer.invoke('get-my-window-id').then(id => { myWindowId = id }).catch(() => {})
   // Once a game window has shown a game, navigating back to the lobby home means the game is over
   // → close the window instead of rerouting (the lobby lives in the main window).
   let armed = false
@@ -63,9 +67,61 @@ export default ({ app }, inject) => {
       ipcRenderer.send('game-window.set-gameid', gameId || null)
     },
 
+    // Report this window's online game key (e.g. "ABC-123") so the lobby's open-windows list can
+    // show it for online games.
+    setKey (key) {
+      ipcRenderer.send('game-window.set-key', key || null)
+    },
+
+    // Report the active player ({ slot, isMe }) so the lobby's open-windows bullet can show that
+    // player's colour (and blink when it's my turn).
+    setActive (active) {
+      ipcRenderer.send('game-window.set-active', active || null)
+    },
+
+    // Report this window's game setup ({ sets, elements }) so the lobby's open-windows list can
+    // render the setup overview.
+    setSetup (setup) {
+      ipcRenderer.send('game-window.set-setup', setup || null)
+    },
+
+    // Report this window's tile progress ({ used, total }) — the same placed/total count the server
+    // stores from the COMMIT message — so the lobby's open-windows list can show it.
+    setProgress (progress) {
+      ipcRenderer.send('game-window.set-progress', progress || null)
+    },
+
     // In-game close: tear the window down (renderer should have closed its game first).
     closeSelf () {
       ipcRenderer.send('close-self-window')
+    },
+
+    // This window's own webContents id (or null before it has been resolved).
+    myWindowId () {
+      return myWindowId
+    },
+
+    // --- open game-windows list (shown in the lobby) ----------------------------------------------
+    // Fetch the current list of open game windows.
+    listGameWindows () {
+      return ipcRenderer.invoke('list-game-windows')
+    },
+
+    // Bring a game window to the front.
+    focusGameWindow (id) {
+      ipcRenderer.send('focus-game-window', id)
+    },
+
+    // Close a game window.
+    closeGameWindow (id) {
+      ipcRenderer.send('close-game-window', id)
+    },
+
+    // Subscribe to live changes of the open-windows list. Returns an unsubscribe function.
+    onWindowsChanged (cb) {
+      const handler = (event, list) => cb(list)
+      ipcRenderer.on('game-windows.changed', handler)
+      return () => ipcRenderer.removeListener('game-windows.changed', handler)
     }
   }
 
