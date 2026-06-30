@@ -118,6 +118,18 @@ function buildWindow ({ role = 'main', hidden = false } = {}) {
   const wcId = win.webContents.id
   stateFor(win.webContents).role = role
 
+  // Forward renderer console (esp. uncaught render errors) to the main-process stdout, so a
+  // crash that closes the window too fast to read in DevTools is still visible in the terminal.
+  win.webContents.on('console-message', (event, level, message, line, sourceId) => {
+    if (level >= 2) { // 2 = warning, 3 = error
+      console.log(`[renderer ${wcId}] ${level === 3 ? 'ERROR' : 'WARN'}: ${message}  (${sourceId}:${line})`)
+    }
+  })
+  win.webContents.on('render-process-gone', (event, details) => {
+    console.log(`[renderer ${wcId}] render-process-gone:`, JSON.stringify(details))
+  })
+  win.webContents.on('unresponsive', () => console.log(`[renderer ${wcId}] unresponsive`))
+
   win.loadURL(process.env.NODE_ENV === 'development' ? process.env.DEV_SERVER_URL : 'app://./index.html')
 
   if (!hidden) {
