@@ -139,6 +139,7 @@ export default {
   watch: {
     $route (to) {
       this.updateMenu()
+      this.updateTitle()
     },
 
     undoAllowed () {
@@ -151,8 +152,8 @@ export default {
     },
 
     showSettings (val) {
-      if (val) {
-        this.$refs.settings?.clean()
+      if (val && typeof this.$refs.settings?.clean === 'function') {
+        this.$refs.settings.clean()
       }
     },
 
@@ -174,6 +175,14 @@ export default {
 
     showGameHistory () {
       this.syncMenuChecks()
+    },
+
+    // In a game window, report the running gameId so a later online join focuses this window.
+    '$store.state.game.id' (id) {
+      if (this.$windows.isGameWindow() && id) {
+        this.$windows.setGameId(id)
+      }
+      this.updateTitle()
     }
   },
 
@@ -211,6 +220,7 @@ export default {
       this.$router.push('/')
     })
     ipcRenderer.on('menu.new-game', () => {
+      if (this.$windows.openGame({ kind: 'new-local' })) return
       this.$store.dispatch('gameSetup/newGame')
       this.$router.push('/game-setup')
     })
@@ -223,8 +233,11 @@ export default {
     ipcRenderer.on('menu.save-game', () => {
       this.$store.dispatch('game/save')
     })
-    ipcRenderer.on('menu.load-game', () => {
-      this.$store.dispatch('game/load')
+    ipcRenderer.on('menu.load-game', async () => {
+      const file = await this.$store.dispatch('game/chooseSaveFile')
+      if (!file) return
+      if (this.$windows.openGame({ kind: 'load', payload: { file } })) return
+      this.$store.dispatch('game/load', { file })
     })
     ipcRenderer.on('menu.show-settings', () => {
       this.showSettings = true
@@ -310,6 +323,7 @@ export default {
     onThemeChange(this.$store.state.settings.theme)
     this.$i18n.setLocale(this.$store.state.settings.locale)
     this.updateMenu()
+    this.updateTitle()
     this.syncMenuChecks()
 
     ipcRenderer.on('error', (ev, value) => {
@@ -320,9 +334,15 @@ export default {
       this.$store.dispatch('settings/loaded', value)
     })
 
-    ipcRenderer.on('settings.update', (ev, update) => {
-      this.$store.dispatch('settings/update', update)
+    ipcRenderer.on('settings.update', async (ev, update) => {
+      const wasOnline = this.$store.state.networking.connectionType === 'online'
+      await this.$store.dispatch('settings/update', update)
       this.$store.dispatch('checkEngineVersion')
+      // Dev "Use Local Play Online" toggle changed the online target → disconnect and reconnect
+      // to the new server so the switch takes effect immediately.
+      if (wasOnline && update && Object.prototype.hasOwnProperty.call(update, 'localPlayOnline')) {
+        await this.$store.dispatch('networking/reconnectOnline')
+      }
     })
     
     this.$store.dispatch('checkEngineVersion')
@@ -344,13 +364,64 @@ export default {
     this.$addons.on('change', async () => {
       await this.loadAddons()
     })
+
+    // Multi-window: a dedicated game window asks the main process for its launch intent and runs it.
+    if (this.$windows.isGameWindow()) {
+      ipcRenderer.on('game-window.init', (ev, { intent }) => this.handleGameWindowInit(intent))
+      ipcRenderer.send('game-window.ready')
+    }
   },
-  
+
   beforeDestroy () {
     window.removeEventListener('keydown', this.onKeyDown)
   },
 
   methods: {
+    // Run the launch intent delivered to a dedicated game window. On failure/cancel the (empty)
+    // window closes itself. Reuses the existing store flows, just without the lobby UI.
+    async handleGameWindowInit (intent) {
+      if (!intent) { this.$windows.closeSelf(); return }
+      const { kind, payload = {} } = intent
+      try {
+        if (kind === 'new-local') {
+          await this.$store.dispatch(payload.ai ? 'gameSetup/newGameAI' : 'gameSetup/newGame')
+          this.$router.push('/game-setup' + (payload.tab !== undefined ? `?tab=${payload.tab}` : ''))
+        } else if (kind === 'load') {
+          const loaded = await this.$store.dispatch('game/load', payload.file ? { file: payload.file } : {})
+          if (!loaded) { this.$windows.closeSelf(); return } // dialog cancelled / load failed
+        } else if (kind === 'load-setup') {
+          await this.$store.dispatch('gameSetup/load', payload.setup)
+          this.$router.push('/game-setup')
+        } else if (kind === 'join-direct') {
+          await this.$store.dispatch('networking/connect', { host: payload.host, connectionType: 'direct' })
+          if (this.$store.state.networking.connectionStatus !== STATUS_CONNECTED) { this.$windows.closeSelf(); return }
+        } else if (kind === 'join-online') {
+          if (!await this.connectForGame(payload)) return
+          this.$connection.send({ type: 'JOIN_GAME', payload: payload.gameId ? { gameId: payload.gameId } : { gameKey: payload.gameKey } })
+        } else if (kind === 'create-online') {
+          if (!await this.connectForGame(payload)) return
+          await this.$store.dispatch('gameSetup/newGame')
+          this.$router.push('/game-setup')
+        } else {
+          this.$windows.closeSelf()
+        }
+      } catch (e) {
+        console.error('game window init failed', e)
+        this.$windows.closeSelf()
+      }
+    },
+
+    // Establish this window's own online connection (its own seat) before joining/creating.
+    async connectForGame (payload) {
+      const action = payload.fan === false ? 'networking/connectPlayOnline' : 'networking/connectPlayOnlineFan'
+      await this.$store.dispatch(action)
+      if (this.$store.state.networking.connectionStatus !== STATUS_CONNECTED) {
+        this.$windows.closeSelf()
+        return false
+      }
+      return true
+    },
+
     async loadAddons () {
       await this.$addons.loadAddons()
       await this.$tiles.loadExpansions()
@@ -359,8 +430,7 @@ export default {
         this.addonsUpdated=true
       }
       
-      // during start up, don't wait for artworks, theme can be loaded in background
-      this.$theme.loadArtworks()
+      await this.$theme.loadArtworks()
     },
 
     updateMenu () {
@@ -404,7 +474,19 @@ export default {
     
     updateTitle() {
       const server = this.$store.getters['settings/isLocalPlayOnline'] ? 'dev local' : 'fanserver'
-      document.title = this.onlineConnected ? ('FanCloisterZone Edition @ ' + server) /* + this.$store.state.onlineHostName */ : 'FanCloisterZone Edition' /* Fan Edition */
+      const base = this.onlineConnected ? ('FanCloisterZone Edition @ ' + server) /* + this.$store.state.onlineHostName */ : 'FanCloisterZone Edition' /* Fan Edition */
+
+      // Multi-window debug indicator: role + gameId + local-server port + clientId tail.
+      // If a game window shows [main], the --window-role argv detection failed (risk #2);
+      // two windows sharing the same cid: confirm/diagnose the shared-clientId routing (risk #1).
+      const parts = [this.$windows.role]
+      const gameId = this.$store.state.game.id
+      if (gameId) parts.push('game:' + String(gameId).slice(0, 8))
+      const port = this.$server && this.$server.port
+      if (port) parts.push('port:' + port)
+      const clientId = this.$store.state.settings.clientId
+      if (clientId) parts.push('cid:' + String(clientId).slice(-4))
+      document.title = `${base}  [${parts.join(' ')}]`
     },
 
     async leaveGame () {
@@ -416,15 +498,18 @@ export default {
             $connection.send({ type: 'LEAVE_GAME', payload: { gameId } })
           }
         }
+        // In a dedicated game window, leaving the game closes the window instead of showing a lobby.
+        if (this.$windows.isGameWindow()) { this.$store.dispatch('networking/close'); this.$windows.closeSelf(); return }
         this.$router.push('/online')
       } else {
         const confirmed = await ipcRenderer.invoke('confirm-leave-game')
         if (!confirmed) return
- 
+
         this.$store.dispatch('game/close')
+        if (this.$windows.isGameWindow()) { this.$windows.closeSelf(); return }
         this.$router.push('/')
       }
-    },	
+    },
 
     onKeyDown (ev) {
       if (ev.key === '+') { // bind both + and numpad +
