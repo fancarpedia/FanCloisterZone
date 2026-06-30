@@ -68,6 +68,12 @@ export default {
 
   methods: {
     async connect () {
+      // Join the direct/LAN host in its own window (one game per window).
+      if (this.$windows.openGame({ kind: 'join-direct', payload: { host: this.host } })) {
+        this.$store.dispatch('settings/addRecentJoinedGame', this.host)
+        this.$emit('close')
+        return
+      }
       this.connecting = true
       this.error = null
       try {
