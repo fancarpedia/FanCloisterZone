@@ -1,8 +1,8 @@
 {
   "@author": "Black Bear",
   "@jcz-version": "5.12.1",
-  "@fcz-version": "6.2.0",
-  "@version": "0.10.22",
+  "@fcz-version": "6.3.0",
+  "@version": "0.11.4",
   "about": {
     "author": "Auteur",
     "configuration-file": "Fichier de configuration",
@@ -52,6 +52,7 @@
     "play-again": "Jouer à nouveau",
     "play-online": "Jouer en ligne",
     "play-online-fan": "Jouer en ligne sur le serveur Fan",
+    "play-online-local": "Play Online on Dev Local Server",
     "plus-description": "Ajouter plusieurs instances",
     "raise": "Augmenter",
     "rematch": "Match retour",
@@ -78,9 +79,17 @@
     "test-runner": "Exécuteur de tests"
   },
   "chat": {
+    "global-chat": {
+      "title": "Global chat",
+      "empty": "No messages yet — say hello!",
+      "new-message": "Message everyone",
+      "send": "Send"
+    },
+    "close": "Fermer la discussion",
     "chat": "Discuter",
     "new-message": "Nouveau message",
-    "take-slot-hint": "Réserver un créneau pour démarrer la discussion"
+    "open": "Ouvrir une discussion",
+    "take-slot-hint": "Réserver un créneau pour démarrer une discussion"
   },
   "core-messages": {
     "bonuses": "Bonus",
@@ -93,6 +102,7 @@
     "no-core-set": "Pas de jeu de base !",
     "offline": "Déconnecté",
     "penalties": "Pénalités",
+    "potential-final-score": "Score final probable",
     "show-available-only": "Afficher uniquement les tuiles disponibles",
     "special-figures": "Pions spéciaux",
     "the-biggest-city": "La plus grande ville",
@@ -190,6 +200,7 @@
     "russian-promos": "Tuiles promotionnelles russes",
     "siege": "Siège",
     "spiel-doch": "Spiel Doch!",
+    "start": "Tuile de départ",
     "the-city-gates": "Les Portes de la Ville",
     "the-city-gates-description": "Permet aux joueurs de placer une porte de ville au bord d’une tuile vers une autre porte de ville, mais aussi vers une route ou un pré au bord d’une tuile, et vice versa.",
     "the-flying-machines-2": "Les Ornithoptères 2",
@@ -273,7 +284,7 @@
       "player-may-place-a-tile-from-supply": "Le joueur peut placer une tuile provenant de la réserve",
       "player-may-place-an-abbey": "Le joueur peut placer un monastère",
       "player-must-place-the-tile": "Le joueur doit placer la tuile",
-      "ransom-paid": "Ransom paid",
+      "ransom-paid": "Rançon versée",
       "shepherd-placement": "Pose du berger",
       "siege-player-can-escape-a-besieged-city": "Le joueur peut s’échapper d’une ville assiégée.",
       "siege-you-can-escape-a-besieged-city": "Vous pouvez vous échapper d’une ville assiégée.",
@@ -404,11 +415,11 @@
       "challenged": "défiée",
       "empty": "vide",
       "feature-scored": "zone évaluée",
-      "income": "income",
+      "income": "revenu",
       "incomplete": "incomplète",
-      "majority": "majority",
-      "no-majority": "no majority",
-      "payment": "payment",
+      "majority": "majorité",
+      "no-majority": "pas de majorité",
+      "payment": "paiement",
       "turn-start": "début du tour"
     },
     "tile-pack-dialog": {
@@ -694,6 +705,7 @@
       "some-expansions-are-playable-only-here": "Certaines extensions ne sont jouables qu’ici",
       "title": "Parties hébergées sur un serveur public",
       "title-fan": "Jeux hébergés sur le serveur Fan",
+      "title-local": "Games hosted on dev local",
       "you-have-no-game-in-progress": "Vous n’avez pas de partie en cours."
     },
     "update": {
@@ -717,6 +729,7 @@
     "discord": "Discord",
     "exit": "Quitter FanCloisterZone",
     "farm-hints": "Délimiter les prés",
+    "feature-hints'": "Délimiter les zones",
     "file": "Fichier",
     "game": "Partie",
     "help": "Aide",
@@ -741,6 +754,16 @@
     "undo": "Annuler",
     "zoom-in": "Zoom avant",
     "zoom-out": "Zoom arrière"
+  },
+  "predraw": {
+    "your-hand": "Your hand",
+    "empty": "—",
+    "incompatible": "Not available with Builder, Dragon, Wagon, Castle, Shepherd, River, Escape, Count or Crop Circles",
+    "local-only": "Not allowed in local games",
+    "one-seat-notice": "Pre-draw game — each player plays on their own device, so you can take only one slot.",
+    "pick-hint": "Click a tile to place it, then choose a spot on the board",
+    "draw": "Draw tile",
+    "pass-abbey": "Pass abbey (draw last tile)"
   },
   "server": {
     "translate": "Une mise à jour vers la version v%VERSION% est nécessaire."

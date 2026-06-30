@@ -52,6 +52,7 @@
     "play-again": "Opnieuw spelen",
     "play-online": "Online spelen",
     "play-online-fan": "Speel online of op een fan-server",
+    "play-online-local": "Play Online on Dev Local Server",
     "plus-description": "Meerdere exemplaren toevoegen",
     "raise": "Heffen",
     "rematch": "Revanche",
@@ -78,8 +79,16 @@
     "test-runner": "Uitvoering testen"
   },
   "chat": {
+    "global-chat": {
+      "title": "Global chat",
+      "empty": "No messages yet — say hello!",
+      "new-message": "Message everyone",
+      "send": "Send"
+    },
+    "close": "Close chat",
     "chat": "Chat",
     "new-message": "Nieuw bericht",
+    "open": "Open chat",
     "take-slot-hint": "Neem een plaats om een chat te starten"
   },
   "core-messages": {
@@ -93,6 +102,7 @@
     "no-core-set": "Er is geen hoofdset!",
     "offline": "Offline",
     "penalties": "Strafpunten",
+    "potential-final-score": "Potential final score",
     "show-available-only": "alleen beschikbare tonen",
     "special-figures": "Bijzondere speelstukken",
     "the-biggest-city": "De grootste stad",
@@ -190,6 +200,7 @@
     "russian-promos": "Russische Promo's",
     "siege": "Belegering",
     "spiel-doch": "Spiel Doch",
+    "start": "Start tile",
     "the-city-gates": "Stadspoorten",
     "the-city-gates-description": "Stelt spelers in staat om een stadspoort op de rand van een tegel naar een andere stadspoort te zetten, maar ook naar een weg of op een weide aan rand van de tegel en omgekeerd.",
     "the-flying-machines-2": "Vliegtuigen 2",
@@ -694,6 +705,7 @@
       "some-expansions-are-playable-only-here": "Sommige uitbreidingen zijn alleen hier te spelen",
       "title": "Spellen op openbare server",
       "title-fan": "Spellen die beschikbaar zijn op de fan-server",
+      "title-local": "Games hosted on dev local",
       "you-have-no-game-in-progress": "Je hebt geen lopende spellen."
     },
     "update": {
@@ -717,6 +729,7 @@
     "discord": "Discord",
     "exit": "Afsluiten",
     "farm-hints": "Weide-wenken",
+    "feature-hints'": "Feature hints",
     "file": "Bestand",
     "game": "Spel",
     "help": "Help",
@@ -741,6 +754,16 @@
     "undo": "Ongedaan maken",
     "zoom-in": "Inzoomen",
     "zoom-out": "Uitzoomen"
+  },
+  "predraw": {
+    "your-hand": "Your hand",
+    "empty": "—",
+    "incompatible": "Not available with Builder, Dragon, Wagon, Castle, Shepherd, River, Escape, Count or Crop Circles",
+    "local-only": "Not allowed in local games",
+    "one-seat-notice": "Pre-draw game — each player plays on their own device, so you can take only one slot.",
+    "pick-hint": "Click a tile to place it, then choose a spot on the board",
+    "draw": "Draw tile",
+    "pass-abbey": "Pass abbey (draw last tile)"
   },
   "server": {
     "translate": "Update naar v%VERSION% is vereist."

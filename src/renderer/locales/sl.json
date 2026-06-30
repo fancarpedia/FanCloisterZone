@@ -52,6 +52,7 @@
     "play-again": "Igraj ponovno",
     "play-online": "Igraj Online",
     "play-online-fan": "Igraj Online na Fan Strežniku",
+    "play-online-local": "Play Online on Dev Local Server",
     "plus-description": "Dodaj več primerkov",
     "raise": "Dvigni",
     "rematch": "Revanša",
@@ -78,8 +79,16 @@
     "test-runner": "Izvajalnik testov"
   },
   "chat": {
+    "global-chat": {
+      "title": "Global chat",
+      "empty": "No messages yet — say hello!",
+      "new-message": "Message everyone",
+      "send": "Send"
+    },
+    "close": "Close chat",
     "chat": "Klepet",
     "new-message": "Novo sporočilo",
+    "open": "Open chat",
     "take-slot-hint": "Zasedite mesto za začetek klepeta"
   },
   "core-messages": {
@@ -93,6 +102,7 @@
     "no-core-set": "Ni osnovnega seta!",
     "offline": "Brez povezave",
     "penalties": "Kazni",
+    "potential-final-score": "Potential final score",
     "show-available-only": "prikaži samo na voljo",
     "special-figures": "Specialne Figure",
     "the-biggest-city": "Največje Mesto",
@@ -190,6 +200,7 @@
     "russian-promos": "Ruske Promo Kartice",
     "siege": "Obleganje",
     "spiel-doch": "Spiel Doch!",
+    "start": "Start tile",
     "the-city-gates": "Mestna vrata",
     "the-city-gates-description": "Omogoča postavitev mestnih vrat na rob ploščice k drugim mestnim vratom, pa tudi k cesti ali polju na robu ploščice, in obratno.",
     "the-flying-machines-2": "Leteči Stroji 2",
@@ -694,6 +705,7 @@
       "some-expansions-are-playable-only-here": "Nekatere razširitve so igralne samo tukaj",
       "title": "Igre gostovane na javnem strežniku",
       "title-fan": "Igre gostovane na fan-strežniku",
+      "title-local": "Games hosted on dev local",
       "you-have-no-game-in-progress": "Nimaš igre v teku."
     },
     "update": {
@@ -717,6 +729,7 @@
     "discord": "Discord",
     "exit": "Izhod",
     "farm-hints": "Namigi za polje",
+    "feature-hints'": "Feature hints",
     "file": "Datoteka",
     "game": "Igra",
     "help": "Pomoč",
@@ -741,6 +754,16 @@
     "undo": "Razveljavi",
     "zoom-in": "Povečaj",
     "zoom-out": "Pomanjšaj"
+  },
+  "predraw": {
+    "your-hand": "Your hand",
+    "empty": "—",
+    "incompatible": "Not available with Builder, Dragon, Wagon, Castle, Shepherd, River, Escape, Count or Crop Circles",
+    "local-only": "Not allowed in local games",
+    "one-seat-notice": "Pre-draw game — each player plays on their own device, so you can take only one slot.",
+    "pick-hint": "Click a tile to place it, then choose a spot on the board",
+    "draw": "Draw tile",
+    "pass-abbey": "Pass abbey (draw last tile)"
   },
   "server": {
     "translate": "Posodobitev na v%VERSION% je obavezna."

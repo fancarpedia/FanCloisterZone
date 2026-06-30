@@ -1,8 +1,8 @@
 {
   "@author": "Bumsakalaka",
   "@jcz-version": "5.12.1",
-  "@fcz-version": "6.2.0",
-  "@version": "0.10.22",
+  "@fcz-version": "6.3.0",
+  "@version": "0.11.4",
   "about": {
     "author": "Autor",
     "configuration-file": "Konfiguračný súbor",
@@ -52,6 +52,7 @@
     "play-again": "Hrať znova",
     "play-online": "Hrajte online",
     "play-online-fan": "Hrajte online na fan serveri",
+    "play-online-local": "Play Online on Dev Local Server",
     "plus-description": "Pridať viacero",
     "raise": "Navýšiť",
     "rematch": "Odveta",
@@ -78,8 +79,16 @@
     "test-runner": "Test Runner"
   },
   "chat": {
+    "global-chat": {
+      "title": "Global chat",
+      "empty": "No messages yet — say hello!",
+      "new-message": "Message everyone",
+      "send": "Send"
+    },
+    "close": "Zatvoriť chat",
     "chat": "Chat",
     "new-message": "Nová správa",
+    "open": "Otvoriť chat",
     "take-slot-hint": "Vyber hráča, až potom môžeš chatovať"
   },
   "core-messages": {
@@ -93,6 +102,7 @@
     "no-core-set": "Žiadna zakladná hra!",
     "offline": "Offline",
     "penalties": "Pokuty",
+    "potential-final-score": "Koncové skóre",
     "show-available-only": "zobraziť len dostupné",
     "special-figures": "Špeciálne figúrky",
     "the-biggest-city": "Najväčšie mesto",
@@ -190,6 +200,7 @@
     "russian-promos": "Ruské promo",
     "siege": "Obliehanie II",
     "spiel-doch": "Spiel DOCH!",
+    "start": "Štartovacia kartička",
     "the-city-gates": "Mestské brány",
     "the-city-gates-description": "Umožňuje hráčom priložiť kartičku s mestskú bránu na hrane kartičky k inej mestskej bráne, ale aj k ceste alebo lúke, a naopak.",
     "the-flying-machines-2": "Lietacie stroje 2",
@@ -273,7 +284,7 @@
       "player-may-place-a-tile-from-supply": "Hráč môže umiestniť kartičku zo zásoby",
       "player-may-place-an-abbey": "Hráč môže umiestniť opátstvo",
       "player-must-place-the-tile": "Hráč musí priložiť kartičku",
-      "ransom-paid": "Ransom paid",
+      "ransom-paid": "Zaplatené výkupné",
       "shepherd-placement": "Umiestnenie pastiera",
       "siege-player-can-escape-a-besieged-city": "Hráč môže uniknúť z obliehaného mesta.",
       "siege-you-can-escape-a-besieged-city": "Môžete uniknúť z obliehaného mesta.",
@@ -404,11 +415,11 @@
       "challenged": "vyzvanie",
       "empty": "prázdny",
       "feature-scored": "skórovanie",
-      "income": "income",
+      "income": "príjem",
       "incomplete": "neukočené",
       "majority": "prevaha",
       "no-majority": "bez prevahy",
-      "payment": "payment",
+      "payment": "platba",
       "turn-start": "začiatok ťahu"
     },
     "tile-pack-dialog": {
@@ -694,6 +705,7 @@
       "some-expansions-are-playable-only-here": "Niektoré rozšírenia je možné hrať len na tomto serveri",
       "title": "Hry na verejnom serveri",
       "title-fan": "Hry na fanúšikovskom serveri",
+      "title-local": "Games hosted on dev local",
       "you-have-no-game-in-progress": "Nemáte rozohranú žiadnu hru."
     },
     "update": {
@@ -717,6 +729,7 @@
     "discord": "Discord",
     "exit": "Ukončiť",
     "farm-hints": "Zafarbenie fariem",
+    "feature-hints'": "Zafarbenie území",
     "file": "Súbor",
     "game": "Hra",
     "help": "Pomoc",
@@ -741,6 +754,16 @@
     "undo": "Späť",
     "zoom-in": "Priblížiť",
     "zoom-out": "Oddialiť"
+  },
+  "predraw": {
+    "your-hand": "Your hand",
+    "empty": "—",
+    "incompatible": "Not available with Builder, Dragon, Wagon, Castle, Shepherd, River, Escape, Count or Crop Circles",
+    "local-only": "Not allowed in local games",
+    "one-seat-notice": "Pre-draw game — each player plays on their own device, so you can take only one slot.",
+    "pick-hint": "Click a tile to place it, then choose a spot on the board",
+    "draw": "Draw tile",
+    "pass-abbey": "Pass abbey (draw last tile)"
   },
   "server": {
     "translate": "Je nevyhnutná aktualizácia na verziu %VERSION%."

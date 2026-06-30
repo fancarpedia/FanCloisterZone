@@ -2,7 +2,7 @@
   "@author": "Paloi Sciurala",
   "@jcz-version": "5.12.1",
   "@fcz-version": "6.3.0",
-  "@version": "0.11.0",
+  "@version": "0.11.5",
   "about": {
     "author": "Autor",
     "configuration-file": "Fișier de configurație",
@@ -42,7 +42,7 @@
     "hide": "Ascunde",
     "hide-finished": "Ascunde cele finalizate",
     "hide-stats": "Ascunde statisticile",
-    "join-game": "Alătură-te unei partide",
+    "join-game": "Alătură-te partidei",
     "load": "Încarcă",
     "load-setup-from-file": "Încarcă configurație din fișier",
     "may-deploy": "are posibilitatea de a plasa",
@@ -52,6 +52,7 @@
     "play-again": "Joacă din nou",
     "play-online": "Joacă online",
     "play-online-fan": "Joacă online pe serverul fanilor",
+    "play-online-local": "Joacă online pe serverul local de dezvoltator",
     "plus-description": "Adaugă mai multe instanțe",
     "raise": "Crește",
     "rematch": "Revanșă",
@@ -78,8 +79,16 @@
     "test-runner": "Rulator de test"
   },
   "chat": {
+    "global-chat": {
+      "title": "Chatul global",
+      "empty": "Niciun mesaj încă — spune „bună!”",
+      "new-message": "Trimite mesaj tuturor",
+      "send": "Trimite"
+    },
+    "close": "Închide chatul",
     "chat": "Chat",
     "new-message": "Mesaj nou",
+    "open": "Deschide chatul",
     "take-slot-hint": "Ia un loc pentru a începe să conversezi"
   },
   "core-messages": {
@@ -93,6 +102,7 @@
     "no-core-set": "Niciun set de bază!",
     "offline": "Offline",
     "penalties": "Penalități",
+    "potential-final-score": "Punctaj final potențial",
     "show-available-only": "arată numai ceea ce este disponibil",
     "special-figures": "Pioni speciali",
     "the-biggest-city": "Cel mai mare oraș",
@@ -190,6 +200,7 @@
     "russian-promos": "Promo-uri rusești",
     "siege": "Asediu",
     "spiel-doch": "Spiel Doch",
+    "start": "Cartonaș de start",
     "the-city-gates": "Porțile de oraș",
     "the-city-gates-description": "Permite jucătorilor să plaseze o poartă de oraș pe latura unui cartonaș contra unei alte porți de oraș, dar și contra unui drum sau contra unui drum de pe latura cartonașului, și invers.",
     "the-flying-machines-2": "Aparate de zbor 2",
@@ -406,8 +417,8 @@
       "feature-scored": "teritoriu evaluat",
       "income": "încasare",
       "incomplete": "nefinalizat",
-      "majority": "majority",
-      "no-majority": "no majority",
+      "majority": "majoritate",
+      "no-majority": "fără majoritate",
       "payment": "plată",
       "turn-start": "începutul turei"
     },
@@ -694,6 +705,7 @@
       "some-expansions-are-playable-only-here": "Unele extensii sunt jucabile numai aici",
       "title": "Partide găzduite pe servere publice",
       "title-fan": "Partide găzduite pe serverul fanilor",
+      "title-local": "Games hosted on dev local",
       "you-have-no-game-in-progress": "Nu ai nicio partidă în curs de desfășurare."
     },
     "update": {
@@ -717,6 +729,7 @@
     "discord": "Discord",
     "exit": "Ieși",
     "farm-hints": "Indicii pentru câmpuri",
+    "feature-hints'": "Indicii pentru teritorii",
     "file": "Fișier",
     "game": "Partidă",
     "help": "Ajutor",
@@ -741,6 +754,16 @@
     "undo": "Anulează",
     "zoom-in": "Mărește",
     "zoom-out": "Micșorează"
+  },
+  "predraw": {
+    "your-hand": "Mâna ta",
+    "empty": "—",
+    "incompatible": "Indisponibil cu constructor, dragon, căruță, cetate, oier, râu, evadare, conte sau cercuri în lan",
+    "local-only": "Nepermis în partide locale",
+    "one-seat-notice": "Partidă cu pre-tragere — fiecare jucător joacă pe propriul său dispozitiv, astfel încât să poți ocupa numai un singur loc.",
+    "pick-hint": "Apasă pe un cartonaș pentru a îl plasa, apoi alege un loc de pe tablă",
+    "draw": "Trage un cartonaș",
+    "pass-abbey": "Omite abația (trage ultimul cartonaș)"
   },
   "server": {
     "translate": "Este necesară actualizarea la v%VERSION%."
@@ -837,7 +860,7 @@
       "folder-does-not-exists": "Directorul nu există",
       "stable": "Vreau doar să joc și să mă bucur de joc",
       "path-is-not-directory": "Calea nu este un director",
-      "test-runner-folder": "Test de director de rulare",
+      "test-runner-folder": "Directorul rulatorului de test",
       "title": "Sistem"
     },
     "title": "Setări"

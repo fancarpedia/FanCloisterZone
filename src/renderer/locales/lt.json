@@ -52,6 +52,7 @@
     "play-again": "Žaisti dar",
     "play-online": "Žaisti internete",
     "play-online-fan": "Žaiskite internetu gerbėjų serveryje",
+    "play-online-local": "Play Online on Dev Local Server",
     "plus-description": "Pridėkite kelis atvejus",
     "raise": "Kelti",
     "rematch": "Atsilošti",
@@ -78,8 +79,16 @@
     "test-runner": "Išbandyti"
   },
   "chat": {
+    "global-chat": {
+      "title": "Global chat",
+      "empty": "No messages yet — say hello!",
+      "new-message": "Message everyone",
+      "send": "Send"
+    },
+    "close": "Close chat",
     "chat": "Chat",
     "new-message": "Naujas pranešimas",
+    "open": "Open chat",
     "take-slot-hint": "Take a slot to start chat"
   },
   "core-messages": {
@@ -93,6 +102,7 @@
     "no-core-set": "Nepasirinktas pagrindas",
     "offline": "Neprisijungęs",
     "penalties": "Nuobaudos",
+    "potential-final-score": "Potential final score",
     "show-available-only": "Rodyti tik prieinamus",
     "special-figures": "Specialios figūros",
     "the-biggest-city": "Didžiausias Miestas",
@@ -190,6 +200,7 @@
     "russian-promos": "rusijos Reklaminės",
     "siege": "Apgultis",
     "spiel-doch": "Spiel Doch!",
+    "start": "Start tile",
     "the-city-gates": "Miesto vartai",
     "the-city-gates-description": "Žaidėjai gali pastatyti miesto vartus ant kortelės krašto, esančio prie kitų miesto vartų, taip pat ant kelio ar lauko, esančio ant kortelės krašto, ir atvirkščiai.",
     "the-flying-machines-2": "Skraidančios mašinos 2",
@@ -694,6 +705,7 @@
       "some-expansions-are-playable-only-here": "Kai kurie papildymai yra prieinami čia",
       "title": "Viešo serverio sukurti žaidimai",
       "title-fan": "Žaidimai talpinami gerbėjų serveryje",
+      "title-local": "Games hosted on dev local",
       "you-have-no-game-in-progress": "Jūs neturite vykstančio žaidimo"
     },
     "update": {
@@ -717,6 +729,7 @@
     "discord": "Discord",
     "exit": "Išeiti",
     "farm-hints": "Parodyti Laukus",
+    "feature-hints'": "Feature hints",
     "file": "Aplankas",
     "game": "Žaidimas",
     "help": "Pagalba",
@@ -741,6 +754,16 @@
     "undo": "Atšaukti",
     "zoom-in": "Artyn",
     "zoom-out": "Tolyn"
+  },
+  "predraw": {
+    "your-hand": "Your hand",
+    "empty": "—",
+    "incompatible": "Not available with Builder, Dragon, Wagon, Castle, Shepherd, River, Escape, Count or Crop Circles",
+    "local-only": "Not allowed in local games",
+    "one-seat-notice": "Pre-draw game — each player plays on their own device, so you can take only one slot.",
+    "pick-hint": "Click a tile to place it, then choose a spot on the board",
+    "draw": "Draw tile",
+    "pass-abbey": "Pass abbey (draw last tile)"
   },
   "server": {
     "translate": "Update to v%VERSION% is required."

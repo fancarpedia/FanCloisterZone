@@ -52,6 +52,7 @@
     "play-again": "Играть снова",
     "play-online": "Играть онлайн",
     "play-online-fan": "Играть онлайн на фанатском сервере",
+    "play-online-local": "Play Online on Dev Local Server",
     "plus-description": "Добавить больше",
     "raise": "Поднять",
     "rematch": "Реванш",
@@ -78,8 +79,16 @@
     "test-runner": "Тестер"
   },
   "chat": {
+    "global-chat": {
+      "title": "Global chat",
+      "empty": "No messages yet — say hello!",
+      "new-message": "Message everyone",
+      "send": "Send"
+    },
+    "close": "Close chat",
     "chat": "Чат",
     "new-message": "Новое сообщение",
+    "open": "Open chat",
     "take-slot-hint": "Займите слот чтобы начать общение"
   },
   "core-messages": {
@@ -93,6 +102,7 @@
     "no-core-set": "Отсутствует основной набор!",
     "offline": "Оффлайн",
     "penalties": "Штрафы",
+    "potential-final-score": "Potential final score",
     "show-available-only": "Показать только доступное",
     "special-figures": "Особые фигуры",
     "the-biggest-city": "Самый большой город",
@@ -190,6 +200,7 @@
     "russian-promos": "Русские промо",
     "siege": "Осада",
     "spiel-doch": "Spiel Doch!",
+    "start": "Start tile",
     "the-city-gates": "Городские ворота",
     "the-city-gates-description": "Позволяет игрокам размещать городские ворота рядом с: другими городскими воротами, дорогой или полем, и наоборот.",
     "the-flying-machines-2": "Летательные аппараты 2",
@@ -694,6 +705,7 @@
       "some-expansions-are-playable-only-here": "...",
       "title": "Игры на общедоступном сервере",
       "title-fan": "Игры, размещённые на фан-сервере",
+      "title-local": "Games hosted on dev local",
       "you-have-no-game-in-progress": "У вас нет активных игр."
     },
     "update": {
@@ -717,6 +729,7 @@
     "discord": "Discord",
     "exit": "Выход",
     "farm-hints": "Подсказки для ферм",
+    "feature-hints'": "Feature hints",
     "file": "Файл",
     "game": "Игра",
     "help": "Помощь",
@@ -741,6 +754,16 @@
     "undo": "Отменить",
     "zoom-in": "Увеличить",
     "zoom-out": "Уменьшить"
+  },
+  "predraw": {
+    "your-hand": "Your hand",
+    "empty": "—",
+    "incompatible": "Not available with Builder, Dragon, Wagon, Castle, Shepherd, River, Escape, Count or Crop Circles",
+    "local-only": "Not allowed in local games",
+    "one-seat-notice": "Pre-draw game — each player plays on their own device, so you can take only one slot.",
+    "pick-hint": "Click a tile to place it, then choose a spot on the board",
+    "draw": "Draw tile",
+    "pass-abbey": "Pass abbey (draw last tile)"
   },
   "server": {
     "translate": "Требуется обновление до версии %VERSION%."

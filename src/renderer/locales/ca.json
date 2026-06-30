@@ -52,6 +52,7 @@
     "play-again": "Juga una altra vegada",
     "play-online": "Juga en línia",
     "play-online-fan": "Juga en línia en un servidor fan",
+    "play-online-local": "Play Online on Dev Local Server",
     "plus-description": "Afegeix múltiples instàncies",
     "raise": "Augmenta",
     "rematch": "Revenja",
@@ -78,8 +79,16 @@
     "test-runner": "Execució de proves"
   },
   "chat": {
+    "global-chat": {
+      "title": "Global chat",
+      "empty": "No messages yet — say hello!",
+      "new-message": "Message everyone",
+      "send": "Send"
+    },
+    "close": "Close chat",
     "chat": "Chat",
     "new-message": "Missatge nou",
+    "open": "Open chat",
     "take-slot-hint": "Take a slot to start chat"
   },
   "core-messages": {
@@ -93,6 +102,7 @@
     "no-core-set": "No hi ha cap joc base!",
     "offline": "Fora de línia",
     "penalties": "Penalitzacions",
+    "potential-final-score": "Potential final score",
     "show-available-only": "mostra només els disponibles",
     "special-figures": "Figures especials",
     "the-biggest-city": "La ciutat més gran",
@@ -190,6 +200,7 @@
     "russian-promos": "Promos russes",
     "siege": "El setge",
     "spiel-doch": "Spiel Doch!",
+    "start": "Start tile",
     "the-city-gates": "Portes de la ciutat",
     "the-city-gates-description": "Permet als jugadors posar un porta de la ciutat a la vora d'una peça amb una altra porta o bé en un camí o un camp a la vora de la peça i a l'inrevés.",
     "the-flying-machines-2": "Les màquines voladores 2",
@@ -694,6 +705,7 @@
       "some-expansions-are-playable-only-here": "Algunes expansions només es poden jugar aquí",
       "title": "Partides allotjades en servidors públics",
       "title-fan": "Partides allotjades en servidors públics fan",
+      "title-local": "Games hosted on dev local",
       "you-have-no-game-in-progress": "No teniu cap partida en curs."
     },
     "update": {
@@ -717,6 +729,7 @@
     "discord": "Discord",
     "exit": "Surt",
     "farm-hints": "Suggeriments de granges",
+    "feature-hints'": "Feature hints",
     "file": "Fitxer",
     "game": "Partida",
     "help": "Ajuda",
@@ -741,6 +754,16 @@
     "undo": "Desfés",
     "zoom-in": "Apropa",
     "zoom-out": "Allunya"
+  },
+  "predraw": {
+    "your-hand": "Your hand",
+    "empty": "—",
+    "incompatible": "Not available with Builder, Dragon, Wagon, Castle, Shepherd, River, Escape, Count or Crop Circles",
+    "local-only": "Not allowed in local games",
+    "one-seat-notice": "Pre-draw game — each player plays on their own device, so you can take only one slot.",
+    "pick-hint": "Click a tile to place it, then choose a spot on the board",
+    "draw": "Draw tile",
+    "pass-abbey": "Pass abbey (draw last tile)"
   },
   "server": {
     "translate": "Cal actualitzar a la versió %VERSION%."

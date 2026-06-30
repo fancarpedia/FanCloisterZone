@@ -52,6 +52,7 @@
     "play-again": "Nochmal spielen",
     "play-online": "Online spielen",
     "play-online-fan": "Spiele online auf dem Fan-Server",
+    "play-online-local": "Play Online on Dev Local Server",
     "plus-description": "Füge mehrere Instanzen hinzu",
     "raise": "Erhöhen",
     "rematch": "Dasselbe Spiel nochmal",
@@ -78,8 +79,16 @@
     "test-runner": "Testläufer"
   },
   "chat": {
+    "global-chat": {
+      "title": "Global chat",
+      "empty": "No messages yet — say hello!",
+      "new-message": "Message everyone",
+      "send": "Send"
+    },
+    "close": "Close chat",
     "chat": "Chat",
     "new-message": "Neue Nachricht",
+    "open": "Open chat",
     "take-slot-hint": "Nimm einen Slot zum Start des Chats"
   },
   "core-messages": {
@@ -93,6 +102,7 @@
     "no-core-set": "Kein Basispaket!",
     "offline": "Offline",
     "penalties": "Strafen",
+    "potential-final-score": "Potential final score",
     "show-available-only": "nur Verfügbare anzeigen",
     "special-figures": "Spezialfiguren",
     "the-biggest-city": "Die größte Stadt",
@@ -190,6 +200,7 @@
     "russian-promos": "Russische Sonderplättchen",
     "siege": "Belagerung",
     "spiel-doch": "Spiel Doch!",
+    "start": "Start tile",
     "the-city-gates": "Stadttore",
     "the-city-gates-description": "Spieler können Stadttore am Rand eines Plättchens an ein anderes Stadttor am Rand eines anderen Plättchens anlegen, aber auch an eine Wiese oder eine Straße (oder umgekehrt)",
     "the-flying-machines-2": "Die Flugmaschinen 2",
@@ -694,6 +705,7 @@
       "some-expansions-are-playable-only-here": "Einige Erweiterungen können nur hier gespielt werden",
       "title": "Auf öffentlichen Servern gehostete Spiele",
       "title-fan": "Auf dem Fan-Server gehostete Spiele",
+      "title-local": "Games hosted on dev local",
       "you-have-no-game-in-progress": "Du hast kein laufendes Spiel."
     },
     "update": {
@@ -717,6 +729,7 @@
     "discord": "Discord",
     "exit": "Exit",
     "farm-hints": "Wiesen-Anzeige",
+    "feature-hints'": "Feature hints",
     "file": "Datei",
     "game": "Spiel",
     "help": "Hilfe",
@@ -741,6 +754,16 @@
     "undo": "Rückgängig machen",
     "zoom-in": "Vergrößern",
     "zoom-out": "Verkleinern"
+  },
+  "predraw": {
+    "your-hand": "Your hand",
+    "empty": "—",
+    "incompatible": "Not available with Builder, Dragon, Wagon, Castle, Shepherd, River, Escape, Count or Crop Circles",
+    "local-only": "Not allowed in local games",
+    "one-seat-notice": "Pre-draw game — each player plays on their own device, so you can take only one slot.",
+    "pick-hint": "Click a tile to place it, then choose a spot on the board",
+    "draw": "Draw tile",
+    "pass-abbey": "Pass abbey (draw last tile)"
   },
   "server": {
     "translate": "Update auf v%VERSION% ist notwendig."

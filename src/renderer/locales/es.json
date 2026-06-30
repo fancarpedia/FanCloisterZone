@@ -52,6 +52,7 @@
     "play-again": "Jugar otra vez",
     "play-online": "Jugar online",
     "play-online-fan": "Jugar online en servidor de fan",
+    "play-online-local": "Play Online on Dev Local Server",
     "plus-description": "Agregar múltiple instancias",
     "raise": "Aumentar la oferta",
     "rematch": "Jugar de nuevo a revancha",
@@ -78,8 +79,16 @@
     "test-runner": "Probador"
   },
   "chat": {
+    "global-chat": {
+      "title": "Global chat",
+      "empty": "No messages yet — say hello!",
+      "new-message": "Message everyone",
+      "send": "Send"
+    },
+    "close": "Close chat",
     "chat": "Conversar",
     "new-message": "Nuevo mensaje",
+    "open": "Open chat",
     "take-slot-hint": "Selecciona un puesto para iniciar conversación"
   },
   "core-messages": {
@@ -93,6 +102,7 @@
     "no-core-set": "¡No hay conjunto básico!",
     "offline": "Fuera de línea",
     "penalties": "Penalidades",
+    "potential-final-score": "Potential final score",
     "show-available-only": "mostrar solo disponibles",
     "special-figures": "Figuras especiales",
     "the-biggest-city": "La ciudad más grande",
@@ -190,6 +200,7 @@
     "russian-promos": "Promos Rusas",
     "siege": "Sitio",
     "spiel-doch": "Spiel Doch!",
+    "start": "Start tile",
     "the-city-gates": "Puertas de Ciudad",
     "the-city-gates-description": "Permite a los jugadores colocar una puerta de ciudad en el borde de una loseta junto a otra puerta de ciudad, pero también junto a un camino o un campo en el borde de la loseta, y viceversa.",
     "the-flying-machines-2": "Máquinas Voladoras 2",
@@ -694,6 +705,7 @@
       "some-expansions-are-playable-only-here": "Algunas expansiones solo se pueden jugar aquí",
       "title": "Partidas alojadas en servidores públicos",
       "title-fan": "Partidas alojadas en un servidor de fan",
+      "title-local": "Games hosted on dev local",
       "you-have-no-game-in-progress": "No hay partidas en curso."
     },
     "update": {
@@ -717,6 +729,7 @@
     "discord": "Discord",
     "exit": "Salir",
     "farm-hints": "Sugerencias para la granja",
+    "feature-hints'": "Feature hints",
     "file": "Fichero",
     "game": "Partida",
     "help": "Ayuda",
@@ -741,6 +754,16 @@
     "undo": "Deshacer",
     "zoom-in": "Acercar",
     "zoom-out": "Alejar"
+  },
+  "predraw": {
+    "your-hand": "Your hand",
+    "empty": "—",
+    "incompatible": "Not available with Builder, Dragon, Wagon, Castle, Shepherd, River, Escape, Count or Crop Circles",
+    "local-only": "Not allowed in local games",
+    "one-seat-notice": "Pre-draw game — each player plays on their own device, so you can take only one slot.",
+    "pick-hint": "Click a tile to place it, then choose a spot on the board",
+    "draw": "Draw tile",
+    "pass-abbey": "Pass abbey (draw last tile)"
   },
   "server": {
     "translate": "Es necesario actualizar a la versión v%VERSION%."
