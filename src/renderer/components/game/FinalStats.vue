@@ -228,13 +228,18 @@ export default {
       const s = this.stats
       return CATEGORIES
         .filter(c => c.always || s.points[c.name].some(p => p))
-        .map(c => ({
-          name: c.name,
-          title: c.title,
-          items: Object.entries(s.items[c.name] || {})
+        .map(c => {
+          const items = Object.entries(s.items[c.name] || {})
             .filter(([, pts]) => pts.some(p => p))
             .map(([name, points]) => ({ name, points }))
-        }))
+          return {
+            name: c.name,
+            title: c.title,
+            // a single breakdown row just duplicates the category total — only show the
+            // item breakdown when there are at least two items
+            items: items.length > 1 ? items : []
+          }
+        })
     }
   },
 
