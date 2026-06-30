@@ -10,6 +10,23 @@
         {{ $t('button.join-game') }}
       </v-btn>
 
+      <span class="header-divider" />
+
+      <!-- Local games run in their own window, independent of the online connection. -->
+      <v-btn large color="secondary" :disabled="!engine || !engine.ok" @click="newLocalGame()">
+        {{ $t('index.local.new-game') }}
+      </v-btn>
+
+      <v-btn large color="secondary" :disabled="!engine || !engine.ok" @click="newLocalGameAI()">
+        {{ $t('index.local.new-game-against-ai') }}
+      </v-btn>
+
+      <v-btn large color="secondary" :disabled="!engine || !engine.ok" @click="loadLocalGame()">
+        {{ $t('index.local.open-game') }}
+      </v-btn>
+
+      <span class="header-divider" />
+
       <v-btn large color="secondary" @click="disconnect()">
         {{ $t('button.disconnect') }}
       </v-btn>
@@ -278,7 +295,8 @@ export default {
       gamePublicList: state => state.online.gamePublicList,
       playOnlineHostname: state => state.settings.playOnlineUrl.split('/')[0],
       locale: state => state.settings.locale,
-      connected: state => state.networking.connectionStatus === STATUS_CONNECTED
+      connected: state => state.networking.connectionStatus === STATUS_CONNECTED,
+      engine: state => state.engine
     }),
 
     getAlertMessageLinks() {
@@ -357,8 +375,30 @@ export default {
 
   methods: {
     createGame () {
+      const fan = this.$store.state.networking.onlineEntry !== 'plain'
+      if (this.$windows.openGame({ kind: 'create-online', payload: { fan } })) return
       this.$store.dispatch('gameSetup/newGame')
       this.$router.push('/game-setup')
+    },
+
+    // Local games open in their own window and don't disturb this lobby's online connection.
+    newLocalGame () {
+      if (this.$windows.openGame({ kind: 'new-local' })) return
+      this.$store.dispatch('gameSetup/newGame')
+      this.$router.push('/game-setup')
+    },
+
+    newLocalGameAI () {
+      if (this.$windows.openGame({ kind: 'new-local', payload: { ai: true } })) return
+      this.$store.dispatch('gameSetup/newGameAI')
+      this.$router.push('/game-setup')
+    },
+
+    async loadLocalGame () {
+      const file = await this.$store.dispatch('game/chooseSaveFile')
+      if (!file) return
+      if (this.$windows.openGame({ kind: 'load', payload: { file } })) return
+      this.$store.dispatch('game/load', { file })
     },
 
     formatDate(date) {
@@ -374,6 +414,11 @@ export default {
     },
 
     joinGame () {
+      const fan = this.$store.state.networking.onlineEntry !== 'plain'
+      if (this.$windows.openGame({ kind: 'join-online', payload: { gameKey: this.joinGameId, fan } })) {
+        this.showJoinDialog = false
+        return
+      }
       this.joinError = null
       this.$connection.onNextSendError(err => {
         this.joinError = err.message
@@ -387,6 +432,8 @@ export default {
     },
 
     resume (game) {
+      const fan = this.$store.state.networking.onlineEntry !== 'plain'
+      if (this.$windows.openGame({ kind: 'join-online', payload: { gameId: game.gameId, fan } })) return
       this.$connection.send({ type: 'JOIN_GAME', payload: { gameId: game.gameId } })
     },
 
@@ -430,6 +477,15 @@ header
 
   .v-btn
     margin: 0 15px
+
+  .header-divider
+    align-self: stretch
+    width: 1px
+    margin: 4px 8px
+    opacity: 0.25
+
+    +theme using ($theme)
+      background-color: map-get($theme, 'gray-text-color')
 
 h2
   font-weight: 300
