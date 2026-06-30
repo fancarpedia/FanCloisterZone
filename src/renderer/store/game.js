@@ -984,6 +984,11 @@ export const actions = {
       await dispatch('applyEngineResponse', { response, hash, message: lastMessage, allowAutoCommit: false })
     } else {
       commit('updateClock', { player: null, clock: 0 })
+      // Init gameMessages BEFORE applyEngineResponse: a degenerate setup (e.g. only the
+      // "start" tile set) can already be game-over, and applyEngineResponse then dispatches
+      // GAME_FINISHED -> apply(), which reads state.gameMessages.length. If it were still
+      // null the renderer would throw and the game window would close immediately.
+      commit('gameMessages', [])
       const { response, hash } = await engine.writeMessage(setupMessage)
       await dispatch('applyEngineResponse', { response, hash, message: null, allowAutoCommit: false })
     }

@@ -94,6 +94,12 @@ export default {
           }
           item.rows[0].events.push({ type: 'current-action' })
         }
+        if (!item.rows.length) {
+          // A turn with no events produced no rows (e.g. an immediately-over game whose only
+          // turn placed just the start tile). Nothing to lay out — skip it instead of reading
+          // item.rows[0].top on undefined (which crashed the whole game window).
+          continue
+        }
         let height = 0
         item.rows.forEach(row => {
           row.top = top
