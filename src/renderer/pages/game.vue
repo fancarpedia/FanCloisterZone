@@ -34,7 +34,6 @@
       <PlayEvents />
       <GameChat />
       <GlobalChat right="calc(var(--aside-width-plus-gap) + 84px)" />
-      <FinalScoringEvents v-if="phase === 'GameOverPhase'" />
       <FinalStats v-if="showGameStats" />
       <div
         v-if="gameDialog"
@@ -76,7 +75,6 @@ import { ipcRenderer } from 'electron'
 
 import ActionPanel from '@/components/game/ActionPanel.vue'
 import Board from '@/components/game/Board.vue'
-import FinalScoringEvents from '@/components/game/FinalScoringEvents.vue'
 import FinalStats from '@/components/game/FinalStats.vue'
 import GameChat from '@/components/game/GameChat.vue'
 import ChooseMonkOrAbbotDialog from '@/components/game/dialogs/ChooseMonkOrAbbotDialog.vue'
@@ -94,7 +92,6 @@ export default {
     ActionPanel,
     Board,
     ChooseMonkOrAbbotDialog,
-    FinalScoringEvents,
     FinalStats,
     GameChat,
     GameSetupDialog,

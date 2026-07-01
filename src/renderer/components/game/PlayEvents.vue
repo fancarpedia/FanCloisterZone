@@ -1,5 +1,14 @@
 <template>
   <div class="play-events" :class="{collapsed: !$store.state.showGameHistory}">
+    <template v-if="phase === 'GameOverPhase'">
+      <!-- final scoring "turn" strip - stays visible (like turn numbers) when history is collapsed -->
+      <div
+        class="number final-number"
+        :style="{ top: `${baseY}px`, height: `${finalHeight}px` }"
+        @click="toggleGameHistory"
+      />
+      <FinalScoringEvents />
+    </template>
     <div
       v-for="h in reversed"
       :key="h.turn"
@@ -29,10 +38,12 @@
 import { mapGetters, mapState } from 'vuex'
 
 import EventsRow from '@/components/game/play-events/EventsRow'
+import FinalScoringEvents from '@/components/game/FinalScoringEvents'
 
 export default {
   components: {
-    EventsRow
+    EventsRow,
+    FinalScoringEvents
   },
 
   data () {
@@ -166,6 +177,19 @@ export default {
 .play-events
   user-select: none
 
+  // shift the panel right of the history strip (same x as the turn rows) so its
+  // background no longer covers the final-scoring strip on the left
+  ::v-deep .final-scoring-events
+    left: 11px
+    padding-left: 5px
+
+  &.collapsed
+    // hide final scoring together with the turn rows when history is toggled off.
+    // use visibility (not display:none) so the panel keeps its measured height -
+    // the strip's height is derived from it and must stay stable while collapsed.
+    ::v-deep .final-scoring-events
+      visibility: hidden
+
 .number
   position: absolute
   left: 0
@@ -174,4 +198,8 @@ export default {
   margin-right: 1px
   width: 10px
   cursor: pointer
+
+.final-number
+  // neutral strip for the final-scoring section (not tied to a player color)
+  background: #9e9e9e
 </style>
