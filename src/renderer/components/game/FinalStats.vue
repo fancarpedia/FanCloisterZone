@@ -46,7 +46,13 @@
         :class="{ 'has-items': cat.items.length }"
         :style="cols"
       >
-        <div class="header" :title="$t(cat.title)"><ScoringIcon :name="cat.name" :size="40" /></div>
+        <div class="header" :title="$t(cat.title)">
+          <ScoringIcon :name="cat.name" :size="40" />
+          <div class="header-label">
+            <div class="header-title">{{ $t(cat.title) }}</div>
+            <div class="header-subtitle">{{ cat.name }}</div>
+          </div>
+        </div>
         <div
           v-for="(val, idx) in stats.points[cat.name]"
           :key="cat.name + '-' + idx"
@@ -57,8 +63,13 @@
 
         <template v-for="item in cat.items">
           <div :key="cat.name + '-' + item.name + '-h'" class="header item-header">
-            <ScoringIcon v-if="item.name === 'tiles'" name="tiles" :size="40" />
-            <ExpressionItem v-else :item="{ name: item.name }" icon-only />
+            <div class="item-icon">
+              <ScoringIcon v-if="item.name === 'tiles'" name="tiles" :size="40" />
+              <ExpressionItem v-else :item="{ name: item.name }" icon-only />
+            </div>
+            <div class="header-label">
+              <div class="header-subtitle">{{ item.name }}</div>
+            </div>
           </div>
           <div
             v-for="(val, idx) in item.points"
@@ -109,7 +120,7 @@ const CATEGORIES = [
   { name: 'church', title: 'game.feature.church-bonus' },
   { name: 'yaga-hut', title: 'game.feature.yaga-hut' },
   { name: 'vodyanoy', title: 'game.feature.vodyanoy' },
-  { name: 'flowers', title: 'game.feature.flowers' },
+  { name: 'flowers', title: 'game.feature.flowers', noExplode: true },
   { name: 'obelisk', title: 'game.element.obelisk' },
   { name: 'windmill', title: 'game.element.windmill' },
   { name: 'decinsky-sneznik', title: 'game.element.decinsky-sneznik' },
@@ -236,8 +247,8 @@ export default {
             name: c.name,
             title: c.title,
             // a single breakdown row just duplicates the category total — only show the
-            // item breakdown when there are at least two items
-            items: items.length > 1 ? items : []
+            // item breakdown when there are at least two items. Some categories
+            items: (!c.noExplode && items.length > 1) ? items : []
           }
         })
     }
@@ -293,13 +304,34 @@ export default {
     grid-gap: 5px 0
 
     .header
+      display: flex
+      flex-direction: column
+      align-items: center
+
       svg.meeple, svg.neutral
         +theme using ($theme)
           /* fill: map-get($theme, 'gray-text-color') */
 
+      .header-label
+        margin-top: 2px
+        text-align: center
+        line-height: 1.1
+
+        +theme using ($theme)
+          color: map-get($theme, 'gray-text-color')
+
+      .header-title
+        font-size: 11px
+        font-weight: 600
+
+      .header-subtitle
+        font-size: 10px
+        opacity: 0.6
+
     // item breakdown sub-rows: smaller icon and faded smaller value
     .header.item-header
-      transform: scale(0.6)
+      .item-icon
+        transform: scale(0.6)
 
       .expr-item
         margin-right: 0
