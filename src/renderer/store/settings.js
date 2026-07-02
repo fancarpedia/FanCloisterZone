@@ -44,7 +44,11 @@ export const state = () => ({
   localPlayOnline: false,
   localPlayOnlineUrl: 'localhost:8000/ws',
   devMode: process.env.NODE_ENV === 'development',
-  devChannel: 'stable'
+  devChannel: 'stable',
+  // Windows taskbar behaviour for the multi-window app:
+  //   'separate' (default) — each window is its own taskbar button
+  //   'grouped'            — windows grouped under one button; a game is raised on top when it's your turn
+  windowsTaskbarMode: 'separate'
 })
 
 const changeCallbacks = {}
