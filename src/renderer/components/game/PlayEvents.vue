@@ -10,36 +10,40 @@
       <v-icon small>fa-history</v-icon>
       <v-icon x-small>{{ $store.state.showGameHistory ? 'fa-chevron-left' : 'fa-chevron-right' }}</v-icon>
     </button>
-    <template v-if="phase === 'GameOverPhase'">
-      <!-- final scoring "turn" strip - stays visible (like turn numbers) when history is collapsed -->
+    <!-- single scroll layer: only this element's transform changes while scrolling, so the
+         browser composites instead of re-laying-out every row (smooth, no per-row "jumping") -->
+    <div class="events-scroll" :style="{ transform: `translateY(${-offset}px)` }">
+      <template v-if="phase === 'GameOverPhase'">
+        <!-- final scoring "turn" strip - stays visible (like turn numbers) when history is collapsed -->
+        <div
+          class="number final-number"
+          :style="{ top: `${baseY}px`, height: `${finalHeight}px`, 'clip-path': getClipPath(-offset + baseY, finalHeight) }"
+          @click="toggleGameHistory"
+        />
+        <FinalScoringEvents :style="{ top: `${baseY}px`, 'clip-path': getClipPath(-offset + baseY, finalHeight) }" />
+      </template>
       <div
-        class="number final-number"
-        :style="{ top: `${-offset + baseY}px`, height: `${finalHeight}px`, 'clip-path': getClipPath(-offset + baseY, finalHeight) }"
-        @click="toggleGameHistory"
-      />
-      <FinalScoringEvents :style="{ top: `${-offset + baseY}px`, 'clip-path': getClipPath(-offset + baseY, finalHeight) }" />
-    </template>
-    <div
-      v-for="h in reversed"
-      :key="h.turn"
-      class="turn"
-      :style="{ display: -offset + finalOffset + h.top + h.height < baseY ? 'none' : 'block' }"
-      @wheel.passive="onWheel"
-    >
-      <div
-        v-if="!h.finalScoring"
-        :class="`number ${colorCssClass(h.player)} color-bg`"
-        :style="{ top: `${-offset + finalOffset + h.top}px`, height: `${h.height}px`, 'clip-path': getClipPath(-offset + finalOffset + h.top, h.height) }"
-        @click="toggleGameHistory"
-      />
+        v-for="h in reversed"
+        :key="h.turn"
+        class="turn"
+        :style="{ display: -offset + finalOffset + h.top + h.height < baseY ? 'none' : 'block' }"
+        @wheel.passive="onWheel"
+      >
+        <div
+          v-if="!h.finalScoring"
+          :class="`number ${colorCssClass(h.player)} color-bg`"
+          :style="{ top: `${finalOffset + h.top}px`, height: `${h.height}px`, 'clip-path': getClipPath(-offset + finalOffset + h.top, h.height) }"
+          @click="toggleGameHistory"
+        />
 
-      <EventsRow
-        v-for="(row, i) in h.rows"
-        :key="i"
-        :row="row"
-        :player="h.player"
-        :style="{ top: `${-offset + finalOffset + row.top}px`, 'clip-path': getClipPath(-offset + finalOffset + row.top, row.height) }"
-      />
+        <EventsRow
+          v-for="(row, i) in h.rows"
+          :key="i"
+          :row="row"
+          :player="h.player"
+          :style="{ top: `${finalOffset + row.top}px`, 'clip-path': getClipPath(-offset + finalOffset + row.top, row.height) }"
+        />
+      </div>
     </div>
   </div>
 </template>
@@ -202,6 +206,17 @@ export default {
 <style lang="sass" scoped>
 .play-events
   user-select: none
+
+  // Scroll layer. Zero-sized and pinned at the origin so its absolutely-positioned children
+  // keep the exact screen coordinates they had before; scrolling only mutates this element's
+  // transform, which the compositor handles on the GPU (no per-row layout).
+  .events-scroll
+    position: absolute
+    top: 0
+    left: 0
+    width: 0
+    height: 0
+    will-change: transform
 
   // shift the panel right of the history strip (same x as the turn rows) so its
   // background no longer covers the final-scoring strip on the left

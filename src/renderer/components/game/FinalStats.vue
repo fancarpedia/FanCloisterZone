@@ -33,7 +33,12 @@
           </div>
         </div>
 
-        <div class="header tiles" :title="$t('core-messages.tiles')"><ScoringIcon name="tiles" :size="42" /></div>
+        <div class="header tiles" :title="$t('game.feature.placed-tiles')">
+          <ScoringIcon name="tiles" :size="42" />
+          <div class="header-label">
+            <div class="header-title">{{ $t('game.feature.placed-tiles') }}</div>
+          </div>
+        </div>
         <div v-for="(val, idx) in stats.tiles" :key="'tiles-'+idx" class="tiles value">
           {{ val }}
         </div>
@@ -50,7 +55,6 @@
           <ScoringIcon :name="cat.name" :size="40" />
           <div class="header-label">
             <div class="header-title">{{ $t(cat.title) }}</div>
-            <div class="header-subtitle">{{ cat.name }}</div>
           </div>
         </div>
         <div
@@ -65,6 +69,7 @@
           <div :key="cat.name + '-' + item.name + '-h'" class="header item-header">
             <div class="item-icon">
               <ScoringIcon v-if="item.name === 'tiles'" name="tiles" :size="40" />
+              <ScoringIcon v-else-if="item.name.startsWith('castle.')" :name="item.name.split('.')[1]" :size="40" />
               <ExpressionItem v-else :item="{ name: item.name }" icon-only />
             </div>
             <div class="header-label">
@@ -218,11 +223,14 @@ export default {
                 stats.points[cat][idx] += points
                 // accumulate the item-level breakdown (tiles / pennants / cathedral / ...)
                 ;(items || []).forEach(it => {
+                  // the engine emits one item per marketplace-adjoining road (marketplace.0,
+                  // marketplace.1, …) — collapse them into a single "marketplace" breakdown row
+                  const itName = it.name.startsWith('marketplace.') ? 'marketplace' : it.name
                   if (!stats.items[cat]) stats.items[cat] = {}
-                  if (!stats.items[cat][it.name]) {
-                    stats.items[cat][it.name] = (new Array(this.players.length)).fill(0)
+                  if (!stats.items[cat][itName]) {
+                    stats.items[cat][itName] = (new Array(this.players.length)).fill(0)
                   }
-                  stats.items[cat][it.name][idx] += it.points
+                  stats.items[cat][itName][idx] += it.points
                 })
               }
             })
