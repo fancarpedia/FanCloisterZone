@@ -441,6 +441,12 @@ export default {
       this.maybeAutoConnect()
     },
 
+    // The engine is probed asynchronously at startup; retry the auto-connect once it's ready
+    // (its version is part of the connect handshake).
+    engine () {
+      this.maybeAutoConnect()
+    },
+
     // Auto-connect finishes after this component is already mounted, so refresh the lobby the
     // moment the connection goes live.
     connected (val) {
@@ -480,6 +486,7 @@ export default {
     maybeAutoConnect () {
       if (this.autoConnectTried) return
       if (!this.settingsLoaded) return // wait for the nickname to load
+      if (!this.engine) return // wait until the engine is probed (its version is sent on connect)
       if (this.connected || this.connecting) return
       if (this.$store.state.networking.connectionType === 'online') return
       const nickname = this.$store.state.settings.nickname
