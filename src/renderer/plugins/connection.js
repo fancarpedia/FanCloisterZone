@@ -22,6 +22,30 @@ class ConnectionPlugin extends EventsBase {
     this.callbacks = null
     this.connectCallbacks = null
 
+    // React to the OS losing/regaining network. Dropping wifi does not promptly fire the
+    // socket's own `onclose` (the TCP close handshake hangs with no network), so without this
+    // the app would keep showing "connected" until connectivity returns. On `offline` we tear
+    // the dead socket down at once so the store's reconnect loop takes over; on `online` we just
+    // log — the reconnect loop is already retrying and will succeed on its next attempt.
+    if (typeof window !== 'undefined') {
+      this._onOffline = () => {
+        // Only ONLINE (remote server) connections depend on internet connectivity. A local game's
+        // embedded server runs on localhost and stays reachable while the OS is "offline" — never
+        // tear a 'direct' connection down here, or creating/playing local games offline breaks.
+        if (this.ws && this.app.store.state.networking.connectionType === 'online') {
+          console.log('%c client %c network offline — dropping online connection', CONSOLE_CLIENT_COLOR, '')
+          this.forceClose(4001)
+        }
+      }
+      this._onOnline = () => {
+        console.log('%c client %c network online', CONSOLE_CLIENT_COLOR, '')
+        // Skip the reconnect backoff and retry straight away.
+        this.app.store.dispatch('networking/reconnectNow')
+      }
+      window.addEventListener('offline', this._onOffline)
+      window.addEventListener('online', this._onOnline)
+    }
+
     if (process.env.JCZ_NETWORK_DELAY) {
       this.debugDelay = process.env.JCZ_NETWORK_DELAY.split('-').map(bound => +bound)
       if (this.debugDelay.length === 1) {
@@ -41,7 +65,9 @@ class ConnectionPlugin extends EventsBase {
         this.ws.send('') // send empty frame = app level ping
         this.pongTimeout = setTimeout(() => {
           console.log('heartbeat timeout')
-          this.ws?.close(4001)
+          // Don't rely on ws.close() here — on a dead network its close handshake hangs and
+          // onclose never fires, leaving the app falsely "connected". Force the teardown.
+          this.forceClose(4001)
         }, HEARTBEAT_TIMEOUT)
       }
     }, HEARTBEAT_INTERVAL)
@@ -135,6 +161,25 @@ class ConnectionPlugin extends EventsBase {
       this.callbacks?.onClose(code)
       this.callbacks = null
       this.ws = null
+    }
+  }
+
+  // Give up on the current socket *now* and notify the app (→ store reconnect loop), without
+  // waiting for the WebSocket close handshake — which can hang for minutes when the network has
+  // silently disappeared. Used by the heartbeat timeout and the OS `offline` event.
+  forceClose (code) {
+    const ws = this.ws
+    if (!ws) return
+    // Detach handlers first so this socket's own (possibly long-delayed) onclose can't later
+    // fire against a freshly reconnected socket and tear it down.
+    ws.onopen = null
+    ws.onmessage = null
+    ws.onclose = null
+    this.afterClose(code, { code }) // nulls this.ws + invokes callbacks.onClose(code) → reconnect
+    try {
+      ws.close(code) // best effort; the network may already be gone
+    } catch (e) {
+      // ignore
     }
   }
 
