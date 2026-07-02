@@ -13,7 +13,7 @@ export default ({ app }, inject) => {
     async start (game) {
       const { settings } = app.store.state
       const appVersion = getAppVersion()
-      const engineVersion = app.store.state.engine.version
+      const engineVersion = app.store.state.engine ? app.store.state.engine.version : ''
       if (!game.gameId) {
         game = { gameId: randomId(), ...game }
       }

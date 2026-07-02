@@ -76,7 +76,8 @@ class ConnectionPlugin extends EventsBase {
   onOpen () {
     console.log('%c client %c connected to ' + this.ws.url, CONSOLE_CLIENT_COLOR, '')
     const appVersion = getAppVersion()
-    const engineVersion = this.app.store.state.engine.version
+    // engine may not be probed yet on a very early connect — don't crash the socket over it
+    const engineVersion = this.app.store.state.engine ? this.app.store.state.engine.version : ''
     const appSessionId = this.app.store.state.appSessionId
     const gameId = this.app.store.state.game ? this.app.store.state.game.id : null
     const { settings } = this.app.store.state
