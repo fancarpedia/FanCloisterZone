@@ -526,7 +526,7 @@ export const actions = {
 			gamePhase = 'GameOverPhase'
 		  }
           content.test.assertions.push(`Phase is ${gamePhase}`)
-          if (gameState.turnPlayer != null && content.players[gameState.turnPlayer]) {
+          if (!endGame && gameState.turnPlayer != null && content.players[gameState.turnPlayer]) {
             content.test.assertions.push(`Turn player is ${content.players[gameState.turnPlayer].name}`)
           }
           if (!endGame && !!gameState.action && gameState.action.player != null && content.players[gameState.action.player]) {
@@ -702,14 +702,16 @@ export const actions = {
           return
         }
         
-        if (rootState.networking.connectionType=='online') {
+        // Loading a saved game into a live online game is not allowed (server-authoritative), but
+        // the Test Runner replays scenarios locally — don't block it there.
+        if (rootState.networking.connectionType === 'online' && !rootState.runningTests) {
           if (sg.test !== undefined) {
-            const msg = [$nuxt.$t(`file.saved-game-contains-tests'),$nuxt.$t('file.not-possible-in-online-mode`)].join(' ')
+            const msg = [$nuxt.$t('file.saved-game-contains-tests'), $nuxt.$t('file.not-possible-in-online-mode')].join(' ')
             commit('errorMessage', { title: $nuxt.$t('file.load-error'), content: msg }, { root: true })
             return
           }
-          if (sg.replay.length>0) {
-			const msg = [$nuxt.$t(`file.saved-game-contains-game-history'),$nuxt.$t('file.not-possible-in-online-mode`)].join(' ')
+          if (sg.replay.length > 0) {
+            const msg = [$nuxt.$t('file.saved-game-contains-game-history'), $nuxt.$t('file.not-possible-in-online-mode')].join(' ')
             commit('errorMessage', { title: $nuxt.$t('file.load-error'), content: msg }, { root: true })
             return
           }
@@ -787,7 +789,10 @@ export const actions = {
         slots,
         replay: sg.replay,
         clock: sg.clock,
-        chat: sg.chat ?? null
+        chat: sg.chat ?? null,
+        // Test scenarios (and anything loaded while running tests) must replay on the embedded
+        // server even if this window is connected online — otherwise it goes to the fan server.
+        local: !!sg.test || rootState.runningTests
       }, { root: true })
 
       if (sg.test) {
@@ -921,10 +926,15 @@ export const actions = {
 
     const loggingEnabled = rootState.settings.devMode
     const engine = this._vm.$engine.spawn({ loggingEnabled })
-    engine.on('error', data => {
-      commit('errorMessage', { title: $nuxt.$t('core-messages.engine-error'), content: data + '' }, { root: true })
-    })
+    let engineErrorShown = false
+    const showEngineError = content => {
+      if (engineErrorShown) return
+      engineErrorShown = true
+      commit('errorMessage', { title: $nuxt.$t('core-messages.engine-error'), content: content + '' }, { root: true })
+    }
+    engine.on('error', showEngineError)
 
+    try {
     // if (state.originAppVersion && state.originAppVersion !== getAppVersion()) {
     //   await engine.write(`%compat ${state.originAppVersion}`)
     // }
@@ -1004,11 +1014,27 @@ export const actions = {
       // GAME_FINISHED -> apply(), which reads state.gameMessages.length. If it were still
       // null the renderer would throw and the game window would close immediately.
       commit('gameMessages', [])
-      const { response, hash } = await engine.writeMessage(setupMessage)
+      // Bound the initial setup response: a misconfigured engine that accepts the connection but
+      // never replies would otherwise hang "Create" forever. The engine responds in well under a
+      // second normally, so a generous timeout only trips on a genuinely stuck engine.
+      const { response, hash } = await Promise.race([
+        engine.writeMessage(setupMessage),
+        new Promise((resolve, reject) => setTimeout(() => reject(new Error('Engine did not respond (is it running?)')), 30000))
+      ])
       await dispatch('applyEngineResponse', { response, hash, message: null, allowAutoCommit: false })
     }
     if (state.gameMessages === null) {
       commit('gameMessages', [])
+    }
+    } catch (err) {
+      // Engine unreachable / crashed during setup (e.g. a remote engine whose port isn't
+      // listening). Surface it, unlock the UI and tear the engine down instead of hanging
+      // forever or crashing the window.
+      console.error('Engine setup failed', err)
+      showEngineError(err && (err.message || err) ? (err.message || err) : 'Unable to start the game engine')
+      commit('lockUi', false)
+      this._vm.$engine.kill()
+      return
     }
 
     commit('lockUi', false)
