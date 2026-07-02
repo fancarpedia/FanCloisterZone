@@ -40,14 +40,17 @@ export default {
 .test-result
   padding: 30px 50px
   margin-left: 100px
+  max-width: 40vw
   max-height: calc( 100% - 100px )
   overflow-y: scroll
 
-  +theme using ($theme)
-    color: map-get($theme, 'cards-text')
-    background: map-get($theme, 'cards-bg')
+  color: white
+  background: rgba(0, 0, 0, 0.75)
 
   .btn-line
+    display: flex
+    justify-content: flex-end
+    gap: 10px
     margin-bottom: 10px
 
   .description
@@ -57,10 +60,10 @@ export default {
     padding: 3px 6px
 
   .case.ok
-    background: #558B2F
+    background: rgba(85, 139, 47, 0.5)
     color: white
 
   .case.fail
-    background: #C62828
+    background: rgba(198, 40, 40, 0.5)
     color: white
 </style>
