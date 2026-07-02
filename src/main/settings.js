@@ -15,6 +15,11 @@ export async function getSettings () {
   return settings || {}
 }
 
+// Synchronous access to the in-memory settings (already loaded before any window is created).
+export function getSettingsSync () {
+  return settings || {}
+}
+
 export async function loadSettings () {
   try {
     await fs.promises.access(SETTINGS_FILE, fs.constants.R_OK)

@@ -7,7 +7,7 @@ import { autoUpdater } from 'electron-updater'
 import electronLogger from 'electron-log'
 import fs from 'fs'
 
-import settings from './settings'
+import settings, { getSettingsSync } from './settings'
 import menu from './modules/menu'
 import theme from './modules/theme'
 import dialog, { showUnfinishedGameDialog } from './modules/dialog'
@@ -139,11 +139,36 @@ ipcMain.handle('open-load-game-dialog', async (event, options) => {
   }
 })
 
-function generateInstanceId() {
-    // Use timestamp + process ID so each instance is unique
-    return `com.myapp.instance.${Date.now()}.${process.pid}`
+// --- Windows taskbar grouping --------------------------------------------------------------------
+// Windows groups taskbar buttons by AppUserModelID (AUMID). We support two modes (see the
+// "Windows taskbar" system setting):
+//   'separate' (default) — give each window a UNIQUE AUMID so every window is its own taskbar button
+//   'grouped'            — all windows share one AUMID (grouped under a single button); the active
+//                          game window is raised on top when it becomes that player's turn
+const TASKBAR_APP_ID = 'com.jcloisterzone.fan'
+app.setAppUserModelId(TASKBAR_APP_ID)
+
+function getTaskbarMode () {
+  return getSettingsSync().windowsTaskbarMode === 'grouped' ? 'grouped' : 'separate'
 }
-app.setAppUserModelId(generateInstanceId()) // Prevent grouping app icons
+
+// Apply the current taskbar mode to a single window (Windows only).
+function applyWindowTaskbar (win, mode = getTaskbarMode()) {
+  if (process.platform !== 'win32' || !win || win.isDestroyed()) return
+  const appId = mode === 'grouped'
+    ? TASKBAR_APP_ID
+    : `${TASKBAR_APP_ID}.w${win.webContents.id}` // unique per window → separate taskbar buttons
+  try {
+    win.setAppDetails({ appId })
+  } catch (e) {
+    console.log('setAppDetails failed', e)
+  }
+}
+
+// Re-apply the taskbar mode to every open window (used when the setting changes).
+function applyTaskbarModeAll (mode = getTaskbarMode()) {
+  for (const w of BrowserWindow.getAllWindows()) applyWindowTaskbar(w, mode)
+}
 
 if (process.platform === 'linux') {
   app.commandLine.appendSwitch('no-sandbox')
@@ -177,6 +202,7 @@ function buildWindow ({ role = 'main', hidden = false } = {}) {
 
   const wcId = win.webContents.id
   stateFor(win.webContents).role = role
+  applyWindowTaskbar(win) // set this window's taskbar grouping per the current setting
 
   // Forward renderer console (esp. uncaught render errors) to the main-process stdout, so a
   // crash that closes the window too fast to read in DevTools is still visible in the terminal.
@@ -332,8 +358,26 @@ ipcMain.on('game-window.set-key', (event, key) => {
 
 // A game window reports its active player ({ slot, isMe }) so the lobby can colour/blink the bullet.
 ipcMain.on('game-window.set-active', (event, active) => {
-  stateFor(event.sender).active = active || null
+  const st = stateFor(event.sender)
+  const wasMine = !!(st.active && st.active.isMe)
+  st.active = active || null
   broadcastGameWindows() // active player changed → refresh the bullet
+
+  // Grouped taskbar mode: when this game becomes my turn, raise its window to the top of the
+  // stack (z-order only, no focus stealing) so the active game surfaces above the others.
+  if (
+    process.platform === 'win32' &&
+    getTaskbarMode() === 'grouped' &&
+    active && active.isMe && !wasMine
+  ) {
+    const win = BrowserWindow.fromWebContents(event.sender)
+    if (win && !win.isDestroyed()) win.moveTop()
+  }
+})
+
+// The "Windows taskbar" setting changed in the renderer → re-apply grouping to all windows now.
+ipcMain.handle('taskbar.set-mode', (event, mode) => {
+  applyTaskbarModeAll(mode === 'grouped' ? 'grouped' : 'separate')
 })
 
 // A game window reports its setup ({ sets, elements }) so the lobby can show a setup overview.
