@@ -50,6 +50,26 @@
         @close="showErrorDialog = false"
       />
     </v-dialog>
+
+    <v-dialog
+      v-model="savedScenarioDialog"
+      max-width="600"
+    >
+      <v-card>
+        <v-card-title>
+          <span class="headline">{{ $t('dev.test-scenario-saved') }}</span>
+        </v-card-title>
+        <v-card-text>
+          <p>{{ $t('dev.test-scenario-saved-hint') }}</p>
+          <code class="scenario-path">{{ savedScenarioPath }}</code>
+        </v-card-text>
+        <v-card-actions>
+          <v-spacer />
+          <v-btn text @click="savedScenarioDialog = false">{{ $t('button.close') }}</v-btn>
+          <v-btn text color="primary" @click="openSavedScenario">{{ $t('button.open') }}</v-btn>
+        </v-card-actions>
+      </v-card>
+    </v-dialog>
   </v-app>
 </template>
 
@@ -81,7 +101,9 @@ export default {
   data () {
     return {
       showAbout: false,
-      addonsUpdated: false
+      addonsUpdated: false,
+      savedScenarioDialog: false,
+      savedScenarioPath: null
     }
   },
 
@@ -296,8 +318,8 @@ export default {
       this.$store.dispatch('networking/connectPlayOnlineFan')
     })
     ipcRenderer.on('menu.playonline-disconnect', () => {
+      // close() is role-aware: the lobby stays on /online, game windows tear down.
       this.$store.dispatch('networking/close')
-      this.$router.push('/')
     })
     ipcRenderer.on('menu.new-game', () => {
       if (this.$windows.openGame({ kind: 'new-local' })) return
@@ -369,10 +391,10 @@ export default {
       this.dumpServer()
     })
     ipcRenderer.on('menu.save-for-test-runner', () => {
-      this.$store.dispatch('game/savescenario', { endGame: false} )
+      this.saveScenario(false)
     })
     ipcRenderer.on('menu.save-for-test-runner-end-game', () => {
-      this.$store.dispatch('game/savescenario', { endGame: true} )
+      this.saveScenario(true)
     })
     ipcRenderer.on('menu.test-runner', () => {
       this.$router.push('/test-runner')
@@ -457,6 +479,30 @@ export default {
   },
 
   methods: {
+    // Save the current game as a test scenario, then offer to open it for verification.
+    async saveScenario (endGame) {
+      try {
+        const filePath = await this.$store.dispatch('game/savescenario', { endGame })
+        if (filePath) {
+          this.savedScenarioPath = filePath
+          this.savedScenarioDialog = true
+        }
+      } catch (e) {
+        // savescenario already surfaces the failure via errorMessage; nothing to add here.
+        console.error(e)
+      }
+    },
+
+    // Open the just-saved scenario in its own window (force so it opens from a game window too),
+    // so the user can replay it and see the assertions run.
+    openSavedScenario () {
+      const file = this.savedScenarioPath
+      this.savedScenarioDialog = false
+      if (!file) return
+      if (this.$windows.openGame({ kind: 'load', payload: { file } }, { force: true })) return
+      this.$store.dispatch('game/load', { file })
+    },
+
     // Run the launch intent delivered to a dedicated game window. On failure/cancel the (empty)
     // window closes itself. Reuses the existing store flows, just without the lobby UI.
     async handleGameWindowInit (intent) {
@@ -647,6 +693,15 @@ export default {
 
 @import '~/assets/styles/player-colors.scss'
 @import '~/assets/styles/rotation.sass'
+
+.scenario-path
+  display: block
+  margin-top: 8px
+  padding: 8px 10px
+  word-break: break-all
+  font-size: 13px
+  background: rgba(127, 127, 127, 0.15)
+  border-radius: 4px
 
 :root
   --aside-width: 290px

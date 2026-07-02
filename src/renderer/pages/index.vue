@@ -3,44 +3,8 @@
     <div class="landing-layout">
       <main class="landing-main">
     <div>
-      <v-alert v-if="engine && engine.error === 'not-found'" type="warning">
-        <i18n tag="span" path="settings.engine.engine-path-not-exists">
-          <template #path>
-            <i>{{ engine.path }}</i>
-          </template>
-        </i18n>
-      </v-alert>
-      <v-alert v-if="engine && engine.error === 'exec-error'" type="warning">
-        {{ $t('settings.engine.unable-to-spawn-game-engine') }}<br>
-        <small>{{ engine.errorMessage }}</small>
-      </v-alert>
-      <v-alert v-if="artworksLoaded && !hasClassicAddon" type="warning">
-        {{ $t('settings.add-ons.artwork-not-found-internet-connection-is-needed') }}<br>
-        {{ $t('settings.add-ons.please-check-connectivity-and-restart-app') }}<br>
-        <small>{{ $t('settings.add-ons.add-on-url') }}: <a :href="$addons.getDefaultArtworkUrl()" @click.prevent="openLink($addons.getDefaultArtworkUrl())">>{{ $addons.getDefaultArtworkUrl() }}</a></small>
-      </v-alert>
-      <div v-if="download" class="download">
-        <v-progress-linear
-          v-if="download.size"
-          :value="download.size ? download.progress / download.size * 100 : null"
-        />
-        <v-progress-linear v-else indeterminate />
-      </div>
-      <div v-if="updateInfo" class="update-box">
-        <InstallerDownloader
-          :fileURL="isWin ? updateInfo.assetUrl.exe : isMac ? updateInfo.assetUrl.dmg : updateInfo.assetUrl.appImage"
-          :titleText="$t('index.update.new-version-available')"
-          :downloadButtonText="$t('index.update.download')"
-          :installButtonText="$t('index.update.install-new-version')"
-          :installerErrorText="$t('index.update.download-error')"
-          :startingText="$t('index.update.starting')"
-        />
-
-        <h4>{{ $t('index.update.release-notes') }}</h4>
-        <div class="update-release-notes">
-          <div v-html="updateInfo.releaseNotes" />
-        </div>
-      </div>
+      <EngineAlerts />
+      <AppUpdateBox />
     </div>
 
     <section class="splash">
@@ -148,23 +112,20 @@
 </template>
 
 <script>
-import { shell, ipcRenderer } from 'electron'
-
 import Vue from 'vue'
 import { mapState } from 'vuex'
 
 import AddonsReloadObserverMixin from '@/components/AddonsReloadObserverMixin'
-import InstallerDownloader from '@/components/InstallerDownloader'
+import EngineAlerts from '@/components/EngineAlerts'
+import AppUpdateBox from '@/components/AppUpdateBox'
 import OpenGameWindows from '@/components/OpenGameWindows'
-
-const isMac = process.platform === 'darwin'
-const isWin = process.platform === 'win32'
 
 import { STATUS_CONNECTED } from '@/store/networking'
 
 export default {
   components: {
-    InstallerDownloader,
+    EngineAlerts,
+    AppUpdateBox,
     OpenGameWindows
   },
 
@@ -174,8 +135,6 @@ export default {
 
   data () {
     return {
-      isMac,
-      isWin,
       // do not bind it to store
       recentSaves: [...this.$store.state.settings.recentSaves],
       updating: false,
@@ -192,13 +151,9 @@ export default {
   computed: {
     ...mapState({
       engine: state => state.engine,
-      download: state => state.download,
       settings: state => state.settings,
       settingsLoaded: state => state.loaded.settings,
-      artworksLoaded: state => state.loaded.artworks,
-      hasClassicAddon: state => state.hasClassicAddon,
-      connectionStatus: state => state.networking.connectionStatus,
-      updateInfo: state => state.updateInfo
+      connectionStatus: state => state.networking.connectionStatus
     }),
 
     connectionStatus() {
@@ -304,10 +259,6 @@ export default {
       if (this.$windows.openGame({ kind: 'load-setup', payload: { setup } })) return
       this.$store.dispatch('gameSetup/load', setup)
       this.$router.push('/game-setup')
-    },
-
-    openLink (href) {
-      shell.openExternal(href)
     },
 
     clearRecentSaves () {

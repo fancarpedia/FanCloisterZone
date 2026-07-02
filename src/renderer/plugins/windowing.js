@@ -45,6 +45,20 @@ export default ({ app }, inject) => {
     })
   }
 
+  // The lobby ('main') window boots into the online lobby (/online) instead of the legacy
+  // landing page. Only the very first navigation is redirected, so index.vue ('/') stays
+  // reachable afterwards (and still renders the shared EngineAlerts / AppUpdateBox).
+  if (role === 'main' && app.router) {
+    let bootRedirectDone = false
+    app.router.beforeEach((to, from, next) => {
+      if (!bootRedirectDone && to.path === '/') {
+        bootRedirectDone = true
+        return next('/online')
+      }
+      next()
+    })
+  }
+
   Vue.prototype.$windows = {
     role,
 

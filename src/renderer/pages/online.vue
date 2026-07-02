@@ -1,5 +1,7 @@
 <template>
   <div class="online-page">
+    <EngineAlerts />
+    <AppUpdateBox />
     <OnlineStatus />
     <header>
       <v-btn :disabled="!connected" large color="primary" @click="createGame()">
@@ -27,15 +29,35 @@
 
       <span class="header-divider" />
 
-      <v-btn large color="secondary" @click="disconnect()">
+      <v-btn v-if="connected" large color="secondary" @click="disconnect()">
         {{ $t('button.disconnect') }}
+      </v-btn>
+      <v-btn v-else large color="secondary" :loading="connecting" @click="connect()">
+        {{ $t('button.connect') }}
       </v-btn>
     </header>
     <div class="online-body">
     <main>
-      <div class="lobby">
+      <section class="splash">
+        <img :src="splashImage()" />
+      </section>
+
+      <div v-if="!connected" class="empty-message offline-message">
+        <p>
+          <i>{{ $t('index.online.offline-lobby-hidden') }}</i>
+        </p>
+      </div>
+
+      <div v-if="connected" class="lobby">
         <h2>{{ $t('index.online.lobby') }}</h2>
 
+        <div v-if="!tilesLoaded" class="empty-message">
+          <p>
+            <i>{{ $t('index.online.loading-game-data') }}</i>
+          </p>
+        </div>
+
+        <template v-else>
         <div v-if="!verifiedGamePublicList.length" class="empty-message">
           <p>
             <i>{{ $t('index.online.no-public-games') }}</i>
@@ -45,7 +67,7 @@
         <div class="game-list public">
           <div
             v-for="{ game, slots, valid, isOwner, isStarted } in verifiedGamePublicList"
-            :key="game.gameId"
+            :key="game.gameId + '#' + addonsReloadTick"
             class="game"
           >
             <div v-if="game.name" class="game-name">
@@ -93,11 +115,19 @@
             </div>
           </div>
         </div>
+        </template>
       </div>
 
-      <div class="games-in-progress">
+      <div v-if="connected" class="games-in-progress">
         <h2>{{ $t('index.online.games-in-progress') }}</h2>
 
+        <div v-if="!tilesLoaded" class="empty-message">
+          <p>
+            <i>{{ $t('index.online.loading-game-data') }}</i>
+          </p>
+        </div>
+
+        <template v-else>
         <div v-if="!verifiedGameList.length" class="empty-message">
           <p>
             <i>{{ $t('index.online.you-have-no-game-in-progress') }}</i>
@@ -112,7 +142,7 @@
         <div class="game-list player">
           <div
             v-for="{ game, slots, valid, isOwner, isStarted } in verifiedGameList"
-            :key="game.gameId"
+            :key="game.gameId + '#' + addonsReloadTick"
             class="game"
           >
             <div v-if="game.name" class="game-name">
@@ -160,6 +190,7 @@
             </div>
           </div>
         </div>
+        </template>
       </div>
     </main>
 
@@ -256,6 +287,32 @@
       </v-card>
     </v-dialog>
 
+    <v-dialog v-model="isNicknameDialogOpen" max-width="500px" persistent>
+      <v-card>
+        <v-card-title>
+          <span class="headline">{{ $t('settings.player.nickname') }}</span>
+        </v-card-title>
+        <v-card-text>
+          <v-container>
+            <em>{{ $t('settings.player.nickname-description') }}</em>
+            <v-text-field
+              ref="nicknameInput"
+              v-model="pendingNickname"
+              :label="$t('settings.player.nickname')"
+              :error-messages="nicknameError"
+              class="mt-3"
+              @keydown.enter="confirmNickname"
+            />
+          </v-container>
+        </v-card-text>
+        <v-card-actions>
+          <v-spacer />
+          <v-btn text @click="isNicknameDialogOpen = false">{{ $t('button.cancel') }}</v-btn>
+          <v-btn text color="secondary" @click="confirmNickname">{{ $t('button.confirm') }}</v-btn>
+        </v-card-actions>
+      </v-card>
+    </v-dialog>
+
   </div>
 </template>
 
@@ -263,13 +320,16 @@
 import { mapState } from 'vuex'
 import sortBy from 'lodash/sortBy'
 
+import AddonsReloadObserverMixin from '@/components/AddonsReloadObserverMixin'
 import GameSetupOverviewInline from '@/components/game-setup/overview/GameSetupOverviewInline'
 import OnlineStatus from '@/components/OnlineStatus'
 import Meeple from '@/components/game/Meeple'
 import GlobalChat from '@/components/GlobalChat'
 import OpenGameWindows from '@/components/OpenGameWindows'
+import EngineAlerts from '@/components/EngineAlerts'
+import AppUpdateBox from '@/components/AppUpdateBox'
 
-import { STATUS_CONNECTED } from '@/store/networking'
+import { STATUS_CONNECTED, STATUS_CONNECTING, STATUS_RECONNECTING } from '@/store/networking'
 
 export default {
   components: {
@@ -277,17 +337,30 @@ export default {
     OnlineStatus,
     Meeple,
     GlobalChat,
-    OpenGameWindows
+    OpenGameWindows,
+    EngineAlerts,
+    AppUpdateBox
   },
+
+  mixins: [
+    AddonsReloadObserverMixin
+  ],
 
   data () {
     return {
+      // bumped whenever addons/tiles finish (re)loading, so game cards (validity +
+      // GameSetupOverviewInline) refresh instead of staying stuck on pre-load "missing addon" data
+      addonsReloadTick: 0,
       hideAlertMessage: false,
       showDeleteDialog: false,
       showDeleteGameId: null,
       showJoinDialog: false,
       joinGameId: '',
-      joinError: null
+      joinError: null,
+      autoConnectTried: false,
+      isNicknameDialogOpen: false,
+      pendingNickname: '',
+      nicknameError: ''
     }
   },
 
@@ -299,8 +372,11 @@ export default {
       gamePublicList: state => state.online.gamePublicList,
       playOnlineHostname: state => state.settings.playOnlineUrl.split('/')[0],
       locale: state => state.settings.locale,
+      engine: state => state.engine,
+      settingsLoaded: state => state.loaded.settings,
+      tilesLoaded: state => state.loaded.tiles,
       connected: state => state.networking.connectionStatus === STATUS_CONNECTED,
-      engine: state => state.engine
+      connecting: state => state.networking.connectionStatus === STATUS_CONNECTING || state.networking.connectionStatus === STATUS_RECONNECTING
     }),
 
     getAlertMessageLinks() {
@@ -344,20 +420,13 @@ export default {
     }
   },
 
-  beforeCreate () {
-    // useful for dev mode, reload on this page redirects back to home
-    if (!this.$store.state.networking.connectionType) {
-      this.$router.push('/')
-    }
-  },
-
   mounted () {
-  console.log("Initial alertMessage:", this.alertMessage);
-  console.log("Initial showAlertMessage:", this.showAlertMessage);
-    if (this.$store.state.networking.connectionStatus === STATUS_CONNECTED) {
-      // not reconnecting
-      this.$connection.send({ type: 'LIST_GAMES', payload: {} })
-      this.$connection.send({ type: 'LIST_PUBLIC_GAMES', payload: {} })
+    if (this.connected) {
+      this.sendGameLists()
+    } else {
+      // /online is the default lobby screen: instead of bouncing home when offline, try to
+      // connect automatically (silently) and stay here.
+      this.maybeAutoConnect()
     }
   },
 
@@ -366,6 +435,20 @@ export default {
   },
 
   watch: {
+    // Settings (and therefore the nickname) load asynchronously at startup, so the initial
+    // mount may run before they are ready. Retry the auto-connect once they arrive.
+    settingsLoaded () {
+      this.maybeAutoConnect()
+    },
+
+    // Auto-connect finishes after this component is already mounted, so refresh the lobby the
+    // moment the connection goes live.
+    connected (val) {
+      if (val) {
+        this.sendGameLists()
+      }
+    },
+
     alertMessage: {
       handler(newVal) {
         // When a new message arrives, show dialog
@@ -378,6 +461,65 @@ export default {
   },
 
   methods: {
+    // Called by AddonsReloadObserverMixin when $tiles / $theme finish loading — force the game
+    // lists to re-render so validity and the setup overview reflect the now-loaded addons.
+    afterAddonsReloaded () {
+      this.addonsReloadTick++
+    },
+
+    sendGameLists () {
+      this.$connection.send({ type: 'LIST_GAMES', payload: {} })
+      this.$connection.send({ type: 'LIST_PUBLIC_GAMES', payload: {} })
+    },
+
+    splashImage () {
+      const theme = this.$vuetify.theme.dark ? 'dark' : 'light'
+      return require(`@/assets/splash_${theme}.png`)
+    },
+
+    maybeAutoConnect () {
+      if (this.autoConnectTried) return
+      if (!this.settingsLoaded) return // wait for the nickname to load
+      if (this.connected || this.connecting) return
+      if (this.$store.state.networking.connectionType === 'online') return
+      const nickname = this.$store.state.settings.nickname
+      // Connect automatically only when a nickname is set; otherwise stay offline and let the
+      // user connect explicitly (which prompts for one).
+      if (!nickname || !nickname.trim()) return
+      this.autoConnectTried = true
+      this.$store.dispatch('networking/connectPlayOnlineFan', { silent: true })
+    },
+
+    connect () {
+      const nickname = this.$store.state.settings.nickname
+      if (!nickname || !nickname.trim()) {
+        this.pendingNickname = nickname || ''
+        this.nicknameError = ''
+        this.isNicknameDialogOpen = true
+        this.$nextTick(() => {
+          this.$refs.nicknameInput && this.$refs.nicknameInput.focus()
+        })
+        return
+      }
+      this.autoConnectTried = true
+      this.$store.dispatch('networking/connectPlayOnlineFan')
+    },
+
+    async confirmNickname () {
+      const trimmed = this.pendingNickname.trim()
+      if (!trimmed) {
+        this.nicknameError = this.$t('core-messages.field-is-required', {
+          field: this.$t('settings.player.nickname')
+        })
+        return
+      }
+      this.nicknameError = ''
+      await this.$store.dispatch('settings/update', { nickname: trimmed })
+      this.isNicknameDialogOpen = false
+      this.autoConnectTried = true
+      this.$store.dispatch('networking/connectPlayOnlineFan')
+    },
+
     createGame () {
       const fan = this.$store.state.networking.onlineEntry !== 'plain'
       if (this.$windows.openGame({ kind: 'create-online', payload: { fan } })) return
@@ -431,8 +573,8 @@ export default {
     },
 
     disconnect () {
+      // close() keeps the lobby window on /online in offline state; no navigation needed.
       this.$store.dispatch('networking/close')
-      this.$router.push('/')
     },
 
     resume (game) {
@@ -590,6 +732,15 @@ h2
         
         +theme using ($theme)
           filter: map-get($theme, 'disconnected-filter')
+
+.splash
+  height: 25vh
+  display: flex
+  justify-content: center
+  align-items: center
+
+  img
+    max-width: 600px
 
 .empty-message
   margin: 30px 0
