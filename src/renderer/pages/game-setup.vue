@@ -41,18 +41,22 @@
           :tile-size="$vuetify.breakpoint.height > 768 ? 100 : 80"
           :sets="sets"
           :rules="rules"
+          editable
           @tile-click="onTileClick"
         />
         <GameAnnotationsPanel v-if="settings.devMode" ref="annotationsPanel" />
       </div>
     </template>
   </GameSetupGrid>
-  <GlobalChat />
+  <!-- shift the global-chat bullet left of the red game-chat bullet when both are shown -->
+  <GlobalChat :right="hasGameChat ? '88px' : '20px'" />
+  <SetupChatLauncher />
   </div>
 </template>
 
 <script>
 import { ipcRenderer } from 'electron'
+import debounce from 'lodash/debounce'
 import { mapGetters, mapState } from 'vuex'
 
 import BookmarksTab from '@/components/game-setup/tabs/BookmarksTab'
@@ -68,6 +72,7 @@ import TileSetsTab from '@/components/game-setup/tabs/TileSetsTab'
 import TimerTab from '@/components/game-setup/tabs/TimerTab'
 import RulesTab from '@/components/game-setup/tabs/RulesTab'
 import GlobalChat from '@/components/GlobalChat'
+import SetupChatLauncher from '@/components/game-setup/SetupChatLauncher'
 
 export default {
   components: {
@@ -83,7 +88,8 @@ export default {
     TileSetsTab,
     TimerTab,
     RulesTab,
-    GlobalChat
+    GlobalChat,
+    SetupChatLauncher
   },
 
   data () {
@@ -95,6 +101,10 @@ export default {
   },
 
   computed: {
+    hasGameChat () {
+      return Array.isArray(this.$store.state.game.gameChat)
+    },
+
     ...mapState({
       ai: state => state.gameSetup.ai,
       gameId: state => state.game.id,
@@ -117,6 +127,29 @@ export default {
       // it would be nice to create one, but also wait for artwork load is needed
       // this.$store.dispatch('gameSetup/newGame')
     }
+  },
+
+  created () {
+    // While editing an already-created online game, broadcast every setup change (debounced)
+    // so all connected players see it immediately on the slot page — not only after Continue.
+    this._pushSetupUpdate = debounce(() => {
+      this.$store.dispatch('gameSetup/pushSetupUpdate')
+    }, 400)
+    this._unwatchSetup = this.$store.watch(
+      state => [state.gameSetup.sets, state.gameSetup.elements, state.gameSetup.rules,
+        state.gameSetup.timer, state.gameSetup.start, state.gameSetup.tileOverrides],
+      () => {
+        if (this.$store.state.gameSetup.editingGameId) {
+          this._pushSetupUpdate()
+        }
+      },
+      { deep: true }
+    )
+  },
+
+  beforeDestroy () {
+    this._unwatchSetup && this._unwatchSetup()
+    this._pushSetupUpdate && this._pushSetupUpdate.cancel()
   },
 
   methods: {

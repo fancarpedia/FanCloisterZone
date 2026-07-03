@@ -10,7 +10,7 @@ import fs from 'fs'
 import settings, { getSettingsSync } from './settings'
 import menu from './modules/menu'
 import theme from './modules/theme'
-import dialog, { showUnfinishedGameDialog } from './modules/dialog'
+import dialog, { showUnfinishedGameDialog, showCloseAllGamesDialog } from './modules/dialog'
 import updater from './modules/updater'
 import winevents from './modules/winevents'
 import settingsWatch from './modules/settingsWatch'
@@ -227,6 +227,28 @@ function buildWindow ({ role = 'main', hidden = false } = {}) {
 
   win.on('close', async (event) => {
     const st = winState.get(wcId)
+
+    // Closing the main (lobby) window quits the app and closes every open game window with
+    // it — confirm first when any games are open (same style as the local-game dialog below).
+    if (st && st.role === 'main' && !st.isForceClosing) {
+      const openGames = BrowserWindow.getAllWindows().filter(w =>
+        w !== win && !w.isDestroyed() && isListableGameState(winState.get(w.webContents.id)))
+      if (openGames.length) {
+        event.preventDefault()
+        st.isForceClosing = true
+
+        const choice = await showCloseAllGamesDialog(win)
+
+        st.isForceClosing = false
+        if (choice === 0) {
+          // destroy() skips the games' own close confirmations — the user just approved it
+          openGames.forEach(w => { if (!w.isDestroyed()) w.destroy() })
+          win.destroy() // closed handler quits the app
+        }
+        return
+      }
+    }
+
     if (st && st.hasLocalGame && !st.isForceClosing) {
       event.preventDefault()
       st.isForceClosing = true

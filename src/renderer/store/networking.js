@@ -142,6 +142,19 @@ class ConnectionHandler {
         commit('predraw/reset', null, { root: true })
         if (!rootState.runningTests) {
           this.$router.push('/open-game')
+          // online-hotseat rematch: take the previous seats in the new (swapped) order — the
+          // server assigns seating by TAKE_SLOT sequence
+          const rematchSlots = rootState.gameSetup.rematchSlots
+          if (rematchSlots && rematchSlots.length && !payload.replay) {
+            commit('gameSetup/rematchSlots', null, { root: true })
+            for (const rs of rematchSlots) {
+              const slot = payload.slots.find(s => s.number === rs.number && !s.clientId)
+              if (slot) {
+                await dispatch('gameSetup/takeSlot', { number: rs.number, name: rs.name }, { root: true })
+              }
+            }
+            return
+          }
           const { preferredColor } = rootState.settings
           if (preferredColor !== null && !payload.replay) {
             // player has auto assign enabled and game is a new game
@@ -158,7 +171,12 @@ class ConnectionHandler {
       }
     } else if (type === 'GAME_UPDATE') {
       commit('game/updateSetup', payload.setup, { root: true })
-      this.$router.push('/open-game')
+      // Live setup edits arrive continuously: don't yank the editing owner off /game-setup,
+      // and don't re-navigate players who are already on the slot page.
+      const path = this.$router.currentRoute.path
+      if (!rootState.gameSetup.editingGameId && path !== '/open-game') {
+        this.$router.push('/open-game')
+      }
     } else if (type === 'GAME_OPTION') {
       commit('game/options', { [payload.key]: payload.value }, { root: true })
     } else if (type === 'GAME_CHAT') {
@@ -392,7 +410,10 @@ export const actions = {
     }
   },
 
-  close ({ commit, rootState }) {
+  // `redirect: false` closes the connection without navigating — used by play-again/rematch,
+  // which immediately start a new game in the SAME window (in a game window the default
+  // navigation to '/' would trigger the windowing guard and close the window).
+  close ({ commit, rootState }, { redirect = true } = {}) {
     const { $server, $connection } = this._vm
     if (reconnectTimeout) {
       clearTimeout(reconnectTimeout)
@@ -405,7 +426,7 @@ export const actions = {
     commit('connectionStatus', null)
     commit('reconnectAttempt', null)
     commit('onlineEntry', null)
-    if (!rootState.runningTests) {
+    if (redirect && !rootState.runningTests) {
       // Game windows go to '/' (windowing guard closes them); the lobby stays on /online.
       const home = homeRoute(this._vm.$windows)
       if (this.$router.currentRoute.path !== home) {

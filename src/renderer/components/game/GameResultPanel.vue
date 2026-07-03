@@ -30,7 +30,7 @@
         {{ $t('button.play-again') }}
       </v-btn>
 
-      <v-btn v-if="!gameKey" large color="primary" @click="rematch" class="rematch">
+      <v-btn v-if="rematchAvailable" large color="primary" @click="rematch" class="rematch">
         <v-icon left>fas fa-arrows-rotate</v-icon>
         {{ $t('button.rematch') }}
       </v-btn>
@@ -62,7 +62,18 @@ export default {
     ...mapGetters({
       colorCssClass: 'game/colorCssClass',
       ranks: 'game/ranks'
-    })
+    }),
+
+    // Rematch swaps/reshuffles the seating: always possible for local games; for online games
+    // only when every occupied seat belongs to THIS client (hotseat) — remote players can't be
+    // re-seated automatically.
+    rematchAvailable () {
+      if (!this.gameKey) return true
+      const { slots } = this.$store.state.game
+      const clientId = this.$store.state.settings.clientId
+      const occupied = (slots || []).filter(s => s.clientId)
+      return occupied.length > 0 && occupied.every(s => s.clientId === clientId)
+    }
   },
 
   methods: {
@@ -77,7 +88,8 @@ export default {
 
     async playAgain () {
       const { setup, gameAnnotations } = this.$store.state.game
-      await this.$store.dispatch('game/close')
+      // no redirect: the new game starts in THIS window (navigating home would close it)
+      await this.$store.dispatch('game/close', { redirect: false })
       this.$store.dispatch('gameSetup/load', setup)
       this.$store.commit('gameSetup/gameAnnotations', gameAnnotations)
       await this.$store.dispatch('gameSetup/createGame')
@@ -127,11 +139,22 @@ export default {
 
     async rematch () {
       const { setup, gameAnnotations, slots } = this.$store.state.game
-      await this.$store.dispatch('game/close')
+      // no redirect: the new game starts in THIS window (navigating home would close it)
+      await this.$store.dispatch('game/close', { redirect: false })
       this.$store.dispatch('gameSetup/load', setup)
       this.$store.commit('gameSetup/gameAnnotations', gameAnnotations)
       const revertedSlots = this.invertOrder(slots)
-      
+
+      if (this.onlineConnected) {
+        // online hotseat: the server assigns seating by TAKE_SLOT sequence — queue the seats
+        // in the new (swapped) order and take them when the created game arrives
+        const ordered = revertedSlots
+          .filter(s => s.order !== undefined && s.order !== null)
+          .sort((a, b) => a.order - b.order)
+          .map(s => ({ number: s.number, name: s.name }))
+        this.$store.commit('gameSetup/rematchSlots', ordered)
+      }
+
       await this.$store.dispatch('gameSetup/createGame', {
         loadedSetup: setup,
         slots: revertedSlots

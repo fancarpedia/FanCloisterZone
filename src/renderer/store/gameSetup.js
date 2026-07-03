@@ -30,6 +30,56 @@ function getEmptySlots () {
   return slots
 }
 
+// Build the wire `setup` from the current gameSetup state (used by createGame and by the
+// live UPDATE_GAME_SETUP push while editing an online game's setup).
+function buildSetupFromState (vm, state, getters) {
+  const { $tiles } = vm
+  const edition = getters.getSelectedEdition
+  const sets = mapKeys(state.sets, (value, key) => {
+    return $tiles.sets[key] ? key : key + ':' + edition
+  })
+  const addons = {}
+  Object.keys($tiles.getExpansions(sets, edition)).forEach(id => {
+    const { addon } = Expansion[id]
+    if (addon) {
+      addons[addon.id] = addon.json.version
+    }
+  })
+
+  const setup = {
+    sets,
+    elements: state.elements,
+    rules: state.rules,
+    timer: state.timer,
+    start: getters.selectedStartingTiles.value,
+    ai: state.ai,
+    options: {}
+  }
+
+  // per-tile count overrides (diffs from set defaults) — omitted entirely when untouched
+  const tileOverrides = $tiles.getValidTileOverrides(
+    state.sets, state.rules, edition, getters.selectedStartingTiles, state.tileOverrides
+  )
+  if (tileOverrides) {
+    setup.tileOverrides = tileOverrides
+  }
+
+  if (Object.keys(addons).length) {
+    setup.addons = addons
+  }
+
+  const rules = {}
+  Rule.all().forEach(r => {
+    if (r.isAvailable($tiles, setup)) {
+      const val = state.rules[r.id]
+      rules[r.id] = val === undefined ? r.default : val
+    }
+  })
+  setup.rules = rules
+
+  return setup
+}
+
 export const state = () => ({
   sets: null,
   excludedSets: {},
@@ -40,7 +90,13 @@ export const state = () => ({
   gameAnnotations: {},
   ai: false,
   editingGameId: null,
-  preDrawSuspended: null // pre-draw value stashed while an incompatible expansion is selected
+  preDrawSuspended: null, // pre-draw value stashed while an incompatible expansion is selected
+  // per-tile count overrides: tileId -> count, stored only as diffs from the counts computed
+  // from the selected sets (0 = tile excluded); empty when the pack is untouched
+  tileOverrides: {},
+  // online-hotseat rematch: seats ({number, name}, in the new order) to auto-take when the
+  // freshly created game arrives (server assigns seating by TAKE_SLOT sequence)
+  rematchSlots: null
 })
 
 export const mutations = {
@@ -56,6 +112,8 @@ export const mutations = {
     state.ai = false
     state.editingGameId = null
     state.preDrawSuspended = null
+    state.tileOverrides = {}
+    state.rematchSlots = null
   },
 
   setAI (state) {
@@ -76,6 +134,7 @@ export const mutations = {
     state.gameAnnotations = {}
     state.ai = setup.ai
     state.preDrawSuspended = null
+    state.tileOverrides = setup.tileOverrides ? { ...setup.tileOverrides } : {}
   },
 
   gameAnnotations (state, gameAnnotations) {
@@ -120,6 +179,22 @@ export const mutations = {
 
   startingTiles (state, id) {
     state.start = id
+  },
+
+  tileOverride (state, { tileId, count }) {
+    if (count === null || count === undefined) {
+      Vue.delete(state.tileOverrides, tileId)
+    } else {
+      Vue.set(state.tileOverrides, tileId, count)
+    }
+  },
+
+  tileOverrides (state, value) {
+    state.tileOverrides = value || {}
+  },
+
+  rematchSlots (state, value) {
+    state.rematchSlots = value
   }
 }
 
@@ -210,6 +285,62 @@ export const actions = {
 
     // A set may have enforced/removed an expansion (in)compatible with pre-draw — suspend or restore.
     dispatch('reconcilePreDraw')
+
+    // The pack composition changed — drop per-tile overrides that no longer apply.
+    dispatch('pruneTileOverrides')
+  },
+
+  // Set (or clear, when it matches the computed default) a per-tile count override.
+  setTileOverride ({ state, commit, getters, dispatch }, { tileId, count }) {
+    const { $tiles } = this._vm
+    const defaults = $tiles.getTilesCounts(
+      state.sets, state.rules, getters.getSelectedEdition, getters.selectedStartingTiles
+    )
+    if (defaults[tileId] === undefined) return
+    const edition = getters.getSelectedEdition
+    const before = $tiles.getDefaultElements(state.sets, state.tileOverrides, edition)
+    commit('tileOverride', { tileId, count: count === defaults[tileId] ? null : count })
+    dispatch('reconcileTileElements', { before })
+  },
+
+  // Wholesale replace of the overrides (Reset / Remove all buttons, unchecking quantity change).
+  setTileOverrides ({ state, commit, getters, dispatch }, value) {
+    const { $tiles } = this._vm
+    const edition = getters.getSelectedEdition
+    const before = $tiles.getDefaultElements(state.sets, state.tileOverrides, edition)
+    commit('tileOverrides', value || {})
+    dispatch('reconcileTileElements', { before })
+  },
+
+  // Removing/restoring tiles changes what the pack allows: sync the implied element defaults
+  // (e.g. inn/cathedral auto-uncheck when their tiles are gone, re-check when restored) and
+  // force-disable checked elements whose tiles are no longer in the pack at all.
+  reconcileTileElements ({ state, commit, getters }, { before }) {
+    const { $tiles } = this._vm
+    const edition = getters.getSelectedEdition
+    const after = $tiles.getDefaultElements(state.sets, state.tileOverrides, edition)
+    const diff = getModifiedDefaults(before, after)
+    Object.entries(diff).forEach(([id, config]) => {
+      commit('elementConfig', { id, config })
+    })
+    GameElement.all().forEach(ge => {
+      if (ge.id in state.elements) {
+        if (!$tiles.isElementEnabled(ge, state.sets, state.elements, state.tileOverrides, edition)) {
+          commit('elementConfig', { id: ge.id, config: false })
+        }
+      }
+    })
+  },
+
+  // Drop overrides for tiles no longer in the pack or equal to their computed default.
+  pruneTileOverrides ({ state, commit, getters }) {
+    if (!Object.keys(state.tileOverrides).length) return
+    const { $tiles } = this._vm
+    const valid = $tiles.getValidTileOverrides(
+      state.sets, state.rules, getters.getSelectedEdition, getters.selectedStartingTiles,
+      state.tileOverrides
+    )
+    commit('tileOverrides', valid || {})
   },
 
   // Suspend pre-draw (remembering its value) while an incompatible expansion is selected, and restore
@@ -325,42 +456,17 @@ export const actions = {
         options: {},
         ...loadedSetup
       }
-    } else {
-      const edition = getters.getSelectedEdition
-      const sets = mapKeys(state.sets, (value, key) => {
-        return $tiles.sets[key] ? key : key + ':' + edition
-      })
-      const addons = {}
-      Object.keys($tiles.getExpansions(sets, edition)).forEach(id => {
-        const { addon } = Expansion[id]
-        if (addon) {
-          addons[addon.id] = addon.json.version
+      const rules = {}
+      Rule.all().forEach(r => {
+        if (r.isAvailable($tiles, setup)) {
+          const val = state.rules[r.id]
+          rules[r.id] = val === undefined ? r.default : val
         }
       })
-
-      setup = {
-        sets,
-        elements: state.elements,
-        rules: state.rules,
-        timer: state.timer,
-        start: getters.selectedStartingTiles.value,
-        ai: state.ai,
-        options: {}
-      }
-
-      if (Object.keys(addons).length) {
-        setup.addons = addons
-      }
+      setup.rules = rules
+    } else {
+      setup = buildSetupFromState(this._vm, state, getters)
     }
-
-    const rules = {}
-    Rule.all().forEach(r => {
-      if (r.isAvailable($tiles, setup)) {
-        const val = state.rules[r.id]
-        rules[r.id] = val === undefined ? r.default : val
-      }
-    })
-    setup.rules = rules
 
     if (state.editingGameId) {
       // Update existing game instead of creating a new one
@@ -378,6 +484,17 @@ export const actions = {
         gameAnnotations: state.gameAnnotations
       }, { root: true })
     }
+  },
+
+  // Live update while editing an online game's setup: broadcast the current setup so every
+  // connected player sees the change on the slot page immediately (not only after Continue).
+  pushSetupUpdate ({ state, getters }) {
+    if (!state.editingGameId) return
+    const setup = buildSetupFromState(this._vm, state, getters)
+    this._vm.$connection.send({
+      type: 'UPDATE_GAME_SETUP',
+      payload: { gameId: state.editingGameId, setup }
+    })
   }
 }
 

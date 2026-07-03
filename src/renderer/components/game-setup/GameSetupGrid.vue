@@ -21,6 +21,8 @@
 <script>
 import TilePackSize from '@/components/game/TilePackSize'
 
+import { getSelectedEdition, getSelectedStartingTiles } from '@/utils/gameSetupUtils'
+
 export default {
   components: {
     TilePackSize
@@ -29,13 +31,21 @@ export default {
   props: {
     sets: { type: Object, required: true },
     rules: { type: Object, required: true },
+    // the setup providing elements/start/tileOverrides for the pack size; defaults to the
+    // gameSetup store (setup editor) — open-game passes the game's own setup instead
+    setup: { type: Object, default: null },
     showPackSize: { type: Boolean, default: true },
     showDetail: { type: Boolean, default: true }
   },
 
   computed: {
     packSize () {
-      return this.$tiles.getPackSize(this.sets, this.rules)
+      // overrides are keyed by per-edition tile ids — size must be computed with the
+      // edition/start the pack editor works against
+      const setup = this.setup || this.$store.state.gameSetup || {}
+      const edition = getSelectedEdition(setup.elements) || 1
+      const start = getSelectedStartingTiles(setup.elements, setup.sets || this.sets, setup.start)
+      return this.$tiles.getPackSize(this.sets, this.rules, setup.tileOverrides, edition, start)
     }
   }
 }

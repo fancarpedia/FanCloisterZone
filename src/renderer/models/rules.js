@@ -29,7 +29,7 @@ export class Rule {
     return Rule.__all
   }
 
-  isAvailable ($tiles, { elements, sets }) {
+  isAvailable ($tiles, { elements, sets, tileOverrides }) {
     if (this.id === 'keep-monasteries') {
       const edition = elements.garden ? 2 : 1
       return Object.keys(sets).some(id => {
@@ -40,6 +40,9 @@ export class Rule {
 
     if (this.id === 'labyrinth-variant') {
       const edition = elements.garden ? 2 : 1
+      if (tileOverrides && Object.keys(tileOverrides).length) {
+        return $tiles.getActiveAllows(sets, tileOverrides, edition).has('labyrinth-variant')
+      }
       return Object.keys(sets).some(id => {
         const set = $tiles.sets[id] || $tiles.sets[id + ':' + edition]
         return set.allows && set.allows.includes('labyrinth-variant')

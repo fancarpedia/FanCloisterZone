@@ -1,12 +1,13 @@
 <template>
   <!-- inline: an always-open panel (lobby). overlay: a blue launcher ("bullet") that opens the panel
        — drop <GlobalChat /> on any online page; it hides itself when not connected online. -->
-  <div v-if="visible" :class="['global-chat-root', inline ? 'inline' : 'overlay', { 'overlay-left': !inline && left }]" :style="overlayVars">
+  <div v-if="visible" :class="['global-chat-root', inline ? 'inline' : 'overlay', { 'overlay-left': !inline && left && !customRight }]" :style="overlayVars">
     <button
       v-if="!inline"
       v-show="!open"
       class="gc-launcher"
       :title="$t('global-chat.title')"
+      @mousedown="bulletDragStart('global-chat', $event)"
       @click="openChat"
     >
       <v-icon class="gc-launcher-icon">fas fa-globe</v-icon>
@@ -54,7 +55,11 @@
 import { mapState } from 'vuex'
 import isNil from 'lodash/isNil'
 
+import ChatBulletDragMixin from '@/components/ChatBulletDragMixin'
+
 export default {
+  mixins: [ChatBulletDragMixin],
+
   props: {
     // inline = always-open panel (lobby); otherwise a collapsible blue overlay ("bullet").
     inline: { type: Boolean, default: false },
@@ -82,8 +87,14 @@ export default {
       return this.connectionType === 'online'
     },
 
+    // once the user has dragged the bullet, that position wins over the page defaults
+    customRight () {
+      return this.bulletRight('global-chat')
+    },
+
     overlayVars () {
       if (this.inline) return {}
+      if (this.customRight) return { '--gc-right': this.customRight }
       return this.left ? { '--gc-left': this.left } : { '--gc-right': this.right }
     },
 
@@ -106,6 +117,7 @@ export default {
 
   methods: {
     openChat () {
+      if (!this.bulletClickAllowed()) return // the click just ended a drag
       this.open = true
       this.readCount = this.messages.length
       this.scrollToBottom()

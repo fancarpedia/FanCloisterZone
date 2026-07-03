@@ -4,7 +4,9 @@
     <button
       v-show="!open"
       class="chat-launcher"
+      :style="bulletRight('game-chat') ? { right: bulletRight('game-chat') } : {}"
       :title="$t('chat.open') || 'Chat'"
+      @mousedown="bulletDragStart('game-chat', $event)"
       @click="openChat"
     >
       <v-icon class="chat-launcher-icon color-overlay">fas fa-comments</v-icon>
@@ -32,7 +34,7 @@
             v-for="m in messages"
           >
             <div
-              :class="'sender color-bg-important color color-overlay color-'+ getPlayerSlotColor(m.player)"
+              :class="'sender color-bg-important color color-overlay color-'+ getMessageSlotColor(m)"
             >
               <!-- {{ getPlayerName(m.player) }} -->
             </div>
@@ -88,7 +90,11 @@ import isArray from 'lodash/isArray'
 import isEqual from 'lodash/isEqual'
 import isNil from 'lodash/isNil'
 
+import ChatBulletDragMixin from '@/components/ChatBulletDragMixin'
+
 export default {
+  mixins: [ChatBulletDragMixin],
+
   data () {
     const src = require('~/assets/beep.wav')
     return {
@@ -234,6 +240,7 @@ export default {
 
   methods: {
     openChat() {
+      if (!this.bulletClickAllowed()) return // the click just ended a drag
       this.open = true
       // mark everything read
       this.readCount = this.chatEnabled ? this.messages.length : 0
@@ -283,10 +290,19 @@ export default {
       this.position.bottom = Math.min(Math.max(this.position.bottom ?? margin, margin), maxBottom)
     },
     getPlayerName(player) {
-      return this.players[player].name
+      const p = this.players && this.players[player]
+      return p ? p.name : ''
     },
     getPlayerSlotColor(player) {
-      return this.players[player].slot
+      const p = this.players && this.players[player]
+      return p ? p.slot : 0
+    },
+    // Message sender color. Messages written BEFORE the game started (slot page / change-setup
+    // chat) carry `slot` directly and their `player` is a slot NUMBER — not an index into the
+    // players array — so indexing players with it would crash (e.g. slot 1 in a 1-player game).
+    getMessageSlotColor(m) {
+      if (!isNil(m.slot)) return m.slot
+      return this.getPlayerSlotColor(m.player)
     },
     getMessageTime(message) {
       if (!isNil(message.timestamp)) {
@@ -315,7 +331,8 @@ export default {
     sendMessageByPlayer(player) {
       const message = this.newMessage.trim()
       if (message.length>0) {
-        this.$store.dispatch('game/chat', { player: player, message: message } )
+        // include the slot so the message renders correctly regardless of game phase
+        this.$store.dispatch('game/chat', { player: player, slot: this.getPlayerSlotColor(player), message: message } )
         this.sentMessage = message
         this.newMessage = ''
       }

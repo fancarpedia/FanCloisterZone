@@ -147,7 +147,40 @@ class Tiles extends EventsBase {
     return counts
   }
 
-  getPackSize (sets, rules) {
+  // Apply per-tile count overrides (diffs from the computed defaults) to a counts map.
+  // Only tiles present in `counts` are affected — a stale override for a tile no longer in
+  // the pack is ignored. An override of 0 removes the tile from the map.
+  applyTileOverrides (counts, tileOverrides) {
+    if (!tileOverrides || !Object.keys(tileOverrides).length) return counts
+    const result = { ...counts }
+    Object.entries(tileOverrides).forEach(([tileId, count]) => {
+      if (result[tileId] === undefined) return
+      if (count > 0) {
+        result[tileId] = count
+      } else {
+        delete result[tileId]
+      }
+    })
+    return result
+  }
+
+  // Overrides that are still meaningful for the given pack: keys present in the defaults
+  // and differing from them. Returns null when nothing remains.
+  getValidTileOverrides (sets, rules, edition, start, tileOverrides) {
+    if (!tileOverrides || !Object.keys(tileOverrides).length) return null
+    const defaults = this.getTilesCounts(sets, rules, edition, start)
+    const valid = {}
+    Object.entries(tileOverrides).forEach(([tileId, count]) => {
+      if (defaults[tileId] === undefined) return
+      if (defaults[tileId] === count) return
+      valid[tileId] = count
+    })
+    return Object.keys(valid).length ? valid : null
+  }
+
+  // NB: without overrides both editions give the same TOTAL, but tile overrides are keyed by
+  // per-edition tile ids/counts — callers editing the pack must pass the real edition (+ start).
+  getPackSize (sets, rules, tileOverrides = null, edition = '1', start = null) {
     let countExp = 0
     // count "The Count of Carcassonne" as single tile
     if (sets.count) {
@@ -156,7 +189,8 @@ class Tiles extends EventsBase {
       countExp = 1
     }
 
-    const counts = this.getTilesCounts(sets, rules, '1') // both editions should provide same size
+    let counts = this.getTilesCounts(sets, rules, edition, start)
+    counts = this.applyTileOverrides(counts, tileOverrides)
     return countExp + Object.entries(counts).reduce((total, [tileId, tileCount]) => total + tileCount, 0)
   }
 
@@ -175,12 +209,24 @@ class Tiles extends EventsBase {
     return ae.r - be.r // less roads first
   }
 
-  getDefaultElements (sets) {
+  // Element ids allowed by the tiles ACTUALLY in the pack — the selected sets' tiles with
+  // the per-tile overrides applied (a tile overridden to 0 no longer contributes anything).
+  getActiveAllows (sets, tileOverrides, edition = '1') {
+    const counts = this.applyTileOverrides(this.getTilesCounts(sets, null, edition), tileOverrides)
+    const allows = new Set([])
+    Object.keys(counts).forEach(tileId => {
+      const tileAllows = this.tileAllows[tileId]
+      if (tileAllows) tileAllows.forEach(geId => allows.add(geId))
+    })
+    return allows
+  }
+
+  getDefaultElements (sets, tileOverrides = null, edition = '1') {
     const q = {}
 
     const implies = new Set([])
     const impliesAllowed = new Set([])
-    const allows = new Set([])
+    let allows = new Set([])
 
     Object.keys(sets).forEach(id => {
       const set = this.sets[id] || this.sets[id + ':1'] || this.sets[id + ':2'] || UNKWNOWN_SET
@@ -189,20 +235,46 @@ class Tiles extends EventsBase {
       set.allows.forEach(elem => { allows.add(elem) })
     })
 
+    // with per-tile overrides, only tiles still in the pack decide what is allowed
+    const overridesActive = !!(tileOverrides && Object.keys(tileOverrides).length)
+    if (overridesActive) {
+      allows = this.getActiveAllows(sets, tileOverrides, edition)
+    }
+
     GameElement.all().forEach(elem => {
       if (elem.default) {
         q[elem.id] = elem.default
-      } else if (implies.has(elem.id) || (impliesAllowed.has(elem.id) && allows.has(elem.id))) {
-        q[elem.id] = elem.configType === Number ? 1 : true
+        return
       }
+      if (!(implies.has(elem.id) || (impliesAllowed.has(elem.id) && allows.has(elem.id)))) {
+        return
+      }
+      // a selector-based element (tied to tile features, e.g. inn/cathedral) is only implied
+      // while its tiles are actually in the pack — even when the expansion `implies` it
+      if (overridesActive && elem.selector !== undefined && !allows.has(elem.id)) {
+        return
+      }
+      q[elem.id] = elem.configType === Number ? 1 : true
     })
 
     // console.log(Object.keys(sets).join(',') + ' -> ' + Object.keys(q).join(','))
     return q
   }
 
-  isElementEnabled (ge, enabledSets, enabledElements) {
-    return (ge.default !== undefined && ge.selector === undefined) || Object.keys(enabledSets).find(id => {
+  isElementEnabled (ge, enabledSets, enabledElements, tileOverrides = null, edition = '1') {
+    if (ge.default !== undefined && ge.selector === undefined) return true
+    if (tileOverrides && Object.keys(tileOverrides).length) {
+      // a selector-based element follows the tiles actually left in the pack — a set-level
+      // `implies` cannot keep it enabled once all of its tiles were removed
+      if (ge.selector !== undefined) {
+        return this.getActiveAllows(enabledSets, tileOverrides, edition).has(ge.id)
+      }
+      return Object.keys(enabledSets).find(id => {
+        const set = this.sets[id] || this.sets[id + ':1'] || this.sets[id + ':2']
+        return set.implies.includes(ge.id)
+      }) !== undefined
+    }
+    return Object.keys(enabledSets).find(id => {
       const set = this.sets[id] || this.sets[id + ':1'] || this.sets[id + ':2']
       return set.allows.includes(ge.id) || set.implies.includes(ge.id)
     }) !== undefined
@@ -461,6 +533,7 @@ class Tiles extends EventsBase {
     this.xmls = xmls
     this.tiles = tiles
     this.sets = sets
+    this.tileAllows = tileAllows // per-tile element ids (selector matches), for override-aware availability
     this.expansionGroups = expansionGroups
     this.expansions = sortBy(expansions, 'name')
     this.loaded = true

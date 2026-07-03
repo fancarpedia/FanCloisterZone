@@ -59,11 +59,12 @@ export default {
   computed: {
     ...mapState({
       sets: state => state.gameSetup.sets,
-      elements: state => state.gameSetup.elements
+      elements: state => state.gameSetup.elements,
+      tileOverrides: state => state.gameSetup.tileOverrides
     }),
 
     enabled () {
-      return this.$tiles.isElementEnabled(this.item, this.sets, this.elements)
+      return this.$tiles.isElementEnabled(this.item, this.sets, this.elements, this.tileOverrides, this.elements.garden ? 2 : 1)
     },
 
     mandatory () {

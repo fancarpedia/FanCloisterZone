@@ -52,6 +52,36 @@ export async function showUnfinishedGameDialog (win) {
   }
 }
 
+// Closing the main (lobby) window quits the app and takes every open game window with it —
+// same style as the unfinished-local-game confirmation above.
+export async function showCloseAllGamesDialog (win) {
+  const closeLabel = getTranslation('close-all-games', 'close-all-games', 'Close All Games')
+  const keepLabel = getTranslation('close-all-games', 'keep-playing', 'Keep Playing')
+  const title = getTranslation('close-all-games', 'open-game-windows', 'Open Game Windows')
+  const message = getTranslation('close-all-games', 'open-game-windows-description',
+    'There are open game windows. Closing the main window will close all of them and quit the app.')
+
+  const opts = {
+    type: 'warning',
+    buttons: [closeLabel, keepLabel],
+    defaultId: 0,
+    cancelId: 1,
+    title,
+    message
+  }
+
+  try {
+    const target = win && !win.isDestroyed() ? win : null
+    const result = target
+      ? await dialog.showMessageBox(target, opts)
+      : await dialog.showMessageBox(opts)
+    return result.response
+  } catch (err) {
+    console.error('Dialog error:', err)
+    return 0 // Default to quit app
+  }
+}
+
 export default function () {
   ipcMain.handle('dialog.showOpenDialog', async (ev, opts) => {
     return await dialog.showOpenDialog(opts)

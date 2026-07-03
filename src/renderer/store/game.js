@@ -30,7 +30,8 @@ const buildPreDrawDeck = ($tiles, setup) => {
   const { elements, sets, rules, start } = setup
   const edition = getSelectedEdition(elements)
   const startTiles = getSelectedStartingTiles(elements, sets, start)
-  const counts = { ...$tiles.getTilesCounts(sets, rules, edition, startTiles) }
+  // final counts = set defaults with the player's per-tile overrides applied
+  const counts = { ...$tiles.applyTileOverrides($tiles.getTilesCounts(sets, rules, edition, startTiles), setup.tileOverrides) }
   if (startTiles && startTiles.value) {
     startTiles.value.forEach(({ tile }) => {
       if (counts[tile]) {
@@ -84,7 +85,10 @@ const applySetup = (state, value, vm) => {
   const { $tiles } = vm
   state.setup = value
   if (value) {
-    state.packSize = $tiles.getPackSize(value.sets, value.rules)
+    // overrides are keyed by per-edition tile ids — compute the size with the game's edition
+    const edition = getSelectedEdition(value.elements)
+    const start = getSelectedStartingTiles(value.elements, value.sets, value.start)
+    state.packSize = $tiles.getPackSize(value.sets, value.rules, value.tileOverrides, edition, start)
   }
 }
 
@@ -972,10 +976,13 @@ export const actions = {
     //   params: { drawLimit: 3 }
     // }
 
+    // engine reads per-tile count overrides from `tiles` (GameSetupMessage.tiles)
+    const { tileOverrides, ...fullSetup } = $tiles.getFullSetup(state.setup)
     const setupMessage = {
       type: 'GAME_SETUP',
       payload: {
-        ...$tiles.getFullSetup(state.setup),
+        ...fullSetup,
+        ...(tileOverrides && Object.keys(tileOverrides).length ? { tiles: tileOverrides } : {}),
         gameId: state.id,
         players: players.length,
         initialRandom: state.initialRandom,
@@ -1045,11 +1052,11 @@ export const actions = {
     }
   },
 
-  close ({ dispatch, commit, rootState }) {
+  close ({ dispatch, commit, rootState }, options = null) {
     commit('id', null)
     if (rootState.networking.connectionType !== 'online') {
       const { $engine } = this._vm
-      dispatch('networking/close', null, { root: true })
+      dispatch('networking/close', options, { root: true })
       $engine.kill()
     }
   },

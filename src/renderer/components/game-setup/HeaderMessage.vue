@@ -6,6 +6,9 @@
     <div v-else-if="!containsCoreSet" class="info-text">
       {{ $t('core-messages.no-core-set') }}
     </div>
+    <div v-else-if="startTileExcluded" class="warning-text">
+      {{ $t('game-setup.start-tile-excluded') }}
+    </div>
     <div v-else-if="info" class="info-text">
       {{ info }}
     </div>
@@ -23,13 +26,22 @@ export default {
 
   computed: {
     ...mapState({
-      engine: state => state.engine
+      engine: state => state.engine,
+      tileOverrides: state => state.gameSetup.tileOverrides
     }),
 
     containsCoreSet () {
       return this.sets.basic || this.sets['basic:1'] || this.sets['basic:2'] ||
         this.sets.winter || this.sets['winter:1'] || this.sets['winter:2'] ||
         this.sets.start
+    },
+
+    // a pre-placed starting tile whose count was overridden to 0 cannot be drawn from the pack
+    startTileExcluded () {
+      if (!this.tileOverrides || !Object.keys(this.tileOverrides).length) return false
+      const startTiles = this.$store.getters['gameSetup/selectedStartingTiles']
+      if (!startTiles || !startTiles.value) return false
+      return startTiles.value.some(({ tile }) => this.tileOverrides[tile] === 0)
     }
   }
 }

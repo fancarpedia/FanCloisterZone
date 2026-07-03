@@ -69,6 +69,7 @@
             :tile-size="$vuetify.breakpoint.height > 768 ? 60 : 48"
             :sets="selectedSetup.sets"
             :rules="selectedSetup.rules"
+            :tile-overrides="selectedSetup.tileOverrides"
             small
           />
         </v-card-text>

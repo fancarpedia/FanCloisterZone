@@ -1,6 +1,6 @@
 <template>
   <div class="open-game-view view">
-  <GameSetupGrid v-if="loaded && gameId" :sets="sets" :rules="rules">
+  <GameSetupGrid v-if="loaded && gameId" :sets="sets" :rules="rules" :setup="setup">
     <template #header>
       <div
         v-if="gameKey"

@@ -10,6 +10,7 @@
       <TilePackSize
         :size="tilePackSize"
         :removed-tiles-size="removedTilesSize"
+        :game-key="$store.state.game.key"
         @click.native="tilePackOpen = !tilePackOpen"
       />
       <aside

@@ -2,39 +2,46 @@
   <div class="online-page">
     <EngineAlerts />
     <AppUpdateBox />
-    <OnlineStatus />
     <header>
-      <v-btn :disabled="!connected" large color="primary" @click="createGame()">
-        {{ $t('button.create-game') }}
-      </v-btn>
+      <section class="button-group">
+        <h3 class="group-title"><OnlineStatus /></h3>
+        <div class="group-buttons">
+          <v-btn :disabled="!connected" large color="primary" @click="createGame()">
+            {{ $t('button.create-game') }}
+          </v-btn>
 
-      <v-btn :disabled="!connected" large color="primary" @click="openJoinGameDialog()">
-        {{ $t('button.join-game') }}
-      </v-btn>
+          <v-btn :disabled="!connected" large color="primary" @click="openJoinGameDialog()">
+            {{ $t('button.join-game') }}
+          </v-btn>
+
+          <v-btn v-if="connected" large color="secondary" @click="disconnect()">
+            {{ $t('button.disconnect') }}
+          </v-btn>
+          <v-btn v-else large color="secondary" :loading="connecting" @click="connect()">
+            {{ $t('button.connect') }}
+          </v-btn>
+        </div>
+      </section>
 
       <span class="header-divider" />
 
       <!-- Local games run in their own window, independent of the online connection. -->
-      <v-btn large color="secondary" :disabled="!engine || !engine.ok" @click="newLocalGame()">
-        {{ $t('index.local.new-game') }}
-      </v-btn>
+      <section class="button-group">
+        <h3 class="group-title">{{ $t('index.local.local-games') }}</h3>
+        <div class="group-buttons">
+          <v-btn large color="secondary" :disabled="!engine || !engine.ok" @click="newLocalGame()">
+            {{ $t('index.local.new-game') }}
+          </v-btn>
 
-      <v-btn large color="secondary" :disabled="!engine || !engine.ok" @click="newLocalGameAI()">
-        {{ $t('index.local.new-game-against-ai') }}
-      </v-btn>
+          <v-btn large color="secondary" :disabled="!engine || !engine.ok" @click="newLocalGameAI()">
+            {{ $t('index.local.new-game-against-ai') }}
+          </v-btn>
 
-      <v-btn large color="secondary" :disabled="!engine || !engine.ok" @click="loadLocalGame()">
-        {{ $t('index.local.open-game') }}
-      </v-btn>
-
-      <span class="header-divider" />
-
-      <v-btn v-if="connected" large color="secondary" @click="disconnect()">
-        {{ $t('button.disconnect') }}
-      </v-btn>
-      <v-btn v-else large color="secondary" :loading="connecting" @click="connect()">
-        {{ $t('button.connect') }}
-      </v-btn>
+          <v-btn large color="secondary" :disabled="!engine || !engine.ok" @click="loadLocalGame()">
+            {{ $t('index.local.open-game') }}
+          </v-btn>
+        </div>
+      </section>
     </header>
     <div class="online-body">
     <main>
@@ -619,14 +626,36 @@ export default {
     background: map-get($theme, 'board-bg')
 
 header
-  padding: 8px 0 16px
+  padding: 8px 0 12px
   display: flex
-  align-items: center
+  align-items: stretch
   justify-content: center
 
   +theme using ($theme)
     background-color: map-get($theme, 'cards-bg')
     color: map-get($theme, 'gray-text-color')
+
+  .button-group
+    display: flex
+    flex-direction: column
+    align-items: center
+    gap: 6px
+
+    .group-title
+      font-size: 14px
+      font-weight: 300
+      text-transform: uppercase
+      margin: 0
+
+      // OnlineStatus text used as the group title — flatten its own bar styling
+      ::v-deep .online-status
+        background: none !important
+        font-size: 14px
+        text-transform: uppercase
+
+    .group-buttons
+      display: flex
+      align-items: center
 
   .v-btn
     margin: 0 15px

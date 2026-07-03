@@ -68,7 +68,11 @@ export default {
         delete sets.count
       }
 
-      const counts = this.$tiles.getTilesCounts(sets, this.rules, this.edition, this.start)
+      // final counts: set defaults with the game's per-tile overrides applied
+      const counts = this.$tiles.applyTileOverrides(
+        this.$tiles.getTilesCounts(sets, this.rules, this.edition, this.start),
+        this.$store.state.game.setup?.tileOverrides
+      )
       let tiles = Object.keys(counts).map(id => ({ id, ...this.$tiles.tiles[id] }))
       tiles.sort(this.$tiles.sortByEdge)
 

@@ -37,11 +37,12 @@ export default {
   computed: {
     ...mapState({
       sets: state => state.gameSetup.sets,
-      elements: state => state.gameSetup.elements
+      elements: state => state.gameSetup.elements,
+      tileOverrides: state => state.gameSetup.tileOverrides
     }),
 
     enabled () {
-      return this.$tiles.isElementEnabled(this.item, this.sets, this.elements)
+      return this.$tiles.isElementEnabled(this.item, this.sets, this.elements, this.tileOverrides, this.elements.garden ? 2 : 1)
     },
 
     mandatory () {
@@ -140,12 +141,17 @@ export default {
       cursor: default
       border-color: rgba(0, 0, 0, 0.05)
 
+  // match the hover message styling of QuantityButtons (Extra Figures boxes) — themed
+  // color so it is visible in dark mode too
   .disabled-message
     visibility: hidden
-    font-size: 11px
+    font-size: 12px
     text-transform: uppercase
-    font-weight: 400
-    color: rgba(0, 0, 0, 0.5)
+    font-weight: 300
+    padding: 0 6px
+
+    +theme using ($theme)
+      color: map-get($theme, 'gray-text-color')
 
 .game-mechanics-box:hover
   .disabled-message

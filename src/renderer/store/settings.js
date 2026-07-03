@@ -7,6 +7,7 @@ import { ipcRenderer } from 'electron'
 import { randomId } from '@/utils/random'
 import { CONSOLE_SETTINGS_COLOR } from '@/constants/logging'
 import { LOCALES } from '@/constants/locales'
+import { getSelectedEdition, getSelectedStartingTiles } from '@/utils/gameSetupUtils'
 
 const RECENT_SAVED_GAME_COUNT = 14
 const RECENT_SETUP_FILE_COUNT = 9
@@ -45,6 +46,8 @@ export const state = () => ({
   localPlayOnlineUrl: 'localhost:8000/ws',
   devMode: process.env.NODE_ENV === 'development',
   devChannel: 'stable',
+  // horizontal positions of the draggable chat launcher bullets (px from the window's right edge)
+  chatBulletOffsets: {},
   // Windows taskbar behaviour for the multi-window app:
   //   'separate' (default) — each window is its own taskbar button
   //   'grouped'            — windows grouped under one button; a game is raised on top when it's your turn
@@ -257,7 +260,11 @@ export const actions = {
     delete bareSetup.options
     if (state.mySetups.find(s => isEqual(s, bareSetup))) return
     const mySetups = [...state.mySetups, {
-      size: $tiles.getPackSize(setup.sets, setup.rules),
+      size: $tiles.getPackSize(
+        setup.sets, setup.rules, setup.tileOverrides,
+        getSelectedEdition(setup.elements),
+        getSelectedStartingTiles(setup.elements, setup.sets, setup.start)
+      ),
       setup: bareSetup
     }]
     commit('mySetups', mySetups)
