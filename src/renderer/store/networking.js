@@ -87,7 +87,10 @@ class ConnectionHandler {
             type: 'JOIN_GAME',
             payload
           })
-        } else {
+        } else if (!this.$windows || !this.$windows.isGameWindow()) {
+          // lobby window: connecting lands on the online lobby. A game window connects only
+          // as a step of joining/creating a game — it stays on the loading page until the
+          // GAME/START messages route it, instead of flashing the lobby.
           this.$router.push('/online')
         }
       }
@@ -413,7 +416,8 @@ export const actions = {
   // `redirect: false` closes the connection without navigating — used by play-again/rematch,
   // which immediately start a new game in the SAME window (in a game window the default
   // navigation to '/' would trigger the windowing guard and close the window).
-  close ({ commit, rootState }, { redirect = true } = {}) {
+  close ({ commit, rootState }, options) {
+    const { redirect = true } = options || {} // dispatch payload may be null, not just undefined
     const { $server, $connection } = this._vm
     if (reconnectTimeout) {
       clearTimeout(reconnectTimeout)
