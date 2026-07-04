@@ -472,10 +472,26 @@ export default {
       ipcRenderer.on('game-window.init', (ev, { intent }) => this.handleGameWindowInit(intent))
       ipcRenderer.send('game-window.ready')
     }
+
+    // Taskbar chat badge: a red-dot overlay when a chat message (game or global) arrives while
+    // this window is unfocused; cleared the moment the window regains focus.
+    ipcRenderer.on('win.focus', () => {
+      ipcRenderer.invoke('win.setChatBadge', false)
+    })
+    this._unwatchChatBadge = this.$store.watch(
+      state => (Array.isArray(state.game.gameChat) ? state.game.gameChat.length : 0) +
+        state.globalChat.messages.length,
+      (count, prev) => {
+        if (count > prev && !document.hasFocus()) {
+          ipcRenderer.invoke('win.setChatBadge', true)
+        }
+      }
+    )
   },
 
   beforeDestroy () {
     window.removeEventListener('keydown', this.onKeyDown)
+    this._unwatchChatBadge && this._unwatchChatBadge()
   },
 
   methods: {

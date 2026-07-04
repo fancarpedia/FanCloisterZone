@@ -48,6 +48,8 @@
         </button>
       </div>
     </div>
+
+    <audio ref="beep" :src="BEEP_URL" />
   </div>
 </template>
 
@@ -71,14 +73,22 @@ export default {
   },
 
   data () {
-    return { open: false, newMessage: '', readCount: 0 }
+    const src = require('~/assets/universfield-interface-soft-click-131438.mp3')
+    return {
+      open: false,
+      newMessage: '',
+      readCount: 0,
+      BEEP_URL: src?.default ? src.default : src // Nuxt may wrap assets in a module object
+    }
   },
 
   computed: {
     ...mapState({
       messages: state => state.globalChat.messages,
       locale: state => state.settings.locale,
-      connectionType: state => state.networking.connectionType
+      connectionType: state => state.networking.connectionType,
+      nickname: state => state.settings.nickname,
+      beepEnabled: state => state.settings.beep
     }),
 
     // Global chat is ONLINE-ONLY (server-broadcast): hidden in local/offline games, both as the
@@ -104,9 +114,17 @@ export default {
   },
 
   watch: {
-    messages () {
+    messages (val, old) {
       if (this.inline || this.open) this.readCount = this.messages.length
       this.scrollToBottom()
+      // notification sound for incoming messages (not our own echoes)
+      if (val.length > (old ? old.length : 0)) {
+        const last = val[val.length - 1]
+        const myClientId = this.$store.state.settings.clientId
+        if (last && (last.clientId ? last.clientId !== myClientId : last.name !== this.nickname)) {
+          this.playBeep()
+        }
+      }
     }
   },
 
@@ -141,6 +159,16 @@ export default {
         const el = this.$refs.messages
         if (el) el.scrollTop = el.scrollHeight
       })
+    },
+
+    playBeep () {
+      if (!this.beepEnabled || !this.$refs.beep) return
+      try {
+        const p = this.$refs.beep.play()
+        if (p && p.catch) p.catch(() => {}) // ignore interrupted-play/autoplay rejections
+      } catch (e) {
+        // ignore
+      }
     }
   }
 }

@@ -1,5 +1,5 @@
 import path from 'path'
-import { ipcMain, app, BrowserWindow } from 'electron'
+import { ipcMain, app, BrowserWindow, nativeImage } from 'electron'
 
 export default function () {
   // These IPCs act on the window that sent them, so they work with any number of windows.
@@ -24,6 +24,21 @@ export default function () {
         const basePath = path.dirname(app.getAppPath())
         win.setIcon(path.join(basePath, 'icons', icon))
       }
+    }
+  })
+
+  // Red-dot taskbar overlay shown when a chat message arrives while the window is unfocused
+  // (the chat counterpart of the active-player progress-bar indication).
+  ipcMain.handle('win.setChatBadge', async (event, on) => {
+    const win = BrowserWindow.fromWebContents(event.sender)
+    if (!win) return
+    if (on) {
+      const p = process.env.NODE_ENV === 'development'
+        ? path.join('icons', 'chat-dot.png')
+        : path.join(path.dirname(app.getAppPath()), 'icons', 'chat-dot.png')
+      win.setOverlayIcon(nativeImage.createFromPath(p), 'New chat message')
+    } else {
+      win.setOverlayIcon(null, '')
     }
   })
 

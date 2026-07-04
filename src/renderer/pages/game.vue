@@ -34,7 +34,6 @@
       <PreDrawHand />
       <PlayEvents />
       <GameChat />
-      <GlobalChat right="calc(var(--aside-width-plus-gap) + 84px)" />
       <FinalStats v-if="showGameStats" />
       <div
         v-if="gameDialog"
@@ -86,7 +85,6 @@ import TilePackDialog from '@/components/game/dialogs/TilePackDialog.vue'
 import TilePackSize from '@/components/game/TilePackSize.vue'
 import GameSetupDialog from '@/components/game/dialogs/GameSetupDialog.vue'
 import PreDrawHand from '@/components/game/PreDrawHand.vue'
-import GlobalChat from '@/components/GlobalChat.vue'
 
 export default {
   components: {
@@ -96,7 +94,6 @@ export default {
     FinalStats,
     GameChat,
     GameSetupDialog,
-    GlobalChat,
     PlayerPanel,
     PlayEvents,
     PreDrawHand,

@@ -12,15 +12,16 @@
           {{ $t('game-setup.header.components') }}
         </v-tab>
         <v-tab><v-icon small class="icon">fas fa-book</v-icon>{{ $t('game-setup.header.rules') }}</v-tab>
-        <v-tab v-if="!ai"><v-icon small class="icon">far fa-clock</v-icon>{{ $t('game-setup.header.timer') }}</v-tab>
+        <v-tab><v-icon small class="icon">far fa-clock</v-icon>{{ $t('game-setup.header.game-flow') }}</v-tab>
       </v-tabs>
 
       <HeaderMessage v-if="tab > 0" :sets="sets" />
+      <!-- wizard: Next steps tiles → components → rules → game flow; Create only on the last tab -->
       <HeaderGameButton
         v-if="tab > 0"
-        :title="$t(gameId !== null ? 'button.continue' : 'button.create')"
+        :title="$t(tab < 4 ? 'button.next' : (gameId !== null ? 'button.continue' : 'button.create'))"
         :sets="sets"
-        @click="createGame"
+        @click="nextOrCreate"
       />
       <HeaderLeaveGameButton :title="$t('menu.leave-game')" @click="leaveGame" />
       
@@ -31,7 +32,7 @@
       <TileSetsTab v-show="tab === 1" />
       <FiguresTab v-show="tab === 2" />
       <RulesTab v-show="tab === 3" />
-      <TimerTab v-if="!ai" v-show="tab === 4" />
+      <TimerTab v-show="tab === 4" />
     </template>
 
     <template #detail>
@@ -48,8 +49,6 @@
       </div>
     </template>
   </GameSetupGrid>
-  <!-- shift the global-chat bullet left of the red game-chat bullet when both are shown -->
-  <GlobalChat :right="hasGameChat ? '88px' : '20px'" />
   <SetupChatLauncher />
   </div>
 </template>
@@ -71,7 +70,6 @@ import TileDistribution from '@/components/TileDistribution'
 import TileSetsTab from '@/components/game-setup/tabs/TileSetsTab'
 import TimerTab from '@/components/game-setup/tabs/TimerTab'
 import RulesTab from '@/components/game-setup/tabs/RulesTab'
-import GlobalChat from '@/components/GlobalChat'
 import SetupChatLauncher from '@/components/game-setup/SetupChatLauncher'
 
 export default {
@@ -88,7 +86,6 @@ export default {
     TileSetsTab,
     TimerTab,
     RulesTab,
-    GlobalChat,
     SetupChatLauncher
   },
 
@@ -101,10 +98,6 @@ export default {
   },
 
   computed: {
-    hasGameChat () {
-      return Array.isArray(this.$store.state.game.gameChat)
-    },
-
     ...mapState({
       ai: state => state.gameSetup.ai,
       gameId: state => state.game.id,
@@ -153,6 +146,15 @@ export default {
   },
 
   methods: {
+    async nextOrCreate () {
+      if (this.tab < 4) {
+        this.tab += 1
+        window.scrollTo(0, 0)
+        return
+      }
+      await this.createGame()
+    },
+
     async createGame () {
       await this.$store.dispatch('gameSetup/createGame')
     },

@@ -130,7 +130,6 @@
     </template>
   </GameSetupGrid>
   <!-- bottom-left so the bullet clears the chat send button (chat lives in the right column) -->
-  <GlobalChat left="20px" />
   </div>
 </template>
 
@@ -146,7 +145,6 @@ import HeaderLeaveGameButton from '@/components/game-setup/HeaderLeaveGameButton
 import HeaderMessage from '@/components/game-setup/HeaderMessage'
 import OpenGameChat from '@/components/game-setup/OpenGameChat'
 import PlayerSlot from '@/components/game-setup/PlayerSlot'
-import GlobalChat from '@/components/GlobalChat'
 
 const LOCAL_PLAYERS_LIMIT = 4
 
@@ -159,8 +157,7 @@ export default {
     HeaderLeaveGameButton,
     HeaderMessage,
     OpenGameChat,
-    PlayerSlot,
-    GlobalChat
+    PlayerSlot
   },
 
   data () {
