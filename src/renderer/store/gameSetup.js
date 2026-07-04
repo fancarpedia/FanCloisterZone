@@ -53,7 +53,8 @@ function buildSetupFromState (vm, state, getters) {
     timer: state.timer,
     start: getters.selectedStartingTiles.value,
     ai: state.ai,
-    options: {}
+    // seating is randomized by default (owner can still turn it off on the slot page)
+    options: { randomizeSeating: true }
   }
 
   // per-tile count overrides (diffs from set defaults) — omitted entirely when untouched
