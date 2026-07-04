@@ -300,7 +300,10 @@
         <v-card-actions>
           <v-spacer />
           <v-btn text @click="showLocalGameDialog = false">{{ $t('button.cancel') }}</v-btn>
-          <v-btn text color="primary" @click="confirmNewLocalGame">{{ $t('button.ok') }}</v-btn>
+          <!-- Online games open in their own window which establishes its own connection (see
+               connectForGame in layouts/default.vue), so this does not depend on the lobby being connected. -->
+          <v-btn text color="primary" @click="confirmNewGame('online')">{{ $t('index.online.online-game') }}</v-btn>
+          <v-btn text color="primary" @click="confirmNewGame('local')">{{ $t('index.online.local-game') }}</v-btn>
         </v-card-actions>
       </v-card>
     </v-dialog>
@@ -558,8 +561,12 @@ export default {
       this.showLocalGameDialog = true
     },
 
-    confirmNewLocalGame () {
+    confirmNewGame (kind) {
       this.showLocalGameDialog = false
+      if (kind === 'online') {
+        this.createGame()
+        return
+      }
       if (this.$windows.openGame({ kind: 'new-local' })) return
       this.$store.dispatch('gameSetup/newGame')
       this.$router.push('/game-setup')
