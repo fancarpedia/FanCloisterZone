@@ -134,17 +134,6 @@
         <GameElementBox :item="GameElement.LITTLE_BUILDINGS">
           <img src="~/assets/figures/lb.png" width="55" height="55">
         </GameElementBox>
-        <!-- Pre-draw: private hand of up to 3 tiles (server-authoritative, online only).
-             Disabled in local games, or when an incompatible expansion is selected. -->
-        <GameElementBox
-          :item="GameElement.PRE_DRAW"
-          :max="3"
-          :default-value="3"
-          :blocked-reason="preDrawReason"
-          show-number
-        >
-          <div class="predraw-icon">⤵<span>hand</span></div>
-        </GameElementBox>
       </div>
     </ConfigSection>
 
@@ -174,7 +163,7 @@
 <script>
 import { mapState } from 'vuex'
 import ConfigSection from '@/components/game-setup/ConfigSection'
-import { GameElement, PRE_DRAW_INCOMPATIBLE } from '@/models/elements'
+import { GameElement } from '@/models/elements'
 import GameElementBox from '@/components/game-setup/GameElementBox'
 import NeutralFigure from '@/components/game/NeutralFigure'
 import StandaloneTileImage from '@/components/game/StandaloneTileImage'
@@ -203,27 +192,7 @@ export default {
       ai: state => !!state.gameSetup.ai,
       detail: state => state.gameSetup.detail,
       figures: state => state.gameSetup.figures
-    }),
-    preDrawBlocked () {
-      const gs = this.$store.state.gameSetup
-      // getFullSetup applies each selected set's `enforces`, so River / Crop Circles (enforced by
-      // their tile-sets, not stored directly) are detected alongside directly-set figures.
-      const eff = this.$tiles.getFullSetup({ sets: gs.sets || {}, elements: gs.elements || {} }).elements
-      // truthy = on (true or count >= 1); NB isConfigValueEnabled(undefined) is true, so don't use it here
-      return PRE_DRAW_INCOMPATIBLE.some(k => !!eff[k])
-    },
-
-    // Pre-draw needs the server-authoritative model, so it is online-only.
-    preDrawLocal () {
-      return this.$store.state.networking.connectionType !== 'online'
-    },
-
-    // Reason the pre-draw box is locked (local-game first, then incompatible expansions), or null.
-    preDrawReason () {
-      if (this.preDrawLocal) return this.$t('predraw.local-only')
-      if (this.preDrawBlocked) return this.$t('predraw.incompatible')
-      return null
-    }
+    })
   }
 }
 </script>

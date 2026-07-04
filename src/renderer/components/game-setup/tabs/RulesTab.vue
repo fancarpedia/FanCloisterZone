@@ -226,9 +226,6 @@
       />
     </ConfigSection>
 
-    <ConfigSection :title="$t('game-setup.rules.starting-tiles-configuration')">
-      <StartingTiles />
-    </ConfigSection>
   </div>
 </template>
 
@@ -241,7 +238,6 @@ import ConfigSection from '@/components/game-setup/ConfigSection'
 import GameMechanicsBox from '@/components/game-setup/GameMechanicsBox'
 import GameplayVariants from '@/components/game-setup/rules/GameplayVariants'
 import ScoringVariants from '@/components/game-setup/rules/ScoringVariants'
-import StartingTiles from '@/components/game-setup/StartingTiles'
 import StandaloneTileImage from '@/components/game/StandaloneTileImage'
 
 const MEEPLES_SVG = require('~/assets/meeples.svg')
@@ -251,7 +247,6 @@ export default {
     ConfigSection,
     GameMechanicsBox,
     GameplayVariants,
-    StartingTiles,
     StandaloneTileImage,
     ScoringVariants
   },
