@@ -3,7 +3,8 @@
   <GameSetupGrid v-if="loaded" :sets="sets" :rules="rules" :show-detail="tab > 0" :show-pack-size="tab > 0">
     <template #header>
       <v-tabs v-model="tab" @change="onTabChange">
-        <v-tab><v-icon small>far fa-heart</v-icon></v-tab>
+        <!-- bookmarks make no sense when editing an already-created game's setup -->
+        <v-tab :disabled="editingGame"><v-icon small>far fa-heart</v-icon></v-tab>
         <v-tab><v-icon small class="icon">fas fa-square</v-icon>{{ $t('game-setup.header.tiles') }}</v-tab>
         <v-tab active-class="active">
           <div class="meeple icon">
@@ -90,9 +91,11 @@ export default {
   },
 
   data () {
+    const editing = this.$store.state.gameSetup.editingGameId != null
     const tabParam = this.$route.query.tab
     return {
-      tab: tabParam === undefined ? 1 : ~~tabParam,
+      // editing an existing game: bookmarks tab is disabled, so never start on it
+      tab: editing ? Math.max(1, ~~tabParam) : (tabParam === undefined ? 1 : ~~tabParam),
       selectedSetupDetail: null
     }
   },
@@ -100,6 +103,7 @@ export default {
   computed: {
     ...mapState({
       ai: state => state.gameSetup.ai,
+      editingGame: state => state.gameSetup.editingGameId != null,
       gameId: state => state.game.id,
       sets: state => state.gameSetup.sets,
       rules: state => state.gameSetup.rules,
