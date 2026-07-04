@@ -18,7 +18,7 @@ const TOKENS_SVG = require('~/assets/tokens.svg')
 
 const TOKENS = {
   TOWER_PIECE: { tag: 'svg', src: TOKENS_SVG + '#tower', fill: 'burlywood', width: 1.512 },
-  BLACK_TOWER_PIECE: { tag: 'svg', src: TOKENS_SVG + '#tower', fill: 'blue', darkThemeFill: '#555', width: 1.512 },
+  BLACK_TOWER_PIECE: { tag: 'svg', src: TOKENS_SVG + '#tower', fill: 'black', darkThemeFill: '#555', width: 1.512 },
   WHITE_TOWER_PIECE: { tag: 'svg', src: TOKENS_SVG + '#white-tower', fill: 'white', width: 1.512 },
   BRIDGE: { tag: 'svg', src: TOKENS_SVG + '#bridge', fill: 'burlywood', width: 1.273 },
   TUNNEL_A: { tag: 'svg', src: TOKENS_SVG + '#tunnel', width: 1 },
