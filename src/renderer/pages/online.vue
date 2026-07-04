@@ -26,7 +26,7 @@
       <span class="header-divider" />
 
       <!-- Local games run in their own window, independent of the online connection. -->
-      <section class="button-group">
+      <section class="button-group local-group">
         <h3 class="group-title">{{ $t('index.local.local-games') }}</h3>
         <div class="group-buttons">
           <v-btn large color="secondary" :disabled="!engine || !engine.ok" @click="newLocalGame()">
@@ -138,11 +138,6 @@
         <div v-if="!verifiedGameList.length" class="empty-message">
           <p>
             <i>{{ $t('index.online.you-have-no-game-in-progress') }}</i>
-          </p>
-          <p>
-            <i>
-              {{ $t('index.online.online-storage-description') }}
-            </i>
           </p>
         </div>
 
@@ -294,6 +289,22 @@
       </v-card>
     </v-dialog>
 
+    <v-dialog v-model="showLocalGameDialog" max-width="500px">
+      <v-card>
+        <v-card-title>
+          <span class="headline">{{ $t('index.local.new-game') }}</span>
+        </v-card-title>
+        <v-card-text>
+          {{ $t('index.online.online-storage-description') }}
+        </v-card-text>
+        <v-card-actions>
+          <v-spacer />
+          <v-btn text @click="showLocalGameDialog = false">{{ $t('button.cancel') }}</v-btn>
+          <v-btn text color="primary" @click="confirmNewLocalGame">{{ $t('button.ok') }}</v-btn>
+        </v-card-actions>
+      </v-card>
+    </v-dialog>
+
     <v-dialog v-model="isNicknameDialogOpen" max-width="500px" persistent>
       <v-card>
         <v-card-title>
@@ -365,6 +376,7 @@ export default {
       joinGameId: '',
       joinError: null,
       autoConnectTried: false,
+      showLocalGameDialog: false,
       isNicknameDialogOpen: false,
       pendingNickname: '',
       nicknameError: ''
@@ -543,6 +555,11 @@ export default {
 
     // Local games open in their own window and don't disturb this lobby's online connection.
     newLocalGame () {
+      this.showLocalGameDialog = true
+    },
+
+    confirmNewLocalGame () {
+      this.showLocalGameDialog = false
       if (this.$windows.openGame({ kind: 'new-local' })) return
       this.$store.dispatch('gameSetup/newGame')
       this.$router.push('/game-setup')
@@ -640,6 +657,13 @@ header
     flex-direction: column
     align-items: center
     gap: 6px
+    padding: 6px 16px 10px
+    border-radius: 8px
+
+    // local games are a separate world from the server connection — tint them apart
+    &.local-group
+      +theme using ($theme)
+        background: map-get($theme, 'board-bg')
 
     .group-title
       font-size: 14px
