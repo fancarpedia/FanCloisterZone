@@ -289,24 +289,6 @@ export default {
   },
 
   created () {
-    ipcRenderer.on('win-close-request', async (hasLocalGame) => {
-      console.log(hasLocalGame)
-      if (!hasLocalGame) {
-        ipcRenderer.send('win-close-allowed')
-        return
-      }
- 
-      const confirmed = await ipcRenderer.invoke('dialog.showConfirmDialog', {
-        title: $t('dialog.close-local-game.unfinished-local-game'),
-        ok: $t('dialog.close-local-game.resign-and-close'),
-        cancel: $t('dialog.close-local-game.continue-playing')
-      })
-
-      if (confirmed) {
-        ipcRenderer.send('win-close-allowed')
-      }
-    })
-
     ipcRenderer.on('app-update', (event, updateInfo) => {
       this.$store.commit('updateInfo', updateInfo)
     })
@@ -640,15 +622,17 @@ export default {
             $connection.send({ type: 'LEAVE_GAME', payload: { gameId } })
           }
         }
-        // In a dedicated game window, leaving the game closes the window instead of showing a lobby.
-        if (this.$windows.isGameWindow()) { this.$store.dispatch('networking/close'); this.$windows.closeSelf(); return }
+        // In a dedicated game window, leaving the game closes the window instead of showing a
+        // lobby. Close WITHOUT navigating: routing to '/' first would re-render the game page
+        // with cleared state (a red error flash) before the window tears down.
+        if (this.$windows.isGameWindow()) { this.$store.dispatch('networking/close', { redirect: false }); this.$windows.closeSelf(); return }
         this.$router.push('/online')
       } else {
         const confirmed = await ipcRenderer.invoke('confirm-leave-game')
         if (!confirmed) return
 
+        if (this.$windows.isGameWindow()) { this.$store.dispatch('game/close', { redirect: false }); this.$windows.closeSelf(); return }
         this.$store.dispatch('game/close')
-        if (this.$windows.isGameWindow()) { this.$windows.closeSelf(); return }
         this.$router.push('/')
       }
     },
