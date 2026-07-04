@@ -68,12 +68,11 @@
         <template v-for="item in cat.items">
           <div :key="cat.name + '-' + item.name + '-h'" class="header item-header">
             <div class="item-icon">
-              <ScoringIcon v-if="item.name === 'tiles'" name="tiles" :size="40" />
-              <ScoringIcon v-else-if="item.name.startsWith('castle.')" :name="item.name.split('.')[1]" :size="40" />
+              <ScoringIcon v-if="itemIcon(item.name)" :name="itemIcon(item.name)" :size="40" />
               <ExpressionItem v-else :item="{ name: item.name }" icon-only />
             </div>
             <div class="header-label">
-              <div class="header-subtitle">{{ item.name }}</div>
+              <div class="header-subtitle">{{ itemLabel(item.name) }}</div>
             </div>
           </div>
           <div
@@ -108,14 +107,14 @@ const CATEGORIES = [
   { name: 'garden', title: 'game.feature.gardens', always: true },
   { name: 'field', title: 'game.feature.fields', always: true },
   { name: 'special-monastery', title: 'game.feature.special-monasteries' },
-  { name: 'castle', title: 'game.feature.castles' },
-  { name: 'watchtower', title: 'game.feature.watchtowers' },
+  { name: 'castle', title: 'game.feature.castles', explode: true },
+  { name: 'watchtower', title: 'game.feature.watchtowers', explode: true },
   { name: 'trade-goods', title: 'game.feature.trade-goods' },
   { name: 'shrine', title: 'game.feature.shrines' },
   { name: 'king', title: 'core-messages.the-biggest-city' },
   { name: 'robber', title: 'core-messages.the-longest-road' },
   { name: 'gold', title: 'game.feature.gold' },
-  { name: 'fairy', title: 'game.feature.fairy' },
+  { name: 'fairy', title: 'game.feature.fairy', explode: true },
   { name: 'tower', title: 'game.feature.towers' },
   { name: 'flock', title: 'game.feature.sheep' },
   { name: 'ringmaster', title: 'game.feature.ringmaster' },
@@ -125,12 +124,12 @@ const CATEGORIES = [
   { name: 'church', title: 'game.feature.church-bonus' },
   { name: 'yaga-hut', title: 'game.feature.yaga-hut' },
   { name: 'vodyanoy', title: 'game.feature.vodyanoy' },
-  { name: 'flowers', title: 'game.feature.flowers', noExplode: true },
+  { name: 'flowers', title: 'game.feature.flowers', explode: true },
   { name: 'obelisk', title: 'game.element.obelisk' },
   { name: 'windmill', title: 'game.element.windmill' },
   { name: 'decinsky-sneznik', title: 'game.element.decinsky-sneznik' },
   { name: 'river', title: 'game.feature.fishermen' },
-  { name: 'courier', title: 'game.figure.courier' },
+  { name: 'courier', title: 'game.figure.courier', explode: true },
   { name: 'fishhut', title: 'game.feature.fishhut' }
 ]
 
@@ -205,6 +204,22 @@ export default {
         // per-category item breakdown: { category: { itemName: [pointsPerPlayer] } }
         items: {}
       }
+      const addItem = (cat, itName, idx, points) => {
+        if (!stats.items[cat]) stats.items[cat] = {}
+        if (!stats.items[cat][itName]) {
+          stats.items[cat][itName] = (new Array(this.players.length)).fill(0)
+        }
+        stats.items[cat][itName][idx] += points
+      }
+      // the scored feature behind a points pointer (plain FeaturePointer, MeeplePointer or
+      // ScoreMeeplePositionsPointer) — e.g. "City", "Road", "Windmill"
+      const featureOf = ptr => {
+        if (!ptr) return null
+        if (ptr.feature) return ptr.feature
+        if (ptr.featurePointer) return featureOf(ptr.featurePointer)
+        if (ptr.pointer) return featureOf(ptr.pointer)
+        return null
+      }
       this.history.forEach(h => {
         h.events.forEach(ev => {
           if (ev.type === 'tile-placed') {
@@ -213,25 +228,35 @@ export default {
           } else if (ev.type === 'ransom-paid') {
             const jailerIdx = this.players.findIndex(p => p.index === ev.jailer)
             stats.points.tower[jailerIdx] += 3
+            addItem('tower', 'ransompaid.income', jailerIdx, 3)
             const prisonerIdx = this.players.findIndex(p => p.index === ev.prisoner)
             stats.points.tower[prisonerIdx] -= 3
+            addItem('tower', 'ransompaid.payment', prisonerIdx, -3)
           } else if (ev.type === 'points') {
-            ev.points.forEach(({ name, player, points, items }) => {
+            ev.points.forEach(({ name, player, points, items, ptr }) => {
               const cat = name.split('.')[0]
               const idx = this.players.findIndex(p => p.index === player)
               if (stats.points[cat]) {
                 stats.points[cat][idx] += points
-                // accumulate the item-level breakdown (tiles / pennants / cathedral / ...)
-                ;(items || []).forEach(it => {
-                  // the engine emits one item per marketplace-adjoining road (marketplace.0,
-                  // marketplace.1, …) — collapse them into a single "marketplace" breakdown row
-                  const itName = it.name.startsWith('marketplace.') ? 'marketplace' : it.name
-                  if (!stats.items[cat]) stats.items[cat] = {}
-                  if (!stats.items[cat][itName]) {
-                    stats.items[cat][itName] = (new Array(this.players.length)).fill(0)
-                  }
-                  stats.items[cat][itName][idx] += it.points
-                })
+                if (cat === 'fairy') {
+                  // fairy.turn (turn start) vs fairy.completed (scored-feature bonus)
+                  addItem(cat, name, idx, points)
+                } else if (cat === 'courier') {
+                  // courier.<feature expression> — group by the scored feature
+                  addItem(cat, 'feature.' + (name.split('.')[1] || 'other'), idx, points)
+                } else if (cat === 'flowers') {
+                  // flowers bonus — group by the feature/figure it was earned on
+                  const feature = featureOf(ptr)
+                  addItem(cat, 'feature.' + (feature ? feature.toLowerCase() : 'other'), idx, points)
+                } else {
+                  // accumulate the item-level breakdown (tiles / pennants / cathedral / ...)
+                  ;(items || []).forEach(it => {
+                    // the engine emits one item per marketplace-adjoining road (marketplace.0,
+                    // marketplace.1, …) — collapse them into a single "marketplace" breakdown row
+                    const itName = it.name.startsWith('marketplace.') ? 'marketplace' : it.name
+                    addItem(cat, itName, idx, it.points)
+                  })
+                }
               }
             })
           }
@@ -254,9 +279,11 @@ export default {
           return {
             name: c.name,
             title: c.title,
-            // a single breakdown row just duplicates the category total — only show the
-            // item breakdown when there are at least two items. Some categories
-            items: (!c.noExplode && items.length > 1) ? items : []
+            // a single breakdown row usually just duplicates the category total, so the
+            // breakdown shows only with 2+ items — except `explode` categories (castle,
+            // watchtower, fairy, flowers, courier), whose sub-rows carry extra meaning
+            // (which feature/source scored) and are always shown
+            items: (c.explode || items.length > 1) ? items : []
           }
         })
     }
@@ -280,6 +307,33 @@ export default {
 
   beforeDestroy () {
     this.resizeObserver.disconnect()
+  },
+
+  methods: {
+    // ScoringIcon name for a breakdown row, or null to fall back to ExpressionItem
+    itemIcon (name) {
+      if (name === 'tiles') return 'tiles'
+      if (name.startsWith('castle.')) return name.split('.')[1]
+      if (name.startsWith('fairy.')) return 'fairy'
+      if (name.startsWith('ransompaid.')) return 'tower'
+      if (name.startsWith('feature.')) return name.split('.')[1]
+      return null
+    },
+
+    // localized subtitle for a breakdown row
+    itemLabel (name) {
+      if (name === 'fairy.turn') return this.$t('game.scoring.turn-start')
+      if (name === 'fairy.completed') return this.$t('game.scoring.feature-scored')
+      if (name === 'ransompaid.income') return this.$t('game.scoring.income')
+      if (name === 'ransompaid.payment') return this.$t('game.scoring.payment')
+      if (name.startsWith('castle.') || name.startsWith('feature.')) {
+        const f = name.split('.')[1]
+        if (this.$te('game.feature.' + f)) return this.$t('game.feature.' + f)
+        if (this.$te('game.element.' + f)) return this.$t('game.element.' + f)
+        return f
+      }
+      return name
+    }
   }
 }
 </script>
