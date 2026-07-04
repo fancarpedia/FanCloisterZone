@@ -1,10 +1,6 @@
 <template>
   <div>
-    <ConfigSection :title="$t('game-setup.rules.starting-tiles-configuration')">
-      <StartingTiles />
-    </ConfigSection>
-
-    <ConfigSection :title="$t('game-setup.game-flow.pre-draw')">
+    <ConfigSection :title="$t('game-setup.game-flow.pre-order')">
       <div class="components">
         <!-- Pre-draw: private hand of up to 3 tiles (server-authoritative, online only).
              Disabled in local games, or when an incompatible expansion is selected. -->
@@ -51,6 +47,10 @@
           <v-btn color="secondary" @click="enableLimits">{{ $t('game-setup.timer.enable-limits') }}</v-btn>
         </div>
       </template>
+    </ConfigSection>
+
+    <ConfigSection :title="$t('game-setup.rules.starting-tiles-configuration')">
+      <StartingTiles />
     </ConfigSection>
   </div>
 </template>
@@ -155,7 +155,7 @@ export default {
   width: 100%
   justify-content: center
   gap: $panel-gap
-  grid-template-columns: repeat(auto-fill, 162px)
+  grid-template-columns: repeat(auto-fit, 162px)
 
   ::v-deep .predraw-icon
     display: flex
