@@ -145,7 +145,16 @@ ipcMain.handle('open-load-game-dialog', async (event, options) => {
 //   'separate' (default) — give each window a UNIQUE AUMID so every window is its own taskbar button
 //   'grouped'            — all windows share one AUMID (grouped under a single button); the active
 //                          game window is raised on top when it becomes that player's turn
-const TASKBAR_APP_ID = 'com.jcloisterzone.fan'
+// The base id is UNIQUE PER PROCESS LAUNCH so two running instances — the same build twice, or
+// stable/alpha/dev side by side — never share a taskbar group; only this instance's own windows
+// group together. (The flavour prefix is just for readability in tooling.)
+function taskbarBaseAppId () {
+  const flavour = process.env.NODE_ENV === 'development'
+    ? 'dev'
+    : (app.getName().toLowerCase().includes('alpha') ? 'alpha' : 'stable')
+  return `com.jcloisterzone.fan.${flavour}.${Date.now()}.${process.pid}`
+}
+const TASKBAR_APP_ID = taskbarBaseAppId()
 app.setAppUserModelId(TASKBAR_APP_ID)
 
 function getTaskbarMode () {
@@ -179,7 +188,10 @@ function buildWindow ({ role = 'main', hidden = false } = {}) {
     height: 600,
     width: 1000,
     show: !hidden,
-    icon: path.join(__dirname, '..', 'resources', 'icon.ico'),
+    // process.resourcesPath is build-injected: dev -> src/extraResources, prod -> packaged resources.
+    // The old __dirname/../resources path did not exist in dev, so the main window fell back to the
+    // generic Electron icon (game windows call win.setIcon at runtime, so only the lobby was affected).
+    icon: path.join(process.resourcesPath, 'icon.ico'),
     webPreferences: {
       zoomFactor: 1,
       webSecurity: false,
@@ -323,6 +335,7 @@ function openGameWindow (intent) {
       win.webContents.send('game-window.init', { role: 'game', intent: intent || null })
       win.maximize()
       win.show()
+      win.focus() // bring the new game window to the front (show() alone doesn't steal focus on Windows)
     }
     // else: still loading — game-window.ready handler will deliver intent + show it
     warmWinReady = false
@@ -357,6 +370,7 @@ ipcMain.on('game-window.ready', (event) => {
   if (win && !win.isDestroyed() && !win.isVisible()) {
     win.maximize()
     win.show()
+    win.focus() // bring the new game window to the front (show() alone doesn't steal focus on Windows)
   }
   broadcastGameWindows() // window is now shown with its intent → refresh the list
 })
