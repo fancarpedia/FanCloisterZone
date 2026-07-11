@@ -401,8 +401,11 @@ export const actions = {
 
     // Keep Building (coop variant) plays without field scoring: farmers and the barn are
     // forced off while it is selected (their setup boxes are hidden, like ai:false does).
+    // Not supported for AI games (for now) — refuse there.
     if (id === 'keep-building') {
-      if (isConfigValueEnabled(config)) {
+      if (isConfigValueEnabled(config) && state.ai) {
+        commit('elementConfig', { id: 'keep-building', config: false })
+      } else if (isConfigValueEnabled(config)) {
         if (state.elements.farmers) commit('elementConfig', { id: 'farmers', config: false })
         if (state.elements.barn > 0) commit('elementConfig', { id: 'barn', config: 0 })
       } else {
