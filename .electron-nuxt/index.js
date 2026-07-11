@@ -41,6 +41,13 @@ const webpackConfig = Webpack.getBaseConfig({
     filename: 'index.js',
     path: path.join(DIST_DIR, 'main')
   },
+  // `ws` (pulled in by discord-rpc) optionally requires these native speedups; they are not
+  // installed (ws falls back to its JS implementations), so tell webpack to leave the
+  // requires alone instead of warning "Module not found" on every build.
+  externals: {
+    bufferutil: 'commonjs bufferutil',
+    'utf-8-validate': 'commonjs utf-8-validate'
+  },
   plugins: [
     new webpack.DefinePlugin({
       'process.resourcesPath': resourcesPath.mainProcess(),
