@@ -22,7 +22,11 @@ app.on('ready', () => {
   menu.append(refreshButton)
   Menu.setApplicationMenu(menu)
 
-  installExtension(VUEJS_DEVTOOLS)
+  // allowFileAccess is the documented workaround for the harmless-but-noisy
+  // "Electron sandbox_bundle.js script failed to run" console errors the extension's
+  // sandboxed frames otherwise emit on startup.
+  installExtension(VUEJS_DEVTOOLS, { loadExtensionOptions: { allowFileAccess: true } })
+    .catch((err) => console.log('vue-devtools install failed:', err.message))
 })
 
 
