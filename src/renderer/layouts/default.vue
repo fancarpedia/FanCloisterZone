@@ -84,7 +84,7 @@ import AboutDialog from '@/components/AboutDialog'
 import ErrorDialog from '@/components/ErrorDialog'
 import JoinGameDialog from '@/components/JoinGameDialog'
 import SettingsDialog from '@/components/SettingsDialog'
-import { getAppVersion, isAlphaBuild } from '@/utils/version'
+import { getAppVersion, getBuildBadge } from '@/utils/version'
 
 import { STATUS_CONNECTED } from '@/store/networking'
 
@@ -599,8 +599,9 @@ export default {
     
     updateTitle() {
       const server = this.$store.getters['settings/isLocalPlayOnline'] ? 'dev local' : 'fanserver'
-      // alpha builds announce themselves in the title (α), so it's obvious which instance this is
-      const product = isAlphaBuild() ? 'FanCloisterZone α Alpha' : 'FanCloisterZone'
+      // non-stable builds announce themselves in the title, so it's obvious which instance this is
+      const badge = getBuildBadge() // 'dev' | 'alpha' | null
+      const product = badge === 'alpha' ? 'FanCloisterZone α Alpha' : (badge === 'dev' ? 'FanCloisterZone Dev' : 'FanCloisterZone')
       const base = this.onlineConnected ? (product + ' Edition @ ' + server) /* + this.$store.state.onlineHostName */ : product + ' Edition' /* Fan Edition */
 
       // Multi-window debug indicator: role + gameId + local-server port + clientId tail.

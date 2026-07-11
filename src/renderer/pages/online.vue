@@ -47,9 +47,10 @@
     <main>
       <section class="splash">
         <img :src="splashImage()" />
-        <!-- alpha builds carry a visible α badge next to the splash -->
-        <div v-if="isAlpha" class="alpha-badge" :title="appVersion">
-          <span class="alpha-symbol">α</span> Alpha
+        <!-- non-stable builds carry a visible badge next to the splash: α Alpha or Dev -->
+        <div v-if="buildBadge" class="alpha-badge" :class="buildBadge" :title="appVersion">
+          <span v-if="buildBadge === 'alpha'" class="alpha-symbol">α</span>
+          {{ buildBadge === 'alpha' ? 'Alpha' : 'Dev' }}
         </div>
       </section>
 
@@ -359,7 +360,7 @@ import EngineAlerts from '@/components/EngineAlerts'
 import AppUpdateBox from '@/components/AppUpdateBox'
 
 import { STATUS_CONNECTED, STATUS_CONNECTING, STATUS_RECONNECTING } from '@/store/networking'
-import { getAppVersion, isAlphaBuild } from '@/utils/version'
+import { getAppVersion, getBuildBadge } from '@/utils/version'
 
 export default {
   components: {
@@ -430,8 +431,8 @@ export default {
       }
     },
 
-    isAlpha () {
-      return isAlphaBuild()
+    buildBadge () {
+      return getBuildBadge()
     },
 
     appVersion () {
@@ -887,8 +888,11 @@ h2
     letter-spacing: 1px
     text-transform: uppercase
     color: white
-    background: #E65100
+    background: #E65100 // alpha = orange
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3)
+
+    &.dev
+      background: #1976D2 // dev = blue
 
     .alpha-symbol
       font-size: 34px

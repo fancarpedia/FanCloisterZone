@@ -3,9 +3,10 @@
     <v-card-text>
       <section class="d-flex justify-center align-center py-10 splash">
         <img :src="splashImage()" :title="$t('about.fantitle')" />
-        <!-- alpha builds carry the same α badge as the lobby splash -->
-        <div v-if="isAlpha" class="alpha-badge" :title="version">
-          <span class="alpha-symbol">α</span> Alpha
+        <!-- non-stable builds carry the same badge as the lobby splash: α Alpha or Dev -->
+        <div v-if="buildBadge" class="alpha-badge" :class="buildBadge" :title="version">
+          <span v-if="buildBadge === 'alpha'" class="alpha-symbol">α</span>
+          {{ buildBadge === 'alpha' ? 'Alpha' : 'Dev' }}
         </div>
       </section>
       <section class="d-flex justify-space-between">
@@ -38,7 +39,7 @@
 import { shell } from 'electron'
 import { mapState } from 'vuex'
 
-import { getAppVersion, isAlphaBuild } from '@/utils/version'
+import { getAppVersion, getBuildBadge } from '@/utils/version'
 
 const MEEPLES_SVG = require('~/assets/meeples.svg')
 
@@ -47,7 +48,7 @@ export default {
     return {
       MEEPLES_SVG,
       version: getAppVersion(),
-      isAlpha: isAlphaBuild()
+      buildBadge: getBuildBadge()
     }
   },
 
@@ -89,8 +90,11 @@ export default {
       letter-spacing: 1px
       text-transform: uppercase
       color: white
-      background: #E65100
+      background: #E65100 // alpha = orange
       box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3)
+
+      &.dev
+        background: #1976D2 // dev = blue
 
       .alpha-symbol
         font-size: 28px

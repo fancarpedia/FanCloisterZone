@@ -5,12 +5,16 @@ export function getAppVersion () {
   return window.process.argv.find(arg => arg.startsWith('--app-version=')).replace('--app-version=', '')
 }
 
-// Alpha build = pre-release version ("6.3.0-alpha.13") or the dedicated alpha channel.
-// Used to visibly mark alpha instances (window title, splash badge, taskbar overlay).
-export function isAlphaBuild () {
+// Which build badge (if any) this instance should display in the UI (window title,
+// lobby splash, About dialog):
+//   'dev'   — running from source (`yarn run dev`)
+//   'alpha' — packaged pre-release build (version contains "alpha")
+//   null    — stable release, no badge
+export function getBuildBadge () {
+  if (process.env.NODE_ENV === 'development') return 'dev'
   try {
-    return getAppVersion().includes('alpha')
+    return getAppVersion().includes('alpha') ? 'alpha' : null
   } catch (e) {
-    return false
+    return null
   }
 }
