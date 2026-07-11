@@ -44,6 +44,18 @@ export default class ArtworkLoader {
   async loadArworks (enabledArtworks) {
     const canvas = document.createElement('canvas')
     canvas.setAttribute('id', 'paper-canvas')
+    // paper.js is only used for offscreen geometry here — nobody interacts with this throwaway
+    // canvas, but paper's view setup registers a non-passive touchstart on it, which Chrome
+    // logs as a scroll-blocking [Violation]. Force passive on touch/wheel listeners for THIS
+    // canvas only (instance-level patch; goes away together with the canvas).
+    const origAdd = canvas.addEventListener.bind(canvas)
+    canvas.addEventListener = (type, listener, options) => {
+      if (type === 'touchstart' || type === 'touchmove' || type === 'wheel' || type === 'mousewheel') {
+        const opts = typeof options === 'object' ? { ...options, passive: true } : { capture: !!options, passive: true }
+        return origAdd(type, listener, opts)
+      }
+      return origAdd(type, listener, options)
+    }
     document.body.appendChild(canvas)
 
     let scope = PaperScope.get(1)
