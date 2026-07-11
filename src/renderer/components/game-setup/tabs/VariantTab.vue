@@ -11,7 +11,10 @@
           <p>{{ $t('game-setup.variant.standard-description') }}</p>
           <div class="toggle"><v-icon v-if="!coopVariant">fas fa-check</v-icon></div>
         </div>
+        <!-- the coop variant is not supported for AI games (the AI can't reason about the
+             enlarge-or-occupy obligation) — hidden like other ai:false elements -->
         <div
+          v-if="!ai"
           class="variant-box"
           :class="{ selected: coopVariant }"
           @click="selectVariant(true)"
@@ -122,6 +125,7 @@ export default {
 
   computed: {
     ...mapState({
+      ai: state => !!state.gameSetup.ai,
       coopVariant: state => !!state.gameSetup.elements['keep-building'],
       leaderboard: state => state.gameSetup.coopLeaderboard,
       popular: state => state.gameSetup.standardPopular,
