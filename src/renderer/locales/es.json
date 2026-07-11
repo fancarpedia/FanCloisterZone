@@ -47,6 +47,7 @@
     "load-setup-from-file": "Cargar configuración desde archivo",
     "may-deploy": "Puede colocar",
     "must-remove": "Debe remover",
+    "next": "Next",
     "open": "Abrir",
     "pass": "Pasar",
     "play-again": "Jugar otra vez",
@@ -80,16 +81,13 @@
     "test-runner": "Probador"
   },
   "chat": {
-    "global-chat": {
-      "title": "Global chat",
-      "empty": "No messages yet — say hello!",
-      "new-message": "Message everyone",
-      "send": "Send"
-    },
-    "close": "Close chat",
     "chat": "Conversar",
+    "close": "Close chat",
+    "empty": "No messages yet — say hello!",
+    "global-chat": "Global chat",
     "new-message": "Nuevo mensaje",
     "open": "Open chat",
+    "send": "Send",
     "take-slot-hint": "Selecciona un puesto para iniciar conversación"
   },
   "core-messages": {
@@ -129,6 +127,8 @@
     "strokes": "Trazos",
     "test": "Prueba",
     "test-runner": "Probador",
+    "test-scenario-saved": "Test scenario saved",
+    "test-scenario-saved-hint": "The test scenario was saved. Open it to replay and check its assertions.",
     "theme-inspector": "Inspector de Tema",
     "tile-draw-order-is-predefined": "El orden de robo de losetas está predefinido",
     "tiles": "Losetas",
@@ -137,6 +137,12 @@
     "use-remote-engine": "Usar Motor Remoto"
   },
   "dialog": {
+    "close-all-games": {
+      "close-all-games": "Close All Games",
+      "keep-playing": "Keep Playing",
+      "open-game-windows": "Open Game Windows",
+      "open-game-windows-description": "There are open game windows. Closing the main window will close all of them and quit the app."
+    },
     "close-local-game": {
       "continue-playing": "Continuar Jugando",
       "resign-and-close": "Renunciar y Cerrar",
@@ -305,6 +311,12 @@
       "you-may-place-an-abbey": "Puede colocar una abadía",
       "your-action": "su acción"
     },
+    "coop": {
+      "all-win": "All players win!",
+      "all-lose": "All players lose",
+      "triggered-by": "{name} could neither enlarge an occupied feature nor occupy a new one.",
+      "team-score": "Team score: {points} points"
+    },
     "element": {
       "abbey": "Abadía",
       "abbot": "Abad",
@@ -331,6 +343,8 @@
       "obelisk": "Obelisco",
       "phantom": "Fantasma",
       "pig": "Cerdo",
+      "pre-draw": "Pre-draw",
+      "pre-draw-move": 1,
       "ringmaster": "Director de circo",
       "robber": "El Ladrón",
       "shepherd": "Pastor",
@@ -374,6 +388,8 @@
       "gold-ingots": "Lingotes de oro",
       "hill": "Colina",
       "inn": "Posada",
+      "keep-building": "Keep Building (co-op)",
+      "keep-building-move": 1,
       "king": "Rey",
       "king-and-robber": "El Rey y el Ladrón",
       "marketplace": "Gran Mercado",
@@ -383,6 +399,8 @@
       "monasteries": "Monasterios",
       "monastery": "Monasterio",
       "pig-herd": "Piara de cerdos",
+      "placed-tiles": "Placed tiles",
+      "placed-tiles-move": 1,
       "portal": "Portal mágico",
       "princess": "Princesa",
       "ringmaster": "Maestro de ceremonias",
@@ -461,11 +479,20 @@
       "mandatory-for-selected-tiles": "Obligatorio para las losetas seleccionadas",
       "related-tiles-not-selected": "Losetas relacionadas no seleccionadas"
     },
+    "game-flow": {
+      "pre-draw": "Pre-draw",
+      "cooperative": "Cooperative variant",
+      "cooperative-move": 1,
+      "keep-building-description": "Every turn you must enlarge an occupied city, road or similar feature, or place a meeple on an unoccupied one. If a player does neither, the game ends and everyone loses. Survive to the last tile and everyone wins with a combined team score.",
+      "keep-building-description-move": 1
+    },
     "header": {
       "components": "Componentes",
+      "game-setup": "Game setup",
       "rules": "Reglas",
       "tiles": "Losetas",
-      "timer": "Temporizador"
+      "timer": "Temporizador",
+      "variant": "Variant"
     },
     "open-game": {
       "assign-all-players-to-start": "Asignar todos los jugadores a la salida",
@@ -540,10 +567,17 @@
     "selected-tiles": "Losetas seleccionadas",
     "tiles": {
       "core-sets": "Sets básicos",
+      "enable-quantity-change": "Enable quantity change",
       "fan-expansions": "Expansiones de fans",
       "major-expansions": "Expansiones mayores",
       "minor-expansions": "Expansiones menores",
-      "promos": "Promos"
+      "next-expansion": "Next expansion",
+      "previous-expansion": "Previous expansion",
+      "promos": "Promos",
+      "remove-all-tiles": "Remove all",
+      "reset-tiles": "Reset",
+      "separate-expansions": "Separate expansions",
+      "start-tile-excluded": "Starting tile count is set to 0 – restore it to create the game"
     },
     "timer": {
       "at-game-start-set-timer-to": "Al inicio de la partida, poner el temporizador en",
@@ -670,7 +704,22 @@
         "C1": "conectado (cruce de carreteras o carretera que se dirige a una ciudad o monasterio) (1ª ed.)",
         "C2": "una zona en la misma loseta o en una adyacente (2ª ed.)",
         "description": "Una vez puntuado, el carromato puede moverse a una zona adyacente desocupada e incompleta. Adyacente significa: {}"
-      }
+      },
+      "choose-variant": "Choose game variant",
+      "standard": "Standard rules",
+      "standard-description": "The classic competitive game — every player scores for themselves and the highest score wins.",
+      "best-setups": "Best setups",
+      "leaderboard-online-only": "Connect to the online server to browse the best co-op setups and scores.",
+      "leaderboard-loading": "Loading best setups from the server…",
+      "leaderboard-empty": "No finished co-op games yet — set up your own game and be the first on the board!",
+      "n-players": "{players} players",
+      "play-it": "Play it",
+      "popular-setups": "Most popular setups",
+      "popular-online-only": "Connect to the online server to browse the most-played setups.",
+      "popular-empty": "No finished games yet — set up your own game and start the statistics!",
+      "times-played": "played {count}×",
+      "share-of-games": "{percent}% of finished games",
+      "all-previous-move": 1
     }
   },
   "index": {
@@ -690,15 +739,23 @@
     "online": {
       "abandon-game": "Abandonar la partida",
       "chat-during-game": "Charlar durante la partida",
+      "connecting": "Connecting to server…",
       "connected-to": "Conectado a {0}",
       "game-id": "ID de la partida",
       "games-in-progress": "Partida en curso",
       "join-game": "Unirse a la partida",
+      "local-game": "Local game",
+      "loading-game-data": "Loading game data…",
       "lobby": "Sala de espera",
       "no-public-games": "No hay partidas públicas",
       "no-random-discovery": "significa que no se buscan jugadores al azar",
       "not-yet-started": "Sin comenzar",
+      "offline": "Offline – not connected to server",
+      "offline-lobby-hidden": "Connect to the server to see the public lobby and your games in progress.",
+      "online-game": "Online game",
       "online-storage-description": "Salir de la partida en línea mantiene la partida incompleta en segundo plano. Se puede volver a la partida desde esta lista cuando se desee.",
+      "opened-in-window": "Open in a window",
+      "opened-in-window-move": 1,
       "paste-a-game-key": "Pegar una clave de partida proporcionada por el servidor",
       "public-games": "Partidas públicas",
       "private-games-only": "Ahora sólo son soportadas partidas privadas.",
@@ -873,6 +930,12 @@
       "folder-does-not-exists": "La carpeta no existe",
       "stable": "Solo quiero jugar y disfrutar del juego",
       "path-is-not-directory": "La ruta no es un directorio",
+      "taskbar": {
+        "title": "Windows taskbar",
+        "separate": "Separate taskbar buttons (one per window)",
+        "grouped": "Group windows (raise the active game on top when it's your turn)",
+        "hint": "Changes how the lobby and game windows appear on the Windows taskbar."
+      },
       "test-runner-folder": "Carpeta de Ejecutor de Pruebas",
       "title": "Sistema"
     },

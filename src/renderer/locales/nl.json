@@ -47,6 +47,7 @@
     "load-setup-from-file": "Opzet uit bestand laden",
     "may-deploy": "Mag zetten",
     "must-remove": "Moet verwijderen",
+    "next": "Next",
     "open": "Openen",
     "pass": "Passen",
     "play-again": "Opnieuw spelen",
@@ -80,16 +81,13 @@
     "test-runner": "Uitvoering testen"
   },
   "chat": {
-    "global-chat": {
-      "title": "Global chat",
-      "empty": "No messages yet — say hello!",
-      "new-message": "Message everyone",
-      "send": "Send"
-    },
-    "close": "Close chat",
     "chat": "Chat",
+    "close": "Close chat",
+    "empty": "No messages yet — say hello!",
+    "global-chat": "Global chat",
     "new-message": "Nieuw bericht",
     "open": "Open chat",
+    "send": "Send",
     "take-slot-hint": "Neem een plaats om een chat te starten"
   },
   "core-messages": {
@@ -129,6 +127,8 @@
     "strokes": "Slagen",
     "test": "Test",
     "test-runner": "Uitvoering testen",
+    "test-scenario-saved": "Test scenario saved",
+    "test-scenario-saved-hint": "The test scenario was saved. Open it to replay and check its assertions.",
     "theme-inspector": "Thema-inspecteur",
     "tile-draw-order-is-predefined": "Tegeltrekvolgorde is voorgedefinieerd",
     "tiles": "Tegels",
@@ -137,6 +137,12 @@
     "use-remote-engine": "Externe engine gebruiken"
   },
   "dialog": {
+    "close-all-games": {
+      "close-all-games": "Close All Games",
+      "keep-playing": "Keep Playing",
+      "open-game-windows": "Open Game Windows",
+      "open-game-windows-description": "There are open game windows. Closing the main window will close all of them and quit the app."
+    },
     "close-local-game": {
       "continue-playing": "Spel voortzetten",
       "resign-and-close": "Opgeven en sluiten",
@@ -305,6 +311,12 @@
       "you-may-place-an-abbey": "Je mag een abdij leggen",
       "your-action": "jouw actie"
     },
+    "coop": {
+      "all-win": "All players win!",
+      "all-lose": "All players lose",
+      "triggered-by": "{name} could neither enlarge an occupied feature nor occupy a new one.",
+      "team-score": "Team score: {points} points"
+    },
     "element": {
       "abbey": "Abdij",
       "abbot": "Abt",
@@ -331,6 +343,8 @@
       "obelisk": "Obelisk",
       "phantom": "Fantoom",
       "pig": "Varken",
+      "pre-draw": "Pre-draw",
+      "pre-draw-move": 1,
       "ringmaster": "Circusdirecteur",
       "robber": "Roofridder",
       "shepherd": "Herder",
@@ -374,6 +388,8 @@
       "gold-ingots": "Goudstaven",
       "hill": "Heuvel",
       "inn": "Herberg",
+      "keep-building": "Keep Building (co-op)",
+      "keep-building-move": 1,
       "king": "Koning",
       "king-and-robber": "Koning & Roofridder",
       "marketplace": "Marktplaats",
@@ -383,6 +399,8 @@
       "monasteries": "Kloosters",
       "monastery": "Klooster",
       "pig-herd": "Varkenskudde",
+      "placed-tiles": "Placed tiles",
+      "placed-tiles-move": 1,
       "portal": "Magische poort",
       "princess": "Jonkvrouw",
       "ringmaster": "Circusdirecteur",
@@ -461,11 +479,20 @@
       "mandatory-for-selected-tiles": "Verplicht voor de geselecteerde tegels",
       "related-tiles-not-selected": "Niet-geselecteerde gerelateerde tegels"
     },
+    "game-flow": {
+      "pre-draw": "Pre-draw",
+      "cooperative": "Cooperative variant",
+      "cooperative-move": 1,
+      "keep-building-description": "Every turn you must enlarge an occupied city, road or similar feature, or place a meeple on an unoccupied one. If a player does neither, the game ends and everyone loses. Survive to the last tile and everyone wins with a combined team score.",
+      "keep-building-description-move": 1
+    },
     "header": {
       "components": "Onderdelen",
+      "game-setup": "Game setup",
       "rules": "Spelregels",
       "tiles": "Tegels",
-      "timer": "Timer"
+      "timer": "Timer",
+      "variant": "Variant"
     },
     "open-game": {
       "assign-all-players-to-start": "Alle spelers aan het begin toewijzen",
@@ -540,10 +567,17 @@
     "selected-tiles": "Geselecteerde tegels",
     "tiles": {
       "core-sets": "Hoofdsets",
+      "enable-quantity-change": "Enable quantity change",
       "fan-expansions": "Fan-uitbreidingen",
       "major-expansions": "Grote uitbreidingen",
       "minor-expansions": "Kleine uitbreidingen",
-      "promos": "Promo's"
+      "next-expansion": "Next expansion",
+      "previous-expansion": "Previous expansion",
+      "promos": "Promo's",
+      "remove-all-tiles": "Remove all",
+      "reset-tiles": "Reset",
+      "separate-expansions": "Separate expansions",
+      "start-tile-excluded": "Starting tile count is set to 0 – restore it to create the game"
     },
     "timer": {
       "at-game-start-set-timer-to": "Stel de timer aan het begin van het spel in op",
@@ -670,7 +704,22 @@
         "C1": "verbonden (weg kruising of weg naar een stad/klooster) (1e editie)",
         "C2": "een project op een aangrenzende tegel (2e editie)",
         "description": "Na de puntentelling, mag de transportwagen naar een aangrenzend, onafgebouwd project verzet worden. Aangrenzend betekent: {}"
-      }
+      },
+      "choose-variant": "Choose game variant",
+      "standard": "Standard rules",
+      "standard-description": "The classic competitive game — every player scores for themselves and the highest score wins.",
+      "best-setups": "Best setups",
+      "leaderboard-online-only": "Connect to the online server to browse the best co-op setups and scores.",
+      "leaderboard-loading": "Loading best setups from the server…",
+      "leaderboard-empty": "No finished co-op games yet — set up your own game and be the first on the board!",
+      "n-players": "{players} players",
+      "play-it": "Play it",
+      "popular-setups": "Most popular setups",
+      "popular-online-only": "Connect to the online server to browse the most-played setups.",
+      "popular-empty": "No finished games yet — set up your own game and start the statistics!",
+      "times-played": "played {count}×",
+      "share-of-games": "{percent}% of finished games",
+      "all-previous-move": 1
     }
   },
   "index": {
@@ -690,15 +739,23 @@
     "online": {
       "abandon-game": "Spel verlaten",
       "chat-during-game": "Chatten tijdens het spel",
+      "connecting": "Connecting to server…",
       "connected-to": "Verbonden met {0}",
       "game-id": "Spel ID",
       "games-in-progress": "Lopende spellen",
       "join-game": "Met spel verbinden",
+      "local-game": "Local game",
+      "loading-game-data": "Loading game data…",
       "lobby": "Lobby",
       "no-public-games": "Geen openbare spellen",
       "no-random-discovery": "dat wil zeggen geen willekeurig zoeken naar spelers",
       "not-yet-started": "Nog niet begonnen",
+      "offline": "Offline – not connected to server",
+      "offline-lobby-hidden": "Connect to the server to see the public lobby and your games in progress.",
+      "online-game": "Online game",
       "online-storage-description": "Een online-spel verlaten behoudt het onafgeronde spel op de achtergrond. Je kunt er wanneer je wilt opnieuw mee verbinden.",
+      "opened-in-window": "Open in a window",
+      "opened-in-window-move": 1,
       "paste-a-game-key": "Plak een spelsleutel zoals verstrekt door de host",
       "public-games": "Openbare spellen",
       "private-games-only": "Op dit moment worden alleen privéspellen ondersteund.",
@@ -873,6 +930,12 @@
       "folder-does-not-exists": "Map bestaat niet",
       "stable": "Ik wil spelen en genieten van het spel",
       "path-is-not-directory": "Pad is geen directory",
+      "taskbar": {
+        "title": "Windows taskbar",
+        "separate": "Separate taskbar buttons (one per window)",
+        "grouped": "Group windows (raise the active game on top when it's your turn)",
+        "hint": "Changes how the lobby and game windows appear on the Windows taskbar."
+      },
       "test-runner-folder": "Test uitvoering map",
       "title": "Systeem"
     },

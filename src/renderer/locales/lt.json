@@ -47,6 +47,7 @@
     "load-setup-from-file": "Užkrauti nustatymus iš aplanko",
     "may-deploy": "Gali padėti",
     "must-remove": "Turi pašalinti",
+    "next": "Next",
     "open": "Atidaryti",
     "pass": "Praleisti",
     "play-again": "Žaisti dar",
@@ -80,16 +81,13 @@
     "test-runner": "Išbandyti"
   },
   "chat": {
-    "global-chat": {
-      "title": "Global chat",
-      "empty": "No messages yet — say hello!",
-      "new-message": "Message everyone",
-      "send": "Send"
-    },
-    "close": "Close chat",
     "chat": "Chat",
+    "close": "Close chat",
+    "empty": "No messages yet — say hello!",
+    "global-chat": "Global chat",
     "new-message": "Naujas pranešimas",
     "open": "Open chat",
+    "send": "Send",
     "take-slot-hint": "Take a slot to start chat"
   },
   "core-messages": {
@@ -129,6 +127,8 @@
     "strokes": "Smūgiai",
     "test": "Bandymas",
     "test-runner": "Tikrinimas",
+    "test-scenario-saved": "Test scenario saved",
+    "test-scenario-saved-hint": "The test scenario was saved. Open it to replay and check its assertions.",
     "theme-inspector": "Temos inspektorius",
     "tile-draw-order-is-predefined": "Tile draw order is predefined",
     "tiles": "Plytelės",
@@ -137,6 +137,12 @@
     "use-remote-engine": "Naudoti nuotolinį variklį"
   },
   "dialog": {
+    "close-all-games": {
+      "close-all-games": "Close All Games",
+      "keep-playing": "Keep Playing",
+      "open-game-windows": "Open Game Windows",
+      "open-game-windows-description": "There are open game windows. Closing the main window will close all of them and quit the app."
+    },
     "close-local-game": {
       "continue-playing": "Tęsti žaidimą",
       "resign-and-close": "Atsistatydinti ir uždaryti",
@@ -305,6 +311,12 @@
       "you-may-place-an-abbey": "Jūs galite padėti Abatiją",
       "your-action": "Jūsų veiksmas"
     },
+    "coop": {
+      "all-win": "All players win!",
+      "all-lose": "All players lose",
+      "triggered-by": "{name} could neither enlarge an occupied feature nor occupy a new one.",
+      "team-score": "Team score: {points} points"
+    },
     "element": {
       "abbey": "Abatija",
       "abbot": "Abotas",
@@ -331,6 +343,8 @@
       "obelisk": "Obeliskas",
       "phantom": "Fantomas",
       "pig": "Kiaulė",
+      "pre-draw": "Pre-draw",
+      "pre-draw-move": 1,
       "ringmaster": "Ringmeisteris",
       "robber": "Vagių Baronas",
       "shepherd": "Aviganis",
@@ -374,6 +388,8 @@
       "gold-ingots": "Aukso luitai",
       "hill": "Kalva",
       "inn": "Užeiga",
+      "keep-building": "Keep Building (co-op)",
+      "keep-building-move": 1,
       "king": "Karalius",
       "king-and-robber": "Karalius ir Plėšikas",
       "marketplace": "Prekyvietė",
@@ -383,6 +399,8 @@
       "monasteries": "Vienuolynai",
       "monastery": "Vienuolynas",
       "pig-herd": "Kiaulių kaimenė",
+      "placed-tiles": "Placed tiles",
+      "placed-tiles-move": 1,
       "portal": "Magiškasis portalas",
       "princess": "Princesė",
       "ringmaster": "Ringmeisteris",
@@ -461,11 +479,20 @@
       "mandatory-for-selected-tiles": "Privaloma pasirinktoms kortelėms",
       "related-tiles-not-selected": "Nepasirinktos susijusios kortelės"
     },
+    "game-flow": {
+      "pre-draw": "Pre-draw",
+      "cooperative": "Cooperative variant",
+      "cooperative-move": 1,
+      "keep-building-description": "Every turn you must enlarge an occupied city, road or similar feature, or place a meeple on an unoccupied one. If a player does neither, the game ends and everyone loses. Survive to the last tile and everyone wins with a combined team score.",
+      "keep-building-description-move": 1
+    },
     "header": {
       "components": "Komponentai",
+      "game-setup": "Game setup",
       "rules": "Taisyklės",
       "tiles": "Kortelės",
-      "timer": "Laikmatis"
+      "timer": "Laikmatis",
+      "variant": "Variant"
     },
     "open-game": {
       "assign-all-players-to-start": "Pradėti žaidimą",
@@ -540,10 +567,17 @@
     "selected-tiles": "Pasirinktos kortelės",
     "tiles": {
       "core-sets": "Pagrindiniai rinkiniai",
+      "enable-quantity-change": "Enable quantity change",
       "fan-expansions": "Fanų papildymai",
       "major-expansions": "Didieji papildymai",
       "minor-expansions": "Mažieji papildymai",
-      "promos": "Reklaminiai"
+      "next-expansion": "Next expansion",
+      "previous-expansion": "Previous expansion",
+      "promos": "Reklaminiai",
+      "remove-all-tiles": "Remove all",
+      "reset-tiles": "Reset",
+      "separate-expansions": "Separate expansions",
+      "start-tile-excluded": "Starting tile count is set to 0 – restore it to create the game"
     },
     "timer": {
       "at-game-start-set-timer-to": "Žaidimo pradžioje nustatyti laikmatį",
@@ -670,7 +704,22 @@
         "C1": "neužimtą kelią, ar miestą/vienuolyną į kurį veda kelias (1st ed.)",
         "C2": "neužimtą kelią, ar miestą/vienuolyną, kuris yra ant tos pačops arba šalia esančios kortelės (2nd ed.)",
         "description": "Po taškų skaičiavimo Vežimas gali būti perkeltas į kitą šalia esantį neužimtą, nepabaigtą objektą. Į kitą reiškia: {}"
-      }
+      },
+      "choose-variant": "Choose game variant",
+      "standard": "Standard rules",
+      "standard-description": "The classic competitive game — every player scores for themselves and the highest score wins.",
+      "best-setups": "Best setups",
+      "leaderboard-online-only": "Connect to the online server to browse the best co-op setups and scores.",
+      "leaderboard-loading": "Loading best setups from the server…",
+      "leaderboard-empty": "No finished co-op games yet — set up your own game and be the first on the board!",
+      "n-players": "{players} players",
+      "play-it": "Play it",
+      "popular-setups": "Most popular setups",
+      "popular-online-only": "Connect to the online server to browse the most-played setups.",
+      "popular-empty": "No finished games yet — set up your own game and start the statistics!",
+      "times-played": "played {count}×",
+      "share-of-games": "{percent}% of finished games",
+      "all-previous-move": 1
     }
   },
   "index": {
@@ -690,15 +739,23 @@
     "online": {
       "abandon-game": "Palieka žaidimą",
       "chat-during-game": "Pokalbis žaidimo metu",
+      "connecting": "Connecting to server…",
       "connected-to": "Prisijungia prie {0}",
       "game-id": "Žaidimo ID",
       "games-in-progress": "Žaidimas jau vyksta",
       "join-game": "Prisijungti prie žaidimo",
+      "local-game": "Local game",
+      "loading-game-data": "Loading game data…",
       "lobby": "Laukiamasis",
       "no-public-games": "Nėra viešų žaidimų",
       "no-random-discovery": "Tai reiškia jokių atsitiktinių žaidėjų",
       "not-yet-started": "Dar nepradėta",
+      "offline": "Offline – not connected to server",
+      "offline-lobby-hidden": "Connect to the server to see the public lobby and your games in progress.",
+      "online-game": "Online game",
       "online-storage-description": "Išėję iš internetinio žaidimo, nebaigtą žaidimą laikykite fone. Galite vėl prisijungti prie jo iš šio sąrašo, kai tik norėsite.",
+      "opened-in-window": "Open in a window",
+      "opened-in-window-move": 1,
       "paste-a-game-key": "Įveskite žaidimo šeimininko pateiktą žaidimo raktą",
       "public-games": "Viešas žaidimas",
       "private-games-only": "Tik privatūs žaidimai dabar yra palaikomi",
@@ -873,6 +930,12 @@
       "folder-does-not-exists": "Folder does not exists",
       "stable": "Noriu tiesiog žaisti ir mėgautis žaidimu",
       "path-is-not-directory": "Path is not directory",
+      "taskbar": {
+        "title": "Windows taskbar",
+        "separate": "Separate taskbar buttons (one per window)",
+        "grouped": "Group windows (raise the active game on top when it's your turn)",
+        "hint": "Changes how the lobby and game windows appear on the Windows taskbar."
+      },
       "test-runner-folder": "Test Runner Folder",
       "title": "Sistema"
     },

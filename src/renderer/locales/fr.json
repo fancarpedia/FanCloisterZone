@@ -2,7 +2,7 @@
   "@author": "Black Bear",
   "@jcz-version": "5.12.1",
   "@fcz-version": "6.3.0",
-  "@version": "0.11.4",
+  "@version": "0.11.6",
   "about": {
     "author": "Auteur",
     "configuration-file": "Fichier de configuration",
@@ -47,12 +47,13 @@
     "load-setup-from-file": "Charger la configuration à partir d’un fichier",
     "may-deploy": "Peut poser",
     "must-remove": "Doit le retirer",
+    "next": "Next",
     "open": "Ouvrir",
     "pass": "Passer",
     "play-again": "Jouer à nouveau",
     "play-online": "Jouer en ligne",
     "play-online-fan": "Jouer en ligne sur le serveur Fan",
-    "play-online-local": "Play Online on Dev Local Server",
+    "play-online-local": "Jouer en ligne sur le serveur Dev Local",
     "plus-description": "Ajouter plusieurs instances",
     "raise": "Augmenter",
     "rematch": "Match retour",
@@ -71,7 +72,7 @@
     "select": "Sélectionner",
     "sell": "Vendre",
     "set": "Sélectionner",
-    "show": "Show",
+    "show": "Afficher",
     "show-all": "Tout afficher",
     "show-stats": "Afficher les statistiques",
     "start": "Démarrer",
@@ -80,16 +81,13 @@
     "test-runner": "Exécuteur de tests"
   },
   "chat": {
-    "global-chat": {
-      "title": "Global chat",
-      "empty": "No messages yet — say hello!",
-      "new-message": "Message everyone",
-      "send": "Send"
-    },
-    "close": "Fermer la discussion",
     "chat": "Discuter",
+    "close": "Fermer la discussion",
+    "empty": "Pas encore de messages — n’hésite pas à dire bonjour !",
+    "global-chat": "Discussion générale",
     "new-message": "Nouveau message",
     "open": "Ouvrir une discussion",
+    "send": "Envoyer",
     "take-slot-hint": "Réserver un créneau pour démarrer une discussion"
   },
   "core-messages": {
@@ -129,6 +127,8 @@
     "strokes": "Traits",
     "test": "Test",
     "test-runner": "Exécuteur de tests",
+    "test-scenario-saved": "Test scenario saved",
+    "test-scenario-saved-hint": "The test scenario was saved. Open it to replay and check its assertions.",
     "theme-inspector": "Inspecteur de thème",
     "tile-draw-order-is-predefined": "L’ordre de pioche des tuiles est prédéfini",
     "tiles": "Tuiles",
@@ -137,6 +137,12 @@
     "use-remote-engine": "Utiliser moteur à distance"
   },
   "dialog": {
+    "close-all-games": {
+      "close-all-games": "Close All Games",
+      "keep-playing": "Keep Playing",
+      "open-game-windows": "Open Game Windows",
+      "open-game-windows-description": "There are open game windows. Closing the main window will close all of them and quit the app."
+    },
     "close-local-game": {
       "continue-playing": "Continuer à jouer",
       "resign-and-close": "Abandonner et fermer",
@@ -305,6 +311,12 @@
       "you-may-place-an-abbey": "Vous pouvez placer un monastère",
       "your-action": "votre action"
     },
+    "coop": {
+      "all-win": "All players win!",
+      "all-lose": "All players lose",
+      "triggered-by": "{name} could neither enlarge an occupied feature nor occupy a new one.",
+      "team-score": "Team score: {points} points"
+    },
     "element": {
       "abbey": "Monastère",
       "abbot": "Abbé",
@@ -331,6 +343,8 @@
       "obelisk": "Obélisque",
       "phantom": "Fantôme",
       "pig": "Cochon",
+      "pre-draw": "Pre-draw",
+      "pre-draw-move": 1,
       "ringmaster": "Directeur de cirque",
       "robber": "Chevalier-brigand",
       "shepherd": "Berger",
@@ -374,6 +388,8 @@
       "gold-ingots": "Lingots d’or",
       "hill": "Colline",
       "inn": "Auberge au lac",
+      "keep-building": "Keep Building (co-op)",
+      "keep-building-move": 1,
       "king": "Roi",
       "king-and-robber": "Roi et Chevalier-brigand",
       "marketplace": "Place du marché",
@@ -383,6 +399,8 @@
       "monasteries": "Abbayes",
       "monastery": "Abbaye",
       "pig-herd": "Troupeau de porcs",
+      "placed-tiles": "Placed tiles",
+      "placed-tiles-move": 1,
       "portal": "Portail magique",
       "princess": "Princesse",
       "ringmaster": "Directeur de cirque",
@@ -461,11 +479,20 @@
       "mandatory-for-selected-tiles": "Obligatoire pour les tuiles sélectionnées",
       "related-tiles-not-selected": "Tuiles connexes non sélectionnées"
     },
+    "game-flow": {
+      "pre-draw": "Pre-draw",
+      "cooperative": "Cooperative variant",
+      "cooperative-move": 1,
+      "keep-building-description": "Every turn you must enlarge an occupied city, road or similar feature, or place a meeple on an unoccupied one. If a player does neither, the game ends and everyone loses. Survive to the last tile and everyone wins with a combined team score.",
+      "keep-building-description-move": 1
+    },
     "header": {
       "components": "Matériel",
+      "game-setup": "Game setup",
       "rules": "Règles",
       "tiles": "Tuiles",
-      "timer": "Minuteur"
+      "timer": "Minuteur",
+      "variant": "Variant"
     },
     "open-game": {
       "assign-all-players-to-start": "Répartir tous les joueurs pour commencer",
@@ -540,10 +567,17 @@
     "selected-tiles": "Tuiles sélectionnées",
     "tiles": {
       "core-sets": "Jeux de base",
+      "enable-quantity-change": "Enable quantity change",
       "fan-expansions": "Extensions de fans",
       "major-expansions": "Extensions majeures",
       "minor-expansions": "Extensions mineures",
-      "promos": "Tuiles promotionnelles"
+      "next-expansion": "Next expansion",
+      "previous-expansion": "Previous expansion",
+      "promos": "Tuiles promotionnelles",
+      "remove-all-tiles": "Remove all",
+      "reset-tiles": "Reset",
+      "separate-expansions": "Separate expansions",
+      "start-tile-excluded": "Starting tile count is set to 0 – restore it to create the game"
     },
     "timer": {
       "at-game-start-set-timer-to": "Au début de la partie, réglez le minuteur sur",
@@ -670,7 +704,22 @@
         "C1": "connecté (intersection ou route menant vers une ville ou une abbaye) (1ʳᵉ édition)",
         "C2": "une zone sur la même tuile ou sur une tuile orthogonalement ou diagonalement adjacente (2ᵉ édition)",
         "description": "Après l’évaluation, le charriot peut être déplacé vers une zone adjacente inoccupée et incomplète. Adjacent signifie : {}"
-      }
+      },
+      "choose-variant": "Choose game variant",
+      "standard": "Standard rules",
+      "standard-description": "The classic competitive game — every player scores for themselves and the highest score wins.",
+      "best-setups": "Best setups",
+      "leaderboard-online-only": "Connect to the online server to browse the best co-op setups and scores.",
+      "leaderboard-loading": "Loading best setups from the server…",
+      "leaderboard-empty": "No finished co-op games yet — set up your own game and be the first on the board!",
+      "n-players": "{players} players",
+      "play-it": "Play it",
+      "popular-setups": "Most popular setups",
+      "popular-online-only": "Connect to the online server to browse the most-played setups.",
+      "popular-empty": "No finished games yet — set up your own game and start the statistics!",
+      "times-played": "played {count}×",
+      "share-of-games": "{percent}% of finished games",
+      "all-previous-move": 1
     }
   },
   "index": {
@@ -690,15 +739,23 @@
     "online": {
       "abandon-game": "Abandonner la partie",
       "chat-during-game": "Discuter pendant la partie",
+      "connecting": "Connecting to server…",
       "connected-to": "Connecté à {0}",
       "game-id": "Identifiant de la partie",
       "games-in-progress": "Parties en cours",
       "join-game": "Rejoindre une partie",
+      "local-game": "Local game",
+      "loading-game-data": "Loading game data…",
       "lobby": "Lobby",
       "no-public-games": "Pas de parties publiques",
       "no-random-discovery": "cela signifie qu’il n’y a pas de découverte de joueurs aléatoires",
       "not-yet-started": "Pas encore commencé",
+      "offline": "Offline – not connected to server",
+      "offline-lobby-hidden": "Connect to the server to see the public lobby and your games in progress.",
+      "online-game": "Online game",
       "online-storage-description": "En quittant une partie en ligne, la partie inachevée reste en arrière-plan. Vous pouvez la rejoindre à partir de cette liste quand vous le souhaitez.",
+      "opened-in-window": "Open in a window",
+      "opened-in-window-move": 1,
       "paste-a-game-key": "Coller la clé fournie par l’hôte",
       "public-games": "Parties publiques",
       "private-games-only": "Seules les parties privées sont désormais prises en charge.",
@@ -769,14 +826,14 @@
     }
   },
   "predraw": {
-    "your-hand": "Your hand",
+    "your-hand": "Votre main",
     "empty": "—",
-    "incompatible": "Not available with Builder, Dragon, Wagon, Castle, Shepherd, River, Escape, Count or Crop Circles",
-    "local-only": "Not allowed in local games",
-    "one-seat-notice": "Pre-draw game — each player plays on their own device, so you can take only one slot.",
-    "pick-hint": "Click a tile to place it, then choose a spot on the board",
-    "draw": "Draw tile",
-    "pass-abbey": "Pass abbey (draw last tile)"
+    "incompatible": "Non disponible avec le Bâtisseur, le Dragon, le Chariot, la Forteresse, le Berger, la Rivière, l'Évasion, le Comte ou les Agroglyphes",
+    "local-only": "Interdit dans les parties locales",
+    "one-seat-notice": "Jeu avant la pioche — chaque joueur joue sur son propre appareil ; vous ne pouvez donc occuper qu’un seul emplacement.",
+    "pick-hint": "Cliquez sur une tuile pour la placer, puis choisissez un emplacement sur l’aire de jeu",
+    "draw": "Piocher une tuile",
+    "pass-abbey": "Passer la phase de placement du Monastère (piocher la dernière tuile)"
   },
   "server": {
     "translate": "Une mise à jour vers la version v%VERSION% est nécessaire."
@@ -873,6 +930,12 @@
       "folder-does-not-exists": "Le dossier n’existe pas",
       "stable": "Je veux juste jouer et profiter du jeu",
       "path-is-not-directory": "Le chemin n’est pas un répertoire",
+      "taskbar": {
+        "title": "Windows taskbar",
+        "separate": "Separate taskbar buttons (one per window)",
+        "grouped": "Group windows (raise the active game on top when it's your turn)",
+        "hint": "Changes how the lobby and game windows appear on the Windows taskbar."
+      },
       "test-runner-folder": "Dossier du programme d’exécuteur de tests",
       "title": "Système"
     },

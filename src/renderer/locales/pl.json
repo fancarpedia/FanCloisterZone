@@ -47,6 +47,7 @@
     "load-setup-from-file": "Wczytaj ustawienia z pliku",
     "may-deploy": "Może dodać",
     "must-remove": "Musi usunąć",
+    "next": "Next",
     "open": "Otwórz",
     "pass": "Pasuj",
     "play-again": "Graj ponownie",
@@ -80,16 +81,13 @@
     "test-runner": "Przetestuj"
   },
   "chat": {
-    "global-chat": {
-      "title": "Global chat",
-      "empty": "No messages yet — say hello!",
-      "new-message": "Message everyone",
-      "send": "Send"
-    },
-    "close": "Close chat",
     "chat": "Czat",
+    "close": "Close chat",
+    "empty": "No messages yet — say hello!",
+    "global-chat": "Global chat",
     "new-message": "Nowa wiadomość",
     "open": "Open chat",
+    "send": "Send",
     "take-slot-hint": "Wybierz miejsce by rozpocząć czat"
   },
   "core-messages": {
@@ -129,6 +127,8 @@
     "strokes": "Krawędzie",
     "test": "Test",
     "test-runner": "Tester",
+    "test-scenario-saved": "Test scenario saved",
+    "test-scenario-saved-hint": "The test scenario was saved. Open it to replay and check its assertions.",
     "theme-inspector": "Inspektor motywów",
     "tile-draw-order-is-predefined": "Kolejność płytek jest ustalona",
     "tiles": "Płytki",
@@ -137,6 +137,12 @@
     "use-remote-engine": "Użyj zdalnego silnika"
   },
   "dialog": {
+    "close-all-games": {
+      "close-all-games": "Close All Games",
+      "keep-playing": "Keep Playing",
+      "open-game-windows": "Open Game Windows",
+      "open-game-windows-description": "There are open game windows. Closing the main window will close all of them and quit the app."
+    },
     "close-local-game": {
       "continue-playing": "Kontynuuj grę",
       "resign-and-close": "Zakończ i zamknij",
@@ -305,6 +311,12 @@
       "you-may-place-an-abbey": "Możesz umieścić Opactwo",
       "your-action": "twoja czynność"
     },
+    "coop": {
+      "all-win": "All players win!",
+      "all-lose": "All players lose",
+      "triggered-by": "{name} could neither enlarge an occupied feature nor occupy a new one.",
+      "team-score": "Team score: {points} points"
+    },
     "element": {
       "abbey": "Opactwo",
       "abbot": "Opat",
@@ -331,6 +343,8 @@
       "obelisk": "Obelisk",
       "phantom": "Świta",
       "pig": "Świnia",
+      "pre-draw": "Pre-draw",
+      "pre-draw-move": 1,
       "ringmaster": "Dyrektor cyrku",
       "robber": "Baron Rabusiów",
       "shepherd": "Pasterz",
@@ -374,6 +388,8 @@
       "gold-ingots": "Sztabki złota",
       "hill": "Wzgórze",
       "inn": "Karczma",
+      "keep-building": "Keep Building (co-op)",
+      "keep-building-move": 1,
       "king": "Król",
       "king-and-robber": "Król i Baron Rabusiów",
       "marketplace": "Targowisko",
@@ -383,6 +399,8 @@
       "monasteries": "Klasztory",
       "monastery": "Klasztor",
       "pig-herd": "Stado świń",
+      "placed-tiles": "Placed tiles",
+      "placed-tiles-move": 1,
       "portal": "Magiczna Ścieżka",
       "princess": "Księżniczka",
       "ringmaster": "Dyrektor Cyrku",
@@ -461,11 +479,20 @@
       "mandatory-for-selected-tiles": "Obowiązkowe do wybranych płytek",
       "related-tiles-not-selected": "Nie wybrano powiązanych płytek."
     },
+    "game-flow": {
+      "pre-draw": "Pre-draw",
+      "cooperative": "Cooperative variant",
+      "cooperative-move": 1,
+      "keep-building-description": "Every turn you must enlarge an occupied city, road or similar feature, or place a meeple on an unoccupied one. If a player does neither, the game ends and everyone loses. Survive to the last tile and everyone wins with a combined team score.",
+      "keep-building-description-move": 1
+    },
     "header": {
       "components": "Komponenty",
+      "game-setup": "Game setup",
       "rules": "Zasady",
       "tiles": "Płytki",
-      "timer": "Minutnik"
+      "timer": "Minutnik",
+      "variant": "Variant"
     },
     "open-game": {
       "assign-all-players-to-start": "Przydziel wszystkich graczy by zacząć",
@@ -540,10 +567,17 @@
     "selected-tiles": "Wybrane płytki",
     "tiles": {
       "core-sets": "Gra podstawowa",
+      "enable-quantity-change": "Enable quantity change",
       "fan-expansions": "Fanowskie rozszerzenia",
       "major-expansions": "Duże rozszerzenia",
       "minor-expansions": "Małe rozszerzenia",
-      "promos": "Promocyjne"
+      "next-expansion": "Next expansion",
+      "previous-expansion": "Previous expansion",
+      "promos": "Promocyjne",
+      "remove-all-tiles": "Remove all",
+      "reset-tiles": "Reset",
+      "separate-expansions": "Separate expansions",
+      "start-tile-excluded": "Starting tile count is set to 0 – restore it to create the game"
     },
     "timer": {
       "at-game-start-set-timer-to": "Stan początkowy licznika:",
@@ -670,7 +704,22 @@
         "C1": "połączonym obiekcie (skrzyżowanie lub droga do/z miasta/klasztoru) (C1)",
         "C2": "przyległej płytce (C2)",
         "description": "Po punktacji wóz może być umieszczony na: {}"
-      }
+      },
+      "choose-variant": "Choose game variant",
+      "standard": "Standard rules",
+      "standard-description": "The classic competitive game — every player scores for themselves and the highest score wins.",
+      "best-setups": "Best setups",
+      "leaderboard-online-only": "Connect to the online server to browse the best co-op setups and scores.",
+      "leaderboard-loading": "Loading best setups from the server…",
+      "leaderboard-empty": "No finished co-op games yet — set up your own game and be the first on the board!",
+      "n-players": "{players} players",
+      "play-it": "Play it",
+      "popular-setups": "Most popular setups",
+      "popular-online-only": "Connect to the online server to browse the most-played setups.",
+      "popular-empty": "No finished games yet — set up your own game and start the statistics!",
+      "times-played": "played {count}×",
+      "share-of-games": "{percent}% of finished games",
+      "all-previous-move": 1
     }
   },
   "index": {
@@ -690,15 +739,23 @@
     "online": {
       "abandon-game": "Porzuć grę",
       "chat-during-game": "Czat podczas gry",
+      "connecting": "Connecting to server…",
       "connected-to": "Połączono z {0}",
       "game-id": "Klucz",
       "games-in-progress": "Gry w toku",
       "join-game": "Dołącz do gry",
+      "local-game": "Local game",
+      "loading-game-data": "Loading game data…",
       "lobby": "Poczekalnia",
       "no-public-games": "Brak gier publicznych",
       "no-random-discovery": "oznacza to brak możliwości odkrycia przypadkowych graczy",
       "not-yet-started": "Jeszcze nie rozpoczęto",
+      "offline": "Offline – not connected to server",
+      "offline-lobby-hidden": "Connect to the server to see the public lobby and your games in progress.",
+      "online-game": "Online game",
       "online-storage-description": "Opuszczając grę online zachowuje się ona niedokończona w tle. Możesz do niej powrócić z tej listy kiedy tylko zechcesz.",
+      "opened-in-window": "Open in a window",
+      "opened-in-window-move": 1,
       "paste-a-game-key": "Wklej klucz do gry dostarczony przez gospodarza",
       "public-games": "Gry publiczne",
       "private-games-only": "Obecnie obsługiwane są tylko gry prywatne.",
@@ -873,6 +930,12 @@
       "folder-does-not-exists": "Folder nie istnieje",
       "stable": "Działa dobrze i jest odpowiednia dla każdego.",
       "path-is-not-directory": "Ścieżka nie jest katalogiem",
+      "taskbar": {
+        "title": "Windows taskbar",
+        "separate": "Separate taskbar buttons (one per window)",
+        "grouped": "Group windows (raise the active game on top when it's your turn)",
+        "hint": "Changes how the lobby and game windows appear on the Windows taskbar."
+      },
       "test-runner-folder": "Folder testera",
       "title": "System"
     },

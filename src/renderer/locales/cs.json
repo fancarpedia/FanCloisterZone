@@ -47,6 +47,7 @@
     "load-setup-from-file": "Načíst nastavení ze souboru",
     "may-deploy": "Může přiložit",
     "must-remove": "Musí odstranit",
+    "next": "Next",
     "open": "Otevři",
     "pass": "Přenechat",
     "play-again": "Hrát znovu",
@@ -80,16 +81,13 @@
     "test-runner": "Test Runner"
   },
   "chat": {
-    "global-chat": {
-      "title": "Global chat",
-      "empty": "No messages yet — say hello!",
-      "new-message": "Message everyone",
-      "send": "Send"
-    },
-    "close": "Zavřít chat",
     "chat": "Chat",
+    "close": "Zavřít chat",
+    "empty": "No messages yet — say hello!",
+    "global-chat": "Global chat",
     "new-message": "Nový dopis",
     "open": "Otevřít chat",
+    "send": "Send",
     "take-slot-hint": "Nejprve vyber hráče, až potom můžeš chatovat"
   },
   "core-messages": {
@@ -129,6 +127,8 @@
     "strokes": "Obrysy",
     "test": "Test",
     "test-runner": "Test Runner",
+    "test-scenario-saved": "Test scenario saved",
+    "test-scenario-saved-hint": "The test scenario was saved. Open it to replay and check its assertions.",
     "theme-inspector": "Kontrolór tém",
     "tile-draw-order-is-predefined": "Pořadí kartiček je určené předem",
     "tiles": "Kartičky",
@@ -137,6 +137,12 @@
     "use-remote-engine": "Použij vzdálený engine"
   },
   "dialog": {
+    "close-all-games": {
+      "close-all-games": "Close All Games",
+      "keep-playing": "Keep Playing",
+      "open-game-windows": "Open Game Windows",
+      "open-game-windows-description": "There are open game windows. Closing the main window will close all of them and quit the app."
+    },
     "close-local-game": {
       "continue-playing": "Pokračuj ve hře",
       "resign-and-close": "Vzdej se a zavři",
@@ -305,6 +311,12 @@
       "you-may-place-an-abbey": "Můžete přiložit opatství",
       "your-action": "provedený úkon"
     },
+    "coop": {
+      "all-win": "All players win!",
+      "all-lose": "All players lose",
+      "triggered-by": "{name} could neither enlarge an occupied feature nor occupy a new one.",
+      "team-score": "Team score: {points} points"
+    },
     "element": {
       "abbey": "Opatství",
       "abbot": "Opat",
@@ -331,6 +343,8 @@
       "obelisk": "Obelisk",
       "phantom": "Fantom",
       "pig": "Prasátko",
+      "pre-draw": "Pre-draw",
+      "pre-draw-move": 1,
       "ringmaster": "Ředitel",
       "robber": "Loupeživý rytíř",
       "shepherd": "Pastýř",
@@ -374,6 +388,8 @@
       "gold-ingots": "Zlaté cihličky",
       "hill": "Kopec",
       "inn": "Hostinec",
+      "keep-building": "Keep Building (co-op)",
+      "keep-building-move": 1,
       "king": "Král",
       "king-and-robber": "Král a loupeživý rytíř",
       "marketplace": "Trh",
@@ -383,6 +399,8 @@
       "monasteries": "Kláštery",
       "monastery": "Klášter",
       "pig-herd": "Stádo prasat",
+      "placed-tiles": "Placed tiles",
+      "placed-tiles-move": 1,
       "portal": "Tajná chodba",
       "princess": "Princezna",
       "ringmaster": "Ředitel",
@@ -461,11 +479,20 @@
       "mandatory-for-selected-tiles": "Povinné pro vybrané kartičky",
       "related-tiles-not-selected": "Nebyly vybrány související kartičky"
     },
+    "game-flow": {
+      "pre-draw": "Pre-draw",
+      "cooperative": "Cooperative variant",
+      "cooperative-move": 1,
+      "keep-building-description": "Every turn you must enlarge an occupied city, road or similar feature, or place a meeple on an unoccupied one. If a player does neither, the game ends and everyone loses. Survive to the last tile and everyone wins with a combined team score.",
+      "keep-building-description-move": 1
+    },
     "header": {
       "components": "Komponenty",
+      "game-setup": "Game setup",
       "rules": "Pravidla",
       "tiles": "Kartičky",
-      "timer": "Časovač"
+      "timer": "Časovač",
+      "variant": "Variant"
     },
     "open-game": {
       "assign-all-players-to-start": "Přiřaďte všechny hráče a spusťte hru",
@@ -540,10 +567,17 @@
     "selected-tiles": "Vybrané kartičky",
     "tiles": {
       "core-sets": "Základní sady",
+      "enable-quantity-change": "Enable quantity change",
       "fan-expansions": "Fanouškovská rozšíření",
       "major-expansions": "Velká rozšíření",
       "minor-expansions": "Malá rozšíření",
-      "promos": "Promo rozšíření"
+      "next-expansion": "Next expansion",
+      "previous-expansion": "Previous expansion",
+      "promos": "Promo rozšíření",
+      "remove-all-tiles": "Remove all",
+      "reset-tiles": "Reset",
+      "separate-expansions": "Separate expansions",
+      "start-tile-excluded": "Starting tile count is set to 0 – restore it to create the game"
     },
     "timer": {
       "at-game-start-set-timer-to": "Celkový čas na začátku hry:",
@@ -670,7 +704,22 @@
         "C1": "které přímo navazuje na cestou, město nebo klášter (1. vydání)",
         "C2": "na stejné nebo sousední kartičce (2. vydání)",
         "description": "Po vyhodnocení území se vůz může přesunut na sousední neobsazené a ​​nedokončené území {}."
-      }
+      },
+      "choose-variant": "Choose game variant",
+      "standard": "Standard rules",
+      "standard-description": "The classic competitive game — every player scores for themselves and the highest score wins.",
+      "best-setups": "Best setups",
+      "leaderboard-online-only": "Connect to the online server to browse the best co-op setups and scores.",
+      "leaderboard-loading": "Loading best setups from the server…",
+      "leaderboard-empty": "No finished co-op games yet — set up your own game and be the first on the board!",
+      "n-players": "{players} players",
+      "play-it": "Play it",
+      "popular-setups": "Most popular setups",
+      "popular-online-only": "Connect to the online server to browse the most-played setups.",
+      "popular-empty": "No finished games yet — set up your own game and start the statistics!",
+      "times-played": "played {count}×",
+      "share-of-games": "{percent}% of finished games",
+      "all-previous-move": 1
     }
   },
   "index": {
@@ -690,15 +739,23 @@
     "online": {
       "abandon-game": "Opustit hru",
       "chat-during-game": "Chat s hráči v průběhu hry",
+      "connecting": "Connecting to server…",
       "connected-to": "Připojeno k {0}",
       "game-id": "Kód hry",
       "games-in-progress": "Probíhající hry",
       "join-game": "Připojit se do hry",
+      "local-game": "Local game",
+      "loading-game-data": "Loading game data…",
       "lobby": "Lobby",
       "no-public-games": "Žádná veřejná hra",
       "no-random-discovery": "Nespustíte žádné hry vytvořené jinými hráči",
       "not-yet-started": "Ještě nezahájeno",
+      "offline": "Offline – not connected to server",
+      "offline-lobby-hidden": "Connect to the server to see the public lobby and your games in progress.",
+      "online-game": "Online game",
       "online-storage-description": "Pokud opustíte online hru, nedokončená hra zůstane rozháraná na serveru a můžete ji dokončit později.",
+      "opened-in-window": "Open in a window",
+      "opened-in-window-move": 1,
       "paste-a-game-key": "Vložte kód hry poskytnutý hostitelem",
       "public-games": "Veřejné hry",
       "private-games-only": "Nyní můžete hrát pouze hry na tomto počítači.",
@@ -873,6 +930,12 @@
       "folder-does-not-exists": "Složka neexistuje",
       "stable": "Chci jen hrát a užívat si hru",
       "path-is-not-directory": "Zadaná cesta není složka",
+      "taskbar": {
+        "title": "Windows taskbar",
+        "separate": "Separate taskbar buttons (one per window)",
+        "grouped": "Group windows (raise the active game on top when it's your turn)",
+        "hint": "Changes how the lobby and game windows appear on the Windows taskbar."
+      },
       "test-runner-folder": "Složka s testy pro Test Runner",
       "title": "Systém"
     },

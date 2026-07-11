@@ -47,6 +47,7 @@
     "load-setup-from-file": "Carrega la configuració des del fitxer",
     "may-deploy": "Pot col·locar",
     "must-remove": "Ha de traure",
+    "next": "Next",
     "open": "Obre",
     "pass": "Passa",
     "play-again": "Juga una altra vegada",
@@ -80,16 +81,13 @@
     "test-runner": "Execució de proves"
   },
   "chat": {
-    "global-chat": {
-      "title": "Global chat",
-      "empty": "No messages yet — say hello!",
-      "new-message": "Message everyone",
-      "send": "Send"
-    },
-    "close": "Close chat",
     "chat": "Chat",
+    "close": "Close chat",
+    "empty": "No messages yet — say hello!",
+    "global-chat": "Global chat",
     "new-message": "Missatge nou",
     "open": "Open chat",
+    "send": "Send",
     "take-slot-hint": "Take a slot to start chat"
   },
   "core-messages": {
@@ -129,6 +127,8 @@
     "strokes": "Traç",
     "test": "Prova",
     "test-runner": "Execució de proves",
+    "test-scenario-saved": "Test scenario saved",
+    "test-scenario-saved-hint": "The test scenario was saved. Open it to replay and check its assertions.",
     "theme-inspector": "Inspector de temes",
     "tile-draw-order-is-predefined": "Tile draw order is predefined",
     "tiles": "Peces",
@@ -137,6 +137,12 @@
     "use-remote-engine": "Fes servir un motor remot"
   },
   "dialog": {
+    "close-all-games": {
+      "close-all-games": "Close All Games",
+      "keep-playing": "Keep Playing",
+      "open-game-windows": "Open Game Windows",
+      "open-game-windows-description": "There are open game windows. Closing the main window will close all of them and quit the app."
+    },
     "close-local-game": {
       "continue-playing": "Continua jugant",
       "resign-and-close": "Renuncia i tanca",
@@ -305,6 +311,12 @@
       "you-may-place-an-abbey": "Podeu col·locar una abadia",
       "your-action": "l'acció"
     },
+    "coop": {
+      "all-win": "All players win!",
+      "all-lose": "All players lose",
+      "triggered-by": "{name} could neither enlarge an occupied feature nor occupy a new one.",
+      "team-score": "Team score: {points} points"
+    },
     "element": {
       "abbey": "Abat",
       "abbot": "Abat",
@@ -331,6 +343,8 @@
       "obelisk": "Obelisc",
       "phantom": "Fantasma",
       "pig": "Porc",
+      "pre-draw": "Pre-draw",
+      "pre-draw-move": 1,
       "ringmaster": "Mestre de cerimònies",
       "robber": "Lladre",
       "shepherd": "Pastor",
@@ -374,6 +388,8 @@
       "gold-ingots": "Lingots d'or",
       "hill": "Turó",
       "inn": "Fonda",
+      "keep-building": "Keep Building (co-op)",
+      "keep-building-move": 1,
       "king": "Rei",
       "king-and-robber": "El rei i el lladre",
       "marketplace": "Mercat",
@@ -383,6 +399,8 @@
       "monasteries": "Monestirs",
       "monastery": "Monestir",
       "pig-herd": "Porcada",
+      "placed-tiles": "Placed tiles",
+      "placed-tiles-move": 1,
       "portal": "Portal màgic",
       "princess": "Princesa",
       "ringmaster": "Mestre de cerimònies",
@@ -461,11 +479,20 @@
       "mandatory-for-selected-tiles": "Obligatori per a les peces seleccionades",
       "related-tiles-not-selected": "Peces relacionades no seleccionades"
     },
+    "game-flow": {
+      "pre-draw": "Pre-draw",
+      "cooperative": "Cooperative variant",
+      "cooperative-move": 1,
+      "keep-building-description": "Every turn you must enlarge an occupied city, road or similar feature, or place a meeple on an unoccupied one. If a player does neither, the game ends and everyone loses. Survive to the last tile and everyone wins with a combined team score.",
+      "keep-building-description-move": 1
+    },
     "header": {
       "components": "Components",
+      "game-setup": "Game setup",
       "rules": "Regles",
       "tiles": "Peces",
-      "timer": "Cronòmetre"
+      "timer": "Cronòmetre",
+      "variant": "Variant"
     },
     "open-game": {
       "assign-all-players-to-start": "Assigneu tots els jugadors per a començar",
@@ -540,10 +567,17 @@
     "selected-tiles": "Peces seleccionades",
     "tiles": {
       "core-sets": "Jocs base",
+      "enable-quantity-change": "Enable quantity change",
       "fan-expansions": "Expansions dels fans",
       "major-expansions": "Expansions majors",
       "minor-expansions": "Expansions menors",
-      "promos": "Promos"
+      "next-expansion": "Next expansion",
+      "previous-expansion": "Previous expansion",
+      "promos": "Promos",
+      "remove-all-tiles": "Remove all",
+      "reset-tiles": "Reset",
+      "separate-expansions": "Separate expansions",
+      "start-tile-excluded": "Starting tile count is set to 0 – restore it to create the game"
     },
     "timer": {
       "at-game-start-set-timer-to": "A l'inici de la partida, posa el cronòmetre a",
@@ -670,7 +704,22 @@
         "C1": "connectat (cruïlla de camins o inici d'un camí que porta a una ciutat o monestir) (1a ed.)",
         "C2": "en un element de la mateixa peça o peça adjacent (2a ed.)",
         "description": "Després de puntuar, el carretó es pot moure a un element incomplet adjacent i desocupat. Adjacent significa: {}"
-      }
+      },
+      "choose-variant": "Choose game variant",
+      "standard": "Standard rules",
+      "standard-description": "The classic competitive game — every player scores for themselves and the highest score wins.",
+      "best-setups": "Best setups",
+      "leaderboard-online-only": "Connect to the online server to browse the best co-op setups and scores.",
+      "leaderboard-loading": "Loading best setups from the server…",
+      "leaderboard-empty": "No finished co-op games yet — set up your own game and be the first on the board!",
+      "n-players": "{players} players",
+      "play-it": "Play it",
+      "popular-setups": "Most popular setups",
+      "popular-online-only": "Connect to the online server to browse the most-played setups.",
+      "popular-empty": "No finished games yet — set up your own game and start the statistics!",
+      "times-played": "played {count}×",
+      "share-of-games": "{percent}% of finished games",
+      "all-previous-move": 1
     }
   },
   "index": {
@@ -690,15 +739,23 @@
     "online": {
       "abandon-game": "Abandona la partida",
       "chat-during-game": "Xat durant la partida",
+      "connecting": "Connecting to server…",
       "connected-to": "Connectat a {0}",
       "game-id": "ID de la partida",
       "games-in-progress": "Partides en curs",
       "join-game": "Uneix-me a la partida",
+      "local-game": "Local game",
+      "loading-game-data": "Loading game data…",
       "lobby": "Sala d'espera",
       "no-public-games": "No hi ha partides públiques",
       "no-random-discovery": "això vol dir que no es troben jugadors a l'atzar",
       "not-yet-started": "Encara no ha començat",
+      "offline": "Offline – not connected to server",
+      "offline-lobby-hidden": "Connect to the server to see the public lobby and your games in progress.",
+      "online-game": "Online game",
       "online-storage-description": "Si sortiu d'una partida en línia que no hagi acabat, la deixa en curs en segon pla. Podeu tornar a a entrar-hi des d'aquesta llista quan vulgueu.",
+      "opened-in-window": "Open in a window",
+      "opened-in-window-move": 1,
       "paste-a-game-key": "Enganxa una clau de partida proporcionada per l'amfitrió",
       "public-games": "Partides públiques",
       "private-games-only": "Ara només se suporten partides privades.",
@@ -873,6 +930,12 @@
       "folder-does-not-exists": "Folder does not exists",
       "stable": "Només vull jugar i gaudir amb el joc",
       "path-is-not-directory": "Path is not directory",
+      "taskbar": {
+        "title": "Windows taskbar",
+        "separate": "Separate taskbar buttons (one per window)",
+        "grouped": "Group windows (raise the active game on top when it's your turn)",
+        "hint": "Changes how the lobby and game windows appear on the Windows taskbar."
+      },
       "test-runner-folder": "Test Runner Folder",
       "title": "Sistema"
     },

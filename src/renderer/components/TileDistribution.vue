@@ -3,12 +3,12 @@
     <div v-if="editable" class="distribution-controls">
       <v-checkbox
         v-model="separateExpansions"
-        :label="$t('game-setup.separate-expansions')"
+        :label="$t('game-setup.tiles.separate-expansions')"
         dense hide-details
       />
       <v-checkbox
         v-model="quantityChange"
-        :label="$t('game-setup.enable-quantity-change')"
+        :label="$t('game-setup.tiles.enable-quantity-change')"
         dense hide-details
       />
     </div>
@@ -16,10 +16,10 @@
     <!-- global actions only in the flat view — the separated view has them per expansion -->
     <div v-if="quantityEditActive && !separateExpansions" class="pack-actions">
       <v-btn small outlined :disabled="!hasAnyOverride" @click="resetTiles()">
-        {{ $t('game-setup.reset-tiles') }}
+        {{ $t('game-setup.tiles.reset-tiles') }}
       </v-btn>
       <v-btn small outlined :disabled="allTilesRemoved(tileItems)" @click="removeTiles(tileItems)">
-        {{ $t('game-setup.remove-all-tiles') }}
+        {{ $t('game-setup.tiles.remove-all-tiles') }}
       </v-btn>
     </div>
 
@@ -33,10 +33,10 @@
         <ExpansionSymbol v-if="group.expansion" :expansion="group.expansion" class="group-symbol" />
         {{ group.title }}&nbsp;({{ group.total }})
         <span class="group-nav">
-          <v-btn icon x-small :disabled="gi === 0" :title="$t('game-setup.previous-expansion')" @click="scrollToGroup(gi - 1)">
+          <v-btn icon x-small :disabled="gi === 0" :title="$t('game-setup.tiles.previous-expansion')" @click="scrollToGroup(gi - 1)">
             <v-icon x-small>fa-chevron-up</v-icon>
           </v-btn>
-          <v-btn icon x-small :disabled="gi >= displayGroups.length - 1" :title="$t('game-setup.next-expansion')" @click="scrollToGroup(gi + 1)">
+          <v-btn icon x-small :disabled="gi >= displayGroups.length - 1" :title="$t('game-setup.tiles.next-expansion')" @click="scrollToGroup(gi + 1)">
             <v-icon x-small>fa-chevron-down</v-icon>
           </v-btn>
         </span>
@@ -44,10 +44,10 @@
 
       <div v-if="quantityEditActive && group.title !== null && group.tiles.length" class="pack-actions group-actions">
         <v-btn x-small outlined :disabled="!hasGroupOverride(group.tiles)" @click="resetTiles(group.tiles)">
-          {{ $t('game-setup.reset-tiles') }}
+          {{ $t('game-setup.tiles.reset-tiles') }}
         </v-btn>
         <v-btn x-small outlined :disabled="allTilesRemoved(group.tiles)" @click="removeTiles(group.tiles)">
-          {{ $t('game-setup.remove-all-tiles') }}
+          {{ $t('game-setup.tiles.remove-all-tiles') }}
         </v-btn>
       </div>
 

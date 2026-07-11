@@ -207,7 +207,7 @@
     <aside class="global-chat-aside">
       <h2>{{ $t('open-windows.title') }}</h2>
       <OpenGameWindows class="open-windows-block" />
-      <h2>{{ $t('global-chat.title') }}</h2>
+      <h2>{{ $t('chat.chat') }}</h2>
       <GlobalChat inline />
     </aside>
     </div>

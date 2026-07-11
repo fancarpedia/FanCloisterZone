@@ -6,7 +6,7 @@
       v-if="!inline"
       v-show="!open"
       class="gc-launcher"
-      :title="$t('global-chat.title')"
+      :title="$t('chat.global-chat')"
       @mousedown="bulletDragStart('global-chat', $event)"
       @click="openChat"
     >
@@ -16,14 +16,14 @@
 
     <div v-show="inline || open" class="gc-panel">
       <div class="gc-header">
-        <span class="gc-title"><span class="gc-bullet" />{{ $t('global-chat.title') }}</span>
+        <span class="gc-title"><span class="gc-bullet" />{{ $t('chat.global-chat') }}</span>
         <button v-if="!inline" class="gc-close" :title="$t('chat.close') || 'Close'" @click="open = false">
           <v-icon>fas fa-times</v-icon>
         </button>
       </div>
 
       <div ref="messages" class="gc-messages">
-        <div v-if="!messages.length" class="gc-empty">{{ $t('global-chat.empty') }}</div>
+        <div v-if="!messages.length" class="gc-empty">{{ $t('chat.empty') }}</div>
         <div v-for="(m, i) in messages" :key="i" class="gc-message">
           <span class="gc-bullet" />
           <span class="gc-name">{{ m.name || '?' }}</span>
@@ -37,13 +37,13 @@
           v-model="newMessage"
           dense
           hide-details
-          :label="$t('global-chat.new-message')"
+          :label="$t('chat.new-message')"
           @focus="editing(true)"
           @blur="editing(false)"
           @keydown.stop
           @keydown.enter="send"
         />
-        <button class="gc-send" :title="$t('global-chat.send')" @click="send">
+        <button class="gc-send" :title="$t('chat.send')" @click="send">
           <v-icon>fas fa-paper-plane</v-icon>
         </button>
       </div>

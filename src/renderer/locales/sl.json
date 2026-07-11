@@ -47,6 +47,7 @@
     "load-setup-from-file": "Naloži Nastavitve Iz Datoteke",
     "may-deploy": "Lahko postaviš",
     "must-remove": "Moraš odstraniti",
+    "next": "Next",
     "open": "Odpri",
     "pass": "Preskoči",
     "play-again": "Igraj ponovno",
@@ -80,16 +81,13 @@
     "test-runner": "Izvajalnik testov"
   },
   "chat": {
-    "global-chat": {
-      "title": "Global chat",
-      "empty": "No messages yet — say hello!",
-      "new-message": "Message everyone",
-      "send": "Send"
-    },
-    "close": "Close chat",
     "chat": "Klepet",
+    "close": "Close chat",
+    "empty": "No messages yet — say hello!",
+    "global-chat": "Global chat",
     "new-message": "Novo sporočilo",
     "open": "Open chat",
+    "send": "Send",
     "take-slot-hint": "Zasedite mesto za začetek klepeta"
   },
   "core-messages": {
@@ -129,6 +127,8 @@
     "strokes": "Poteze",
     "test": "Test",
     "test-runner": "Izvajalnik testov",
+    "test-scenario-saved": "Test scenario saved",
+    "test-scenario-saved-hint": "The test scenario was saved. Open it to replay and check its assertions.",
     "theme-inspector": "Pregledovalnik teme",
     "tile-draw-order-is-predefined": "Vrstni red risanja ploščic je vnaprej določen",
     "tiles": "Ploščice",
@@ -137,6 +137,12 @@
     "use-remote-engine": "Uporabi oddaljeni pogon"
   },
   "dialog": {
+    "close-all-games": {
+      "close-all-games": "Close All Games",
+      "keep-playing": "Keep Playing",
+      "open-game-windows": "Open Game Windows",
+      "open-game-windows-description": "There are open game windows. Closing the main window will close all of them and quit the app."
+    },
     "close-local-game": {
       "continue-playing": "Nadaljuj igranje",
       "resign-and-close": "Predaj se in zapri",
@@ -305,6 +311,12 @@
       "you-may-place-an-abbey": "Lahko postaviš opatijo",
       "your-action": "tvoja poteza"
     },
+    "coop": {
+      "all-win": "All players win!",
+      "all-lose": "All players lose",
+      "triggered-by": "{name} could neither enlarge an occupied feature nor occupy a new one.",
+      "team-score": "Team score: {points} points"
+    },
     "element": {
       "abbey": "Opatija",
       "abbot": "Opat",
@@ -331,6 +343,8 @@
       "obelisk": "Obelisk",
       "phantom": "Duh",
       "pig": "Prašič",
+      "pre-draw": "Pre-draw",
+      "pre-draw-move": 1,
       "ringmaster": "Cirkuški Direktor",
       "robber": "Razbojniški Baron",
       "shepherd": "Pastir",
@@ -374,6 +388,8 @@
       "gold-ingots": "Zlati palici",
       "hill": "Hrib",
       "inn": "Gostilna",
+      "keep-building": "Keep Building (co-op)",
+      "keep-building-move": 1,
       "king": "Kralj",
       "king-and-robber": "Kralj & Razbojnik",
       "marketplace": "Tržnica",
@@ -383,6 +399,8 @@
       "monasteries": "Samostani",
       "monastery": "Samostan",
       "pig-herd": "Čreda prašičev",
+      "placed-tiles": "Placed tiles",
+      "placed-tiles-move": 1,
       "portal": "Čarobni portal",
       "princess": "Princesa",
       "ringmaster": "Cirkuški Direktor",
@@ -461,11 +479,20 @@
       "mandatory-for-selected-tiles": "Obvezno za izbrane ploščice",
       "related-tiles-not-selected": "Povezane ploščice niso izbrane"
     },
+    "game-flow": {
+      "pre-draw": "Pre-draw",
+      "cooperative": "Cooperative variant",
+      "cooperative-move": 1,
+      "keep-building-description": "Every turn you must enlarge an occupied city, road or similar feature, or place a meeple on an unoccupied one. If a player does neither, the game ends and everyone loses. Survive to the last tile and everyone wins with a combined team score.",
+      "keep-building-description-move": 1
+    },
     "header": {
       "components": "Komponente",
+      "game-setup": "Game setup",
       "rules": "Pravila",
       "tiles": "Ploščice",
-      "timer": "Časovnik"
+      "timer": "Časovnik",
+      "variant": "Variant"
     },
     "open-game": {
       "assign-all-players-to-start": "Dodeli vse igralce za začetek",
@@ -540,10 +567,17 @@
     "selected-tiles": "Izbrane ploščice",
     "tiles": {
       "core-sets": "Osnovni seti",
+      "enable-quantity-change": "Enable quantity change",
       "fan-expansions": "Navijače razširitve",
       "major-expansions": "Velike razširitve",
       "minor-expansions": "Majhne razširitve",
-      "promos": "Promo kartice"
+      "next-expansion": "Next expansion",
+      "previous-expansion": "Previous expansion",
+      "promos": "Promo kartice",
+      "remove-all-tiles": "Remove all",
+      "reset-tiles": "Reset",
+      "separate-expansions": "Separate expansions",
+      "start-tile-excluded": "Starting tile count is set to 0 – restore it to create the game"
     },
     "timer": {
       "at-game-start-set-timer-to": "Ob začetku igre nastavi časovnik na",
@@ -670,7 +704,22 @@
         "C1": "povezana (križišče ceste ali cesta proti mestu/samostanu) (1. izd.)",
         "C2": "značilnost na isti ali sosednji ploščici (2. izd.)",
         "description": "Po točkovanju se lahko voz premakne do sosednje nezasedene, nedokončane značilnosti. Sosednja pomeni: {}"
-      }
+      },
+      "choose-variant": "Choose game variant",
+      "standard": "Standard rules",
+      "standard-description": "The classic competitive game — every player scores for themselves and the highest score wins.",
+      "best-setups": "Best setups",
+      "leaderboard-online-only": "Connect to the online server to browse the best co-op setups and scores.",
+      "leaderboard-loading": "Loading best setups from the server…",
+      "leaderboard-empty": "No finished co-op games yet — set up your own game and be the first on the board!",
+      "n-players": "{players} players",
+      "play-it": "Play it",
+      "popular-setups": "Most popular setups",
+      "popular-online-only": "Connect to the online server to browse the most-played setups.",
+      "popular-empty": "No finished games yet — set up your own game and start the statistics!",
+      "times-played": "played {count}×",
+      "share-of-games": "{percent}% of finished games",
+      "all-previous-move": 1
     }
   },
   "index": {
@@ -690,15 +739,23 @@
     "online": {
       "abandon-game": "Zapusti igro",
       "chat-during-game": "Klepetaj med igro",
+      "connecting": "Connecting to server…",
       "connected-to": "Povezan z {0}",
       "game-id": "ID igre",
       "games-in-progress": "Igre v teku",
       "join-game": "Pridruži se igri",
+      "local-game": "Local game",
+      "loading-game-data": "Loading game data…",
       "lobby": "Avla",
       "no-public-games": "Ni javnih iger",
       "no-random-discovery": "to pomeni brez odkrivanja naključnih igralcev",
       "not-yet-started": "Se še ni začelo",
+      "offline": "Offline – not connected to server",
+      "offline-lobby-hidden": "Connect to the server to see the public lobby and your games in progress.",
+      "online-game": "Online game",
       "online-storage-description": "Zapuščanje online igre samo zadrži nedokončano igro v ozadju. Lahko se ji ponovno pridružiš s tega seznama kadarkoli želiš.",
+      "opened-in-window": "Open in a window",
+      "opened-in-window-move": 1,
       "paste-a-game-key": "Prilepi ključ igre, ki ga je zagotovil gostitelj",
       "public-games": "Javne igre",
       "private-games-only": "Trenutno so podprte samo zasebne igre.",
@@ -873,6 +930,12 @@
       "folder-does-not-exists": "Mapa ne obstaja",
       "stable": "Želim samo igrati in uživati v igri",
       "path-is-not-directory": "Pot ni direktorij",
+      "taskbar": {
+        "title": "Windows taskbar",
+        "separate": "Separate taskbar buttons (one per window)",
+        "grouped": "Group windows (raise the active game on top when it's your turn)",
+        "hint": "Changes how the lobby and game windows appear on the Windows taskbar."
+      },
       "test-runner-folder": "Mapa preizkuševalnika testov",
       "title": "Sistem"
     },

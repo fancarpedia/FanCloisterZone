@@ -1,6 +1,6 @@
 <template>
   <div>
-    <ConfigSection :title="$t('game-setup.game-flow.pre-order')">
+    <ConfigSection :title="$t('game-setup.game-flow.pre-draw')">
       <div class="components">
         <!-- Pre-draw: private hand of up to 3 tiles (server-authoritative, online only).
              Disabled in local games, or when an incompatible expansion is selected. -->

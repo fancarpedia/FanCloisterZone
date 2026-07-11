@@ -14,7 +14,7 @@
           {{ $t('game-setup.header.components') }}
         </v-tab>
         <v-tab><v-icon small class="icon">fas fa-book</v-icon>{{ $t('game-setup.header.rules') }}</v-tab>
-        <v-tab><v-icon small class="icon">far fa-clock</v-icon>{{ $t('game-setup.header.game-flow') }}</v-tab>
+        <v-tab><v-icon small class="icon">far fa-clock</v-icon>{{ $t('game-setup.header.game-setup') }}</v-tab>
       </v-tabs>
 
       <HeaderMessage v-if="tab > 1" :sets="sets" />
