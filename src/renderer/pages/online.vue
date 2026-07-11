@@ -47,6 +47,10 @@
     <main>
       <section class="splash">
         <img :src="splashImage()" />
+        <!-- alpha builds carry a visible α badge next to the splash -->
+        <div v-if="isAlpha" class="alpha-badge" :title="appVersion">
+          <span class="alpha-symbol">α</span> Alpha
+        </div>
       </section>
 
       <div v-if="!connected" class="empty-message offline-message">
@@ -355,6 +359,7 @@ import EngineAlerts from '@/components/EngineAlerts'
 import AppUpdateBox from '@/components/AppUpdateBox'
 
 import { STATUS_CONNECTED, STATUS_CONNECTING, STATUS_RECONNECTING } from '@/store/networking'
+import { getAppVersion, isAlphaBuild } from '@/utils/version'
 
 export default {
   components: {
@@ -423,6 +428,14 @@ export default {
           this.hideAlertMessage = true;
         }
       }
+    },
+
+    isAlpha () {
+      return isAlphaBuild()
+    },
+
+    appVersion () {
+      return getAppVersion()
     },
 
     // gameIds already open in a game window of this app instance
@@ -861,6 +874,27 @@ h2
   display: flex
   justify-content: center
   align-items: center
+
+  .alpha-badge
+    display: flex
+    align-items: center
+    gap: 6px
+    margin-left: 24px
+    padding: 6px 16px
+    border-radius: 8px
+    font-size: 22px
+    font-weight: 600
+    letter-spacing: 1px
+    text-transform: uppercase
+    color: white
+    background: #E65100
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3)
+
+    .alpha-symbol
+      font-size: 34px
+      font-weight: 700
+      line-height: 1
+      text-transform: none // keep the lowercase greek α (uppercase would render it as Α)
 
   img
     max-width: 600px

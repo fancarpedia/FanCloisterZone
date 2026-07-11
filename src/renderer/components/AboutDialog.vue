@@ -1,8 +1,12 @@
 <template>
   <v-card class="about">
     <v-card-text>
-      <section class="d-flex justify-center py-10 splash">
+      <section class="d-flex justify-center align-center py-10 splash">
         <img :src="splashImage()" :title="$t('about.fantitle')" />
+        <!-- alpha builds carry the same α badge as the lobby splash -->
+        <div v-if="isAlpha" class="alpha-badge" :title="version">
+          <span class="alpha-symbol">α</span> Alpha
+        </div>
       </section>
       <section class="d-flex justify-space-between">
         <div><span class="label">{{ $t('about.author') }}</span>: Roman Krejčík &amp; fans</div>
@@ -34,7 +38,7 @@
 import { shell } from 'electron'
 import { mapState } from 'vuex'
 
-import { getAppVersion } from '@/utils/version'
+import { getAppVersion, isAlphaBuild } from '@/utils/version'
 
 const MEEPLES_SVG = require('~/assets/meeples.svg')
 
@@ -42,7 +46,8 @@ export default {
   data () {
     return {
       MEEPLES_SVG,
-      version: getAppVersion()
+      version: getAppVersion(),
+      isAlpha: isAlphaBuild()
     }
   },
 
@@ -71,6 +76,27 @@ export default {
   .splash
     img
       max-width: 75%
+
+    .alpha-badge
+      display: flex
+      align-items: center
+      gap: 5px
+      margin-left: 20px
+      padding: 4px 12px
+      border-radius: 8px
+      font-size: 18px
+      font-weight: 600
+      letter-spacing: 1px
+      text-transform: uppercase
+      color: white
+      background: #E65100
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3)
+
+      .alpha-symbol
+        font-size: 28px
+        font-weight: 700
+        line-height: 1
+        text-transform: none // keep the lowercase greek α
     
   section
     font-size: 16px

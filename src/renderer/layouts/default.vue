@@ -84,7 +84,7 @@ import AboutDialog from '@/components/AboutDialog'
 import ErrorDialog from '@/components/ErrorDialog'
 import JoinGameDialog from '@/components/JoinGameDialog'
 import SettingsDialog from '@/components/SettingsDialog'
-import { getAppVersion } from '@/utils/version'
+import { getAppVersion, isAlphaBuild } from '@/utils/version'
 
 import { STATUS_CONNECTED } from '@/store/networking'
 
@@ -599,7 +599,9 @@ export default {
     
     updateTitle() {
       const server = this.$store.getters['settings/isLocalPlayOnline'] ? 'dev local' : 'fanserver'
-      const base = this.onlineConnected ? ('FanCloisterZone Edition @ ' + server) /* + this.$store.state.onlineHostName */ : 'FanCloisterZone Edition' /* Fan Edition */
+      // alpha builds announce themselves in the title (α), so it's obvious which instance this is
+      const product = isAlphaBuild() ? 'FanCloisterZone α Alpha' : 'FanCloisterZone'
+      const base = this.onlineConnected ? (product + ' Edition @ ' + server) /* + this.$store.state.onlineHostName */ : product + ' Edition' /* Fan Edition */
 
       // Multi-window debug indicator: role + gameId + local-server port + clientId tail.
       // If a game window shows [main], the --window-role argv detection failed (risk #2);
