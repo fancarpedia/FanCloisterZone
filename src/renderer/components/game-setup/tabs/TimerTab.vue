@@ -16,6 +16,19 @@
       </div>
     </ConfigSection>
 
+    <ConfigSection :title="$t('game-setup.game-flow.cooperative')">
+      <div class="components">
+        <!-- Keep Building: cooperative variant — each turn must enlarge an occupied
+             completable feature or occupy a new one, or everyone loses. -->
+        <GameMechanicsBox :item="GameElement.KEEP_BUILDING">
+          <template #icon>
+            <div class="predraw-icon">🤝<span>co-op</span></div>
+          </template>
+          <template #description>{{ $t('game-setup.game-flow.keep-building-description') }}</template>
+        </GameMechanicsBox>
+      </div>
+    </ConfigSection>
+
     <ConfigSection v-if="!ai" :title="$t('game-setup.timer.player-time-limit')">
       <template v-if="timer !== null">
         <!-- TODO use display grid -->
@@ -60,6 +73,7 @@ import { mapState } from 'vuex'
 import ConfigSection from '@/components/game-setup/ConfigSection'
 import TimeInput from '@/components/game-setup/TimeInput'
 import GameElementBox from '@/components/game-setup/GameElementBox'
+import GameMechanicsBox from '@/components/game-setup/GameMechanicsBox'
 import StartingTiles from '@/components/game-setup/StartingTiles'
 import { GameElement, PRE_DRAW_INCOMPATIBLE } from '@/models/elements'
 
@@ -68,6 +82,7 @@ export default {
     ConfigSection,
     TimeInput,
     GameElementBox,
+    GameMechanicsBox,
     StartingTiles
   },
 

@@ -15,6 +15,7 @@
 
 <script>
 import CastleCreatedEvent from '@/components/game/play-events/CastleCreatedEvent'
+import CoopGameLostEvent from '@/components/game/play-events/CoopGameLostEvent'
 import DragonMovedEvent from '@/components/game/play-events/DragonMovedEvent'
 import DiceSixRollEvent from '@/components/game/play-events/DiceSixRollEvent'
 import FlierDiceRollEvent from '@/components/game/play-events/FlierDiceRollEvent'
@@ -35,6 +36,7 @@ import TokenRemovedEvent from '@/components/game/play-events/TokenRemovedEvent'
 
 const MAPPING = {
   'castle-created': CastleCreatedEvent,
+  'coop-lost': CoopGameLostEvent,
   'dragon-moved': DragonMovedEvent,
   'dicesix-roll': DiceSixRollEvent,
   'flier-roll': FlierRollEvent,
@@ -58,6 +60,7 @@ const MAPPING = {
 export default {
   components: {
     CastleCreatedEvent,
+    CoopGameLostEvent,
     DiceSixRollEvent,
     DragonMovedEvent,
     FlierDiceRollEvent,

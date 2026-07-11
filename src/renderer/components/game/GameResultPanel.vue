@@ -1,22 +1,38 @@
 <template>
   <section>
     <div class="standing">
-      <div
-        v-for="r in ranks"
-        :key="r.rank"
-        class="rank"
-      >
-        <template v-if="r.rank == 1">
-          <div class="num">🥇</div>
-          <div
-            v-for="p in r.players"
-            :key="p.index"
-            :class="colorCssClass(p.index)"
-          >
-            <Meeple type="SmallFollower" />
-          </div>
-        </template>
+      <!-- coop (Keep Building): no single winner — the whole team wins or loses together -->
+      <div v-if="coop" class="rank">
+        <div class="num">{{ coop.lost ? '💔' : '🏆' }}</div>
+        <div
+          v-for="(p, index) in allPlayers"
+          :key="index"
+          :class="colorCssClass(index)"
+        >
+          <Meeple type="SmallFollower" />
+        </div>
+        <div class="coop-result">
+          {{ coop.lost ? $t('game.coop.all-lose') : $t('game.coop.team-score', { points: teamPoints }) }}
+        </div>
       </div>
+      <template v-else>
+        <div
+          v-for="r in ranks"
+          :key="r.rank"
+          class="rank"
+        >
+          <template v-if="r.rank == 1">
+            <div class="num">🥇</div>
+            <div
+              v-for="p in r.players"
+              :key="p.index"
+              :class="colorCssClass(p.index)"
+            >
+              <Meeple type="SmallFollower" />
+            </div>
+          </template>
+        </div>
+      </template>
     </div>
 
     <div class="buttons">
@@ -46,6 +62,7 @@
 <script>
 import { mapGetters, mapState } from 'vuex'
 import Meeple from '@/components/game/Meeple'
+import { reverseSeatOrder } from '@/store/rematch'
 
 export default {
   components: {
@@ -56,13 +73,20 @@ export default {
     ...mapState({
       gameKey: state => state.game.key,
       showGameStats: state => state.game.showGameStats,
-      onlineConnected: state => state.networking.connectionType === 'online'
+      onlineConnected: state => state.networking.connectionType === 'online',
+      coop: state => state.game.coop,
+      allPlayers: state => state.game.players
     }),
 
     ...mapGetters({
       colorCssClass: 'game/colorCssClass',
       ranks: 'game/ranks'
     }),
+
+    // Keep Building (coop): one shared team score
+    teamPoints () {
+      return (this.allPlayers || []).reduce((acc, p) => acc + p.points, 0)
+    },
 
     // Rematch swaps/reshuffles the seating: always possible for local games; for online games
     // only when every occupied seat belongs to THIS client (hotseat) — remote players can't be
@@ -78,6 +102,18 @@ export default {
 
   methods: {
     async close () {
+      // In a dedicated game window, Close closes the WINDOW (the lobby window already shows
+      // /online — navigating there would leave two lobbies open). Close without navigating:
+      // routing first would re-render the game page with cleared state before teardown.
+      if (this.$windows.isGameWindow()) {
+        if (this.onlineConnected) {
+          this.$store.dispatch('networking/close', { redirect: false })
+        } else {
+          this.$store.dispatch('game/close', { redirect: false })
+        }
+        this.$windows.closeSelf()
+        return
+      }
       if (this.onlineConnected) {
         this.$router.push('/online')
       } else {
@@ -95,55 +131,13 @@ export default {
       await this.$store.dispatch('gameSetup/createGame')
     },
 
-    invertOrder(slots) {
-
-      // Deep copy (keep objects intact but cloned)
-      const result = slots.map(s => {
-        const copy = JSON.parse(JSON.stringify(s))
-
-        if ('gameId' in copy) {
-          copy.gameId = null
-        }
-        if ('sessionId' in copy) {
-          copy.sessionId = null
-        }
-
-        return copy
-      })
-      const orderedPlayers = result.filter(s => s.order !== undefined)
-
-      const orders = orderedPlayers.map(s => s.order)
-
-      if (orders.length === 2) {
-        orderedPlayers[0].order = orders[1]
-        orderedPlayers[1].order = orders[0]
-        return result;
-      }
-
-      function shuffle(arr) {
-        for (let i = arr.length - 1; i > 0; i--) {
-            const j = Math.floor(Math.random() * (i + 1)); // without this is generating JS Error
-            [arr[i], arr[j]] = [arr[j], arr[i]]
-        }
-        return arr
-      }
-
-      const shuffledOrders = shuffle([...orders])
-
-      orderedPlayers.forEach((player, i) => {
-        player.order = shuffledOrders[i]
-      });
-
-      return result
-    },
-
     async rematch () {
       const { setup, gameAnnotations, slots } = this.$store.state.game
       // no redirect: the new game starts in THIS window (navigating home would close it)
       await this.$store.dispatch('game/close', { redirect: false })
       this.$store.dispatch('gameSetup/load', setup)
       this.$store.commit('gameSetup/gameAnnotations', gameAnnotations)
-      const revertedSlots = this.invertOrder(slots)
+      const revertedSlots = reverseSeatOrder(slots)
 
       if (this.onlineConnected) {
         // online hotseat: the server assigns seating by TAKE_SLOT sequence — queue the seats
@@ -197,6 +191,15 @@ svg.meeple
 .rank
   display: flex
   margin: 0 35px
+
+  .coop-result
+    align-self: center
+    margin-left: 14px
+    font-size: 22px
+    font-weight: 500
+
+    +theme using ($theme)
+      color: map-get($theme, 'gray-text-color')
 
   .num
     position: relative

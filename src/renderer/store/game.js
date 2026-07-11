@@ -116,6 +116,7 @@ export const state = () => ({
   deployedMeeples: null,
   tokens: null,
   bazaar: null,
+  coop: null, // Keep Building variant outcome { lost, loser } — null when variant inactive
   sheep: null,
   phase: null,
   action: null,
@@ -156,6 +157,7 @@ export const mutations = {
     state.deployedMeeples = null
     state.tokens = null
     state.bazaar = null
+    state.coop = null
     state.sheep = null
     state.phase = null
     state.action = null
@@ -1163,7 +1165,9 @@ export const actions = {
           type: 'GAME_FINISHED',
           payload: {
             gameId: state.id,
-            points: state.players.map(p => p.points)
+            points: state.players.map(p => p.points),
+            // Keep Building (coop variant) outcome — the server stores it for the leaderboard
+            coop: state.coop
           },
           force: true
         })

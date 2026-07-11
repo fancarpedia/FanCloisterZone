@@ -11,7 +11,8 @@
 
     <ConfigSection :title="$t('game-setup.rules.optional-game-mechanics')">
       <div class="rules-section game-mechanics">
-        <GameMechanicsBox :item="GameElement.FARMERS">
+        <!-- farmers are forced off in the Keep Building coop variant -->
+        <GameMechanicsBox v-if="!coopVariant" :item="GameElement.FARMERS">
           <template #icon>
             <div class="farmers">
               <StandaloneTileImage tile-id="GQ/F" :size="55" />
@@ -265,7 +266,8 @@ export default {
       setup: state => state.gameSetup,
       ai: state => !!state.gameSetup.ai,
       detail: state => state.gameSetup.detail,
-      figures: state => state.gameSetup.figures
+      figures: state => state.gameSetup.figures,
+      coopVariant: state => !!state.gameSetup.elements['keep-building']
     }),
 
     showValidRulesOnly: {

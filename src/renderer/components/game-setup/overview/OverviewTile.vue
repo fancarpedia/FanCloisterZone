@@ -34,11 +34,13 @@ export default {
     align-items: center
     justify-content: center
 
-    svg
+    // the svg comes from the slot (parent scope) — ::v-deep is required or the
+    // themed fill never applies and icons render black (invisible in dark mode)
+    ::v-deep svg
       +theme using ($theme)
         fill: map-get($theme, 'overview-tile-fill')
 
-    svg.meeple, svg.neutral
+    ::v-deep svg.meeple, ::v-deep svg.neutral
       +theme using ($theme)
         fill: map-get($theme, 'overview-tile-meeple-fill')
 
@@ -63,7 +65,7 @@ export default {
       display: flex
 
 .element-box.off
-  svg.meeple, svg.neutral
+  ::v-deep svg.meeple, ::v-deep svg.neutral
     +theme using ($theme)
       fill: map-get($theme, 'overview-tile-off-fill')
       color: map-get($theme, 'overview-tile-off-overlay')

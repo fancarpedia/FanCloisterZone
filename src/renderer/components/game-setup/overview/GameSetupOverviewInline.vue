@@ -1,27 +1,33 @@
 <template>
   <div class="game-setup-overview-inline" :class="sizeClass">
-    <OverviewExpansionTile
-      v-for="({ expansion, id, title, quantity, lang }, idx) in releases"
-      :key="'r' + expansion.name + idx"
-      :expansion="expansion"
-      :title="title"
-      :quantity="quantity"
-      :z-index="toZindex(idx)"
-    />
-    <OverviewElementTile
-      v-for="([element, value], idx) in additions"
-      :key="'a' + element"
-      :element="element"
-      :value="value"
-      :z-index="toZindex(idx + releases.length)"
-    />
-    <OverviewElementTile
-      v-for="([element, value], idx) in removals"
-      :key="'r' + element"
-      :element="element"
-      :value="value"
-      :z-index="toZindex(idx + releases.length + additions.length)"
-    />
+    <!-- game type: standard vs Keep Building (co-op) -->
+    <div class="game-type" :class="{ coop: isCoop }">
+      {{ isCoop ? $t('game.feature.keep-building') : $t('game-setup.variant.standard') }}
+    </div>
+    <div class="overview-grid">
+      <OverviewExpansionTile
+        v-for="({ expansion, id, title, quantity, lang }, idx) in releases"
+        :key="'r' + expansion.name + idx"
+        :expansion="expansion"
+        :title="title"
+        :quantity="quantity"
+        :z-index="toZindex(idx)"
+      />
+      <OverviewElementTile
+        v-for="([element, value], idx) in additions"
+        :key="'a' + element"
+        :element="element"
+        :value="value"
+        :z-index="toZindex(idx + releases.length)"
+      />
+      <OverviewElementTile
+        v-for="([element, value], idx) in removals"
+        :key="'r' + element"
+        :element="element"
+        :value="value"
+        :z-index="toZindex(idx + releases.length + additions.length)"
+      />
+    </div>
   </div>
 </template>
 
@@ -44,6 +50,10 @@ export default {
   },
 
   computed: {
+    isCoop () {
+      return !!this.elements['keep-building']
+    },
+
     sizeClass () {
       const size = this.configElementsSize
       if (size > 6) {
@@ -66,10 +76,27 @@ export default {
 
 <style lang="sass" scoped>
 .game-setup-overview-inline
-  display: grid
   width: 360px
-  grid-template-columns: repeat(6, 60px)
-  grid-auto-rows: 70px
+
+  .game-type
+    display: inline-block
+    margin-bottom: 4px
+    padding: 1px 8px
+    border-radius: 8px
+    font-size: 12px
+    font-weight: 600
+    text-transform: uppercase
+    letter-spacing: 0.5px
+    color: white
+    background: #9e9e9e
+
+    &.coop
+      background: #009900
+
+  .overview-grid
+    display: grid
+    grid-template-columns: repeat(6, 60px)
+    grid-auto-rows: 70px
 
   .element-box
     width: 60px
@@ -105,9 +132,10 @@ export default {
         font-size: 10px
 
 .game-setup-overview-inline.small
-  grid-template-columns: repeat(9, 36px)
-  grid-auto-rows: 40px
-  padding-bottom: 30px
+  .overview-grid
+    grid-template-columns: repeat(9, 36px)
+    grid-auto-rows: 40px
+    padding-bottom: 30px
 
   .element-box
     grid-column-end: span 2

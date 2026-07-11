@@ -73,10 +73,12 @@
 
         <div class="game-list public">
           <div
-            v-for="{ game, slots, valid, isOwner, isStarted } in verifiedGamePublicList"
+            v-for="{ game, slots, valid, isOwner, isStarted, isOpen } in verifiedGamePublicList"
             :key="game.gameId + '#' + addonsReloadTick"
             class="game"
+            :class="{ 'open-in-window': isOpen }"
           >
+            <div v-if="isOpen" class="open-badge">{{ $t('index.online.opened-in-window') }}</div>
             <div v-if="game.name" class="game-name">
               {{ game.name }}
             </div>
@@ -143,10 +145,12 @@
 
         <div class="game-list player">
           <div
-            v-for="{ game, slots, valid, isOwner, isStarted } in verifiedGameList"
+            v-for="{ game, slots, valid, isOwner, isStarted, isOpen } in verifiedGameList"
             :key="game.gameId + '#' + addonsReloadTick"
             class="game"
+            :class="{ 'open-in-window': isOpen }"
           >
+            <div v-if="isOpen" class="open-badge">{{ $t('index.online.opened-in-window') }}</div>
             <div v-if="game.name" class="game-name">
               {{ game.name }}
             </div>
@@ -382,7 +386,9 @@ export default {
       showLocalGameDialog: false,
       isNicknameDialogOpen: false,
       pendingNickname: '',
-      nicknameError: ''
+      nicknameError: '',
+      // open game windows (main-process registry) — used to mark game boxes already open in a window
+      openWindows: []
     }
   },
 
@@ -419,6 +425,11 @@ export default {
       }
     },
 
+    // gameIds already open in a game window of this app instance
+    openGameIds () {
+      return new Set(this.openWindows.map(w => w.gameId).filter(Boolean))
+    },
+
     verifiedGameList () {
       return this.gameList.map(game => {
         const edition = game.setup.elements.garden ? 2 : 1
@@ -426,7 +437,8 @@ export default {
         const slots = sortBy(game.slots.filter(s => s.clientId), 'order')
         const isOwner = game.owner === this.$store.state.settings.clientId
         const isStarted = !(game.started == null || game.started === '')
-        return { game, valid, slots, isOwner, isStarted }
+        const isOpen = this.openGameIds.has(game.gameId)
+        return { game, valid, slots, isOwner, isStarted, isOpen }
       })
     },
 
@@ -437,7 +449,8 @@ export default {
         const slots = sortBy(game.slots.filter(s => s.clientId), 'order')
         const isOwner = game.owner === this.$store.state.settings.clientId
         const isStarted = !(game.started == null || game.started === '')
-        return { game, valid, slots, isOwner, isStarted }
+        const isOpen = this.openGameIds.has(game.gameId)
+        return { game, valid, slots, isOwner, isStarted, isOpen }
       })
     }
   },
@@ -450,10 +463,19 @@ export default {
       // connect automatically (silently) and stay here.
       this.maybeAutoConnect()
     }
+    // Games are created/started in their own windows: refresh the lists whenever the user
+    // comes back to this lobby window, or a freshly created game never shows up in them.
+    this._onWindowFocus = () => { if (this.connected) this.sendGameLists() }
+    window.addEventListener('focus', this._onWindowFocus)
+    // track open game windows to mark game boxes that are already open in one
+    this.$windows.listGameWindows().then(list => { this.openWindows = list })
+    this._unsubscribeWindows = this.$windows.onWindowsChanged(list => { this.openWindows = list })
   },
 
   beforeDestroy () {
     this._onClose && this.$connection.off('close', this._onClose)
+    this._onWindowFocus && window.removeEventListener('focus', this._onWindowFocus)
+    this._unsubscribeWindows && this._unsubscribeWindows()
   },
 
   watch: {
@@ -507,6 +529,7 @@ export default {
 
     maybeAutoConnect () {
       if (this.autoConnectTried) return
+      if (this.$store.state.networking.userDisconnected) return // the user pressed Disconnect — stay offline
       if (!this.settingsLoaded) return // wait for the nickname to load
       if (!this.engine) return // wait until the engine is probed (its version is sent on connect)
       if (this.connected || this.connecting) return
@@ -598,6 +621,14 @@ export default {
     },
 
     joinGame () {
+      // already open in a game window (match by game key) → focus it instead of a second window
+      const norm = k => (k || '').replace(/-/g, '').toLowerCase()
+      const openWin = this.openWindows.find(w => w.key && norm(w.key) === norm(this.joinGameId))
+      if (openWin) {
+        this.$windows.focusGameWindow(openWin.id)
+        this.showJoinDialog = false
+        return
+      }
       const fan = this.$store.state.networking.onlineEntry !== 'plain'
       if (this.$windows.openGame({ kind: 'join-online', payload: { gameKey: this.joinGameId, fan } })) {
         this.showJoinDialog = false
@@ -612,10 +643,18 @@ export default {
 
     disconnect () {
       // close() keeps the lobby window on /online in offline state; no navigation needed.
-      this.$store.dispatch('networking/close')
+      // userIntent suppresses the auto-connect from re-firing right after.
+      this.$store.dispatch('networking/close', { userIntent: true })
     },
 
     resume (game) {
+      // the game is already open in a game window → bring THAT window to the front
+      // instead of opening a second window for the same game
+      const openWin = this.openWindows.find(w => w.gameId === game.gameId)
+      if (openWin) {
+        this.$windows.focusGameWindow(openWin.id)
+        return
+      }
       const fan = this.$store.state.networking.onlineEntry !== 'plain'
       if (this.$windows.openGame({ kind: 'join-online', payload: { gameId: game.gameId, fan } })) return
       this.$connection.send({ type: 'JOIN_GAME', payload: { gameId: game.gameId } })
@@ -719,13 +758,30 @@ h2
     +theme using ($theme)
       background-color: map-get($theme, 'cards-bg')
       color: map-get($theme, 'gray-text-color')
-  
 
 .game
   width: 380px
   padding: 20px 10px
   margin: 10px
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.15), 0 3px 10px 0 rgba(0, 0, 0, 0.10)
+
+  // already open in a game window of this app — outlined + labelled
+  &.open-in-window
+    outline: 2px solid var(--v-primary-base)
+    position: relative
+
+    .open-badge
+      position: absolute
+      top: -1px
+      right: -1px
+      padding: 2px 10px
+      border-radius: 0 0 0 6px
+      font-size: 11px
+      font-weight: 600
+      text-transform: uppercase
+      letter-spacing: 0.5px
+      color: white
+      background: var(--v-primary-base)
 
   .invalid
     opacity: 0.4

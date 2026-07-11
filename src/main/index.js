@@ -276,10 +276,14 @@ function buildWindow ({ role = 'main', hidden = false } = {}) {
   })
 
   win.on('closed', ev => {
-    modules.forEach(m => m.winClosed(win))
     const st = winState.get(wcId)
     winState.delete(wcId)
+    // broadcast FIRST (and shield the module hooks) — a throwing hook must not leave the
+    // lobby's open-windows list showing a window that no longer exists
     broadcastGameWindows() // a window vanished → refresh the lobby's open-windows list
+    modules.forEach(m => {
+      try { m.winClosed(win) } catch (e) { console.error('winClosed hook failed', e) }
+    })
     // Clean up warm window reference if this was the warm window
     if (warmWin === win) {
       warmWin = null

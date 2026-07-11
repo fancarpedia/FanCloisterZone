@@ -46,6 +46,7 @@
 	<img v-else-if="element === 'fishermen'" src="~/assets/features/C1/fishermen.png" height="55">
 	<img v-else-if="element === 'fishhut'" src="~/assets/features/C1/fishhut.png" height="55">
     <div v-else-if="element === 'pre-draw'" class="predraw-icon">⤵<span>hand</span></div>
+    <div v-else-if="element === 'keep-building'" class="predraw-icon">🤝<span>co-op</span></div>
 
     <template #quantity>
       <div class="quantity" :class="enabled ? 'addition': 'removal'">

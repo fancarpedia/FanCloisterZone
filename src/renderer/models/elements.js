@@ -69,6 +69,11 @@ export const LITTLE_BUILDINGS = GameElement.LITTLE_BUILDINGS = new GameElement('
 // See PREDRAW_RULES.md / PREDRAW_DESIGN.md in the engine repo.
 export const PRE_DRAW = GameElement.PRE_DRAW = new GameElement('pre-draw', 'Pre-draw hand', Number, { default: 0 })
 
+// Keep Building: cooperative variant. Every turn the player must enlarge an occupied
+// completable feature or occupy a new one — otherwise the game ends and ALL players lose.
+// If nobody fails before the pack runs out, everyone wins with a combined team score.
+export const KEEP_BUILDING = GameElement.KEEP_BUILDING = new GameElement('keep-building', 'Keep Building', Boolean, { default: false })
+
 // Pre-draw needs an ordered tile pack + simple round-robin turns, so it is mutually exclusive with
 // expansions that change tile-draw order (River/Fishermen, Dragon, Crop Circles), grant extra
 // turns/placements (Wagon, Builder, Castle, Shepherd, Escape), or draw extra tiles (Bazaar, Count).

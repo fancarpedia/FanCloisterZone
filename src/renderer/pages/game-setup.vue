@@ -1,10 +1,11 @@
 <template>
   <div class="game-setup-page">
-  <GameSetupGrid v-if="loaded" :sets="sets" :rules="rules" :show-detail="tab > 0" :show-pack-size="tab > 0">
+  <GameSetupGrid v-if="loaded" :sets="sets" :rules="rules" :show-detail="tab > 1" :show-pack-size="tab > 1">
     <template #header>
       <v-tabs v-model="tab" @change="onTabChange">
         <!-- bookmarks make no sense when editing an already-created game's setup -->
         <v-tab :disabled="editingGame"><v-icon small>far fa-heart</v-icon></v-tab>
+        <v-tab><v-icon small class="icon">fas fa-users</v-icon>{{ $t('game-setup.header.variant') }}</v-tab>
         <v-tab><v-icon small class="icon">fas fa-square</v-icon>{{ $t('game-setup.header.tiles') }}</v-tab>
         <v-tab active-class="active">
           <div class="meeple icon">
@@ -16,28 +17,29 @@
         <v-tab><v-icon small class="icon">far fa-clock</v-icon>{{ $t('game-setup.header.game-flow') }}</v-tab>
       </v-tabs>
 
-      <HeaderMessage v-if="tab > 0" :sets="sets" />
-      <!-- wizard: Next steps tiles → components → rules → game flow; Create only on the last tab -->
+      <HeaderMessage v-if="tab > 1" :sets="sets" />
+      <!-- wizard: Next steps variant → tiles → components → rules → game flow; Create only on the last tab -->
       <HeaderGameButton
         v-if="tab > 0"
-        :title="$t(tab < 4 ? 'button.next' : (gameId !== null ? 'button.continue' : 'button.create'))"
+        :title="$t(tab < 5 ? 'button.next' : (gameId !== null ? 'button.continue' : 'button.create'))"
         :sets="sets"
         @click="nextOrCreate"
       />
       <HeaderLeaveGameButton :title="$t('menu.leave-game')" @click="leaveGame" />
-      
+
     </template>
 
     <template #main>
-      <BookmarksTab v-show="tab === 0" @load="tab = 1" @select="selectedSetupDetail = $event" />
-      <TileSetsTab v-show="tab === 1" />
-      <FiguresTab v-show="tab === 2" />
-      <RulesTab v-show="tab === 3" />
-      <TimerTab v-show="tab === 4" />
+      <BookmarksTab v-show="tab === 0" @load="tab = 2" @select="selectedSetupDetail = $event" />
+      <VariantTab v-show="tab === 1" />
+      <TileSetsTab v-show="tab === 2" />
+      <FiguresTab v-show="tab === 3" />
+      <RulesTab v-show="tab === 4" />
+      <TimerTab v-show="tab === 5" />
     </template>
 
     <template #detail>
-      <div v-if="tab > 0" class="detail-pack">
+      <div v-if="tab > 1" class="detail-pack">
         <h2>{{ $t('game-setup.selected-tiles') }}</h2>
         <TileDistribution
           :tile-size="$vuetify.breakpoint.height > 768 ? 100 : 80"
@@ -72,6 +74,7 @@ import TileSetsTab from '@/components/game-setup/tabs/TileSetsTab'
 import TimerTab from '@/components/game-setup/tabs/TimerTab'
 import RulesTab from '@/components/game-setup/tabs/RulesTab'
 import SetupChatLauncher from '@/components/game-setup/SetupChatLauncher'
+import VariantTab from '@/components/game-setup/tabs/VariantTab'
 
 export default {
   components: {
@@ -87,15 +90,17 @@ export default {
     TileSetsTab,
     TimerTab,
     RulesTab,
-    SetupChatLauncher
+    SetupChatLauncher,
+    VariantTab
   },
 
   data () {
     const editing = this.$store.state.gameSetup.editingGameId != null
     const tabParam = this.$route.query.tab
     return {
-      // editing an existing game: bookmarks tab is disabled, so never start on it
-      tab: editing ? Math.max(1, ~~tabParam) : (tabParam === undefined ? 1 : ~~tabParam),
+      // editing an existing game: bookmarks tab is disabled (and the variant is settled), start on tiles;
+      // a fresh setup starts on the Variant tab (standard vs cooperative choice)
+      tab: editing ? Math.max(2, ~~tabParam) : (tabParam === undefined ? 1 : ~~tabParam),
       selectedSetupDetail: null
     }
   },
@@ -151,7 +156,7 @@ export default {
 
   methods: {
     async nextOrCreate () {
-      if (this.tab < 4) {
+      if (this.tab < 5) {
         this.tab += 1
         window.scrollTo(0, 0)
         return

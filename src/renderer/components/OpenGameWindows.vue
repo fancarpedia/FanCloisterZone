@@ -63,10 +63,15 @@ export default {
     this.myId = this.$windows.myWindowId()
     await this.refresh()
     this.unsubscribe = this.$windows.onWindowsChanged(list => { this.allWindows = list })
+    // Closing a game window focuses the main window — re-query on focus as a safety net in
+    // case the main-process 'game-windows.changed' broadcast was missed.
+    this._onFocus = () => { this.refresh() }
+    window.addEventListener('focus', this._onFocus)
   },
 
   beforeDestroy () {
     if (this.unsubscribe) this.unsubscribe()
+    if (this._onFocus) window.removeEventListener('focus', this._onFocus)
   },
 
   methods: {

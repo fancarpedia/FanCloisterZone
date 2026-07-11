@@ -32,7 +32,7 @@
             <use :href="`${MEEPLES_SVG}#pig`" />
           </svg>
         </GameElementBox>
-        <GameElementBox v-if="!ai":item="GameElement.MAYOR" :max="9">
+        <GameElementBox v-if="!ai" :item="GameElement.MAYOR" :max="9">
           <svg class="meeple" :width="55" :height="55">
             <use :href="`${MEEPLES_SVG}#mayor`" />
           </svg>
@@ -42,7 +42,8 @@
             <use :href="`${MEEPLES_SVG}#wagon`" />
           </svg>
         </GameElementBox>
-        <GameElementBox v-if="!ai" :item="GameElement.BARN" :max="9">
+        <!-- the barn is forced off in the Keep Building coop variant (field feature) -->
+        <GameElementBox v-if="!ai && !coopVariant" :item="GameElement.BARN" :max="9">
           <svg class="meeple" :width="55" :height="55">
             <use :href="`${MEEPLES_SVG}#barn`" />
           </svg>
@@ -191,7 +192,8 @@ export default {
     ...mapState({
       ai: state => !!state.gameSetup.ai,
       detail: state => state.gameSetup.detail,
-      figures: state => state.gameSetup.figures
+      figures: state => state.gameSetup.figures,
+      coopVariant: state => !!state.gameSetup.elements['keep-building']
     })
   }
 }

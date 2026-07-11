@@ -1,5 +1,11 @@
 <template>
   <div class="game-setup-overview">
+    <!-- game type: standard vs Keep Building (co-op) — same badge as the inline overview -->
+    <div class="game-type-wrap">
+      <div class="game-type" :class="{ coop: isCoop }">
+        {{ isCoop ? $t('game.feature.keep-building') : $t('game-setup.variant.standard') }}
+      </div>
+    </div>
     <div class="label">
       <h3>{{ $t('game-setup.selected-tiles') }}</h3>
     </div>
@@ -109,6 +115,10 @@ export default {
     elements () { return this.setup?.elements },
     timer () { return this.setup?.timer },
 
+    isCoop () {
+      return !!this.elements?.['keep-building']
+    },
+
     gameplayAltred () {
       return Rule.all().filter(r => r.kind === GAMEPLAY).some(r => this.rules[r.id] !== undefined && r.default !== this.rules[r.id])
     },
@@ -135,6 +145,24 @@ export default {
 </script>
 
 <style lang="sass" scoped>
+.game-type-wrap
+  text-align: center
+  margin-top: 10px
+
+  .game-type
+    display: inline-block
+    padding: 2px 12px
+    border-radius: 10px
+    font-size: 13px
+    font-weight: 600
+    text-transform: uppercase
+    letter-spacing: 0.5px
+    color: white
+    background: #9e9e9e
+
+    &.coop
+      background: #009900
+
 section
   display: flex
   flex-wrap: wrap

@@ -2,6 +2,7 @@ import last from 'lodash/last'
 
 import { ENGINE_MESSAGES } from '@/constants/messages'
 import { connectExceptionToMessage } from '@/utils/networking'
+import { claimableRematchSlots } from '@/store/rematch'
 
 export const STATUS_CONNECTING = 'connecting'
 export const STATUS_RECONNECTING = 'reconnecting'
@@ -150,11 +151,8 @@ class ConnectionHandler {
           const rematchSlots = rootState.gameSetup.rematchSlots
           if (rematchSlots && rematchSlots.length && !payload.replay) {
             commit('gameSetup/rematchSlots', null, { root: true })
-            for (const rs of rematchSlots) {
-              const slot = payload.slots.find(s => s.number === rs.number && !s.clientId)
-              if (slot) {
-                await dispatch('gameSetup/takeSlot', { number: rs.number, name: rs.name }, { root: true })
-              }
+            for (const rs of claimableRematchSlots(rematchSlots, payload.slots)) {
+              await dispatch('gameSetup/takeSlot', { number: rs.number, name: rs.name }, { root: true })
             }
             return
           }
@@ -194,6 +192,12 @@ class ConnectionHandler {
       await dispatch('predraw/handlePublic', payload, { root: true })
     } else if (type === 'PASS_ABBEY_PUBLIC') {
       await dispatch('predraw/handlePassAbbey', payload, { root: true })
+    } else if (type === 'COOP_LEADERBOARD') {
+      // Keep Building (coop variant) best-setups list for the game-setup Variant tab
+      commit('gameSetup/coopLeaderboard', payload.items || [], { root: true })
+    } else if (type === 'STANDARD_POPULAR') {
+      // most-played standard setups for the game-setup Variant tab
+      commit('gameSetup/standardPopular', payload.items || [], { root: true })
     } else {
       console.error(payload)
 //      throw new Error(`Unhandled message ${type}`)
@@ -249,7 +253,10 @@ export const state = () => ({
   connectionType: null, // direct / online
   connectionStatus: null,
   reconnectAttempt: null,
-  onlineEntry: null // 'fan' / 'plain' — which online entry point opened the current connection (for reconnect)
+  onlineEntry: null, // 'fan' / 'plain' — which online entry point opened the current connection (for reconnect)
+  // set when the USER pressed Disconnect — suppresses the lobby's auto-connect (which otherwise
+  // re-fires from its engine/settings watchers and silently reconnects); any connect resets it
+  userDisconnected: false
 })
 
 export const mutations = {
@@ -263,6 +270,10 @@ export const mutations = {
 
   connectionStatus (state, value) {
     state.connectionStatus = value
+  },
+
+  userDisconnected (state, value) {
+    state.userDisconnected = value
   },
 
   reconnectAttempt (state, value) {
@@ -316,6 +327,7 @@ export const actions = {
 
   async connect (ctx, { host, connectionType }) {
     const { state, commit, rootState } = ctx
+    commit('userDisconnected', false) // any connect (user or auto) clears the disconnect intent
     if (state.connectionStatus !== STATUS_RECONNECTING) {
       commit('connectionType', connectionType)
       commit('connectionStatus', STATUS_CONNECTING)
@@ -417,7 +429,12 @@ export const actions = {
   // which immediately start a new game in the SAME window (in a game window the default
   // navigation to '/' would trigger the windowing guard and close the window).
   close ({ commit, rootState }, options) {
-    const { redirect = true } = options || {} // dispatch payload may be null, not just undefined
+    // `userIntent: true` = the user pressed Disconnect — remember it so the lobby's
+    // auto-connect doesn't silently reconnect right after (its engine/settings watchers re-fire)
+    const { redirect = true, userIntent = false } = options || {} // dispatch payload may be null, not just undefined
+    if (userIntent) {
+      commit('userDisconnected', true)
+    }
     const { $server, $connection } = this._vm
     if (reconnectTimeout) {
       clearTimeout(reconnectTimeout)

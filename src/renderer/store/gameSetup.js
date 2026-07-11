@@ -97,7 +97,11 @@ export const state = () => ({
   tileOverrides: {},
   // online-hotseat rematch: seats ({number, name}, in the new order) to auto-take when the
   // freshly created game arrives (server assigns seating by TAKE_SLOT sequence)
-  rematchSlots: null
+  rematchSlots: null,
+  // Keep Building (coop variant) best-setups list from the server (Variant tab); null = not loaded
+  coopLeaderboard: null,
+  // most-played standard setups from the server (Variant tab); null = not loaded
+  standardPopular: null
 })
 
 export const mutations = {
@@ -124,7 +128,7 @@ export const mutations = {
   setEditingGameId (state, id) {
     state.editingGameId = id
   },
-  
+
   setup (state, setup) {
     state.sets = setup.sets
     state.excludedSets = setup.excludedSets
@@ -144,6 +148,14 @@ export const mutations = {
 
   preDrawSuspended (state, value) {
     state.preDrawSuspended = value
+  },
+
+  coopLeaderboard (state, value) {
+    state.coopLeaderboard = value
+  },
+
+  standardPopular (state, value) {
+    state.standardPopular = value
   },
 
   tileSetQuantity (state, { id, quantity }) {
@@ -363,7 +375,7 @@ export const actions = {
 
   setElementConfig ({ commit, state, dispatch }, { id, config }) {
     commit('elementConfig', { id, config })
-    
+
     const linkedPairs = {
       mage: 'witch',
       witch: 'mage'
@@ -387,6 +399,20 @@ export const actions = {
       }
     }
 
+    // Keep Building (coop variant) plays without field scoring: farmers and the barn are
+    // forced off while it is selected (their setup boxes are hidden, like ai:false does).
+    if (id === 'keep-building') {
+      if (isConfigValueEnabled(config)) {
+        if (state.elements.farmers) commit('elementConfig', { id: 'farmers', config: false })
+        if (state.elements.barn > 0) commit('elementConfig', { id: 'barn', config: 0 })
+      } else {
+        commit('elementConfig', { id: 'farmers', config: true }) // back to the standard default
+      }
+    } else if ((id === 'farmers' || id === 'barn') && isConfigValueEnabled(config) && state.elements['keep-building']) {
+      // refuse while the coop variant is on (boxes are hidden, but guard other write paths too)
+      commit('elementConfig', { id, config: id === 'farmers' ? false : 0 })
+    }
+
     // Pre-draw is mutually exclusive with expansions that change tile-draw or turn order.
     if (id === 'pre-draw') {
       // include enforced-by-set elements (River, Crop Circles, …), not just directly-set ones
@@ -403,6 +429,20 @@ export const actions = {
 
   setRuleConfig ({ commit }, { id, config }) {
     commit('ruleConfig', { id, config })
+  },
+
+  // Keep Building (coop variant): ask the server for the best-setups leaderboard.
+  // The response arrives as a COOP_LEADERBOARD message (see store/networking.js).
+  fetchCoopLeaderboard ({ rootState }, { players = null } = {}) {
+    if (rootState.networking.connectionType !== 'online') return
+    this._vm.$connection.send({ type: 'COOP_LEADERBOARD', payload: players ? { players } : {} })
+  },
+
+  // Standard game: ask the server for the most-played setups.
+  // The response arrives as a STANDARD_POPULAR message (see store/networking.js).
+  fetchStandardPopular ({ rootState }, { players = null } = {}) {
+    if (rootState.networking.connectionType !== 'online') return
+    this._vm.$connection.send({ type: 'STANDARD_POPULAR', payload: players ? { players } : {} })
   },
 
   takeSlot ({ rootState }, { number, name }) {
@@ -438,7 +478,7 @@ export const actions = {
       payload: { gameId: rootState.game.id, number }
     })
   },
-  
+
   async changeGameSetup ({ state, commit, rootState, dispatch }) {
     const existingSetup = rootState.game.setup
     const existingGameId = rootState.game.id

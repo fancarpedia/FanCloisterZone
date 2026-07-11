@@ -301,7 +301,8 @@ export default {
     })
     ipcRenderer.on('menu.playonline-disconnect', () => {
       // close() is role-aware: the lobby stays on /online, game windows tear down.
-      this.$store.dispatch('networking/close')
+      // userIntent: the user chose to disconnect — suppress the lobby's auto-reconnect.
+      this.$store.dispatch('networking/close', { userIntent: true })
     })
     ipcRenderer.on('menu.new-game', () => {
       if (this.$windows.openGame({ kind: 'new-local' })) return

@@ -55,6 +55,8 @@ export default {
           diff['black-tower'] = false
         }
       }
+      // the coop variant is shown as a game-type badge, not as a +/- element tile
+      delete diff['keep-building']
       return Object.entries(diff)
     },
 

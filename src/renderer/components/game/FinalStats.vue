@@ -5,8 +5,10 @@
     <div class="grid-wrap" :style="`width: ${width}px`">
       <div class="grid summary" :style="cols">
         <div />
+        <!-- coop: no ranking — the whole team wins or loses together -->
         <div v-for="p in players" :key="'rank-'+p.index" class="rank">
-          <template v-if="p.rank == 1">🥇</template>
+          <template v-if="coop">{{ coop.lost ? '💔' : '🏆' }}</template>
+          <template v-else-if="p.rank == 1">🥇</template>
           <template v-else-if="p.rank == 2">🥈</template>
           <template v-else-if="p.rank == 3">🥉</template>
           <template v-else>{{ p.rank }}</template>
@@ -153,10 +155,15 @@ export default {
     }),
 
     ...mapState({
-      history: state => state.game.history
+      history: state => state.game.history,
+      coop: state => state.game.coop
     }),
 
     players () {
+      // coop: keep seating order — points are team contributions, not a competition
+      if (this.coop) {
+        return this.$store.state.game.players.map((p, index) => ({ ...p, index, rank: null }))
+      }
       return flatten(this.ranks.map(r => r.players.map(p => ({ ...p, rank: r.rank }))))
     },
 
