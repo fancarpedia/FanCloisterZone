@@ -196,8 +196,11 @@ class ConnectionHandler {
       // Keep Building (coop variant) best-setups list for the game-setup Variant tab
       commit('gameSetup/coopLeaderboard', payload.items || [], { root: true })
     } else if (type === 'STANDARD_POPULAR') {
-      // most-played standard setups for the game-setup Variant tab
+      // most-played standard setups + most-popular sets/addons for the game-setup Variant tab
       commit('gameSetup/standardPopular', payload.items || [], { root: true })
+      commit('gameSetup/standardPopularSets', payload.sets || [], { root: true })
+      commit('gameSetup/standardPopularAddons', payload.addons || [], { root: true })
+      commit('gameSetup/standardPopularComponents', payload.components || [], { root: true })
     } else {
       console.error(payload)
 //      throw new Error(`Unhandled message ${type}`)
