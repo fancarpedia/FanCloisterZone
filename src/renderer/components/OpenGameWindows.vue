@@ -30,6 +30,7 @@
           class="ow-setup"
           :sets="w.setup.sets"
           :elements="w.setup.elements"
+          :tile-overrides="w.setup.tileOverrides"
         />
       </li>
     </ul>
