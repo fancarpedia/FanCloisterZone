@@ -18,10 +18,11 @@
       </v-tabs>
 
       <HeaderMessage v-if="tab > 1" :sets="sets" />
-      <!-- wizard: Next steps variant → tiles → components → rules → game flow; Create only on the last tab -->
+      <!-- wizard: Next steps variant → tiles → components → rules → game flow; Create only on the last tab.
+           In change mode there is no wizard — always Continue (user tweaks one thing on one tab). -->
       <HeaderGameButton
         v-if="tab > 0"
-        :title="$t(tab < 5 ? 'button.next' : (gameId !== null ? 'button.continue' : 'button.create'))"
+        :title="$t(editingGame ? 'button.continue' : (tab < 5 ? 'button.next' : (gameId !== null ? 'button.continue' : 'button.create')))"
         :sets="sets"
         @click="nextOrCreate"
       />
@@ -46,6 +47,7 @@
           :sets="sets"
           :rules="rules"
           editable
+          :allow-quantity-change="!coopVariant"
           @tile-click="onTileClick"
         />
         <GameAnnotationsPanel v-if="settings.devMode" ref="annotationsPanel" />
@@ -113,7 +115,9 @@ export default {
       sets: state => state.gameSetup.sets,
       rules: state => state.gameSetup.rules,
       detail: state => state.gameSetup.detail,
-      settings: state => state.settings
+      settings: state => state.settings,
+      // Keep Building (coop) plays the standard pack — tile-count editing is disabled for it
+      coopVariant: state => !!state.gameSetup.elements['keep-building']
     }),
 
     ...mapGetters({
@@ -156,7 +160,8 @@ export default {
 
   methods: {
     async nextOrCreate () {
-      if (this.tab < 5) {
+      // change mode: no wizard stepping — Continue commits the edited setup from any tab
+      if (!this.editingGame && this.tab < 5) {
         this.tab += 1
         window.scrollTo(0, 0)
         return

@@ -35,7 +35,7 @@
       </div>
 
       <HeaderChangeSetupButton
-        v-if="isOwner && !readOnly"
+        v-if="isOwner && !readOnly && !isRematch"
         :title="$t('button.change')"
         @click="changeGameSetup"
       />
@@ -61,14 +61,14 @@
       <div v-if="preDraw" class="predraw-notice">{{ $t('predraw.one-seat-notice') }}</div>
       <div class="slots">
         <PlayerSlot
-          v-for="slot in slots"
+          v-for="slot in visibleSlots"
           :key="slot.number"
           :number="slot.number"
           :owner="slot.sessionId"
           :client="slot.clientId"
           :name="slot.name"
           :order="slot.order"
-          :read-only="readOnly"
+          :read-only="readOnly || isRematch"
           :ai="slot.ai || false"
           :is-owner="isOwner"
           :limit-reached="!!gameKey && localSlotsCount >= LOCAL_PLAYERS_LIMIT"
@@ -96,28 +96,30 @@
     </template>
 
     <template #detail>
-      <div class="options">
+      <div v-if="!isRematch" class="options">
         <h2>{{ $t('game-setup.open-game.options') }}</h2>
+        <!-- rematch locks these — reuses the finished game's options as-is -->
         <v-checkbox
           class="public-game"
-          v-if="gameKey && !readOnly"
+          v-if="gameKey && !readOnly && !isRematch"
           v-model="publicGame"
           dense hide-details
           :label="$t('game-setup.open-game.public-game')"
           :disabled="!isOwner"
         />
         <v-checkbox
-          v-if="!readOnly"
+          v-if="!readOnly && !isRematch"
           v-model="randomizeSeating"
           dense hide-details
           :label="$t('game-setup.open-game.randomize-seating-order')"
           :disabled="!isOwner"
         />
         <v-checkbox
+          v-if="!isRematch"
           v-model="puristTiles"
           dense hide-details
           :label="$t('game-setup.open-game.hide-remaining-tiles-cheat-sheet')"
-          :disabled="readOnly || !isOwner"
+          :disabled="readOnly || !isOwner || isCoop"
         />
       </div>
 
@@ -177,6 +179,7 @@ export default {
       setup: state => state.game.setup,
       sets: state => state.game.setup?.sets,
       rules: state => state.game.setup?.rules,
+      elements: state => state.game.setup?.elements,
       gameId: state => state.game.id,
       name: state => state.game.name,
       options: state => state.game.setup?.options,
@@ -188,6 +191,24 @@ export default {
     ...mapGetters({
       loaded: 'loaded'
     }),
+
+    // Rematch: the game reuses a fixed setup + roster. Locks the setup, the seats (no
+    // add/remove players), seating randomization, and the public-game / hide-tiles options.
+    isRematch () {
+      return !!(this.options && this.options.rematch)
+    },
+
+    // Keep Building (coop): the "hide remaining tiles" cheat sheet is always ON and locked —
+    // the variant is meant to be played without the remaining-tiles crib.
+    isCoop () {
+      return !!(this.elements && this.elements['keep-building'])
+    },
+
+    // in a rematch only the carried-over (occupied) seats are shown — empty slots are hidden
+    visibleSlots () {
+      if (!this.slots) return []
+      return this.isRematch ? this.slots.filter(s => s.name || s.clientId) : this.slots
+    },
 
     slotsAssigned () {
       if (this.readOnly) {
@@ -264,7 +285,8 @@ export default {
       },
 
       get () {
-        return this.options.puristTiles
+        // Keep Building always hides the remaining-tiles cheat sheet
+        return this.isCoop ? true : this.options.puristTiles
       }
     }
   },
