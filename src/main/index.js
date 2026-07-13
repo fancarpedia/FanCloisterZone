@@ -7,7 +7,7 @@ import { autoUpdater } from 'electron-updater'
 import electronLogger from 'electron-log'
 import fs from 'fs'
 
-import settings, { getSettingsSync } from './settings'
+import settings, { getSettingsSync, applySettingsPatch } from './settings'
 import menu from './modules/menu'
 import theme from './modules/theme'
 import dialog, { showUnfinishedGameDialog, showCloseAllGamesDialog } from './modules/dialog'
@@ -462,6 +462,48 @@ ipcMain.on('close-self-window', (event) => {
   if (win && !win.isDestroyed()) {
     stateFor(event.sender).hasLocalGame = false
     win.close()
+  }
+})
+
+// Confirm switching the online server while online games are open (texts come from the renderer,
+// which owns i18n). Returns true when the user confirms.
+ipcMain.handle('confirm-online-games-dialog', async (event, texts = {}) => {
+  const win = BrowserWindow.fromWebContents(event.sender)
+  try {
+    const result = await dialogElectron.showMessageBox(win && !win.isDestroyed() ? win : undefined, {
+      type: 'warning',
+      buttons: [texts.confirm || 'Switch & close games', texts.cancel || 'Cancel'],
+      defaultId: 1,
+      cancelId: 1,
+      title: texts.title || 'Switch online server',
+      message: texts.message || 'Switching the online server will close all open online games. Continue?'
+    })
+    return result.response === 0
+  } catch (err) {
+    console.error('confirm-online-games-dialog dialog error:', err)
+    return false
+  }
+})
+
+// "Use Local Play Online" is a SHARED setting. Persist it ONCE here (single writer — avoids the
+// per-window save clobber where a window that hasn't applied the change re-saves the old value),
+// then push `settings.shared-update` to every window so they mirror it in-memory and reconnect.
+ipcMain.on('broadcast-settings-update', async (event, update) => {
+  try {
+    await applySettingsPatch(update)
+  } catch (err) {
+    console.error('broadcast-settings-update persist failed:', err)
+  }
+  for (const win of BrowserWindow.getAllWindows()) {
+    if (!win.isDestroyed()) win.webContents.send('settings.shared-update', update)
+  }
+})
+
+// Disconnect is app-wide: every window has its OWN server connection, so a disconnect in one
+// window must tell every window to close its connection (else e.g. the lobby still shows online).
+ipcMain.on('broadcast-disconnect', () => {
+  for (const win of BrowserWindow.getAllWindows()) {
+    if (!win.isDestroyed()) win.webContents.send('networking.disconnect')
   }
 })
 

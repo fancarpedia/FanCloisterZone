@@ -30,6 +30,21 @@ export async function loadSettings () {
   }
 }
 
+// Authoritative single-writer patch for SHARED settings (e.g. the dev "Use Local Play Online"
+// toggle). Merges `update` into the on-disk settings once, from the main process — so windows
+// don't each re-save their full (possibly stale) blob and clobber each other's value.
+export async function applySettingsPatch (update) {
+  saving = true
+  try {
+    const merged = { ...(settings || {}), ...update }
+    await fs.promises.writeFile(SETTINGS_FILE, JSON.stringify(merged, null, 2))
+    settings = merged
+    return merged
+  } finally {
+    saving = false
+  }
+}
+
 export default async function () {
   ipcMain.handle('settings.get', () => {
     return { settings, file: SETTINGS_FILE, systemLocale: app.getSystemLocale() || 'en-US' }

@@ -159,10 +159,10 @@ async function createMenu(win, messages) {
       targetWin().webContents.send('settings.update', { enginePath: currValue === remoteEngineValue ? null : remoteEngineValue })
     }
 
-    const localPlayOnlineUrl = 'localhost:8000/ws'
-    const toggleLocalPlayOnline = async () => {
-      const enabling = !(await getSettings()).localPlayOnline
-      targetWin().webContents.send('settings.update', { localPlayOnline: enabling, localPlayOnlineUrl })
+    // The renderer orchestrates the switch: it confirms if online games are open, closes them,
+    // then broadcasts the change to EVERY window (shared setting) so they all reconnect.
+    const toggleLocalPlayOnline = () => {
+      targetWin().webContents.send('menu.toggle-local-play-online')
     }
 
     template.push({
