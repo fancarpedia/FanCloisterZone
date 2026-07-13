@@ -278,6 +278,8 @@ export default {
     categories () {
       const s = this.stats
       return CATEGORIES
+        // Keep Building (coop) is played without field scoring — never show the fields row
+        .filter(c => !(this.coop && c.name === 'field'))
         .filter(c => c.always || s.points[c.name].some(p => p))
         .map(c => {
           const items = Object.entries(s.items[c.name] || {})
