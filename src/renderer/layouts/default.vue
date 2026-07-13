@@ -299,11 +299,15 @@ export default {
     ipcRenderer.on('menu.playonline-connect', () => {
       this.$store.dispatch('networking/connectPlayOnlineFan')
     })
-    ipcRenderer.on('menu.playonline-disconnect', () => {
-      // close() is role-aware: the lobby stays on /online, game windows tear down.
-      // userIntent: the user chose to disconnect — suppress the lobby's auto-reconnect.
-      this.$store.dispatch('networking/close', { userIntent: true })
+    ipcRenderer.on('menu.playonline-disconnect', () => this.confirmedDisconnect())
+    // app-wide disconnect: another window initiated Disconnect → close this window's connection too.
+    // ONLINE only — a local game window has its own embedded ('direct') connection; don't kill it.
+    ipcRenderer.on('networking.disconnect', () => {
+      if (this.$store.state.networking.connectionType === 'online') {
+        this.$store.dispatch('networking/close', { userIntent: true })
+      }
     })
+    ipcRenderer.on('menu.toggle-local-play-online', () => this.toggleLocalPlayOnline())
     ipcRenderer.on('menu.new-game', () => {
       if (this.$windows.openGame({ kind: 'new-local' })) return
       this.$store.dispatch('gameSetup/newGame')
@@ -420,13 +424,18 @@ export default {
     })
 
     ipcRenderer.on('settings.update', async (ev, update) => {
-      const wasOnline = this.$store.state.networking.connectionType === 'online'
       await this.$store.dispatch('settings/update', update)
       this.$store.dispatch('checkEngineVersion')
-      // Dev "Use Local Play Online" toggle changed the online target → disconnect and reconnect
-      // to the new server so the switch takes effect immediately.
-      if (wasOnline && update && Object.prototype.hasOwnProperty.call(update, 'localPlayOnline')) {
-        await this.$store.dispatch('networking/reconnectOnline')
+    })
+
+    // SHARED settings pushed from the main process (already persisted there). Mirror in-memory
+    // WITHOUT re-saving (avoids the multi-window clobber), then sync the menu + reconnect.
+    ipcRenderer.on('settings.shared-update', async (ev, update) => {
+      const wasOnline = this.$store.state.networking.connectionType === 'online'
+      this.$store.commit('settings/settings', { settings: update, source: 'update' })
+      if (Object.prototype.hasOwnProperty.call(update, 'localPlayOnline')) {
+        this.syncMenuChecks()
+        if (wasOnline) await this.$store.dispatch('networking/reconnectOnline')
       }
     })
     
@@ -593,10 +602,55 @@ export default {
         'game-farm-hints': this.showGameFarmHints,
         'game-feature-hints': this.showGameFeatureHints,
         'game-potential-score': this.showPotentialScore,
-        'toggle-history': this.showGameHistory
+        'toggle-history': this.showGameHistory,
+        'local-play-online': this.$store.getters['settings/isLocalPlayOnline']
       })
     },
-    
+
+    // Dev "Use Local Play Online" toggle (shared across windows). If any online game is open,
+    // confirm first, then close those games; finally broadcast the switch to every window so
+    // they all persist the setting and reconnect to the new server.
+    async toggleLocalPlayOnline () {
+      const enabling = !this.$store.state.settings.localPlayOnline
+      const wins = await this.$windows.listGameWindows()
+      const onlineGames = (wins || []).filter(w => w.intentKind === 'create-online' || w.intentKind === 'join-online')
+      if (onlineGames.length) {
+        const confirmed = await ipcRenderer.invoke('confirm-online-games-dialog', {
+          title: this.$t('dev.switch-online-server-title'),
+          message: this.$t('dev.switch-online-server-message', { count: onlineGames.length }),
+          confirm: this.$t('dev.switch-online-server-confirm'),
+          cancel: this.$t('dev.switch-online-server-cancel')
+        })
+        if (!confirmed) {
+          this.syncMenuChecks() // revert the checkbox Electron auto-toggled on click
+          return
+        }
+        onlineGames.forEach(w => this.$windows.closeGameWindow(w.id))
+      }
+      // apply to EVERY window (each persists + reconnects if it was online)
+      ipcRenderer.send('broadcast-settings-update', { localPlayOnline: enabling, localPlayOnlineUrl: 'localhost:8000/ws' })
+    },
+
+    // Disconnect (menu item). If online game windows are open, confirm first and close them on
+    // confirm — same as the lobby's Disconnect button. close() is role-aware (lobby stays on
+    // /online, game windows tear down); userIntent suppresses the auto-reconnect.
+    async confirmedDisconnect () {
+      const wins = await this.$windows.listGameWindows()
+      const onlineGames = (wins || []).filter(w => w.intentKind === 'create-online' || w.intentKind === 'join-online')
+      if (onlineGames.length) {
+        const confirmed = await ipcRenderer.invoke('confirm-online-games-dialog', {
+          title: this.$t('index.online.disconnect-title'),
+          message: this.$t('index.online.disconnect-message', { count: onlineGames.length }),
+          confirm: this.$t('index.online.disconnect-confirm'),
+          cancel: this.$t('index.online.disconnect-cancel')
+        })
+        if (!confirmed) return
+        onlineGames.forEach(w => this.$windows.closeGameWindow(w.id))
+      }
+      // disconnect EVERY window (each has its own connection) — the broadcast comes back to us too
+      ipcRenderer.send('broadcast-disconnect')
+    },
+
     updateTitle() {
       const server = this.$store.getters['settings/isLocalPlayOnline'] ? 'dev local' : 'fanserver'
       // non-stable builds announce themselves in the title, so it's obvious which instance this is

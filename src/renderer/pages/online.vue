@@ -97,6 +97,10 @@
                 <span v-if="!isStarted">
                   {{ $t('index.online.not-yet-started') }}
                 </span>
+                <!-- progress = tiles placed / total, sent by the client on each COMMIT -->
+                <span v-if="game.progress" class="game-progress" :title="$t('game.tiles-progress')">
+                  <ScoringIcon name="tiles" :size="14" /> {{ game.progress }}
+                </span>
               </span>
             </div>
 
@@ -120,7 +124,7 @@
             </div>
 
             <div :class="{ invalid: !valid }">
-              <GameSetupOverviewInline :sets="game.setup.sets" :elements="game.setup.elements" />
+              <GameSetupOverviewInline :sets="game.setup.sets" :elements="game.setup.elements" :tile-overrides="game.setup.tileOverrides" />
             </div>
 
             <div class="buttons">
@@ -169,6 +173,10 @@
                 <span v-if="!isStarted">
                   {{ $t('index.online.not-yet-started') }}
                 </span>
+                <!-- progress = tiles placed / total, sent by the client on each COMMIT -->
+                <span v-if="game.progress" class="game-progress" :title="$t('game.tiles-progress')">
+                  <ScoringIcon name="tiles" :size="14" /> {{ game.progress }}
+                </span>
               </span>
             </div>
 
@@ -192,7 +200,7 @@
             </div>
 
             <div :class="{ invalid: !valid }">
-              <GameSetupOverviewInline :sets="game.setup.sets" :elements="game.setup.elements" />
+              <GameSetupOverviewInline :sets="game.setup.sets" :elements="game.setup.elements" :tile-overrides="game.setup.tileOverrides" />
             </div>
 
             <div class="buttons">
@@ -347,6 +355,7 @@
 </template>
 
 <script>
+import { ipcRenderer } from 'electron'
 import { mapState } from 'vuex'
 import sortBy from 'lodash/sortBy'
 
@@ -354,6 +363,7 @@ import AddonsReloadObserverMixin from '@/components/AddonsReloadObserverMixin'
 import GameSetupOverviewInline from '@/components/game-setup/overview/GameSetupOverviewInline'
 import OnlineStatus from '@/components/OnlineStatus'
 import Meeple from '@/components/game/Meeple'
+import ScoringIcon from '@/components/game/ScoringIcon'
 import GlobalChat from '@/components/GlobalChat'
 import OpenGameWindows from '@/components/OpenGameWindows'
 import EngineAlerts from '@/components/EngineAlerts'
@@ -367,6 +377,7 @@ export default {
     GameSetupOverviewInline,
     OnlineStatus,
     Meeple,
+    ScoringIcon,
     GlobalChat,
     OpenGameWindows,
     EngineAlerts,
@@ -655,10 +666,24 @@ export default {
       this.$connection.send({ type: 'JOIN_GAME', payload: { gameKey: this.joinGameId } })
     },
 
-    disconnect () {
-      // close() keeps the lobby window on /online in offline state; no navigation needed.
-      // userIntent suppresses the auto-connect from re-firing right after.
-      this.$store.dispatch('networking/close', { userIntent: true })
+    async disconnect () {
+      // If online game windows are open, confirm first; on confirm close them too (else they'd
+      // keep running with their own connection after the lobby disconnects).
+      const wins = await this.$windows.listGameWindows()
+      const onlineGames = (wins || []).filter(w => w.intentKind === 'create-online' || w.intentKind === 'join-online')
+      if (onlineGames.length) {
+        const confirmed = await ipcRenderer.invoke('confirm-online-games-dialog', {
+          title: this.$t('index.online.disconnect-title'),
+          message: this.$t('index.online.disconnect-message', { count: onlineGames.length }),
+          confirm: this.$t('index.online.disconnect-confirm'),
+          cancel: this.$t('index.online.disconnect-cancel')
+        })
+        if (!confirmed) return
+        onlineGames.forEach(w => this.$windows.closeGameWindow(w.id))
+      }
+      // disconnect is app-wide: every window has its own connection, so broadcast to all (the
+      // broadcast returns to this window too). userIntent suppresses the auto-connect re-firing.
+      ipcRenderer.send('broadcast-disconnect')
     },
 
     resume (game) {
@@ -829,6 +854,14 @@ h2
 
     +theme using ($theme)
       color: map-get($theme, 'gray-text-color')
+
+    .game-progress
+      margin-left: 10px
+      white-space: nowrap
+
+      .v-icon
+        font-size: 11px
+        margin-right: 2px
 
   .game-slots
     display: flex
