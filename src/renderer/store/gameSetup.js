@@ -35,9 +35,16 @@ function getEmptySlots () {
 function buildSetupFromState (vm, state, getters) {
   const { $tiles } = vm
   const edition = getters.getSelectedEdition
-  const sets = mapKeys(state.sets, (value, key) => {
-    return $tiles.sets[key] ? key : key + ':' + edition
+  // Expansions whose tiles the user zeroed out entirely — dropped from the saved setup so a
+  // standard game doesn't carry a tile set that contributes nothing.
+  const emptied = $tiles.getEmptiedSets(state.sets, state.rules, edition, getters.selectedStartingTiles, state.tileOverrides)
+  const sets = {}
+  Object.entries(state.sets).forEach(([key, value]) => {
+    if (emptied.includes(key)) return
+    sets[$tiles.sets[key] ? key : key + ':' + edition] = value
   })
+  // Addons come only from the KEPT sets — an emptied expansion (all tiles removed) is fully
+  // dropped, addon included, so a standard game never carries an add-on that contributes no tiles.
   const addons = {}
   Object.keys($tiles.getExpansions(sets, edition)).forEach(id => {
     const { addon } = Expansion[id]
@@ -53,13 +60,18 @@ function buildSetupFromState (vm, state, getters) {
     timer: state.timer,
     start: getters.selectedStartingTiles.value,
     ai: state.ai,
-    // seating is randomized by default (owner can still turn it off on the slot page)
-    options: { randomizeSeating: true }
+    // seating is randomized by default (owner can still turn it off on the slot page);
+    // Keep Building always hides the remaining-tiles cheat sheet (locked on the slot page)
+    options: {
+      randomizeSeating: true,
+      ...(state.elements['keep-building'] ? { puristTiles: true } : {})
+    }
   }
 
-  // per-tile count overrides (diffs from set defaults) — omitted entirely when untouched
+  // per-tile count overrides (diffs from set defaults) — omitted entirely when untouched;
+  // computed against the KEPT sets so 0-overrides for a dropped (emptied) expansion don't linger
   const tileOverrides = $tiles.getValidTileOverrides(
-    state.sets, state.rules, edition, getters.selectedStartingTiles, state.tileOverrides
+    sets, state.rules, edition, getters.selectedStartingTiles, state.tileOverrides
   )
   if (tileOverrides) {
     setup.tileOverrides = tileOverrides
@@ -101,7 +113,11 @@ export const state = () => ({
   // Keep Building (coop variant) best-setups list from the server (Variant tab); null = not loaded
   coopLeaderboard: null,
   // most-played standard setups from the server (Variant tab); null = not loaded
-  standardPopular: null
+  standardPopular: null,
+  // most-popular sets / addons / components from the server (Variant tab), player-count independent
+  standardPopularSets: null,
+  standardPopularAddons: null,
+  standardPopularComponents: null
 })
 
 export const mutations = {
@@ -156,6 +172,18 @@ export const mutations = {
 
   standardPopular (state, value) {
     state.standardPopular = value
+  },
+
+  standardPopularSets (state, value) {
+    state.standardPopularSets = value
+  },
+
+  standardPopularAddons (state, value) {
+    state.standardPopularAddons = value
+  },
+
+  standardPopularComponents (state, value) {
+    state.standardPopularComponents = value
   },
 
   tileSetQuantity (state, { id, quantity }) {
@@ -408,6 +436,8 @@ export const actions = {
       } else if (isConfigValueEnabled(config)) {
         if (state.elements.farmers) commit('elementConfig', { id: 'farmers', config: false })
         if (state.elements.barn > 0) commit('elementConfig', { id: 'barn', config: 0 })
+        // coop plays the standard pack — drop any per-tile count overrides
+        if (Object.keys(state.tileOverrides).length) commit('tileOverrides', {})
       } else {
         commit('elementConfig', { id: 'farmers', config: true }) // back to the standard default
       }
@@ -436,16 +466,24 @@ export const actions = {
 
   // Keep Building (coop variant): ask the server for the best-setups leaderboard.
   // The response arrives as a COOP_LEADERBOARD message (see store/networking.js).
-  fetchCoopLeaderboard ({ rootState }, { players = null } = {}) {
+  // `range` = 'month' (default) | 'year' | 'all' — time window over finished games.
+  fetchCoopLeaderboard ({ rootState }, { players = null, range = 'month' } = {}) {
     if (rootState.networking.connectionType !== 'online') return
-    this._vm.$connection.send({ type: 'COOP_LEADERBOARD', payload: players ? { players } : {} })
+    const payload = { range }
+    if (players) payload.players = players
+    this._vm.$connection.send({ type: 'COOP_LEADERBOARD', payload })
   },
 
-  // Standard game: ask the server for the most-played setups.
+  // Standard game: ask the server for the most-played setups + popular sets/addons/components.
   // The response arrives as a STANDARD_POPULAR message (see store/networking.js).
-  fetchStandardPopular ({ rootState }, { players = null } = {}) {
+  // `range` = 'month' (default) | 'year' | 'all' — time window over finished games.
+  // The client sends the `components` allowlist (elements flagged popularComponent) so the
+  // server aggregates their popularity WITHOUT needing an update when a new element is added.
+  fetchStandardPopular ({ rootState }, { players = null, range = 'month' } = {}) {
     if (rootState.networking.connectionType !== 'online') return
-    this._vm.$connection.send({ type: 'STANDARD_POPULAR', payload: players ? { players } : {} })
+    const payload = { range, components: GameElement.all().filter(e => e.popularComponent).map(e => e.id) }
+    if (players) payload.players = players
+    this._vm.$connection.send({ type: 'STANDARD_POPULAR', payload })
   },
 
   takeSlot ({ rootState }, { number, name }) {

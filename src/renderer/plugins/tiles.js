@@ -164,6 +164,24 @@ class Tiles extends EventsBase {
     return result
   }
 
+  // Set ids (as keyed in `sets`) whose tiles are ALL removed by the current overrides —
+  // i.e. the set contributes no tile to the final pack. Sets without tiles are never emptied.
+  // Used to drop an expansion from the saved setup when the user zeroed out all its tiles.
+  getEmptiedSets (sets, rules, edition, start, tileOverrides) {
+    if (!tileOverrides || !Object.keys(tileOverrides).length) return []
+    const finalCounts = this.applyTileOverrides(this.getTilesCounts(sets, rules, edition, start), tileOverrides)
+    const emptied = []
+    Object.entries(sets).forEach(([id, setCount]) => {
+      if (!setCount) return
+      const set = this.sets[id] || this.sets[id + ':' + edition]
+      const tileIds = set ? Object.keys(set.tiles || {}) : []
+      if (tileIds.length && !tileIds.some(tid => finalCounts[tid] > 0)) {
+        emptied.push(id)
+      }
+    })
+    return emptied
+  }
+
   // Overrides that are still meaningful for the given pack: keys present in the defaults
   // and differing from them. Returns null when nothing remains.
   getValidTileOverrides (sets, rules, edition, start, tileOverrides) {

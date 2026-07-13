@@ -1,12 +1,15 @@
 <template>
   <div class="tile-distribution-wrap">
     <div v-if="editable" class="distribution-controls">
+      <!-- separating expansions only makes sense with 2+ expansions that still have tiles -->
       <v-checkbox
+        v-if="canSeparate"
         v-model="separateExpansions"
         :label="$t('game-setup.tiles.separate-expansions')"
         dense hide-details
       />
       <v-checkbox
+        v-if="allowQuantityChange"
         v-model="quantityChange"
         :label="$t('game-setup.tiles.enable-quantity-change')"
         dense hide-details
@@ -110,7 +113,10 @@ export default {
     // read-only overrides for displaying a saved setup (bookmarks etc.)
     tileOverrides: { type: Object, default: null },
     // game-setup mode: header checkboxes + steppers editing gameSetup.tileOverrides
-    editable: { type: Boolean, default: false }
+    editable: { type: Boolean, default: false },
+    // whether changing per-tile COUNTS is allowed (the Keep Building variant allows separating
+    // expansions but not editing tile counts, so it passes false here)
+    allowQuantityChange: { type: Boolean, default: true }
   },
 
   data () {
@@ -144,7 +150,7 @@ export default {
     }),
 
     quantityEditActive () {
-      return this.editable && this.quantityChange
+      return this.editable && this.quantityChange && this.allowQuantityChange
     },
 
     hasAnyOverride () {
@@ -206,9 +212,30 @@ export default {
       })
     },
 
+    // more than one expansion still contributes tiles → separating them is meaningful.
+    // Reacts to tile removal: drop all of an expansion's tiles and it stops counting.
+    canSeparate () {
+      // Count SELECTED expansions, regardless of current tile counts. A player often removes all
+      // tiles from an expansion to then hand-pick a few — separation must stay available through
+      // that (the old tiles-count>0 test made it vanish the moment an expansion was zeroed out).
+      const expansions = this.$tiles.getExpansions(this.baseSets, this.edition)
+      let n = 0
+      for (const expId of Object.keys(expansions)) {
+        const expansion = Expansion[expId]
+        if (!expansion) continue
+        const selected = expansion.releases.some(release => release.sets.some(sid =>
+          this.baseSets[sid] || this.baseSets[sid + ':' + this.edition]
+        ))
+        if (selected && ++n > 1) return true
+      }
+      return false
+    },
+
     // one flat pseudo-group, or (editable + separate view) a group per expansion
     displayGroups () {
-      if (!this.editable || !this.separateExpansions) {
+      // collapse to the flat single-group view (no per-expansion arrows) unless separation is
+      // both requested AND meaningful (2+ expansions with tiles) — reacts as tiles are removed
+      if (!this.editable || !this.separateExpansions || !this.canSeparate) {
         return [{
           id: 'all',
           title: null,
