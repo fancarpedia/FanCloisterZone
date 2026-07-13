@@ -126,6 +126,9 @@ export default {
 
   methods: {
     toggle () {
+      // read-only (e.g. a rematch, or viewing another's game) → slots are locked; a player
+      // must not be able to release/take their own seat by clicking it
+      if (this.readOnly) return
       const { number } = this
       if (this.slotState === 'local' && this.setupAi) {
         this.$store.dispatch('gameSetup/changeSlotToAi', { number })
