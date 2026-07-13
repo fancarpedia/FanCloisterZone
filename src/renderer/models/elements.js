@@ -30,20 +30,24 @@ export function isConfigValueEnabled (config) {
 }
 
 // Meeples
-export const SMALL_FOLLOWER = GameElement.SMALL_FOLLOWER = new GameElement('small-follower', 'Small Follower', Number, { default: 7 })
-export const ABBOT = GameElement.ABBOT = new GameElement('abbot', 'Abbot', Number, { default: 0 })
-export const PHANTOM = GameElement.PHANTOM = new GameElement('phantom', 'Phantom', Number, { default: 0 })
-export const BIG_FOLLOWER = GameElement.BIG_FOLLOWER = new GameElement('big-follower', 'Big Follower', Number, { default: 0 })
+// `keepBuildingMeeple` marks the figures that satisfy the Keep Building (coop variant)
+// occupy-a-new-feature obligation — the engine's Follower subclasses. Their setup boxes show
+// a badge while the variant is selected (see GameElementBox); Specials (builder, pig, barn,
+// shepherd, …) never carry it.
+export const SMALL_FOLLOWER = GameElement.SMALL_FOLLOWER = new GameElement('small-follower', 'Small Follower', Number, { default: 7, keepBuildingMeeple: true })
+export const ABBOT = GameElement.ABBOT = new GameElement('abbot', 'Abbot', Number, { default: 0, keepBuildingMeeple: true, popularComponent: true })
+export const PHANTOM = GameElement.PHANTOM = new GameElement('phantom', 'Phantom', Number, { default: 0, keepBuildingMeeple: true, popularComponent: true })
+export const BIG_FOLLOWER = GameElement.BIG_FOLLOWER = new GameElement('big-follower', 'Big Follower', Number, { default: 0, keepBuildingMeeple: true })
 export const BUILDER = GameElement.BUILDER = new GameElement('builder', 'Builder', Number, { default: 0 })
 export const PIG = GameElement.PIG = new GameElement('pig', 'Pig', Number, { default: 0 })
 export const BARN = GameElement.BARN = new GameElement('barn', 'Barn', Number, { default: 0 })
-export const WAGON = GameElement.WAGON = new GameElement('wagon', 'Wagon', Number, { default: 0 })
-export const MAYOR = GameElement.MAYOR = new GameElement('mayor', 'Mayor', Number, { default: 0 })
+export const WAGON = GameElement.WAGON = new GameElement('wagon', 'Wagon', Number, { default: 0, keepBuildingMeeple: true })
+export const MAYOR = GameElement.MAYOR = new GameElement('mayor', 'Mayor', Number, { default: 0, keepBuildingMeeple: true })
 export const SHEPHERD = GameElement.SHEPHERD = new GameElement('shepherd', 'Shepherd', Number, { default: 0 })
-export const RINGMASTER = GameElement.RINGMASTER = new GameElement('ringmaster', 'Ringmaster', Number, { default: 0 })
+export const RINGMASTER = GameElement.RINGMASTER = new GameElement('ringmaster', 'Ringmaster', Number, { default: 0, keepBuildingMeeple: true })
 
 // Fan figures
-export const OBELISK = GameElement.OBELISK = new GameElement('obelisk', 'Obelisk', Number, { default: 0 })
+export const OBELISK = GameElement.OBELISK = new GameElement('obelisk', 'Obelisk', Number, { default: 0, popularComponent: true })
 export const WINDMILL = GameElement.WINDMILL = new GameElement('windmill', 'Windmill', Number, { default: 0 })
 export const DECINSKY_SNEZNIK = GameElement.DECINSKY_SNEZNIK = new GameElement('decinsky-sneznik', 'Decinsky Sneznik', Number, { default: 0 })
 
@@ -62,7 +66,7 @@ export const BRIDGE = GameElement.BRIDGE = new GameElement('bridge', 'Bridges', 
 export const CASTLE = GameElement.CASTLE = new GameElement('castle', 'Castles', Number, { default: 0 })
 export const TUNNEL = GameElement.TUNNEL = new GameElement('tunnel', 'Tunnel tokens', Number)
 export const FERRY = GameElement.FERRY = new GameElement('ferry', 'Ferries', Number, { selector: 'ferry' })
-export const LITTLE_BUILDINGS = GameElement.LITTLE_BUILDINGS = new GameElement('little-buildings', 'Little Buildings', Number, { default: 0 })
+export const LITTLE_BUILDINGS = GameElement.LITTLE_BUILDINGS = new GameElement('little-buildings', 'Little Buildings', Number, { default: 0, popularComponent: true })
 
 // Variants
 // Pre-draw: private hand of up to N regular tiles (server-authoritative, online only).
@@ -77,11 +81,12 @@ export const KEEP_BUILDING = GameElement.KEEP_BUILDING = new GameElement('keep-b
 // Pre-draw needs an ordered tile pack + simple round-robin turns, so it is mutually exclusive with
 // expansions that change tile-draw order (River/Fishermen, Dragon, Crop Circles), grant extra
 // turns/placements (Wagon, Builder, Castle, Shepherd, Escape), or draw extra tiles (Bazaar, Count).
+// Keep Building (coop) is also excluded — its enlarge-or-occupy turn model doesn't fit pre-draw.
 // Enforced in store/gameSetup.js and surfaced in the setup UI. Keep in sync with the PHP server's
 // predrawAllowed().
 export const PRE_DRAW_INCOMPATIBLE = [
   // Bazaar is NOT here — it's allowed with pre-draw (it just reserves one pre-draw slot → auto-draw N-1).
-  'builder', 'dragon', 'wagon', 'castle', 'shepherd', 'river', 'fishermen', 'escape', 'count', 'corn-circle'
+  'builder', 'dragon', 'wagon', 'castle', 'shepherd', 'river', 'fishermen', 'escape', 'count', 'corn-circle', 'keep-building'
 ]
 
 // Rewards
@@ -165,7 +170,8 @@ export const FISHERMEN = GameElement.FISHERMEN = new GameElement('fishermen', 'F
 
 export const BLACK_TOWER = GameElement.BLACK_TOWER = new GameElement('black-tower', 'Black & White Tower pieces', Number, {
   selector: 'tower',
-  default: 0
+  default: 0,
+  popularComponent: true
 })
 
 export const FISHHUT = GameElement.FISHHUT = new GameElement('fishhut', 'Fish Hut', Boolean, {
@@ -174,4 +180,4 @@ export const FISHHUT = GameElement.FISHHUT = new GameElement('fishhut', 'Fish Hu
 
 export const COURIER = GameElement.COURIER = new GameElement('courier', 'Courier', Number, {
   selector: 'courier-letter'
- })
+})

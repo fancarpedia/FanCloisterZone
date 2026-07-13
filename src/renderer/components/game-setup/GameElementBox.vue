@@ -7,6 +7,15 @@
       'selected': selected,
     }"
   >
+    <!-- Keep Building (coop variant): mark the figures that count for the
+         enlarge-or-occupy obligation while the variant is selected -->
+    <div
+      v-if="item.keepBuildingMeeple && coopVariant"
+      class="keep-building-badge"
+      :title="$t('game.feature.keep-building')"
+    >
+      🤝
+    </div>
     <GameElementButtons
       :mutable="mutable && enabled && !blockedReason"
       :item="item"
@@ -63,6 +72,10 @@ export default {
       tileOverrides: state => state.gameSetup.tileOverrides
     }),
 
+    coopVariant () {
+      return !!this.elements['keep-building']
+    },
+
     enabled () {
       return this.$tiles.isElementEnabled(this.item, this.sets, this.elements, this.tileOverrides, this.elements.garden ? 2 : 1)
     },
@@ -82,6 +95,19 @@ export default {
 .element-box
   display: flex
   flex-direction: column
+  position: relative
+
+  .keep-building-badge
+    position: absolute
+    top: 4px
+    right: 6px
+    z-index: 1
+    font-size: 20px
+    line-height: 1
+    padding: 3px
+    border-radius: 50%
+    background: rgba(0, 153, 0, 0.18) // same green family as the coop type badge
+    cursor: default
 
   +theme using ($theme)
     color: map-get($theme, 'cards-text')
