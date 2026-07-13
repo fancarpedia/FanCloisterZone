@@ -1,9 +1,13 @@
 <template>
   <div class="game-setup-overview">
-    <!-- game type: standard vs Keep Building (co-op) — same badge as the inline overview -->
+    <!-- game type: standard vs Keep Building (co-op) — same badge as the inline overview,
+         plus a "custom pack" marker when tile counts were edited -->
     <div class="game-type-wrap">
       <div class="game-type" :class="{ coop: isCoop }">
         {{ isCoop ? $t('game.feature.keep-building') : $t('game-setup.variant.standard') }}
+      </div>
+      <div v-if="tilesChanged" class="game-type tiles-changed" :title="$t('game-setup.tiles.custom-pack')">
+        ✂ {{ $t('game-setup.tiles.custom-pack-short') }}
       </div>
     </div>
     <div class="label">
@@ -115,6 +119,10 @@ export default {
     elements () { return this.setup?.elements },
     timer () { return this.setup?.timer },
 
+    tilesChanged () {
+      return !!(this.setup?.tileOverrides && Object.keys(this.setup.tileOverrides).length)
+    },
+
     isCoop () {
       return !!this.elements?.['keep-building']
     },
@@ -148,6 +156,9 @@ export default {
 .game-type-wrap
   text-align: center
   margin-top: 10px
+  display: flex
+  justify-content: center
+  gap: 6px
 
   .game-type
     display: inline-block
@@ -162,6 +173,9 @@ export default {
 
     &.coop
       background: #009900
+
+    &.tiles-changed
+      background: #7B1FA2 // purple — custom tile pack
 
 section
   display: flex

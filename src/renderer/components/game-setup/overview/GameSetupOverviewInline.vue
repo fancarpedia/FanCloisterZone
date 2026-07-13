@@ -1,8 +1,13 @@
 <template>
   <div class="game-setup-overview-inline" :class="sizeClass">
-    <!-- game type: standard vs Keep Building (co-op) -->
-    <div class="game-type" :class="{ coop: isCoop }">
-      {{ isCoop ? $t('game.feature.keep-building') : $t('game-setup.variant.standard') }}
+    <!-- game type: standard vs Keep Building (co-op) + a marker when the tile pack was edited -->
+    <div class="badges">
+      <span class="game-type" :class="{ coop: isCoop }">
+        {{ isCoop ? $t('game.feature.keep-building') : $t('game-setup.variant.standard') }}
+      </span>
+      <span v-if="tilesChanged" class="tiles-changed" :title="$t('game-setup.tiles.custom-pack')">
+        ✂ {{ $t('game-setup.tiles.custom-pack-short') }}
+      </span>
     </div>
     <div class="overview-grid">
       <OverviewExpansionTile
@@ -46,12 +51,18 @@ export default {
 
   props: {
     sets: { type: Object, required: true },
-    elements: { type: Object, required: true }
+    elements: { type: Object, required: true },
+    // optional per-tile overrides object — when non-empty, a "custom pack" marker is shown
+    tileOverrides: { type: Object, default: null }
   },
 
   computed: {
     isCoop () {
       return !!this.elements['keep-building']
+    },
+
+    tilesChanged () {
+      return !!(this.tileOverrides && Object.keys(this.tileOverrides).length)
     },
 
     sizeClass () {
@@ -78,9 +89,14 @@ export default {
 .game-setup-overview-inline
   width: 360px
 
+  .badges
+    display: flex
+    flex-wrap: wrap
+    gap: 4px
+    margin-bottom: 4px
+
   .game-type
     display: inline-block
-    margin-bottom: 4px
     padding: 1px 8px
     border-radius: 8px
     font-size: 12px
@@ -92,6 +108,17 @@ export default {
 
     &.coop
       background: #009900
+
+  .tiles-changed
+    display: inline-block
+    padding: 1px 8px
+    border-radius: 8px
+    font-size: 12px
+    font-weight: 600
+    text-transform: uppercase
+    letter-spacing: 0.5px
+    color: white
+    background: #7B1FA2 // purple — distinct from the type badge
 
   .overview-grid
     display: grid

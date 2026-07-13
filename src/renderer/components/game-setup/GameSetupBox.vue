@@ -11,7 +11,7 @@
       </a>
     </header>
     <v-divider />
-    <GameSetupOverviewInline :sets="setup.sets" :elements="setup.elements" />
+    <GameSetupOverviewInline :sets="setup.sets" :elements="setup.elements" :tile-overrides="setup.tileOverrides" />
     <div class="buttons">
       <v-btn v-if="$store.getters['settings/isMySetup'](setup)" small color="secondary" @click.stop="removeSetup(setup)">
         <v-icon left>fa-heart</v-icon>
