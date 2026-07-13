@@ -132,7 +132,12 @@ export default {
     },
 
     async rematch () {
-      const { setup, gameAnnotations, slots } = this.$store.state.game
+      const { setup: origSetup, gameAnnotations, slots } = this.$store.state.game
+      // A rematch reuses the exact setup with a fixed roster: mark it so the slot page locks
+      // the setup, the roster (no add/remove players), seating (no randomize), and the
+      // public-game / hide-tiles options. Seating is deterministic (reverseSeatOrder), so
+      // randomizeSeating is forced off.
+      const setup = { ...origSetup, options: { ...(origSetup.options || {}), rematch: true, randomizeSeating: false } }
       // no redirect: the new game starts in THIS window (navigating home would close it)
       await this.$store.dispatch('game/close', { redirect: false })
       this.$store.dispatch('gameSetup/load', setup)
