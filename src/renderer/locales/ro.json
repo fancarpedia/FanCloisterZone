@@ -2,7 +2,7 @@
   "@author": "Paloi Sciurala",
   "@jcz-version": "5.12.1",
   "@fcz-version": "6.3.0",
-  "@version": "0.11.6",
+  "@version": "0.11.7",
   "about": {
     "author": "Autor",
     "configuration-file": "Fișier de configurație",
@@ -47,7 +47,7 @@
     "load-setup-from-file": "Încarcă configurație din fișier",
     "may-deploy": "are posibilitatea de a plasa",
     "must-remove": "trebuie să îndepărteze",
-    "next": "Next",
+    "next": "Înainte",
     "open": "Deschide",
     "pass": "Omite",
     "play-again": "Joacă din nou",
@@ -127,21 +127,26 @@
     "strokes": "Linii",
     "test": "Test",
     "test-runner": "Rulator de test",
-    "test-scenario-saved": "Test scenario saved",
-    "test-scenario-saved-hint": "The test scenario was saved. Open it to replay and check its assertions.",
+    "test-scenario-saved": "Scenariul de test s-a salvat",
+    "test-scenario-saved-hint": "Scenariul de test a fost salvat. Deschide-l pentru a îl reda din nou și a îi verifica afirmațiile.",
     "theme-inspector": "Inspector de temă",
     "tile-draw-order-is-predefined": "Ordinea de tragere a cartonașelor este predefinită",
     "tiles": "Cartonașe",
     "toggle-devtools": "Comută uneltele de dezvoltator",
     "use-local-play-online": "Folosește jucarea online locală",
-    "use-remote-engine": "Folosește motorul retras"
+    "use-remote-engine": "Folosește motorul retras",
+    "switch-online-server-title": "Switch online server",
+    "switch-online-server-message": "You have {count} online game(s) open. Switching the server will close them.",
+    "switch-online-server-confirm": "Switch and close games",
+    "switch-online-server-cancel": "Keep current server",
+    "switch-online-server-move": 1
   },
   "dialog": {
     "close-all-games": {
-      "close-all-games": "Close All Games",
-      "keep-playing": "Keep Playing",
-      "open-game-windows": "Open Game Windows",
-      "open-game-windows-description": "There are open game windows. Closing the main window will close all of them and quit the app."
+      "close-all-games": "Închide toate partidele",
+      "keep-playing": "Continuă să joci",
+      "open-game-windows": "Deschide ferestrele partidelor",
+      "open-game-windows-description": "Sunt deschise ferestrele unor partide. Închiderea ferestrei principale le va închide pe toate și va duce la părăsirea aplicației."
     },
     "close-local-game": {
       "continue-playing": "Continuă să joci",
@@ -312,10 +317,10 @@
       "your-action": "acțiunea ta"
     },
     "coop": {
-      "all-win": "All players win!",
-      "all-lose": "All players lose",
-      "triggered-by": "{name} could neither enlarge an occupied feature nor occupy a new one.",
-      "team-score": "Team score: {points} points"
+      "all-win": "Toți jucătorii câștigă!",
+      "all-lose": "Toți jucătorii pierd",
+      "triggered-by": "{name} nu a putut nici să prelungească un teritoriu ocupat, nici să ocupe unul nou.",
+      "team-score": "Punctajul echipei: {points} puncte"
     },
     "element": {
       "abbey": "Abație",
@@ -343,7 +348,7 @@
       "obelisk": "Obelisc",
       "phantom": "Fantomă",
       "pig": "Porc",
-      "pre-draw": "Pre-draw",
+      "pre-draw": "Pre-tragere",
       "pre-draw-move": 1,
       "ringmaster": "Director de circ",
       "robber": "Cavalerul brigand",
@@ -388,7 +393,7 @@
       "gold-ingots": "Lingouri de aur",
       "hill": "Deal",
       "inn": "Han",
-      "keep-building": "Keep Building (co-op)",
+      "keep-building": "Continuă să construiești (cooperativ)",
       "keep-building-move": 1,
       "king": "Regele",
       "king-and-robber": "Regele și cavalerul brigand",
@@ -399,7 +404,7 @@
       "monasteries": "Mănăstiri",
       "monastery": "Mănăstire",
       "pig-herd": "Turmă de porci",
-      "placed-tiles": "Placed tiles",
+      "placed-tiles": "Cartonașe plasate",
       "placed-tiles-move": 1,
       "portal": "Coridor fermecat",
       "princess": "Prințesă",
@@ -449,7 +454,9 @@
       "remaining-tiles": "Cartonașe rămase",
       "tiles": "Cartonașe",
       "tiles-plural": "cartonașe | cartonaș | cartonașe | de cartonașe"
-    }
+    },
+    "tiles-progress": "Tiles placed",
+    "tiles-progress-move": "Tiles placed"
   },
   "game-setup": {
     "additional-elements": "Elemente adiționale",
@@ -480,19 +487,19 @@
       "related-tiles-not-selected": "Cartonașe aferente neselectate"
     },
     "game-flow": {
-      "pre-draw": "Pre-draw",
-      "cooperative": "Cooperative variant",
+      "pre-draw": "Pre-tragere",
+      "cooperative": "Variantă cooperativă",
       "cooperative-move": 1,
-      "keep-building-description": "Every turn you must enlarge an occupied city, road or similar feature, or place a meeple on an unoccupied one. If a player does neither, the game ends and everyone loses. Survive to the last tile and everyone wins with a combined team score.",
+      "keep-building-description": "În fiecare tură trebuie să prelungești un oraș ocupat, un drum ocupat sau un alt teritoriu similar ocupat sau să plasezi un meeple pe unul neocupat. Dacă un jucător nu face niciuna dintre acestea, jocul se termină și toți pierd. Supraviețuiți până la ultimul cartonaș și toți câștigă cu un punctaj combinat împărțit de toată echipa.",
       "keep-building-description-move": 1
     },
     "header": {
       "components": "Componente",
-      "game-setup": "Game setup",
+      "game-setup": "Configurarea partidei",
       "rules": "Reguli",
       "tiles": "Cartonașe",
       "timer": "Cronometru",
-      "variant": "Variant"
+      "variant": "Variantă"
     },
     "open-game": {
       "assign-all-players-to-start": "Atribuie toți jucătorii pentru a începe",
@@ -567,17 +574,20 @@
     "selected-tiles": "Cartonașe selectate",
     "tiles": {
       "core-sets": "Seturi de bază",
-      "enable-quantity-change": "Enable quantity change",
+      "enable-quantity-change": "Activează schimbarea cantității",
       "fan-expansions": "Extensii de fani",
       "major-expansions": "Extensii majore",
       "minor-expansions": "Extensii minore",
-      "next-expansion": "Next expansion",
-      "previous-expansion": "Previous expansion",
+      "next-expansion": "Extensia următoare",
+      "previous-expansion": "Extensia precedentă",
       "promos": "Promo-uri",
-      "remove-all-tiles": "Remove all",
-      "reset-tiles": "Reset",
-      "separate-expansions": "Separate expansions",
-      "start-tile-excluded": "Starting tile count is set to 0 – restore it to create the game"
+      "remove-all-tiles": "Șterge-le pe toate",
+      "reset-tiles": "Resetează",
+      "separate-expansions": "Separă extensiile",
+      "start-tile-excluded": "Numătul cartonașelor de pornire este setat la 0 – restaurează-l pentru a crea partida",
+      "custom-pack": "Custom tile pack (counts changed)",
+      "custom-pack-short": "Tiles",
+      "custom-pack-move": 1
     },
     "timer": {
       "at-game-start-set-timer-to": "La începutul jocului, setează cronometrul la",
@@ -705,20 +715,27 @@
         "C2": "un teritoriu de pe același cartonaș sau unul adiacent (a doua ed.)",
         "description": "După ce este evaluată, căruța poate fi mutată pe un teritoriu adiacent nefinalizat și neocupat. Adiacent înseamnă: {}"
       },
-      "choose-variant": "Choose game variant",
-      "standard": "Standard rules",
-      "standard-description": "The classic competitive game — every player scores for themselves and the highest score wins.",
-      "best-setups": "Best setups",
-      "leaderboard-online-only": "Connect to the online server to browse the best co-op setups and scores.",
-      "leaderboard-loading": "Loading best setups from the server…",
-      "leaderboard-empty": "No finished co-op games yet — set up your own game and be the first on the board!",
-      "n-players": "{players} players",
-      "play-it": "Play it",
-      "popular-setups": "Most popular setups",
-      "popular-online-only": "Connect to the online server to browse the most-played setups.",
-      "popular-empty": "No finished games yet — set up your own game and start the statistics!",
-      "times-played": "played {count}×",
-      "share-of-games": "{percent}% of finished games",
+      "choose-variant": "Alege varianta de joc",
+      "standard": "Regulile standard",
+      "standard-description": "Clasicul joc competitiv — fiecare jucător punctează pentru sine și câștigă cel cu cel mai mare punctaj.",
+      "best-setups": "Cele mai bune configurații",
+      "leaderboard-online-only": "Conectează-te la serverul online pentru a răsfoi cele mai bune configurații și punctaje cooperative.",
+      "leaderboard-loading": "Se încarcă cele mai bune configurații din server…",
+      "leaderboard-empty": "Nicio partidă cooperativă finalizată deocamdată — configurează-ți propria ta partidă și fii primul la înaintare!",
+      "n-players": "{players} jucători",
+      "play-it": "Joac-o",
+      "popular-setups": "Cele mai populare configurații",
+      "popular-online-only": "Conectează-te la serverul online pentru a răsfoi cele mai jucate configurații.",
+      "popular-empty": "Nicio partidă finalizată deocamdată — configurează-ți propria ta partidă și pornește statisticile!",
+      "times-played": "jucată de {count}×",
+      "share-of-games": "{percent}% din partidele finalizate",
+      "popular-sets": "Most popular expansions",
+      "popular-addons": "Most popular add-ons",
+      "range-month": "Last month",
+      "range-year": "Last year",
+      "range-all": "All time",
+      "popular-components": "Most popular components",
+      "your-score": "Your score — best {best}, latest {latest}",
       "all-previous-move": 1
     }
   },
@@ -739,22 +756,22 @@
     "online": {
       "abandon-game": "Abandonează partida",
       "chat-during-game": "Discută în timpul partidei",
-      "connecting": "Connecting to server…",
+      "connecting": "Se face conecțiunea la server…",
       "connected-to": "Conectat la {0}",
       "game-id": "ID-ul partidei",
       "games-in-progress": "Partide în curs de jucare",
       "join-game": "Alătură-te partidei",
-      "local-game": "Local game",
-      "loading-game-data": "Loading game data…",
+      "local-game": "Partidă locală",
+      "loading-game-data": "Se încarcă datele partidei…",
       "lobby": "Lobby",
       "no-public-games": "Nicio partidă publică",
       "no-random-discovery": "înseamnă că nu se pot descoperi jucători aleatorii",
       "not-yet-started": "Nu a început încă",
-      "offline": "Offline – not connected to server",
-      "offline-lobby-hidden": "Connect to the server to see the public lobby and your games in progress.",
-      "online-game": "Online game",
+      "offline": "Offline – neconectat la server",
+      "offline-lobby-hidden": "Conectează-te la server pentru a vedea lobbyul public și partidele care îți sunt în curs de desfășurare.",
+      "online-game": "Partidă online",
       "online-storage-description": "Părăsirea unei partide online menține partida neîncheiată în fundal. Poți să i te alături oricând dorești din această listă.",
-      "opened-in-window": "Open in a window",
+      "opened-in-window": "Deschide într-o fereastră",
       "opened-in-window-move": 1,
       "paste-a-game-key": "Inserează o cheie de partidă furnizată de o gazdă",
       "public-games": "Partide publice",
@@ -764,7 +781,12 @@
       "title": "Partide găzduite pe servere publice",
       "title-fan": "Partide găzduite pe serverul fanilor",
       "title-local": "Games hosted on dev local",
-      "you-have-no-game-in-progress": "Nu ai nicio partidă în curs de desfășurare."
+      "you-have-no-game-in-progress": "Nu ai nicio partidă în curs de desfășurare.",
+      "disconnect-title": "Disconnect from server",
+      "disconnect-message": "You have {count} online game(s) open. Disconnecting will close them.",
+      "disconnect-confirm": "Disconnect and close games",
+      "disconnect-cancel": "Stay connected",
+      "disconnect-move": 1
     },
     "update": {
       "download": "Descarcă",
@@ -931,10 +953,10 @@
       "stable": "Vreau doar să joc și să mă bucur de joc",
       "path-is-not-directory": "Calea nu este un director",
       "taskbar": {
-        "title": "Windows taskbar",
-        "separate": "Separate taskbar buttons (one per window)",
-        "grouped": "Group windows (raise the active game on top when it's your turn)",
-        "hint": "Changes how the lobby and game windows appear on the Windows taskbar."
+        "title": "Bara de sarcini a Windows-ului",
+        "separate": "Separă butoanele barei de sarcini (câte una pentru fiecare fereastră)",
+        "grouped": "Grupează ferestrele (ridică în partea de sus partida activă atunci când este tura ta)",
+        "hint": "Schimbă felul în care arată pe bara de sarcini a Windows-ului ferestrele lobbyului și ale partidelor."
       },
       "test-runner-folder": "Directorul rulatorului de test",
       "title": "Sistem"

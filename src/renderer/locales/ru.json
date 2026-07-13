@@ -134,7 +134,12 @@
     "tiles": "Тайлы",
     "toggle-devtools": "Переключить DevTools",
     "use-local-play-online": "Использовать локальную онлайн игру",
-    "use-remote-engine": "Использовать сторонний движок"
+    "use-remote-engine": "Использовать сторонний движок",
+    "switch-online-server-title": "Switch online server",
+    "switch-online-server-message": "You have {count} online game(s) open. Switching the server will close them.",
+    "switch-online-server-confirm": "Switch and close games",
+    "switch-online-server-cancel": "Keep current server",
+    "switch-online-server-move": 1
   },
   "dialog": {
     "close-all-games": {
@@ -449,7 +454,9 @@
       "remaining-tiles": "Оставшиеся тайлы",
       "tiles": "Тайлы",
       "tiles-plural": "тайлов | тайл | тайла | тайлов"
-    }
+    },
+    "tiles-progress": "Tiles placed",
+    "tiles-progress-move": "Tiles placed"
   },
   "game-setup": {
     "additional-elements": "Дополнительные элементы",
@@ -577,7 +584,10 @@
       "remove-all-tiles": "Remove all",
       "reset-tiles": "Reset",
       "separate-expansions": "Separate expansions",
-      "start-tile-excluded": "Starting tile count is set to 0 – restore it to create the game"
+      "start-tile-excluded": "Starting tile count is set to 0 – restore it to create the game",
+      "custom-pack": "Custom tile pack (counts changed)",
+      "custom-pack-short": "Tiles",
+      "custom-pack-move": 1
     },
     "timer": {
       "at-game-start-set-timer-to": "При начале игры установить таймер на",
@@ -719,6 +729,13 @@
       "popular-empty": "No finished games yet — set up your own game and start the statistics!",
       "times-played": "played {count}×",
       "share-of-games": "{percent}% of finished games",
+      "popular-sets": "Most popular expansions",
+      "popular-addons": "Most popular add-ons",
+      "range-month": "Last month",
+      "range-year": "Last year",
+      "range-all": "All time",
+      "popular-components": "Most popular components",
+      "your-score": "Your score — best {best}, latest {latest}",
       "all-previous-move": 1
     }
   },
@@ -750,7 +767,7 @@
       "no-public-games": "Нет публичных игр",
       "no-random-discovery": "это означает отсутствие случайного обнаружения игроков",
       "not-yet-started": "Ещё не началась",
-      "offline": "Offline – not connected to server",
+      "offline": "Offline – not connected to {0}",
       "offline-lobby-hidden": "Connect to the server to see the public lobby and your games in progress.",
       "online-game": "Online game",
       "online-storage-description": "При выходе из онлайн-игры она остается в фоновом режиме. Вы можете присоединиться к ней из этого списка в любое время.",
@@ -764,7 +781,12 @@
       "title": "Игры на общедоступном сервере",
       "title-fan": "Игры, размещённые на фан-сервере",
       "title-local": "Games hosted on dev local",
-      "you-have-no-game-in-progress": "У вас нет активных игр."
+      "you-have-no-game-in-progress": "У вас нет активных игр.",
+      "disconnect-title": "Disconnect from server",
+      "disconnect-message": "You have {count} online game(s) open. Disconnecting will close them.",
+      "disconnect-confirm": "Disconnect and close games",
+      "disconnect-cancel": "Stay connected",
+      "disconnect-move": 1
     },
     "update": {
       "download": "Загрузить",

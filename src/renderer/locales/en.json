@@ -2,7 +2,7 @@
   "@author": "farin & Scott",
   "@jcz-version": "5.12.1",
   "@fcz-version": "6.3.0",
-  "@version": "0.11.7",
+  "@version": "0.11.8",
   "about": {
     "author": "Author",
     "configuration-file": "Configuration file",
@@ -134,7 +134,12 @@
     "tiles": "Tiles",
     "toggle-devtools": "Toggle DevTools",
     "use-local-play-online": "Use Local Play Online",
-    "use-remote-engine": "Use Remote Engine"
+    "use-remote-engine": "Use Remote Engine",
+    "switch-online-server-title": "Switch online server",
+    "switch-online-server-message": "You have {count} online game(s) open. Switching the server will close them.",
+    "switch-online-server-confirm": "Switch and close games",
+    "switch-online-server-cancel": "Keep current server",
+    "switch-online-server-move": 1
   },
   "dialog": {
     "close-all-games": {
@@ -449,7 +454,9 @@
       "remaining-tiles": "Remaining tiles",
       "tiles": "Tiles",
       "tiles-plural": "tiles | tile | tiles"
-    }
+    },
+    "tiles-progress": "Tiles placed",
+    "tiles-progress-move": "Tiles placed"
   },
   "game-setup": {
     "additional-elements": "Additional elements",
@@ -577,7 +584,10 @@
       "remove-all-tiles": "Remove all",
       "reset-tiles": "Reset",
       "separate-expansions": "Separate expansions",
-      "start-tile-excluded": "Starting tile count is set to 0 – restore it to create the game"
+      "start-tile-excluded": "Starting tile count is set to 0 – restore it to create the game",
+      "custom-pack": "Custom tile pack (counts changed)",
+      "custom-pack-short": "Tiles",
+      "custom-pack-move": 1
     },
     "timer": {
       "at-game-start-set-timer-to": "At game start, set timer to",
@@ -719,6 +729,13 @@
       "popular-empty": "No finished games yet — set up your own game and start the statistics!",
       "times-played": "played {count}×",
       "share-of-games": "{percent}% of finished games",
+      "popular-sets": "Most popular expansions",
+      "popular-addons": "Most popular add-ons",
+      "range-month": "Last month",
+      "range-year": "Last year",
+      "range-all": "All time",
+      "popular-components": "Most popular components",
+      "your-score": "Your score — best {best}, latest {latest}",
       "all-previous-move": 1
     }
   },
@@ -750,7 +767,7 @@
       "no-public-games": "No public games",
       "no-random-discovery": "it means no random player discovery",
       "not-yet-started": "Not yet started",
-      "offline": "Offline – not connected to server",
+      "offline": "Offline – not connected to {0}",
       "offline-lobby-hidden": "Connect to the server to see the public lobby and your games in progress.",
       "online-game": "Online game",
       "online-storage-description": "Leaving an online game keeps the unfinished game in the background. You can rejoin it from this list whenever you want.",
@@ -764,7 +781,12 @@
       "title": "Public server hosted games",
       "title-fan": "Games hosted on fan-server",
       "title-local": "Games hosted on dev local",
-      "you-have-no-game-in-progress": "You have no game in progress."
+      "you-have-no-game-in-progress": "You have no game in progress.",
+      "disconnect-title": "Disconnect from server",
+      "disconnect-message": "You have {count} online game(s) open. Disconnecting will close them.",
+      "disconnect-confirm": "Disconnect and close games",
+      "disconnect-cancel": "Stay connected",
+      "disconnect-move": 1
     },
     "update": {
       "download": "Download",

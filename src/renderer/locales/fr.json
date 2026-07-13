@@ -134,7 +134,12 @@
     "tiles": "Tuiles",
     "toggle-devtools": "Activer/désactiver les outils de développement",
     "use-local-play-online": "Utiliser jeu local en ligne",
-    "use-remote-engine": "Utiliser moteur à distance"
+    "use-remote-engine": "Utiliser moteur à distance",
+    "switch-online-server-title": "Switch online server",
+    "switch-online-server-message": "You have {count} online game(s) open. Switching the server will close them.",
+    "switch-online-server-confirm": "Switch and close games",
+    "switch-online-server-cancel": "Keep current server",
+    "switch-online-server-move": 1
   },
   "dialog": {
     "close-all-games": {
@@ -449,7 +454,9 @@
       "remaining-tiles": "Tuiles restantes",
       "tiles": "Tuiles",
       "tiles-plural": "tuile | tuile | tuiles"
-    }
+    },
+    "tiles-progress": "Tiles placed",
+    "tiles-progress-move": "Tiles placed"
   },
   "game-setup": {
     "additional-elements": "Éléments supplémentaires",
@@ -577,7 +584,10 @@
       "remove-all-tiles": "Remove all",
       "reset-tiles": "Reset",
       "separate-expansions": "Separate expansions",
-      "start-tile-excluded": "Starting tile count is set to 0 – restore it to create the game"
+      "start-tile-excluded": "Starting tile count is set to 0 – restore it to create the game",
+      "custom-pack": "Custom tile pack (counts changed)",
+      "custom-pack-short": "Tiles",
+      "custom-pack-move": 1
     },
     "timer": {
       "at-game-start-set-timer-to": "Au début de la partie, réglez le minuteur sur",
@@ -719,6 +729,13 @@
       "popular-empty": "No finished games yet — set up your own game and start the statistics!",
       "times-played": "played {count}×",
       "share-of-games": "{percent}% of finished games",
+      "popular-sets": "Most popular expansions",
+      "popular-addons": "Most popular add-ons",
+      "range-month": "Last month",
+      "range-year": "Last year",
+      "range-all": "All time",
+      "popular-components": "Most popular components",
+      "your-score": "Your score — best {best}, latest {latest}",
       "all-previous-move": 1
     }
   },
@@ -750,7 +767,7 @@
       "no-public-games": "Pas de parties publiques",
       "no-random-discovery": "cela signifie qu’il n’y a pas de découverte de joueurs aléatoires",
       "not-yet-started": "Pas encore commencé",
-      "offline": "Offline – not connected to server",
+      "offline": "Offline – not connected to {0}",
       "offline-lobby-hidden": "Connect to the server to see the public lobby and your games in progress.",
       "online-game": "Online game",
       "online-storage-description": "En quittant une partie en ligne, la partie inachevée reste en arrière-plan. Vous pouvez la rejoindre à partir de cette liste quand vous le souhaitez.",
@@ -764,7 +781,12 @@
       "title": "Parties hébergées sur un serveur public",
       "title-fan": "Jeux hébergés sur le serveur Fan",
       "title-local": "Games hosted on dev local",
-      "you-have-no-game-in-progress": "Vous n’avez pas de partie en cours."
+      "you-have-no-game-in-progress": "Vous n’avez pas de partie en cours.",
+      "disconnect-title": "Disconnect from server",
+      "disconnect-message": "You have {count} online game(s) open. Disconnecting will close them.",
+      "disconnect-confirm": "Disconnect and close games",
+      "disconnect-cancel": "Stay connected",
+      "disconnect-move": 1
     },
     "update": {
       "download": "Télécharger",

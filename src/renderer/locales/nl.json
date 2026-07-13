@@ -134,7 +134,12 @@
     "tiles": "Tegels",
     "toggle-devtools": "Ontwikkeltools wisselen",
     "use-local-play-online": "Lokaal spel online gebruiken",
-    "use-remote-engine": "Externe engine gebruiken"
+    "use-remote-engine": "Externe engine gebruiken",
+    "switch-online-server-title": "Switch online server",
+    "switch-online-server-message": "You have {count} online game(s) open. Switching the server will close them.",
+    "switch-online-server-confirm": "Switch and close games",
+    "switch-online-server-cancel": "Keep current server",
+    "switch-online-server-move": 1
   },
   "dialog": {
     "close-all-games": {
@@ -449,7 +454,9 @@
       "remaining-tiles": "Overgebleven tegels",
       "tiles": "Tegels",
       "tiles-plural": "tegels | tegel | tegels"
-    }
+    },
+    "tiles-progress": "Tiles placed",
+    "tiles-progress-move": "Tiles placed"
   },
   "game-setup": {
     "additional-elements": "Aanvullende elementen",
@@ -577,7 +584,10 @@
       "remove-all-tiles": "Remove all",
       "reset-tiles": "Reset",
       "separate-expansions": "Separate expansions",
-      "start-tile-excluded": "Starting tile count is set to 0 – restore it to create the game"
+      "start-tile-excluded": "Starting tile count is set to 0 – restore it to create the game",
+      "custom-pack": "Custom tile pack (counts changed)",
+      "custom-pack-short": "Tiles",
+      "custom-pack-move": 1
     },
     "timer": {
       "at-game-start-set-timer-to": "Stel de timer aan het begin van het spel in op",
@@ -719,6 +729,13 @@
       "popular-empty": "No finished games yet — set up your own game and start the statistics!",
       "times-played": "played {count}×",
       "share-of-games": "{percent}% of finished games",
+      "popular-sets": "Most popular expansions",
+      "popular-addons": "Most popular add-ons",
+      "range-month": "Last month",
+      "range-year": "Last year",
+      "range-all": "All time",
+      "popular-components": "Most popular components",
+      "your-score": "Your score — best {best}, latest {latest}",
       "all-previous-move": 1
     }
   },
@@ -750,7 +767,7 @@
       "no-public-games": "Geen openbare spellen",
       "no-random-discovery": "dat wil zeggen geen willekeurig zoeken naar spelers",
       "not-yet-started": "Nog niet begonnen",
-      "offline": "Offline – not connected to server",
+      "offline": "Offline – not connected to {0}",
       "offline-lobby-hidden": "Connect to the server to see the public lobby and your games in progress.",
       "online-game": "Online game",
       "online-storage-description": "Een online-spel verlaten behoudt het onafgeronde spel op de achtergrond. Je kunt er wanneer je wilt opnieuw mee verbinden.",
@@ -764,7 +781,12 @@
       "title": "Spellen op openbare server",
       "title-fan": "Spellen die beschikbaar zijn op de fan-server",
       "title-local": "Games hosted on dev local",
-      "you-have-no-game-in-progress": "Je hebt geen lopende spellen."
+      "you-have-no-game-in-progress": "Je hebt geen lopende spellen.",
+      "disconnect-title": "Disconnect from server",
+      "disconnect-message": "You have {count} online game(s) open. Disconnecting will close them.",
+      "disconnect-confirm": "Disconnect and close games",
+      "disconnect-cancel": "Stay connected",
+      "disconnect-move": 1
     },
     "update": {
       "download": "Downloaden",

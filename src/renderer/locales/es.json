@@ -134,7 +134,12 @@
     "tiles": "Losetas",
     "toggle-devtools": "Activar/Desactivar DevTools",
     "use-local-play-online": "Usar Juego Local Online",
-    "use-remote-engine": "Usar Motor Remoto"
+    "use-remote-engine": "Usar Motor Remoto",
+    "switch-online-server-title": "Switch online server",
+    "switch-online-server-message": "You have {count} online game(s) open. Switching the server will close them.",
+    "switch-online-server-confirm": "Switch and close games",
+    "switch-online-server-cancel": "Keep current server",
+    "switch-online-server-move": 1
   },
   "dialog": {
     "close-all-games": {
@@ -449,7 +454,9 @@
       "remaining-tiles": "Losetas restantes",
       "tiles": "Losetas",
       "tiles-plural": "losetas | loseta | losetas"
-    }
+    },
+    "tiles-progress": "Tiles placed",
+    "tiles-progress-move": "Tiles placed"
   },
   "game-setup": {
     "additional-elements": "Elementos adicionales",
@@ -577,7 +584,10 @@
       "remove-all-tiles": "Remove all",
       "reset-tiles": "Reset",
       "separate-expansions": "Separate expansions",
-      "start-tile-excluded": "Starting tile count is set to 0 – restore it to create the game"
+      "start-tile-excluded": "Starting tile count is set to 0 – restore it to create the game",
+      "custom-pack": "Custom tile pack (counts changed)",
+      "custom-pack-short": "Tiles",
+      "custom-pack-move": 1
     },
     "timer": {
       "at-game-start-set-timer-to": "Al inicio de la partida, poner el temporizador en",
@@ -719,6 +729,13 @@
       "popular-empty": "No finished games yet — set up your own game and start the statistics!",
       "times-played": "played {count}×",
       "share-of-games": "{percent}% of finished games",
+      "popular-sets": "Most popular expansions",
+      "popular-addons": "Most popular add-ons",
+      "range-month": "Last month",
+      "range-year": "Last year",
+      "range-all": "All time",
+      "popular-components": "Most popular components",
+      "your-score": "Your score — best {best}, latest {latest}",
       "all-previous-move": 1
     }
   },
@@ -750,7 +767,7 @@
       "no-public-games": "No hay partidas públicas",
       "no-random-discovery": "significa que no se buscan jugadores al azar",
       "not-yet-started": "Sin comenzar",
-      "offline": "Offline – not connected to server",
+      "offline": "Offline – not connected to {0}",
       "offline-lobby-hidden": "Connect to the server to see the public lobby and your games in progress.",
       "online-game": "Online game",
       "online-storage-description": "Salir de la partida en línea mantiene la partida incompleta en segundo plano. Se puede volver a la partida desde esta lista cuando se desee.",
@@ -764,7 +781,12 @@
       "title": "Partidas alojadas en servidores públicos",
       "title-fan": "Partidas alojadas en un servidor de fan",
       "title-local": "Games hosted on dev local",
-      "you-have-no-game-in-progress": "No hay partidas en curso."
+      "you-have-no-game-in-progress": "No hay partidas en curso.",
+      "disconnect-title": "Disconnect from server",
+      "disconnect-message": "You have {count} online game(s) open. Disconnecting will close them.",
+      "disconnect-confirm": "Disconnect and close games",
+      "disconnect-cancel": "Stay connected",
+      "disconnect-move": 1
     },
     "update": {
       "download": "Descargar",
