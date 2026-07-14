@@ -2,7 +2,9 @@
 export const state = () => ({
   alertMessage: null,
   gameList: [],
-  gamePublicList: []
+  gamePublicList: [],
+  // connected clients (server-pushed): [{ clientId, name, playing }] — playing = in a game, else idle
+  connectedClients: []
 })
 
 export const mutations = {
@@ -14,14 +16,18 @@ export const mutations = {
   },
   gamePublicList (state, value) {
     state.gamePublicList = value
+  },
+  connectedClients (state, value) {
+    state.connectedClients = value
   }
 }
 
 export const actions = {
   onClose ({ commit }) {
-    commit('alertMessage', null),
-    commit('gameList', []),
+    commit('alertMessage', null)
+    commit('gameList', [])
     commit('gamePublicList', [])
+    commit('connectedClients', [])
   }
 
 }

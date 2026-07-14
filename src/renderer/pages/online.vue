@@ -101,6 +101,10 @@
                 <span v-if="game.progress" class="game-progress" :title="$t('game.tiles-progress')">
                   <ScoringIcon name="tiles" :size="14" /> {{ game.progress }}
                 </span>
+                <!-- public-game player cap (taken / max), when the owner set one -->
+                <span v-if="game.setup.options && game.setup.options.maxPlayers" class="game-maxplayers" :title="$t('index.online.max-players-title')">
+                  <v-icon x-small>fas fa-users</v-icon> {{ slots.length }}/{{ game.setup.options.maxPlayers }}
+                </span>
               </span>
             </div>
 
@@ -177,6 +181,10 @@
                 <span v-if="game.progress" class="game-progress" :title="$t('game.tiles-progress')">
                   <ScoringIcon name="tiles" :size="14" /> {{ game.progress }}
                 </span>
+                <!-- public-game player cap (taken / max), when the owner set one -->
+                <span v-if="game.setup.options && game.setup.options.maxPlayers" class="game-maxplayers" :title="$t('index.online.max-players-title')">
+                  <v-icon x-small>fas fa-users</v-icon> {{ slots.length }}/{{ game.setup.options.maxPlayers }}
+                </span>
               </span>
             </div>
 
@@ -216,6 +224,16 @@
     <aside class="global-chat-aside">
       <h2>{{ $t('open-windows.title') }}</h2>
       <OpenGameWindows class="open-windows-block" />
+      <!-- currently connected clients, with idle vs in-game status -->
+      <h2>{{ $t('index.online.players-online', { count: connectedClients.length }) }}</h2>
+      <ul class="clients-list">
+        <li v-for="c in connectedClients" :key="c.clientId" class="client" :class="{ me: isMyClient(c.clientId) }">
+          <span class="status-dot" :class="c.playing ? 'playing' : 'idle'" />
+          <span class="client-name">{{ c.name || '—' }}</span>
+          <span class="client-status">{{ c.playing ? $t('index.online.status-in-game') : $t('index.online.status-idle') }}</span>
+        </li>
+        <li v-if="!connectedClients.length" class="client empty">{{ $t('index.online.no-clients') }}</li>
+      </ul>
       <h2>{{ $t('chat.chat') }}</h2>
       <GlobalChat inline />
     </aside>
@@ -415,6 +433,7 @@ export default {
       clientId: state => state.settings.clientId,
       gameList: state => state.online.gameList,
       gamePublicList: state => state.online.gamePublicList,
+      connectedClients: state => state.online.connectedClients,
       playOnlineHostname: state => state.settings.playOnlineUrl.split('/')[0],
       locale: state => state.settings.locale,
       engine: state => state.engine,
@@ -545,6 +564,15 @@ export default {
     sendGameLists () {
       this.$connection.send({ type: 'LIST_GAMES', payload: {} })
       this.$connection.send({ type: 'LIST_PUBLIC_GAMES', payload: {} })
+      this.$connection.send({ type: 'LIST_CLIENTS', payload: {} })
+    },
+
+    // the server dedupes clients by base clientId; our own may carry a per-window "--<suffix>"
+    isMyClient (clientId) {
+      const mine = this.$store.state.settings.clientId
+      if (!mine || !clientId) return false
+      const base = String(mine).split('--')[0]
+      return String(clientId).split('--')[0] === base
     },
 
     splashImage () {
@@ -974,6 +1002,52 @@ h2
     flex: 0 0 auto
     max-height: 35%
     margin-bottom: 4px
+
+  .clients-list
+    list-style: none
+    margin: 0
+    padding: 0
+    flex: 0 0 auto
+    max-height: 25%
+    overflow-y: auto
+
+    .client
+      display: flex
+      align-items: center
+      gap: 8px
+      padding: 4px 0
+      font-size: 14px
+
+      &.empty
+        font-style: italic
+        opacity: 0.6
+
+      &.me .client-name
+        font-weight: 700
+
+      .status-dot
+        flex: 0 0 auto
+        width: 9px
+        height: 9px
+        border-radius: 50%
+
+        &.playing
+          background-color: #4caf50
+
+        &.idle
+          background-color: #9e9e9e
+
+      .client-name
+        flex: 1 1 auto
+        min-width: 0
+        overflow: hidden
+        text-overflow: ellipsis
+        white-space: nowrap
+
+      .client-status
+        flex: 0 0 auto
+        font-size: 12px
+        opacity: 0.7
 
   ::v-deep .global-chat-root
     flex: 1 1 0
