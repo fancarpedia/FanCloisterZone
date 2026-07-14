@@ -76,6 +76,16 @@ function buildSetupFromState (vm, state, getters) {
   if (tileOverrides) {
     setup.tileOverrides = tileOverrides
   }
+  // per-set breakdown, so the separated view's independent edits survive save/reload. The engine
+  // ignores this field (it uses the flat tileOverrides → GAME_SETUP `tiles`). Drop emptied sets.
+  const bySet = {}
+  Object.entries(state.tileOverridesBySet || {}).forEach(([sk, tiles]) => {
+    if (emptied.includes(sk)) return
+    if (tiles && Object.keys(tiles).length) bySet[sk] = { ...tiles }
+  })
+  if (tileOverrides && Object.keys(bySet).length) {
+    setup.tileOverridesBySet = bySet
+  }
 
   if (Object.keys(addons).length) {
     setup.addons = addons
@@ -105,8 +115,18 @@ export const state = () => ({
   editingGameId: null,
   preDrawSuspended: null, // pre-draw value stashed while an incompatible expansion is selected
   // per-tile count overrides: tileId -> count, stored only as diffs from the counts computed
-  // from the selected sets (0 = tile excluded); empty when the pack is untouched
+  // from the selected sets (0 = tile excluded); empty when the pack is untouched. This is the
+  // FLAT, engine-facing form (the sum across sets) — everything downstream reads it.
   tileOverrides: {},
+  // per-SET breakdown of the above: { setKey: { tileId: count } }. Lets the separated tiles view
+  // edit the SAME tileId provided by two sets (base+winter, river/1+river/2) independently; a
+  // per-set edit recomputes that tile's flat total. Diffs-only, like tileOverrides.
+  tileOverridesBySet: {},
+  // Tiles-tab UI toggles, kept here (not in the component) so they survive the Tiles tab being
+  // remounted when the owner goes back to change an already-created game. Window-scoped UI state,
+  // NOT part of the setup sent to the engine.
+  separateExpansions: false,
+  quantityChange: false,
   // online-hotseat rematch: seats ({number, name}, in the new order) to auto-take when the
   // freshly created game arrives (server assigns seating by TAKE_SLOT sequence)
   rematchSlots: null,
@@ -134,6 +154,9 @@ export const mutations = {
     state.editingGameId = null
     state.preDrawSuspended = null
     state.tileOverrides = {}
+    state.tileOverridesBySet = {}
+    state.separateExpansions = false
+    state.quantityChange = false
     state.rematchSlots = null
   },
 
@@ -156,6 +179,15 @@ export const mutations = {
     state.ai = setup.ai
     state.preDrawSuspended = null
     state.tileOverrides = setup.tileOverrides ? { ...setup.tileOverrides } : {}
+    // deep-copy the per-set breakdown if the setup carries it (new format); older setups only
+    // have the flat form, so the separated view falls back to per-set defaults for shared tiles
+    state.tileOverridesBySet = setup.tileOverridesBySet
+      ? JSON.parse(JSON.stringify(setup.tileOverridesBySet))
+      : {}
+    // Re-check "Enable quantity change" when the loaded setup already has tile-count changes (so
+    // going back to change setup shows the counts as editable, matching the "tiles changed" note);
+    // keep it on if it was already on. "Separate expansions" is retained window state (not touched).
+    state.quantityChange = state.quantityChange || Object.keys(state.tileOverrides).length > 0
   },
 
   gameAnnotations (state, gameAnnotations) {
@@ -232,6 +264,34 @@ export const mutations = {
 
   tileOverrides (state, value) {
     state.tileOverrides = value || {}
+  },
+
+  // per-set override: state.tileOverridesBySet[setKey][tileId] = count (null → remove, and drop
+  // the set bucket when it becomes empty)
+  tileOverrideBySet (state, { setKey, tileId, count }) {
+    if (count === null || count === undefined) {
+      if (state.tileOverridesBySet[setKey]) {
+        Vue.delete(state.tileOverridesBySet[setKey], tileId)
+        if (!Object.keys(state.tileOverridesBySet[setKey]).length) {
+          Vue.delete(state.tileOverridesBySet, setKey)
+        }
+      }
+    } else {
+      if (!state.tileOverridesBySet[setKey]) Vue.set(state.tileOverridesBySet, setKey, {})
+      Vue.set(state.tileOverridesBySet[setKey], tileId, count)
+    }
+  },
+
+  tileOverridesBySet (state, value) {
+    state.tileOverridesBySet = value || {}
+  },
+
+  separateExpansions (state, value) {
+    state.separateExpansions = !!value
+  },
+
+  quantityChange (state, value) {
+    state.quantityChange = !!value
   },
 
   rematchSlots (state, value) {
@@ -341,6 +401,38 @@ export const actions = {
     const edition = getters.getSelectedEdition
     const before = $tiles.getDefaultElements(state.sets, state.tileOverrides, edition)
     commit('tileOverride', { tileId, count: count === defaults[tileId] ? null : count })
+    // a flat (aggregate) edit supersedes any per-set split for this tile — drop it so the
+    // separated view doesn't show a stale breakdown that disagrees with the flat total
+    Object.keys(state.tileOverridesBySet).forEach(sk => {
+      if (state.tileOverridesBySet[sk][tileId] !== undefined) {
+        commit('tileOverrideBySet', { setKey: sk, tileId, count: null })
+      }
+    })
+    dispatch('reconcileTileElements', { before })
+  },
+
+  // Per-set (separated view) edit: set (setKey, tileId) independently, then recompute the tile's
+  // flat total = sum over every set of (per-set override ?? per-set default).
+  setTileOverrideBySet ({ state, commit, getters, dispatch }, { setKey, tileId, count }) {
+    const { $tiles } = this._vm
+    const edition = getters.getSelectedEdition
+    const bySetDefaults = $tiles.getTilesCountsBySet(state.sets, edition)
+    const setDefault = bySetDefaults[setKey] ? bySetDefaults[setKey][tileId] : undefined
+    if (setDefault === undefined) return // this set doesn't provide the tile
+    const before = $tiles.getDefaultElements(state.sets, state.tileOverrides, edition)
+    commit('tileOverrideBySet', { setKey, tileId, count: count === setDefault ? null : count })
+    // recompute the flat total across ALL sets that provide this tile
+    let total = 0
+    let defaultTotal = 0
+    Object.keys(bySetDefaults).forEach(sk => {
+      const def = bySetDefaults[sk][tileId]
+      if (def === undefined) return
+      defaultTotal += def
+      const bucket = state.tileOverridesBySet[sk]
+      const ov = bucket ? bucket[tileId] : undefined
+      total += (ov === undefined || ov === null) ? def : ov
+    })
+    commit('tileOverride', { tileId, count: total === defaultTotal ? null : total })
     dispatch('reconcileTileElements', { before })
   },
 
@@ -350,6 +442,7 @@ export const actions = {
     const edition = getters.getSelectedEdition
     const before = $tiles.getDefaultElements(state.sets, state.tileOverrides, edition)
     commit('tileOverrides', value || {})
+    commit('tileOverridesBySet', {}) // wholesale flat replace resets the per-set breakdown
     dispatch('reconcileTileElements', { before })
   },
 
@@ -375,6 +468,21 @@ export const actions = {
 
   // Drop overrides for tiles no longer in the pack or equal to their computed default.
   pruneTileOverrides ({ state, commit, getters }) {
+    // prune the per-set breakdown: drop buckets for sets no longer selected and per-set
+    // overrides equal to (or no longer part of) that set's default
+    if (Object.keys(state.tileOverridesBySet).length) {
+      const defs = this._vm.$tiles.getTilesCountsBySet(state.sets, getters.getSelectedEdition)
+      const prunedBySet = {}
+      Object.entries(state.tileOverridesBySet).forEach(([sk, tiles]) => {
+        if (!defs[sk]) return // set no longer selected
+        const kept = {}
+        Object.entries(tiles).forEach(([tid, c]) => {
+          if (defs[sk][tid] !== undefined && defs[sk][tid] !== c) kept[tid] = c
+        })
+        if (Object.keys(kept).length) prunedBySet[sk] = kept
+      })
+      commit('tileOverridesBySet', prunedBySet)
+    }
     if (!Object.keys(state.tileOverrides).length) return
     const { $tiles } = this._vm
     const valid = $tiles.getValidTileOverrides(

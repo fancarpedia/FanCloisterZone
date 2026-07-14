@@ -978,8 +978,9 @@ export const actions = {
     //   params: { drawLimit: 3 }
     // }
 
-    // engine reads per-tile count overrides from `tiles` (GameSetupMessage.tiles)
-    const { tileOverrides, ...fullSetup } = $tiles.getFullSetup(state.setup)
+    // engine reads per-tile count overrides from `tiles` (GameSetupMessage.tiles). The per-set
+    // breakdown (tileOverridesBySet) is a client-only detail — strip it from the engine payload.
+    const { tileOverrides, tileOverridesBySet, ...fullSetup } = $tiles.getFullSetup(state.setup)
     const setupMessage = {
       type: 'GAME_SETUP',
       payload: {

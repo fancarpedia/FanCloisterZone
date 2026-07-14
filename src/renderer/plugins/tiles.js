@@ -147,6 +147,25 @@ class Tiles extends EventsBase {
     return counts
   }
 
+  // Per-set (release) RAW tile counts, before the global remove/max/min/start adjustments that
+  // getTilesCounts applies. { setKey: { tileId: count } }. Used by the separated tiles view so
+  // the SAME tileId provided by two sets (e.g. base+winter, river/1+river/2) can be shown and
+  // edited independently per set. The engine still gets the flat SUM (see the store's flatten).
+  getTilesCountsBySet (sets, edition) {
+    const bySet = {}
+    Object.entries(sets).forEach(([id, setCount]) => {
+      if (!setCount) return
+      const set = this.sets[id] || this.sets[id + ':' + edition]
+      if (!set || set === UNKWNOWN_SET) return
+      const counts = {}
+      Object.entries(set.tiles || {}).forEach(([tileId, tileCount]) => {
+        counts[tileId] = setCount * tileCount
+      })
+      bySet[id] = counts
+    })
+    return bySet
+  }
+
   // Apply per-tile count overrides (diffs from the computed defaults) to a counts map.
   // Only tiles present in `counts` are affected — a stale override for a tile no longer in
   // the pack is ignored. An override of 0 removes the tile from the map.

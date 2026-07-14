@@ -56,7 +56,7 @@
 
       <div class="tile-distribution" :class="{ small }">
         <div
-          v-for="{ id, count, rotation, cap } in group.tiles"
+          v-for="{ id, count, rotation, cap, setKey } in group.tiles"
           :key="id"
           class="tile"
           :class="{ excluded: count === 0 }"
@@ -66,15 +66,15 @@
             :tile-id="id"
             :size="tileSize"
             :rotation="rotation"
-            @click.native="onTileClick(id, count)"
+            @click.native="onTileClick(id, count, setKey)"
           />
           <div v-if="!quantityEditActive" class="count">{{ count }}</div>
           <div v-else class="count stepper">
-            <v-btn icon x-small :disabled="count <= 0" @click="changeCount(id, count, -1)">
+            <v-btn icon x-small :disabled="count <= 0" @click="changeCount(id, count, -1, setKey)">
               <v-icon x-small>fa-minus</v-icon>
             </v-btn>
             <span class="stepper-count">{{ count }}</span>
-            <v-btn icon x-small :disabled="count >= cap" @click="changeCount(id, count, 1)">
+            <v-btn icon x-small :disabled="count >= cap" @click="changeCount(id, count, 1, setKey)">
               <v-icon x-small>fa-plus</v-icon>
             </v-btn>
           </div>
@@ -121,8 +121,10 @@ export default {
 
   data () {
     return {
-      separateExpansions: false,
-      quantityChange: false
+      // fallbacks for the read-only (non-editable) display; in editable mode the toggles live in
+      // the gameSetup store so they survive the Tiles tab remounting on "change setup"
+      localSeparateExpansions: false,
+      localQuantityChange: false
     }
   },
 
@@ -136,6 +138,27 @@ export default {
   },
 
   computed: {
+    // window-scoped in editable mode (persisted in the store), local otherwise
+    separateExpansions: {
+      get () {
+        return this.editable ? this.$store.state.gameSetup.separateExpansions : this.localSeparateExpansions
+      },
+      set (val) {
+        if (this.editable) this.$store.commit('gameSetup/separateExpansions', val)
+        else this.localSeparateExpansions = val
+      }
+    },
+
+    quantityChange: {
+      get () {
+        return this.editable ? this.$store.state.gameSetup.quantityChange : this.localQuantityChange
+      },
+      set (val) {
+        if (this.editable) this.$store.commit('gameSetup/quantityChange', val)
+        else this.localQuantityChange = val
+      }
+    },
+
     ...mapState({
       edition: state => {
         const setup = state.gameSetup || state.game.setup
@@ -146,7 +169,8 @@ export default {
         const { elements, sets, start } = setup
         return getSelectedStartingTiles(elements, sets, start)
       },
-      storeOverrides: state => state.gameSetup.tileOverrides
+      storeOverrides: state => state.gameSetup.tileOverrides,
+      storeOverridesBySet: state => state.gameSetup.tileOverridesBySet || {}
     }),
 
     quantityEditActive () {
@@ -215,18 +239,16 @@ export default {
     // more than one expansion still contributes tiles → separating them is meaningful.
     // Reacts to tile removal: drop all of an expansion's tiles and it stops counting.
     canSeparate () {
-      // Count SELECTED expansions, regardless of current tile counts. A player often removes all
-      // tiles from an expansion to then hand-pick a few — separation must stay available through
-      // that (the old tiles-count>0 test made it vanish the moment an expansion was zeroed out).
-      const expansions = this.$tiles.getExpansions(this.baseSets, this.edition)
+      // Count SELECTED tile SETS (releases), regardless of current tile counts. Per-set grouping
+      // means two releases of one expansion (river/1 + river/2) are separable too. Selection-based
+      // so it stays available when a player zeroes a set's tiles to hand-pick a few.
       let n = 0
-      for (const expId of Object.keys(expansions)) {
-        const expansion = Expansion[expId]
-        if (!expansion) continue
-        const selected = expansion.releases.some(release => release.sets.some(sid =>
-          this.baseSets[sid] || this.baseSets[sid + ':' + this.edition]
-        ))
-        if (selected && ++n > 1) return true
+      for (const id of Object.keys(this.baseSets)) {
+        if (!this.baseSets[id]) continue
+        const set = this.$tiles.sets[id] || this.$tiles.sets[id + ':' + this.edition]
+        if (set && set.tiles && Object.keys(set.tiles).length) {
+          if (++n > 1) return true
+        }
       }
       return false
     },
@@ -246,67 +268,45 @@ export default {
         }]
       }
 
-      // map each tile id to the (first) selected expansion providing it, then distribute
-      // the already-sorted tileItems so per-group tile order matches the flat view
-      const tileExpansion = {}
-      const expansionOrder = []
-      const expansions = this.$tiles.getExpansions(this.baseSets, this.edition)
-      Object.keys(expansions).forEach(expId => {
-        const expansion = Expansion[expId]
-        if (!expansion) return
-        expansionOrder.push(expId)
-        expansion.releases.forEach(release => {
-          release.sets.forEach(sid => {
-            const set = this.$tiles.sets[sid] || this.$tiles.sets[sid + ':' + this.edition]
-            if (!set) return
-            if (!this.baseSets[sid] && !this.baseSets[sid + ':' + this.edition]) return
-            Object.keys(set.tiles).forEach(tileId => {
-              if (tileExpansion[tileId] === undefined) {
-                tileExpansion[tileId] = expId
-              }
-            })
-          })
-        })
-      })
-
-      const byExpansion = {}
-      const rest = []
-      this.tileItems.forEach(t => {
-        const expId = tileExpansion[t.id]
-        if (expId === undefined) {
-          rest.push(t)
-          return
-        }
-        if (!byExpansion[expId]) byExpansion[expId] = []
-        byExpansion[expId].push(t)
-      })
+      // one group per SET/release, so the SAME tileId provided by two sets (base+winter,
+      // river/1+river/2) shows and edits independently per set. Per-set counts come from
+      // getTilesCountsBySet + the per-set overrides; the engine still gets the flat sum.
+      const bySetDefaults = this.$tiles.getTilesCountsBySet(this.baseSets, this.edition)
+      const overridesBySet = this.storeOverridesBySet
+      const tileOrder = this.tileItems.map(t => t.id) // global edge-sorted order
+      const orderIndex = {}
+      tileOrder.forEach((id, i) => { orderIndex[id] = i })
 
       const groups = []
-      expansionOrder.forEach(expId => {
-        const tiles = byExpansion[expId]
-        if (!tiles || !tiles.length) return
-        const expansion = Expansion[expId]
+      // follow the sets' natural order as keyed in the store
+      Object.keys(bySetDefaults).forEach(setKey => {
+        const perSet = bySetDefaults[setKey]
+        const ov = overridesBySet[setKey] || {}
+        const tiles = Object.keys(perSet)
+          .sort((a, b) => (orderIndex[a] ?? 1e9) - (orderIndex[b] ?? 1e9))
+          .map(tileId => {
+            const count = ov[tileId] === undefined ? perSet[tileId] : ov[tileId]
+            const themeTile = this.$theme.getTile(tileId)
+            return {
+              id: tileId,
+              count,
+              cap: this.caps[tileId] || 99,
+              rotation: themeTile ? themeTile.rotation : 0,
+              setKey
+            }
+          })
+        if (!tiles.length) return
         groups.push({
-          id: expId,
-          title: this.expansionTitle(expansion),
-          expansion,
+          id: 'set:' + setKey,
+          title: this.setTitle(setKey),
+          expansion: this.expansionForSet(setKey),
           total: tiles.reduce((sum, t) => sum + t.count, 0),
           tiles,
-          miniboard: false
+          miniboard: false,
+          setKey
         })
       })
 
-      // tiles not claimed by any expansion (safety net) keep a residual group
-      if (rest.length) {
-        groups.push({
-          id: '_rest',
-          title: '…',
-          expansion: null,
-          total: rest.reduce((sum, t) => sum + t.count, 0),
-          tiles: rest,
-          miniboard: false
-        })
-      }
       if (this.sets.count) {
         groups.push({
           id: '_count',
@@ -327,22 +327,56 @@ export default {
       return this.$te(langId) ? this.$t(langId) : expansion.title
     },
 
+    // the release + expansion that owns a set key (edition suffix stripped)
+    releaseForSet (setKey) {
+      const base = setKey.split(':')[0]
+      for (const exp of Expansion.all()) {
+        for (const r of exp.releases) {
+          if (r.sets.includes(base)) return { release: r, expansion: exp }
+        }
+      }
+      return null
+    },
+
+    // label for a per-set group: the release title (e.g. "The River I"), else the expansion title
+    setTitle (setKey) {
+      const found = this.releaseForSet(setKey)
+      return found ? (found.release.title || this.expansionTitle(found.expansion)) : setKey
+    },
+
+    expansionForSet (setKey) {
+      const found = this.releaseForSet(setKey)
+      return found ? found.expansion : null
+    },
+
     // clicking a removed (count 0) tile brings it back with a single copy
-    onTileClick (tileId, count) {
+    onTileClick (tileId, count, setKey = null) {
       if (this.quantityEditActive && count === 0) {
-        this.changeCount(tileId, 0, 1)
+        this.changeCount(tileId, 0, 1, setKey)
         return
       }
       this.$emit('tile-click', tileId, count)
     },
 
-    changeCount (tileId, count, delta) {
-      const next = Math.min(Math.max(count + delta, 0), this.caps[tileId])
+    // setKey present (separated view) → edit that set's copy independently; else the flat total
+    changeCount (tileId, count, delta, setKey = null) {
+      const next = Math.min(Math.max(count + delta, 0), this.caps[tileId] || 99)
       if (next === count) return
-      this.$store.dispatch('gameSetup/setTileOverride', { tileId, count: next })
+      if (setKey) {
+        this.$store.dispatch('gameSetup/setTileOverrideBySet', { setKey, tileId, count: next })
+      } else {
+        this.$store.dispatch('gameSetup/setTileOverride', { tileId, count: next })
+      }
     },
 
     hasGroupOverride (tiles) {
+      // per-set group → check the nested breakdown; flat group → the flat overrides
+      if (tiles.length && tiles[0].setKey) {
+        return tiles.some(t => {
+          const b = this.storeOverridesBySet[t.setKey]
+          return b && b[t.id] !== undefined
+        })
+      }
       if (!this.storeOverrides) return false
       return tiles.some(t => this.storeOverrides[t.id] !== undefined)
     },
@@ -352,10 +386,19 @@ export default {
       return tiles.length > 0 && tiles.every(t => t.count === (this.startTileCounts[t.id] || 0))
     },
 
-    // restore defaults — for all tiles (no argument) or for the given group's tiles only
+    // restore defaults — for all tiles (no argument), a per-set group, or a flat group
     resetTiles (tiles = null) {
       if (tiles === null) {
         this.$store.dispatch('gameSetup/setTileOverrides', {})
+        return
+      }
+      if (tiles.length && tiles[0].setKey) {
+        // per-set: set each back to its per-set default (which clears the nested override)
+        const defs = this.$tiles.getTilesCountsBySet(this.baseSets, this.edition)
+        tiles.forEach(t => {
+          const d = defs[t.setKey] ? defs[t.setKey][t.id] : undefined
+          this.$store.dispatch('gameSetup/setTileOverrideBySet', { setKey: t.setKey, tileId: t.id, count: d })
+        })
         return
       }
       const next = { ...this.storeOverrides }
@@ -377,6 +420,14 @@ export default {
     // exclude the given tiles from the pack (count 0) — except pre-placed starting tiles,
     // which are kept at their pre-placed count so the game stays creatable
     removeTiles (tiles) {
+      if (tiles.length && tiles[0].setKey) {
+        // per-set: zero this set's copies (keeping any pre-placed starting tiles)
+        tiles.forEach(t => {
+          const keep = this.startTileCounts[t.id] || 0
+          this.$store.dispatch('gameSetup/setTileOverrideBySet', { setKey: t.setKey, tileId: t.id, count: keep })
+        })
+        return
+      }
       const next = { ...this.storeOverrides }
       tiles.forEach(t => {
         const keep = this.startTileCounts[t.id] || 0
