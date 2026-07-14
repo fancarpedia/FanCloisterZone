@@ -1,5 +1,5 @@
 <template>
-  <div :class="`player-slot color-${number} ${slotState} ${readOnly || (slotState === 'open' && limitReached) ? '' : 'editable'}`" @click="toggle">
+  <div :class="`player-slot color-${number} ${slotState} ${readOnly || (slotState === 'open' && (limitReached || capReached)) ? '' : 'editable'}`" @click="toggle">
     <div
       v-if="order !== null && (readOnly || !randomized)"
       :class="`order order-${order}`"
@@ -26,7 +26,11 @@
       <v-icon v-if="slotState === 'local' && !readOnly">fas fa-pencil-alt</v-icon>
     </div>
     <div v-else class="name">
-      <template v-if="slotState === 'open' && !readOnly && !limitReached">{{ $t('game-setup.create.click-to-assign') }}</template>
+      <template v-if="slotState === 'open' && !readOnly && !limitReached && !capReached">{{ $t('game-setup.create.click-to-assign') }}</template>
+      <!-- max-players cap reached → this empty seat is locked -->
+      <span v-else-if="slotState === 'open' && !readOnly && capReached" class="limit-reached">
+        {{ $t('game-setup.create.game-full') }}
+      </span>
       <v-tooltip v-else-if="slotState === 'open' && !readOnly && limitReached" bottom>
         <template #activator="{ on }">
           <span class="limit-reached" v-on="on">
@@ -91,6 +95,8 @@ export default {
     readOnly: { type: Boolean },
     limitReached: { type: Boolean, default: false },
     localLimit: { type: Number, default: null },
+    // max-players cap reached → open seats are locked (can't take a new one)
+    capReached: { type: Boolean, default: false },
     isOwner: { type: Boolean, default: false }
   },
 
@@ -135,7 +141,7 @@ export default {
       } else if (this.slotState === 'localai' || (this.slotState === 'local' && !this.setupAi)) {
         this.$store.dispatch('gameSetup/releaseSlot', { number })
       } else if (this.slotState === 'open') {
-        if (this.limitReached) return
+        if (this.limitReached || this.capReached) return
         this.ai = false;
         this.$store.dispatch('gameSetup/takeSlot', { number })
       }

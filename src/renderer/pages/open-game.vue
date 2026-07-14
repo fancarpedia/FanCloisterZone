@@ -73,6 +73,7 @@
           :is-owner="isOwner"
           :limit-reached="!!gameKey && localSlotsCount >= LOCAL_PLAYERS_LIMIT"
           :local-limit="LOCAL_PLAYERS_LIMIT"
+          :cap-reached="capReached"
         />
       </div>
 
@@ -105,6 +106,17 @@
           v-model="publicGame"
           dense hide-details
           :label="$t('game-setup.open-game.public-game')"
+          :disabled="!isOwner"
+        />
+        <!-- max players for a public game: once this many seats are taken the game leaves the
+             public list and its remaining empty seats lock. Owner-only, public games only. -->
+        <v-select
+          v-if="gameKey && publicGame && !readOnly && !isRematch"
+          v-model="maxPlayers"
+          :items="maxPlayersOptions"
+          dense hide-details
+          class="max-players"
+          :label="$t('game-setup.open-game.max-players')"
           :disabled="!isOwner"
         />
         <v-checkbox
@@ -204,6 +216,13 @@ export default {
       return !!(this.elements && this.elements['keep-building'])
     },
 
+    // max-players cap reached → open seats lock (no new joins), mirroring the server gate
+    capReached () {
+      const max = this.options && this.options.maxPlayers ? this.options.maxPlayers : 0
+      if (!max) return false
+      return (this.slots || []).filter(s => s.clientId).length >= max
+    },
+
     // in a rematch only the carried-over (occupied) seats are shown — empty slots are hidden
     visibleSlots () {
       if (!this.slots) return []
@@ -287,6 +306,42 @@ export default {
       get () {
         // Keep Building always hides the remaining-tiles cheat sheet
         return this.isCoop ? true : this.options.puristTiles
+      }
+    },
+
+    // choices for the max-players cap: "No limit" (0) plus 2..(number of seats)
+    maxPlayersOptions () {
+      const n = (this.slots || []).length
+      const opts = [{ text: this.$t('game-setup.open-game.max-players-no-limit'), value: 0 }]
+      for (let i = 2; i <= n; i++) opts.push({ text: String(i), value: i })
+      return opts
+    },
+
+    maxPlayers: {
+      set (value) {
+        this.$store.commit('game/options', { maxPlayers: value })
+        this.$connection.send({
+          type: 'GAME_OPTION',
+          payload: {
+            gameId: this.gameId,
+            key: 'maxPlayers',
+            value
+          }
+        })
+      },
+
+      get () {
+        return this.options.maxPlayers || 0 // 0 = no limit
+      }
+    }
+  },
+
+  watch: {
+    // turning a game public reveals the max-players select and gives it a sensible default (all
+    // seats) so it isn't left unset — the owner can then lower it
+    publicGame (val) {
+      if (val && this.isOwner && !this.options.maxPlayers) {
+        this.maxPlayers = (this.slots || []).length
       }
     }
   },
