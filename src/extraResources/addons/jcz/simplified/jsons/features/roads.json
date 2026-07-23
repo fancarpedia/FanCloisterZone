@@ -3,14 +3,14 @@
     "images": [
       { "href": "#road-N", "class": "road" }
     ],
-    "clip": "M360,0 l180,0 l0,400, l-180,0 Z",
+    "clip": "M360,0 l180,0 l0,400 l-180,0 Z",
     "point": [450, 180]
   },
   "road.N.c2": {
     "images": [
       { "href": "#road-N.long", "class": "road" }
     ],
-    "clip": "${(M360,0 l180,0 l0,700, l-180,0 Z) - city.NW|rotate(270)}",
+    "clip": "${(M360,0 l180,0 l0,700 l-180,0 Z) - city.NW|rotate(270)}",
     "point": [450, 180]
   },
   "road.N.c2x": {
@@ -122,7 +122,7 @@
     "images": [
       { "href": "#road-WE", "class": "road" }
     ],
-    "clip": "M0,360 l900,0 l0,180, l-900,0 Z",
+    "clip": "M0,360 l900,0 l0,180 l-900,0 Z",
     "point": [450, 450]
   },
   "road.WE.under": {
@@ -136,7 +136,7 @@
     "images": [
       { "href": "#road-WE-over", "class": "above-road" }
     ],
-    "clip": "M0,360 l900,0 l0,180, l-900,0 Z",
+    "clip": "M0,360 l900,0 l0,180 l-900,0 Z",
     "point": [720, 450]
   },
   "road.W.over": {
