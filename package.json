@@ -1,6 +1,6 @@
 {
   "name": "fancloisterzone",
-  "version": "6.3.0-alpha.17",
+  "version": "6.3.0-alpha.18",
   "description": "FanCloisterZone",
   "repository": "github:fancarpedia/FanCloisterZone",
   "license": "AGPL-3.0-or-later",
@@ -11,6 +11,10 @@
     "dev": "node .electron-nuxt/dev.js",
     "build": "yarn run download-game-engine && node .electron-nuxt/build.js",
     "rebuild": "node .electron-nuxt/build.js",
+    "build:web": "node web-build/build.js",
+    "build:web:offline": "cross-env WEB_BUILD_BUNDLED_ONLY=1 node web-build/build.js",
+    "build:web:landing": "node web-build/build-landing.js",
+    "build:web:site": "yarn run build:web:offline && yarn run build:web:landing",
     "test": "vitest run",
     "test:watch": "vitest",
     "lint": "node_modules/.bin/eslint --ext .js,.vue -f ./node_modules/eslint-friendly-formatter ./src",
