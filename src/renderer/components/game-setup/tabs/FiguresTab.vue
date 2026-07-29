@@ -81,6 +81,9 @@
         <GameElementBox :item="GameElement.FAIRY">
           <NeutralFigure figure="fairy" :width="55" :height="55" />
         </GameElementBox>
+        <GameElementBox :item="GameElement.BLACK_FAIRY">
+          <NeutralFigure figure="black-fairy" :width="55" :height="55" />
+        </GameElementBox>
         <GameElementBox :item="GameElement.DRAGON">
           <NeutralFigure figure="dragon" :width="110" :height="55" />
         </GameElementBox>

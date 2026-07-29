@@ -7,6 +7,7 @@
       <template v-else-if="item.name === 'inn'"><img :title="$t('game.feature.inn')" src="~/assets/features/C1/inn.png" height="40"></template>
       <template v-else-if="item.name === 'cathedral'"><img :title="$t('game.feature.cathedral')" src="~/assets/features/C1/cathedral.png" height="40"></template>
       <template v-else-if="item.name === 'fairy'"><NeutralFigure figure="fairy" :width="40" :height="40" /></template>
+      <template v-else-if="item.name === 'black-fairy'"><NeutralFigure figure="black-fairy" :width="40" :height="40" /></template>
       <template v-else-if="item.name === 'meeples'">
         <svg class="meeple" :width="40" :height="40">
           <use :href="`${MEEPLES_SVG}#small-follower`" />

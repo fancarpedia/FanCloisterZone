@@ -45,6 +45,7 @@ const MAPPING = {
   'king+robber': { kind: 'img', value: require('~/assets/figures/king_robber.png') },
   'gold': { kind: 'img', value: require('~/assets/figures/gold.png') },
   'fairy': { kind: 'figure', value: 'fairy' },
+  'black-fairy': { kind: 'figure', value: 'black-fairy' },
   'tower': { kind: 'tile', value: 'TO/F' },
   'flock': { kind: 'token', value: 'SHEEP_3X' },
   'ringmaster': { kind: 'meeple', value: 'Ringmaster' },

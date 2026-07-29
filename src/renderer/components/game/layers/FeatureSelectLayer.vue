@@ -65,11 +65,21 @@ export default {
           return
         }
         const tile = this.tileOn(option.position)
-        const opt = {
-          option,
-          feature: this.$theme.getFeature(tile, option.feature, option.location, this.bridges),
-          abbotChoice: null
+        let feature
+        try {
+          feature = this.$theme.getFeature(tile, option.feature, option.location, this.bridges)
+        } catch (e) {
+          // getFeature throws when the artwork has no such feature. The only expected case is a
+          // meeple option on a BRIDGE road whose bridge is momentarily gone: during an undo the
+          // `options` prop (pushed to board.layers on Vue.nextTick, see LayeredItemMixin) lags the
+          // `bridges` list (derived synchronously from history) by one render, so the option outlives
+          // its bridge. Skip it for this render; it reappears once the props catch up. NOTE: normal
+          // straight roads are Road/NS or Road/WE too (e.g. the start tile BA/RCr's W–E road) and own
+          // a native feature, so getFeature resolves them and they are never skipped.
+          console.warn('Skipping meeple option without artwork feature:', tile?.id, option.feature + '/' + option.location)
+          return
         }
+        const opt = { option, feature, abbotChoice: null }
 
         if (!opt.feature.clip) {
           console.error(`Clipping is not defined for ${tile.id} ${option.location}`)

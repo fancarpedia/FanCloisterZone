@@ -5,8 +5,8 @@
     :class="{ 'overlay': overlay }"
     draggable
     @wheel.passive="onWheel"
-    @mousedown="onMouseDown"
-    @mousemove="onMouseMove"
+    @pointerdown="onPointerDown"
+    @pointermove="onPointerMove"
     @click.right="onRightClick"
   >
     <g :transform="transform">
@@ -41,6 +41,10 @@
       <EventMeeplesLayer
         v-if="layers.EventMeeplesLayer"
         v-bind="layers.EventMeeplesLayer"
+      />
+      <NeutralFigureGhostLayer
+        v-if="layers.NeutralFigureGhostLayer"
+        v-bind="layers.NeutralFigureGhostLayer"
       />
       <FeatureSelectLayer
         v-if="layers.FeatureSelectLayer"
@@ -96,6 +100,7 @@ import TokenLayer from '@/components/game/layers/TokenLayer'
 import TowerLayer from '@/components/game/layers/TowerLayer'
 import FeatureSelectLayer from '@/components/game/layers/FeatureSelectLayer'
 import EventMeeplesLayer from '@/components/game/layers/EventMeeplesLayer'
+import NeutralFigureGhostLayer from '@/components/game/layers/NeutralFigureGhostLayer'
 import MeepleLayer from '@/components/game/layers/MeepleLayer'
 import ScoreLayer from '@/components/game/layers/ScoreLayer'
 import TileLayer from '@/components/game/layers/TileLayer'
@@ -123,6 +128,7 @@ export default {
     FerryChangeLayer,
     FlierLayer,
     EventMeeplesLayer,
+    NeutralFigureGhostLayer,
     MeepleLayer,
     ScoreLayer,
     TileLayer,
@@ -190,12 +196,18 @@ export default {
     	
 
     this.pressedKeys = {}
+    // Active pointers, keyed by pointerId: 1 = pan, 2 = pinch-zoom. Deliberately NOT reactive —
+    // it changes on every pointermove and nothing renders from it.
+    this.pointers = new Map()
+    this.pinchDist = 0
     // this._onKeyDown = this.onKeyDown.bind(this)
     // this._onKeyUp = this.onKeyUp.bind(this)
     // this._stopDragging = this.stopDragging.bind(this)
     document.addEventListener('keydown', this.onKeyDown)
     document.addEventListener('keyup', this.onKeyUp)
-    document.addEventListener('mouseup', this.stopDragging) // reset it even if mouse is outside
+    // on document, so a drag that ends outside the board still releases
+    document.addEventListener('pointerup', this.onPointerUp)
+    document.addEventListener('pointercancel', this.onPointerUp) // touch interrupted (call, gesture)
     document.addEventListener('mouseleave', this.stopDragging)
     this.$root.$on('request-zoom', this.onRequestZoom)
     this.$root.$on('request-rotate', this.onRequestRotate)
@@ -205,7 +217,8 @@ export default {
     clearInterval(this.pressedKeysInterval)
     document.removeEventListener('keydown', this.onKeyDown)
     document.removeEventListener('keyup', this.onKeyUp)
-    document.removeEventListener('mouseup', this.stopDragging)
+    document.removeEventListener('pointerup', this.onPointerUp)
+    document.removeEventListener('pointercancel', this.onPointerUp)
     document.removeEventListener('mouseleave', this.stopDragging)
     this.$root.$off('request-zoom', this.onRequestZoom)
     this.$root.$off('request-rotate', this.onRequestRotate)
@@ -318,8 +331,21 @@ export default {
       this.adjustAfterMove()
     },
 
-    onMouseDown (ev) {
-      if (ev.button === 0) {
+    // Pointer events rather than mouse events, so the board pans on touch as well as with a mouse
+    // (a touch drag never produces mousedown/mousemove — the browser treats it as a page scroll).
+    // One pointer pans; two pinch-zoom, which is the only way to zoom on a touch device: the
+    // zoom-in/out commands come from the native menu and the keyboard, and mobile has neither.
+    onPointerDown (ev) {
+      this.pointers.set(ev.pointerId, { x: ev.screenX, y: ev.screenY, cx: ev.clientX, cy: ev.clientY })
+
+      if (this.pointers.size === 2) {
+        // second finger down: stop panning and start a pinch
+        this.$store.commit('board/dragging', null)
+        this.pinchDist = this.pointerDistance()
+        return
+      }
+
+      if (ev.button === 0 && this.pointers.size === 1) {
         this.$store.commit('board/dragging', {
           offsetX: this.offsetX,
           offsetY: this.offsetY,
@@ -329,7 +355,23 @@ export default {
       }
     },
 
-    onMouseMove (ev) {
+    onPointerMove (ev) {
+      if (this.pointers.has(ev.pointerId)) {
+        this.pointers.set(ev.pointerId, { x: ev.screenX, y: ev.screenY, cx: ev.clientX, cy: ev.clientY })
+      }
+
+      if (this.pointers.size === 2 && this.pinchDist) {
+        const dist = this.pointerDistance()
+        if (!dist || !this.pinchDist) return
+        // board/changeZoom applies zoom *= 1.3**steps, so invert that for a distance ratio
+        const steps = Math.log(dist / this.pinchDist) / Math.log(1.3)
+        const [p1, p2] = [...this.pointers.values()]
+        const rect = this.$refs.svg.getBoundingClientRect()
+        this.changeZoom((p1.cx + p2.cx) / 2 - rect.left, (p1.cy + p2.cy) / 2 - rect.top, steps)
+        this.pinchDist = dist // incremental: re-baseline each move
+        return
+      }
+
       const d = this.dragging
       if (d) {
         const changeX = ev.screenX - d.x
@@ -338,6 +380,19 @@ export default {
         this.offsetY = d.offsetY + changeY
         this.adjustAfterMove()
       }
+    },
+
+    pointerDistance () {
+      if (this.pointers.size < 2) return 0
+      const [a, b] = [...this.pointers.values()]
+      return Math.hypot(a.cx - b.cx, a.cy - b.cy)
+    },
+
+    onPointerUp (ev) {
+      this.pointers.delete(ev.pointerId)
+      if (this.pointers.size < 2) this.pinchDist = 0
+      // lifting one of two fingers must not resume a stale pan from the first finger's origin
+      if (this.pointers.size === 0) this.stopDragging(ev)
     },
 
     stopDragging (ev) {
@@ -398,4 +453,8 @@ export default {
 <style lang="sass" scoped>
 .board
   user-select: none
+  // Claim touch gestures for the board. Without this the browser consumes a drag as a page scroll
+  // and a two-finger gesture as its own page zoom, so pointermove never sees them and the board
+  // cannot be panned on a phone at all.
+  touch-action: none
 </style>

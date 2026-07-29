@@ -1,6 +1,6 @@
 <template>
   <NeutralFigure
-    figure="fairy"
+    :figure="figureId && figureId.startsWith('black-fairy') ? 'black-fairy' : 'fairy'"
     :width="$vuetify.breakpoint.height > 768 ? 74 : 50"
     :height="$vuetify.breakpoint.height > 768 ? 74 : 50"
   />
@@ -57,10 +57,11 @@ export default {
 </script>
 
 <style lang="sass" scoped>
+svg.fairy, svg.black-fairy
+  position: relative
+
 svg.fairy
   fill: #999
-  position: relative
-  top: -10px
 
 .active
   svg.fairy

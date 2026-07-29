@@ -68,6 +68,9 @@ export default {
           rows.monasteries.events.push(ev)
         } else if (type === 'vodyanoy') {
           rows.penalties.events.push(ev)
+        } else if (type === 'black-fairy') {
+          // black fairy scores negative points → group with penalties
+          rows.penalties.events.push(ev)
         } else if (type === 'fairy') {
           rows.bonuses.events.push(ev)
         } else if (type === 'obelisk') {

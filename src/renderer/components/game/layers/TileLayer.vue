@@ -17,6 +17,8 @@
           :id="artwork.id + '/placed-tiles-clip'"
           :key="artwork.id + '/placed-tiles-clip'"
         >
+          <!-- placed tiles only (the hovered preview is drawn separately); this mask stays constant
+               while hovering, so the masked background rect never needs to repaint mid-hover -->
           <rect
             v-for="pos in positions"
             :key="'clip-' + positionAsKey(pos)"
@@ -24,7 +26,6 @@
             :height="BASE_SIZE"
             fill="white"
             :transform="transformPosition(pos)"
-            :opacity="tilePlacementMouseOver && tilePlacementMouseOver[0] === pos ? PREVIEW_OPACITY : 1"
           />
         </mask>
       </template>
@@ -52,6 +53,22 @@
       :height="BASE_SIZE * (bounds.height + 2)"
       :fill="`url(#${artwork.id}/bg)`"
       :mask="`url(#${artwork.id}/placed-tiles-clip)`"
+    />
+
+    <!-- Preview (hover) tile background.
+         Deliberately NOT part of the placed-tiles mask above: some browsers (Firefox/Safari, and the
+         mobile web build) do not repaint a rect that references a <mask> when only the mask's children
+         change, so the green preview background lingered after the mouse left a placement square until
+         another square was hovered. Rendering it as its own element (added/removed by v-if) changes the
+         element's OWN attributes, which always repaints. -->
+    <rect
+      v-if="previewBg"
+      :x="getX(previewBg.position)"
+      :y="getY(previewBg.position)"
+      :width="BASE_SIZE"
+      :height="BASE_SIZE"
+      :fill="`url(#${previewBg.artworkId}/bg)`"
+      :opacity="PREVIEW_OPACITY"
     />
 
     <g
@@ -123,7 +140,8 @@ export default {
       BORDER_SIZE: BASE_SIZE * 0.08,
       artworks: {},
       artworksWithBackground: [],
-      layerBuckets: []
+      layerBuckets: [],
+      previewBg: null // { artworkId, position } for the hovered placement's background, or null
     }
   },
 
@@ -185,6 +203,7 @@ export default {
     onTilesChange (tiles, previewPosition) {
       const tileLayers = {}
       const artworks = {}
+      let previewBg = null
       for (const tile of sortBy(tiles, t => t.position[1] << 8 + t.position[0])) {
         const { artwork, layers } = this.$theme.getTileLayers(tile.id, tile.rotation)
         let artworkData = artworks[artwork.id]
@@ -194,7 +213,15 @@ export default {
             positions: []
           }
         }
-        artworkData.positions.push(tile.position)
+        // Keep the hovered preview tile OUT of the shared placed-tiles mask (see the preview <rect>
+        // in the template) and render its background separately so it clears reliably on mouse-out.
+        if (tile.position === previewPosition) {
+          if (artworkData.artwork?.background) {
+            previewBg = { artworkId: artwork.id, position: tile.position }
+          }
+        } else {
+          artworkData.positions.push(tile.position)
+        }
 
         for (const layer of layers) {
           let zval = tileLayers[layer.zindex]
@@ -231,6 +258,7 @@ export default {
       this.layerBuckets = buckets
       this.artworks = Object.values(artworks)
       this.artworksWithBackground = this.artworks.filter(({ artwork }) => artwork?.background)
+      this.previewBg = previewBg
     }
   }
 }

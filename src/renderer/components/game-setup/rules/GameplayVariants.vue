@@ -67,6 +67,17 @@
     <RuleBox
       v-if="!setup.ai"
       :setup="setup"
+      :rules="[Rule.BLACK_FAIRY_PLACEMENT]"
+      :read-only="readOnly"
+    >
+      <template #icon>
+        <NeutralFigure figure="black-fairy" :width="45" :height="45" />
+      </template>
+    </RuleBox>
+
+    <RuleBox
+      v-if="!setup.ai"
+      :setup="setup"
       :rules="[Rule.DRAGON_MOVEMENT]"
       :read-only="readOnly"
     >

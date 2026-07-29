@@ -117,6 +117,7 @@ const CATEGORIES = [
   { name: 'robber', title: 'core-messages.the-longest-road' },
   { name: 'gold', title: 'game.feature.gold' },
   { name: 'fairy', title: 'game.feature.fairy', explode: true },
+  { name: 'black-fairy', title: 'game.feature.black-fairy', explode: true },
   { name: 'tower', title: 'game.feature.towers' },
   { name: 'flock', title: 'game.feature.sheep' },
   { name: 'ringmaster', title: 'game.feature.ringmaster' },
@@ -189,6 +190,7 @@ export default {
           'king': (new Array(this.players.length)).fill(0),
           'gold': (new Array(this.players.length)).fill(0),
           'fairy': (new Array(this.players.length)).fill(0),
+          'black-fairy': (new Array(this.players.length)).fill(0),
           'tower': (new Array(this.players.length)).fill(0),
           'flock': (new Array(this.players.length)).fill(0),
           'ringmaster': (new Array(this.players.length)).fill(0),
@@ -245,8 +247,8 @@ export default {
               const idx = this.players.findIndex(p => p.index === player)
               if (stats.points[cat]) {
                 stats.points[cat][idx] += points
-                if (cat === 'fairy') {
-                  // fairy.turn (turn start) vs fairy.completed (scored-feature bonus)
+                if (cat === 'fairy' || cat === 'black-fairy') {
+                  // (black-)fairy.turn (turn start) vs .completed (scored-feature bonus)
                   addItem(cat, name, idx, points)
                 } else if (cat === 'courier') {
                   // courier.<feature expression> — group by the scored feature
@@ -324,6 +326,7 @@ export default {
       if (name === 'tiles') return 'tiles'
       if (name.startsWith('castle.')) return name.split('.')[1]
       if (name.startsWith('fairy.')) return 'fairy'
+      if (name.startsWith('black-fairy.')) return 'black-fairy'
       if (name.startsWith('ransompaid.')) return 'tower'
       if (name.startsWith('feature.')) return name.split('.')[1]
       return null
@@ -331,8 +334,8 @@ export default {
 
     // localized subtitle for a breakdown row
     itemLabel (name) {
-      if (name === 'fairy.turn') return this.$t('game.scoring.turn-start')
-      if (name === 'fairy.completed') return this.$t('game.scoring.feature-scored')
+      if (name === 'fairy.turn' || name === 'black-fairy.turn') return this.$t('game.scoring.turn-start')
+      if (name === 'fairy.completed' || name === 'black-fairy.completed') return this.$t('game.scoring.feature-scored')
       if (name === 'ransompaid.income') return this.$t('game.scoring.income')
       if (name === 'ransompaid.payment') return this.$t('game.scoring.payment')
       if (name.startsWith('castle.') || name.startsWith('feature.')) {

@@ -115,6 +115,18 @@
           :height="BASE_SIZE * 0.42"
           :href="`${NEUTRAL_SVG}#fairy`"
         />
+        <!-- Black Fairy — sits in the SAME spot as the regular fairy when alone; when the regular
+             fairy shares this meeple it mirrors to the left so the two hug the meeple symmetrically
+             (both stay visible; the +/- bonuses cancel). -->
+        <use
+          v-if="blackFairy && blackFairy.placement.meepleId === meeple.id"
+          class="black-fairy"
+          :x="(fairy && fairy.placement.meepleId === meeple.id) ? -BASE_SIZE * 0.32 : -BASE_SIZE * 0.1"
+          :y="-BASE_SIZE * 0.24"
+          :width="BASE_SIZE * 0.42"
+          :height="BASE_SIZE * 0.42"
+          :href="`${NEUTRAL_SVG}#black-fairy`"
+        />
       </g>
 
       <g
@@ -183,6 +195,18 @@
     </g>
 
     <g
+      v-if="blackFairy && !blackFairy.placement.meepleId"
+      :transform="lonelyBlackFairyTransform()"
+      class="black-fairy"
+    >
+      <use
+        :width="BASE_SIZE * 0.42"
+        :height="BASE_SIZE * 0.42"
+        :href="`${NEUTRAL_SVG}#black-fairy`"
+      />
+    </g>
+
+    <g
       v-if="donkey"
       :transform="donkeyTransform()"
       class="donkey"
@@ -239,6 +263,7 @@ export default {
       castles: state => state.game.features.filter(f => f.type === 'Castle'),
       dragon: state => state.game.neutralFigures.dragon,
       fairy: state => state.game.neutralFigures.fairy,
+      blackFairy: state => state.game.neutralFigures['black-fairy'],
       count: state => state.game.neutralFigures.count,
       mage: state => state.game.neutralFigures.mage,
       witch: state => state.game.neutralFigures.witch,
@@ -459,6 +484,17 @@ export default {
     lonelyFairyTransform () {
       const { placement } = this.fairy
       if (this.$store.state.game.setup.rules['fairy-placement'] === 'next-follower') {
+        const fp = placement.featurePointer
+        return this.transformPoint(fp) + ` translate(-${BASE_SIZE * 0.24} -${BASE_SIZE * 0.24})`
+      } else {
+        return this.transformPosition(placement) + ` translate(${BASE_SIZE * 0.41} ${BASE_SIZE * 0.2})`
+      }
+    },
+
+    lonelyBlackFairyTransform () {
+      // match the regular fairy's placement exactly (a black fairy alone should look like a fairy)
+      const { placement } = this.blackFairy
+      if (this.$store.state.game.setup.rules['black-fairy-placement'] === 'next-follower') {
         const fp = placement.featurePointer
         return this.transformPoint(fp) + ` translate(-${BASE_SIZE * 0.24} -${BASE_SIZE * 0.24})`
       } else {
