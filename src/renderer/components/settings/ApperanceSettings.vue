@@ -17,30 +17,40 @@
       />
     </v-radio-group>
 
-    <h4>{{ $t('settings.appearance.artworks') }}</h4>
-    <em style="display:none">{{ $t('settings.appearance.artworks-description') }}</em>
+    <!-- design tiles / downloadable artworks — desktop-only (web ships fixed bundled artwork) -->
+    <template v-if="!isWeb">
+      <h4>{{ $t('settings.appearance.artworks') }}</h4>
+      <em style="display:none">{{ $t('settings.appearance.artworks-description') }}</em>
 
-    <div
-      v-for="{ json: artwork } in artworks"
-      :key="artwork.id"
-      class="artwork-box"
-      :class="{ disabled: !isArtworkEnabled(artwork.id) }"
-    >
-      <div class="artwork-icon">
-        <img v-if="artwork.icon" :src="artwork.icon">
+      <div
+        v-for="{ json: artwork } in artworks"
+        :key="artwork.id"
+        class="artwork-box"
+        :class="{ disabled: !isArtworkEnabled(artwork.id) }"
+      >
+        <div class="artwork-icon">
+          <img v-if="artwork.icon" :src="artwork.icon">
+        </div>
+        <div>
+          <h5>{{ artwork.title }}</h5>
+          <p>{{ artwork.description }}</p>
+          <p v-if="artwork.artist" class="artist">{{ $t('settings.appearance.illustrated-by', [artwork.artist]) }}</p>
+        </div>
       </div>
-      <div>
-        <h5>{{ artwork.title }}</h5>
-        <p>{{ artwork.description }}</p>
-        <p v-if="artwork.artist" class="artist">{{ $t('settings.appearance.illustrated-by', [artwork.artist]) }}</p>
-      </div>
-    </div>
+    </template>
   </div>
 </template>
 
 <script>
+import { isWeb } from '@/utils/version'
 
 export default {
+  data () {
+    return {
+      isWeb: isWeb()
+    }
+  },
+
   computed: {
     theme: {
       get () { return this.$store.state.settings.theme },

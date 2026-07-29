@@ -3,10 +3,10 @@
     <v-card-text>
       <section class="d-flex justify-center align-center py-10 splash">
         <img :src="splashImage()" :title="$t('about.fantitle')" />
-        <!-- non-stable builds carry the same badge as the lobby splash: α Alpha or Dev -->
+        <!-- non-stable builds carry the same badge as the lobby splash: α Alpha, Dev, or Web -->
         <div v-if="buildBadge" class="alpha-badge" :class="buildBadge" :title="version">
           <span v-if="buildBadge === 'alpha'" class="alpha-symbol">α</span>
-          {{ buildBadge === 'alpha' ? 'Alpha' : 'Dev' }}
+          {{ buildBadge.charAt(0).toUpperCase() + buildBadge.slice(1) }}
         </div>
       </section>
       <section class="d-flex justify-space-between">
@@ -95,6 +95,9 @@ export default {
 
       &.dev
         background: #1976D2 // dev = blue
+
+      &.web
+        background: var(--v-primary-base) // web = app primary color
 
       .alpha-symbol
         font-size: 28px
