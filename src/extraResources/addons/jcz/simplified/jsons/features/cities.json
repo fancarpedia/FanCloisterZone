@@ -1,7 +1,7 @@
 {
   "city.NWSE[coa]": {
     "images": [
-      { "href": "images/city.webp", "class": "city" },
+      { "href": "#city-NWSE", "class": "city" },
       { "if": "coa", "href": "#coat-of-arms", "class": "symbols", "x": 690, "y": 80 }
     ],
     "clip": "${all}",
@@ -9,7 +9,7 @@
   },
   "city.cathedral": {
     "images": [
-      { "href": "images/city.webp", "class": "city" },
+      { "href": "#city-NWSE", "class": "city" },
       { "href": "#cathedral", "class": "city" }
     ],
     "clip": "${all}",

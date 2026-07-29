@@ -53,6 +53,10 @@
     <path d="M350 500 Q 450 400 550 500" stroke="#444" stroke-width="20" fill="none" />
   </symbol>
 
+  <symbol id="city-NWSE" viewBox="0 0 900 900">
+    <image href="images/city.webp" clip-path="path('M0 0 L900 0 L900 900 L0 900 Z')" />
+  </symbol>
+
   <symbol id="city-N" viewBox="0 0 900 900">
     <!-- M 0 0 H 15 Q 7 10 0 0 -->
     <image href="images/city.webp" clip-path="path('M 0 0 H 900 Q 450 500 0 0')" />
