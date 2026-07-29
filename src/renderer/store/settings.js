@@ -5,6 +5,7 @@ import isEqual from 'lodash/isEqual'
 import { ipcRenderer } from 'electron'
 
 import { randomId } from '@/utils/random'
+import { isWeb } from '@/utils/version'
 import { CONSOLE_SETTINGS_COLOR } from '@/constants/logging'
 import { LOCALES } from '@/constants/locales'
 import { getSelectedEdition, getSelectedStartingTiles } from '@/utils/gameSetupUtils'
@@ -13,10 +14,19 @@ const RECENT_SAVED_GAME_COUNT = 14
 const RECENT_SETUP_FILE_COUNT = 9
 
 /* eslint quote-props: 0 */
+// On the web platform default new users to the bundled `jcz/simplified` artwork (renders instantly,
+// no ~32MB download) — consistent across BOTH web variants (normal + offline). Desktop defaults to
+// classic. See also the one-time migration in loaded() for already-visited browsers.
+const DEFAULT_ARTWORKS = isWeb()
+  ? ['jcz/simplified']
+  : ['classic/classic']
+
 export const state = () => ({
   file: null,
   userAddons: [],
-  enabledArtworks: ['classic/classic'],
+  enabledArtworks: [...DEFAULT_ARTWORKS],
+  // one-time guard for the web simplified-artwork migration (see loaded())
+  webArtworkMigrated: false,
   lastGameSetup: null,
   mySetups: [],
   // deprecated
@@ -41,7 +51,7 @@ export const state = () => ({
   locale: null,
   enginePath: null, // explicit engine path
   playOnlineUrl: 'play.jcloisterzone.com/ws',
-  playOnlineFanURL: 'fancarpedia.snazzybee.com:37447',
+  playOnlineFanURL: 'wss://fancarpedia.snazzybee.com/ws',
   localPlayOnline: false,
   localPlayOnlineUrl: 'localhost:8000/ws',
   devMode: process.env.NODE_ENV === 'development',
@@ -133,15 +143,28 @@ export const actions = {
         missingKey = true
         settings.playOnlineUrl = 'play-online.jcloisterzone.com/ws'
       }
-      // Add Fan server
-      if (settings.playOnlineFanURL === null) {
+      // Add / migrate the Fan server URL. It is now a TLS wss endpoint (required so the https web
+      // build can connect without mixed-content errors). Rewrite the unset case AND the old bare
+      // host:port default; leave a user's custom value untouched.
+      if (settings.playOnlineFanURL === null || settings.playOnlineFanURL === 'fancarpedia.snazzybee.com:37447') {
         missingKey = true
-        settings.playOnlineFanURL = 'fancarpedia.snazzybee.com:37447'
+        settings.playOnlineFanURL = 'wss://fancarpedia.snazzybee.com/ws'
       }
       // migrate 5.6
       if (settings.enabledArtworks.length > 0 && settings.enabledArtworks[0] === 'classic') {
         missingKey = true
         settings.enabledArtworks = ['classic/classic']
+      }
+      // web: default artwork is jcz/simplified (bundled, no download). Migrate browsers still sitting
+      // on the old normal-web-build default of classic (which they never actively chose). One-time,
+      // guarded so a deliberate later switch to classic is NOT reverted; only the untouched old
+      // default is rewritten. Never runs on desktop.
+      if (isWeb() && !settings.webArtworkMigrated) {
+        missingKey = true
+        settings.webArtworkMigrated = true
+        if (isEqual(settings.enabledArtworks, ['classic/classic'])) {
+          settings.enabledArtworks = ['jcz/simplified']
+        }
       }
       // locale
       if (!settings.locale) {

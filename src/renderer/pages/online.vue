@@ -2,6 +2,19 @@
   <div class="online-page">
     <EngineAlerts />
     <AppUpdateBox />
+    <v-menu offset-y left>
+      <template #activator="{ on, attrs }">
+        <div class="online-menu" v-bind="attrs" :title="$t('menu.session')" v-on="on">
+          <v-icon>fas fa-bars</v-icon>
+        </div>
+      </template>
+      <v-list dense>
+        <v-list-item @click="openSettings">
+          <v-list-item-icon><v-icon small>fas fa-cog</v-icon></v-list-item-icon>
+          <v-list-item-title>{{ $t('menu.settings') }}</v-list-item-title>
+        </v-list-item>
+      </v-list>
+    </v-menu>
     <header>
       <section class="button-group">
         <h3 class="group-title"><OnlineStatus /></h3>
@@ -23,10 +36,12 @@
         </div>
       </section>
 
-      <span class="header-divider" />
+      <!-- Local games open a separate window (multi-window), which the single-window web build can't
+           do — and web is online-play only — so the whole section is hidden there. -->
+      <span v-if="!isWeb" class="header-divider" />
 
       <!-- Local games run in their own window, independent of the online connection. -->
-      <section class="button-group local-group">
+      <section v-if="!isWeb" class="button-group local-group">
         <h3 class="group-title">{{ $t('index.local.local-games') }}</h3>
         <div class="group-buttons">
           <v-btn large color="secondary" :disabled="!engine || !engine.ok" @click="newLocalGame()">
@@ -47,10 +62,10 @@
     <main>
       <section class="splash">
         <img :src="splashImage()" />
-        <!-- non-stable builds carry a visible badge next to the splash: α Alpha or Dev -->
+        <!-- non-stable builds carry a visible badge next to the splash: α Alpha, Dev, or Web -->
         <div v-if="buildBadge" class="alpha-badge" :class="buildBadge" :title="appVersion">
           <span v-if="buildBadge === 'alpha'" class="alpha-symbol">α</span>
-          {{ buildBadge === 'alpha' ? 'Alpha' : 'Dev' }}
+          {{ buildBadge.charAt(0).toUpperCase() + buildBadge.slice(1) }}
         </div>
       </section>
 
@@ -222,17 +237,20 @@
     </main>
 
     <aside class="global-chat-aside">
-      <h2>{{ $t('open-windows.title') }}</h2>
-      <OpenGameWindows class="open-windows-block" />
-      <!-- currently connected clients, with idle vs in-game status -->
-      <h2>{{ $t('index.online.players-online', { count: connectedClients.length }) }}</h2>
+      <!-- game windows are a multi-window (desktop) feature; the single-window web build has none -->
+      <template v-if="!isWeb">
+        <h2>{{ $t('open-windows.title') }}</h2>
+        <OpenGameWindows class="open-windows-block" />
+      </template>
+      <!-- currently connected clients (excluding yourself), with idle vs in-game status -->
+      <h2>{{ $t('index.online.players-online', { count: otherClients.length }) }}</h2>
       <ul class="clients-list">
-        <li v-for="c in connectedClients" :key="c.clientId" class="client" :class="{ me: isMyClient(c.clientId) }">
+        <li v-for="c in otherClients" :key="c.clientId" class="client">
           <span class="status-dot" :class="c.playing ? 'playing' : 'idle'" />
           <span class="client-name">{{ c.name || '—' }}</span>
           <span class="client-status">{{ c.playing ? $t('index.online.status-in-game') : $t('index.online.status-idle') }}</span>
         </li>
-        <li v-if="!connectedClients.length" class="client empty">{{ $t('index.online.no-clients') }}</li>
+        <li v-if="!otherClients.length" class="client empty">{{ $t('index.online.no-clients') }}</li>
       </ul>
       <h2>{{ $t('chat.chat') }}</h2>
       <GlobalChat inline />
@@ -271,7 +289,6 @@
 
     <v-dialog
       v-model="showJoinDialog"
-      persistent
       max-width="400px"
     >
       <v-card>
@@ -388,7 +405,7 @@ import EngineAlerts from '@/components/EngineAlerts'
 import AppUpdateBox from '@/components/AppUpdateBox'
 
 import { STATUS_CONNECTED, STATUS_CONNECTING, STATUS_RECONNECTING } from '@/store/networking'
-import { getAppVersion, getBuildBadge } from '@/utils/version'
+import { getAppVersion, getBuildBadge, isWeb } from '@/utils/version'
 
 export default {
   components: {
@@ -461,8 +478,17 @@ export default {
       }
     },
 
+    // connected clients excluding yourself (you're already represented by the connection UI)
+    otherClients () {
+      return this.connectedClients.filter(c => !this.isMyClient(c.clientId))
+    },
+
     buildBadge () {
       return getBuildBadge()
+    },
+
+    isWeb () {
+      return isWeb()
     },
 
     appVersion () {
@@ -514,12 +540,20 @@ export default {
     // track open game windows to mark game boxes that are already open in one
     this.$windows.listGameWindows().then(list => { this.openWindows = list })
     this._unsubscribeWindows = this.$windows.onWindowsChanged(list => { this.openWindows = list })
+    // Close the Join dialog on Esc. Vuetify's built-in Esc-to-close doesn't fire here (its keydown
+    // listener lives on .v-dialog__content and isn't invoked for this dialog), so use a raw
+    // capture-phase listener — immune to that and guaranteed to run before anything can swallow it.
+    this._onEscKey = (ev) => {
+      if (ev.key === 'Escape' && this.showJoinDialog) this.showJoinDialog = false
+    }
+    window.addEventListener('keydown', this._onEscKey, true)
   },
 
   beforeDestroy () {
     this._onClose && this.$connection.off('close', this._onClose)
     this._onWindowFocus && window.removeEventListener('focus', this._onWindowFocus)
     this._unsubscribeWindows && this._unsubscribeWindows()
+    this._onEscKey && window.removeEventListener('keydown', this._onEscKey, true)
   },
 
   watch: {
@@ -573,6 +607,10 @@ export default {
       if (!mine || !clientId) return false
       const base = String(mine).split('--')[0]
       return String(clientId).split('--')[0] === base
+    },
+
+    openSettings () {
+      this.$store.commit('showSettings', true)
     },
 
     splashImage () {
@@ -754,6 +792,29 @@ export default {
 
   +theme using ($theme)
     background: map-get($theme, 'board-bg')
+
+.online-menu
+  position: absolute
+  top: 8px
+  right: 12px
+  z-index: 6
+  display: flex
+  align-items: center
+  justify-content: center
+  width: 40px
+  height: 40px
+  border-radius: 6px
+  cursor: pointer
+  color: white
+  background: var(--v-primary-base)
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3)
+
+  &:hover
+    filter: brightness(1.1)
+
+  .v-icon
+    color: white
+    font-size: 22px
 
 header
   padding: 8px 0 12px
@@ -954,6 +1015,9 @@ h2
 
     &.dev
       background: #1976D2 // dev = blue
+
+    &.web
+      background: var(--v-primary-base) // web = app primary color
 
     .alpha-symbol
       font-size: 34px

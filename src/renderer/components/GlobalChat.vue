@@ -246,6 +246,20 @@ $gc-blue: #2196f3
     right: auto
     left: var(--gc-left, 20px)
 
+// Mobile portrait / narrow screens: the host-supplied fixed offset (e.g. in-game, based on
+// --aside-width-plus-gap) can push the bullet and the 360px panel off-screen. Clamp both to stay
+// visible: re-anchor right-side overlays to a small inset, and cap the panel to the viewport width.
+@media (max-width: 600px)
+  .overlay:not(.overlay-left)
+    .gc-launcher, .gc-panel
+      right: 16px
+      left: auto
+
+  .overlay
+    .gc-panel
+      width: calc(100vw - 32px)
+      max-width: 360px
+
 .inline
   // fills its container (e.g. the lobby's right-hand aside) rather than a fixed height
   flex-direction: column

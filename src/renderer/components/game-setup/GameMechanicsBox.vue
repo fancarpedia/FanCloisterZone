@@ -1,5 +1,6 @@
 <template>
   <div
+    v-if="!hideOnWeb"
     :class="{
       'game-mechanics-box': true,
       'disabled': !enabled,
@@ -24,6 +25,7 @@
 
 <script>
 import { mapState } from 'vuex'
+import { isWeb } from '@/utils/version'
 
 export default {
   components: {
@@ -40,6 +42,11 @@ export default {
       elements: state => state.gameSetup.elements,
       tileOverrides: state => state.gameSetup.tileOverrides
     }),
+
+    // Mechanics not offered when creating a game in the web build (flagged notOnWeb in elements.js).
+    hideOnWeb () {
+      return isWeb() && !!this.item.notOnWeb
+    },
 
     enabled () {
       return this.$tiles.isElementEnabled(this.item, this.sets, this.elements, this.tileOverrides, this.elements.garden ? 2 : 1)

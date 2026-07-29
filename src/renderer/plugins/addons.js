@@ -15,7 +15,8 @@ import { ipcRenderer } from 'electron'
 import fetch from 'node-fetch'
 import semver from 'semver'
 
-import { getAppVersion } from '@/utils/version'
+import { getAppVersion, isWeb } from '@/utils/version'
+import { assetFileUrl } from '@/utils/asset-url'
 import { EventsBase } from '@/utils/events'
 
 class Addons extends EventsBase {
@@ -44,6 +45,10 @@ class Addons extends EventsBase {
   }
   
   async getDownloadable() {
+    // Web builds cannot download add-ons — the catalogue (GitHub) and packs (jcloisterzone.com) send
+    // no CORS headers to a browser, so the fetch would fail anyway. Skip it: nothing is downloadable
+    // on web, and this avoids a pointless (blocked) request to addons.json on every load.
+    if (isWeb()) return []
     if (this.downloadableInitialized == 0 ) {
       try {
         let url = `https://github.com/fancarpedia/FanCloisterZone/releases/download/v6.0.0-all/addons.json`
@@ -395,6 +400,11 @@ class Addons extends EventsBase {
   }
 
   async updateOutdatedClassic (installedAddons) {
+    // Any web build: never auto-download the classic artwork. Web defaults to the bundled
+    // `jcz/simplified` (theme.js always enables it), so classic is never required — pulling ~32MB
+    // from Mega on first run would be wrong (and is what triggered the "default artwork not found"
+    // warning). Desktop still defaults to classic and downloads it on first run.
+    if (isWeb()) return
     const classicArtwork = installedAddons.find(({ id }) => id === 'classic')
     if (classicArtwork) {
       if (!classicArtwork.outdated && !classicArtwork.error) {
@@ -631,7 +641,7 @@ class Addons extends EventsBase {
       try {
         json.id = id
         if (json.icon) {
-          json.icon = 'file://' + path.join(fullPath, json.icon)
+          json.icon = assetFileUrl(fullPath, json.icon)
         }
         const artwork = {
           id,

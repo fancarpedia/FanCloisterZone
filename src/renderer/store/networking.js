@@ -343,7 +343,11 @@ export const actions = {
       host = `${host}:${rootState.settings.port}`
     }
     if (!host.match(/^\w+:\/\//)) {
-      host = 'ws://' + host
+      // Mirror the page protocol: an https-hosted web build MUST use wss:// (a browser blocks a
+      // ws:// socket from an https page as mixed content). http/localhost stays ws://. Desktop has
+      // no document protocol, so it also stays ws://.
+      const scheme = (typeof location !== 'undefined' && location.protocol === 'https:') ? 'wss' : 'ws'
+      host = `${scheme}://` + host
     }
     rootState.onlineHostName = (new URL(host)).hostname
     return new Promise((resolve, reject) => {

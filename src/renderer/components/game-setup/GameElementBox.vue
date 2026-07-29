@@ -1,5 +1,6 @@
 <template>
   <div
+    v-if="!hideOnWeb"
     :class="{
       'element-box': true,
       'disabled': !enabled || !!blockedReason,
@@ -47,6 +48,7 @@
 
 <script>
 import { mapState } from 'vuex'
+import { isWeb } from '@/utils/version'
 import GameElementButtons from '@/components/game-setup/buttons/GameElementButtons'
 
 export default {
@@ -71,6 +73,12 @@ export default {
       elements: state => state.gameSetup.elements,
       tileOverrides: state => state.gameSetup.tileOverrides
     }),
+
+    // Some components (Tower, Abbey, Tunnel, Ferry, Gold, …) are not offered when creating a game
+    // in the web build. Flagged notOnWeb in models/elements.js.
+    hideOnWeb () {
+      return isWeb() && !!this.item.notOnWeb
+    },
 
     coopVariant () {
       return !!this.elements['keep-building']

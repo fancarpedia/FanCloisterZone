@@ -27,6 +27,10 @@ export class Expansion {
     this.implies = options.implies || []
     this.impliesAllowed = options.impliesAllowed || []
     this.ai = options.ai || false
+    // true when the bundled `jcz/simplified` artwork ships tiles for this set. When only the
+    // simplified addon is available (no classic), the setup lists ONLY these — the rest would
+    // render as missing images. See TileSetsTab.
+    this.simplified = options.simplified || false
 	this.groups = options.groups || []
   }
 
@@ -56,7 +60,7 @@ Expansion._UNKNOWN = {
 Expansion._UNKNOWN.releases = [{ title: 'Missing expansion', sets: [], expansion: Expansion._UNKNOWN }]
 
 // $t('expansion.basic')
-export const BASIC = Expansion.BASIC = new Expansion('BASIC', 'Base game')
+export const BASIC = Expansion.BASIC = new Expansion('BASIC', 'Base game', { simplified: true })
 // $t('expansion.winter')
 export const WINTER = Expansion.WINTER = new Expansion('WINTER', 'Winter')
 // $t('expansion.start')
@@ -68,13 +72,15 @@ export const START = Expansion.START = new Expansion('START', 'Start', {}, [
 // $t('expansion.inns-and-cathedrals')
 export const INNS_AND_CATHEDRALS = Expansion.INNS_AND_CATHEDRALS = new Expansion('INNS_AND_CATHEDRALS', 'Inns & Cathedrals', {
   implies: ['big-follower', 'cathedral', 'inn'],
-  ai: true
+  ai: true,
+  simplified: true
 })
 // $t('expansion.traders-and-builders')
 export const TRADERS_AND_BUILDERS = Expansion.TRADERS_AND_BUILDERS = new Expansion('TRADERS_AND_BUILDERS', 'Traders & Builders', {
   implies: ['builder', 'pig', 'traders'],
   impliesAllowed: ['pig-herd'], // expansion makes pig-herd enabled but don't automatically allows it
-  ai: true
+  ai: true,
+  simplified: true
 })
 // $t('expansion.princess-and-dragon')
 export const PRINCESS_AND_DRAGON = Expansion.PRINCESS_AND_DRAGON = new Expansion('PRINCESS_AND_DRAGON', 'The Princess & The Dragon', {
@@ -192,5 +198,6 @@ export const DARMSTADT = Expansion.DARMSTADT = new Expansion('DARMSTADT', 'Darms
 })
 // $t('expansion.spiel-doch')
 export const SPIEL_DOCH = Expansion.SPIEL_DOCH = new Expansion('SPIEL_DOCH', 'Spiel Doch', {
-  ai: true
+  ai: true,
+  simplified: true
 })

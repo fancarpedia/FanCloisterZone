@@ -7,6 +7,25 @@
       </div>
       <TestResult v-if="testScenarioResult" :result="testScenarioResult" />
       <Board />
+      <!-- web build has no native menu / window chrome, so surface an in-view burger menu;
+           hidden once the final score is up (that screen has its own controls) -->
+      <v-menu v-if="isWeb && !showGameStats" offset-y>
+        <template #activator="{ on, attrs }">
+          <div class="web-menu" v-bind="attrs" :title="$t('menu.session')" v-on="on">
+            <v-icon>fas fa-bars</v-icon>
+          </div>
+        </template>
+        <v-list dense>
+          <v-list-item @click="openSettings">
+            <v-list-item-icon><v-icon small>fas fa-cog</v-icon></v-list-item-icon>
+            <v-list-item-title>{{ $t('menu.settings') }}</v-list-item-title>
+          </v-list-item>
+          <v-list-item @click="leave">
+            <v-list-item-icon><v-icon small>fas fa-house</v-icon></v-list-item-icon>
+            <v-list-item-title>{{ $t('menu.home') }}</v-list-item-title>
+          </v-list-item>
+        </v-list>
+      </v-menu>
       <TilePackSize
         :size="tilePackSize"
         :removed-tiles-size="removedTilesSize"
@@ -20,6 +39,8 @@
           'active-player-indicator-bg-color': activePlayerIndicatorBgColor
         }"
       >
+        <!-- variant banner sits between the deck counter (above) and the player panels (below) -->
+        <div v-if="gameVariant" class="game-variant" :title="$t('game-setup.variant.choose-variant')">{{ gameVariant }}</div>
         <PlayerPanel
           v-for="({player, index}) in orderedPlayers"
           :key="index"
@@ -34,6 +55,11 @@
       <PreDrawHand />
       <PlayEvents />
       <GameChat />
+      <!-- Single-window web replaces the online lobby when a game starts, so surface the lobby-wide
+           global chat here too (floating bullet). Self-hides when not connected online. Web only —
+           on desktop the lobby lives in its own window. Offset left of the red GameChat button
+           (which sits at aside-width + 16px) so the two bullets don't overlap. -->
+      <GlobalChat v-if="isWeb" right="calc(var(--aside-width-plus-gap) + 84px)" />
       <FinalStats v-if="showGameStats" />
       <div
         v-if="gameDialog"
@@ -73,10 +99,12 @@
 import { mapGetters, mapState } from 'vuex'
 import { ipcRenderer } from 'electron'
 
+import { isWeb } from '@/utils/version'
 import ActionPanel from '@/components/game/ActionPanel.vue'
 import Board from '@/components/game/Board.vue'
 import FinalStats from '@/components/game/FinalStats.vue'
 import GameChat from '@/components/game/GameChat.vue'
+import GlobalChat from '@/components/GlobalChat'
 import ChooseMonkOrAbbotDialog from '@/components/game/dialogs/ChooseMonkOrAbbotDialog.vue'
 import PlayerPanel from '@/components/game/PlayerPanel.vue'
 import PlayEvents from '@/components/game/PlayEvents.vue'
@@ -93,6 +121,7 @@ export default {
     ChooseMonkOrAbbotDialog,
     FinalStats,
     GameChat,
+    GlobalChat,
     GameSetupDialog,
     PlayerPanel,
     PlayEvents,
@@ -105,7 +134,8 @@ export default {
   data () {
     return {
       shrink: 0,
-      showFinalStats: true
+      showFinalStats: true,
+      isWeb: isWeb()
     }
   },
 
@@ -130,12 +160,20 @@ export default {
       gameHash: state => state.game.hash,
       playerListRotate: state => state.settings.playerListRotate,
       activePlayerIndicatorBgColor: state => state.settings.activePlayerIndicatorBgColor,
-      showGameStats: state => state.game.showGameStats
+      showGameStats: state => state.game.showGameStats,
+      setup: state => state.game.setup
     }),
 
     ...mapGetters({
       localPlayers: 'game/localPlayers'
     }),
+
+    // in-game variant label shown next to the deck counter; null for the standard game
+    gameVariant () {
+      return this.setup?.elements?.['keep-building']
+        ? this.$t('game.feature.keep-building')
+        : null
+    },
 
     orderedPlayers () {
       const players = this.players.map((player, index) => ({ player, index }))
@@ -204,12 +242,35 @@ export default {
     if (this.$store.state.networking.connectionType == 'direct' ) {
       ipcRenderer.send('set-local-game', true)
     }
+
+    // Disallow BROWSER page zoom while in the game view — the board has its own zoom (wheel / pinch),
+    // and page zoom on mobile just breaks the fixed full-screen layout. Blocks ctrl/⌘+wheel, the
+    // Safari pinch "gesture" events, ctrl/⌘ +/-/0 keys, and multi-touch pinch. The board's own zoom
+    // uses plain wheel + pointer events, so it is unaffected.
+    this._onWheelZoom = (e) => { if (e.ctrlKey) e.preventDefault() }
+    this._onGesture = (e) => e.preventDefault()
+    this._onKeyZoom = (e) => {
+      if ((e.ctrlKey || e.metaKey) && ['+', '-', '=', '0'].includes(e.key)) e.preventDefault()
+    }
+    this._onPinch = (e) => { if (e.touches && e.touches.length > 1) e.preventDefault() }
+    window.addEventListener('wheel', this._onWheelZoom, { passive: false })
+    window.addEventListener('gesturestart', this._onGesture)
+    window.addEventListener('gesturechange', this._onGesture)
+    window.addEventListener('gestureend', this._onGesture)
+    window.addEventListener('keydown', this._onKeyZoom)
+    window.addEventListener('touchmove', this._onPinch, { passive: false })
   },
 
   beforeDestroy () {
     this._ro?.disconnect()
     window.removeEventListener('resize', this.onRezize)
     clearTimeout(this.checkOverflowTimeout)
+    window.removeEventListener('wheel', this._onWheelZoom)
+    window.removeEventListener('gesturestart', this._onGesture)
+    window.removeEventListener('gesturechange', this._onGesture)
+    window.removeEventListener('gestureend', this._onGesture)
+    window.removeEventListener('keydown', this._onKeyZoom)
+    window.removeEventListener('touchmove', this._onPinch)
     this.setPlayer(null)
     if (this.gameId === this.$store.state.game.id) {
       // close only if not already closed (eg by Play Again button )
@@ -221,6 +282,16 @@ export default {
   },
 
   methods: {
+    leave () {
+      // reuse the layout's leaveGame flow (online LEAVE_GAME / offline confirm + close + redirect);
+      // default.vue listens on this channel, and the electron stub's emit() delivers it on web too
+      ipcRenderer.emit('menu.leave-game')
+    },
+
+    openSettings () {
+      this.$store.commit('showSettings', true)
+    },
+
     setPlayer (idx) {
       this.setPlayerIcon(idx)
     },
@@ -322,6 +393,46 @@ export default {
 
   +theme using ($theme)
     background: map-get($theme, 'opaque-bg')
+
+.game-variant
+  display: flex
+  align-items: center
+  justify-content: center
+  width: 100%
+  padding: 4px 12px
+  margin-bottom: $panel-gap
+  font-weight: 600
+  text-transform: uppercase
+  letter-spacing: 0.5px
+  white-space: nowrap
+  text-align: center
+
+  +theme using ($theme)
+    background: map-get($theme, 'opaque-bg')
+    color: var(--v-primary-base)
+
+.web-menu
+  position: absolute
+  top: $panel-gap
+  right: $panel-gap
+  z-index: 3
+  display: flex
+  align-items: center
+  justify-content: center
+  width: 40px
+  height: 40px
+  border-radius: 6px
+  cursor: pointer
+  color: white
+  background: var(--v-primary-base)
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3)
+
+  &:hover
+    filter: brightness(1.1)
+
+  .v-icon
+    color: white
+    font-size: 22px
 
 aside
   position: absolute

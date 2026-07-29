@@ -1,5 +1,6 @@
 <template>
   <div
+    v-if="!hideOnWeb"
     :class="{
       'rule-box': true,
       'available': available,
@@ -24,6 +25,7 @@
 </template>
 
 <script>
+import { isWeb } from '@/utils/version'
 import RuleLine from '@/components/game-setup/rules/RuleLine'
 
 export default {
@@ -38,6 +40,14 @@ export default {
   },
 
   computed: {
+    // Variants not offered when creating a game in the web build: hide the box when every rule in it
+    // is flagged notOnWeb (rules.js stores the flag on rule.options). Nested rule groups are handled.
+    hideOnWeb () {
+      if (!isWeb()) return false
+      const flagged = r => Array.isArray(r) ? r.every(flagged) : !!(r.options && r.options.notOnWeb)
+      return this.rules.every(flagged)
+    },
+
     defaultValue () {
       return this.rules.every(r => r.default === this.setup.rules[r.id])
     },

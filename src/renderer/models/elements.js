@@ -54,18 +54,20 @@ export const DECINSKY_SNEZNIK = GameElement.DECINSKY_SNEZNIK = new GameElement('
 // Neutral
 export const DRAGON = GameElement.DRAGON = new GameElement('dragon', 'Dragon', Number, { selector: 'dragon' })
 export const FAIRY = GameElement.FAIRY = new GameElement('fairy', 'Fairy', Number, { default: 0 })
+// $t('game.feature.black-fairy') — fan expansion: a Fairy that scores NEGATIVE points
+export const BLACK_FAIRY = GameElement.BLACK_FAIRY = new GameElement('black-fairy', 'Black Fairy', Number, { default: 0 })
 export const COUNT = GameElement.COUNT = new GameElement('count', 'Count', Number, { selector: 'quarter' })
 export const MAGE = GameElement.MAGE = new GameElement('mage', 'Mage', Number, { selector: 'mage' })
 export const WITCH = GameElement.WITCH = new GameElement('witch', 'Witch', Number, { selector: 'mage' }) // trigger on tile is simply called mage
 export const BIG_TOP = GameElement.BIG_TOP = new GameElement('big-top', 'Big Top', Number, { selector: 'circus' })
 
 // Player Tokens
-export const TOWER = GameElement.TOWER = new GameElement('tower', 'Tower pieces', Number, { selector: 'tower' })
-export const ABBEY = GameElement.ABBEY = new GameElement('abbey', 'Abbey tile', Number, { default: 0 })
+export const TOWER = GameElement.TOWER = new GameElement('tower', 'Tower pieces', Number, { selector: 'tower', notOnWeb: true })
+export const ABBEY = GameElement.ABBEY = new GameElement('abbey', 'Abbey tile', Number, { default: 0, notOnWeb: true })
 export const BRIDGE = GameElement.BRIDGE = new GameElement('bridge', 'Bridges', Number, { default: 0 })
 export const CASTLE = GameElement.CASTLE = new GameElement('castle', 'Castles', Number, { default: 0 })
-export const TUNNEL = GameElement.TUNNEL = new GameElement('tunnel', 'Tunnel tokens', Number)
-export const FERRY = GameElement.FERRY = new GameElement('ferry', 'Ferries', Number, { selector: 'ferry' })
+export const TUNNEL = GameElement.TUNNEL = new GameElement('tunnel', 'Tunnel tokens', Number, { notOnWeb: true })
+export const FERRY = GameElement.FERRY = new GameElement('ferry', 'Ferries', Number, { selector: 'ferry', notOnWeb: true })
 export const LITTLE_BUILDINGS = GameElement.LITTLE_BUILDINGS = new GameElement('little-buildings', 'Little Buildings', Number, { default: 0, popularComponent: true })
 
 // Variants
@@ -93,7 +95,7 @@ export const PRE_DRAW_INCOMPATIBLE = [
 export const TRADERS = GameElement.TRADERS = new GameElement('traders', 'Trade goods', Boolean, { selector: 'city[resource]' })
 export const KING = GameElement.KING = new GameElement('king', 'King', Boolean, { default: false })
 export const ROBBER = GameElement.ROBBER = new GameElement('robber', 'Robber', Boolean, { default: false })
-export const GOLD = GameElement.GOLD = new GameElement('gold', 'Gold pieces', Boolean, { selector: 'goldmine' })
+export const GOLD = GameElement.GOLD = new GameElement('gold', 'Gold pieces', Boolean, { selector: 'goldmine', notOnWeb: true })
 
 // Game mechanics
 
@@ -108,43 +110,43 @@ export const INN = GameElement.INN = new GameElement('inn', 'Inns', Boolean, {
   selector: 'road[inn]'
 })
 export const PRINCESS = GameElement.PRINCESS = new GameElement('princess', 'Princess', Boolean, {
-  selector: 'city[princess]'
+  selector: 'city[princess]', notOnWeb: true
 })
 export const PORTAL = GameElement.PORTAL = new GameElement('portal', 'Magic portals', Boolean, {
-  selector: 'portal'
+  selector: 'portal', notOnWeb: true
 })
 export const PIG_HERD = GameElement.PIG_HERD = new GameElement('pig-herd', 'Pig Herds', Boolean, {
   selector: 'field[pig-herd]'
 })
 export const BAZAAR = GameElement.BAZAAR = new GameElement('bazaar', 'Bazaars', Boolean, {
-  selector: 'bazaar'
+  selector: 'bazaar', notOnWeb: true
 })
 export const HILL = GameElement.HILL = new GameElement('hill', 'Hills', Boolean, {
-  selector: 'hill'
+  selector: 'hill', notOnWeb: true
 })
 export const VINEYARD = GameElement.VINEYARD = new GameElement('vineyard', 'Vineyards', Boolean, {
-  selector: 'vineyard'
+  selector: 'vineyard', notOnWeb: true
 })
 export const SHRINE = GameElement.SHRINE = new GameElement('shrine', 'Monastery/Shrine challenges', Boolean, {
-  selector: 'monastery[shrine]'
+  selector: 'monastery[shrine]', notOnWeb: true
 })
 export const FESTIVAL = GameElement.FESTIVAL = new GameElement('festival', 'Festival', Boolean, {
   selector: 'festival'
 })
 export const SIEGE = GameElement.SIEGE = new GameElement('siege', 'Besieged cities', Boolean, {
-  selector: 'city[besieged]'
+  selector: 'city[besieged]', notOnWeb: true
 })
 export const ESCAPE = GameElement.ESCAPE = new GameElement('escape', 'Escaping a besieged city', Boolean, {
-  selector: 'city[besieged]'
+  selector: 'city[besieged]', notOnWeb: true
 })
 export const ACROBATS = GameElement.ACROBATS = new GameElement('acrobats', 'Acrobats', Boolean, {
   selector: 'acrobats'
 })
 export const FAMILIES = GameElement.FAMILIES = new GameElement('families', 'Families', Boolean, {
-  selector: 'city[family]'
+  selector: 'city[family]', notOnWeb: true
 })
 export const ROBBERS_SON = GameElement.ROBBERS_SON = new GameElement('robbers-son', 'Robber\'s son', Boolean, {
-  selector: 'road[robbers-son]'
+  selector: 'road[robbers-son]', notOnWeb: true
 })
 export const WELL = GameElement.WELL = new GameElement('well', 'Well', Boolean, {
   selector: 'road[wells]'
@@ -153,29 +155,30 @@ export const WELL = GameElement.WELL = new GameElement('well', 'Well', Boolean, 
 export const DONKEY = GameElement.DONKEY = new GameElement('donkey', 'Donkey', Number, { default: false })
 
 export const FLOWERS = GameElement.FLOWERS = new GameElement('flowers', 'Flowers', Boolean, {
-  selector: '*[flowers]'
+  selector: '*[flowers]', notOnWeb: true
 })
 
 export const MARKETPLACE = GameElement.MARKETPLACE = new GameElement('marketplace', 'Marketplace', Boolean, {
-  selector: 'marketplace'
+  selector: 'marketplace', notOnWeb: true
 })
 
 export const METEORITE = GameElement.METEORITE = new GameElement('meteorite', 'Meteorite', Boolean, {
-  selector: 'crater'
+  selector: 'crater', notOnWeb: true
 })
 
 export const FISHERMEN = GameElement.FISHERMEN = new GameElement('fishermen', 'Fishermen', Boolean, {
-  selector: 'river'
+  selector: 'river', notOnWeb: true
 })
 
 export const BLACK_TOWER = GameElement.BLACK_TOWER = new GameElement('black-tower', 'Black & White Tower pieces', Number, {
   selector: 'tower',
   default: 0,
-  popularComponent: true
+  popularComponent: true,
+  notOnWeb: true
 })
 
 export const FISHHUT = GameElement.FISHHUT = new GameElement('fishhut', 'Fish Hut', Boolean, {
-  selector: 'fishhut'
+  selector: 'fishhut', notOnWeb: true
 })
 
 export const COURIER = GameElement.COURIER = new GameElement('courier', 'Courier', Number, {

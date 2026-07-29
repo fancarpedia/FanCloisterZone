@@ -7,6 +7,7 @@ import mapValues from 'lodash/mapValues'
 
 import { PaperScope } from 'paper/dist/paper-core'
 import { grammar, createSemantics } from '@/plugins/ohm/path-template'
+import { assetDirUrl } from '@/utils/asset-url'
 import { BASE_SIZE } from '@/constants/ui'
 
 const FEATURE_PATTERN = /([^[]+)(?:\[([^\]]+)\])/
@@ -101,7 +102,7 @@ export default class ArtworkLoader {
       features: {},
       tiles: {},
       elements: {},
-      pathPrefix: `file://${folder}/`
+      pathPrefix: assetDirUrl(folder)
     }
 
     if (artwork.tileSize === BASE_SIZE) {
@@ -138,7 +139,16 @@ export default class ArtworkLoader {
         const [w, h] = el.getAttribute('viewBox').split(' ').slice(2).map(val => parseInt(val))
         artwork.symbols[symbolId] = { size: [w, h] }
       })
-      doc.querySelectorAll('image').forEach(el => el.setAttribute('href', artwork.pathPrefix + el.getAttribute('href')))
+      // Set BOTH href (SVG2) and xlink:href (SVG1). Chromium/Electron only need href, but older
+      // Safari and some Android WebViews render an SVG <image> only from xlink:href — without it the
+      // tile art is a broken image in exactly those browsers. The xlink namespace must be declared
+      // on the root so the attribute survives the outerHTML round-trip below.
+      doc.documentElement.setAttribute('xmlns:xlink', 'http://www.w3.org/1999/xlink')
+      doc.querySelectorAll('image').forEach(el => {
+        const abs = artwork.pathPrefix + el.getAttribute('href')
+        el.setAttribute('href', abs)
+        el.setAttributeNS('http://www.w3.org/1999/xlink', 'xlink:href', abs)
+      })
       document.getElementById('theme-resources').innerHTML += doc.documentElement.outerHTML
     }
 

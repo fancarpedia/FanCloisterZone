@@ -4,20 +4,22 @@
     <v-card-text class="flex-grow-1">
       <div class="d-flex">
         <v-list class="flex-shrink-0">
+          <!-- explicit :value so hiding items (web build) doesn't renumber the sections -->
           <v-list-item-group v-model="section" mandatory>
-            <v-list-item>
+            <v-list-item :value="0">
               <v-list-item-title>{{ $t('settings.player.title') }}</v-list-item-title>
             </v-list-item>
-            <v-list-item>
+            <v-list-item :value="1">
               <v-list-item-title>{{ $t('settings.game-interface.title') }}</v-list-item-title>
             </v-list-item>
-            <v-list-item>
+            <v-list-item :value="2">
               <v-list-item-title>{{ $t('settings.appearance.title') }}</v-list-item-title>
             </v-list-item>
-            <v-list-item>
+            <!-- Add-ons & System are desktop-only (no addon downloads / OS integration on web) -->
+            <v-list-item v-if="!isWeb" :value="3">
               <v-list-item-title>{{ $t('settings.add-ons.title') }}</v-list-item-title>
             </v-list-item>
-            <v-list-item>
+            <v-list-item v-if="!isWeb" :value="4">
               <v-list-item-title>{{ $t('settings.system.title') }}</v-list-item-title>
             </v-list-item>
           </v-list-item-group>
@@ -40,6 +42,7 @@
 </template>
 
 <script>
+import { isWeb } from '@/utils/version'
 import AddonsSettings from '@/components/settings/AddonsSettings'
 import ApperanceSettings from '@/components/settings/ApperanceSettings'
 import GameInterfaceSettings from '@/components/settings/GameInterfaceSettings'
@@ -57,7 +60,8 @@ export default {
 
   data () {
     return {
-      section: 0
+      section: 0,
+      isWeb: isWeb()
     }
   }
 

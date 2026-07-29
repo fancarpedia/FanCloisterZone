@@ -161,7 +161,7 @@ export default {
   data () {
     return {
       Expansion,
-      selected: this.local ? 0 : null
+      selected: null
     }
   },
 
@@ -169,6 +169,14 @@ export default {
     ...mapState({
       rules: state => state.game.setup.rules
     }),
+
+    // Default focused item. Bridge is moved to the front for visibility (see items()), but the focus
+    // should land on the NEXT option (the actual meeple/placement) when one exists — not the bridge.
+    // Non-bridge actions keep focusing the first item as before. Observers (non-local) focus nothing.
+    defaultSelected () {
+      if (!this.local) return null
+      return (this.items.length > 1 && this.items[0].type === 'Bridge') ? 1 : 0
+    },
 
     items () {
       const items = []
@@ -182,13 +190,23 @@ export default {
           items.push(item)
         }
       })
+      // In the action panel, bridge placement is shown BEFORE any meeples (a stable move to the
+      // front; everything else keeps the engine's order). This differs from the player supply
+      // (PlayerPanel), where the bridge intentionally stays after the meeples.
+      const bridges = items.filter(i => i.type === 'Bridge')
+      if (bridges.length) {
+        return [...bridges, ...items.filter(i => i.type !== 'Bridge')]
+      }
       return items
     }
   },
 
   watch: {
-    action () {
-      this.selected = 0
+    action: {
+      immediate: true,
+      handler () {
+        this.selected = this.defaultSelected
+      }
     }
   },
 

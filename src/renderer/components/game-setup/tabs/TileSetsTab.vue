@@ -2,26 +2,26 @@
   <div>
     <ConfigSection :title="$t('game-setup.tiles.core-sets')">
       <div class="expansions">
-        <ExpansionBox :expansion="Expansion.BASIC" @open-detail="openDetail" />
-        <ExpansionBox v-if="!ai" :expansion="Expansion.WINTER" @open-detail="openDetail" />
-        <ExpansionBox :expansion="Expansion.START" @open-detail="openDetail" />
+        <ExpansionBox v-if="simplifiedOk(Expansion.BASIC)" :expansion="Expansion.BASIC" @open-detail="openDetail" />
+        <ExpansionBox v-if="!ai && simplifiedOk(Expansion.WINTER)" :expansion="Expansion.WINTER" @open-detail="openDetail" />
+        <ExpansionBox v-if="simplifiedOk(Expansion.START)" :expansion="Expansion.START" @open-detail="openDetail" />
       </div>
     </ConfigSection>
 
     <ConfigSection :title="$t('game-setup.tiles.major-expansions')">
       <div class="expansions">
-        <ExpansionBox :expansion="Expansion.INNS_AND_CATHEDRALS" @open-detail="openDetail" />
-        <ExpansionBox :expansion="Expansion.TRADERS_AND_BUILDERS" @open-detail="openDetail" />
-        <ExpansionBox v-if="!ai" :expansion="Expansion.PRINCESS_AND_DRAGON" @open-detail="openDetail" />
-        <ExpansionBox v-if="!ai" :expansion="Expansion.TOWER" @open-detail="openDetail" />
-        <ExpansionBox v-if="!ai" :expansion="Expansion.ABBEY_AND_MAYOR" @open-detail="openDetail" />
-        <ExpansionBox v-if="!ai" :expansion="Expansion.BRIDGES_CASTLES_AND_BAZAARS" @open-detail="openDetail" />
-        <ExpansionBox v-if="!ai" :expansion="Expansion.HILLS_AND_SHEEP" @open-detail="openDetail" />
-        <ExpansionBox v-if="!ai" :expansion="Expansion.UNDER_THE_BIG_TOP_C1" @open-detail="openDetail" />
+        <ExpansionBox v-if="simplifiedOk(Expansion.INNS_AND_CATHEDRALS)" :expansion="Expansion.INNS_AND_CATHEDRALS" @open-detail="openDetail" />
+        <ExpansionBox v-if="simplifiedOk(Expansion.TRADERS_AND_BUILDERS)" :expansion="Expansion.TRADERS_AND_BUILDERS" @open-detail="openDetail" />
+        <ExpansionBox v-if="!ai && simplifiedOk(Expansion.PRINCESS_AND_DRAGON)" :expansion="Expansion.PRINCESS_AND_DRAGON" @open-detail="openDetail" />
+        <ExpansionBox v-if="!ai && simplifiedOk(Expansion.TOWER)" :expansion="Expansion.TOWER" @open-detail="openDetail" />
+        <ExpansionBox v-if="!ai && simplifiedOk(Expansion.ABBEY_AND_MAYOR)" :expansion="Expansion.ABBEY_AND_MAYOR" @open-detail="openDetail" />
+        <ExpansionBox v-if="!ai && simplifiedOk(Expansion.BRIDGES_CASTLES_AND_BAZAARS)" :expansion="Expansion.BRIDGES_CASTLES_AND_BAZAARS" @open-detail="openDetail" />
+        <ExpansionBox v-if="!ai && simplifiedOk(Expansion.HILLS_AND_SHEEP)" :expansion="Expansion.HILLS_AND_SHEEP" @open-detail="openDetail" />
+        <ExpansionBox v-if="!ai && simplifiedOk(Expansion.UNDER_THE_BIG_TOP_C1)" :expansion="Expansion.UNDER_THE_BIG_TOP_C1" @open-detail="openDetail" />
       </div>
     </ConfigSection>
 
-    <ConfigSection :title="$t('game-setup.tiles.minor-expansions')">
+    <ConfigSection v-if="!onlySimplified" :title="$t('game-setup.tiles.minor-expansions')">
       <div class="expansions">
         <ExpansionBox v-if="!ai" :expansion="Expansion.KING_AND_ROBBER" @open-detail="openDetail" />
         <ExpansionBox :expansion="Expansion.RIVER" @open-detail="openDetail" />
@@ -44,10 +44,10 @@
 
     <ConfigSection :title="$t('game-setup.tiles.promos')">
       <div class="expansions">
-        <ExpansionBox v-if="!ai" :expansion="Expansion.RUSSIAN_PROMOS" @open-detail="openDetail" />
-        <ExpansionBox :expansion="Expansion.DARMSTADT" @open-detail="openDetail" />
-        <ExpansionBox :expansion="Expansion.LABYRINTH" @open-detail="openDetail" />
-        <ExpansionBox :expansion="Expansion.SPIEL_DOCH" @open-detail="openDetail" />
+        <ExpansionBox v-if="!ai && simplifiedOk(Expansion.RUSSIAN_PROMOS)" :expansion="Expansion.RUSSIAN_PROMOS" @open-detail="openDetail" />
+        <ExpansionBox v-if="simplifiedOk(Expansion.DARMSTADT)" :expansion="Expansion.DARMSTADT" @open-detail="openDetail" />
+        <ExpansionBox v-if="simplifiedOk(Expansion.LABYRINTH)" :expansion="Expansion.LABYRINTH" @open-detail="openDetail" />
+        <ExpansionBox v-if="simplifiedOk(Expansion.SPIEL_DOCH)" :expansion="Expansion.SPIEL_DOCH" @open-detail="openDetail" />
       </div>
     </ConfigSection>
 
@@ -102,12 +102,24 @@ export default {
       sets: state => state.gameSetup.sets,
     }),
 
+    // Only the bundled `jcz/simplified` artwork is available (the classic addon isn't installed —
+    // e.g. the offline web build). Non-simplified sets would render as missing images, so the setup
+    // offers only sets flagged `simplified`.
+    onlySimplified () {
+      return !this.$store.state.hasClassicAddon
+    },
+
     fanExpansions () {
-      return this.$tiles.expansions.filter(e => !this.ai || e.ai)
+      return this.$tiles.expansions.filter(e => (!this.ai || e.ai) && this.simplifiedOk(e))
     }
   },
-  
+
   methods: {
+    // whether to show a set given the available artwork (see onlySimplified)
+    simplifiedOk (exp) {
+      return !this.onlySimplified || !!(exp && exp.simplified)
+    },
+
     openDetail (exp) {
       this.detailExpansion = exp
       this.detailOpen = true

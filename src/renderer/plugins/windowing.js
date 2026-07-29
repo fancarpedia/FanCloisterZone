@@ -13,11 +13,23 @@ function readRole () {
   }
 }
 
+// Can this platform open a game in its own OS window? Electron can; a browser / mobile WebView
+// cannot (one document, one window), so there every game is handled in-place by the caller.
+// The web build passes --single-window (see web-build/build.js).
+function readSingleWindow () {
+  try {
+    return (window.process.argv || []).includes('--single-window')
+  } catch (e) {
+    return false
+  }
+}
+
 // Routes that mean "a game is on screen" — entering one arms the close-on-home behaviour.
 const GAME_ROUTES = ['/game', '/open-game', '/game-setup']
 
 export default ({ app }, inject) => {
   const role = readRole()
+  const singleWindow = readSingleWindow()
   // Our own webContents id, used to exclude this window from the open-windows list. Resolved async
   // on boot; null until the main process answers (the lobby/'main' window is never in the list anyway).
   let myWindowId = null
@@ -72,6 +84,9 @@ export default ({ app }, inject) => {
     // triggered from another game window (one game per window, never clobber the current one).
     openGame (intent, { force = false } = {}) {
       if (!force && app.store.state.runningTests) return false
+      // No OS windows on this platform (browser / mobile) — tell the caller to run it in-place.
+      // Every call site already falls back to `dispatch(newGame) + router.push(...)`.
+      if (singleWindow) return false
       ipcRenderer.invoke('open-game-window', intent)
       return true
     },

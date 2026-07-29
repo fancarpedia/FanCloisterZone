@@ -362,6 +362,11 @@ export default {
     async playSetup (item, coop = true) {
       const setup = { ...item.setup }
       setup.elements = { ...(setup.elements || {}), 'keep-building': coop }
+      // "Play it" launches a BRAND NEW game from a leaderboard entry. If the user reached the
+      // variant tab via change-setup, editingGameId is still set and createGame would send
+      // UPDATE_GAME_SETUP (silently editing the current game, no navigation) — i.e. the button
+      // appears to do nothing. Clear it so createGame always creates + navigates.
+      this.$store.commit('gameSetup/setEditingGameId', null)
       await this.$store.dispatch('gameSetup/load', setup)
       await this.$store.dispatch('gameSetup/createGame')
     }

@@ -79,6 +79,7 @@ import fs from 'fs'
 import { extname } from 'path'
 import { webFrame, shell, ipcRenderer, ipcMain, dialog } from 'electron'
 import { mapState, mapGetters } from 'vuex'
+import debounce from 'lodash/debounce'
 
 import AboutDialog from '@/components/AboutDialog'
 import ErrorDialog from '@/components/ErrorDialog'
@@ -455,6 +456,17 @@ export default {
     }])
     await this.$store.dispatch('settings/registerChangeCallback', ['dev', () => { this.updateMenu() }])
 
+    // Nickname change: re-send HELLO so the server updates this client's displayed name. The nickname
+    // input commits on every keystroke, so debounce and only reconnect once the user pauses; only
+    // while actually connected online.
+    const reconnectForNickname = debounce(() => {
+      const nw = this.$store.state.networking
+      if (nw.connectionType === 'online' && nw.connectionStatus === STATUS_CONNECTED) {
+        this.$store.dispatch('networking/reconnectOnline')
+      }
+    }, 1500)
+    await this.$store.dispatch('settings/registerChangeCallback', ['nickname', reconnectForNickname])
+
     this.$addons.on('change', async () => {
       await this.loadAddons()
     })
@@ -654,8 +666,11 @@ export default {
     updateTitle() {
       const server = this.$store.getters['settings/isLocalPlayOnline'] ? 'dev local' : 'fanserver'
       // non-stable builds announce themselves in the title, so it's obvious which instance this is
-      const badge = getBuildBadge() // 'dev' | 'alpha' | null
-      const product = badge === 'alpha' ? 'FanCloisterZone α Alpha' : (badge === 'dev' ? 'FanCloisterZone Dev' : 'FanCloisterZone')
+      const badge = getBuildBadge() // 'dev' | 'alpha' | 'web' | null
+      const product = badge === 'alpha' ? 'FanCloisterZone α Alpha'
+        : badge === 'dev' ? 'FanCloisterZone Dev'
+          : badge === 'web' ? 'FanCloisterZone Web'
+            : 'FanCloisterZone'
       const base = this.onlineConnected ? (product + ' Edition @ ' + server) /* + this.$store.state.onlineHostName */ : product + ' Edition' /* Fan Edition */
 
       // Multi-window debug indicator: role + gameId + local-server port + clientId tail.

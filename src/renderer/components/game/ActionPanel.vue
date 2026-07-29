@@ -34,16 +34,26 @@
       :local="local && !ai"
     >
       <template
-        v-if="action.canPass"
+        v-if="action.canPass || undoAllowed"
         #default="{ plain, label }"
       >
         <template v-if="local && !ai">
-          <span v-if="plain !== ''" class="skip-text text">{{ $t('game.action.or') }}</span>
-          <div class="pass-item">
-            <v-btn :large="$vuetify.breakpoint.height > 768" color="secondary" @click="pass">{{ label || $t('game.action.skip-action') }}</v-btn>
-          </div>
+          <template v-if="action.canPass">
+            <span v-if="plain !== ''" class="skip-text text">{{ $t('game.action.or') }}</span>
+            <div class="pass-item">
+              <v-btn :large="$vuetify.breakpoint.height > 768" color="secondary" @click="pass">{{ label || $t('game.action.skip-action') }}</v-btn>
+            </div>
+          </template>
+          <!-- undo (e.g. take back the tile placement / a wrong meeple choice); on mobile/web this
+               is the only way to undo — there is no keyboard shortcut or native menu -->
+          <template v-if="undoAllowed">
+            <span class="skip-text text">{{ $t('game.action.or') }}</span>
+            <div class="pass-item">
+              <v-btn :large="$vuetify.breakpoint.height > 768" @click="undo">{{ $t('button.undo') }}</v-btn>
+            </div>
+          </template>
         </template>
-        <template v-else>
+        <template v-else-if="action.canPass">
           <span class="skip-text text">{{ $t('game.action.or') }} {{ $t('game.action.skip-action') }}</span>
         </template>
       </template>
@@ -155,7 +165,8 @@ export default {
     ...mapGetters({
       colorCssClass: 'game/colorCssClass',
       local: 'game/isActionLocal',
-      ai: 'game/isActionAi'
+      ai: 'game/isActionAi',
+      undoAllowed: 'game/isUndoAllowed'
     }),
 
     ...mapState({
@@ -269,6 +280,12 @@ export default {
           type: 'PASS',
           payload: {}
         })
+      }
+    },
+
+    async undo () {
+      if (this.local && this.undoAllowed) {
+        await this.$store.dispatch('game/undo')
       }
     },
 

@@ -67,5 +67,5 @@ svg
 
 .active svg
   +theme using ($theme)
-    fill: map-get($theme, 'text-color')
+    fill: burlywood
 </style>

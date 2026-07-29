@@ -127,6 +127,15 @@ export const FAIRY_PLACEMENT = Rule.FAIRY_PLACEMENT = new Rule('fairy-placement'
   ]
 )
 
+export const BLACK_FAIRY_PLACEMENT = Rule.BLACK_FAIRY_PLACEMENT = new Rule('black-fairy-placement', GAMEPLAY,
+  'The Black Fairy is deployed {}.',
+  [GameElement.BLACK_FAIRY],
+  [
+    { value: 'next-follower', text: 'next to a\u00A0follower' },
+    { value: 'on-tile', text: 'on a tile' }
+  ]
+)
+
 export const DRAGON_MOVEMENT = Rule.DRAGON_MOVEMENT = new Rule('dragon-move', GAMEPLAY,
   'Dragon movement occurs {} scoring.',
   [GameElement.DRAGON],
@@ -134,7 +143,7 @@ export const DRAGON_MOVEMENT = Rule.DRAGON_MOVEMENT = new Rule('dragon-move', GA
     { value: 'before-scoring', text: 'before', flags: ['HiG', 'ZMG'] },
     { value: 'after-scoring', text: 'after', flags: ['RGG'] }
   ],
-  { style: 'short', ai: true }
+  { style: 'short', ai: true, notOnWeb: true }
 )
 
 export const BARN_PLACEMENT = Rule.BARN_PLACEMENT = new Rule('barn-placement', GAMEPLAY,
@@ -162,7 +171,8 @@ export const BAZAAR_NO_AUCTION = Rule.BAZAAR_NO_AUCTION = new Rule('bazaar-no-au
   [GameElement.BAZAAR],
   Boolean,
   {
-    link: 'https://wikicarpedia.com/car/Special:MyLanguage/Bridges,_Castles_and_Bazaars#Bazaar'
+    link: 'https://wikicarpedia.com/car/Special:MyLanguage/Bridges,_Castles_and_Bazaars#Bazaar',
+    notOnWeb: true
   }
 )
 
@@ -174,7 +184,8 @@ export const HILL_TIEBREAKER = Rule.HILL_TIEBREAKER = new Rule('hill-tiebreaker'
     { value: 'number-of-followers', text: 'number of followers' }
   ],
   {
-    link: 'https://wikicarpedia.com/car/Special:MyLanguage/Hills_%26_Sheep_(1st_edition)#cite_note-9'
+    link: 'https://wikicarpedia.com/car/Special:MyLanguage/Hills_%26_Sheep_(1st_edition)#cite_note-9',
+    notOnWeb: true
   }
 )
 
@@ -185,7 +196,8 @@ export const VINEYARDS_FOR_GARDEN = Rule.VINEYARDS_FOR_GARDEN = new Rule('vineya
   ],
   Boolean,
   {
-    link: 'https://wikicarpedia.com/car/Special:MyLanguage/Sheep_and_Shepherds#3._Scoring_a_feature_3'
+    link: 'https://wikicarpedia.com/car/Special:MyLanguage/Sheep_and_Shepherds#3._Scoring_a_feature_3',
+    notOnWeb: true
   }
 )
 
@@ -197,7 +209,8 @@ export const ESCAPE_VARIANT = Rule.ESCAPE_VARIANT = new Rule('espace-variant', G
     { value: 'siege-tile', text: 'siege tile' }
   ],
   {
-    link: 'https://wikicarpedia.com/car/Special:MyLanguage/Besiegers_Cathars_Siege_(1st_edition)#cite_note-5'
+    link: 'https://wikicarpedia.com/car/Special:MyLanguage/Besiegers_Cathars_Siege_(1st_edition)#cite_note-5',
+    notOnWeb: true
   }
 )
 
@@ -207,7 +220,8 @@ export const TUNNELIZE_OTHER_EXPANSIONS = Rule.TUNNELIZE_OTHER_EXPANSIONS = new 
   Boolean,
   {
     default: true,
-    link: 'https://wikicarpedia.com/car/Special:MyLanguage/The_Tunnel_(1st_edition)#Other_Expansions'
+    link: 'https://wikicarpedia.com/car/Special:MyLanguage/The_Tunnel_(1st_edition)#Other_Expansions',
+    notOnWeb: true
   }
 )
 
@@ -221,7 +235,8 @@ export const MORE_TUNNEL_TOKENS = Rule.MORE_TUNNEL_TOKENS = new Rule('more-tunne
   ],
   {
     link: 'https://wikicarpedia.com/car/Special:MyLanguage/The_Tunnel_(1st_edition)#Preparation',
-    style: 'short'
+    style: 'short',
+    notOnWeb: true
   }
 )
 
@@ -246,7 +261,8 @@ export const KEEP_MONASTERIES = Rule.KEEP_MONASTERIES = new Rule('keep-monasteri
   ],
   {
     link: 'https://wikicarpedia.com/car/Special:MyLanguage/Monasteries#cite_note-1',
-    style: 'long'
+    style: 'long',
+    notOnWeb: true
   }
 )
 
@@ -259,7 +275,8 @@ export const LABYRINTH_VARIANT = Rule.LABYRINTH_VARIANT = new Rule('labyrinth-va
   ],
   {
     default: 'advanced',
-    link: 'https://wikicarpedia.com/car/Special:MyLanguage/The_Labyrinths'
+    link: 'https://wikicarpedia.com/car/Special:MyLanguage/The_Labyrinths',
+    notOnWeb: true
   },
   { style: 'short' }
 )
@@ -271,7 +288,7 @@ export const COC_FINAL_SCORING = Rule.COC_FINAL_SCORING = new Rule('coc-final-sc
     { value: 'market-only', text: 'is allowed only from market district (C2)' },
     { value: 'any-district', text: 'is not limited (C1)' }
   ],
-  { style: 'xlong' }
+  { style: 'xlong', notOnWeb: true }
 )
 
 export const COUNT_MOVE = Rule.COUNT_MOVE = new Rule('count-move', GAMEPLAY,
@@ -282,7 +299,7 @@ export const COUNT_MOVE = Rule.COUNT_MOVE = new Rule('count-move', GAMEPLAY,
     { value: 'clockwise', text: 'clockwise to the next district' },
     { value: 'follow-meeple', text: 'to whichever district as the meeple' }
   ],
-  { style: 'long ' }
+  { style: 'long ', notOnWeb: true }
 )
 
 // Scoring
@@ -344,5 +361,5 @@ export const METEORITE_IMPACT = Rule.METEORITE_IMPACT = new Rule('meteorite-impa
     { value: 'extended', text: 'extended' },
     { value: 'combination', text: 'combination' }
   ],
-  { style: 'short' }
+  { style: 'short', notOnWeb: true }
 )
