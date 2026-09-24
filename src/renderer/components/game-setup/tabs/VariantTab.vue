@@ -102,6 +102,7 @@
                 <GameSetupOverviewInline
                   v-if="item.setup && item.setup.sets && item.setup.elements"
                   class="setup-overview"
+                  wide
                   :sets="item.setup.sets"
                   :elements="item.setup.elements"
                   :tile-overrides="item.setup.tileOverrides"
@@ -161,6 +162,7 @@
                 <GameSetupOverviewInline
                   v-if="item.setup && item.setup.sets && item.setup.elements"
                   class="setup-overview"
+                  wide
                   :sets="item.setup.sets"
                   :elements="item.setup.elements"
                   :tile-overrides="item.setup.tileOverrides"
