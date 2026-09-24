@@ -122,6 +122,7 @@ export default {
 
   .overview-grid
     display: grid
+    isolation: isolate
     grid-template-columns: repeat(6, 60px)
     grid-auto-rows: 70px
 
