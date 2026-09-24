@@ -2,7 +2,7 @@
   "@author": "J0anJosep",
   "@jcz-version": "5.12.1",
   "@fcz-version": "6.3.0",
-  "@version": "0.11.8",
+  "@version": "0.11.9",
   "about": {
     "author": "Autor",
     "configuration-file": "Fitxer de configuració",
@@ -135,10 +135,10 @@
     "toggle-devtools": "Commuta les DevTools",
     "use-local-play-online": "Fes servir la partida local en línia",
     "use-remote-engine": "Fes servir un motor remot",
-    "switch-online-server-title": "Canvia el servidor en línia",
-    "switch-online-server-message": "You have {count} online game(s) open. Switching the server will close them.",
-    "switch-online-server-confirm": "Switch and close games",
-    "switch-online-server-cancel": "Keep current server",
+    "switch-online-server-title": "Commuta el servidor en línia",
+    "switch-online-server-message": "Teniu {count} partides en línia obertes. Si apagueu el servidor, es tancaran.",
+    "switch-online-server-confirm": "Apaga i tanca les partides",
+    "switch-online-server-cancel": "Mantén el servidor actual",
     "switch-online-server-move": 1
   },
   "dialog": {
@@ -146,7 +146,7 @@
       "close-all-games": "Tanca totes les partides",
       "keep-playing": "Continua jugant",
       "open-game-windows": "Obre les finestres de la partida",
-      "open-game-windows-description": "There are open game windows. Closing the main window will close all of them and quit the app."
+      "open-game-windows-description": "Hi ha finestres de partides obertes. Si es tanca la finestra principal, també es tancaran les altres finestres i se sortirà de l'aplicació."
     },
     "close-local-game": {
       "continue-playing": "Continua jugant",
@@ -183,10 +183,10 @@
     "family-feud-description": "Peces amb escuts d'armes blaus/blancs i rojos/grocs que pertanyen a famílies rivals. No es poden posar peces que connectin dues ciutats que pertanyin a famílies rivals.",
     "farmers-heaven": "El cel dels pagesos",
     "farmers-heaven-description": "Com la majarona d'expansions se centren en les ciutats, ja era hora que es fes alguna cosa amb els grangers.",
-    "fishhuts": "Fish Huts",
-    "fishhuts-description": "Make the River more valuable. A meeple can also be placed to the fish-smoking hut as a poissonnier (French for a person whose job is to prepare fish) and score additional points.",
+    "fishhuts": "Cabanes de peixaters",
+    "fishhuts-description": "Fan que el riu valgui més. Es pot posar un seguidor a la cabana de com a pescador i aconseguir punts addicionals.",
     "fishermen": "Pescadors",
-    "fishermen-description": "River tiles are shuffled into the regular tile stack. Players may place a meeple on a river segment as on any other scoreable feature, score points when the river is completed.",
+    "fishermen-description": "Les peces de riu es barregen en una pila normal. Els jugadors poden posar un seguidor en un segment de riu com en altres elements puntuables i obtenir punts quan es completi el riu.",
     "ferries": "Els transbordadors",
     "festival": "El festival",
     "flier": "Les màquines voladores",
@@ -237,17 +237,17 @@
     "winter": "Hivern"
   },
   "file": {
-    "file-is-not-valid": "File is not valid",
+    "file-is-not-valid": "El fitxer no és vàlid.",
     "load-error": "Error de càrrega",
     "not-possible-in-online-mode": "No es pot obrir en mode en línia.",
     "save-created-prior-version-is-not-supported": "Saved file created for prior version {version} is not supported",
     "save-game-setup": "Save Game Setup",
-    "save-game": "Save Game",
-    "save-test-runner-scenario": "Save Test Runner Scenario",
-    "saved-game-contains-game-history": "Saved game contains game history",
-    "saved-game-contains-tests": "Saved game contains tests",
-    "saved-game-requires-missing-add-ons": "Saved game requires missing add-ons: {missing}",
-    "test-scenarios": "Test Scenarios"
+    "save-game": "Desa la partida",
+    "save-test-runner-scenario": "Desa l'escenari d'execució de prova",
+    "saved-game-contains-game-history": "La partida desada conté l'historial de la partida.",
+    "saved-game-contains-tests": "La partida desada conté proves.",
+    "saved-game-requires-missing-add-ons": "La partida desada necessita els complements que fan falta: {missing}",
+    "test-scenarios": "Escenaris de prova"
   },
   "game": {
     "action": {
@@ -288,7 +288,7 @@
       "monasteries-how-do-you-want-place-follower": "Com voleu posar el seguidor al monestir especial?",
       "or": "o",
       "place-the-tile": "Col·loqueu la peça",
-      "placement-optional-bridge": "Some rotations here place a bridge; others don't",
+      "placement-optional-bridge": "En algunes rotacions, es pot posar un pont. En d'altres, no.",
       "placement-requires-bridge": "Every placement here requires a bridge",
       "player-may-move-a-meeple-from-a-city-district": "El jugador pot moure un seguidor d'un districte de la ciutat.",
       "player-may-move-a-meeple-from-a-city-district-before-final-scoring": "El jugador pot moure un seguidor d'un districte de la ciutat abans de la puntuació final.",
@@ -319,8 +319,8 @@
       "your-action": "l'acció"
     },
     "coop": {
-      "all-win": "All players win!",
-      "all-lose": "All players lose",
+      "all-win": "Guanyen tots els jugadors!",
+      "all-lose": "Tots els jugadors perden.",
       "triggered-by": "{name} could neither enlarge an occupied feature nor occupy a new one.",
       "team-score": "Team score: {points} points"
     },
@@ -385,7 +385,7 @@
       "festival": "Festival",
       "field": "Camp",
       "fields": "Camps",
-      "fishhut": "Fish Hut",
+      "fishhut": "Cabana de peixaters",
       "fishermen": "Pescadors",
       "flock": "Ramat",
       "flowers": "Flors",
