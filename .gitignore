@@ -1,6 +1,7 @@
 .nuxt
 dist
 build-dist
+web-build/site
 build/*
 !build/icons
 node_modules
