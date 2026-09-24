@@ -184,3 +184,59 @@ export const FISHHUT = GameElement.FISHHUT = new GameElement('fishhut', 'Fish Hu
 export const COURIER = GameElement.COURIER = new GameElement('courier', 'Courier', Number, {
   selector: 'courier-letter'
 })
+
+// Single source of truth for each element's setup/stats icon. One of:
+//   { meeple: '<sprite>' } — sprite in assets/meeples.svg
+//   { token:  '<sprite>' } — sprite in assets/tokens.svg
+//   { neutral:'<figure>', w?: <px> } — <NeutralFigure>; w only for the wide dragon
+//   { fig: '<file>.png', w?: <px>, h?: <px> } — image in assets/figures/
+//   { tile: '<tileId>' } — <StandaloneTileImage>
+// Rendered by <GameElementIcon>. Used by FiguresTab (setup), FinalStats and the "most popular
+// standalone elements" list, so the icon for a given element is defined once, here.
+/* eslint-disable quote-props */
+export const ELEMENT_ICONS = {
+  // followers / special meeples
+  'small-follower': { meeple: 'small-follower' },
+  'abbot': { meeple: 'abbot' },
+  'phantom': { meeple: 'phantom' },
+  'big-follower': { meeple: 'big-follower' },
+  'builder': { meeple: 'builder' },
+  'pig': { meeple: 'pig' },
+  'mayor': { meeple: 'mayor' },
+  'wagon': { meeple: 'wagon' },
+  'barn': { meeple: 'barn' },
+  'shepherd': { meeple: 'shepherd' },
+  'ringmaster': { meeple: 'ringmaster' },
+  'obelisk': { meeple: 'obelisk' },
+  'windmill': { meeple: 'windmill' },
+  'decinsky-sneznik': { meeple: 'decinsky-sneznik' },
+  // neutral figures
+  'fairy': { neutral: 'fairy' },
+  'black-fairy': { neutral: 'black-fairy' },
+  'dragon': { neutral: 'dragon', w: 110 },
+  'count': { neutral: 'count' },
+  'mage': { neutral: 'mage' },
+  'witch': { neutral: 'witch' },
+  'big-top': { neutral: 'big-top' },
+  'donkey': { neutral: 'donkey' },
+  'courier': { neutral: 'courier' },
+  // player tokens
+  'tower': { fig: 'tower.png' },
+  'black-tower': { fig: 'black_and_white_tower.png' },
+  'abbey': { tile: 'AM/A' },
+  'bridge': { fig: 'bridge-alt.png' },
+  'castle': { fig: 'castle.png', w: 66 },
+  'tunnel': { token: 'tunnel' },
+  'ferry': { fig: 'ferry.png', h: 30 },
+  'little-buildings': { fig: 'lb.png' },
+  // rewards
+  'traders': { fig: 'trade.png', h: 45 },
+  'king': { fig: 'king.png' },
+  'robber': { fig: 'robber.png' },
+  'gold': { fig: 'gold.png', h: 40 }
+}
+/* eslint-enable quote-props */
+
+export function getElementIcon (id) {
+  return ELEMENT_ICONS[id] || null
+}

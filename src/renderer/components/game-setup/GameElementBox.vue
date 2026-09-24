@@ -27,7 +27,9 @@
       :default-value="defaultValue"
     >
       <div class="box-title">
-        <slot />
+        <!-- default icon comes from the element's own definition (models/elements.js ELEMENT_ICONS);
+             a parent may still override by passing slot content -->
+        <slot><GameElementIcon :item="item" :selected="selected" /></slot>
         <h3>{{ $t(['game.element',item.id].join('.')) }}</h3>
       </div>
 
@@ -50,10 +52,12 @@
 import { mapState } from 'vuex'
 import { isWeb } from '@/utils/version'
 import GameElementButtons from '@/components/game-setup/buttons/GameElementButtons'
+import GameElementIcon from '@/components/game/GameElementIcon'
 
 export default {
   components: {
-    GameElementButtons
+    GameElementButtons,
+    GameElementIcon
   },
 
   props: {

@@ -2,163 +2,57 @@
   <div>
     <ConfigSection :title="$t('game-setup.components.followers')">
       <div class="components">
-        <GameElementBox :item="GameElement.SMALL_FOLLOWER" :max="99" :reset="7">
-          <svg class="meeple" :width="55" :height="55">
-            <use :href="`${MEEPLES_SVG}#small-follower`" />
-          </svg>
-        </GameElementBox>
-        <GameElementBox v-if="!ai" :item="GameElement.ABBOT" :max="9">
-          <svg class="meeple" :width="55" :height="55">
-            <use :href="`${MEEPLES_SVG}#abbot`" />
-          </svg>
-        </GameElementBox>
-        <GameElementBox v-if="!ai" :item="GameElement.PHANTOM" :max="9">
-          <svg class="meeple" :width="55" :height="55">
-            <use :href="`${MEEPLES_SVG}#phantom`" />
-          </svg>
-        </GameElementBox>
-        <GameElementBox :item="GameElement.BIG_FOLLOWER" :max="9">
-          <svg class="meeple" :width="55" :height="55">
-            <use :href="`${MEEPLES_SVG}#big-follower`" />
-          </svg>
-        </GameElementBox>
-        <GameElementBox :item="GameElement.BUILDER" :max="9">
-          <svg class="meeple" :width="55" :height="55">
-            <use :href="`${MEEPLES_SVG}#builder`" />
-          </svg>
-        </GameElementBox>
-        <GameElementBox :item="GameElement.PIG" :max="9">
-          <svg class="meeple" :width="55" :height="55">
-            <use :href="`${MEEPLES_SVG}#pig`" />
-          </svg>
-        </GameElementBox>
-        <GameElementBox v-if="!ai" :item="GameElement.MAYOR" :max="9">
-          <svg class="meeple" :width="55" :height="55">
-            <use :href="`${MEEPLES_SVG}#mayor`" />
-          </svg>
-        </GameElementBox>
-        <GameElementBox v-if="!ai" :item="GameElement.WAGON" :max="9">
-          <svg class="meeple" :width="55" :height="55">
-            <use :href="`${MEEPLES_SVG}#wagon`" />
-          </svg>
-        </GameElementBox>
+        <GameElementBox :item="GameElement.SMALL_FOLLOWER" :max="99" :reset="7" />
+        <GameElementBox v-if="!ai" :item="GameElement.ABBOT" :max="9" />
+        <GameElementBox v-if="!ai" :item="GameElement.PHANTOM" :max="9" />
+        <GameElementBox :item="GameElement.BIG_FOLLOWER" :max="9" />
+        <GameElementBox :item="GameElement.BUILDER" :max="9" />
+        <GameElementBox :item="GameElement.PIG" :max="9" />
+        <GameElementBox v-if="!ai" :item="GameElement.MAYOR" :max="9" />
+        <GameElementBox v-if="!ai" :item="GameElement.WAGON" :max="9" />
         <!-- the barn is forced off in the Keep Building coop variant (field feature) -->
-        <GameElementBox v-if="!ai && !coopVariant" :item="GameElement.BARN" :max="9">
-          <svg class="meeple" :width="55" :height="55">
-            <use :href="`${MEEPLES_SVG}#barn`" />
-          </svg>
-        </GameElementBox>
-        <GameElementBox v-if="!ai" :item="GameElement.SHEPHERD" :max="9">
-          <svg class="meeple" :width="55" :height="55">
-            <use :href="`${MEEPLES_SVG}#shepherd`" />
-          </svg>
-        </GameElementBox>
-        <GameElementBox v-if="!ai" :item="GameElement.RINGMASTER" :max="9">
-          <svg class="meeple" :width="55" :height="55">
-            <use :href="`${MEEPLES_SVG}#ringmaster`" />
-          </svg>
-        </GameElementBox>
-        <GameElementBox v-if="!ai" :item="GameElement.OBELISK" :max="9">
-          <svg class="meeple" :width="55" :height="55">
-            <use :href="`${MEEPLES_SVG}#obelisk`" />
-          </svg>
-        </GameElementBox>
-        <GameElementBox v-if="!ai" :item="GameElement.WINDMILL" :max="9">
-          <svg class="meeple" :width="55" :height="55">
-            <use :href="`${MEEPLES_SVG}#windmill`" />
-          </svg>
-        </GameElementBox>
-        <GameElementBox v-if="!ai" :item="GameElement.DECINSKY_SNEZNIK" :max="9">
-          <svg class="meeple" :width="55" :height="55">
-            <use :href="`${MEEPLES_SVG}#decinsky-sneznik`" />
-          </svg>
-        </GameElementBox>
+        <GameElementBox v-if="!ai && !coopVariant" :item="GameElement.BARN" :max="9" />
+        <GameElementBox v-if="!ai" :item="GameElement.SHEPHERD" :max="9" />
+        <GameElementBox v-if="!ai" :item="GameElement.RINGMASTER" :max="9" />
+        <GameElementBox v-if="!ai" :item="GameElement.OBELISK" :max="9" />
+        <GameElementBox v-if="!ai" :item="GameElement.WINDMILL" :max="9" />
+        <GameElementBox v-if="!ai" :item="GameElement.DECINSKY_SNEZNIK" :max="9" />
       </div>
     </ConfigSection>
 
     <ConfigSection v-if="!ai" :title="$t('game-setup.components.neutral-figures')">
       <div class="components">
-        <GameElementBox :item="GameElement.FAIRY">
-          <NeutralFigure figure="fairy" :width="55" :height="55" />
-        </GameElementBox>
-        <GameElementBox :item="GameElement.BLACK_FAIRY">
-          <NeutralFigure figure="black-fairy" :width="55" :height="55" />
-        </GameElementBox>
-        <GameElementBox :item="GameElement.DRAGON">
-          <NeutralFigure figure="dragon" :width="110" :height="55" />
-        </GameElementBox>
-        <GameElementBox :item="GameElement.COUNT">
-          <NeutralFigure figure="count" :width="55" :height="55" />
-        </GameElementBox>
-        <GameElementBox :item="GameElement.MAGE">
-          <NeutralFigure figure="mage" :width="55" :height="55" />
-        </GameElementBox>
-        <GameElementBox :item="GameElement.WITCH">
-          <NeutralFigure figure="witch" :width="55" :height="55" />
-        </GameElementBox>
-        <GameElementBox :item="GameElement.BIG_TOP">
-          <NeutralFigure figure="big-top" :width="55" :height="55" />
-        </GameElementBox>
-        <GameElementBox :item="GameElement.DONKEY">
-          <NeutralFigure figure="donkey" :width="55" :height="55" />
-        </GameElementBox>
-        <GameElementBox :item="GameElement.COURIER">
-          <NeutralFigure figure="courier" :width="55" :height="55" />
-        </GameElementBox>
+        <GameElementBox :item="GameElement.FAIRY" />
+        <GameElementBox :item="GameElement.BLACK_FAIRY" />
+        <GameElementBox :item="GameElement.DRAGON" />
+        <GameElementBox :item="GameElement.COUNT" />
+        <GameElementBox :item="GameElement.MAGE" />
+        <GameElementBox :item="GameElement.WITCH" />
+        <GameElementBox :item="GameElement.BIG_TOP" />
+        <GameElementBox :item="GameElement.DONKEY" />
+        <GameElementBox :item="GameElement.COURIER" />
       </div>
     </ConfigSection>
 
     <ConfigSection v-if="!ai" :title="$t('game-setup.components.tokens')">
       <div class="components">
-        <GameElementBox :item="GameElement.TOWER">
-          <img src="~/assets/figures/tower.png" height="55">
-        </GameElementBox>
-        <GameElementBox :item="GameElement.BLACK_TOWER">
-          <img src="~/assets/figures/black_and_white_tower.png" height="55">
-        </GameElementBox>
-        <GameElementBox :item="GameElement.ABBEY" :max="9">
-          <StandaloneTileImage tile-id="AM/A" :size="55" />
-        </GameElementBox>
-        <GameElementBox :item="GameElement.BRIDGE">
-          <img src="~/assets/figures/bridge-alt.png" height="55">
-        </GameElementBox>
-        <GameElementBox :item="GameElement.CASTLE">
-          <img src="~/assets/figures/castle.png" width="66" height="55">
-        </GameElementBox>
-        <GameElementBox :item="GameElement.TUNNEL" :mutable="false">
-          <svg class="token tunnel-token" :width="55" :height="55">
-            <use :href="TOKENS_SVG + '#tunnel'" />
-          </svg>
-        </GameElementBox>
-        <GameElementBox :item="GameElement.FERRY" :mutable="false">
-          <div class="icon-wrapper">
-            <img src="~/assets/figures/ferry.png" height="30">
-          </div>
-        </GameElementBox>
-        <GameElementBox :item="GameElement.LITTLE_BUILDINGS">
-          <img src="~/assets/figures/lb.png" width="55" height="55">
-        </GameElementBox>
+        <GameElementBox :item="GameElement.TOWER" />
+        <GameElementBox :item="GameElement.BLACK_TOWER" />
+        <GameElementBox :item="GameElement.ABBEY" :max="9" />
+        <GameElementBox :item="GameElement.BRIDGE" />
+        <GameElementBox :item="GameElement.CASTLE" />
+        <GameElementBox :item="GameElement.TUNNEL" :mutable="false" />
+        <GameElementBox :item="GameElement.FERRY" :mutable="false" />
+        <GameElementBox :item="GameElement.LITTLE_BUILDINGS" />
       </div>
     </ConfigSection>
 
     <ConfigSection :title="$t('game-setup.components.rewards')">
       <div class="components">
-        <GameElementBox :item="GameElement.TRADERS">
-          <div class="icon-wrapper">
-            <img src="~/assets/figures/trade.png" height="45">
-          </div>
-        </GameElementBox>
-        <GameElementBox v-if="!ai" :item="GameElement.KING">
-          <img src="~/assets/figures/king.png" width="55" height="55">
-        </GameElementBox>
-        <GameElementBox v-if="!ai" :item="GameElement.ROBBER">
-          <img src="~/assets/figures/robber.png" width="55" height="55">
-        </GameElementBox>
-        <GameElementBox v-if="!ai" :item="GameElement.GOLD">
-          <div class="icon-wrapper">
-            <img src="~/assets/figures/gold.png" height="40">
-          </div>
-        </GameElementBox>
+        <GameElementBox :item="GameElement.TRADERS" />
+        <GameElementBox v-if="!ai" :item="GameElement.KING" />
+        <GameElementBox v-if="!ai" :item="GameElement.ROBBER" />
+        <GameElementBox v-if="!ai" :item="GameElement.GOLD" />
       </div>
     </ConfigSection>
   </div>
@@ -169,24 +63,15 @@ import { mapState } from 'vuex'
 import ConfigSection from '@/components/game-setup/ConfigSection'
 import { GameElement } from '@/models/elements'
 import GameElementBox from '@/components/game-setup/GameElementBox'
-import NeutralFigure from '@/components/game/NeutralFigure'
-import StandaloneTileImage from '@/components/game/StandaloneTileImage'
-
-const MEEPLES_SVG = require('~/assets/meeples.svg')
-const TOKENS_SVG = require('~/assets/tokens.svg')
 
 export default {
   components: {
     ConfigSection,
-    GameElementBox,
-    NeutralFigure,
-    StandaloneTileImage
+    GameElementBox
   },
 
   data () {
     return {
-      MEEPLES_SVG,
-      TOKENS_SVG,
       GameElement
     }
   },
@@ -212,55 +97,4 @@ export default {
   gap: $panel-gap
   grid-template-columns: repeat(auto-fill, 162px)
   grid-auto-flow: row
-
-  .predraw-icon
-    display: flex
-    flex-direction: column
-    align-items: center
-    justify-content: center
-    width: 55px
-    height: 55px
-    font-size: 22px
-    span
-      font-size: 10px
-
-  svg.meeple, svg.tunnel-token
-    +theme using ($theme)
-      color: map-get($theme, 'cards-meeple-overlay')
-
-  svg.meeple, svg.neutral, svg.token
-    +theme using ($theme)
-      fill: map-get($theme, 'disabled-fill')
-
-  .selected
-    svg.meeple, svg.tunnel-token
-      +theme using ($theme)
-        fill: map-get($theme, 'cards-selected-meeple')
-        color: map-get($theme, 'cards-selected-meeple-overlay')
-
-    +theme using ($theme)
-      // theme is not used, but specific theme selector is needed to override disabled-fill
-      svg.fairy
-        fill: $fairy-color
-
-      svg.dragon, svg.big-top
-        fill: $dragon-color
-
-      svg.count
-        fill: $count-color
-
-      svg.mage
-        fill: $mage-color
-
-      svg.witch
-        fill: $witch-color
-
-      svg.wooden-token
-        fill: $wooden-token-color
-
-.icon-wrapper
-  height: 55px
-  display: flex
-  align-items: center
-  justify-content: center
 </style>

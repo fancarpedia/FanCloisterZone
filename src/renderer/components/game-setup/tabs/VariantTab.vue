@@ -65,7 +65,7 @@
     <ConfigSection v-if="!coopVariant && online && (popularComponents && popularComponents.length)" :title="$t('game-setup.variant.popular-components')">
       <div class="popular-chips">
         <div v-for="c in popularComponents" :key="'comp-' + c.id" class="popular-chip">
-          <v-icon class="chip-icon addon-icon">fas fa-chess-pawn</v-icon>
+          <GameElementIcon :id="c.id" class="chip-icon" :size="34" />
           <div class="chip-detail">
             <div class="chip-name">{{ componentTitle(c.id) }}</div>
             <div class="chip-share">{{ $t('game-setup.variant.share-of-games', { percent: c.percent }) }}</div>
@@ -182,6 +182,7 @@ import { mapState } from 'vuex'
 import ConfigSection from '@/components/game-setup/ConfigSection'
 import GameSetupOverviewInline from '@/components/game-setup/overview/GameSetupOverviewInline'
 import ExpansionSymbol from '@/components/ExpansionSymbol'
+import GameElementIcon from '@/components/game/GameElementIcon'
 import { Expansion } from '@/models/expansions'
 import { GameElement } from '@/models/elements'
 
@@ -189,7 +190,8 @@ export default {
   components: {
     ConfigSection,
     GameSetupOverviewInline,
-    ExpansionSymbol
+    ExpansionSymbol,
+    GameElementIcon
   },
 
   data () {
@@ -347,6 +349,10 @@ export default {
     },
 
     addonTitle (id) {
+      // Prefer the translated name from the language pack (same expansion.* keys as setTitle),
+      // falling back to the add-on's own title and finally the raw id.
+      const key = 'expansion.' + String(id).toLowerCase().replace(/_/g, '-')
+      if (this.$te(key)) return this.$t(key)
       const addon = (this.$addons.addons || []).find(a => a.id === id)
       return (addon && (addon.title || addon.json.title)) || id
     },

@@ -70,7 +70,8 @@
         <template v-for="item in cat.items">
           <div :key="cat.name + '-' + item.name + '-h'" class="header item-header">
             <div class="item-icon">
-              <ScoringIcon v-if="itemIcon(item.name)" :name="itemIcon(item.name)" :size="40" />
+              <GameElementIcon v-if="elementIcon(item.name)" :id="item.name" :size="40" selected />
+              <ScoringIcon v-else-if="itemIcon(item.name)" :name="itemIcon(item.name)" :size="40" />
               <ExpressionItem v-else :item="{ name: item.name }" icon-only />
             </div>
             <div class="header-label">
@@ -99,6 +100,8 @@ import debounce from 'lodash/debounce'
 import ExpressionItem from '@/components/game/ExpressionItem'
 import Meeple from '@/components/game/Meeple'
 import ScoringIcon from '@/components/game/ScoringIcon'
+import GameElementIcon from '@/components/game/GameElementIcon'
+import { getElementIcon } from '@/models/elements'
 
 // scoring categories in display order; `always` ones show even at 0 points, the rest only
 // when scored. Each row shows the category total plus a sub-row per contributing item.
@@ -140,7 +143,8 @@ export default {
   components: {
     ExpressionItem,
     Meeple,
-    ScoringIcon
+    ScoringIcon,
+    GameElementIcon
   },
 
   data () {
@@ -322,6 +326,11 @@ export default {
 
   methods: {
     // ScoringIcon name for a breakdown row, or null to fall back to ExpressionItem
+    // a stats row backed by a game element with its own figure icon (obelisk, windmill, …)
+    elementIcon (name) {
+      return !!getElementIcon(name)
+    },
+
     itemIcon (name) {
       if (name === 'tiles') return 'tiles'
       if (name.startsWith('castle.')) return name.split('.')[1]
