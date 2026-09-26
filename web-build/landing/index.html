@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>FanCloisterZone — play in your browser</title>
+<meta name="description" content="FanCloisterZone, the enhanced JCloisterZone client, running as a self-contained web app. Nothing to install, nothing to download." />
+<meta name="theme-color" content="#0f1620" />
+<link rel="icon" href="./logo.svg" type="image/svg+xml" />
+<meta property="og:title" content="FanCloisterZone — play in your browser" />
+<meta property="og:description" content="The enhanced JCloisterZone client, running as a self-contained web app." />
+<meta property="og:type" content="website" />
+<style>
+  :root {
+    --bg: #0f1620;
+    --bg-soft: #16202c;
+    --line: #22303f;
+    --fg: #e8eef5;
+    --fg-dim: #93a5b8;
+    --accent: #3d97d3;
+    --accent-soft: rgba(61, 151, 211, .14);
+    --ok: #5cc98a;
+    --warn: #e0a94a;
+    --radius: 12px;
+  }
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--fg);
+    font: 16px/1.6 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    overflow-x: hidden;
+  }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  .wrap { width: 100%; max-width: 960px; margin: 0 auto; padding: 0 20px; }
+
+  /* ---- hero ---- */
+  .hero {
+    position: relative;
+    padding: 64px 0 56px;
+    background:
+      radial-gradient(900px 420px at 50% -10%, rgba(61, 151, 211, .22), transparent 70%),
+      linear-gradient(180deg, #121b26 0%, var(--bg) 100%);
+    border-bottom: 1px solid var(--line);
+    text-align: center;
+  }
+  .logo { width: 88px; height: 88px; display: block; margin: 0 auto 20px; }
+  .hero h1 { margin: 0 0 6px; font-size: clamp(30px, 6vw, 46px); letter-spacing: -.02em; line-height: 1.15; }
+  .hero .tag { margin: 0 auto 28px; max-width: 34em; color: var(--fg-dim); font-size: clamp(15px, 2.4vw, 18px); }
+
+  .cta {
+    display: inline-flex; align-items: center; gap: 10px;
+    background: var(--accent); color: #fff; font-weight: 600; font-size: 18px;
+    padding: 14px 34px; border-radius: 999px;
+    box-shadow: 0 8px 24px rgba(61, 151, 211, .3);
+    transition: transform .12s ease, box-shadow .12s ease;
+  }
+  .cta:hover { text-decoration: none; transform: translateY(-2px); box-shadow: 0 12px 30px rgba(61, 151, 211, .4); }
+  .cta:active { transform: translateY(0); }
+  .cta-note { margin: 14px 0 0; font-size: 13px; color: var(--fg-dim); }
+
+  /* ---- build info ---- */
+  .build {
+    display: flex; flex-wrap: wrap; justify-content: center; gap: 10px;
+    margin: 30px 0 0; padding: 0; list-style: none;
+  }
+  .build li {
+    background: var(--bg-soft); border: 1px solid var(--line); border-radius: 999px;
+    padding: 6px 14px; font-size: 13px; color: var(--fg-dim);
+    white-space: nowrap;
+  }
+  .build b { color: var(--fg); font-weight: 600; }
+  .build code { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 12px; }
+
+  /* ---- sections ---- */
+  section { padding: 52px 0; border-bottom: 1px solid var(--line); }
+  section:last-of-type { border-bottom: 0; }
+  h2 { margin: 0 0 6px; font-size: 22px; letter-spacing: -.01em; }
+  .sub { margin: 0 0 26px; color: var(--fg-dim); font-size: 15px; }
+
+  .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px; }
+  .card {
+    background: var(--bg-soft); border: 1px solid var(--line); border-radius: var(--radius);
+    padding: 16px 18px;
+  }
+  .card h3 { margin: 0 0 6px; font-size: 15px; display: flex; align-items: center; gap: 8px; }
+  .card p { margin: 0; font-size: 14px; color: var(--fg-dim); }
+  .dot { width: 8px; height: 8px; border-radius: 50%; flex: none; }
+  .dot.ok { background: var(--ok); }
+  .dot.warn { background: var(--warn); }
+
+  /* ---- expansions ---- */
+  .exp { display: flex; flex-wrap: wrap; gap: 8px; padding: 0; margin: 0; list-style: none; }
+  .exp a {
+    display: block; background: var(--accent-soft); border: 1px solid transparent;
+    border-radius: 8px; padding: 7px 13px; font-size: 14px; color: var(--fg);
+  }
+  .exp a:hover { text-decoration: none; border-color: var(--accent); }
+  .exp.soon a { background: transparent; border: 1px dashed var(--line); color: var(--fg-dim); cursor: default; }
+  .soon-label { margin: 22px 0 10px; font-size: 13px; text-transform: uppercase; letter-spacing: .08em; color: var(--fg-dim); }
+
+  /* ---- links ---- */
+  .links { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px; }
+  .links a {
+    display: block; background: var(--bg-soft); border: 1px solid var(--line);
+    border-radius: var(--radius); padding: 16px 18px; color: var(--fg);
+  }
+  .links a:hover { text-decoration: none; border-color: var(--accent); }
+  .links strong { display: block; font-size: 15px; margin-bottom: 4px; }
+  .links span { font-size: 13px; color: var(--fg-dim); }
+
+  footer { padding: 32px 0 44px; color: var(--fg-dim); font-size: 13px; text-align: center; }
+  footer p { margin: 0 0 6px; }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <svg class="logo" viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <path fill="#3d97d3" d="M496.9,269.9v-39.7c0-3.4-2.2-6.5-5.5-7.5l-51.8-16.8c-2.2-.7-4-2.4-4.9-4.5l-19.6-47.4c-.9-2.1-.8-4.6.3-6.6l24.8-48.5c1.6-3.1,1-6.8-1.5-9.2l-28.1-28.1c-2.4-2.4-6.2-3-9.2-1.5l-48.5,24.8c-2.1,1.1-4.5,1.2-6.6.3l-47.4-19.6c-2.1-.9-3.8-2.6-4.5-4.9l-16.8-51.8c-1-3.2-4.1-5.5-7.5-5.5h-39.7c-3.4,0-6.5,2.2-7.5,5.5l-16.8,51.8c-.7,2.2-2.4,4-4.5,4.9l-47.4,19.6c-2.1.9-4.6.8-6.6-.3l-48.5-24.8c-3.1-1.6-6.8-1-9.2,1.5l-28.1,28.1c-2.4,2.4-3,6.2-1.5,9.2l24.8,48.5c1.1,2.1,1.2,4.5.3,6.6l-19.6,47.4c-.9,2.1-2.6,3.8-4.9,4.5l-51.8,16.8c-3.2,1-5.5,4.1-5.5,7.5v39.7c0,3.4,2.2,6.5,5.5,7.5l51.8,16.8c2.2.7,4,2.4,4.9,4.5l19.6,47.4c.9,2.1.8,4.6-.3,6.6l-24.8,48.5c-1.6,3.1-1,6.8,1.5,9.2l28.1,28.1c2.4,2.4,6.2,3,9.2,1.5l48.5-24.8c2.1-1.1,4.5-1.2,6.6-.3l47.4,19.6c2.1.9,3.8,2.6,4.5,4.9l16.8,51.8c1,3.2,4.1,5.5,7.5,5.5h39.7c3.4,0,6.5-2.2,7.5-5.5l16.8-51.8c.7-2.2,2.4-4,4.5-4.9l47.4-19.6c2.1-.9,4.6-.8,6.6.3l48.5,24.8c3.1,1.6,6.8,1,9.2-1.5l28.1-28.1c2.4-2.4,3-6.2,1.5-9.2l-24.8-48.5c-1.1-2.1-1.2-4.5-.3-6.6l19.6-47.4c.9-2.1,2.6-3.8,4.9-4.5l51.8-16.8c3.2-1,5.5-4.1,5.5-7.5Z"/>
+      <path fill="#fff" d="M250,110.9c-76.8,0-139.1,62.3-139.1,139.1s62.3,139.1,139.1,139.1,139.1-62.3,139.1-139.1-62.3-139.1-139.1-139.1ZM250,340.7c-50.1,0-90.7-40.6-90.7-90.7s40.6-90.7,90.7-90.7,90.7,40.6,90.7,90.7-40.6,90.7-90.7,90.7Z"/>
+    </svg>
+
+    <h1>FanCloisterZone</h1>
+    <p class="tag">
+      The enhanced JCloisterZone client, running as a self-contained web app.
+      Nothing to install, nothing to download &mdash; open it and play.
+    </p>
+
+    <a class="cta" href="./app/">Play in your browser &rarr;</a>
+    <p class="cta-note">Works in any modern desktop or mobile browser.</p>
+
+    <ul class="build">
+      <li>App <b data-k="appVersion">&mdash;</b></li>
+      <li>Engine <b data-k="engineVersion">&mdash;</b></li>
+      <li>Build <b><code data-k="buildId">&mdash;</code></b></li>
+      <li data-hide-if-empty><b data-k="sizeMb">&mdash;</b> MB</li>
+      <li data-hide-if-empty>Built <b data-k="builtAt">&mdash;</b></li>
+    </ul>
+  </div>
+</header>
+
+<section>
+  <div class="wrap">
+    <h2>What this build does</h2>
+    <p class="sub">The offline web build: everything it needs is already in the page.</p>
+    <div class="cards">
+      <div class="card">
+        <h3><span class="dot ok"></span>No downloads, ever</h3>
+        <p>The bundled <em>simplified</em> artwork ships with the site. No Mega, no GitHub, no CDN &mdash; the only network traffic is the game connection itself.</p>
+      </div>
+      <div class="card">
+        <h3><span class="dot ok"></span>The real game engine</h3>
+        <p>The full TypeScript JCloisterZone engine runs in a Web Worker, right in your browser. Same rules, same scoring as the desktop app.</p>
+      </div>
+      <div class="card">
+        <h3><span class="dot ok"></span>Online play &amp; lobby</h3>
+        <p>Connect to the Fan server for public and private games, the lobby player list, and global chat.</p>
+      </div>
+      <div class="card">
+        <h3><span class="dot ok"></span>Settings that stick</h3>
+        <p>Preferences, nickname and theme are stored in your browser, so they survive a reload just like the desktop config file.</p>
+      </div>
+      <div class="card">
+        <h3><span class="dot warn"></span>Local games: not yet</h3>
+        <p>Hot-seat and solo games against the AI still need the embedded server, which has no browser equivalent yet. Use the desktop app for those.</p>
+      </div>
+      <div class="card">
+        <h3><span class="dot warn"></span>Simplified artwork only</h3>
+        <p>The classic tile artwork and optional add-ons are a desktop feature in this build &mdash; nothing is downloaded at runtime.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>Supported fan expansions</h2>
+    <p class="sub">Beyond the official expansions, FanCloisterZone plays these community-made ones.</p>
+    <ul class="exp">
+      <li><a href="https://wikicarpedia.com/car/Black_Tower_(Fan_Expansion)">Black Tower</a></li>
+      <li><a href="https://wikicarpedia.com/car/The_City_Gates_(1st_edition)">The City Gates</a></li>
+      <li><a href="https://wikicarpedia.com/car/The_Courier_(Fan_Expansion)">The Courier</a></li>
+      <li><a href="https://wikicarpedia.com/car/D%C4%9B%C4%8D%C3%ADnsk%C3%BD_Sn%C4%9B%C5%BEn%C3%ADk_(Fan_Expansion)">Děčínský Sněžník</a></li>
+      <li><a href="https://wikicarpedia.com/car/Family_Feud_(Fan_Expansion)">Family Feud</a></li>
+      <li><a href="https://wikicarpedia.com/car/Fish_Huts_(Fan_Expansion)">Fish Huts</a></li>
+      <li><a href="https://wikicarpedia.com/car/Fishermen_(Fan_Expansion)">Fishermen</a></li>
+      <li><a href="https://wikicarpedia.com/car/The_Flying_Machines_2_(Fan_Expansion)">The Flying Machines 2</a></li>
+      <li><a href="https://wikicarpedia.com/car/Gambler's_Luck_(Fan_Expansion)">Gambler's Luck</a></li>
+      <li><a href="https://wikicarpedia.com/car/The_Labyrinths_(Fan_Expansion)">The Labyrinths</a></li>
+      <li><a href="https://wikicarpedia.com/car/Meteorites_(Fan_Expansion)">Meteorites</a></li>
+      <li><a href="https://wikicarpedia.com/car/The_Obelisk_(Fan_Expansion)">The Obelisk</a></li>
+      <li><a href="https://wikicarpedia.com/car/Robber%27s_Son_(Fan_Expansion)">Robber's Son</a></li>
+      <li><a href="https://wikicarpedia.com/car/Village_Life_(Fan_Expansion)">Village Life</a></li>
+      <li><a href="https://wikicarpedia.com/car/The_Wells_(Fan_Expansion)">The Wells</a></li>
+    </ul>
+
+    <p class="soon-label">Coming</p>
+    <ul class="exp soon">
+      <li><a>The Carousel</a></li>
+      <li><a>Castle Lords</a></li>
+    </ul>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>Elsewhere</h2>
+    <p class="sub">Bug reports and ideas are welcome &mdash; the project is open source.</p>
+    <div class="links">
+      <a href="https://discord.gg/CswNeVg3eS">
+        <strong>Discord</strong>
+        <span>Report issues, ask questions, find opponents</span>
+      </a>
+      <a href="https://github.com/fancarpedia/FanCloisterZone">
+        <strong>FanCloisterZone</strong>
+        <span>The client &mdash; source and desktop downloads</span>
+      </a>
+      <a href="https://github.com/fancarpedia/JCloisterZoneEngine">
+        <strong>JCloisterZoneEngine</strong>
+        <span>The TypeScript game engine running in this page</span>
+      </a>
+      <a href="https://github.com/farin/JCloisterZone-Client">
+        <strong>JCloisterZone</strong>
+        <span>The original client this edition builds on</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <p>FanCloisterZone by Roman Krejcik and fans &mdash; AGPL-3.0-or-later.</p>
+    <p>Not affiliated with Hans im Glück. Carcassonne is a trademark of Hans im Glück Verlags-GmbH.</p>
+  </div>
+</footer>
+
+<script>
+  // Build facts come from build-info.json, written by web-build/build-landing.js. Keeping them out
+  // of the markup means a redeploy refreshes them without touching this file — and a landing page
+  // opened straight off disk (no server, fetch fails) simply keeps its em-dash placeholders.
+  fetch('./build-info.json?ts=' + Date.now(), { cache: 'no-store' })
+    .then(function (r) { return r.ok ? r.json() : null })
+    .then(function (info) {
+      if (!info) return
+      document.querySelectorAll('[data-k]').forEach(function (el) {
+        var v = info[el.dataset.k]
+        if (v === undefined || v === null || v === '') {
+          var li = el.closest('[data-hide-if-empty]')
+          if (li) li.hidden = true
+          return
+        }
+        el.textContent = String(v)
+      })
+    })
+    .catch(function () {})
+</script>
+
+</body>
+</html>
