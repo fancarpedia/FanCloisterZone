@@ -347,6 +347,7 @@
       "little-buildings": "Edificis petits",
       "mage": "Mag",
       "mayor": "Alcalde",
+      "mini-follower": "Mini Meeple",
       "obelisk": "Obelisc",
       "phantom": "Fantasma",
       "pig": "Porc",
@@ -363,6 +364,10 @@
       "windmill": "Molí de vent",
       "windmill-description": "Els molins de vent donen punts quan queden envoltats amb un patró en forma de signe «+» gran.",
       "witch": "Bruixa"
+    },
+    "event": {
+      "meeple-awarded": "Earned a meeple",
+      "meeple-awarded-hole": "Filled a hole"
     },
     "feature": {
       "acrobats": "Acròbates",

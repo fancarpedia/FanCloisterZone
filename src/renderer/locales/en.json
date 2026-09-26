@@ -2,7 +2,7 @@
   "@author": "farin & Scott",
   "@jcz-version": "5.12.1",
   "@fcz-version": "6.3.0",
-  "@version": "0.11.9",
+  "@version": "0.11.10",
   "about": {
     "author": "Author",
     "configuration-file": "Configuration file",
@@ -347,6 +347,7 @@
       "little-buildings": "Little Buildings",
       "mage": "Mage",
       "mayor": "Mayor",
+      "mini-follower": "Mini Meeple",
       "obelisk": "Obelisk",
       "phantom": "Phantom",
       "pig": "Pig",
@@ -363,6 +364,10 @@
       "windmill": "Windmill",
       "windmill-description": "Windmills grant points once surrounded in a large plus-shaped pattern.",
       "witch": "Witch"
+    },
+    "event": {
+      "meeple-awarded": "Earned a meeple",
+      "meeple-awarded-hole": "Filled a hole"
     },
     "feature": {
       "acrobats": "Acrobats",

@@ -347,6 +347,7 @@
       "little-buildings": "Domy",
       "mage": "Mág",
       "mayor": "Starosta",
+      "mini-follower": "Mini Meeple",
       "obelisk": "Obelisk",
       "phantom": "Fantom",
       "pig": "Prasátko",
@@ -363,6 +364,10 @@
       "windmill": "Vetřený mlýn",
       "windmill-description": "Větrné mlýny udělují body, jakmile jsou obklopeny velkým vzorem ve tvaru plusu.",
       "witch": "Čarodějnice"
+    },
+    "event": {
+      "meeple-awarded": "Earned a meeple",
+      "meeple-awarded-hole": "Filled a hole"
     },
     "feature": {
       "acrobats": "Artisté",

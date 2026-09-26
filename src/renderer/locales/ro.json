@@ -347,6 +347,7 @@
       "little-buildings": "Construcții mici",
       "mage": "Magician",
       "mayor": "Primar",
+      "mini-follower": "Mini Meeple",
       "obelisk": "Obelisc",
       "phantom": "Fantomă",
       "pig": "Porc",
@@ -363,6 +364,10 @@
       "windmill": "Moară de vânt",
       "windmill-description": "Morile de vânt oferă puncte odată de sunt înconjurate într-un model în formă de plus mare.",
       "witch": "Vrăjitoare"
+    },
+    "event": {
+      "meeple-awarded": "Earned a meeple",
+      "meeple-awarded-hole": "Filled a hole"
     },
     "feature": {
       "acrobats": "Artiști",
@@ -450,7 +455,7 @@
     },
     "tile-pack-dialog": {
       "disabled-show-remaining": "Partida a fost creată cu o opțiune care nu permite afișarea numerelor cartonașelor rămase.",
-      "discarded-tiles": "Cartonașe respinse",
+      "discarded-tiles": "Cartonașe decartate",
       "game-tiles": "Cartonașe de joc",
       "hidden-tiles-under-hill-plural": "Nu există niciun cartonaș necunoscut sub deal. | Nu uita că 1 cartonaș necunoscut din listă este ascuns sub un deal. | Nu uita că {count} cartonașe necunoscute din listă sunt ascunse sub dealuri. | Nu uita că {count} de cartonașe necunoscute din listă sunt ascunse sub dealuri.",
       "remaining-tiles": "Cartonașe rămase",

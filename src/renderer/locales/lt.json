@@ -347,6 +347,7 @@
       "little-buildings": "Maži pastatai",
       "mage": "Burtininkas",
       "mayor": "Meras",
+      "mini-follower": "Mini Meeple",
       "obelisk": "Obeliskas",
       "phantom": "Fantomas",
       "pig": "Kiaulė",
@@ -363,6 +364,10 @@
       "windmill": "Vėjo malūnas",
       "windmill-description": "Vėjo malūnai suteikia taškus, kai jie yra apsupti iš keturių pusių kortelėmis.",
       "witch": "Ragana"
+    },
+    "event": {
+      "meeple-awarded": "Earned a meeple",
+      "meeple-awarded-hole": "Filled a hole"
     },
     "feature": {
       "acrobats": "Akrobatai",

@@ -347,6 +347,7 @@
       "little-buildings": "Маленькие здания",
       "mage": "Маг",
       "mayor": "Мэр",
+      "mini-follower": "Mini Meeple",
       "obelisk": "Обелиск",
       "phantom": "Фантом",
       "pig": "Свинья",
@@ -363,6 +364,10 @@
       "windmill": "Мельница",
       "windmill-description": "Ветряные мельницы дают очки, когда окружены тайлами в форме большого плюса.",
       "witch": "Ведьма"
+    },
+    "event": {
+      "meeple-awarded": "Earned a meeple",
+      "meeple-awarded-hole": "Filled a hole"
     },
     "feature": {
       "acrobats": "Акробаты",

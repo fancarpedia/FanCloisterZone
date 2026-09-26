@@ -347,6 +347,7 @@
       "little-buildings": "Pequeños edificios",
       "mage": "Mago",
       "mayor": "Alcalde",
+      "mini-follower": "Mini Meeple",
       "obelisk": "Obelisco",
       "phantom": "Fantasma",
       "pig": "Cerdo",
@@ -363,6 +364,10 @@
       "windmill": "Molino",
       "windmill-description": "Los Molinos proporcionan puntos una vez rodeados siguiendo un patrón de cruz grande.",
       "witch": "Bruja"
+    },
+    "event": {
+      "meeple-awarded": "Earned a meeple",
+      "meeple-awarded-hole": "Filled a hole"
     },
     "feature": {
       "acrobats": "Acróbatas",

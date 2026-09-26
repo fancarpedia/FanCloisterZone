@@ -347,6 +347,7 @@
       "little-buildings": "Häuser",
       "mage": "Magier",
       "mayor": "Bürgermeister",
+      "mini-follower": "Mini Meeple",
       "obelisk": "Obelisk",
       "phantom": "Phantom",
       "pig": "Schwein",
@@ -363,6 +364,10 @@
       "windmill": "Windmühle",
       "windmill-description": "Windmühlen bringen Punkte, wenn sie in einem großen Kreuz aus Plättchen stehen.",
       "witch": "Hexe"
+    },
+    "event": {
+      "meeple-awarded": "Earned a meeple",
+      "meeple-awarded-hole": "Filled a hole"
     },
     "feature": {
       "acrobats": "Artisten",
@@ -718,7 +723,7 @@
       "wagon-move": {
         "C1": "verbunden (Straßenkreuzung oder Straße, die zu einer Stadt/einem Kloster führt) (1. Edition)",
         "C2": "Bauwerk auf demselben oder einem angrenzenden Plättchen (Neue Edition)",
-        "description": "Nach der Wertung kann der Wagen zu einem angrenzenden, unbesetzten, unvollständigen Bauwerk bewegt werden. Angrenzend heisst: {}"
+        "description": "Nach der Wertung kann der Wagen zu einem angrenzenden, unbesetzten, unvollständigen Bauwerk bewegt werden. Angrenzend heißt: {}"
       },
       "choose-variant": "Choose game variant",
       "standard": "Standard rules",

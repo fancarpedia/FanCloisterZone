@@ -347,6 +347,7 @@
       "little-buildings": "Małe budynki",
       "mage": "Mag",
       "mayor": "Burmistrz",
+      "mini-follower": "Mini Meeple",
       "obelisk": "Obelisk",
       "phantom": "Świta",
       "pig": "Świnia",
@@ -363,6 +364,10 @@
       "windmill": "Wiatrak",
       "windmill-description": "Wiatraki pozwalają na zdobycie punktów gdy płytki wokół nich utworzą kształt dużego plusa.",
       "witch": "Wiedźma"
+    },
+    "event": {
+      "meeple-awarded": "Earned a meeple",
+      "meeple-awarded-hole": "Filled a hole"
     },
     "feature": {
       "acrobats": "Akrobaci",

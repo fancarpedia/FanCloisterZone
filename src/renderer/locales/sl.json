@@ -347,6 +347,7 @@
       "little-buildings": "Majhne stavbe",
       "mage": "Čarovnik",
       "mayor": "Župan",
+      "mini-follower": "Mini Meeple",
       "obelisk": "Obelisk",
       "phantom": "Duh",
       "pig": "Prašič",
@@ -363,6 +364,10 @@
       "windmill": "Mlin na veter",
       "windmill-description": "Vetrnice prinesejo točke, ko so obkrožene v vzorcu velikega plusa.",
       "witch": "Čarovnica"
+    },
+    "event": {
+      "meeple-awarded": "Earned a meeple",
+      "meeple-awarded-hole": "Filled a hole"
     },
     "feature": {
       "acrobats": "Akrobati",

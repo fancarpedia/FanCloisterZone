@@ -347,6 +347,7 @@
       "little-buildings": "Petits bâtiments",
       "mage": "Mage",
       "mayor": "Maire",
+      "mini-follower": "Mini Meeple",
       "obelisk": "Obélisque",
       "phantom": "Fantôme",
       "pig": "Cochon",
@@ -363,6 +364,10 @@
       "windmill": "Moulin à vent",
       "windmill-description": "Les moulins à vent rapportent des points lorsqu’ils sont entourés d’un grand motif en forme de plus.",
       "witch": "Sorcière"
+    },
+    "event": {
+      "meeple-awarded": "Earned a meeple",
+      "meeple-awarded-hole": "Filled a hole"
     },
     "feature": {
       "acrobats": "Artistes",

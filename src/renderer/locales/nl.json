@@ -347,6 +347,7 @@
       "little-buildings": "Kleine Gebouwen",
       "mage": "Tovenaar",
       "mayor": "Burgemeester",
+      "mini-follower": "Mini Meeple",
       "obelisk": "Obelisk",
       "phantom": "Fantoom",
       "pig": "Varken",
@@ -363,6 +364,10 @@
       "windmill": "Windmolen",
       "windmill-description": "Windmolens leveren punten op als ze omringd worden in een groot kruisvormig patroon.",
       "witch": "Heks"
+    },
+    "event": {
+      "meeple-awarded": "Earned a meeple",
+      "meeple-awarded-hole": "Filled a hole"
     },
     "feature": {
       "acrobats": "Artiesten",

@@ -347,6 +347,7 @@
       "little-buildings": "Malé budovy",
       "mage": "Mág",
       "mayor": "Starosta",
+      "mini-follower": "Mini Meeple",
       "obelisk": "Obelisk",
       "phantom": "Fantóm",
       "pig": "Prasiatko",
@@ -363,6 +364,10 @@
       "windmill": "Veterný mlyn",
       "windmill-description": "Veterné mlyny získavajú body za obstavanie do veľkého plus.",
       "witch": "Čarodejnica"
+    },
+    "event": {
+      "meeple-awarded": "Earned a meeple",
+      "meeple-awarded-hole": "Filled a hole"
     },
     "feature": {
       "acrobats": "Akrobati",
