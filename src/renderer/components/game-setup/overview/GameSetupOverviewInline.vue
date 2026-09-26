@@ -53,7 +53,10 @@ export default {
     sets: { type: Object, required: true },
     elements: { type: Object, required: true },
     // optional per-tile overrides object — when non-empty, a "custom pack" marker is shown
-    tileOverrides: { type: Object, default: null }
+    tileOverrides: { type: Object, default: null },
+    // lay tiles out in a plain wrapping row instead of the compact 360px honeycomb
+    // (for places with enough horizontal room, where the overlap only hurts readability)
+    wide: { type: Boolean, default: false }
   },
 
   computed: {
@@ -66,6 +69,9 @@ export default {
     },
 
     sizeClass () {
+      if (this.wide) {
+        return 'wide'
+      }
       const size = this.configElementsSize
       if (size > 6) {
         return 'small'
@@ -122,6 +128,7 @@ export default {
 
   .overview-grid
     display: grid
+    isolation: isolate
     grid-template-columns: repeat(6, 60px)
     grid-auto-rows: 70px
 
@@ -157,6 +164,13 @@ export default {
 
       .symbol.name
         font-size: 10px
+
+.game-setup-overview-inline.wide
+  width: auto
+
+  .overview-grid
+    grid-template-columns: repeat(auto-fill, 60px)
+    column-gap: 4px
 
 .game-setup-overview-inline.small
   .overview-grid
