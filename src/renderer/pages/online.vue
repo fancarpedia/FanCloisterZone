@@ -2,7 +2,9 @@
   <div class="online-page">
     <EngineAlerts />
     <AppUpdateBox />
-    <v-menu offset-y left>
+    <!-- Only the web build needs this: the desktop app reaches Settings through the native
+         menu, so an in-view burger there is redundant chrome (same rule as pages/game.vue). -->
+    <v-menu v-if="isWeb" offset-y left>
       <template #activator="{ on, attrs }">
         <div class="online-menu" v-bind="attrs" :title="$t('menu.session')" v-on="on">
           <v-icon>fas fa-bars</v-icon>

@@ -102,6 +102,7 @@ export default {
       const t = options[0].meepleId.split('.')[1]
       if (t === 'small') return 'SmallFollower'
       if (t === 'big') return 'BigFollower'
+      if (t === 'mini') return 'MiniFollower'
       return t
     }
   }

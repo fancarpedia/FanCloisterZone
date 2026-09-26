@@ -2,6 +2,7 @@
 export const FOLLOWER_ORDERING = {
   SmallFollower: 1,
   Phantom: 10,
+  MiniFollower: 15,
   BigFollower: 20,
   Abbot: 30,
   Mayor: 40,

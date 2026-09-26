@@ -6,6 +6,7 @@ export const state = () => ({
   dragging: null,
   diceRollPanel: null,
   pointsExpression: null,
+  awardedMeeplePanel: null,
   returnedMeeplePanel: null,
   returnedTokenPanel: null,
   layers: {},
@@ -27,6 +28,10 @@ export const mutations = {
 
   pointsExpression (state, value) {
     state.pointsExpression = value
+  },
+
+  awardedMeeplePanel (state, value) {
+    state.awardedMeeplePanel = value
   },
 
   returnedMeeplePanel (state, value) {
@@ -80,6 +85,7 @@ export const mutations = {
   reset (state) {
     state.dragging = null
     state.pointsExpression = null
+    state.awardedMeeplePanel = null
     state.returnedMeeplePanel = null
     state.returnedTokenPanel = null
     state.layers = {}

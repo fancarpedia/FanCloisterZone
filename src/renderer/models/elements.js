@@ -38,6 +38,13 @@ export const SMALL_FOLLOWER = GameElement.SMALL_FOLLOWER = new GameElement('smal
 export const ABBOT = GameElement.ABBOT = new GameElement('abbot', 'Abbot', Number, { default: 0, keepBuildingMeeple: true, popularComponent: true })
 export const PHANTOM = GameElement.PHANTOM = new GameElement('phantom', 'Phantom', Number, { default: 0, keepBuildingMeeple: true, popularComponent: true })
 export const BIG_FOLLOWER = GameElement.BIG_FOLLOWER = new GameElement('big-follower', 'Big Follower', Number, { default: 0, keepBuildingMeeple: true })
+// Mini Meeple (fan expansion): power 0.5, awarded during play for placing a regular tile into
+// a hole. The value is the per-game CAP per player, not a starting supply — players begin with
+// none and MiniMeepleCapability creates each figure as it is awarded.
+// `default: 0` keeps it OFF unless the host picks it (a truthy default would force it into
+// every game — see getDefaultElements in plugins/tiles.js). The count it jumps to when
+// activated is the box's :default-value in FiguresTab.
+export const MINI_FOLLOWER = GameElement.MINI_FOLLOWER = new GameElement('mini-follower', 'Mini Meeple', Number, { default: 0, keepBuildingMeeple: true })
 export const BUILDER = GameElement.BUILDER = new GameElement('builder', 'Builder', Number, { default: 0 })
 export const PIG = GameElement.PIG = new GameElement('pig', 'Pig', Number, { default: 0 })
 export const BARN = GameElement.BARN = new GameElement('barn', 'Barn', Number, { default: 0 })
@@ -191,8 +198,14 @@ export const COURIER = GameElement.COURIER = new GameElement('courier', 'Courier
 //   { neutral:'<figure>', w?: <px> } — <NeutralFigure>; w only for the wide dragon
 //   { fig: '<file>.png', w?: <px>, h?: <px> } — image in assets/figures/
 //   { tile: '<tileId>' } — <StandaloneTileImage>
-// Rendered by <GameElementIcon>. Used by FiguresTab (setup), FinalStats and the "most popular
-// standalone elements" list, so the icon for a given element is defined once, here.
+//   { feature: '<C1|C2>/<file>' } — image in assets/features/ (tile-feature artwork)
+// This table owns WHICH image an element uses. Each consumer owns HOW BIG it draws it, since
+// they legitimately differ (the setup boxes are 55px, the game-list overview tiles are 70px) —
+// the w/h here are the <GameElementIcon> defaults.
+// Consumers: <GameElementIcon> (FiguresTab setup, FinalStats, the "most popular standalone
+// elements" list) and <OverviewElementTile> (the setup summary in the server game list).
+// A missing entry is how the Mini Meeple once rendered its "+2" badge with no figure at all —
+// add new elements here, never to a consumer's own list.
 /* eslint-disable quote-props */
 export const ELEMENT_ICONS = {
   // followers / special meeples
@@ -200,6 +213,7 @@ export const ELEMENT_ICONS = {
   'abbot': { meeple: 'abbot' },
   'phantom': { meeple: 'phantom' },
   'big-follower': { meeple: 'big-follower' },
+  'mini-follower': { meeple: 'mini-follower' },
   'builder': { meeple: 'builder' },
   'pig': { meeple: 'pig' },
   'mayor': { meeple: 'mayor' },
@@ -233,7 +247,26 @@ export const ELEMENT_ICONS = {
   'traders': { fig: 'trade.png', h: 45 },
   'king': { fig: 'king.png' },
   'robber': { fig: 'robber.png' },
-  'gold': { fig: 'gold.png', h: 40 }
+  'gold': { fig: 'gold.png', h: 40 },
+  // tile features — artwork in assets/features/<edition>/
+  'garden': { feature: 'C1/garden.png', w: 80, h: 55 },
+  'inn': { feature: 'C1/inn.png', w: 55, h: 55 },
+  'cathedral': { feature: 'C1/cathedral.png', w: 55, h: 55 },
+  'princess': { feature: 'C1/princess.png', h: 55 },
+  'portal': { feature: 'C1/magic_portal.png', h: 55 },
+  'pig-herd': { feature: 'C1/pig_herd.jpg', h: 55 },
+  'vineyard': { feature: 'C1/vineyard.png', h: 55 },
+  'bazaar': { feature: 'C1/bazaar.png', h: 45 },
+  'hill': { feature: 'C1/hill.png', h: 55 },
+  'shrine': { feature: 'C1/shrine.jpg', h: 55 },
+  'festival': { feature: 'C1/festival.png', h: 55 },
+  'escape': { feature: 'C1/escape.png', h: 55 },
+  'robbers-son': { feature: 'C1/robbers-son.png', h: 55 },
+  'well': { feature: 'C2/well.png', h: 55 },
+  'marketplace': { feature: 'C1/marketplace.png', h: 55 },
+  'meteorite': { feature: 'C1/crater.png', h: 55 },
+  'fishermen': { feature: 'C1/fishermen.png', h: 55 },
+  'fishhut': { feature: 'C1/fishhut.png', h: 55 }
 }
 /* eslint-enable quote-props */
 

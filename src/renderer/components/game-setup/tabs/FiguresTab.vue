@@ -6,6 +6,7 @@
         <GameElementBox v-if="!ai" :item="GameElement.ABBOT" :max="9" />
         <GameElementBox v-if="!ai" :item="GameElement.PHANTOM" :max="9" />
         <GameElementBox :item="GameElement.BIG_FOLLOWER" :max="9" />
+        <GameElementBox v-if="!ai" :item="GameElement.MINI_FOLLOWER" :max="9" :default-value="2" />
         <GameElementBox :item="GameElement.BUILDER" :max="9" />
         <GameElementBox :item="GameElement.PIG" :max="9" />
         <GameElementBox v-if="!ai" :item="GameElement.MAYOR" :max="9" />

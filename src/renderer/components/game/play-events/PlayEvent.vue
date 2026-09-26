@@ -20,6 +20,7 @@ import DragonMovedEvent from '@/components/game/play-events/DragonMovedEvent'
 import DiceSixRollEvent from '@/components/game/play-events/DiceSixRollEvent'
 import FlierDiceRollEvent from '@/components/game/play-events/FlierDiceRollEvent'
 import FlierRollEvent from '@/components/game/play-events/FlierRollEvent'
+import MeepleAwardedEvent from '@/components/game/play-events/MeepleAwardedEvent'
 import MeepleDeployedEvent from '@/components/game/play-events/MeepleDeployedEvent'
 import MeepleReturnedEvent from '@/components/game/play-events/MeepleReturnedEvent'
 import NeutralMovedEvent from '@/components/game/play-events/NeutralMovedEvent'
@@ -41,6 +42,7 @@ const MAPPING = {
   'dicesix-roll': DiceSixRollEvent,
   'flier-roll': FlierRollEvent,
   'flierdice-roll': FlierDiceRollEvent,
+  'meeple-awarded': MeepleAwardedEvent,
   'meeple-captured': MeepleReturnedEvent, // reuse returned component
   'meeple-deployed': MeepleDeployedEvent,
   'meeple-returned': MeepleReturnedEvent,
@@ -60,6 +62,7 @@ const MAPPING = {
 export default {
   components: {
     CastleCreatedEvent,
+    MeepleAwardedEvent,
     CoopGameLostEvent,
     DiceSixRollEvent,
     DragonMovedEvent,

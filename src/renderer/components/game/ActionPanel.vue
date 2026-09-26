@@ -16,6 +16,10 @@
       v-else-if="returnedMeeplePanel"
       :expr="returnedMeeplePanel"
     />
+    <AwardedMeeplePanel
+      v-else-if="awardedMeeplePanel"
+      :expr="awardedMeeplePanel"
+    />
     <ReturnedTokenPanel
       v-else-if="returnedTokenPanel"
       :expr="returnedTokenPanel"
@@ -28,7 +32,7 @@
     <component
       :is="actionComponent"
       v-if="action"
-      v-show="!pointsExpression && !notifyConnectionClosed && !returnedMeeplePanel && !returnedTokenPanel && !diceRollPanel"
+      v-show="!pointsExpression && !notifyConnectionClosed && !returnedMeeplePanel && !awardedMeeplePanel && !returnedTokenPanel && !diceRollPanel"
       :action="action"
       :phase="phase"
       :local="local && !ai"
@@ -61,12 +65,12 @@
 
     <GameResultPanel
       v-else-if="phase === 'GameOverPhase'"
-      v-show="!pointsExpression && !returnedMeeplePanel && !returnedTokenPanel && !diceRollPanel"
+      v-show="!pointsExpression && !returnedMeeplePanel && !awardedMeeplePanel && !returnedTokenPanel && !diceRollPanel"
       class="game-over"
     />
 
     <svg
-      v-if="action && activePlayerIndicatorTriangle && !returnedMeeplePanel && !returnedTokenPanel && !diceRollPanel"
+      v-if="action && activePlayerIndicatorTriangle && !returnedMeeplePanel && !awardedMeeplePanel && !returnedTokenPanel && !diceRollPanel"
       :class="`active-player-marker ${colorCssClass(action.player)} color-fill`"
       width="42" height="42"
     >
@@ -99,6 +103,7 @@ import GameResultPanel from '@/components/game/GameResultPanel.vue'
 import GoldPiecePhaseAction from '@/components/game/actions/GoldPiecePhaseAction.vue'
 import PointsExpression from '@/components/game/PointsExpression.vue'
 import RemoveMageOrWitchAction from '@/components/game/actions/RemoveMageOrWitchAction.vue'
+import AwardedMeeplePanel from '@/components/game/AwardedMeeplePanel.vue'
 import ReturnedMeeplePanel from '@/components/game/ReturnedMeeplePanel.vue'
 import ReturnedTokenPanel from '@/components/game/ReturnedTokenPanel.vue'
 import SelectPrisonerToExchangeAction from '@/components/game/actions/SelectPrisonerToExchangeAction.vue'
@@ -138,6 +143,7 @@ export default {
     FerryPhaseAction,
     PointsExpression,
     RemoveMageOrWitchAction,
+    AwardedMeeplePanel,
     ReturnedMeeplePanel,
     ReturnedTokenPanel,
     SelectPrisonerToExchangeAction,
@@ -173,6 +179,7 @@ export default {
       connectionState: state => state.networking.connectionStatus,
       diceRollPanel: state => state.board.diceRollPanel,
       pointsExpression: state => state.board.pointsExpression,
+      awardedMeeplePanel: state => state.board.awardedMeeplePanel,
       returnedMeeplePanel: state => state.board.returnedMeeplePanel,
       returnedTokenPanel: state => state.board.returnedTokenPanel,
       beep: state => state.settings.beep,
