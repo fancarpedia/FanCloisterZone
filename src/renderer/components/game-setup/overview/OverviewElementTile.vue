@@ -3,49 +3,32 @@
     :enabled="enabled"
     :z-index="zIndex"
   >
-    <svg v-if="isMeeple(element)" class="meeple" :width="70" :height="70">
-      <use :href="`${MEEPLES_SVG}#${element}`" />
+    <!-- Which image an element uses comes from ELEMENT_ICONS (models/elements.js) so it cannot
+         drift from the setup boxes; only the SIZE is local, because the overview draws bigger
+         than the 55px setup tiles. -->
+    <svg v-if="icon && icon.meeple" class="meeple" :width="70" :height="70">
+      <use :href="`${MEEPLES_SVG}#${icon.meeple}`" />
     </svg>
-    <img v-else-if="element === 'garden'" src="~/assets/features/C1/garden.png" width="80" height="55">
-    <NeutralFigure v-else-if="element === 'fairy'" figure="fairy" :width="70" :height="70" />
-    <NeutralFigure v-else-if="element === 'black-fairy'" figure="black-fairy" :width="70" :height="70" />
-    <NeutralFigure v-else-if="element === 'dragon'" figure="dragon" :width="80" :height="40" />
-    <NeutralFigure v-else-if="element === 'count'" figure="count" :width="70" :height="70" />
-    <StandaloneTileImage v-else-if="element === 'abbey'" tile-id="AM/A" :size="70" />
-    <img v-else-if="element === 'tower'" src="~/assets/figures/tower.png" height="45">
-    <img v-else-if="element === 'black-tower'" src="~/assets/figures/black_and_white_tower.png" height="45">
-    <img v-else-if="element === 'bridge'" src="~/assets/figures/bridge-alt.png" height="45">
-    <img v-else-if="element === 'castle'" src="~/assets/figures/castle.png" width="66" height="55">
-    <img v-else-if="element === 'little-buildings'" src="~/assets/figures/lb.png" width="70" height="70">
-    <img v-else-if="element === 'king'" src="~/assets/figures/king.png" width="70" height="70">
-    <img v-else-if="element === 'robber'" src="~/assets/figures/robber.png" width="70" height="70">
-    <img v-else-if="element === 'traders'" src="~/assets/figures/trade.png" height="28">
-    <img v-else-if="element === 'gold'" src="~/assets/figures/gold.png" width="70" height="37">
-    <img v-else-if="element === 'inn'" src="~/assets/features/C1/inn.png" width="55" height="55">
-    <img v-else-if="element === 'cathedral'" src="~/assets/features/C1/cathedral.png" width="55" height="55">
+    <svg v-else-if="icon && icon.token" class="meeple" :width="70" :height="70">
+      <use :href="`${TOKENS_SVG}#${icon.token}`" />
+    </svg>
+    <NeutralFigure
+      v-else-if="icon && icon.neutral"
+      :figure="icon.neutral"
+      :width="size.w"
+      :height="size.h"
+    />
+    <StandaloneTileImage v-else-if="icon && icon.tile" :tile-id="icon.tile" :size="70" />
+    <img v-else-if="icon && icon.fig" :src="figSrc(icon.fig)" :width="size.w" :height="size.h">
+    <img v-else-if="icon && icon.feature" :src="featureSrc(icon.feature)" :width="size.w" :height="size.h">
+
+    <!-- Bespoke renderings — not a plain image lookup, so they stay here. -->
     <svg v-else-if="element === 'farmers'" class="meeple" :width="70" :height="70">
       <g transform="translate(42 32) scale(0.6) rotate(90) translate(-27 -27)">
         <use :href="`${MEEPLES_SVG}#small-follower`" />
       </g>
     </svg>
-    <img v-else-if="element === 'princess'" src="~/assets/features/C1/princess.png" height="55">
-    <img v-else-if="element === 'portal'" src="~/assets/features/C1/magic_portal.png" height="55">
-    <img v-else-if="element === 'pig-herd'" src="~/assets/features/C1/pig_herd.jpg" height="55">
-    <img v-else-if="element === 'vineyard'" src="~/assets/features/C1/vineyard.png" height="55">
-    <img v-else-if="element === 'bazaar'" src="~/assets/features/C1/bazaar.png" height="45">
-    <img v-else-if="element === 'hill'" src="~/assets/features/C1/hill.png" height="55">
-    <img v-else-if="element === 'shrine'" src="~/assets/features/C1/shrine.jpg" height="55">
-    <img v-else-if="element === 'festival'" src="~/assets/features/C1/festival.png" height="55">
-    <img v-else-if="element === 'escape'" src="~/assets/features/C1/escape.png" height="55">
-
-	<img v-else-if="element === 'robbers-son'" src="~/assets/features/C1/robbers-son.png" height="55">
-	<img v-else-if="element === 'well'" src="~/assets/features/C2/well.png" height="55">
-	<TokenImage v-else-if="element === 'flowers'" token="FLOWERS_YELLOW" :height="55" />
-	<img v-else-if="element === 'marketplace'" src="~/assets/features/C1/marketplace.png" height="55">
-    <NeutralFigure v-else-if="element === 'donkey'" figure="donkey" :width="70" :height="70" />
-	<img v-else-if="element === 'meteorite'" src="~/assets/features/C1/crater.png" height="55">
-	<img v-else-if="element === 'fishermen'" src="~/assets/features/C1/fishermen.png" height="55">
-	<img v-else-if="element === 'fishhut'" src="~/assets/features/C1/fishhut.png" height="55">
+    <TokenImage v-else-if="element === 'flowers'" token="FLOWERS_YELLOW" :height="55" />
     <div v-else-if="element === 'pre-draw'" class="predraw-icon">⤵<span>hand</span></div>
     <div v-else-if="element === 'keep-building'" class="predraw-icon">🤝<span>co-op</span></div>
 
@@ -63,13 +46,34 @@
 </template>
 
 <script>
+import { getElementIcon } from '@/models/elements'
 import NeutralFigure from '@/components/game/NeutralFigure'
 import OverviewTile from '@/components/game-setup/overview/OverviewTile'
 import StandaloneTileImage from '@/components/game/StandaloneTileImage'
 import TokenImage from '@/components/game/TokenImage'
 
 const MEEPLES_SVG = require('~/assets/meeples.svg')
-const MEEPLES = ['small-follower', 'abbot', 'phantom', 'big-follower', 'builder', 'pig', 'mayor', 'wagon', 'barn', 'shepherd', 'ringmaster', 'obelisk', 'windmill', 'decinsky-sneznik' ]
+const TOKENS_SVG = require('~/assets/tokens.svg')
+// context requires so webpack bundles the referenced assets (a require.context directory
+// cannot use the '~' alias, hence the relative paths). `true` = recurse into C1/C2.
+const figureCtx = require.context('../../../assets/figures', false, /\.png$/)
+const featureCtx = require.context('../../../assets/features', true, /\.(png|jpg)$/)
+
+// Overview-only sizing, where this tile draws an icon differently from the setup boxes.
+// Anything not listed falls back to the ELEMENT_ICONS w/h hint (or 70×70 for neutral figures).
+const NEUTRAL_SIZE = { w: 70, h: 70 }
+const OVERVIEW_SIZE = {
+  'tower': { h: 45 },
+  'black-tower': { h: 45 },
+  'bridge': { h: 45 },
+  'castle': { w: 66, h: 55 },
+  'little-buildings': { w: 70, h: 70 },
+  'king': { w: 70, h: 70 },
+  'robber': { w: 70, h: 70 },
+  'traders': { h: 28 },
+  'gold': { w: 70, h: 37 },
+  'dragon': { w: 80, h: 40 }
+}
 
 export default {
   components: {
@@ -86,10 +90,23 @@ export default {
   },
 
   data () {
-    return { MEEPLES_SVG }
+    return { MEEPLES_SVG, TOKENS_SVG }
   },
 
   computed: {
+    icon () {
+      return getElementIcon(this.element)
+    },
+
+    size () {
+      const { icon } = this
+      if (!icon) return {}
+      const override = OVERVIEW_SIZE[this.element]
+      if (override) return override
+      if (icon.neutral) return NEUTRAL_SIZE
+      return { w: icon.w || null, h: icon.h || null }
+    },
+
     enabled () {
       return this.value === true || this.value > 0
     },
@@ -100,21 +117,33 @@ export default {
       if (this.value > 0) return '+' + this.value
       return '' + this.value
     },
-    
+
     elementTitle () {
-      if (this.$te('game.feature.'+this.element)) {
-        return this.$t('game.feature.'+this.element)
+      if (this.$te('game.feature.' + this.element)) {
+        return this.$t('game.feature.' + this.element)
       }
-      if (this.$te('game.element.'+this.element)) {
-        return this.$t('game.element.'+this.element)
+      if (this.$te('game.element.' + this.element)) {
+        return this.$t('game.element.' + this.element)
       }
-      return this.element.replace('-',' ')
+      return this.element.replace('-', ' ')
     }
   },
 
   methods: {
-    isMeeple (el) {
-      return MEEPLES.includes(el)
+    figSrc (file) {
+      try {
+        return figureCtx('./' + file)
+      } catch (e) {
+        return null
+      }
+    },
+
+    featureSrc (file) {
+      try {
+        return featureCtx('./' + file)
+      } catch (e) {
+        return null
+      }
     }
   }
 }
@@ -135,7 +164,7 @@ export default {
 
 .tile-img, img
   filter: grayscale(100%)
-  
+
 .off
   .tile-img, img
     filter: grayscale(75%)
@@ -156,4 +185,4 @@ export default {
   .off
     .tile-img, img
       filter: grayscale(25%)
- </style>
+</style>
