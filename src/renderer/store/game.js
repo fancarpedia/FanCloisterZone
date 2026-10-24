@@ -16,7 +16,7 @@ import Location from '@/models/Location'
 import { randomId } from '@/utils/random'
 import { getAppVersion } from '@/utils/version'
 import { isSameFeature, generateSaveContent } from '@/utils/gameUtils'
-import { verifyScenario } from '@/utils/testing'
+import { verifyScenario, describeActionItem } from '@/utils/testing'
 import { getDefaultRules } from '@/models/rules'
 import { getSelectedEdition, getSelectedStartingTiles } from '@/utils/gameSetupUtils'
 
@@ -540,57 +540,53 @@ export const actions = {
           }
           if (!endGame && !!gameState.action) {
             content.test.assertions.push(`Player ${gameState.action.canPass ? 'can' : 'can\'t'} pass`)
+            // One exhaustive assertion for everything on offer, so a replay also fails when an
+            // action is present that should NOT be (see AvailableActionsAssert). The per-action
+            // `... options:` lines below stay — they check WHERE each one may be used.
+            content.test.assertions.push(`Available actions: ${gameState.action.items.map(describeActionItem).join('; ') || 'none'}`)
             for (const i of gameState.action.items) {
               let options = []
               switch(i.type) {
 				case 'BazaarSelectTile':
-				  content.test.assertions.push(`Available action ${i.type}`)
 				  content.test.assertions.push(`Bazaar noAuction: ${i.noAuction}`)
 				  break;
                 case 'CaptureFollower':
-          	  	  content.test.assertions.push(`Available action ${i.type}`)
           	  	  for (const o of i.options) {
           	        options.push(['{',[o.meepleId,o.featurePointer.feature,o.featurePointer.location,['[',o.featurePointer.position.join(','),']'].join('')].join(','),'}'].join(''))
           	  	  }
 		          content.test.assertions.push(`CaptureFollower options: ${options.join('; ')}`)
                   break;
           	  	case 'Ferries':
-          	  	  content.test.assertions.push(`Available action ${i.type}`)
           	  	  for (const o of i.options) {
           	        options.push(['{',[o.feature,o.location,['[',o.position.join(','),']'].join('')].join(','),'}'].join(''))
           	  	  }
 		          content.test.assertions.push(`Ferries options: ${options.join('; ')}`)
           	  	  break;
           	  	case 'Meeple':
-          	  	  content.test.assertions.push(`Available action ${i.type} for ${i.meeple}`)
                   for (const o of i.options) {
           	        options.push(['{',[o.feature,o.location,['[',o.position.join(','),']'].join('')].join(','),'}'].join(''))
           	  	  }
 		          content.test.assertions.push(`Meeple ${i.meeple} options: ${options.join('; ')}`)
           	  	  break;
 				case 'ReturnMeeple':
-			      content.test.assertions.push(`Available action ${i.type} for ${i.source}`)
 				  for (const o of i.options) {
 					options.push(['{',[o.meepleId,o.featurePointer.feature,o.featurePointer.location,['[',o.featurePointer.position.join(','),']'].join('')].join(','),'}'].join(''))
 			      }
 				  content.test.assertions.push(`ReturnMeeple ${i.source} options: ${options.join('; ')}`)
 			      break;
                 case 'TilePlacement':
-          	  	  content.test.assertions.push(`Available action ${i.type} for ${i.tileId}`)
           	      for (const o of i.options) {
           	        options.push(`[${o.position.join(',')}] - [${o.rotations.join(',')}]`)
           	  	  }
 		          content.test.assertions.push(`TilePlacement ${i.tileId} options: ${options.join('; ')}`)
           	  	  break;
                 case 'TowerPiece':
-          	  	  content.test.assertions.push(`Available action ${i.type} for ${i.token}`)
           	      for (const o of i.options) {
           	        options.push(`[${o.join(',')}]`)
           	  	  }
 		          content.test.assertions.push(`Tower piece ${i.token} options: ${options.join('; ')}`)
           	  	  break;
           	  	case 'Tunnel':
-          	  	  content.test.assertions.push(`Available action ${i.type} for ${i.token}`)
                   for (const o of i.options) {
           	        options.push(['{',[o.feature,o.location,['[',o.position.join(','),']'].join('')].join(','),'}'].join(''))
           	  	  }

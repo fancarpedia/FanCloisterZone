@@ -4,6 +4,33 @@ const findPlayerIndex = (state, name) => {
   return state.players.findIndex(p => p.name === name)
 }
 
+// The scalar fields that identify WHICH thing an action item is about, in precedence order.
+// One list covers every action type instead of a per-type switch: `Meeple` carries `meeple`,
+// `TilePlacement` a `tileId`, `TowerPiece`/`Tunnel` a `token`, `ReturnMeeple` a `source`, the
+// fairy/dragon/donkey actions a `figureId`, and the rest (Confirm, BazaarBid, ...) none at all.
+// MUST match ACTION_QUALIFIERS in the engine harness
+// (JCloisterZoneEngine src/main/ts/com/jcloisterzone/engine/jcz.test.ts).
+const ACTION_QUALIFIERS = ['meeple', 'tileId', 'token', 'source', 'figureId']
+
+// `Meeple,SmallFollower` / `TilePlacement,BA/L` / `Confirm` — one descriptor per action item.
+export const describeActionItem = item => {
+  for (const key of ACTION_QUALIFIERS) {
+    const value = item[key]
+    if (typeof value === 'string' || typeof value === 'number') {
+      return `${item.type},${value}`
+    }
+  }
+  return `${item.type}`
+}
+
+const parseActionList = body => {
+  const text = body.trim()
+  if (text === '' || text.toLowerCase() === 'none') {
+    return []
+  }
+  return text.split(';').map(x => x.trim()).filter(x => x !== '')
+}
+
 // -------------------- Points Assert --------------------
 class PointsAssert {
   constructor(state) {
@@ -153,6 +180,47 @@ class BazaarNoAuctionAssert {
       }
 	  return { result: this.state.action.items[0].noAuction === value }
 	}
+  }
+}
+
+// -------------------- Available Actions Assert --------------------
+// `Available actions: Meeple,SmallFollower; Meeple,MiniFollower` — the EXHAUSTIVE set of
+// offered action items. Unlike AvailableActionAssert (which only checks that one action is
+// present) this also fails on an action that should NOT be offered, which is what catches a
+// figure wrongly made deployable. `none` asserts that nothing is offered.
+class AvailableActionsAssert {
+  constructor(state) {
+    this.state = state
+    this.REGEXP = /^Available actions:(.*)$/i
+  }
+
+  verify(assertion) {
+    const m = this.REGEXP.exec(assertion)
+    if (!m) return
+
+    const expected = parseActionList(m[1]).sort()
+    const items = this.state.action?.items
+    if (isNil(items)) {
+      return expected.length === 0
+        ? { result: true }
+        : { result: false, error: `AvailableActionsAssert: state.action is null — nothing offered, expected [${expected.join('; ')}]` }
+    }
+
+    const actual = items.map(describeActionItem).sort()
+    if (actual.length === expected.length && actual.every((x, i) => x === expected[i])) {
+      return { result: true }
+    }
+
+    const missing = expected.filter(x => !actual.includes(x))
+    const unexpected = actual.filter(x => !expected.includes(x))
+    const detail = [
+      missing.length ? `missing: ${missing.join('; ')}` : null,
+      unexpected.length ? `unexpected: ${unexpected.join('; ')}` : null
+    ].filter(x => x !== null).join(', ')
+    return {
+      result: false,
+      error: `AvailableActionsAssert: expected [${expected.join('; ')}] but got [${actual.join('; ')}]${detail ? ` (${detail})` : ''}`
+    }
   }
 }
 
@@ -744,6 +812,7 @@ export function verifyScenario(state, { description, assertions }) {
     new TurnPlayerAssert(state),
     new ActivePlayerAssert(state),
 	new BazaarNoAuctionAssert(state),
+    new AvailableActionsAssert(state),
     new AvailableActionAssert(state),
     new TilePlacementOptionsAssert(state),
     new UndoAssert(state),
