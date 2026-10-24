@@ -1,7 +1,7 @@
 const https = require('https')
 const fs = require('fs')
 
-const ENGINE_VERSION = 'v7.0.0-beta.3'
+const ENGINE_VERSION = 'v7.0.0-beta.4'
 const ENGINE_FILE = 'jcz-engine.js'
 const VERSION_MARKER = '.engine-version'
 const ENGINE_URL =
