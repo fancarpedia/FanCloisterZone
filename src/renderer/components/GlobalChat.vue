@@ -24,7 +24,12 @@
 
       <div ref="messages" class="gc-messages">
         <div v-if="!messages.length" class="gc-empty">{{ $t('chat.empty') }}</div>
-        <div v-for="(m, i) in messages" :key="i" class="gc-message">
+        <div
+          v-for="(m, i) in messages"
+          :key="i"
+          class="gc-message"
+          :class="{ 'author-inactive': !isAuthorActive(m) }"
+        >
           <span class="gc-bullet" />
           <span class="gc-name">{{ m.name || '?' }}</span>
           <span class="gc-time">{{ time(m) }}</span>
@@ -88,8 +93,16 @@ export default {
       locale: state => state.settings.locale,
       connectionType: state => state.networking.connectionType,
       nickname: state => state.settings.nickname,
-      beepEnabled: state => state.settings.beep
+      beepEnabled: state => state.settings.beep,
+      connectedClients: state => state.online.connectedClients
     }),
+
+    // clientIds currently connected (the server pushes this as CLIENT_LIST). Includes ourselves,
+    // so our own messages never dim. Reactive: a message dims the moment its author leaves and
+    // brightens again if they come back.
+    activeClientIds () {
+      return new Set((this.connectedClients || []).map(c => c.clientId))
+    },
 
     // Global chat is ONLINE-ONLY (server-broadcast): hidden in local/offline games, both as the
     // inline lobby panel and as the bullet. (connectionType is 'online' only for online play.)
@@ -134,6 +147,13 @@ export default {
   },
 
   methods: {
+    // Is the message's author still connected? Messages carry the sender's clientId (the server
+    // fills it in). An author we cannot identify is treated as ACTIVE, so we never dim by mistake.
+    isAuthorActive (m) {
+      if (!m || !m.clientId) return true
+      return this.activeClientIds.has(m.clientId)
+    },
+
     openChat () {
       if (!this.bulletClickAllowed()) return // the click just ended a drag
       this.open = true
@@ -185,6 +205,15 @@ $gc-blue: #2196f3
   background: $gc-blue
   margin-right: 6px
   flex: 0 0 auto
+
+// Author is no longer connected: dim the bullet + name so it is obvious they cannot reply.
+// The message text and timestamp stay at full brightness (opacity, not color, so it works
+// against both the light and dark theme without restating the palette).
+.gc-message.author-inactive
+  .gc-bullet
+    opacity: 0.35
+  .gc-name
+    opacity: 0.5
 
 .overlay
   .gc-launcher

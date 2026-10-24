@@ -34,7 +34,10 @@
             v-for="m in messages"
           >
             <div
-              :class="'sender color-bg-important color color-overlay color-'+ getMessageSlotColor(m)"
+              :class="[
+                'sender color-bg-important color color-overlay color-' + getMessageSlotColor(m),
+                { inactive: !isMessageAuthorActive(m) }
+              ]"
             >
               <!-- {{ getPlayerName(m.player) }} -->
             </div>
@@ -304,6 +307,22 @@ export default {
       if (!isNil(m.slot)) return m.slot
       return this.getPlayerSlotColor(m.player)
     },
+    // Is the message's author still connected? The server nulls a seat's sessionId when its client
+    // disconnects, so sessionId is the liveness signal. Mirrors getMessageSlotColor's rule: a
+    // pre-game message carries `slot` (a slot NUMBER, matched against players[].slot / slots[].number),
+    // otherwise `player` is an index into players. An author we cannot resolve counts as ACTIVE, so
+    // we never dim by mistake.
+    isMessageAuthorActive(m) {
+      if (!m) return true
+      if (!isNil(m.slot)) {
+        const byPlayer = (this.players || []).find(p => p && p.slot === m.slot)
+        if (byPlayer) return !!byPlayer.sessionId
+        const slot = (this.slots || []).find(s => s && s.number === m.slot)
+        return slot ? !!slot.sessionId : true
+      }
+      const p = (this.players || [])[m.player]
+      return p ? !!p.sessionId : true
+    },
     getMessageTime(message) {
       if (!isNil(message.timestamp)) {
         const date = new Date(message.timestamp * 1000)
@@ -556,6 +575,11 @@ export default {
       padding: 2px 5px
       display: inline-block
       border-radius: 5px
+
+      // Author's seat is no longer connected: dim their colour swatch (the author marker here —
+      // the name is not rendered). Message text and time stay at full brightness.
+      &.inactive
+        opacity: 0.35
 
     .time
       color: #bbb
