@@ -293,6 +293,26 @@ const SHIM = '<script>' +
     console.log('\n*** WEB BUILD OK' + (BUNDLED_ONLY ? ' (bundled-only: no downloads, simplified artwork)' : '') + ' ***')
     console.log('output: ' + DIST + '  (' + (bytes / 1048576).toFixed(1) + ' MB)')
     console.log('serve:  node web-build/serve.js')
+
+    // This build refreshed dist/ ONLY. web-build/site/ (landing at /, app at /app/) is a COPY of
+    // dist/ taken by build-landing.js, so it still holds whatever app was current when it last
+    // ran. Deploying site/ after a plain build:web therefore ships the old app — assets are
+    // content-hashed, so the stale copy looks perfectly valid and simply shows old artwork.
+    // Not rebuilt automatically: site/ is meant to carry the OFFLINE variant (build:web:site),
+    // which is not necessarily the variant just built here.
+    const siteInfo = path.join(__dirname, 'site', 'build-info.json')
+    if (fs.existsSync(siteInfo)) {
+      let info = {}
+      try { info = JSON.parse(fs.readFileSync(siteInfo, 'utf8')) } catch (e) { /* treat as stale */ }
+      if (info.buildId !== BUILD_ID) {
+        console.log('\n!!! web-build/site/ is now STALE — it still holds app ' +
+          (info.appVersion || '?') + ' / engine ' + (info.engineVersion || '?') +
+          ' built ' + (info.builtAt || '?') + '.')
+        console.log('    Deploying site/ would ship that older app, not this build.')
+        console.log('    Refresh it with:  yarn build:web:site      (offline variant + landing)')
+        console.log('    or just:          yarn build:web:landing   (re-copy the dist/ built above)')
+      }
+    }
     process.exit(0)
   } catch (e) {
     console.log('\n*** WEB BUILD FAILED ***')
