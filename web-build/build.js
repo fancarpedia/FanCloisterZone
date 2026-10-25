@@ -184,10 +184,7 @@ const SHIM = '<script>' +
   const generator = new Generator(nuxt, new Builder(nuxt))
 
   try {
-    await generator.generate({ build: true, init: true })
-
-    // Both sub-steps must run AFTER `generate`, which wipes dist/.
-    // Non-fatal: without them the app still boots, it just cannot run games.
+    // Non-fatal: without these the app still boots, it just cannot run games.
     const sub = (script, args, warn) => {
       try {
         require('child_process').execFileSync(
@@ -198,6 +195,16 @@ const SHIM = '<script>' +
       }
     }
 
+    // The engine VERSION must be resolved before `generate`: the child_process stub does
+    // `require('../engine-version.json')` and webpack bakes the value into the app bundle, so
+    // writing it after generate (as the worker build below does) would ship the version from the
+    // previous build. This also surfaces a stale engine dist/ before the long Nuxt build.
+    sub('build-engine-worker.js', ['--version-only'],
+      'engine version NOT resolved — the app may report a stale engine version.')
+
+    await generator.generate({ build: true, init: true })
+
+    // The worker bundle must be produced AFTER `generate`, which wipes dist/.
     // Build the TS engine Web Worker FIRST (before the HTML is finalized) so we can content-hash it
     // and give it a versioned filename — otherwise its fixed name (jcz-engine.worker.js) is cached
     // and a rebuilt engine is never picked up. Then rewrite the loader URL into the SHIM below.

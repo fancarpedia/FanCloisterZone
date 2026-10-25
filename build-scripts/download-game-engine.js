@@ -11,7 +11,16 @@ function download (url, dest) {
   return new Promise((resolve, reject) => {
     https
       .get(url, res1 => {
-        // GitHub redirects release-asset URLs to the actual storage location
+        // GitHub redirects release-asset URLs to the actual storage location. No redirect means
+        // no asset — typically the release does not exist because that engine version was never
+        // built and published. Report it instead of calling https.get(undefined), which throws.
+        if (!res1.headers.location) {
+          reject(new Error(
+            `HTTP ${res1.statusCode} and no redirect for ${url}\n` +
+            `  The release asset does not exist — is engine ${ENGINE_VERSION} built and published?`
+          ))
+          return
+        }
         https
           .get(res1.headers.location, res2 => {
             if (res2.statusCode !== 200) {
