@@ -12,7 +12,7 @@
           <Meeple type="SmallFollower" />
         </div>
         <div class="coop-result">
-          {{ coop.lost ? $t('game.coop.all-lose') : $t('game.coop.team-score', { points: teamPoints }) }}
+          {{ coop.lost ? $t('game.coop.all-lose') : $tc('game.coop.team-score-plural', teamPoints, { points: teamPoints }) }}
         </div>
       </div>
       <template v-else>

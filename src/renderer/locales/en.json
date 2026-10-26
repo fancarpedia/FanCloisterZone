@@ -322,7 +322,7 @@
       "all-win": "All players win!",
       "all-lose": "All players lose",
       "triggered-by": "{name} could neither enlarge an occupied feature nor occupy a new one.",
-      "team-score": "Team score: {points} points"
+      "team-score-plural": "Team score: {points} points | Team score: {points} point | Team score: {points} points"
     },
     "element": {
       "abbey": "Abbey",
@@ -481,7 +481,7 @@
       "kick-player": "Kick player",
       "local-ai-player": "local ai player",
       "local-limit-reached": "Limit reached",
-      "local-limit-reached-tooltip": "Maximum {limit} local players allowed",
+      "local-limit-reached-tooltip-plural": "Maximum {limit} local players allowed | Maximum {limit} local player allowed | Maximum {limit} local players allowed",
       "local-player": "local player",
       "name": "Name",
       "open-slot": "open slot",
@@ -732,7 +732,7 @@
       "leaderboard-online-only": "Connect to the online server to browse the best co-op setups and scores.",
       "leaderboard-loading": "Loading best setups from the server…",
       "leaderboard-empty": "No finished co-op games yet — set up your own game and be the first on the board!",
-      "n-players": "{players} players",
+      "n-players-plural": "{players} players | {players} player | {players} players",
       "play-it": "Play it",
       "popular-setups": "Most popular setups",
       "popular-online-only": "Connect to the online server to browse the most-played setups.",

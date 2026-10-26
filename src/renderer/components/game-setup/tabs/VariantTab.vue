@@ -88,7 +88,7 @@
       </div>
       <template v-else>
         <div v-for="group in popularGrouped" :key="'p' + group.players" class="leaderboard-group">
-          <h3>{{ $t('game-setup.variant.n-players', { players: group.players }) }}</h3>
+          <h3>{{ $tc('game-setup.variant.n-players-plural', group.players, { players: group.players }) }}</h3>
           <div class="leaderboard-rows">
             <div
               v-for="item in group.items"
@@ -130,7 +130,7 @@
       </div>
       <template v-else>
         <div v-for="group in grouped" :key="group.players" class="leaderboard-group">
-          <h3>{{ $t('game-setup.variant.n-players', { players: group.players }) }}</h3>
+          <h3>{{ $tc('game-setup.variant.n-players-plural', group.players, { players: group.players }) }}</h3>
           <div class="leaderboard-rows">
             <div
               v-for="item in group.items"

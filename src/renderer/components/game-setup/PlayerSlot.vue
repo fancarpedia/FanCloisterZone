@@ -38,7 +38,7 @@
             <v-icon small>fas fa-question-circle</v-icon>
           </span>
         </template>
-        <span>{{ $t('game-setup.create.local-limit-reached-tooltip', { limit: localLimit }) }}</span>
+        <span>{{ $tc('game-setup.create.local-limit-reached-tooltip-plural', localLimit, { limit: localLimit }) }}</span>
       </v-tooltip>
       <template v-else>{{ name }}</template>
     </div>
