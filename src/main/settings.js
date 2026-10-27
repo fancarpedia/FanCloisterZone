@@ -1,6 +1,6 @@
 import fs from 'fs'
 import path from 'path'
-import { app, ipcMain } from 'electron'
+import { app, ipcMain, BrowserWindow } from 'electron'
 
 export const SETTINGS_FILE = process.env.JCZ_CONFIG || path.join(app.getPath('userData'), 'jcz-config.json')
 
@@ -55,6 +55,18 @@ export default async function () {
     await fs.promises.writeFile(SETTINGS_FILE, JSON.stringify(data, null, 2))
     settings = data
     saving = false
+    // Tell every OTHER window about it. The fs watcher cannot be relied on here: it is skipped
+    // while isSaveInProgress(), and modules/settingsWatch keeps a single module-level watcher, so
+    // only the most recently created window would ever be notified. Without this, a language (or
+    // any other setting) picked in one window never reaches the windows already open — including
+    // the hidden warm window that the next "New Game" click will claim.
+    const payload = { settings: data, file: SETTINGS_FILE, systemLocale: app.getSystemLocale() || 'en-US' }
+    for (const win of BrowserWindow.getAllWindows()) {
+      if (win.isDestroyed()) continue
+      const wc = win.webContents
+      if (wc.id === ev.sender.id) continue // the sender already has it
+      wc.send('settings.changed', payload)
+    }
   })
 
   console.log(`Loading settings from ${SETTINGS_FILE}`)

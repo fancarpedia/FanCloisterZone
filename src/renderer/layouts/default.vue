@@ -411,7 +411,7 @@ export default {
 
     await this.$store.dispatch('settings/loaded', await ipcRenderer.invoke('settings.get'))
     onThemeChange(this.$store.state.settings.theme)
-    this.$i18n.setLocale(this.$store.state.settings.locale)
+    this.applyLocale()
     this.updateMenu()
     this.updateTitle()
     this.syncMenuChecks()
@@ -420,8 +420,9 @@ export default {
       this.$store.commit('errorMessage', value)
     })
 
-    ipcRenderer.on('settings.changed', (ev, value) => {
-      this.$store.dispatch('settings/loaded', value)
+    ipcRenderer.on('settings.changed', async (ev, value) => {
+      await this.$store.dispatch('settings/loaded', value)
+      this.applyLocale() // language picked in another window must follow into this one
     })
 
     ipcRenderer.on('settings.update', async (ev, update) => {
@@ -434,6 +435,7 @@ export default {
     ipcRenderer.on('settings.shared-update', async (ev, update) => {
       const wasOnline = this.$store.state.networking.connectionType === 'online'
       this.$store.commit('settings/settings', { settings: update, source: 'update' })
+      this.applyLocale()
       if (Object.prototype.hasOwnProperty.call(update, 'localPlayOnline')) {
         this.syncMenuChecks()
         if (wasOnline) await this.$store.dispatch('networking/reconnectOnline')
@@ -473,7 +475,14 @@ export default {
 
     // Multi-window: a dedicated game window asks the main process for its launch intent and runs it.
     if (this.$windows.isGameWindow()) {
-      ipcRenderer.on('game-window.init', (ev, { intent }) => this.handleGameWindowInit(intent))
+      // A warm (pre-booted, hidden) window mounted with whatever settings were current at warm-up
+      // time, which can be minutes old. Re-read them on claim so the window shows the language the
+      // user has on screen NOW, not the one from app start.
+      ipcRenderer.on('game-window.init', async (ev, { intent }) => {
+        await this.$store.dispatch('settings/loaded', await ipcRenderer.invoke('settings.get'))
+        this.applyLocale()
+        this.handleGameWindowInit(intent)
+      })
       ipcRenderer.send('game-window.ready')
     }
 
@@ -499,6 +508,16 @@ export default {
   },
 
   methods: {
+    // Push the stored locale into vue-i18n. Called on mount AND on every path that can deliver
+    // settings from elsewhere (another window's save, a shared patch, a warm window being claimed),
+    // because setting the store value alone does not re-translate the UI.
+    applyLocale () {
+      const locale = this.$store.state.settings.locale
+      if (locale && locale !== this.$i18n.locale) {
+        this.$i18n.setLocale(locale)
+      }
+    },
+
     // Save the current game as a test scenario, then offer to open it for verification.
     async saveScenario (endGame) {
       try {
