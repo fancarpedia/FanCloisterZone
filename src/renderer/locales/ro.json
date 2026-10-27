@@ -1,8 +1,8 @@
 {
   "@author": "Paloi Sciurala",
   "@jcz-version": "5.12.1",
-  "@fcz-version": "6.3.0",
-  "@version": "0.11.9",
+  "@fcz-version": "7.0.1",
+  "@version": "0.11.11",
   "about": {
     "author": "Autor",
     "configuration-file": "Fișier de configurație",
@@ -179,7 +179,7 @@
     "decinsky-sneznik-description": "Un nou pion special, Turnul de observație, care este plasat pe un câmp și finalizat atunci când este înconjurat de cartonașe în toate direcțiile cardinale (nord, est, sud și vest).",
     "dutch-monasteries": "Mănăstiri neerlandeze",
     "dutch-monasteries-description": "Asemănătoare cu mănăstirile germane, aceste mănăstiri neerlandeze sunt menite să înlocuiască mănăstirile din jocul de bază.",
-    "family-feud": "Feuda familiei",
+    "family-feud": "Vrajba dintre familii",
     "family-feud-description": "Cartonașele cu blazoane albastre-albe roșii-galbene aparțin unor familii rivale. Niciun cartonaș nu poate fi plasat în așa fel încât orașe ce aparțin unor familii rivale să devină conectate.",
     "farmers-heaven": "Raiul țăranilor",
     "farmers-heaven-description": "Din moment ce cele mai multe extensii sunt în principal axate pe orașe, este vremea să se facă ceva pentru țărani.",
@@ -322,7 +322,7 @@
       "all-win": "Toți jucătorii câștigă!",
       "all-lose": "Toți jucătorii pierd",
       "triggered-by": "{name} nu a putut nici să prelungească un teritoriu ocupat, nici să ocupe unul nou.",
-      "team-score": "Punctajul echipei: {points} puncte"
+      "team-score-plural": "Punctajul echipei: {points} puncte | Punctajul echipei: {points} punct | Punctajul echipei: {points} puncte"
     },
     "element": {
       "abbey": "Abație",
@@ -347,7 +347,7 @@
       "little-buildings": "Construcții mici",
       "mage": "Magician",
       "mayor": "Primar",
-      "mini-follower": "Mini Meeple",
+      "mini-follower": "Mini-meeple",
       "obelisk": "Obelisc",
       "phantom": "Fantomă",
       "pig": "Porc",
@@ -366,8 +366,8 @@
       "witch": "Vrăjitoare"
     },
     "event": {
-      "meeple-awarded": "Earned a meeple",
-      "meeple-awarded-hole": "Filled a hole"
+      "meeple-awarded": "A dobândit un meeple",
+      "meeple-awarded-hole": "Umplut o gaură"
     },
     "feature": {
       "acrobats": "Artiști",
@@ -481,7 +481,7 @@
       "kick-player": "Dă jucătorul afară",
       "local-ai-player": "jucător local cu IA",
       "local-limit-reached": "Limita a fost atinsă",
-      "local-limit-reached-tooltip": "Se permit maxim {limit} jucători locali",
+      "local-limit-reached-tooltip-plural": "Se permit maxim {limit} jucători locali | Se permite maxim {limit} jucător local | Se permit maxim {limit} jucători locali",
       "local-player": "jucător local",
       "name": "Nume",
       "open-slot": "deschide locul",
@@ -732,7 +732,7 @@
       "leaderboard-online-only": "Conectează-te la serverul online pentru a răsfoi cele mai bune configurații și punctaje cooperative.",
       "leaderboard-loading": "Se încarcă cele mai bune configurații din server…",
       "leaderboard-empty": "Nicio partidă cooperativă finalizată deocamdată — configurează-ți propria ta partidă și fii primul la înaintare!",
-      "n-players": "{players} jucători",
+      "n-players-plural": "{players} jucători | {players} jucător | {players} jucător",
       "play-it": "Joac-o",
       "popular-setups": "Cele mai populare configurații",
       "popular-online-only": "Conectează-te la serverul online pentru a răsfoi cele mai jucate configurații.",
@@ -852,15 +852,15 @@
     "zoom-out": "Micșorează"
   },
   "open-windows": {
-    "title": "Open game windows",
-    "empty": "No game windows open",
-    "focus": "Bring window to front",
-    "close": "Close window",
-    "progress": "Placed tiles / total",
+    "title": "Ferestrele partidelor deschise",
+    "empty": "Nu este deschisă nicio fereastră a unei partide",
+    "focus": "Adu fereastra în față",
+    "close": "Închide fereastra",
+    "progress": "Cartonașe plasate / total",
     "kind": {
-      "local": "Local game",
-      "online": "Online game",
-      "game": "Game"
+      "local": "Partidă locală",
+      "online": "Partidă online",
+      "game": "Partidă"
     }
   },
   "predraw": {
@@ -970,7 +970,7 @@
       "path-is-not-directory": "Calea nu este un director",
       "taskbar": {
         "title": "Bara de sarcini a Windows-ului",
-        "separate": "Separă butoanele barei de sarcini (câte una pentru fiecare fereastră)",
+        "separate": "Separă butoanele barei de sarcini (câte unul pentru fiecare fereastră)",
         "grouped": "Grupează ferestrele (ridică în partea de sus partida activă atunci când este tura ta)",
         "hint": "Schimbă felul în care arată pe bara de sarcini a Windows-ului ferestrele lobbyului și ale partidelor."
       },

@@ -322,7 +322,7 @@
       "all-win": "Všichni hráči vyhrávají!",
       "all-lose": "Všichni hráči prohrávají",
       "triggered-by": "{name} nerozšířil obsazené území ani neobsadil nové.",
-      "team-score-plural": "Skóre týmu: {points} bodů | Skóre týmu: {points} bod | Skóre týmu: {points} bodů"
+      "team-score-plural": "Skóre týmu: 0 bodů | Skóre týmu: 1 bod | Skóre týmu: {points} body | Skóre týmu: {points} bodů"
     },
     "element": {
       "abbey": "Opatství",
@@ -481,7 +481,7 @@
       "kick-player": "Odpojit hráče",
       "local-ai-player": "místní AI hráč",
       "local-limit-reached": "Dosažený limit",
-      "local-limit-reached-tooltip-plural": "Maximálně {limit} místních hráčů | Maximálně {limit} místní hráč | Maximálně {limit} místních hráčů",
+      "local-limit-reached-tooltip-plural": "Maximálně {limit} místních hráčů | Maximálně {limit} místní hráč | Maximálně {limit} místní hráči | Maximálně {limit} místních hráčů",
       "local-player": "místní hráč",
       "name": "Jméno",
       "open-slot": "Volná pozice",
@@ -732,7 +732,7 @@
       "leaderboard-online-only": "Připojte se k online serveru, abyste si mohli prohlédnout nejlepší kooperativní nastavení a skóre.",
       "leaderboard-loading": "Načítají se nejlepší nastavení ze serveru…",
       "leaderboard-empty": "Zatím žádné dokončené kooperativní hry — připravte si vlastní hru a buďte první v tabulce!",
-      "n-players-plural": "{players} hráčů | {players} hráč | {players} hráčů",
+      "n-players-plural": "0 hráčů | 1 hráč | {players} hráči | {players} hráčů",
       "play-it": "Zahrát si",
       "popular-setups": "Nejpopulárnější nastavení",
       "popular-online-only": "Připojte se k online serveru, abyste si mohli prohlédnout nejhranější nastavení.",

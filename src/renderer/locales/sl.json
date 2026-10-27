@@ -322,7 +322,7 @@
       "all-win": "Vsi igralci zmagajo!",
       "all-lose": "Vsi igralci izgubijo",
       "triggered-by": "{name} ni niti razširil zasedenega območja niti zasedel novega.",
-      "team-score-plural": "Izid ekipe: {points} točk | Izid ekipe: {points} točka | Izid ekipe: {points} točk"
+      "team-score-plural": "Izid ekipe: 0 točk | Izid ekipe: {points} točka | Izid ekipe: {points} točki | Izid ekipe: {points} točke | Izid ekipe: {points} točk"
     },
     "element": {
       "abbey": "Opatija",
@@ -481,7 +481,7 @@
       "kick-player": "Izključi igralca",
       "local-ai-player": "Lokalni AI igralec",
       "local-limit-reached": "Omejitev dosežena",
-      "local-limit-reached-tooltip-plural": "Dovoljenih je največ {limit} lokalnih igralcev | Dovoljen je največ {limit} lokalni igralec | Dovoljenih je največ {limit} lokalnih igralcev",
+      "local-limit-reached-tooltip-plural": "Dovoljenih je največ {limit} lokalnih igralcev | Dovoljen je največ {limit} lokalni igralec | Dovoljena sta največ {limit} lokalna igralca | Dovoljeni so največ {limit} lokalni igralci | Dovoljenih je največ {limit} lokalnih igralcev",
       "local-player": "lokalni igralec",
       "name": "Ime",
       "open-slot": "odprta pozicija",
@@ -732,7 +732,7 @@
       "leaderboard-online-only": "Poveži se s spletnim strežnikom, da pregledaš najboljše sodelovalne nastavitve in izide.",
       "leaderboard-loading": "Nalaganje najboljših nastavitev s strežnika…",
       "leaderboard-empty": "Še ni zaključenih sodelovalnih iger — pripravi svojo igro in bodi prvi na lestvici!",
-      "n-players-plural": "{players} igralcev | {players} igralec | {players} igralcev",
+      "n-players-plural": "0 igralcev | {players} igralec | {players} igralca | {players} igralci | {players} igralcev",
       "play-it": "Igraj jo",
       "popular-setups": "Najbolj priljubljene nastavitve",
       "popular-online-only": "Poveži se s spletnim strežnikom, da pregledaš najbolj igrane nastavitve.",

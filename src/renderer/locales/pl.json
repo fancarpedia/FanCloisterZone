@@ -322,7 +322,7 @@
       "all-win": "Wszyscy gracze wygrywają!",
       "all-lose": "Wszyscy gracze przegrywają",
       "triggered-by": "{name} nie powiększył zajętego obszaru ani nie zajął nowego.",
-      "team-score-plural": "Wynik zespołu: {points} punktów | Wynik zespołu: {points} punkt | Wynik zespołu: {points} punktów"
+      "team-score-plural": "Wynik zespołu: 0 punktów | Wynik zespołu: 1 punkt | Wynik zespołu: {points} punkty | Wynik zespołu: {points} punktów"
     },
     "element": {
       "abbey": "Opactwo",
@@ -481,7 +481,7 @@
       "kick-player": "Wyrzuć gracza",
       "local-ai-player": "lokalny gracz AI",
       "local-limit-reached": "Limit osiągnięty",
-      "local-limit-reached-tooltip-plural": "Dozwolonych jest maksymalnie {limit} graczy lokalnych | Dozwolony jest maksymalnie {limit} gracz lokalny | Dozwolonych jest maksymalnie {limit} graczy lokalnych",
+      "local-limit-reached-tooltip-plural": "Dozwolonych jest maksymalnie {limit} graczy lokalnych | Dozwolony jest maksymalnie {limit} gracz lokalny | Dozwoleni są maksymalnie {limit} gracze lokalni | Dozwolonych jest maksymalnie {limit} graczy lokalnych",
       "local-player": "gracz lokalny",
       "name": "Nazwa",
       "open-slot": "Wolne miejsce",
@@ -732,7 +732,7 @@
       "leaderboard-online-only": "Połącz się z serwerem online, aby przejrzeć najlepsze ustawienia i wyniki kooperacyjne.",
       "leaderboard-loading": "Wczytywanie najlepszych ustawień z serwera…",
       "leaderboard-empty": "Jeszcze nie ma ukończonych gier kooperacyjnych — przygotuj własną grę i bądź pierwszy w tabeli!",
-      "n-players-plural": "{players} graczy | {players} gracz | {players} graczy",
+      "n-players-plural": "0 graczy | 1 gracz | {players} gracze | {players} graczy",
       "play-it": "Zagraj",
       "popular-setups": "Najpopularniejsze ustawienia",
       "popular-online-only": "Połącz się z serwerem online, aby przejrzeć najczęściej grane ustawienia.",
