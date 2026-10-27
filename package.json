@@ -27,6 +27,7 @@
     "package:alpha": "cross-env FCZ_CHANNEL=alpha yarn run package",
     "extract": "vue-i18n-extract report --vueFiles './src/{main/modules,renderer}/**/*.?(js|vue)' --languageFiles './src/renderer/locales/*.json'",
     "update-locales": "node ./dev-utils/update-locales.js",
+    "update-locales-download": "node ./dev-utils/update-locales-download.js",
     "git-release": "node ./dev-utils/git-release.js"
   },
   "build": {
