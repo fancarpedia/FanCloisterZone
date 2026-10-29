@@ -10,6 +10,6 @@ module.exports = defineConfig({
     }
   },
   test: {
-    include: ['src/renderer/**/*.spec.js']
+    include: ['src/renderer/**/*.spec.js', 'web-build/**/*.spec.js']
   }
 })
