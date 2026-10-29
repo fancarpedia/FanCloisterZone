@@ -29,6 +29,34 @@ const NO_SW = (typeof window !== 'undefined' && !!window.__FCZ_NO_SW__)
 const norm = opfs.norm
 const isUser = opfs.isUserData
 
+// --- /download — the browser's stand-in for "a file on the user's disk" -----------------------
+// Electron answers dialog.showSaveDialog/showOpenDialog with a real path, and the app then does
+// plain fs.writeFile/readFile on it. A browser has no such path, so stubs/electron.js hands back a
+// virtual one under /download and this module maps it onto the two things a browser CAN do:
+// writing triggers a download, reading serves the bytes of a file the user picked.
+const DOWNLOAD = '/download'
+export const isDownload = (p) => norm(p).startsWith(DOWNLOAD)
+
+// Bytes of files the user picked with the file input, keyed by virtual path. Kept until read.
+const picked = new Map()
+export const _picked = picked
+export const putPickedFile = (path, text) => { picked.set(norm(path), text) }
+
+const triggerDownload = (p, data) => {
+  const name = norm(p).slice(DOWNLOAD.length + 1) || 'download'
+  const blob = new Blob([data], { type: 'application/octet-stream' })
+  const url = URL.createObjectURL(blob)
+  const a = document.createElement('a')
+  a.href = url
+  a.download = name
+  document.body.appendChild(a)
+  a.click()
+  a.remove()
+  // revoke late: Firefox cancels an in-flight download if the URL dies too early
+  setTimeout(() => URL.revokeObjectURL(url), 10000)
+  return name
+}
+
 // Buffers of files written this session, keyed by path. sha256-file needs a SYNCHRONOUS read of the
 // .jca it just downloaded, which async storage cannot do — so keep the bytes until it is unlinked.
 const memory = new Map()
@@ -136,6 +164,10 @@ async function stat (p) {
 
 async function readFile (p) {
   const key = norm(p)
+  if (isDownload(key)) {
+    if (!picked.has(key)) throw enoent(p)
+    return picked.get(key)
+  }
   if (isUser(key)) {
     // the artwork loader reads JSON here, then emits image URLs the SW must serve
     await swReady()
@@ -166,7 +198,11 @@ export const promises = {
   readFile,
   access,
   mkdir: async (p) => { if (isUser(p)) await opfs.mkdirp(p) },
-  writeFile: async (p, data) => { if (!isUser(p)) throw new Error('read-only: ' + p); await opfs.writeFile(p, data) },
+  writeFile: async (p, data) => {
+    if (isDownload(p)) { triggerDownload(p, data); return }
+    if (!isUser(p)) throw new Error('read-only: ' + p)
+    await opfs.writeFile(p, data)
+  },
   rm: async (p) => { memory.delete(norm(p)); if (isUser(p)) { try { await opfs.rm(p) } catch (e) {} } },
   unlink: async (p) => { memory.delete(norm(p)); if (isUser(p)) { try { await opfs.rm(p) } catch (e) {} } },
   rename: async (from, to) => {
@@ -254,6 +290,13 @@ export const createReadStream = (p) => new Readable(p)
 
 export const unlink = (p, cb) => { promises.unlink(p).then(() => cb && cb(null)).catch((e) => cb && cb(e)) }
 
+// Callback form, as Node's. store/game.js save/savescenario and layouts/default.vue dumpServer all
+// use `fs.writeFile(path, data, err => ...)`; without it Ctrl+S died on "fs.writeFile is not a
+// function" even once the save dialog answered.
+export const writeFile = (p, data, cb) => {
+  promises.writeFile(p, data).then(() => cb && cb(null)).catch((e) => cb && cb(e))
+}
+
 // Sync API — cannot be backed by async storage. Nothing on the boot path uses it.
 export const existsSync = () => false
 export const readdirSync = () => []
@@ -265,6 +308,6 @@ export const writeFileSync = boom('writeFileSync')
 
 export default {
   promises, constants,
-  createReadStream, createWriteStream, unlink,
+  createReadStream, createWriteStream, unlink, writeFile,
   existsSync, readdirSync, mkdirSync, statSync, readFileSync, writeFileSync
 }
