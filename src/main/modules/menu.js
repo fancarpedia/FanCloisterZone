@@ -89,7 +89,7 @@ function applyDevToolsCheck(win) {
 }
 
 async function createMenu(win, messages) {
-  const $t = key => messages[key.replace('menu.', '').replace('dev.', '')]
+  const $t = key => messages[key.replace('menu.', '').replace('dev.', '').replace('core-messages.', '')]
   const settings = await getSettings()
 
   // The application menu is global; route each command to the *focused* window so menu actions
