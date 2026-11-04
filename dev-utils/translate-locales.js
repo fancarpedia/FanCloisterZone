@@ -117,6 +117,39 @@ function isMetadata (keyPath) {
   return keyPath.startsWith('@')
 }
 
+/** The locale file currently in the app, or {} if this language is new here. */
+function existingApp (lang) {
+  const file = path.join(APP_LOCALES_DIR, lang + '.json')
+  if (!fs.existsSync(file)) return {}
+  try {
+    return JSON.parse(fs.readFileSync(file, 'utf8'))
+  } catch (err) {
+    return {}
+  }
+}
+
+/**
+ * Re-key `wiki` onto the shape of en.json: for every key en.json has, take the wiki's value when
+ * it has one, otherwise keep whatever the app file already holds. Nothing outside en.json's key
+ * set is carried over, so a wiki-side typo or a retired key cannot reach the app.
+ */
+function buildFromEnShape (wiki, existing) {
+  const enApp = existingApp('en')
+  const out = {}
+  for (const [keyPath] of leaves(enApp, '', [])) {
+    const fromWiki = getByPath(wiki, keyPath)
+    const fromApp = getByPath(existing, keyPath)
+    const value = fromWiki !== undefined ? fromWiki : fromApp
+    if (value !== undefined) setByPath(out, keyPath, value)
+  }
+  // @author is the translator's own name and is not in en.json's key set in any meaningful sense,
+  // but it must survive; the same goes for any other @ key the page carries.
+  for (const [keyPath, value] of leaves(wiki, '', [])) {
+    if (isMetadata(keyPath) && getByPath(out, keyPath) === undefined) setByPath(out, keyPath, value)
+  }
+  return out
+}
+
 function loadDb (lang) {
   const file = path.join(DB_DIR, lang + '.json')
   if (!fs.existsSync(file)) return {}
@@ -314,12 +347,22 @@ function main () {
   }
 
   // Everything the memory can answer, filled in; the rest keeps the wiki's current text.
-  const out = JSON.parse(JSON.stringify(tree))
-  for (const [keyPath, value] of leaves(out, '', [])) {
-    if (typeof value === 'string') setByPath(out, keyPath, plain(value))
+  const wiki = JSON.parse(JSON.stringify(tree))
+  for (const [keyPath, value] of leaves(wiki, '', [])) {
+    if (typeof value === 'string') setByPath(wiki, keyPath, plain(value))
   }
-  for (const item of resolved) setByPath(out, item.keyPath, item.value)
-  for (const item of copied) setByPath(out, item.keyPath, item.value)
+  for (const item of resolved) setByPath(wiki, item.keyPath, item.value)
+  for (const item of copied) setByPath(wiki, item.keyPath, item.value)
+
+  // en.json defines WHICH keys exist — not the wiki page. The app reads en.json, so it is the
+  // authority on the key set, and routing the output through it fixes two things the wiki cannot:
+  //   * a typo in a wiki key name stays out of the app. `menu.feature-hints'` (stray apostrophe)
+  //     really is the key on the page; copying the page's names verbatim shipped that and left
+  //     menu.feature-hints missing, so the item fell back to English.
+  //   * keys that exist only in the repo survive. `menu.potential-final-score` is in en.json but
+  //     not yet on the wiki, and a verbatim copy silently deleted it on every run.
+  // A key the wiki has retired disappears, because en.json no longer lists it either.
+  const out = buildFromEnShape(wiki, existingApp(lang))
 
   if (args.install) {
     const suffix = args.versionSuffix !== undefined ? args.versionSuffix : AI_VERSION_SUFFIX
