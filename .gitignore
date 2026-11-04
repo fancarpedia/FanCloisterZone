@@ -12,3 +12,7 @@ jcz-engine.js
 .env
 src/main/config
 src/renderer/.DS_Store
+
+# locale pages saved from the wiki (input for update-locales-download), scratch only
+dev-utils/locale-pages/*
+!dev-utils/locale-pages/README.md
