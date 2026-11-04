@@ -42,6 +42,9 @@ function getPluralCode(locale, n, choicesLength) {
     case 'sl':
       nplurals=4; plural=(n%100==1 ? 0 : n%100==2 ? 1 : n%100==3 || n%100==4 ? 2 : 3);
       break;
+    case 'uk':
+      nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);
+      break;
   }
   plural++;
   return (choicesLength<plural) ? choicesLength : plural;
@@ -85,6 +88,9 @@ function locale_sk(choice, choicesLength) {
 function locale_sl(choice, choicesLength) {
   return getPluralCode('sl', choice, choicesLength);
 }
+function locale_uk(choice, choicesLength) {
+  return getPluralCode('uk', choice, choicesLength);
+}
       
 export default (context) => {
   return {
@@ -101,7 +107,8 @@ export default (context) => {
       "ro": locale_ro,
       "ru": locale_ru,
       "sk": locale_sk,
-      "sl": locale_sl
+      "sl": locale_sl,
+      "uk": locale_uk
     }
   }
 }

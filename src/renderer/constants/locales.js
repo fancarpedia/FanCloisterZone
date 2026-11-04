@@ -63,5 +63,10 @@ export const LOCALES = [
     id: 'sl',
     flag: 'slovenia',
     text: 'Slovenščina'
+  },
+  {
+    id: 'uk',
+    flag: 'ukraine',
+    text: 'Українська'
   }
 ]

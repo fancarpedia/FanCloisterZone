@@ -115,6 +115,11 @@
     <path fill="#006a44" d="M0 0h1000v400H0z"/>
     <path fill="#fdb913" d="M0 0h1000v200H0z"/>
   </symbol>
+
+  <symbol id="ukraine" viewBox="0 0 1000 600">
+    <path fill="#ffd700" d="M0 0h1000v600H0z"/>
+    <path fill="#0057b7" d="M0 0h1000v300H0z"/>
+  </symbol>
   
   <symbol id="slovenia" viewBox="0 0 240 120">
     <path d="M0 0h240v120H0Z" fill="red"/>
