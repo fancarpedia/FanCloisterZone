@@ -447,6 +447,20 @@ aside
   &.shrink-3
     top: calc(var(--action-bar-height) + 2px)
 
+// Small screens: the action bar spans the full width (ActionPanel.vue), so the deck counter can no
+// longer sit beside it in the top-right corner — it moves directly below, and the player panels
+// shift down by one bar height to keep clear of it. The aside's shrink logic measures its own
+// getBoundingClientRect().top, so it adapts to the new offset on its own.
+@media (max-width: $small-screen-max-width)
+  .tile-pack-size
+    top: var(--action-bar-height)
+
+  aside
+    top: calc(var(--action-bar-height) * 2 + #{$panel-gap})
+
+    &.shrink-3
+      top: calc(var(--action-bar-height) * 2 + 2px)
+
 .game-modal
   position: absolute
   top: 0
