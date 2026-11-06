@@ -45,6 +45,7 @@ import CheckerPattern from '@/components/game/layers/patterns/CheckerPattern.vue
 import FeatureClip from '@/components/game/layers/FeatureClip.vue'
 import LayerMixin from '@/components/game/layers/LayerMixin'
 import LinePattern from '@/components/game/layers/patterns/LinePattern.vue'
+import { barnOwnersByPlace, effectiveOwnersOf, isHintedField } from '@/models/farm-hints'
 import MultiColorPattern from '@/components/game/layers/patterns/MultiColorPattern.vue'
 import TrianglePattern from '@/components/game/layers/patterns/TrianglePattern.vue'
 import ZigZagPattern from '@/components/game/layers/patterns/ZigZagPattern.vue'
@@ -96,13 +97,19 @@ export default {
   computed: {
     ...mapState({
       players: state => state.game.players,
-      fields: state => state.game.features.filter(f => {
-        if (f.type !== 'Field') return false
-        // ignore small tiny fields
-        if (!f.owners.length) return f.cities && f.places.length > 1
-        return true
-      })
+      features: state => state.game.features,
+      deployedMeeples: state => state.game.deployedMeeples
     }),
+
+    // Where the barns are, keyed "x,y,location" — see models/farm-hints.js for why this is
+    // needed at all (the engine's `owners` counts followers only, and a Barn is not one).
+    barns () {
+      return barnOwnersByPlace(this.deployedMeeples)
+    },
+
+    fields () {
+      return this.features.filter(f => isHintedField(f, this.barns))
+    },
 
     patternPlayerIndexes () {
       const res = [null]
@@ -140,8 +147,9 @@ export default {
         const props = {}
         let pattern
         let patternId
-        if (field.owners.length > 1) {
-          const owners = [...field.owners]
+        const effectiveOwners = this.effectiveOwnersOf(field)
+        if (effectiveOwners.length > 1) {
+          const owners = [...effectiveOwners]
           owners.sort()
           patternId = '-' + owners.join('-')
           pattern = {
@@ -151,9 +159,9 @@ export default {
         } else {
           patternId = '' + patternIndex
           pattern = this.patterns[patternIndex]
-          if (field.owners.length === 1) {
-            patternId += '--' + field.owners[0]
-            props.player = field.owners[0]
+          if (effectiveOwners.length === 1) {
+            patternId += '--' + effectiveOwners[0]
+            props.player = effectiveOwners[0]
           }
         }
 
@@ -189,6 +197,12 @@ export default {
         clips,
         usedPatterns: Object.values(usedPatterns)
       }
+    }
+  },
+
+  methods: {
+    effectiveOwnersOf (field) {
+      return effectiveOwnersOf(field, this.barns)
     }
   }
 }
