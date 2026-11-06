@@ -331,13 +331,21 @@ export default {
       this.changeZoom(ev.offsetX, ev.offsetY, steps)
     },
 
-    onRequestZoom (change) {
+    // Middle of the board area the player can actually see: the side panels and the action bar
+    // cover the rest of the svg, so the geometric centre of the element is not what they look at.
+    visibleCenter () {
       const { width, height } = this.$refs.svg.getBoundingClientRect()
       const adjustedWidth = width - 210 - 80 // approx 210px for players panel and 80 px for history
       const adjustedHeight = height - 84 // action panel
-      const eventX = 80 + adjustedWidth / 2
-      const eventY = 84 + adjustedHeight / 2
-      this.changeZoom(eventX, eventY, change)
+      return {
+        x: 80 + adjustedWidth / 2,
+        y: 84 + adjustedHeight / 2
+      }
+    },
+
+    onRequestZoom (change) {
+      const { x, y } = this.visibleCenter()
+      this.changeZoom(x, y, change)
     },
 
     changeZoom (eventX, eventY, change) {
@@ -460,6 +468,21 @@ export default {
 
     changeRotate () {
       const rotate = (this.rotate + 90) % 360
+
+      // Turn around the middle of the visible board, not around the board's own origin.
+      //
+      // The group transform is `rotate(r Ox Oy) translate(Ox Oy) scale(z)`, so a board point p
+      // lands at O + R(r)·(z·p) with O = (offsetX, offsetY) — meaning the pivot is wherever the
+      // board's 0,0 currently sits, which drifts with every pan. To keep whatever is under the
+      // visible centre C from moving, the origin has to go to
+      //     O' = C - R(90)·(C - O)
+      // and in screen coordinates (y pointing down) R(90) maps (x, y) -> (-y, x).
+      const c = this.visibleCenter()
+      const dx = c.x - this.offsetX
+      const dy = c.y - this.offsetY
+      this.offsetX = c.x + dy
+      this.offsetY = c.y - dx
+
       this.$store.commit('board/changeRotate', rotate)
       this.rotate = rotate
       this.adjustAfterMove()
