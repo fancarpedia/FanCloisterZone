@@ -114,6 +114,11 @@ import TilePackSize from '@/components/game/TilePackSize.vue'
 import GameSetupDialog from '@/components/game/dialogs/GameSetupDialog.vue'
 import PreDrawHand from '@/components/game/PreDrawHand.vue'
 
+// How densely the player panels in the aside can be packed: 0 is roomy, MAX_SHRINK is tightest.
+// Each level needs a matching `aside.shrink-N` rule in this file's styles.
+const SHRINK_LEVELS = [0, 1, 2, 3]
+const MAX_SHRINK = SHRINK_LEVELS[SHRINK_LEVELS.length - 1]
+
 export default {
   components: {
     ActionPanel,
@@ -233,8 +238,9 @@ export default {
   },
 
   mounted () {
-    this.shrinkSizes = [null, null, null]
-    this.shrinkChanged = false
+    // One remembered height per shrink level. Was three entries while the code indexed four,
+    // so level 3 read back as `undefined` and could never be measured or loosened out of.
+    this.shrinkSizes = SHRINK_LEVELS.map(() => null)
     window.addEventListener('resize', this.onRezize)
     this.checkOverflow()
     this.setPlayer(this.activePlayerIdx)
@@ -306,9 +312,15 @@ export default {
       ipcRenderer.invoke('win.setIcon', icon)
     },
 
-    onRezize () {
+    // Single debounced entry point for everything that can change how much room the aside has:
+    // a window resize, a layout change, or the aside's own content.
+    scheduleCheckOverflow () {
       clearTimeout(this.checkOverflowTimeout)
       this.checkOverflowTimeout = setTimeout(this.checkOverflow, 20)
+    },
+
+    onRezize () {
+      this.scheduleCheckOverflow()
     },
 
     checkOverflow () {
@@ -318,16 +330,12 @@ export default {
       }
 
       if (!this._ro) {
-        this._ro = new ResizeObserver(ev => {
-          if (this.shrinkChanged) {
-            // triggered from checkOverflow
-            this.shrinkChanged = false
-          } else {
-            // triggered by changed content
-            this.shrinkSizes = [null, null, null, null]
-            this.checkOverflow()
-          }
-        })
+        // The callback must not touch layout synchronously. Changing `shrink` re-renders the very
+        // element being observed, and resizing an observed element from inside the callback is
+        // exactly what makes the browser log "ResizeObserver loop limit exceeded" (and drop the
+        // remaining notifications). Routing through the debounced entry point defers the work out
+        // of the observer's delivery cycle and coalesces the burst a resize produces.
+        this._ro = new ResizeObserver(() => this.scheduleCheckOverflow())
         this._ro.observe(aside)
       }
 
@@ -335,21 +343,27 @@ export default {
       const height = aside.clientHeight
       const sizes = this.shrinkSizes
 
-      if (sizes[this.shrink] === null) {
+      // Remember how tall the aside is at this level, so we never loosen back into an overflow
+      // and oscillate. A different height at a level we have already measured means the content
+      // itself changed (a player gained tokens, a variant banner appeared), so every other
+      // level's remembered height is stale too.
+      if (sizes[this.shrink] == null) {
         sizes[this.shrink] = height
+      } else if (sizes[this.shrink] !== height) {
+        this.shrinkSizes = SHRINK_LEVELS.map(() => null)
+        this.shrinkSizes[this.shrink] = height
+        this.scheduleCheckOverflow()
+        return
       }
 
-      if (availableHeight < height && this.shrink < 3) {
+      if (availableHeight < height && this.shrink < MAX_SHRINK) {
         this.shrink += 1
-        this.shrinkChanged = true
-        setTimeout(this.checkOverflow, 1)
-      }
-      if (availableHeight > height && this.shrink > 0) {
+        this.scheduleCheckOverflow()
+      } else if (availableHeight > height && this.shrink > 0) {
         const target = this.shrink - 1
-        if (sizes[target] === null || sizes[target] <= availableHeight) {
+        if (sizes[target] == null || sizes[target] <= availableHeight) {
           this.shrink = target
-          this.shrinkChanged = true
-          setTimeout(this.checkOverflow, 1)
+          this.scheduleCheckOverflow()
         }
       }
     }
