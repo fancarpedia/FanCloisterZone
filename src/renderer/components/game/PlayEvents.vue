@@ -57,6 +57,17 @@ import FinalScoringEvents from '@/components/game/FinalScoringEvents'
 // vertical space reserved at the top of the strip for the history toggle button
 const TOGGLE_HEIGHT = 34
 
+// How many events share one line of a turn. A row is laid out as a flex line of fixed height and
+// every following row's `top` is derived from it, so this cap — not CSS — is what decides whether
+// events sit side by side. Dropping it to 1 gives each event its own line and the tops still add
+// up; removing the flex instead would let a row grow past the height its neighbours were placed
+// against, and the rows would overlap.
+const EVENTS_PER_ROW = 4
+// Small screens have no width for four events next to each other: one per line.
+const EVENTS_PER_ROW_SMALL = 1
+// Keep in step with $small-screen-max-width in assets/styles/shared.sass.
+const SMALL_SCREEN_QUERY = '(max-width: 960px)'
+
 export default {
   components: {
     EventsRow,
@@ -66,7 +77,8 @@ export default {
   data () {
     return {
       finalHeight: 0,
-      offset: 0
+      offset: 0,
+      smallScreen: false
     }
   },
 
@@ -74,6 +86,10 @@ export default {
     ...mapGetters({
       colorCssClass: 'game/colorCssClass'
     }),
+
+    eventsPerRow () {
+      return this.smallScreen ? EVENTS_PER_ROW_SMALL : EVENTS_PER_ROW
+    },
 
     ...mapState({
       history: state => state.game.history,
@@ -121,7 +137,7 @@ export default {
 
           const isScore = ev.type === 'points' || ev.type === 'token-received'
           const isNewLineEvent = ev.type === 'tile-auctioned' || ev.type === 'dragon-moved'
-          if (isScore !== lastRowIsScore || isNewLineEvent || row?.events.length === 4) {
+          if (isScore !== lastRowIsScore || isNewLineEvent || row?.events.length === this.eventsPerRow) {
             row = { events: [], height: isScore ? 27 : 41 }
             item.rows.unshift(row)
             lastRowIsScore = isScore
@@ -130,7 +146,11 @@ export default {
         })
         delete item.events
         if (i === this.history.length - 1 && this.phase !== 'CommitActionPhase' && this.phase !== 'GameOverPhase') {
-          if (!item.rows.length || item.rows[0].events[0].type === 'points') {
+          // The marker shares the newest row when there is space; it needs its own row when that
+          // row is a score row, or is already full — which, at one event per line, it always is.
+          if (!item.rows.length ||
+              item.rows[0].events.length >= this.eventsPerRow ||
+              item.rows[0].events[0].type === 'points') {
             item.rows.unshift({ events: [], height: 41 })
           }
           item.rows[0].events.push({ type: 'current-action' })
@@ -169,8 +189,30 @@ export default {
     this.$root.$on('final-scoring-height', this._finalScoringResized)
   },
 
+  mounted () {
+    // matchMedia rather than a resize listener: the only thing that matters is crossing the
+    // breakpoint, and this fires once when it happens instead of on every pixel of a drag.
+    if (window.matchMedia) {
+      this._smallScreen = window.matchMedia(SMALL_SCREEN_QUERY)
+      this.smallScreen = this._smallScreen.matches
+      this._onSmallScreenChange = ev => { this.smallScreen = ev.matches }
+      if (this._smallScreen.addEventListener) {
+        this._smallScreen.addEventListener('change', this._onSmallScreenChange)
+      } else {
+        this._smallScreen.addListener(this._onSmallScreenChange) // older Safari
+      }
+    }
+  },
+
   beforeDestroy () {
     this.$root.$off('final-scoring-height', this._finalScoringResized)
+    if (this._smallScreen) {
+      if (this._smallScreen.removeEventListener) {
+        this._smallScreen.removeEventListener('change', this._onSmallScreenChange)
+      } else {
+        this._smallScreen.removeListener(this._onSmallScreenChange)
+      }
+    }
   },
 
   methods: {
