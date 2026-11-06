@@ -8,7 +8,7 @@
     <g
       v-for="meeple in cornerMeeples"
       :key="meeple.id"
-      :transform="transformPosition(meeple.position)"
+      :transform="transformPosition(meeple.position) + ` ` + rotateMeeple()"
       :class="colorCssClass(meeple.player)"
     >
       <use
