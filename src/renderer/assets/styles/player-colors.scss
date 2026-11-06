@@ -1,9 +1,4 @@
 
-// Below this width the action panel shows the active player as a background tint instead of the
-// corner triangle — the bar is too cramped there for the 42px marker. Vuetify's sm-and-down, so
-// phones and narrow windows; raise it if the triangle should go on wider screens too.
-$action-panel-tint-max-width: 960px;
-
 // primary overlay
 // inactive - used https://meyerweb.com/eric/tools/color-blend/ blended with #EEEEEE, 3 mid points, used last
 $colors: (
@@ -86,7 +81,7 @@ $colors: (
   // panel carries the active player's colour instead. Same tints as the sidebar indicator above,
   // so the two readings of "who is on turn" match. ActionPanel.vue adds .panel-color-N only while
   // the indicator should be visible, so this follows the triangle setting.
-  @media (max-width: $action-panel-tint-max-width) {
+  @media (max-width: $small-screen-max-width) {
     #app.theme--light .action-panel.panel-color-#{$i - 1} {
       background-color: map-get($slot, activebglight);
     }
@@ -97,7 +92,7 @@ $colors: (
   }
 }
 
-@media (max-width: $action-panel-tint-max-width) {
+@media (max-width: $small-screen-max-width) {
   .action-panel .active-player-marker {
     display: none;
   }

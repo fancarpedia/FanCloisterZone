@@ -1,6 +1,12 @@
 $panel-gap: 10px
 $button-gap: 12px
 
+// Phones and narrow windows (Vuetify's sm-and-down). The action bar has no room for its
+// secondary bits here: the active-player triangle gives way to a background tint
+// (player-colors.scss) and the "or skip action" hint is dropped (ActionPanel.vue).
+// styleResources prepends this file to every sass block, so it is in scope everywhere.
+$small-screen-max-width: 960px
+
 $removed-color: #DD2C00
 
 $rules-text-size: 16px

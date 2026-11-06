@@ -401,6 +401,13 @@ export default {
     .pass-item
       margin-left: 20px
 
+// Small screens: drop the "or / or skip action" hint. It is secondary to the button next to it,
+// and the bar has no room for it here. Same breakpoint as the active-player tint (shared.sass).
+@media (max-width: $small-screen-max-width)
+  .action-panel > section
+    span.skip-text
+      display: none
+
 @media (max-height: 768px)
   .action-panel
     .text
