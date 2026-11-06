@@ -1,8 +1,8 @@
 {
   "@author": "Paloi Sciurala",
   "@jcz-version": "5.12.1",
-  "@fcz-version": "7.0.1",
-  "@version": "0.11.11",
+  "@fcz-version": "7.1.0",
+  "@version": "0.12.1",
   "about": {
     "author": "Autor",
     "configuration-file": "Fișier de configurație",
@@ -330,6 +330,7 @@
       "barn": "Moșie",
       "big-follower": "Meeple mare",
       "big-top": "Cort de circ",
+      "black-fairy": "Zâna neagră",
       "black-tower": "Turn negru",
       "bridge": "Pod",
       "builder": "Constructor",
@@ -373,6 +374,7 @@
       "acrobats": "Artiști",
       "bazaar": "Bazar",
       "big-top": "Cort de circ",
+      "black-fairy": "Zâna neagră",
       "castle": "Cetate",
       "castles": "Cetăți",
       "cathedral": "Catedrală",
@@ -616,6 +618,11 @@
         "not-occupied": "nu poate",
         "occupied": "poate"
       },
+      "black-fairy-placement": {
+        "description": "Zâna neagră este depusă {}.",
+        "next-follower": "lângă un meeple",
+        "on-tile": "pe un cartonaș"
+      },
       "bazaar-no-auction": {
         "description": "Fără licitație la bazar. Fiecare jucător alege pur și simplu un cartonaș."
       },
@@ -627,7 +634,7 @@
       "count-move": {
         "by-player": "de jucător",
         "clockwise": "în sensul acelor de ceasornic în următorul cartier",
-        "description": "Atunci când este plasat un meeple în orașul C., contele este apoi mutat {}.",
+        "description": "Atunci când este depus un meeple în orașul C., contele este apoi mutat {}.",
         "follow-meeple": "în oricare cartier ca meepleul"
       },
       "dragon-move": {
@@ -732,7 +739,7 @@
       "leaderboard-online-only": "Conectează-te la serverul online pentru a răsfoi cele mai bune configurații și punctaje cooperative.",
       "leaderboard-loading": "Se încarcă cele mai bune configurații din server…",
       "leaderboard-empty": "Nicio partidă cooperativă finalizată deocamdată — configurează-ți propria ta partidă și fii primul la înaintare!",
-      "n-players-plural": "{players} jucători | {players} jucător | {players} jucător",
+      "n-players-plural": "{players} jucători | {players} jucător | {players} jucători",
       "play-it": "Joac-o",
       "popular-setups": "Cele mai populare configurații",
       "popular-online-only": "Conectează-te la serverul online pentru a răsfoi cele mai jucate configurații.",
@@ -770,6 +777,7 @@
       "connected-to": "Conectat la {0}",
       "game-id": "ID-ul partidei",
       "games-in-progress": "Partide în curs de jucare",
+      "game-not-found": "Partida nu a fost găsită. Verifică cheia partidei și încearcă din nou.",
       "join-game": "Alătură-te partidei",
       "local-game": "Partidă locală",
       "loading-game-data": "Se încarcă datele partidei…",

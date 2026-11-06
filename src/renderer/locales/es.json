@@ -1,8 +1,8 @@
 {
   "@author": "Carlium & Meepledrone",
   "@jcz-version": "5.12.1",
-  "@fcz-version": "7.0.1",
-  "@version": "0.11.11-ai",
+  "@fcz-version": "7.1.0",
+  "@version": "0.12.1-ai",
   "about": {
     "author": "Autor",
     "configuration-file": "Archivo de configuración",
@@ -330,6 +330,7 @@
       "barn": "Granero",
       "big-follower": "Seguidor mayor",
       "big-top": "Carpa",
+      "black-fairy": "Hada negra",
       "black-tower": "Torre Negra",
       "bridge": "Puente",
       "builder": "Constructor",
@@ -373,6 +374,7 @@
       "acrobats": "Acróbatas",
       "bazaar": "Bazar",
       "big-top": "Carpa",
+      "black-fairy": "Hada negra",
       "castle": "Castillo",
       "castles": "Castillos",
       "cathedral": "Catedral",
@@ -616,6 +618,11 @@
         "not-occupied": "no puede",
         "occupied": "puede"
       },
+      "black-fairy-placement": {
+        "description": "El hada negra se coloca {}.",
+        "next-follower": "junto a un seguidor",
+        "on-tile": "en la loseta"
+      },
       "bazaar-no-auction": {
         "description": "Sin pujas de bazar. Cada jugador elige una loseta."
       },
@@ -770,6 +777,7 @@
       "connected-to": "Conectado a {0}",
       "game-id": "ID de la partida",
       "games-in-progress": "Partida en curso",
+      "game-not-found": "No se ha encontrado la partida. Comprueba la clave de la partida e inténtalo de nuevo.",
       "join-game": "Unirse a la partida",
       "local-game": "Partida local",
       "loading-game-data": "Cargando los datos de la partida…",

@@ -1,8 +1,8 @@
 {
   "@author": "Kiap1969 & Sinscerly",
   "@jcz-version": "5.12.1",
-  "@fcz-version": "7.0.1",
-  "@version": "0.11.11-ai",
+  "@fcz-version": "7.1.0",
+  "@version": "0.12.1-ai",
   "about": {
     "author": "Auteur",
     "configuration-file": "Configuratiebestand",
@@ -330,6 +330,7 @@
       "barn": "Herenboerderij",
       "big-follower": "Grote meeple",
       "big-top": "Circustent",
+      "black-fairy": "Zwarte fee",
       "black-tower": "Zwarte toren",
       "bridge": "Brug",
       "builder": "Bouwmeester",
@@ -373,6 +374,7 @@
       "acrobats": "Artiesten",
       "bazaar": "Bazaar",
       "big-top": "Circustent",
+      "black-fairy": "Zwarte fee",
       "castle": "Burcht",
       "castles": "Burchten",
       "cathedral": "Kathedraal",
@@ -616,6 +618,11 @@
         "not-occupied": "mag niet",
         "occupied": "mag"
       },
+      "black-fairy-placement": {
+        "description": "De zwarte fee wordt {} gezet.",
+        "next-follower": "bij een meeple",
+        "on-tile": "op een tegel"
+      },
       "bazaar-no-auction": {
         "description": "Geen veiling bij bazaar. Elke speler kiest een tegel."
       },
@@ -770,6 +777,7 @@
       "connected-to": "Verbonden met {0}",
       "game-id": "Spel ID",
       "games-in-progress": "Lopende spellen",
+      "game-not-found": "Spel niet gevonden. Controleer de spelsleutel en probeer het opnieuw.",
       "join-game": "Met spel verbinden",
       "local-game": "Lokaal spel",
       "loading-game-data": "Spelgegevens worden geladen…",

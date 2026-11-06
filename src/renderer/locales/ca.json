@@ -1,8 +1,8 @@
 {
   "@author": "J0anJosep",
   "@jcz-version": "5.12.1",
-  "@fcz-version": "7.0.1",
-  "@version": "0.11.11-ai",
+  "@fcz-version": "7.1.0",
+  "@version": "0.12.1-ai",
   "about": {
     "author": "Autor",
     "configuration-file": "Fitxer de configuració",
@@ -330,6 +330,7 @@
       "barn": "Graner",
       "big-follower": "Seguidor gran",
       "big-top": "Carpa",
+      "black-fairy": "Fada negra",
       "black-tower": "La torre negra",
       "bridge": "Pont",
       "builder": "Constructor",
@@ -373,6 +374,7 @@
       "acrobats": "Acròbates",
       "bazaar": "Basar",
       "big-top": "Carpa",
+      "black-fairy": "Fada negra",
       "castle": "Castell",
       "castles": "Castells",
       "cathedral": "Catedral",
@@ -616,6 +618,11 @@
         "not-occupied": "no es pot",
         "occupied": "es pot"
       },
+      "black-fairy-placement": {
+        "description": "La fada negra es posa {}.",
+        "next-follower": "al costat d'un seguidor",
+        "on-tile": "en una peça"
+      },
       "bazaar-no-auction": {
         "description": "Els basar no se subhasten. Cada jugador tria una peça."
       },
@@ -770,6 +777,7 @@
       "connected-to": "Connectat a {0}",
       "game-id": "ID de la partida",
       "games-in-progress": "Partides en curs",
+      "game-not-found": "No s'ha trobat la partida. Comproveu la clau de la partida i torneu-ho a provar.",
       "join-game": "Uneix-me a la partida",
       "local-game": "Partida local",
       "loading-game-data": "S'estan carregant les dades de la partida…",

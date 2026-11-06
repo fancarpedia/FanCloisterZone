@@ -1,8 +1,8 @@
 {
   "@author": "farin & Scott",
   "@jcz-version": "5.12.1",
-  "@fcz-version": "6.3.0",
-  "@version": "0.11.10",
+  "@fcz-version": "7.1.0",
+  "@version": "0.12.1",
   "about": {
     "author": "Author",
     "configuration-file": "Configuration file",
@@ -330,6 +330,7 @@
       "barn": "Barn",
       "big-follower": "Big Meeple",
       "big-top": "Big Top",
+      "black-fairy": "Black Fairy",
       "black-tower": "Black Tower",
       "bridge": "Bridge",
       "builder": "Builder",
@@ -373,6 +374,7 @@
       "acrobats": "Acrobats",
       "bazaar": "Bazaar",
       "big-top": "Big Top",
+      "black-fairy": "Black Fairy",
       "castle": "Castle",
       "castles": "Castles",
       "cathedral": "Cathedral",
@@ -616,6 +618,11 @@
         "not-occupied": "can't",
         "occupied": "can"
       },
+      "black-fairy-placement": {
+        "description": "The Black Fairy is deployed {}.",
+        "next-follower": "next to a meeple",
+        "on-tile": "on a tile"
+      },
       "bazaar-no-auction": {
         "description": "No bazaar bidding. Each player just chooses one tile."
       },
@@ -770,6 +777,7 @@
       "connected-to": "Connected to {0}",
       "game-id": "Game ID",
       "games-in-progress": "Games in progress",
+      "game-not-found": "Game not found. Check the game key and try again.",
       "join-game": "Join game",
       "local-game": "Local game",
       "loading-game-data": "Loading game data…",
@@ -838,7 +846,7 @@
     "open-game": "Open Game",
     "playonline-connect": "Play Online",
     "playonline-disconnect": "Disconnect",
-    "potential-final-score": "Potential final score",
+    "potential-final-score": "Potential Final Score",
     "report-bug": "Report a bug",
     "rotate": "Rotate",
     "rules": "Rules",

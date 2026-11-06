@@ -1,8 +1,8 @@
 {
   "@author": "Peťul",
   "@jcz-version": "5.12.1",
-  "@fcz-version": "7.0.1",
-  "@version": "0.11.11-ai",
+  "@fcz-version": "7.1.0",
+  "@version": "0.12.1-ai",
   "about": {
     "author": "Autor",
     "configuration-file": "Konfigurační soubor",
@@ -330,6 +330,7 @@
       "barn": "Statek",
       "big-follower": "Velký družiník",
       "big-top": "Šapitó",
+      "black-fairy": "Černá víla",
       "black-tower": "Černá věž",
       "bridge": "Most",
       "builder": "Stavitel",
@@ -373,6 +374,7 @@
       "acrobats": "Artisté",
       "bazaar": "Bazar",
       "big-top": "Šapitó",
+      "black-fairy": "Černá víla",
       "castle": "Hrad",
       "castles": "Hrady",
       "cathedral": "Katedrála",
@@ -616,6 +618,11 @@
         "not-occupied": "nemůže",
         "occupied": "může"
       },
+      "black-fairy-placement": {
+        "description": "Černá víla stojí {}.",
+        "next-follower": "vedle družiníka",
+        "on-tile": "na kartičce"
+      },
       "bazaar-no-auction": {
         "description": "Varianta bez dražby. Každý hráč si jen vybere kartičku."
       },
@@ -770,6 +777,7 @@
       "connected-to": "Připojeno k {0}",
       "game-id": "Kód hry",
       "games-in-progress": "Probíhající hry",
+      "game-not-found": "Hra nebyla nalezena. Zkontrolujte klíč hry a zkuste to znovu.",
       "join-game": "Připojit se do hry",
       "local-game": "Místní hra",
       "loading-game-data": "Načítají se data hry…",

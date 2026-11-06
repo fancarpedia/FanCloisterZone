@@ -1,8 +1,8 @@
 {
   "@author": "pOison & Dextea & SonicDC",
   "@jcz-version": "5.12.1",
-  "@fcz-version": "7.0.1",
-  "@version": "0.11.11-ai",
+  "@fcz-version": "7.1.0",
+  "@version": "0.12.1-ai",
   "about": {
     "author": "Автор",
     "configuration-file": "Файл конфигурации",
@@ -330,6 +330,7 @@
       "barn": "Амбар",
       "big-follower": "Большой мипл",
       "big-top": "Цирковой купол",
+      "black-fairy": "Чёрная фея",
       "black-tower": "Чёрная башня",
       "bridge": "Мост",
       "builder": "Строитель",
@@ -373,6 +374,7 @@
       "acrobats": "Акробаты",
       "bazaar": "Базар",
       "big-top": "Цирковой купол",
+      "black-fairy": "Чёрная фея",
       "castle": "Замок",
       "castles": "Замки",
       "cathedral": "Собор",
@@ -616,6 +618,11 @@
         "not-occupied": "не может",
         "occupied": "может"
       },
+      "black-fairy-placement": {
+        "description": "Чёрная фея размещается {}.",
+        "next-follower": "рядом с миплом",
+        "on-tile": "на тайле"
+      },
       "bazaar-no-auction": {
         "description": "Отсутствует аукцион на базаре. Каждый игрок просто выбирает один тайл."
       },
@@ -770,6 +777,7 @@
       "connected-to": "Подключен к {0}",
       "game-id": "Идентификатор игры",
       "games-in-progress": "Игры в процессе",
+      "game-not-found": "Игра не найдена. Проверьте ключ игры и попробуйте снова.",
       "join-game": "Присоединиться к игре",
       "local-game": "Локальная игра",
       "loading-game-data": "Загрузка данных игры…",

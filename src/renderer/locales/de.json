@@ -1,8 +1,8 @@
 {
   "@author": "Challa007 & Bombur",
   "@jcz-version": "5.12.1",
-  "@fcz-version": "7.0.1",
-  "@version": "0.11.11-ai",
+  "@fcz-version": "7.1.0",
+  "@version": "0.12.1-ai",
   "about": {
     "author": "Autor",
     "configuration-file": "Konfigurationsdatei",
@@ -330,6 +330,7 @@
       "barn": "Gutshof",
       "big-follower": "Großer Meeple",
       "big-top": "Zirkuszelt",
+      "black-fairy": "Schwarze Fee",
       "black-tower": "Schwarzer Turm",
       "bridge": "Brücke",
       "builder": "Baumeister",
@@ -373,6 +374,7 @@
       "acrobats": "Artisten",
       "bazaar": "Basar",
       "big-top": "Zirkuszelt",
+      "black-fairy": "Schwarze Fee",
       "castle": "Burg",
       "castles": "Burgen",
       "cathedral": "Kathedrale",
@@ -616,6 +618,11 @@
         "not-occupied": "darf nicht",
         "occupied": "darf"
       },
+      "black-fairy-placement": {
+        "description": "Die schwarze Fee wird {} gesetzt.",
+        "next-follower": "neben einen Meeple",
+        "on-tile": "auf ein Plättchen"
+      },
       "bazaar-no-auction": {
         "description": "Keine Basarversteigerung. Jeder Spieler wählt nur ein Plättchen aus."
       },
@@ -770,6 +777,7 @@
       "connected-to": "Verbunden mit {0}",
       "game-id": "Spiel-ID",
       "games-in-progress": "Laufende Spiele",
+      "game-not-found": "Spiel nicht gefunden. Prüfe den Spielschlüssel und versuche es erneut.",
       "join-game": "einem Spiel beitreten",
       "local-game": "Lokales Spiel",
       "loading-game-data": "Spieldaten werden geladen…",

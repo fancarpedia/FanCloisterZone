@@ -1,8 +1,8 @@
 {
   "@author": "ai",
   "@jcz-version": "5.12.1",
-  "@fcz-version": "7.0.1",
-  "@version": "0.11.12-ai",
+  "@fcz-version": "7.1.0",
+  "@version": "0.12.1-ai",
   "about": {
     "author": "Автор",
     "configuration-file": "Файл конфігурації",
@@ -330,6 +330,7 @@
       "barn": "Клуня",
       "big-follower": "Великий підданець",
       "big-top": "Шапіто",
+      "black-fairy": "Чорна фея",
       "black-tower": "Чорна вежа",
       "bridge": "Міст",
       "builder": "Будівельник",
@@ -373,6 +374,7 @@
       "acrobats": "Акробати",
       "bazaar": "Базар",
       "big-top": "Шапіто",
+      "black-fairy": "Чорна фея",
       "castle": "Замок",
       "castles": "Замки",
       "cathedral": "Собор",
@@ -616,6 +618,11 @@
         "not-occupied": "не можна",
         "occupied": "можна"
       },
+      "black-fairy-placement": {
+        "description": "Чорну фею розміщують {}.",
+        "next-follower": "поряд із підданцем",
+        "on-tile": "на плитці"
+      },
       "bazaar-no-auction": {
         "description": "Без ставок на базарі. Кожен гравець просто вибирає одну плитку."
       },
@@ -770,6 +777,7 @@
       "connected-to": "Підключено до {0}",
       "game-id": "ID гри",
       "games-in-progress": "Ігри, що тривають",
+      "game-not-found": "Гру не знайдено. Перевірте ключ гри та спробуйте ще раз.",
       "join-game": "Приєднатися до гри",
       "local-game": "Локальна гра",
       "loading-game-data": "Завантаження даних гри…",
@@ -824,6 +832,7 @@
     "discord": "Discord",
     "exit": "Вихід",
     "farm-hints": "Підказки полів",
+    "feature-hints": "Підказки об’єктів",
     "file": "Файл",
     "game": "Гра",
     "help": "Довідка",
@@ -837,6 +846,7 @@
     "open-game": "Відкрити гру",
     "playonline-connect": "Грати онлайн",
     "playonline-disconnect": "Відключитися",
+    "potential-final-score": "Можливий підсумковий рахунок",
     "report-bug": "Повідомити про помилку",
     "rotate": "Повернути",
     "rules": "Правила",

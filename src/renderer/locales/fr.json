@@ -1,8 +1,8 @@
 {
   "@author": "Black Bear",
   "@jcz-version": "5.12.1",
-  "@fcz-version": "7.0.1",
-  "@version": "0.11.11",
+  "@fcz-version": "7.1.0",
+  "@version": "0.12.1-ai",
   "about": {
     "author": "Auteur",
     "configuration-file": "Fichier de configuration",
@@ -330,6 +330,7 @@
       "barn": "Grange",
       "big-follower": "Grand meeple",
       "big-top": "Chapiteau",
+      "black-fairy": "La Fée Noire",
       "black-tower": "La Tour Noire",
       "bridge": "Pont",
       "builder": "Bâtisseur",
@@ -373,6 +374,7 @@
       "acrobats": "Artistes",
       "bazaar": "Bazar",
       "big-top": "Chapiteau",
+      "black-fairy": "La Fée Noire",
       "castle": "Forteresse",
       "castles": "Forteresses",
       "cathedral": "Cathédrale",
@@ -616,6 +618,11 @@
         "not-occupied": "ne peut pas",
         "occupied": "peut"
       },
+      "black-fairy-placement": {
+        "description": "La Fée Noire est utilisée {}.",
+        "next-follower": "à côté d’un meeple",
+        "on-tile": "est déplacée sur une tuile"
+      },
       "bazaar-no-auction": {
         "description": "Pas d’enchères de bazar. Chaque joueur choisit simplement une tuile."
       },
@@ -770,6 +777,7 @@
       "connected-to": "Connecté à {0}",
       "game-id": "Identifiant de la partie",
       "games-in-progress": "Parties en cours",
+      "game-not-found": "Partie introuvable. Vérifiez la clé de la partie et réessayez.",
       "join-game": "Rejoindre une partie",
       "local-game": "Partie locale",
       "loading-game-data": "Chargement des données de la partie…",

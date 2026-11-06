@@ -1,8 +1,8 @@
 {
   "@author": "Stepukiss",
   "@jcz-version": "5.12.1",
-  "@fcz-version": "7.0.1",
-  "@version": "0.11.11-ai",
+  "@fcz-version": "7.1.0",
+  "@version": "0.12.1-ai",
   "about": {
     "author": "Autorius",
     "configuration-file": "Nustatymų aplankas",
@@ -330,6 +330,7 @@
       "barn": "Tvartas",
       "big-follower": "Didelis Miplas",
       "big-top": "Šapito",
+      "black-fairy": "Juodoji fėja",
       "black-tower": "Juodasis bokštas",
       "bridge": "Tiltas",
       "builder": "Statybininkas",
@@ -373,6 +374,7 @@
       "acrobats": "Akrobatai",
       "bazaar": "Turgus",
       "big-top": "Šapito",
+      "black-fairy": "Juodoji fėja",
       "castle": "Pilis",
       "castles": "Pilys",
       "cathedral": "Katedra",
@@ -616,6 +618,11 @@
         "not-occupied": "negali",
         "occupied": "gali"
       },
+      "black-fairy-placement": {
+        "description": "Juodoji fėja yra padėta {}.",
+        "next-follower": "prie Miplo",
+        "on-tile": "ant kortelės"
+      },
       "bazaar-no-auction": {
         "description": "Nėra Turgaus aukciono. Kiekvienas žaidėjas tiesiog pasirenka kortelę"
       },
@@ -770,6 +777,7 @@
       "connected-to": "Prisijungia prie {0}",
       "game-id": "Žaidimo ID",
       "games-in-progress": "Žaidimas jau vyksta",
+      "game-not-found": "Žaidimas nerastas. Patikrinkite žaidimo raktą ir bandykite dar kartą.",
       "join-game": "Prisijungti prie žaidimo",
       "local-game": "Vietinis žaidimas",
       "loading-game-data": "Įkeliami žaidimo duomenys…",

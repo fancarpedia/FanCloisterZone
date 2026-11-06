@@ -1,8 +1,8 @@
 {
   "@author": "TileLord | Erol",
   "@jcz-version": "5.12.1",
-  "@fcz-version": "7.0.1",
-  "@version": "0.11.11-ai",
+  "@fcz-version": "7.1.0",
+  "@version": "0.12.1-ai",
   "about": {
     "author": "Avtor",
     "configuration-file": "Konfiguracijska datoteka",
@@ -330,6 +330,7 @@
       "barn": "Skedenj",
       "big-follower": "Veliki Človeček",
       "big-top": "Veliki Šotor",
+      "black-fairy": "Črna vila",
       "black-tower": "Črni stolp",
       "bridge": "Most",
       "builder": "Graditelj",
@@ -373,6 +374,7 @@
       "acrobats": "Akrobati",
       "bazaar": "Bazar",
       "big-top": "Veliki Šotor",
+      "black-fairy": "Črna vila",
       "castle": "Grad",
       "castles": "Gradovi",
       "cathedral": "Katedrala",
@@ -616,6 +618,11 @@
         "not-occupied": "ne more",
         "occupied": "lahko"
       },
+      "black-fairy-placement": {
+        "description": "Črna vila je postavljena {}.",
+        "next-follower": "poleg človeščka",
+        "on-tile": "na ploščico"
+      },
       "bazaar-no-auction": {
         "description": "Brez bazarske dražbe. Vsak igralec samo izbere eno ploščico."
       },
@@ -770,6 +777,7 @@
       "connected-to": "Povezan z {0}",
       "game-id": "ID igre",
       "games-in-progress": "Igre v teku",
+      "game-not-found": "Igre ni mogoče najti. Preverite ključ igre in poskusite znova.",
       "join-game": "Pridruži se igri",
       "local-game": "Lokalna igra",
       "loading-game-data": "Nalaganje podatkov igre…",

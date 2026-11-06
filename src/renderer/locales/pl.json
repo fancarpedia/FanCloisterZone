@@ -1,8 +1,8 @@
 {
   "@author": "Snearone",
   "@jcz-version": "5.12.1",
-  "@fcz-version": "7.0.1",
-  "@version": "0.11.11-ai",
+  "@fcz-version": "7.1.0",
+  "@version": "0.12.1-ai",
   "about": {
     "author": "Autor",
     "configuration-file": "Plik konfiguracyjny",
@@ -330,6 +330,7 @@
       "barn": "Stodoła",
       "big-follower": "Duży podwładny",
       "big-top": "Cyrk objazdowy",
+      "black-fairy": "Czarna wróżka",
       "black-tower": "Czarna Wieża",
       "bridge": "Most",
       "builder": "Budowniczy",
@@ -373,6 +374,7 @@
       "acrobats": "Akrobaci",
       "bazaar": "Bazar",
       "big-top": "Cyrk",
+      "black-fairy": "Czarna wróżka",
       "castle": "Zamek",
       "castles": "Zamki",
       "cathedral": "Katedra",
@@ -616,6 +618,11 @@
         "not-occupied": "nie może",
         "occupied": "może"
       },
+      "black-fairy-placement": {
+        "description": "Czarna wróżka jest umieszczana {}.",
+        "next-follower": "obok podwładnego",
+        "on-tile": "na płytce"
+      },
       "bazaar-no-auction": {
         "description": "Brak licytacji, gracze kolejno wybierają po jednej płtyce."
       },
@@ -770,6 +777,7 @@
       "connected-to": "Połączono z {0}",
       "game-id": "Klucz",
       "games-in-progress": "Gry w toku",
+      "game-not-found": "Nie znaleziono gry. Sprawdź klucz gry i spróbuj ponownie.",
       "join-game": "Dołącz do gry",
       "local-game": "Gra lokalna",
       "loading-game-data": "Wczytywanie danych gry…",
