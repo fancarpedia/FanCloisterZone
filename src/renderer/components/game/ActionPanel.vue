@@ -1,6 +1,6 @@
 <template>
   <div
-    :class="{ 'action-panel': true, 'full-height': pointsExpression || phase === 'GameOverPhase'}"
+    :class="['action-panel', { 'full-height': pointsExpression || phase === 'GameOverPhase' }, activePlayerPanelColorClass]"
     @click.right="onRightClick"
   >
     <div v-if="notifyConnectionClosed" class="flex-grow-1">
@@ -70,7 +70,7 @@
     />
 
     <svg
-      v-if="action && activePlayerIndicatorTriangle && !returnedMeeplePanel && !awardedMeeplePanel && !returnedTokenPanel && !diceRollPanel"
+      v-if="showActivePlayerIndicator"
       :class="`active-player-marker ${colorCssClass(action.player)} color-fill`"
       width="42" height="42"
     >
@@ -188,6 +188,28 @@ export default {
 
     playerIndex () {
       return this.action?.player
+    },
+
+    // One source of truth for the active-player indicator, so the corner triangle and the
+    // small-screen panel tint can never disagree about when to show it. The overlay panels take
+    // the whole bar over, and marking a player while one of them is up would be misleading.
+    showActivePlayerIndicator () {
+      return !!this.action && this.activePlayerIndicatorTriangle &&
+        !this.returnedMeeplePanel && !this.awardedMeeplePanel &&
+        !this.returnedTokenPanel && !this.diceRollPanel
+    },
+
+    // Tints the whole bar in the active player's colour. The rule only has an effect on small
+    // screens (see player-colors.scss), where the triangle is hidden because it cramps the bar.
+    //
+    // The number in the class is the player's COLOUR (their slot), not their seat index — the two
+    // differ as soon as anyone picks a colour out of seat order. Derived through colorCssClass the
+    // same way PlayerPanel does it, so the bar and the sidebar always agree.
+    activePlayerPanelColorClass () {
+      if (!this.showActivePlayerIndicator) {
+        return null
+      }
+      return this.colorCssClass(this.action.player).replaceAll('color', 'panel-color')
     },
 
     notifyConnectionClosed () {
