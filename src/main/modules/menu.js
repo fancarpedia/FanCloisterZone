@@ -96,6 +96,14 @@ async function createMenu(win, messages) {
   // hit whichever window (lobby or a specific game window) the user is currently looking at.
   const targetWin = () => BrowserWindow.getFocusedWindow() || win
 
+  // R / F / T / H are handled by the renderer (Board.vue onKeyDown) — which is also the only way
+  // they can work in the web build, where there is no native menu. They must NOT be registered as
+  // menu accelerators as well: `registerAccelerator: false` is macOS-only, so on Windows and Linux
+  // the menu claimed the key too and one press ran the action twice — a rotation that visibly
+  // started and then snapped to the end, and hint toggles that flipped twice and so did nothing.
+  // The key still belongs in the menu, just as a hint in the label rather than a live binding.
+  const withKey = (label, key) => `${label} (${key})`
+
   const isMac = process.platform === 'darwin'
   const sessionSubmenu = [
     { id: 'new-game', label: $t('menu.new-game') || 'New Game', accelerator: 'CommandOrControl+N', click() { targetWin().webContents.send('menu.new-game') } },
@@ -132,13 +140,13 @@ async function createMenu(win, messages) {
         { type: 'separator' },
         { id: 'zoom-in', label: $t('menu.zoom-in') || 'Zoom In', accelerator: 'numadd', registerAccelerator: false, click() { targetWin().webContents.send('menu.zoom-in') } },
         { id: 'zoom-out', label: $t('menu.zoom-out') || 'Zoom Out', accelerator: 'numsub', registerAccelerator: false, click() { targetWin().webContents.send('menu.zoom-out') } },
-        { id: 'rotate', label: $t('menu.rotate') || 'Rotate', accelerator: 'r', registerAccelerator: false, click() { targetWin().webContents.send('menu.rotate') } },
+        { id: 'rotate', label: withKey($t('menu.rotate') || 'Rotate', 'R'), click() { targetWin().webContents.send('menu.rotate') } },
         { type: 'separator' },
         { id: 'game-tiles', label: $t('menu.tiles') || 'Tiles', click() { targetWin().webContents.send('menu.game-tiles') } },
-        { id: 'game-farm-hints', label: $t('menu.farm-hints') || 'Farm Hints', accelerator: 'f', registerAccelerator: false, type: 'checkbox', checked: DEFAULT_CHECKED['game-farm-hints'], click() { targetWin().webContents.send('menu.game-farm-hints') } },
-        { id: 'game-feature-hints', label: $t('menu.feature-hints') || 'Feature Hints', accelerator: 't', registerAccelerator: false, type: 'checkbox', checked: DEFAULT_CHECKED['game-feature-hints'], click() { targetWin().webContents.send('menu.game-feature-hints') } },
+        { id: 'game-farm-hints', label: withKey($t('menu.farm-hints') || 'Farm Hints', 'F'), type: 'checkbox', checked: DEFAULT_CHECKED['game-farm-hints'], click() { targetWin().webContents.send('menu.game-farm-hints') } },
+        { id: 'game-feature-hints', label: withKey($t('menu.feature-hints') || 'Feature Hints', 'T'), type: 'checkbox', checked: DEFAULT_CHECKED['game-feature-hints'], click() { targetWin().webContents.send('menu.game-feature-hints') } },
         { id: 'game-potential-score', label: $t('menu.potential-final-score') || 'Potential Final Score', type: 'checkbox', checked: DEFAULT_CHECKED['game-potential-score'], click() { targetWin().webContents.send('menu.game-potential-score') } },
-        { id: 'toggle-history', label: $t('menu.toggle-history') || 'Toggle History', accelerator: 'h', registerAccelerator: false, type: 'checkbox', checked: DEFAULT_CHECKED['toggle-history'], click() { targetWin().webContents.send('menu.game-history') } }
+        { id: 'toggle-history', label: withKey($t('menu.toggle-history') || 'Toggle History', 'H'), type: 'checkbox', checked: DEFAULT_CHECKED['toggle-history'], click() { targetWin().webContents.send('menu.game-history') } }
       ]
     }, {
       label: $t('menu.help') || 'Help',

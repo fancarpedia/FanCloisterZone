@@ -119,6 +119,10 @@ const PAN_KEYS = ['a', 's', 'd', 'w']
 // One action per press, however long the key is held: rotate and the hint/history toggles.
 const ACTION_KEYS = ['r', 'f', 'h', 't']
 
+// Length of one quarter-turn. Long enough to read as a turn, short enough not to delay play.
+const ROTATE_DURATION = 480
+const easeInOutCubic = t => t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2
+
 export default {
   components: {
     BridgeLayer,
@@ -205,6 +209,10 @@ export default {
     // it changes on every pointermove and nothing renders from it.
     this.pointers = new Map()
     this.pinchDist = 0
+    // requestAnimationFrame handle of the running quarter-turn, and the angle it is heading for.
+    // Not reactive — nothing renders from them.
+    this.rotateAnimation = null
+    this.rotateTarget = 0
     // this._onKeyDown = this.onKeyDown.bind(this)
     // this._onKeyUp = this.onKeyUp.bind(this)
     // this._stopDragging = this.stopDragging.bind(this)
@@ -220,6 +228,7 @@ export default {
 
   beforeDestroy () {
     clearInterval(this.pressedKeysInterval)
+    this.stopRotateAnimation()
     document.removeEventListener('keydown', this.onKeyDown)
     document.removeEventListener('keyup', this.onKeyUp)
     document.removeEventListener('pointerup', this.onPointerUp)
@@ -467,25 +476,80 @@ export default {
     },
 
     changeRotate () {
-      const rotate = (this.rotate + 90) % 360
+      // A turn already running is snapped to its target first, so quick taps add up to 180°
+      // instead of restarting from a half-finished angle.
+      this.stopRotateAnimation(true)
 
-      // Turn around the middle of the visible board, not around the board's own origin.
-      //
-      // The group transform is `rotate(r Ox Oy) translate(Ox Oy) scale(z)`, so a board point p
-      // lands at O + R(r)·(z·p) with O = (offsetX, offsetY) — meaning the pivot is wherever the
-      // board's 0,0 currently sits, which drifts with every pan. To keep whatever is under the
-      // visible centre C from moving, the origin has to go to
-      //     O' = C - R(90)·(C - O)
-      // and in screen coordinates (y pointing down) R(90) maps (x, y) -> (-y, x).
-      const c = this.visibleCenter()
-      const dx = c.x - this.offsetX
-      const dy = c.y - this.offsetY
-      this.offsetX = c.x + dy
-      this.offsetY = c.y - dx
+      const from = this.rotate
+      const center = this.visibleCenter()
+      const origin = { x: this.offsetX, y: this.offsetY }
 
-      this.$store.commit('board/changeRotate', rotate)
+      if (this.prefersReducedMotion()) {
+        this.applyRotation(from, 90, center, origin)
+        this.adjustAfterMove()
+        return
+      }
+
+      this.rotateTarget = (from + 90) % 360
+      const start = performance.now()
+      const step = now => {
+        const t = Math.min(1, (now - start) / ROTATE_DURATION)
+        this.applyRotation(from, 90 * easeInOutCubic(t), center, origin)
+        if (t < 1) {
+          this.rotateAnimation = requestAnimationFrame(step)
+        } else {
+          this.rotateAnimation = null
+          this.adjustAfterMove() // clamp once, at rest — clamping mid-turn fights the animation
+        }
+      }
+      this.rotateAnimation = requestAnimationFrame(step)
+    },
+
+    /**
+     * Put the board at `from + delta` degrees while keeping whatever sits under `center` in place.
+     *
+     * The group transform is `rotate(r Ox Oy) translate(Ox Oy) scale(z)`, so a board point p lands
+     * at O + R(r)·(z·p) with O = (offsetX, offsetY) — the pivot is wherever the board's own 0,0
+     * currently sits, which drifts with every pan. Holding the centre still means moving the origin
+     * to O' = C - R(delta)·(C - O), where O is the origin as it was when the turn began.
+     */
+    applyRotation (from, delta, center, origin) {
+      const rad = delta * Math.PI / 180
+      const cos = Math.cos(rad)
+      const sin = Math.sin(rad)
+      const dx = center.x - origin.x
+      const dy = center.y - origin.y
+      this.offsetX = center.x - (dx * cos - dy * sin)
+      this.offsetY = center.y - (dx * sin + dy * cos)
+
+      const rotate = (from + delta) % 360
       this.rotate = rotate
-      this.adjustAfterMove()
+      // Committed every frame, not just at the end: the meeples, score bullets and anything else
+      // using counterBoardRotation() have to turn with the board to stay upright all the way.
+      this.$store.commit('board/changeRotate', rotate)
+    },
+
+    /**
+     * Ends an in-flight turn. With `snap`, finishes the quarter-turn it was heading for, rather
+     * than the nearest one — a second tap at 30° through must still land on 90°, not fall back
+     * to 0°, or quick taps would cancel each other out.
+     */
+    stopRotateAnimation (snap = false) {
+      if (!this.rotateAnimation) {
+        return
+      }
+      cancelAnimationFrame(this.rotateAnimation)
+      this.rotateAnimation = null
+      if (snap) {
+        const remaining = (this.rotateTarget - this.rotate + 360) % 360
+        this.applyRotation(this.rotate, remaining, this.visibleCenter(),
+          { x: this.offsetX, y: this.offsetY })
+      }
+    },
+
+    prefersReducedMotion () {
+      return typeof window !== 'undefined' && !!window.matchMedia &&
+        window.matchMedia('(prefers-reduced-motion: reduce)').matches
     },
     
   }
