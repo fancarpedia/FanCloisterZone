@@ -114,6 +114,11 @@ import { BASE_SIZE } from '@/constants/ui'
 const ACTION_PANEL_HEIGHT = 160
 const KEY_PRESSED_OFFSET = 30
 
+// Held down to pan continuously — these drive the repeat loop in onKeyDown.
+const PAN_KEYS = ['a', 's', 'd', 'w']
+// One action per press, however long the key is held: rotate and the hint/history toggles.
+const ACTION_KEYS = ['r', 'f', 'h', 't']
+
 export default {
   components: {
     BridgeLayer,
@@ -244,10 +249,37 @@ export default {
   
   methods: {
     onKeyDown (ev) {
-      if (['a', 's', 'd', 'w', 'r', 't', 'h', 'f'].includes(ev.key) && !this.$store.state.gameDialog && !this.$store.state.gameChatEdit) {
+	  if ([...PAN_KEYS, ...ACTION_KEYS].includes(ev.key) && !this.$store.state.gameDialog && !this.$store.state.gameChatEdit) {
         if (ev.ctrlKey || ev.metaKey || ev.altKey || ev.shiftKey) {
           return
         }
+
+        // Rotate and the three hint toggles are ONE-SHOT: they belong on the key press, not in
+        // the repeat loop below, which exists to pan smoothly while a key is held. Holding the
+        // key used to re-fire them — r spun the board every 40 ms, and f/h/t flickered at the
+        // keyboard's auto-repeat rate. `ev.repeat` is true for every auto-repeated keydown, so
+        // this reacts once per physical press.
+        if (ACTION_KEYS.includes(ev.key)) {
+          if (ev.repeat) {
+            return
+          }
+          switch (ev.key) {
+            case 'r':
+              this.changeRotate() // already calls adjustAfterMove()
+              break
+            case 'f':
+              this.$store.commit('toggleGameFarmHints')
+              break
+            case 'h':
+              this.$store.commit('toggleGameHistory')
+              break
+            case 't':
+              this.$store.commit('toggleGameFeatureHints')
+              break
+          }
+          return
+        }
+
         this.pressedKeys[ev.key] = true
         if (!this.pressedKeysInterval) {
           this.pressedKeysInterval = setInterval(() => {
@@ -264,22 +296,9 @@ export default {
               this.offsetY += KEY_PRESSED_OFFSET
               pressed = true
             }
-            if (this.pressedKeys.r) {
-              this.changeRotate()
-              pressed = true
-            }
             if (this.pressedKeys.w) {
               this.offsetY -= KEY_PRESSED_OFFSET
               pressed = true
-            }
-            if (this.pressedKeys.f) {
-              this.$store.commit('toggleGameFarmHints')
-            }
-            if (this.pressedKeys.h) {
-              this.$store.commit('toggleGameHistory')
-            }
-            if (this.pressedKeys.t) {
-              this.$store.commit('toggleGameFeatureHints')
             }
             if (pressed) {
               this.adjustAfterMove()
