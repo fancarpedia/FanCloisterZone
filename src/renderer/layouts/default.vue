@@ -85,7 +85,7 @@ import AboutDialog from '@/components/AboutDialog'
 import ErrorDialog from '@/components/ErrorDialog'
 import JoinGameDialog from '@/components/JoinGameDialog'
 import SettingsDialog from '@/components/SettingsDialog'
-import { getAppVersion, getBuildBadge } from '@/utils/version'
+import { getAppVersion, getBuildBadge, isWeb } from '@/utils/version'
 
 import { STATUS_CONNECTED } from '@/store/networking'
 
@@ -562,7 +562,7 @@ export default {
           if (this.$store.state.networking.connectionStatus !== STATUS_CONNECTED) { this.$windows.closeSelf(); return }
         } else if (kind === 'join-online') {
           if (!await this.connectForGame(payload)) return
-          this.$connection.send({ type: 'JOIN_GAME', payload: payload.gameId ? { gameId: payload.gameId } : { gameKey: payload.gameKey } })
+          await this.joinOnlineGame(payload)
         } else if (kind === 'create-online') {
           if (!await this.connectForGame(payload)) return
           await this.$store.dispatch('gameSetup/newGame')
@@ -574,6 +574,40 @@ export default {
         console.error('game window init failed', e)
         this.$windows.closeSelf()
       }
+    },
+
+    /**
+     * Join an online game, and only report success once the server has confirmed it.
+     *
+     * A wrong or stale game key is answered with silence, not an error (see sendAndAwait), so
+     * this used to leave the window parked on /loading for ever — and a game window cannot
+     * navigate to '/' (that closes it), so the window was simply dead. It read as a crash.
+     *
+     * On failure there is nothing for this window to show — a game window that never joined has
+     * no game — so it closes and hands the message to the lobby, which stays open. In the web
+     * build there is no second window to hand it to (and closing would take the whole app with
+     * it), so the message is shown here instead.
+     */
+    async joinOnlineGame (payload) {
+      const request = payload.gameId ? { gameId: payload.gameId } : { gameKey: payload.gameKey }
+      const res = await this.$connection.sendAndAwait({ type: 'JOIN_GAME', payload: request }, { expect: 'GAME' })
+      if (res.ok) {
+        return true
+      }
+
+      const error = {
+        title: this.$t('index.online.join-game'),
+        content: res.reason === 'error' && res.error?.message
+          ? res.error.message
+          : this.$t('index.online.game-not-found')
+      }
+      if (this.$windows.isGameWindow() && !isWeb()) {
+        ipcRenderer.send('report-error-to-lobby', error)
+        this.$windows.closeSelf()
+      } else {
+        this.$store.commit('errorMessage', error)
+      }
+      return false
     },
 
     // Establish this window's own online connection (its own seat) before joining/creating.

@@ -273,6 +273,44 @@ class ConnectionPlugin extends EventsBase {
   //   return this.ws !== null
   // }
 
+  /**
+   * Send a message and wait for the server to answer it.
+   *
+   * Resolves { ok: true, message } on a reply of type `expect`, or { ok: false, reason } with
+   * reason 'error' (the server sent ERR) or 'timeout' (it said nothing at all).
+   *
+   * The timeout is not belt-and-braces: the server genuinely answers some requests with silence.
+   * JOIN_GAME for a game that does not exist is one — jczserver.class.php's joinGame() wraps its
+   * whole body in `if ($game = getGames(...))` with no else branch, so a wrong game key produces
+   * neither GAME nor ERR, and a caller that just awaits a reply waits for ever.
+   */
+  sendAndAwait (message, { expect, timeout = 8000 } = {}) {
+    return new Promise(resolve => {
+      let settled = false
+      const callbacks = {}
+      const finish = result => {
+        if (settled) {
+          return
+        }
+        settled = true
+        clearTimeout(callbacks.timer)
+        this.off('message', callbacks.onMessage)
+        this.off('error', callbacks.onError)
+        resolve(result)
+      }
+      callbacks.onMessage = msg => {
+        if (msg && msg.type === expect) {
+          finish({ ok: true, message: msg })
+        }
+      }
+      callbacks.onError = error => finish({ ok: false, reason: 'error', error })
+      callbacks.timer = setTimeout(() => finish({ ok: false, reason: 'timeout' }), timeout)
+      this.on('message', callbacks.onMessage)
+      this.on('error', callbacks.onError)
+      this.send(message)
+    })
+  }
+
   onNextSendError (handler) {
     const callbacks = {}
     callbacks.onError = err => {

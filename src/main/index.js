@@ -465,6 +465,18 @@ ipcMain.on('close-self-window', (event) => {
   }
 })
 
+// A game window that is about to close itself hands its error to the lobby, which stays open —
+// otherwise the message dies with the window and the player sees it flash and vanish.
+ipcMain.on('report-error-to-lobby', (event, payload) => {
+  const lobby = BrowserWindow.getAllWindows().find(w => {
+    const s = winState.get(w.webContents.id)
+    return s && s.role === 'main'
+  })
+  if (lobby && !lobby.isDestroyed() && lobby.webContents.id !== event.sender.id) {
+    lobby.webContents.send('error', payload)
+  }
+})
+
 // Confirm switching the online server while online games are open (texts come from the renderer,
 // which owns i18n). Returns true when the user confirms.
 ipcMain.handle('confirm-online-games-dialog', async (event, texts = {}) => {

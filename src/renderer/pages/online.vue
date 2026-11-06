@@ -728,10 +728,17 @@ export default {
         return
       }
       this.joinError = null
-      this.$connection.onNextSendError(err => {
-        this.joinError = err.message
-      })
-      this.$connection.send({ type: 'JOIN_GAME', payload: { gameKey: this.joinGameId } })
+      // Waits for the GAME reply instead of firing and forgetting: an unknown game key is
+      // answered with silence, so without this the dialog just sat there as if nothing happened.
+      this.$connection
+        .sendAndAwait({ type: 'JOIN_GAME', payload: { gameKey: this.joinGameId } }, { expect: 'GAME' })
+        .then(res => {
+          if (!res.ok) {
+            this.joinError = res.reason === 'error' && res.error?.message
+              ? res.error.message
+              : this.$t('index.online.game-not-found')
+          }
+        })
     },
 
     async disconnect () {
