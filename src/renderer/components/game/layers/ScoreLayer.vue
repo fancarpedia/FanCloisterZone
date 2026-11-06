@@ -6,7 +6,7 @@
     <g
       v-for="(scores, key) in scoreSources"
       :key="key"
-      :transform="transformPointer(scores[0].ptr)"
+      :transform="transformPointer(scores[0].ptr) + ' ' + counterBoardRotation()"
     >
       <g
         v-for="(s, idx) in scores"

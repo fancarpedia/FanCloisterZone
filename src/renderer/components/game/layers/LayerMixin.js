@@ -1,15 +1,33 @@
-import { mapGetters } from 'vuex'
+import { mapGetters, mapState } from 'vuex'
 import { BASE_SIZE } from '@/constants/ui'
 
 export default {
-  computed: mapGetters({
-    bridges: 'game/bridges',
-    colorCssClass: 'game/colorCssClass',
-    isDragging: 'board/isDragging',
-    tileOn: 'game/tileOn'
-  }),
+  computed: {
+    ...mapGetters({
+      bridges: 'game/bridges',
+      colorCssClass: 'game/colorCssClass',
+      isDragging: 'board/isDragging',
+      tileOn: 'game/tileOn'
+    }),
+
+    ...mapState({
+      boardRotation: state => state.board.rotate
+    })
+  },
 
   methods: {
+    /**
+     * Cancels the board's rotation, so whatever it is applied to stays upright on screen while
+     * the board is turned. Append it to a group's transform; it pivots on that group's own
+     * origin, so the anchor point does not move — only the orientation changes.
+     *
+     * Anything with a readable face (a figure, a number, a label) needs this. MeepleLayer and
+     * EventMeeplesLayer each have their own `rotateMeeple()` doing exactly the same thing.
+     */
+    counterBoardRotation () {
+      return `rotate(${-(this.boardRotation || 0)} 0 0)`
+    },
+
     positionAsKey (pos) {
       return `${pos[0]},${pos[1]}`
     },
