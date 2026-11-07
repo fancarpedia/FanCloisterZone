@@ -1,12 +1,10 @@
 <template>
   <section>
     <template v-if="local">
-      <v-btn color="secondary" @click="confirm">
-        {{ $t('button.confirm') }}
-      </v-btn>
+      <ActionButton color="secondary" icon="fa-check" :label="$t('button.confirm')" @click="confirm" />
       <template v-if="undoAllowed">
-        {{ $t('game.action.or') }}
-        <v-btn @click="undo">{{ $t('button.undo') }}</v-btn>
+        <span class="skip-text">{{ $t('game.action.or') }}</span>
+        <ActionButton icon="fa-undo" :label="$t('button.undo')" @click="undo" />
       </template>
       <span class="text">
         {{ $t('game.action.your-action') }}
@@ -21,7 +19,11 @@
 <script>
 import { mapGetters } from 'vuex'
 
+import ActionButton from '@/components/game/actions/ActionButton'
+
 export default {
+  components: { ActionButton },
+
   props: {
     action: { type: Object, required: true },
     local: { type: Boolean }

@@ -1,9 +1,7 @@
 <template>
   <section>
     <template v-if="local">
-      <v-btn color="secondary" @click="confirm">
-        {{ $t('button.confirm') }}
-      </v-btn>
+      <ActionButton color="secondary" icon="fa-check" :label="$t('button.confirm')" @click="confirm" />
       <!-- Undo and "rotate the placed tile" both come from ActionPanel's slot, so this phase does
            NOT render its own undo - two of them read as "Confirm or Undo ... or or Undo". The tile
            is not committed until this confirmation, so turning it is still legal here
@@ -17,7 +15,11 @@
 </template>
 
 <script>
+import ActionButton from '@/components/game/actions/ActionButton'
+
 export default {
+  components: { ActionButton },
+
   props: {
     action: { type: Object, required: true },
     local: { type: Boolean }

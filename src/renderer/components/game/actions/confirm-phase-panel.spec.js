@@ -1,6 +1,7 @@
-import { describe, it, expect } from 'vitest'
 import fs from 'node:fs'
 import { fileURLToPath } from 'node:url'
+
+import { describe, it, expect } from 'vitest'
 
 // The tile-placement confirmation panel must read:
 //   large screens -> "Confirm or Undo"

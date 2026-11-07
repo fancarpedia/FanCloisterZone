@@ -45,7 +45,13 @@
           <template v-if="action.canPass">
             <span v-if="plain !== ''" class="skip-text text">{{ $t('game.action.or') }}</span>
             <div class="pass-item">
-              <v-btn :large="$vuetify.breakpoint.height > 768" color="secondary" @click="pass">{{ label || $t('game.action.skip-action') }}</v-btn>
+              <ActionButton
+                :large="$vuetify.breakpoint.height > 768"
+                color="secondary"
+                :icon="label ? 'fa-check' : 'fa-forward'"
+                :label="label || $t('game.action.skip-action')"
+                @click="pass"
+              />
             </div>
           </template>
           <!-- Turn the tile that is already on the board. Small screens only: with no R key the
@@ -56,7 +62,12 @@
           <template v-if="canRotatePlacedTile">
             <span class="skip-text text rotate-placed">{{ $t('game.action.or') }}</span>
             <div class="pass-item rotate-placed">
-              <v-btn :large="$vuetify.breakpoint.height > 768" @click="rotatePlacedTile">{{ $t('menu.rotate') }}</v-btn>
+              <ActionButton
+                :large="$vuetify.breakpoint.height > 768"
+                icon="fa-sync-alt"
+                :label="$t('menu.rotate')"
+                @click="rotatePlacedTile"
+              />
             </div>
           </template>
           <!-- undo (e.g. take back the tile placement / a wrong meeple choice); on mobile/web this
@@ -64,7 +75,12 @@
           <template v-if="undoAllowed">
             <span class="skip-text text">{{ $t('game.action.or') }}</span>
             <div class="pass-item">
-              <v-btn :large="$vuetify.breakpoint.height > 768" @click="undo">{{ $t('button.undo') }}</v-btn>
+              <ActionButton
+                :large="$vuetify.breakpoint.height > 768"
+                icon="fa-undo"
+                :label="$t('button.undo')"
+                @click="undo"
+              />
             </div>
           </template>
         </template>
@@ -99,6 +115,7 @@
 import { ipcRenderer } from 'electron'
 import { mapGetters, mapState } from 'vuex'
 
+import ActionButton from '@/components/game/actions/ActionButton'
 import ActionPhaseAction from '@/components/game/actions/ActionPhaseAction.vue'
 import BazaarPhaseAction from '@/components/game/actions/BazaarPhaseAction.vue'
 import CastlePhaseAction from '@/components/game/actions/CastlePhaseAction.vue'
@@ -139,6 +156,7 @@ const MAPPING = {
 
 export default {
   components: {
+    ActionButton,
     ActionPhaseAction,
     BazaarPhaseAction,
     CastlePhaseAction,
@@ -431,6 +449,10 @@ export default {
     width: 100%
 
     > section
+      // icon-only buttons sit closer together than worded ones
+      .pass-item
+        margin-left: 12px
+
       span.skip-text
         display: none
 

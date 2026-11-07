@@ -3,10 +3,10 @@
     <template v-if="local">
       <i18n tag="span" path="game.action.crop-circles-choose-one" class="text">
         <template #deploy>
-          <v-btn large color="secondary" @click="select('DEPLOY')">{{ $t('button.may-deploy') }}</v-btn>
+          <ActionButton large color="secondary" icon="fa-user-plus" :label="$t('button.may-deploy')" @click="select('DEPLOY')" />
         </template>
         <template #remove>
-          <v-btn large color="secondary" @click="select('REMOVE')">{{ $t('button.must-remove') }}</v-btn>
+          <ActionButton large color="secondary" icon="fa-user-minus" :label="$t('button.must-remove')" @click="select('REMOVE')" />
         </template>
         <template #feature>{{ featureName }}</template>
       </i18n>
@@ -18,8 +18,11 @@
 <script>
 import { mapGetters } from 'vuex'
 
+import ActionButton from '@/components/game/actions/ActionButton'
+
 export default {
   components: {
+    ActionButton
   },
 
   props: {

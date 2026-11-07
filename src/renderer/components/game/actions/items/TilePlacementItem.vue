@@ -5,7 +5,7 @@
     :class="{remote: !local}"
     @click="onClick"
   />
-</template> 
+</template>
 
 <script>
 import LayeredItemMixin from '@/components/game/actions/items/LayeredItemMixin.js'

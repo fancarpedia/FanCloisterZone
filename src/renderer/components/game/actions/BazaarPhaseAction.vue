@@ -46,15 +46,15 @@
             <span v-else class="bid-price">{{ bid }}</span>
           </template>
           <template v-if="local && actionItem.type === 'BazaarSelectTile'">
-            <v-btn small color="secondary" @click="makeBid">{{ $t('button.select') }}</v-btn>
+            <ActionButton small color="secondary" icon="fa-check" :label="$t('button.select')" @click="makeBid" />
           </template>
           <template v-else-if="local && actionItem.type === 'BazaarBid'">
-            <v-btn class="left-btn" small color="secondary" @click="makeBid">{{ $t('button.raise') }}</v-btn>
-            <v-btn small color="secondary" @click="pass">{{ $t('button.pass') }}</v-btn>
+            <ActionButton class="left-btn" small color="secondary" icon="fa-arrow-up" :label="$t('button.raise')" @click="makeBid" />
+            <ActionButton small color="secondary" icon="fa-forward" :label="$t('button.pass')" @click="pass" />
           </template>
           <template v-else-if="local && actionItem.type === 'BazaarSelectBuyOrSell'">
-            <v-btn class="left-btn" small color="secondary" @click="buy">{{ $t('button.buy') }}</v-btn>
-            <v-btn small color="secondary" @click="sell">{{ $t('button.sell') }}</v-btn>
+            <ActionButton class="left-btn" small color="secondary" icon="fa-shopping-cart" :label="$t('button.buy')" @click="buy" />
+            <ActionButton small color="secondary" icon="fa-coins" :label="$t('button.sell')" @click="sell" />
           </template>
         </div>
       </div>
@@ -66,6 +66,7 @@
 import { mapGetters, mapState } from 'vuex'
 import isNil from 'lodash/isNil'
 
+import ActionButton from '@/components/game/actions/ActionButton'
 import BidPriceInput from '@/components/game/actions/BidPriceInput.vue'
 import Meeple from '@/components/game/Meeple'
 import StandaloneTileImage from '@/components/game/StandaloneTileImage'
@@ -93,6 +94,7 @@ const getInitialData = (item, bazaar) => {
 
 export default {
   components: {
+    ActionButton,
     BidPriceInput,
     Meeple,
     StandaloneTileImage

@@ -27,14 +27,14 @@
         <div class="text">{{ $t('core-messages.choose') }}</div>
       </div>
       <div>
-        <v-btn color="secondary" @click="grow">{{ $t('button.grow-the-flock') }}</v-btn>
+        <ActionButton color="secondary" icon="fa-plus" :label="$t('button.grow-the-flock')" @click="grow" />
         <div class="help">{{ $tc('game.action.hills-and-sheep-tokens-left-plural', sheep.bagSize, { tokens: sheep.bagSize } ) }}</div>
       </div>
       <div>
         <div class="text">{{ $t('game.action.or') }}</div>
       </div>
       <div>
-        <v-btn color="secondary" @click="score">{{ $t('button.score-the-sheep') }}</v-btn>
+        <ActionButton color="secondary" icon="fa-star" :label="$t('button.score-the-sheep')" @click="score" />
         <div class="help">{{ $tc('game.action.hills-and-receive-points-plural', points, { points: points } ) }}</div>
       </div>
     </template>
@@ -51,8 +51,11 @@ import { isSameFeature, getMeeplePlayer } from '@/utils/gameUtils'
 import Meeple from '@/components/game/Meeple'
 import TokenImage from '@/components/game/TokenImage'
 
+import ActionButton from '@/components/game/actions/ActionButton'
+
 export default {
   components: {
+    ActionButton,
     Meeple,
     TokenImage
   },
