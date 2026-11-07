@@ -86,6 +86,7 @@
 import Vue from 'vue'
 import { mapGetters, mapState } from 'vuex'
 
+import { centerOf, recenterAfterResize } from '@/utils/view-center'
 import BridgeLayer from '@/components/game/layers/BridgeLayer'
 import BridgeSelectLayer from '@/components/game/layers/BridgeSelectLayer'
 import CastleLayer from '@/components/game/layers/CastleLayer'
@@ -224,11 +225,41 @@ export default {
     document.addEventListener('mouseleave', this.stopDragging)
     this.$root.$on('request-zoom', this.onRequestZoom)
     this.$root.$on('request-rotate', this.onRequestRotate)
+
+    // Size the re-centring compares against. Not reactive - nothing renders from it.
+    const svgRect = this.$refs.svg ? this.$refs.svg.getBoundingClientRect() : null
+    this._viewSize = svgRect ? { width: svgRect.width, height: svgRect.height } : null
+
+    // The work happens in a rAF: a ResizeObserver callback that writes layout synchronously
+    // trips "ResizeObserver loop limit exceeded", which is exactly how this broke once before.
+    this._onViewResize = () => {
+      if (this._resizeFrame) return
+      this._resizeFrame = requestAnimationFrame(() => {
+        this._resizeFrame = null
+        this.onViewResize()
+      })
+    }
+    if (window.ResizeObserver && this.$refs.svg) {
+      this._resizeObserver = new ResizeObserver(this._onViewResize)
+      this._resizeObserver.observe(this.$refs.svg)
+    } else {
+      window.addEventListener('resize', this._onViewResize)
+    }
   },
 
   beforeDestroy () {
     clearInterval(this.pressedKeysInterval)
     this.stopRotateAnimation()
+    if (this._resizeFrame) {
+      cancelAnimationFrame(this._resizeFrame)
+      this._resizeFrame = null
+    }
+    if (this._resizeObserver) {
+      this._resizeObserver.disconnect()
+      this._resizeObserver = null
+    } else {
+      window.removeEventListener('resize', this._onViewResize)
+    }
     document.removeEventListener('keydown', this.onKeyDown)
     document.removeEventListener('keyup', this.onKeyUp)
     document.removeEventListener('pointerup', this.onPointerUp)
@@ -344,12 +375,46 @@ export default {
     // cover the rest of the svg, so the geometric centre of the element is not what they look at.
     visibleCenter () {
       const { width, height } = this.$refs.svg.getBoundingClientRect()
-      const adjustedWidth = width - 210 - 80 // approx 210px for players panel and 80 px for history
-      const adjustedHeight = height - 84 // action panel
-      return {
-        x: 80 + adjustedWidth / 2,
-        y: 84 + adjustedHeight / 2
+      return centerOf(width, height)
+    },
+
+    /**
+     * Keep whatever the player was looking at in the middle of the window after it is resized.
+     *
+     * Without this the board is pinned to the svg's top-left, so widening or shrinking the window
+     * slides the view sideways and the tile they were working on can drift off screen entirely.
+     *
+     * The centre depends only on the element's size, so the OLD centre can be recovered from the
+     * size cached last time round - no need to track an anchor on every pan, which would mean a
+     * getBoundingClientRect on each pointermove. The board point under the old centre is then put
+     * back under the new one.
+     */
+    onViewResize () {
+      const svg = this.$refs.svg
+      if (!svg) return
+      const { width, height } = svg.getBoundingClientRect()
+      const prev = this._viewSize
+      // nothing to preserve before the first measurement, or while the board is laid out at zero
+      // (hidden tab, window minimised) - a 0-size centre would throw the view away
+      if (!width || !height) return
+      if (!prev || !prev.width || !prev.height) {
+        this._viewSize = { width, height }
+        return
       }
+      if (prev.width === width && prev.height === height) return
+
+      const moved = recenterAfterResize({
+        prev,
+        next: { width, height },
+        offsetX: this.offsetX,
+        offsetY: this.offsetY,
+        tileSize: this.tileSize
+      })
+      this.offsetX = moved.offsetX
+      this.offsetY = moved.offsetY
+      this.adjustAfterMove()
+
+      this._viewSize = { width, height }
     },
 
     onRequestZoom (change) {
