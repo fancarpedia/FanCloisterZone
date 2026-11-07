@@ -283,7 +283,8 @@ export default {
   height: 26px
   padding: 0 9px
   border: none
-  border-radius: 13px
+  // square against the screen edge it sits on, rounded on the side facing the board
+  border-radius: 0 13px 13px 0
   cursor: pointer
   background: rgba(0, 0, 0, 0.55)
   transition: background 0.15s

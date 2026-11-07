@@ -18,6 +18,10 @@ export const state = () => ({
   showGameFeatureHints: false,
   showPotentialScore: false,
   showGameHistory: true,
+  // Player supply (followers, tokens, prisoners) in the aside. Starts collapsed: it only has an
+  // effect on small screens, where the full panels leave no room for the board, and there the
+  // score and flowers alone are what a player needs at a glance.
+  showPlayerSupply: false,
   showGameTiles: false,
   showGameSetup: false,
   engine: null,
@@ -80,6 +84,10 @@ export const mutations = {
 
   toggleGameHistory (state) {
     state.showGameHistory = !state.showGameHistory
+  },
+
+  togglePlayerSupply (state) {
+    state.showPlayerSupply = !state.showPlayerSupply
   },
 
   showGameTiles (state, value) {

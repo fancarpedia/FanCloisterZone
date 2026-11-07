@@ -26,7 +26,10 @@
           </v-list-item>
         </v-list>
       </v-menu>
+      <!-- same collapsed class as the aside below: the deck counter sits directly above the
+           player panels, so the two must share a width or the column looks broken -->
       <TilePackSize
+        :class="{ 'supply-collapsed': !showPlayerSupply }"
         :size="tilePackSize"
         :removed-tiles-size="removedTilesSize"
         :game-key="$store.state.game.key"
@@ -36,9 +39,23 @@
         ref="aside"
         :class="{
           [`shrink-${shrink}`]: true,
-          'active-player-indicator-bg-color': activePlayerIndicatorBgColor
+          'active-player-indicator-bg-color': activePlayerIndicatorBgColor,
+          'supply-collapsed': !showPlayerSupply
         }"
+        @click="onAsideClick"
       >
+        <!-- Small screens only (hidden by CSS above the breakpoint): expands the player panels
+             from score + flowers to the full supply. Deliberately a child of the aside, exactly
+             as .history-toggle lives inside .play-events — as a bare sibling of <aside> it
+             rendered correctly but never received the click. -->
+        <button
+          class="supply-toggle"
+          :title="showPlayerSupply ? $t('button.hide') : $t('button.show')"
+          @click.stop="togglePlayerSupply"
+        >
+          <Meeple type="SmallFollower" />
+          <v-icon x-small>{{ showPlayerSupply ? 'fa-chevron-right' : 'fa-chevron-left' }}</v-icon>
+        </button>
         <!-- variant banner sits between the deck counter (above) and the player panels (below) -->
         <div v-if="gameVariant" class="game-variant" :title="$t('game-setup.variant.choose-variant')">{{ gameVariant }}</div>
         <PlayerPanel
@@ -112,6 +129,7 @@ import TestResult from '@/components/game/TestResult.vue'
 import TilePackDialog from '@/components/game/dialogs/TilePackDialog.vue'
 import TilePackSize from '@/components/game/TilePackSize.vue'
 import GameSetupDialog from '@/components/game/dialogs/GameSetupDialog.vue'
+import Meeple from '@/components/game/Meeple'
 import PreDrawHand from '@/components/game/PreDrawHand.vue'
 
 // How densely the player panels in the aside can be packed: 0 is roomy, MAX_SHRINK is tightest.
@@ -128,6 +146,7 @@ export default {
     GameChat,
     GlobalChat,
     GameSetupDialog,
+    Meeple,
     PlayerPanel,
     PlayEvents,
     PreDrawHand,
@@ -166,6 +185,7 @@ export default {
       playerListRotate: state => state.settings.playerListRotate,
       activePlayerIndicatorBgColor: state => state.settings.activePlayerIndicatorBgColor,
       showGameStats: state => state.game.showGameStats,
+      showPlayerSupply: state => state.showPlayerSupply,
       setup: state => state.game.setup
     }),
 
@@ -288,6 +308,23 @@ export default {
   },
 
   methods: {
+    // A named method rather than an inline $store.commit in the template: if the mutation name is
+    // ever wrong, this fails loudly in one place instead of silently doing nothing on every click.
+    togglePlayerSupply () {
+      this.$store.commit('togglePlayerSupply')
+    },
+
+    // Tapping the panels toggles the supply, so it is reachable both ways even if the toggle
+    // button itself is not. The only click target inside an expanded panel is a captured meeple
+    // (paying a ransom), so that one is left alone; the button stops its own propagation.
+    onAsideClick (ev) {
+      const target = ev.target
+      if (target && target.closest && target.closest('.item-prisoner')) {
+        return
+      }
+      this.togglePlayerSupply()
+    },
+
     leave () {
       // reuse the layout's leaveGame flow (online LEAVE_GAME / offline confirm + close + redirect);
       // default.vue listens on this channel, and the electron stub's emit() delivers it on web too
@@ -340,7 +377,13 @@ export default {
       }
 
       const availableHeight = this.$el.clientHeight - aside.getBoundingClientRect().top
-      const height = aside.clientHeight
+      // scrollHeight, not clientHeight: on small screens the aside is bounded top and bottom so it
+      // can scroll, which makes clientHeight equal to the space available and the comparison below
+      // can never fire — shrink froze at whatever level it was on. scrollHeight is the height the
+      // panels actually want, so compressing is tried first and scrolling stays the fallback for
+      // when even the densest level does not fit. On desktop the aside is content-sized, where the
+      // two are the same, so this changes nothing there.
+      const height = aside.scrollHeight
       const sizes = this.shrinkSizes
 
       // Remember how tall the aside is at this level, so we never loosen back into an overflow
@@ -461,6 +504,52 @@ aside
   &.shrink-3
     top: calc(var(--action-bar-height) + 2px)
 
+// Mirrors .history-toggle in PlayEvents.vue, on the opposite edge. Hidden above the breakpoint:
+// there the aside always shows the full supply and there is nothing to expand.
+.supply-toggle
+  display: none
+
+@media (max-width: $small-screen-max-width)
+  // A row of its own at the top of the aside, not an overlay: as an absolutely-positioned pill it
+  // sat on the first player's score. Still a child of the aside (that is what made it receive the
+  // click at all), just in the flex flow, so it can never cover a panel.
+  .supply-toggle
+    align-self: flex-end
+    margin-bottom: 4px
+    // stays put while the panels scroll under it, like the history toggle
+    position: sticky
+    top: 0
+    // The aside is a bounded flex column now, and a flex item's default flex-shrink: 1 lets the
+    // browser squash items to avoid overflowing instead of scrolling. That made this pill shorter
+    // in the expanded state (content overflows) than in the collapsed one (it fits).
+    flex: none
+    z-index: 6
+    pointer-events: auto
+    display: flex
+    align-items: center
+    gap: 3px
+    height: 26px
+    padding: 0 9px
+    border: none
+    border-radius: 13px 0 0 13px
+    cursor: pointer
+    background: rgba(0, 0, 0, 0.55)
+    transition: background 0.15s
+
+    &:hover
+      background: rgba(0, 0, 0, 0.75)
+
+    // ::v-deep because .meeple belongs to the Meeple child component — a scoped rule cannot
+    // reach it. Without the size an <svg> with no width/height falls back to 300x150px, which
+    // made this button enormous and pushed its real hit area off the screen edge.
+    ::v-deep .meeple
+      width: 16px
+      height: 16px
+      fill: #fff
+
+    .v-icon
+      color: #fff
+
 // Small screens: the action bar spans the full width (ActionPanel.vue), so the deck counter can no
 // longer sit beside it in the top-right corner — it moves directly below, and the player panels
 // shift down by one bar height to keep clear of it. The aside's shrink logic measures its own
@@ -475,6 +564,44 @@ aside
     &.shrink-3
       top: calc(var(--action-bar-height) * 2 + 2px)
 
+    // Collapsed, give the board the width back too: the panels hold only a score bullet and the
+    // flowers, so the full --aside-width (210px) is mostly empty strip covering the board.
+    //
+    // auto rather than a fixed width, so the panel is exactly as wide as its content needs — and
+    // flowers widen it instead of being clipped by the section's overflow: hidden.
+    //
+    // min-width leaves room for the toggle pill, which sits in the first panel's top-right corner.
+    // Content alone settles at 65px (where the absolutely-positioned score bullet ends: it starts
+    // at left:-25px and is 90px wide, the same 65px .player-tokens uses as its margin), and the
+    // ~50px pill would then sit on top of that player's bullet.
+    // Bounded top AND bottom, so the panels scroll instead of running off the screen with no way
+    // to reach the last player. Desktop keeps its shrink-to-fit compression: there the aside has
+    // no bottom, stays content-sized, and checkOverflow() picks a denser level. Here the height is
+    // fixed by the two offsets, so that measurement settles and the overflow scrolls instead.
+    bottom: $panel-gap
+    overflow-y: auto
+    // Vertical only. overflow-y: auto alone leaves overflow-x computing to auto, so anything a
+    // panel pushes sideways produced a horizontal scrollbar. hidden pairs legally with auto (the
+    // rule is only that `visible` cannot), and it does not crop the score bullet: the padding
+    // below puts the bullet's overhang inside the box rather than outside it.
+    overflow-x: hidden
+    // keep a flick at the end of the list from scrolling the page/board behind it
+    overscroll-behavior: contain
+    // Room for the score bullet, which is absolutely positioned at left:-25px and overhangs each
+    // panel. overflow-y: auto forces overflow-x to auto as well (CSS: once one axis is not
+    // visible, the other cannot stay visible), so without this padding the scroll box crops the
+    // bullet. The width grows to match, so the panels themselves keep their size — box-sizing is
+    // border-box here, so padding would otherwise eat into them.
+    padding-left: 25px
+    width: calc(var(--aside-width) + 25px)
+
+    &.supply-collapsed
+      width: auto
+      min-width: calc(120px + 25px)
+
+  .tile-pack-size.supply-collapsed
+    width: auto
+    min-width: 120px
 .game-modal
   position: absolute
   top: 0

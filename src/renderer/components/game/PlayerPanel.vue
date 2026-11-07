@@ -234,6 +234,10 @@ export default {
 section
   margin-bottom: $panel-gap
   // min-height: 100px
+  // Keep full height in a scrolling aside: as flex items these would otherwise shrink
+  // (flex-shrink defaults to 1) so the browser could avoid overflowing, squashing every panel
+  // instead of letting the aside scroll.
+  flex: none
 
   +theme using ($theme)
     background: map-get($theme, 'opaque-bg')
@@ -246,6 +250,8 @@ section
   +theme using ($theme)
     background: map-get($theme, 'player-panel-name-bg')
 
+// Rendered even when the player holds no flowers: this margin-left is what holds .name clear of
+// the absolutely-positioned score bullet, so a v-if here pushes the name under the bullet.
 .player-tokens
   display: flex
   justify-content: flex-start
@@ -552,4 +558,46 @@ aside.shrink-3
 
     .item:first-child
       padding-left: 0px
+
+// Small screens, supply collapsed (the default): the panel keeps only what a player needs at a
+// glance — the score, and the flowers when they hold any (the wrapper is not rendered otherwise).
+// Name, clock, follower/token supply and prisoners are hidden; the meeple toggle in game.vue
+// brings them back. Above the breakpoint the class is inert, so desktop is untouched.
+@media (max-width: $small-screen-max-width)
+  aside.supply-collapsed
+    .name, .resources
+      display: none
+
+    ::v-deep .player-clock
+      display: none
+
+    // Hiding the children is not enough to shrink the panel: every shrink level sets an explicit
+    // height on .name-box/.points (60/50/40/28px) and a padding-top on the section, so the row
+    // kept its full height with nothing in it. Same specificity as those rules and later in the
+    // file, so this wins deterministically.
+    //
+    // The height goes on the SECTION as well, not only on the row inside it: the aside has no
+    // height of its own, so its height is the sum of these panels, and anything left sizing the
+    // section (its padding, a child I did not account for) keeps the aside at its expanded
+    // height.
+    // No overflow: hidden here. The score bullet is absolutely positioned at left:-25px and is
+    // meant to overhang the panel's left edge, so clipping the section cropped it. Nothing needs
+    // clipping anyway: the tall children are display:none and the flowers are capped below.
+    section
+      padding-top: 0
+      height: 40px
+
+    .name-box, .points
+      height: 40px
+
+    .points > div
+      font-size: 24px
+
+    // the flowers are allowed 54px tall in the full panel, which overflows a 40px collapsed row
+    // (and would be cut off by the overflow: hidden above)
+    .player-tokens
+      margin-left: 65px
+
+      img, svg
+        max-height: 28px
 </style>
