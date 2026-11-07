@@ -56,3 +56,75 @@ describe('locale registration', () => {
     }
   })
 })
+
+// Anything dispatched through game/apply goes to the engine, so it must be in ENGINE_MESSAGES -
+// networking.js filters on that set, and a type missing from it means the engine's reply is
+// dropped and the move silently does nothing. ROTATE_TILE was missed exactly that way once.
+// (Types sent straight to the server, e.g. GAME_CHAT or SYNC_GAME, do not go through apply.)
+describe('ENGINE_MESSAGES', () => {
+  it('carries every message type dispatched through apply', async () => {
+    const { ENGINE_MESSAGES } = await import('@/constants/messages')
+    const fs = await import('node:fs')
+    const url = await import('node:url')
+    const src = fs.readFileSync(url.fileURLToPath(new URL('../store/game.js', import.meta.url)), 'utf8')
+    // GAME_FINISHED rides the same send path but is purely a server notification - the engine
+    // never sees it and must not, since the game is already over.
+    const SERVER_ONLY = new Set(['GAME_FINISHED'])
+    const applied = [...src.matchAll(/dispatch\('apply',\s*\{[^}]*?type:\s*'([A-Z_]+)'/gs)].map(m => m[1])
+    expect(applied.length).toBeGreaterThan(0)
+    expect(applied.filter(t => !ENGINE_MESSAGES.has(t) && !SERVER_ONLY.has(t))).toEqual([])
+  })
+
+  it('includes ROTATE_TILE', async () => {
+    const { ENGINE_MESSAGES } = await import('@/constants/messages')
+    expect(ENGINE_MESSAGES.has('ROTATE_TILE')).toBe(true)
+  })
+})
+
+// The protocol version is both the current and the minimum accepted one - the handshake compares
+// it for exact equality, so bumping it refuses every older peer. Pinned so it cannot drift back
+// by accident along with an unrelated edit to this file.
+describe('NETWORK_PROTOCOL_COMPATIBILITY', () => {
+  it('is 7.1.0 - the version that carries ROTATE_TILE', async () => {
+    const { NETWORK_PROTOCOL_COMPATIBILITY } = await import('@/constants/versions')
+    expect(NETWORK_PROTOCOL_COMPATIBILITY).toBe('7.1.0')
+  })
+
+  it('is the single value the handshake sends and checks', async () => {
+    const fs = await import('node:fs')
+    const url = await import('node:url')
+    const read = p => fs.readFileSync(url.fileURLToPath(new URL(p, import.meta.url)), 'utf8')
+    // no literal version numbers on either side of the wire - both read the constant
+    expect(read('../plugins/connection.js')).toContain('protocolVersion: NETWORK_PROTOCOL_COMPATIBILITY')
+    expect(read('../../main/modules/localServer.js')).toContain('NETWORK_PROTOCOL_COMPATIBILITY !== payload.protocolVersion')
+  })
+})
+
+// The save gate must never sort ABOVE the app's own version, or the app refuses saves it has
+// just written - semver puts 7.1.0-alpha.1 before 7.1.0, so a bare '7.1.0' here would do exactly
+// that. This guards the pairing as package.json moves on.
+describe('SAVED_GAME_COMPATIBILITY', () => {
+  it('is 7.1.0-alpha.1', async () => {
+    const { SAVED_GAME_COMPATIBILITY } = await import('@/constants/versions')
+    expect(SAVED_GAME_COMPATIBILITY).toBe('7.1.0-alpha.1')
+  })
+
+  it('does not lock out saves written by this very build', async () => {
+    const { SAVED_GAME_COMPATIBILITY } = await import('@/constants/versions')
+    const { compare } = await import('compare-versions')
+    const fs = await import('node:fs')
+    const url = await import('node:url')
+    const appVersion = JSON.parse(
+      fs.readFileSync(url.fileURLToPath(new URL('../../../package.json', import.meta.url)), 'utf8')
+    ).version
+    expect(compare(appVersion, SAVED_GAME_COMPATIBILITY, '<')).toBe(false)
+  })
+
+  it('still refuses saves from before the rotation protocol', async () => {
+    const { SAVED_GAME_COMPATIBILITY } = await import('@/constants/versions')
+    const { compare } = await import('compare-versions')
+    for (const old of ['6.2.1', '6.3.0', '7.0.0']) {
+      expect(compare(old, SAVED_GAME_COMPATIBILITY, '<')).toBe(true)
+    }
+  })
+})

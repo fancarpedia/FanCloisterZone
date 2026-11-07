@@ -1,4 +1,3 @@
-
 export const ENGINE_MESSAGES = new Set([
   'AI',
   'BAZAAR_BID',
@@ -15,6 +14,7 @@ export const ENGINE_MESSAGES = new Set([
   'PLACE_TILE',
   'PLACE_PREDRAWN',
   'PLACE_TOKEN',
+  'ROTATE_TILE',
   'RETURN_MEEPLE',
   'SCORE_ACROBATS',
   'UNDO',

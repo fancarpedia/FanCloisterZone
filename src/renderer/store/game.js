@@ -126,6 +126,7 @@ export const state = () => ({
     allowed: false,
     depth: 0
   },
+  tileRotation: null,
   initialRandom: null,
   gameMessages: null,
   gameAnnotations: {},
@@ -137,6 +138,7 @@ export const state = () => ({
 
 export const mutations = {
   clear (state) {
+    state.tileRotation = null
     state.id = null
     state.originAppVersion = null
     state.key = null
@@ -414,6 +416,18 @@ export const getters = {
 
   isUndoAllowed: (state, getters) => {
     return state.undo?.allowed && getters.isActionLocal
+  },
+
+  /**
+   * Whether the tile already on the board may still be turned.
+   *
+   * The engine decides and publishes the answer as `tileRotation` - it knows the legal angles for
+   * that square and whether anything has committed to the tile as it lies. The client keeps no
+   * memory of the placement, so the action survives a reload, a reconnect and a game opened from
+   * a save, none of which can restore in-session state.
+   */
+  canRotatePlacedTile: (state, getters) => {
+    return !!state.tileRotation && getters.isUndoAllowed
   },
 
   ranks (state) {
@@ -1180,6 +1194,23 @@ export const actions = {
       },
       force: true
     })
+  },
+
+  /**
+   * Turn the tile that was just placed, without the player taking it back and placing it again.
+   *
+   * The engine has no "rotate a placed tile" message, so this is UNDO followed by the same
+   * placement at the next legal rotation for that square. Both steps are engine messages that
+   * replay deterministically, so a recorded game stays valid.
+   */
+  async rotatePlacedTile ({ getters, dispatch }) {
+    if (!getters.canRotatePlacedTile) {
+      return false
+    }
+    // No angle: the engine steps to the next one the square allows. It is one undoable message,
+    // so undo walks back through the angles before it lifts the tile.
+    await dispatch('apply', { type: 'ROTATE_TILE', payload: {} })
+    return true
   },
 
   async undo ({ getters, dispatch }) {

@@ -4,13 +4,11 @@
       <v-btn color="secondary" @click="confirm">
         {{ $t('button.confirm') }}
       </v-btn>
-      <template v-if="undoAllowed">
-        {{ $t('game.action.or') }}
-        <v-btn @click="undo">{{ $t('button.undo') }}</v-btn>
-      </template>
-      <span class="text">
-        {{ $t('game.action.tile-placement') }}
-      </span>
+      <!-- Undo and "rotate the placed tile" both come from ActionPanel's slot, so this phase does
+           NOT render its own undo - two of them read as "Confirm or Undo ... or or Undo". The tile
+           is not committed until this confirmation, so turning it is still legal here
+           (TILE_ROTATION_DISALLOWED is raised by the confirmation itself). -->
+      <slot plain />
     </template>
     <span v-else class="text">
       {{ $t('game.action.waiting-for-player-confirmation') }}
@@ -19,17 +17,11 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
-
 export default {
   props: {
     action: { type: Object, required: true },
     local: { type: Boolean }
   },
-
-  computed: mapGetters({
-    undoAllowed: 'game/isUndoAllowed'
-  }),
 
   mounted () {
     window.addEventListener('keydown', this.onKeyDown)
@@ -46,12 +38,6 @@ export default {
           type: 'TILE_CONFIRM',
           payload: {}
         })
-      }
-    },
-
-    async undo () {
-      if (this.local) {
-        await this.$store.dispatch('game/undo')
       }
     },
 

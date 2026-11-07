@@ -38,7 +38,7 @@
       :local="local && !ai"
     >
       <template
-        v-if="action.canPass || undoAllowed"
+        v-if="action.canPass || undoAllowed || canRotatePlacedTile"
         #default="{ plain, label }"
       >
         <template v-if="local && !ai">
@@ -46,6 +46,17 @@
             <span v-if="plain !== ''" class="skip-text text">{{ $t('game.action.or') }}</span>
             <div class="pass-item">
               <v-btn :large="$vuetify.breakpoint.height > 768" color="secondary" @click="pass">{{ label || $t('game.action.skip-action') }}</v-btn>
+            </div>
+          </template>
+          <!-- Turn the tile that is already on the board. Small screens only: with no R key the
+               alternative is undo, re-rotate, re-place. Offered in every phase that can still be
+               reached with the tile uncommitted - ActionPhase, TilePlacementConfirmPhase,
+               GoldPiecePhase and MageAndWitchPhase all render this slot - and withdrawn as soon
+               as the engine raises TILE_ROTATION_DISALLOWED (see canRotatePlacedTile). -->
+          <template v-if="canRotatePlacedTile">
+            <span class="skip-text text rotate-placed">{{ $t('game.action.or') }}</span>
+            <div class="pass-item rotate-placed">
+              <v-btn :large="$vuetify.breakpoint.height > 768" @click="rotatePlacedTile">{{ $t('menu.rotate') }}</v-btn>
             </div>
           </template>
           <!-- undo (e.g. take back the tile placement / a wrong meeple choice); on mobile/web this
@@ -172,7 +183,8 @@ export default {
       colorCssClass: 'game/colorCssClass',
       local: 'game/isActionLocal',
       ai: 'game/isActionAi',
-      undoAllowed: 'game/isUndoAllowed'
+      undoAllowed: 'game/isUndoAllowed',
+      canRotatePlacedTile: 'game/canRotatePlacedTile'
     }),
 
     ...mapState({
@@ -312,6 +324,10 @@ export default {
       }
     },
 
+    rotatePlacedTile () {
+      this.$store.dispatch('game/rotatePlacedTile')
+    },
+
     async undo () {
       if (this.local && this.undoAllowed) {
         await this.$store.dispatch('game/undo')
@@ -404,7 +420,13 @@ export default {
 // Small screens: the bar takes the full width instead of leaving the deck counter a slot beside
 // it (game.vue moves that below the bar), and the "or / or skip action" hint goes — it is
 // secondary to the button next to it. Same breakpoint as the active-player tint (shared.sass).
+.rotate-placed
+  display: none
+
 @media (max-width: $small-screen-max-width)
+  .rotate-placed
+    display: block
+
   .action-panel
     width: 100%
 
