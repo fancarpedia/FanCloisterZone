@@ -239,12 +239,16 @@ export default {
         this.onViewResize()
       })
     }
+    // BOTH, not one or the other. The observer catches the svg changing size for reasons the
+    // window knows nothing about (a panel collapsing, the aside widening); the window event
+    // catches the desktop app's own window being dragged, maximised or moved to another display,
+    // where the observer has been seen not to fire. Either way onViewResize no-ops unless the
+    // measured size actually differs, so hearing it twice costs nothing.
     if (window.ResizeObserver && this.$refs.svg) {
       this._resizeObserver = new ResizeObserver(this._onViewResize)
       this._resizeObserver.observe(this.$refs.svg)
-    } else {
-      window.addEventListener('resize', this._onViewResize)
     }
+    window.addEventListener('resize', this._onViewResize)
   },
 
   beforeDestroy () {
@@ -257,9 +261,8 @@ export default {
     if (this._resizeObserver) {
       this._resizeObserver.disconnect()
       this._resizeObserver = null
-    } else {
-      window.removeEventListener('resize', this._onViewResize)
     }
+    window.removeEventListener('resize', this._onViewResize)
     document.removeEventListener('keydown', this.onKeyDown)
     document.removeEventListener('keyup', this.onKeyUp)
     document.removeEventListener('pointerup', this.onPointerUp)
