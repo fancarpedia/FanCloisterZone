@@ -151,7 +151,7 @@ export default {
 
     subtitle () {
       // the feature the points came from wins over the generic subtitles below
-      if (this.sourceTitle) return this.sourceTitle
+      if (this.sourceTitle) return '(' + this.sourceTitle + ')'
       const title = SUBTITLE_MAPPING[this.expr.name]
       if (title !== undefined) {
         if (title === null) return ''
