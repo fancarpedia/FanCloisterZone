@@ -314,12 +314,18 @@ export default {
       this.$store.commit('togglePlayerSupply')
     },
 
-    // Tapping the panels toggles the supply, so it is reachable both ways even if the toggle
-    // button itself is not. The only click target inside an expanded panel is a captured meeple
-    // (paying a ransom), so that one is left alone; the button stops its own propagation.
+    // Tapping a PLAYER PANEL toggles the supply, so it is reachable even if the small toggle
+    // button is awkward to hit. Only the panels: the aside is taller than the panels it holds,
+    // and the variant banner sits in there too, so a click on that empty space used to collapse
+    // the supply for no apparent reason. The one target inside an expanded panel that must keep
+    // its own behaviour is a captured meeple (paying a ransom). The toggle button itself stops
+    // propagation and calls the toggle directly.
     onAsideClick (ev) {
       const target = ev.target
-      if (target && target.closest && target.closest('.item-prisoner')) {
+      if (!target || !target.closest) {
+        return
+      }
+      if (!target.closest('.player-panel') || target.closest('.item-prisoner')) {
         return
       }
       this.togglePlayerSupply()
@@ -506,6 +512,15 @@ aside
   display: flex
   flex-direction: column
   z-index: 2
+  // On small screens the aside is bounded top AND bottom, so below the last player panel it is
+  // an empty strip lying over the board: a touch there hit the aside instead of placing a tile.
+  // Let the empty space fall through to the board and take the events back on the children that
+  // are actually interactive. Clicks on those still bubble up to the aside's own handler, so
+  // tapping a panel keeps toggling the supply, and dragging a panel still scrolls the list.
+  pointer-events: none
+
+  > *
+    pointer-events: auto
 
   &.shrink-3
     top: calc(var(--action-bar-height) + 2px)

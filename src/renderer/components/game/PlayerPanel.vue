@@ -1,6 +1,9 @@
 <template>
   <!-- use bg-color-N on whole section to not interact with capturd meeples-->
+  <!-- `player-panel` is a stable hook, not a style: game.vue needs to tell a click on a panel
+       apart from a click on the aside's empty space around it. -->
   <section
+    class="player-panel"
     :class="{
       'active-turn': index === turnPlayer,
       'active-action': index === actionPlayer,
