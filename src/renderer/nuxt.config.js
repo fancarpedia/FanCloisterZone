@@ -135,6 +135,13 @@ module.exports = {
     }
   },
 
+  // Nuxt emits <link rel="preload"> for the client manifest. In dev that manifest picks up the
+  // incremental `*.hot-update.js` chunks, so every page load preloads files the HMR runtime never
+  // asks for on a cold start — the browser downloads them and then warns "preloaded using link
+  // preload but not used". Noise, and wasted fetches, on every forced reload. Production keeps
+  // its hints; only the dev server drops them.
+  render: isDev ? { resourceHints: false } : {},
+
   build: {
     loaders: {
       vue: {
