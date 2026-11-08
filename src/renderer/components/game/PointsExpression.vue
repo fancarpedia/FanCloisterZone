@@ -138,7 +138,20 @@ export default {
       return this.expr.name
     },
 
+    // The feature the points were taken from, when the engine named one (ScoreSourceFeaturePointer).
+    // A castle scores the value of a feature beside it, so "Castle + 13 = 13" never said what
+    // earned the 13; this becomes the subtitle, e.g. Castle / Road.
+    // Absent for an unfinished castle at final scoring, which takes from nothing and scores zero.
+    sourceTitle () {
+      const feature = this.expr.ptr?.source?.feature
+      if (!feature) return null
+      const key = TITLE_MAPPING[feature.toLowerCase()]
+      return key ? this.$t(key) : feature
+    },
+
     subtitle () {
+      // the feature the points came from wins over the generic subtitles below
+      if (this.sourceTitle) return this.sourceTitle
       const title = SUBTITLE_MAPPING[this.expr.name]
       if (title !== undefined) {
         if (title === null) return ''

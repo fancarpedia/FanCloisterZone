@@ -6,6 +6,8 @@
     v-bind="sizeAttrs"
     @click="$emit('click')"
   >
+    <!-- an svg shows a tooltip from a <title> CHILD; the title attribute does nothing here -->
+    <title v-if="title">{{ title }}</title>
     <defs>
       <clipPath :id="`clip-${uuid}`">
         <rect x="0" y="0" :width="tileSize" :height="tileSize" />
@@ -42,7 +44,9 @@ export default {
     tileId: { type: String, required: true },
     rotation: { type: Number, default: 0 },
     size: { type: Number, default: null },
-    padding: { type: Array, default: () => [0, 0] }
+    padding: { type: Array, default: () => [0, 0] },
+    // hover text; omitted, no <title> is rendered and the tile has no tooltip
+    title: { type: String, default: null }
   },
 
   data () {

@@ -333,14 +333,26 @@ export const getters = {
     return state.placedTiles.find(({ position: p }) => p[0] === pos[0] && p[1] === pos[1])
   },
 
-  featureOn: state => ({ position, location }) => {
-    // TODO Aware there can be multiple Inner features with location I, II, III, IV!
+  /**
+   * The feature a pointer refers to.
+   *
+   * Position and location alone are NOT unique: several inner features can share location I on
+   * one tile - a Tower and a Monastery do exactly that on TO/L - so matching on those two picked
+   * whichever happened to come first and highlighted the wrong one. Pointers carry the feature
+   * type, so use it when it is there, and fall back to the old match when it is not, which keeps
+   * every caller that passes a bare position/location working.
+   */
+  featureOn: state => ({ position, location, feature }) => {
     if (location === 'AS_ABBOT') {
       location = 'I'
     }
-    return state.features.find(({ places }) => {
-      return !!places.find(p => p[0] === position[0] && p[1] === position[1] && p[2] === location)
-    })
+    const at = ({ places }) =>
+      !!places.find(p => p[0] === position[0] && p[1] === position[1] && p[2] === location)
+    if (feature) {
+      const exact = state.features.find(f => f.type === feature && at(f))
+      if (exact) return exact
+    }
+    return state.features.find(at)
   },
 
   meepleIdFromSupply: state => (playerIdx, meepleType) => {

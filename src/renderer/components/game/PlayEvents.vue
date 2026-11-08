@@ -115,6 +115,7 @@ export default {
 
     reversed () {
       const items = []
+      const devMode = this.$store.state.settings.devMode
       let top = this.baseY
       for (let i = this.history.length - 1; i >= 0; i--) {
         if (this.history[i].finalScoring) {
@@ -128,7 +129,13 @@ export default {
         let lastRowIsScore = null
         let row = null
         item.rows = []
-        item.events.forEach(ev => {
+        item.events.forEach((ev, evIdx) => {
+          // Dev builds label each event with where it sits in the raw history, so a thing seen on
+          // screen can be found in the state without counting rows by hand. The index is the one
+          // from the ORIGINAL array - events skipped below (big top moves) must not shift it.
+          if (devMode) {
+            ev = { ...ev, historyKey: `history[${i}].events[${evIdx}]` }
+          }
           if (ev.type === 'neutral-moved' && ev.figure.startsWith('bigtop.')) {
             // do not show big top moves in history
             // it's always bound to circus tile, no need to have explicit item there

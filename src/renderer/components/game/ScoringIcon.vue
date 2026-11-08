@@ -1,6 +1,6 @@
 <template>
   <span v-if="icon" class="scoring-icon">
-    <StandaloneTileImage v-if="icon.kind === 'tile'" :tile-id="icon.value" :size="iconSize" />
+    <StandaloneTileImage v-if="icon.kind === 'tile'" :tile-id="icon.value" :size="iconSize" :style="boxStyle" />
     <img v-else-if="icon.kind === 'tile-back'" class="tile-back" :src="icon.value" :width="iconSize" :height="iconSize">
     <img v-else-if="icon.kind === 'img'" :src="icon.value" :height="iconSize">
     <TokenImage v-else-if="icon.kind === 'token'" :token="icon.value" :height="iconSize" />
@@ -100,6 +100,15 @@ export default {
       }
       const kind = this.icon ? this.icon.kind : null
       return Math.round(this.size * (SCALE[kind] || 1))
+    },
+
+    // A tile icon is an <svg class="tile-img">, and OTHER components style that class for their
+    // own, much larger tile previews - `.action-panel .tile-img` is 84px, and it caught these
+    // little icons wherever they are drawn inside the action bar, blowing a road up to 72px
+    // beside a 46px monastery. A class rule beats the svg's width/height attributes, so the size
+    // this component promises has to be stated inline, where nothing else can reach it.
+    boxStyle () {
+      return { width: `${this.iconSize}px`, height: `${this.iconSize}px`, transform: 'none' }
     }
   }
 }

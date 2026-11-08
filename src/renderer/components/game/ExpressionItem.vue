@@ -23,7 +23,11 @@
       <template v-else-if="item.name === 'roads'"><img class="bw" src="~/assets/icons/road-icon.png" height="40"></template>
       <template v-else-if="item.name === 'monasteries'"><img src="~/assets/features/C1/cloister.png" height="40"></template>
       <template v-else-if="item.name === 'vineyards'"><img src="~/assets/features/C1/vineyard.png" height="40"></template>
-      <template v-else-if="item.name === 'castles' || item.name.startsWith('castle.')"><img src="~/assets/figures/castle.png" height="40"></template>
+      <template v-else-if="item.name === 'castles'"><img src="~/assets/figures/castle.png" height="40"></template>
+      <!-- `castle.road` means a castle took a road's points: show the ROAD, since that is what the
+           number came from. ScoringIcon keys off the part before the first dot, so the unfinished
+           `castle.incomplete` still falls back to the castle image. -->
+      <template v-else-if="item.name.startsWith('castle.')"><ScoringIcon :name="item.name.slice('castle.'.length)" :size="40" /></template>
       <template v-else-if="item.name === 'church'"><ExpansionSymbol :expansion="Expansion.DARMSTADT" :style="{ width: 40, height: 40 }" /></template>
       <template v-else-if="item.name === 'little-buildings'"><img src="~/assets/figures/lb.png" width="40" height="40"></template>
       <template v-else-if="item.name === 'mage'"><NeutralFigure figure="mage" :width="40" :height="40" /></template>

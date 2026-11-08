@@ -85,6 +85,10 @@ export default {
           this.showTile(ptr)
         } else if (ptr.positions) {
           this.showTiles(ptr.positions)
+        } else if (ptr.source) {
+          // A castle takes the points of the best completed feature beside it, so highlight that
+          // feature as well - the points alone never said WHERE they came from.
+          this.showFeatures(this.featureOn(ptr.featurePointer), this.featureOn(ptr.source))
         } else if (ptr.position && !ptr.location) {
           this.showTile(ptr.position)
         } else {
@@ -124,13 +128,23 @@ export default {
     },
 
     showFeature (feature) {
-      const places = feature.places.map(p => {
-        return {
+      this.showFeatures(feature)
+    },
+
+    // EmphasizeLayer takes a flat list of places, so several features are highlighted together by
+    // concatenating theirs - one dispatch, no layer change. Missing features are skipped rather
+    // than throwing: a pointer can outlive the feature it names.
+    showFeatures (...features) {
+      const places = features.filter(Boolean).flatMap(feature =>
+        feature.places.map(p => ({
           tile: this.tileOn(p),
           feature: feature.type,
           location: p[2]
-        }
-      })
+        }))
+      )
+      if (!places.length) {
+        return
+      }
       this.$store.dispatch('board/showLayer', {
         layer: 'EmphasizeLayer',
         props: {
