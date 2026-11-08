@@ -398,7 +398,7 @@ export default {
     background: map-get($theme, 'opaque-bg')
 
   .text
-    font-size: 20px
+    font-size: $action-text-size
     font-weight: 300
 
   > section

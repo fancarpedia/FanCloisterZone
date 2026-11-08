@@ -9,7 +9,7 @@
       <Board />
       <!-- web build has no native menu / window chrome, so surface an in-view burger menu;
            hidden once the final score is up (that screen has its own controls) -->
-      <v-menu v-if="isWeb && !showGameStats" offset-y>
+      <v-menu v-if="isWeb && !showGameStats" offset-y content-class="web-menu-content">
         <template #activator="{ on, attrs }">
           <div class="web-menu" v-bind="attrs" :title="$t('menu.session')" v-on="on">
             <v-icon>fas fa-bars</v-icon>
@@ -622,4 +622,26 @@ aside
     +theme using ($theme)
       color: map-get($theme, 'cards-text')
       background: map-get($theme, 'cards-bg')
+</style>
+
+<style lang="sass">
+// The burger menu is the action bar's counterpart in the web build, so it speaks at the same
+// size. v-menu teleports its content out of this page, which is why this block is NOT scoped
+// and is keyed off the menu's content-class instead.
+.web-menu-content
+  // `dense` sizes the title at 13px through `.v-list--dense .v-list-item .v-list-item__title`,
+  // which out-specifies a plainer selector - hence the full chain here.
+  .v-list--dense .v-list-item .v-list-item__title
+    font-size: $action-text-size
+    line-height: 1.3
+
+  // and give the larger type room rather than cropping it
+  .v-list-item
+    min-height: 48px
+
+  // the icons keep their own `small` size - they read fine beside the larger label, and
+  // Vuetify's .v-size--small would override anything set here anyway
+  .v-list-item__icon
+    margin-top: 12px
+    margin-bottom: 12px
 </style>
