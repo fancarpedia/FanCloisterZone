@@ -15,6 +15,11 @@ const { Nuxt, Builder, Generator } = require('nuxt')
 const config = require('./nuxt.config.web.js')
 const DIST = path.join(__dirname, 'dist')
 
+// A build step that failed for a known, actionable reason - the message already tells the user
+// what to run. Thrown so the build STOPS: anything that leaves the app unable to run a game must
+// never reach the "WEB BUILD OK" line.
+class BuildStepError extends Error {}
+
 // The REAL app version. Addons declare a `minimumJczVersion` and are rejected outright if the app
 // looks older — so a placeholder like "0.0.0" makes every addon fail with
 // "Add-on requires JCZ x.y.z or higher", which in turn makes the loader try to re-download them.
@@ -184,14 +189,17 @@ const SHIM = '<script>' +
   const generator = new Generator(nuxt, new Builder(nuxt))
 
   try {
-    // Non-fatal: without these the app still boots, it just cannot run games.
-    const sub = (script, args, warn) => {
+    // FATAL. These steps produce the engine the app runs games with; without them the app boots
+    // into a shell that cannot play. This used to warn and carry on, so the build still signed
+    // off with "WEB BUILD OK" while shipping something broken - and that line gets trusted.
+    // A build that would not work must stop, and must not claim success.
+    const sub = (script, args, help) => {
       try {
         require('child_process').execFileSync(
           process.execPath, [path.join(__dirname, script), ...args], { stdio: 'inherit' }
         )
       } catch (e) {
-        console.log('\n!!! ' + warn)
+        throw new BuildStepError(help)
       }
     }
 
@@ -200,7 +208,9 @@ const SHIM = '<script>' +
     // writing it after generate (as the worker build below does) would ship the version from the
     // previous build. This also surfaces a stale engine dist/ before the long Nuxt build.
     sub('build-engine-worker.js', ['--version-only'],
-      'engine version NOT resolved — the app may report a stale engine version.')
+      'engine version could not be resolved (reason above), so the app would report the wrong\n' +
+      '    engine version and the worker build would fail too. Nothing has been built.\n' +
+      '    Build the engine first:  npm run build   (in JCloisterZoneEngine)')
 
     await generator.generate({ build: true, init: true })
 
@@ -214,6 +224,13 @@ const SHIM = '<script>' +
 
     let engineWorkerUrl = './jcz-engine.worker.js'
     const workerPlain = path.join(DIST, 'jcz-engine.worker.js')
+    // Belt and braces: the step above exits non-zero on failure, but if it ever returned success
+    // without writing the worker, the versioned-filename block below would quietly leave the
+    // loader pointing at a file that does not exist.
+    if (!fs.existsSync(workerPlain)) {
+      throw new BuildStepError('engine worker missing from dist/ after the worker build reported success:\n  ' +
+        workerPlain + '\nNo game could run, so the build is stopped rather than reported OK.')
+    }
     if (fs.existsSync(workerPlain)) {
       const ver = crypto.createHash('sha256').update(fs.readFileSync(workerPlain)).digest('hex').slice(0, 12)
       const versioned = 'jcz-engine.worker.' + ver + '.js'
@@ -316,7 +333,10 @@ const SHIM = '<script>' +
     process.exit(0)
   } catch (e) {
     console.log('\n*** WEB BUILD FAILED ***')
-    console.log(e && e.stack ? e.stack.split('\n').slice(0, 20).join('\n') : String(e))
+    // A known, actionable step failure says what to do; a stack trace would only bury it.
+    console.log(e instanceof BuildStepError
+      ? e.message
+      : (e && e.stack ? e.stack.split('\n').slice(0, 20).join('\n') : String(e)))
     process.exit(1)
   }
 })()
