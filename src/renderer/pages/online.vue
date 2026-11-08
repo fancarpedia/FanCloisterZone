@@ -29,9 +29,16 @@
             {{ $t('button.join-game') }}
           </v-btn>
 
-          <v-btn v-if="connected" large color="secondary" @click="disconnect()">
-            {{ $t('button.disconnect') }}
-          </v-btn>
+          <!-- No Disconnect in the web build: the lobby IS the app there, and web is online-play
+               only, so going offline leaves nothing to do. Connect still shows when not
+               connected, for the case where the automatic connect did not get through. The
+               template wrapper keeps the v-else paired with "connected" - hiding the button
+               alone would show Connect while already connected. -->
+          <template v-if="connected">
+            <v-btn v-if="!isWeb" large color="secondary" @click="disconnect()">
+              {{ $t('button.disconnect') }}
+            </v-btn>
+          </template>
           <v-btn v-else large color="secondary" :loading="connecting" @click="connect()">
             {{ $t('button.connect') }}
           </v-btn>

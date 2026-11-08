@@ -86,6 +86,7 @@ import ErrorDialog from '@/components/ErrorDialog'
 import JoinGameDialog from '@/components/JoinGameDialog'
 import SettingsDialog from '@/components/SettingsDialog'
 import { getAppVersion, getBuildBadge, isWeb } from '@/utils/version'
+import { installReloadHook, takePendingRejoin } from '@/utils/reload-rejoin'
 
 import { STATUS_CONNECTED } from '@/store/networking'
 
@@ -446,6 +447,11 @@ export default {
 
     await this.loadAddons()
 
+    // Deliberately here, right after loadAddons: joining a game sets the engine up from
+    // $tiles.xmls, which loadExpansions() only fills in above. Everything else that joins a
+    // game (the launch intent below) sits after this await for the same reason.
+    await this.rejoinAfterReload()
+
     window.addEventListener('keydown', this.onKeyDown)
 
     await this.$store.dispatch('settings/registerChangeCallback', ['theme', onThemeChange])
@@ -608,6 +614,41 @@ export default {
         this.$store.commit('errorMessage', error)
       }
       return false
+    },
+
+    /**
+     * Web build: after reloading to a new version, go back into the game that was open.
+     *
+     * The update bar's Reload button calls the hook installed here, which records the game and
+     * disconnects; this picks it up on the way back. It reuses connectForGame/joinOnlineGame —
+     * the same pair the launch intent uses — so there is one join path, not two.
+     *
+     * The record is consumed on read, so a game that cannot be rejoined (finished, abandoned,
+     * or unknown to the server) is never retried: joinOnlineGame reports it and we fall back to
+     * the lobby rather than leaving the player on an empty /game.
+     */
+    async rejoinAfterReload () {
+      if (!isWeb()) {
+        return
+      }
+      installReloadHook(this.$store)
+      const pending = takePendingRejoin()
+      if (!pending) {
+        return
+      }
+      try {
+        if (!await this.connectForGame({ fan: pending.entry !== 'plain' })) {
+          return
+        }
+        if (await this.joinOnlineGame({ gameId: pending.gameId })) {
+          return
+        }
+      } catch (e) {
+        console.warn('could not rejoin the game after reload', e)
+      }
+      if (this.$route.path !== '/online') {
+        this.$router.push('/online')
+      }
     },
 
     // Establish this window's own online connection (its own seat) before joining/creating.

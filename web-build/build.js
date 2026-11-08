@@ -173,7 +173,13 @@ const SHIM = '<script>' +
       'var t=document.createElement("span");t.textContent="A new version is available.";o.appendChild(t);' +
       'var b=document.createElement("button");b.textContent="Reload";' +
       'b.style.cssText="background:#fff;color:#1976D2;border:0;border-radius:4px;padding:6px 16px;font-weight:600;cursor:pointer";' +
-      'b.onclick=function(){location.reload()};o.appendChild(b);' +
+      // The app installs __fczBeforeReload (utils/reload-rejoin.js): it records the open online
+      // game so the reloaded app can rejoin it, and closes the socket so the server drops the
+      // seat now rather than leaving a ghost for the rejoin to fight. The short delay gives the
+      // close frame a chance to go out; the reload happens either way.
+      'b.onclick=function(){' +
+        'try{if(window.__fczBeforeReload)window.__fczBeforeReload()}catch(_){}' +
+        'setTimeout(function(){location.reload()},150)};o.appendChild(b);' +
       '(document.body||document.documentElement).appendChild(o);}' +
     'function chk(){if(!BID)return;fetch("./version.json?ts="+Date.now(),{cache:"no-store"})' +
       '.then(function(r){return r.ok?r.json():null}).then(function(j){if(j&&j.buildId&&j.buildId!==BID)bar();})' +
