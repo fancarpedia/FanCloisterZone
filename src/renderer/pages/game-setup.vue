@@ -117,7 +117,7 @@ export default {
       detail: state => state.gameSetup.detail,
       settings: state => state.settings,
       // Keep Building (coop) plays the standard pack — tile-count editing is disabled for it
-      coopVariant: state => !!state.gameSetup.elements['keep-building']
+      coopVariant: state => !!(state.gameSetup.elements || {})['keep-building']
     }),
 
     ...mapGetters({

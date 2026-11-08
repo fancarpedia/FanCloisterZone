@@ -39,7 +39,8 @@ export default {
   computed: {
     ...mapState({
       sets: state => state.gameSetup.sets,
-      elements: state => state.gameSetup.elements,
+      // null until the setup store is initialised; a reload can re-mount this first
+      elements: state => state.gameSetup.elements || {},
       tileOverrides: state => state.gameSetup.tileOverrides
     }),
 

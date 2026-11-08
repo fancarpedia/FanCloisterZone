@@ -10,15 +10,32 @@ export const SMALL_SCREEN_QUERY = '(max-width: 960px)'
 const state = Vue.observable({ small: false })
 
 let mql = null
+let onChange = null
 if (typeof window !== 'undefined' && window.matchMedia) {
   mql = window.matchMedia(SMALL_SCREEN_QUERY)
   state.small = mql.matches
-  const onChange = ev => { state.small = ev.matches }
+  onChange = ev => { state.small = ev.matches }
   if (mql.addEventListener) {
     mql.addEventListener('change', onChange)
   } else {
     mql.addListener(onChange) // older Safari
   }
+}
+
+// This module subscribes at import time, so a hot swap would leave the previous listener behind -
+// writing to a `state` nothing reads any more, one more each time the file is touched. A full
+// reload does not need this (fresh context), but HMR does.
+// `module` exists under webpack; guard it so importing this file anywhere else (a test run,
+// for instance) does not throw a ReferenceError before the first line of the test.
+if (typeof module !== 'undefined' && module.hot) {
+  module.hot.dispose(() => {
+    if (!mql || !onChange) return
+    if (mql.removeEventListener) {
+      mql.removeEventListener('change', onChange)
+    } else {
+      mql.removeListener(onChange)
+    }
+  })
 }
 
 export const isSmallScreen = () => state.small

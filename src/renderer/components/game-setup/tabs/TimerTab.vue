@@ -101,7 +101,7 @@ export default {
     ...mapState({
       timer: state => state.gameSetup.timer,
       ai: state => !!state.gameSetup.ai,
-      coopVariant: state => !!state.gameSetup.elements['keep-building']
+      coopVariant: state => !!(state.gameSetup.elements || {})['keep-building']
     }),
 
     preDrawBlocked () {

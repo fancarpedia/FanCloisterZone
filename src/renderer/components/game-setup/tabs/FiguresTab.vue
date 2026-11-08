@@ -82,7 +82,7 @@ export default {
       ai: state => !!state.gameSetup.ai,
       detail: state => state.gameSetup.detail,
       figures: state => state.gameSetup.figures,
-      coopVariant: state => !!state.gameSetup.elements['keep-building']
+      coopVariant: state => !!(state.gameSetup.elements || {})['keep-building']
     })
   }
 }

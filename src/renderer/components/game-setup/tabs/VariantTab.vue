@@ -205,7 +205,7 @@ export default {
   computed: {
     ...mapState({
       ai: state => !!state.gameSetup.ai,
-      coopVariant: state => !!state.gameSetup.elements['keep-building'],
+      coopVariant: state => !!(state.gameSetup.elements || {})['keep-building'],
       leaderboard: state => state.gameSetup.coopLeaderboard,
       popular: state => state.gameSetup.standardPopular,
       popularSets: state => state.gameSetup.standardPopularSets,
