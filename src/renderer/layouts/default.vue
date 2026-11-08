@@ -855,7 +855,11 @@ body
 
 .view
   width: 100%
+  // 100vh is measured against the viewport with the mobile URL bar HIDDEN, so it overshoots
+  // the visible area while the bar is up. dvh tracks what the player can actually see; the
+  // 100vh line above stays as the fallback for browsers without dvh.
   min-height: 100vh
+  min-height: 100dvh
 
 svg, g, use
   &.dragon, &.bigtop

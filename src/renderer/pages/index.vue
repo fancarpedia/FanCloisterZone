@@ -367,7 +367,11 @@ h2
   align-self: stretch
   position: sticky
   top: 0
+  // 100vh is measured against the viewport with the mobile URL bar HIDDEN, so it overshoots
+  // the visible area while the bar is up. dvh tracks what the player can actually see; the
+  // 100vh line above stays as the fallback for browsers without dvh.
   max-height: 100vh
+  max-height: 100dvh
   display: flex
   flex-direction: column
   padding: 20px 16px

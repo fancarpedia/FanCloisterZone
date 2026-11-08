@@ -422,7 +422,13 @@ export default {
   position: relative
   display: flex
   overflow: hidden
+  // A mobile browser measures 100vh against the viewport with the URL bar HIDDEN, so while the
+  // bar is showing the bottom of this element sits below what the player can actually see - and
+  // everything anchored to it goes too, which is how the pre-draw hand ended up off screen.
+  // `dvh` tracks the visible height instead. The 100vh line stays as the fallback for browsers
+  // that do not know dvh, and on desktop (and in Electron, which has no URL bar) the two agree.
   height: 100vh
+  height: 100dvh
 
   .forced-draw, .test-result
     position: absolute
@@ -607,7 +613,10 @@ aside
   top: 0
   left: 0
   width: 100%
+  // same reason as .game-view: 100vh overshoots the visible area while the URL bar is showing,
+  // which would push the dialog's lower half out of reach
   height: 100vh
+  height: 100dvh
   background: rgba(255, 255, 255, 0.8)
   z-index: 99
   display: flex

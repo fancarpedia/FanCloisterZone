@@ -412,7 +412,11 @@ export default {
 
 .open-game-view
   position: relative
+  // 100vh is measured against the viewport with the mobile URL bar HIDDEN, so it overshoots
+  // the visible area while the bar is up. dvh tracks what the player can actually see; the
+  // 100vh line above stays as the fallback for browsers without dvh.
   height: 100vh
+  height: 100dvh
   overflow: hidden
 
   ::v-deep .game-setup-grid
