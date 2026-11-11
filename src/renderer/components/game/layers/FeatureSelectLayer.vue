@@ -3,10 +3,13 @@
     id="feature-select-layer"
     :class="`area-select-layer ${cssClass} ${(player === null ? '' : colorCssClass(player))}`"
   >
+    <!-- `at`/`segment` are set only in wholeFeature mode, where one option is drawn as several
+         areas - one per place of its feature. They share the option object, so hovering any part
+         lights up all of them, and a click still sends the option itself. -->
     <g
-      v-for="({option: opt, feature, abbotChoice}) in optionsWithFeature"
-      :key="positionAsKey(opt.position) + opt.feature + opt.location"
-      :transform="transformPosition(opt.position)"
+      v-for="({option: opt, feature, abbotChoice, at, segment}) in optionsWithFeature"
+      :key="segment || (positionAsKey(opt.position) + opt.feature + opt.location)"
+      :transform="transformPosition(at || opt.position)"
     >
       <circle
         v-if="meeple == 'Barn' || meeple == 'Obelisk'"
@@ -31,8 +34,11 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
+
 import LayerMixin from '@/components/game/layers/LayerMixin'
 import FeatureClip from '@/components/game/layers/FeatureClip.vue'
+import { wholeFeaturePlaces } from '@/utils/whole-feature'
 
 export default {
   components: {
@@ -45,7 +51,11 @@ export default {
     options: { type: Array, required: true },
     player: { type: Number, default: null },
     meeple: { type: String, default: null },
-    cssClass: { type: String, default: '' }
+    cssClass: { type: String, default: '' },
+    // Draw each option over every place of its feature instead of only the place it points at.
+    // Off by default: placing a meeple is about one tile's segment, scoring order is about the
+    // whole feature.
+    wholeFeature: { type: Boolean, default: false }
   },
 
   data () {
@@ -55,6 +65,10 @@ export default {
   },
 
   computed: {
+    ...mapGetters({
+      featureOn: 'game/featureOn'
+    }),
+
     optionsWithFeature () {
       const optionsWithFeature = []
       const cloisterOptionsWithFeature = []
@@ -83,6 +97,27 @@ export default {
 
         if (!opt.feature.clip) {
           console.error(`Clipping is not defined for ${tile.id} ${option.location}`)
+        }
+
+        if (this.wholeFeature) {
+          wholeFeaturePlaces(option, this.featureOn).forEach(({ position, location }) => {
+            let part
+            try {
+              part = this.$theme.getFeature(this.tileOn(position), option.feature, location, this.bridges)
+            } catch (e) {
+              return // a place without artwork for this feature - skip that part, keep the rest
+            }
+            if (part && part.clip) {
+              optionsWithFeature.push({
+                option,
+                feature: part,
+                abbotChoice: null,
+                at: position,
+                segment: this.positionAsKey(position) + option.feature + location
+              })
+            }
+          })
+          return
         }
 
         optionsWithFeature.push(opt)

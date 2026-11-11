@@ -42,7 +42,8 @@ const makeVm = expr => ({
     return key ? this.$t(key) : feature
   },
   get subtitle () {
-    if (this.sourceTitle) return this.sourceTitle
+    // in brackets, like the courier's subtitle (commit 6a38216)
+    if (this.sourceTitle) return '(' + this.sourceTitle + ')'
     const t = SUBTITLE_MAPPING[this.expr.name]
     if (t !== undefined) return t === null ? '' : '(' + this.$t(t) + ')'
     const key = this.expr.name.split('.')[1]
@@ -66,11 +67,11 @@ describe('a castle score', () => {
   })
 
   it('names the road it took the points from, underneath', () => {
-    expect(castle({ feature: 'Road' }).subtitle).toBe('road')
+    expect(castle({ feature: 'Road' }).subtitle).toBe('(road)')
   })
 
   it('names a city just the same', () => {
-    expect(castle({ feature: 'City' }).subtitle).toBe('city')
+    expect(castle({ feature: 'City' }).subtitle).toBe('(city)')
   })
 
   it('has no subtitle when the engine named no source', () => {
@@ -80,11 +81,11 @@ describe('a castle score', () => {
   })
 
   it('reads sensibly when one castle cascaded into another', () => {
-    expect(castle({ feature: 'Castle' }).subtitle).toBe('castle')
+    expect(castle({ feature: 'Castle' }).subtitle).toBe('(castle)')
   })
 
   it('shows the raw feature name rather than nothing if it is unmapped', () => {
-    expect(castle({ feature: 'Bogus' }).subtitle).toBe('Bogus')
+    expect(castle({ feature: 'Bogus' }).subtitle).toBe('(Bogus)')
   })
 })
 
@@ -109,7 +110,7 @@ describe('the component really is built this way', () => {
   })
 
   it('puts the source in the subtitle, ahead of the generic ones', () => {
-    expect(src).toMatch(/subtitle \(\) \{[\s\S]{0,160}if \(this\.sourceTitle\) return this\.sourceTitle/)
+    expect(src).toMatch(/subtitle \(\) \{[\s\S]{0,160}if \(this\.sourceTitle\) return '\(' \+ this\.sourceTitle \+ '\)'/)
   })
 
   it('leaves the heading as it was', () => {
