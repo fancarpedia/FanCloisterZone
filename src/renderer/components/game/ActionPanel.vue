@@ -135,6 +135,8 @@ import AwardedMeeplePanel from '@/components/game/AwardedMeeplePanel.vue'
 import ReturnedMeeplePanel from '@/components/game/ReturnedMeeplePanel.vue'
 import ReturnedTokenPanel from '@/components/game/ReturnedTokenPanel.vue'
 import SelectPrisonerToExchangeAction from '@/components/game/actions/SelectPrisonerToExchangeAction.vue'
+// resolved by name ("ScoringPhase" + "Action") while scoring waits for SCORE_FIRST
+import ScoringPhaseAction from '@/components/game/actions/ScoringPhaseAction.vue'
 import ShepherdPhaseAction from '@/components/game/actions/ShepherdPhaseAction.vue'
 import ShepherdPlacementConfirmPhaseAction from '@/components/game/actions/ShepherdPlacementConfirmPhaseAction.vue'
 import TilePhaseAction from '@/components/game/actions/TilePhaseAction.vue'
@@ -176,6 +178,7 @@ export default {
     ReturnedMeeplePanel,
     ReturnedTokenPanel,
     SelectPrisonerToExchangeAction,
+    ScoringPhaseAction,
     ShepherdPhaseAction,
     ShepherdPlacementConfirmPhaseAction,
     TilePhaseAction,
