@@ -2,7 +2,7 @@
   "@author": "Black Bear",
   "@jcz-version": "5.12.1",
   "@fcz-version": "7.1.0",
-  "@version": "0.12.1-ai",
+  "@version": "0.12.3-ai",
   "about": {
     "author": "Auteur",
     "configuration-file": "Fichier de configuration",
@@ -299,6 +299,8 @@
       "player-may-place-an-abbey": "Le joueur peut placer un monastère",
       "player-must-place-the-tile": "Le joueur doit placer la tuile",
       "ransom-paid": "Rançon versée",
+      "score-first-choose": "Choisissez la zone que vous souhaitez évaluer en premier",
+      "score-first-player-must-choose": "Le joueur doit choisir la zone qu’il souhaite évaluer en premier",
       "shepherd-placement": "Pose du berger",
       "siege-player-can-escape-a-besieged-city": "Le joueur peut s’échapper d’une ville assiégée.",
       "siege-you-can-escape-a-besieged-city": "Vous pouvez vous échapper d’une ville assiégée.",
@@ -330,8 +332,8 @@
       "barn": "Grange",
       "big-follower": "Grand meeple",
       "big-top": "Chapiteau",
-      "black-fairy": "La Fée Noire",
-      "black-tower": "La Tour Noire",
+      "black-fairy": "Fée noire",
+      "black-tower": "Tour noire",
       "bridge": "Pont",
       "builder": "Bâtisseur",
       "castle": "Forteresse",
@@ -619,9 +621,9 @@
         "occupied": "peut"
       },
       "black-fairy-placement": {
-        "description": "La Fée Noire est utilisée {}.",
-        "next-follower": "à côté d’un meeple",
-        "on-tile": "est déplacée sur une tuile"
+        "description": "La fée noire est {}.",
+        "next-follower": "assignée à un meeple",
+        "on-tile": "déplacée sur une tuile"
       },
       "bazaar-no-auction": {
         "description": "Pas d’enchères de bazar. Chaque joueur choisit simplement une tuile."
@@ -777,7 +779,10 @@
       "connected-to": "Connecté à {0}",
       "game-id": "Identifiant de la partie",
       "games-in-progress": "Parties en cours",
-      "game-not-found": "Partie introuvable. Vérifiez la clé de la partie et réessayez.",
+      "game-not-found": "Partie non trouvée. Vérifiez la clé et essayez à nouveau.",
+      "incompatible-version-older": "Version plus ancienne, impossible de jouer ensemble (protocole {version})",
+      "incompatible-version-newer": "Version plus récente, impossible de jouer ensemble (protocole {version})",
+      "incompatible-version-unknown": "Version inconnue, impossible de jouer ensemble",
       "join-game": "Rejoindre une partie",
       "local-game": "Partie locale",
       "loading-game-data": "Chargement des données de la partie…",

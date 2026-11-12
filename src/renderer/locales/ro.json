@@ -2,7 +2,7 @@
   "@author": "Paloi Sciurala",
   "@jcz-version": "5.12.1",
   "@fcz-version": "7.1.0",
-  "@version": "0.12.1",
+  "@version": "0.12.3",
   "about": {
     "author": "Autor",
     "configuration-file": "Fișier de configurație",
@@ -299,6 +299,8 @@
       "player-may-place-an-abbey": "Jucătorul poate plasa o abație",
       "player-must-place-the-tile": "Jucătorul trebuie să plaseze cartonașul",
       "ransom-paid": "Răscumpărare plătită",
+      "score-first-choose": "Alege pe care teritoriu să îl evaluezi primul",
+      "score-first-player-must-choose": "Jucătorul trebuie să aleagă pe care teritoriu să îl evalueze primul",
       "shepherd-placement": "Plasarea oierului",
       "siege-player-can-escape-a-besieged-city": "Jucătorul poate scăpa dintr-un oraș asediat.",
       "siege-you-can-escape-a-besieged-city": "Poți evada dintr-un oraș asediat.",
@@ -648,7 +650,7 @@
         "siege-tile": "un cartonaș cu asediu"
       },
       "fairy-placement": {
-        "description": "Zâna este plasată {}.",
+        "description": "Zâna este depusă {}.",
         "next-follower": "lângă un meeple",
         "on-tile": "pe un cartonaș"
       },
@@ -778,6 +780,9 @@
       "game-id": "ID-ul partidei",
       "games-in-progress": "Partide în curs de jucare",
       "game-not-found": "Partida nu a fost găsită. Verifică cheia partidei și încearcă din nou.",
+      "incompatible-version-older": "Versiune mai veche, nu se poate juca împreună (protocolul {version})",
+      "incompatible-version-newer": "Versiune mai nouă, nu se poate juca împreună (protocolul {version})",
+      "incompatible-version-unknown": "Versiune necunoscută, nu se poate juca împreună",
       "join-game": "Alătură-te partidei",
       "local-game": "Partidă locală",
       "loading-game-data": "Se încarcă datele partidei…",
