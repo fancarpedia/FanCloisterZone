@@ -34,6 +34,10 @@ const path = require('path')
 const BASE_URL = 'https://wikicarpedia.com'
 const WIKI_PATH = 'car'
 const PAGE_TITLE = 'User:Bumsakalaka/JCloisterZoneLocale'
+// Matches update-locales.js. Node sends no User-Agent of its own, so an anonymous request is
+// exactly what Anubis is built to block; a named agent is something the wiki operator can
+// allowlist. The name comes from FCZ_USER_AGENT in .env and is deliberately not in git.
+const USER_AGENT = require('./user-agent').userAgent()
 
 // Where things live. All relative to this script, not to the shell's working directory.
 const LOCALES_DIR = path.resolve(__dirname, '../src/renderer/locales') // read-only here: tells us which languages exist
@@ -58,9 +62,10 @@ function knownLanguages () {
 }
 
 function pageUrl (lang) {
-  // The base page is English; translations live on /<code> subpages.
-  const title = lang === 'en' ? PAGE_TITLE : PAGE_TITLE + '/' + lang
-  return BASE_URL + '/' + WIKI_PATH + '/' + title + '?action=raw'
+  // Always the /<code> subpage, English included. The base page carries the same content, but it
+  // is the one URL the wiki's bot gate still challenges (the per-language subpages answer fine),
+  // so asking for it just forced a fallback to a saved page for English alone.
+  return BASE_URL + '/' + WIKI_PATH + '/' + PAGE_TITLE + '/' + lang + '?action=raw'
 }
 
 /**
@@ -82,7 +87,7 @@ function detectBotChallenge (body, headers) {
 
 function fetchPage (url, redirectsLeft = 5) {
   return new Promise((resolve, reject) => {
-    https.get(url, res => {
+    https.get(url, { headers: { 'User-Agent': USER_AGENT } }, res => {
       if ([301, 302, 303, 307, 308].includes(res.statusCode) && res.headers.location) {
         res.resume()
         if (redirectsLeft === 0) {

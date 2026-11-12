@@ -129,14 +129,30 @@ function existingApp (lang) {
 }
 
 /**
- * Re-key `wiki` onto the shape of en.json: for every key en.json has, take the wiki's value when
- * it has one, otherwise keep whatever the app file already holds. Nothing outside en.json's key
- * set is carried over, so a wiki-side typo or a retired key cannot reach the app.
+ * Re-key `wiki` onto the English key set: for every key English has, take the wiki's value when it
+ * has one, otherwise keep whatever the app file already holds.
+ *
+ * "English" is the wiki's own en page UNION the app's en.json, and both halves matter:
+ *   - the page, so a key added upstream actually reaches the app. Taking the shape from en.json
+ *     alone made that impossible for en.json itself (it is its own authority), and the Black
+ *     Fairy strings were silently dropped from all 13 languages because of it.
+ *   - en.json, so a key that exists only in the repo survives until the wiki catches up
+ *     (index.online.game-not-found lived there for a while).
+ * A key the wiki has retired and the app no longer lists disappears, which is the point.
  */
 function buildFromEnShape (wiki, existing) {
   const enApp = existingApp('en')
-  const out = {}
+  const enPage = parseRaw(fs.readFileSync(path.join(RAW_DIR, 'en.raw.json'), 'utf8'))
+  const keyPaths = []
+  for (const [keyPath] of leaves(enPage, '', [])) {
+    keyPaths.push(keyPath)
+  }
   for (const [keyPath] of leaves(enApp, '', [])) {
+    if (!keyPaths.includes(keyPath)) keyPaths.push(keyPath)
+  }
+
+  const out = {}
+  for (const keyPath of keyPaths) {
     const fromWiki = getByPath(wiki, keyPath)
     const fromApp = getByPath(existing, keyPath)
     const value = fromWiki !== undefined ? fromWiki : fromApp

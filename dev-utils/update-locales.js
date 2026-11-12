@@ -9,6 +9,16 @@ const BASE_URL = 'https://wikicarpedia.com';
 const WIKI_PATH = 'car'; // URL path component (e.g., 'wiki', 'w', 'mywiki')
 const PAGE_TITLE = 'User:Bumsakalaka/JCloisterZoneLocale'; // MediaWiki page title
 const OUTPUT_DIR = '../src/renderer/locales'; // Output directory for locale files
+// Sent on every request. Node sends no User-Agent of its own, which makes this script
+// indistinguishable from an anonymous scraper to the wiki's bot protection (Anubis). A named agent
+// is something the wiki operator can allowlist so `?action=raw` answers with the page instead of a
+// proof-of-work challenge. The name itself is NOT in git — it comes from FCZ_USER_AGENT in .env.
+const { userAgent, isConfigured } = require('./user-agent');
+const USER_AGENT = userAgent();
+if (!isConfigured()) {
+  console.warn(`⚠️  FCZ_USER_AGENT is not set in .env — requesting as "${USER_AGENT}".`);
+  console.warn('    The wiki\'s bot gate is likely to reject that; see .env.example.');
+}
 
 // Version 20
 
@@ -105,14 +115,56 @@ async function discoverLanguages() {
     }
     
     console.log('All automatic discovery methods failed.');
-    console.log('Falling back to base language only');
-    return ['en'];
-    
+    return languagesFromLocaleFiles();
+
   } catch (error) {
     console.error('Failed to discover languages:', error.message);
-    console.log('Falling back to base language only');
+    return languagesFromLocaleFiles();
+  }
+}
+
+/**
+ * Fallback language list: the locale files this repo already has.
+ *
+ * Discovery needs the BASE page (or api.php), and those are the one part of the wiki the bot gate
+ * still blocks — the per-language /<code> subpages answer fine. Falling back to ['en'] made the
+ * run LOOK successful while silently updating English only, so take the list from disk instead:
+ * every language we ship has a file here, and a genuinely new one is announced by the wiki anyway.
+ */
+function languagesFromLocaleFiles() {
+  const dir = path.resolve(__dirname, OUTPUT_DIR);
+  let langs = [];
+  try {
+    langs = fs.readdirSync(dir)
+      .filter(f => /^[a-z]{2}(-[A-Za-z]+)?\.json$/.test(f))
+      .map(f => f.replace(/\.json$/, ''));
+  } catch (e) {
+    // no locale dir (fresh checkout) — English is all we can be sure of
+  }
+  if (!langs.length) {
+    console.log('No locale files found either; falling back to base language only');
     return ['en'];
   }
+  if (!langs.includes('en')) langs.unshift('en');
+  console.log(`Using the ${langs.length} languages already in ${OUTPUT_DIR}: ${langs.join(', ')}`);
+  console.log('(a NEW language on the wiki will not be picked up while the base page is gated)');
+  return langs;
+}
+
+/**
+ * Recognise the Anubis bot-gate page. It is served with HTTP 200, so every caller has to look at
+ * the body as well as the status.
+ */
+function detectBotChallenge(body, headers) {
+  const cookies = [].concat((headers || {})['set-cookie'] || []).join(';');
+  if (/anubis/i.test(cookies) || /anubis|Making sure you(&#39;|')re not a bot|Oh noes!/i.test(body)) {
+    return 'blocked by an anti-bot challenge (Anubis)';
+  }
+  const type = (headers || {})['content-type'] || '';
+  if (/^\s*<(!doctype|html)/i.test(body) && !/text\/plain|text\/x-wiki/.test(type)) {
+    return 'server returned an HTML page instead of wiki source';
+  }
+  return null;
 }
 
 /**
@@ -122,7 +174,7 @@ function fetchPage(url) {
   return new Promise((resolve, reject) => {
     const protocol = url.startsWith('https') ? https : require('http');
     
-    protocol.get(url, (res) => {
+    protocol.get(url, { headers: { 'User-Agent': USER_AGENT } }, (res) => {
       let data = '';
       
       // Explicitly set encoding to UTF-8
@@ -133,11 +185,19 @@ function fetchPage(url) {
       });
       
       res.on('end', () => {
-        if (res.statusCode === 200) {
-          resolve(data);
-        } else {
+        if (res.statusCode !== 200) {
           reject(new Error(`HTTP ${res.statusCode}: ${url}`));
+          return;
         }
+        // The bot gate answers 200 with an HTML challenge page, so the status code alone proves
+        // nothing. Without this the challenge HTML is treated as page content: language discovery
+        // just finds no <languages /> tag and quietly carries on with English only.
+        const challenge = detectBotChallenge(data, res.headers);
+        if (challenge) {
+          reject(new Error(`${challenge}: ${url}`));
+          return;
+        }
+        resolve(data);
       });
     }).on('error', (err) => {
       reject(err);
