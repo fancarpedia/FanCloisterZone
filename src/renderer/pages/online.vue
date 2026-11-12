@@ -254,9 +254,18 @@
       <!-- currently connected clients (excluding yourself), with idle vs in-game status -->
       <h2>{{ $t('index.online.players-online', { count: otherClients.length }) }}</h2>
       <ul class="clients-list">
-        <li v-for="c in otherClients" :key="c.clientId" class="client">
+        <!-- compatible players first; an incompatible one (protocol mismatch) is dimmed and marked -->
+        <li v-for="c in otherClients" :key="c.clientId" class="client" :class="{ incompatible: !!clientMismatch(c) }">
           <span class="status-dot" :class="c.playing ? 'playing' : 'idle'" />
           <span class="client-name">{{ c.name || '—' }}</span>
+          <!-- arrow down: they run an older protocol than this app accepts; arrow up: they need a
+               newer one than this app has; unlink: their version is unknown -->
+          <v-icon
+            v-if="clientMismatch(c)"
+            x-small
+            class="incompatible-icon"
+            :title="$t('index.online.incompatible-version-' + clientMismatch(c), { version: c.protocolVersion || '?' })"
+          >{{ mismatchIcon(c) }}</v-icon>
           <span class="client-status">{{ c.playing ? $t('index.online.status-in-game') : $t('index.online.status-idle') }}</span>
         </li>
         <li v-if="!otherClients.length" class="client empty">{{ $t('index.online.no-clients') }}</li>
@@ -415,6 +424,13 @@ import AppUpdateBox from '@/components/AppUpdateBox'
 
 import { STATUS_CONNECTED, STATUS_CONNECTING, STATUS_RECONNECTING } from '@/store/networking'
 import { getAppVersion, getBuildBadge, isWeb } from '@/utils/version'
+import { protocolMismatch, sortByCompatibility, OWN_PROTOCOL } from '@/utils/protocol-compat'
+
+const MISMATCH_ICONS = {
+  older: 'fas fa-arrow-circle-down',
+  newer: 'fas fa-arrow-circle-up',
+  unknown: 'fas fa-unlink'
+}
 
 export default {
   components: {
@@ -487,9 +503,10 @@ export default {
       }
     },
 
-    // connected clients excluding yourself (you're already represented by the connection UI)
+    // connected clients excluding yourself (you're already represented by the connection UI),
+    // the ones this app can play with on top and the incompatible ones at the bottom
     otherClients () {
-      return this.connectedClients.filter(c => !this.isMyClient(c.clientId))
+      return sortByCompatibility(this.connectedClients.filter(c => !this.isMyClient(c.clientId)))
     },
 
     buildBadge () {
@@ -611,6 +628,15 @@ export default {
     },
 
     // the server dedupes clients by base clientId; our own may carry a per-window "--<suffix>"
+    // null when this app can play with the client, else 'older' / 'newer' / 'unknown'
+    clientMismatch (client) {
+      return protocolMismatch(OWN_PROTOCOL, client)
+    },
+
+    mismatchIcon (client) {
+      return MISMATCH_ICONS[this.clientMismatch(client)]
+    },
+
     isMyClient (clientId) {
       const mine = this.$store.state.settings.clientId
       if (!mine || !clientId) return false
@@ -1132,6 +1158,14 @@ h2
         flex: 0 0 auto
         font-size: 12px
         opacity: 0.7
+
+      &.incompatible
+        .client-name, .status-dot
+          opacity: 0.5
+
+        .incompatible-icon
+          flex: 0 0 auto
+          opacity: 0.7
 
   ::v-deep .global-chat-root
     flex: 1 1 0

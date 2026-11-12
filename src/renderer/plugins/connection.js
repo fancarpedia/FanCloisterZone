@@ -3,7 +3,7 @@ import { randomId, randomInt } from '@/utils/random'
 
 import { getAppVersion } from '@/utils/version'
 import { CONSOLE_CLIENT_COLOR } from '@/constants/logging'
-import { NETWORK_PROTOCOL_COMPATIBILITY } from '@/constants/versions'
+import { NETWORK_PROTOCOL_COMPATIBILITY, NETWORK_PROTOCOL_MINIMUM } from '@/constants/versions'
 import { EventsBase } from '@/utils/events'
 
 const isDev = process.env.NODE_ENV === 'development'
@@ -88,6 +88,7 @@ class ConnectionPlugin extends EventsBase {
         appVersion,
         engineVersion,
         protocolVersion: NETWORK_PROTOCOL_COMPATIBILITY,
+        minProtocolVersion: NETWORK_PROTOCOL_MINIMUM,
         name: settings.nickname,
         clientId: settings.clientId,
         secret: settings.secret,
