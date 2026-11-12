@@ -1,5 +1,5 @@
 <template>
-  <div class="expr-item" :class="{'has-count': hasCount && !iconOnly}">
+  <div class="expr-item" :class="{'has-count': hasCount && !iconOnly}" :title="label">
     <div class="icon">
       <span v-if="hasCount && !iconOnly" class="count">{{ item.count }}&times;</span>
       <template v-if="item.name === 'tiles'"><ScoringIcon name="tiles" :size="40" :title="$t('core-messages.tiles')" /></template>
@@ -93,6 +93,7 @@ import NeutralFigure from '@/components/game/NeutralFigure'
 import ExpansionSymbol from '@/components/ExpansionSymbol'
 import ScoringIcon from '@/components/game/ScoringIcon'
 import TokenImage from '@/components/game/TokenImage'
+import { scoringItemLabel } from '@/utils/scoring-items'
 
 const MEEPLES_SVG = require('~/assets/meeples.svg')
 
@@ -121,6 +122,11 @@ export default {
   computed: {
     hasCount () {
       return !isNil(this.item.count)
+    },
+
+    // localized tooltip for the item's icon (the engine name only if nothing is mapped)
+    label () {
+      return scoringItemLabel(this.item.name, this)
     },
 
     points () {

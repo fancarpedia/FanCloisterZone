@@ -102,6 +102,7 @@ import Meeple from '@/components/game/Meeple'
 import ScoringIcon from '@/components/game/ScoringIcon'
 import GameElementIcon from '@/components/game/GameElementIcon'
 import { getElementIcon } from '@/models/elements'
+import { scoringItemLabel } from '@/utils/scoring-items'
 
 // scoring categories in display order; `always` ones show even at 0 points, the rest only
 // when scored. Each row shows the category total plus a sub-row per contributing item.
@@ -118,6 +119,8 @@ const CATEGORIES = [
   { name: 'shrine', title: 'game.feature.shrines' },
   { name: 'king', title: 'core-messages.the-biggest-city' },
   { name: 'robber', title: 'core-messages.the-longest-road' },
+  // King and Robber Baron held together score under one combined name
+  { name: 'king+robber', title: 'game.feature.king-and-robber' },
   { name: 'gold', title: 'game.feature.gold' },
   { name: 'fairy', title: 'game.feature.fairy', explode: true },
   { name: 'black-fairy', title: 'game.feature.black-fairy', explode: true },
@@ -192,6 +195,7 @@ export default {
           'trade-goods': (new Array(this.players.length)).fill(0),
           'robber': (new Array(this.players.length)).fill(0),
           'king': (new Array(this.players.length)).fill(0),
+          'king+robber': (new Array(this.players.length)).fill(0),
           'gold': (new Array(this.players.length)).fill(0),
           'fairy': (new Array(this.players.length)).fill(0),
           'black-fairy': (new Array(this.players.length)).fill(0),
@@ -353,7 +357,8 @@ export default {
         if (this.$te('game.element.' + f)) return this.$t('game.element.' + f)
         return f
       }
-      return name
+      // every other engine item (tiles, pennants, cathedral, sheep.SHEEP_2X, …)
+      return scoringItemLabel(name, this)
     }
   }
 }

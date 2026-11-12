@@ -72,6 +72,8 @@ const TITLE_MAPPING = {
   'flock': 'game.feature.flock',
   'wind-rose': 'game.feature.wind-rose',
   'yaga-hut': 'game.feature.yaga-hut',
+  // a 0-point entry is named after the feature class: 'yagahut.empty'
+  'yagahut': 'game.feature.yaga-hut',
   'field': 'game.feature.field',
   'trade-goods': 'game.feature.trade-goods',
   'king': 'game.feature.king',
