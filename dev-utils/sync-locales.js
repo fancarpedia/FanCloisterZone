@@ -163,8 +163,14 @@ async function main () {
   console.log('[1/3] downloading ' + langs.length + ' page(s) + the English source')
   const toFetch = langs.includes('en') ? langs : ['en', ...langs]
   const dl = run('update-locales-download.js', ['--lang', toFetch.join(',')])
+  // per language: where the page came from ('wiki' or the saved file's name) and whether it
+  // differs from the previous run's copy - the download script prints
+  //   '<lang>: written|unchanged from <origin> (...)'
+  const pages = {}
   for (const line of dl.out.split(/\r?\n/)) {
     if (/^[a-z]{2}(-[A-Za-z]+)?:/.test(line) || /^(Got|Missing)/.test(line)) console.log('  ' + line)
+    const m = /^([a-z]{2}(?:-[A-Za-z]+)?): (written|unchanged) from (\S+)/.exec(line)
+    if (m) pages[m[1]] = { changed: m[2] === 'written', fromWiki: m[3] === 'wiki', origin: m[3] }
   }
   if (!dl.ok) {
     console.error('')
@@ -216,42 +222,20 @@ async function main () {
       needs: num(res.out, /needs translating:\s*(\d+)/),
       filled: num(res.out, /filled from memory \/ metadata\s*:\s*(\d+)/),
       human: num(res.out, /updated from the wiki page \(human\):\s*(\d+)/),
+      changed: num(res.out, /total values changed\s*:\s*(\d+)/),
+      page: pages[lang] || null,
       version: (/@version: \S+ -> "([^"]+)"/.exec(res.out) || [])[1] || null
     })
   }
 
-  // --- report ----------------------------------------------------------------------------------
-  console.log('')
-  console.log('[3/3] summary')
-  console.log('')
-  console.log('  lang  from memory  still new  human text  @version')
-  for (const r of rows) {
-    if (r.error) {
-      console.log('  ' + r.lang.padEnd(6) + 'FAILED — ' + r.error)
-      continue
-    }
-    console.log('  ' + r.lang.padEnd(6) +
-      String(r.fromMemory).padStart(8) + '   ' +
-      String(r.needs).padStart(8) + '   ' +
-      String(r.human).padStart(9) + '   ' +
-      (r.version || '(unchanged)') +
-      (brandNew.includes(r.lang) ? '   <- NEW' : ''))
-  }
-  if (brandNew.length) {
-    console.log('')
-    console.log('NEW on the wiki: ' + brandNew.join(', ') +
-      ' — add it to LOCALES in src/renderer/constants/locales.js so the app offers it.')
-  }
-
+  // --- still untranslated (details first, so the statistics below are the last thing printed) --
   const pendingLangs = Object.keys(pending)
   const pendingTotal = pendingLangs.reduce((n, l) => n + pending[l].length, 0)
-  console.log('')
   if (pendingTotal) {
     if (!fs.existsSync(RAW_DIR)) fs.mkdirSync(RAW_DIR, { recursive: true })
     fs.writeFileSync(PENDING_FILE, JSON.stringify(pending, null, 2) + '\n', 'utf8')
-    console.log('Still untranslated: ' + pendingTotal + ' string(s) across ' +
-      pendingLangs.length + ' language(s) — ' + pendingLangs.join(', '))
-    console.log('Written to ' + PENDING_FILE)
+    console.log('')
+    console.log('Still untranslated, written to ' + PENDING_FILE + ':')
     console.log('')
     for (const lang of pendingLangs) {
       const items = pending[lang]
@@ -268,9 +252,51 @@ async function main () {
     console.log('so the locale files stay valid. Translate them, then feed them back with:')
     console.log('  node dev-utils/translate-locales.js --lang <code> --merge <file> ')
     console.log('  node dev-utils/translate-locales.js --lang <code> --install')
-  } else {
-    console.log('Nothing left untranslated — every marked string was answered from the memory.')
-    if (fs.existsSync(PENDING_FILE)) fs.unlinkSync(PENDING_FILE)
+  } else if (fs.existsSync(PENDING_FILE)) {
+    fs.unlinkSync(PENDING_FILE)
+  }
+
+  // --- statistics: always the very last output ------------------------------------------------
+  console.log('')
+  console.log('[3/3] summary')
+  console.log('')
+  // source: where the page came from this run; page: whether it differs from the last run's copy
+  console.log('  lang  source       page     from memory  still new  human text  changed  @version')
+  for (const r of rows) {
+    if (r.error) {
+      console.log('  ' + r.lang.padEnd(6) + 'FAILED — ' + r.error)
+      continue
+    }
+    const source = r.page ? (r.page.fromWiki ? 'wiki' : r.page.origin) : '?'
+    const page = r.page ? (r.page.changed ? 'UPDATED' : 'same') : '?'
+    console.log('  ' + r.lang.padEnd(6) +
+      source.padEnd(13) +
+      page.padEnd(9) +
+      String(r.fromMemory).padStart(8) + '   ' +
+      String(r.needs).padStart(8) + '   ' +
+      String(r.human).padStart(9) + '   ' +
+      String(r.changed).padStart(6) + '   ' +
+      (r.version || '(unchanged)') +
+      (brandNew.includes(r.lang) ? '   <- NEW' : ''))
+  }
+
+  const ok = rows.filter(r => !r.error && r.page)
+  const updatedFromWiki = ok.filter(r => r.page.fromWiki && r.page.changed).map(r => r.lang)
+  const updatedFromSaved = ok.filter(r => !r.page.fromWiki && r.page.changed).map(r => r.lang)
+  const fromSavedPage = ok.filter(r => !r.page.fromWiki).map(r => r.lang)
+  const localeChanged = rows.filter(r => !r.error && r.changed > 0).map(r => r.lang)
+  console.log('')
+  console.log('Updated from the wiki      : ' + (updatedFromWiki.join(', ') || 'none'))
+  if (updatedFromSaved.length) console.log('Updated from a saved page  : ' + updatedFromSaved.join(', '))
+  if (fromSavedPage.length) console.log('Not downloaded (saved page): ' + fromSavedPage.join(', '))
+  // a dry run never installs, so translate-locales reports no changed values to count
+  if (!args.dryRun) console.log('Locale files changed       : ' + (localeChanged.join(', ') || 'none'))
+  console.log('Still untranslated         : ' + (pendingTotal
+    ? pendingTotal + ' string(s) in ' + pendingLangs.join(', ')
+    : 'none — every marked string was answered from the memory'))
+  if (brandNew.length) {
+    console.log('New on the wiki            : ' + brandNew.join(', ') +
+      ' (add to LOCALES in src/renderer/constants/locales.js)')
   }
 
   if (rows.some(r => r.error)) process.exit(1)
