@@ -18,7 +18,9 @@ import { mapGetters } from 'vuex'
 
 export default {
   props: {
-    ev: { type: Object, required: true }
+    ev: { type: Object, required: true },
+    // all events of the same turn — courier points find the courier move that preceded them
+    siblings: { type: Array, default: () => [] }
   },
 
   data () {
@@ -70,6 +72,41 @@ export default {
         return
       }
 
+      // Courier: points for a feature next to where the courier went. Highlight that feature; its
+      // meeples are usually still standing on it, so only the ones that have left the board since
+      // are drawn back (pulsing), as a regular score event shows its returned meeples.
+      // Where the courier came from is shown on its move bullet, not here; only where it stood
+      // when these points were scored is.
+      if (name.startsWith('courier.')) {
+        // the courier's spot also gets a circle in the dimming, as on its move bullet
+        const at = this.courierPosition()
+        const extraPoints = at ? [at] : []
+        if (ptr && ptr.positions) {
+          // a range feature (monastery, garden, …): the tiles around it earned the points
+          this.showTiles(ptr.positions, extraPoints)
+        } else if (ptr) {
+          const feature = this.featureOn(ptr.featurePointer || ptr)
+          if (feature) this.showFeature(feature, extraPoints)
+        }
+        const removed = (meeples || []).filter(h => this.isMeepleRemoved(h))
+        if (removed.length) {
+          this.$store.dispatch('board/showLayer', {
+            layer: 'EventMeeplesLayer',
+            props: { meeples: removed, winners: [] }
+          })
+        }
+        // the courier where it stood when scoring (beside the meeple it walked to): a pulsing ghost,
+        // drawn above the dimming
+        if (at) {
+          this.$store.dispatch('board/showLayer', {
+            layer: 'NeutralFigureGhostLayer',
+            props: { ghosts: [{ figure: 'courier', ptr: at, nextToMeeple: at.feature !== 'CourierLetter' }] }
+          })
+        }
+        this.$store.commit('board/pointsExpression', points)
+        return
+      }
+
       if (meeples && meeples.length) {
         // followers were returned to supply when the feature scored — draw them
         // back at their original positions so the player can see who scored, and crown
@@ -103,6 +140,19 @@ export default {
       this.$store.commit('board/pointsExpression', points)
     },
 
+    // where the last courier move before this score event in its turn took the courier
+    courierPosition () {
+      const list = this.siblings || []
+      for (let i = list.indexOf(this.ev) - 1; i >= 0; i--) {
+        const e = list[i]
+        if (e.type === 'neutral-moved' && (e.figure || '').startsWith('courier')) {
+          const to = e.to && (e.to.featurePointer || e.to)
+          return to && to.position ? to : null
+        }
+      }
+      return null
+    },
+
     showTile (position) {
       this.$store.dispatch('board/showLayer', {
         layer: 'EmphasizeLayer',
@@ -115,26 +165,32 @@ export default {
       })
     },
 
-    showTiles (positions) {
+    // extraPoints: single spots ({ position, feature, location }) opened on top (the courier's)
+    showTiles (positions, extraPoints = []) {
       this.$store.dispatch('board/showLayer', {
         layer: 'EmphasizeLayer',
         props: {
           emphasis: {
             type: 'tiles',
-            positions
+            positions,
+            extraPoints
           }
         }
       })
     },
 
-    showFeature (feature) {
-      this.showFeatures(feature)
+    showFeature (feature, extraPoints = []) {
+      this.emphasizeFeatures([feature], extraPoints)
+    },
+
+    showFeatures (...features) {
+      this.emphasizeFeatures(features)
     },
 
     // EmphasizeLayer takes a flat list of places, so several features are highlighted together by
     // concatenating theirs - one dispatch, no layer change. Missing features are skipped rather
     // than throwing: a pointer can outlive the feature it names.
-    showFeatures (...features) {
+    emphasizeFeatures (features, extraPoints = []) {
       const places = features.filter(Boolean).flatMap(feature =>
         feature.places.map(p => ({
           tile: this.tileOn(p),
@@ -150,7 +206,8 @@ export default {
         props: {
           emphasis: {
             type: 'feature',
-            places
+            places,
+            extraPoints
           }
         }
       })

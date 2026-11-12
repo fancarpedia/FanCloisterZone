@@ -1,22 +1,25 @@
 <template>
-  <g id="neutral-figure-ghost-layer" :transform="ghostTransform">
-    <use
-      class="neutral-ghost"
-      :class="figure"
-      :x="-BASE_SIZE * 0.21"
-      :y="-BASE_SIZE * 0.21"
-      :width="BASE_SIZE * 0.42"
-      :height="BASE_SIZE * 0.42"
-      :href="`${NEUTRAL_SVG}#${figure}`"
-    />
+  <g id="neutral-figure-ghost-layer">
+    <g v-for="(g, idx) in drawn" :key="idx" :transform="g.transform">
+      <use
+        class="neutral-ghost"
+        :class="g.figure"
+        :x="-BASE_SIZE * g.size / 2"
+        :y="-BASE_SIZE * g.size / 2"
+        :width="BASE_SIZE * g.size"
+        :height="BASE_SIZE * g.size"
+        :href="`${NEUTRAL_SVG}#${g.figure}`"
+      />
+    </g>
   </g>
 </template>
 
 <script>
 // Temporary layer shown while hovering a score event tied to a neutral figure (fairy, black-fairy,
-// …), to pulse that figure at the exact spot it scored from — used when the figure is no longer
-// deployed there (removed), so the player can see where it was. Position is the event's feature
-// pointer; `figure` is any id present in neutral.svg.
+// courier, …), to pulse that figure at the exact spot it scored from — used when the figure is no
+// longer deployed there (removed), so the player can see where it was. Position is the event's
+// feature pointer; `figure` is any id present in neutral.svg. Several ghosts can be drawn at once
+// (`ghosts`), e.g. the courier where it came from and where it went.
 import LayerMixin from '@/components/game/layers/LayerMixin'
 import { BASE_SIZE } from '@/constants/ui'
 
@@ -26,11 +29,14 @@ export default {
   mixins: [LayerMixin],
 
   props: {
-    // any neutral figure id in neutral.svg, e.g. 'fairy' | 'black-fairy'
-    figure: { type: String, required: true },
+    // any neutral figure id in neutral.svg, e.g. 'fairy' | 'black-fairy' | 'courier'
+    figure: { type: String, default: null },
     // where the figure was: a feature pointer { position, feature, location } (placed next to a
     // meeple) OR a bare tile position [x, y] / { position } (the on-tile placement rule)
-    ptr: { type: [Object, Array], required: true }
+    ptr: { type: [Object, Array], default: null },
+    // several ghosts at once: [{ figure, ptr, nextToMeeple }] — nextToMeeple shifts the figure off
+    // the meeple's spot, the way the board draws a neutral figure standing beside a follower
+    ghosts: { type: Array, default: null }
   },
 
   data () {
@@ -38,8 +44,23 @@ export default {
   },
 
   computed: {
-    ghostTransform () {
-      const p = this.ptr
+    drawn () {
+      const list = this.ghosts || (this.figure && this.ptr ? [{ figure: this.figure, ptr: this.ptr }] : [])
+      return list.map(({ figure, ptr, nextToMeeple }) => {
+        // the courier is drawn smaller than the other neutral figures on the board (MeepleLayer)
+        const size = figure === 'courier' ? 0.32 : 0.42
+        let transform = this.ghostTransform(ptr)
+        if (transform && nextToMeeple) {
+          transform += ` translate(${BASE_SIZE * 0.18} ${BASE_SIZE * 0.02})`
+        }
+        return { figure, size, transform }
+      }).filter(g => g.transform)
+    }
+  },
+
+  methods: {
+    ghostTransform (p) {
+      if (!p) return ''
       const pos = Array.isArray(p) ? p : (p.position || null)
       const hasFeature = !Array.isArray(p) && p.feature && p.location
       if (hasFeature) {

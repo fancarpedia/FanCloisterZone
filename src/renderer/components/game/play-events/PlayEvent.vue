@@ -7,6 +7,7 @@
       v-if="component"
       :ev="ev"
       :player="player"
+      v-bind="extraProps"
     />
     <div v-else-if="ev.type === 'current-action'" class="current-action" />
     <div v-else class="unknown-event">{{ ev.type }}</div>
@@ -85,12 +86,19 @@ export default {
 
   props: {
     ev: { type: Object, required: true },
-    player: { type: Number, default: null }
+    player: { type: Number, default: null },
+    // all events of the same turn; handed on only to the components that need them
+    siblings: { type: Array, default: () => [] }
   },
 
   computed: {
     component () {
       return MAPPING[this.ev.type] || null
+    },
+
+    // a courier move shows the points it scored; courier points show where the courier stood
+    extraProps () {
+      return this.component === NeutralMovedEvent || this.component === PointsEvent ? { siblings: this.siblings } : {}
     }
   }
 }

@@ -138,7 +138,7 @@ const CATEGORIES = [
   { name: 'windmill', title: 'game.element.windmill' },
   { name: 'decinsky-sneznik', title: 'game.element.decinsky-sneznik' },
   { name: 'river', title: 'game.feature.fishermen' },
-  { name: 'courier', title: 'game.figure.courier', explode: true },
+  { name: 'courier', title: 'game.element.courier', explode: true },
   { name: 'fishhut', title: 'game.feature.fishhut' }
 ]
 

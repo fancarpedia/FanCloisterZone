@@ -12,6 +12,8 @@
 <script>
 import { mapGetters } from 'vuex'
 
+import { courierGhosts } from '@/utils/courier-ghosts'
+
 import NeutralFigure from '@/components/game/NeutralFigure'
 
 export default {
@@ -20,11 +22,13 @@ export default {
   },
 
   props: {
-    ev: { type: Object, required: true }
+    ev: { type: Object, required: true },
+    // all events of the same turn — the courier's scoring follows its move there
+    siblings: { type: Array, default: () => [] }
   },
 
   computed: {
-    ...mapGetters({ tileOn: 'game/tileOn' }),
+    ...mapGetters({ tileOn: 'game/tileOn', featureOn: 'game/featureOn' }),
 
     figure () {
       return this.ev.figure.split('.')[0]
@@ -35,6 +39,10 @@ export default {
     onMouseEnter () {
       const { to } = this.ev
       if (!to) {
+        return
+      }
+      if (this.figure === 'courier') {
+        this.showCourierMove()
         return
       }
 
@@ -94,6 +102,78 @@ export default {
           props: { figure: fig, ptr: ghostPtr }
         })
       }
+    },
+
+    // The courier walked to (or was placed at) a spot and scored the occupied features within the
+    // 3×3 tiles around it. Like the wagon's move range: frame those 3×3 tiles and open the dimming
+    // only over the spots that matter — where it came FROM (the letter symbol on its first move, with
+    // a pulsing courier ghost), where it went, and the scored meeples inside the range. Scored meeples
+    // that have since left the board are drawn back pulsing, as a score event shows them.
+    showCourierMove () {
+      const entries = this.courierScoring()
+      const from = this.ev.from && (this.ev.from.featurePointer || this.ev.from)
+      const to = this.ev.to && (this.ev.to.featurePointer || this.ev.to)
+      const center = to && to.position
+
+      const inRange = m => !center || !m.position ||
+        (Math.abs(m.position[0] - center[0]) <= 1 && Math.abs(m.position[1] - center[1]) <= 1)
+      // the followers of the scored features that stand inside the range (a scored city may reach
+      // far beyond it); a castle's vicinity can reach further, so fall back to the scoring pointer
+      let scored = entries.flatMap(e => (e.meeples || []).filter(inRange))
+      if (!scored.length) {
+        scored = entries.map(e => e.ptr && (e.ptr.featurePointer || e.ptr)).filter(Boolean)
+      }
+
+      const points = [from, to, ...scored].filter(p => p && p.position && p.feature && p.location)
+      this.$store.dispatch('board/showLayer', {
+        layer: 'EmphasizeLayer',
+        props: { emphasis: { type: 'points', points, frame: center || null } }
+      })
+
+      const removed = scored.filter(m => m.type && this.isMeepleRemoved(m))
+      if (removed.length) {
+        this.$store.dispatch('board/showLayer', {
+          layer: 'EventMeeplesLayer',
+          props: { meeples: removed, winners: [] }
+        })
+      }
+
+      // the courier where it came from (absent on its first placement) and, if it has moved on
+      // since, where it went — beside the meeple, as the board draws it
+      const ghosts = courierGhosts(from, to, p => !this.isFairyRemoved('courier', p))
+      if (ghosts.length) {
+        this.$store.dispatch('board/showLayer', {
+          layer: 'NeutralFigureGhostLayer',
+          props: { ghosts }
+        })
+      }
+    },
+
+    // the courier.* points entries that follow this move in its turn, up to the next courier move
+    courierScoring () {
+      const list = this.siblings || []
+      const start = list.indexOf(this.ev)
+      if (start < 0) return []
+      const out = []
+      for (let i = start + 1; i < list.length; i++) {
+        const e = list[i]
+        if (e.type === 'neutral-moved' && (e.figure || '').startsWith('courier')) break
+        if (e.type !== 'points') continue
+        for (const p of e.points || []) {
+          if ((p.name || '').startsWith('courier.')) out.push(p)
+        }
+      }
+      return out
+    },
+
+    // is a scored meeple no longer standing at its recorded spot?
+    isMeepleRemoved (m) {
+      const dm = this.$store.state.game.deployedMeeples || []
+      return !dm.some(d =>
+        d.position && m.position &&
+        d.position[0] === m.position[0] && d.position[1] === m.position[1] &&
+        d.feature === m.feature && d.location === m.location
+      )
     },
 
     // The meeple the fairy is associated with, to pulse on hover. Use the live deployed meeple when

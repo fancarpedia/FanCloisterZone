@@ -129,6 +129,9 @@ export default {
         let lastRowIsScore = null
         let row = null
         item.rows = []
+        // every shown event of the turn, shared by all its rows: score events sit in rows of their
+        // own, so an event that needs its turn's scoring (the courier move) looks it up here
+        const turnEvents = []
         item.events.forEach((ev, evIdx) => {
           // Dev builds label each event with where it sits in the raw history, so a thing seen on
           // screen can be found in the state without counting rows by hand. The index is the one
@@ -145,11 +148,12 @@ export default {
           const isScore = ev.type === 'points' || ev.type === 'token-received'
           const isNewLineEvent = ev.type === 'tile-auctioned' || ev.type === 'dragon-moved'
           if (isScore !== lastRowIsScore || isNewLineEvent || row?.events.length === this.eventsPerRow) {
-            row = { events: [], height: isScore ? 27 : 41 }
+            row = { events: [], height: isScore ? 27 : 41, turnEvents }
             item.rows.unshift(row)
             lastRowIsScore = isScore
           }
           row.events.push(ev)
+          turnEvents.push(ev)
         })
         delete item.events
         if (i === this.history.length - 1 && this.phase !== 'CommitActionPhase' && this.phase !== 'GameOverPhase') {

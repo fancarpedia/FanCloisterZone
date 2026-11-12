@@ -10,6 +10,7 @@
         :key="i"
         :ev="ev"
         :player="player"
+        :siblings="row.turnEvents || row.events"
       />
     </div>
   </div>
