@@ -406,11 +406,18 @@ export default {
       this.$store.dispatch('gameSetup/setTileOverrides', next)
     },
 
-    // jump to the previous/next expansion section (refs collected by the v-for, in order);
-    // offsets the scroll by the sticky game-setup header so the group title isn't hidden under it
+    // jump to the previous/next expansion section (refs collected by the v-for, in order).
+    // Side by side the setup aside scrolls on its own, so scroll that; stacked (narrow) the page
+    // scrolls, offset by the sticky game-setup header so the group title isn't hidden under it
     scrollToGroup (idx) {
       const els = this.$refs.groupEl
       if (!els || !els[idx]) return
+      const panel = this.$el.closest && this.$el.closest('.game-setup-grid > aside')
+      if (panel && panel.scrollHeight > panel.clientHeight) {
+        const top = els[idx].getBoundingClientRect().top - panel.getBoundingClientRect().top + panel.scrollTop - 6
+        panel.scrollTo({ top, behavior: 'smooth' })
+        return
+      }
       const header = document.querySelector('.game-setup-grid .tiles-header')
       const offset = (header ? header.getBoundingClientRect().height : 0) + 6
       const top = els[idx].getBoundingClientRect().top + window.pageYOffset - offset

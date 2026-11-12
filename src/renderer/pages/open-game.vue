@@ -426,13 +426,13 @@ export default {
     display: flex
     flex-direction: column
     height: 100%
-    overflow: hidden
+    overflow-x: auto
+    overflow-y: hidden
 
   @media (max-width: 1164px)
     ::v-deep aside
       flex-direction: row
       height: 33.333vh
-      overflow: visible
 
     .options,
     .game-setup-overview,

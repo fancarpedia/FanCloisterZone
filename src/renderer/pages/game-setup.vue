@@ -163,7 +163,7 @@ export default {
       // change mode: no wizard stepping — Continue commits the edited setup from any tab
       if (!this.editingGame && this.tab < 5) {
         this.tab += 1
-        window.scrollTo(0, 0)
+        this.scrollToTop()
         return
       }
       await this.createGame()
@@ -184,7 +184,14 @@ export default {
     },
 
     onTabChange () {
+      this.scrollToTop()
+    },
+
+    // side by side the main panel scrolls on its own; stacked (narrow) the page does
+    scrollToTop () {
       window.scrollTo(0, 0)
+      const main = this.$el && this.$el.querySelector && this.$el.querySelector('.game-setup-grid > main')
+      if (main) main.scrollTop = 0
     }
   }
 }

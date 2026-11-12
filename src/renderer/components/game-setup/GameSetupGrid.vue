@@ -55,7 +55,12 @@ export default {
 .game-setup-grid
   display: grid
   grid-template-columns: minmax(0, 1560px) minmax(372px, 1fr)
-  grid-template-rows: var(--game-setup-header-height) auto
+  // side by side, main and aside each scroll on their own: the grid is exactly one screen
+  // high, so the content row is what is left under the header and never grows the page
+  // (100dvh tracks the visible area under a mobile URL bar; 100vh is the fallback)
+  height: 100vh
+  height: 100dvh
+  grid-template-rows: var(--game-setup-header-height) minmax(0, 1fr)
   grid-template-areas: "header tiles-header" "main detail"
 
   &.no-detail
@@ -106,8 +111,12 @@ header
   justify-content: flex-start
   padding-left: 30px
 
+// main and aside each scroll on their own, in both axes: content wider than its column scrolls
+// inside that column instead of widening the grid (and with it the whole page)
 main
   grid-area: main
+  min-width: 0
+  overflow-x: auto
   overflow-y: overlay
   padding-bottom: $panel-gap * 2
   margin-right: $panel-gap
@@ -117,12 +126,19 @@ main
     margin-right: 0
 
 aside
+  grid-area: detail
+  min-width: 0
+  overflow-x: auto
   overflow-y: overlay
   margin-top: -2px
 
 @media (max-width: 1164px)
   .game-setup-grid
-    grid-template-columns: 1fr
+    // minmax(0, ...) — a bare 1fr track never shrinks below its widest content, which would
+    // push the page into horizontal scroll instead of main/aside scrolling themselves
+    grid-template-columns: minmax(0, 1fr)
+    // stacked, the page scrolls as a whole again
+    height: auto
     grid-template-rows: var(--game-setup-header-height) auto var(--game-setup-header-height) auto
     grid-template-areas: "header" "main" "tiles-header" "detail"
 
