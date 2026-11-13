@@ -44,7 +44,7 @@
         v-if="isOwner"
         :title="$t('button.start')"
         :sets="sets"
-        :disabled="(!ai && !slotsAssigned) || (ai && (!slotsReservedByAI || !slotsReserved))"
+        :disabled="!canStart"
         @click="startGame"
       />
 
@@ -180,7 +180,9 @@ export default {
       isRenameDialogOpen: false,
       editName: null,
       // do not update it after start when gameMessages are set to empty array
-      readOnly: this.$store.state.game.gameMessages !== null
+      readOnly: this.$store.state.game.gameMessages !== null,
+      // the loaded local game was started automatically (once)
+      autoStarted: false
     }
   },
 
@@ -235,6 +237,20 @@ export default {
       } else {
         return !!this.slots.find(slot => slot.sessionId)
       }
+    },
+
+    // the Start button's condition
+    canStart () {
+      if (!this.slots) return false // the game has not arrived yet
+      return this.ai ? (this.slotsReservedByAI && this.slotsReserved) : this.slotsAssigned
+    },
+
+    // A loaded game (saved, or the dev Step Back copy) that is not online starts by itself as soon
+    // as every seat is assigned — there is nothing left to choose on this page. A new game from
+    // the setup page still waits for Start, so players can be added.
+    shouldAutoStart () {
+      return this.readOnly && this.isOwner && this.canStart &&
+        this.$store.state.networking.connectionType !== 'online'
     },
 
     slotsReserved () {
@@ -337,6 +353,16 @@ export default {
   },
 
   watch: {
+    shouldAutoStart: {
+      immediate: true,
+      handler (val) {
+        if (val && !this.autoStarted) {
+          this.autoStarted = true
+          this.startGame()
+        }
+      }
+    },
+
     // turning a game public reveals the max-players select and gives it a sensible default (all
     // seats) so it isn't left unset — the owner can then lower it
     publicGame (val) {
