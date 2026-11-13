@@ -2,7 +2,7 @@
   "@author": "Challa007 & Bombur",
   "@jcz-version": "5.12.1",
   "@fcz-version": "7.1.0",
-  "@version": "0.12.8-ai",
+  "@version": "0.12.9-ai",
   "about": {
     "author": "Autor",
     "configuration-file": "Konfigurationsdatei",
@@ -125,6 +125,7 @@
     "save-test-scenario": "Testszenario speichern",
     "shapes": "Formen",
     "size": "Größe",
+    "step-back-in-save": "Einen Schritt zurück im Spielstand",
     "strokes": "Schläge",
     "test": "Test",
     "test-runner": "Testläufer",

@@ -2,7 +2,7 @@
   "@author": "Black Bear",
   "@jcz-version": "5.12.1",
   "@fcz-version": "7.1.0",
-  "@version": "0.12.8-ai",
+  "@version": "0.12.9-ai",
   "about": {
     "author": "Auteur",
     "configuration-file": "Fichier de configuration",
@@ -125,6 +125,7 @@
     "save-test-scenario": "Enregistrer le scénario de test",
     "shapes": "Formes",
     "size": "Taille",
+    "step-back-in-save": "Un pas en arrière dans la partie sauvegardée",
     "strokes": "Traits",
     "test": "Test",
     "test-runner": "Exécuteur de tests",

@@ -2,7 +2,7 @@
   "@author": "TileLord | Erol",
   "@jcz-version": "5.12.1",
   "@fcz-version": "7.1.0",
-  "@version": "0.12.8-ai",
+  "@version": "0.12.9-ai",
   "about": {
     "author": "Avtor",
     "configuration-file": "Konfiguracijska datoteka",
@@ -125,6 +125,7 @@
     "save-test-scenario": "Shrani testni scenarij",
     "shapes": "Oblike",
     "size": "Velikost",
+    "step-back-in-save": "Korak nazaj v shranjeni igri",
     "strokes": "Poteze",
     "test": "Test",
     "test-runner": "Izvajalnik testov",

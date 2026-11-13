@@ -2,7 +2,7 @@
   "@author": "Carlium & Meepledrone",
   "@jcz-version": "5.12.1",
   "@fcz-version": "7.1.0",
-  "@version": "0.12.8-ai",
+  "@version": "0.12.9-ai",
   "about": {
     "author": "Autor",
     "configuration-file": "Archivo de configuración",
@@ -125,6 +125,7 @@
     "save-test-scenario": "Grabar Escenario de Prueba",
     "shapes": "Formas",
     "size": "Tamaño",
+    "step-back-in-save": "Un paso atrás en la partida guardada",
     "strokes": "Trazos",
     "test": "Prueba",
     "test-runner": "Probador",

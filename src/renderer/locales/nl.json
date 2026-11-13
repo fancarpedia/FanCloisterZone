@@ -2,7 +2,7 @@
   "@author": "Kiap1969 & Sinscerly",
   "@jcz-version": "5.12.1",
   "@fcz-version": "7.1.0",
-  "@version": "0.12.8-ai",
+  "@version": "0.12.9-ai",
   "about": {
     "author": "Auteur",
     "configuration-file": "Configuratiebestand",
@@ -125,6 +125,7 @@
     "save-test-scenario": "Testscenario opslaan",
     "shapes": "Vormen",
     "size": "Grootte",
+    "step-back-in-save": "Stap terug in opgeslagen spel",
     "strokes": "Slagen",
     "test": "Test",
     "test-runner": "Uitvoering testen",

@@ -2,7 +2,7 @@
   "@author": "ai",
   "@jcz-version": "5.12.1",
   "@fcz-version": "7.1.0",
-  "@version": "0.12.8-ai",
+  "@version": "0.12.9-ai",
   "about": {
     "author": "Автор",
     "configuration-file": "Файл конфігурації",
@@ -125,6 +125,7 @@
     "save-test-scenario": "Зберегти тестовий сценарій",
     "shapes": "Форми",
     "size": "Розмір",
+    "step-back-in-save": "Крок назад у збереженій грі",
     "strokes": "Обведення",
     "test": "Тест",
     "test-runner": "Запуск тестів",

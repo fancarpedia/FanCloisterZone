@@ -35,7 +35,8 @@ const DEFAULT_ENABLED = {
   'dump-server': false,
   'theme-inspector': false,
   'save-for-test-runner': false,
-  'save-for-test-runner-end-game': false
+  'save-for-test-runner-end-game': false,
+  'dev-step-back': false
 }
 
 // checked state defaults — kept in sync with the renderer store per window
@@ -191,6 +192,8 @@ async function createMenu(win, messages) {
         { id: 'test-runner', label: $t('dev.test-runner') || 'Test Runner', click() { targetWin().webContents.send('menu.test-runner') } },
         { id: 'save-for-test-runner', label: $t('dev.save-test-scenario') || 'Save Test Scenario', click() { targetWin().webContents.send('menu.save-for-test-runner') } },
 		{ id: 'save-for-test-runner-end-game', label: $t('dev.save-test-scenario-end-game') || 'Save Test Scenario End Game', click() { targetWin().webContents.send('menu.save-for-test-runner-end-game') } },
+        // drop the last message from the game history and reload the game from that shorter history
+        { id: 'dev-step-back', label: $t('dev.step-back-in-save') || 'Step Back in Save', click() { targetWin().webContents.send('menu.dev-step-back') } },
         { type: 'separator' },
         { label: $t('dev.reload-add-ons') || 'Reload Add-ons', click() { targetWin().webContents.send('menu.reload-addons') } },
         { id: 'theme-inspector', label: $t('dev.theme-inspector') || 'Theme Inspector', click() { targetWin().webContents.send('menu.theme-inspector') } }

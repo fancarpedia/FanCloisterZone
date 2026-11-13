@@ -2,7 +2,7 @@
   "@author": "Bumsakalaka",
   "@jcz-version": "5.12.1",
   "@fcz-version": "7.1.0",
-  "@version": "0.12.8-ai",
+  "@version": "0.12.9-ai",
   "about": {
     "author": "Autor",
     "configuration-file": "Konfiguračný súbor",
@@ -125,6 +125,7 @@
     "save-test-scenario": "Uložiť testovací scenár",
     "shapes": "Tvary",
     "size": "Veľkosť",
+    "step-back-in-save": "Krok späť v uloženej hre",
     "strokes": "Obrysy",
     "test": "Test",
     "test-runner": "Test Runner",

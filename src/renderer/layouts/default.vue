@@ -385,6 +385,9 @@ export default {
     ipcRenderer.on('menu.save-for-test-runner-end-game', () => {
       this.saveScenario(true)
     })
+    ipcRenderer.on('menu.dev-step-back', () => {
+      this.$store.dispatch('game/stepBack')
+    })
     ipcRenderer.on('menu.test-runner', () => {
       this.$router.push('/test-runner')
     })
@@ -558,7 +561,10 @@ export default {
           await this.$store.dispatch(payload.ai ? 'gameSetup/newGameAI' : 'gameSetup/newGame')
           this.$router.push('/game-setup' + (payload.tab !== undefined ? `?tab=${payload.tab}` : ''))
         } else if (kind === 'load') {
-          const loaded = await this.$store.dispatch('game/load', payload.file ? { file: payload.file } : {})
+          // file: a saved game; saved: an in-memory one (dev "Step Back in Save" of an online game)
+          const loaded = await this.$store.dispatch('game/load', payload.file
+            ? { file: payload.file }
+            : payload.saved ? { saved: payload.saved, forceLocal: !!payload.forceLocal } : {})
           if (!loaded) { this.$windows.closeSelf(); return } // dialog cancelled / load failed
         } else if (kind === 'load-setup') {
           await this.$store.dispatch('gameSetup/load', payload.setup)
@@ -699,7 +705,9 @@ export default {
         'dump-server': this.$server.isRunning(),
         'theme-inspector': !gameOpen,
         'save-for-test-runner': gameRunning,
-        'save-for-test-runner-end-game': gameRunning
+        'save-for-test-runner-end-game': gameRunning,
+        // any running game (an online one is reloaded as a local copy)
+        'dev-step-back': gameRunning
       })
     },
 

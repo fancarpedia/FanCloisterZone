@@ -2,7 +2,7 @@
   "@author": "farin & Scott",
   "@jcz-version": "5.12.1",
   "@fcz-version": "7.1.0",
-  "@version": "0.12.8",
+  "@version": "0.12.9",
   "about": {
     "author": "Author",
     "configuration-file": "Configuration file",
@@ -125,6 +125,7 @@
     "save-test-scenario": "Save Test Scenario",
     "shapes": "Shapes",
     "size": "Size",
+    "step-back-in-save": "Step Back in Save",
     "strokes": "Strokes",
     "test": "Test",
     "test-runner": "Test Runner",

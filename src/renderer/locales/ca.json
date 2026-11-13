@@ -2,7 +2,7 @@
   "@author": "J0anJosep",
   "@jcz-version": "5.12.1",
   "@fcz-version": "7.1.0",
-  "@version": "0.12.8-ai",
+  "@version": "0.12.9-ai",
   "about": {
     "author": "Autor",
     "configuration-file": "Fitxer de configuració",
@@ -125,6 +125,7 @@
     "save-test-scenario": "Desa l'escenari de proves",
     "shapes": "Formes",
     "size": "Mida",
+    "step-back-in-save": "Un pas enrere a la partida desada",
     "strokes": "Traç",
     "test": "Prova",
     "test-runner": "Execució de proves",

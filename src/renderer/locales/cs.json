@@ -2,7 +2,7 @@
   "@author": "Peťul",
   "@jcz-version": "5.12.1",
   "@fcz-version": "7.1.0",
-  "@version": "0.12.8-ai",
+  "@version": "0.12.9-ai",
   "about": {
     "author": "Autor",
     "configuration-file": "Konfigurační soubor",
@@ -125,6 +125,7 @@
     "save-test-scenario": "Uložit testovací scénář",
     "shapes": "Tvary",
     "size": "Velikost",
+    "step-back-in-save": "Krok zpět v uložené hře",
     "strokes": "Obrysy",
     "test": "Test",
     "test-runner": "Test Runner",

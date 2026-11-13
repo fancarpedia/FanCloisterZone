@@ -2,7 +2,7 @@
   "@author": "Snearone",
   "@jcz-version": "5.12.1",
   "@fcz-version": "7.1.0",
-  "@version": "0.12.8-ai",
+  "@version": "0.12.9-ai",
   "about": {
     "author": "Autor",
     "configuration-file": "Plik konfiguracyjny",
@@ -125,6 +125,7 @@
     "save-test-scenario": "Zapisz Scenariusz Testowy",
     "shapes": "Kształty",
     "size": "Rozmiar",
+    "step-back-in-save": "Krok wstecz w zapisanej grze",
     "strokes": "Krawędzie",
     "test": "Test",
     "test-runner": "Tester",

@@ -492,6 +492,33 @@ export const actions = {
     })
   },
 
+  // Dev: the current game minus the last message of its history, reloaded through the regular
+  // open-game path — a step back past what undo allows (a COMMIT, another player's move, …).
+  // Works in any game. An online game's history lives on the server and cannot be rewound there,
+  // so it is reloaded as a LOCAL copy (the server game is left untouched) in which this player
+  // controls every human seat, like a test scenario.
+  async stepBack ({ state, dispatch, rootState }) {
+    if (!state.id || !state.gameMessages || !state.gameMessages.length) return
+    const online = rootState.networking.connectionType === 'online'
+    const content = generateSaveContent(state, false)
+    content.replay = content.replay.slice(0, -1)
+    // the game clock as it stood at the (new) last message
+    const last = content.replay[content.replay.length - 1]
+    content.clock = last && last.clock ? last.clock : 0
+    console.log(`%c dev %c step back: ${state.gameMessages.length} -> ${content.replay.length} messages`, 'color: #888', '')
+    // An online game is left running: the stepped-back copy opens in a new local game window.
+    // Turning the online game's own window into a local game would tear down its online connection,
+    // and a game window closes itself once that connection is gone.
+    if (online && this._vm.$windows && this._vm.$windows.openGame({ kind: 'load', payload: { saved: content, forceLocal: true } }, { force: true })) {
+      return
+    }
+    // In place (a local game, or no separate windows, e.g. the web build). Close the running game
+    // first, quietly: starting the new server while the old game's connection is still open makes
+    // that connection drop, which reads as a lost game and sends the window home.
+    await dispatch('close', { redirect: false })
+    return dispatch('load', { saved: content, forceLocal: online })
+  },
+
   async savescenario ({ state, commit, dispatch }, { endGame = false } = {}) {
     return new Promise(async (resolve, reject) => { /* eslint no-async-promise-executor: 0 */
       let { filePath } = await ipcRenderer.invoke('dialog.showSaveDialog', {
@@ -699,9 +726,12 @@ export const actions = {
     }
   },
 
-  async load ({ commit, dispatch, rootState }, { file: filePath, setupOnly = false } = {}) {
+  // `saved`: an in-memory save to load instead of a file (dev "Step Back in Save");
+  // `forceLocal`: replay it on the embedded server even while connected online, with this player
+  // in every human seat (a local copy of an online game)
+  async load ({ commit, dispatch, rootState }, { file: filePath, setupOnly = false, saved = null, forceLocal = false } = {}) {
     return new Promise(async (resolve, reject) => {
-      if (!filePath) {
+      if (!filePath && !saved) {
         const { filePaths, canceled } = await ipcRenderer.invoke('open-load-game-dialog', {
           title: $nuxt.$t('index.local.open-game'),
           filters: getSavedGameFilters(),
@@ -716,7 +746,7 @@ export const actions = {
       }
       let sg, slots
       try {
-        const data = await fs.promises.readFile(filePath)
+        const data = saved ? JSON.stringify(saved) : await fs.promises.readFile(filePath)
         try {
           sg = JSON.parse(data)
         } catch (err) {
@@ -732,7 +762,7 @@ export const actions = {
         
         // Loading a saved game into a live online game is not allowed (server-authoritative), but
         // the Test Runner replays scenarios locally — don't block it there.
-        if (rootState.networking.connectionType === 'online' && !rootState.runningTests) {
+        if (rootState.networking.connectionType === 'online' && !rootState.runningTests && !forceLocal) {
           if (sg.test !== undefined) {
             const msg = [$nuxt.$t('file.saved-game-contains-tests'), $nuxt.$t('file.not-possible-in-online-mode')].join(' ')
             commit('errorMessage', { title: $nuxt.$t('file.load-error'), content: msg }, { root: true })
@@ -800,8 +830,9 @@ export const actions = {
         return
       }
 
-      if (sg.test) {
-        slots.forEach(s => { s.clientId = rootState.settings.clientId })
+      if (sg.test || forceLocal) {
+        // a test takes every seat; a local copy of an online game keeps the AI seats as AI
+        slots.forEach(s => { if (sg.test || !s.ai) s.clientId = rootState.settings.clientId })
       }
 
       commit('game/clear', null, { root: true })
@@ -820,7 +851,7 @@ export const actions = {
         chat: sg.chat ?? null,
         // Test scenarios (and anything loaded while running tests) must replay on the embedded
         // server even if this window is connected online — otherwise it goes to the fan server.
-        local: !!sg.test || rootState.runningTests
+        local: !!sg.test || rootState.runningTests || forceLocal
       }, { root: true })
 
       if (sg.test) {
