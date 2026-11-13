@@ -78,6 +78,21 @@ describe('player colours under auto dark mode (player-colors.scss)', () => {
   })
 })
 
+describe('the small-screen action panel under auto dark mode', () => {
+  const fs = require('fs')
+  const path = require('path')
+  const sass = require('sass')
+  const css = sass.renderSync({ data: '$small-screen-max-width: 960px;\n' + fs.readFileSync(path.join(__dirname, '../assets/styles/player-colors.scss'), 'utf8') }).css.toString()
+
+  it('keeps the active player tint for every colour, in both app themes', () => {
+    for (let i = 0; i < 9; i++) {
+      expect(css).toContain(`html.auto-dark #app.theme--light .action-panel.panel-color-${i} {`)
+      expect(css).toContain(`html.auto-dark #app.theme--dark .action-panel.panel-color-${i} {`)
+    }
+    expect(css).toMatch(/html\.auto-dark #app\.theme--light \.action-panel\.panel-color-2 \{\s*color-scheme: only light;\s*background-color: #f7f2b2ea !important;/)
+  })
+})
+
 describe('bridges and tower pieces under auto dark mode', () => {
   const fs = require('fs')
   const path = require('path')

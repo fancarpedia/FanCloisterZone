@@ -122,6 +122,18 @@ $colors: (
     #app.theme--dark .action-panel.panel-color-#{$i - 1} {
       background-color: map-get($slot, activebgdark);
     }
+
+    // A browser's automatic dark mode darkens the tint into a muddy, wrong colour: opt the panel
+    // out so it shows the active player's real tint (the light one under the app's light theme).
+    html.auto-dark #app.theme--light .action-panel.panel-color-#{$i - 1} {
+      color-scheme: only light;
+      background-color: map-get($slot, activebglight) !important;
+    }
+
+    html.auto-dark #app.theme--dark .action-panel.panel-color-#{$i - 1} {
+      color-scheme: only light;
+      background-color: map-get($slot, activebgdark) !important;
+    }
   }
 }
 
