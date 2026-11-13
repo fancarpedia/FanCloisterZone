@@ -2,7 +2,7 @@
   "@author": "Bumsakalaka",
   "@jcz-version": "5.12.1",
   "@fcz-version": "7.1.0",
-  "@version": "0.12.9-ai",
+  "@version": "0.12.10-ai",
   "about": {
     "author": "Autor",
     "configuration-file": "Konfiguračný súbor",
@@ -482,6 +482,12 @@
         "castle-created": "Malé mesto premenené na hrad",
         "tile-placed": "Položená kartička"
       }
+    },
+    "ransom": {
+      "already-paid": "A meeple was already bought back this turn — one per turn",
+      "can": "Buy back for 3 points",
+      "not-enough-points": "Not enough points to buy back — 3 points are needed",
+      "not-their-action": "Captured — its owner can buy it back for 3 points on their turn"
     },
     "scoring": {
       "barn-connected": "prepojenie so stodolou",

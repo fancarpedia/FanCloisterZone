@@ -2,7 +2,7 @@
   "@author": "ai",
   "@jcz-version": "5.12.1",
   "@fcz-version": "7.1.0",
-  "@version": "0.12.9-ai",
+  "@version": "0.12.10-ai",
   "about": {
     "author": "Автор",
     "configuration-file": "Файл конфігурації",
@@ -482,6 +482,12 @@
         "castle-created": "Маленьке місто перетворено на замок",
         "tile-placed": "Плитку викладено"
       }
+    },
+    "ransom": {
+      "already-paid": "A meeple was already bought back this turn — one per turn",
+      "can": "Buy back for 3 points",
+      "not-enough-points": "Not enough points to buy back — 3 points are needed",
+      "not-their-action": "Captured — its owner can buy it back for 3 points on their turn"
     },
     "scoring": {
       "barn-connected": "клуню приєднано",
