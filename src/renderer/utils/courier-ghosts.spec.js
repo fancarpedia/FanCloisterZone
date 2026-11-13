@@ -1,3 +1,7 @@
+import fs from 'node:fs'
+import path from 'node:path'
+import { fileURLToPath } from 'node:url'
+
 import { describe, it, expect } from 'vitest'
 
 import { courierGhosts } from './courier-ghosts'
@@ -9,14 +13,14 @@ const city = { position: [2, -1], feature: 'City', location: 'N' }
 describe('courierGhosts', () => {
   it('ghosts the courier on the letter symbol itself, not beside a meeple', () => {
     expect(courierGhosts(letter, road, () => true)).toEqual([
-      { figure: 'courier', ptr: letter, nextToMeeple: false }
+      { figure: 'courier', ptr: letter, nextToMeeple: false, role: 'from' }
     ])
   })
 
   it('adds the destination, beside the meeple, once the courier has moved on', () => {
     expect(courierGhosts(road, city, () => false)).toEqual([
-      { figure: 'courier', ptr: road, nextToMeeple: true },
-      { figure: 'courier', ptr: city, nextToMeeple: true }
+      { figure: 'courier', ptr: road, nextToMeeple: true, role: 'from' },
+      { figure: 'courier', ptr: city, nextToMeeple: true, role: 'to' }
     ])
   })
 
@@ -26,7 +30,21 @@ describe('courierGhosts', () => {
 
   it('has no origin on the first placement', () => {
     expect(courierGhosts(null, letter, () => false)).toEqual([
-      { figure: 'courier', ptr: letter, nextToMeeple: false }
+      { figure: 'courier', ptr: letter, nextToMeeple: false, role: 'to' }
     ])
+  })
+})
+
+describe('the ghost layer tells the original spot from the new one', () => {
+  const layer = fs.readFileSync(path.join(path.dirname(fileURLToPath(import.meta.url)), '../components/game/layers/NeutralFigureGhostLayer.vue'), 'utf8')
+
+  it('marks the origin ghost and rings it with a dashed circle', () => {
+    expect(layer).toContain(":class=\"{ origin: g.role === 'from' }\"")
+    expect(layer).toContain('class="origin-ring"')
+    expect(layer).toContain(':stroke-dasharray=')
+  })
+
+  it('draws it faded, grey and still; the new spot keeps the pulse', () => {
+    expect(layer).toMatch(/\.origin\s+\.neutral-ghost\s+animation: none\s+opacity: 0\.45\s+filter: grayscale\(1\)/)
   })
 })

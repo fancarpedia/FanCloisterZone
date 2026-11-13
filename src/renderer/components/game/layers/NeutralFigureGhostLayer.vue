@@ -1,6 +1,18 @@
 <template>
   <g id="neutral-figure-ghost-layer">
-    <g v-for="(g, idx) in drawn" :key="idx" :transform="g.transform">
+    <g v-for="(g, idx) in drawn" :key="idx" :transform="g.transform" :class="{ origin: g.role === 'from' }">
+      <!-- where a figure came FROM is drawn as a faded, still ghost in a dashed ring, so it is not
+           mistaken for where it went (the bright, pulsing one) -->
+      <circle
+        v-if="g.role === 'from'"
+        class="origin-ring"
+        cx="0"
+        cy="0"
+        :r="BASE_SIZE * g.size * 0.7"
+        fill="none"
+        :stroke-width="BASE_SIZE * 0.025"
+        :stroke-dasharray="BASE_SIZE * 0.05 + ' ' + BASE_SIZE * 0.04"
+      />
       <use
         class="neutral-ghost"
         :class="g.figure"
@@ -46,14 +58,14 @@ export default {
   computed: {
     drawn () {
       const list = this.ghosts || (this.figure && this.ptr ? [{ figure: this.figure, ptr: this.ptr }] : [])
-      return list.map(({ figure, ptr, nextToMeeple }) => {
+      return list.map(({ figure, ptr, nextToMeeple, role }) => {
         // the courier is drawn smaller than the other neutral figures on the board (MeepleLayer)
         const size = figure === 'courier' ? 0.32 : 0.42
         let transform = this.ghostTransform(ptr)
         if (transform && nextToMeeple) {
           transform += ` translate(${BASE_SIZE * 0.18} ${BASE_SIZE * 0.02})`
         }
-        return { figure, size, transform }
+        return { figure, size, transform, role: role || null }
       }).filter(g => g.transform)
     }
   },
@@ -87,6 +99,16 @@ export default {
   fill: $fairy-color
   stroke: black
   stroke-width: 8
+
+// the spot a figure came from: faded, grey and still, in a dashed ring
+.origin
+  .neutral-ghost
+    animation: none
+    opacity: 0.45
+    filter: grayscale(1)
+
+  .origin-ring
+    stroke: rgba(80, 80, 80, 0.85)
 
 @keyframes neutral-ghost-pulse
   0%
