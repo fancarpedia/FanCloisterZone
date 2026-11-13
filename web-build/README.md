@@ -66,6 +66,7 @@ yarn serve:site           # -> http://localhost:8080   (app at /app/)
 ```
 web-build/site/
   index.html          <- landing/index.html — "Play in your browser" points at ./app/
+  .htaccess           <- landing/.htaccess — Apache: redirect http (80) to https (443) + HSTS
   logo.svg            <- icons/FCZ logo_6.0.0.svg, the favicon
   build-info.json     <- app + engine version, build id, size, variant
   .nojekyll           <- GitHub Pages must not eat _nuxt/

@@ -164,8 +164,17 @@ const SHIM = '<script>' +
   // New-build detector: poll version.json (bypassing cache) and, when the deployed build id no longer
   // matches this running one, show a one-time "reload" bar. Covers already-open sessions that would
   // otherwise keep the pre-redeploy bundle. Checks every 60s and whenever the tab regains focus.
-  '(function(){var BID=window.__FCZ_BUILD_ID__;var shown=false;' +
-    'function bar(){if(shown)return;shown=true;' +
+  // A stale index.html from the browser's HTTP cache would carry an old id against a current
+  // version.json: the bar would show for a deploy that is long live, and a plain reload could hand
+  // back the same cached page, so the bar returned every minute. Reload therefore navigates to
+  // ?v=<new id> (a fresh cache key — the page itself is fetched anew), and a tab that still comes
+  // back on the old build after that is not nagged again for the same id (sessionStorage).
+  '(function(){var BID=window.__FCZ_BUILD_ID__;var shown=false;var KEY="fcz.update-reload";' +
+    'var tried=null;try{tried=sessionStorage.getItem(KEY)}catch(_){}' +
+    'if(tried&&tried===BID){try{sessionStorage.removeItem(KEY)}catch(_){}tried=null}' +
+    'function bar(id){if(shown)return;' +
+      'if(tried&&tried===id){shown=true;console.warn("[update] reloaded for build "+id+" but still running "+BID+" - the server or a cache serves an old index.html");return}' +
+      'shown=true;' +
       'var o=document.createElement("div");o.id="__fcz_upd";' +
       'o.style.cssText="position:fixed;left:0;right:0;bottom:0;z-index:2147483646;background:#1976D2;color:#fff;' +
       'font:14px/1.4 sans-serif;padding:10px 14px;display:flex;align-items:center;justify-content:center;gap:14px;' +
@@ -179,10 +188,13 @@ const SHIM = '<script>' +
       // close frame a chance to go out; the reload happens either way.
       'b.onclick=function(){' +
         'try{if(window.__fczBeforeReload)window.__fczBeforeReload()}catch(_){}' +
-        'setTimeout(function(){location.reload()},150)};o.appendChild(b);' +
+        'try{sessionStorage.setItem(KEY,id)}catch(_){}' +
+        'var q=location.search.replace(/[?&]v=[^&]*/g,"").replace(/^&/,"?");' +
+        'var u=location.pathname+(q?q+"&":"?")+"v="+encodeURIComponent(id)+location.hash;' +
+        'setTimeout(function(){location.replace(u)},150)};o.appendChild(b);' +
       '(document.body||document.documentElement).appendChild(o);}' +
     'function chk(){if(!BID)return;fetch("./version.json?ts="+Date.now(),{cache:"no-store"})' +
-      '.then(function(r){return r.ok?r.json():null}).then(function(j){if(j&&j.buildId&&j.buildId!==BID)bar();})' +
+      '.then(function(r){return r.ok?r.json():null}).then(function(j){if(j&&j.buildId&&j.buildId!==BID)bar(j.buildId);})' +
       '.catch(function(){});}' +
     'setInterval(chk,60000);' +
     'document.addEventListener("visibilitychange",function(){if(!document.hidden)chk();});' +
@@ -302,6 +314,11 @@ const SHIM = '<script>' +
     // the Service Worker that serves downloaded addons out of IndexedDB — not needed (nor
     // registered) in the bundled-only variant, which downloads nothing.
     if (!BUNDLED_ONLY) fs.copyFileSync(path.join(__dirname, 'sw.js'), path.join(DIST, 'sw.js'))
+
+    // Apache: http (80) → https (443) + HSTS, for when dist/ is deployed on its own. One source
+    // shared with the landing site (build-landing.js copies landing/ to the site root, and dist/ —
+    // this file included — to site/app/).
+    fs.copyFileSync(path.join(__dirname, 'landing', '.htaccess'), path.join(DIST, '.htaccess'))
 
     let bytes = 0
     const walk = (d) => {

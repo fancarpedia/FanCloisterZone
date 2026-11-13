@@ -15,6 +15,68 @@ if (typeof window !== 'undefined') {
 
 const record = (kind, channel) => { calls.push({ kind, channel, at: Date.now() }) }
 
+// --- player identity -------------------------------------------------------------------------
+// The clientId + secret in the settings are who the player IS on the server: they own their seats
+// in open games. If the settings ever read back without them, the store mints a NEW identity and
+// saves it, and every game the player had open now treats them as an observer. On phones that
+// happens when the browser evicts best-effort storage or a restart / dropped connection leaves the
+// settings unreadable. So the identity is also kept under its own small key, written on every save
+// and used to restore the settings when they come back without it.
+// (A different storage context — home-screen app vs. browser tab vs. a chat app's in-app browser —
+// has storage of its own; nothing in the page can reach across that.)
+const IDENTITY_KEY = 'fcz.identity'
+
+function backupIdentity (settings) {
+  try {
+    if (settings && settings.clientId && settings.secret) {
+      const clientId = String(settings.clientId).split('--')[0] // dev-mode suffix is not part of it
+      window.localStorage.setItem(IDENTITY_KEY, JSON.stringify({ clientId, secret: settings.secret }))
+    }
+  } catch (e) {
+    console.warn('[settings] identity backup failed', e)
+  }
+}
+
+function readIdentityBackup () {
+  try {
+    const raw = window.localStorage.getItem(IDENTITY_KEY)
+    const id = raw ? JSON.parse(raw) : null
+    return id && id.clientId && id.secret ? id : null
+  } catch (e) {
+    return null
+  }
+}
+
+// settings (possibly null) → settings carrying the backed-up identity whenever theirs is missing
+function restoreIdentity (settings) {
+  const backup = readIdentityBackup()
+  if (!backup) {
+    // first run of a build with the backup: seed it from the current settings
+    if (settings) backupIdentity(settings)
+    return settings
+  }
+  if (settings && settings.clientId && settings.secret) return settings
+  console.warn('[settings] player identity missing from the stored settings — restored from backup')
+  const restored = { ...(settings || {}), clientId: backup.clientId, secret: backup.secret }
+  try {
+    window.localStorage.setItem('fcz.settings', JSON.stringify(restored))
+  } catch (e) { /* the store saves it again anyway */ }
+  return restored
+}
+
+// Ask the browser to keep this site's storage instead of evicting it under pressure (mobile
+// browsers treat it as best-effort by default). Fire-and-forget; once per page load.
+let persistRequested = false
+function requestPersistentStorage () {
+  if (persistRequested) return
+  persistRequested = true
+  try {
+    if (navigator.storage && navigator.storage.persist) {
+      navigator.storage.persist().catch(() => {})
+    }
+  } catch (e) { /* not supported */ }
+}
+
 // Last enabled-state the renderer pushed for the native menu ({ 'save-game': false, ... }). There
 // is no menu to apply it to, but the keyboard accelerators below honour it.
 const menuState = {}
@@ -30,8 +92,18 @@ const REPLIES = {
   // Contract (src/main/settings.js): { settings, file, systemLocale } — `settings` may be null,
   // in which case the store creates defaults.
   'settings.get': () => {
-    const raw = window.localStorage.getItem('fcz.settings')
-    const settings = raw ? JSON.parse(raw) : null
+    requestPersistentStorage()
+    let settings = null
+    try {
+      const raw = window.localStorage.getItem('fcz.settings')
+      settings = raw ? JSON.parse(raw) : null
+    } catch (e) {
+      // unreadable / damaged blob: fall through to the identity backup below rather than letting
+      // the store mint a brand-new identity
+      console.warn('[settings] stored settings unreadable, recovering', e)
+      settings = null
+    }
+    settings = restoreIdentity(settings)
 
     // One-time migration. An earlier build's os stub returned a hardcoded userInfo().username of
     // 'Player', so settings.js seeded that as the nickname and the app never showed its
@@ -54,6 +126,7 @@ const REPLIES = {
   },
   'settings.save': (data) => {
     window.localStorage.setItem('fcz.settings', JSON.stringify(data))
+    backupIdentity(data)
     return true
   },
 

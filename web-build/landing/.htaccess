@@ -1,0 +1,36 @@
+# FanCloisterZone web build — Apache config for the site root (landing at /, app at /app/).
+# build-landing.js copies this file from web-build/landing/ to web-build/site/.
+#
+# Send every plain-http visitor (port 80) to https (443). The app needs https: an https page may
+# only open the secure wss:// game connection, and the service worker and persistent storage only
+# work on a secure origin. http:// and https:// are separate origins with separate storage, so
+# keeping everyone on https also keeps every player on ONE stored identity.
+
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+
+  # Behind a proxy / load balancer that terminates TLS, the request reaching Apache is plain http
+  # even when the visitor used https; trust its X-Forwarded-Proto header so this does not loop.
+  RewriteCond %{HTTPS} off
+  RewriteCond %{HTTP:X-Forwarded-Proto} !=https
+  # 301: permanent, so browsers and search engines go straight to https next time.
+  # The full original path and query string are kept (e.g. /app/?game=… still lands in the game).
+  RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301,NE]
+</IfModule>
+
+<IfModule mod_headers.c>
+  # Once on https, browsers remember to use it for this host for a year (HSTS), so even a typed
+  # http:// address never leaves the device unencrypted. Sent only on https responses.
+  Header always set Strict-Transport-Security "max-age=31536000" env=HTTPS
+</IfModule>
+
+<IfModule mod_headers.c>
+  # The entry pages and the deployed-build marker must never come from a stale cache: an open tab
+  # compares the build id in its index.html with version.json, and an old cached index.html shows
+  # "A new version is available" for a deploy that is long live — and comes back after a reload.
+  # no-cache = the browser may keep a copy but must check with the server before using it.
+  # (The _nuxt/ bundles are content-hashed, so they can stay cached.)
+  <FilesMatch "^(index\.html|200\.html|version\.json|build-info\.json)$">
+    Header set Cache-Control "no-cache"
+  </FilesMatch>
+</IfModule>
