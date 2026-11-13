@@ -2,7 +2,7 @@
   "@author": "J0anJosep",
   "@jcz-version": "5.12.1",
   "@fcz-version": "7.1.0",
-  "@version": "0.12.5-ai",
+  "@version": "0.12.6-ai",
   "about": {
     "author": "Autor",
     "configuration-file": "Fitxer de configuració",
@@ -115,6 +115,7 @@
     "dump-hosted-game-server-state": "Bolca l'estat del servidor de la partida de l'amfitrió",
     "edition": "Edició",
     "game-created-in-development-mode": "Joc en mode de desenvolupament",
+    "filter-tests-by-name": "Filter tests by name",
     "fail": "Error",
     "meeples": "Seguidors",
     "mode": "Mode",

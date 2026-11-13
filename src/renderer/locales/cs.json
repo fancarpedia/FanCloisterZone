@@ -2,7 +2,7 @@
   "@author": "Peťul",
   "@jcz-version": "5.12.1",
   "@fcz-version": "7.1.0",
-  "@version": "0.12.5-ai",
+  "@version": "0.12.6-ai",
   "about": {
     "author": "Autor",
     "configuration-file": "Konfigurační soubor",
@@ -115,6 +115,7 @@
     "dump-hosted-game-server-state": "Dump Stavu herného serveru",
     "edition": "Edice",
     "game-created-in-development-mode": "Hra je v Development módu",
+    "filter-tests-by-name": "Filter tests by name",
     "fail": "Trh",
     "meeples": "Figurky hráče",
     "mode": "Mód",

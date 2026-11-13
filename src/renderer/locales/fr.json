@@ -2,7 +2,7 @@
   "@author": "Black Bear",
   "@jcz-version": "5.12.1",
   "@fcz-version": "7.1.0",
-  "@version": "0.12.5-ai",
+  "@version": "0.12.6-ai",
   "about": {
     "author": "Auteur",
     "configuration-file": "Fichier de configuration",
@@ -115,6 +115,7 @@
     "dump-hosted-game-server-state": "Vider l’état du serveur de parties hébergées",
     "edition": "Édition",
     "game-created-in-development-mode": "Partie en mode développement",
+    "filter-tests-by-name": "Filter tests by name",
     "fail": "Échec",
     "meeples": "Meeples",
     "mode": "Mode",

@@ -2,7 +2,7 @@
   "@author": "TileLord | Erol",
   "@jcz-version": "5.12.1",
   "@fcz-version": "7.1.0",
-  "@version": "0.12.5-ai",
+  "@version": "0.12.6-ai",
   "about": {
     "author": "Avtor",
     "configuration-file": "Konfiguracijska datoteka",
@@ -115,6 +115,7 @@
     "dump-hosted-game-server-state": "Izpiši stanje gostovanega strežnika igre",
     "edition": "Izdaja",
     "game-created-in-development-mode": "Igra v načinu razvoja",
+    "filter-tests-by-name": "Filter tests by name",
     "fail": "Neuspeh",
     "meeples": "Meepli",
     "mode": "Način",

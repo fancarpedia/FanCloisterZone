@@ -2,7 +2,7 @@
   "@author": "Snearone",
   "@jcz-version": "5.12.1",
   "@fcz-version": "7.1.0",
-  "@version": "0.12.5-ai",
+  "@version": "0.12.6-ai",
   "about": {
     "author": "Autor",
     "configuration-file": "Plik konfiguracyjny",
@@ -115,6 +115,7 @@
     "dump-hosted-game-server-state": "Zrzuć Stan Serwera Hostowanych Gier",
     "edition": "Edycja",
     "game-created-in-development-mode": "Gra w trybie deweloperskim",
+    "filter-tests-by-name": "Filter tests by name",
     "fail": "Niepowodzenie",
     "meeples": "Podwładni",
     "mode": "Tryb",

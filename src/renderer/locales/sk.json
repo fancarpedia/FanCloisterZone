@@ -2,7 +2,7 @@
   "@author": "Bumsakalaka",
   "@jcz-version": "5.12.1",
   "@fcz-version": "7.1.0",
-  "@version": "0.12.5-ai",
+  "@version": "0.12.6-ai",
   "about": {
     "author": "Autor",
     "configuration-file": "Konfiguračný súbor",
@@ -115,6 +115,7 @@
     "dump-hosted-game-server-state": "Dump Stavu herného servera",
     "edition": "Edícia",
     "game-created-in-development-mode": "Hra je v Development móde",
+    "filter-tests-by-name": "Filter tests by name",
     "fail": "Chyba",
     "meeples": "Figúrky",
     "mode": "Mód",

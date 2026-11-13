@@ -2,7 +2,7 @@
   "@author": "pOison & Dextea & SonicDC",
   "@jcz-version": "5.12.1",
   "@fcz-version": "7.1.0",
-  "@version": "0.12.5-ai",
+  "@version": "0.12.6-ai",
   "about": {
     "author": "Автор",
     "configuration-file": "Файл конфигурации",
@@ -115,6 +115,7 @@
     "dump-hosted-game-server-state": "Дамп состояния игрового сервера",
     "edition": "Издание",
     "game-created-in-development-mode": "Игра в режиме разработки",
+    "filter-tests-by-name": "Filter tests by name",
     "fail": "Провал",
     "meeples": "Миплы",
     "mode": "Режим",

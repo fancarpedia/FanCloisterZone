@@ -2,7 +2,7 @@
   "@author": "Stepukiss",
   "@jcz-version": "5.12.1",
   "@fcz-version": "7.1.0",
-  "@version": "0.12.5-ai",
+  "@version": "0.12.6-ai",
   "about": {
     "author": "Autorius",
     "configuration-file": "Nustatymų aplankas",
@@ -115,6 +115,7 @@
     "dump-hosted-game-server-state": "Išmesti pradįto žaidimų serverio būseną",
     "edition": "Leidimas",
     "game-created-in-development-mode": "Žaidimas kūrimo režimu",
+    "filter-tests-by-name": "Filter tests by name",
     "fail": "Nesekmė",
     "meeples": "Miplai",
     "mode": "Režimas",

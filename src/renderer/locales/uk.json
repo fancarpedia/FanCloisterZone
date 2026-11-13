@@ -2,7 +2,7 @@
   "@author": "ai",
   "@jcz-version": "5.12.1",
   "@fcz-version": "7.1.0",
-  "@version": "0.12.5-ai",
+  "@version": "0.12.6-ai",
   "about": {
     "author": "Автор",
     "configuration-file": "Файл конфігурації",
@@ -115,6 +115,7 @@
     "dump-hosted-game-server-state": "Вивантажити стан сервера гри",
     "edition": "Видання",
     "game-created-in-development-mode": "Гра в режимі розробки",
+    "filter-tests-by-name": "Filter tests by name",
     "fail": "Невдача",
     "meeples": "Підданці",
     "mode": "Режим",

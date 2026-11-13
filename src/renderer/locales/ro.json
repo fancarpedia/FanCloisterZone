@@ -2,7 +2,7 @@
   "@author": "Paloi Sciurala",
   "@jcz-version": "5.12.1",
   "@fcz-version": "7.1.0",
-  "@version": "0.12.5-ai",
+  "@version": "0.12.6-ai",
   "about": {
     "author": "Autor",
     "configuration-file": "Fișier de configurație",
@@ -115,6 +115,7 @@
     "dump-hosted-game-server-state": "Golește starea serverului partidei găzduite",
     "edition": "Ediție",
     "game-created-in-development-mode": "Partidă în modul de dezvoltare",
+    "filter-tests-by-name": "Filter tests by name",
     "fail": "Eșec",
     "meeples": "Meepleși",
     "mode": "Mod",

@@ -2,7 +2,7 @@
   "@author": "Challa007 & Bombur",
   "@jcz-version": "5.12.1",
   "@fcz-version": "7.1.0",
-  "@version": "0.12.5-ai",
+  "@version": "0.12.6-ai",
   "about": {
     "author": "Autor",
     "configuration-file": "Konfigurationsdatei",
@@ -115,6 +115,7 @@
     "dump-hosted-game-server-state": "Dump Hosted Game Server State",
     "edition": "Edition",
     "game-created-in-development-mode": "Spiel in Entwicklungs-Modus",
+    "filter-tests-by-name": "Filter tests by name",
     "fail": "Fehlschlag",
     "meeples": "Meeple",
     "mode": "Modus",

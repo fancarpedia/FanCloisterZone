@@ -2,7 +2,7 @@
   "@author": "farin & Scott",
   "@jcz-version": "5.12.1",
   "@fcz-version": "7.1.0",
-  "@version": "0.12.5",
+  "@version": "0.12.6",
   "about": {
     "author": "Author",
     "configuration-file": "Configuration file",
@@ -115,6 +115,7 @@
     "dump-hosted-game-server-state": "Dump Hosted Game Server State",
     "edition": "Edition",
     "game-created-in-development-mode": "Game in Development mode",
+    "filter-tests-by-name": "Filter tests by name",
     "fail": "Fail",
     "meeples": "Meeples",
     "mode": "Mode",

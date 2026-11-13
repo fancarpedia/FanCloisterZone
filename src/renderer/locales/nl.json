@@ -2,7 +2,7 @@
   "@author": "Kiap1969 & Sinscerly",
   "@jcz-version": "5.12.1",
   "@fcz-version": "7.1.0",
-  "@version": "0.12.5-ai",
+  "@version": "0.12.6-ai",
   "about": {
     "author": "Auteur",
     "configuration-file": "Configuratiebestand",
@@ -115,6 +115,7 @@
     "dump-hosted-game-server-state": "Spelserver-toestand dumpen",
     "edition": "Editie",
     "game-created-in-development-mode": "Spel in ontwikkelstand",
+    "filter-tests-by-name": "Filter tests by name",
     "fail": "Mislukken",
     "meeples": "Meeples",
     "mode": "Modus",

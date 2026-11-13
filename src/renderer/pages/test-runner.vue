@@ -44,6 +44,20 @@
             <ExpansionSymbol :expansion="expansion" />
           </div>
         </div>
+
+        <!-- narrow the list (and Run all) to tests whose name contains every typed word -->
+        <div class="name-filter">
+          <v-text-field
+            v-model="nameFilter"
+            :label="$nuxt.$t('dev.filter-tests-by-name')"
+            prepend-inner-icon="fa-search"
+            clearable
+            dense
+            hide-details
+            outlined
+          />
+          <span v-if="nameFilter" class="name-filter-count">{{ filteredTests.length }} / {{ tests.length }}</span>
+        </div>
       </div>
 
       <v-simple-table class="test-runner-table">
@@ -122,6 +136,7 @@ export default {
       closing: false,
       tests: [],
       selectedExpansions: [],
+      nameFilter: '',
       expansions: Expansion.all(),
       timerSeconds: 0,
       timerInterval: null,
@@ -130,10 +145,19 @@ export default {
 
   computed: {
     filteredTests () {
-      if (this.selectedExpansions.length === 0) return this.tests
-      return this.tests.filter(test =>
-        this.selectedExpansions.every(exp => test.requiredSets && test.requiredSets.includes(exp))
-      )
+      // case-insensitive; every word typed must appear in the test name (its path relative to the
+      // tests folder, e.g. "mage-and-witch/mage"); / and \ match each other
+      const norm = text => (text || '').toLowerCase().replace(/\\/g, '/')
+      const words = norm(this.nameFilter).split(/\s+/).filter(Boolean)
+      return this.tests.filter(test => {
+        if (this.selectedExpansions.length &&
+            !this.selectedExpansions.every(exp => test.requiredSets && test.requiredSets.includes(exp))) {
+          return false
+        }
+        if (!words.length) return true
+        const name = norm(test.name)
+        return words.every(w => name.includes(w))
+      })
     },
 
     timerDisplay () {
@@ -441,6 +465,17 @@ export default {
   .selected svg
     +theme using ($theme)
       fill: var(--v-primary-base)
+
+.name-filter
+  display: flex
+  align-items: center
+  max-width: 480px
+  margin: 8px auto 0
+
+  .name-filter-count
+    margin-left: 12px
+    white-space: nowrap
+    opacity: 0.7
 
 .test-runner-table
   flex: 1
