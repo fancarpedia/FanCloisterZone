@@ -642,9 +642,15 @@ export const actions = {
     let setup
 
     if (loadedSetup) {
+      // Seating is randomized by default here too, as for a game built on the setup page
+      // (buildSetupFromState). A setup that states its own choice keeps it — a rematch, for one,
+      // passes randomizeSeating: false to keep its reversed seat order.
       setup = {
-        options: {},
-        ...loadedSetup
+        ...loadedSetup,
+        options: {
+          randomizeSeating: true,
+          ...(loadedSetup.options || {})
+        }
       }
       const rules = {}
       Rule.all().forEach(r => {
