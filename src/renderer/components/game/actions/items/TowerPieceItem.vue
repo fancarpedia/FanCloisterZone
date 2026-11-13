@@ -1,5 +1,6 @@
 <template>
   <img
+    class="tower-piece-item"
     :src="towerImage"
     :height="$vuetify.breakpoint.height > 768 ? 55 : 39"
   >

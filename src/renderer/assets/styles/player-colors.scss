@@ -61,6 +61,39 @@ $colors: (
     &.color-overlay, .color-overlay {
       color: map-get($slot, overlay);
     }
+
+    // Under a browser's automatic dark mode (html.auto-dark) a meeple keeps its player colour —
+    // in the history, the action panel and the supply as on the board (opted out below).
+    // (meeples drawn as inactive keep their grey)
+    html.auto-dark &.meeple:not(.inactive), html.auto-dark & .meeple:not(.inactive) {
+      fill: map-get($slot, primary) !important;
+    }
+
+    // Same for the plain player-colour surfaces: the history's turn strip on the left (color-bg),
+    // panel bars and colour fills keep the exact player colour.
+    html.auto-dark &.color-bg, html.auto-dark &.color-bg-important {
+      color-scheme: only light;
+      background: map-get($slot, primary) !important;
+    }
+
+    html.auto-dark &.color-fill {
+      color-scheme: only light;
+      fill: map-get($slot, primary) !important;
+    }
+
+    // A browser's automatic dark mode (html.auto-dark, utils/auto-dark.js) turns the black text
+    // of the light colours' scoring bullets (yellow, orange, white) white on their light fill.
+    // `color-scheme: only light` asks it to leave those bullets alone; the black is forced too.
+    @if map-get($slot, overlay) == black {
+      html.auto-dark &.points, html.auto-dark & div.points, html.auto-dark & g.points {
+        color-scheme: only light;
+        color: black !important;
+
+        text {
+          fill: black !important;
+        }
+      }
+    }
   }
 
   #tile-layer .color-#{$i - 1} {
@@ -89,6 +122,27 @@ $colors: (
     #app.theme--dark .action-panel.panel-color-#{$i - 1} {
       background-color: map-get($slot, activebgdark);
     }
+  }
+}
+
+// A browser's automatic dark mode (html.auto-dark) repaints colours itself, so CSS colours alone
+// cannot hold. `color-scheme: only light` asks it to leave the meeples alone: they keep their
+// player colours everywhere, and on the board their black outline (drawn into the meeple artwork;
+// the stroke here covers a figure without one).
+html.auto-dark {
+  svg.meeple, #meeple-layer, #meeple-layer-bridges {
+    color-scheme: only light;
+  }
+
+  #meeple-layer use.meeple, #meeple-layer-bridges use.meeple {
+    stroke: black;
+  }
+
+  // Bridges and tower pieces keep their colours too (burlywood / brown / black / white): on the
+  // board, as tokens in the history, the action panel and the player supply (TokenImage), and
+  // as the action items.
+  #bridge-layer, #tower-layer, .token-image, svg.bridge-item, .tower-piece-item {
+    color-scheme: only light;
   }
 }
 

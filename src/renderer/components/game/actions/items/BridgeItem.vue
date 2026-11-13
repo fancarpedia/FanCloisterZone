@@ -1,5 +1,5 @@
 <template>
-  <svg>
+  <svg class="bridge-item">
     <use :href="TOKENS_SVG + '#bridge'" />
   </svg>
 </template>

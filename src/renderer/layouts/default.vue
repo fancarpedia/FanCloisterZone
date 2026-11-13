@@ -87,6 +87,7 @@ import JoinGameDialog from '@/components/JoinGameDialog'
 import SettingsDialog from '@/components/SettingsDialog'
 import { getAppVersion, getBuildBadge, isWeb } from '@/utils/version'
 import { installReloadHook, takePendingRejoin } from '@/utils/reload-rejoin'
+import { markAutoDark } from '@/utils/auto-dark'
 
 import { STATUS_CONNECTED } from '@/store/networking'
 
@@ -400,6 +401,9 @@ export default {
   },
 
   async mounted () {
+    // the browser's own automatic dark mode repaints the page; flag it so the light player colours'
+    // scoring bullets keep their black text (player-colors.scss)
+    markAutoDark()
     webFrame.setZoomLevel(0)
     webFrame.setVisualZoomLevelLimits(1, 1)
 
