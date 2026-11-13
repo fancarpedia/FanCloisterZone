@@ -60,6 +60,17 @@ const figureKind = id => (id || '').split('.')[0]
 const SYMBOL = { bigtop: 'big-top' }
 const ELEMENT_KEY = { bigtop: 'big-top' }
 
+// tokens whose engine name does not lead to their game name on its own
+const TOKEN_KEYS = {
+  TOWER_PIECE: 'game.element.tower',
+  BLACK_TOWER_PIECE: 'game.element.black-tower',
+  WHITE_TOWER_PIECE: 'game.element.tower',
+  LB_SHED: 'game.scoring.item-shed',
+  LB_HOUSE: 'game.scoring.item-house',
+  LB_TOWER: 'game.scoring.item-tower',
+  WOLF: 'game.scoring.item-wolf'
+}
+
 // a meeple's return source (engine ReturnMeepleSource) → its name, and its artwork where the return
 // choice (ReturnMeepleItem) draws one
 const SOURCE_KEYS = {
@@ -112,6 +123,9 @@ export default {
         const key = 'game.element.' + (ELEMENT_KEY[kind] || kind)
         return this.$te(key) ? this.$t(key) : kind
       }
+      // tokens with a name of their own (tower pieces, little buildings, tunnels, …)
+      if (token && TOKEN_KEYS[token] && this.$te(TOKEN_KEYS[token])) return this.$t(TOKEN_KEYS[token])
+      if (token && /^TUNNEL_/.test(token) && this.$te('game.element.tunnel')) return this.$t('game.element.tunnel')
       // meeple class names (SmallFollower) and token names (GOLD, SHEEP_2X) → element keys
       // (small-follower, gold, sheep); the raw name only if there is none
       const name = meeple || token || ''

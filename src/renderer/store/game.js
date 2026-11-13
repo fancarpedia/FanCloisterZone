@@ -360,15 +360,25 @@ export const getters = {
     return state.players[playerIdx].meeples[meepleType][1]
   },
 
-  canPayRansom: (state, getters, rootState) => player => {
-    if (state.action === null || state.action.player !== player) {
-      return false
+  // Can `player` buy one of their captured followers back right now, and if not, why? Mirrors the
+  // engine's PayRansom: only on that player's own action, once a turn, for 3 points.
+  //   'can'               — a click pays the ransom
+  //   'not-enough-points' — their action, but fewer than 3 points (until scoring brings more)
+  //   'already-paid'      — their action, but a follower was already bought back this turn
+  //   'not-their-action'  — someone else's action, or a seat not played in this window
+  ransomStatus: (state, getters, rootState) => player => {
+    if (state.action === null || state.action.player !== player || !state.history.length) {
+      return 'not-their-action'
     }
     if (state.players[player].sessionId !== rootState.networking.sessionId) {
-      return false
+      return 'not-their-action'
     }
-    return !state.flags.ransomPaid && state.history.length && state.players[player].points >= 3
+    if (state.flags.ransomPaid) return 'already-paid'
+    if (state.players[player].points < 3) return 'not-enough-points'
+    return 'can'
   },
+
+  canPayRansom: (state, getters) => player => getters.ransomStatus(player) === 'can',
 
   currentTurnLastEvent: state => {
     if (!state.history || state.history.length === 0) {

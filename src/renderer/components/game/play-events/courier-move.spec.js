@@ -234,3 +234,19 @@ describe('a meeple removed with the Princess (or another return source)', () => 
     expect(returned).toContain("this.$store.dispatch('board/hideLayerDebounced', { layer: 'EventMeeplesLayer' })")
   })
 })
+
+describe('a token placed by the player (tower piece, bridge, little building, …)', () => {
+  it('fills the placement panel with "Placed by <player>"', () => {
+    const src = read('TokenPlacedEvent.vue')
+    expect(src).toContain("byKey: 'game.placement.placed-by'")
+    expect(src).toContain('player: this.player, byPlayer: true')
+    expect(src).not.toContain('if (this.ev.cause) {\n        this.$store.commit')
+  })
+
+  it('names tower pieces, little buildings and tunnels by their game names', () => {
+    const panel = read('../PlacementPanel.vue')
+    expect(panel).toContain("TOWER_PIECE: 'game.element.tower',")
+    expect(panel).toContain("LB_SHED: 'game.scoring.item-shed',")
+    expect(panel).toContain("if (token && /^TUNNEL_/.test(token) && this.$te('game.element.tunnel'))")
+  })
+})

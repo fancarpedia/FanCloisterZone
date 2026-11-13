@@ -77,10 +77,29 @@
           [colorCssClass(cap.player)]: true,
           'can-pay': canPayRansom(cap.player)
         }"
+        :title="ransomTitle(cap.player)"
         @click="payRansom(cap.player, cap.id)"
       >
         <Meeple :type="cap.type" />
+        <!-- prison bars over the captured meeple (same box as the meeple: the panel's svg sizing
+             rules cover it at every shrink level) -->
+        <svg class="prison-bars" viewBox="0 0 40 40" aria-hidden="true">
+          <rect x="1" y="2" width="38" height="3" rx="1" />
+          <rect x="1" y="35" width="38" height="3" rx="1" />
+          <rect v-for="x in [6, 14, 22, 30]" :key="x" :x="x" y="2" width="3" height="36" rx="1" />
+        </svg>
         <span v-if="cap.count > 1" class="count">{{ cap.count }}</span>
+        <!-- buy-back state for the owner: a check when a click pays the ransom now; a "no" sign
+             when it is the owner's action but it cannot be paid (fewer than 3 points, or a follower
+             already bought back this turn) — so "not possible yet" does not look like a bug -->
+        <v-icon
+          v-if="ransomStatus(cap.player) === 'can'"
+          class="ransom-badge can"
+        >fas fa-check-circle</v-icon>
+        <v-icon
+          v-else-if="ransomStatus(cap.player) !== 'not-their-action'"
+          class="ransom-badge cannot"
+        >fas fa-ban</v-icon>
       </div>
 
       <div v-if="auctionedTile" class="bazaar-tile">
@@ -126,6 +145,7 @@ export default {
     ...mapGetters({
       colorCssClass: 'game/colorCssClass',
       canPayRansom: 'game/canPayRansom',
+      ransomStatus: 'game/ransomStatus',
       featureOn: 'game/featureOn',
       tileOn: 'game/tileOn'
     }),
@@ -184,6 +204,11 @@ export default {
   },
 
   methods: {
+    // tooltip explaining the prisoner's buy-back state
+    ransomTitle (owner) {
+      return this.$t('game.ransom.' + this.ransomStatus(owner))
+    },
+
     async payRansom (owner, meepleId) {
       if (this.canPayRansom(owner)) {
         await this.$store.dispatch('game/apply', {
@@ -401,6 +426,37 @@ section
     ::v-deep svg:not(.tunnel):not(.token-BRIDGE)
       +theme using ($theme)
         fill: map-get($theme, 'cards-text')
+
+  .item-prisoner
+    position: relative
+
+    // over the meeple (z 2), under the buy-back badge
+    svg.prison-bars
+      position: absolute
+      left: 0
+      top: 0
+      z-index: 3
+      pointer-events: none
+      fill: rgba(40, 40, 40, 0.85)
+      stroke: rgba(255, 255, 255, 0.6)
+      stroke-width: 0.6
+
+    .ransom-badge
+      position: absolute
+      right: -4px
+      bottom: -2px
+      z-index: 4
+      font-size: 14px
+      border-radius: 50%
+
+      +theme using ($theme)
+        background: map-get($theme, 'cards-bg')
+
+      &.can
+        color: #43A047
+
+      &.cannot
+        color: #E53935
 
   .item-prisoner.can-pay:hover
     cursor: pointer
