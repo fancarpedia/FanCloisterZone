@@ -317,7 +317,10 @@ export default {
         this.closing = false
       }
       this.resetFailed()
-      this.$router.push('/')
+      // back to the lobby's home screen (the online lobby, like the boot redirect and
+      // networking's homeRoute) — not the legacy landing page at '/'; a game window keeps '/'
+      const gameWindow = this.$windows && this.$windows.isGameWindow && this.$windows.isGameWindow()
+      this.$router.push(gameWindow ? '/' : '/online')
     },
 
     resetAll() {
