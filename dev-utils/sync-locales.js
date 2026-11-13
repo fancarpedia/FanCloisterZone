@@ -111,6 +111,28 @@ function run (script, scriptArgs) {
   }
 }
 
+/**
+ * The @version on the downloaded wiki page (locale-raw/<lang>.raw.json), as the translators left
+ * it. The wiki wraps a stale value in <span class="mw-translate-fuzzy"> and an untranslated one in
+ * <span … class="mw-content-ltr">: the markup is stripped and the state appended, e.g.
+ * "0.11.4 (outdated)". null when the page or the field is missing.
+ */
+function wikiVersion (lang) {
+  let raw
+  try {
+    raw = fs.readFileSync(path.join(RAW_DIR, lang + '.raw.json'), 'utf8')
+  } catch (e) {
+    return null
+  }
+  // the value runs to the end of its line; the span markup inside it has its own quotes
+  const m = /"@version"\s*:\s*"(.*)",?\s*$/m.exec(raw)
+  if (!m) return null
+  const value = m[1].replace(/<[^>]*>/g, '').trim()
+  if (/mw-translate-fuzzy/.test(m[1])) return value + ' (outdated)'
+  if (/mw-content-ltr/.test(m[1])) return value + ' (untranslated)'
+  return value
+}
+
 const num = (out, re) => {
   const m = re.exec(out)
   return m ? parseInt(m[1], 10) : 0
@@ -224,7 +246,7 @@ async function main () {
       human: num(res.out, /updated from the wiki page \(human\):\s*(\d+)/),
       changed: num(res.out, /total values changed\s*:\s*(\d+)/),
       page: pages[lang] || null,
-      version: (/@version: \S+ -> "([^"]+)"/.exec(res.out) || [])[1] || null
+      version: wikiVersion(lang)
     })
   }
 
@@ -261,7 +283,9 @@ async function main () {
   console.log('[3/3] summary')
   console.log('')
   // source: where the page came from this run; page: whether it differs from the last run's copy
-  console.log('  lang  source       page     from memory  still new  human text  changed  @version')
+  // wiki @version: the version on the wiki page itself (what the translators worked against), not
+  // the one written to the installed file (which gets the -ai suffix)
+  console.log('  lang  source       page     from memory  still new  human text  changed  wiki @version')
   for (const r of rows) {
     if (r.error) {
       console.log('  ' + r.lang.padEnd(6) + 'FAILED — ' + r.error)
@@ -276,7 +300,7 @@ async function main () {
       String(r.needs).padStart(8) + '   ' +
       String(r.human).padStart(9) + '   ' +
       String(r.changed).padStart(6) + '   ' +
-      (r.version || '(unchanged)') +
+      (r.version || '?') +
       (brandNew.includes(r.lang) ? '   <- NEW' : ''))
   }
 
