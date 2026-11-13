@@ -484,10 +484,10 @@
       }
     },
     "ransom": {
-      "already-paid": "A meeple was already bought back this turn — one per turn",
-      "can": "Buy back for 3 points",
-      "not-enough-points": "Not enough points to buy back — 3 points are needed",
-      "not-their-action": "Captured — its owner can buy it back for 3 points on their turn"
+      "already-paid": "Deze beurt is al een meeple vrijgekocht — slechts één per beurt",
+      "can": "Vrijkopen voor 3 punten",
+      "not-enough-points": "Niet genoeg punten om vrij te kopen — er zijn 3 punten nodig",
+      "not-their-action": "Gevangen — de eigenaar kan hem in zijn beurt vrijkopen voor 3 punten"
     },
     "scoring": {
       "barn-connected": "herenboerderij gekoppeld",

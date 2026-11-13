@@ -484,10 +484,10 @@
       }
     },
     "ransom": {
-      "already-paid": "A meeple was already bought back this turn — one per turn",
-      "can": "Buy back for 3 points",
-      "not-enough-points": "Not enough points to buy back — 3 points are needed",
-      "not-their-action": "Captured — its owner can buy it back for 3 points on their turn"
+      "already-paid": "В этом ходу мипл уже выкуплен — только один за ход",
+      "can": "Выкупить за 3 очка",
+      "not-enough-points": "Недостаточно очков для выкупа — нужно 3 очка",
+      "not-their-action": "В плену — владелец может выкупить его за 3 очка в свой ход"
     },
     "scoring": {
       "barn-connected": "амбар подключен",

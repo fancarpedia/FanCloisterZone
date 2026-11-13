@@ -484,10 +484,10 @@
       }
     },
     "ransom": {
-      "already-paid": "A meeple was already bought back this turn — one per turn",
-      "can": "Buy back for 3 points",
-      "not-enough-points": "Not enough points to buy back — 3 points are needed",
-      "not-their-action": "Captured — its owner can buy it back for 3 points on their turn"
+      "already-paid": "In diesem Zug wurde schon ein Meeple freigekauft — nur einer pro Zug",
+      "can": "Für 3 Punkte freikaufen",
+      "not-enough-points": "Nicht genug Punkte zum Freikaufen — 3 Punkte sind nötig",
+      "not-their-action": "Gefangen — sein Besitzer kann ihn in seinem Zug für 3 Punkte freikaufen"
     },
     "scoring": {
       "barn-connected": "Gutshof verbunden",

@@ -484,10 +484,10 @@
       }
     },
     "ransom": {
-      "already-paid": "A meeple was already bought back this turn — one per turn",
-      "can": "Buy back for 3 points",
-      "not-enough-points": "Not enough points to buy back — 3 points are needed",
-      "not-their-action": "Captured — its owner can buy it back for 3 points on their turn"
+      "already-paid": "W tej turze wykupiono już podwładnego — tylko jednego na turę",
+      "can": "Wykup za 3 punkty",
+      "not-enough-points": "Za mało punktów na okup — potrzeba 3 punktów",
+      "not-their-action": "Zakładnik — jego właściciel może go wykupić za 3 punkty w swojej turze"
     },
     "scoring": {
       "barn-connected": "połączona stodoła",

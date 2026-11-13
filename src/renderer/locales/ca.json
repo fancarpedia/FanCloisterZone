@@ -484,10 +484,10 @@
       }
     },
     "ransom": {
-      "already-paid": "A meeple was already bought back this turn — one per turn",
-      "can": "Buy back for 3 points",
-      "not-enough-points": "Not enough points to buy back — 3 points are needed",
-      "not-their-action": "Captured — its owner can buy it back for 3 points on their turn"
+      "already-paid": "Ja s'ha rescatat un seguidor aquest torn — només un per torn",
+      "can": "Rescata'l per 3 punts",
+      "not-enough-points": "No tens prou punts per rescatar-lo — calen 3 punts",
+      "not-their-action": "Capturat — el seu propietari el pot rescatar per 3 punts al seu torn"
     },
     "scoring": {
       "barn-connected": "graner connectat",
