@@ -142,6 +142,34 @@
           :y="-BASE_SIZE * (n.sizeCoeficient ? n.sizeCoeficient : 0.42) / 2"
           :href="`${NEUTRAL_SVG}#${n.type === 'bigtop' ? 'big-top' : n.type}`"
         />
+        <!-- NeutralFigureSelectLayer (virtual, like MeepleSelectLayer): a figure the player may pick
+             on the board, e.g. the mage or witch to give up — a circle in the player's colour,
+             clickable for the local player -->
+        <!-- same look and hover effect as the meeple choice circles (the abbot return): the
+             shared .meeple-select style (half-transparent, full on hover), same radius and stroke -->
+        <g
+          v-if="neutralSelectable(n.type)"
+          :class="['meeple-select', colorCssClass(neutralSelect.player)]"
+        >
+          <circle
+            cx="0"
+            cy="0"
+            :r="BASE_SIZE * 0.27"
+            :class="{'color-stroke': true, mouseover: mouseOver === neutralSelectable(n.type) }"
+            :style="{'pointer-events': 'none'}"
+            fill="none"
+            :stroke-width="BASE_SIZE * 0.07"
+          />
+          <circle
+            cx="0"
+            cy="0"
+            :r="BASE_SIZE * 0.305"
+            :style="{'pointer-events': 'all', fill: 'none', cursor: neutralSelect.local ? 'pointer' : 'default'}"
+            @mouseenter="neutralSelect.local && onMouseOver(neutralSelectable(n.type))"
+            @mouseleave="neutralSelect.local && onMouseLeave()"
+            @click="ev => neutralSelect.local && onNeutralSelect(ev, neutralSelectable(n.type))"
+          />
+        </g>
       </g>
     </g>
 
@@ -274,6 +302,8 @@ export default {
       courier: state => state.game.neutralFigures.courier,
       donkey: state => state.game.neutralFigures.donkey,
       meepleSelect: state => state.board.layers.MeepleSelectLayer,
+      // { options: [figureId, …], local, player } — neutral figures selectable on the board
+      neutralSelect: state => state.board.layers.NeutralFigureSelectLayer,
       rotate: state => state.board.rotate
     }),
 
@@ -473,6 +503,18 @@ export default {
     onSelect (ev, opt) {
       if (opt && !this.isDragging(ev)) {
         this.$root.$emit('meeple.select', opt)
+      }
+    },
+
+    // the offered figure id ('mage.1') for a drawn neutral figure type ('mage'), or null
+    neutralSelectable (type) {
+      if (!this.neutralSelect || !this.neutralSelect.options) return null
+      return this.neutralSelect.options.find(id => id.split('.')[0] === type) || null
+    },
+
+    onNeutralSelect (ev, figureId) {
+      if (figureId && !this.isDragging(ev)) {
+        this.$root.$emit('neutral-figure.select', figureId)
       }
     },
 
