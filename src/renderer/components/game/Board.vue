@@ -521,10 +521,17 @@ export default {
       const { width, height } = this.$refs.svg.getBoundingClientRect()
       const adjustedWidth = width - 210 - 80 // approx 210px for players panel and 80 px for history
       const adjustedHeight = height - 84 // action panel
-      const minX = parseInt(-(-0.3 + this.bounds.width + this.bounds.x) * this.tileSize + 80 + adjustedWidth / 3)
-      const maxX = parseInt((-0.3 - this.bounds.x) * this.tileSize + (80 + adjustedWidth / 3 * 2))
-      const minY = parseInt(-(-0.3 + this.bounds.height + this.bounds.y) * this.tileSize + 84 + adjustedHeight / 3)
-      const maxY = parseInt((-0.3 - this.bounds.y) * this.tileSize + (84 + adjustedHeight / 3 * 2))
+      // The board's extent ON SCREEN, relative to its origin (offsetX, offsetY). With the board
+      // turned, that is the bounding box of its rotated corners: after 90° a row of tiles runs
+      // vertically, so the limits must follow it (they used the unrotated columns / rows, which
+      // pinned a turned board and kept it from scrolling along its new long side). At 0° this is
+      // exactly the old x..x+width / y..y+height.
+      const { left, right, top, bottom } = this.screenExtent()
+      const edge = 0.3 * this.tileSize
+      const minX = parseInt(-(right - edge) + 80 + adjustedWidth / 3)
+      const maxX = parseInt(-(left + edge) + (80 + adjustedWidth / 3 * 2))
+      const minY = parseInt(-(bottom - edge) + 84 + adjustedHeight / 3)
+      const maxY = parseInt(-(top + edge) + (84 + adjustedHeight / 3 * 2))
       if (this.offsetX < minX) {
         this.offsetX = minX
       }
@@ -537,6 +544,26 @@ export default {
       if (this.offsetY > maxY) {
         this.offsetY = maxY
       }
+    },
+
+    // The bounding box of the board's tiles in screen pixels, relative to the board origin, with the
+    // current rotation applied the same way the group transform and applyRotation() do:
+    // (dx, dy) → (dx·cos − dy·sin, dx·sin + dy·cos).
+    screenExtent () {
+      const ts = this.tileSize
+      const { x, y, width, height } = this.bounds
+      const rad = (this.rotate || 0) * Math.PI / 180
+      const cos = Math.cos(rad)
+      const sin = Math.sin(rad)
+      const xs = []
+      const ys = []
+      for (const [cx, cy] of [[x, y], [x + width, y], [x, y + height], [x + width, y + height]]) {
+        const dx = cx * ts
+        const dy = cy * ts
+        xs.push(dx * cos - dy * sin)
+        ys.push(dx * sin + dy * cos)
+      }
+      return { left: Math.min(...xs), right: Math.max(...xs), top: Math.min(...ys), bottom: Math.max(...ys) }
     },
 
     onRequestRotate () {
