@@ -44,7 +44,12 @@ describe('the ghost layer tells the original spot from the new one', () => {
     expect(layer).toContain(':stroke-dasharray=')
   })
 
-  it('draws it faded, grey and still; the new spot keeps the pulse', () => {
-    expect(layer).toMatch(/\.origin\s+\.neutral-ghost\s+animation: none\s+opacity: 0\.45\s+filter: grayscale\(1\)/)
+  it('draws it grey and faintly pulsing in a turning dashed ring; the new spot keeps the bright pulse', () => {
+    const origin = layer.slice(layer.indexOf('.origin' + String.fromCharCode(10)))
+    expect(origin).toContain('animation: origin-ghost-pulse 1.6s ease-in-out infinite')
+    expect(origin).toContain('filter: grayscale(1)')
+    expect(origin).toContain('animation: origin-ring-spin 6s linear infinite')
+    expect(origin).toContain('transform-origin: center')
+    expect(layer).toContain('@keyframes origin-ring-spin')
   })
 })

@@ -100,15 +100,33 @@ export default {
   stroke: black
   stroke-width: 8
 
-// the spot a figure came from: faded, grey and still, in a dashed ring
+// the spot a figure came from: a grey ghost pulsing faintly (dimmer than the new spot's bright
+// pulse) inside a slowly turning dashed ring
 .origin
   .neutral-ghost
-    animation: none
-    opacity: 0.45
+    animation: origin-ghost-pulse 1.6s ease-in-out infinite
     filter: grayscale(1)
 
   .origin-ring
     stroke: rgba(80, 80, 80, 0.85)
+    // turn around its own centre (the circle sits at 0,0 of the ghost's group)
+    transform-box: fill-box
+    transform-origin: center
+    animation: origin-ring-spin 6s linear infinite
+
+@keyframes origin-ghost-pulse
+  0%
+    opacity: 0.2
+  50%
+    opacity: 0.6
+  100%
+    opacity: 0.2
+
+@keyframes origin-ring-spin
+  from
+    transform: rotate(0deg)
+  to
+    transform: rotate(360deg)
 
 @keyframes neutral-ghost-pulse
   0%

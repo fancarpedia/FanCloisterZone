@@ -53,6 +53,8 @@ export default {
         cause: this.ev.cause || null
       })
       if (!to) {
+        // removed from the board: show where it stood
+        this.showMoveGhosts()
         return
       }
       if (this.figure === 'courier') {
@@ -91,8 +93,11 @@ export default {
         })
       }
 
-      // For the fairy / black fairy, also show the original placement: the meeple it was placed next
-      // to, and the fairy figure — pulsing whichever has since been removed (same as the score hover).
+      // where it came from (faded, dashed) and, if it has moved on since, where it went (pulsing)
+      this.showMoveGhosts()
+
+      // For the fairy / black fairy, also pulse the meeple it was placed next to — from the board if
+      // still there, else from the engine-captured host meeple (same as the score hover).
       const fig = this.figure
       if (fig !== 'fairy' && fig !== 'black-fairy') {
         return
@@ -108,12 +113,33 @@ export default {
           })
         }
       }
-      // the figure's spot: feature pointer (next-to) or the bare tile position (on-tile placement)
-      const ghostPtr = fp || (Array.isArray(to) && to.length === 2 ? to : null)
-      if (ghostPtr && this.isFairyRemoved(fig, ghostPtr)) {
+    },
+
+    // Any neutral figure's move (fairy, black fairy, Count, mage, witch, Donkey, big top): its old
+    // spot as a faded, still ghost in a dashed ring ('from'), and its new spot as the pulsing ghost
+    // ('to') when the figure has moved on since — the same look as the courier's move.
+    showMoveGhosts () {
+      const symbol = this.figure === 'bigtop' ? 'big-top' : this.figure
+      // a pointer of any shape → what the ghost layer places: a feature pointer, or [x, y]
+      const spot = p => {
+        if (!p) return null
+        if (Array.isArray(p)) return p.length === 2 ? p : null
+        const fp = p.featurePointer || p
+        return fp.position ? fp : null
+      }
+      const ghosts = []
+      const from = spot(this.ev.from)
+      if (from) {
+        ghosts.push({ figure: symbol, ptr: from, nextToMeeple: !!(this.ev.from && this.ev.from.meepleId), role: 'from' })
+      }
+      const to = spot(this.ev.to)
+      if (to && this.isFairyRemoved(this.figure, to)) {
+        ghosts.push({ figure: symbol, ptr: to, nextToMeeple: !!(this.ev.to && this.ev.to.meepleId), role: 'to' })
+      }
+      if (ghosts.length) {
         this.$store.dispatch('board/showLayer', {
           layer: 'NeutralFigureGhostLayer',
-          props: { figure: fig, ptr: ghostPtr }
+          props: { ghosts }
         })
       }
     },

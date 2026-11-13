@@ -250,3 +250,19 @@ describe('a token placed by the player (tower piece, bridge, little building, â€
     expect(panel).toContain("if (token && /^TUNNEL_/.test(token) && this.$te('game.element.tunnel'))")
   })
 })
+
+describe('every neutral figure move shows where it came from', () => {
+  const body = moved.slice(moved.indexOf('    showMoveGhosts () {'), moved.indexOf('    // The meeple the fairy is associated with'))
+
+  it('ghosts the old spot faded (from) and the new spot pulsing (to) once the figure moved on', () => {
+    expect(body).toContain("role: 'from' })")
+    expect(body).toContain('if (to && this.isFairyRemoved(this.figure, to)) {')
+    expect(body).toContain("role: 'to' })")
+    expect(body).toContain("const symbol = this.figure === 'bigtop' ? 'big-top' : this.figure")
+  })
+
+  it('is used for every non-courier move and for removals', () => {
+    expect(moved).toContain('// removed from the board: show where it stood\n        this.showMoveGhosts()')
+    expect(moved).toContain('      this.showMoveGhosts()\n\n      // For the fairy / black fairy')
+  })
+})
