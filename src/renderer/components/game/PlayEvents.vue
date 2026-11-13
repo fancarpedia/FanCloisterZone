@@ -28,6 +28,10 @@
         class="turn"
         :style="{ display: -offset + finalOffset + h.top + h.height < baseY ? 'none' : 'block' }"
         @wheel.passive="onWheel"
+        @touchstart.passive.stop="onTouchStart"
+        @touchmove.stop="onTouchMove"
+        @touchend.passive.stop="onTouchEnd"
+        @touchcancel.passive.stop="onTouchEnd"
       >
         <div
           v-if="!h.finalScoring"
@@ -242,19 +246,40 @@ export default {
       this.$store.commit('toggleGameHistory')
     },
 
+    // moves the history by delta px, kept within the events' height
+    scrollBy (delta) {
+      const availableHeight = document.documentElement.clientHeight - this.baseY
+      const maxOffset = this.eventsHeight - availableHeight + this.finalOffset
+      this.offset = Math.min(Math.max(0, this.offset + delta), Math.max(0, maxOffset))
+    },
+
     onWheel (ev) {
+      // handle wheel only on first item
       if (ev.clientX < 52) {
-        const availableHeight = document.documentElement.clientHeight - this.baseY
-        const maxOffset = this.eventsHeight - availableHeight + this.finalOffset
-        // handle wheel only on first item
-        this.offset += ev.deltaY / 3
-        if (this.offset < 0) {
-          this.offset = 0
-        }
-        if (this.offset > maxOffset) {
-          this.offset = Math.max(0, maxOffset)
-        }
+        this.scrollBy(ev.deltaY / 3)
       }
+    },
+
+    // Touch screens have no wheel: a vertical finger drag over the history scrolls it (the web
+    // build on phones). The drag is kept from the board underneath, so it does not pan as well.
+    onTouchStart (ev) {
+      if (ev.touches.length !== 1) {
+        this._touchY = null
+        return
+      }
+      this._touchY = ev.touches[0].clientY
+    },
+
+    onTouchMove (ev) {
+      if (this._touchY == null || ev.touches.length !== 1) return
+      const y = ev.touches[0].clientY
+      this.scrollBy(this._touchY - y)
+      this._touchY = y
+      if (ev.cancelable) ev.preventDefault()
+    },
+
+    onTouchEnd () {
+      this._touchY = null
     }
   }
 }
@@ -318,6 +343,10 @@ export default {
   margin-right: 1px
   width: 10px
   cursor: pointer
+
+.turn
+  // vertical drags are the history's own scroll (onTouchMove), not the page's
+  touch-action: none
 
 .final-number
   // neutral strip for the final-scoring section (not tied to a player color)
