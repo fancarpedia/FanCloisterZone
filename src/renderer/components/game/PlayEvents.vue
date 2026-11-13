@@ -139,9 +139,9 @@ export default {
           if (devMode) {
             ev = { ...ev, historyKey: `history[${i}].events[${evIdx}]` }
           }
-          if (ev.type === 'neutral-moved' && ev.figure.startsWith('bigtop.')) {
-            // do not show big top moves in history
-            // it's always bound to circus tile, no need to have explicit item there
+          if (ev.type === 'neutral-moved' && ev.figure.startsWith('bigtop.') && !ev.cause) {
+            // a big top move is always bound to its circus tile, so a bare one adds nothing; one
+            // carrying its cause (the circus tile placed) stays, so the history tells why it moved
             return
           }
 

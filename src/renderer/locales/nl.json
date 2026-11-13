@@ -2,7 +2,7 @@
   "@author": "Kiap1969 & Sinscerly",
   "@jcz-version": "5.12.1",
   "@fcz-version": "7.1.0",
-  "@version": "0.12.4-ai",
+  "@version": "0.12.5-ai",
   "about": {
     "author": "Auteur",
     "configuration-file": "Configuratiebestand",
@@ -320,6 +320,27 @@
       "you-may-place-an-abbey": "Je mag een abdij leggen",
       "your-action": "jouw actie"
     },
+    "cause": {
+      "caused-by": "Oorzaak: {cause}",
+      "figure-moved": "de hierheen verplaatste figuur",
+      "meeple-deployed": "de geplaatste meeple",
+      "rule": {
+        "count-clockwise": "de Graaf schuift met de klok mee",
+        "decinsky-sneznik-scored": "Decinsky Sneznik gewaardeerd",
+        "final-scoring": "eindtelling",
+        "flock-expanded": "een schaapfiche getrokken voor de kudde",
+        "flock-scored": "de kudde gewaardeerd",
+        "game-start": "het begin van het spel",
+        "mage-witch-joined": "de projecten van de Tovenaar en de Heks zijn verbonden",
+        "mage-witch-no-target": "geen open stad of weg meer voor de figuur",
+        "meteorite": "een meteorietinslag",
+        "obelisk-scored": "de obelisk gewaardeerd",
+        "trap": "een val",
+        "windmill-scored": "de windmolen gewaardeerd",
+        "wolf": "de wolf getrokken"
+      },
+      "tile-placed": "de gelegde tegel"
+    },
     "coop": {
       "all-win": "Alle spelers winnen!",
       "all-lose": "Alle spelers verliezen",
@@ -444,6 +465,20 @@
       "wind-roses": "Windrozen",
       "yaga-hut": "Baba Yaga-hut"
     },
+    "placement": {
+      "converted-by": "Omgezet door {player}",
+      "deployed-by": "Geplaatst door {player}",
+      "moved-by": "Verplaatst door {player}",
+      "placed-by": "Gelegd door {player}",
+      "title": {
+        "moved": "{figure} verplaatst",
+        "placed": "{figure} geplaatst",
+        "placed-on-letter": "{figure} op de Brief geplaatst",
+        "removed": "{figure} verwijderd",
+        "castle-created": "Kleine stad omgezet in een burcht",
+        "tile-placed": "Tegel gelegd"
+      }
+    },
     "scoring": {
       "barn-connected": "herenboerderij gekoppeld",
       "barn-placed": "herenboerderij gezet",
@@ -452,18 +487,18 @@
       "feature-scored": "project geteld",
       "income": "inkomsten",
       "incomplete": "onafgebouwd",
-      "item-cloth": "Cloth",
+      "item-cloth": "Stof",
       "item-darmstadtium": "Darmstadtium",
-      "item-grain": "Grain",
-      "item-house": "House",
-      "item-river-tiles": "River tiles",
-      "item-shed": "Shed",
-      "item-tiles-east": "Tiles to the east",
-      "item-tiles-north": "Tiles to the north",
-      "item-tiles-south": "Tiles to the south",
-      "item-tiles-west": "Tiles to the west",
-      "item-tower": "Tower",
-      "item-wine": "Wine",
+      "item-grain": "Graan",
+      "item-house": "Huis",
+      "item-river-tiles": "Riviertegels",
+      "item-shed": "Schuur",
+      "item-tiles-east": "Tegels naar het oosten",
+      "item-tiles-north": "Tegels naar het noorden",
+      "item-tiles-south": "Tegels naar het zuiden",
+      "item-tiles-west": "Tegels naar het westen",
+      "item-tower": "Toren",
+      "item-wine": "Wijn",
       "item-wolf": "Wolf",
       "majority": "meerderheid",
       "no-majority": "geen meerderheid",

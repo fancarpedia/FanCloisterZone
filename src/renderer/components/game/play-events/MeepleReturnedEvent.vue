@@ -2,6 +2,7 @@
   <div
     class="one-square meeple-returned"
     :class="colorCssClass(ev.player)"
+    :title="causeTitle"
     @mouseenter="onMouseEnter"
     @mouseleave="onMouseLeave"
   >
@@ -14,6 +15,7 @@
 import { mapGetters } from 'vuex'
 
 import Meeple from '@/components/game/Meeple'
+import { causeTitle, withCause } from '@/utils/placement-cause'
 
 export default {
   components: {
@@ -24,21 +26,38 @@ export default {
     ev: { type: Object, required: true }
   },
 
-  computed: mapGetters({
-    tileOn: 'game/tileOn',
-    colorCssClass: 'game/colorCssClass'
-  }),
+  computed: {
+    ...mapGetters({
+      tileOn: 'game/tileOn',
+      colorCssClass: 'game/colorCssClass'
+    }),
+
+    // what triggered this when no player chose it (engine PlacementCause), as a tooltip
+    causeTitle () {
+      return causeTitle(this.ev.cause, this) || null
+    }
+  },
 
   methods: {
     onMouseEnter () {
-      this.$store.commit('board/returnedMeeplePanel', this.ev)
+      if (this.ev.cause) {
+        // returned by the game itself (meteorite, wolf, dragon, …): say what caused it
+        this.$store.commit('board/placementPanel', {
+          kind: 'removed',
+          meeple: this.ev.meeple,
+          player: this.ev.player,
+          cause: this.ev.cause
+        })
+      } else {
+        this.$store.commit('board/returnedMeeplePanel', this.ev)
+      }
       this.$store.dispatch('board/showLayer', {
         layer: 'EmphasizeLayer',
         props: {
-          emphasis: {
+          emphasis: withCause({
             type: 'meeple',
             ...this.ev.from
-          }
+          }, this.ev.cause)
         }
       })
     },
@@ -46,6 +65,7 @@ export default {
     onMouseLeave () {
       this.$store.dispatch('board/hideLayerDebounced', { layer: 'EmphasizeLayer' })
       this.$store.commit('board/returnedMeeplePanel', null)
+      this.$store.commit('board/placementPanel', null)
     }
   }
 }

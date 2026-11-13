@@ -1,6 +1,7 @@
 <template>
   <div
     class="neutral-moved one-square"
+    :title="causeTitle"
     @mouseenter="onMouseEnter"
     @mouseleave="onMouseLeave"
   >
@@ -13,6 +14,7 @@
 import { mapGetters } from 'vuex'
 
 import { courierGhosts } from '@/utils/courier-ghosts'
+import { causeMeeple, causeTitle, withCause } from '@/utils/placement-cause'
 
 import NeutralFigure from '@/components/game/NeutralFigure'
 
@@ -32,12 +34,24 @@ export default {
 
     figure () {
       return this.ev.figure.split('.')[0]
+    },
+
+    // what triggered this move when no player chose it (engine PlacementCause), as a tooltip
+    causeTitle () {
+      return causeTitle(this.ev.cause, this) || null
     }
   },
 
   methods: {
     onMouseEnter () {
-      const { to } = this.ev
+      const { from, to } = this.ev
+      // the action panel tells what happened and why (PlacementPanel)
+      this.$store.commit('board/placementPanel', {
+        kind: !to ? 'removed' : (!from ? 'placed' : 'moved'),
+        figure: this.ev.figure,
+        to: to && (to.featurePointer || to),
+        cause: this.ev.cause || null
+      })
       if (!to) {
         return
       }
@@ -59,20 +73,20 @@ export default {
         this.$store.dispatch('board/showLayer', {
           layer: 'EmphasizeLayer',
           props: {
-            emphasis: {
+            emphasis: withCause({
               type: 'meeple',
               ...fp
-            }
+            }, this.ev.cause)
           }
         })
       } else if (this.ev.to.length === 2) { // position
         this.$store.dispatch('board/showLayer', {
           layer: 'EmphasizeLayer',
           props: {
-            emphasis: {
+            emphasis: withCause({
               type: 'tile',
               position: this.ev.to
-            }
+            }, this.ev.cause)
           }
         })
       }
@@ -127,10 +141,14 @@ export default {
       const points = [from, to, ...scored].filter(p => p && p.position && p.feature && p.location)
       this.$store.dispatch('board/showLayer', {
         layer: 'EmphasizeLayer',
-        props: { emphasis: { type: 'points', points, frame: center || null } }
+        // plus what triggered the move: the placed letter tile, or the meeple it walked to
+        props: { emphasis: withCause({ type: 'points', points, frame: center || null }, this.ev.cause) }
       })
 
-      const removed = scored.filter(m => m.type && this.isMeepleRemoved(m))
+      // the scored meeples that left the board since, and the deployed meeple that triggered the move
+      // if it has left too
+      const trigger = causeMeeple(this.ev.cause)
+      const removed = [...scored, ...(trigger ? [trigger] : [])].filter(m => m.type && this.isMeepleRemoved(m))
       if (removed.length) {
         this.$store.dispatch('board/showLayer', {
           layer: 'EventMeeplesLayer',
@@ -221,6 +239,7 @@ export default {
       this.$store.dispatch('board/hideLayerDebounced', { layer: 'EmphasizeLayer' })
       this.$store.dispatch('board/hideLayerDebounced', { layer: 'EventMeeplesLayer' })
       this.$store.dispatch('board/hideLayerDebounced', { layer: 'NeutralFigureGhostLayer' })
+      this.$store.commit('board/placementPanel', null)
     }
   }
 }

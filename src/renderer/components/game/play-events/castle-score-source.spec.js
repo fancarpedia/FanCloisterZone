@@ -30,7 +30,8 @@ describe('the PointsEvent hover branch', () => {
   })
 
   it('keeps the single-feature case working through the same helper', () => {
-    expect(src).toMatch(/showFeature \(feature\) \{\s*this\.showFeatures\(feature\)/)
+    expect(src).toContain('this.emphasizeFeatures([feature], extraPoints)')
+    expect(src).toContain('this.emphasizeFeatures(features)')
   })
 
   it('skips features it cannot resolve instead of throwing', () => {

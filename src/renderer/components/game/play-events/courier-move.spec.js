@@ -23,7 +23,7 @@ describe('courier move hover', () => {
 
   it('opens only single spots — origin, destination and the scored meeples — not whole features', () => {
     expect(moved).toContain('const points = [from, to, ...scored].filter(p => p && p.position && p.feature && p.location)')
-    expect(moved).toContain("emphasis: { type: 'points', points, frame: center || null }")
+    expect(moved).toContain("emphasis: withCause({ type: 'points', points, frame: center || null }, this.ev.cause)")
     expect(moved).not.toContain("emphasis: { type: 'feature'")
   })
 
@@ -49,7 +49,7 @@ describe('courier move hover', () => {
   })
 
   it('pulses only the scored meeples that left the board', () => {
-    expect(moved).toContain('const removed = scored.filter(m => m.type && this.isMeepleRemoved(m))')
+    expect(moved).toContain('const removed = [...scored, ...(trigger ? [trigger] : [])].filter(m => m.type && this.isMeepleRemoved(m))')
   })
 
   it('gets the whole turn, not just its own row', () => {
@@ -91,5 +91,122 @@ describe('courier points of a range feature', () => {
   it('light the tiles that earned them', () => {
     const branch = points.slice(points.indexOf("if (name.startsWith('courier.')) {"))
     expect(branch.slice(0, 800)).toContain('this.showTiles(ptr.positions, extraPoints)')
+  })
+})
+
+describe('placement causes in the history', () => {
+  const files = ['NeutralMovedEvent.vue', 'MeepleDeployedEvent.vue', 'MeepleReturnedEvent.vue', 'TokenPlacedEvent.vue', 'TokenRemovedEvent.vue']
+  for (const file of files) {
+    it(file + ' shows the cause as a tooltip and opens it on the board', () => {
+      const src = read(file)
+      expect(src).toContain(':title="causeTitle"')
+      expect(src).toContain('return causeTitle(this.ev.cause, this) || null')
+      expect(src).toContain('this.ev.cause)')
+      expect(src).toContain('withCause(')
+    })
+  }
+
+  it('the dimming can open whole extra tiles', () => {
+    expect(read('../layers/EmphasizeLayer.vue')).toContain('v-for="(pos, idx) in emphasis.extraTiles || []"')
+  })
+})
+
+describe('the action panel tells what a history event did and why (PlacementPanel)', () => {
+  const panel = read('../PlacementPanel.vue')
+  const actionPanel = read('../ActionPanel.vue')
+
+  it('is shown in the action panel while hovering, like the dice-roll / returned-meeple panels', () => {
+    expect(actionPanel).toContain('<PlacementPanel')
+    expect(actionPanel).toContain('v-else-if="placementPanel"')
+    expect(actionPanel).toContain('!returnedTokenPanel && !diceRollPanel && !placementPanel"')
+  })
+
+  it('is set by the neutral-move bullet for every move, and cleared on leave', () => {
+    expect(moved).toContain("this.$store.commit('board/placementPanel', {")
+    expect(moved).toContain("kind: !to ? 'removed' : (!from ? 'placed' : 'moved'),")
+    expect(moved).toContain("this.$store.commit('board/placementPanel', null)")
+  })
+
+  it('is set by meeple / token bullets that carry a cause', () => {
+    for (const file of ['MeepleDeployedEvent.vue', 'MeepleReturnedEvent.vue', 'TokenPlacedEvent.vue', 'TokenRemovedEvent.vue']) {
+      const src = read(file)
+      expect(src, file).toContain("this.$store.commit('board/placementPanel', ")
+      expect(src, file).toContain("this.$store.commit('board/placementPanel', null)")
+    }
+  })
+
+  it('titles the courier on the letter specially and draws the cause beside the figure', () => {
+    expect(panel).toContain("if (to && to.feature === 'CourierLetter') {")
+    expect(panel).toContain("this.$t('game.placement.title.placed-on-letter', { figure: this.subjectName })")
+    expect(panel).toContain(':tile-id="causeVisual.tile.id"')
+    expect(panel).toContain('<Meeple v-else-if="causeVisual.meeple" :type="causeVisual.meeple" />')
+  })
+})
+
+describe('cause panel order', () => {
+  it('shows the cause first, then an arrow to what it placed', () => {
+    const panel = read('../PlacementPanel.vue')
+    const cause = panel.indexOf('<div class="cause"')
+    const arrow = panel.indexOf('fas fa-arrow-right')
+    const subject = panel.indexOf('class="subject')
+    expect(cause).toBeGreaterThan(-1)
+    expect(cause).toBeLessThan(arrow)
+    expect(arrow).toBeLessThan(subject)
+    expect(panel).not.toContain('fas fa-arrow-left')
+  })
+})
+
+describe('cause panel: a figure that walked to a deployed meeple', () => {
+  it('is drawn standing next to that meeple on the right of the arrow', () => {
+    const panel = read('../PlacementPanel.vue')
+    expect(panel).toContain('<div v-if="besideMeeple" class="subject beside-meeple">')
+    expect(panel).toContain("if (!this.expr.figure || !c || c.type !== 'meeple-deployed' || !c.meeple) return null")
+    expect(panel.indexOf('fas fa-arrow-right')).toBeLessThan(panel.indexOf('class="subject beside-meeple"'))
+  })
+})
+
+describe('a regular deployment in the placement panel', () => {
+  it('every meeple-deployed hover fills the panel; without a cause it is the player\'s own choice', () => {
+    const src = read('MeepleDeployedEvent.vue')
+    expect(src).toContain('byPlayer: !this.ev.cause')
+    expect(src).not.toContain('if (this.ev.cause) {')
+    const panel = read('../PlacementPanel.vue')
+    expect(panel).toContain("(this.expr.kind === 'moved' ? 'game.placement.moved-by' : 'game.placement.deployed-by')")
+    expect(panel).not.toContain('from-supply')
+  })
+
+  it('draws the courier as big as the meeple it stands beside', () => {
+    expect(read('../PlacementPanel.vue')).toMatch(/svg\.neutral\.beside\s+width: 40px\s+height: 40px/)
+  })
+})
+
+describe('player-chosen placements in the placement panel', () => {
+  it('a placed tile: the tile, placed by the turn player', () => {
+    const src = read('TilePlacedEvent.vue')
+    expect(src).toContain("titleKey: 'game.placement.title.tile-placed'")
+    expect(src).toContain("byKey: 'game.placement.placed-by'")
+    expect(src).toContain('player: { type: Number, default: null }')
+    expect(src).toContain("this.$store.commit('board/placementPanel', null)")
+  })
+
+  it('a castle: the small city converted with a castle token, by the turn player', () => {
+    const src = read('CastleCreatedEvent.vue')
+    expect(src).toContain("titleKey: 'game.placement.title.castle-created'")
+    expect(src).toContain("byKey: 'game.placement.converted-by'")
+    expect(src).toContain("this.$store.commit('board/placementPanel', null)")
+  })
+
+  it('the panel draws a tile subject and honours the title / by-player overrides', () => {
+    const panel = read('../PlacementPanel.vue')
+    expect(panel).toContain(':tile-id="expr.tile.id"')
+    expect(panel).toContain('if (this.expr.titleKey) return this.$t(this.expr.titleKey)')
+    expect(panel).toContain('const key = this.expr.byKey ||')
+  })
+})
+
+describe('placement panel token colour', () => {
+  it('uses the same theme text colour as the history bullets (castle not black on dark)', () => {
+    const rule = '.token-image:not(.tunnel):not(.token-BRIDGE)\n  +theme using ($theme)\n    fill: map-get($theme, \'text-color\')'
+    expect(read('../PlacementPanel.vue')).toContain(rule)
   })
 })

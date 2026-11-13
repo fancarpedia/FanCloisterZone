@@ -9,6 +9,9 @@ export const state = () => ({
   awardedMeeplePanel: null,
   returnedMeeplePanel: null,
   returnedTokenPanel: null,
+  // a hovered history event that placed / moved / removed a figure or piece: by the player's own
+  // choice, or by the game itself with what caused it (PlacementPanel)
+  placementPanel: null,
   layers: {},
   tilePlacementMouseOver: null, // select tile from TilePlacementLayer must be drawn together with regular tils by TileLayer
   zoom: DEFAULT_ZOOM,
@@ -40,6 +43,10 @@ export const mutations = {
 
   returnedTokenPanel (state, value) {
     state.returnedTokenPanel = value
+  },
+
+  placementPanel (state, value) {
+    state.placementPanel = value
   },
 
   showLayer (state, { layer, props }) {
@@ -88,6 +95,7 @@ export const mutations = {
     state.awardedMeeplePanel = null
     state.returnedMeeplePanel = null
     state.returnedTokenPanel = null
+    state.placementPanel = null
     state.layers = {}
     state.tilePlacementMouseOver = null
     state.zoom = DEFAULT_ZOOM

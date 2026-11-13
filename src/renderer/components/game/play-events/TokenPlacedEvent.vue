@@ -1,16 +1,23 @@
 <template>
-  <TokenImage
-    :class="cssClass"
-    :token="ev.token"
-    :player="player"
-    :height="height"
-    @mouseenter.native="onMouseEnter"
-    @mouseleave.native="onMouseLeave"
-  />
+  <!-- the wrapper carries the tooltip: a token can render as an svg, which shows no title -->
+  <div
+    class="token-placed"
+    :title="causeTitle"
+    @mouseenter="onMouseEnter"
+    @mouseleave="onMouseLeave"
+  >
+    <TokenImage
+      :class="cssClass"
+      :token="ev.token"
+      :player="player"
+      :height="height"
+    />
+  </div>
 </template>
 
 <script>
 import TokenImage from '@/components/game/TokenImage'
+import { causeTitle, withCause } from '@/utils/placement-cause'
 
 const FULL_SIZE_TOKENS = new Set(['WOLF', 'SHEEP', 'TUNNEL', 'FERRY', 'LB'])
 
@@ -25,6 +32,11 @@ export default {
   },
 
   computed: {
+    // what triggered this when no player chose it (engine PlacementCause), as a tooltip
+    causeTitle () {
+      return causeTitle(this.ev.cause, this) || null
+    },
+
     height () {
       if (this.ev.token === 'GOLD') {
         return 21
@@ -44,6 +56,15 @@ export default {
 
   methods: {
     onMouseEnter () {
+      // placed by the game itself (mandatory bridge, gold, sheep, …): the action panel tells why
+      if (this.ev.cause) {
+        this.$store.commit('board/placementPanel', {
+          kind: 'placed',
+          token: this.ev.token,
+          to: this.ev.to,
+          cause: this.ev.cause
+        })
+      }
       let emphasis
       if (this.ev.token === 'BRIDGE' || this.ev.token === 'FERRY') {
         emphasis = {
@@ -64,19 +85,25 @@ export default {
       this.$store.dispatch('board/showLayer', {
         layer: 'EmphasizeLayer',
         props: {
-          emphasis
+          emphasis: withCause(emphasis, this.ev.cause)
         }
       })
     },
 
     onMouseLeave () {
       this.$store.dispatch('board/hideLayerDebounced', { layer: 'EmphasizeLayer' })
+      this.$store.commit('board/placementPanel', null)
     }
   }
 }
 </script>
 
 <style lang="sass" scoped>
+.token-placed
+  display: flex
+  align-items: center
+  justify-content: center
+
 .token-image:not(.tunnel):not(.token-BRIDGE)
   +theme using ($theme)
     fill: map-get($theme, 'text-color')

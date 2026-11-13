@@ -2,7 +2,7 @@
   "@author": "farin & Scott",
   "@jcz-version": "5.12.1",
   "@fcz-version": "7.1.0",
-  "@version": "0.12.4",
+  "@version": "0.12.5",
   "about": {
     "author": "Author",
     "configuration-file": "Configuration file",
@@ -320,6 +320,27 @@
       "you-may-place-an-abbey": "You may place an abbey",
       "your-action": "your action"
     },
+    "cause": {
+      "caused-by": "Caused by: {cause}",
+      "figure-moved": "the figure moving here",
+      "meeple-deployed": "the deployed meeple",
+      "rule": {
+        "count-clockwise": "the Count moving on clockwise",
+        "decinsky-sneznik-scored": "Děčínský Sněžník scored",
+        "final-scoring": "final scoring",
+        "flock-expanded": "a sheep token drawn for the flock",
+        "flock-scored": "the flock scored",
+        "game-start": "the start of the game",
+        "mage-witch-joined": "the mage's and the witch's features joined",
+        "mage-witch-no-target": "no open city or road left for the figure",
+        "meteorite": "a meteorite impact",
+        "obelisk-scored": "the obelisk scored",
+        "trap": "a trap",
+        "windmill-scored": "the windmill scored",
+        "wolf": "the wolf drawn"
+      },
+      "tile-placed": "the placed tile"
+    },
     "coop": {
       "all-win": "All players win!",
       "all-lose": "All players lose",
@@ -443,6 +464,20 @@
       "wind-rose": "Wind Rose",
       "wind-roses": "Wind Roses",
       "yaga-hut": "Baba Yaga Hut"
+    },
+    "placement": {
+      "converted-by": "Converted by {player}",
+      "deployed-by": "Deployed by {player}",
+      "moved-by": "Moved by {player}",
+      "placed-by": "Placed by {player}",
+      "title": {
+        "moved": "{figure} moved",
+        "placed": "{figure} placed",
+        "placed-on-letter": "{figure} placed on the Letter",
+        "removed": "{figure} removed",
+        "castle-created": "Small city converted to a castle",
+        "tile-placed": "Tile placed"
+      }
     },
     "scoring": {
       "barn-connected": "barn connected",

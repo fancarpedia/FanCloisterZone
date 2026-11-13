@@ -2,6 +2,7 @@
   <div
     class="token-removed points align-center"
     :class="{wide: ev.count > 1}"
+    :title="causeTitle"
     @mouseenter="onMouseEnter"
     @mouseleave="onMouseLeave"
   >
@@ -15,6 +16,7 @@
 import { mapGetters } from 'vuex'
 
 import TokenImage from '@/components/game/TokenImage'
+import { causeTitle, withCause } from '@/utils/placement-cause'
 
 export default {
   components: {
@@ -29,16 +31,26 @@ export default {
     ...mapGetters({
       tileOn: 'game/tileOn',
       featureOn: 'game/featureOn'
-    })
+    }),
+
+    // what triggered this when no player chose it (engine PlacementCause), as a tooltip
+    causeTitle () {
+      return causeTitle(this.ev.cause, this) || null
+    }
   },
 
   methods: {
     onMouseEnter () {
-      this.$store.commit('board/returnedTokenPanel', this.ev)
-      const emphasis = {
+      if (this.ev.cause) {
+        // removed by the game itself (a meteorite, …): say what caused it
+        this.$store.commit('board/placementPanel', { kind: 'removed', token: this.ev.token, cause: this.ev.cause })
+      } else {
+        this.$store.commit('board/returnedTokenPanel', this.ev)
+      }
+      const emphasis = withCause({
         type: 'tile',
         position: this.ev.from
-      }
+      }, this.ev.cause)
       this.$store.dispatch('board/showLayer', {
         layer: 'EmphasizeLayer',
         props: {
@@ -50,6 +62,7 @@ export default {
     onMouseLeave () {
       this.$store.dispatch('board/hideLayerDebounced', { layer: 'EmphasizeLayer' })
       this.$store.commit('board/returnedTokenPanel', null)
+      this.$store.commit('board/placementPanel', null)
     }
   }
 }

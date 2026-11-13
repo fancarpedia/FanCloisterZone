@@ -62,6 +62,13 @@
             :x="0" :y="0" :r="BASE_SIZE * 0.3"
             :transform="p"
           />
+          <!-- extra whole tiles opened on top (e.g. the tile whose placement caused the event) -->
+          <rect
+            v-for="(pos, idx) in emphasis.extraTiles || []"
+            :key="'extra-tile-' + idx"
+            :x="0" :y="0" :width="BASE_SIZE" :height="BASE_SIZE"
+            :transform="transformPosition(pos)"
+          />
         </g>
       </mask>
     </defs>

@@ -2,7 +2,7 @@
   "@author": "Challa007 & Bombur",
   "@jcz-version": "5.12.1",
   "@fcz-version": "7.1.0",
-  "@version": "0.12.4-ai",
+  "@version": "0.12.5-ai",
   "about": {
     "author": "Autor",
     "configuration-file": "Konfigurationsdatei",
@@ -320,6 +320,27 @@
       "you-may-place-an-abbey": "Du darfst eine Abtei einsetzen",
       "your-action": "deiner Aktion"
     },
+    "cause": {
+      "caused-by": "Ursache: {cause}",
+      "figure-moved": "die hierher gezogene Figur",
+      "meeple-deployed": "der eingesetzte Meeple",
+      "rule": {
+        "count-clockwise": "der Graf zieht im Uhrzeigersinn weiter",
+        "decinsky-sneznik-scored": "Hoher Schneeberg gewertet",
+        "final-scoring": "Schlusswertung",
+        "flock-expanded": "ein Schafplättchen für die Herde gezogen",
+        "flock-scored": "die Herde gewertet",
+        "game-start": "der Spielbeginn",
+        "mage-witch-joined": "die Gebiete von Magier und Hexe wurden verbunden",
+        "mage-witch-no-target": "keine offene Stadt oder Straße mehr für die Figur",
+        "meteorite": "ein Meteoriteneinschlag",
+        "obelisk-scored": "der Obelisk gewertet",
+        "trap": "eine Falle",
+        "windmill-scored": "die Windmühle gewertet",
+        "wolf": "der Wolf gezogen"
+      },
+      "tile-placed": "das gelegte Plättchen"
+    },
     "coop": {
       "all-win": "Alle Spieler gewinnen!",
       "all-lose": "Alle Spieler verlieren",
@@ -444,6 +465,20 @@
       "wind-roses": "Windrosen",
       "yaga-hut": "Baba-Jagas Hütte"
     },
+    "placement": {
+      "converted-by": "Umgewandelt von {player}",
+      "deployed-by": "Eingesetzt von {player}",
+      "moved-by": "Versetzt von {player}",
+      "placed-by": "Gelegt von {player}",
+      "title": {
+        "moved": "{figure} versetzt",
+        "placed": "{figure} eingesetzt",
+        "placed-on-letter": "{figure} auf den Brief gesetzt",
+        "removed": "{figure} entfernt",
+        "castle-created": "Kleine Stadt in eine Burg umgewandelt",
+        "tile-placed": "Plättchen gelegt"
+      }
+    },
     "scoring": {
       "barn-connected": "Gutshof verbunden",
       "barn-placed": "Gutshof gesetzt",
@@ -452,18 +487,18 @@
       "feature-scored": "Gebiet gewertet",
       "income": "Einnahmen",
       "incomplete": "unvollendet",
-      "item-cloth": "Cloth",
+      "item-cloth": "Stoff",
       "item-darmstadtium": "Darmstadtium",
-      "item-grain": "Grain",
-      "item-house": "House",
-      "item-river-tiles": "River tiles",
-      "item-shed": "Shed",
-      "item-tiles-east": "Tiles to the east",
-      "item-tiles-north": "Tiles to the north",
-      "item-tiles-south": "Tiles to the south",
-      "item-tiles-west": "Tiles to the west",
-      "item-tower": "Tower",
-      "item-wine": "Wine",
+      "item-grain": "Getreide",
+      "item-house": "Haus",
+      "item-river-tiles": "Flussplättchen",
+      "item-shed": "Schuppen",
+      "item-tiles-east": "Plättchen nach Osten",
+      "item-tiles-north": "Plättchen nach Norden",
+      "item-tiles-south": "Plättchen nach Süden",
+      "item-tiles-west": "Plättchen nach Westen",
+      "item-tower": "Turm",
+      "item-wine": "Wein",
       "item-wolf": "Wolf",
       "majority": "Mehrheit",
       "no-majority": "keine Mehrheit",

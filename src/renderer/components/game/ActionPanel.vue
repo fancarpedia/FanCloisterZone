@@ -28,11 +28,15 @@
       v-else-if="diceRollPanel"
       :expr="diceRollPanel"
     />
+    <PlacementPanel
+      v-else-if="placementPanel"
+      :expr="placementPanel"
+    />
     <!-- use v-show bit v-if for pointsExoression - to not hide related layers when pointExpression is triggered by mouse hover  -->
     <component
       :is="actionComponent"
       v-if="action"
-      v-show="!pointsExpression && !notifyConnectionClosed && !returnedMeeplePanel && !awardedMeeplePanel && !returnedTokenPanel && !diceRollPanel"
+      v-show="!pointsExpression && !notifyConnectionClosed && !returnedMeeplePanel && !awardedMeeplePanel && !returnedTokenPanel && !diceRollPanel && !placementPanel"
       :action="action"
       :phase="phase"
       :local="local && !ai"
@@ -92,7 +96,7 @@
 
     <GameResultPanel
       v-else-if="phase === 'GameOverPhase'"
-      v-show="!pointsExpression && !returnedMeeplePanel && !awardedMeeplePanel && !returnedTokenPanel && !diceRollPanel"
+      v-show="!pointsExpression && !returnedMeeplePanel && !awardedMeeplePanel && !returnedTokenPanel && !diceRollPanel && !placementPanel"
       class="game-over"
     />
 
@@ -123,6 +127,7 @@ import CocCountPhaseAction from '@/components/game/actions/CocCountPhaseAction.v
 import CornCircleChoice from '@/components/game/actions/CornCircleChoice.vue'
 import CornCircleReturn from '@/components/game/actions/CornCircleReturn.vue'
 import CommitActionPhaseAction from '@/components/game/actions/CommitActionPhaseAction.vue'
+import PlacementPanel from '@/components/game/PlacementPanel.vue'
 import DiceRollPanel from '@/components/game/DiceRollPanel.vue'
 import DragonMovePhaseAction from '@/components/game/actions/DragonMovePhaseAction.vue'
 import EscapePhaseAction from '@/components/game/actions/EscapePhaseAction.vue'
@@ -166,6 +171,7 @@ export default {
     CornCircleChoice,
     CornCircleReturn,
     CommitActionPhaseAction,
+    PlacementPanel,
     DiceRollPanel,
     DragonMovePhaseAction,
     EscapePhaseAction,
@@ -215,6 +221,7 @@ export default {
       awardedMeeplePanel: state => state.board.awardedMeeplePanel,
       returnedMeeplePanel: state => state.board.returnedMeeplePanel,
       returnedTokenPanel: state => state.board.returnedTokenPanel,
+      placementPanel: state => state.board.placementPanel,
       beep: state => state.settings.beep,
       activePlayerIndicatorTriangle: state => state.settings.activePlayerIndicatorTriangle
     }),
@@ -229,7 +236,7 @@ export default {
     showActivePlayerIndicator () {
       return !!this.action && this.activePlayerIndicatorTriangle &&
         !this.returnedMeeplePanel && !this.awardedMeeplePanel &&
-        !this.returnedTokenPanel && !this.diceRollPanel
+        !this.returnedTokenPanel && !this.diceRollPanel && !this.placementPanel
     },
 
     // Tints the whole bar in the active player's colour. The rule only has an effect on small
