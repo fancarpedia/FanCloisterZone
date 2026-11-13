@@ -1,11 +1,11 @@
 <template>
   <div
-    :class="['action-panel', { 'full-height': pointsExpression || phase === 'GameOverPhase' }, activePlayerPanelColorClass]"
+    :class="['action-panel', { 'full-height': pointsExpression || phase === 'GameOverPhase', 'two-lines': twoLines, web: isWeb }, activePlayerPanelColorClass]"
     @click.right="onRightClick"
   >
     <div v-if="notifyConnectionClosed" class="flex-grow-1">
       <v-alert type="error">
-        Host terminated the game. Connection was closed.
+        {{ $t('game.action.host-terminated-the-game') }}
       </v-alert>
     </div>
     <PointsExpression
@@ -40,6 +40,7 @@
       :action="action"
       :phase="phase"
       :local="local && !ai"
+      @two-lines="twoLines = $event"
     >
       <template
         v-if="action.canPass || undoAllowed || canRotatePlacedTile"
@@ -147,6 +148,7 @@ import ShepherdPlacementConfirmPhaseAction from '@/components/game/actions/Sheph
 import TilePhaseAction from '@/components/game/actions/TilePhaseAction.vue'
 import TilePlacementConfirmPhaseAction from '@/components/game/actions/TilePlacementConfirmPhaseAction.vue'
 import TowerCapturePhaseAction from '@/components/game/actions/TowerCapturePhaseAction.vue'
+import { isWeb } from '@/utils/version'
 
 const MAPPING = {
   AbbeyEndGamePhase: TilePhaseAction,
@@ -201,6 +203,10 @@ export default {
     const src = require('~/assets/beep.wav')
     return {
       selected: 0,
+      // the action items took a line of their own above the buttons (ActionPhaseAction)
+      twoLines: false,
+      // the web build's burger button sits over the bar's right end on small screens
+      isWeb: isWeb(),
       BEEP_URL: src?.default ? src.default : src // hack, Nuxt doesn't convert asset to string directly (at least in dev mode)
     }
   },
@@ -319,6 +325,23 @@ export default {
     ipcRenderer.on('win.minimize', this._minimized)
     ipcRenderer.on('win.hide', this._minimized)
     ipcRenderer.on('win.blur', this._minimized)
+
+    // The bar grows to two lines with many actions. Publish its real height so what sits below it
+    // follows: --action-panel-height for CSS (game.vue), board/actionPanelHeight for the history strip.
+    if (typeof ResizeObserver !== 'undefined') {
+      // published on the next animation frame (once per frame): moving what sits below the bar from
+      // inside the observer callback would trigger "ResizeObserver loop completed with undelivered
+      // notifications"
+      this.heightObserver = new ResizeObserver(() => {
+        if (this.heightFrame) return
+        this.heightFrame = requestAnimationFrame(() => {
+          this.heightFrame = null
+          this.publishHeight()
+        })
+      })
+      this.heightObserver.observe(this.$el)
+    }
+    this.publishHeight()
   },
 
   beforeDestroy () {
@@ -330,9 +353,22 @@ export default {
     ipcRenderer.off('win.hide', this._minimized)
     ipcRenderer.off('win.blur', this._minimized)
     this.clearProgress()
+    if (this.heightObserver) this.heightObserver.disconnect()
+    if (this.heightFrame) cancelAnimationFrame(this.heightFrame)
+    document.documentElement.style.removeProperty('--action-panel-height')
+    this.$store.commit('board/actionPanelHeight', null)
   },
 
   methods: {
+    publishHeight () {
+      const h = this.$el && this.$el.offsetHeight
+      if (!h) return
+      document.documentElement.style.setProperty('--action-panel-height', h + 'px')
+      if (this.$store.state.board.actionPanelHeight !== h) {
+        this.$store.commit('board/actionPanelHeight', h)
+      }
+    },
+
     onRightClick (ev) {
       this.$root.$emit('rclick', ev)
     },
@@ -404,6 +440,11 @@ export default {
   &.full-height
     height: 84px
 
+  // many actions: the items above, the buttons below — the bar grows instead of shrinking them
+  &.two-lines
+    height: auto
+    min-height: var(--action-bar-height)
+
   +theme using ($theme)
     background: map-get($theme, 'opaque-bg')
 
@@ -457,6 +498,10 @@ export default {
 
   .action-panel
     width: 100%
+
+    // keep clear of the web build's burger button (40px, top-right) instead of running under it
+    &.web
+      padding-right: 56px
 
     > section
       // icon-only buttons sit closer together than worded ones

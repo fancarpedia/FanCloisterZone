@@ -126,6 +126,12 @@ export const actions = {
     let missingKey = false
     if (settings) {
       settings = { ...settings, file }
+      if (!settings.clientId || !settings.secret) {
+        // a new identity: the player no longer owns the seats of their open online games. Worth
+        // seeing in the console when it happens unexpectedly (the web build restores it from a
+        // backup first — web-build/stubs/electron.js)
+        console.warn('[settings] no player identity in the stored settings — creating a new one')
+      }
       if (!settings.clientId) {
         missingKey = true
         settings.clientId = randomId()

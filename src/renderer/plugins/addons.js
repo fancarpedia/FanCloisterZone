@@ -244,7 +244,7 @@ class Addons extends EventsBase {
       const checksum = sha256File(downloadedPath)
       if (checksum !== versionDefinition.sha256) {
         await fs.promises.unlink(downloadedPath)
-        throw new Error($nuxt.$t('settings.add-ons.downloaded-file-checksum-mismatch'))
+        throw new Error(this._t('settings.add-ons.downloaded-file-checksum-mismatch'))
       }
     }
     // Install after verification
@@ -444,7 +444,7 @@ class Addons extends EventsBase {
 
     this.ctx.app.store.commit('download', {
       name: 'classic.jca',
-      description: 'Downloading classic artwork',
+      description: this._t('settings.add-ons.downloading-classic-artwork'),
       progress: null,
       size: null,
       link
@@ -498,7 +498,7 @@ class Addons extends EventsBase {
       console.log('classic.jca checksum mismatch ' + checksum)
       this.ctx.app.store.commit('download', {
         name: 'classic.jca',
-        description: 'Error: Downloaded file has invalid checksum',
+        description: this._t('settings.add-ons.downloaded-file-checksum-mismatch'),
         progress: 0,
         size: this.AUTO_DOWNLOADED.classic.size,
         link
@@ -580,6 +580,12 @@ class Addons extends EventsBase {
     return missing
   }
 
+  // translated text through the app's i18n (the plugin's own Nuxt context)
+  _t (key, values) {
+    const i18n = this.ctx && this.ctx.app && this.ctx.app.i18n
+    return i18n ? i18n.t(key, values) : key
+  }
+
   async _readAddon (id, fullPath) {
     const stats = await fs.promises.stat(fullPath)
     if (stats.isDirectory()) {
@@ -601,13 +607,13 @@ class Addons extends EventsBase {
           remote: this.AUTO_DOWNLOADED[id] || null
         }
         if (!isNumber(addon.json.version)) {
-          addon.error = 'Invalid add-on. Expecting number as version found string.'
+          addon.error = this._t('settings.add-ons.invalid-add-on-version-not-a-number')
         } else if (parseInt(addon.json.version) !== addon.json.version) {
-          addon.error = `Invalid add-on. Expecting integer number as version, found ${addon.json.version}`
+          addon.error = this._t('settings.add-ons.invalid-add-on-version-not-an-integer', { version: addon.json.version })
         } else if (!addon.json.minimumJczVersion) {
-          addon.error = 'Invalid add-on. Missing minimumJczVersion.'
+          addon.error = this._t('settings.add-ons.invalid-add-on-missing-minimum-version')
         } else if (compare(getAppVersion().split('-')[0], addon.json.minimumJczVersion, '<')) {
-          addon.error = `Add-on requires JCZ ${addon.json.minimumJczVersion} or higher`
+          addon.error = this._t('settings.add-ons.add-on-requires-newer-app', { version: addon.json.minimumJczVersion })
         } else if (addon.remote) {
           if (addon.json.version !== addon.remote.version) {
             const currentVersion = addon.json.version

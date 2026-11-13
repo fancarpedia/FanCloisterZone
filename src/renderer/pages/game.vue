@@ -438,7 +438,7 @@ export default {
 
   .forced-draw, .test-result
     position: absolute
-    top: calc(var(--action-bar-height) + #{$panel-gap})
+    top: calc(var(--action-panel-height, var(--action-bar-height)) + #{$panel-gap})
     right: var(--aside-width-plus-gap)
 
   .forced-draw
@@ -575,15 +575,17 @@ aside
 // longer sit beside it in the top-right corner — it moves directly below, and the player panels
 // shift down by one bar height to keep clear of it. The aside's shrink logic measures its own
 // getBoundingClientRect().top, so it adapts to the new offset on its own.
+// The bar's own height is --action-panel-height (ActionPanel publishes it; it grows to two lines
+// with many actions), falling back to the fixed --action-bar-height.
 @media (max-width: $small-screen-max-width)
   .tile-pack-size
-    top: var(--action-bar-height)
+    top: var(--action-panel-height, var(--action-bar-height))
 
   aside
-    top: calc(var(--action-bar-height) * 2 + #{$panel-gap})
+    top: calc(var(--action-panel-height, var(--action-bar-height)) + var(--action-bar-height) + #{$panel-gap})
 
     &.shrink-3
-      top: calc(var(--action-bar-height) * 2 + 2px)
+      top: calc(var(--action-panel-height, var(--action-bar-height)) + var(--action-bar-height) + 2px)
 
     // Collapsed, give the board the width back too: the panels hold only a score bullet and the
     // flowers, so the full --aside-width (210px) is mostly empty strip covering the board.

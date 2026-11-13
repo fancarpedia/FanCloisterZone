@@ -1,9 +1,13 @@
 <template>
-  <section :class="{
-    local,
-    [`size-${items.length}`]: true,
-    'size-max': items.length > 14
-  }">
+  <!-- Small screens: one line while everything fits; with many actions the items get a line of
+       their own above the buttons (two-lines) that scrolls sideways — never shrunk to fit.
+       Wider screens keep the one-line bar, the items scaled by count (size-N classes). -->
+  <section
+    ref="section"
+    :class="{ local, [`size-${items.length}`]: true, 'size-max': items.length > 14, 'two-lines': twoLines }"
+  >
+    <div ref="itemsRow" class="items-row">
+    <div ref="itemsInner" class="items-inner">
     <div v-if="phase === 'CocFollowerPhase'" class="text-with-icons text-center">
       <v-icon>fas fa-arrow-right</v-icon>
       <v-icon>fab fa-fort-awesome-alt</v-icon>
@@ -115,12 +119,18 @@
       />
       <div v-else>{{ item.type }}</div>
     </div>
-    <slot />
+    </div>
+    </div>
+    <div ref="buttonsRow" class="buttons-row">
+      <slot />
+    </div>
   </section>
 </template>
 
 <script>
 import { mapState } from 'vuex'
+
+import { isSmallScreen } from '@/utils/small-screen'
 
 import { Expansion } from '@/models/expansions'
 import ExpansionSymbol from '@/components/ExpansionSymbol'
@@ -161,11 +171,17 @@ export default {
   data () {
     return {
       Expansion,
-      selected: null
+      selected: null,
+      // items on a line of their own above the buttons (see measureLines)
+      twoLines: false
     }
   },
 
   computed: {
+    small () {
+      return isSmallScreen()
+    },
+
     ...mapState({
       rules: state => state.game.setup.rules
     }),
@@ -202,6 +218,11 @@ export default {
   },
 
   watch: {
+    // crossing the small-screen breakpoint re-decides the layout
+    small () {
+      this.scheduleMeasure()
+    },
+
     action: {
       immediate: true,
       handler () {
@@ -212,13 +233,65 @@ export default {
 
   mounted () {
     this.$root.$on('rclick', this.selectNext)
+    // re-decide one line vs two whenever the bar, the items or the buttons change size
+    if (typeof ResizeObserver !== 'undefined') {
+      this.resizeObserver = new ResizeObserver(() => this.scheduleMeasure())
+      for (const el of [this.$refs.section, this.$refs.itemsInner, this.$refs.buttonsRow]) {
+        if (el) this.resizeObserver.observe(el)
+      }
+    }
+    this.scheduleMeasure()
+  },
+
+  updated () {
+    this.scheduleMeasure()
   },
 
   beforeDestroy () {
     this.$root.$off('rclick', this.selectNext)
+    if (this.resizeObserver) this.resizeObserver.disconnect()
+    if (this.measureFrame) cancelAnimationFrame(this.measureFrame)
+    if (this.twoLines) this.$emit('two-lines', false)
   },
 
   methods: {
+    // Two lines when the items and the buttons together are wider than the bar. Measured from the
+    // content's own widths (the items' inner strip never shrinks), so the decision is the same
+    // whichever layout is showing — no flip-flopping. Without buttons the items stay on the one
+    // line and simply scroll.
+    // Measure on the next animation frame, once per frame however many notifications arrive.
+    // Switching the layout from inside a ResizeObserver callback resizes the very elements it
+    // watches in the same frame, which the browser reports as "ResizeObserver loop completed with
+    // undelivered notifications".
+    scheduleMeasure () {
+      if (this.measureFrame) return
+      this.measureFrame = requestAnimationFrame(() => {
+        this.measureFrame = null
+        this.measureLines()
+      })
+    },
+
+    measureLines () {
+      const { section, itemsInner, buttonsRow } = this.$refs
+      if (!section || !itemsInner || !buttonsRow) return
+      if (!isSmallScreen()) {
+        // wider screens keep the one-line bar (items scaled by count)
+        if (this.twoLines) {
+          this.twoLines = false
+          this.$emit('two-lines', false)
+        }
+        return
+      }
+      const style = getComputedStyle(section)
+      const available = section.clientWidth - parseFloat(style.paddingLeft || 0) - parseFloat(style.paddingRight || 0)
+      const buttons = buttonsRow.scrollWidth
+      const twoLines = buttons > 0 && itemsInner.scrollWidth + buttons + 8 > available
+      if (twoLines !== this.twoLines) {
+        this.twoLines = twoLines
+        this.$emit('two-lines', twoLines)
+      }
+    },
+
     select (idx) {
       if (this.local) {
         this.selected = idx
@@ -281,19 +354,77 @@ section.local
         background: rgba(map-get($theme, 'action-panel-hover-bg'), 0.72)
         border-radius: 500px
 
-@media (max-height: 800px)
+// Small screens (≤ 960px) never shrink the items: with many actions they get a line of their own
+// above the buttons (section.two-lines, decided in measureLines) and that line scrolls sideways.
+// Wider screens keep the one-line bar, scaled down by item count (the rules after this block).
+.items-row
+  display: flex
+  min-width: 0
+  overflow: hidden
+
+// auto margins centre the strip while it fits and fall to 0 once it overflows, so a scrolling row
+// still starts at its first item (justify-content: center would cut the left end off)
+.items-inner
+  display: flex
+  align-items: center
+  flex: none
+  margin: 0 auto
+
+.buttons-row
+  display: flex
+  align-items: center
+  flex: none
+
+@media (max-width: 960px)
+  section
+    min-width: 0
+
+  .items-row
+    overflow-x: auto
+    scrollbar-width: thin
+
+  section.two-lines
+    flex-direction: column
+    align-items: stretch
+
+    .items-row
+      width: 100%
+
+    .buttons-row
+      justify-content: center
+      padding: 2px 0 6px
+
+      // the first button starts the line: no gap in front of it
+      ::v-deep > :first-child
+        margin-left: 0
+
+  // Each item is a round slot exactly the bar's height, so the highlight of the selected / hovered
+  // item is a circle that fits the bar (as on larger screens); the meeple / token inside is drawn
+  // at 80% so it sits within that circle with a margin. Fixed, never by item count.
+  section .action-item
+    --action-item-scale: 1
+    width: var(--action-bar-height)
+    height: var(--action-bar-height)
+    margin: 0 2px
+    transform: none
+
+    > *
+      transform: scale(0.8)
+
+// --- wider screens: one line, items scaled by count ---------------------------------------------
+@media (max-height: 800px) and (min-width: 961px)
   section
     .action-item
       --action-item-scale: 0.6
       --action-item-margin: -12px
 
-@media (min-height: 769px)
+@media (min-width: 961px) and (min-height: 769px)
 section.size-max
     .action-item
       --action-item-scale: 0.85
       --action-item-margin: -8px
 
-@media (max-width: 1920px) and (min-height: 769px)
+@media (min-width: 961px) and (max-width: 1920px) and (min-height: 769px)
   section.size-max
     .action-item
       --action-item-scale: 0.65
@@ -307,7 +438,7 @@ section.size-max
       --action-item-scale: 0.85
       --action-item-margin: -8px
 
-@media (max-width: 1700px) and (min-height: 769px)
+@media (min-width: 961px) and (max-width: 1700px) and (min-height: 769px)
   section.size-max
     .action-item
       --action-item-scale: 0.6
@@ -321,7 +452,7 @@ section.size-max
       --action-item-scale: 0.85
       --action-item-margin: -8px
 
-@media (max-width: 1550px) and (min-height: 769px)
+@media (min-width: 961px) and (max-width: 1550px) and (min-height: 769px)
   section.size-max, section.size-14, section.size-13, section.size-12, section.size-11
     .action-item
       --action-item-scale: 0.65
@@ -331,29 +462,29 @@ section.size-max
       --action-item-scale: 0.6
       --action-item-margin: -12px
 
-@media (max-width: 1410px)
+@media (min-width: 961px) and (max-width: 1410px)
   section.size-max, section.size-14, section.size-13, section.size-12, section.size-11
     .action-item
       --action-item-scale: 0.55
       --action-item-margin: -12px
-@media (max-width: 1410px) and (min-height: 769px)
+@media (min-width: 961px) and (max-width: 1410px) and (min-height: 769px)
    section.size-8, section.size-7
     .action-item
       --action-item-scale: 0.85
       --action-item-margin: -8px
 
-@media (max-width: 1280px)
+@media (min-width: 961px) and (max-width: 1280px)
   section.size-max, section.size-14, section.size-13, section.size-12, section.size-11
     .action-item
       --action-item-scale: 0.5
       --action-item-margin: -12px
-@media (max-width: 1280px) and (min-height: 769px)
+@media (min-width: 961px) and (max-width: 1280px) and (min-height: 769px)
    section.size-8, section.size-7
     .action-item
       --action-item-scale: 0.75
       --action-item-margin: -10px
 
-@media (max-width: 1060px)
+@media (min-width: 961px) and (max-width: 1060px)
   section.size-max, section.size-14, section.size-13, section.size-12, section.size-11
     .action-item
       --action-item-scale: 0.4
@@ -362,50 +493,12 @@ section.size-max
     .action-item
       --action-item-scale: 0.5
       --action-item-margin: -12px
-@media (max-width: 1060px) and (min-height: 769px)
+@media (min-width: 961px) and (max-width: 1060px) and (min-height: 769px)
   section.size-8, section.size-7
     .action-item
       --action-item-scale: 0.65
       --action-item-margin: -11px
   section.size-6, section.size-5
-    .action-item
-      --action-item-scale: 0.85
-      --action-item-margin: -8px
-
-@media (max-width: 960px)
-  section.size-max, section.size-14, section.size-13, section.size-12, section.size-11, section.size-10, section.size-9
-    .action-item
-      --action-item-scale: 0.4
-      --action-item-margin: -12px
-  section.size-8, section.size-7
-    .action-item
-      --action-item-scale: 0.5
-      --action-item-margin: -12px
-@media (max-width: 960px)  and (min-height: 769px)
-  section.size-6, section.size-5
-    .action-item
-      --action-item-scale: 0.75
-      --action-item-margin: -10px
-  section.size-4, section.size-3
-    .action-item
-      --action-item-scale: 0.85
-      --action-item-margin: -8px
-
-@media (max-width: 800px)
-  section.size-max, section.size-14, section.size-13, section.size-12, section.size-11, section.size-10, section.size-9, section.size-8, section.size-7
-    .action-item
-      --action-item-scale: 0.4
-      --action-item-margin: -12px
-  section.size-6, section.size-5
-    .action-item
-      --action-item-scale: 0.6
-      --action-item-margin: -12px
-@media (max-width: 800px)  and (min-height: 769px)
-  section.size-4, section.size-3
-    .action-item
-      --action-item-scale: 0.75
-      --action-item-margin: -10px
-  section.size-2, section.size-1
     .action-item
       --action-item-scale: 0.85
       --action-item-margin: -8px

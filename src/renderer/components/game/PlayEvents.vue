@@ -97,8 +97,12 @@ export default {
     }),
 
     baseY () {
-      // action panel height + gap, plus space reserved for the history toggle button
-      return (this.$vuetify.breakpoint.height > 768 ? 94 : 70) + TOGGLE_HEIGHT
+      // action panel height + gap, plus space reserved for the history toggle button. The panel
+      // reports its real height (it grows to two lines with many actions); before it has, use the
+      // fixed bar height (84 / 60) + 10.
+      const panel = this.$store.state.board.actionPanelHeight
+      const top = panel ? panel + 10 : (this.$vuetify.breakpoint.height > 768 ? 94 : 70)
+      return top + TOGGLE_HEIGHT
     },
 
     // the toggle sits in the reserved header space, just above the strip content

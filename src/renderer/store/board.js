@@ -12,6 +12,9 @@ export const state = () => ({
   // a hovered history event that placed / moved / removed a figure or piece: by the player's own
   // choice, or by the game itself with what caused it (PlacementPanel)
   placementPanel: null,
+  // the action bar's real height in px (it grows to two lines with many actions); null = the
+  // default --action-bar-height. Set by ActionPanel.
+  actionPanelHeight: null,
   layers: {},
   tilePlacementMouseOver: null, // select tile from TilePlacementLayer must be drawn together with regular tils by TileLayer
   zoom: DEFAULT_ZOOM,
@@ -47,6 +50,10 @@ export const mutations = {
 
   placementPanel (state, value) {
     state.placementPanel = value
+  },
+
+  actionPanelHeight (state, value) {
+    state.actionPanelHeight = value
   },
 
   showLayer (state, { layer, props }) {

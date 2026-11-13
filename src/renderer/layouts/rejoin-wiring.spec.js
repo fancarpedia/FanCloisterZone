@@ -70,10 +70,20 @@ describe('the update bar', () => {
     const onclick = shim.slice(shim.lastIndexOf('b.onclick=function(){', at), shim.indexOf('o.appendChild(b)', at))
     expect(onclick).toContain('try{')
     expect(onclick).toContain('catch(_){}')
-    expect(onclick).toContain('location.reload()')
+    expect(onclick).toContain('location.replace(u)')
   })
 
   it('gives the close frame a moment to go out', () => {
-    expect(shim).toContain('setTimeout(function(){location.reload()},150)')
+    expect(shim).toContain('setTimeout(function(){location.replace(u)},150)')
+  })
+
+  it('reloads to a fresh cache key (?v=<new id>), keeping the rest of the URL and the route', () => {
+    expect(shim).toContain('var u=location.pathname+(q?q+"&":"?")+"v="+encodeURIComponent(id)+location.hash;')
+    expect(shim).toContain('bar(j.buildId)')
+  })
+
+  it('does not nag again when a reload still came back on the old build', () => {
+    expect(shim).toContain('try{sessionStorage.setItem(KEY,id)}catch(_){}')
+    expect(shim).toContain('if(tried&&tried===id){shown=true;console.warn(')
   })
 })
