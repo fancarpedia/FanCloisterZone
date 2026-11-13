@@ -115,7 +115,7 @@
     "dump-hosted-game-server-state": "Dump Stavu herného serveru",
     "edition": "Edice",
     "game-created-in-development-mode": "Hra je v Development módu",
-    "filter-tests-by-name": "Filter tests by name",
+    "filter-tests-by-name": "Filtrovat testy podle názvu",
     "fail": "Trh",
     "meeples": "Figurky hráče",
     "mode": "Mód",
@@ -471,7 +471,7 @@
       "deployed-by": "Umístil hráč {player}",
       "moved-by": "Přesunul hráč {player}",
       "placed-by": "Položil hráč {player}",
-      "removed-with": "{source}, by {player}",
+      "removed-with": "{source}, hráč {player}",
       "title": {
         "moved": "Přesun: {figure}",
         "placed": "Umístění: {figure}",

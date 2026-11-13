@@ -115,7 +115,7 @@
     "dump-hosted-game-server-state": "Дамп состояния игрового сервера",
     "edition": "Издание",
     "game-created-in-development-mode": "Игра в режиме разработки",
-    "filter-tests-by-name": "Filter tests by name",
+    "filter-tests-by-name": "Фильтр тестов по названию",
     "fail": "Провал",
     "meeples": "Миплы",
     "mode": "Режим",
@@ -471,7 +471,7 @@
       "deployed-by": "Разместил {player}",
       "moved-by": "Переместил {player}",
       "placed-by": "Выложил {player}",
-      "removed-with": "{source}, by {player}",
+      "removed-with": "{source}, игрок {player}",
       "title": {
         "moved": "Перемещение: {figure}",
         "placed": "Размещение: {figure}",

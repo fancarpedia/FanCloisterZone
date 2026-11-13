@@ -115,7 +115,7 @@
     "dump-hosted-game-server-state": "Zrzuć Stan Serwera Hostowanych Gier",
     "edition": "Edycja",
     "game-created-in-development-mode": "Gra w trybie deweloperskim",
-    "filter-tests-by-name": "Filter tests by name",
+    "filter-tests-by-name": "Filtruj testy według nazwy",
     "fail": "Niepowodzenie",
     "meeples": "Podwładni",
     "mode": "Tryb",
@@ -471,7 +471,7 @@
       "deployed-by": "Umieścił gracz {player}",
       "moved-by": "Przesunął gracz {player}",
       "placed-by": "Położył gracz {player}",
-      "removed-with": "{source}, by {player}",
+      "removed-with": "{source}, gracz {player}",
       "title": {
         "moved": "Przesunięcie: {figure}",
         "placed": "Umieszczenie: {figure}",

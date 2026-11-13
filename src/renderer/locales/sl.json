@@ -115,7 +115,7 @@
     "dump-hosted-game-server-state": "Izpiši stanje gostovanega strežnika igre",
     "edition": "Izdaja",
     "game-created-in-development-mode": "Igra v načinu razvoja",
-    "filter-tests-by-name": "Filter tests by name",
+    "filter-tests-by-name": "Filtriraj teste po imenu",
     "fail": "Neuspeh",
     "meeples": "Meepli",
     "mode": "Način",
@@ -471,7 +471,7 @@
       "deployed-by": "Postavil {player}",
       "moved-by": "Premaknil {player}",
       "placed-by": "Položil {player}",
-      "removed-with": "{source}, by {player}",
+      "removed-with": "{source}, igralec {player}",
       "title": {
         "moved": "Premik: {figure}",
         "placed": "Postavitev: {figure}",

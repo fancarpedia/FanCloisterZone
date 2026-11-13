@@ -115,7 +115,7 @@
     "dump-hosted-game-server-state": "Spelserver-toestand dumpen",
     "edition": "Editie",
     "game-created-in-development-mode": "Spel in ontwikkelstand",
-    "filter-tests-by-name": "Filter tests by name",
+    "filter-tests-by-name": "Tests filteren op naam",
     "fail": "Mislukken",
     "meeples": "Meeples",
     "mode": "Modus",
@@ -471,7 +471,7 @@
       "deployed-by": "Geplaatst door {player}",
       "moved-by": "Verplaatst door {player}",
       "placed-by": "Gelegd door {player}",
-      "removed-with": "{source}, by {player}",
+      "removed-with": "{source}, door {player}",
       "title": {
         "moved": "{figure} verplaatst",
         "placed": "{figure} geplaatst",

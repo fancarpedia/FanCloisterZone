@@ -115,7 +115,7 @@
     "dump-hosted-game-server-state": "Golește starea serverului partidei găzduite",
     "edition": "Ediție",
     "game-created-in-development-mode": "Partidă în modul de dezvoltare",
-    "filter-tests-by-name": "Filter tests by name",
+    "filter-tests-by-name": "Filtrează testele după nume",
     "fail": "Eșec",
     "meeples": "Meepleși",
     "mode": "Mod",
@@ -471,7 +471,7 @@
       "deployed-by": "Plasat de {player}",
       "moved-by": "Mutat de {player}",
       "placed-by": "Pus de {player}",
-      "removed-with": "{source}, by {player}",
+      "removed-with": "{source}, de {player}",
       "title": {
         "moved": "Mutare: {figure}",
         "placed": "Plasare: {figure}",

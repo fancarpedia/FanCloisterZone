@@ -115,7 +115,7 @@
     "dump-hosted-game-server-state": "Volcar Estado del Servidor de Juegos Alojado",
     "edition": "Edición",
     "game-created-in-development-mode": "Partida en modo Desarrollo",
-    "filter-tests-by-name": "Filter tests by name",
+    "filter-tests-by-name": "Filtrar pruebas por nombre",
     "fail": "Fallo",
     "meeples": "Seguidores",
     "mode": "Modo",
@@ -471,7 +471,7 @@
       "deployed-by": "Colocado por {player}",
       "moved-by": "Movido por {player}",
       "placed-by": "Puesto por {player}",
-      "removed-with": "{source}, by {player}",
+      "removed-with": "{source}, por {player}",
       "title": {
         "moved": "Movimiento: {figure}",
         "placed": "Colocación: {figure}",

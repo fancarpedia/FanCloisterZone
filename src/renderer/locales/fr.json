@@ -115,7 +115,7 @@
     "dump-hosted-game-server-state": "Vider l’état du serveur de parties hébergées",
     "edition": "Édition",
     "game-created-in-development-mode": "Partie en mode développement",
-    "filter-tests-by-name": "Filter tests by name",
+    "filter-tests-by-name": "Filtrer les tests par nom",
     "fail": "Échec",
     "meeples": "Meeples",
     "mode": "Mode",
@@ -471,7 +471,7 @@
       "deployed-by": "Posé par {player}",
       "moved-by": "Déplacé par {player}",
       "placed-by": "Placé par {player}",
-      "removed-with": "{source}, by {player}",
+      "removed-with": "{source}, par {player}",
       "title": {
         "moved": "Déplacement : {figure}",
         "placed": "Pose : {figure}",

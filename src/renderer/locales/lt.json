@@ -115,7 +115,7 @@
     "dump-hosted-game-server-state": "Išmesti pradįto žaidimų serverio būseną",
     "edition": "Leidimas",
     "game-created-in-development-mode": "Žaidimas kūrimo režimu",
-    "filter-tests-by-name": "Filter tests by name",
+    "filter-tests-by-name": "Filtruoti testus pagal pavadinimą",
     "fail": "Nesekmė",
     "meeples": "Miplai",
     "mode": "Režimas",
@@ -471,7 +471,7 @@
       "deployed-by": "Padėjo {player}",
       "moved-by": "Perkėlė {player}",
       "placed-by": "Padėjo {player}",
-      "removed-with": "{source}, by {player}",
+      "removed-with": "{source}, žaidėjas {player}",
       "title": {
         "moved": "Perkėlimas: {figure}",
         "placed": "Padėjimas: {figure}",

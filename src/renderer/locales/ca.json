@@ -115,7 +115,7 @@
     "dump-hosted-game-server-state": "Bolca l'estat del servidor de la partida de l'amfitrió",
     "edition": "Edició",
     "game-created-in-development-mode": "Joc en mode de desenvolupament",
-    "filter-tests-by-name": "Filter tests by name",
+    "filter-tests-by-name": "Filtra les proves pel nom",
     "fail": "Error",
     "meeples": "Seguidors",
     "mode": "Mode",
@@ -471,7 +471,7 @@
       "deployed-by": "Col·locat per {player}",
       "moved-by": "Mogut per {player}",
       "placed-by": "Posat per {player}",
-      "removed-with": "{source}, by {player}",
+      "removed-with": "{source}, per {player}",
       "title": {
         "moved": "Moviment: {figure}",
         "placed": "Col·locació: {figure}",

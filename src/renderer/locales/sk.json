@@ -115,7 +115,7 @@
     "dump-hosted-game-server-state": "Dump Stavu herného servera",
     "edition": "Edícia",
     "game-created-in-development-mode": "Hra je v Development móde",
-    "filter-tests-by-name": "Filter tests by name",
+    "filter-tests-by-name": "Filtrovať testy podľa názvu",
     "fail": "Chyba",
     "meeples": "Figúrky",
     "mode": "Mód",
@@ -471,7 +471,7 @@
       "deployed-by": "Umiestnil hráč {player}",
       "moved-by": "Presunul hráč {player}",
       "placed-by": "Položil hráč {player}",
-      "removed-with": "{source}, by {player}",
+      "removed-with": "{source}, hráč {player}",
       "title": {
         "moved": "Presun: {figure}",
         "placed": "Umiestnenie: {figure}",

@@ -115,7 +115,7 @@
     "dump-hosted-game-server-state": "Вивантажити стан сервера гри",
     "edition": "Видання",
     "game-created-in-development-mode": "Гра в режимі розробки",
-    "filter-tests-by-name": "Filter tests by name",
+    "filter-tests-by-name": "Фільтр тестів за назвою",
     "fail": "Невдача",
     "meeples": "Підданці",
     "mode": "Режим",
@@ -471,7 +471,7 @@
       "deployed-by": "Розмістив {player}",
       "moved-by": "Перемістив {player}",
       "placed-by": "Виклав {player}",
-      "removed-with": "{source}, by {player}",
+      "removed-with": "{source}, гравець {player}",
       "title": {
         "moved": "Переміщення: {figure}",
         "placed": "Розміщення: {figure}",
