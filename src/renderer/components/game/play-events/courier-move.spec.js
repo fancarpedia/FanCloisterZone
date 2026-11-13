@@ -210,3 +210,27 @@ describe('placement panel token colour', () => {
     expect(read('../PlacementPanel.vue')).toContain(rule)
   })
 })
+
+describe('a meeple removed with the Princess (or another return source)', () => {
+  const returned = read('MeepleReturnedEvent.vue')
+  const panel = read('../PlacementPanel.vue')
+
+  it('fills the placement panel with the source, the meeple and the player who used it', () => {
+    expect(returned).toContain('} else if (this.ev.source) {')
+    expect(returned).toContain('actor: this.player,')
+    expect(returned).toContain('source: this.ev.source')
+    expect(panel).toContain("this.$t('game.placement.removed-with', { source: what, player: this.playerName })")
+    expect(panel).toContain("PRINCESS: 'game.feature.princess',")
+    expect(panel).toContain("PRINCESS: require('~/assets/features/C1/princess.png'),")
+    expect(panel).toContain('<img v-else-if="causeVisual.image" :src="causeVisual.image" class="source-image">')
+  })
+
+  it('names the player who used it, not the meeple owner', () => {
+    expect(panel).toContain('const idx = this.expr.actor !== undefined && this.expr.actor !== null ? this.expr.actor : this.expr.player')
+  })
+
+  it('draws the removed meeple back on the board at the spot it left', () => {
+    expect(returned).toContain("layer: 'EventMeeplesLayer',")
+    expect(returned).toContain("this.$store.dispatch('board/hideLayerDebounced', { layer: 'EventMeeplesLayer' })")
+  })
+})

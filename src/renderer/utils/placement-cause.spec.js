@@ -103,3 +103,9 @@ describe('placed tile and castle wording', () => {
     expect(get('game.placement.title.castle-created')).toBe('Small city converted to a castle')
   })
 })
+
+describe('removed-with wording', () => {
+  it('names the source and the player', () => {
+    expect(vm.$t('game.placement.removed-with', { source: 'Princess', player: 'Betty' })).toBe('Princess, by Betty')
+  })
+})

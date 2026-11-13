@@ -2,7 +2,7 @@
   "@author": "Stepukiss",
   "@jcz-version": "5.12.1",
   "@fcz-version": "7.1.0",
-  "@version": "0.12.6-ai",
+  "@version": "0.12.7-ai",
   "about": {
     "author": "Autorius",
     "configuration-file": "Nustatymų aplankas",
@@ -471,6 +471,7 @@
       "deployed-by": "Padėjo {player}",
       "moved-by": "Perkėlė {player}",
       "placed-by": "Padėjo {player}",
+      "removed-with": "{source}, by {player}",
       "title": {
         "moved": "Perkėlimas: {figure}",
         "placed": "Padėjimas: {figure}",

@@ -2,7 +2,7 @@
   "@author": "TileLord | Erol",
   "@jcz-version": "5.12.1",
   "@fcz-version": "7.1.0",
-  "@version": "0.12.6-ai",
+  "@version": "0.12.7-ai",
   "about": {
     "author": "Avtor",
     "configuration-file": "Konfiguracijska datoteka",
@@ -471,6 +471,7 @@
       "deployed-by": "Postavil {player}",
       "moved-by": "Premaknil {player}",
       "placed-by": "Položil {player}",
+      "removed-with": "{source}, by {player}",
       "title": {
         "moved": "Premik: {figure}",
         "placed": "Postavitev: {figure}",

@@ -2,7 +2,7 @@
   "@author": "farin & Scott",
   "@jcz-version": "5.12.1",
   "@fcz-version": "7.1.0",
-  "@version": "0.12.6",
+  "@version": "0.12.7",
   "about": {
     "author": "Author",
     "configuration-file": "Configuration file",
@@ -471,6 +471,7 @@
       "deployed-by": "Deployed by {player}",
       "moved-by": "Moved by {player}",
       "placed-by": "Placed by {player}",
+      "removed-with": "{source}, by {player}",
       "title": {
         "moved": "{figure} moved",
         "placed": "{figure} placed",

@@ -2,7 +2,7 @@
   "@author": "J0anJosep",
   "@jcz-version": "5.12.1",
   "@fcz-version": "7.1.0",
-  "@version": "0.12.6-ai",
+  "@version": "0.12.7-ai",
   "about": {
     "author": "Autor",
     "configuration-file": "Fitxer de configuració",
@@ -471,6 +471,7 @@
       "deployed-by": "Col·locat per {player}",
       "moved-by": "Mogut per {player}",
       "placed-by": "Posat per {player}",
+      "removed-with": "{source}, by {player}",
       "title": {
         "moved": "Moviment: {figure}",
         "placed": "Col·locació: {figure}",

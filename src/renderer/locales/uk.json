@@ -2,7 +2,7 @@
   "@author": "ai",
   "@jcz-version": "5.12.1",
   "@fcz-version": "7.1.0",
-  "@version": "0.12.6-ai",
+  "@version": "0.12.7-ai",
   "about": {
     "author": "Автор",
     "configuration-file": "Файл конфігурації",
@@ -471,6 +471,7 @@
       "deployed-by": "Розмістив {player}",
       "moved-by": "Перемістив {player}",
       "placed-by": "Виклав {player}",
+      "removed-with": "{source}, by {player}",
       "title": {
         "moved": "Переміщення: {figure}",
         "placed": "Розміщення: {figure}",

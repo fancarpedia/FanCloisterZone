@@ -14,6 +14,7 @@
             :rotation="causeVisual.tile.rotation"
             :size="tileSize"
           />
+          <img v-else-if="causeVisual.image" :src="causeVisual.image" class="source-image">
           <Meeple v-else-if="causeVisual.meeple" :type="causeVisual.meeple" />
           <NeutralFigure v-else-if="causeVisual.figure" :figure="causeVisual.figure" />
         </div>
@@ -58,6 +59,26 @@ import { causeTitle } from '@/utils/placement-cause'
 const figureKind = id => (id || '').split('.')[0]
 const SYMBOL = { bigtop: 'big-top' }
 const ELEMENT_KEY = { bigtop: 'big-top' }
+
+// a meeple's return source (engine ReturnMeepleSource) → its name, and its artwork where the return
+// choice (ReturnMeepleItem) draws one
+const SOURCE_KEYS = {
+  PRINCESS: 'game.feature.princess',
+  ROBBERS_SON: 'game.feature.robbers-son',
+  FESTIVAL: 'game.feature.festival',
+  SIEGE_ESCAPE: 'game.feature.escape',
+  CORN_CIRCLE: 'game.feature.crop-circle',
+  ABBOT_RETURN: 'game.element.abbot',
+  MONASTERY_SHRINE_CHALLENGE: 'game.feature.shrine-challenge',
+  BARN_PLACEMENT: 'game.element.barn',
+  BARN_FIELD_JOIN: 'game.element.barn',
+  TRAP: 'game.cause.rule.trap'
+}
+const SOURCE_IMAGES = {
+  PRINCESS: require('~/assets/features/C1/princess.png'),
+  ROBBERS_SON: require('~/assets/features/C1/robbers-son.png'),
+  FESTIVAL: require('~/assets/features/C1/festival.png')
+}
 
 export default {
   components: {
@@ -115,6 +136,14 @@ export default {
 
     subtitle () {
       if (this.expr.cause) return causeTitle(this.expr.cause, this)
+      // removed through a player's special figure / tile (Princess, Robber's Son, Festival, …):
+      // what removed it, and who used it
+      if (this.expr.source) {
+        const what = this.sourceName
+        return this.playerName
+          ? this.$t('game.placement.removed-with', { source: what, player: this.playerName })
+          : what
+      }
       // the player's own choice, not a cause: who deployed / moved it
       if (this.expr.byPlayer && this.playerName) {
         const key = this.expr.byKey ||
@@ -124,10 +153,19 @@ export default {
       return ''
     },
 
+    // who did it: `actor` when it differs from the figure's owner (the Princess removes an opponent's
+    // knight), else the owner
     playerName () {
       const players = (this.$store.state.game && this.$store.state.game.players) || []
-      const p = players[this.expr.player]
+      const idx = this.expr.actor !== undefined && this.expr.actor !== null ? this.expr.actor : this.expr.player
+      const p = players[idx]
       return p ? p.name : ''
+    },
+
+    // a ReturnMeepleSource (PRINCESS, ROBBERS_SON, …) by its game name
+    sourceName () {
+      const key = SOURCE_KEYS[this.expr.source]
+      return key && this.$te(key) ? this.$t(key) : this.expr.source
     },
 
     // a neutral figure moved to the meeple whose deployment caused it (the courier): that meeple,
@@ -140,6 +178,10 @@ export default {
 
     // the cause drawn next to the figure, when it is something on the board
     causeVisual () {
+      // a return source drawn as its tile artwork (Princess, Robber's Son, Festival)
+      if (!this.expr.cause && this.expr.source && SOURCE_IMAGES[this.expr.source]) {
+        return { image: SOURCE_IMAGES[this.expr.source] }
+      }
       const c = this.expr.cause
       if (!c) return null
       if (c.type === 'tile-placed') {
@@ -207,6 +249,9 @@ svg.meeple, svg.neutral
 .token-image:not(.tunnel):not(.token-BRIDGE)
   +theme using ($theme)
     fill: map-get($theme, 'text-color')
+
+.source-image
+  height: 54px
 
 // the figure next to the meeple, slightly smaller and overlapping its side, as on the board
 .beside-meeple

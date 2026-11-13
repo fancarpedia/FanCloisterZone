@@ -23,7 +23,10 @@ export default {
   },
 
   props: {
-    ev: { type: Object, required: true }
+    ev: { type: Object, required: true },
+    // the player whose turn it was — who used the Princess / Robber's Son / Festival …
+    // (ev.player is the owner of the returned meeple)
+    player: { type: Number, default: null }
   },
 
   computed: {
@@ -48,6 +51,16 @@ export default {
           player: this.ev.player,
           cause: this.ev.cause
         })
+      } else if (this.ev.source) {
+        // removed through a special figure / tile (Princess, Robber's Son, Festival, …): what
+        // removed which meeple, and which player used it
+        this.$store.commit('board/placementPanel', {
+          kind: 'removed',
+          meeple: this.ev.meeple,
+          player: this.ev.player,
+          actor: this.player,
+          source: this.ev.source
+        })
       } else {
         this.$store.commit('board/returnedMeeplePanel', this.ev)
       }
@@ -60,10 +73,28 @@ export default {
           }, this.ev.cause)
         }
       })
+      // the removed meeple drawn back at the spot it left, as a score event shows returned meeples
+      const from = this.ev.from && (this.ev.from.featurePointer || this.ev.from)
+      if (from && from.position && from.location) {
+        this.$store.dispatch('board/showLayer', {
+          layer: 'EventMeeplesLayer',
+          props: {
+            meeples: [{
+              type: this.ev.meeple,
+              player: this.ev.player,
+              position: from.position,
+              feature: from.feature,
+              location: from.location
+            }],
+            winners: []
+          }
+        })
+      }
     },
 
     onMouseLeave () {
       this.$store.dispatch('board/hideLayerDebounced', { layer: 'EmphasizeLayer' })
+      this.$store.dispatch('board/hideLayerDebounced', { layer: 'EventMeeplesLayer' })
       this.$store.commit('board/returnedMeeplePanel', null)
       this.$store.commit('board/placementPanel', null)
     }

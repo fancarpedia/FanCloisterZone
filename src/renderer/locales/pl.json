@@ -2,7 +2,7 @@
   "@author": "Snearone",
   "@jcz-version": "5.12.1",
   "@fcz-version": "7.1.0",
-  "@version": "0.12.6-ai",
+  "@version": "0.12.7-ai",
   "about": {
     "author": "Autor",
     "configuration-file": "Plik konfiguracyjny",
@@ -471,6 +471,7 @@
       "deployed-by": "Umieścił gracz {player}",
       "moved-by": "Przesunął gracz {player}",
       "placed-by": "Położył gracz {player}",
+      "removed-with": "{source}, by {player}",
       "title": {
         "moved": "Przesunięcie: {figure}",
         "placed": "Umieszczenie: {figure}",

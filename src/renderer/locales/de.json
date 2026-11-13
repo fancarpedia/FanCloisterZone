@@ -2,7 +2,7 @@
   "@author": "Challa007 & Bombur",
   "@jcz-version": "5.12.1",
   "@fcz-version": "7.1.0",
-  "@version": "0.12.6-ai",
+  "@version": "0.12.7-ai",
   "about": {
     "author": "Autor",
     "configuration-file": "Konfigurationsdatei",
@@ -471,6 +471,7 @@
       "deployed-by": "Eingesetzt von {player}",
       "moved-by": "Versetzt von {player}",
       "placed-by": "Gelegt von {player}",
+      "removed-with": "{source}, by {player}",
       "title": {
         "moved": "{figure} versetzt",
         "placed": "{figure} eingesetzt",

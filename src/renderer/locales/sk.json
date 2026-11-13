@@ -2,7 +2,7 @@
   "@author": "Bumsakalaka",
   "@jcz-version": "5.12.1",
   "@fcz-version": "7.1.0",
-  "@version": "0.12.6-ai",
+  "@version": "0.12.7-ai",
   "about": {
     "author": "Autor",
     "configuration-file": "Konfiguračný súbor",
@@ -471,6 +471,7 @@
       "deployed-by": "Umiestnil hráč {player}",
       "moved-by": "Presunul hráč {player}",
       "placed-by": "Položil hráč {player}",
+      "removed-with": "{source}, by {player}",
       "title": {
         "moved": "Presun: {figure}",
         "placed": "Umiestnenie: {figure}",

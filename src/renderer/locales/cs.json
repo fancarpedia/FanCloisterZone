@@ -2,7 +2,7 @@
   "@author": "Peťul",
   "@jcz-version": "5.12.1",
   "@fcz-version": "7.1.0",
-  "@version": "0.12.6-ai",
+  "@version": "0.12.7-ai",
   "about": {
     "author": "Autor",
     "configuration-file": "Konfigurační soubor",
@@ -471,6 +471,7 @@
       "deployed-by": "Umístil hráč {player}",
       "moved-by": "Přesunul hráč {player}",
       "placed-by": "Položil hráč {player}",
+      "removed-with": "{source}, by {player}",
       "title": {
         "moved": "Přesun: {figure}",
         "placed": "Umístění: {figure}",

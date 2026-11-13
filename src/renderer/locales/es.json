@@ -2,7 +2,7 @@
   "@author": "Carlium & Meepledrone",
   "@jcz-version": "5.12.1",
   "@fcz-version": "7.1.0",
-  "@version": "0.12.6-ai",
+  "@version": "0.12.7-ai",
   "about": {
     "author": "Autor",
     "configuration-file": "Archivo de configuración",
@@ -471,6 +471,7 @@
       "deployed-by": "Colocado por {player}",
       "moved-by": "Movido por {player}",
       "placed-by": "Puesto por {player}",
+      "removed-with": "{source}, by {player}",
       "title": {
         "moved": "Movimiento: {figure}",
         "placed": "Colocación: {figure}",
