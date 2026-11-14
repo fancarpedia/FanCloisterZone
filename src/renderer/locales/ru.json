@@ -2,7 +2,7 @@
   "@author": "pOison & Dextea & SonicDC",
   "@jcz-version": "5.12.1",
   "@fcz-version": "7.1.0",
-  "@version": "0.12.11-ai",
+  "@version": "0.12.12-ai",
   "about": {
     "author": "Автор",
     "configuration-file": "Файл конфигурации",
@@ -529,6 +529,12 @@
     "tiles-progress-move": "Tiles placed"
   },
   "game-setup": {
+    "ai": {
+      "not-available": "ИИ недоступен",
+      "not-available-hint": "Игроки ИИ недоступны для этой настройки игры",
+      "not-supported": "ИИ не играет",
+      "supported": "ИИ может это играть"
+    },
     "additional-elements": "Дополнительные элементы",
     "altered-gameplay": "Измененный геймплей",
     "altered-scoring": "Измененные очки",
@@ -539,6 +545,8 @@
       "tokens": "Жетоны"
     },
     "create": {
+      "assign": "назначить",
+      "ai-player": "ИИ игрок",
       "click-to-assign": "нажмите, чтобы назначить",
       "game-full": "Игра заполнена",
       "kick-player": "Выгнать игрока",
@@ -548,6 +556,7 @@
       "local-player": "локальный игрок",
       "name": "Имя",
       "open-slot": "открытое место",
+      "release-slot": "Освободить место",
       "remote-ai-player": "удалённый ИИ игрок",
       "remote-player": "удаленный игрок",
       "rename-player": "Переименовать игрока",
@@ -579,6 +588,7 @@
       "max-players-no-limit": "Без ограничения",
       "name": "Имя",
       "no-ai-in-game": "Игра без ИИ",
+      "no-human-player": "Нет человека в игре",
       "no-player-in-game": "Нет игрока в игре",
       "options": "Опции",
       "public-game": "Публичная игра",

@@ -2,7 +2,7 @@
   "@author": "Snearone",
   "@jcz-version": "5.12.1",
   "@fcz-version": "7.1.0",
-  "@version": "0.12.11-ai",
+  "@version": "0.12.12-ai",
   "about": {
     "author": "Autor",
     "configuration-file": "Plik konfiguracyjny",
@@ -529,6 +529,12 @@
     "tiles-progress-move": "Tiles placed"
   },
   "game-setup": {
+    "ai": {
+      "not-available": "AI niedostępne",
+      "not-available-hint": "Gracze AI nie są dostępni w tej konfiguracji gry",
+      "not-supported": "AI nie gra",
+      "supported": "AI może w to grać"
+    },
     "additional-elements": "Elementy dodatkowe",
     "altered-gameplay": "Zmienione zasady",
     "altered-scoring": "Zmieniona punktacja",
@@ -539,6 +545,8 @@
       "tokens": "Żetony"
     },
     "create": {
+      "assign": "przydziel",
+      "ai-player": "Gracz AI",
       "click-to-assign": "kliknij, aby przydzielić",
       "game-full": "Gra jest pełna",
       "kick-player": "Wyrzuć gracza",
@@ -548,6 +556,7 @@
       "local-player": "gracz lokalny",
       "name": "Nazwa",
       "open-slot": "Wolne miejsce",
+      "release-slot": "Zwolnij miejsce",
       "remote-ai-player": "zdalny gracz AI",
       "remote-player": "gracz zdalny",
       "rename-player": "Zmień nazwę",
@@ -579,6 +588,7 @@
       "max-players-no-limit": "Bez limitu",
       "name": "Nazwa",
       "no-ai-in-game": "Brak AI w grze",
+      "no-human-player": "Brak ludzkich graczy",
       "no-player-in-game": "Brak graczy",
       "options": "Opcje",
       "public-game": "Gra publiczna",

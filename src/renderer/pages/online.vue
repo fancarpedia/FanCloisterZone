@@ -57,10 +57,6 @@
             {{ $t('index.local.new-game') }}
           </v-btn>
 
-          <v-btn large color="secondary" :disabled="!engine || !engine.ok" @click="newLocalGameAI()">
-            {{ $t('index.local.new-game-against-ai') }}
-          </v-btn>
-
           <v-btn large color="secondary" :disabled="!engine || !engine.ok" @click="loadLocalGame()">
             {{ $t('index.local.open-game') }}
           </v-btn>
@@ -144,6 +140,8 @@
               >
                 <div class="meeple">
                   <Meeple type="SmallFollower" />
+                  <!-- an AI seat (played by its owner's client): a robot head on the meeple -->
+                  <v-icon v-if="s.ai" class="ai-head">fa-solid fa-robot</v-icon>
                 </div>
                 <div class="name">
                   {{ s.name }}
@@ -224,6 +222,8 @@
               >
                 <div class="meeple">
                   <Meeple type="SmallFollower" />
+                  <!-- an AI seat (played by its owner's client): a robot head on the meeple -->
+                  <v-icon v-if="s.ai" class="ai-head">fa-solid fa-robot</v-icon>
                 </div>
                 <div class="name">
                   {{ s.name }}
@@ -721,12 +721,6 @@ export default {
       this.$router.push('/game-setup')
     },
 
-    newLocalGameAI () {
-      if (this.$windows.openGame({ kind: 'new-local', payload: { ai: true } })) return
-      this.$store.dispatch('gameSetup/newGameAI')
-      this.$router.push('/game-setup')
-    },
-
     async loadLocalGame () {
       const file = await this.$store.dispatch('game/chooseSaveFile')
       if (!file) return
@@ -1023,6 +1017,20 @@ h2
       width: 36px
       height: 36px
       display: block
+
+    .meeple
+      position: relative
+
+    // AI seat: a robot head over the meeple's head (its top centre)
+    .ai-head
+      position: absolute
+      top: 1px
+      left: 50%
+      transform: translateX(-50%)
+      font-size: 12px
+      color: white
+      filter: drop-shadow(0 0 1px black) drop-shadow(0 0 1px black)
+      pointer-events: none
 
     &.local
       font-weight: bolder

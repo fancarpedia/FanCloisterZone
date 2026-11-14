@@ -2,7 +2,7 @@
   "@author": "Carlium & Meepledrone",
   "@jcz-version": "5.12.1",
   "@fcz-version": "7.1.0",
-  "@version": "0.12.11-ai",
+  "@version": "0.12.12-ai",
   "about": {
     "author": "Autor",
     "configuration-file": "Archivo de configuración",
@@ -529,6 +529,12 @@
     "tiles-progress-move": "Tiles placed"
   },
   "game-setup": {
+    "ai": {
+      "not-available": "IA no disponible",
+      "not-available-hint": "Los jugadores IA no están disponibles para esta configuración de partida",
+      "not-supported": "La IA no juega",
+      "supported": "La IA puede jugar esto"
+    },
     "additional-elements": "Elementos adicionales",
     "altered-gameplay": "Modo de juego alterado",
     "altered-scoring": "Puntuación alterada",
@@ -539,6 +545,8 @@
       "tokens": "Fichas"
     },
     "create": {
+      "assign": "asignar",
+      "ai-player": "Jugador IA",
       "click-to-assign": "clic para asignar",
       "game-full": "Partida completa",
       "kick-player": "Echar jugador",
@@ -548,6 +556,7 @@
       "local-player": "jugador local",
       "name": "Nombre",
       "open-slot": "puesto disponible",
+      "release-slot": "Liberar puesto",
       "remote-ai-player": "jugador IA remoto",
       "remote-player": "jugador remoto",
       "rename-player": "Renombrar jugador",
@@ -579,6 +588,7 @@
       "max-players-no-limit": "Sin límite",
       "name": "Nombre",
       "no-ai-in-game": "Sin IA en partida",
+      "no-human-player": "Ningún humano en la partida",
       "no-player-in-game": "Ningún jugador en la partida",
       "options": "Opciones",
       "public-game": "Partida pública",

@@ -2,7 +2,7 @@
   "@author": "Kiap1969 & Sinscerly",
   "@jcz-version": "5.12.1",
   "@fcz-version": "7.1.0",
-  "@version": "0.12.11-ai",
+  "@version": "0.12.12-ai",
   "about": {
     "author": "Auteur",
     "configuration-file": "Configuratiebestand",
@@ -529,6 +529,12 @@
     "tiles-progress-move": "Tiles placed"
   },
   "game-setup": {
+    "ai": {
+      "not-available": "AI niet beschikbaar",
+      "not-available-hint": "AI-spelers zijn niet beschikbaar voor deze spelinstelling",
+      "not-supported": "De AI speelt niet",
+      "supported": "De AI kan dit spelen"
+    },
     "additional-elements": "Aanvullende elementen",
     "altered-gameplay": "Afwijkend spelverloop",
     "altered-scoring": "Afwijkende puntentelling",
@@ -539,6 +545,8 @@
       "tokens": "Fiches"
     },
     "create": {
+      "assign": "toewijzen",
+      "ai-player": "AI-speler",
       "click-to-assign": "klik om toe te wijzen",
       "game-full": "Spel is vol",
       "kick-player": "Speler schoppen",
@@ -548,6 +556,7 @@
       "local-player": "lokale speler",
       "name": "Naam",
       "open-slot": "open plaats",
+      "release-slot": "Plaats vrijgeven",
       "remote-ai-player": "externe ai-speler",
       "remote-player": "externe speler",
       "rename-player": "Speler hernoemen",
@@ -579,6 +588,7 @@
       "max-players-no-limit": "Geen limiet",
       "name": "Naam",
       "no-ai-in-game": "Geen ai in het spel",
+      "no-human-player": "Er zijn geen menselijke spelers",
       "no-player-in-game": "Er zijn geen spelers",
       "options": "Opties",
       "public-game": "Openbaar spel",

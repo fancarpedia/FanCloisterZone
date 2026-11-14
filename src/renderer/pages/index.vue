@@ -75,10 +75,6 @@
           {{ $t('index.local.new-game') }}
         </v-btn>
 
-        <v-btn v-if="settings.devMode === true" large color="secondary" @click="newGameAI()">
-          {{ $t('index.local.new-game-against-ai') }}
-        </v-btn>
-
         <!-- <v-btn large color="secondary" :disabled="!engine || !engine.ok" @click="joinGame()">
           {{ $t('button.join-game') }}
         </v-btn> -->
@@ -192,12 +188,6 @@ export default {
     newGame (tab) {
       if (this.$windows.openGame({ kind: 'new-local', payload: { tab } })) return
       this.$store.dispatch('gameSetup/newGame')
-      this.$router.push('/game-setup' + (tab !== undefined ? `?tab=${tab}` : ''))
-    },
-
-    newGameAI (tab) {
-      if (this.$windows.openGame({ kind: 'new-local', payload: { ai: true, tab } })) return
-      this.$store.dispatch('gameSetup/newGameAI')
       this.$router.push('/game-setup' + (tab !== undefined ? `?tab=${tab}` : ''))
     },
 

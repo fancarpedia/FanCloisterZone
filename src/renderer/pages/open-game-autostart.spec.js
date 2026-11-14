@@ -24,7 +24,8 @@ describe('open-game auto start', () => {
     expect(src).toContain(':disabled="!canStart"')
     const can = computed('canStart')
     expect(can).toContain('if (!this.slots) return false')
-    expect(can).toContain('this.ai ? (this.slotsReservedByAI && this.slotsReserved) : this.slotsAssigned')
+    // seats assigned, and at least one human player (open-game-human.spec.js)
+    expect(can).toContain('return this.slotsAssigned && this.slotsReserved')
   })
 
   it('starts once, as soon as the condition holds', () => {

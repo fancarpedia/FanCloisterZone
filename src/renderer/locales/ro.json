@@ -2,7 +2,7 @@
   "@author": "Paloi Sciurala",
   "@jcz-version": "5.12.1",
   "@fcz-version": "7.1.0",
-  "@version": "0.12.11-ai",
+  "@version": "0.12.12",
   "about": {
     "author": "Autor",
     "configuration-file": "Fișier de configurație",
@@ -84,7 +84,7 @@
     "chat": "Chat",
     "close": "Închide chatul",
     "empty": "Niciun mesaj încă — spune „Bună!”",
-    "game-chat": "Chatul jocului",
+    "game-chat": "Chatul partidei",
     "global-chat": "Chatul global",
     "new-message": "Mesaj nou",
     "open": "Deschide chatul",
@@ -529,6 +529,12 @@
     "tiles-progress-move": "Tiles placed"
   },
   "game-setup": {
+    "ai": {
+      "not-available": "IA nu este disponibilă",
+      "not-available-hint": "Jucătorii cu IA nu sunt disponibili pentru configurația partidei",
+      "not-supported": "IA nu joacă",
+      "supported": "IA poate juca asta"
+    },
     "additional-elements": "Elemente adiționale",
     "altered-gameplay": "Desfășurare a jocului alterată",
     "altered-scoring": "Evaluare alterată",
@@ -539,6 +545,8 @@
       "tokens": "Jetoane"
     },
     "create": {
+      "assign": "alocă",
+      "ai-player": "Jucător cu IA",
       "click-to-assign": "apasă pentru a atribui",
       "game-full": "Partidă plină",
       "kick-player": "Dă jucătorul afară",
@@ -548,6 +556,7 @@
       "local-player": "jucător local",
       "name": "Nume",
       "open-slot": "deschide locul",
+      "release-slot": "Eliberează locașul",
       "remote-ai-player": "jucător de la distanță cu IA",
       "remote-player": "jucător de la distanță",
       "rename-player": "Redenumește jucătorul",
@@ -579,6 +588,7 @@
       "max-players-no-limit": "Fără limită",
       "name": "Nume",
       "no-ai-in-game": "Nicio IA în partidă",
+      "no-human-player": "Nu este niciun om în joc",
       "no-player-in-game": "Niciun jucător în partidă",
       "options": "Opțiuni",
       "public-game": "Partidă publică",

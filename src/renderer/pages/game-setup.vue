@@ -18,6 +18,8 @@
       </v-tabs>
 
       <HeaderMessage v-if="tab > 1" :sets="sets" />
+      <!-- something the AI does not play is chosen → no AI players in this game -->
+      <AiSupportBadge />
       <!-- wizard: Next steps variant → tiles → components → rules → game flow; Create only on the last tab.
            In change mode there is no wizard — always Continue (user tweaks one thing on one tab). -->
       <HeaderGameButton
@@ -68,6 +70,7 @@ import FiguresTab from '@/components/game-setup/tabs/FiguresTab'
 import GameAnnotationsPanel from '@/components/dev/GameAnnotationsPanel'
 import GameSetupGrid from '@/components/game-setup/GameSetupGrid'
 import HeaderMessage from '@/components/game-setup/HeaderMessage'
+import AiSupportBadge from '@/components/game-setup/AiSupportBadge'
 import HeaderGameButton from '@/components/game-setup/HeaderGameButton'
 import HeaderLeaveGameButton from '@/components/game-setup/HeaderLeaveGameButton'
 import Meeple from '@/components/game/Meeple'
@@ -80,6 +83,7 @@ import VariantTab from '@/components/game-setup/tabs/VariantTab'
 
 export default {
   components: {
+    AiSupportBadge,
     BookmarksTab,
     FiguresTab,
     GameSetupGrid,

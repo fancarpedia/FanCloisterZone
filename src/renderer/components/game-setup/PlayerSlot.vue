@@ -26,7 +26,8 @@
       <v-icon v-if="slotState === 'local' && !readOnly">fas fa-pencil-alt</v-icon>
     </div>
     <div v-else class="name">
-      <template v-if="slotState === 'open' && !readOnly && !limitReached && !capReached">{{ $t('game-setup.create.click-to-assign') }}</template>
+      <!-- an empty seat I may take: the Assign / AI player buttons below say what to do -->
+      <template v-if="slotState === 'open' && !readOnly && !limitReached && !capReached" />
       <!-- max-players cap reached → this empty seat is locked -->
       <span v-else-if="slotState === 'open' && !readOnly && capReached" class="limit-reached">
         {{ $t('game-setup.create.game-full') }}
@@ -59,6 +60,57 @@
       </v-btn>
     </div>
 
+    <!-- An empty seat offers one choice, side by side at the bottom of the slot:
+         - Assign: take it as a human player (same as clicking the slot);
+         - AI player: take it for the AI. Greyed out, with the reason as a tooltip, when the setup
+           has something the AI does not play (utils/ai-support.js).
+         A taken seat cannot be switched between human and AI: my own (human or AI) shows Release
+         instead, which leaves it (same as clicking it). -->
+    <div
+      v-if="showReleaseButton"
+      class="kick-wrapper slot-actions"
+      @click.stop
+    >
+      <v-btn
+        class="kick-btn release-btn"
+        x-small
+        color="secondary"
+        @click.stop="toggle"
+      >
+        <v-icon x-small left>fas fa-sign-out-alt</v-icon>
+        {{ $t('game-setup.create.release-slot') }}
+      </v-btn>
+    </div>
+    <div
+      v-if="showAiButton"
+      class="kick-wrapper slot-actions"
+      @click.stop
+    >
+      <v-btn
+        class="kick-btn assign-btn"
+        x-small
+        color="secondary"
+        @click.stop="toggle"
+      >
+        <v-icon x-small left>fas fa-user</v-icon>
+        {{ $t('game-setup.create.assign') }}
+      </v-btn>
+      <!-- the wrapper only carries the tooltip (a disabled button shows none); laid out as a plain
+           flex box around the button, so both buttons sit and look exactly alike -->
+      <span class="ai-btn-tooltip" :title="canMakeAi ? null : $t('game-setup.ai.not-available-hint')">
+        <v-btn
+          class="kick-btn ai-btn"
+          x-small
+          color="secondary"
+          :disabled="!canMakeAi"
+          @click.stop="makeAi"
+        >
+          <v-icon x-small left>fa-solid fa-robot</v-icon>
+          {{ $t('game-setup.create.ai-player') }}
+        </v-btn>
+      </span>
+    </div>
+
     <v-dialog v-model="edit" max-width="600px">
       <v-card>
         <v-card-title>
@@ -81,6 +133,8 @@
 
 <script>
 import { mapState } from 'vuex'
+
+import { aiSupport } from '@/utils/ai-support'
 
 const MEEPLES_SVG = require('~/assets/meeples.svg')
 
@@ -110,11 +164,30 @@ export default {
 
   computed: {
     ...mapState({
-      setupAi: state => state.game.setup.ai,
       sessionId: state => state.networking.sessionId,
       randomized: state => state.game.setup.options.randomizeSeating,
       gameKey: state => state.game.key
     }),
+
+    // Release: on my own taken seat, human or AI
+    showReleaseButton () {
+      return !this.readOnly && (this.slotState === 'local' || this.slotState === 'localai')
+    },
+
+    // the Assign / AI player choice: only on an empty seat I may take
+    showAiButton () {
+      if (this.readOnly) return false
+      return this.slotState === 'open' && !this.limitReached && !this.capReached
+    },
+
+    // ...and it works only when the AI plays everything in this game's setup
+    aiSupported () {
+      return aiSupport(this.$store.state.game.setup, this.$tiles).ok
+    },
+
+    canMakeAi () {
+      return this.showAiButton && this.aiSupported
+    },
 
     slotState () {
       if (this.owner === this.sessionId) {
@@ -131,20 +204,29 @@ export default {
   },
 
   methods: {
+    // Clicking the slot: an empty one is taken (a human seat), one of mine — human or AI — is
+    // left. Taking an empty seat for the AI is the separate "AI player" button (makeAi); a taken
+    // seat is never switched between human and AI.
     toggle () {
       // read-only (e.g. a rematch, or viewing another's game) → slots are locked; a player
       // must not be able to release/take their own seat by clicking it
       if (this.readOnly) return
       const { number } = this
-      if (this.slotState === 'local' && this.setupAi) {
-        this.$store.dispatch('gameSetup/changeSlotToAi', { number })
-      } else if (this.slotState === 'localai' || (this.slotState === 'local' && !this.setupAi)) {
+      if (this.slotState === 'local' || this.slotState === 'localai') {
         this.$store.dispatch('gameSetup/releaseSlot', { number })
       } else if (this.slotState === 'open') {
         if (this.limitReached || this.capReached) return
-        this.ai = false;
         this.$store.dispatch('gameSetup/takeSlot', { number })
       }
+    },
+
+    // The "AI player" button on an empty seat: take it, then hand it to the AI (the server only
+    // lets a seat's owner change it to AI).
+    async makeAi () {
+      if (!this.canMakeAi || this.slotState !== 'open') return
+      const { number } = this
+      await this.$store.dispatch('gameSetup/takeSlot', { number })
+      this.$store.dispatch('gameSetup/changeSlotToAi', { number })
     },
 
     kickPlayer () {
@@ -173,9 +255,12 @@ export default {
 </script>
 
 <style lang="sass" scoped>
+// The slot buttons (Assign / AI player / Release / Kick) are pinned 8px from the bottom edge, so
+// the bottom padding keeps them clear of the name (8px + a 20px x-small button + a few px). The
+// gaps above are tighter to pay for it: the slot is shorter overall than before the buttons.
 .player-slot
   position: relative
-  padding: 40px 0 30px 0
+  padding: 30px 0 34px 0
 
   display: flex
   flex-direction: column
@@ -202,13 +287,13 @@ export default {
     right: -34px
 
   svg
-    margin-bottom: 30px
+    margin-bottom: 16px
 
   .state
     font-size: 24px
     text-transform: uppercase
     font-weight: 300
-    margin-bottom: 15px
+    margin-bottom: 8px
 
   .name
     font-size: 24px
@@ -248,6 +333,15 @@ export default {
   .kick-btn
     position: static
 
+  .slot-actions
+    display: flex
+    align-items: center
+    gap: 6px
+
+    .ai-btn-tooltip
+      display: inline-flex
+      align-items: center
+
   .limit-reached
     font-size: 14px
     font-style: italic
@@ -278,10 +372,13 @@ export default {
 
 @media (max-height: 768px)
   .player-slot
-    padding: 20px 0 10px 0
+    padding: 12px 0 32px 0
 
     svg
-      margin-bottom: 20px
+      margin-bottom: 10px
+
+    .state
+      margin-bottom: 4px
 
     .state, .name
       font-size: 20px

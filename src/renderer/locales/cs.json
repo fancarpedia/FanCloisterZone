@@ -2,7 +2,7 @@
   "@author": "Peťul",
   "@jcz-version": "5.12.1",
   "@fcz-version": "7.1.0",
-  "@version": "0.12.11-ai",
+  "@version": "0.12.12-ai",
   "about": {
     "author": "Autor",
     "configuration-file": "Konfigurační soubor",
@@ -529,6 +529,12 @@
     "tiles-progress-move": "Tiles placed"
   },
   "game-setup": {
+    "ai": {
+      "not-available": "AI není k dispozici",
+      "not-available-hint": "AI hráči nejsou pro toto nastavení hry k dispozici",
+      "not-supported": "AI nehraje",
+      "supported": "AI tohle umí hrát"
+    },
     "additional-elements": "Další prvky",
     "altered-gameplay": "Změněná hratelnost",
     "altered-scoring": "Změněné hodnocení",
@@ -539,6 +545,8 @@
       "tokens": "Žetony"
     },
     "create": {
+      "assign": "přidat",
+      "ai-player": "AI hráč",
       "click-to-assign": "Kliknutím přidáte hráče",
       "game-full": "Hra je plná",
       "kick-player": "Odpojit hráče",
@@ -548,6 +556,7 @@
       "local-player": "místní hráč",
       "name": "Jméno",
       "open-slot": "Volná pozice",
+      "release-slot": "Uvolnit pozici",
       "remote-ai-player": "vzdálený AI hráč",
       "remote-player": "vzdálený hráč",
       "rename-player": "Přejmenovat hráče",
@@ -579,6 +588,7 @@
       "max-players-no-limit": "Bez limitu",
       "name": "Název",
       "no-ai-in-game": "Bez AI ve hře",
+      "no-human-player": "Žádný člověk ve hře",
       "no-player-in-game": "Žádný hráč ve hře",
       "options": "Možnosti",
       "public-game": "Veřejná hra",

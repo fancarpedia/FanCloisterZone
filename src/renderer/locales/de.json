@@ -2,7 +2,7 @@
   "@author": "Challa007 & Bombur",
   "@jcz-version": "5.12.1",
   "@fcz-version": "7.1.0",
-  "@version": "0.12.11-ai",
+  "@version": "0.12.12-ai",
   "about": {
     "author": "Autor",
     "configuration-file": "Konfigurationsdatei",
@@ -529,6 +529,12 @@
     "tiles-progress-move": "Tiles placed"
   },
   "game-setup": {
+    "ai": {
+      "not-available": "Computergegner nicht verfügbar",
+      "not-available-hint": "Computergegner sind für diese Spieleinstellung nicht verfügbar",
+      "not-supported": "Der Computergegner spielt nicht",
+      "supported": "Der Computergegner kann das spielen"
+    },
     "additional-elements": "Zusätzliche Elemente",
     "altered-gameplay": "Geänderte Spielregeln",
     "altered-scoring": "Geänderte Wertungsregeln",
@@ -539,6 +545,8 @@
       "tokens": "Sonstige Spielkomponenten"
     },
     "create": {
+      "assign": "zuweisen",
+      "ai-player": "Computergegner",
       "click-to-assign": "zum Zuweisen hier klicken",
       "game-full": "Spiel voll",
       "kick-player": "Spieler entfernen",
@@ -548,6 +556,7 @@
       "local-player": "lokaler Spieler",
       "name": "Name",
       "open-slot": "offener Slot",
+      "release-slot": "Slot freigeben",
       "remote-ai-player": "Remote Computergegner",
       "remote-player": "Remote Spieler",
       "rename-player": "Spieler umbenennen",
@@ -579,6 +588,7 @@
       "max-players-no-limit": "Kein Limit",
       "name": "Name",
       "no-ai-in-game": "Kein Computergegner im Spiel",
+      "no-human-player": "Kein menschlicher Spieler im Spiel",
       "no-player-in-game": "Kein Spieler im Spiel",
       "options": "Optionen",
       "public-game": "Öffentliches Spiel",

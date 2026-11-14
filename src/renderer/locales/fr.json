@@ -2,7 +2,7 @@
   "@author": "Black Bear",
   "@jcz-version": "5.12.1",
   "@fcz-version": "7.1.0",
-  "@version": "0.12.11-ai",
+  "@version": "0.12.12-ai",
   "about": {
     "author": "Auteur",
     "configuration-file": "Fichier de configuration",
@@ -529,6 +529,12 @@
     "tiles-progress-move": "Tiles placed"
   },
   "game-setup": {
+    "ai": {
+      "not-available": "IA non disponible",
+      "not-available-hint": "Les joueurs IA ne sont pas disponibles pour cette configuration de partie",
+      "not-supported": "L'IA ne joue pas",
+      "supported": "L'IA peut jouer ceci"
+    },
     "additional-elements": "Éléments supplémentaires",
     "altered-gameplay": "Règles modifiées",
     "altered-scoring": "Évaluations modifiées",
@@ -539,6 +545,8 @@
       "tokens": "Jetons"
     },
     "create": {
+      "assign": "attribuer",
+      "ai-player": "Joueur IA",
       "click-to-assign": "cliquer pour attribuer",
       "game-full": "Partie complète",
       "kick-player": "Exclure un joueur",
@@ -548,6 +556,7 @@
       "local-player": "joueur local",
       "name": "Nom",
       "open-slot": "ouvrir emplacement",
+      "release-slot": "Libérer l'emplacement",
       "remote-ai-player": "joueur IA à distance",
       "remote-player": "joueur à distance",
       "rename-player": "Renommer le joueur",
@@ -579,6 +588,7 @@
       "max-players-no-limit": "Sans limite",
       "name": "Nom",
       "no-ai-in-game": "Aucune IA en jeu",
+      "no-human-player": "Aucun humain en jeu",
       "no-player-in-game": "Aucun joueur en jeu",
       "options": "Options",
       "public-game": "Partie publique",

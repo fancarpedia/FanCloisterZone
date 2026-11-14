@@ -2,7 +2,7 @@
   "@author": "ai",
   "@jcz-version": "5.12.1",
   "@fcz-version": "7.1.0",
-  "@version": "0.12.11-ai",
+  "@version": "0.12.12-ai",
   "about": {
     "author": "Автор",
     "configuration-file": "Файл конфігурації",
@@ -529,6 +529,12 @@
     "tiles-progress-move": "Tiles placed"
   },
   "game-setup": {
+    "ai": {
+      "not-available": "Комп'ютерний гравець недоступний",
+      "not-available-hint": "Комп'ютерні гравці недоступні для цього налаштування гри",
+      "not-supported": "Комп'ютерний гравець не грає",
+      "supported": "Комп'ютерний гравець може це грати"
+    },
     "additional-elements": "Додаткові елементи",
     "altered-gameplay": "Змінений перебіг гри",
     "altered-scoring": "Змінений підрахунок очок",
@@ -539,6 +545,8 @@
       "tokens": "Жетони"
     },
     "create": {
+      "assign": "призначити",
+      "ai-player": "Комп'ютерний гравець",
       "click-to-assign": "натисніть, щоб призначити",
       "game-full": "Гру заповнено",
       "kick-player": "Вигнати гравця",
@@ -548,6 +556,7 @@
       "local-player": "локальний гравець",
       "name": "Ім’я",
       "open-slot": "вільне місце",
+      "release-slot": "Звільнити місце",
       "remote-ai-player": "віддалений комп’ютерний гравець",
       "remote-player": "віддалений гравець",
       "rename-player": "Перейменувати гравця",
@@ -579,6 +588,7 @@
       "max-players-no-limit": "Без обмеження",
       "name": "Назва",
       "no-ai-in-game": "Без комп’ютерних гравців",
+      "no-human-player": "У грі немає людей",
       "no-player-in-game": "У грі немає гравців",
       "options": "Параметри",
       "public-game": "Публічна гра",

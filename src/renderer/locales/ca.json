@@ -2,7 +2,7 @@
   "@author": "J0anJosep",
   "@jcz-version": "5.12.1",
   "@fcz-version": "7.1.0",
-  "@version": "0.12.11-ai",
+  "@version": "0.12.12-ai",
   "about": {
     "author": "Autor",
     "configuration-file": "Fitxer de configuració",
@@ -529,6 +529,12 @@
     "tiles-progress-move": "Tiles placed"
   },
   "game-setup": {
+    "ai": {
+      "not-available": "IA no disponible",
+      "not-available-hint": "Els jugadors IA no estan disponibles per a aquesta configuració de partida",
+      "not-supported": "La IA no juga",
+      "supported": "La IA pot jugar això"
+    },
     "additional-elements": "Elements addicionals",
     "altered-gameplay": "Modificacions del joc",
     "altered-scoring": "Modificacions de puntuació",
@@ -539,6 +545,8 @@
       "tokens": "Fitxes"
     },
     "create": {
+      "assign": "assigna",
+      "ai-player": "Jugador IA",
       "click-to-assign": "feu clic per a assignar",
       "game-full": "Partida completa",
       "kick-player": "Expulsa el jugador",
@@ -548,6 +556,7 @@
       "local-player": "jugador local",
       "name": "Nom",
       "open-slot": "ranura oberta",
+      "release-slot": "Allibera la ranura",
       "remote-ai-player": "jugador ia remot",
       "remote-player": "jugador remot",
       "rename-player": "Canvia el nom de jugador",
@@ -579,6 +588,7 @@
       "max-players-no-limit": "Sense límit",
       "name": "Nom",
       "no-ai-in-game": "No hi ha IA a la partida",
+      "no-human-player": "No hi ha cap humà a la partida",
       "no-player-in-game": "No hi ha jugadors a la partida",
       "options": "Opcions",
       "public-game": "Partida pública",

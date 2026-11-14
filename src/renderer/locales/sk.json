@@ -2,7 +2,7 @@
   "@author": "Bumsakalaka",
   "@jcz-version": "5.12.1",
   "@fcz-version": "7.1.0",
-  "@version": "0.12.11-ai",
+  "@version": "0.12.12-ai",
   "about": {
     "author": "Autor",
     "configuration-file": "Konfiguračný súbor",
@@ -529,6 +529,12 @@
     "tiles-progress-move": "Tiles placed"
   },
   "game-setup": {
+    "ai": {
+      "not-available": "AI nie je k dispozícii",
+      "not-available-hint": "AI hráči nie sú pre toto nastavenie hry k dispozícii",
+      "not-supported": "AI nehrá",
+      "supported": "AI toto vie hrať"
+    },
     "additional-elements": "Dodatočné prvky",
     "altered-gameplay": "Pozmenené varianty",
     "altered-scoring": "Zmenené skóre",
@@ -539,6 +545,8 @@
       "tokens": "Žetóny"
     },
     "create": {
+      "assign": "zvoliť",
+      "ai-player": "AI hráč",
       "click-to-assign": "kliknutím zvoľte",
       "game-full": "Hra je plná",
       "kick-player": "Odpojiť hráča",
@@ -548,6 +556,7 @@
       "local-player": "miestny hráč",
       "name": "Meno",
       "open-slot": "otvorené",
+      "release-slot": "Uvoľniť pozíciu",
       "remote-ai-player": "vzdialený AI hráč",
       "remote-player": "vzdialený hráč",
       "rename-player": "Premenovať hráča",
@@ -579,6 +588,7 @@
       "max-players-no-limit": "Bez limitu",
       "name": "Názov",
       "no-ai-in-game": "V hre nie je AI hráč",
+      "no-human-player": "Žiaden človek v hre",
       "no-player-in-game": "Žiaden hráč v hre",
       "options": "možnosti",
       "public-game": "Verejná hra",

@@ -8,6 +8,10 @@
       ['multiset-' + expansion.releases.length]: expansion.releases.length > 1
     }"
   >
+    <!-- the AI plays this (utils/ai-support.js): AI players stay available with it -->
+    <div v-if="aiPlayable" class="ai-badge" :title="$t('game-setup.ai.supported')">
+      <v-icon x-small>fa-solid fa-robot</v-icon>
+    </div>
     <a href="#" class="detail-link" @click.prevent="open">
       <v-icon>fas fa-layer-group</v-icon>
     </a>
@@ -54,6 +58,7 @@
 import { mapState } from 'vuex'
 import ExpansionSymbol from '@/components/ExpansionSymbol'
 import ReleaseButtons from '@/components/game-setup/buttons/ReleaseButtons'
+import { isAiExpansion } from '@/utils/ai-support'
 
 export default {
   components: {
@@ -82,6 +87,10 @@ export default {
   },
 
   computed: {
+    aiPlayable () {
+      return isAiExpansion(this.expansion)
+    },
+
     ...mapState({
       sets: state => state.gameSetup.sets || {}
     }),
@@ -263,6 +272,21 @@ export default {
   h4
     text-align: center
     font-weight: 400
+
+// "the AI plays this" — top-left corner, out of the way of the corner controls on the right
+.ai-badge
+  position: absolute
+  top: 4px
+  left: 6px
+  z-index: 1
+  line-height: 1
+  padding: 3px
+  border-radius: 50%
+  background: rgba(33, 150, 243, 0.18)
+  cursor: default
+
+  .v-icon
+    color: #2196f3
 
 .requirement-warning
   position: absolute

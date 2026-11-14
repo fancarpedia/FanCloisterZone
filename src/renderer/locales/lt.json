@@ -2,7 +2,7 @@
   "@author": "Stepukiss",
   "@jcz-version": "5.12.1",
   "@fcz-version": "7.1.0",
-  "@version": "0.12.11-ai",
+  "@version": "0.12.12-ai",
   "about": {
     "author": "Autorius",
     "configuration-file": "Nustatymų aplankas",
@@ -529,6 +529,12 @@
     "tiles-progress-move": "Tiles placed"
   },
   "game-setup": {
+    "ai": {
+      "not-available": "DI negalimas",
+      "not-available-hint": "DI žaidėjai negalimi šiai žaidimo sąrankai",
+      "not-supported": "DI nežaidžia",
+      "supported": "DI gali tai žaisti"
+    },
     "additional-elements": "Papildomi elementai",
     "altered-gameplay": "Alternatyvi žaidimo eiga",
     "altered-scoring": "Alternatyvus taškų skaičiavimas",
@@ -539,6 +545,8 @@
       "tokens": "Žymekliai"
     },
     "create": {
+      "assign": "priskirti",
+      "ai-player": "DI žaidėjas",
       "click-to-assign": "paspausti čia",
       "game-full": "Žaidimas užpildytas",
       "kick-player": "Išmesti žaidėją",
@@ -548,6 +556,7 @@
       "local-player": "vietinis žaidėjas",
       "name": "Vardas",
       "open-slot": "Pridėti",
+      "release-slot": "Atlaisvinti vietą",
       "remote-ai-player": "Pašalinti DI žaidėją",
       "remote-player": "nuotolinis žaidėjas",
       "rename-player": "Pervadinti",
@@ -579,6 +588,7 @@
       "max-players-no-limit": "Be ribos",
       "name": "Vardas",
       "no-ai-in-game": "Nėra DI žaidime",
+      "no-human-player": "Žaidime nėra žmogaus",
       "no-player-in-game": "Žaidimė nėra žaidėjų",
       "options": "Nustatymai",
       "public-game": "Viešas žaidimas",

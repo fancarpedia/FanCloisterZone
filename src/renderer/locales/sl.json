@@ -2,7 +2,7 @@
   "@author": "TileLord | Erol",
   "@jcz-version": "5.12.1",
   "@fcz-version": "7.1.0",
-  "@version": "0.12.11-ai",
+  "@version": "0.12.12-ai",
   "about": {
     "author": "Avtor",
     "configuration-file": "Konfiguracijska datoteka",
@@ -529,6 +529,12 @@
     "tiles-progress-move": "Tiles placed"
   },
   "game-setup": {
+    "ai": {
+      "not-available": "AI ni na voljo",
+      "not-available-hint": "AI igralci za to nastavitev igre niso na voljo",
+      "not-supported": "AI ne igra",
+      "supported": "AI lahko igra to"
+    },
     "additional-elements": "Dodatni elementi",
     "altered-gameplay": "Spremenjena Igra",
     "altered-scoring": "Spremenjeno Točkovanje",
@@ -539,6 +545,8 @@
       "tokens": "Žetoni"
     },
     "create": {
+      "assign": "dodeli",
+      "ai-player": "AI igralec",
       "click-to-assign": "klikni za dodelitev",
       "game-full": "Igra je polna",
       "kick-player": "Izključi igralca",
@@ -548,6 +556,7 @@
       "local-player": "lokalni igralec",
       "name": "Ime",
       "open-slot": "odprta pozicija",
+      "release-slot": "Sprosti pozicijo",
       "remote-ai-player": "Oddaljeni AI igralec",
       "remote-player": "oddaljeni igralec",
       "rename-player": "Preimenuj Igralca",
@@ -579,6 +588,7 @@
       "max-players-no-limit": "Brez omejitve",
       "name": "Ime",
       "no-ai-in-game": "Brez AI v igri",
+      "no-human-player": "Ni človeškega igralca v igri",
       "no-player-in-game": "Ni igralcev v igri",
       "options": "Možnosti",
       "public-game": "Javna igra",

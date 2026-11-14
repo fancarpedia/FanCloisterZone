@@ -1156,6 +1156,12 @@ export const actions = {
 	    }, { root: true })
 	    return
     }
+    // An AI move request is never a game message. The AI seat's owner asks its own engine
+    // (aiEngineRequest) and sends only the move it gets back; a request relayed by a server (from
+    // an older client) is not ours to answer — answering it made EVERY client play the AI.
+    if (message.type === 'AI') {
+      return
+    }
     if (message.seq !== (1 + state.gameMessages.length)) {
       console.warn(`Seq doesn't match ${message.seq} != ${1 + state.gameMessages.length}`)
       const { $connection } = this._vm
@@ -1164,29 +1170,7 @@ export const actions = {
     }
     const engine = this._vm.$engine.get()
     const { response, hash } = await engine.writeMessage(message)
-    if (message.type == 'AI' && response.type == 'AI_MESSAGE') {
-      // Response from engine with AI suggestion
-      const { $connection } = this._vm
-      const aiPlayerResponse = {
-      	type: response.payload.type,
-      	payload: response.payload.payload,
-      	gameId: state.id,
-      	player: response.payload.player,
-      	seq: (state.gameMessages.length+1),
-      	clock: computeClock(state.players.length, state.gameMessages)
-      }
-      await dispatch('apply', response.payload);
-      
-      console.log('AI Response message',aiPlayerResponse)
-//      await dispatch('applyEngineResponse', { response, hash, message, allowAutoCommit: true })
-//      $connection.send(aiPlayerResponse)
-      
-      return
-    }
-    
-    if (message.type != 'AI') {
-	  commit('appendMessage', message)
-	}
+    commit('appendMessage', message)
     commit('lastMessageId', message.id)
     commit('updateClock', { player: state.action?.player, clock: message.clock || 0 })
     await dispatch('applyEngineResponse', { response, hash, message, allowAutoCommit: true })
@@ -1239,14 +1223,30 @@ export const actions = {
     }
   },
 
-  async aiEngineRequest ({ state, commit, dispatch, rootState }, { }) {
-    await dispatch('apply', {
+  // The AI seat's owner (the only client that calls this — see the aiPlayer checks) asks its OWN
+  // engine for the AI's move and sends just that move, like a human player's. The request itself
+  // never goes to the server: the PHP server stored it in the replay as a move and then dropped
+  // the AI's real move (same seq) as a repeat, and relayed it to every client, each of which then
+  // played the AI. The engine leaves the game state unchanged for an AI request; every random
+  // draw is re-seeded by the next random-carrying message, so the AI's look-ahead does not make
+  // this engine drift from the other players'.
+  async aiEngineRequest ({ state, dispatch }) {
+    const player = state.action?.player
+    if (player === undefined || player === null) return
+    const engine = this._vm.$engine.get()
+    const { response } = await engine.writeMessage({
+      id: randomId(),
       type: 'AI',
-      payload: {
-        gameId: state.id
-      },
-      force: true
+      payload: { gameId: state.id },
+      seq: 1 + state.gameMessages.length,
+      player
     })
+    if (response?.type !== 'AI_MESSAGE') {
+      console.warn('AI request without a move', response)
+      return
+    }
+    const { type, payload } = response.payload
+    await dispatch('apply', { type, payload })
   },
 
   /**

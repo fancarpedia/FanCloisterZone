@@ -9,6 +9,10 @@
     }"
     @click.stop="toggle"
   >
+    <!-- the AI plays this (utils/ai-support.js): AI players stay available with it -->
+    <div v-if="aiPlayable" class="ai-badge" :title="$t('game-setup.ai.supported')">
+      <v-icon x-small>fa-solid fa-robot</v-icon>
+    </div>
     <div class="box-title">
       <slot name="icon" />
       <h3>{{ $t(['game.feature',item.id].join('.')) }}</h3>
@@ -26,6 +30,7 @@
 <script>
 import { mapState } from 'vuex'
 import { isWeb } from '@/utils/version'
+import { isAiElement } from '@/utils/ai-support'
 
 export default {
   components: {
@@ -37,6 +42,10 @@ export default {
   },
 
   computed: {
+    aiPlayable () {
+      return isAiElement(this.item)
+    },
+
     ...mapState({
       sets: state => state.gameSetup.sets,
       // null until the setup store is initialised; a reload can re-mount this first
@@ -77,6 +86,22 @@ export default {
   display: flex
   flex-direction: column
   cursor: pointer
+  position: relative
+  // "the AI plays this" — top-left corner, out of the way of the corner controls on the right
+
+  .ai-badge
+    position: absolute
+    top: 4px
+    left: 6px
+    z-index: 1
+    line-height: 1
+    padding: 3px
+    border-radius: 50%
+    background: rgba(33, 150, 243, 0.18)
+    cursor: default
+
+    .v-icon
+      color: #2196f3
 
   +theme using ($theme)
     color: map-get($theme, 'cards-text')

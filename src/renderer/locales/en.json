@@ -2,7 +2,7 @@
   "@author": "farin & Scott",
   "@jcz-version": "5.12.1",
   "@fcz-version": "7.1.0",
-  "@version": "0.12.11",
+  "@version": "0.12.12",
   "about": {
     "author": "Author",
     "configuration-file": "Configuration file",
@@ -529,6 +529,12 @@
     "tiles-progress-move": "Tiles placed"
   },
   "game-setup": {
+    "ai": {
+      "not-available": "AI not available",
+      "not-available-hint": "AI players are not available for game setup",
+      "not-supported": "The AI does not play",
+      "supported": "The AI can play this"
+    },
     "additional-elements": "Additional elements",
     "altered-gameplay": "Altered Gameplay",
     "altered-scoring": "Altered Scoring",
@@ -539,6 +545,8 @@
       "tokens": "Tokens"
     },
     "create": {
+      "assign": "assign",
+      "ai-player": "AI player",
       "click-to-assign": "click to assign",
       "game-full": "Game full",
       "kick-player": "Kick player",
@@ -548,6 +556,7 @@
       "local-player": "local player",
       "name": "Name",
       "open-slot": "open slot",
+      "release-slot": "Release slot",
       "remote-ai-player": "remote ai player",
       "remote-player": "remote player",
       "rename-player": "Rename Player",
@@ -579,6 +588,7 @@
       "max-players-no-limit": "No limit",
       "name": "Name",
       "no-ai-in-game": "No AI in game",
+      "no-human-player": "No human in game",
       "no-player-in-game": "No player in game",
       "options": "Options",
       "public-game": "Public game",

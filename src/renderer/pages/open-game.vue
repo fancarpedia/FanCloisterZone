@@ -15,7 +15,7 @@
 
       <HeaderMessage
         :sets="sets"
-        :info="slotsReserved ? (!ai || slotsReservedByAI ? null : $t('game-setup.open-game.no-ai-in-game') ): (readOnly ? $t('game-setup.open-game.assign-all-players-to-start') : $t('game-setup.open-game.no-player-in-game') )"
+        :info="startInfo"
       />
 
       <div v-if="gameKey" class="game-key">
@@ -188,7 +188,6 @@ export default {
 
   computed: {
     ...mapState({
-      ai: state => state.game.setup?.ai,
       gameKey: state => state.game.key,
       setup: state => state.game.setup,
       sets: state => state.game.setup?.sets,
@@ -239,10 +238,25 @@ export default {
       }
     },
 
-    // the Start button's condition
+    // the Start button's condition: the seats are assigned, and at least one of them is a human
+    // player — a game of AI players only is not started
     canStart () {
       if (!this.slots) return false // the game has not arrived yet
-      return this.ai ? (this.slotsReservedByAI && this.slotsReserved) : this.slotsAssigned
+      return this.slotsAssigned && this.slotsReserved
+    },
+
+    // what still keeps the game from starting, shown in the header (null = nothing)
+    startInfo () {
+      if (!this.slots) return null
+      if (!this.slotsAssigned) {
+        return this.readOnly
+          ? this.$t('game-setup.open-game.assign-all-players-to-start')
+          : this.$t('game-setup.open-game.no-player-in-game')
+      }
+      if (!this.slotsReserved) {
+        return this.$t('game-setup.open-game.no-human-player')
+      }
+      return null
     },
 
     // A loaded game (saved, or the dev Step Back copy) that is not online starts by itself as soon
@@ -253,12 +267,9 @@ export default {
         this.$store.state.networking.connectionType !== 'online'
     },
 
+    // a human player is seated (an AI seat does not count)
     slotsReserved () {
       return !!this.slots.find(slot => slot.clientId && !slot.ai)
-    },
-
-    slotsReservedByAI () {
-      return !!this.slots.find(slot => slot.clientId && slot.ai)
     },
 
     localSlotsCount () {
