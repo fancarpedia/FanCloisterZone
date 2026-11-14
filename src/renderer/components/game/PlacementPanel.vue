@@ -22,7 +22,21 @@
       </template>
       <!-- … then what it placed / moved / removed -->
       <!-- a figure that walked to a deployed meeple stands next to it, as on the board -->
-      <div v-if="besideMeeple" class="subject beside-meeple">
+      <!-- prisoners exchanged (Tower): both followers behind bars, the exchange between them -->
+      <div v-if="expr.prisoners" class="subject prisoners-exchange">
+        <template v-for="(f, i) in expr.prisoners">
+          <v-icon v-if="i > 0" :key="'x' + i" class="because">fas fa-exchange-alt</v-icon>
+          <div :key="'m' + i" class="prisoner" :class="colorCssClass(f.player)">
+            <Meeple :type="f.type" />
+            <svg class="prison-bars" viewBox="0 0 40 40" aria-hidden="true">
+              <rect x="1" y="2" width="38" height="3" rx="1" />
+              <rect x="1" y="35" width="38" height="3" rx="1" />
+              <rect v-for="x in [6, 14, 22, 30]" :key="x" :x="x" y="2" width="3" height="36" rx="1" />
+            </svg>
+          </div>
+        </template>
+      </div>
+      <div v-else-if="besideMeeple" class="subject beside-meeple">
         <Meeple :type="besideMeeple.type" :class="colorCssClass(besideMeeple.player)" />
         <NeutralFigure class="beside" :figure="figureSymbol(expr.figure)" />
       </div>
@@ -287,6 +301,16 @@ svg.meeple, svg.neutral
 // prison bars over a captured follower (PlayerPanel.vue look), on the 40px meeple
 .subject
   position: relative
+
+  &.prisoners-exchange
+    display: flex
+    align-items: center
+    gap: 10px
+
+  .prisoner
+    position: relative
+    width: 40px
+    height: 40px
 
   svg.prison-bars
     position: absolute
