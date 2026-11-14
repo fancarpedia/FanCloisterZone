@@ -110,6 +110,9 @@ export const state = () => ({
   // seat, then make it AI), and the seat must not show as a human in between — that flashed a
   // chat send button and the "local player" label for a moment. number -> true
   pendingAiSlots: {},
+  // who has this online game open without a seat — watching it (server GAME_OBSERVERS):
+  // [{ clientId, name, country }]
+  observers: [],
   players: null,
   clock: null,
   lastMessageClock: null,
@@ -154,6 +157,7 @@ export const mutations = {
     state.packSize = null
     state.slots = null
     state.pendingAiSlots = {}
+    state.observers = []
     state.players = null
     state.clock = null
     state.lastMessageClock = null
@@ -231,6 +235,12 @@ export const mutations = {
   },
 
   // pending: true (asked for) | 'taken' (the take arrived, the AI change is on its way) | false
+  // GAME_OBSERVERS for this game (another game's list is ignored)
+  observers (state, { gameId, observers }) {
+    if (gameId && state.id && gameId !== state.id) return
+    state.observers = Array.isArray(observers) ? observers : []
+  },
+
   pendingAiSlot (state, { number, pending }) {
     if (pending) {
       Vue.set(state.pendingAiSlots, number, pending)

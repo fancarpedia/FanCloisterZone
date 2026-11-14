@@ -195,6 +195,9 @@ class ConnectionHandler {
     } else if (type === 'COOP_LEADERBOARD') {
       // Keep Building (coop variant) best-setups list for the game-setup Variant tab
       commit('gameSetup/coopLeaderboard', payload.items || [], { root: true })
+    } else if (type === 'GAME_OBSERVERS') {
+      // who is watching the open game (connected to it without a seat)
+      commit('game/observers', payload, { root: true })
     } else if (type === 'CLIENT_LIST') {
       // connected clients + their idle/in-game status for the online lobby
       commit('online/connectedClients', payload.clients || [], { root: true })

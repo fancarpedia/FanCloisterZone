@@ -64,6 +64,8 @@
           :index="index"
           :player="player"
         />
+        <!-- who is watching (online games) -->
+        <ObserversPanel />
       </aside>
       <ActionPanel
         :phase="phase"
@@ -127,6 +129,7 @@ import GlobalChat from '@/components/GlobalChat'
 import ChooseMonkOrAbbotDialog from '@/components/game/dialogs/ChooseMonkOrAbbotDialog.vue'
 import PlayerPanel from '@/components/game/PlayerPanel.vue'
 import DiscardedTileNotice from '@/components/game/DiscardedTileNotice'
+import ObserversPanel from '@/components/game/ObserversPanel'
 import PlayEvents from '@/components/game/PlayEvents.vue'
 import TestResult from '@/components/game/TestResult.vue'
 import TilePackDialog from '@/components/game/dialogs/TilePackDialog.vue'
@@ -142,6 +145,7 @@ const MAX_SHRINK = SHRINK_LEVELS[SHRINK_LEVELS.length - 1]
 
 export default {
   components: {
+    ObserversPanel,
     DiscardedTileNotice,
     ActionPanel,
     Board,

@@ -253,6 +253,7 @@
     "test-scenarios": "Test Scenarios"
   },
   "game": {
+    "observers": "Watching",
     "action": {
       "bazaar-buy-sell-the-tile-from-to": "Buy/Sell the tile from/to",
       "bazaar-choose-a-tile": "Choose a tile",
