@@ -52,6 +52,6 @@ describe('the captured follower in the panel', () => {
   it('is behind prison bars', () => {
     const panel = read('../PlacementPanel.vue')
     expect(panel).toContain(`<svg v-if="expr.kind === 'captured' && expr.meeple" class="prison-bars"`)
-    expect(panel).toMatch(/\.subject\n\s+position: relative\n\n\s+svg\.prison-bars\n\s+position: absolute/)
+    expect(panel).toMatch(/\.subject\n\s+position: relative[\s\S]*?svg\.prison-bars\n\s+position: absolute/)
   })
 })

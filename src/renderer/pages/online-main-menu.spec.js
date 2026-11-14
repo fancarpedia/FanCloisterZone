@@ -16,7 +16,7 @@ describe('main menu: create / join online, new local game', () => {
   it('has the three items, Create Game on Ctrl/Cmd+N and New Local Game on Ctrl/Cmd+Shift+N', () => {
     expect(menu).toContain("id: 'create-online-game', label: $t('menu.create-game') || 'Create Game', accelerator: 'CommandOrControl+N'")
     expect(menu).toContain("$t('menu.new-local-game') || 'New Local Game', accelerator: 'CommandOrControl+Shift+N'")
-    expect(menu).toContain("$t('menu.join-game') || 'Join Online Game', accelerator: 'CommandOrControl+J'")
+    expect(menu).toContain("$t('menu.join-game') || 'Join Game', accelerator: 'CommandOrControl+J'")
   })
 
   it('online items only on the online page while connected; a local game whenever no game is open', () => {

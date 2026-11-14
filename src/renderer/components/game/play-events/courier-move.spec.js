@@ -159,7 +159,7 @@ describe('cause panel order', () => {
 describe('cause panel: a figure that walked to a deployed meeple', () => {
   it('is drawn standing next to that meeple on the right of the arrow', () => {
     const panel = read('../PlacementPanel.vue')
-    expect(panel).toContain('<div v-if="besideMeeple" class="subject beside-meeple">')
+    expect(panel).toContain('<div v-else-if="besideMeeple" class="subject beside-meeple">')
     expect(panel).toContain("if (!this.expr.figure || !c || c.type !== 'meeple-deployed' || !c.meeple) return null")
     expect(panel.indexOf('fas fa-arrow-right')).toBeLessThan(panel.indexOf('class="subject beside-meeple"'))
   })
@@ -222,7 +222,7 @@ describe('a meeple removed with the Princess (or another return source)', () => 
     expect(panel).toContain("this.$t('game.placement.removed-with', { source: what, player: this.playerName })")
     expect(panel).toContain("PRINCESS: 'game.feature.princess',")
     expect(panel).toContain("PRINCESS: require('~/assets/features/C1/princess.png'),")
-    expect(panel).toContain('<img v-else-if="causeVisual.image" :src="causeVisual.image" class="source-image">')
+    expect(panel).toContain(`<img v-else-if="causeVisual.image" :src="causeVisual.image" :class="causeVisual.towerPiece ? 'tower-piece-image' : 'source-image'">`)
   })
 
   it('names the player who used it, not the meeple owner', () => {
