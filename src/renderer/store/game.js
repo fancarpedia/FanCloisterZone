@@ -106,6 +106,10 @@ export const state = () => ({
   setup: null,
   packSize: null,
   slots: null,
+  // empty seats this client is turning into AI players: "AI player" is two requests (take the
+  // seat, then make it AI), and the seat must not show as a human in between — that flashed a
+  // chat send button and the "local player" label for a moment. number -> true
+  pendingAiSlots: {},
   players: null,
   clock: null,
   lastMessageClock: null,
@@ -149,6 +153,7 @@ export const mutations = {
     state.setup = null
     state.packSize = null
     state.slots = null
+    state.pendingAiSlots = {}
     state.players = null
     state.clock = null
     state.lastMessageClock = null
@@ -223,6 +228,15 @@ export const mutations = {
     Object.entries(options).forEach(([key, value]) => {
       Vue.set(state.setup.options, key, value)
     })
+  },
+
+  // pending: true (asked for) | 'taken' (the take arrived, the AI change is on its way) | false
+  pendingAiSlot (state, { number, pending }) {
+    if (pending) {
+      Vue.set(state.pendingAiSlots, number, pending)
+    } else {
+      Vue.delete(state.pendingAiSlots, number)
+    }
   },
 
   slot (state, slot) {
@@ -914,6 +928,17 @@ export const actions = {
   },
 
   handleSlotMessage ({ state, commit }, payload) {
+    // A seat being turned into an AI player (see pendingAiSlots): the first reply is the take —
+    // the seat mine but still human — so show it as the AI it is about to be. Whatever comes next
+    // (the AI seat, a release, or a refusal) is applied as sent and ends the wait.
+    if (state.pendingAiSlots && state.pendingAiSlots[payload.number]) {
+      if (payload.sessionId && !payload.ai && state.pendingAiSlots[payload.number] === true) {
+        commit('pendingAiSlot', { number: payload.number, pending: 'taken' })
+        payload = { ...payload, ai: true }
+      } else {
+        commit('pendingAiSlot', { number: payload.number, pending: false })
+      }
+    }
     if (state.gameMessages === null) {
       const selectedSlot = state.slots.find(s => s.number === payload.number)
       if (payload.sessionId) {

@@ -15,7 +15,7 @@ const PlayerSlot = new Function('mapState', 'require', 'aiSupport', script)(() =
 
 // run a method / computed of PlayerSlot against a plain `this`
 const run = (fn, ctx) => fn.call(ctx)
-const store = () => ({ dispatch: vi.fn().mockResolvedValue(undefined) })
+const store = () => ({ dispatch: vi.fn().mockResolvedValue(undefined), commit: vi.fn() })
 
 describe('clicking a slot only takes or leaves it', () => {
   const toggle = PlayerSlot.methods.toggle
