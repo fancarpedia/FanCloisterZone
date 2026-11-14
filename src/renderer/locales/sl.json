@@ -2,7 +2,7 @@
   "@author": "TileLord | Erol",
   "@jcz-version": "5.12.1",
   "@fcz-version": "7.1.0",
-  "@version": "0.12.13-ai",
+  "@version": "0.12.16-ai",
   "about": {
     "author": "Avtor",
     "configuration-file": "Konfiguracijska datoteka",
@@ -112,6 +112,7 @@
   },
   "dev": {
     "actions": "Dejanja",
+    "continue-game": "Nadaljuj igro",
     "dev": "Razvoj",
     "dump-hosted-game-server-state": "Izpiši stanje gostovanega strežnika igre",
     "edition": "Izdaja",
@@ -128,6 +129,10 @@
     "size": "Velikost",
     "step-back-in-save": "Korak nazaj v shranjeni igri",
     "strokes": "Poteze",
+    "switch-online-server-title": "Zamenjaj spletni strežnik",
+    "switch-online-server-message": "Odprtih imaš {count} spletnih iger. Ob zamenjavi strežnika se bodo zaprle.",
+    "switch-online-server-confirm": "Zamenjaj in zapri igre",
+    "switch-online-server-cancel": "Ohrani trenutni strežnik",
     "test": "Test",
     "test-runner": "Izvajalnik testov",
     "test-scenario-saved": "Testni scenarij je shranjen",
@@ -138,10 +143,6 @@
     "toggle-devtools": "Preklopi razvijalska orodja",
     "use-local-play-online": "Uporabi lokalno igro prek spleta",
     "use-remote-engine": "Uporabi oddaljeni pogon",
-    "switch-online-server-title": "Zamenjaj spletni strežnik",
-    "switch-online-server-message": "Odprtih imaš {count} spletnih iger. Ob zamenjavi strežnika se bodo zaprle.",
-    "switch-online-server-confirm": "Zamenjaj in zapri igre",
-    "switch-online-server-cancel": "Ohrani trenutni strežnik",
     "switch-online-server-move": 1
   },
   "dialog": {
@@ -470,6 +471,9 @@
       "wind-roses": "Vetrne rože",
       "yaga-hut": "Yaga koča"
     },
+    "observers": {
+      "watching": "Opazujejo"
+    },
     "placement": {
       "converted-by": "Spremenil {player}",
       "deployed-by": "Postavil {player}",
@@ -478,6 +482,7 @@
       "placed-by": "Položil {player}",
       "removed-with": "{source}, igralec {player}",
       "title": {
+        "discarded": "Zavržena",
         "moved": "Premik: {figure}",
         "placed": "Postavitev: {figure}",
         "placed-on-letter": "Postavitev na Pismo: {figure}",
@@ -841,7 +846,8 @@
       "new-game-against-ai": "Nova igra proti AI",
       "open-game": "Odpri igro",
       "saved-game": "Shranjena igra",
-      "title": "Igre gostovane pri igralcu"
+      "title": "Igre gostovane pri igralcu",
+      "new-local-game": "Nova lokalna igra"
     },
     "online": {
       "abandon-game": "Zapusti igro",
@@ -905,6 +911,7 @@
   },
   "menu": {
     "about": "O programu",
+    "create-game": "Ustvari Igro",
     "discord": "Discord",
     "exit": "Izhod",
     "farm-hints": "Namigi za polje",
@@ -918,6 +925,7 @@
     "load-setup": "Naloži nastavitev",
     "new-game": "Nova Igra",
     "new-game-against-ai": "Nova igra proti AI",
+    "new-local-game": "Nova lokalna igra",
     "online": "Preko spleta",
     "open-game": "Odpri igro",
     "playonline-connect": "Igraj Online",

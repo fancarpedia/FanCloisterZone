@@ -2,7 +2,7 @@
   "@author": "pOison & Dextea & SonicDC",
   "@jcz-version": "5.12.1",
   "@fcz-version": "7.1.0",
-  "@version": "0.12.13-ai",
+  "@version": "0.12.16-ai",
   "about": {
     "author": "Автор",
     "configuration-file": "Файл конфигурации",
@@ -112,6 +112,7 @@
   },
   "dev": {
     "actions": "Действия",
+    "continue-game": "Продолжить игру",
     "dev": "Dev",
     "dump-hosted-game-server-state": "Дамп состояния игрового сервера",
     "edition": "Издание",
@@ -128,6 +129,10 @@
     "size": "Размер",
     "step-back-in-save": "Шаг назад в сохранённой игре",
     "strokes": "Штрихи",
+    "switch-online-server-title": "Сменить онлайн-сервер",
+    "switch-online-server-message": "У вас открыто игр онлайн: {count}. При смене сервера они будут закрыты.",
+    "switch-online-server-confirm": "Сменить и закрыть игры",
+    "switch-online-server-cancel": "Оставить текущий сервер",
     "test": "Тест",
     "test-runner": "Тестер",
     "test-scenario-saved": "Тестовый сценарий сохранён",
@@ -138,10 +143,6 @@
     "toggle-devtools": "Переключить DevTools",
     "use-local-play-online": "Использовать локальную онлайн игру",
     "use-remote-engine": "Использовать сторонний движок",
-    "switch-online-server-title": "Сменить онлайн-сервер",
-    "switch-online-server-message": "У вас открыто игр онлайн: {count}. При смене сервера они будут закрыты.",
-    "switch-online-server-confirm": "Сменить и закрыть игры",
-    "switch-online-server-cancel": "Оставить текущий сервер",
     "switch-online-server-move": 1
   },
   "dialog": {
@@ -470,6 +471,9 @@
       "wind-roses": "Розы ветров",
       "yaga-hut": "Хижина Бабы Яги"
     },
+    "observers": {
+      "watching": "Наблюдают"
+    },
     "placement": {
       "converted-by": "Преобразовал {player}",
       "deployed-by": "Разместил {player}",
@@ -478,6 +482,7 @@
       "placed-by": "Выложил {player}",
       "removed-with": "{source}, игрок {player}",
       "title": {
+        "discarded": "Сброшен",
         "moved": "Перемещение: {figure}",
         "placed": "Размещение: {figure}",
         "placed-on-letter": "Размещение на Письме: {figure}",
@@ -841,7 +846,8 @@
       "new-game-against-ai": "Новая игра против ИИ",
       "open-game": "Открыть игру",
       "saved-game": "Сохранённая игра",
-      "title": "Игры, созданные игроками"
+      "title": "Игры, созданные игроками",
+      "new-local-game": "Новая локальная игра"
     },
     "online": {
       "abandon-game": "Покинуть игру",
@@ -905,6 +911,7 @@
   },
   "menu": {
     "about": "О программе",
+    "create-game": "Создать игру",
     "discord": "Discord",
     "exit": "Выход",
     "farm-hints": "Подсказки для ферм",
@@ -918,6 +925,7 @@
     "load-setup": "Загрузить расстановку",
     "new-game": "Новая игра",
     "new-game-against-ai": "Новая игра против ИИ",
+    "new-local-game": "Новая локальная игра",
     "online": "Онлайн",
     "open-game": "Открыть игру",
     "playonline-connect": "Играть онлайн",

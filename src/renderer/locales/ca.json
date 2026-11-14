@@ -2,7 +2,7 @@
   "@author": "J0anJosep",
   "@jcz-version": "5.12.1",
   "@fcz-version": "7.1.0",
-  "@version": "0.12.13-ai",
+  "@version": "0.12.16-ai",
   "about": {
     "author": "Autor",
     "configuration-file": "Fitxer de configuració",
@@ -112,6 +112,7 @@
   },
   "dev": {
     "actions": "Accions",
+    "continue-game": "Continua la partida",
     "dev": "Desenvolupament",
     "dump-hosted-game-server-state": "Bolca l'estat del servidor de la partida de l'amfitrió",
     "edition": "Edició",
@@ -128,6 +129,10 @@
     "size": "Mida",
     "step-back-in-save": "Un pas enrere a la partida desada",
     "strokes": "Traç",
+    "switch-online-server-title": "Commuta el servidor en línia",
+    "switch-online-server-message": "Teniu {count} partides en línia obertes. Si apagueu el servidor, es tancaran.",
+    "switch-online-server-confirm": "Apaga i tanca les partides",
+    "switch-online-server-cancel": "Mantén el servidor actual",
     "test": "Prova",
     "test-runner": "Execució de proves",
     "test-scenario-saved": "Escenari de prova desat",
@@ -138,10 +143,6 @@
     "toggle-devtools": "Commuta les DevTools",
     "use-local-play-online": "Fes servir la partida local en línia",
     "use-remote-engine": "Fes servir un motor remot",
-    "switch-online-server-title": "Commuta el servidor en línia",
-    "switch-online-server-message": "Teniu {count} partides en línia obertes. Si apagueu el servidor, es tancaran.",
-    "switch-online-server-confirm": "Apaga i tanca les partides",
-    "switch-online-server-cancel": "Mantén el servidor actual",
     "switch-online-server-move": 1
   },
   "dialog": {
@@ -470,6 +471,9 @@
       "wind-roses": "Roses dels vents",
       "yaga-hut": "Cabana de Yaga"
     },
+    "observers": {
+      "watching": "Observant"
+    },
     "placement": {
       "converted-by": "Convertit per {player}",
       "deployed-by": "Col·locat per {player}",
@@ -478,6 +482,7 @@
       "placed-by": "Posat per {player}",
       "removed-with": "{source}, per {player}",
       "title": {
+        "discarded": "Descartada",
         "moved": "Moviment: {figure}",
         "placed": "Col·locació: {figure}",
         "placed-on-letter": "Col·locació a la Carta: {figure}",
@@ -841,7 +846,8 @@
       "new-game-against-ai": "Partida nova contra IA",
       "open-game": "Partida oberta",
       "saved-game": "Partida desada",
-      "title": "Partides organitzades pel jugador"
+      "title": "Partides organitzades pel jugador",
+      "new-local-game": "Partida local nova"
     },
     "online": {
       "abandon-game": "Abandona la partida",
@@ -905,6 +911,7 @@
   },
   "menu": {
     "about": "Quant a",
+    "create-game": "Crea una partida",
     "discord": "Discord",
     "exit": "Surt",
     "farm-hints": "Suggeriments de granges",
@@ -918,6 +925,7 @@
     "load-setup": "Carrega una configuració",
     "new-game": "Partida nova",
     "new-game-against-ai": "Partida nova contra IA",
+    "new-local-game": "Partida local nova",
     "online": "En línia",
     "open-game": "Obre una partida",
     "playonline-connect": "Juga en línia",

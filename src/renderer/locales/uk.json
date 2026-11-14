@@ -2,7 +2,7 @@
   "@author": "ai",
   "@jcz-version": "5.12.1",
   "@fcz-version": "7.1.0",
-  "@version": "0.12.13-ai",
+  "@version": "0.12.16-ai",
   "about": {
     "author": "Автор",
     "configuration-file": "Файл конфігурації",
@@ -112,6 +112,7 @@
   },
   "dev": {
     "actions": "Дії",
+    "continue-game": "Продовжити гру",
     "dev": "Розробка",
     "dump-hosted-game-server-state": "Вивантажити стан сервера гри",
     "edition": "Видання",
@@ -128,6 +129,10 @@
     "size": "Розмір",
     "step-back-in-save": "Крок назад у збереженій грі",
     "strokes": "Обведення",
+    "switch-online-server-title": "Змінити онлайн-сервер",
+    "switch-online-server-message": "У вас відкрито ігор онлайн: {count}. Після зміни сервера вони закриються.",
+    "switch-online-server-confirm": "Змінити й закрити ігри",
+    "switch-online-server-cancel": "Залишити поточний сервер",
     "test": "Тест",
     "test-runner": "Запуск тестів",
     "test-scenario-saved": "Тестовий сценарій збережено",
@@ -138,10 +143,6 @@
     "toggle-devtools": "Перемкнути DevTools",
     "use-local-play-online": "Використовувати локальну гру онлайн",
     "use-remote-engine": "Використовувати віддалений рушій",
-    "switch-online-server-title": "Змінити онлайн-сервер",
-    "switch-online-server-message": "У вас відкрито ігор онлайн: {count}. Після зміни сервера вони закриються.",
-    "switch-online-server-confirm": "Змінити й закрити ігри",
-    "switch-online-server-cancel": "Залишити поточний сервер",
     "switch-online-server-move": 1
   },
   "dialog": {
@@ -470,6 +471,9 @@
       "wind-roses": "Рози вітрів",
       "yaga-hut": "Хатинка Баби Яги"
     },
+    "observers": {
+      "watching": "Спостерігають"
+    },
     "placement": {
       "converted-by": "Перетворив {player}",
       "deployed-by": "Розмістив {player}",
@@ -478,6 +482,7 @@
       "placed-by": "Виклав {player}",
       "removed-with": "{source}, гравець {player}",
       "title": {
+        "discarded": "Скинуто",
         "moved": "Переміщення: {figure}",
         "placed": "Розміщення: {figure}",
         "placed-on-letter": "Розміщення на Листі: {figure}",
@@ -841,7 +846,8 @@
       "new-game-against-ai": "Нова гра проти комп’ютера",
       "open-game": "Відкрити гру",
       "saved-game": "Збережена гра",
-      "title": "Ігри, створені гравцями"
+      "title": "Ігри, створені гравцями",
+      "new-local-game": "Нова локальна гра"
     },
     "online": {
       "abandon-game": "Покинути гру",
@@ -905,6 +911,7 @@
   },
   "menu": {
     "about": "Про програму",
+    "create-game": "Створити гру",
     "discord": "Discord",
     "exit": "Вихід",
     "farm-hints": "Підказки полів",
@@ -918,6 +925,7 @@
     "load-setup": "Завантажити налаштування",
     "new-game": "Нова гра",
     "new-game-against-ai": "Нова гра проти комп’ютера",
+    "new-local-game": "Нова локальна гра",
     "online": "Онлайн",
     "open-game": "Відкрити гру",
     "playonline-connect": "Грати онлайн",

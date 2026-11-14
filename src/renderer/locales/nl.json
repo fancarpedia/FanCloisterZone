@@ -2,7 +2,7 @@
   "@author": "Kiap1969 & Sinscerly",
   "@jcz-version": "5.12.1",
   "@fcz-version": "7.1.0",
-  "@version": "0.12.13-ai",
+  "@version": "0.12.16-ai",
   "about": {
     "author": "Auteur",
     "configuration-file": "Configuratiebestand",
@@ -112,6 +112,7 @@
   },
   "dev": {
     "actions": "Acties",
+    "continue-game": "Spel voortzetten",
     "dev": "Ontw",
     "dump-hosted-game-server-state": "Spelserver-toestand dumpen",
     "edition": "Editie",
@@ -128,6 +129,10 @@
     "size": "Grootte",
     "step-back-in-save": "Stap terug in opgeslagen spel",
     "strokes": "Slagen",
+    "switch-online-server-title": "Online server wisselen",
+    "switch-online-server-message": "Je hebt {count} online spellen open. Bij het wisselen van server worden ze gesloten.",
+    "switch-online-server-confirm": "Wisselen en spellen sluiten",
+    "switch-online-server-cancel": "Huidige server behouden",
     "test": "Test",
     "test-runner": "Uitvoering testen",
     "test-scenario-saved": "Testscenario opgeslagen",
@@ -138,10 +143,6 @@
     "toggle-devtools": "Ontwikkeltools wisselen",
     "use-local-play-online": "Lokaal spel online gebruiken",
     "use-remote-engine": "Externe engine gebruiken",
-    "switch-online-server-title": "Online server wisselen",
-    "switch-online-server-message": "Je hebt {count} online spellen open. Bij het wisselen van server worden ze gesloten.",
-    "switch-online-server-confirm": "Wisselen en spellen sluiten",
-    "switch-online-server-cancel": "Huidige server behouden",
     "switch-online-server-move": 1
   },
   "dialog": {
@@ -470,6 +471,9 @@
       "wind-roses": "Windrozen",
       "yaga-hut": "Baba Yaga-hut"
     },
+    "observers": {
+      "watching": "Kijkt mee"
+    },
     "placement": {
       "converted-by": "Omgezet door {player}",
       "deployed-by": "Geplaatst door {player}",
@@ -478,6 +482,7 @@
       "placed-by": "Gelegd door {player}",
       "removed-with": "{source}, door {player}",
       "title": {
+        "discarded": "Afgelegd",
         "moved": "{figure} verplaatst",
         "placed": "{figure} geplaatst",
         "placed-on-letter": "{figure} op de Brief geplaatst",
@@ -841,7 +846,8 @@
       "new-game-against-ai": "Nieuw spel tegen ai",
       "open-game": "Open spel",
       "saved-game": "Opgeslagen spel",
-      "title": "Door speler georganiseerde spellen"
+      "title": "Door speler georganiseerde spellen",
+      "new-local-game": "Nieuw lokaal spel"
     },
     "online": {
       "abandon-game": "Spel verlaten",
@@ -905,6 +911,7 @@
   },
   "menu": {
     "about": "Info",
+    "create-game": "Spel maken",
     "discord": "Discord",
     "exit": "Afsluiten",
     "farm-hints": "Weide-wenken",
@@ -918,6 +925,7 @@
     "load-setup": "Opzet laden",
     "new-game": "Nieuw spel",
     "new-game-against-ai": "Nieuw spel tegen ai",
+    "new-local-game": "Nieuw lokaal spel",
     "online": "Online",
     "open-game": "Spel openen",
     "playonline-connect": "Online spelen",

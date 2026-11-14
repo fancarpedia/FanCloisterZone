@@ -2,7 +2,7 @@
   "@author": "Bumsakalaka",
   "@jcz-version": "5.12.1",
   "@fcz-version": "7.1.0",
-  "@version": "0.12.13-ai",
+  "@version": "0.12.16-ai",
   "about": {
     "author": "Autor",
     "configuration-file": "Konfiguračný súbor",
@@ -112,6 +112,7 @@
   },
   "dev": {
     "actions": "Akcie",
+    "continue-game": "Pokračovať v hre",
     "dev": "Vývojové",
     "dump-hosted-game-server-state": "Dump Stavu herného servera",
     "edition": "Edícia",
@@ -128,6 +129,10 @@
     "size": "Veľkosť",
     "step-back-in-save": "Krok späť v uloženej hre",
     "strokes": "Obrysy",
+    "switch-online-server-title": "Prepnúť online server",
+    "switch-online-server-message": "Máte otvorených {count} online hier. Prepnutie servera ich zatvorí.",
+    "switch-online-server-confirm": "Prepnúť a zatvoriť hry",
+    "switch-online-server-cancel": "Ponechať súčasný server",
     "test": "Test",
     "test-runner": "Test Runner",
     "test-scenario-saved": "Testovací scenár bol uložený",
@@ -138,10 +143,6 @@
     "toggle-devtools": "Skry/Zobraz DevTools",
     "use-local-play-online": "Použi lokálny online server",
     "use-remote-engine": "Použi vzdialený engine",
-    "switch-online-server-title": "Prepnúť online server",
-    "switch-online-server-message": "Máte otvorených {count} online hier. Prepnutie servera ich zatvorí.",
-    "switch-online-server-confirm": "Prepnúť a zatvoriť hry",
-    "switch-online-server-cancel": "Ponechať súčasný server",
     "switch-online-server-move": 1
   },
   "dialog": {
@@ -470,6 +471,9 @@
       "wind-roses": "Veterné ružice",
       "yaga-hut": "Izbuška"
     },
+    "observers": {
+      "watching": "Sledujú"
+    },
     "placement": {
       "converted-by": "Premenil hráč {player}",
       "deployed-by": "Umiestnil hráč {player}",
@@ -478,6 +482,7 @@
       "placed-by": "Položil hráč {player}",
       "removed-with": "{source}, hráč {player}",
       "title": {
+        "discarded": "Vyradená",
         "moved": "Presun: {figure}",
         "placed": "Umiestnenie: {figure}",
         "placed-on-letter": "Umiestnenie na List: {figure}",
@@ -841,7 +846,8 @@
       "new-game-against-ai": "Nová hra proti AI",
       "open-game": "Otvoriť uloženú hru",
       "saved-game": "Uložené hry",
-      "title": "Hry na tomto počítači"
+      "title": "Hry na tomto počítači",
+      "new-local-game": "Nová miestna hra"
     },
     "online": {
       "abandon-game": "Opustiť hru",
@@ -905,6 +911,7 @@
   },
   "menu": {
     "about": "O aplikácii",
+    "create-game": "Vytvoriť hru",
     "discord": "Discord",
     "exit": "Ukončiť",
     "farm-hints": "Zafarbenie fariem",
@@ -918,6 +925,7 @@
     "load-setup": "Načítať nastavenie",
     "new-game": "Nová hra",
     "new-game-against-ai": "Nová hra proti AI",
+    "new-local-game": "Nová miestna hra",
     "online": "Online",
     "open-game": "Otvoriť uloženú hru",
     "playonline-connect": "Hrajte online",

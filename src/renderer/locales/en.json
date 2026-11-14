@@ -2,7 +2,7 @@
   "@author": "farin & Scott",
   "@jcz-version": "5.12.1",
   "@fcz-version": "7.1.0",
-  "@version": "0.12.13",
+  "@version": "0.12.16",
   "about": {
     "author": "Author",
     "configuration-file": "Configuration file",
@@ -112,6 +112,7 @@
   },
   "dev": {
     "actions": "Actions",
+    "continue-game": "Continue game",
     "dev": "Dev",
     "dump-hosted-game-server-state": "Dump Hosted Game Server State",
     "edition": "Edition",
@@ -128,6 +129,10 @@
     "size": "Size",
     "step-back-in-save": "Step Back in Save",
     "strokes": "Strokes",
+    "switch-online-server-title": "Switch online server",
+    "switch-online-server-message": "You have {count} online game(s) open. Switching the server will close them.",
+    "switch-online-server-confirm": "Switch and close games",
+    "switch-online-server-cancel": "Keep current server",
     "test": "Test",
     "test-runner": "Test Runner",
     "test-scenario-saved": "Test scenario saved",
@@ -138,10 +143,6 @@
     "toggle-devtools": "Toggle DevTools",
     "use-local-play-online": "Use Local Play Online",
     "use-remote-engine": "Use Remote Engine",
-    "switch-online-server-title": "Switch online server",
-    "switch-online-server-message": "You have {count} online game(s) open. Switching the server will close them.",
-    "switch-online-server-confirm": "Switch and close games",
-    "switch-online-server-cancel": "Keep current server",
     "switch-online-server-move": 1
   },
   "dialog": {
@@ -253,7 +254,6 @@
     "test-scenarios": "Test Scenarios"
   },
   "game": {
-    "observers": "Watching",
     "action": {
       "bazaar-buy-sell-the-tile-from-to": "Buy/Sell the tile from/to",
       "bazaar-choose-a-tile": "Choose a tile",
@@ -471,6 +471,9 @@
       "wind-roses": "Wind Roses",
       "yaga-hut": "Baba Yaga Hut"
     },
+    "observers": {
+      "watching": "Watching"
+    },
     "placement": {
       "converted-by": "Converted by {player}",
       "deployed-by": "Deployed by {player}",
@@ -479,13 +482,13 @@
       "placed-by": "Placed by {player}",
       "removed-with": "{source}, by {player}",
       "title": {
+        "discarded": "Discarded",
         "moved": "{figure} moved",
         "placed": "{figure} placed",
         "placed-on-letter": "{figure} placed on the Letter",
         "removed": "{figure} removed",
         "castle-created": "Small city converted to a castle",
-        "tile-placed": "Tile placed",
-        "discarded": "Tile discarded"
+        "tile-placed": "Tile placed"
       }
     },
     "ransom": {
@@ -843,7 +846,8 @@
       "new-game-against-ai": "New game against AI",
       "open-game": "Open game",
       "saved-game": "Saved game",
-      "title": "Player hosted games"
+      "title": "Player hosted games",
+      "new-local-game": "New local game"
     },
     "online": {
       "abandon-game": "Abandon game",
@@ -907,6 +911,7 @@
   },
   "menu": {
     "about": "About",
+    "create-game": "Create Game",
     "discord": "Discord",
     "exit": "Exit",
     "farm-hints": "Farm hints",
@@ -920,6 +925,7 @@
     "load-setup": "Load Setup",
     "new-game": "New Game",
     "new-game-against-ai": "New Game Against AI",
+    "new-local-game": "New local game",
     "online": "Online",
     "open-game": "Open Game",
     "playonline-connect": "Play Online",
@@ -936,10 +942,7 @@
     "toggle-history": "Toggle History",
     "undo": "Undo",
     "zoom-in": "Zoom In",
-    "zoom-out": "Zoom Out",
-    "create-game": "Create Game",
-    "join-online-game": "Join Online Game",
-    "new-local-game": "New Local Game"
+    "zoom-out": "Zoom Out"
   },
   "open-windows": {
     "title": "Open game windows",

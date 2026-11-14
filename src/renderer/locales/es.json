@@ -2,7 +2,7 @@
   "@author": "Carlium & Meepledrone",
   "@jcz-version": "5.12.1",
   "@fcz-version": "7.1.0",
-  "@version": "0.12.13-ai",
+  "@version": "0.12.16-ai",
   "about": {
     "author": "Autor",
     "configuration-file": "Archivo de configuración",
@@ -112,6 +112,7 @@
   },
   "dev": {
     "actions": "Acciones",
+    "continue-game": "Continuar la partida",
     "dev": "Desarrollo",
     "dump-hosted-game-server-state": "Volcar Estado del Servidor de Juegos Alojado",
     "edition": "Edición",
@@ -128,6 +129,10 @@
     "size": "Tamaño",
     "step-back-in-save": "Un paso atrás en la partida guardada",
     "strokes": "Trazos",
+    "switch-online-server-title": "Cambiar de servidor en línea",
+    "switch-online-server-message": "Tienes {count} partidas en línea abiertas. Al cambiar de servidor se cerrarán.",
+    "switch-online-server-confirm": "Cambiar y cerrar partidas",
+    "switch-online-server-cancel": "Mantener el servidor actual",
     "test": "Prueba",
     "test-runner": "Probador",
     "test-scenario-saved": "Escenario de prueba guardado",
@@ -138,10 +143,6 @@
     "toggle-devtools": "Activar/Desactivar DevTools",
     "use-local-play-online": "Usar Juego Local Online",
     "use-remote-engine": "Usar Motor Remoto",
-    "switch-online-server-title": "Cambiar de servidor en línea",
-    "switch-online-server-message": "Tienes {count} partidas en línea abiertas. Al cambiar de servidor se cerrarán.",
-    "switch-online-server-confirm": "Cambiar y cerrar partidas",
-    "switch-online-server-cancel": "Mantener el servidor actual",
     "switch-online-server-move": 1
   },
   "dialog": {
@@ -470,6 +471,9 @@
       "wind-roses": "Rosas de los Vientos",
       "yaga-hut": "Cabaña de Baba Yaga"
     },
+    "observers": {
+      "watching": "Observando"
+    },
     "placement": {
       "converted-by": "Convertido por {player}",
       "deployed-by": "Colocado por {player}",
@@ -478,6 +482,7 @@
       "placed-by": "Puesto por {player}",
       "removed-with": "{source}, por {player}",
       "title": {
+        "discarded": "Descartada",
         "moved": "Movimiento: {figure}",
         "placed": "Colocación: {figure}",
         "placed-on-letter": "Colocación en la Carta: {figure}",
@@ -841,7 +846,8 @@
       "new-game-against-ai": "Nueva partida contra IA",
       "open-game": "Abrir partida",
       "saved-game": "Juego grabado",
-      "title": "Partidas organizadas por el jugador"
+      "title": "Partidas organizadas por el jugador",
+      "new-local-game": "Nueva partida local"
     },
     "online": {
       "abandon-game": "Abandonar la partida",
@@ -905,6 +911,7 @@
   },
   "menu": {
     "about": "Acerca",
+    "create-game": "Crear partida",
     "discord": "Discord",
     "exit": "Salir",
     "farm-hints": "Sugerencias para la granja",
@@ -918,6 +925,7 @@
     "load-setup": "Cargar Configuración",
     "new-game": "Nueva partida",
     "new-game-against-ai": "Nuevo Juego Contra IA",
+    "new-local-game": "Nueva partida local",
     "online": "En línea",
     "open-game": "Abrir Juego",
     "playonline-connect": "Jugar en línea",

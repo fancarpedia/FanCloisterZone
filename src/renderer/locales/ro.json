@@ -2,7 +2,7 @@
   "@author": "Paloi Sciurala",
   "@jcz-version": "5.12.1",
   "@fcz-version": "7.1.0",
-  "@version": "0.12.13-ai",
+  "@version": "0.12.16-ai",
   "about": {
     "author": "Autor",
     "configuration-file": "Fișier de configurație",
@@ -112,6 +112,7 @@
   },
   "dev": {
     "actions": "Acțiuni",
+    "continue-game": "Continuă partida",
     "dev": "Dez",
     "dump-hosted-game-server-state": "Golește starea serverului partidei găzduite",
     "edition": "Ediție",
@@ -128,6 +129,10 @@
     "size": "Mărime",
     "step-back-in-save": "Pas înapoi în salvare",
     "strokes": "Linii",
+    "switch-online-server-title": "Comută serverul online",
+    "switch-online-server-message": "Numărul partidelor online deschise ale tale este de {count}. Comutarea serverului le va închide.",
+    "switch-online-server-confirm": "Comută și închide partidele",
+    "switch-online-server-cancel": "Păstrează serverul actual",
     "test": "Test",
     "test-runner": "Rulator de test",
     "test-scenario-saved": "Scenariul de test s-a salvat",
@@ -138,10 +143,6 @@
     "toggle-devtools": "Comută uneltele de dezvoltator",
     "use-local-play-online": "Folosește jucarea online locală",
     "use-remote-engine": "Folosește motorul retras",
-    "switch-online-server-title": "Comută serverul online",
-    "switch-online-server-message": "Numărul partidelor online deschise ale tale este de {count}. Comutarea serverului le va închide.",
-    "switch-online-server-confirm": "Comută și închide partidele",
-    "switch-online-server-cancel": "Păstrează serverul actual",
     "switch-online-server-move": 1
   },
   "dialog": {
@@ -309,7 +310,7 @@
       "siege-player-can-escape-a-besieged-city": "Jucătorul poate scăpa dintr-un oraș asediat.",
       "siege-you-can-escape-a-besieged-city": "Poți evada dintr-un oraș asediat.",
       "skip-action": "Omite acțiunea",
-      "tile-discarded-notice-plural": "Aceste piese nu pot fi plasate nicăieri, așa că au fost eliminate | Această piesă nu poate fi plasată nicăieri, așa că a fost eliminată | Aceste piese nu pot fi plasate nicăieri, așa că au fost eliminate | Aceste piese nu pot fi plasate nicăieri, așa că au fost eliminate",
+      "tile-discarded-notice-plural": "Aceste cartonașe nu pot fi plasate nicăieri, așa că au fost decartate | Acest cartonaș nu poate fi plasat nicăieri, așa că a fost decartat | Aceste cartonașe nu pot fi plasate nicăieri, așa că au fost decartate",
       "tile-placement": "Plasare de cartonaș",
       "tower-player-can-take-a-prisoner": "Jucătorul poate lua un prizonier",
       "tower-player-must-select-follower-for-exchange": "Jucătorul trebuie să selecteze un meeple pentru schimb",
@@ -470,14 +471,18 @@
       "wind-roses": "Rozele vântului",
       "yaga-hut": "Coliba Babei Iaga"
     },
+    "observers": {
+      "watching": "Urmărește"
+    },
     "placement": {
       "converted-by": "Convertit de {player}",
       "deployed-by": "Depus de {player}",
-      "discarded-reason": "Nu se potrivește nicăieri pe tablă, așa că a fost trasă altă piesă",
+      "discarded-reason": "Nu se potrivește nicăieri pe tablă, așa că a fost tras alt cartonaș",
       "moved-by": "Mutat de {player}",
       "placed-by": "Plasat de {player}",
       "removed-with": "{source}, de {player}",
       "title": {
+        "discarded": "Decartat",
         "moved": "{figure} s-a mutat",
         "placed": "{figure} s-a plasat",
         "placed-on-letter": "{figure} s-a plasat pe Scrisoare",
@@ -841,7 +846,8 @@
       "new-game-against-ai": "Partidă nouă împotriva IA",
       "open-game": "Deschide partidă",
       "saved-game": "Partidă salvată",
-      "title": "Partide găzduite de jucător"
+      "title": "Partide găzduite de jucător",
+      "new-local-game": "Partidă locală nouă"
     },
     "online": {
       "abandon-game": "Abandonează partida",
@@ -905,6 +911,7 @@
   },
   "menu": {
     "about": "Despre",
+    "create-game": "Creează partidă",
     "discord": "Discord",
     "exit": "Ieși",
     "farm-hints": "Indicii pentru câmpuri",
@@ -918,6 +925,7 @@
     "load-setup": "Încarcă configurație",
     "new-game": "Partidă nouă",
     "new-game-against-ai": "Partidă nouă împotriva IA",
+    "new-local-game": "Partidă locală nouă",
     "online": "Online",
     "open-game": "Deschide partidă",
     "playonline-connect": "Joacă online",

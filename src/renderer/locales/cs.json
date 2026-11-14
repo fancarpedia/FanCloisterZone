@@ -2,7 +2,7 @@
   "@author": "Peťul",
   "@jcz-version": "5.12.1",
   "@fcz-version": "7.1.0",
-  "@version": "0.12.13-ai",
+  "@version": "0.12.16-ai",
   "about": {
     "author": "Autor",
     "configuration-file": "Konfigurační soubor",
@@ -112,6 +112,7 @@
   },
   "dev": {
     "actions": "Úkony",
+    "continue-game": "Pokračovat ve hře",
     "dev": "Vývojové",
     "dump-hosted-game-server-state": "Dump Stavu herného serveru",
     "edition": "Edice",
@@ -128,6 +129,10 @@
     "size": "Velikost",
     "step-back-in-save": "Krok zpět v uložené hře",
     "strokes": "Obrysy",
+    "switch-online-server-title": "Přepnout online server",
+    "switch-online-server-message": "Máte otevřeno {count} online her. Přepnutí serveru je zavře.",
+    "switch-online-server-confirm": "Přepnout a zavřít hry",
+    "switch-online-server-cancel": "Ponechat současný server",
     "test": "Test",
     "test-runner": "Test Runner",
     "test-scenario-saved": "Testovací scénář byl uložen",
@@ -138,10 +143,6 @@
     "toggle-devtools": "Skryj/Zobraz DevTools",
     "use-local-play-online": "Použij lokální online server",
     "use-remote-engine": "Použij vzdálený engine",
-    "switch-online-server-title": "Přepnout online server",
-    "switch-online-server-message": "Máte otevřeno {count} online her. Přepnutí serveru je zavře.",
-    "switch-online-server-confirm": "Přepnout a zavřít hry",
-    "switch-online-server-cancel": "Ponechat současný server",
     "switch-online-server-move": 1
   },
   "dialog": {
@@ -470,6 +471,9 @@
       "wind-roses": "Větrné růžice",
       "yaga-hut": "Chaloupka baby Yagy"
     },
+    "observers": {
+      "watching": "Sledují"
+    },
     "placement": {
       "converted-by": "Přeměnil hráč {player}",
       "deployed-by": "Umístil hráč {player}",
@@ -478,6 +482,7 @@
       "placed-by": "Položil hráč {player}",
       "removed-with": "{source}, hráč {player}",
       "title": {
+        "discarded": "Vyřazena",
         "moved": "Přesun: {figure}",
         "placed": "Umístění: {figure}",
         "placed-on-letter": "Umístění na Dopis: {figure}",
@@ -841,7 +846,8 @@
       "new-game-against-ai": "Nová hra proti AI",
       "open-game": "Otevřít uloženu hru",
       "saved-game": "Uložené hry",
-      "title": "Hry na tomto počítači"
+      "title": "Hry na tomto počítači",
+      "new-local-game": "Nová místní hra"
     },
     "online": {
       "abandon-game": "Opustit hru",
@@ -905,6 +911,7 @@
   },
   "menu": {
     "about": "O aplikaci",
+    "create-game": "Vytvořit hru",
     "discord": "Discord",
     "exit": "Ukončit",
     "farm-hints": "Zvýraznit louky",
@@ -918,6 +925,7 @@
     "load-setup": "Načíst nastavení",
     "new-game": "Nová hra",
     "new-game-against-ai": "Nová hra proti AI",
+    "new-local-game": "Nová místní hra",
     "online": "Online",
     "open-game": "Otevřít uloženu hru",
     "playonline-connect": "Hrát online",

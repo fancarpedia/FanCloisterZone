@@ -2,7 +2,7 @@
   "@author": "Snearone",
   "@jcz-version": "5.12.1",
   "@fcz-version": "7.1.0",
-  "@version": "0.12.13-ai",
+  "@version": "0.12.16-ai",
   "about": {
     "author": "Autor",
     "configuration-file": "Plik konfiguracyjny",
@@ -112,6 +112,7 @@
   },
   "dev": {
     "actions": "Akcje",
+    "continue-game": "Kontynuuj grę",
     "dev": "Dev",
     "dump-hosted-game-server-state": "Zrzuć Stan Serwera Hostowanych Gier",
     "edition": "Edycja",
@@ -128,6 +129,10 @@
     "size": "Rozmiar",
     "step-back-in-save": "Krok wstecz w zapisanej grze",
     "strokes": "Krawędzie",
+    "switch-online-server-title": "Zmień serwer online",
+    "switch-online-server-message": "Masz otwarte {count} gier online. Zmiana serwera je zamknie.",
+    "switch-online-server-confirm": "Zmień i zamknij gry",
+    "switch-online-server-cancel": "Zostaw obecny serwer",
     "test": "Test",
     "test-runner": "Tester",
     "test-scenario-saved": "Scenariusz testowy zapisany",
@@ -138,10 +143,6 @@
     "toggle-devtools": "Narzędzia Programistyczne",
     "use-local-play-online": "Korzystaj z lokalnej gry online",
     "use-remote-engine": "Użyj zdalnego silnika",
-    "switch-online-server-title": "Zmień serwer online",
-    "switch-online-server-message": "Masz otwarte {count} gier online. Zmiana serwera je zamknie.",
-    "switch-online-server-confirm": "Zmień i zamknij gry",
-    "switch-online-server-cancel": "Zostaw obecny serwer",
     "switch-online-server-move": 1
   },
   "dialog": {
@@ -470,6 +471,9 @@
       "wind-roses": "Róże wiatrów",
       "yaga-hut": "Hatka Baby Jagi"
     },
+    "observers": {
+      "watching": "Obserwują"
+    },
     "placement": {
       "converted-by": "Przekształcił gracz {player}",
       "deployed-by": "Umieścił gracz {player}",
@@ -478,6 +482,7 @@
       "placed-by": "Położył gracz {player}",
       "removed-with": "{source}, gracz {player}",
       "title": {
+        "discarded": "Odrzucona",
         "moved": "Przesunięcie: {figure}",
         "placed": "Umieszczenie: {figure}",
         "placed-on-letter": "Umieszczenie na Liście: {figure}",
@@ -841,7 +846,8 @@
       "new-game-against-ai": "Nowa gra przeciwko AI",
       "open-game": "Otwarta gra",
       "saved-game": "Zapisana gra",
-      "title": "Gry prywatne"
+      "title": "Gry prywatne",
+      "new-local-game": "Nowa gra lokalna"
     },
     "online": {
       "abandon-game": "Porzuć grę",
@@ -905,6 +911,7 @@
   },
   "menu": {
     "about": "Informacje",
+    "create-game": "Utwórz grę",
     "discord": "Discord",
     "exit": "Wyjdź",
     "farm-hints": "Podpowiedźi pól",
@@ -918,6 +925,7 @@
     "load-setup": "Załaduj konfigurację",
     "new-game": "Nowa gra",
     "new-game-against-ai": "Nowa gra przeciwko AI",
+    "new-local-game": "Nowa gra lokalna",
     "online": "Online",
     "open-game": "Otwórz grę",
     "playonline-connect": "Graj online",

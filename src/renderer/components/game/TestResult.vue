@@ -1,6 +1,8 @@
 <template>
   <v-card class="test-result">
     <div class="btn-line">
+      <!-- play on from here: the results go away and the test is no longer checked after each move -->
+      <v-btn color="primary" @click="continueGame">{{ $nuxt.$t('dev.continue-game') }}</v-btn>
       <v-btn @click="casesHidden = !casesHidden">{{ casesHidden ? $nuxt.$t('button.show') : $nuxt.$t('button.hide') }}</v-btn>
       <v-btn @click="$router.push('/')">{{ $nuxt.$t('button.close') }}</v-btn>
     </div>
@@ -31,6 +33,15 @@ export default {
   data () {
     return {
       casesHidden: false
+    }
+  },
+
+  methods: {
+    // Leave the test and keep playing the game as it stands: without the scenario the game is no
+    // longer verified after each move (store game.js applyEngineResponse), so the results stay gone.
+    continueGame () {
+      this.$store.commit('game/testScenario', null)
+      this.$store.commit('game/testScenarioResult', null)
     }
   }
 }

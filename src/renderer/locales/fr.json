@@ -2,7 +2,7 @@
   "@author": "Black Bear",
   "@jcz-version": "5.12.1",
   "@fcz-version": "7.1.0",
-  "@version": "0.12.13-ai",
+  "@version": "0.12.16-ai",
   "about": {
     "author": "Auteur",
     "configuration-file": "Fichier de configuration",
@@ -112,6 +112,7 @@
   },
   "dev": {
     "actions": "Actions",
+    "continue-game": "Continuer la partie",
     "dev": "Développement",
     "dump-hosted-game-server-state": "Vider l’état du serveur de parties hébergées",
     "edition": "Édition",
@@ -128,6 +129,10 @@
     "size": "Taille",
     "step-back-in-save": "Un pas en arrière dans la partie sauvegardée",
     "strokes": "Traits",
+    "switch-online-server-title": "Changer de serveur en ligne",
+    "switch-online-server-message": "Vous avez {count} partie(s) en ligne ouverte(s). Si vous changez de serveur, elles seront fermées.",
+    "switch-online-server-confirm": "Changer et fermer les parties en cours",
+    "switch-online-server-cancel": "Garder le serveur actuel",
     "test": "Test",
     "test-runner": "Exécuteur de tests",
     "test-scenario-saved": "Scénario de test enregistré",
@@ -138,10 +143,6 @@
     "toggle-devtools": "Activer/désactiver les outils de développement",
     "use-local-play-online": "Utiliser jeu local en ligne",
     "use-remote-engine": "Utiliser moteur à distance",
-    "switch-online-server-title": "Changer de serveur en ligne",
-    "switch-online-server-message": "Vous avez {count} partie(s) en ligne ouverte(s). Si vous changez de serveur, elles seront fermées.",
-    "switch-online-server-confirm": "Changer et fermer les parties en cours",
-    "switch-online-server-cancel": "Garder le serveur actuel",
     "switch-online-server-move": 1
   },
   "dialog": {
@@ -470,6 +471,9 @@
       "wind-roses": "Roses des vents",
       "yaga-hut": "Isba de Baba Yaga"
     },
+    "observers": {
+      "watching": "Spectateurs"
+    },
     "placement": {
       "converted-by": "Transformé par {player}",
       "deployed-by": "Posé par {player}",
@@ -478,6 +482,7 @@
       "placed-by": "Placé par {player}",
       "removed-with": "{source}, par {player}",
       "title": {
+        "discarded": "Défaussée",
         "moved": "Déplacement : {figure}",
         "placed": "Pose : {figure}",
         "placed-on-letter": "Pose sur la Lettre : {figure}",
@@ -841,7 +846,8 @@
       "new-game-against-ai": "Nouvelle partie contre une IA",
       "open-game": "Ouvrir une partie",
       "saved-game": "Partie sauvegardée",
-      "title": "Parties hébergées par le joueur"
+      "title": "Parties hébergées par le joueur",
+      "new-local-game": "Nouvelle partie locale"
     },
     "online": {
       "abandon-game": "Abandonner la partie",
@@ -905,6 +911,7 @@
   },
   "menu": {
     "about": "À propos",
+    "create-game": "Créer une partie",
     "discord": "Discord",
     "exit": "Quitter FanCloisterZone",
     "farm-hints": "Délimiter les prés",
@@ -918,6 +925,7 @@
     "load-setup": "Charger la configuration",
     "new-game": "Nouvelle partie",
     "new-game-against-ai": "Nouvelle partie contre une IA",
+    "new-local-game": "Nouvelle partie locale",
     "online": "En ligne",
     "open-game": "Ouvrir une partie",
     "playonline-connect": "Jouer en ligne",

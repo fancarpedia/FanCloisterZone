@@ -2,7 +2,7 @@
   "@author": "Stepukiss",
   "@jcz-version": "5.12.1",
   "@fcz-version": "7.1.0",
-  "@version": "0.12.13-ai",
+  "@version": "0.12.16-ai",
   "about": {
     "author": "Autorius",
     "configuration-file": "Nustatymų aplankas",
@@ -112,6 +112,7 @@
   },
   "dev": {
     "actions": "Veiksmai",
+    "continue-game": "Tęsti žaidimą",
     "dev": "Kūrimas",
     "dump-hosted-game-server-state": "Išmesti pradįto žaidimų serverio būseną",
     "edition": "Leidimas",
@@ -128,6 +129,10 @@
     "size": "Dydis",
     "step-back-in-save": "Žingsnis atgal išsaugotame žaidime",
     "strokes": "Smūgiai",
+    "switch-online-server-title": "Pakeisti interneto serverį",
+    "switch-online-server-message": "Turite atidarytų žaidimų internete: {count}. Pakeitus serverį jie bus uždaryti.",
+    "switch-online-server-confirm": "Pakeisti ir uždaryti žaidimus",
+    "switch-online-server-cancel": "Likti dabartiniame serveryje",
     "test": "Bandymas",
     "test-runner": "Tikrinimas",
     "test-scenario-saved": "Testo scenarijus išsaugotas",
@@ -138,10 +143,6 @@
     "toggle-devtools": "Perjungti kūrėjo įrankius",
     "use-local-play-online": "Naudoti vietinį žaidimą internete",
     "use-remote-engine": "Naudoti nuotolinį variklį",
-    "switch-online-server-title": "Pakeisti interneto serverį",
-    "switch-online-server-message": "Turite atidarytų žaidimų internete: {count}. Pakeitus serverį jie bus uždaryti.",
-    "switch-online-server-confirm": "Pakeisti ir uždaryti žaidimus",
-    "switch-online-server-cancel": "Likti dabartiniame serveryje",
     "switch-online-server-move": 1
   },
   "dialog": {
@@ -470,6 +471,9 @@
       "wind-roses": "Vėjo Rožės",
       "yaga-hut": "Babos-Yagos trobelė"
     },
+    "observers": {
+      "watching": "Stebi"
+    },
     "placement": {
       "converted-by": "Pavertė {player}",
       "deployed-by": "Padėjo {player}",
@@ -478,6 +482,7 @@
       "placed-by": "Padėjo {player}",
       "removed-with": "{source}, žaidėjas {player}",
       "title": {
+        "discarded": "Išmesta",
         "moved": "Perkėlimas: {figure}",
         "placed": "Padėjimas: {figure}",
         "placed-on-letter": "Padėjimas ant Laiško: {figure}",
@@ -841,7 +846,8 @@
       "new-game-against-ai": "Naujas žaidimas preš DI",
       "open-game": "Atviras žaidimas",
       "saved-game": "Išsaugoti žaidimą",
-      "title": "Žaidėjui priklausantys žaidimai"
+      "title": "Žaidėjui priklausantys žaidimai",
+      "new-local-game": "Naujas vietinis žaidimas"
     },
     "online": {
       "abandon-game": "Palieka žaidimą",
@@ -905,6 +911,7 @@
   },
   "menu": {
     "about": "Apie",
+    "create-game": "Sukurti žaidimą",
     "discord": "Discord",
     "exit": "Išeiti",
     "farm-hints": "Parodyti Laukus",
@@ -918,6 +925,7 @@
     "load-setup": "Įkelti nustatymus",
     "new-game": "Naujas Žaidimas",
     "new-game-against-ai": "Naujas žaidimas prieš DI",
+    "new-local-game": "Naujas vietinis žaidimas",
     "online": "Prisijungęs",
     "open-game": "Atidaryti žaidimą",
     "playonline-connect": "Žaisti Internete",
