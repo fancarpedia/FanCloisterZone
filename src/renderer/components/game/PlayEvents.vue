@@ -159,6 +159,13 @@ export default {
             // carrying its cause (the circus tile placed) stays, so the history tells why it moved
             return
           }
+          if (ev.type === 'ransom-paid') {
+            // A ransom is already in the history as the two scoring bullets it made (the payer's
+            // -3, the jailer's +3); its own -3 / +3 event would show it twice. Kept for the turn
+            // only, where those bullets look up whose follower was bought back.
+            turnEvents.push(ev)
+            return
+          }
 
           const isScore = ev.type === 'points' || ev.type === 'token-received'
           const isNewLineEvent = ev.type === 'tile-auctioned' || ev.type === 'dragon-moved'

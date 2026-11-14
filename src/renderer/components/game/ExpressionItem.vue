@@ -8,9 +8,11 @@
       <template v-else-if="item.name === 'cathedral'"><img :title="$t('game.feature.cathedral')" src="~/assets/features/C1/cathedral.png" height="40"></template>
       <template v-else-if="item.name === 'fairy'"><NeutralFigure figure="fairy" :width="40" :height="40" /></template>
       <template v-else-if="item.name === 'black-fairy'"><NeutralFigure figure="black-fairy" :width="40" :height="40" /></template>
+      <!-- a follower; for a ransom the very follower bought back, in its owner's colour
+           (item.meeple / item.player, see PointsEvent withRansom) -->
       <template v-else-if="item.name === 'meeples'">
-        <svg class="meeple" :width="40" :height="40">
-          <use :href="`${MEEPLES_SVG}#small-follower`" />
+        <svg class="meeple" :class="meepleColorClass" :width="40" :height="40">
+          <use :href="`${MEEPLES_SVG}#${meepleSymbol}`" />
         </svg>
       </template>
       <template v-else-if="item.name === 'pigs'">
@@ -87,6 +89,7 @@
 
 <script>
 import isNil from 'lodash/isNil'
+import kebabCase from 'lodash/kebabCase'
 
 import { Expansion } from '@/models/expansions'
 import NeutralFigure from '@/components/game/NeutralFigure'
@@ -120,6 +123,17 @@ export default {
   },
 
   computed: {
+    // the meeples item's figure: a given follower kind (SmallFollower, BigFollower, …) or a follower
+    meepleSymbol () {
+      return this.item.meeple ? kebabCase(this.item.meeple) : 'small-follower'
+    },
+
+    // ...in its owner's colour when the item names one
+    meepleColorClass () {
+      const p = this.item.player
+      return p === undefined || p === null ? '' : this.$store.getters['game/colorCssClass'](p)
+    },
+
     hasCount () {
       return !isNil(this.item.count)
     },
@@ -164,7 +178,9 @@ export default {
     .v-icon
       font-size: 40px
 
-    svg.meeple, svg.artwork-element, svg.exp-symbol
+    // grey, except a follower drawn in a player's colour (a ransom's freed follower: colour class
+    // "color color-N" from meepleColorClass), which keeps that colour
+    svg.meeple:not(.color), svg.artwork-element, svg.exp-symbol
       +theme using ($theme)
         fill: map-get($theme, 'gray-text-color')
 

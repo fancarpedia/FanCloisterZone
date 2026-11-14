@@ -41,6 +41,22 @@ export default {
   },
 
   methods: {
+    // A ransom's points (the payer's -3, the jailer's +3) say nothing of whose follower was bought
+    // back: take it from the turn's ransom-paid event (hidden from the history, kept in the turn's
+    // events) — the one this player paid (payment) or received (income) — and draw that follower,
+    // in its owner's colour, in place of the expression's generic follower.
+    withRansom (points) {
+      const name = points.name || ''
+      if (!name.startsWith('ransompaid')) return points
+      const ransoms = (this.siblings || []).filter(e => e.type === 'ransom-paid')
+      const income = name === 'ransompaid.income'
+      const ev = ransoms.find(e => (income ? e.jailer : e.prisoner) === points.player) || ransoms[0]
+      if (!ev) return points
+      // the expression's follower item becomes the freed follower, in its owner's colour
+      const items = (points.items || []).map(it => it.name === 'meeples' ? { ...it, meeple: ev.follower, player: ev.prisoner } : it)
+      return { ...points, items }
+    },
+
     // A mouse click pins the breakdown in the action panel. A touch tap does not: it is the
     // touch screen's hover, and a pinned breakdown outlived the board dim once the board was
     // tapped (they must go away together).
@@ -51,6 +67,7 @@ export default {
 
     onMouseEnter (points) {
       this.persistBreakdown = false
+      points = this.withRansom(points)
       const { ptr, meeples, majority } = points
 
       // Fairy / Black Fairy score events: show the exact spot (radius), and pulse the host meeple
