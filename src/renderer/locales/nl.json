@@ -2,7 +2,7 @@
   "@author": "Kiap1969 & Sinscerly",
   "@jcz-version": "5.12.1",
   "@fcz-version": "7.1.0",
-  "@version": "0.12.12-ai",
+  "@version": "0.12.13-ai",
   "about": {
     "author": "Auteur",
     "configuration-file": "Configuratiebestand",
@@ -309,6 +309,7 @@
       "siege-player-can-escape-a-besieged-city": "Speler mag een belegerde stad ontvluchten.",
       "siege-you-can-escape-a-besieged-city": "Je mag een belegerde stad ontvluchten.",
       "skip-action": "Actie overslaan",
+      "tile-discarded-notice-plural": "Deze tegels passen nergens en zijn daarom afgelegd | Deze tegel past nergens en is daarom afgelegd | Deze tegels passen nergens en zijn daarom afgelegd",
       "tile-placement": "Tegel plaatsing",
       "tower-player-can-take-a-prisoner": "Speler kan een gevangene nemen",
       "tower-player-must-select-follower-for-exchange": "Speler moet een meeple selecteren om te ruilen",
@@ -472,6 +473,7 @@
     "placement": {
       "converted-by": "Omgezet door {player}",
       "deployed-by": "Geplaatst door {player}",
+      "discarded-reason": "Hij past nergens op het speelveld, dus is er een andere tegel getrokken",
       "moved-by": "Verplaatst door {player}",
       "placed-by": "Gelegd door {player}",
       "removed-with": "{source}, door {player}",

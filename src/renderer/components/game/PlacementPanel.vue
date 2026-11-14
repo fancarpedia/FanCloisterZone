@@ -101,8 +101,9 @@ export default {
 
   props: {
     // { kind: 'placed'|'moved'|'removed', figure?|meeple?|tile?|token?, player?, to?, cause,
-    //   byPlayer?, titleKey?, byKey? } — titleKey / byKey override the generic title and the
-    //   "… by <player>" line (a placed tile, a castle)
+    //   byPlayer?, titleKey?, byKey?, subtitleKey? } — titleKey / byKey override the generic title
+    //   and the "… by <player>" line (a placed tile, a castle); subtitleKey is a fixed second line
+    //   (a discarded tile: why)
     expr: { type: Object, required: true }
   },
 
@@ -149,6 +150,8 @@ export default {
     },
 
     subtitle () {
+      // a fixed explanation line (e.g. why a tile was discarded)
+      if (this.expr.subtitleKey) return this.$t(this.expr.subtitleKey)
       if (this.expr.cause) return causeTitle(this.expr.cause, this)
       // removed through a player's special figure / tile (Princess, Robber's Son, Festival, …):
       // what removed it, and who used it

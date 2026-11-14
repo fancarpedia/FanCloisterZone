@@ -2,7 +2,7 @@
   "@author": "Snearone",
   "@jcz-version": "5.12.1",
   "@fcz-version": "7.1.0",
-  "@version": "0.12.12-ai",
+  "@version": "0.12.13-ai",
   "about": {
     "author": "Autor",
     "configuration-file": "Plik konfiguracyjny",
@@ -309,6 +309,7 @@
       "siege-player-can-escape-a-besieged-city": "Gracz może uciec z oblężonego miasta.",
       "siege-you-can-escape-a-besieged-city": "Możesz uciec z oblężonego miasta.",
       "skip-action": "pomiń czynność",
+      "tile-discarded-notice-plural": "Tych płytek nie da się nigdzie położyć, więc zostały odrzucone | Tej płytki nie da się nigdzie położyć, więc została odrzucona | Tych płytek nie da się nigdzie położyć, więc zostały odrzucone | Tych płytek nie da się nigdzie położyć, więc zostały odrzucone",
       "tile-placement": "Położenie płytki terenu",
       "tower-player-can-take-a-prisoner": "Gracz może wziąć zakładnika",
       "tower-player-must-select-follower-for-exchange": "Gracz musi wybrać zakładnika do wymiany",
@@ -472,6 +473,7 @@
     "placement": {
       "converted-by": "Przekształcił gracz {player}",
       "deployed-by": "Umieścił gracz {player}",
+      "discarded-reason": "Nie pasuje nigdzie na planszy, więc dobrano inną płytkę",
       "moved-by": "Przesunął gracz {player}",
       "placed-by": "Położył gracz {player}",
       "removed-with": "{source}, gracz {player}",

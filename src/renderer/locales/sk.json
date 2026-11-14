@@ -2,7 +2,7 @@
   "@author": "Bumsakalaka",
   "@jcz-version": "5.12.1",
   "@fcz-version": "7.1.0",
-  "@version": "0.12.12-ai",
+  "@version": "0.12.13-ai",
   "about": {
     "author": "Autor",
     "configuration-file": "Konfiguračný súbor",
@@ -309,6 +309,7 @@
       "siege-player-can-escape-a-besieged-city": "Hráč môže uniknúť z obliehaného mesta.",
       "siege-you-can-escape-a-besieged-city": "Môžete uniknúť z obliehaného mesta.",
       "skip-action": "Preskočiť akciu",
+      "tile-discarded-notice-plural": "Tieto kartičky sa nedajú nikam umiestniť, preto boli vyradené | Táto kartička sa nedá nikam umiestniť, preto bola vyradená | Tieto kartičky sa nedajú nikam umiestniť, preto boli vyradené | Tieto kartičky sa nedajú nikam umiestniť, preto boli vyradené",
       "tile-placement": "Priloženie kartičky",
       "tower-player-can-take-a-prisoner": "Hráč môže vziať zajatca",
       "tower-player-must-select-follower-for-exchange": "Hráč si musí vybrať spoločníka na výmenu",
@@ -472,6 +473,7 @@
     "placement": {
       "converted-by": "Premenil hráč {player}",
       "deployed-by": "Umiestnil hráč {player}",
+      "discarded-reason": "Nedá sa nikam umiestniť, preto bola ťahaná iná kartička",
       "moved-by": "Presunul hráč {player}",
       "placed-by": "Položil hráč {player}",
       "removed-with": "{source}, hráč {player}",

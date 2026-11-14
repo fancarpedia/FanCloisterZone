@@ -71,6 +71,8 @@
       />
       <PreDrawHand />
       <PlayEvents />
+      <!-- a drawn tile that fits nowhere was discarded: tell the players -->
+      <DiscardedTileNotice />
       <GameChat />
       <!-- Single-window web replaces the online lobby when a game starts, so surface the lobby-wide
            global chat here too (floating bullet). Self-hides when not connected online. Web only —
@@ -124,6 +126,7 @@ import GameChat from '@/components/game/GameChat.vue'
 import GlobalChat from '@/components/GlobalChat'
 import ChooseMonkOrAbbotDialog from '@/components/game/dialogs/ChooseMonkOrAbbotDialog.vue'
 import PlayerPanel from '@/components/game/PlayerPanel.vue'
+import DiscardedTileNotice from '@/components/game/DiscardedTileNotice'
 import PlayEvents from '@/components/game/PlayEvents.vue'
 import TestResult from '@/components/game/TestResult.vue'
 import TilePackDialog from '@/components/game/dialogs/TilePackDialog.vue'
@@ -139,6 +142,7 @@ const MAX_SHRINK = SHRINK_LEVELS[SHRINK_LEVELS.length - 1]
 
 export default {
   components: {
+    DiscardedTileNotice,
     ActionPanel,
     Board,
     ChooseMonkOrAbbotDialog,

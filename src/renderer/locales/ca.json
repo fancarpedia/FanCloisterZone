@@ -2,7 +2,7 @@
   "@author": "J0anJosep",
   "@jcz-version": "5.12.1",
   "@fcz-version": "7.1.0",
-  "@version": "0.12.12-ai",
+  "@version": "0.12.13-ai",
   "about": {
     "author": "Autor",
     "configuration-file": "Fitxer de configuració",
@@ -309,6 +309,7 @@
       "siege-player-can-escape-a-besieged-city": "El jugador es pot escapar d'una ciutat assetjada.",
       "siege-you-can-escape-a-besieged-city": "Podeu escapar-vos d'una ciutat assetjada.",
       "skip-action": "Salteu l'acció",
+      "tile-discarded-notice-plural": "Aquestes peces no es poden col·locar enlloc, per això s'han descartat | Aquesta peça no es pot col·locar enlloc, per això s'ha descartat | Aquestes peces no es poden col·locar enlloc, per això s'han descartat",
       "tile-placement": "Posició de casella",
       "tower-player-can-take-a-prisoner": "El jugador pot capturar un presoner",
       "tower-player-must-select-follower-for-exchange": "El jugador ha de triar un seguidor per a l'intercanvi",
@@ -472,6 +473,7 @@
     "placement": {
       "converted-by": "Convertit per {player}",
       "deployed-by": "Col·locat per {player}",
+      "discarded-reason": "No encaixa enlloc del tauler, així que s'ha robat una altra peça",
       "moved-by": "Mogut per {player}",
       "placed-by": "Posat per {player}",
       "removed-with": "{source}, per {player}",

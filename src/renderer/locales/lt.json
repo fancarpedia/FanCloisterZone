@@ -2,7 +2,7 @@
   "@author": "Stepukiss",
   "@jcz-version": "5.12.1",
   "@fcz-version": "7.1.0",
-  "@version": "0.12.12-ai",
+  "@version": "0.12.13-ai",
   "about": {
     "author": "Autorius",
     "configuration-file": "Nustatymų aplankas",
@@ -309,6 +309,7 @@
       "siege-player-can-escape-a-besieged-city": "Žaidėjas gali pabėgti iš apgulto miesto",
       "siege-you-can-escape-a-besieged-city": "Jūs galite pabėgti iš apgulto miesto",
       "skip-action": "Praleisti veiksmą",
+      "tile-discarded-notice-plural": "Šių plytelių niekur negalima padėti, todėl jos išmestos | Šios plytelės niekur negalima padėti, todėl ji išmesta | Šių plytelių niekur negalima padėti, todėl jos išmestos | Šių plytelių niekur negalima padėti, todėl jos išmestos",
       "tile-placement": "Plytelių išdėstymas",
       "tower-player-can-take-a-prisoner": "ŽAidėjas gali paimti kalinį",
       "tower-player-must-select-follower-for-exchange": "Žaidėjas turi pasirinkti Miplą apsikeitimui",
@@ -472,6 +473,7 @@
     "placement": {
       "converted-by": "Pavertė {player}",
       "deployed-by": "Padėjo {player}",
+      "discarded-reason": "Jos niekur negalima padėti ant lentos, todėl ištraukta kita plytelė",
       "moved-by": "Perkėlė {player}",
       "placed-by": "Padėjo {player}",
       "removed-with": "{source}, žaidėjas {player}",

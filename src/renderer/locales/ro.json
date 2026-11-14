@@ -2,7 +2,7 @@
   "@author": "Paloi Sciurala",
   "@jcz-version": "5.12.1",
   "@fcz-version": "7.1.0",
-  "@version": "0.12.12",
+  "@version": "0.12.13-ai",
   "about": {
     "author": "Autor",
     "configuration-file": "Fișier de configurație",
@@ -309,6 +309,7 @@
       "siege-player-can-escape-a-besieged-city": "Jucătorul poate scăpa dintr-un oraș asediat.",
       "siege-you-can-escape-a-besieged-city": "Poți evada dintr-un oraș asediat.",
       "skip-action": "Omite acțiunea",
+      "tile-discarded-notice-plural": "Aceste piese nu pot fi plasate nicăieri, așa că au fost eliminate | Această piesă nu poate fi plasată nicăieri, așa că a fost eliminată | Aceste piese nu pot fi plasate nicăieri, așa că au fost eliminate | Aceste piese nu pot fi plasate nicăieri, așa că au fost eliminate",
       "tile-placement": "Plasare de cartonaș",
       "tower-player-can-take-a-prisoner": "Jucătorul poate lua un prizonier",
       "tower-player-must-select-follower-for-exchange": "Jucătorul trebuie să selecteze un meeple pentru schimb",
@@ -472,6 +473,7 @@
     "placement": {
       "converted-by": "Convertit de {player}",
       "deployed-by": "Depus de {player}",
+      "discarded-reason": "Nu se potrivește nicăieri pe tablă, așa că a fost trasă altă piesă",
       "moved-by": "Mutat de {player}",
       "placed-by": "Plasat de {player}",
       "removed-with": "{source}, de {player}",

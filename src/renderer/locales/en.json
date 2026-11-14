@@ -2,7 +2,7 @@
   "@author": "farin & Scott",
   "@jcz-version": "5.12.1",
   "@fcz-version": "7.1.0",
-  "@version": "0.12.12",
+  "@version": "0.12.13",
   "about": {
     "author": "Author",
     "configuration-file": "Configuration file",
@@ -309,6 +309,7 @@
       "siege-player-can-escape-a-besieged-city": "Player can escape a besieged city.",
       "siege-you-can-escape-a-besieged-city": "You can escape a besieged city.",
       "skip-action": "Skip action",
+      "tile-discarded-notice-plural": "These tiles can't be placed anywhere, so they were discarded | This tile can't be placed anywhere, so it was discarded | These tiles can't be placed anywhere, so they were discarded",
       "tile-placement": "Tile placement",
       "tower-player-can-take-a-prisoner": "Player can take a prisoner",
       "tower-player-must-select-follower-for-exchange": "Player must select meeple for exchange",
@@ -472,6 +473,7 @@
     "placement": {
       "converted-by": "Converted by {player}",
       "deployed-by": "Deployed by {player}",
+      "discarded-reason": "It fits nowhere on the board, so another tile was drawn",
       "moved-by": "Moved by {player}",
       "placed-by": "Placed by {player}",
       "removed-with": "{source}, by {player}",
@@ -481,7 +483,8 @@
         "placed-on-letter": "{figure} placed on the Letter",
         "removed": "{figure} removed",
         "castle-created": "Small city converted to a castle",
-        "tile-placed": "Tile placed"
+        "tile-placed": "Tile placed",
+        "discarded": "Tile discarded"
       }
     },
     "ransom": {
@@ -903,7 +906,6 @@
   },
   "menu": {
     "about": "About",
-    "create-game": "Create Game",
     "discord": "Discord",
     "exit": "Exit",
     "farm-hints": "Farm hints",
@@ -913,12 +915,10 @@
     "help": "Help",
     "home": "Home",
     "join-game": "Join Game",
-    "join-online-game": "Join Online Game",
     "leave-game": "Leave Game",
     "load-setup": "Load Setup",
     "new-game": "New Game",
     "new-game-against-ai": "New Game Against AI",
-    "new-local-game": "New Local Game",
     "online": "Online",
     "open-game": "Open Game",
     "playonline-connect": "Play Online",
@@ -935,7 +935,10 @@
     "toggle-history": "Toggle History",
     "undo": "Undo",
     "zoom-in": "Zoom In",
-    "zoom-out": "Zoom Out"
+    "zoom-out": "Zoom Out",
+    "create-game": "Create Game",
+    "join-online-game": "Join Online Game",
+    "new-local-game": "New Local Game"
   },
   "open-windows": {
     "title": "Open game windows",

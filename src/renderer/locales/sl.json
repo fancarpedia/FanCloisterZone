@@ -2,7 +2,7 @@
   "@author": "TileLord | Erol",
   "@jcz-version": "5.12.1",
   "@fcz-version": "7.1.0",
-  "@version": "0.12.12-ai",
+  "@version": "0.12.13-ai",
   "about": {
     "author": "Avtor",
     "configuration-file": "Konfiguracijska datoteka",
@@ -309,6 +309,7 @@
       "siege-player-can-escape-a-besieged-city": "Igralec lahko pobegne iz oblegnega mesta.",
       "siege-you-can-escape-a-besieged-city": "Lahko pobegneš iz oblegnega mesta.",
       "skip-action": "Preskoči dejanje",
+      "tile-discarded-notice-plural": "Teh ploščic ni mogoče nikamor postaviti, zato so bile zavržene | Te ploščice ni mogoče nikamor postaviti, zato je bila zavržena | Teh dveh ploščic ni mogoče nikamor postaviti, zato sta bili zavrženi | Teh ploščic ni mogoče nikamor postaviti, zato so bile zavržene | Teh ploščic ni mogoče nikamor postaviti, zato so bile zavržene",
       "tile-placement": "Polaganje ploščic",
       "tower-player-can-take-a-prisoner": "Igralec lahko ujame ujetnika",
       "tower-player-must-select-follower-for-exchange": "Igralec mora izbrati človeščka za menjavo",
@@ -472,6 +473,7 @@
     "placement": {
       "converted-by": "Spremenil {player}",
       "deployed-by": "Postavil {player}",
+      "discarded-reason": "Nikamor na plošči je ni mogoče postaviti, zato je bila izvlečena druga ploščica",
       "moved-by": "Premaknil {player}",
       "placed-by": "Položil {player}",
       "removed-with": "{source}, igralec {player}",

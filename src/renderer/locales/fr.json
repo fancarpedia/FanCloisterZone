@@ -2,7 +2,7 @@
   "@author": "Black Bear",
   "@jcz-version": "5.12.1",
   "@fcz-version": "7.1.0",
-  "@version": "0.12.12-ai",
+  "@version": "0.12.13-ai",
   "about": {
     "author": "Auteur",
     "configuration-file": "Fichier de configuration",
@@ -309,6 +309,7 @@
       "siege-player-can-escape-a-besieged-city": "Le joueur peut s’échapper d’une ville assiégée.",
       "siege-you-can-escape-a-besieged-city": "Vous pouvez vous échapper d’une ville assiégée.",
       "skip-action": "Sauter l’action",
+      "tile-discarded-notice-plural": "Ces tuiles ne peuvent être posées nulle part, elles ont donc été défaussées | Cette tuile ne peut être posée nulle part, elle a donc été défaussée | Ces tuiles ne peuvent être posées nulle part, elles ont donc été défaussées",
       "tile-placement": "Placement de tuile",
       "tower-player-can-take-a-prisoner": "Le joueur peut capturer un meeple",
       "tower-player-must-select-follower-for-exchange": "Le joueur doit sélectionner un meeple pour l’échange",
@@ -472,6 +473,7 @@
     "placement": {
       "converted-by": "Transformé par {player}",
       "deployed-by": "Posé par {player}",
+      "discarded-reason": "Elle ne peut être posée nulle part sur le plateau, une autre tuile a donc été piochée",
       "moved-by": "Déplacé par {player}",
       "placed-by": "Placé par {player}",
       "removed-with": "{source}, par {player}",

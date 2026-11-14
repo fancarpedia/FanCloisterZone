@@ -2,7 +2,7 @@
   "@author": "ai",
   "@jcz-version": "5.12.1",
   "@fcz-version": "7.1.0",
-  "@version": "0.12.12-ai",
+  "@version": "0.12.13-ai",
   "about": {
     "author": "Автор",
     "configuration-file": "Файл конфігурації",
@@ -309,6 +309,7 @@
       "siege-player-can-escape-a-besieged-city": "Гравець може втекти з обложеного міста.",
       "siege-you-can-escape-a-besieged-city": "Ви можете втекти з обложеного міста.",
       "skip-action": "Пропустити дію",
+      "tile-discarded-notice-plural": "Ці тайли нікуди викласти, тому їх скинуто | Цей тайл нікуди викласти, тому його скинуто | Ці тайли нікуди викласти, тому їх скинуто | Ці тайли нікуди викласти, тому їх скинуто",
       "tile-placement": "Викладання плитки",
       "tower-player-can-take-a-prisoner": "Гравець може взяти полоненого",
       "tower-player-must-select-follower-for-exchange": "Гравець мусить вибрати підданця для обміну",
@@ -472,6 +473,7 @@
     "placement": {
       "converted-by": "Перетворив {player}",
       "deployed-by": "Розмістив {player}",
+      "discarded-reason": "Його нікуди викласти на полі, тому витягнуто інший тайл",
       "moved-by": "Перемістив {player}",
       "placed-by": "Виклав {player}",
       "removed-with": "{source}, гравець {player}",

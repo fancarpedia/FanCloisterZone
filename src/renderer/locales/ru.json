@@ -2,7 +2,7 @@
   "@author": "pOison & Dextea & SonicDC",
   "@jcz-version": "5.12.1",
   "@fcz-version": "7.1.0",
-  "@version": "0.12.12-ai",
+  "@version": "0.12.13-ai",
   "about": {
     "author": "Автор",
     "configuration-file": "Файл конфигурации",
@@ -309,6 +309,7 @@
       "siege-player-can-escape-a-besieged-city": "Игрок может выбраться из осажденного города.",
       "siege-you-can-escape-a-besieged-city": "Вы можете выбраться из осажденного города.",
       "skip-action": "Пропустить действие",
+      "tile-discarded-notice-plural": "Эти тайлы некуда выложить, поэтому они сброшены | Этот тайл некуда выложить, поэтому он сброшен | Эти тайлы некуда выложить, поэтому они сброшены | Эти тайлы некуда выложить, поэтому они сброшены",
       "tile-placement": "Размещение тайла",
       "tower-player-can-take-a-prisoner": "Игрок может взять в плен.",
       "tower-player-must-select-follower-for-exchange": "Игрок должен выбрать мипла для обмена",
@@ -472,6 +473,7 @@
     "placement": {
       "converted-by": "Преобразовал {player}",
       "deployed-by": "Разместил {player}",
+      "discarded-reason": "Его некуда выложить на поле, поэтому вытянут другой тайл",
       "moved-by": "Переместил {player}",
       "placed-by": "Выложил {player}",
       "removed-with": "{source}, игрок {player}",

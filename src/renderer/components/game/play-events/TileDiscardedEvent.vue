@@ -1,5 +1,11 @@
 <template>
-  <div class="one-square tile-discarded">
+  <!-- hovered: the action panel tells what happened (PlacementPanel) — a drawn tile that fits
+       nowhere on the board, discarded -->
+  <div
+    class="one-square tile-discarded"
+    @mouseenter="onMouseEnter"
+    @mouseleave="onMouseLeave"
+  >
     <StandaloneTileImage
       :tile-id="ev.tile"
     />
@@ -17,6 +23,21 @@ export default {
 
   props: {
     ev: { type: Object, required: true }
+  },
+
+  methods: {
+    onMouseEnter () {
+      this.$store.commit('board/placementPanel', {
+        kind: 'discarded',
+        tile: { id: this.ev.tile, rotation: 0 },
+        titleKey: 'game.placement.title.discarded',
+        subtitleKey: 'game.placement.discarded-reason'
+      })
+    },
+
+    onMouseLeave () {
+      this.$store.commit('board/placementPanel', null)
+    }
   }
 }
 </script>

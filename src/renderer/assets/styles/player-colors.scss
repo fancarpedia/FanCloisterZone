@@ -169,6 +169,18 @@ html.auto-dark {
     fill: rgba(0, 0, 0, 0.7) !important;
   }
 
+  // The discarded tile notice (DiscardedTileNotice.vue): the light grey look of the app's dark
+  // theme, kept as it is instead of being repainted by the browser.
+  .discarded-tile-notice .v-snack__wrapper {
+    color-scheme: only light;
+    background-color: #e0e0e0 !important;
+    color: #212121 !important;
+
+    .v-icon {
+      color: #212121 !important;
+    }
+  }
+
   // The "more actions this way" chevrons over the ends of the scrolling action items row
   // (ActionPhaseAction.vue): the browser repainted the chevron and its fade into colours of its
   // own. Fixed instead: a dark chevron on the light fade.
