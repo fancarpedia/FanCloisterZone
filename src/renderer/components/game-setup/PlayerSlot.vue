@@ -225,6 +225,8 @@ export default {
     async makeAi () {
       if (!this.canMakeAi || this.slotState !== 'open') return
       const { number } = this
+      // shown as an AI seat from the first reply on (store game.js pendingAiSlots)
+      this.$store.commit('game/pendingAiSlot', { number, pending: true })
       await this.$store.dispatch('gameSetup/takeSlot', { number })
       this.$store.dispatch('gameSetup/changeSlotToAi', { number })
     },
@@ -342,13 +344,22 @@ export default {
       display: inline-flex
       align-items: center
 
+  // "Limit reached (?)" / "Game full" on a locked empty seat: centred on the name line like the
+  // other empty-seat texts, its help icon always shown (the name line hides icons until hover —
+  // that is for the rename pencil)
   .limit-reached
-    font-size: 14px
-    font-style: italic
-    display: flex
+    display: inline-flex
+    justify-content: center
     align-items: center
     gap: 4px
+    padding-top: 8px
+    font-size: 16px
+    font-style: italic
+    white-space: nowrap
     cursor: help
+
+    i
+      visibility: visible
 
   &.open, &.local, &.localai
     cursor: pointer

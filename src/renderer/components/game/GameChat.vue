@@ -153,10 +153,12 @@ export default {
       return Math.max(0, this.messages.length - this.readCount)
     },
 
+    // the players at this client who can chat — one send button each; an AI seat this client
+    // runs does not chat
     localPlayers() {
       return this.players
         .map((player, index) => ({ player, index }))
-        .filter(({ player }) => player.sessionId === this.sessionId)
+        .filter(({ player }) => player.sessionId === this.sessionId && !player.ai)
         .map(({ index }) => index)
     },
 

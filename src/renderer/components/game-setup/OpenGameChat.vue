@@ -82,9 +82,10 @@ export default {
       return this.gameChat || []
     },
 
+    // my seats that can chat (one send button each) — an AI seat I run does not chat
     localSlots () {
       if (!this.slots || !this.sessionId) return []
-      return this.slots.filter(s => s.sessionId === this.sessionId)
+      return this.slots.filter(s => s.sessionId === this.sessionId && !s.ai)
     }
   },
 

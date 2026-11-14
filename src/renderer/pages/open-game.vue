@@ -273,9 +273,10 @@ export default {
       return !!this.slots.find(slot => slot.clientId && !slot.ai)
     },
 
+    // my human seats, for the local players limit — AI seats I run do not count
     localSlotsCount () {
       if (!this.slots || !this.sessionId) return 0
-      return this.slots.filter(s => s.sessionId === this.sessionId).length
+      return this.slots.filter(s => s.sessionId === this.sessionId && !s.ai).length
     },
 
     preDraw () {
