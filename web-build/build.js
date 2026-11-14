@@ -15,6 +15,18 @@ const { Nuxt, Builder, Generator } = require('nuxt')
 const config = require('./nuxt.config.web.js')
 const DIST = path.join(__dirname, 'dist')
 
+// When the build started, printed with its end as the very last lines (success or failure).
+const STARTED_AT = new Date()
+const pad2 = n => String(n).padStart(2, '0')
+const clock = d => d.getFullYear() + '-' + pad2(d.getMonth() + 1) + '-' + pad2(d.getDate()) + ' ' +
+  pad2(d.getHours()) + ':' + pad2(d.getMinutes()) + ':' + pad2(d.getSeconds())
+const printTimes = () => {
+  const end = new Date()
+  const secs = Math.round((end - STARTED_AT) / 1000)
+  console.log('\nstarted:  ' + clock(STARTED_AT))
+  console.log('finished: ' + clock(end) + '  (' + Math.floor(secs / 60) + 'm ' + pad2(secs % 60) + 's)')
+}
+
 // A build step that failed for a known, actionable reason - the message already tells the user
 // what to run. Thrown so the build STOPS: anything that leaves the app unable to run a game must
 // never reach the "WEB BUILD OK" line.
@@ -353,6 +365,7 @@ const SHIM = '<script>' +
         console.log('    or just:          yarn build:web:landing   (re-copy the dist/ built above)')
       }
     }
+    printTimes()
     process.exit(0)
   } catch (e) {
     console.log('\n*** WEB BUILD FAILED ***')
@@ -360,6 +373,7 @@ const SHIM = '<script>' +
     console.log(e instanceof BuildStepError
       ? e.message
       : (e && e.stack ? e.stack.split('\n').slice(0, 20).join('\n') : String(e)))
+    printTimes()
     process.exit(1)
   }
 })()
