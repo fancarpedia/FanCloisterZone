@@ -280,6 +280,12 @@ export default {
   text-align: center
   font-size: 18px
   cursor: pointer
+  // the 1px gap below the row is part of the bullet's hover area (see PlayEvent.vue), its colour
+  // stays the 26px bullet
+  box-sizing: content-box
+  padding-bottom: 1px
+  margin-bottom: -1px
+  background-clip: content-box
 
   &:first-child
     border-radius: 13px 0 0 13px

@@ -105,13 +105,33 @@ export default {
 </script>
 
 <style lang="sass" scoped>
+// The 1px gaps between events (to the right) and between rows (below) are part of each event:
+// a transparent border the background stops at (so they look as before), and the event inside
+// reaches over it (negative margin + padding). Moving the pointer to the next event never leaves
+// an event, so the action panel does not blink back to the current action in between.
 .play-event
   display: flex
   justify-content: center
   align-items: center
-  margin-right: 1px
-  min-width: 40px
-  height: 40px
+  min-width: 41px
+  height: 41px
+  border-right: 1px solid transparent
+  border-bottom: 1px solid transparent
+  background-clip: padding-box
+
+  > *
+    box-sizing: content-box
+    margin: 0 -1px -1px 0
+    padding: 0 1px 1px 0
+
+.score-event
+  border-bottom: 1px solid transparent
+  background-clip: padding-box
+
+  > *
+    box-sizing: content-box
+    margin-bottom: -1px
+    padding-bottom: 1px
 
 .play-event.ev-current-action
   background: transparent !important
