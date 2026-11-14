@@ -3,7 +3,7 @@
     v-if="isAvailable"
     class="open-game-chat"
   >
-    <div class="messages" ref="messagesContainer">
+    <div ref="messagesContainer" class="messages">
       <div
         v-for="(m, idx) in messages"
         :key="idx"
@@ -29,9 +29,9 @@
         <span v-if="localSlots.length === 0" class="no-slot-hint">{{ $t('chat.take-slot-hint') }}</span>
         <v-text-field
           v-else
-          class="edit-message"
           ref="chatInput"
           v-model="newMessage"
+          class="edit-message"
           :label="$t('chat.new-message')"
           @focus="joinMessage"
           @blur="leaveMessage"
@@ -89,18 +89,18 @@ export default {
     }
   },
 
+  watch: {
+    messages () {
+      this.scrollToBottom()
+    }
+  },
+
   mounted () {
     this.$nextTick(() => this.scrollToBottom())
   },
 
   beforeDestroy () {
     this.leaveMessage()
-  },
-
-  watch: {
-    messages () {
-      this.scrollToBottom()
-    }
   },
 
   methods: {
