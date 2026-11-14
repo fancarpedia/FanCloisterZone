@@ -20,6 +20,10 @@ const userNuxtConfig = require(path.join(RENDERER, 'nuxt.config'))
 const baseConfig = {
   srcDir: RENDERER,
   rootDir: RENDERER,
+  // Its own build folder. Left at the default it would be src/renderer/.nuxt — the very folder a
+  // running `yarn dev` builds from — and a web build overwrote dev's templates with the web
+  // config: dev hot-reloaded the whole app and came back without its CSS.
+  buildDir: path.join(__dirname, '.nuxt-web'),
   router: { mode: 'hash' },
   dev: false,
   telemetry: false,
