@@ -6,7 +6,8 @@
       :class="'points ' + colorCssClass(p.player)"
       @mouseenter="onMouseEnter(p)"
       @mouseleave="onMouseLeave()"
-      @click="persistBreakdown = !persistBreakdown"
+      @pointerdown="pointerType = $event.pointerType"
+      @click="onClick"
     >
       {{ p.points }}
     </div>
@@ -25,7 +26,9 @@ export default {
 
   data () {
     return {
-      persistBreakdown: false
+      persistBreakdown: false,
+      // how the last press came: a touch tap is how a phone "hovers", not a request to pin
+      pointerType: null
     }
   },
 
@@ -38,6 +41,14 @@ export default {
   },
 
   methods: {
+    // A mouse click pins the breakdown in the action panel. A touch tap does not: it is the
+    // touch screen's hover, and a pinned breakdown outlived the board dim once the board was
+    // tapped (they must go away together).
+    onClick () {
+      if (this.pointerType === 'touch' || this.pointerType === 'pen') return
+      this.persistBreakdown = !this.persistBreakdown
+    },
+
     onMouseEnter (points) {
       this.persistBreakdown = false
       const { ptr, meeples, majority } = points

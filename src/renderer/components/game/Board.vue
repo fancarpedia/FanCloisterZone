@@ -485,6 +485,11 @@ export default {
       // history event stays "hovered"): it stays wherever they leave it, no slide back later.
       this.stopPanAnimation()
       this.panBeforeHover = null
+      // A tap on the board ends a touch "hover" of a history event: the dim and the panel it put
+      // in the action bar's place go together (a mouse leaves the event on its own).
+      if (ev.pointerType !== 'mouse') {
+        this.$store.dispatch('board/clearHistoryHover')
+      }
       this.pointers.set(ev.pointerId, { x: ev.screenX, y: ev.screenY, cx: ev.clientX, cy: ev.clientY })
 
       if (this.pointers.size === 2) {

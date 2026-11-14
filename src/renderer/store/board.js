@@ -26,6 +26,9 @@ export const state = () => ({
 
 const delayedHideTimeout = {}
 
+// the action-panel stand-ins a hovered history event shows
+export const HISTORY_PANELS = ['pointsExpression', 'diceRollPanel', 'awardedMeeplePanel', 'returnedMeeplePanel', 'returnedTokenPanel', 'placementPanel']
+
 export const mutations = {
   dragging (state, value) {
     state.dragging = value
@@ -162,6 +165,19 @@ export const actions = {
       delete delayedHideTimeout[layer]
     }
     commit('hideLayer', { layer })
+  },
+
+  // Everything a hovered history event shows, gone at once: the board dim / highlight, its
+  // meeples and ghosts, and whatever it put in the action panel's place (the active panel is
+  // back). For touch screens, where a tapped event stays "hovered" until the board is tapped.
+  clearHistoryHover ({ commit, dispatch, state }) {
+    for (const layer of ['EmphasizeLayer', 'EventMeeplesLayer', 'NeutralFigureGhostLayer']) {
+      if (state.layers[layer]) dispatch('hideLayer', { layer })
+    }
+    for (const panel of HISTORY_PANELS) {
+      if (state[panel]) commit(panel, null)
+    }
+    if (state.historyHover) commit('historyHover', false)
   },
 
   hideLayerDebounced ({ dispatch }, { layer }) {
