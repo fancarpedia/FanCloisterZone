@@ -93,6 +93,20 @@ describe('the history hover lightbox under auto dark mode', () => {
   })
 })
 
+describe('the action items scroll arrows under auto dark mode', () => {
+  const fs = require('fs')
+  const path = require('path')
+  const sass = require('sass')
+  const css = sass.renderSync({ data: '$small-screen-max-width: 960px;\n' + fs.readFileSync(path.join(__dirname, '../assets/styles/player-colors.scss'), 'utf8') }).css.toString()
+
+  it('keep a fixed dark chevron on a light fade', () => {
+    expect(css).toMatch(/html\.auto-dark \.scroll-hint \{\s*color-scheme: only light;/)
+    expect(css).toContain('html.auto-dark .scroll-hint.left {')
+    expect(css).toContain('html.auto-dark .scroll-hint.right {')
+    expect(css).toMatch(/html\.auto-dark \.scroll-hint \.v-icon \{\s*color: #333 !important;/)
+  })
+})
+
 describe('the small-screen action panel under auto dark mode', () => {
   const fs = require('fs')
   const path = require('path')

@@ -168,6 +168,25 @@ html.auto-dark {
   #emphasize-layer .emphasize-lightbox {
     fill: rgba(0, 0, 0, 0.7) !important;
   }
+
+  // The "more actions this way" chevrons over the ends of the scrolling action items row
+  // (ActionPhaseAction.vue): the browser repainted the chevron and its fade into colours of its
+  // own. Fixed instead: a dark chevron on the light fade.
+  .scroll-hint {
+    color-scheme: only light;
+
+    &.left {
+      background: linear-gradient(to right, rgba(255, 255, 255, 0.92) 35%, transparent) !important;
+    }
+
+    &.right {
+      background: linear-gradient(to left, rgba(255, 255, 255, 0.92) 35%, transparent) !important;
+    }
+
+    .v-icon {
+      color: #333 !important;
+    }
+  }
 }
 
 @media (max-width: $small-screen-max-width) {

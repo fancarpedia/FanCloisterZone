@@ -6,7 +6,10 @@
     ref="section"
     :class="{ local, [`size-${items.length}`]: true, 'size-max': items.length > 14, 'two-lines': twoLines }"
   >
-    <div ref="itemsRow" class="items-row">
+    <!-- the items row scrolls sideways on small screens; the arrows over its ends say there is more
+         that way (and scroll there when tapped) -->
+    <div class="items-row-wrap">
+    <div ref="itemsRow" class="items-row" @scroll.passive="updateScrollHints">
     <div ref="itemsInner" class="items-inner">
     <div v-if="phase === 'CocFollowerPhase'" class="text-with-icons text-center">
       <v-icon>fas fa-arrow-right</v-icon>
@@ -121,6 +124,13 @@
     </div>
     </div>
     </div>
+    <div v-if="hiddenLeft" class="scroll-hint left" @click.stop="scrollItems(-1)">
+      <v-icon small>fas fa-chevron-left</v-icon>
+    </div>
+    <div v-if="hiddenRight" class="scroll-hint right" @click.stop="scrollItems(1)">
+      <v-icon small>fas fa-chevron-right</v-icon>
+    </div>
+    </div>
     <div ref="buttonsRow" class="buttons-row">
       <slot />
     </div>
@@ -173,7 +183,10 @@ export default {
       Expansion,
       selected: null,
       // items on a line of their own above the buttons (see measureLines)
-      twoLines: false
+      twoLines: false,
+      // the scrolling items row has items out of view on that side (see updateScrollHints)
+      hiddenLeft: false,
+      hiddenRight: false
     }
   },
 
@@ -268,7 +281,27 @@ export default {
       this.measureFrame = requestAnimationFrame(() => {
         this.measureFrame = null
         this.measureLines()
+        this.updateScrollHints()
       })
+    },
+
+    // Arrows over the ends of the items row while items are scrolled out of view on that side.
+    updateScrollHints () {
+      const row = this.$refs.itemsRow
+      if (!row) return
+      // wider screens scale the items to fit instead of scrolling them
+      const max = isSmallScreen() ? row.scrollWidth - row.clientWidth : 0
+      const left = max > 1 && row.scrollLeft > 1
+      const right = max > 1 && row.scrollLeft < max - 1
+      if (left !== this.hiddenLeft) this.hiddenLeft = left
+      if (right !== this.hiddenRight) this.hiddenRight = right
+    },
+
+    // tapping an arrow scrolls most of a view that way
+    scrollItems (dir) {
+      const row = this.$refs.itemsRow
+      if (!row) return
+      row.scrollBy({ left: dir * row.clientWidth * 0.8, behavior: 'smooth' })
     },
 
     measureLines () {
@@ -357,10 +390,39 @@ section.local
 // Small screens (≤ 960px) never shrink the items: with many actions they get a line of their own
 // above the buttons (section.two-lines, decided in measureLines) and that line scrolls sideways.
 // Wider screens keep the one-line bar, scaled down by item count (the rules after this block).
-.items-row
+.items-row-wrap
+  position: relative
   display: flex
   min-width: 0
+
+.items-row
+  display: flex
+  flex: 1 1 auto
+  min-width: 0
   overflow: hidden
+
+// "more this way": a chevron over the row's end, on a fade into the bar's background
+.scroll-hint
+  position: absolute
+  top: 0
+  bottom: 0
+  z-index: 2
+  width: 28px
+  display: flex
+  align-items: center
+  cursor: pointer
+
+  &.left
+    left: 0
+    justify-content: flex-start
+    +theme using ($theme)
+      background: linear-gradient(to right, map-get($theme, 'opaque-bg') 35%, transparent)
+
+  &.right
+    right: 0
+    justify-content: flex-end
+    +theme using ($theme)
+      background: linear-gradient(to left, map-get($theme, 'opaque-bg') 35%, transparent)
 
 // auto margins centre the strip while it fits and fall to 0 once it overflows, so a scrolling row
 // still starts at its first item (justify-content: center would cut the left end off)
@@ -387,7 +449,7 @@ section.local
     flex-direction: column
     align-items: stretch
 
-    .items-row
+    .items-row-wrap
       width: 100%
 
     .buttons-row

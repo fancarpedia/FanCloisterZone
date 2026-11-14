@@ -41,7 +41,7 @@ describe('action panel with many actions', () => {
   })
 
   it('puts the items and the buttons in rows of their own; the items row scrolls on small screens', () => {
-    expect(phase).toContain('<div ref="itemsRow" class="items-row">')
+    expect(phase).toContain('<div ref="itemsRow" class="items-row" @scroll.passive="updateScrollHints">')
     expect(phase).toContain('<div ref="buttonsRow" class="buttons-row">')
     const small = phase.slice(phase.indexOf('@media (max-width: 960px)' + NL + '  section'))
     expect(small).toContain('  .items-row' + NL + '    overflow-x: auto')
