@@ -6,9 +6,13 @@
     >
       {{ order }}
     </div>
-    <svg class="meeple" :width="$vuetify.breakpoint.height > 768 ? 105 : 80" :height="$vuetify.breakpoint.height > 768 ? 105 : 80">
-      <use :href="`${MEEPLES_SVG}#small-follower`" />
-    </svg>
+    <div class="meeple-wrap">
+      <svg class="meeple" :width="$vuetify.breakpoint.height > 768 ? 105 : 80" :height="$vuetify.breakpoint.height > 768 ? 105 : 80">
+        <use :href="`${MEEPLES_SVG}#small-follower`" />
+      </svg>
+      <!-- an AI seat: a robot head on the meeple, as in the online lobby's game lists -->
+      <v-icon v-if="ai" class="ai-head">fa-solid fa-robot</v-icon>
+    </div>
     <div class="state">
       <template v-if="slotState === 'open'">{{ $t('game-setup.create.open-slot') }}</template>
       <template v-if="slotState === 'local'">{{ $t('game-setup.create.local-player') }}</template>
@@ -291,6 +295,22 @@ export default {
   svg
     margin-bottom: 16px
 
+  // the meeple, and an AI seat's robot head over its head (about a third of the meeple, as in
+  // the online lobby: 12px on a 36px meeple)
+  .meeple-wrap
+    position: relative
+    line-height: 0
+
+  .ai-head
+    position: absolute
+    top: 3px
+    left: 50%
+    transform: translateX(-50%)
+    font-size: 35px
+    color: white
+    filter: drop-shadow(0 0 1px black) drop-shadow(0 0 2px black)
+    pointer-events: none
+
   .state
     font-size: 24px
     text-transform: uppercase
@@ -387,6 +407,11 @@ export default {
 
     svg
       margin-bottom: 10px
+
+    // 80px meeple
+    .ai-head
+      top: 2px
+      font-size: 27px
 
     .state
       margin-bottom: 4px

@@ -154,3 +154,10 @@ describe('the online lobby marks AI seats', () => {
     expect(online).toMatch(/\.ai-head\n\s+position: absolute/)
   })
 })
+
+describe('an AI seat wears the robot head, as in the online lobby', () => {
+  it('drawn over the meeple of an AI seat', () => {
+    expect(src).toMatch(/<div class="meeple-wrap">[\s\S]*<v-icon v-if="ai" class="ai-head">fa-solid fa-robot<\/v-icon>\n\s+<\/div>/)
+    expect(src).toMatch(/\.ai-head\n\s+position: absolute/)
+  })
+})
