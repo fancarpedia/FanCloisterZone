@@ -260,6 +260,12 @@ export default {
       return this.connectionState === null && this.phase !== 'GameOverPhase'
     },
 
+    // a history event's panel shown in place of the action, while it is hovered
+    standInShown () {
+      return !!(this.pointsExpression || this.returnedMeeplePanel || this.awardedMeeplePanel ||
+        this.returnedTokenPanel || this.diceRollPanel || this.placementPanel)
+    },
+
     actionComponent () {
       const itemType = this.action.items.length ? this.action.items[0].type : null
       if (itemType === 'Confirm') {
@@ -293,6 +299,11 @@ export default {
   },
 
   watch: {
+    // the action is back: measure it, in case it changed size while the stand-in was shown
+    standInShown (shown) {
+      if (!shown) this.$nextTick(() => this.publishHeight())
+    },
+
     local (val) {
       if (val) {
         this.onPlayerActivated()
@@ -359,6 +370,13 @@ export default {
 
   methods: {
     publishHeight () {
+      // A hovered history event's panel (scoring expression, dice, placement, …) stands in for the
+      // action only for the hover, and may be taller. Publishing that height moved the history
+      // strip down from under the pointer, which ended the hover, shrank the bar, moved the strip
+      // back under the pointer, hovered again — an endless loop. Keep the action's own height:
+      // the stand-in just draws over what is below it. It is published again once the action is
+      // back (the observer sees the bar change size).
+      if (this.standInShown) return
       const h = this.$el && this.$el.offsetHeight
       if (!h) return
       document.documentElement.style.setProperty('--action-panel-height', h + 'px')
