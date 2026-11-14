@@ -441,7 +441,7 @@ export const actions = {
   // `redirect: false` closes the connection without navigating — used by play-again/rematch,
   // which immediately start a new game in the SAME window (in a game window the default
   // navigation to '/' would trigger the windowing guard and close the window).
-  close ({ commit, rootState }, options) {
+  close ({ state, commit, dispatch, rootState }, options) {
     // `userIntent: true` = the user pressed Disconnect — remember it so the lobby's
     // auto-connect doesn't silently reconnect right after (its engine/settings watchers re-fire)
     const { redirect = true, userIntent = false } = options || {} // dispatch payload may be null, not just undefined
@@ -454,6 +454,13 @@ export const actions = {
       reconnectTimeout = null
     }
     scheduledReconnect = null
+    // Leaving the online server: its lists (players online, open games) go with it. The socket's
+    // own close handler does this too, but only while the connection is still marked online —
+    // which it no longer is by then when the player pressed Disconnect, so the lobby kept showing
+    // the last players.
+    if (state.connectionType === 'online') {
+      dispatch('online/onClose', null, { root: true })
+    }
     $connection.disconnect()
     $server.stop()
     commit('connectionType', null)
