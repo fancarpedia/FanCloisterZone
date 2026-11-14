@@ -3,7 +3,6 @@
     <template v-if="local">
       <ActionButton color="secondary" icon="fa-check" :label="$t('button.confirm')" @click="confirm" />
       <template v-if="undoAllowed">
-        <span class="skip-text">{{ $t('game.action.or') }}</span>
         <ActionButton icon="fa-undo" :label="$t('button.undo')" @click="undo" />
       </template>
       <span class="text">

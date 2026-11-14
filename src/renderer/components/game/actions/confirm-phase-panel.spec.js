@@ -41,14 +41,6 @@ describe('TilePlacementConfirmPhaseAction', () => {
 describe('the Rotate option in ActionPanel', () => {
   const tpl = template(panel)
 
-  it('marks its separator with the same class as the button', () => {
-    // otherwise a bare "or" is left behind wherever the button is hidden
-    const rotateBlock = tpl.slice(tpl.indexOf('v-if="canRotatePlacedTile"'), tpl.indexOf('undoAllowed"'))
-    const separator = rotateBlock.match(/<span class="([^"]*)">\{\{ \$t\('game\.action\.or'\) \}\}/)
-    expect(separator).not.toBeNull()
-    expect(separator[1].split(/\s+/)).toContain('rotate-placed')
-  })
-
   it('hides anything marked rotate-placed by default', () => {
     expect(panel).toMatch(/\.rotate-placed\n {2}display: none/)
   })
@@ -58,9 +50,8 @@ describe('the Rotate option in ActionPanel', () => {
     expect(media).toMatch(/\.rotate-placed\n {4}display: block/)
   })
 
-  it('drops the separators entirely on small screens', () => {
-    // which is what turns "Confirm or Rotate or Undo" into "Confirm Rotate Undo"
-    const media = panel.slice(panel.indexOf('@media (max-width: $small-screen-max-width)'))
-    expect(media).toMatch(/span\.skip-text\n {8}display: none/)
+  it('has no "or" separators at all: actions and buttons only', () => {
+    // "Confirm Rotate Undo" on every screen size, no "or" / "or skip action" texts
+    expect(panel).not.toContain('skip-text')
   })
 })

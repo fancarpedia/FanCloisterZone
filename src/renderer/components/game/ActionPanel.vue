@@ -44,11 +44,11 @@
     >
       <template
         v-if="action.canPass || undoAllowed || canRotatePlacedTile"
-        #default="{ plain, label }"
+        #default="{ label }"
       >
+        <!-- the action panel shows actions and buttons only: no "or" / "or skip action" texts -->
         <template v-if="local && !ai">
           <template v-if="action.canPass">
-            <span v-if="plain !== ''" class="skip-text text">{{ $t('game.action.or') }}</span>
             <div class="pass-item">
               <ActionButton
                 :large="$vuetify.breakpoint.height > 768"
@@ -65,7 +65,6 @@
                GoldPiecePhase and MageAndWitchPhase all render this slot - and withdrawn as soon
                as the engine raises TILE_ROTATION_DISALLOWED (see canRotatePlacedTile). -->
           <template v-if="canRotatePlacedTile">
-            <span class="skip-text text rotate-placed">{{ $t('game.action.or') }}</span>
             <div class="pass-item rotate-placed">
               <ActionButton
                 :large="$vuetify.breakpoint.height > 768"
@@ -78,7 +77,6 @@
           <!-- undo (e.g. take back the tile placement / a wrong meeple choice); on mobile/web this
                is the only way to undo — there is no keyboard shortcut or native menu -->
           <template v-if="undoAllowed">
-            <span class="skip-text text">{{ $t('game.action.or') }}</span>
             <div class="pass-item">
               <ActionButton
                 :large="$vuetify.breakpoint.height > 768"
@@ -88,9 +86,6 @@
               />
             </div>
           </template>
-        </template>
-        <template v-else-if="action.canPass">
-          <span class="skip-text text">{{ $t('game.action.or') }} {{ $t('game.action.skip-action') }}</span>
         </template>
       </template>
     </component>
@@ -458,9 +453,6 @@ export default {
     justify-content: center
     align-items: center
 
-    .skip-text
-      margin-left: 40px
-
     .pass-item
       margin-left: 40px
       text-align: center
@@ -480,15 +472,11 @@ export default {
 
 @media (max-width: 1080px)
   .action-panel > section
-    .skip-text
-      margin-left: 20px
-
     .pass-item
       margin-left: 20px
 
 // Small screens: the bar takes the full width instead of leaving the deck counter a slot beside
-// it (game.vue moves that below the bar), and the "or / or skip action" hint goes — it is
-// secondary to the button next to it. Same breakpoint as the active-player tint (shared.sass).
+// it (game.vue moves that below the bar). Same breakpoint as the active-player tint (shared.sass).
 .rotate-placed
   display: none
 
@@ -507,9 +495,6 @@ export default {
       // icon-only buttons sit closer together than worded ones
       .pass-item
         margin-left: 12px
-
-      span.skip-text
-        display: none
 
 @media (max-height: 768px)
   .action-panel
