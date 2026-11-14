@@ -17,6 +17,7 @@ const winWcId = new Map()       // win -> wcId (cached so winClosed never touche
 const DEFAULT_ENABLED = {
   'playonline-connect': false,
   'playonline-disconnect': false,
+  'create-online-game': false,
   'new-game': false,
   'join-game': false,
   'leave-game': false,
@@ -107,8 +108,12 @@ async function createMenu(win, messages) {
 
   const isMac = process.platform === 'darwin'
   const sessionSubmenu = [
-    { id: 'new-game', label: $t('menu.new-game') || 'New Game', accelerator: 'CommandOrControl+N', click() { targetWin().webContents.send('menu.new-game') } },
-    { id: 'join-game', label: $t('menu.join-game') || 'Join Game', accelerator: 'CommandOrControl+J', click() { targetWin().webContents.send('menu.join-game') } },
+    // online games (enabled on the online page while connected) and a local game (any time no
+    // game is open) — layouts/default.vue updateMenu
+    // CommandOrControl = Cmd on macOS, Ctrl elsewhere
+    { id: 'create-online-game', label: $t('menu.create-game') || 'Create Game', accelerator: 'CommandOrControl+N', click() { targetWin().webContents.send('menu.create-online-game') } },
+    { id: 'new-game', label: $t('menu.new-local-game') || 'New Local Game', accelerator: 'CommandOrControl+Shift+N', click() { targetWin().webContents.send('menu.new-game') } },
+    { id: 'join-game', label: $t('menu.join-online-game') || 'Join Online Game', accelerator: 'CommandOrControl+J', click() { targetWin().webContents.send('menu.join-game') } },
     { type: 'separator' },
     { id: 'save-game', label: $t('menu.save-game') || 'Save Game', accelerator: 'CommandOrControl+S', click() { targetWin().webContents.send('menu.save-game') } },
     { id: 'load-game', label: [$t('menu.open-game') || 'Open Game', $t('menu.load-setup') || 'Load Setup'].join(' / '), accelerator: 'CommandOrControl+O', click() { targetWin().webContents.send('menu.load-game') } },

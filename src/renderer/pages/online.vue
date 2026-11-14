@@ -44,24 +44,6 @@
           </v-btn>
         </div>
       </section>
-
-      <!-- Local games open a separate window (multi-window), which the single-window web build can't
-           do — and web is online-play only — so the whole section is hidden there. -->
-      <span v-if="!isWeb" class="header-divider" />
-
-      <!-- Local games run in their own window, independent of the online connection. -->
-      <section v-if="!isWeb" class="button-group local-group">
-        <h3 class="group-title">{{ $t('index.local.local-games') }}</h3>
-        <div class="group-buttons">
-          <v-btn large color="secondary" :disabled="!engine || !engine.ok" @click="newLocalGame()">
-            {{ $t('index.local.new-game') }}
-          </v-btn>
-
-          <v-btn large color="secondary" :disabled="!engine || !engine.ok" @click="loadLocalGame()">
-            {{ $t('index.local.open-game') }}
-          </v-btn>
-        </div>
-      </section>
     </header>
     <div class="online-body">
     <main>
@@ -359,25 +341,6 @@
       </v-card>
     </v-dialog>
 
-    <v-dialog v-model="showLocalGameDialog" max-width="500px">
-      <v-card>
-        <v-card-title>
-          <span class="headline">{{ $t('index.local.new-game') }}</span>
-        </v-card-title>
-        <v-card-text>
-          {{ $t('index.online.online-storage-description') }}
-        </v-card-text>
-        <v-card-actions>
-          <v-spacer />
-          <v-btn text @click="showLocalGameDialog = false">{{ $t('button.cancel') }}</v-btn>
-          <!-- Online games open in their own window which establishes its own connection (see
-               connectForGame in layouts/default.vue), so this does not depend on the lobby being connected. -->
-          <v-btn text color="primary" @click="confirmNewGame('online')">{{ $t('index.online.online-game') }}</v-btn>
-          <v-btn text color="primary" @click="confirmNewGame('local')">{{ $t('index.online.local-game') }}</v-btn>
-        </v-card-actions>
-      </v-card>
-    </v-dialog>
-
     <v-dialog v-model="isNicknameDialogOpen" max-width="500px" persistent>
       <v-card>
         <v-card-title>
@@ -460,7 +423,6 @@ export default {
       joinGameId: '',
       joinError: null,
       autoConnectTried: false,
-      showLocalGameDialog: false,
       isNicknameDialogOpen: false,
       pendingNickname: '',
       nicknameError: '',
@@ -573,6 +535,11 @@ export default {
       if (ev.key === 'Escape' && this.showJoinDialog) this.showJoinDialog = false
     }
     window.addEventListener('keydown', this._onEscKey, true)
+    // main menu: Create online game / Join online game (enabled only here, while connected)
+    this._onMenuCreate = () => { if (this.connected) this.createGame() }
+    this._onMenuJoin = () => { if (this.connected) this.openJoinGameDialog() }
+    this.$root.$on('online.create-game', this._onMenuCreate)
+    this.$root.$on('online.join-game', this._onMenuJoin)
   },
 
   beforeDestroy () {
@@ -580,6 +547,8 @@ export default {
     this._onWindowFocus && window.removeEventListener('focus', this._onWindowFocus)
     this._unsubscribeWindows && this._unsubscribeWindows()
     this._onEscKey && window.removeEventListener('keydown', this._onEscKey, true)
+    this.$root.$off('online.create-game', this._onMenuCreate)
+    this.$root.$off('online.join-game', this._onMenuJoin)
   },
 
   watch: {
@@ -703,29 +672,6 @@ export default {
       if (this.$windows.openGame({ kind: 'create-online', payload: { fan } })) return
       this.$store.dispatch('gameSetup/newGame')
       this.$router.push('/game-setup')
-    },
-
-    // Local games open in their own window and don't disturb this lobby's online connection.
-    newLocalGame () {
-      this.showLocalGameDialog = true
-    },
-
-    confirmNewGame (kind) {
-      this.showLocalGameDialog = false
-      if (kind === 'online') {
-        this.createGame()
-        return
-      }
-      if (this.$windows.openGame({ kind: 'new-local' })) return
-      this.$store.dispatch('gameSetup/newGame')
-      this.$router.push('/game-setup')
-    },
-
-    async loadLocalGame () {
-      const file = await this.$store.dispatch('game/chooseSaveFile')
-      if (!file) return
-      if (this.$windows.openGame({ kind: 'load', payload: { file } })) return
-      this.$store.dispatch('game/load', { file })
     },
 
     formatDate(date) {
@@ -874,11 +820,6 @@ header
     padding: 6px 16px 10px
     border-radius: 8px
 
-    // local games are a separate world from the server connection — tint them apart
-    &.local-group
-      +theme using ($theme)
-        background: map-get($theme, 'board-bg')
-
     .group-title
       font-size: 14px
       font-weight: 300
@@ -897,15 +838,6 @@ header
 
   .v-btn
     margin: 0 15px
-
-  .header-divider
-    align-self: stretch
-    width: 1px
-    margin: 4px 8px
-    opacity: 0.25
-
-    +theme using ($theme)
-      background-color: map-get($theme, 'gray-text-color')
 
 h2
   font-weight: 300

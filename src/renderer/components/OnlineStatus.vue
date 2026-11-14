@@ -1,8 +1,9 @@
 <template>
   <div class="online-status" :class="{ offline: !connected && !connecting }">
-    <span v-if="connected" class="text">{{ $t('index.online.connected-to', [isLocalPlayOnline ? 'dev local' : 'fanserver'/*playOnlineHostname*/]) }}</span><!-- /* Fan Edition */ -->
-    <span v-else-if="connecting" class="text">{{ $t('index.online.connecting') }}</span>
-    <span v-else class="text">{{ $t('index.online.offline', [isLocalPlayOnline ? 'dev local' : 'fanserver']) }}</span>
+    <!-- connected: nothing to say (the Create / Join buttons beside it are live); only the
+         connecting and offline states are shown -->
+    <span v-if="connecting" class="text">{{ $t('index.online.connecting') }}</span>
+    <span v-else-if="!connected" class="text">{{ $t('index.online.offline', [isLocalPlayOnline ? 'dev local' : 'fanserver']) }}</span>
   </div>
 </template>
 

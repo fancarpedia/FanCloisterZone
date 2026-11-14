@@ -214,6 +214,10 @@ export default {
       this.updateTitle()
     },
 
+    connectionState () {
+      this.updateMenu()
+    },
+
     showSettings (val) {
       if (val && typeof this.$refs.settings?.clean === 'function') {
         this.$refs.settings.clean()
@@ -316,8 +320,12 @@ export default {
       this.$store.dispatch('gameSetup/newGame')
       this.$router.push('/game-setup')
     })
+    // the online lobby (pages/online.vue) creates / joins online games
+    ipcRenderer.on('menu.create-online-game', () => {
+      this.$root.$emit('online.create-game')
+    })
     ipcRenderer.on('menu.join-game', () => {
-      this.showJoinDialog = true
+      this.$root.$emit('online.join-game')
     })
     ipcRenderer.on('menu.leave-game', () => {
       this.leaveGame()
@@ -687,12 +695,17 @@ export default {
       const routeName = this.$route.name
       const gameOpen = routeName === 'game-setup' || routeName === 'open-game' || routeName === 'game'
       const gameRunning = routeName === 'game'
+      const onlineReady = routeName === 'online' && this.onlineConnected &&
+        this.connectionState === STATUS_CONNECTED && !!this.engine?.ok
 
       ipcRenderer.invoke('update-menu', {
         'playonline-connect': !this.onlineConnected && !gameOpen && this.engine?.ok,
         'playonline-disconnect': this.onlineConnected,
-        'new-game': !this.onlineConnected && !gameOpen,
-        'join-game': !this.onlineConnected && !gameOpen && this.engine?.ok,
+        // online games need the online page and a live connection; a local game is always
+        // possible while no game is open (it opens in its own window)
+        'create-online-game': onlineReady,
+        'new-game': !gameOpen && this.engine?.ok,
+        'join-game': onlineReady,
         'leave-game': gameOpen,
         'save-game': gameRunning,
         'load-game': !gameOpen && this.engine?.ok,
