@@ -7,6 +7,7 @@ import { ipcRenderer } from 'electron'
 import { randomId } from '@/utils/random'
 import { isWeb } from '@/utils/version'
 import { CONSOLE_SETTINGS_COLOR } from '@/constants/logging'
+import { setSystemLocale } from '@/utils/system-locale'
 import { LOCALES } from '@/constants/locales'
 import { getSelectedEdition, getSelectedStartingTiles } from '@/utils/gameSetupUtils'
 
@@ -123,6 +124,8 @@ export const actions = {
   },
 
   async loaded ({ commit, dispatch }, { settings, file, systemLocale }) {
+    // kept for HELLO (plugins/connection.js), which reports it to the server
+    setSystemLocale(systemLocale)
     let missingKey = false
     if (settings) {
       settings = { ...settings, file }

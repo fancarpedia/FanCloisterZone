@@ -5,6 +5,7 @@ import { getAppVersion } from '@/utils/version'
 import { CONSOLE_CLIENT_COLOR } from '@/constants/logging'
 import { NETWORK_PROTOCOL_COMPATIBILITY, NETWORK_PROTOCOL_MINIMUM } from '@/constants/versions'
 import { EventsBase } from '@/utils/events'
+import { getSystemLocale } from '@/utils/system-locale'
 
 const isDev = process.env.NODE_ENV === 'development'
 const HEARTBEAT_INTERVAL = 9 * 1000
@@ -94,8 +95,11 @@ class ConnectionPlugin extends EventsBase {
         secret: settings.secret,
         appSessionId: appSessionId,
         language: settings.locale,
-        // OS/system locale (e.g. "en-US"), independent of the in-app language setting above.
+        // the browser's UI language (e.g. "en-US"), independent of the in-app language setting above
         systemLanguage: (typeof navigator !== 'undefined' && (navigator.language || (navigator.languages && navigator.languages[0]))) || null,
+        // the operating system's locale (e.g. "sk-SK"; Electron app.getSystemLocale(), the browser's
+        // resolved locale in the web build). The server stores it with the connection.
+        systemLocale: getSystemLocale(),
         gameId: gameId,
         platform: process.platform
       }
