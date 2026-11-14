@@ -2,7 +2,7 @@
   "@author": "Kiap1969 & Sinscerly",
   "@jcz-version": "5.12.1",
   "@fcz-version": "7.1.0",
-  "@version": "0.12.10-ai",
+  "@version": "0.12.11-ai",
   "about": {
     "author": "Auteur",
     "configuration-file": "Configuratiebestand",
@@ -84,6 +84,7 @@
     "chat": "Chat",
     "close": "Chat sluiten",
     "empty": "Nog geen berichten — zeg eens hallo!",
+    "game-chat": "Spelchat",
     "global-chat": "Globale chat",
     "new-message": "Nieuw bericht",
     "open": "Chat openen",

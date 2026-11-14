@@ -2,13 +2,15 @@
   <!-- inline: an always-open panel (lobby). overlay: a blue launcher ("bullet") that opens the panel
        — drop <GlobalChat /> on any online page; it hides itself when not connected online. -->
   <div v-if="visible" :class="['global-chat-root', inline ? 'inline' : 'overlay', { 'overlay-left': !inline && left && !customRight }]" :style="overlayVars">
+    <!-- the launcher stays in place while the chat is open (the panel opens ABOVE it), so the
+         game chat's red one next to it stays reachable too; a click toggles the chat -->
     <button
       v-if="!inline"
-      v-show="!open"
       class="gc-launcher"
+      :class="{ active: open }"
       :title="$t('chat.global-chat')"
       @mousedown="bulletDragStart('global-chat', $event)"
-      @click="openChat"
+      @click="toggleChat"
     >
       <v-icon class="gc-launcher-icon">fas fa-globe</v-icon>
       <span v-if="unread > 0" class="gc-badge">{{ unread > 99 ? '99+' : unread }}</span>
@@ -127,6 +129,12 @@ export default {
   },
 
   watch: {
+    // only one chat open at a time: opening this one closes the game chat (and the other way
+    // round, below) — on the web build both buttons sit in the game
+    open (value) {
+      if (value) this.$root.$emit('chat-opened', 'global')
+    },
+
     messages (val, old) {
       if (this.inline || this.open) this.readCount = this.messages.length
       this.scrollToBottom()
@@ -144,6 +152,11 @@ export default {
   mounted () {
     this.readCount = this.messages.length
     this.scrollToBottom()
+    this.$root.$on('chat-opened', this.onOtherChatOpened)
+  },
+
+  beforeDestroy () {
+    this.$root.$off('chat-opened', this.onOtherChatOpened)
   },
 
   methods: {
@@ -152,6 +165,20 @@ export default {
     isAuthorActive (m) {
       if (!m || !m.clientId) return true
       return this.activeClientIds.has(m.clientId)
+    },
+
+    // another chat opened: the overlay closes (the lobby's inline one always stays)
+    onOtherChatOpened (which) {
+      if (which !== 'global' && !this.inline && this.open) this.open = false
+    },
+
+    toggleChat () {
+      if (this.open) {
+        if (!this.bulletClickAllowed()) return // the click just ended a drag
+        this.open = false
+        return
+      }
+      this.openChat()
     },
 
     openChat () {
@@ -256,9 +283,13 @@ $gc-blue: #2196f3
       text-align: center
       box-sizing: border-box
 
+  .gc-launcher.active
+    box-shadow: 0 0 0 3px rgba(255,255,255,0.85), 0 2px 8px rgba(0,0,0,0.4)
+
+  // opens ABOVE its launcher (20px + 56px button + 12px gap), right edges aligned
   .gc-panel
     position: fixed
-    bottom: 20px
+    bottom: 88px
     right: var(--gc-right, 20px)
     z-index: 6
     width: 360px

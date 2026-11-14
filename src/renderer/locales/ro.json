@@ -2,7 +2,7 @@
   "@author": "Paloi Sciurala",
   "@jcz-version": "5.12.1",
   "@fcz-version": "7.1.0",
-  "@version": "0.12.10",
+  "@version": "0.12.11-ai",
   "about": {
     "author": "Autor",
     "configuration-file": "Fișier de configurație",
@@ -84,6 +84,7 @@
     "chat": "Chat",
     "close": "Închide chatul",
     "empty": "Niciun mesaj încă — spune „Bună!”",
+    "game-chat": "Chatul jocului",
     "global-chat": "Chatul global",
     "new-message": "Mesaj nou",
     "open": "Deschide chatul",

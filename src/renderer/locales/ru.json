@@ -2,7 +2,7 @@
   "@author": "pOison & Dextea & SonicDC",
   "@jcz-version": "5.12.1",
   "@fcz-version": "7.1.0",
-  "@version": "0.12.10-ai",
+  "@version": "0.12.11-ai",
   "about": {
     "author": "Автор",
     "configuration-file": "Файл конфигурации",
@@ -84,6 +84,7 @@
     "chat": "Чат",
     "close": "Закрыть чат",
     "empty": "Сообщений пока нет — поздоровайтесь!",
+    "game-chat": "Игровой чат",
     "global-chat": "Общий чат",
     "new-message": "Новое сообщение",
     "open": "Открыть чат",

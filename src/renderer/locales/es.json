@@ -2,7 +2,7 @@
   "@author": "Carlium & Meepledrone",
   "@jcz-version": "5.12.1",
   "@fcz-version": "7.1.0",
-  "@version": "0.12.10-ai",
+  "@version": "0.12.11-ai",
   "about": {
     "author": "Autor",
     "configuration-file": "Archivo de configuración",
@@ -84,6 +84,7 @@
     "chat": "Conversar",
     "close": "Cerrar el chat",
     "empty": "Aún no hay mensajes — ¡saluda!",
+    "game-chat": "Chat de la partida",
     "global-chat": "Chat global",
     "new-message": "Nuevo mensaje",
     "open": "Abrir el chat",

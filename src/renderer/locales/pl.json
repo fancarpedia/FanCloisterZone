@@ -2,7 +2,7 @@
   "@author": "Snearone",
   "@jcz-version": "5.12.1",
   "@fcz-version": "7.1.0",
-  "@version": "0.12.10-ai",
+  "@version": "0.12.11-ai",
   "about": {
     "author": "Autor",
     "configuration-file": "Plik konfiguracyjny",
@@ -84,6 +84,7 @@
     "chat": "Czat",
     "close": "Zamknij czat",
     "empty": "Jeszcze nie ma wiadomości — przywitaj się!",
+    "game-chat": "Czat gry",
     "global-chat": "Czat globalny",
     "new-message": "Nowa wiadomość",
     "open": "Otwórz czat",

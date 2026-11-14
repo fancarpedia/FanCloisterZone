@@ -2,7 +2,7 @@
   "@author": "TileLord | Erol",
   "@jcz-version": "5.12.1",
   "@fcz-version": "7.1.0",
-  "@version": "0.12.10-ai",
+  "@version": "0.12.11-ai",
   "about": {
     "author": "Avtor",
     "configuration-file": "Konfiguracijska datoteka",
@@ -84,6 +84,7 @@
     "chat": "Klepet",
     "close": "Zapri klepet",
     "empty": "Še ni sporočil — pozdravi!",
+    "game-chat": "Klepet igre",
     "global-chat": "Globalni klepet",
     "new-message": "Novo sporočilo",
     "open": "Odpri klepet",

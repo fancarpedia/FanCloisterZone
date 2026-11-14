@@ -2,7 +2,7 @@
   "@author": "Peťul",
   "@jcz-version": "5.12.1",
   "@fcz-version": "7.1.0",
-  "@version": "0.12.10-ai",
+  "@version": "0.12.11-ai",
   "about": {
     "author": "Autor",
     "configuration-file": "Konfigurační soubor",
@@ -84,6 +84,7 @@
     "chat": "Chat",
     "close": "Zavřít chat",
     "empty": "Zatím žádné zprávy — pozdravte se!",
+    "game-chat": "Herní chat",
     "global-chat": "Globální chat",
     "new-message": "Nový dopis",
     "open": "Otevřít chat",

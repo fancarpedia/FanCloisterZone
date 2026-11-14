@@ -2,7 +2,7 @@
   "@author": "Black Bear",
   "@jcz-version": "5.12.1",
   "@fcz-version": "7.1.0",
-  "@version": "0.12.10-ai",
+  "@version": "0.12.11-ai",
   "about": {
     "author": "Auteur",
     "configuration-file": "Fichier de configuration",
@@ -84,6 +84,7 @@
     "chat": "Discuter",
     "close": "Fermer la discussion",
     "empty": "Pas encore de messages — n’hésite pas à dire bonjour !",
+    "game-chat": "Discussion de la partie",
     "global-chat": "Discussion générale",
     "new-message": "Nouveau message",
     "open": "Ouvrir une discussion",

@@ -1,13 +1,16 @@
 <template>
   <div class="game-chat-root" v-if="chatEnabled">
     <!-- Collapsed launcher: red button with chat icon + unread badge -->
+    <!-- web build: the launcher stays while the chat is open (the chat opens ABOVE it, so the
+         global chat's blue launcher beside it stays reachable); a click toggles the chat -->
     <button
-      v-show="!open"
+      v-show="!open || anchored"
       class="chat-launcher"
+      :class="{ active: open }"
       :style="bulletRight('game-chat') ? { right: bulletRight('game-chat') } : {}"
       :title="$t('chat.open') || 'Chat'"
       @mousedown="bulletDragStart('game-chat', $event)"
-      @click="openChat"
+      @click="onLauncherClick"
     >
       <v-icon class="chat-launcher-icon color-overlay">fas fa-comments</v-icon>
       <span v-if="unread > 0" class="chat-badge">{{ unread > 99 ? '99+' : unread }}</span>
@@ -17,67 +20,64 @@
     <div
       v-show="open"
       class="game-chat"
+      :class="{ anchored }"
       :style="positionStyle"
       @mousedown="startDrag"
     >
-      <button
-        class="chat-close"
-        :title="$t('chat.close') || 'Close'"
-        @mousedown.stop
-        @click="closeChat"
-      >
-        <v-icon class="color-overlay">fas fa-times</v-icon>
-      </button>
-      <div class="messages-wrapper">
-        <div class="messages" ref="gameChatMessages">
-          <div class="message"
-            v-for="m in messages"
-          >
-            <div
-              :class="[
-                'sender color-bg-important color color-overlay color-' + getMessageSlotColor(m),
-                { inactive: !isMessageAuthorActive(m) }
-              ]"
-            >
-              <!-- {{ getPlayerName(m.player) }} -->
-            </div>
-            <div class="time">
-              {{ getMessageTime(m) }}
-            </div>
-            <div class="message-text">
-	        {{ m.message }}
-	      </div>
-          </div>
-          <div class="message">
-            {{ sentMessage }}
-          </div>
-          <div ref="endOfChat" ></div>
+      <!-- same header as the global chat (GlobalChat.vue .gc-header), in the game chat's red -->
+      <div class="chat-header">
+        <span class="chat-title"><span class="chat-bullet" />{{ $t('chat.game-chat') }}</span>
+        <button
+          class="chat-close"
+          :title="$t('chat.close') || 'Close'"
+          @mousedown.stop
+          @click="closeChat"
+        >
+          <v-icon>fas fa-times</v-icon>
+        </button>
+      </div>
+      <!-- messages and input laid out like the global chat (GlobalChat.vue .gc-messages /
+           .gc-input); the author marker is the seat's colour bullet -->
+      <div ref="gameChatMessages" class="chat-messages">
+        <div
+          v-for="(m, i) in messages"
+          :key="i"
+          class="chat-message"
+          :class="{ 'author-inactive': !isMessageAuthorActive(m) }"
+        >
+          <span :class="'chat-author color-bg-important color-' + getMessageSlotColor(m)" />
+          <span class="chat-time">{{ getMessageTime(m) }}</span>
+          <span class="chat-text">{{ m.message }}</span>
         </div>
-        <div class="send-message-wrapper">
-          <div class="new-message-text-wrapper">
-            <v-text-field
-              class="edit-message"
-              ref="chatMessage"
-              v-model="newMessage"
-              :label="$t('chat.new-message')"
-              :style="{ width: inputWidth + 'px' }"
-              @focus="joinMessage"
-              @blur="leaveMessage"
-              @keydown="keyDown"
-              @keydown.enter="sendMessage"
-            />
-          </div>
-          <div class="new-massage-send-wrapper">
-            <button
-              v-for="p in localPlayers"
-              :class="'send-button color-bg-important color color-overlay color-'+ getPlayerSlotColor(p)"
-              @mousedown.stop
-              @click="sendMessageByPlayer(p)"
-            >
-             <v-icon class="color-overlay">fas fa-paper-plane</v-icon>
-            </button>
-          </div>
+        <div v-if="sentMessage" class="chat-message pending">
+          <span class="chat-text">{{ sentMessage }}</span>
         </div>
+        <div ref="endOfChat" />
+      </div>
+      <div class="chat-input">
+        <v-text-field
+          ref="chatMessage"
+          v-model="newMessage"
+          dense
+          hide-details
+          :label="$t('chat.new-message')"
+          @mousedown.stop
+          @focus="joinMessage"
+          @blur="leaveMessage"
+          @keydown="keyDown"
+          @keydown.enter="sendMessage"
+        />
+        <!-- one send button per local player (hotseat), in that player's colour -->
+        <button
+          v-for="p in localPlayers"
+          :key="p"
+          :class="'chat-send color-bg-important color-overlay color-' + getPlayerSlotColor(p)"
+          :title="$t('chat.send')"
+          @mousedown.stop
+          @click="sendMessageByPlayer(p)"
+        >
+          <v-icon class="color-overlay">fas fa-paper-plane</v-icon>
+        </button>
       </div>
     </div>
 
@@ -94,6 +94,7 @@ import isEqual from 'lodash/isEqual'
 import isNil from 'lodash/isNil'
 
 import ChatBulletDragMixin from '@/components/ChatBulletDragMixin'
+import { isWeb } from '@/utils/version'
 
 export default {
   mixins: [ChatBulletDragMixin],
@@ -105,8 +106,9 @@ export default {
       open: false,
       readCount: 0,
       newMessage: '',
-      CHAT_WIDTH: 400,
-      CHAT_HEIGHT: 200,
+      // keep in step with .game-chat width / height (the global chat's panel size)
+      CHAT_WIDTH: 360,
+      CHAT_HEIGHT: 280,
       offset: {
         x: 0,
         y: 0
@@ -116,6 +118,9 @@ export default {
         bottom: null
       },
       sentMessage: null,
+      // web build: the chat opens above its launcher instead of a free-floating, draggable box
+      // (the global chat's launcher sits beside it in the game, both stay visible)
+      anchored: isWeb(),
       BEEP_URL: src?.default ? src.default : src // hack, Nuxt doesn't convert asset to string directly (at least in dev mode)
     }
   },
@@ -157,19 +162,17 @@ export default {
 
     positionStyle() {
       const style = {}
+      if (this.anchored) {
+        // right edge on the launcher's right edge; vertical place from the CSS (.anchored)
+        const right = this.bulletRight('game-chat')
+        if (right) style.right = right
+        return style
+      }
 
       if (this.position.right != null) style.right = this.position.right + 'px'
       if (this.position.bottom != null) style.bottom = this.position.bottom + 'px'
 
       return style
-    },
-
-    inputWidth() {
-      const chatWidth = 400 // or dynamically: this.$el.offsetWidth
-      const buttonWidth = 40 // approximate width of each send button including margin
-      const totalButtonsWidth = this.localPlayers.length * buttonWidth + 10 // add small padding/margin
-      const width = chatWidth - totalButtonsWidth
-      return width > 50 ? width : 50 // minimum width 50px
     }
   },
 
@@ -194,9 +197,16 @@ export default {
     }
 
     window.addEventListener('resize', this.onWindowResize)
+    this.$root.$on('chat-opened', this.onOtherChatOpened)
   },
 
   watch: {
+    // only one chat open at a time: opening this one closes the global chat, and opening the
+    // global chat closes this one (onOtherChatOpened)
+    open (value) {
+      if (value) this.$root.$emit('chat-opened', 'game')
+    },
+
     chat() {
       if (!this.chatEnabled) {
         this._chatInited = false
@@ -237,20 +247,36 @@ export default {
   },
 
   beforeDestroy () {
+    this.$root.$off('chat-opened', this.onOtherChatOpened)
     this.leaveMessage()
     window.removeEventListener('resize', this.onWindowResize)
   },
 
   methods: {
+    onLauncherClick () {
+      if (this.open) {
+        if (!this.bulletClickAllowed()) return // the click just ended a drag
+        this.closeChat()
+        return
+      }
+      this.openChat()
+    },
+
+    onOtherChatOpened (which) {
+      if (which !== 'game' && this.open) this.closeChat()
+    },
+
     openChat() {
       if (!this.bulletClickAllowed()) return // the click just ended a drag
       this.open = true
       // mark everything read
       this.readCount = this.chatEnabled ? this.messages.length : 0
-      if (this.position.right == null || this.position.bottom == null) {
-        this.resetToDefaultPosition()
+      if (!this.anchored) {
+        if (this.position.right == null || this.position.bottom == null) {
+          this.resetToDefaultPosition()
+        }
+        this.clampPosition()
       }
-      this.clampPosition()
       this.$nextTick(() => this.scrollToBottom())
     },
     closeChat() {
@@ -357,6 +383,7 @@ export default {
       }
     },
     startDrag(ev) {
+      if (this.anchored) return // sits above its launcher
       this.dragging = true
 
       // current top-left of the box, derived from the right/bottom anchor
@@ -415,7 +442,7 @@ export default {
         const container = this.$refs.gameChatMessages
         const endOfChat = this.$refs.endOfChat
         if (container && endOfChat) {
-          container.scrollTop = endOfChat.offsetTop
+          container.scrollTop = container.scrollHeight
         }
       })
     }
@@ -471,6 +498,9 @@ export default {
     color: white
     font-size: 24px
 
+  &.active
+    box-shadow: 0 0 0 3px rgba(255,255,255,0.85), 0 2px 8px rgba(0,0,0,0.4)
+
   .chat-badge
     position: absolute
     top: -4px
@@ -488,107 +518,121 @@ export default {
     text-align: center
     box-sizing: border-box
 
+// The panel matches the global chat's (GlobalChat.vue .gc-panel): same size, backdrop, corners,
+// header, message rows, input and send button — only the colour is the game chat's red.
 .game-chat
-  width: 400px
-  height: 200px
-  background-color: rgba(0,0,0,0.5)
-  padding: 0
+  width: 360px
+  height: 280px
   position: absolute
+  z-index: 3
+  display: flex
+  flex-direction: column
+  border-radius: 8px
+  background: rgba(0,0,0,0.6)
+  box-shadow: 0 2px 10px rgba(0,0,0,0.4)
   cursor: move
   user-select: none /* prevent text selection while dragging */
-  display: flex
-  align-items: center
-  justify-content: center
-  font-weight: bold
-  z-index: 3
 
-  .chat-close
-    position: absolute
-    top: 4px
-    right: 14px
-    z-index: 4
-    width: 26px
-    height: 26px
-    border-radius: 50%
-    border: none
-    background: rgba(211,47,47,0.85)
-    color: white
-    cursor: pointer
+  // web build: above the launcher (20px + 56px button + 12px gap), right edges aligned
+  &.anchored
+    right: calc(var(--aside-width-plus-gap) + 16px)
+    bottom: 88px
+    cursor: default
+
+    @media (max-width: 600px)
+      right: 16px !important
+      width: calc(100vw - 32px)
+      max-width: 360px
+
+  .chat-header
+    flex: 0 0 auto
     display: flex
     align-items: center
-    justify-content: center
-    padding: 0
+    justify-content: space-between
+    padding: 8px 12px
+    border-bottom: 2px solid #d32f2f
 
-    &:hover
-      background: #e53935
+    .chat-title
+      display: flex
+      align-items: center
+      font-weight: 500
+      text-transform: uppercase
+      font-size: 13px
+
+    .chat-bullet
+      display: inline-block
+      width: 9px
+      height: 9px
+      border-radius: 50%
+      background: #d32f2f
+      margin-right: 6px
+      flex: 0 0 auto
+
+  .chat-close
+    border: none
+    background: transparent
+    cursor: pointer
+    padding: 0
+    display: flex
+    align-items: center
 
     .v-icon
-      color: white
-      font-size: 14px
+      font-size: 16px
 
-  .messages-wrapper
-    overflow: hidden
-    height: 160px
-
-  .messages
-    position: absolute
-    overflow-y: scroll
-    overflow-x: hidden
-    margin-bottom: 10px
-    width: 100%
-    bottom: 50px
-    left: 0
-    padding: 5px
-    height: 140px
-
-  .edit-message
-    width: 200px
-    height: 40px
-    margin: 5px
-
-  .send-message-wrapper
-    display: flex
-    width: 400px
-    position: absolute
-    bottom: 0
-    left: 0
-
-  .new-message-text-wrapper
+  .chat-messages
     flex: 1 1 auto
-    min-width: 0
+    overflow-y: auto
+    padding: 8px 12px
+    cursor: auto
+    user-select: text
 
-  .new-massage-send-wrapper
-    flex: 0 0 auto
-    padding-top: 12px
-
-  .send-button
-    padding: 5px
-    border-radius: 5px
-    margin-left: 10px
-
-  .message
+  .chat-message
     display: flex
+    align-items: baseline
     gap: 5px
-    margin-bottom: 0.5ex
+    margin-bottom: 4px
+    font-size: 13px
 
-    .sender
-      padding: 2px 5px
+    // the author: their seat's colour, as a bullet (the global chat's blue bullet + name)
+    .chat-author
       display: inline-block
-      border-radius: 5px
+      width: 9px
+      height: 9px
+      border-radius: 50%
+      flex: 0 0 auto
+      align-self: center
 
-      // Author's seat is no longer connected: dim their colour swatch (the author marker here —
-      // the name is not rendered). Message text and time stay at full brightness.
-      &.inactive
-        opacity: 0.35
-
-    .time
-      color: #bbb
+    .chat-time
+      color: #999
+      font-size: 11px
       white-space: nowrap
 
-  .theme--dark .message .message-text
-    color: white
+    .chat-text
+      word-break: break-word
 
-  .theme--light .message .message-text
-    color: black
+    // author's seat no longer connected: dim the bullet only, the text stays readable
+    &.author-inactive .chat-author
+      opacity: 0.35
+
+    &.pending
+      opacity: 0.6
+
+  .chat-input
+    flex: 0 0 auto
+    display: flex
+    align-items: center
+    gap: 6px
+    padding: 4px 12px 8px
+    cursor: auto
+
+  .chat-send
+    border: none
+    border-radius: 5px
+    padding: 6px 10px
+    cursor: pointer
+    flex: 0 0 auto
+
+    &:hover
+      filter: brightness(1.15)
 
 </style>

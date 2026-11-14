@@ -2,7 +2,7 @@
   "@author": "Challa007 & Bombur",
   "@jcz-version": "5.12.1",
   "@fcz-version": "7.1.0",
-  "@version": "0.12.10-ai",
+  "@version": "0.12.11-ai",
   "about": {
     "author": "Autor",
     "configuration-file": "Konfigurationsdatei",
@@ -84,6 +84,7 @@
     "chat": "Chat",
     "close": "Chat schließen",
     "empty": "Noch keine Nachrichten — sag Hallo!",
+    "game-chat": "Spielchat",
     "global-chat": "Globaler Chat",
     "new-message": "Neue Nachricht",
     "open": "Chat öffnen",

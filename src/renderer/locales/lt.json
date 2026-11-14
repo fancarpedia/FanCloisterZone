@@ -2,7 +2,7 @@
   "@author": "Stepukiss",
   "@jcz-version": "5.12.1",
   "@fcz-version": "7.1.0",
-  "@version": "0.12.10-ai",
+  "@version": "0.12.11-ai",
   "about": {
     "author": "Autorius",
     "configuration-file": "Nustatymų aplankas",
@@ -84,6 +84,7 @@
     "chat": "Pokalbis",
     "close": "Uždaryti pokalbį",
     "empty": "Pranešimų dar nėra — pasisveikinkite!",
+    "game-chat": "Žaidimo pokalbis",
     "global-chat": "Bendrasis pokalbis",
     "new-message": "Naujas pranešimas",
     "open": "Atidaryti pokalbį",

@@ -2,7 +2,7 @@
   "@author": "farin & Scott",
   "@jcz-version": "5.12.1",
   "@fcz-version": "7.1.0",
-  "@version": "0.12.10",
+  "@version": "0.12.11",
   "about": {
     "author": "Author",
     "configuration-file": "Configuration file",
@@ -84,6 +84,7 @@
     "chat": "Chat",
     "close": "Close chat",
     "empty": "No messages yet — say hello!",
+    "game-chat": "Game chat",
     "global-chat": "Global chat",
     "new-message": "New message",
     "open": "Open chat",
