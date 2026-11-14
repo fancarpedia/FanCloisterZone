@@ -65,6 +65,8 @@ export default {
         if (transform && nextToMeeple) {
           transform += ` translate(${BASE_SIZE * 0.18} ${BASE_SIZE * 0.02})`
         }
+        // upright on a turned board, like the figures themselves
+        if (transform) transform += ' ' + this.upright()
         return { figure, size, transform, role: role || null }
       }).filter(g => g.transform)
     }

@@ -28,6 +28,33 @@ export default {
       return `rotate(${-(this.boardRotation || 0)} 0 0)`
     },
 
+    /**
+     * Same, pivoting on (cx, cy) of the group's own coordinates — for a figure or piece drawn off
+     * its origin (an image from 0,0, a box beside the point), turned upright around its middle so
+     * it stays on its spot. Empty while the board is not turned.
+     */
+    /**
+     * The bridge shape's transform on its tile, so a bridge only ever reads at 0° or 90° on
+     * screen: 180° looks like 0°, 270° like 90° (the arch never hangs upside down).
+     *
+     * What counts is where the bridge ends up on screen: its own orientation (a north-south
+     * bridge is already turned 90°) plus the board's. It is flipped half a turn whenever that sum
+     * lands on 180° or 270° — e.g. a north-south bridge flips on a board turned 90° or 180°, an
+     * east-west one on a board turned 180° or 270°.
+     */
+    bridgeTransform (location) {
+      const own = location === 'NS' ? 90 : 0
+      const onScreen = (((own + (this.boardRotation || 0)) % 360) + 360) % 360
+      const flip = onScreen >= 180 ? 'rotate(180 450 450)' : ''
+      const ns = own ? 'rotate(90 450 450)' : ''
+      return [flip, ns].filter(Boolean).join(' ')
+    },
+
+    upright (cx = 0, cy = 0) {
+      const r = -(this.boardRotation || 0)
+      return r ? `rotate(${r} ${cx} ${cy})` : ''
+    },
+
     positionAsKey (pos) {
       return `${pos[0]},${pos[1]}`
     },

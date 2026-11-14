@@ -10,7 +10,7 @@
       <path
         class="preview-bridge"
         d="M 0 540 L 0 360 L 900 360 L 900 540 L 765 540 C 765 392 135 392 135 540 Z"
-        :transform="previewBridge.location === 'NS' ? 'rotate(90 450 450)' : ''"
+        :transform="bridgeTransform(previewBridge.location)"
       />
     </g>
 

@@ -185,7 +185,7 @@
       />
 
       <g
-        :transform="transformPosition(dragon.position)"
+        :transform="transformPosition(dragon.position) + ' ' + upright(BASE_SIZE / 2, BASE_SIZE / 2)"
         class="dragon"
       >
         <use
@@ -212,7 +212,7 @@
     -->
     <g
       v-if="fairy && !fairy.placement.meepleId"
-      :transform="lonelyFairyTransform()"
+      :transform="lonelyFairyTransform() + ' ' + upright(BASE_SIZE * 0.21, BASE_SIZE * 0.21)"
       class="fairy"
     >
       <use
@@ -224,7 +224,7 @@
 
     <g
       v-if="blackFairy && !blackFairy.placement.meepleId"
-      :transform="lonelyBlackFairyTransform()"
+      :transform="lonelyBlackFairyTransform() + ' ' + upright(BASE_SIZE * 0.21, BASE_SIZE * 0.21)"
       class="black-fairy"
     >
       <use
@@ -236,7 +236,7 @@
 
     <g
       v-if="donkey"
-      :transform="donkeyTransform()"
+      :transform="donkeyTransform() + ' ' + upright(BASE_SIZE * 0.21, BASE_SIZE * 0.21)"
       class="donkey"
     >
       <use

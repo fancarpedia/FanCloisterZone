@@ -11,7 +11,7 @@
         fill-opacity="0.75"
         :stroke="strokeColor(bridge)"
         stroke-width="15"
-        :transform="bridge.location ===  'NS' ? 'rotate(90 450 450)' : ''"
+        :transform="bridgeTransform(bridge.location)"
       />
     </g>
   </g>

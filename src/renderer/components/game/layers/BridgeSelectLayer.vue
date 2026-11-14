@@ -9,14 +9,14 @@
         d="M 0 540 L 0 360 L 900 360 L 900 540 L 765 540 C 765 392 135 392 135 540 Z"
         fill="white"
         :fill-opacity="mouseOver === opt ? 0.8 : 0.4"
-        :transform="opt.location === 'NS' ? 'rotate(90 450 450)' : ''"
+        :transform="bridgeTransform(opt.location)"
       />
 
       <!-- invisible shape for tracking mouse events -->
       <rect
         x="0" y="360" width="900" height="180"
         :style="{'pointer-events': 'all', fill: 'none'}"
-        :transform="opt.location === 'NS' ? 'rotate(90 450 450)' : ''"
+        :transform="bridgeTransform(opt.location)"
         @mouseenter="onMouseOver(opt)"
         @mouseleave="onMouseLeave(opt)"
         @click="ev => onSelect(ev, opt)"

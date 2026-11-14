@@ -3,7 +3,7 @@
     <g
       v-for="({ height, tile, point, rotation, transform, fill, textColor, stroke, outline }) in towerItems"
       :key="positionAsKey(tile.position)"
-      :transform="`${transformPosition(tile.position)} ${transformRotation(rotation)} ${transform} translate(${point[0]} ${point[1]}) rotate(${-rotation} 0 0)`"
+      :transform="`${transformPosition(tile.position)} ${transformRotation(rotation)} ${transform} translate(${point[0]} ${point[1]}) rotate(${-rotation} 0 0) ${upright()}`"
     >
       <rect
         class="tower"
