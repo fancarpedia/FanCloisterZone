@@ -7,7 +7,13 @@
     @mouseleave="onMouseLeave"
   >
     <Meeple :type="ev.meeple" />
-    <v-icon>fas fa-slash</v-icon>
+    <!-- captured by a tower: behind prison bars (as in the player panel's prisoners), not crossed out -->
+    <svg v-if="captured" class="prison-bars" viewBox="0 0 40 40" aria-hidden="true">
+      <rect x="1" y="2" width="38" height="3" rx="1" />
+      <rect x="1" y="35" width="38" height="3" rx="1" />
+      <rect v-for="x in [6, 14, 22, 30]" :key="x" :x="x" y="2" width="3" height="36" rx="1" />
+    </svg>
+    <v-icon v-else>fas fa-slash</v-icon>
   </div>
 </template>
 
@@ -35,6 +41,11 @@ export default {
       colorCssClass: 'game/colorCssClass'
     }),
 
+    // shown also for a follower captured by a tower (PlayEvent maps 'meeple-captured' here)
+    captured () {
+      return this.ev.type === 'meeple-captured'
+    },
+
     // what triggered this when no player chose it (engine PlacementCause), as a tooltip
     causeTitle () {
       return causeTitle(this.ev.cause, this) || null
@@ -43,7 +54,16 @@ export default {
 
   methods: {
     onMouseEnter () {
-      if (this.ev.cause) {
+      if (this.captured) {
+        // captured by a tower: the tower, and the player whose tower piece took it
+        this.$store.commit('board/placementPanel', {
+          kind: 'captured',
+          meeple: this.ev.meeple,
+          player: this.ev.player,
+          actor: this.player,
+          source: 'TOWER'
+        })
+      } else if (this.ev.cause) {
         // returned by the game itself (meteorite, wolf, dragon, …): say what caused it
         this.$store.commit('board/placementPanel', {
           kind: 'removed',
@@ -105,6 +125,18 @@ export default {
 <style lang="sass" scoped>
 .meeple-returned
   position: relative
+
+  // as in the player panel's prisoners (PlayerPanel.vue)
+  svg.prison-bars
+    position: absolute
+    left: 0
+    top: 0
+    width: 40px
+    height: 40px
+    pointer-events: none
+    fill: rgba(40, 40, 40, 0.85)
+    stroke: rgba(255, 255, 255, 0.6)
+    stroke-width: 0.6
 
   i
     position: absolute

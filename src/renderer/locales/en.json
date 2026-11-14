@@ -488,6 +488,7 @@
         "placed-on-letter": "{figure} placed on the Letter",
         "removed": "{figure} removed",
         "castle-created": "Small city converted to a castle",
+        "captured": "{figure} captured",
         "tile-placed": "Tile placed"
       }
     },

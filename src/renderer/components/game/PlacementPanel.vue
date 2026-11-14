@@ -14,7 +14,7 @@
             :rotation="causeVisual.tile.rotation"
             :size="tileSize"
           />
-          <img v-else-if="causeVisual.image" :src="causeVisual.image" class="source-image">
+          <img v-else-if="causeVisual.image" :src="causeVisual.image" :class="causeVisual.towerPiece ? 'tower-piece-image' : 'source-image'">
           <Meeple v-else-if="causeVisual.meeple" :type="causeVisual.meeple" />
           <NeutralFigure v-else-if="causeVisual.figure" :figure="causeVisual.figure" />
         </div>
@@ -29,6 +29,12 @@
       <div v-else class="subject" :class="expr.player === null || expr.player === undefined ? '' : colorCssClass(expr.player)">
         <NeutralFigure v-if="expr.figure" :figure="figureSymbol(expr.figure)" />
         <Meeple v-else-if="expr.meeple" :type="expr.meeple" />
+        <!-- captured by a tower: behind prison bars, as in the history and the player panel -->
+        <svg v-if="expr.kind === 'captured' && expr.meeple" class="prison-bars" viewBox="0 0 40 40" aria-hidden="true">
+          <rect x="1" y="2" width="38" height="3" rx="1" />
+          <rect x="1" y="35" width="38" height="3" rx="1" />
+          <rect v-for="x in [6, 14, 22, 30]" :key="x" :x="x" y="2" width="3" height="36" rx="1" />
+        </svg>
         <StandaloneTileImage
           v-else-if="expr.tile"
           :tile-id="expr.tile.id"
@@ -92,12 +98,14 @@ const SOURCE_KEYS = {
   MONASTERY_SHRINE_CHALLENGE: 'game.feature.shrine-challenge',
   BARN_PLACEMENT: 'game.element.barn',
   BARN_FIELD_JOIN: 'game.element.barn',
-  TRAP: 'game.cause.rule.trap'
+  TRAP: 'game.cause.rule.trap',
+  TOWER: 'game.element.tower'
 }
 const SOURCE_IMAGES = {
   PRINCESS: require('~/assets/features/C1/princess.png'),
   ROBBERS_SON: require('~/assets/features/C1/robbers-son.png'),
-  FESTIVAL: require('~/assets/features/C1/festival.png')
+  FESTIVAL: require('~/assets/features/C1/festival.png'),
+  TOWER: require('~/assets/figures/tower.png')
 }
 
 export default {
@@ -211,7 +219,8 @@ export default {
     causeVisual () {
       // a return source drawn as its tile artwork (Princess, Robber's Son, Festival)
       if (!this.expr.cause && this.expr.source && SOURCE_IMAGES[this.expr.source]) {
-        return { image: SOURCE_IMAGES[this.expr.source] }
+        // the tower that captured a follower: the same size as a placed tower piece here
+        return { image: SOURCE_IMAGES[this.expr.source], towerPiece: this.expr.source === 'TOWER' }
       }
       const c = this.expr.cause
       if (!c) return null
@@ -274,6 +283,22 @@ export default {
 svg.meeple, svg.neutral
   max-width: 40px
   height: 40px
+
+// prison bars over a captured follower (PlayerPanel.vue look), on the 40px meeple
+.subject
+  position: relative
+
+  svg.prison-bars
+    position: absolute
+    left: 50%
+    top: 50%
+    width: 40px
+    height: 40px
+    transform: translate(-50%, -50%)
+    pointer-events: none
+    fill: rgba(40, 40, 40, 0.85)
+    stroke: rgba(255, 255, 255, 0.6)
+    stroke-width: 0.6
 
 // tokens drawn in the theme's text colour, the same rule as the history bullets (PlayEvent) — the
 // castle symbol would otherwise stay black on the dark theme
