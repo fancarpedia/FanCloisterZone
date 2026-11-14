@@ -33,6 +33,7 @@
           :class="{ 'author-inactive': !isAuthorActive(m) }"
         >
           <span class="gc-bullet" />
+          <CountryFlag :country="m.country" />
           <span class="gc-name">{{ m.name || '?' }}</span>
           <span class="gc-time">{{ time(m) }}</span>
           <span class="gc-text">{{ m.message }}</span>
@@ -63,10 +64,13 @@
 <script>
 import { mapState } from 'vuex'
 import isNil from 'lodash/isNil'
+import CountryFlag from '@/components/CountryFlag'
 
 import ChatBulletDragMixin from '@/components/ChatBulletDragMixin'
 
 export default {
+  components: { CountryFlag },
+
   mixins: [ChatBulletDragMixin],
 
   props: {

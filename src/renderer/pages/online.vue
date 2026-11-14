@@ -239,6 +239,7 @@
         <!-- compatible players first; an incompatible one (protocol mismatch) is dimmed and marked -->
         <li v-for="c in otherClients" :key="c.clientId" class="client" :class="{ incompatible: !!clientMismatch(c) }">
           <span class="status-dot" :class="c.playing ? 'playing' : 'idle'" />
+          <CountryFlag :country="c.country" />
           <span class="client-name">{{ c.name || '—' }}</span>
           <!-- arrow down: they run an older protocol than this app accepts; arrow up: they need a
                newer one than this app has; unlink: their version is unknown -->
@@ -374,6 +375,7 @@
 import { ipcRenderer } from 'electron'
 import { mapState } from 'vuex'
 import sortBy from 'lodash/sortBy'
+import CountryFlag from '@/components/CountryFlag'
 
 import AddonsReloadObserverMixin from '@/components/AddonsReloadObserverMixin'
 import GameSetupOverviewInline from '@/components/game-setup/overview/GameSetupOverviewInline'
@@ -397,6 +399,7 @@ const MISMATCH_ICONS = {
 
 export default {
   components: {
+    CountryFlag,
     GameSetupOverviewInline,
     OnlineStatus,
     Meeple,

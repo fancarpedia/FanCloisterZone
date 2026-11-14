@@ -86,6 +86,7 @@
     "discord-rpc": "^4.0.1",
     "electron-log": "^4.4.1",
     "electron-updater": "^4.3.9",
+    "flag-icons": "7.2.3",
     "fs-extra": "^11.3.2",
     "lodash": "^4.17.21",
     "marked": "4.0.18",
