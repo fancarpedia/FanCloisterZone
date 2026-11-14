@@ -19,6 +19,9 @@
         <v-icon class="color-overlay">fas fa-undo</v-icon>
       </div>
     </div>
+    <!-- ActionPanel's buttons: Undo (e.g. take back the tile placement that brought the mage and
+         witch together). Rotate is drawn by ActionPanel itself, first in the panel. -->
+    <slot />
   </section>
 </template>
 

@@ -55,3 +55,29 @@ describe('the Rotate option in ActionPanel', () => {
     expect(panel).not.toContain('skip-text')
   })
 })
+
+describe('Rotate comes first in the action panel', () => {
+  it('is drawn before the current action, not after Skip in its buttons', () => {
+    const rotate = panel.indexOf('class="pass-item rotate-placed rotate-first"')
+    const action = panel.indexOf(':is="actionComponent"')
+    expect(rotate).toBeGreaterThan(-1)
+    expect(rotate).toBeLessThan(action)
+    // the action's own button slot no longer carries it
+    expect(panel).toContain('v-if="action.canPass || undoAllowed"')
+    expect(panel.match(/@click="rotatePlacedTile"/g)).toHaveLength(1)
+  })
+
+  it('only for the local player, hidden while a history panel stands in for the action', () => {
+    expect(panel).toContain('v-if="action && local && !ai && canRotatePlacedTile"')
+    const block = panel.slice(panel.indexOf('v-if="action && local && !ai && canRotatePlacedTile"'), panel.indexOf('class="pass-item rotate-placed rotate-first"'))
+    expect(block).toContain('!pointsExpression')
+    expect(block).toContain('!placementPanel')
+  })
+})
+
+describe('Remove mage or witch', () => {
+  it('shows the action panel buttons (Undo); Rotate comes first from the panel itself', () => {
+    const remove = read('./RemoveMageOrWitchAction.vue')
+    expect(template(remove)).toMatch(/<slot \/>\n {2}<\/section>/)
+  })
+})

@@ -32,6 +32,24 @@
       v-else-if="placementPanel"
       :expr="placementPanel"
     />
+    <!-- Turn the tile that is already on the board — FIRST in the panel, before the current
+         action, since it belongs to the step just taken (placing the tile). Small screens only:
+         with no R key the alternative is undo, re-rotate, re-place. Offered in every phase that
+         can still be reached with the tile uncommitted (ActionPhase, TilePlacementConfirmPhase,
+         GoldPiecePhase, MageAndWitchPhase) and withdrawn as soon as the engine raises
+         TILE_ROTATION_DISALLOWED (see canRotatePlacedTile). -->
+    <div
+      v-if="action && local && !ai && canRotatePlacedTile"
+      v-show="!pointsExpression && !notifyConnectionClosed && !returnedMeeplePanel && !awardedMeeplePanel && !returnedTokenPanel && !diceRollPanel && !placementPanel"
+      class="pass-item rotate-placed rotate-first"
+    >
+      <ActionButton
+        :large="$vuetify.breakpoint.height > 768"
+        icon="fa-sync-alt"
+        :label="$t('menu.rotate')"
+        @click="rotatePlacedTile"
+      />
+    </div>
     <!-- use v-show bit v-if for pointsExoression - to not hide related layers when pointExpression is triggered by mouse hover  -->
     <component
       :is="actionComponent"
@@ -43,7 +61,7 @@
       @two-lines="twoLines = $event"
     >
       <template
-        v-if="action.canPass || undoAllowed || canRotatePlacedTile"
+        v-if="action.canPass || undoAllowed"
         #default="{ label }"
       >
         <!-- the action panel shows actions and buttons only: no "or" / "or skip action" texts -->
@@ -56,21 +74,6 @@
                 :icon="label ? 'fa-check' : 'fa-forward'"
                 :label="label || $t('game.action.skip-action')"
                 @click="pass"
-              />
-            </div>
-          </template>
-          <!-- Turn the tile that is already on the board. Small screens only: with no R key the
-               alternative is undo, re-rotate, re-place. Offered in every phase that can still be
-               reached with the tile uncommitted - ActionPhase, TilePlacementConfirmPhase,
-               GoldPiecePhase and MageAndWitchPhase all render this slot - and withdrawn as soon
-               as the engine raises TILE_ROTATION_DISALLOWED (see canRotatePlacedTile). -->
-          <template v-if="canRotatePlacedTile">
-            <div class="pass-item rotate-placed">
-              <ActionButton
-                :large="$vuetify.breakpoint.height > 768"
-                icon="fa-sync-alt"
-                :label="$t('menu.rotate')"
-                @click="rotatePlacedTile"
               />
             </div>
           </template>
@@ -483,6 +486,12 @@ export default {
 @media (max-width: $small-screen-max-width)
   .rotate-placed
     display: block
+
+  // the rotate button ahead of the action: centred in the bar, its own slot at the left
+  .action-panel > .rotate-first
+    flex: 0 0 auto
+    align-self: center
+    margin: 0 4px 0 12px
 
   .action-panel
     width: 100%
