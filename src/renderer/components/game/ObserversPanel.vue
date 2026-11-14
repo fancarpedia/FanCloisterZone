@@ -4,7 +4,7 @@
   <section v-if="observers.length" class="observers-panel">
     <div class="observers-title">
       <v-icon small>fas fa-eye</v-icon>
-      {{ $t('game.observers') }}
+      {{ $t('game.observers.watching') }}
     </div>
     <div
       v-for="o in observers"
