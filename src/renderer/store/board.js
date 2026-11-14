@@ -15,6 +15,9 @@ export const state = () => ({
   // the action bar's real height in px (it grows to two lines with many actions); null = the
   // default --action-bar-height. Set by ActionPanel.
   actionPanelHeight: null,
+  // the pointer is over the event history: the board centres on the hovered event's spot and
+  // goes back to where it was when the pointer leaves (Board.vue)
+  historyHover: false,
   layers: {},
   tilePlacementMouseOver: null, // select tile from TilePlacementLayer must be drawn together with regular tils by TileLayer
   zoom: DEFAULT_ZOOM,
@@ -54,6 +57,10 @@ export const mutations = {
 
   actionPanelHeight (state, value) {
     state.actionPanelHeight = value
+  },
+
+  historyHover (state, value) {
+    state.historyHover = !!value
   },
 
   showLayer (state, { layer, props }) {

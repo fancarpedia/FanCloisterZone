@@ -12,7 +12,14 @@
     </button>
     <!-- single scroll layer: only this element's transform changes while scrolling, so the
          browser composites instead of re-laying-out every row (smooth, no per-row "jumping") -->
-    <div class="events-scroll" :style="{ transform: `translateY(${-offset}px)` }">
+    <!-- hovering the history centres the board on the hovered event, leaving it moves the board
+         back (store board.historyHover, Board.vue) -->
+    <div
+      class="events-scroll"
+      :style="{ transform: `translateY(${-offset}px)` }"
+      @mouseenter="setHistoryHover(true)"
+      @mouseleave="setHistoryHover(false)"
+    >
       <template v-if="phase === 'GameOverPhase'">
         <!-- final scoring "turn" strip - stays visible (like turn numbers) when history is collapsed -->
         <div
@@ -224,6 +231,7 @@ export default {
   },
 
   beforeDestroy () {
+    this.setHistoryHover(false)
     this.$root.$off('final-scoring-height', this._finalScoringResized)
     if (this._smallScreen) {
       if (this._smallScreen.removeEventListener) {
@@ -240,6 +248,12 @@ export default {
         return `inset(${this.baseY - 9 - top}px 0 0 0)`
       }
       return 'none'
+    },
+
+    setHistoryHover (value) {
+      if (this.$store.state.board.historyHover !== value) {
+        this.$store.commit('board/historyHover', value)
+      }
     },
 
     toggleGameHistory () {

@@ -87,6 +87,7 @@ import Vue from 'vue'
 import { mapGetters, mapState } from 'vuex'
 
 import { centerOf, recenterAfterResize } from '@/utils/view-center'
+import { emphasisCenter, offsetsCentering } from '@/utils/emphasis-center'
 import BridgeLayer from '@/components/game/layers/BridgeLayer'
 import BridgeSelectLayer from '@/components/game/layers/BridgeSelectLayer'
 import CastleLayer from '@/components/game/layers/CastleLayer'
@@ -122,6 +123,8 @@ const ACTION_KEYS = ['r', 'f', 'h', 't']
 
 // Length of one quarter-turn. Long enough to read as a turn, short enough not to delay play.
 const ROTATE_DURATION = 480
+// Length of the slide to a hovered history event's spot, and back.
+const HOVER_PAN_DURATION = 260
 const easeInOutCubic = t => t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2
 
 export default {
@@ -188,6 +191,13 @@ export default {
 
     boardHeight () {
       return this.bounds.height * this.tileSize
+    },
+
+    // While the pointer is over the event history: the middle of the hovered event's spot on the
+    // board (tile units), taken from the highlight the event shows; null otherwise.
+    historyHoverCenter () {
+      if (!this.$store.state.board.historyHover) return null
+      return emphasisCenter(this.layers.EmphasizeLayer?.emphasis)
     }
   },
 
@@ -214,6 +224,10 @@ export default {
     // Not reactive — nothing renders from them.
     this.rotateAnimation = null
     this.rotateTarget = 0
+    // rAF handle of the slide to / from a hovered history event, and where the board was before
+    // the first one (null = not moved for the history). Not reactive.
+    this.panAnimation = null
+    this.panBeforeHover = null
     // this._onKeyDown = this.onKeyDown.bind(this)
     // this._onKeyUp = this.onKeyUp.bind(this)
     // this._stopDragging = this.stopDragging.bind(this)
@@ -254,6 +268,7 @@ export default {
   beforeDestroy () {
     clearInterval(this.pressedKeysInterval)
     this.stopRotateAnimation()
+    this.stopPanAnimation()
     if (this._resizeFrame) {
       cancelAnimationFrame(this._resizeFrame)
       this._resizeFrame = null
@@ -273,6 +288,32 @@ export default {
   },
 
   watch: {
+    // Hovering a history event slides its spot into the middle of the view; moving on to the next
+    // event slides on from there. Between two events (no highlight for a moment) nothing moves.
+    historyHoverCenter (center, prev) {
+      if (!center) return
+      if (prev && prev.x === center.x && prev.y === center.y) return
+      if (!this.panBeforeHover) {
+        this.panBeforeHover = { offsetX: this.offsetX, offsetY: this.offsetY }
+      }
+      this.animatePan(offsetsCentering({
+        center,
+        target: this.visibleCenter(),
+        zoom: parseFloat(this.zoom),
+        rotate: this.rotate,
+        baseSize: BASE_SIZE
+      }))
+    },
+
+    // Leaving the history puts the board back where the player had it.
+    '$store.state.board.historyHover' (value) {
+      if (!value && this.panBeforeHover) {
+        const back = this.panBeforeHover
+        this.panBeforeHover = null
+        this.animatePan(back)
+      }
+    },
+
     '$store.state.showGameFarmHints' (value) {
       if (value) {
         this.$store.dispatch('board/showLayer', { layer: 'FarmHintsLayer', props: {} })
@@ -440,6 +481,10 @@ export default {
     // One pointer pans; two pinch-zoom, which is the only way to zoom on a touch device: the
     // zoom-in/out commands come from the native menu and the keyboard, and mobile has neither.
     onPointerDown (ev) {
+      // The player takes the board into their own hands (e.g. on a touch screen, where a tapped
+      // history event stays "hovered"): it stays wherever they leave it, no slide back later.
+      this.stopPanAnimation()
+      this.panBeforeHover = null
       this.pointers.set(ev.pointerId, { x: ev.screenX, y: ev.screenY, cx: ev.clientX, cy: ev.clientY })
 
       if (this.pointers.size === 2) {
@@ -639,6 +684,33 @@ export default {
         const remaining = (this.rotateTarget - this.rotate + 360) % 360
         this.applyRotation(this.rotate, remaining, this.visibleCenter(),
           { x: this.offsetX, y: this.offsetY })
+      }
+    },
+
+    // Slide the board to the given offsets (or jump, with reduced motion).
+    animatePan (to) {
+      this.stopPanAnimation()
+      if (this.prefersReducedMotion()) {
+        this.offsetX = to.offsetX
+        this.offsetY = to.offsetY
+        return
+      }
+      const from = { offsetX: this.offsetX, offsetY: this.offsetY }
+      const start = performance.now()
+      const step = now => {
+        const t = Math.min(1, (now - start) / HOVER_PAN_DURATION)
+        const k = easeInOutCubic(t)
+        this.offsetX = from.offsetX + (to.offsetX - from.offsetX) * k
+        this.offsetY = from.offsetY + (to.offsetY - from.offsetY) * k
+        this.panAnimation = t < 1 ? requestAnimationFrame(step) : null
+      }
+      this.panAnimation = requestAnimationFrame(step)
+    },
+
+    stopPanAnimation () {
+      if (this.panAnimation) {
+        cancelAnimationFrame(this.panAnimation)
+        this.panAnimation = null
       }
     },
 
