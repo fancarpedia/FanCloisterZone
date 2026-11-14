@@ -35,6 +35,8 @@
           :rotation="expr.tile.rotation"
           :size="tileSize"
         />
+        <!-- a tower piece as the action panel shows it (TowerPieceItem.vue), not the icon -->
+        <img v-else-if="towerPieceImage" :src="towerPieceImage" class="tower-piece-image">
         <TokenImage v-else-if="expr.token" :token="expr.token" :height="40" />
       </div>
     </div>
@@ -56,6 +58,13 @@ import TokenImage from '@/components/game/TokenImage'
 import { causeTitle } from '@/utils/placement-cause'
 
 // figure ids are "<kind>.<n>"; the sprite / locale names differ for the big top
+// tower pieces drawn as in the action panel (TowerPieceItem.vue)
+const TOWER_PIECE_IMAGES = {
+  TOWER_PIECE: require('~/assets/figures/tower.png'),
+  BLACK_TOWER_PIECE: require('~/assets/figures/black_tower.png'),
+  WHITE_TOWER_PIECE: require('~/assets/figures/white_tower.png')
+}
+
 const figureKind = id => (id || '').split('.')[0]
 const SYMBOL = { bigtop: 'big-top' }
 const ELEMENT_KEY = { bigtop: 'big-top' }
@@ -112,6 +121,11 @@ export default {
       colorCssClass: 'game/colorCssClass',
       tileOn: 'game/tileOn'
     }),
+
+    // the action panel's tower piece artwork for a placed tower piece, else null
+    towerPieceImage () {
+      return TOWER_PIECE_IMAGES[this.expr.token] || null
+    },
 
     tileSize () {
       return this.$vuetify.breakpoint.height > 768 ? 60 : 44
@@ -269,6 +283,11 @@ svg.meeple, svg.neutral
 
 .source-image
   height: 54px
+
+// a placed tower piece (the action panel's artwork, wider than tall)
+.tower-piece-image
+  height: 30px
+  width: auto
 
 // the figure next to the meeple, slightly smaller and overlapping its side, as on the board
 .beside-meeple
