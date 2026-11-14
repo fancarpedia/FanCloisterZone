@@ -156,6 +156,18 @@ html.auto-dark {
   #bridge-layer, #tower-layer, .token-image, svg.bridge-item, .tower-piece-item {
     color-scheme: only light;
   }
+
+  // The lightbox shown while hovering a history event (EmphasizeLayer): the browser recolours its
+  // black/white mask and its white dimming fill, so the whole board washed out light and the
+  // highlighted spot (a placed tile, …) could not be told apart. Keep the mask exact, and dim
+  // with black instead, matching the darkened page.
+  #emphasize-layer {
+    color-scheme: only light;
+  }
+
+  #emphasize-layer .emphasize-lightbox {
+    fill: rgba(0, 0, 0, 0.7) !important;
+  }
 }
 
 @media (max-width: $small-screen-max-width) {

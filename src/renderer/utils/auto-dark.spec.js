@@ -78,6 +78,21 @@ describe('player colours under auto dark mode (player-colors.scss)', () => {
   })
 })
 
+describe('the history hover lightbox under auto dark mode', () => {
+  const fs = require('fs')
+  const path = require('path')
+  const sass = require('sass')
+  const css = sass.renderSync({ data: '$small-screen-max-width: 960px;\n' + fs.readFileSync(path.join(__dirname, '../assets/styles/player-colors.scss'), 'utf8') }).css.toString()
+
+  it('keeps the mask exact and dims the board dark', () => {
+    expect(css).toMatch(/html\.auto-dark #emphasize-layer \{\s*color-scheme: only light;/)
+    expect(css).toMatch(/html\.auto-dark #emphasize-layer \.emphasize-lightbox \{\s*fill: rgba\(0, 0, 0, 0\.7\) !important;/)
+    const layer = fs.readFileSync(path.join(__dirname, '../components/game/layers/EmphasizeLayer.vue'), 'utf8')
+    expect(layer).toContain('id="emphasize-layer"')
+    expect(layer).toContain('class="emphasize-lightbox"')
+  })
+})
+
 describe('the small-screen action panel under auto dark mode', () => {
   const fs = require('fs')
   const path = require('path')
