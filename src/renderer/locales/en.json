@@ -2,7 +2,7 @@
   "@author": "farin & Scott",
   "@jcz-version": "5.12.1",
   "@fcz-version": "7.1.0",
-  "@version": "0.12.16",
+  "@version": "0.12.17",
   "about": {
     "author": "Author",
     "configuration-file": "Configuration file",
@@ -483,14 +483,14 @@
       "placed-by": "Placed by {player}",
       "removed-with": "{source}, by {player}",
       "title": {
+        "captured": "{figure} captured",
+        "castle-created": "Small city converted to a castle",
         "discarded": "Discarded",
         "exchanged": "Prisoners exchanged",
         "moved": "{figure} moved",
         "placed": "{figure} placed",
         "placed-on-letter": "{figure} placed on the Letter",
         "removed": "{figure} removed",
-        "castle-created": "Small city converted to a castle",
-        "captured": "{figure} captured",
         "tile-placed": "Tile placed"
       }
     },

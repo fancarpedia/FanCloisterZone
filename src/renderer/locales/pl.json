@@ -2,7 +2,7 @@
   "@author": "Snearone",
   "@jcz-version": "5.12.1",
   "@fcz-version": "7.1.0",
-  "@version": "0.12.16-ai",
+  "@version": "0.12.17-ai",
   "about": {
     "author": "Autor",
     "configuration-file": "Plik konfiguracyjny",
@@ -478,16 +478,19 @@
       "converted-by": "Przekształcił gracz {player}",
       "deployed-by": "Umieścił gracz {player}",
       "discarded-reason": "Nie pasuje nigdzie na planszy, więc dobrano inną płytkę",
+      "exchanged-reason": "Każdy gracz odzyskał swojego podwładnego",
       "moved-by": "Przesunął gracz {player}",
       "placed-by": "Położył gracz {player}",
       "removed-with": "{source}, gracz {player}",
       "title": {
+        "captured": "Pojmanie: {figure}",
+        "castle-created": "Małe miasto przekształcone w zamek",
         "discarded": "Odrzucona",
+        "exchanged": "Wymiana zakładników",
         "moved": "Przesunięcie: {figure}",
         "placed": "Umieszczenie: {figure}",
         "placed-on-letter": "Umieszczenie na Liście: {figure}",
         "removed": "Usunięcie: {figure}",
-        "castle-created": "Małe miasto przekształcone w zamek",
         "tile-placed": "Płytka położona"
       }
     },

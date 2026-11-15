@@ -2,7 +2,7 @@
   "@author": "Peťul",
   "@jcz-version": "5.12.1",
   "@fcz-version": "7.1.0",
-  "@version": "0.12.16-ai",
+  "@version": "0.12.17-ai",
   "about": {
     "author": "Autor",
     "configuration-file": "Konfigurační soubor",
@@ -478,16 +478,19 @@
       "converted-by": "Přeměnil hráč {player}",
       "deployed-by": "Umístil hráč {player}",
       "discarded-reason": "Nelze ji nikam umístit, proto byla tažena jiná kartička",
+      "exchanged-reason": "Každý hráč dostal zpět svého družiníka",
       "moved-by": "Přesunul hráč {player}",
       "placed-by": "Položil hráč {player}",
       "removed-with": "{source}, hráč {player}",
       "title": {
+        "captured": "Zajetí: {figure}",
+        "castle-created": "Malé město přeměněné na hrad",
         "discarded": "Vyřazena",
+        "exchanged": "Výměna zajatců",
         "moved": "Přesun: {figure}",
         "placed": "Umístění: {figure}",
         "placed-on-letter": "Umístění na Dopis: {figure}",
         "removed": "Odstranění: {figure}",
-        "castle-created": "Malé město přeměněné na hrad",
         "tile-placed": "Položená kartička"
       }
     },

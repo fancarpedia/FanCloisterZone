@@ -2,7 +2,7 @@
   "@author": "J0anJosep",
   "@jcz-version": "5.12.1",
   "@fcz-version": "7.1.0",
-  "@version": "0.12.16-ai",
+  "@version": "0.12.17-ai",
   "about": {
     "author": "Autor",
     "configuration-file": "Fitxer de configuració",
@@ -478,16 +478,19 @@
       "converted-by": "Convertit per {player}",
       "deployed-by": "Col·locat per {player}",
       "discarded-reason": "No encaixa enlloc del tauler, així que s'ha robat una altra peça",
+      "exchanged-reason": "Cada jugador ha recuperat el seu propi seguidor",
       "moved-by": "Mogut per {player}",
       "placed-by": "Posat per {player}",
       "removed-with": "{source}, per {player}",
       "title": {
+        "captured": "Captura: {figure}",
+        "castle-created": "Ciutat petita convertida en castell",
         "discarded": "Descartada",
+        "exchanged": "Intercanvi de presoners",
         "moved": "Moviment: {figure}",
         "placed": "Col·locació: {figure}",
         "placed-on-letter": "Col·locació a la Carta: {figure}",
         "removed": "Retirada: {figure}",
-        "castle-created": "Ciutat petita convertida en castell",
         "tile-placed": "Peça col·locada"
       }
     },

@@ -2,7 +2,7 @@
   "@author": "Kiap1969 & Sinscerly",
   "@jcz-version": "5.12.1",
   "@fcz-version": "7.1.0",
-  "@version": "0.12.16-ai",
+  "@version": "0.12.17-ai",
   "about": {
     "author": "Auteur",
     "configuration-file": "Configuratiebestand",
@@ -478,16 +478,19 @@
       "converted-by": "Omgezet door {player}",
       "deployed-by": "Geplaatst door {player}",
       "discarded-reason": "Hij past nergens op het speelveld, dus is er een andere tegel getrokken",
+      "exchanged-reason": "Elke speler heeft zijn eigen meeple terug",
       "moved-by": "Verplaatst door {player}",
       "placed-by": "Gelegd door {player}",
       "removed-with": "{source}, door {player}",
       "title": {
+        "captured": "{figure} gevangen",
+        "castle-created": "Kleine stad omgezet in een burcht",
         "discarded": "Afgelegd",
+        "exchanged": "Gevangenen geruild",
         "moved": "{figure} verplaatst",
         "placed": "{figure} geplaatst",
         "placed-on-letter": "{figure} op de Brief geplaatst",
         "removed": "{figure} verwijderd",
-        "castle-created": "Kleine stad omgezet in een burcht",
         "tile-placed": "Tegel gelegd"
       }
     },

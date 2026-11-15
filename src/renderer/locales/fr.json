@@ -2,7 +2,7 @@
   "@author": "Black Bear",
   "@jcz-version": "5.12.1",
   "@fcz-version": "7.1.0",
-  "@version": "0.12.16-ai",
+  "@version": "0.12.17-ai",
   "about": {
     "author": "Auteur",
     "configuration-file": "Fichier de configuration",
@@ -478,16 +478,19 @@
       "converted-by": "Transformé par {player}",
       "deployed-by": "Posé par {player}",
       "discarded-reason": "Elle ne peut être posée nulle part sur le plateau, une autre tuile a donc été piochée",
+      "exchanged-reason": "Chaque joueur a récupéré son propre meeple",
       "moved-by": "Déplacé par {player}",
       "placed-by": "Placé par {player}",
       "removed-with": "{source}, par {player}",
       "title": {
+        "captured": "Capture : {figure}",
+        "castle-created": "Petite ville transformée en forteresse",
         "discarded": "Défaussée",
+        "exchanged": "Échange de prisonniers",
         "moved": "Déplacement : {figure}",
         "placed": "Pose : {figure}",
         "placed-on-letter": "Pose sur la Lettre : {figure}",
         "removed": "Retrait : {figure}",
-        "castle-created": "Petite ville transformée en forteresse",
         "tile-placed": "Tuile posée"
       }
     },

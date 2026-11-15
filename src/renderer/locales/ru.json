@@ -2,7 +2,7 @@
   "@author": "pOison & Dextea & SonicDC",
   "@jcz-version": "5.12.1",
   "@fcz-version": "7.1.0",
-  "@version": "0.12.16-ai",
+  "@version": "0.12.17-ai",
   "about": {
     "author": "Автор",
     "configuration-file": "Файл конфигурации",
@@ -478,16 +478,19 @@
       "converted-by": "Преобразовал {player}",
       "deployed-by": "Разместил {player}",
       "discarded-reason": "Его некуда выложить на поле, поэтому вытянут другой тайл",
+      "exchanged-reason": "Каждый игрок вернул своего мипла",
       "moved-by": "Переместил {player}",
       "placed-by": "Выложил {player}",
       "removed-with": "{source}, игрок {player}",
       "title": {
+        "captured": "Захват: {figure}",
+        "castle-created": "Маленький город превращён в замок",
         "discarded": "Сброшен",
+        "exchanged": "Обмен пленными",
         "moved": "Перемещение: {figure}",
         "placed": "Размещение: {figure}",
         "placed-on-letter": "Размещение на Письме: {figure}",
         "removed": "Удаление: {figure}",
-        "castle-created": "Маленький город превращён в замок",
         "tile-placed": "Тайл выложен"
       }
     },

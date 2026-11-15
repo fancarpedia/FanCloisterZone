@@ -2,7 +2,7 @@
   "@author": "TileLord | Erol",
   "@jcz-version": "5.12.1",
   "@fcz-version": "7.1.0",
-  "@version": "0.12.16-ai",
+  "@version": "0.12.17-ai",
   "about": {
     "author": "Avtor",
     "configuration-file": "Konfiguracijska datoteka",
@@ -478,16 +478,19 @@
       "converted-by": "Spremenil {player}",
       "deployed-by": "Postavil {player}",
       "discarded-reason": "Nikamor na plošči je ni mogoče postaviti, zato je bila izvlečena druga ploščica",
+      "exchanged-reason": "Vsak igralec je dobil nazaj svojega človečka",
       "moved-by": "Premaknil {player}",
       "placed-by": "Položil {player}",
       "removed-with": "{source}, igralec {player}",
       "title": {
+        "captured": "Ujetje: {figure}",
+        "castle-created": "Majhno mesto spremenjeno v grad",
         "discarded": "Zavržena",
+        "exchanged": "Izmenjava ujetnikov",
         "moved": "Premik: {figure}",
         "placed": "Postavitev: {figure}",
         "placed-on-letter": "Postavitev na Pismo: {figure}",
         "removed": "Odstranitev: {figure}",
-        "castle-created": "Majhno mesto spremenjeno v grad",
         "tile-placed": "Ploščica položena"
       }
     },

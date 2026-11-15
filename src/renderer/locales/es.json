@@ -2,7 +2,7 @@
   "@author": "Carlium & Meepledrone",
   "@jcz-version": "5.12.1",
   "@fcz-version": "7.1.0",
-  "@version": "0.12.16-ai",
+  "@version": "0.12.17-ai",
   "about": {
     "author": "Autor",
     "configuration-file": "Archivo de configuración",
@@ -478,16 +478,19 @@
       "converted-by": "Convertido por {player}",
       "deployed-by": "Colocado por {player}",
       "discarded-reason": "No encaja en ningún sitio del tablero, así que se ha robado otra loseta",
+      "exchanged-reason": "Cada jugador ha recuperado su propio seguidor",
       "moved-by": "Movido por {player}",
       "placed-by": "Puesto por {player}",
       "removed-with": "{source}, por {player}",
       "title": {
+        "captured": "Captura: {figure}",
+        "castle-created": "Ciudad pequeña convertida en castillo",
         "discarded": "Descartada",
+        "exchanged": "Intercambio de prisioneros",
         "moved": "Movimiento: {figure}",
         "placed": "Colocación: {figure}",
         "placed-on-letter": "Colocación en la Carta: {figure}",
         "removed": "Retirada: {figure}",
-        "castle-created": "Ciudad pequeña convertida en castillo",
         "tile-placed": "Loseta colocada"
       }
     },

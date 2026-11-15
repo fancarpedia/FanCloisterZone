@@ -2,7 +2,7 @@
   "@author": "Bumsakalaka",
   "@jcz-version": "5.12.1",
   "@fcz-version": "7.1.0",
-  "@version": "0.12.16-ai",
+  "@version": "0.12.17-ai",
   "about": {
     "author": "Autor",
     "configuration-file": "Konfiguračný súbor",
@@ -478,16 +478,19 @@
       "converted-by": "Premenil hráč {player}",
       "deployed-by": "Umiestnil hráč {player}",
       "discarded-reason": "Nedá sa nikam umiestniť, preto bola ťahaná iná kartička",
+      "exchanged-reason": "Každý hráč dostal späť svojho spoločníka",
       "moved-by": "Presunul hráč {player}",
       "placed-by": "Položil hráč {player}",
       "removed-with": "{source}, hráč {player}",
       "title": {
+        "captured": "Zajatie: {figure}",
+        "castle-created": "Malé mesto premenené na hrad",
         "discarded": "Vyradená",
+        "exchanged": "Výmena zajatcov",
         "moved": "Presun: {figure}",
         "placed": "Umiestnenie: {figure}",
         "placed-on-letter": "Umiestnenie na List: {figure}",
         "removed": "Odstránenie: {figure}",
-        "castle-created": "Malé mesto premenené na hrad",
         "tile-placed": "Položená kartička"
       }
     },

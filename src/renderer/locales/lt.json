@@ -2,7 +2,7 @@
   "@author": "Stepukiss",
   "@jcz-version": "5.12.1",
   "@fcz-version": "7.1.0",
-  "@version": "0.12.16-ai",
+  "@version": "0.12.17-ai",
   "about": {
     "author": "Autorius",
     "configuration-file": "Nustatymų aplankas",
@@ -478,16 +478,19 @@
       "converted-by": "Pavertė {player}",
       "deployed-by": "Padėjo {player}",
       "discarded-reason": "Jos niekur negalima padėti ant lentos, todėl ištraukta kita plytelė",
+      "exchanged-reason": "Kiekvienas žaidėjas atgavo savo miplą",
       "moved-by": "Perkėlė {player}",
       "placed-by": "Padėjo {player}",
       "removed-with": "{source}, žaidėjas {player}",
       "title": {
+        "captured": "Paėmimas į nelaisvę: {figure}",
+        "castle-created": "Mažas miestas paverstas pilimi",
         "discarded": "Išmesta",
+        "exchanged": "Belaisvių mainai",
         "moved": "Perkėlimas: {figure}",
         "placed": "Padėjimas: {figure}",
         "placed-on-letter": "Padėjimas ant Laiško: {figure}",
         "removed": "Pašalinimas: {figure}",
-        "castle-created": "Mažas miestas paverstas pilimi",
         "tile-placed": "Padėta kortelė"
       }
     },

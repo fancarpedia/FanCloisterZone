@@ -2,7 +2,7 @@
   "@author": "Challa007 & Bombur",
   "@jcz-version": "5.12.1",
   "@fcz-version": "7.1.0",
-  "@version": "0.12.16-ai",
+  "@version": "0.12.17-ai",
   "about": {
     "author": "Autor",
     "configuration-file": "Konfigurationsdatei",
@@ -478,16 +478,19 @@
       "converted-by": "Umgewandelt von {player}",
       "deployed-by": "Eingesetzt von {player}",
       "discarded-reason": "Es passt nirgends auf den Spielplan, daher wurde ein neues Plättchen gezogen",
+      "exchanged-reason": "Jeder Spieler hat seinen eigenen Meeple zurückbekommen",
       "moved-by": "Versetzt von {player}",
       "placed-by": "Gelegt von {player}",
       "removed-with": "{source}, von {player}",
       "title": {
+        "captured": "{figure} gefangen",
+        "castle-created": "Kleine Stadt in eine Burg umgewandelt",
         "discarded": "Abgelegt",
+        "exchanged": "Gefangene ausgetauscht",
         "moved": "{figure} versetzt",
         "placed": "{figure} eingesetzt",
         "placed-on-letter": "{figure} auf den Brief gesetzt",
         "removed": "{figure} entfernt",
-        "castle-created": "Kleine Stadt in eine Burg umgewandelt",
         "tile-placed": "Plättchen gelegt"
       }
     },

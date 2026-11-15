@@ -2,7 +2,7 @@
   "@author": "Paloi Sciurala",
   "@jcz-version": "5.12.1",
   "@fcz-version": "7.1.0",
-  "@version": "0.12.16-ai",
+  "@version": "0.12.17-ai",
   "about": {
     "author": "Autor",
     "configuration-file": "Fișier de configurație",
@@ -478,16 +478,19 @@
       "converted-by": "Convertit de {player}",
       "deployed-by": "Depus de {player}",
       "discarded-reason": "Nu se potrivește nicăieri pe tablă, așa că a fost tras alt cartonaș",
+      "exchanged-reason": "Fiecare jucător și-a recuperat propriul meeple",
       "moved-by": "Mutat de {player}",
       "placed-by": "Plasat de {player}",
       "removed-with": "{source}, de {player}",
       "title": {
+        "captured": "{figure} a fost capturat",
+        "castle-created": "Oraș mic convertit în cetate",
         "discarded": "Decartat",
+        "exchanged": "Schimb de prizonieri",
         "moved": "{figure} s-a mutat",
         "placed": "{figure} s-a plasat",
         "placed-on-letter": "{figure} s-a plasat pe Scrisoare",
         "removed": "{figure} s-a înlăturat",
-        "castle-created": "Oraș mic convertit în cetate",
         "tile-placed": "Cartonaș plasat"
       }
     },
