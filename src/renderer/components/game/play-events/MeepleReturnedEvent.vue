@@ -89,7 +89,10 @@ export default {
         props: {
           emphasis: withCause({
             type: 'meeple',
-            ...this.ev.from
+            ...this.ev.from,
+            // captured: light up the tower that did it too (its piece was just placed — with
+            // several towers around, the one whose reach took this follower)
+            ...(this.captured && this.ev.tower && this.ev.tower.position ? { extraTiles: [this.ev.tower.position] } : {})
           }, this.ev.cause)
         }
       })

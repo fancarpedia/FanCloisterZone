@@ -55,3 +55,27 @@ describe('the captured follower in the panel', () => {
     expect(panel).toMatch(/\.subject\n\s+position: relative[\s\S]*?svg\.prison-bars\n\s+position: absolute/)
   })
 })
+
+describe('which tower captured the follower', () => {
+  it('hovering lights up that tower’s tile with the spot the follower was taken from', () => {
+    const dispatch = vi.fn()
+    const ev = {
+      type: 'meeple-captured',
+      meeple: 'SmallFollower',
+      player: 1,
+      from: { position: [0, 2], feature: 'City', location: 'N' },
+      tower: { position: [0, 0], feature: 'Tower', location: 'I' }
+    }
+    onMouseEnter.call({ captured: true, ev, player: 0, $store: { commit: vi.fn(), dispatch } })
+    const emphasis = dispatch.mock.calls.find(c => c[1] && c[1].layer === 'EmphasizeLayer')[1].props.emphasis
+    expect(emphasis).toMatchObject({ type: 'meeple', position: [0, 2], extraTiles: [[0, 0]] })
+  })
+
+  it('the engine records the tower on the capture event', () => {
+    const engine = '../../../../../../JCloisterZoneEngine/src/main/ts/com/jcloisterzone/'
+    expect(fs.readFileSync(path.join(dir, engine + 'engine/StateGsonBuilder.ts'), 'utf8'))
+      .toContain('...(ev.getTower() ? { tower: this.boardPtr(ev.getTower()!) } : {}),')
+    expect(fs.readFileSync(path.join(dir, engine + 'game/phase/TowerCapturePhase.ts'), 'utf8'))
+      .toContain('state = new CaptureMeeple(meeple, tower).apply(state)')
+  })
+})
