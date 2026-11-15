@@ -16,8 +16,10 @@ const a = { type: 'SmallFollower', player: 0 }
 const b = { type: 'BigFollower', player: 1 }
 
 describe('a prisoners exchange in the history', () => {
-  it('shows both exchanged followers (engine `followers`)', () => {
-    expect(exchangedPrisoners({ followers: [a, b], exchange: [b, {}] })).toEqual([a, b])
+  it('shows both exchanged followers (engine `followers`), in reverse order', () => {
+    const ev = { followers: [a, b], exchange: [b, {}] }
+    expect(exchangedPrisoners(ev)).toEqual([b, a])
+    expect(ev.followers).toEqual([a, b]) // the event itself is not changed
   })
 
   it('falls back to the one follower an older engine sent', () => {

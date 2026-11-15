@@ -800,6 +800,39 @@ class CaptureFollowerOptionsAssert {
   }
 }
 
+// -------------------- Select Prisoner To Exchange Options --------------------
+// Tower: a captured follower can be swapped for one of the capturer's own followers held in the
+// other player's tower; this checks WHICH followers are offered for that exchange.
+//   "SelectPrisonerToExchange options: {1.mayor.1,Mayor}, {1.small.1,SmallFollower}"
+// Each option is {meepleId,MeepleType}; the order does not matter, the list must match exactly.
+class SelectPrisonerToExchangeOptionsAssert {
+  constructor (state) {
+    this.state = state
+    this.REGEXP = /^SelectPrisonerToExchange options: (.*)$/
+  }
+
+  verify (assertion) {
+    const m = this.REGEXP.exec(assertion)
+    if (!m) return
+
+    const expected = [...m[1].matchAll(/\{\s*([^,}]+?)\s*,\s*([^,}]+?)\s*\}/g)]
+      .map(match => match[1] + '/' + match[2])
+      .sort()
+    if (this.state.action == null) {
+      return { result: false, error: 'SelectPrisonerToExchangeOptionsAssert: state.action is null' }
+    }
+    const item = this.state.action.items.find(i => i.type === 'SelectPrisonerToExchange')
+    if (!item) {
+      return { result: false, error: 'SelectPrisonerToExchangeOptionsAssert: no SelectPrisonerToExchange action' }
+    }
+    const actual = (item.options || []).map(o => o.id + '/' + o.type).sort()
+    const result = expected.length === actual.length && expected.every((v, i) => v === actual[i])
+    return result
+      ? { result: true }
+      : { result: false, error: 'options: ' + actual.map(v => '{' + v.replace('/', ',') + '}').join(', ') }
+  }
+}
+
 // -------------------- Main verification function --------------------
 export function verifyScenario(state, { description, assertions }) {
   const result = { description, assertions: [] }
@@ -822,7 +855,8 @@ export function verifyScenario(state, { description, assertions }) {
 	new ReturnMeepleOptionsAssert(state),
     new TokenSizeAssert(state),
     new TowerPiecePlacementOptionsAssert(state),
-    new CaptureFollowerOptionsAssert(state)
+    new CaptureFollowerOptionsAssert(state),
+    new SelectPrisonerToExchangeOptionsAssert(state)
   ]
 
   for (const assertion of assertions) {

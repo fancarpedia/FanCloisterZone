@@ -25,10 +25,10 @@ import { mapGetters } from 'vuex'
 
 import Meeple from '@/components/game/Meeple'
 
-// The exchanged followers: both of them (engine `followers`), or — from an engine before that —
-// the only one it sent.
+// The exchanged followers: both of them (engine `followers`, shown in reverse order), or — from
+// an engine before that — the only one it sent. Used for the history and the panel alike.
 export const exchangedPrisoners = ev => {
-  if (Array.isArray(ev.followers) && ev.followers.length) return ev.followers
+  if (Array.isArray(ev.followers) && ev.followers.length) return [...ev.followers].reverse()
   return (ev.exchange || []).filter(f => f && f.type)
 }
 
