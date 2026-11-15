@@ -101,8 +101,16 @@ export default {
     SettingsDialog
   },
 
+  // The window title through Nuxt's own head handling: nuxt.config's head.title is applied on every
+  // route change, AFTER the route watcher ran — a title set straight on document.title was
+  // overwritten that way (the Test Runner / Theme Inspector showed the plain default).
+  head () {
+    return this.windowTitle ? { title: this.windowTitle } : {}
+  },
+
   data () {
     return {
+      windowTitle: '',
       showAbout: false,
       addonsUpdated: false,
       savedScenarioDialog: false,
@@ -211,6 +219,15 @@ export default {
 
     onlineConnected () {
       this.updateMenu()
+      this.updateTitle()
+    },
+
+    // the game's name is part of the title (gameTitle): follow a rename, and the game opening
+    '$store.state.game.name' () {
+      this.updateTitle()
+    },
+
+    '$store.state.game.id' () {
       this.updateTitle()
     },
 
@@ -782,6 +799,28 @@ export default {
       ipcRenderer.send('broadcast-disconnect')
     },
 
+    // dev tools opened in this window name themselves in front of the title
+    pageTitle () {
+      const routeName = this.$route && this.$route.name
+      if (routeName === 'test-runner') return this.$t('dev.test-runner') + ' · '
+      if (routeName === 'theme-inspector') return this.$t('dev.theme-inspector') + ' · '
+      return ''
+    },
+
+    // A window with a game open starts its title with the game's name and whether it is played
+    // online or locally ("My game — Online game · FanCloisterZone …"); empty otherwise.
+    gameTitle () {
+      const routeName = this.$route && this.$route.name
+      const inGame = routeName === 'game' || routeName === 'open-game' || routeName === 'game-setup'
+      const game = this.$store.state.game
+      if (!inGame || !game.id) return ''
+      const name = game.name || this.$t('game-setup.open-game.untitled-game')
+      const kind = this.$store.state.networking.connectionType === 'online'
+        ? this.$t('index.online.online-game')
+        : this.$t('index.online.local-game')
+      return `${name} — ${kind} · `
+    },
+
     updateTitle() {
       const server = this.$store.getters['settings/isLocalPlayOnline'] ? 'dev local' : 'fanserver'
       // non-stable builds announce themselves in the title, so it's obvious which instance this is
@@ -792,17 +831,9 @@ export default {
             : 'FanCloisterZone'
       const base = this.onlineConnected ? (product + ' Edition @ ' + server) /* + this.$store.state.onlineHostName */ : product + ' Edition' /* Fan Edition */
 
-      // Multi-window debug indicator: role + gameId + local-server port + clientId tail.
-      // If a game window shows [main], the --window-role argv detection failed (risk #2);
-      // two windows sharing the same cid: confirm/diagnose the shared-clientId routing (risk #1).
-      const parts = [this.$windows.role]
-      const gameId = this.$store.state.game.id
-      if (gameId) parts.push('game:' + String(gameId).slice(0, 8))
-      const port = this.$server && this.$server.port
-      if (port) parts.push('port:' + port)
-      const clientId = this.$store.state.settings.clientId
-      if (clientId) parts.push('cid:' + String(clientId).slice(-4))
-      document.title = `${base}  [${parts.join(' ')}]`
+      const title = `${this.pageTitle()}${this.gameTitle()}${base}`
+      this.windowTitle = title
+      document.title = title
     },
 
     async leaveGame () {
