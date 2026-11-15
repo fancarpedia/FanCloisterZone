@@ -1,8 +1,8 @@
 {
   "@author": "farin & Scott",
   "@jcz-version": "5.12.1",
-  "@fcz-version": "7.1.0",
-  "@version": "0.12.17",
+  "@fcz-version": "7.2.0",
+  "@version": "0.13.1",
   "about": {
     "author": "Author",
     "configuration-file": "Configuration file",
@@ -202,6 +202,8 @@
     "hills-and-sheep": "Hills & Sheep",
     "inns-and-cathedrals": "Inns & Cathedrals",
     "king-and-robber": "King & Robber",
+    "kingdoms": "Kingdoms",
+    "kingdoms-description": "Each player has a City Palace in their colour. Instead of drawing, place it in a city with one of your followers to make it your capital. Once your capital is completed it becomes a kingdom: at the end, it scores 3 points for every city touching a field connected to it.",
     "labyrinth": "The Labyrinth",
     "mage-and-witch": "Mage & Witch",
     "meteorites": "Meteorites",
@@ -293,6 +295,7 @@
       "monasteries-how-do-you-want-place-follower": "How do you want to place your meeple on the special monastery?",
       "or": "or",
       "place-the-tile": "Place the tile",
+      "place-this-tile-instead": "Place this tile instead",
       "placement-optional-bridge": "Some rotations here place a bridge; others don't",
       "placement-requires-bridge": "Every placement here requires a bridge",
       "player-may-move-a-meeple-from-a-city-district": "Player may move a meeple from a city district.",
@@ -364,6 +367,7 @@
       "bridge": "Bridge",
       "builder": "Builder",
       "castle": "Castle",
+      "city-palace": "City Palace",
       "count": "Count",
       "decinsky-sneznik": "Decinsky Sneznik",
       "donkey": "Donkey",
@@ -435,6 +439,8 @@
       "keep-building-move": 1,
       "king": "King",
       "king-and-robber": "King & Robber",
+      "kingdom": "Kingdom",
+      "kingdoms": "Kingdoms",
       "marketplace": "Marketplace",
       "marketplaces": "Marketplaces",
       "meteorite": "Meteorite",
@@ -667,6 +673,8 @@
     "selected-tiles": "Selected tiles",
     "tiles": {
       "core-sets": "Core sets",
+      "custom-pack": "Custom tile pack (counts changed)",
+      "custom-pack-short": "Tiles",
       "enable-quantity-change": "Enable quantity change",
       "fan-expansions": "Fan expansions",
       "major-expansions": "Major expansions",
@@ -678,8 +686,7 @@
       "reset-tiles": "Reset",
       "separate-expansions": "Separate expansions",
       "start-tile-excluded": "Starting tile count is set to 0 – restore it to create the game",
-      "custom-pack": "Custom tile pack (counts changed)",
-      "custom-pack-short": "Tiles",
+      "supply-tiles": "In the players' supply, not in the draw pile",
       "custom-pack-move": 1
     },
     "timer": {
@@ -974,13 +981,15 @@
   },
   "settings": {
     "add-ons": {
-      "add-ons-definition-not-available": "Add-ons definition not available",
+      "add-on-requires-newer-app": "Add-on requires FanCloisterZone {version} or higher",
       "add-on-already-installed": "Add-on {id} is already installed. If you want to reinstall it, please remove it first.",
       "add-on-url": "add-on url",
+      "add-ons-definition-not-available": "Add-ons definition not available",
       "artwork-not-found-internet-connection-is-needed": "Unable to locate or download add-on with default artwork. An Internet connection is needed at first run to download it.",
       "available-new-add-ons": "Available new add-ons",
       "download-definition-not-found": "Download definition not found",
       "downloaded-file-checksum-mismatch": "Downloaded file checksum mismatch",
+      "downloading-classic-artwork": "Downloading classic artwork",
       "drag-add-on-here-or-click-here": "Drag add-on here (.jca file) or click here to select it.",
       "finish-or-leave-game-to-make-changes": "Please finish or leave the game first to make changes here.",
       "install-add-on": "Install add-on",
@@ -995,9 +1004,7 @@
       "no-add-ons-installed": "No add-ons installed",
       "not-available-new-add-ons": "Sorry there is no new add-on.",
       "please-check-connectivity-and-restart-app": "Please check your connectivity and restart the app to try again.",
-      "title": "Add-ons",
-      "add-on-requires-newer-app": "Add-on requires JCZ {version} or higher",
-      "downloading-classic-artwork": "Downloading classic artwork"
+      "title": "Add-ons"
     },
     "appearance": {
       "artworks": "Artwork",
