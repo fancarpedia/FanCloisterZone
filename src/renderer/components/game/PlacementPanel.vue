@@ -347,4 +347,36 @@ svg.meeple, svg.neutral
     width: 40px
     height: 40px
     margin-left: -10px
+
+// Small screens: one row — the text on the left, the pictures right after it. The wide-screen
+// layout (the title pinned to the left edge over a row centred across the whole bar) overlapped
+// there once the pictures got wide (two exchanged prisoners), pushing the text under them.
+@media (max-width: $small-screen-max-width)
+  section
+    display: flex
+    flex-wrap: nowrap
+    align-items: center
+    justify-content: flex-start
+    gap: 10px
+    padding: 0 10px
+
+  .expr-title
+    position: static
+    flex: 1 1 auto
+    min-width: 0
+    max-width: none
+    height: auto
+    padding-left: 0
+    font-size: 16px
+
+    .sub
+      font-size: 13px
+
+  .expr-row
+    flex: 0 0 auto
+    height: auto
+    gap: 8px
+
+  .subject.prisoners-exchange
+    gap: 4px
 </style>

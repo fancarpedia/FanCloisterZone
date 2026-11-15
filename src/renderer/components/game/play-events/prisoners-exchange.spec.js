@@ -51,3 +51,13 @@ describe('a prisoners exchange in the history', () => {
     expect(builder).toContain('followers: [freed(ev.getFirst()), freed(ev.getSecond())]')
   })
 })
+
+describe('the exchange panel on small screens', () => {
+  it('is one row: the text on the left, then the pictures (no overlap, no text under them)', () => {
+    const panel = read('../PlacementPanel.vue')
+    const small = panel.slice(panel.lastIndexOf('@media (max-width: $small-screen-max-width)'))
+    expect(small).toMatch(/section\n\s+display: flex\n\s+flex-wrap: nowrap/)
+    expect(small).toMatch(/\.expr-title\n\s+position: static/)
+    expect(small).toMatch(/\.expr-row\n\s+flex: 0 0 auto/)
+  })
+})
