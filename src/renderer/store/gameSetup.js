@@ -52,6 +52,15 @@ function buildSetupFromState (vm, state, getters) {
       addons[addon.id] = addon.json.version
     }
   })
+  // supply tiles in play (abbey, City Palaces, …) — from the XML supply sets of the enabled elements.
+  // Their add-on is needed too, even when the element was switched on without selecting its set.
+  const supplyFull = $tiles.getSupply(state.elements)
+  const supply = {}
+  Object.entries(supplyFull).forEach(([element, { count, tiles, setId }]) => {
+    supply[element] = { count, tiles }
+    const exp = Expansion.all().find(e => e.releases.some(r => r.sets.includes(setId.split(':')[0])))
+    if (exp && exp.addon) addons[exp.addon.id] = exp.addon.json.version
+  })
 
   const setup = {
     sets,
@@ -89,6 +98,9 @@ function buildSetupFromState (vm, state, getters) {
 
   if (Object.keys(addons).length) {
     setup.addons = addons
+  }
+  if (Object.keys(supply).length) {
+    setup.supply = supply
   }
 
   const rules = {}

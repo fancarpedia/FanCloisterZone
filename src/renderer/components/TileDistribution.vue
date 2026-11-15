@@ -193,6 +193,7 @@ export default {
         const { elements, sets, start } = setup
         return getSelectedStartingTiles(elements, sets, start)
       },
+      elements: state => (state.gameSetup || state.game.setup || {}).elements,
       storeOverrides: state => state.gameSetup.tileOverrides,
       storeOverridesBySet: state => state.gameSetup.tileOverridesBySet || {}
     }),
@@ -277,19 +278,21 @@ export default {
       return false
     },
 
-    // per selected supply set (<tile-set supply="true">): its tiles, which go into the players'
-    // supplies instead of the draw pile (plugins/tiles.js keeps them in `supplyTiles`)
+    // supply sets (<tile-set supply="true" element="…">) whose element is on: their tiles go into
+    // the players' supplies instead of the draw pile (plugins/tiles.js keeps them in `supplyTiles`).
+    // Tied to the element, not to a selected set — the abbey can be on without Abbey & Mayor.
     supplyGroups () {
-      return Object.keys(this.baseSets)
-        .filter(id => this.baseSets[id])
-        .map(id => {
-          const set = this.$tiles.sets[id] || this.$tiles.sets[id + ':' + this.edition]
-          const ids = Object.keys(set?.supplyTiles || {}).filter(tid => this.$tiles.tiles[tid])
+      const elements = this.elements || {}
+      return Object.entries(this.$tiles.sets)
+        .filter(([, set]) => set.supplyTiles && set.element && elements[set.element])
+        .map(([id, set]) => {
+          const ids = Object.keys(set.supplyTiles).filter(tid => this.$tiles.tiles[tid])
           if (!ids.length) return null
+          const found = this.releaseForSet(id)
           return {
             id: 'supply:' + id,
-            title: this.setTitle(id),
-            expansion: this.expansionForSet(id),
+            title: this.$t('game.element.' + set.element),
+            expansion: found ? found.expansion : null,
             tiles: ids.map(tid => ({ id: tid, rotation: this.$theme.getTile(tid)?.rotation || 0 }))
           }
         })
