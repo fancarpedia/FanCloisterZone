@@ -39,6 +39,7 @@ export default {
       const rows = {
         features: { title: this.$t('core-messages.incomplete-features'), events: [] },
         farms: { title: this.$t('game.feature.fields'), events: [] },
+        kingdoms: { title: this.$t('game.feature.kingdoms'), events: [] },
         monasteries: { title: this.$t('game.feature.special-monasteries'), events: [] },
         tradeGoods: { title: this.$t('game.feature.trade-goods'), events: [] },
         gold: { title: this.$t('game.feature.gold-ingots'), events: [] },
@@ -62,6 +63,8 @@ export default {
           rows.gold.events.push(ev)
         } else if (type === 'field') {
           rows.farms.events.push(ev)
+        } else if (type === 'kingdom') {
+          rows.kingdoms.events.push(ev)
         } else if (type === 'king' || type === 'robber') {
           rows.kingAndRobber.events.push(ev)
         } else if (type === 'special-monastery') {

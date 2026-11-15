@@ -75,6 +75,8 @@ const TITLE_MAPPING = {
   // a 0-point entry is named after the feature class: 'yagahut.empty'
   'yagahut': 'game.feature.yaga-hut',
   'field': 'game.feature.field',
+  // Kingdoms: a capital's final score (3 points per city touching its fields)
+  'kingdom': 'game.feature.kingdom',
   'trade-goods': 'game.feature.trade-goods',
   'king': 'game.feature.king',
   'ringmaster': 'game.feature.ringmaster',

@@ -150,6 +150,14 @@ export default {
           this.showTile(ptr)
         } else if (ptr.positions) {
           this.showTiles(ptr.positions)
+        } else if (ptr.fields) {
+          // Kingdoms: the capital, the shapes of every field touching it, and every city those
+          // fields touch — the ones counted (3 points each)
+          this.showFeatures(
+            this.featureOn(ptr.featurePointer),
+            ...ptr.fields.map(fp => this.featureOn(fp)),
+            ...(ptr.cities || []).map(fp => this.featureOn(fp))
+          )
         } else if (ptr.source) {
           // A castle takes the points of the best completed feature beside it, so highlight that
           // feature as well - the points alone never said WHERE they came from.

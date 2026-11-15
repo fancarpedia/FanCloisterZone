@@ -86,6 +86,30 @@
         </div>
       </div>
     </div>
+
+    <!-- tiles of supply sets (<tile-set supply="true"> in the expansion XML): they go into the
+         players' supplies, not into the draw pile — listed read-only, per expansion -->
+    <div
+      v-for="group in supplyGroups"
+      :key="group.id"
+      class="group supply-group"
+    >
+      <h3 class="group-title">
+        <ExpansionSymbol v-if="group.expansion" :expansion="group.expansion" class="group-symbol" />
+        {{ group.title }}
+      </h3>
+      <div class="supply-note">{{ $t('game-setup.tiles.supply-tiles') }}</div>
+      <div class="tile-distribution" :class="{ small }">
+        <div
+          v-for="t in group.tiles"
+          :key="t.id"
+          class="tile"
+          :style="{ width: `${tileSize + 4}px` }"
+        >
+          <StandaloneTileImage :tile-id="t.id" :size="tileSize" :rotation="t.rotation" />
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -251,6 +275,25 @@ export default {
         }
       }
       return false
+    },
+
+    // per selected supply set (<tile-set supply="true">): its tiles, which go into the players'
+    // supplies instead of the draw pile (plugins/tiles.js keeps them in `supplyTiles`)
+    supplyGroups () {
+      return Object.keys(this.baseSets)
+        .filter(id => this.baseSets[id])
+        .map(id => {
+          const set = this.$tiles.sets[id] || this.$tiles.sets[id + ':' + this.edition]
+          const ids = Object.keys(set?.supplyTiles || {}).filter(tid => this.$tiles.tiles[tid])
+          if (!ids.length) return null
+          return {
+            id: 'supply:' + id,
+            title: this.setTitle(id),
+            expansion: this.expansionForSet(id),
+            tiles: ids.map(tid => ({ id: tid, rotation: this.$theme.getTile(tid)?.rotation || 0 }))
+          }
+        })
+        .filter(Boolean)
     },
 
     // one flat pseudo-group, or (editable + separate view) a group per expansion
@@ -493,6 +536,12 @@ export default {
     display: inline-flex
     gap: 2px
     margin-left: 6px
+
+.supply-note
+  font-size: 13px
+  font-style: italic
+  opacity: 0.75
+  margin: -4px 0 6px
 
 .tile-distribution
   display: flex

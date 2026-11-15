@@ -80,12 +80,14 @@ export default {
     myTurn () {
       return this.$store.getters['game/isActionLocal'] && this.$store.state.game.phase === 'TileFromSupplyPhase'
     },
-    // True while we hold an (unplaced) abbey tile — it reserves one pre-draw slot until passed.
+    // True while we hold an (unplaced) abbey or City Palace (Kingdoms) tile — it reserves one
+    // pre-draw slot until passed (the server counts both the same way).
     abbeyHeld () {
       if (!this.myTurn) return false
       const { action, players } = this.$store.state.game
       const p = action && players ? players[action.player] : null
-      return !!(p && p.tokens && p.tokens.ABBEY_TILE && p.tokens.ABBEY_TILE.count > 0)
+      const held = token => !!(p && p.tokens && p.tokens[token] && p.tokens[token].count > 0)
+      return held('ABBEY_TILE') || held('CITY_PALACE')
     },
     // Bazaar in play reserves one pre-draw slot (mirrors the server) → base cap N-1.
     bazaarInPlay () {

@@ -1086,6 +1086,9 @@ export const actions = {
         ...(tileOverrides && Object.keys(tileOverrides).length ? { tiles: tileOverrides } : {}),
         gameId: state.id,
         players: players.length,
+        // each player's slot (= colour), in turn order: Kingdoms gives everyone the City Palace
+        // tile of their colour
+        playerSlots: players.map(p => p.slot),
         initialRandom: state.initialRandom,
         gameAnnotations: annotations
       }

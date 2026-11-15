@@ -35,6 +35,7 @@ const MAPPING = {
   'monastery': { kind: 'img', value: require('~/assets/features/C1/cloister.png') },
   'garden': { kind: 'img', value: require('~/assets/features/C1/garden.png') },
   'field': { kind: 'tile', value: 'GQ/F' },
+  'kingdom': { kind: 'tile', value: 'Kingdoms/CityPalaceRed' },
   'special-monastery': { kind: 'tile', value: 'MO/M1' },
   'castle': { kind: 'img', value: require('~/assets/figures/castle.png') },
   'watchtower': { kind: 'tile', value: 'WT/CFff_3C' },
