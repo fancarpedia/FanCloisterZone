@@ -9,7 +9,7 @@
           :key="index"
           :class="colorCssClass(index)"
         >
-          <Meeple type="SmallFollower" />
+          <Meeple type="SmallFollower" :ai="!!p.ai" />
         </div>
         <div class="coop-result">
           {{ coop.lost ? $t('game.coop.all-lose') : $tc('game.coop.team-score-plural', teamPoints, { points: teamPoints }) }}
@@ -28,7 +28,7 @@
               :key="p.index"
               :class="colorCssClass(p.index)"
             >
-              <Meeple type="SmallFollower" />
+              <Meeple type="SmallFollower" :ai="!!p.ai" />
             </div>
           </template>
         </div>

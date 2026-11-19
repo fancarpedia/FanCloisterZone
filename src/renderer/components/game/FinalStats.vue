@@ -20,12 +20,13 @@
           :key="'ico-'+p.index"
           :class="colorCssClass(p.index)"
         >
-          <Meeple type="SmallFollower" />
+          <!-- an AI player: a robot head on the meeple, as in the lobby and the slot selection -->
+          <Meeple type="SmallFollower" :ai="!!p.ai" />
         </div>
 
         <div />
         <div v-for="p in players" :key="'name-'+p.index" class="name">
-          {{ p.name }}<v-icon v-if="p.ai">fa-solid fa-robot</v-icon>
+          {{ p.name }}
         </div>
 
         <div />

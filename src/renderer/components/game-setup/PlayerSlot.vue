@@ -7,11 +7,13 @@
       {{ order }}
     </div>
     <div class="meeple-wrap">
-      <svg class="meeple" :width="$vuetify.breakpoint.height > 768 ? 105 : 80" :height="$vuetify.breakpoint.height > 768 ? 105 : 80">
-        <use :href="`${MEEPLES_SVG}#small-follower`" />
-      </svg>
       <!-- an AI seat: a robot head on the meeple, as in the online lobby's game lists -->
-      <v-icon v-if="ai" class="ai-head">fa-solid fa-robot</v-icon>
+      <Meeple
+        type="SmallFollower"
+        :ai="ai"
+        :width="$vuetify.breakpoint.height > 768 ? 105 : 80"
+        :height="$vuetify.breakpoint.height > 768 ? 105 : 80"
+      />
     </div>
     <div class="state">
       <template v-if="slotState === 'open'">{{ $t('game-setup.create.open-slot') }}</template>
@@ -139,10 +141,13 @@
 import { mapState } from 'vuex'
 
 import { aiSupport } from '@/utils/ai-support'
-
-const MEEPLES_SVG = require('~/assets/meeples.svg')
+import Meeple from '@/components/game/Meeple'
 
 export default {
+  components: {
+    Meeple
+  },
+
   props: {
     number: { type: Number, required: true },
     owner: { type: String, default: null },
@@ -160,7 +165,6 @@ export default {
 
   data () {
     return {
-      MEEPLES_SVG,
       edit: false,
       editName: null
     }
@@ -295,21 +299,10 @@ export default {
   svg
     margin-bottom: 16px
 
-  // the meeple, and an AI seat's robot head over its head (about a third of the meeple, as in
-  // the online lobby: 12px on a 36px meeple)
+  // the meeple (an AI seat's robot head is drawn inside it — see Meeple.vue)
   .meeple-wrap
     position: relative
     line-height: 0
-
-  .ai-head
-    position: absolute
-    top: 3px
-    left: 50%
-    transform: translateX(-50%)
-    font-size: 35px
-    color: white
-    filter: drop-shadow(0 0 1px black) drop-shadow(0 0 2px black)
-    pointer-events: none
 
   .state
     font-size: 24px

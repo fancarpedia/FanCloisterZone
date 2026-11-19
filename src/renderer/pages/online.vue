@@ -121,9 +121,8 @@
                 :title="s.name"
               >
                 <div class="meeple">
-                  <Meeple type="SmallFollower" />
                   <!-- an AI seat (played by its owner's client): a robot head on the meeple -->
-                  <v-icon v-if="s.ai" class="ai-head">fa-solid fa-robot</v-icon>
+                  <Meeple type="SmallFollower" :ai="!!s.ai" />
                 </div>
                 <div class="name">
                   {{ s.name }}
@@ -203,9 +202,8 @@
                 :title="s.name"
               >
                 <div class="meeple">
-                  <Meeple type="SmallFollower" />
                   <!-- an AI seat (played by its owner's client): a robot head on the meeple -->
-                  <v-icon v-if="s.ai" class="ai-head">fa-solid fa-robot</v-icon>
+                  <Meeple type="SmallFollower" :ai="!!s.ai" />
                 </div>
                 <div class="name">
                   {{ s.name }}
@@ -955,17 +953,6 @@ h2
 
     .meeple
       position: relative
-
-    // AI seat: a robot head over the meeple's head (its top centre)
-    .ai-head
-      position: absolute
-      top: 1px
-      left: 50%
-      transform: translateX(-50%)
-      font-size: 12px
-      color: white
-      filter: drop-shadow(0 0 1px black) drop-shadow(0 0 1px black)
-      pointer-events: none
 
     &.local
       font-weight: bolder

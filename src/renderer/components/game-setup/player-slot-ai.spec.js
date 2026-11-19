@@ -11,7 +11,7 @@ const script = src.slice(src.indexOf('<script>') + 8, src.indexOf('</script>'))
   .replace(/^import .*$/gm, '')
   .replace('export default', 'return')
 // eslint-disable-next-line no-new-func
-const PlayerSlot = new Function('mapState', 'require', 'aiSupport', script)(() => ({}), () => '', setup => ({ ok: !!(setup && setup.aiOk) }))
+const PlayerSlot = new Function('mapState', 'require', 'aiSupport', 'Meeple', script)(() => ({}), () => '', setup => ({ ok: !!(setup && setup.aiOk) }), {})
 
 // run a method / computed of PlayerSlot against a plain `this`
 const run = (fn, ctx) => fn.call(ctx)
@@ -150,14 +150,29 @@ describe('Assign and AI player look alike', () => {
 describe('the online lobby marks AI seats', () => {
   it('a robot head on the meeple of each AI player, in both game lists', () => {
     const online = fs.readFileSync(path.join(path.dirname(fileURLToPath(import.meta.url)), '../../pages/online.vue'), 'utf8')
-    expect(online.split('<v-icon v-if="s.ai" class="ai-head">fa-solid fa-robot</v-icon>')).toHaveLength(3)
-    expect(online).toMatch(/\.ai-head\n\s+position: absolute/)
+    expect(online.split('<Meeple type="SmallFollower" :ai="!!s.ai" />')).toHaveLength(3)
   })
 })
 
 describe('an AI seat wears the robot head, as in the online lobby', () => {
-  it('drawn over the meeple of an AI seat', () => {
-    expect(src).toMatch(/<div class="meeple-wrap">[\s\S]*<v-icon v-if="ai" class="ai-head">fa-solid fa-robot<\/v-icon>\n\s+<\/div>/)
-    expect(src).toMatch(/\.ai-head\n\s+position: absolute/)
+  it('drawn over the meeple of an AI seat by the shared Meeple component', () => {
+    expect(src).toMatch(/<div class="meeple-wrap">[\s\S]*<Meeple\n\s+type="SmallFollower"\n\s+:ai="ai"/)
+  })
+})
+
+describe('one robot head across the app (Meeple.vue)', () => {
+  const dir = path.dirname(fileURLToPath(import.meta.url))
+  const meeple = fs.readFileSync(path.join(dir, '../game/Meeple.vue'), 'utf8')
+
+  it('is drawn inside the meeple svg, positioned and sized in % so it scales and stays centred', () => {
+    expect(meeple).toMatch(/<svg\n\s+v-if="ai"\n\s+class="ai-head"\n\s+x="27\.5%"\n\s+y="-8\.5%"\n\s+width="45%"/)
+    expect(meeple).toContain("ai: { type: Boolean, default: false }")
+  })
+
+  it('final scoring and the victory panel use it too', () => {
+    const stats = fs.readFileSync(path.join(dir, '../game/FinalStats.vue'), 'utf8')
+    const result = fs.readFileSync(path.join(dir, '../game/GameResultPanel.vue'), 'utf8')
+    expect(stats).toContain('<Meeple type="SmallFollower" :ai="!!p.ai" />')
+    expect(result.split(':ai="!!p.ai"')).toHaveLength(3)
   })
 })
