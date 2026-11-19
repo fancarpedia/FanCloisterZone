@@ -39,7 +39,7 @@
       v-else-if="canPassAbbey"
       class="draw-btn"
       @click="passAbbey"
-    >{{ $t('predraw.pass-abbey') }}</button>
+    >{{ passLabel }}</button>
     <div v-if="canPlace && myHand.length" class="hint">{{ $t('predraw.pick-hint') }}</div>
     <div v-if="otherCounts.length" class="counts">
       <span v-for="c in otherCounts" :key="c.seat">P{{ c.seat + 1 }}: {{ c.count }}</span>
@@ -51,6 +51,7 @@
 import { mapState } from 'vuex'
 import StandaloneTileImage from '@/components/game/StandaloneTileImage.vue'
 import TilePlacementItem from '@/components/game/actions/items/TilePlacementItem.vue'
+import { isKingdomPalace } from '@/utils/kingdom-palace'
 
 export default {
   components: { StandaloneTileImage, TilePlacementItem },
@@ -61,7 +62,9 @@ export default {
       dragOffset: 0,
       dragWidth: 0,
       // anchored to the window bottom (locked) — only `left` moves; persisted in settings.
-      position: { left: 12, bottom: 12 }
+      position: { left: 12, bottom: 12 },
+      // the automatic pass (see autoPassDue) was already sent this turn-part
+      autoPassSent: false
     }
   },
 
@@ -80,14 +83,14 @@ export default {
     myTurn () {
       return this.$store.getters['game/isActionLocal'] && this.$store.state.game.phase === 'TileFromSupplyPhase'
     },
-    // True while we hold an (unplaced) abbey or City Palace (Kingdoms) tile — it reserves one
+    // True while we hold an (unplaced) abbey or Kingdom Palace (Kingdoms) tile — it reserves one
     // pre-draw slot until passed (the server counts both the same way).
     abbeyHeld () {
       if (!this.myTurn) return false
       const { action, players } = this.$store.state.game
       const p = action && players ? players[action.player] : null
       const held = token => !!(p && p.tokens && p.tokens[token] && p.tokens[token].count > 0)
-      return held('ABBEY_TILE') || held('CITY_PALACE')
+      return held('ABBEY_TILE') || held('KINGDOM_PALACE')
     },
     // Bazaar in play reserves one pre-draw slot (mirrors the server) → base cap N-1.
     bazaarInPlay () {
@@ -117,14 +120,48 @@ export default {
     canPassAbbey () {
       return this.myTurn && this.abbeyHeld && !this.abbeyPassed && (this.handMax <= 0 || this.myHand.length < this.handMax)
     },
+    // name what is being passed: the abbey keeps its own wording; any other held supply tile (a City
+    // Palace) is named after its element, so the button isn't mistaken for an abbey-only one
+    passLabel () {
+      const { action, players } = this.$store.state.game
+      const p = action && players ? players[action.player] : null
+      const tokens = (p && p.tokens) || {}
+      if (tokens.ABBEY_TILE && tokens.ABBEY_TILE.count > 0) return this.$t('predraw.pass-abbey')
+      return this.$t('predraw.pass-supply-tile', { name: this.$t('game.element.kingdom-palace') })
+    },
+    // Is any held supply tile (abbey / Kingdom Palace) placeable right now? The engine offers a supply
+    // tile as a TilePlacement only when it has a legal spot (a hole for the abbey, an own-occupied
+    // city without a palace for a palace).
+    supplyPlaceable () {
+      const action = this.$store.state.game.action
+      return !!(action && (action.items || []).some(i =>
+        i.type === 'TilePlacement' && (i.tileId === 'AM/A' || isKingdomPalace(i.tileId))))
+    },
+    // Holding supply tile(s) that cannot be placed anywhere this turn keeps the last pre-draw slot
+    // reserved for nothing — so pass automatically: the server then deals the held-back tile
+    // (exactly the "Pass … (draw last tile)" button, which would be the only sensible choice).
+    autoPassDue () {
+      return this.canPassAbbey && !this.supplyPlaceable
+    },
     otherCounts () {
       return Object.keys(this.counts).map(seat => ({ seat: +seat, count: this.counts[seat] }))
     }
   },
 
   watch: {
+    autoPassDue: {
+      immediate: true,
+      handler (due) {
+        if (due && !this.autoPassSent) {
+          this.autoPassSent = true
+          this.passAbbey()
+        }
+      }
+    },
+
     myTurn (val) {
       if (!val) {
+        this.autoPassSent = false
         // Leaving our turn-part: cancel any pending selection + re-arm the abbey pass for next turn.
         if (this.selected) this.$store.dispatch('predraw/clearSelection')
         if (this.abbeyPassed) this.$store.commit('predraw/setAbbeyPassed', false)

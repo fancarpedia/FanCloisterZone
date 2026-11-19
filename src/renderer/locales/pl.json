@@ -2,7 +2,7 @@
   "@author": "Snearone",
   "@jcz-version": "5.12.1",
   "@fcz-version": "7.2.0",
-  "@version": "0.13.1-ai",
+  "@version": "0.13.4-ai",
   "about": {
     "author": "Autor",
     "configuration-file": "Plik konfiguracyjny",
@@ -203,7 +203,7 @@
     "inns-and-cathedrals": "Karczmy i katedry",
     "king-and-robber": "Król i Baron rabusiów",
     "kingdoms": "Królestwa",
-    "kingdoms-description": "Każdy gracz ma Pałac w swoim kolorze. Zamiast losować płytkę, możesz dołożyć go do miasta, w którym stoi jeden z twoich podwładnych – miasto staje się twoją stolicą. Gdy stolica zostanie ukończona, staje się królestwem: na koniec gry zdobywa 3 punkty za każde miasto stykające się z polem połączonym ze stolicą.",
+    "kingdoms-description": "Każdy gracz ma Pałac Królestwa w swoim kolorze. Zamiast losować płytkę, możesz dołożyć go do miasta, w którym stoi jeden z twoich podwładnych – miasto staje się twoją stolicą. Gdy stolica zostanie ukończona, staje się królestwem: na koniec gry zdobywa 3 punkty za każde ukończone miasto stykające się z polem połączonym ze stolicą.",
     "labyrinth": "Labirynt",
     "mage-and-witch": "Mag i Wiedźma",
     "meteorites": "Meteoryty",
@@ -367,7 +367,6 @@
       "bridge": "Most",
       "builder": "Budowniczy",
       "castle": "Zamek",
-      "city-palace": "Pałac",
       "count": "Hrabia",
       "decinsky-sneznik": "Dieczyński Śnieżnik",
       "donkey": "Osioł",
@@ -378,6 +377,7 @@
       "ferry": "Prom",
       "gold": "Złoto",
       "king": "Król",
+      "kingdom-palace": "Pałac Królestwa",
       "little-buildings": "Małe budynki",
       "mage": "Mag",
       "mayor": "Burmistrz",
@@ -968,13 +968,14 @@
   },
   "predraw": {
     "your-hand": "Twoja ręka",
+    "draw": "Dobierz płytkę",
     "empty": "—",
     "incompatible": "Niedostępne z Budowniczym, Smokiem, Wozem, Zamkiem, Pasterzem, Rzeką, Ucieczką, Hrabią ani Kręgami w zbożu",
     "local-only": "Niedozwolone w grach lokalnych",
     "one-seat-notice": "Gra z wcześniejszym dobieraniem — każdy gracz gra na własnym urządzeniu, więc możesz zająć tylko jedno miejsce.",
-    "pick-hint": "Kliknij płytkę, którą chcesz ułożyć, a potem wybierz miejsce na planszy",
-    "draw": "Dobierz płytkę",
-    "pass-abbey": "Pomiń opactwo (dobierz ostatnią płytkę)"
+    "pass-abbey": "Pomiń opactwo (dobierz ostatnią płytkę)",
+    "pass-supply-tile": "Pomiń {name} (dobierz ostatnią płytkę)",
+    "pick-hint": "Kliknij płytkę, którą chcesz ułożyć, a potem wybierz miejsce na planszy"
   },
   "server": {
     "translate": "Aktualizacja do wersji v%VERSION% wymagana."

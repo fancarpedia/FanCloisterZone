@@ -136,6 +136,8 @@ export default {
     small: { type: Boolean, default: false },
     // read-only overrides for displaying a saved setup (bookmarks etc.)
     tileOverrides: { type: Object, default: null },
+    // elements of a saved setup (bookmarks) — decides which supply tiles are listed
+    setupElements: { type: Object, default: null },
     // game-setup mode: header checkboxes + steppers editing gameSetup.tileOverrides
     editable: { type: Boolean, default: false },
     // whether changing per-tile COUNTS is allowed (the Keep Building variant allows separating
@@ -281,10 +283,21 @@ export default {
     // supply sets (<tile-set supply="true" element="…">) whose element is on: their tiles go into
     // the players' supplies instead of the draw pile (plugins/tiles.js keeps them in `supplyTiles`).
     // Tied to the element, not to a selected set — the abbey can be on without Abbey & Mayor.
+    // In the game setup (editable) or for a saved setup (setupElements given) the setup's elements
+    // decide; in an expansion's detail view (fixed `sets`, no setup) only the supply sets of the
+    // expansions shown — otherwise every expansion's detail listed e.g. the Kingdom Palaces.
     supplyGroups () {
-      const elements = this.elements || {}
+      const elements = this.editable ? (this.elements || {}) : this.setupElements
+      const shownExpansions = new Set(
+        Object.keys(this.baseSets).map(id => this.releaseForSet(id)?.expansion).filter(Boolean)
+      )
       return Object.entries(this.$tiles.sets)
-        .filter(([, set]) => set.supplyTiles && set.element && elements[set.element])
+        .filter(([id, set]) => {
+          if (!set.supplyTiles || !set.element) return false
+          if (elements) return !!elements[set.element]
+          const found = this.releaseForSet(id)
+          return !!found && shownExpansions.has(found.expansion)
+        })
         .map(([id, set]) => {
           const ids = Object.keys(set.supplyTiles).filter(tid => this.$tiles.tiles[tid])
           if (!ids.length) return null

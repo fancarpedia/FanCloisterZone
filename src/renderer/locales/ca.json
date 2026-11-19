@@ -2,7 +2,7 @@
   "@author": "J0anJosep",
   "@jcz-version": "5.12.1",
   "@fcz-version": "7.2.0",
-  "@version": "0.13.1-ai",
+  "@version": "0.13.4-ai",
   "about": {
     "author": "Autor",
     "configuration-file": "Fitxer de configuració",
@@ -203,7 +203,7 @@
     "inns-and-cathedrals": "Fondes i catedrals",
     "king-and-robber": "El rei i el lladre",
     "kingdoms": "Regnes",
-    "kingdoms-description": "Cada jugador té un Palau del seu color. En lloc d'agafar una peça, col·loqueu-lo en una ciutat amb un dels vostres seguidors per convertir-la en la vostra capital. Quan la capital es completa, esdevé un regne: al final, puntua 3 punts per cada ciutat que toca un camp connectat amb ella.",
+    "kingdoms-description": "Cada jugador té un Palau del Regne del seu color. En lloc d'agafar una peça, col·loqueu-lo en una ciutat amb un dels vostres seguidors per convertir-la en la vostra capital. Quan la capital es completa, esdevé un regne: al final, puntua 3 punts per cada ciutat completada que toca un camp connectat amb ella.",
     "labyrinth": "El laberint",
     "mage-and-witch": "El mag i la bruixa",
     "meteorites": "Meteorits",
@@ -367,7 +367,6 @@
       "bridge": "Pont",
       "builder": "Constructor",
       "castle": "Castell",
-      "city-palace": "Palau",
       "count": "Comte",
       "decinsky-sneznik": "Děčínský Sněžník",
       "donkey": "L'ase",
@@ -378,6 +377,7 @@
       "ferry": "Transbordador",
       "gold": "Or",
       "king": "Rei",
+      "kingdom-palace": "Palau del Regne",
       "little-buildings": "Edificis petits",
       "mage": "Mag",
       "mayor": "Alcalde",
@@ -968,13 +968,14 @@
   },
   "predraw": {
     "your-hand": "La vostra mà",
+    "draw": "Agafa una peça",
     "empty": "—",
     "incompatible": "No disponible amb Constructor, Drac, Carro, Castell, Pastor, Riu, Fugida, Comte ni Cercles de conreu",
     "local-only": "No permès en partides locals",
     "one-seat-notice": "Partida amb agafada prèvia — cada jugador juga al seu propi dispositiu, de manera que només podeu ocupar una plaça.",
-    "pick-hint": "Feu clic en una peça per col·locar-la i després trieu un lloc al tauler",
-    "draw": "Agafa una peça",
-    "pass-abbey": "Passa l'abadia (agafa l'última peça)"
+    "pass-abbey": "Passa l'abadia (agafa l'última peça)",
+    "pass-supply-tile": "Passa {name} (agafa l'última peça)",
+    "pick-hint": "Feu clic en una peça per col·locar-la i després trieu un lloc al tauler"
   },
   "server": {
     "translate": "Cal actualitzar a la versió %VERSION%."

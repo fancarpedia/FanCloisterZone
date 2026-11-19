@@ -2,7 +2,7 @@
   "@author": "Peťul",
   "@jcz-version": "5.12.1",
   "@fcz-version": "7.2.0",
-  "@version": "0.13.1-ai",
+  "@version": "0.13.4-ai",
   "about": {
     "author": "Autor",
     "configuration-file": "Konfigurační soubor",
@@ -203,7 +203,7 @@
     "inns-and-cathedrals": "Hostince a katedrály",
     "king-and-robber": "Král a loupeživý rytíř",
     "kingdoms": "Království",
-    "kingdoms-description": "Každý hráč má Palác ve své barvě. Místo tažení kartičky ho můžete přiložit k městu s jedním z vašich družiníků a udělat z něj své hlavní město. Jakmile je hlavní město dokončené, stane se královstvím: na konci hry získá 3 body za každé město, které sousedí s loukou spojenou s ním.",
+    "kingdoms-description": "Každý hráč má Palác království ve své barvě. Místo tažení kartičky ho můžete přiložit k městu s jedním z vašich družiníků a udělat z něj své hlavní město. Jakmile je hlavní město dokončené, stane se královstvím: na konci hry získá 3 body za každé dokončené město, které sousedí s loukou spojenou s ním.",
     "labyrinth": "Labyrint",
     "mage-and-witch": "Mág a čarodějnice",
     "meteorites": "Meteority",
@@ -367,7 +367,6 @@
       "bridge": "Most",
       "builder": "Stavitel",
       "castle": "Hrad",
-      "city-palace": "Palác",
       "count": "Hrabě",
       "decinsky-sneznik": "Děčínský Sněžník",
       "donkey": "Osel",
@@ -378,6 +377,7 @@
       "ferry": "Přívoz",
       "gold": "Zlato",
       "king": "Král",
+      "kingdom-palace": "Palác království",
       "little-buildings": "Domy",
       "mage": "Mág",
       "mayor": "Starosta",
@@ -968,13 +968,14 @@
   },
   "predraw": {
     "your-hand": "Vaše ruka",
+    "draw": "Vzít kartičku",
     "empty": "—",
     "incompatible": "Není dostupné se Stavitelem, Drakem, Vozem, Hradem, Pastýřem, Řekou, Únikem, Hrabětem ani Kruhy v obilí",
     "local-only": "Není povoleno v místních hrách",
     "one-seat-notice": "Hra s předběžným tažením — každý hráč hraje na svém zařízení, takže můžete obsadit jen jedno místo.",
-    "pick-hint": "Klikněte na kartičku, kterou chcete položit, a potom vyberte místo na hrací ploše",
-    "draw": "Vzít kartičku",
-    "pass-abbey": "Přeskočit opatství (vzít poslední kartičku)"
+    "pass-abbey": "Přeskočit opatství (vzít poslední kartičku)",
+    "pass-supply-tile": "Přeskočit {name} (vzít poslední kartičku)",
+    "pick-hint": "Klikněte na kartičku, kterou chcete položit, a potom vyberte místo na hrací ploše"
   },
   "server": {
     "translate": "Nevyhnutná aktualizace na verzi %VERSION%."

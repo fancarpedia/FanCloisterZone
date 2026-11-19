@@ -2,7 +2,7 @@
   "@author": "Black Bear",
   "@jcz-version": "5.12.1",
   "@fcz-version": "7.2.0",
-  "@version": "0.13.1-ai",
+  "@version": "0.13.4-ai",
   "about": {
     "author": "Auteur",
     "configuration-file": "Fichier de configuration",
@@ -203,7 +203,7 @@
     "inns-and-cathedrals": "Auberges et Cathédrales",
     "king-and-robber": "Roi et Chevalier-brigand",
     "kingdoms": "Royaumes",
-    "kingdoms-description": "Chaque joueur possède un Palais de sa couleur. Au lieu de piocher une tuile, placez-le dans une ville où se trouve l'un de vos meeples : elle devient votre capitale. Une fois la capitale achevée, elle devient un royaume : en fin de partie, elle rapporte 3 points pour chaque ville touchant un pré relié à elle.",
+    "kingdoms-description": "Chaque joueur possède un Palais du Royaume de sa couleur. Au lieu de piocher une tuile, placez-le dans une ville où se trouve l'un de vos meeples : elle devient votre capitale. Une fois la capitale achevée, elle devient un royaume : en fin de partie, elle rapporte 3 points pour chaque ville achevée touchant un pré relié à elle.",
     "labyrinth": "Le Labyrinthe",
     "mage-and-witch": "Mage et Sorcière",
     "meteorites": "Les Météorites",
@@ -367,7 +367,6 @@
       "bridge": "Pont",
       "builder": "Bâtisseur",
       "castle": "Forteresse",
-      "city-palace": "Palais",
       "count": "Comte",
       "decinsky-sneznik": "Decinsky Sneznik",
       "donkey": "Âne",
@@ -378,6 +377,7 @@
       "ferry": "Bac",
       "gold": "Or",
       "king": "Roi",
+      "kingdom-palace": "Palais du Royaume",
       "little-buildings": "Petits bâtiments",
       "mage": "Mage",
       "mayor": "Maire",
@@ -968,13 +968,14 @@
   },
   "predraw": {
     "your-hand": "Votre main",
+    "draw": "Piocher une tuile",
     "empty": "—",
     "incompatible": "Non disponible avec le Bâtisseur, le Dragon, le Chariot, la Forteresse, le Berger, la Rivière, l'Évasion, le Comte ou les Agroglyphes",
     "local-only": "Interdit dans les parties locales",
     "one-seat-notice": "Jeu avant la pioche — chaque joueur joue sur son propre appareil ; vous ne pouvez donc occuper qu’un seul emplacement.",
-    "pick-hint": "Cliquez sur une tuile pour la placer, puis choisissez un emplacement sur l’aire de jeu",
-    "draw": "Piocher une tuile",
-    "pass-abbey": "Passer la phase de placement du Monastère (piocher la dernière tuile)"
+    "pass-abbey": "Passer la phase de placement du Monastère (piocher la dernière tuile)",
+    "pass-supply-tile": "Passer {name} (piocher la dernière tuile)",
+    "pick-hint": "Cliquez sur une tuile pour la placer, puis choisissez un emplacement sur l’aire de jeu"
   },
   "server": {
     "translate": "Une mise à jour vers la version v%VERSION% est nécessaire."

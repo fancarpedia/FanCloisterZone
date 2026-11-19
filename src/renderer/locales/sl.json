@@ -2,7 +2,7 @@
   "@author": "TileLord | Erol",
   "@jcz-version": "5.12.1",
   "@fcz-version": "7.2.0",
-  "@version": "0.13.1-ai",
+  "@version": "0.13.4-ai",
   "about": {
     "author": "Avtor",
     "configuration-file": "Konfiguracijska datoteka",
@@ -203,7 +203,7 @@
     "inns-and-cathedrals": "Gostilne & Katedrale",
     "king-and-robber": "Kralj & Razbojnik",
     "kingdoms": "Kraljestva",
-    "kingdoms-description": "Vsak igralec ima Palačo v svoji barvi. Namesto da potegneš ploščico, jo lahko postaviš ob mesto z enim od svojih človečkov in ga narediš za svojo prestolnico. Ko je prestolnica dokončana, postane kraljestvo: na koncu igre prinese 3 točke za vsako mesto, ki se dotika polja, povezanega z njo.",
+    "kingdoms-description": "Vsak igralec ima Palačo kraljestva v svoji barvi. Namesto da potegneš ploščico, jo lahko postaviš ob mesto z enim od svojih človečkov in ga narediš za svojo prestolnico. Ko je prestolnica dokončana, postane kraljestvo: na koncu igre prinese 3 točke za vsako dokončano mesto, ki se dotika polja, povezanega z njo.",
     "labyrinth": "Labirint",
     "mage-and-witch": "Čarovnik & Čarovnica",
     "meteorites": "Meteoriti",
@@ -367,7 +367,6 @@
       "bridge": "Most",
       "builder": "Graditelj",
       "castle": "Grad",
-      "city-palace": "Palača",
       "count": "Grof",
       "decinsky-sneznik": "Decinsky Sneznik",
       "donkey": "Osel",
@@ -378,6 +377,7 @@
       "ferry": "Trajekt",
       "gold": "Zlato",
       "king": "Kralj",
+      "kingdom-palace": "Palača kraljestva",
       "little-buildings": "Majhne stavbe",
       "mage": "Čarovnik",
       "mayor": "Župan",
@@ -968,13 +968,14 @@
   },
   "predraw": {
     "your-hand": "Tvoja roka",
+    "draw": "Vzemi ploščico",
     "empty": "—",
     "incompatible": "Ni na voljo z Graditeljem, Zmajem, Vozom, Gradom, Pastirjem, Reko, Pobegom, Grofom ali Krogi v žitu",
     "local-only": "Ni dovoljeno v lokalnih igrah",
     "one-seat-notice": "Igra z vnaprejšnjim jemanjem — vsak igralec igra na svoji napravi, zato lahko zasedeš samo eno mesto.",
-    "pick-hint": "Klikni ploščico, da jo položiš, nato izberi mesto na igralni plošči",
-    "draw": "Vzemi ploščico",
-    "pass-abbey": "Preskoči opatijo (vzemi zadnjo ploščico)"
+    "pass-abbey": "Preskoči opatijo (vzemi zadnjo ploščico)",
+    "pass-supply-tile": "Preskoči {name} (vzemi zadnjo ploščico)",
+    "pick-hint": "Klikni ploščico, da jo položiš, nato izberi mesto na igralni plošči"
   },
   "server": {
     "translate": "Posodobitev na v%VERSION% je obavezna."

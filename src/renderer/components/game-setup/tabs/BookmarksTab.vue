@@ -70,6 +70,7 @@
             :sets="selectedSetup.sets"
             :rules="selectedSetup.rules"
             :tile-overrides="selectedSetup.tileOverrides"
+            :setup-elements="selectedSetup.elements || {}"
             small
           />
         </v-card-text>

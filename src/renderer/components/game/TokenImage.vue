@@ -13,7 +13,7 @@
 import { mapGetters } from 'vuex'
 import StandaloneTileImage from '@/components/game/StandaloneTileImage'
 import AnimalToken from '@/components/game/tokens/AnimalToken'
-import { cityPalaceTileId } from '@/utils/city-palace'
+import { kingdomPalaceTileId } from '@/utils/kingdom-palace'
 
 const TOKENS_SVG = require('~/assets/tokens.svg')
 
@@ -76,7 +76,7 @@ export default {
     },
     
     tag () {
-      if (this.token === 'ABBEY_TILE' || this.token === 'CITY_PALACE') {
+      if (this.token === 'ABBEY_TILE' || this.token === 'KINGDOM_PALACE') {
         return StandaloneTileImage
       }
       if (this.token.startsWith('BIGTOP_')) {
@@ -105,11 +105,11 @@ export default {
           'size': this.height
         }
       }
-      if (this.token === 'CITY_PALACE') {
+      if (this.token === 'KINGDOM_PALACE') {
         // Kingdoms: the palace in the player's own colour (their slot)
         const p = this.player === null ? null : this.$store.state.game.players?.[this.player]
         return {
-          'tile-id': cityPalaceTileId(p ? p.slot : 0),
+          'tile-id': kingdomPalaceTileId(p ? p.slot : 0),
           'size': this.height
         }
       }

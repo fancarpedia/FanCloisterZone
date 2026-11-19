@@ -71,8 +71,8 @@ export const BIG_TOP = GameElement.BIG_TOP = new GameElement('big-top', 'Big Top
 // Player Tokens
 export const TOWER = GameElement.TOWER = new GameElement('tower', 'Tower pieces', Number, { selector: 'tower', notOnWeb: true })
 export const ABBEY = GameElement.ABBEY = new GameElement('abbey', 'Abbey tile', Number, { default: 0, notOnWeb: true })
-// $t('game.element.city-palace') — Kingdoms (fan expansion): a City Palace tile per player, in their colour
-export const CITY_PALACE = GameElement.CITY_PALACE = new GameElement('city-palace', 'City Palace', Number, { default: 0 })
+// $t('game.element.kingdom-palace') — Kingdoms (fan expansion): a Kingdom Palace tile per player, in their colour
+export const KINGDOM_PALACE = GameElement.KINGDOM_PALACE = new GameElement('kingdom-palace', 'Kingdom Palace', Number, { default: 0 })
 export const BRIDGE = GameElement.BRIDGE = new GameElement('bridge', 'Bridges', Number, { default: 0 })
 export const CASTLE = GameElement.CASTLE = new GameElement('castle', 'Castles', Number, { default: 0 })
 export const TUNNEL = GameElement.TUNNEL = new GameElement('tunnel', 'Tunnel tokens', Number, { notOnWeb: true })
@@ -240,7 +240,7 @@ export const ELEMENT_ICONS = {
   'tower': { fig: 'tower.png' },
   'black-tower': { fig: 'black_and_white_tower.png' },
   'abbey': { tile: 'AM/A' },
-  'city-palace': { tile: 'Kingdoms/CityPalaceRed' },
+  'kingdom-palace': { tile: 'Kingdoms/KingdomPalaceRed' },
   'bridge': { fig: 'bridge-alt.png' },
   'castle': { fig: 'castle.png', w: 66 },
   'tunnel': { token: 'tunnel' },

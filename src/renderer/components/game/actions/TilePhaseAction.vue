@@ -18,7 +18,7 @@
       :active="!preDrawSelected"
       :local="local"
     />
-    <!-- several supply tiles at once (abbey + City Palace, bazaar tile + …): the others wait as
+    <!-- several supply tiles at once (abbey + Kingdom Palace, bazaar tile + …): the others wait as
          thumbnails; clicking one makes it the tile placed on the board -->
     <StandaloneTileImage
       v-for="alt in otherPlacements"
@@ -30,17 +30,31 @@
       :title="$t('game.action.place-this-tile-instead')"
       @click="local && (selectedTileId = alt.tileId)"
     />
+    <!-- Pre-draw: the engine allows no pass here (tiles come from the secret hand), so skipping the
+         offered supply tile(s) is the server's pass — it deals the held-back tile, and the passed
+         abbey / palace leaves this panel. Outside pre-draw the regular pass button below does it. -->
+    <div v-if="showSkip" class="pass-item">
+      <ActionButton
+        :large="$vuetify.breakpoint.height > 768"
+        color="secondary"
+        icon="fa-forward"
+        :label="$t('game.action.skip-action')"
+        @click="skipSupply"
+      />
+    </div>
     <slot :label="phase === 'TileFromSupplyPhase' ? $t('game.action.draw-a-tile') : null" />
   </section>
 </template>
 
 <script>
 import TilePlacementItem from '@/components/game/actions/items/TilePlacementItem.vue'
+import ActionButton from '@/components/game/actions/ActionButton'
 import StandaloneTileImage from '@/components/game/StandaloneTileImage'
-import { isCityPalace } from '@/utils/city-palace'
+import { isKingdomPalace } from '@/utils/kingdom-palace'
 
 export default {
   components: {
+    ActionButton,
     StandaloneTileImage,
     TilePlacementItem
   },
@@ -60,11 +74,11 @@ export default {
   computed: {
     placements () {
       // Pre-draw: once the abbey is passed this turn, the player declined it — don't offer it (nor a
-      // City Palace, which pre-draw treats the same) for placement; the server also refuses a
+      // Kingdom Palace, which pre-draw treats the same) for placement; the server also refuses a
       // PLACE_TILE for it. 'AM/A' is the engine's abbey tile id.
       const passed = this.$store.state.predraw.abbeyPassed
       return this.action.items.filter(i => i.type === 'TilePlacement' &&
-        !(passed && (i.tileId === 'AM/A' || isCityPalace(i.tileId))))
+        !(passed && (i.tileId === 'AM/A' || isKingdomPalace(i.tileId))))
     },
     tilePlacement () {
       return this.placements.find(i => i.tileId === this.selectedTileId) || this.placements[0] || null
@@ -72,9 +86,23 @@ export default {
     otherPlacements () {
       return this.placements.filter(i => i !== this.tilePlacement)
     },
+    // Skip, in a pre-draw game, when at least one supply tile (abbey / Kingdom Palace) is offered and
+    // the engine itself allows no pass
+    showSkip () {
+      if (!this.local || this.phase !== 'TileFromSupplyPhase' || this.action.canPass) return false
+      const els = this.$store.state.game.setup && this.$store.state.game.setup.elements
+      if (!(els && els['pre-draw'])) return false
+      return this.placements.some(i => i.tileId === 'AM/A' || isKingdomPalace(i.tileId))
+    },
     // When the player has picked a pre-draw tile to place, let it own the board ghost.
     preDrawSelected () {
       return !!this.$store.state.predraw.selected
+    }
+  },
+
+  methods: {
+    skipSupply () {
+      this.$store.dispatch('predraw/passAbbey')
     }
   }
 }

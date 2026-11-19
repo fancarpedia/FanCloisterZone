@@ -422,10 +422,10 @@ class Tiles extends EventsBase {
           setTiles[ref.getAttribute('tile')] = parseInt(count || 1)
         })
         // <tile-set supply="true">: tiles the expansion puts into players' supplies, never into the
-        // draw pile (e.g. Kingdoms' City Palaces). They are kept apart in `supplyTiles` so pack
+        // draw pile (e.g. Kingdoms' Kingdom Palaces). They are kept apart in `supplyTiles` so pack
         // counts, overrides and the emptied-set logic never see them; the Tiles view lists them
         // read-only.
-        // `element` names the setup element that hands these tiles out (abbey, city-palace).
+        // `element` names the setup element that hands these tiles out (abbey, kingdom-palace).
         const set = ts.getAttribute('supply') === 'true'
           ? { tiles: {}, supplyTiles: setTiles, element: ts.getAttribute('element') || null, allows: [] }
           : { tiles: setTiles, allows: [] }

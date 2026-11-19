@@ -2,7 +2,7 @@
   "@author": "farin & Scott",
   "@jcz-version": "5.12.1",
   "@fcz-version": "7.2.0",
-  "@version": "0.13.1",
+  "@version": "0.13.4",
   "about": {
     "author": "Author",
     "configuration-file": "Configuration file",
@@ -203,7 +203,7 @@
     "inns-and-cathedrals": "Inns & Cathedrals",
     "king-and-robber": "King & Robber",
     "kingdoms": "Kingdoms",
-    "kingdoms-description": "Each player has a City Palace in their colour. Instead of drawing, place it in a city with one of your followers to make it your capital. Once your capital is completed it becomes a kingdom: at the end, it scores 3 points for every city touching a field connected to it.",
+    "kingdoms-description": "Each player has a Kingdom Palace in their colour. Instead of drawing, place it in a city with one of your followers to make it your capital. Once your capital is completed it becomes a kingdom: at the end, it scores 3 points for every completed city touching a field connected to it.",
     "labyrinth": "The Labyrinth",
     "mage-and-witch": "Mage & Witch",
     "meteorites": "Meteorites",
@@ -367,7 +367,6 @@
       "bridge": "Bridge",
       "builder": "Builder",
       "castle": "Castle",
-      "city-palace": "City Palace",
       "count": "Count",
       "decinsky-sneznik": "Decinsky Sneznik",
       "donkey": "Donkey",
@@ -378,6 +377,7 @@
       "ferry": "Ferry",
       "gold": "Gold",
       "king": "King",
+      "kingdom-palace": "Kingdom Palace",
       "little-buildings": "Little Buildings",
       "mage": "Mage",
       "mayor": "Mayor",
@@ -968,13 +968,14 @@
   },
   "predraw": {
     "your-hand": "Your hand",
+    "draw": "Draw tile",
     "empty": "—",
     "incompatible": "Not available with Builder, Dragon, Wagon, Castle, Shepherd, River, Escape, Count or Crop Circles",
     "local-only": "Not allowed in local games",
     "one-seat-notice": "Pre-draw game — each player plays on their own device, so you can take only one slot.",
-    "pick-hint": "Click a tile to place it, then choose a spot on the board",
-    "draw": "Draw tile",
-    "pass-abbey": "Pass abbey (draw last tile)"
+    "pass-abbey": "Pass abbey (draw last tile)",
+    "pass-supply-tile": "Pass {name} (draw last tile)",
+    "pick-hint": "Click a tile to place it, then choose a spot on the board"
   },
   "server": {
     "translate": "Update to v%VERSION% is required."

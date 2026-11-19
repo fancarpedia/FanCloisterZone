@@ -2,7 +2,7 @@
   "@author": "Carlium & Meepledrone",
   "@jcz-version": "5.12.1",
   "@fcz-version": "7.2.0",
-  "@version": "0.13.1-ai",
+  "@version": "0.13.4-ai",
   "about": {
     "author": "Autor",
     "configuration-file": "Archivo de configuración",
@@ -203,7 +203,7 @@
     "inns-and-cathedrals": "Posadas y Catedrales",
     "king-and-robber": "El Rey y el Ladrón",
     "kingdoms": "Reinos",
-    "kingdoms-description": "Cada jugador tiene un Palacio de su color. En lugar de robar una loseta, puede colocarlo en una ciudad con uno de sus seguidores para convertirla en su capital. Cuando la capital se completa, se convierte en un reino: al final, puntúa 3 puntos por cada ciudad que toque un campo conectado con ella.",
+    "kingdoms-description": "Cada jugador tiene un Palacio del Reino de su color. En lugar de robar una loseta, puede colocarlo en una ciudad con uno de sus seguidores para convertirla en su capital. Cuando la capital se completa, se convierte en un reino: al final, puntúa 3 puntos por cada ciudad completada que toque un campo conectado con ella.",
     "labyrinth": "El Laberinto",
     "mage-and-witch": "Mago y Bruja",
     "meteorites": "Meteoritos",
@@ -367,7 +367,6 @@
       "bridge": "Puente",
       "builder": "Constructor",
       "castle": "Castillo",
-      "city-palace": "Palacio",
       "count": "Conde",
       "decinsky-sneznik": "Decinsky Sneznik",
       "donkey": "Burro",
@@ -378,6 +377,7 @@
       "ferry": "Transbordador",
       "gold": "Oro",
       "king": "Rey",
+      "kingdom-palace": "Palacio del Reino",
       "little-buildings": "Pequeños edificios",
       "mage": "Mago",
       "mayor": "Alcalde",
@@ -968,13 +968,14 @@
   },
   "predraw": {
     "your-hand": "Tu mano",
+    "draw": "Robar loseta",
     "empty": "—",
     "incompatible": "No disponible con Constructor, Dragón, Carro, Castillo, Pastor, Río, Huida, Conde ni Círculos de cultivo",
     "local-only": "No permitido en partidas locales",
     "one-seat-notice": "Partida con robo previo — cada jugador juega en su propio dispositivo, así que solo puedes ocupar un puesto.",
-    "pick-hint": "Haz clic en una loseta para colocarla y luego elige un lugar en el tablero",
-    "draw": "Robar loseta",
-    "pass-abbey": "Pasar la abadía (robar la última loseta)"
+    "pass-abbey": "Pasar la abadía (robar la última loseta)",
+    "pass-supply-tile": "Pasar {name} (robar la última loseta)",
+    "pick-hint": "Haz clic en una loseta para colocarla y luego elige un lugar en el tablero"
   },
   "server": {
     "translate": "Es necesario actualizar a la versión v%VERSION%."

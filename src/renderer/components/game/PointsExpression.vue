@@ -1,7 +1,7 @@
 <template>
   <section @click="onClick">
     <div class="expr-title">
-      <ScoringIcon :name="expr.name" :size="36" class="title-icon" />
+      <ScoringIcon :name="expr.name" :size="60" class="title-icon" />
       <div class="title-text">
         <div>{{ title }}</div>
         <div v-if="subtitle" class="sub">{{ subtitle }}</div>
@@ -240,6 +240,8 @@ export default {
 
   .title-icon
     flex: none
+    // lifted a little: centred on the whole bar it read as sitting low beside the feature name
+    margin-top: -4px
 
   .title-text
     display: flex

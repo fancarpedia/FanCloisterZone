@@ -2,7 +2,7 @@
   "@author": "Stepukiss",
   "@jcz-version": "5.12.1",
   "@fcz-version": "7.2.0",
-  "@version": "0.13.1-ai",
+  "@version": "0.13.4-ai",
   "about": {
     "author": "Autorius",
     "configuration-file": "Nustatymų aplankas",
@@ -203,7 +203,7 @@
     "inns-and-cathedrals": "Užeigos ir Katedros",
     "king-and-robber": "Karalius ir Vagis",
     "kingdoms": "Karalystės",
-    "kingdoms-description": "Kiekvienas žaidėjas turi savo spalvos Rūmus. Užuot traukę kortelę, galite juos padėti prie miesto, kuriame yra vienas iš jūsų miplų, ir paversti jį savo sostine. Kai sostinė užbaigiama, ji tampa karalyste: žaidimo pabaigoje ji pelno 3 taškus už kiekvieną miestą, besiliečiantį su lauku, sujungtu su ja.",
+    "kingdoms-description": "Kiekvienas žaidėjas turi savo spalvos Karalystės rūmus. Užuot traukę kortelę, galite juos padėti prie miesto, kuriame yra vienas iš jūsų miplų, ir paversti jį savo sostine. Kai sostinė užbaigiama, ji tampa karalyste: žaidimo pabaigoje ji pelno 3 taškus už kiekvieną užbaigtą miestą, besiliečiantį su lauku, sujungtu su ja.",
     "labyrinth": "Labirintas",
     "mage-and-witch": "Burtininkas ir Ragana",
     "meteorites": "Meteoritai",
@@ -367,7 +367,6 @@
       "bridge": "Tiltas",
       "builder": "Statybininkas",
       "castle": "Pilis",
-      "city-palace": "Rūmai",
       "count": "Grafas",
       "decinsky-sneznik": "Decinsky Sneznik",
       "donkey": "Asilas",
@@ -378,6 +377,7 @@
       "ferry": "Keltas",
       "gold": "Auksas",
       "king": "Karalius",
+      "kingdom-palace": "Karalystės rūmai",
       "little-buildings": "Maži pastatai",
       "mage": "Burtininkas",
       "mayor": "Meras",
@@ -968,13 +968,14 @@
   },
   "predraw": {
     "your-hand": "Jūsų ranka",
+    "draw": "Traukti kortelę",
     "empty": "—",
     "incompatible": "Negalima su Statybininku, Drakonu, Vežimu, Pilimi, Aviganiu, Upe, Pabėgimu, Grafu ar Ratais pasėliuose",
     "local-only": "Neleidžiama vietiniuose žaidimuose",
     "one-seat-notice": "Išankstinio traukimo žaidimas — kiekvienas žaidėjas žaidžia savo įrenginiu, todėl galite užimti tik vieną vietą.",
-    "pick-hint": "Paspauskite kortelę, kurią norite padėti, tada pasirinkite vietą lentoje",
-    "draw": "Traukti kortelę",
-    "pass-abbey": "Praleisti abatiją (traukti paskutinę kortelę)"
+    "pass-abbey": "Praleisti abatiją (traukti paskutinę kortelę)",
+    "pass-supply-tile": "Praleisti {name} (traukti paskutinę kortelę)",
+    "pick-hint": "Paspauskite kortelę, kurią norite padėti, tada pasirinkite vietą lentoje"
   },
   "server": {
     "translate": "Reikia atnaujinti į v%VERSION%."

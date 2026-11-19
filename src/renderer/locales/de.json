@@ -2,7 +2,7 @@
   "@author": "Challa007 & Bombur",
   "@jcz-version": "5.12.1",
   "@fcz-version": "7.2.0",
-  "@version": "0.13.1-ai",
+  "@version": "0.13.4-ai",
   "about": {
     "author": "Autor",
     "configuration-file": "Konfigurationsdatei",
@@ -203,7 +203,7 @@
     "inns-and-cathedrals": "Wirtshäuser und Kathedralen",
     "king-and-robber": "König und Raubritter",
     "kingdoms": "Königreiche",
-    "kingdoms-description": "Jeder Spieler hat einen Palast in seiner Farbe. Statt ein Plättchen zu ziehen, legst du ihn an eine Stadt mit einem deiner Meeple – sie wird deine Hauptstadt. Ist die Hauptstadt fertig, wird sie zum Königreich: Bei Spielende bringt sie 3 Punkte für jede Stadt, die an eine mit ihr verbundene Wiese grenzt.",
+    "kingdoms-description": "Jeder Spieler hat einen Königreichspalast in seiner Farbe. Statt ein Plättchen zu ziehen, legst du ihn an eine Stadt mit einem deiner Meeple – sie wird deine Hauptstadt. Ist die Hauptstadt fertig, wird sie zum Königreich: Bei Spielende bringt sie 3 Punkte für jede fertige Stadt, die an eine mit ihr verbundene Wiese grenzt.",
     "labyrinth": "Das Labyrinth",
     "mage-and-witch": "Magier und Hexe",
     "meteorites": "Meteoriten",
@@ -367,7 +367,6 @@
       "bridge": "Brücke",
       "builder": "Baumeister",
       "castle": "Burg",
-      "city-palace": "Stadtpalast",
       "count": "Graf",
       "decinsky-sneznik": "Hoher Schneeberg",
       "donkey": "Esel",
@@ -378,6 +377,7 @@
       "ferry": "Fähre",
       "gold": "Goldstücke",
       "king": "König-Karte",
+      "kingdom-palace": "Königreichspalast",
       "little-buildings": "Häuser",
       "mage": "Magier",
       "mayor": "Bürgermeister",
@@ -968,13 +968,14 @@
   },
   "predraw": {
     "your-hand": "Deine Hand",
+    "draw": "Plättchen ziehen",
     "empty": "—",
     "incompatible": "Nicht verfügbar mit Baumeister, Drache, Wagen, Burg, Schäfer, Fluss, Flucht, Graf oder Kornkreisen",
     "local-only": "In lokalen Spielen nicht erlaubt",
     "one-seat-notice": "Spiel mit Vorziehen — jeder Spieler spielt auf seinem eigenen Gerät, daher kannst du nur einen Platz einnehmen.",
-    "pick-hint": "Klicke ein Plättchen an, um es zu legen, und wähle dann einen Platz auf dem Spielfeld",
-    "draw": "Plättchen ziehen",
-    "pass-abbey": "Abtei überspringen (letztes Plättchen ziehen)"
+    "pass-abbey": "Abtei überspringen (letztes Plättchen ziehen)",
+    "pass-supply-tile": "{name} überspringen (letztes Plättchen ziehen)",
+    "pick-hint": "Klicke ein Plättchen an, um es zu legen, und wähle dann einen Platz auf dem Spielfeld"
   },
   "server": {
     "translate": "Update auf v%VERSION% ist notwendig."

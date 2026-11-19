@@ -2,7 +2,7 @@
   "@author": "Bumsakalaka",
   "@jcz-version": "5.12.1",
   "@fcz-version": "7.2.0",
-  "@version": "0.13.1-ai",
+  "@version": "0.13.4-ai",
   "about": {
     "author": "Autor",
     "configuration-file": "Konfiguračný súbor",
@@ -203,7 +203,7 @@
     "inns-and-cathedrals": "Hostince a katedrály",
     "king-and-robber": "Kráľ a barón",
     "kingdoms": "Kráľovstvá",
-    "kingdoms-description": "Každý hráč má Palác vo svojej farbe. Namiesto ťahania kartičky ho môžete priložiť k mestu s jedným z vašich spoločníkov a urobiť z neho svoje hlavné mesto. Keď je hlavné mesto dokončené, stane sa kráľovstvom: na konci hry získa 3 body za každé mesto, ktoré susedí s lúkou spojenou s ním.",
+    "kingdoms-description": "Každý hráč má Palác kráľovstva vo svojej farbe. Namiesto ťahania kartičky ho môžete priložiť k mestu s jedným z vašich spoločníkov a urobiť z neho svoje hlavné mesto. Keď je hlavné mesto dokončené, stane sa kráľovstvom: na konci hry získa 3 body za každé dokončené mesto, ktoré susedí s lúkou spojenou s ním.",
     "labyrinth": "Labyrint",
     "mage-and-witch": "Mág a čarodejnica",
     "meteorites": "Meteority",
@@ -367,7 +367,6 @@
       "bridge": "Most",
       "builder": "Staviteľ",
       "castle": "Hrad",
-      "city-palace": "Palác",
       "count": "Gróf",
       "decinsky-sneznik": "Děčínský Sněžník",
       "donkey": "Somár",
@@ -378,6 +377,7 @@
       "ferry": "Priezov",
       "gold": "Zlato",
       "king": "Kráľ",
+      "kingdom-palace": "Palác kráľovstva",
       "little-buildings": "Malé budovy",
       "mage": "Mág",
       "mayor": "Starosta",
@@ -968,13 +968,14 @@
   },
   "predraw": {
     "your-hand": "Vaša ruka",
+    "draw": "Potiahnuť kartičku",
     "empty": "—",
     "incompatible": "Nie je dostupné so Staviteľom, Drakom, Vozom, Hradom, Pastierom, Riekou, Únikom, Grófom ani Kruhmi v obilí",
     "local-only": "Nie je povolené v lokálnych hrách",
     "one-seat-notice": "Hra s predbežným ťahaním — každý hráč hrá na svojom zariadení, takže môžete obsadiť len jedno miesto.",
-    "pick-hint": "Kliknite na kartičku, ktorú chcete položiť, a potom vyberte miesto na hracej ploche",
-    "draw": "Potiahnuť kartičku",
-    "pass-abbey": "Preskočiť opátstvo (potiahnuť poslednú kartičku)"
+    "pass-abbey": "Preskočiť opátstvo (potiahnuť poslednú kartičku)",
+    "pass-supply-tile": "Preskočiť {name} (potiahnuť poslednú kartičku)",
+    "pick-hint": "Kliknite na kartičku, ktorú chcete položiť, a potom vyberte miesto na hracej ploche"
   },
   "server": {
     "translate": "Je nevyhnutná aktualizácia na verziu %VERSION%."

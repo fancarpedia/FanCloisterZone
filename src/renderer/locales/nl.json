@@ -2,7 +2,7 @@
   "@author": "Kiap1969 & Sinscerly",
   "@jcz-version": "5.12.1",
   "@fcz-version": "7.2.0",
-  "@version": "0.13.1-ai",
+  "@version": "0.13.4-ai",
   "about": {
     "author": "Auteur",
     "configuration-file": "Configuratiebestand",
@@ -203,7 +203,7 @@
     "inns-and-cathedrals": "Kathedralen & Herbergen",
     "king-and-robber": "Koning & Roofridder",
     "kingdoms": "Koninkrijken",
-    "kingdoms-description": "Elke speler heeft een Paleis in zijn eigen kleur. In plaats van een tegel te trekken, leg je het aan een stad met een van je meeples: die wordt je hoofdstad. Zodra je hoofdstad af is, wordt ze een koninkrijk: aan het einde levert ze 3 punten op voor elke stad die grenst aan een weide die met de hoofdstad verbonden is.",
+    "kingdoms-description": "Elke speler heeft een Koninkrijkspaleis in zijn eigen kleur. In plaats van een tegel te trekken, leg je het aan een stad met een van je meeples: die wordt je hoofdstad. Zodra je hoofdstad af is, wordt ze een koninkrijk: aan het einde levert ze 3 punten op voor elke voltooide stad die grenst aan een weide die met de hoofdstad verbonden is.",
     "labyrinth": "Het Doolhof",
     "mage-and-witch": "Tovenaar & Heks",
     "meteorites": "Meteorieten",
@@ -367,7 +367,6 @@
       "bridge": "Brug",
       "builder": "Bouwmeester",
       "castle": "Brucht",
-      "city-palace": "Paleis",
       "count": "Graaf",
       "decinsky-sneznik": "Decinsky Sneznik",
       "donkey": "Ezel",
@@ -378,6 +377,7 @@
       "ferry": "Veerboot",
       "gold": "Goud",
       "king": "Koning",
+      "kingdom-palace": "Koninkrijkspaleis",
       "little-buildings": "Kleine Gebouwen",
       "mage": "Tovenaar",
       "mayor": "Burgemeester",
@@ -968,13 +968,14 @@
   },
   "predraw": {
     "your-hand": "Jouw hand",
+    "draw": "Tegel pakken",
     "empty": "—",
     "incompatible": "Niet beschikbaar met Bouwmeester, Draak, Wagen, Kasteel, Schaapherder, Rivier, Ontsnapping, Graaf of Graancirkels",
     "local-only": "Niet toegestaan in lokale spellen",
     "one-seat-notice": "Spel met voorafgaand pakken — elke speler speelt op zijn eigen apparaat, dus je kunt maar één plaats innemen.",
-    "pick-hint": "Klik op een tegel om die te plaatsen en kies daarna een plek op het bord",
-    "draw": "Tegel pakken",
-    "pass-abbey": "Abdij overslaan (laatste tegel pakken)"
+    "pass-abbey": "Abdij overslaan (laatste tegel pakken)",
+    "pass-supply-tile": "{name} overslaan (laatste tegel pakken)",
+    "pick-hint": "Klik op een tegel om die te plaatsen en kies daarna een plek op het bord"
   },
   "server": {
     "translate": "Update naar v%VERSION% is vereist."

@@ -40,7 +40,7 @@
         <GameElementBox :item="GameElement.TOWER" />
         <GameElementBox :item="GameElement.BLACK_TOWER" />
         <GameElementBox :item="GameElement.ABBEY" :max="9" />
-        <GameElementBox v-if="!ai && kingdomsInstalled" :item="GameElement.CITY_PALACE" :max="9" />
+        <GameElementBox v-if="!ai && kingdomsInstalled" :item="GameElement.KINGDOM_PALACE" :max="9" />
         <GameElementBox :item="GameElement.BRIDGE" />
         <GameElementBox :item="GameElement.CASTLE" />
         <GameElementBox :item="GameElement.TUNNEL" :mutable="false" />
@@ -65,7 +65,7 @@ import { mapState } from 'vuex'
 import ConfigSection from '@/components/game-setup/ConfigSection'
 import { GameElement } from '@/models/elements'
 import GameElementBox from '@/components/game-setup/GameElementBox'
-import { cityPalaceTileId } from '@/utils/city-palace'
+import { kingdomPalaceTileId } from '@/utils/kingdom-palace'
 
 export default {
   components: {
@@ -87,10 +87,10 @@ export default {
       coopVariant: state => !!(state.gameSetup.elements || {})['keep-building']
     }),
 
-    // Kingdoms is a fan add-on: its City Palace tiles (and the expansion) exist only when the
+    // Kingdoms is a fan add-on: its Kingdom Palace tiles (and the expansion) exist only when the
     // add-on is installed
     kingdomsInstalled () {
-      return !!this.$tiles.tiles[cityPalaceTileId(0)]
+      return !!this.$tiles.tiles[kingdomPalaceTileId(0)]
     }
   }
 }
