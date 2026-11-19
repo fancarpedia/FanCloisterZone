@@ -10,6 +10,9 @@ import { getSystemLocale } from '@/utils/system-locale'
 const isDev = process.env.NODE_ENV === 'development'
 const HEARTBEAT_INTERVAL = 9 * 1000
 const HEARTBEAT_TIMEOUT = 9 * 1000
+// ERR codes the server sends DURING a game (answers to a move), handed to the store like any other
+// message — every other ERR is a connection rejection
+const IN_GAME_ERR_CODES = new Set(['abbey-passed'])
 
 class ConnectionPlugin extends EventsBase {
   constructor (app) {
@@ -123,6 +126,12 @@ class ConnectionPlugin extends EventsBase {
         console.debug(msg)
       }
       // console.debug(`%c client %c received ${msg.type}`, CONSOLE_CLIENT_COLOR, '')
+      // In-game answers the store acts on (store/networking.js), not connection rejections: e.g. the
+      // pre-draw server refusing an abbey / Kingdom Palace placement because it was passed this turn.
+      if (msg.type === 'ERR' && IN_GAME_ERR_CODES.has(msg.payload?.code)) {
+        this.callbacks.onMessage(msg)
+        return
+      }
       if (msg.type === 'ERR') {
         this.connectCallbacks?.reject(msg)
         this.emit('error', msg.payload)
