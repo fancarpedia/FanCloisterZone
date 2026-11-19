@@ -16,6 +16,9 @@ import { mapGetters, mapState } from 'vuex'
 
 import EventsRow from '@/components/game/play-events/EventsRow'
 
+// final scores earned by a figure rather than a feature — shown together under "Figures"
+const FIGURE_TYPES = new Set(['fairy', 'black-fairy', 'ringmaster', 'bigtop', 'obelisk', 'windmill', 'decinsky-sneznik'])
+
 export default {
   components: {
     EventsRow
@@ -46,7 +49,7 @@ export default {
         kingAndRobber: { title: this.$t('game.feature.king-and-robber'), events: [] },
         penalties: { title: this.$t('core-messages.penalties'), events: [] },
         bonuses: { title: this.$t('core-messages.bonuses'), events: [] },
-        specialfigures: { title: this.$t('core-messages.special-figures'), events: [] }
+        figures: { title: this.$t('core-messages.figures'), events: [] }
       }
       item.events.forEach(ev => {
         if (!ev.points?.length) {
@@ -71,17 +74,10 @@ export default {
           rows.monasteries.events.push(ev)
         } else if (type === 'vodyanoy') {
           rows.penalties.events.push(ev)
-        } else if (type === 'black-fairy') {
-          // black fairy scores negative points → group with penalties
-          rows.penalties.events.push(ev)
-        } else if (type === 'fairy') {
-          rows.bonuses.events.push(ev)
-        } else if (type === 'obelisk') {
-          rows.specialfigures.events.push(ev)
-        } else if (type === 'windmill') {
-          rows.specialfigures.events.push(ev)
-        } else if (type === 'decinsky-sneznik') {
-          rows.specialfigures.events.push(ev)
+        } else if (FIGURE_TYPES.has(type)) {
+          // figures (not features): fairy, black fairy, ringmaster, big top, obelisk, windmill,
+          // Děčínský Sněžník
+          rows.figures.events.push(ev)
         } else if (type === 'flowers') {
           rows.bonuses.events.push(ev)
         } else {
