@@ -97,6 +97,7 @@
     "done": "Terminé",
     "engine-error": "Erreur du moteur",
     "field-is-required": "{field} est obligatoire",
+    "figures": "<span lang="en" dir="ltr" class="mw-content-ltr">Figures</span>",
     "game-engine-not-available": "Moteur de jeu non disponible.",
     "incomplete-features": "Zones incomplètes",
     "no-core-set": "Pas de jeu de base !",

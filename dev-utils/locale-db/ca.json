@@ -4,6 +4,11 @@
     "value": "Xat de la partida",
     "source": "manual"
   },
+  "core-messages.figures": {
+    "en": "Figures",
+    "value": "Figures",
+    "source": "manual"
+  },
   "dev.continue-game": {
     "en": "Continue game",
     "value": "Continua la partida",

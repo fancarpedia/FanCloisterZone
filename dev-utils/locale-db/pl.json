@@ -44,6 +44,11 @@
     "value": "Wyślij",
     "source": "manual"
   },
+  "core-messages.figures": {
+    "en": "Figures",
+    "value": "Pionki",
+    "source": "manual"
+  },
   "core-messages.potential-final-score": {
     "en": "Potential final score",
     "value": "Potencjalny wynik końcowy",

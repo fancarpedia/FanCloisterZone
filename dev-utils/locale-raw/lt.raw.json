@@ -97,6 +97,7 @@
     "done": "Atlikta",
     "engine-error": "<span lang="en" dir="ltr" class="mw-content-ltr">Engine error</span>",
     "field-is-required": "<span lang="en" dir="ltr" class="mw-content-ltr">{field} is required</span>",
+    "figures": "<span lang="en" dir="ltr" class="mw-content-ltr">Figures</span>",
     "game-engine-not-available": "Žaidimo variklis nėra prieinamas",
     "incomplete-features": "Nepabaigti objektai",
     "no-core-set": "Nepasirinktas pagrindas",

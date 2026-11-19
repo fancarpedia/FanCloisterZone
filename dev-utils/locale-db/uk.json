@@ -394,6 +394,11 @@
     "value": "Потрібно заповнити: {field}",
     "source": "manual"
   },
+  "core-messages.figures": {
+    "en": "Figures",
+    "value": "Фігурки",
+    "source": "manual"
+  },
   "core-messages.game-engine-not-available": {
     "en": "Game engine not available.",
     "value": "Ігровий рушій недоступний.",

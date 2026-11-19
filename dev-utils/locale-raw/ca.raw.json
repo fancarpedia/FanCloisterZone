@@ -97,6 +97,7 @@
     "done": "Fet",
     "engine-error": "Error del motor",
     "field-is-required": "Cal {field}",
+    "figures": "<span lang="en" dir="ltr" class="mw-content-ltr">Figures</span>",
     "game-engine-not-available": "El motor del joc no està disponible.",
     "incomplete-features": "Elements incomplets",
     "no-core-set": "No hi ha cap joc base!",

@@ -34,6 +34,11 @@
     "value": "Odeslat",
     "source": "manual"
   },
+  "core-messages.figures": {
+    "en": "Figures",
+    "value": "Figurky",
+    "source": "manual"
+  },
   "dev.continue-game": {
     "en": "Continue game",
     "value": "Pokračovat ve hře",

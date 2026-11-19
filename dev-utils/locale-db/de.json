@@ -44,6 +44,11 @@
     "value": "Senden",
     "source": "manual"
   },
+  "core-messages.figures": {
+    "en": "Figures",
+    "value": "Figuren",
+    "source": "manual"
+  },
   "core-messages.potential-final-score": {
     "en": "Potential final score",
     "value": "Möglicher Endstand",

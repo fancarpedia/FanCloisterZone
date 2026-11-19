@@ -69,6 +69,11 @@
     "value": "Būtina užpildyti: {field}",
     "source": "manual"
   },
+  "core-messages.figures": {
+    "en": "Figures",
+    "value": "Figūros",
+    "source": "manual"
+  },
   "core-messages.potential-final-score": {
     "en": "Potential final score",
     "value": "Galimas galutinis rezultatas",

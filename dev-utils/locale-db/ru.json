@@ -44,6 +44,11 @@
     "value": "Отправить",
     "source": "manual"
   },
+  "core-messages.figures": {
+    "en": "Figures",
+    "value": "Фигуры",
+    "source": "manual"
+  },
   "core-messages.potential-final-score": {
     "en": "Potential final score",
     "value": "Возможный итоговый счёт",

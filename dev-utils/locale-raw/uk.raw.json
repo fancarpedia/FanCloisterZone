@@ -97,6 +97,7 @@
     "done": "<span lang="en" dir="ltr" class="mw-content-ltr">Done</span>",
     "engine-error": "<span lang="en" dir="ltr" class="mw-content-ltr">Engine error</span>",
     "field-is-required": "<span lang="en" dir="ltr" class="mw-content-ltr">{field} is required</span>",
+    "figures": "<span lang="en" dir="ltr" class="mw-content-ltr">Figures</span>",
     "game-engine-not-available": "<span lang="en" dir="ltr" class="mw-content-ltr">Game engine not available.</span>",
     "incomplete-features": "<span lang="en" dir="ltr" class="mw-content-ltr">Incomplete features</span>",
     "no-core-set": "<span lang="en" dir="ltr" class="mw-content-ltr">No Core set!</span>",

@@ -4,6 +4,11 @@
     "value": "Discussion de la partie",
     "source": "manual"
   },
+  "core-messages.figures": {
+    "en": "Figures",
+    "value": "Pions",
+    "source": "manual"
+  },
   "dev.continue-game": {
     "en": "Continue game",
     "value": "Continuer la partie",

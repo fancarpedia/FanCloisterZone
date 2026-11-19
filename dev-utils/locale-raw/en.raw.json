@@ -2,7 +2,7 @@
   "@author": "farin & Scott",
   "@jcz-version": "5.12.1",
   "@fcz-version": "7.2.0",
-  "@version": "0.13.4",
+  "@version": "0.13.5",
   "about": {
     "author": "Author",
     "configuration-file": "Configuration file",
@@ -97,6 +97,7 @@
     "done": "Done",
     "engine-error": "Engine error",
     "field-is-required": "{field} is required",
+    "figures": "Figures",
     "game-engine-not-available": "Game engine not available.",
     "incomplete-features": "Incomplete features",
     "no-core-set": "No Core set!",

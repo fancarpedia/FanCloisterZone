@@ -2,7 +2,7 @@
   "@author": "Paloi Sciurala",
   "@jcz-version": "5.12.1",
   "@fcz-version": "7.2.0",
-  "@version": "<span class="mw-translate-fuzzy">0.13.1</span>",
+  "@version": "<span class="mw-translate-fuzzy">0.13.4</span>",
   "about": {
     "author": "Autor",
     "configuration-file": "Fișier de configurație",
@@ -97,6 +97,7 @@
     "done": "Realizat",
     "engine-error": "Eroare de motor",
     "field-is-required": "Este nevoie de {field}",
+    "figures": "<span lang="en" dir="ltr" class="mw-content-ltr">Figures</span>",
     "game-engine-not-available": "Motorul jocului nu este disponibil.",
     "incomplete-features": "Teritorii nefinalizate",
     "no-core-set": "Niciun set de bază!",
@@ -202,7 +203,7 @@
     "inns-and-cathedrals": "Hanuri și catedrale",
     "king-and-robber": "Regele și cavalerul brigand",
     "kingdoms": "Regate",
-    "kingdoms-description": "<span class="mw-translate-fuzzy">Fiecare jucător are un palat de oraș în culoarea sa. În loc de a trage, plasează-l într-un oraș cu unul dintre supușii tăi pentru a îl face capitala ta. Odată ce capitala ta este finalizată devine un regat: la sfârșit, aduce 3 puncte pentru fiecare oraș ce se atinge de un câmp conectat la el.</span>",
+    "kingdoms-description": "Fiecare jucător are un palat de regat în culoarea sa. În loc de a trage, plasează-l într-un oraș cu unul dintre supușii tăi pentru a îl face capitala ta. Odată ce capitala ta este finalizată devine un regat: la sfârșit, aduce 3 puncte pentru fiecare oraș finalizat ce se atinge de un câmp conectat la el.",
     "labyrinth": "Labirintul",
     "mage-and-witch": "Magicianul și vrăjitoarea",
     "meteorites": "Meteoriți",
@@ -376,7 +377,7 @@
       "ferry": "Bac",
       "gold": "Aur",
       "king": "Regele",
-      "kingdom-palace": "<span class="mw-translate-fuzzy">Palat de oraș</span>",
+      "kingdom-palace": "Palat de regat",
       "little-buildings": "Construcții mici",
       "mage": "Magician",
       "mayor": "Primar",
@@ -971,7 +972,7 @@
     "local-only": "Nepermis în partide locale",
     "one-seat-notice": "Partidă cu pre-tragere — fiecare jucător joacă pe propriul său dispozitiv, astfel încât să poți ocupa numai un singur loc.",
     "pass-abbey": "Omite abația (trage ultimul cartonaș)",
-    "pass-supply-tile": "<span lang="en" dir="ltr" class="mw-content-ltr">Pass {name} (draw last tile)</span>",
+    "pass-supply-tile": "Omite {name} (trage ultimul cartonaș)",
     "pick-hint": "Apasă pe un cartonaș pentru a îl plasa, apoi alege un loc de pe tablă"
   },
   "server": {

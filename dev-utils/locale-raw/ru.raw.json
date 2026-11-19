@@ -97,6 +97,7 @@
     "done": "Готово",
     "engine-error": "Ошибка движка",
     "field-is-required": "необходим {field}",
+    "figures": "<span lang="en" dir="ltr" class="mw-content-ltr">Figures</span>",
     "game-engine-not-available": "Игровой движок недоступен.",
     "incomplete-features": "Незавершенные функции",
     "no-core-set": "Отсутствует основной набор!",
