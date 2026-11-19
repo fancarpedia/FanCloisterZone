@@ -102,6 +102,10 @@ export default {
   data () {
     const src = require('~/assets/beep.wav')
     return {
+      // the launcher steps aside from the pre-draw hand box (ChatBulletDragMixin)
+      bulletAvoidTargets: [['game-chat', '.chat-launcher']],
+      // the OPEN chat box steps aside / rises above the pre-draw hand box too
+      boxAvoidTargets: [['game-chat-box', '.game-chat']],
       dragging: false,
       open: false,
       readCount: 0,
@@ -168,13 +172,14 @@ export default {
         // right edge on the launcher's right edge; vertical place from the CSS (.anchored)
         const right = this.bulletRight('game-chat')
         if (right) style.right = right
-        return style
+        return { ...style, ...this.boxAvoidStyle('game-chat-box') }
       }
 
       if (this.position.right != null) style.right = this.position.right + 'px'
       if (this.position.bottom != null) style.bottom = this.position.bottom + 'px'
 
-      return style
+      // stepping aside from / rising above the pre-draw hand box (ChatBulletDragMixin)
+      return { ...style, ...this.boxAvoidStyle('game-chat-box') }
     }
   },
 
@@ -207,6 +212,8 @@ export default {
     // global chat closes this one (onOtherChatOpened)
     open (value) {
       if (value) this.$root.$emit('chat-opened', 'game')
+      // opened or closed: every chat bullet / box re-checks against the hand box
+      this.$nextTick(this.announceChatLayout)
     },
 
     chat() {
@@ -416,8 +423,17 @@ export default {
       this.position.right = windowWidth - left - this.CHAT_WIDTH
     },
 
+    // ChatBulletDragMixin: no stepping aside while the user drags the box
+    boxAvoidPaused() {
+      return this.dragging
+    },
+
     stopDrag() {
       this.dragging = false
+      // dropped somewhere new: measure its own place again, then re-check the hand box
+      this.$delete(this.boxAvoid, 'game-chat-box')
+      this.$delete(this.boxBase, 'game-chat-box')
+      this.$nextTick(this.refreshBulletAvoid)
       document.removeEventListener('mousemove', this.onDrag)
       document.removeEventListener('mouseup', this.stopDrag)
 

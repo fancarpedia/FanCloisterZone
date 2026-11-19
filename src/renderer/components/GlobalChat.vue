@@ -16,7 +16,7 @@
       <span v-if="unread > 0" class="gc-badge">{{ unread > 99 ? '99+' : unread }}</span>
     </button>
 
-    <div v-show="inline || open" class="gc-panel">
+    <div v-show="inline || open" class="gc-panel" :style="inline ? {} : boxAvoidStyle('global-chat-box')">
       <div class="gc-header">
         <span class="gc-title"><span class="gc-bullet" />{{ $t('chat.global-chat') }}</span>
         <button v-if="!inline" class="gc-close" :title="$t('chat.close') || 'Close'" @click="open = false">
@@ -86,6 +86,10 @@ export default {
   data () {
     const src = require('~/assets/universfield-interface-soft-click-131438.mp3')
     return {
+      // the launcher steps aside from the pre-draw hand box (ChatBulletDragMixin)
+      bulletAvoidTargets: [['global-chat', '.gc-launcher']],
+      // the OPEN panel steps aside / rises above the pre-draw hand box too (not the lobby's inline one)
+      boxAvoidTargets: [['global-chat-box', '.gc-panel']],
       open: false,
       newMessage: '',
       readCount: 0,
@@ -137,6 +141,8 @@ export default {
     // round, below) — on the web build both buttons sit in the game
     open (value) {
       if (value) this.$root.$emit('chat-opened', 'global')
+      // opened or closed: every chat bullet / box re-checks against the hand box
+      this.$nextTick(this.announceChatLayout)
     },
 
     messages (val, old) {
