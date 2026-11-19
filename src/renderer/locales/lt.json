@@ -2,7 +2,7 @@
   "@author": "Stepukiss",
   "@jcz-version": "5.12.1",
   "@fcz-version": "7.2.0",
-  "@version": "0.13.4-ai",
+  "@version": "0.13.5-ai",
   "about": {
     "author": "Autorius",
     "configuration-file": "Nustatymų aplankas",
@@ -97,6 +97,7 @@
     "done": "Atlikta",
     "engine-error": "Variklio klaida",
     "field-is-required": "Būtina užpildyti: {field}",
+    "figures": "Figūros",
     "game-engine-not-available": "Žaidimo variklis nėra prieinamas",
     "incomplete-features": "Nepabaigti objektai",
     "no-core-set": "Nepasirinktas pagrindas",

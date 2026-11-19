@@ -2,7 +2,7 @@
   "@author": "Bumsakalaka",
   "@jcz-version": "5.12.1",
   "@fcz-version": "7.2.0",
-  "@version": "0.13.4-ai",
+  "@version": "0.13.5-ai",
   "about": {
     "author": "Autor",
     "configuration-file": "Konfiguračný súbor",
@@ -97,6 +97,7 @@
     "done": "hotovo",
     "engine-error": "Chyba programu",
     "field-is-required": "Povinné: {field}",
+    "figures": "Figúrky",
     "game-engine-not-available": "Herný engine nie je k dispozícii.",
     "incomplete-features": "Neukončené územia",
     "no-core-set": "Žiadna zakladná hra!",

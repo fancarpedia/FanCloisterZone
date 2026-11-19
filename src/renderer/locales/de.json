@@ -2,7 +2,7 @@
   "@author": "Challa007 & Bombur",
   "@jcz-version": "5.12.1",
   "@fcz-version": "7.2.0",
-  "@version": "0.13.4-ai",
+  "@version": "0.13.5-ai",
   "about": {
     "author": "Autor",
     "configuration-file": "Konfigurationsdatei",
@@ -97,6 +97,7 @@
     "done": "Erledigt",
     "engine-error": "Engine Fehler",
     "field-is-required": "{field} ist notwendig",
+    "figures": "Figuren",
     "game-engine-not-available": "Spiel-Engine nicht verfügbar.",
     "incomplete-features": "Unvollständige Gebiete",
     "no-core-set": "Kein Basispaket!",

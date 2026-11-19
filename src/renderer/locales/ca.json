@@ -2,7 +2,7 @@
   "@author": "J0anJosep",
   "@jcz-version": "5.12.1",
   "@fcz-version": "7.2.0",
-  "@version": "0.13.4-ai",
+  "@version": "0.13.5-ai",
   "about": {
     "author": "Autor",
     "configuration-file": "Fitxer de configuració",
@@ -97,6 +97,7 @@
     "done": "Fet",
     "engine-error": "Error del motor",
     "field-is-required": "Cal {field}",
+    "figures": "Figures",
     "game-engine-not-available": "El motor del joc no està disponible.",
     "incomplete-features": "Elements incomplets",
     "no-core-set": "No hi ha cap joc base!",

@@ -2,7 +2,7 @@
   "@author": "Snearone",
   "@jcz-version": "5.12.1",
   "@fcz-version": "7.2.0",
-  "@version": "0.13.4-ai",
+  "@version": "0.13.5-ai",
   "about": {
     "author": "Autor",
     "configuration-file": "Plik konfiguracyjny",
@@ -97,6 +97,7 @@
     "done": "Gotowe",
     "engine-error": "Błąd silnika",
     "field-is-required": "{field} jest wymagane",
+    "figures": "Pionki",
     "game-engine-not-available": "Silnik gry niedostępny.",
     "incomplete-features": "Nieukończone obszary",
     "no-core-set": "Brak gry podstawowej!",

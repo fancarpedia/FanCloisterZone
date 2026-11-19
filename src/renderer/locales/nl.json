@@ -2,7 +2,7 @@
   "@author": "Kiap1969 & Sinscerly",
   "@jcz-version": "5.12.1",
   "@fcz-version": "7.2.0",
-  "@version": "0.13.4-ai",
+  "@version": "0.13.5-ai",
   "about": {
     "author": "Auteur",
     "configuration-file": "Configuratiebestand",
@@ -97,6 +97,7 @@
     "done": "Klaar",
     "engine-error": "Programmafout",
     "field-is-required": "{field} is verplicht",
+    "figures": "Speelstukken",
     "game-engine-not-available": "Spelmachine niet beschikbaar.",
     "incomplete-features": "Onafgebouwde projecten",
     "no-core-set": "Er is geen hoofdset!",

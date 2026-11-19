@@ -2,7 +2,7 @@
   "@author": "Black Bear",
   "@jcz-version": "5.12.1",
   "@fcz-version": "7.2.0",
-  "@version": "0.13.4-ai",
+  "@version": "0.13.5-ai",
   "about": {
     "author": "Auteur",
     "configuration-file": "Fichier de configuration",
@@ -97,6 +97,7 @@
     "done": "Terminé",
     "engine-error": "Erreur du moteur",
     "field-is-required": "{field} est obligatoire",
+    "figures": "Pions",
     "game-engine-not-available": "Moteur de jeu non disponible.",
     "incomplete-features": "Zones incomplètes",
     "no-core-set": "Pas de jeu de base !",

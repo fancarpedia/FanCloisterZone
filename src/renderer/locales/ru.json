@@ -2,7 +2,7 @@
   "@author": "pOison & Dextea & SonicDC",
   "@jcz-version": "5.12.1",
   "@fcz-version": "7.2.0",
-  "@version": "0.13.4-ai",
+  "@version": "0.13.5-ai",
   "about": {
     "author": "Автор",
     "configuration-file": "Файл конфигурации",
@@ -97,6 +97,7 @@
     "done": "Готово",
     "engine-error": "Ошибка движка",
     "field-is-required": "необходим {field}",
+    "figures": "Фигуры",
     "game-engine-not-available": "Игровой движок недоступен.",
     "incomplete-features": "Незавершенные функции",
     "no-core-set": "Отсутствует основной набор!",

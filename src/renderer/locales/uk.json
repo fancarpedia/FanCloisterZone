@@ -2,7 +2,7 @@
   "@author": "ai",
   "@jcz-version": "5.12.1",
   "@fcz-version": "7.2.0",
-  "@version": "0.13.4-ai",
+  "@version": "0.13.5-ai",
   "about": {
     "author": "Автор",
     "configuration-file": "Файл конфігурації",
@@ -97,6 +97,7 @@
     "done": "Готово",
     "engine-error": "Помилка рушія",
     "field-is-required": "Потрібно заповнити: {field}",
+    "figures": "Фігурки",
     "game-engine-not-available": "Ігровий рушій недоступний.",
     "incomplete-features": "Незавершені об’єкти",
     "no-core-set": "Не вибрано основний набір!",

@@ -2,7 +2,7 @@
   "@author": "Peťul",
   "@jcz-version": "5.12.1",
   "@fcz-version": "7.2.0",
-  "@version": "0.13.4-ai",
+  "@version": "0.13.5-ai",
   "about": {
     "author": "Autor",
     "configuration-file": "Konfigurační soubor",
@@ -97,6 +97,7 @@
     "done": "Hotovo",
     "engine-error": "Chyba programu",
     "field-is-required": "Povinné: {field}",
+    "figures": "Figurky",
     "game-engine-not-available": "Herní engine nebyl nalezen.",
     "incomplete-features": "Nedokončená území",
     "no-core-set": "Nevybrána žádná základní sada!",

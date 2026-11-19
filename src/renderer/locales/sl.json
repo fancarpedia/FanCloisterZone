@@ -2,7 +2,7 @@
   "@author": "TileLord | Erol",
   "@jcz-version": "5.12.1",
   "@fcz-version": "7.2.0",
-  "@version": "0.13.4-ai",
+  "@version": "0.13.5-ai",
   "about": {
     "author": "Avtor",
     "configuration-file": "Konfiguracijska datoteka",
@@ -97,6 +97,7 @@
     "done": "Končano",
     "engine-error": "Napaka motorja",
     "field-is-required": "{field} je obvezno",
+    "figures": "Figure",
     "game-engine-not-available": "Igralni pogon ni na voljo.",
     "incomplete-features": "Nedokončane značilnosti",
     "no-core-set": "Ni osnovnega seta!",

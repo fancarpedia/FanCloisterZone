@@ -2,7 +2,7 @@
   "@author": "Carlium & Meepledrone",
   "@jcz-version": "5.12.1",
   "@fcz-version": "7.2.0",
-  "@version": "0.13.4-ai",
+  "@version": "0.13.5-ai",
   "about": {
     "author": "Autor",
     "configuration-file": "Archivo de configuración",
@@ -97,6 +97,7 @@
     "done": "Hecho",
     "engine-error": "Error de motor",
     "field-is-required": "{field} es requerido",
+    "figures": "Figuras",
     "game-engine-not-available": "Motor de juego no disponible.",
     "incomplete-features": "Elementos incompletos",
     "no-core-set": "¡No hay conjunto básico!",
