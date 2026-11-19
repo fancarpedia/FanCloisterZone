@@ -151,7 +151,7 @@ async function createMenu(win, messages) {
         { id: 'game-tiles', label: $t('menu.tiles') || 'Tiles', click() { targetWin().webContents.send('menu.game-tiles') } },
         { id: 'game-farm-hints', label: withKey($t('menu.farm-hints') || 'Farm Hints', 'F'), type: 'checkbox', checked: DEFAULT_CHECKED['game-farm-hints'], click() { targetWin().webContents.send('menu.game-farm-hints') } },
         { id: 'game-feature-hints', label: withKey($t('menu.feature-hints') || 'Feature Hints', 'T'), type: 'checkbox', checked: DEFAULT_CHECKED['game-feature-hints'], click() { targetWin().webContents.send('menu.game-feature-hints') } },
-        { id: 'game-potential-score', label: $t('menu.potential-final-score') || 'Potential Final Score', type: 'checkbox', checked: DEFAULT_CHECKED['game-potential-score'], click() { targetWin().webContents.send('menu.game-potential-score') } },
+        { id: 'game-potential-score', label: withKey($t('menu.potential-final-score') || 'Potential Final Score', 'P'), type: 'checkbox', checked: DEFAULT_CHECKED['game-potential-score'], click() { targetWin().webContents.send('menu.game-potential-score') } },
         { id: 'toggle-history', label: withKey($t('menu.toggle-history') || 'Toggle History', 'H'), type: 'checkbox', checked: DEFAULT_CHECKED['toggle-history'], click() { targetWin().webContents.send('menu.game-history') } }
       ]
     }, {
