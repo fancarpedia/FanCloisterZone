@@ -52,6 +52,14 @@ describe('aiSupport(setup)', () => {
     expect(r.expansions).toEqual(['TOWER'])
   })
 
+  it('an allowlist: any element switched on that is not listed disables AI — even an unknown one', () => {
+    const r = aiSupport({ sets: { BASIC: 1 }, elements: { 'small-follower': 7, 'farmers': true, 'some-addon-thing': 1, 'other-addon-thing': false }, rules: {} }, tiles)
+    expect(r.ok).toBe(false)
+    expect(r.elements).toEqual(['some-addon-thing'])
+    expect(isAiElement('some-addon-thing')).toBe(false)
+    expect(read('ai-support.js')).not.toContain('NON_AI_ELEMENT')
+  })
+
   it('names an element switched on that the AI does not play, but not one an AI set brings in', () => {
     const r = aiSupport({ sets: { BASIC: 1 }, elements: { abbot: 1, dragon: false, wagon: 0 }, rules: {} }, tiles)
     expect(r.elements).toEqual(['abbot'])

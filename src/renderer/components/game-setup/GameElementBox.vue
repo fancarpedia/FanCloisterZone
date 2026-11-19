@@ -19,7 +19,7 @@
     </div>
     <!-- the AI plays this (utils/ai-support.js): AI players stay available with it -->
     <div v-if="aiPlayable" class="ai-badge" :title="$t('game-setup.ai.supported')">
-      <v-icon x-small>fa-solid fa-robot</v-icon>
+      <v-icon small>fa-solid fa-robot</v-icon>
     </div>
     <GameElementButtons
       :mutable="mutable && enabled && !blockedReason"
@@ -126,13 +126,7 @@ export default {
     left: 6px
     z-index: 1
     line-height: 1
-    padding: 3px
-    border-radius: 50%
-    background: rgba(33, 150, 243, 0.18)
     cursor: default
-
-    .v-icon
-      color: #2196f3
 
   .keep-building-badge
     position: absolute

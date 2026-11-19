@@ -15,17 +15,12 @@ const AI_CORE_EXPANSIONS = new Set([
   'WIND_ROSES', 'WATCHTOWERS', 'DARMSTADT', 'LABYRINTH', 'SPIEL_DOCH'
 ])
 
-// figures and mechanics the AI does not play (the boxes the AI mode hid), by GameElement key
-const NON_AI_ELEMENT_KEYS = [
-  'ABBOT', 'PHANTOM', 'MINI_FOLLOWER', 'MAYOR', 'WAGON', 'BARN', 'SHEPHERD', 'RINGMASTER', 'OBELISK',
-  'WINDMILL', 'DECINSKY_SNEZNIK',
-  'FAIRY', 'BLACK_FAIRY', 'DRAGON', 'COUNT', 'MAGE', 'WITCH', 'BIG_TOP', 'DONKEY', 'COURIER',
-  'TOWER', 'BLACK_TOWER', 'ABBEY', 'KINGDOM_PALACE', 'BRIDGE', 'CASTLE', 'TUNNEL', 'FERRY', 'LITTLE_BUILDINGS',
-  'KING', 'ROBBER', 'GOLD',
-  'GARDEN', 'PRINCESS', 'PORTAL', 'BAZAAR', 'HILL', 'VINEYARD', 'PIG_HERD', 'SHRINE', 'FESTIVAL',
-  'SIEGE', 'ESCAPE', 'ACROBATS', 'FAMILIES', 'ROBBERS_SON', 'WELL', 'FLOWERS', 'MARKETPLACE',
-  'METEORITE', 'FISHERMEN', 'FISHHUT',
-  'KEEP_BUILDING', 'PRE_DRAW'
+// figures and mechanics the AI plays, by GameElement key — an ALLOWLIST: every other element
+// switched on (including any new or add-on element nobody has checked yet) disables AI players
+// unless an AI expansion brings it in itself. Add an element here only once the engine AI
+// (LegacyAiPlayer / LegacyRanking) really handles it.
+const AI_ELEMENT_KEYS = [
+  'SMALL_FOLLOWER', 'BIG_FOLLOWER', 'BUILDER', 'PIG', 'TRADERS', 'FARMERS', 'CATHEDRAL', 'INN'
 ]
 
 // gameplay / scoring variants the AI plays only at their default (the ones the AI mode hid)
@@ -49,7 +44,7 @@ export const isAiExpansion = exp => {
 /** Is this element (a GameElement, or its id) one the AI plays? */
 export const isAiElement = item => {
   const id = typeof item === 'string' ? item : item && item.id
-  return !!id && !ids(GameElement, NON_AI_ELEMENT_KEYS).has(id)
+  return !!id && ids(GameElement, AI_ELEMENT_KEYS).has(id)
 }
 
 /**
@@ -72,9 +67,9 @@ export const aiSupport = (setup, tiles) => {
     if (!e) return
     ;[...(e.implies || []), ...(e.enforces || []), ...(e.impliesAllowed || [])].forEach(id => broughtIn.add(id))
   })
-  const nonAiElements = ids(GameElement, NON_AI_ELEMENT_KEYS)
+  const aiElements = ids(GameElement, AI_ELEMENT_KEYS)
   const badElements = Object.entries(elements)
-    .filter(([id, value]) => nonAiElements.has(id) && isConfigValueEnabled(value) && value !== null && value !== undefined && !broughtIn.has(id))
+    .filter(([id, value]) => !aiElements.has(id) && isConfigValueEnabled(value) && value !== null && value !== undefined && !broughtIn.has(id))
     .map(([id]) => id)
 
   const badRules = NON_AI_RULE_KEYS
