@@ -491,15 +491,17 @@ export default {
   top: 0
   right: 0
 
-@media (max-width: 1080px)
-  .action-panel > section
-    .pass-item
-      margin-left: 20px
-
 // Small screens: the bar takes the full width instead of leaving the deck counter a slot beside
 // it (game.vue moves that below the bar). Same breakpoint as the active-player tint (shared.sass).
+// TEMPORARY, for testing: the Rotate button shows on large screens too (normally `display: none`
+// here and shown only in the small-screen media query below). Revert both rules when done.
 .rotate-placed
-  display: none
+  display: block
+
+.action-panel > .rotate-first
+  flex: 0 0 auto
+  align-self: center
+  margin: 0 4px 0 12px
 
 @media (max-width: $small-screen-max-width)
   .rotate-placed

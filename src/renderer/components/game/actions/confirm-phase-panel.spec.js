@@ -41,8 +41,9 @@ describe('TilePlacementConfirmPhaseAction', () => {
 describe('the Rotate option in ActionPanel', () => {
   const tpl = template(panel)
 
-  it('hides anything marked rotate-placed by default', () => {
-    expect(panel).toMatch(/\.rotate-placed\n {2}display: none/)
+  // TEMPORARY, for testing: shown on large screens too — back to `display: none` when reverted
+  it('shows rotate-placed on large screens too (temporary, for testing)', () => {
+    expect(panel).toMatch(/\.rotate-placed\n {2}display: block/)
   })
 
   it('shows it only inside the small-screen media query', () => {
