@@ -475,7 +475,7 @@ export default {
     align-items: center
 
     .pass-item
-      margin-left: 40px
+      margin-left: 10px
       text-align: center
 
   .tile-img
@@ -519,11 +519,6 @@ export default {
     // keep clear of the web build's burger button (40px, top-right) instead of running under it
     &.web
       padding-right: 56px
-
-    > section
-      // icon-only buttons sit closer together than worded ones
-      .pass-item
-        margin-left: 12px
 
 @media (max-height: 768px)
   .action-panel

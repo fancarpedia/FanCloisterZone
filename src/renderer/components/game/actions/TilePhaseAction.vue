@@ -1,35 +1,55 @@
 <template>
   <section>
-    <span v-if="phase === 'TileFromSupplyPhase'" class="text">
+    <!-- the supply wording only while a supply tile is actually offered (and no hand tile picked):
+         once a pre-draw player passed it (drew the last tile), it is a plain "place the tile" -->
+    <span v-if="phase === 'TileFromSupplyPhase' && placements.length && !preDrawTile" class="text">
       {{ local ? $t('game.action.you-may-place-a-tile-from-supply') : $t('game.action.player-may-place-a-tile-from-supply') }}
+    </span>
+    <!-- pre-draw, no tile in the panel yet (nothing picked from the hand, no supply tile offered):
+         the player first chooses a tile from their hand -->
+    <span v-else-if="phase === 'TileFromSupplyPhase' && !preDrawTile && !tilePlacement" class="text">
+      {{ local ? $t('game.action.choose-a-tile-from-your-hand') : $t('game.action.player-is-choosing-a-tile') }}
     </span>
     <span v-else class="text">
       {{ local ? $t('game.action.place-the-tile') : $t('game.action.player-must-place-the-tile') }}
     </span>
-    <!-- A real supply tile (abbey / bazaar). A pre-draw tile is NOT here — its action is opaque
-         (the engine can't see the secret hand); it is placed from the hand tray (PreDrawHand.vue).
-         While the player has picked a pre-draw tile to place, this (abbey) ghost yields the board so
-         only one placement ghost is active at a time. -->
+    <!-- Pre-draw: the tile picked from the secret hand (PreDrawHand.vue) is shown and placed HERE,
+         like a drawn tile — click it (or right-click the board) to turn it. It reveals + validates
+         through PLACE_PREDRAWN. Keyed by hand index, so picking another tile starts fresh. -->
     <TilePlacementItem
-      v-if="tilePlacement"
-      :key="tilePlacement.tileId"
-      :tile-id="tilePlacement.tileId"
-      :options="tilePlacement.options"
-      :active="!preDrawSelected"
-      :local="local"
+      v-if="preDrawTile"
+      :key="'predraw-' + preDrawTile.index"
+      :tile-id="preDrawTile.tileId"
+      :options="preDrawTile.options"
+      active
+      :local="true"
+      place-message-type="PLACE_PREDRAWN"
     />
-    <!-- several supply tiles at once (abbey + Kingdom Palace, bazaar tile + …): the others wait as
-         thumbnails; clicking one makes it the tile placed on the board -->
-    <StandaloneTileImage
-      v-for="alt in otherPlacements"
-      :key="'alt-' + alt.tileId"
-      class="alt-tile"
-      :class="{ remote: !local }"
-      :tile-id="alt.tileId"
-      :size="40"
-      :title="$t('game.action.place-this-tile-instead')"
-      @click="local && (selectedTileId = alt.tileId)"
-    />
+    <!-- The supply tiles (abbey / Kingdom Palace / bazaar …) in a FIXED order: the chosen one is the
+         live placement (marked with a border when there is a choice), the others wait as thumbnails
+         in their own places — choosing one doesn't reorder them. While a hand tile is picked, all
+         of them are thumbnails. -->
+    <template v-for="pl in placements">
+      <TilePlacementItem
+        v-if="!preDrawTile && pl === tilePlacement"
+        :key="pl.tileId"
+        :tile-id="pl.tileId"
+        :options="pl.options"
+        active
+        :local="local"
+        :class="{ chosen: placements.length > 1 }"
+      />
+      <StandaloneTileImage
+        v-else
+        :key="'alt-' + pl.tileId"
+        class="alt-tile"
+        :class="{ remote: !local }"
+        :tile-id="pl.tileId"
+        :size="40"
+        :title="$t('game.action.place-this-tile-instead')"
+        @click="local && chooseSupplyTile(pl.tileId)"
+      />
+    </template>
     <!-- Pre-draw: the engine allows no pass here (tiles come from the secret hand), so skipping the
          offered supply tile(s) is the server's pass — it deals the held-back tile, and the passed
          abbey / palace leaves this panel. Outside pre-draw the regular pass button below does it. -->
@@ -38,7 +58,7 @@
         :large="$vuetify.breakpoint.height > 768"
         color="secondary"
         icon="fa-forward"
-        :label="$t('game.action.skip-action')"
+        :label="$t('game.action.draw-a-tile')"
         @click="skipSupply"
       />
     </div>
@@ -83,9 +103,6 @@ export default {
     tilePlacement () {
       return this.placements.find(i => i.tileId === this.selectedTileId) || this.placements[0] || null
     },
-    otherPlacements () {
-      return this.placements.filter(i => i !== this.tilePlacement)
-    },
     // Skip, in a pre-draw game, when at least one supply tile (abbey / Kingdom Palace) is offered and
     // the engine itself allows no pass
     showSkip () {
@@ -94,15 +111,45 @@ export default {
       if (!(els && els['pre-draw'])) return false
       return this.placements.some(i => i.tileId === 'AM/A' || isKingdomPalace(i.tileId))
     },
-    // When the player has picked a pre-draw tile to place, let it own the board ghost.
-    preDrawSelected () {
-      return !!this.$store.state.predraw.selected
+    // the tile the local player picked from the pre-draw hand — placed from this panel
+    preDrawTile () {
+      return this.local ? this.$store.state.predraw.selected : null
     }
   },
 
+  mounted () {
+    window.addEventListener('keydown', this.onKeyDown)
+    // a supply tile clicked in the pre-draw hand (PreDrawHand.vue) — place that one
+    this.$root.$on('tile-from-supply.choose', this.onChooseFromHand)
+  },
+
+  beforeDestroy () {
+    window.removeEventListener('keydown', this.onKeyDown)
+    this.$root.$off('tile-from-supply.choose', this.onChooseFromHand)
+  },
+
   methods: {
+    // a supply tile thumbnail was clicked: it becomes the tile placed (a picked hand tile is dropped)
+    chooseSupplyTile (tileId) {
+      if (this.preDrawTile) this.$store.dispatch('predraw/clearSelection')
+      this.selectedTileId = tileId
+    },
+
+    onChooseFromHand (tileId) {
+      if (this.local && this.placements.some(i => i.tileId === tileId)) this.chooseSupplyTile(tileId)
+    },
+
     skipSupply () {
       this.$store.dispatch('predraw/passAbbey')
+    },
+
+    // Space = Skip, like Space = Pass elsewhere (ActionPanel.onKeyDown handles the engine's own pass;
+    // the pre-draw Skip is not an engine pass, so it needs its own key)
+    onKeyDown (ev) {
+      if (ev.key === ' ' && this.showSkip && !this.$store.state.gameDialog && !this.$store.state.gameChatEdit) {
+        ev.preventDefault()
+        this.skipSupply()
+      }
     }
   }
 }
@@ -113,7 +160,16 @@ export default {
   font-size: 20px
   font-weight: 300
 
+// the chosen supply tile, when there are several to choose from. Same box and spacing as the
+// others (the placement tile's own 30px side margins dropped), so switching doesn't shift the row.
+.chosen
+  outline: 3px solid #ffd54f
+  outline-offset: 2px
+  border-radius: 2px
+  margin: 0 10px
+
 .alt-tile
+  margin: 0 10px
   cursor: pointer
   opacity: 0.75
   align-self: center

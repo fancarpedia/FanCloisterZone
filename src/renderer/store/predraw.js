@@ -11,7 +11,9 @@ export const state = () => ({
   selected: null, // { tileId, options } the hand tile currently picked for board placement
   handMax: 0,   // N = max regular hand (public; from the redacted GAME payload)
   mySeat: null, // our engine player index (from the redacted GAME)
-  abbeyPassed: false // we passed the abbey this turn → pre-draw cap is back to N
+  abbeyPassed: false, // we passed the abbey this turn → pre-draw cap is back to N
+  deckEmpty: false, // no tile left in the pre-draw deck: free hand slots will never be refilled
+  handRect: null // the hand box on screen { left, right, top, bottom } — chat launchers step aside
 })
 
 export const mutations = {
@@ -23,6 +25,13 @@ export const mutations = {
     state.handMax = 0
     state.mySeat = null
     state.abbeyPassed = false
+    state.deckEmpty = false
+  },
+  setHandRect (state, rect) {
+    state.handRect = rect
+  },
+  setDeckEmpty (state, val) {
+    state.deckEmpty = !!val
   },
   setSelected (state, selected) {
     state.selected = selected
@@ -69,7 +78,10 @@ export const actions = {
     commit('setHand', payload.myHand || [])
     commit('setCounts', payload.handCounts || {})
     commit('setMySeat', payload.mySeat)
-    commit('setAbbeyPassed', false)
+    // reopened / reconnected mid-turn: whether we already passed our abbey / Kingdom Palace this turn
+    // (server 1.71+; older servers don't say → not passed)
+    commit('setAbbeyPassed', !!payload.abbeyPassed)
+    commit('setDeckEmpty', payload.deckSize === 0)
   },
 
   // outgoing (client -> server) — draw one tile into the secret hand (server enforces the cap).
@@ -89,7 +101,7 @@ export const actions = {
   // Pick a secret hand tile to place: ask the engine (non-mutating %placements query) for its
   // legal placements on the current board, then expose it as the active placement so the board
   // shows the ghost + options (the tile is in the public pack, so this leaks nothing).
-  async selectForPlacement ({ commit }, { index, tileId }) {
+  async selectForPlacement ({ commit, rootState }, { index, tileId }) {
     const engine = this._vm.$engine.get()
     if (!engine) return
     let options = []
@@ -101,6 +113,9 @@ export const actions = {
     } catch (e) {
       console.error('pre-draw %placements query failed', e)
     }
+    // The query is async: if the tile phase ended meanwhile (the tile got placed, the turn moved on),
+    // a late pick must not come back as a stale selection.
+    if (rootState.game.phase !== 'TileFromSupplyPhase') return
     // Select by hand INDEX (tileId can be duplicated in hand) — only this entry activates.
     commit('setSelected', { index, tileId, options })
   },
@@ -115,6 +130,11 @@ export const actions = {
   },
   handlePublic ({ commit }, payload) {
     commit('setCount', { seat: payload.seat, count: payload.count }) // PUBLIC: no tile id
+    if (payload.deckRemaining === 0) commit('setDeckEmpty', true) // that was the last tile
+  },
+  // PRE_DRAW_EMPTY (server 1.71+): a draw / pass / end-of-turn refill found no tile left in the deck
+  handleDeckEmpty ({ commit }) {
+    commit('setDeckEmpty', true)
   },
   // PASS_ABBEY_PUBLIC: someone passed their abbey this turn. If it's us, raise our local cap to N.
   handlePassAbbey ({ commit, state }, payload) {

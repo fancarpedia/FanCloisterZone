@@ -105,6 +105,12 @@
       <div v-if="auctionedTile" class="bazaar-tile">
         <StandaloneTileImage :tile-id="auctionedTile" />
       </div>
+
+      <!-- pre-draw game: how many tiles the player holds in their secret hand (0 shown too) -->
+      <div v-if="preDraw" class="item item-hand" :title="$t('predraw.tiles-in-hand')">
+        <v-icon class="hand-icon">fas fa-clone</v-icon>
+        <span class="count">{{ handCount }}</span>
+      </div>
     </div>
   </section>
 </template>
@@ -133,6 +139,16 @@ export default {
   },
 
   computed: {
+    preDraw () {
+      const els = this.$store.state.game.setup && this.$store.state.game.setup.elements
+      return !!(els && els['pre-draw'])
+    },
+    // the public hand size (PRE_DRAW_PUBLIC); our own seat from our own hand
+    handCount () {
+      const pd = this.$store.state.predraw
+      if (this.index === pd.mySeat) return pd.myHand.length
+      return pd.counts[this.index] || 0
+    },
     ...mapState({
       timer: state => state.game.setup.timer,
       turnPlayer: state => state.game.turnPlayer,
@@ -412,6 +428,17 @@ section
 
   .item-token
     margin: 0 2px
+
+  // pre-draw hand size: a card-stack icon with the count badge
+  .item-hand
+    margin: 0 2px
+    display: flex
+    align-items: center
+
+    .hand-icon
+      font-size: 26px
+      position: relative
+      z-index: 2
 
     .token-image
       position: relative

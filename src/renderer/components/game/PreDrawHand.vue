@@ -5,19 +5,22 @@
     </div>
     <div class="tiles">
       <template v-for="(tileId, i) in myHand">
-        <!-- The picked tile becomes a live placement: same supply mechanism as abbey/bazaar
-             (TilePlacementItem), but it reveals + validates via PLACE_PREDRAWN. Selection is by hand
-             INDEX (not tileId) so duplicate tiles in hand don't both activate. -->
-        <TilePlacementItem
+        <!-- The picked tile is placed from the action panel (TilePhaseAction shows it there as the
+             live TilePlacementItem, like a drawn tile). Here it stays highlighted with the rotate
+             symbol: clicking it again turns the panel tile (the same 'rclick' the board uses). -->
+        <div
           v-if="canPlace && selected && selected.index === i"
           :key="'sel' + i"
-          :tile-id="tileId"
-          :options="selected.options"
-          active
-          :local="true"
-          place-message-type="PLACE_PREDRAWN"
-          class="tile selected"
-        />
+          class="selected-wrap"
+        >
+          <StandaloneTileImage
+            :tile-id="tileId"
+            :size="60"
+            class="tile selected"
+            @click.native="rotateSelected"
+          />
+          <v-icon class="rotate-icon">fas fa-sync-alt</v-icon>
+        </div>
         <StandaloneTileImage
           v-else
           :key="i"
@@ -28,21 +31,40 @@
           @click.native="onTileClick(i, tileId)"
         />
       </template>
-      <div v-if="!myHand.length" class="empty">{{ $t('predraw.empty') }}</div>
-    </div>
-    <button
-      v-if="canDraw"
-      class="draw-btn"
-      @click="drawTile"
-    >{{ $t('predraw.draw') }} ({{ myHand.length }}/{{ effectiveMax }})</button>
-    <button
-      v-else-if="canPassAbbey"
-      class="draw-btn"
-      @click="passAbbey"
-    >{{ passLabel }}</button>
-    <div v-if="canPlace && myHand.length" class="hint">{{ $t('predraw.pick-hint') }}</div>
-    <div v-if="otherCounts.length" class="counts">
-      <span v-for="c in otherCounts" :key="c.seat">P{{ c.seat + 1 }}: {{ c.count }}</span>
+      <!-- the free places of the hand stay as empty slots, so the panel keeps its size (and the
+           tiles their places) when a tile is placed, until the next one is drawn -->
+      <!-- The first free slot is the draw button: clicking it draws a tile into it. When the last
+           slot is held back for a supply tile (abbey / Kingdom Palace), the click passes that tile
+           this turn and so draws the held-back one (the tooltip says so). -->
+      <div
+        v-for="n in emptySlots"
+        :key="'empty' + n"
+        class="tile empty-slot"
+        :class="{ drawable: n === 1 && slotAction }"
+        :title="n === 1 && slotAction ? slotTitle : (deckEmpty ? $t('predraw.no-tiles-left') : null)"
+        @click="n === 1 && onDrawSlot()"
+      >
+        <v-icon v-if="n === 1 && slotAction" class="draw-icon">fas fa-plus</v-icon>
+        <!-- the deck is empty: this slot will never be refilled -->
+        <v-icon v-else-if="deckEmpty" class="never-icon">fas fa-ban</v-icon>
+        <!-- not drawable now (another player's turn, or later in ours): the slot waits to be refilled -->
+        <v-icon v-else class="wait-icon">fas fa-hourglass-half</v-icon>
+      </div>
+      <div v-if="!myHand.length && !emptySlots" class="empty">{{ $t('predraw.empty') }}</div>
+      <!-- the player's supply (abbey / Kingdom Palace), after a divider: a supply tile offered for
+           placement right now is clickable and becomes the tile placed from the action panel -->
+      <template v-if="supplyTiles.length">
+        <div class="supply-divider" />
+        <StandaloneTileImage
+          v-for="(t, si) in supplyTiles"
+          :key="'supply' + si"
+          :tile-id="t.tileId"
+          :size="60"
+          class="tile supply-tile"
+          :class="{ selectable: t.offered, unavailable: !t.offered }"
+          @click.native="t.offered && chooseSupplyTile(t.tileId)"
+        />
+      </template>
     </div>
   </div>
 </template>
@@ -50,11 +72,10 @@
 <script>
 import { mapState } from 'vuex'
 import StandaloneTileImage from '@/components/game/StandaloneTileImage.vue'
-import TilePlacementItem from '@/components/game/actions/items/TilePlacementItem.vue'
-import { isKingdomPalace } from '@/utils/kingdom-palace'
+import { isKingdomPalace, kingdomPalaceTileId } from '@/utils/kingdom-palace'
 
 export default {
-  components: { StandaloneTileImage, TilePlacementItem },
+  components: { StandaloneTileImage },
 
   data () {
     return {
@@ -69,7 +90,7 @@ export default {
   },
 
   computed: {
-    ...mapState('predraw', ['myHand', 'counts', 'selected', 'handMax', 'abbeyPassed', 'mySeat']),
+    ...mapState('predraw', ['myHand', 'counts', 'selected', 'handMax', 'abbeyPassed', 'mySeat', 'deckEmpty']),
     positionStyle () {
       return { left: this.position.left + 'px', bottom: this.position.bottom + 'px' }
     },
@@ -98,6 +119,25 @@ export default {
       return !!(els && els.bazaar)
     },
     // Pre-draw cap right now: N, minus 1 if bazaar is in play, minus 1 more while an unpassed abbey is held.
+    // free places in the hand (its full size minus the tiles held), drawn as empty slots; before
+    // the hand size is known (handMax 0) one slot still stands for the draw button
+    emptySlots () {
+      if (this.handMax <= 0) return this.canDraw ? 1 : 0
+      return Math.max(0, this.handMax - this.myHand.length)
+    },
+    // what clicking the first free slot does: draw, or pass the held supply tile (which deals the
+    // held-back tile into that slot); null = the slot is just empty
+    slotAction () {
+      if (this.deckEmpty) return null // nothing left to draw — neither a draw nor a pass brings a tile
+      if (this.canDraw) return 'draw'
+      if (this.canPassAbbey) return 'pass'
+      return null
+    },
+    slotTitle () {
+      // one wording for every supply tile (abbey, Kingdom Palace, …)
+      if (this.slotAction === 'pass') return this.$t('predraw.pass-tile-from-supply')
+      return `${this.$t('predraw.draw')} (${this.myHand.length}/${this.effectiveMax})`
+    },
     effectiveMax () {
       if (this.handMax <= 0) return 0
       const base = Math.max(0, this.handMax - (this.bazaarInPlay ? 1 : 0))
@@ -120,15 +160,6 @@ export default {
     canPassAbbey () {
       return this.myTurn && this.abbeyHeld && !this.abbeyPassed && (this.handMax <= 0 || this.myHand.length < this.handMax)
     },
-    // name what is being passed: the abbey keeps its own wording; any other held supply tile (a City
-    // Palace) is named after its element, so the button isn't mistaken for an abbey-only one
-    passLabel () {
-      const { action, players } = this.$store.state.game
-      const p = action && players ? players[action.player] : null
-      const tokens = (p && p.tokens) || {}
-      if (tokens.ABBEY_TILE && tokens.ABBEY_TILE.count > 0) return this.$t('predraw.pass-abbey')
-      return this.$t('predraw.pass-supply-tile', { name: this.$t('game.element.kingdom-palace') })
-    },
     // Is any held supply tile (abbey / Kingdom Palace) placeable right now? The engine offers a supply
     // tile as a TilePlacement only when it has a legal spot (a hole for the abbey, an own-occupied
     // city without a palace for a palace).
@@ -137,18 +168,50 @@ export default {
       return !!(action && (action.items || []).some(i =>
         i.type === 'TilePlacement' && (i.tileId === 'AM/A' || isKingdomPalace(i.tileId))))
     },
+    // Our turn, nothing picked from the hand and no supply tile to place now (none held, none with a
+    // legal spot, or passed this turn): the hand is the only choice, so its first tile is picked
+    // automatically (shown in the action panel, ready to place). Another hand tile can still be picked.
+    autoSelectDue () {
+      if (!this.canPlace || this.selected || !this.myHand.length) return false
+      const action = this.$store.state.game.action
+      const supplyOffered = !!(action && (action.items || []).some(i => i.type === 'TilePlacement' &&
+        !(this.abbeyPassed && (i.tileId === 'AM/A' || isKingdomPalace(i.tileId)))))
+      return !supplyOffered
+    },
     // Holding supply tile(s) that cannot be placed anywhere this turn keeps the last pre-draw slot
     // reserved for nothing — so pass automatically: the server then deals the held-back tile
     // (exactly the "Pass … (draw last tile)" button, which would be the only sensible choice).
     autoPassDue () {
       return this.canPassAbbey && !this.supplyPlaceable
     },
-    otherCounts () {
-      return Object.keys(this.counts).map(seat => ({ seat: +seat, count: this.counts[seat] }))
+    // the local player's supply tiles (abbey tiles, Kingdom Palaces), always shown; each marked
+    // whether it can be placed right now — not once passed this turn (also the automatic pass when a
+    // hand tile is placed instead), which only leaves the action panel and dims it here
+    supplyTiles () {
+      const { players, action } = this.$store.state.game
+      const me = this.mySeat === null || !players ? null : players[this.mySeat]
+      if (!me || !me.tokens) return []
+      const offered = new Set(this.canPlace && action
+        ? (action.items || []).filter(i => i.type === 'TilePlacement').map(i => i.tileId)
+        : [])
+      const tiles = []
+      const add = (tileId, count) => {
+        for (let k = 0; k < count; k++) tiles.push({ tileId, offered: offered.has(tileId) && !this.abbeyPassed })
+      }
+      add('AM/A', me.tokens.ABBEY_TILE?.count || 0)
+      add(kingdomPalaceTileId(me.slot), me.tokens.KINGDOM_PALACE?.count || 0)
+      return tiles
     }
   },
 
   watch: {
+    autoSelectDue: {
+      immediate: true,
+      handler (due) {
+        if (due) this.$store.dispatch('predraw/selectForPlacement', { index: 0, tileId: this.myHand[0] })
+      }
+    },
+
     autoPassDue: {
       immediate: true,
       handler (due) {
@@ -177,21 +240,43 @@ export default {
     }
     this.$nextTick(this.clampPosition)
     window.addEventListener('resize', this.clampPosition)
+    this.$nextTick(this.publishRect)
+  },
+
+  // the box changes size (tiles drawn / placed, supply shown) — keep its published place current
+  updated () {
+    this.publishRect()
   },
 
   beforeDestroy () {
+    this.$store.commit('predraw/setHandRect', null)
     window.removeEventListener('resize', this.clampPosition)
     document.removeEventListener('mousemove', this.onDrag)
     document.removeEventListener('mouseup', this.stopDrag)
   },
 
   methods: {
+    // the first free slot was clicked: draw into it, or pass the held supply tile to get the last one
+    onDrawSlot () {
+      if (this.slotAction === 'draw') this.drawTile()
+      else if (this.slotAction === 'pass') this.passAbbey()
+    },
     drawTile () {
       this.$store.dispatch('predraw/requestPreDraw')
     },
 
     passAbbey () {
       this.$store.dispatch('predraw/passAbbey')
+    },
+
+    // a supply tile was clicked: the action panel (TilePhaseAction) makes it the tile placed
+    chooseSupplyTile (tileId) {
+      this.$root.$emit('tile-from-supply.choose', tileId)
+    },
+
+    // turn the picked tile: its TilePlacementItem (in the action panel) rotates on 'rclick'
+    rotateSelected () {
+      this.$root.$emit('rclick')
     },
 
     onTileClick (index, tileId) {
@@ -219,6 +304,7 @@ export default {
       const margin = 8
       const maxLeft = Math.max(margin, window.innerWidth - this.dragWidth - margin)
       this.position.left = Math.min(Math.max(ev.clientX - this.dragOffset, margin), maxLeft)
+      this.$nextTick(this.publishRect)
     },
 
     stopDrag () {
@@ -237,6 +323,17 @@ export default {
       const width = this.$el ? this.$el.offsetWidth : 0
       const maxLeft = Math.max(margin, window.innerWidth - width - margin)
       this.position.left = Math.min(Math.max(this.position.left, margin), maxLeft)
+      this.$nextTick(this.publishRect)
+    },
+
+    // Where the box is on screen, for the chat launchers (ChatBulletDragMixin): one it would cover
+    // steps aside to the other side of the box. Published only when it actually changed.
+    publishRect () {
+      const el = this.$el
+      const r = el && el.getBoundingClientRect ? el.getBoundingClientRect() : null
+      const rect = r && r.width ? { left: Math.round(r.left), right: Math.round(r.right), top: Math.round(r.top), bottom: Math.round(r.bottom) } : null
+      const cur = this.$store.state.predraw.handRect
+      if (JSON.stringify(cur) !== JSON.stringify(rect)) this.$store.commit('predraw/setHandRect', rect)
     }
   }
 }
@@ -252,11 +349,15 @@ export default {
   color: #fff
   font-size: 12px
   user-select: none
+  // as wide as the row of tile slots (which never wraps)
+  width: min-content
+  min-width: 140px
 
   .title
     opacity: 0.8
     margin-bottom: 4px
     cursor: move
+    white-space: nowrap
 
     .drag-handle
       font-size: 12px
@@ -276,28 +377,70 @@ export default {
     .tile.selectable
       cursor: pointer
 
+    // the supply: a thin divider, then the supply tiles (dimmed while not placeable)
+    .supply-divider
+      align-self: stretch
+      width: 1px
+      margin: 0 2px
+      background: rgba(255, 255, 255, 0.35)
+
+    .tile.supply-tile.unavailable
+      opacity: 0.5
+
+    // the picked tile keeps its slot like every other tile, so the row doesn't jump on selection
     .tile.selected
       outline: 2px solid #ffd54f
+      margin: 0
+      cursor: pointer
+      display: block
+
+    // the rotate symbol sits on the picked tile; clicks pass through to the tile (which rotates)
+    .selected-wrap
+      position: relative
+      line-height: 0
+
+      .rotate-icon
+        position: absolute
+        right: 3px
+        bottom: 3px
+        font-size: 16px
+        color: white
+        filter: drop-shadow(0 0 1px black) drop-shadow(0 0 2px black)
+        pointer-events: none
+
+    // a free place of the hand, the size of a tile
+    .tile.empty-slot
+      width: 60px
+      height: 60px
+      box-sizing: border-box
+      border: 2px dashed rgba(255, 255, 255, 0.35)
+      display: flex
+      align-items: center
+      justify-content: center
+
+      .wait-icon
+        color: rgba(255, 255, 255, 0.35)
+        font-size: 18px
+
+      // the deck is empty: the slot stays free for good
+      .never-icon
+        color: rgba(255, 255, 255, 0.35)
+        font-size: 18px
+
+      // the slot that draws (the former Draw / Pass button): a dashed button with a plus
+      &.drawable
+        cursor: pointer
+        border-color: #ffd54f
+        background: rgba(255, 213, 79, 0.12)
+
+        .draw-icon
+          color: #ffd54f
+          font-size: 20px
+
+        &:hover
+          background: rgba(255, 213, 79, 0.25)
 
     .empty
       opacity: 0.6
 
-  .draw-btn
-    margin-top: 6px
-    padding: 4px 12px
-    border-radius: 4px
-    background: #ffd54f
-    color: #222
-    font-weight: 600
-    cursor: pointer
-
-  .hint
-    margin-top: 6px
-    opacity: 0.7
-
-  .counts
-    margin-top: 6px
-    display: flex
-    gap: 10px
-    opacity: 0.85
 </style>

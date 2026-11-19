@@ -2,6 +2,7 @@
   <StandaloneTileImage
     :tile-id="tileId"
     :rotation="rotation"
+    :size="size"
     :class="{remote: !local}"
     @click="onClick"
   />
@@ -30,7 +31,10 @@ export default {
     local: { type: Boolean },
     // Engine message dispatched on placement. Defaults to a normal draw placement; pre-draw uses
     // PLACE_PREDRAWN so the server validates the tile against the player's secret hand and reveals it.
-    placeMessageType: { type: String, default: 'PLACE_TILE' }
+    placeMessageType: { type: String, default: 'PLACE_TILE' },
+    // fixed image size in px; null = the image's own (action panel) size. The pre-draw hand passes
+    // its thumbnail size, so picking a tile doesn't blow it up and shift the hand around.
+    size: { type: Number, default: null }
   },
 
   data () {

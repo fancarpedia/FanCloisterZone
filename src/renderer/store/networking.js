@@ -61,11 +61,13 @@ class ConnectionHandler {
 	  return
 	}
 	if (ENGINE_MESSAGES.has(type)) {
+      // the engine places the tile FIRST, then a pre-drawn tile's reveal updates the secret-hand UI:
+      // the other way round the hand briefly looked like 'my tile phase, a free slot, nothing picked'
+      // and fired its automatic pass (refilling the hand) and auto-pick in the middle of the placement
+      await dispatch('game/handleEngineMessage', message, { root: true })
       if (type === 'PLACE_PREDRAWN') {
-        // reveal of a pre-drawn tile: update the secret-hand UI, then let the engine place it
         await dispatch('predraw/handlePlaced', { player: message.player, tileId: payload.tileId }, { root: true })
       }
-      await dispatch('game/handleEngineMessage', message, { root: true })
     } else if (type === 'WELCOME') {
       const reconnected = !!state.reconnectAttempt
       commit('sessionId', payload.sessionId)
@@ -190,6 +192,15 @@ class ConnectionHandler {
       await dispatch('predraw/handleResult', payload, { root: true })
     } else if (type === 'PRE_DRAW_PUBLIC') {
       await dispatch('predraw/handlePublic', payload, { root: true })
+    } else if (type === 'ERR' && payload && payload.code === 'abbey-passed') {
+      // the server refused placing an abbey / Kingdom Palace: it was passed this turn, which this
+      // client had not registered (e.g. reopened the game). Catch up: mark it passed, so the supply
+      // tile (and its ghost on the board) leaves the panels and the first hand tile is picked. No draw:
+      // the pass already dealt its tile, the hand is full.
+      commit('predraw/setAbbeyPassed', true, { root: true })
+    } else if (type === 'PRE_DRAW_EMPTY') {
+      // no tile left in the pre-draw deck (answer to a draw / pass / end-of-turn refill)
+      await dispatch('predraw/handleDeckEmpty', payload, { root: true })
     } else if (type === 'PASS_ABBEY_PUBLIC') {
       await dispatch('predraw/handlePassAbbey', payload, { root: true })
     } else if (type === 'COOP_LEADERBOARD') {
