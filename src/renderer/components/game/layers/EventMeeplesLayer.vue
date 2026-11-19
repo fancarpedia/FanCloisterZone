@@ -3,7 +3,7 @@
     <g
       v-for="group in groups"
       :key="group.key"
-      :transform="transformPoint(group) + ' ' + rotateMeeple()"
+      :transform="(group.corner ? transformPosition(group.position) : transformPoint(group)) + ' ' + rotateMeeple()"
     >
       <g
         v-for="(meeple, idx) in group.meeples"
@@ -13,10 +13,10 @@
       >
         <use
           :class="{ meeple: true, 'event-meeple': true, 'rot-90': meeple.rotate90 }"
-          :x="-MEEPLE_SIZE / 2"
-          :y="-MEEPLE_SIZE / 2"
-          :width="MEEPLE_SIZE"
-          :height="MEEPLE_SIZE"
+          :x="-MEEPLE_SIZE * meeple.size / 2"
+          :y="-MEEPLE_SIZE * meeple.size / 2"
+          :width="MEEPLE_SIZE * meeple.size"
+          :height="MEEPLE_SIZE * meeple.size"
           :href="`${MEEPLES_SVG}#${svgMeepleId(meeple)}`"
         />
         <path
@@ -44,6 +44,9 @@ import LayerMixin from '@/components/game/layers/LayerMixin'
 import { BASE_SIZE } from '@/constants/ui'
 
 const MEEPLES_SVG = require('~/assets/meeples.svg')
+
+// figures that stand on a tile corner, not inside a feature (see MeepleLayer.cornerMeeples)
+const CORNER_MEEPLES = ['Barn', 'Obelisk']
 
 // 3-peak crown in a 0..24 wide / 0..18 tall box, drawn above the meeple's head.
 const CROWN_PATH = 'M1 17 L1 5 L6.5 9.5 L12 1 L17.5 9.5 L23 5 L23 17 Z'
@@ -87,10 +90,14 @@ export default {
       return Object.entries(groupped).map(([key, meeples]) => {
         const sample = meeples[0]
         const deployedOnFarm = sample.feature === 'Field'
+        // a barn or obelisk stands upright on the corner where four tiles meet — drawn there, as
+        // on the board (MeepleLayer's corner meeples), not lying on the field like a farmer
+        const corner = CORNER_MEEPLES.includes(sample.type)
         let x = 0
         let y = 0
         return {
           key,
+          corner,
           position: sample.position,
           feature: sample.feature,
           location: sample.location,
@@ -100,8 +107,10 @@ export default {
               x,
               y,
               winner: this.winners.includes(m.player),
-              rotate90: m.location === 'AS_ABBOT' ||
-                (deployedOnFarm && !['Shepherd', 'Pig', 'DecinskySneznik', 'Windmill'].includes(m.type))
+              // the board's corner-meeple sizes: an obelisk is drawn 1.5×
+              size: m.type === 'Obelisk' ? 1.5 : 1,
+              rotate90: !corner && (m.location === 'AS_ABBOT' ||
+                (deployedOnFarm && !['Shepherd', 'Pig', 'DecinskySneznik', 'Windmill'].includes(m.type)))
             }
             x += m.type === 'SmallFollower' ? BASE_SIZE * 0.1 : BASE_SIZE * 0.14
             y += BASE_SIZE * 0.02
