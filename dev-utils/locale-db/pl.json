@@ -389,6 +389,11 @@
     "value": "Twój wynik — najlepszy {best}, ostatni {latest}",
     "source": "manual"
   },
+  "game.action.choose-a-tile-from-your-hand": {
+    "en": "Choose a tile from your hand",
+    "value": "Wybierz płytkę z ręki",
+    "source": "manual"
+  },
   "game.action.host-terminated-the-game": {
     "en": "Host terminated the game. Connection was closed.",
     "value": "Gospodarz zakończył grę. Połączenie zostało zamknięte.",
@@ -407,6 +412,11 @@
   "game.action.placement-requires-bridge": {
     "en": "Every placement here requires a bridge",
     "value": "Każde ułożenie w tym miejscu wymaga mostu",
+    "source": "manual"
+  },
+  "game.action.player-is-choosing-a-tile": {
+    "en": "Player is choosing a tile from their hand",
+    "value": "Gracz wybiera płytkę z ręki",
     "source": "manual"
   },
   "game.action.ransom-paid": {
@@ -994,6 +1004,11 @@
     "value": "Niedozwolone w grach lokalnych",
     "source": "manual"
   },
+  "predraw.no-tiles-left": {
+    "en": "No tiles left to draw",
+    "value": "Nie ma już płytek do dobrania",
+    "source": "manual"
+  },
   "predraw.one-seat-notice": {
     "en": "Pre-draw game — each player plays on their own device, so you can take only one slot.",
     "value": "Gra z wcześniejszym dobieraniem — każdy gracz gra na własnym urządzeniu, więc możesz zająć tylko jedno miejsce.",
@@ -1009,9 +1024,19 @@
     "value": "Pomiń {name} (dobierz ostatnią płytkę)",
     "source": "manual"
   },
+  "predraw.pass-tile-from-supply": {
+    "en": "Pass placing a tile from supply (draw last tile)",
+    "value": "Pomiń położenie płytki z zasobu (dobierz ostatnią płytkę)",
+    "source": "manual"
+  },
   "predraw.pick-hint": {
     "en": "Click a tile to place it, then choose a spot on the board",
     "value": "Kliknij płytkę, którą chcesz ułożyć, a potem wybierz miejsce na planszy",
+    "source": "manual"
+  },
+  "predraw.tiles-in-hand": {
+    "en": "Tiles in hand",
+    "value": "Płytki w ręce",
     "source": "manual"
   },
   "predraw.your-hand": {

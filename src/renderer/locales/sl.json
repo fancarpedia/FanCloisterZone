@@ -2,7 +2,7 @@
   "@author": "TileLord | Erol",
   "@jcz-version": "5.12.1",
   "@fcz-version": "7.2.0",
-  "@version": "0.13.5-ai",
+  "@version": "0.13.6-ai",
   "about": {
     "author": "Avtor",
     "configuration-file": "Konfiguracijska datoteka",
@@ -268,6 +268,7 @@
       "bazaar-raise-bid-or-pass": "Dvigni ponudbo ali preskoči",
       "castle-player-is-allowed-to-place": "Igralec lahko postavi",
       "castle-you-are-allowed-to-place": "Lahko postaviš",
+      "choose-a-tile-from-your-hand": "Izberi ploščico iz roke",
       "coc-player-can-move-the-count": "Igralec lahko premakne Grofa",
       "coc-you-can-move-the-count": "Lahko premakneš Grofa",
       "crop-circles-choose-city": "mesto",
@@ -299,6 +300,7 @@
       "place-this-tile-instead": "Namesto tega postavi to ploščico",
       "placement-optional-bridge": "Nekateri zasuki tu postavijo most, drugi ne",
       "placement-requires-bridge": "Vsaka postavitev tukaj zahteva most",
+      "player-is-choosing-a-tile": "Igralec izbira ploščico iz roke",
       "player-may-move-a-meeple-from-a-city-district": "Igralec lahko prestavi človeščka iz mestnega okrožja.",
       "player-may-move-a-meeple-from-a-city-district-before-final-scoring": "Igralec lahko prestavi človeščka iz mestnega okrožja pred končnim točkovanjem.",
       "player-may-move-a-meeple-from-the-market-district-before-final-scoring": "Igralec lahko prestavi človeščka iz tržnega okrožja pred končnim točkovanjem.",
@@ -973,10 +975,13 @@
     "empty": "—",
     "incompatible": "Ni na voljo z Graditeljem, Zmajem, Vozom, Gradom, Pastirjem, Reko, Pobegom, Grofom ali Krogi v žitu",
     "local-only": "Ni dovoljeno v lokalnih igrah",
+    "no-tiles-left": "Ni več ploščic za vlečenje",
     "one-seat-notice": "Igra z vnaprejšnjim jemanjem — vsak igralec igra na svoji napravi, zato lahko zasedeš samo eno mesto.",
     "pass-abbey": "Preskoči opatijo (vzemi zadnjo ploščico)",
     "pass-supply-tile": "Preskoči {name} (vzemi zadnjo ploščico)",
-    "pick-hint": "Klikni ploščico, da jo položiš, nato izberi mesto na igralni plošči"
+    "pass-tile-from-supply": "Preskoči postavitev ploščice iz zaloge (vzemi zadnjo ploščico)",
+    "pick-hint": "Klikni ploščico, da jo položiš, nato izberi mesto na igralni plošči",
+    "tiles-in-hand": "Ploščice v roki"
   },
   "server": {
     "translate": "Posodobitev na v%VERSION% je obavezna."

@@ -1,0 +1,6 @@
+{
+  "predraw.no-tiles-left": "Keine Plättchen mehr zum Ziehen",
+  "predraw.pass-tile-from-supply": "Legen eines Plättchens aus dem Vorrat überspringen (letztes Plättchen ziehen)",
+  "predraw.pick-hint": "Klicke ein Plättchen an, um es zu legen, und wähle dann einen Platz auf dem Spielfeld",
+  "predraw.tiles-in-hand": "Plättchen auf der Hand"
+}

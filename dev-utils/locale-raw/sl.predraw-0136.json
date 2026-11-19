@@ -1,0 +1,6 @@
+{
+  "predraw.no-tiles-left": "Ni več ploščic za vlečenje",
+  "predraw.pass-tile-from-supply": "Preskoči postavitev ploščice iz zaloge (vzemi zadnjo ploščico)",
+  "predraw.pick-hint": "Klikni ploščico, da jo položiš, nato izberi mesto na igralni plošči",
+  "predraw.tiles-in-hand": "Ploščice v roki"
+}

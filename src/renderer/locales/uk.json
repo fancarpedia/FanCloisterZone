@@ -2,7 +2,7 @@
   "@author": "ai",
   "@jcz-version": "5.12.1",
   "@fcz-version": "7.2.0",
-  "@version": "0.13.5-ai",
+  "@version": "0.13.6-ai",
   "about": {
     "author": "Автор",
     "configuration-file": "Файл конфігурації",
@@ -268,6 +268,7 @@
       "bazaar-raise-bid-or-pass": "Підвищіть ставку або пропустіть",
       "castle-player-is-allowed-to-place": "Гравцеві дозволено розмістити",
       "castle-you-are-allowed-to-place": "Вам дозволено розмістити",
+      "choose-a-tile-from-your-hand": "Виберіть плитку з руки",
       "coc-player-can-move-the-count": "Гравець може перемістити Графа",
       "coc-you-can-move-the-count": "Ви можете перемістити Графа",
       "crop-circles-choose-city": "місто",
@@ -299,6 +300,7 @@
       "place-this-tile-instead": "Натомість викласти цю плитку",
       "placement-optional-bridge": "За деяких поворотів тут ставиться міст, за інших — ні",
       "placement-requires-bridge": "Будь-яке викладання тут потребує моста",
+      "player-is-choosing-a-tile": "Гравець вибирає плитку з руки",
       "player-may-move-a-meeple-from-a-city-district": "Гравець може перемістити підданця з міського кварталу.",
       "player-may-move-a-meeple-from-a-city-district-before-final-scoring": "Гравець може перемістити підданця з міського кварталу перед підсумковим підрахунком.",
       "player-may-move-a-meeple-from-the-market-district-before-final-scoring": "Гравець може перемістити підданця з торгового кварталу перед підсумковим підрахунком.",
@@ -973,10 +975,13 @@
     "empty": "—",
     "incompatible": "Недоступно з Будівельником, Драконом, Возом, Замком, Пастухом, Річкою, Втечею, Графом або Колами на полях",
     "local-only": "Не дозволено в локальних іграх",
+    "no-tiles-left": "Плиток для витягування більше немає",
     "one-seat-notice": "Гра з попереднім витягуванням — кожен гравець грає на своєму пристрої, тому ви можете зайняти лише одне місце.",
     "pass-abbey": "Пропустити абатство (витягнути останню плитку)",
     "pass-supply-tile": "Пропустити {name} (витягнути останню плитку)",
-    "pick-hint": "Натисніть плитку, щоб викласти її, а потім виберіть місце на полі"
+    "pass-tile-from-supply": "Пропустити викладання плитки із запасу (витягнути останню плитку)",
+    "pick-hint": "Натисніть плитку, щоб викласти її, а потім виберіть місце на полі",
+    "tiles-in-hand": "Плитки в руці"
   },
   "server": {
     "translate": "Потрібно оновити до v%VERSION%."

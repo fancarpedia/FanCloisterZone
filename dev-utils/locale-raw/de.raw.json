@@ -267,6 +267,7 @@
       "bazaar-raise-bid-or-pass": "Gebot erhöhen oder passen",
       "castle-player-is-allowed-to-place": "Der Spieler darf setzen",
       "castle-you-are-allowed-to-place": "Du darfst setzen",
+      "choose-a-tile-from-your-hand": "<span lang="en" dir="ltr" class="mw-content-ltr">Choose a tile from your hand</span>",
       "coc-player-can-move-the-count": "Der Spieler darf den Grafen in ein anderes Stadtviertel ziehen.",
       "coc-you-can-move-the-count": "Du darfst den Grafen in ein anderes Stadtviertel ziehen.",
       "crop-circles-choose-city": "eine Stadt",
@@ -298,6 +299,7 @@
       "place-this-tile-instead": "<span lang="en" dir="ltr" class="mw-content-ltr">Place this tile instead</span>",
       "placement-optional-bridge": "<span lang="en" dir="ltr" class="mw-content-ltr">Some rotations here place a bridge; others don't</span>",
       "placement-requires-bridge": "<span lang="en" dir="ltr" class="mw-content-ltr">Every placement here requires a bridge</span>",
+      "player-is-choosing-a-tile": "<span lang="en" dir="ltr" class="mw-content-ltr">Player is choosing a tile from their hand</span>",
       "player-may-move-a-meeple-from-a-city-district": "Der Spieler darf 1 Meeple aus einem Stadtviertel herausnehmen.",
       "player-may-move-a-meeple-from-a-city-district-before-final-scoring": "Der Spieler darf vor der Schlusswertung 1 Meeple vom Markt herausnehmen.",
       "player-may-move-a-meeple-from-the-market-district-before-final-scoring": "Der Spieler darf vor der Schlusswertung 1 Meeple vom Markt  herausnehmen.",
@@ -970,10 +972,13 @@
     "empty": "<span lang="en" dir="ltr" class="mw-content-ltr">—</span>",
     "incompatible": "<span lang="en" dir="ltr" class="mw-content-ltr">Not available with Builder, Dragon, Wagon, Castle, Shepherd, River, Escape, Count or Crop Circles</span>",
     "local-only": "<span lang="en" dir="ltr" class="mw-content-ltr">Not allowed in local games</span>",
+    "no-tiles-left": "<span lang="en" dir="ltr" class="mw-content-ltr">No tiles left to draw</span>",
     "one-seat-notice": "<span lang="en" dir="ltr" class="mw-content-ltr">Pre-draw game — each player plays on their own device, so you can take only one slot.</span>",
     "pass-abbey": "<span lang="en" dir="ltr" class="mw-content-ltr">Pass abbey (draw last tile)</span>",
     "pass-supply-tile": "<span lang="en" dir="ltr" class="mw-content-ltr">Pass {name} (draw last tile)</span>",
-    "pick-hint": "<span lang="en" dir="ltr" class="mw-content-ltr">Click a tile to place it, then choose a spot on the board</span>"
+    "pass-tile-from-supply": "<span lang="en" dir="ltr" class="mw-content-ltr">Pass placing a tile from supply (draw last tile)</span>",
+    "pick-hint": "<span lang="en" dir="ltr" class="mw-content-ltr">Click a tile to place it, then choose a spot on the board</span>",
+    "tiles-in-hand": "<span lang="en" dir="ltr" class="mw-content-ltr">Tiles in hand</span>"
   },
   "server": {
     "translate": "Update auf v%VERSION% ist notwendig."

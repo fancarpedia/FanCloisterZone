@@ -369,6 +369,11 @@
     "value": "Vaše skóre — nejlepší {best}, poslední {latest}",
     "source": "manual"
   },
+  "game.action.choose-a-tile-from-your-hand": {
+    "en": "Choose a tile from your hand",
+    "value": "Vyberte kartičku z ruky",
+    "source": "manual"
+  },
   "game.action.host-terminated-the-game": {
     "en": "Host terminated the game. Connection was closed.",
     "value": "Hostitel ukončil hru. Spojení bylo uzavřeno.",
@@ -387,6 +392,11 @@
   "game.action.placement-requires-bridge": {
     "en": "Every placement here requires a bridge",
     "value": "Každé umístění zde vyžaduje most",
+    "source": "manual"
+  },
+  "game.action.player-is-choosing-a-tile": {
+    "en": "Player is choosing a tile from their hand",
+    "value": "Hráč vybírá kartičku z ruky",
     "source": "manual"
   },
   "game.action.score-first-choose": {
@@ -939,6 +949,11 @@
     "value": "Není povoleno v místních hrách",
     "source": "manual"
   },
+  "predraw.no-tiles-left": {
+    "en": "No tiles left to draw",
+    "value": "Už nezbývají žádné kartičky k tažení",
+    "source": "manual"
+  },
   "predraw.one-seat-notice": {
     "en": "Pre-draw game — each player plays on their own device, so you can take only one slot.",
     "value": "Hra s předběžným tažením — každý hráč hraje na svém zařízení, takže můžete obsadit jen jedno místo.",
@@ -954,9 +969,19 @@
     "value": "Přeskočit {name} (vzít poslední kartičku)",
     "source": "manual"
   },
+  "predraw.pass-tile-from-supply": {
+    "en": "Pass placing a tile from supply (draw last tile)",
+    "value": "Přeskočit umístění kartičky ze zásoby (vzít poslední kartičku)",
+    "source": "manual"
+  },
   "predraw.pick-hint": {
     "en": "Click a tile to place it, then choose a spot on the board",
     "value": "Klikněte na kartičku, kterou chcete položit, a potom vyberte místo na hrací ploše",
+    "source": "manual"
+  },
+  "predraw.tiles-in-hand": {
+    "en": "Tiles in hand",
+    "value": "Kartičky v ruce",
     "source": "manual"
   },
   "predraw.your-hand": {

@@ -389,6 +389,11 @@
     "value": "Jouw score — beste {best}, laatste {latest}",
     "source": "manual"
   },
+  "game.action.choose-a-tile-from-your-hand": {
+    "en": "Choose a tile from your hand",
+    "value": "Kies een tegel uit je hand",
+    "source": "manual"
+  },
   "game.action.host-terminated-the-game": {
     "en": "Host terminated the game. Connection was closed.",
     "value": "De host heeft het spel beëindigd. De verbinding is verbroken.",
@@ -407,6 +412,11 @@
   "game.action.placement-requires-bridge": {
     "en": "Every placement here requires a bridge",
     "value": "Elke plaatsing hier vereist een brug",
+    "source": "manual"
+  },
+  "game.action.player-is-choosing-a-tile": {
+    "en": "Player is choosing a tile from their hand",
+    "value": "Speler kiest een tegel uit zijn hand",
     "source": "manual"
   },
   "game.action.ransom-paid": {
@@ -994,6 +1004,11 @@
     "value": "Niet toegestaan in lokale spellen",
     "source": "manual"
   },
+  "predraw.no-tiles-left": {
+    "en": "No tiles left to draw",
+    "value": "Geen tegels meer om te pakken",
+    "source": "manual"
+  },
   "predraw.one-seat-notice": {
     "en": "Pre-draw game — each player plays on their own device, so you can take only one slot.",
     "value": "Spel met voorafgaand pakken — elke speler speelt op zijn eigen apparaat, dus je kunt maar één plaats innemen.",
@@ -1009,9 +1024,19 @@
     "value": "{name} overslaan (laatste tegel pakken)",
     "source": "manual"
   },
+  "predraw.pass-tile-from-supply": {
+    "en": "Pass placing a tile from supply (draw last tile)",
+    "value": "Tegel uit de voorraad leggen overslaan (laatste tegel pakken)",
+    "source": "manual"
+  },
   "predraw.pick-hint": {
     "en": "Click a tile to place it, then choose a spot on the board",
     "value": "Klik op een tegel om die te plaatsen en kies daarna een plek op het bord",
+    "source": "manual"
+  },
+  "predraw.tiles-in-hand": {
+    "en": "Tiles in hand",
+    "value": "Tegels in de hand",
     "source": "manual"
   },
   "predraw.your-hand": {

@@ -2,7 +2,7 @@
   "@author": "J0anJosep",
   "@jcz-version": "5.12.1",
   "@fcz-version": "7.2.0",
-  "@version": "0.13.5-ai",
+  "@version": "0.13.6-ai",
   "about": {
     "author": "Autor",
     "configuration-file": "Fitxer de configuració",
@@ -268,6 +268,7 @@
       "bazaar-raise-bid-or-pass": "Augmenteu l'oferta o passa",
       "castle-player-is-allowed-to-place": "El jugador pot posar",
       "castle-you-are-allowed-to-place": "Podeu posar",
+      "choose-a-tile-from-your-hand": "Trieu una peça de la vostra mà",
       "coc-player-can-move-the-count": "El jugador pot moure el comte",
       "coc-you-can-move-the-count": "Podeu moure el comte",
       "crop-circles-choose-city": "una ciutat",
@@ -299,6 +300,7 @@
       "place-this-tile-instead": "Col·loqueu aquesta peça en canvi",
       "placement-optional-bridge": "En algunes rotacions, es pot posar un pont. En d'altres, no.",
       "placement-requires-bridge": "Cada col·locació aquí requereix un pont",
+      "player-is-choosing-a-tile": "El jugador està triant una peça de la seva mà",
       "player-may-move-a-meeple-from-a-city-district": "El jugador pot moure un seguidor d'un districte de la ciutat.",
       "player-may-move-a-meeple-from-a-city-district-before-final-scoring": "El jugador pot moure un seguidor d'un districte de la ciutat abans de la puntuació final.",
       "player-may-move-a-meeple-from-the-market-district-before-final-scoring": "El jugador pot moure un seguidor del districte del mercat abans de la puntuació final.",
@@ -973,10 +975,13 @@
     "empty": "—",
     "incompatible": "No disponible amb Constructor, Drac, Carro, Castell, Pastor, Riu, Fugida, Comte ni Cercles de conreu",
     "local-only": "No permès en partides locals",
+    "no-tiles-left": "No queden peces per agafar",
     "one-seat-notice": "Partida amb agafada prèvia — cada jugador juga al seu propi dispositiu, de manera que només podeu ocupar una plaça.",
     "pass-abbey": "Passa l'abadia (agafa l'última peça)",
     "pass-supply-tile": "Passa {name} (agafa l'última peça)",
-    "pick-hint": "Feu clic en una peça per col·locar-la i després trieu un lloc al tauler"
+    "pass-tile-from-supply": "Passa la col·locació d'una peça del subministrament (agafa l'última peça)",
+    "pick-hint": "Feu clic en una peça per col·locar-la i després trieu un lloc al tauler",
+    "tiles-in-hand": "Peces a la mà"
   },
   "server": {
     "translate": "Cal actualitzar a la versió %VERSION%."

@@ -2,7 +2,7 @@
   "@author": "farin & Scott",
   "@jcz-version": "5.12.1",
   "@fcz-version": "7.2.0",
-  "@version": "0.13.5",
+  "@version": "0.13.6",
   "about": {
     "author": "Author",
     "configuration-file": "Configuration file",
@@ -267,6 +267,7 @@
       "bazaar-raise-bid-or-pass": "Raise bid or pass",
       "castle-player-is-allowed-to-place": "Player is allowed to place",
       "castle-you-are-allowed-to-place": "You are allowed to place",
+      "choose-a-tile-from-your-hand": "Choose a tile from your hand",
       "coc-player-can-move-the-count": "Player can move the Count",
       "coc-you-can-move-the-count": "You can move the Count",
       "crop-circles-choose-city": "a city",
@@ -298,6 +299,7 @@
       "place-this-tile-instead": "Place this tile instead",
       "placement-optional-bridge": "Some rotations here place a bridge; others don't",
       "placement-requires-bridge": "Every placement here requires a bridge",
+      "player-is-choosing-a-tile": "Player is choosing a tile from their hand",
       "player-may-move-a-meeple-from-a-city-district": "Player may move a meeple from a city district.",
       "player-may-move-a-meeple-from-a-city-district-before-final-scoring": "Player may move a meeple from a city district before final scoring.",
       "player-may-move-a-meeple-from-the-market-district-before-final-scoring": "Player may move a meeple from the market district before final scoring.",
@@ -970,10 +972,13 @@
     "empty": "—",
     "incompatible": "Not available with Builder, Dragon, Wagon, Castle, Shepherd, River, Escape, Count or Crop Circles",
     "local-only": "Not allowed in local games",
+    "no-tiles-left": "No tiles left to draw",
     "one-seat-notice": "Pre-draw game — each player plays on their own device, so you can take only one slot.",
     "pass-abbey": "Pass abbey (draw last tile)",
     "pass-supply-tile": "Pass {name} (draw last tile)",
-    "pick-hint": "Click a tile to place it, then choose a spot on the board"
+    "pass-tile-from-supply": "Pass placing a tile from supply (draw last tile)",
+    "pick-hint": "Click a tile to place it, then choose a spot on the board",
+    "tiles-in-hand": "Tiles in hand"
   },
   "server": {
     "translate": "Update to v%VERSION% is required."

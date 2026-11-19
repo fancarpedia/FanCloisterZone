@@ -389,6 +389,11 @@
     "value": "Deine Punkte — beste {best}, letzte {latest}",
     "source": "manual"
   },
+  "game.action.choose-a-tile-from-your-hand": {
+    "en": "Choose a tile from your hand",
+    "value": "Wähle ein Plättchen aus deiner Hand",
+    "source": "manual"
+  },
   "game.action.host-terminated-the-game": {
     "en": "Host terminated the game. Connection was closed.",
     "value": "Der Host hat das Spiel beendet. Die Verbindung wurde getrennt.",
@@ -407,6 +412,11 @@
   "game.action.placement-requires-bridge": {
     "en": "Every placement here requires a bridge",
     "value": "Jede Platzierung hier benötigt eine Brücke",
+    "source": "manual"
+  },
+  "game.action.player-is-choosing-a-tile": {
+    "en": "Player is choosing a tile from their hand",
+    "value": "Der Spieler wählt ein Plättchen aus seiner Hand",
     "source": "manual"
   },
   "game.action.score-first-choose": {
@@ -989,6 +999,11 @@
     "value": "In lokalen Spielen nicht erlaubt",
     "source": "manual"
   },
+  "predraw.no-tiles-left": {
+    "en": "No tiles left to draw",
+    "value": "Keine Plättchen mehr zum Ziehen",
+    "source": "manual"
+  },
   "predraw.one-seat-notice": {
     "en": "Pre-draw game — each player plays on their own device, so you can take only one slot.",
     "value": "Spiel mit Vorziehen — jeder Spieler spielt auf seinem eigenen Gerät, daher kannst du nur einen Platz einnehmen.",
@@ -1004,9 +1019,19 @@
     "value": "{name} überspringen (letztes Plättchen ziehen)",
     "source": "manual"
   },
+  "predraw.pass-tile-from-supply": {
+    "en": "Pass placing a tile from supply (draw last tile)",
+    "value": "Legen eines Plättchens aus dem Vorrat überspringen (letztes Plättchen ziehen)",
+    "source": "manual"
+  },
   "predraw.pick-hint": {
     "en": "Click a tile to place it, then choose a spot on the board",
     "value": "Klicke ein Plättchen an, um es zu legen, und wähle dann einen Platz auf dem Spielfeld",
+    "source": "manual"
+  },
+  "predraw.tiles-in-hand": {
+    "en": "Tiles in hand",
+    "value": "Plättchen auf der Hand",
     "source": "manual"
   },
   "predraw.your-hand": {

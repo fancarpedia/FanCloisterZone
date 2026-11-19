@@ -389,6 +389,11 @@
     "value": "Tu puntuación — mejor {best}, última {latest}",
     "source": "manual"
   },
+  "game.action.choose-a-tile-from-your-hand": {
+    "en": "Choose a tile from your hand",
+    "value": "Elige una loseta de tu mano",
+    "source": "manual"
+  },
   "game.action.host-terminated-the-game": {
     "en": "Host terminated the game. Connection was closed.",
     "value": "El anfitrión ha terminado la partida. Se ha cerrado la conexión.",
@@ -407,6 +412,11 @@
   "game.action.placement-requires-bridge": {
     "en": "Every placement here requires a bridge",
     "value": "Toda colocación aquí requiere un puente",
+    "source": "manual"
+  },
+  "game.action.player-is-choosing-a-tile": {
+    "en": "Player is choosing a tile from their hand",
+    "value": "El jugador está eligiendo una loseta de su mano",
     "source": "manual"
   },
   "game.action.ransom-paid": {
@@ -994,6 +1004,11 @@
     "value": "No permitido en partidas locales",
     "source": "manual"
   },
+  "predraw.no-tiles-left": {
+    "en": "No tiles left to draw",
+    "value": "No quedan losetas por robar",
+    "source": "manual"
+  },
   "predraw.one-seat-notice": {
     "en": "Pre-draw game — each player plays on their own device, so you can take only one slot.",
     "value": "Partida con robo previo — cada jugador juega en su propio dispositivo, así que solo puedes ocupar un puesto.",
@@ -1009,9 +1024,19 @@
     "value": "Pasar {name} (robar la última loseta)",
     "source": "manual"
   },
+  "predraw.pass-tile-from-supply": {
+    "en": "Pass placing a tile from supply (draw last tile)",
+    "value": "Pasar la colocación de una loseta de la reserva (robar la última loseta)",
+    "source": "manual"
+  },
   "predraw.pick-hint": {
     "en": "Click a tile to place it, then choose a spot on the board",
     "value": "Haz clic en una loseta para colocarla y luego elige un lugar en el tablero",
+    "source": "manual"
+  },
+  "predraw.tiles-in-hand": {
+    "en": "Tiles in hand",
+    "value": "Losetas en la mano",
     "source": "manual"
   },
   "predraw.your-hand": {

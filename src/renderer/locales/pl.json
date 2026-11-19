@@ -2,7 +2,7 @@
   "@author": "Snearone",
   "@jcz-version": "5.12.1",
   "@fcz-version": "7.2.0",
-  "@version": "0.13.5-ai",
+  "@version": "0.13.6-ai",
   "about": {
     "author": "Autor",
     "configuration-file": "Plik konfiguracyjny",
@@ -268,6 +268,7 @@
       "bazaar-raise-bid-or-pass": "Podnieść ofertę lub spasuj",
       "castle-player-is-allowed-to-place": "Gracz może umieścić'",
       "castle-you-are-allowed-to-place": "Możesz umieścić'",
+      "choose-a-tile-from-your-hand": "Wybierz płytkę z ręki",
       "coc-player-can-move-the-count": "Gracz możesz przesunąć Hrabiego",
       "coc-you-can-move-the-count": "Możesz przesunąć Hrabiego",
       "crop-circles-choose-city": "miasto",
@@ -299,6 +300,7 @@
       "place-this-tile-instead": "Zamiast tego umieść tę płytkę",
       "placement-optional-bridge": "Niektóre obroty stawiają tu most, inne nie",
       "placement-requires-bridge": "Każde ułożenie w tym miejscu wymaga mostu",
+      "player-is-choosing-a-tile": "Gracz wybiera płytkę z ręki",
       "player-may-move-a-meeple-from-a-city-district": "Gracz może przenieść podwładnego z dzielnicy miasta",
       "player-may-move-a-meeple-from-a-city-district-before-final-scoring": "Gracz może przenieść podwładnego z pałacu przed ostatecznym punktowaniem.",
       "player-may-move-a-meeple-from-the-market-district-before-final-scoring": "Gracz może przenieść podwładnego z targu przed ostatecznym punktowaniem.",
@@ -973,10 +975,13 @@
     "empty": "—",
     "incompatible": "Niedostępne z Budowniczym, Smokiem, Wozem, Zamkiem, Pasterzem, Rzeką, Ucieczką, Hrabią ani Kręgami w zbożu",
     "local-only": "Niedozwolone w grach lokalnych",
+    "no-tiles-left": "Nie ma już płytek do dobrania",
     "one-seat-notice": "Gra z wcześniejszym dobieraniem — każdy gracz gra na własnym urządzeniu, więc możesz zająć tylko jedno miejsce.",
     "pass-abbey": "Pomiń opactwo (dobierz ostatnią płytkę)",
     "pass-supply-tile": "Pomiń {name} (dobierz ostatnią płytkę)",
-    "pick-hint": "Kliknij płytkę, którą chcesz ułożyć, a potem wybierz miejsce na planszy"
+    "pass-tile-from-supply": "Pomiń położenie płytki z zasobu (dobierz ostatnią płytkę)",
+    "pick-hint": "Kliknij płytkę, którą chcesz ułożyć, a potem wybierz miejsce na planszy",
+    "tiles-in-hand": "Płytki w ręce"
   },
   "server": {
     "translate": "Aktualizacja do wersji v%VERSION% wymagana."

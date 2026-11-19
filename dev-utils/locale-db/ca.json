@@ -284,6 +284,11 @@
     "value": "La vostra puntuació — millor {best}, última {latest}",
     "source": "manual"
   },
+  "game.action.choose-a-tile-from-your-hand": {
+    "en": "Choose a tile from your hand",
+    "value": "Trieu una peça de la vostra mà",
+    "source": "manual"
+  },
   "game.action.host-terminated-the-game": {
     "en": "Host terminated the game. Connection was closed.",
     "value": "L'amfitrió ha finalitzat la partida. S'ha tancat la connexió.",
@@ -297,6 +302,11 @@
   "game.action.placement-requires-bridge": {
     "en": "Every placement here requires a bridge",
     "value": "Cada col·locació aquí requereix un pont",
+    "source": "manual"
+  },
+  "game.action.player-is-choosing-a-tile": {
+    "en": "Player is choosing a tile from their hand",
+    "value": "El jugador està triant una peça de la seva mà",
     "source": "manual"
   },
   "game.action.ransom-paid": {
@@ -839,6 +849,11 @@
     "value": "No permès en partides locals",
     "source": "manual"
   },
+  "predraw.no-tiles-left": {
+    "en": "No tiles left to draw",
+    "value": "No queden peces per agafar",
+    "source": "manual"
+  },
   "predraw.one-seat-notice": {
     "en": "Pre-draw game — each player plays on their own device, so you can take only one slot.",
     "value": "Partida amb agafada prèvia — cada jugador juga al seu propi dispositiu, de manera que només podeu ocupar una plaça.",
@@ -854,9 +869,19 @@
     "value": "Passa {name} (agafa l'última peça)",
     "source": "manual"
   },
+  "predraw.pass-tile-from-supply": {
+    "en": "Pass placing a tile from supply (draw last tile)",
+    "value": "Passa la col·locació d'una peça del subministrament (agafa l'última peça)",
+    "source": "manual"
+  },
   "predraw.pick-hint": {
     "en": "Click a tile to place it, then choose a spot on the board",
     "value": "Feu clic en una peça per col·locar-la i després trieu un lloc al tauler",
+    "source": "manual"
+  },
+  "predraw.tiles-in-hand": {
+    "en": "Tiles in hand",
+    "value": "Peces a la mà",
     "source": "manual"
   },
   "predraw.your-hand": {

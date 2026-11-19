@@ -389,6 +389,11 @@
     "value": "Tvoj izid — najboljši {best}, zadnji {latest}",
     "source": "manual"
   },
+  "game.action.choose-a-tile-from-your-hand": {
+    "en": "Choose a tile from your hand",
+    "value": "Izberi ploščico iz roke",
+    "source": "manual"
+  },
   "game.action.host-terminated-the-game": {
     "en": "Host terminated the game. Connection was closed.",
     "value": "Gostitelj je končal igro. Povezava je bila prekinjena.",
@@ -407,6 +412,11 @@
   "game.action.placement-requires-bridge": {
     "en": "Every placement here requires a bridge",
     "value": "Vsaka postavitev tukaj zahteva most",
+    "source": "manual"
+  },
+  "game.action.player-is-choosing-a-tile": {
+    "en": "Player is choosing a tile from their hand",
+    "value": "Igralec izbira ploščico iz roke",
     "source": "manual"
   },
   "game.action.ransom-paid": {
@@ -994,6 +1004,11 @@
     "value": "Ni dovoljeno v lokalnih igrah",
     "source": "manual"
   },
+  "predraw.no-tiles-left": {
+    "en": "No tiles left to draw",
+    "value": "Ni več ploščic za vlečenje",
+    "source": "manual"
+  },
   "predraw.one-seat-notice": {
     "en": "Pre-draw game — each player plays on their own device, so you can take only one slot.",
     "value": "Igra z vnaprejšnjim jemanjem — vsak igralec igra na svoji napravi, zato lahko zasedeš samo eno mesto.",
@@ -1009,9 +1024,19 @@
     "value": "Preskoči {name} (vzemi zadnjo ploščico)",
     "source": "manual"
   },
+  "predraw.pass-tile-from-supply": {
+    "en": "Pass placing a tile from supply (draw last tile)",
+    "value": "Preskoči postavitev ploščice iz zaloge (vzemi zadnjo ploščico)",
+    "source": "manual"
+  },
   "predraw.pick-hint": {
     "en": "Click a tile to place it, then choose a spot on the board",
     "value": "Klikni ploščico, da jo položiš, nato izberi mesto na igralni plošči",
+    "source": "manual"
+  },
+  "predraw.tiles-in-hand": {
+    "en": "Tiles in hand",
+    "value": "Ploščice v roki",
     "source": "manual"
   },
   "predraw.your-hand": {

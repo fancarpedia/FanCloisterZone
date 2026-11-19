@@ -2,7 +2,7 @@
   "@author": "Peťul",
   "@jcz-version": "5.12.1",
   "@fcz-version": "7.2.0",
-  "@version": "0.13.5-ai",
+  "@version": "0.13.6-ai",
   "about": {
     "author": "Autor",
     "configuration-file": "Konfigurační soubor",
@@ -268,6 +268,7 @@
       "bazaar-raise-bid-or-pass": "Zvyšte nabídku nebo pasujte",
       "castle-player-is-allowed-to-place": "Hráč může přiložit",
       "castle-you-are-allowed-to-place": "Můžete přiložit",
+      "choose-a-tile-from-your-hand": "Vyberte kartičku z ruky",
       "coc-player-can-move-the-count": "Hráč může přesouvat hraběte",
       "coc-you-can-move-the-count": "Můžete přesunout hraběte",
       "crop-circles-choose-city": "na město",
@@ -299,6 +300,7 @@
       "place-this-tile-instead": "Přiložit místo toho tuto kartičku",
       "placement-optional-bridge": "Některá otočení zde umístí most, jiná ne",
       "placement-requires-bridge": "Každé umístění zde vyžaduje most",
+      "player-is-choosing-a-tile": "Hráč vybírá kartičku z ruky",
       "player-may-move-a-meeple-from-a-city-district": "Hráč může přesunout družiníka ze čtvrti ve městě Carcassonne.",
       "player-may-move-a-meeple-from-a-city-district-before-final-scoring": "Před vyhodnocením území může hráč přesunout družiníka ze čtvrti města Carcassonne.",
       "player-may-move-a-meeple-from-the-market-district-before-final-scoring": "Hráč může přesunout družiníka z tržiště před vyhodnocením území.",
@@ -973,10 +975,13 @@
     "empty": "—",
     "incompatible": "Není dostupné se Stavitelem, Drakem, Vozem, Hradem, Pastýřem, Řekou, Únikem, Hrabětem ani Kruhy v obilí",
     "local-only": "Není povoleno v místních hrách",
+    "no-tiles-left": "Už nezbývají žádné kartičky k tažení",
     "one-seat-notice": "Hra s předběžným tažením — každý hráč hraje na svém zařízení, takže můžete obsadit jen jedno místo.",
     "pass-abbey": "Přeskočit opatství (vzít poslední kartičku)",
     "pass-supply-tile": "Přeskočit {name} (vzít poslední kartičku)",
-    "pick-hint": "Klikněte na kartičku, kterou chcete položit, a potom vyberte místo na hrací ploše"
+    "pass-tile-from-supply": "Přeskočit umístění kartičky ze zásoby (vzít poslední kartičku)",
+    "pick-hint": "Klikněte na kartičku, kterou chcete položit, a potom vyberte místo na hrací ploše",
+    "tiles-in-hand": "Kartičky v ruce"
   },
   "server": {
     "translate": "Nevyhnutná aktualizace na verzi %VERSION%."

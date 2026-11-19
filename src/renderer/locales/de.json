@@ -2,7 +2,7 @@
   "@author": "Challa007 & Bombur",
   "@jcz-version": "5.12.1",
   "@fcz-version": "7.2.0",
-  "@version": "0.13.5-ai",
+  "@version": "0.13.6-ai",
   "about": {
     "author": "Autor",
     "configuration-file": "Konfigurationsdatei",
@@ -268,6 +268,7 @@
       "bazaar-raise-bid-or-pass": "Gebot erhöhen oder passen",
       "castle-player-is-allowed-to-place": "Der Spieler darf setzen",
       "castle-you-are-allowed-to-place": "Du darfst setzen",
+      "choose-a-tile-from-your-hand": "Wähle ein Plättchen aus deiner Hand",
       "coc-player-can-move-the-count": "Der Spieler darf den Grafen in ein anderes Stadtviertel ziehen.",
       "coc-you-can-move-the-count": "Du darfst den Grafen in ein anderes Stadtviertel ziehen.",
       "crop-circles-choose-city": "eine Stadt",
@@ -299,6 +300,7 @@
       "place-this-tile-instead": "Stattdessen dieses Plättchen legen",
       "placement-optional-bridge": "Manche Drehungen setzen hier eine Brücke, andere nicht",
       "placement-requires-bridge": "Jede Platzierung hier benötigt eine Brücke",
+      "player-is-choosing-a-tile": "Der Spieler wählt ein Plättchen aus seiner Hand",
       "player-may-move-a-meeple-from-a-city-district": "Der Spieler darf 1 Meeple aus einem Stadtviertel herausnehmen.",
       "player-may-move-a-meeple-from-a-city-district-before-final-scoring": "Der Spieler darf vor der Schlusswertung 1 Meeple vom Markt herausnehmen.",
       "player-may-move-a-meeple-from-the-market-district-before-final-scoring": "Der Spieler darf vor der Schlusswertung 1 Meeple vom Markt  herausnehmen.",
@@ -973,10 +975,13 @@
     "empty": "—",
     "incompatible": "Nicht verfügbar mit Baumeister, Drache, Wagen, Burg, Schäfer, Fluss, Flucht, Graf oder Kornkreisen",
     "local-only": "In lokalen Spielen nicht erlaubt",
+    "no-tiles-left": "Keine Plättchen mehr zum Ziehen",
     "one-seat-notice": "Spiel mit Vorziehen — jeder Spieler spielt auf seinem eigenen Gerät, daher kannst du nur einen Platz einnehmen.",
     "pass-abbey": "Abtei überspringen (letztes Plättchen ziehen)",
     "pass-supply-tile": "{name} überspringen (letztes Plättchen ziehen)",
-    "pick-hint": "Klicke ein Plättchen an, um es zu legen, und wähle dann einen Platz auf dem Spielfeld"
+    "pass-tile-from-supply": "Legen eines Plättchens aus dem Vorrat überspringen (letztes Plättchen ziehen)",
+    "pick-hint": "Klicke ein Plättchen an, um es zu legen, und wähle dann einen Platz auf dem Spielfeld",
+    "tiles-in-hand": "Plättchen auf der Hand"
   },
   "server": {
     "translate": "Update auf v%VERSION% ist notwendig."

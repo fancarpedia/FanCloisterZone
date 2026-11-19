@@ -2,7 +2,7 @@
   "@author": "Bumsakalaka",
   "@jcz-version": "5.12.1",
   "@fcz-version": "7.2.0",
-  "@version": "0.13.5-ai",
+  "@version": "0.13.6-ai",
   "about": {
     "author": "Autor",
     "configuration-file": "Konfiguračný súbor",
@@ -268,6 +268,7 @@
       "bazaar-raise-bid-or-pass": "Zvýšte ponuku alebo prenechajte",
       "castle-player-is-allowed-to-place": "Hráč môže umiestniť",
       "castle-you-are-allowed-to-place": "Možete umiestniť'",
+      "choose-a-tile-from-your-hand": "Vyberte si kartičku z ruky",
       "coc-player-can-move-the-count": "Hráč môže presunúť grófa",
       "coc-you-can-move-the-count": "Môžete presunúť grófa",
       "crop-circles-choose-city": "mesto",
@@ -299,6 +300,7 @@
       "place-this-tile-instead": "Priložiť namiesto toho túto kartičku",
       "placement-optional-bridge": "Niektoré otočenia tu umiestnia most, iné nie",
       "placement-requires-bridge": "Každé umiestnenie tu vyžaduje most",
+      "player-is-choosing-a-tile": "Hráč vyberá kartičku z ruky",
       "player-may-move-a-meeple-from-a-city-district": "Hráč môže umiestniť spoločníka z mestskej časti.",
       "player-may-move-a-meeple-from-a-city-district-before-final-scoring": "Hráč môže umiestniť spoločníka z mesta pred konečným bodovaním.",
       "player-may-move-a-meeple-from-the-market-district-before-final-scoring": "Hráč môže umiestniť spoločníka z trhoviska pred konečným bodovaním.",
@@ -973,10 +975,13 @@
     "empty": "—",
     "incompatible": "Nie je dostupné so Staviteľom, Drakom, Vozom, Hradom, Pastierom, Riekou, Únikom, Grófom ani Kruhmi v obilí",
     "local-only": "Nie je povolené v lokálnych hrách",
+    "no-tiles-left": "Už nezostali žiadne kartičky na potiahnutie",
     "one-seat-notice": "Hra s predbežným ťahaním — každý hráč hrá na svojom zariadení, takže môžete obsadiť len jedno miesto.",
     "pass-abbey": "Preskočiť opátstvo (potiahnuť poslednú kartičku)",
     "pass-supply-tile": "Preskočiť {name} (potiahnuť poslednú kartičku)",
-    "pick-hint": "Kliknite na kartičku, ktorú chcete položiť, a potom vyberte miesto na hracej ploche"
+    "pass-tile-from-supply": "Preskočiť umiestnenie kartičky zo zásoby (potiahnuť poslednú kartičku)",
+    "pick-hint": "Kliknite na kartičku, ktorú chcete položiť, a potom vyberte miesto na hracej ploche",
+    "tiles-in-hand": "Kartičky v ruke"
   },
   "server": {
     "translate": "Je nevyhnutná aktualizácia na verziu %VERSION%."

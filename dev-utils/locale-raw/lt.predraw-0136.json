@@ -1,0 +1,6 @@
+{
+  "predraw.no-tiles-left": "Nebeliko kortelių traukti",
+  "predraw.pass-tile-from-supply": "Praleisti kortelės padėjimą iš atsargų (traukti paskutinę kortelę)",
+  "predraw.pick-hint": "Paspauskite kortelę, kurią norite padėti, tada pasirinkite vietą lentoje",
+  "predraw.tiles-in-hand": "Kortelės rankoje"
+}

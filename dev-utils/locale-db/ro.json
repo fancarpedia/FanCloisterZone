@@ -74,6 +74,11 @@
     "value": "În rezerva jucătorilor, nu în teancul de tras",
     "source": "manual"
   },
+  "game.action.choose-a-tile-from-your-hand": {
+    "en": "Choose a tile from your hand",
+    "value": "Alege un cartonaș din mână",
+    "source": "manual"
+  },
   "game.action.host-terminated-the-game": {
     "en": "Host terminated the game. Connection was closed.",
     "value": "Gazda a încheiat partida. Conexiunea a fost închisă.",
@@ -82,6 +87,11 @@
   "game.action.place-this-tile-instead": {
     "en": "Place this tile instead",
     "value": "Plasează în schimb acest cartonaș",
+    "source": "manual"
+  },
+  "game.action.player-is-choosing-a-tile": {
+    "en": "Player is choosing a tile from their hand",
+    "value": "Jucătorul alege un cartonaș din mână",
     "source": "manual"
   },
   "game.action.tile-discarded-notice-plural": {

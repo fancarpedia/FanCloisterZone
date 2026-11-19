@@ -1,0 +1,6 @@
+{
+  "predraw.no-tiles-left": "No quedan losetas por robar",
+  "predraw.pass-tile-from-supply": "Pasar la colocación de una loseta de la reserva (robar la última loseta)",
+  "predraw.pick-hint": "Haz clic en una loseta para colocarla y luego elige un lugar en el tablero",
+  "predraw.tiles-in-hand": "Losetas en la mano"
+}

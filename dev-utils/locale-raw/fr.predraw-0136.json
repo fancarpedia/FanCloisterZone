@@ -1,0 +1,6 @@
+{
+  "predraw.no-tiles-left": "Plus aucune tuile à piocher",
+  "predraw.pass-tile-from-supply": "Passer le placement d'une tuile de la réserve (piocher la dernière tuile)",
+  "predraw.pick-hint": "Cliquez sur une tuile pour la placer, puis choisissez un emplacement sur l’aire de jeu",
+  "predraw.tiles-in-hand": "Tuiles en main"
+}

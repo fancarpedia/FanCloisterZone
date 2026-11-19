@@ -2,7 +2,7 @@
   "@author": "Kiap1969 & Sinscerly",
   "@jcz-version": "5.12.1",
   "@fcz-version": "7.2.0",
-  "@version": "0.13.5-ai",
+  "@version": "0.13.6-ai",
   "about": {
     "author": "Auteur",
     "configuration-file": "Configuratiebestand",
@@ -268,6 +268,7 @@
       "bazaar-raise-bid-or-pass": "Bod verhogen of passen",
       "castle-player-is-allowed-to-place": "Speler mag leggen",
       "castle-you-are-allowed-to-place": "Je mag leggen",
+      "choose-a-tile-from-your-hand": "Kies een tegel uit je hand",
       "coc-player-can-move-the-count": "Speler mag de graaf verzetten",
       "coc-you-can-move-the-count": "Je mag de graaf verzetten",
       "crop-circles-choose-city": "een stad",
@@ -299,6 +300,7 @@
       "place-this-tile-instead": "Leg in plaats daarvan deze tegel",
       "placement-optional-bridge": "Sommige rotaties plaatsen hier een brug, andere niet",
       "placement-requires-bridge": "Elke plaatsing hier vereist een brug",
+      "player-is-choosing-a-tile": "Speler kiest een tegel uit zijn hand",
       "player-may-move-a-meeple-from-a-city-district": "Speler mag een meeple uit een stadskwartier verzetten.",
       "player-may-move-a-meeple-from-a-city-district-before-final-scoring": "Speler mag voorafgaand aan de eindtelling een meeple uit een stadskwartier verzetten.",
       "player-may-move-a-meeple-from-the-market-district-before-final-scoring": "Speler mag voorafgaand aan de eindtelling een meeple uit het marktkwartier verzetten.",
@@ -973,10 +975,13 @@
     "empty": "—",
     "incompatible": "Niet beschikbaar met Bouwmeester, Draak, Wagen, Kasteel, Schaapherder, Rivier, Ontsnapping, Graaf of Graancirkels",
     "local-only": "Niet toegestaan in lokale spellen",
+    "no-tiles-left": "Geen tegels meer om te pakken",
     "one-seat-notice": "Spel met voorafgaand pakken — elke speler speelt op zijn eigen apparaat, dus je kunt maar één plaats innemen.",
     "pass-abbey": "Abdij overslaan (laatste tegel pakken)",
     "pass-supply-tile": "{name} overslaan (laatste tegel pakken)",
-    "pick-hint": "Klik op een tegel om die te plaatsen en kies daarna een plek op het bord"
+    "pass-tile-from-supply": "Tegel uit de voorraad leggen overslaan (laatste tegel pakken)",
+    "pick-hint": "Klik op een tegel om die te plaatsen en kies daarna een plek op het bord",
+    "tiles-in-hand": "Tegels in de hand"
   },
   "server": {
     "translate": "Update naar v%VERSION% is vereist."

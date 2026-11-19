@@ -1,0 +1,6 @@
+{
+  "predraw.no-tiles-left": "No queden peces per agafar",
+  "predraw.pass-tile-from-supply": "Passa la col·locació d'una peça del subministrament (agafa l'última peça)",
+  "predraw.pick-hint": "Feu clic en una peça per col·locar-la i després trieu un lloc al tauler",
+  "predraw.tiles-in-hand": "Peces a la mà"
+}

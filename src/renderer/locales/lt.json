@@ -2,7 +2,7 @@
   "@author": "Stepukiss",
   "@jcz-version": "5.12.1",
   "@fcz-version": "7.2.0",
-  "@version": "0.13.5-ai",
+  "@version": "0.13.6-ai",
   "about": {
     "author": "Autorius",
     "configuration-file": "Nustatymų aplankas",
@@ -268,6 +268,7 @@
       "bazaar-raise-bid-or-pass": "Padidinti statymą arba pasuoti",
       "castle-player-is-allowed-to-place": "Žaidėjui leista padėti",
       "castle-you-are-allowed-to-place": "Jums leidžiama padėti",
+      "choose-a-tile-from-your-hand": "Pasirinkite kortelę iš rankos",
       "coc-player-can-move-the-count": "Žaidėjas gali perkelti Grafą",
       "coc-you-can-move-the-count": "Jūs galite perkelti Grafą",
       "crop-circles-choose-city": "Miesto",
@@ -299,6 +300,7 @@
       "place-this-tile-instead": "Vietoj to padėti šią kortelę",
       "placement-optional-bridge": "Kai kurie pasukimai čia padeda tiltą, kiti — ne",
       "placement-requires-bridge": "Bet kokiam padėjimui čia reikia tilto",
+      "player-is-choosing-a-tile": "Žaidėjas renkasi kortelę iš rankos",
       "player-may-move-a-meeple-from-a-city-district": "Žaidėjas gali perkelti Miplą iš miesto rajono",
       "player-may-move-a-meeple-from-a-city-district-before-final-scoring": "Žaidėjas gali perkelti Miplą iš miesto rajono prieš galutinį taškų skaičiavimą",
       "player-may-move-a-meeple-from-the-market-district-before-final-scoring": "Žaidėjas gali perkelti Miplą iš turgaus rajono prieš galutinį taškų skaičiavimą",
@@ -973,10 +975,13 @@
     "empty": "—",
     "incompatible": "Negalima su Statybininku, Drakonu, Vežimu, Pilimi, Aviganiu, Upe, Pabėgimu, Grafu ar Ratais pasėliuose",
     "local-only": "Neleidžiama vietiniuose žaidimuose",
+    "no-tiles-left": "Nebeliko kortelių traukti",
     "one-seat-notice": "Išankstinio traukimo žaidimas — kiekvienas žaidėjas žaidžia savo įrenginiu, todėl galite užimti tik vieną vietą.",
     "pass-abbey": "Praleisti abatiją (traukti paskutinę kortelę)",
     "pass-supply-tile": "Praleisti {name} (traukti paskutinę kortelę)",
-    "pick-hint": "Paspauskite kortelę, kurią norite padėti, tada pasirinkite vietą lentoje"
+    "pass-tile-from-supply": "Praleisti kortelės padėjimą iš atsargų (traukti paskutinę kortelę)",
+    "pick-hint": "Paspauskite kortelę, kurią norite padėti, tada pasirinkite vietą lentoje",
+    "tiles-in-hand": "Kortelės rankoje"
   },
   "server": {
     "translate": "Reikia atnaujinti į v%VERSION%."

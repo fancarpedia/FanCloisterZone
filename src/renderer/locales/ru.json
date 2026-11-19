@@ -2,7 +2,7 @@
   "@author": "pOison & Dextea & SonicDC",
   "@jcz-version": "5.12.1",
   "@fcz-version": "7.2.0",
-  "@version": "0.13.5-ai",
+  "@version": "0.13.6-ai",
   "about": {
     "author": "Автор",
     "configuration-file": "Файл конфигурации",
@@ -268,6 +268,7 @@
       "bazaar-raise-bid-or-pass": "Повысить ставку или пропустить",
       "castle-player-is-allowed-to-place": "Игрок может разместить",
       "castle-you-are-allowed-to-place": "Вы можете разместить",
+      "choose-a-tile-from-your-hand": "Выберите тайл из руки",
       "coc-player-can-move-the-count": "Игрок может переместить Графа",
       "coc-you-can-move-the-count": "Вы можете переместить Графа",
       "crop-circles-choose-city": "город",
@@ -299,6 +300,7 @@
       "place-this-tile-instead": "Выложить этот тайл вместо другого",
       "placement-optional-bridge": "Некоторые повороты ставят здесь мост, другие — нет",
       "placement-requires-bridge": "Любое размещение здесь требует моста",
+      "player-is-choosing-a-tile": "Игрок выбирает тайл из руки",
       "player-may-move-a-meeple-from-a-city-district": "Игрок может переместить мипла из городского района.",
       "player-may-move-a-meeple-from-a-city-district-before-final-scoring": "Игрок может переместить мипла из городского района перед окончательным подсчетом очков.",
       "player-may-move-a-meeple-from-the-market-district-before-final-scoring": "Игрок может переместить мипла из рыночного района перед окончательным подсчетом очков.",
@@ -973,10 +975,13 @@
     "empty": "—",
     "incompatible": "Недоступно со Строителем, Драконом, Повозкой, Замком, Пастухом, Рекой, Побегом, Графом и Кругами на полях",
     "local-only": "Не разрешено в локальных играх",
+    "no-tiles-left": "Тайлов для взятия больше нет",
     "one-seat-notice": "Игра с предварительным набором — каждый играет на своём устройстве, поэтому вы можете занять только одно место.",
     "pass-abbey": "Пропустить аббатство (взять последний тайл)",
     "pass-supply-tile": "Пропустить {name} (взять последний тайл)",
-    "pick-hint": "Нажмите на тайл, чтобы выложить его, затем выберите место на поле"
+    "pass-tile-from-supply": "Пропустить выкладывание тайла из запаса (взять последний тайл)",
+    "pick-hint": "Нажмите на тайл, чтобы выложить его, затем выберите место на поле",
+    "tiles-in-hand": "Тайлы в руке"
   },
   "server": {
     "translate": "Требуется обновление до версии %VERSION%."

@@ -267,6 +267,7 @@
       "bazaar-raise-bid-or-pass": "Zvýšte ponuku alebo prenechajte",
       "castle-player-is-allowed-to-place": "Hráč môže umiestniť",
       "castle-you-are-allowed-to-place": "Možete umiestniť'",
+      "choose-a-tile-from-your-hand": "<span lang="en" dir="ltr" class="mw-content-ltr">Choose a tile from your hand</span>",
       "coc-player-can-move-the-count": "Hráč môže presunúť grófa",
       "coc-you-can-move-the-count": "Môžete presunúť grófa",
       "crop-circles-choose-city": "mesto",
@@ -298,6 +299,7 @@
       "place-this-tile-instead": "<span lang="en" dir="ltr" class="mw-content-ltr">Place this tile instead</span>",
       "placement-optional-bridge": "<span lang="en" dir="ltr" class="mw-content-ltr">Some rotations here place a bridge; others don't</span>",
       "placement-requires-bridge": "<span lang="en" dir="ltr" class="mw-content-ltr">Every placement here requires a bridge</span>",
+      "player-is-choosing-a-tile": "<span lang="en" dir="ltr" class="mw-content-ltr">Player is choosing a tile from their hand</span>",
       "player-may-move-a-meeple-from-a-city-district": "Hráč môže umiestniť spoločníka z mestskej časti.",
       "player-may-move-a-meeple-from-a-city-district-before-final-scoring": "Hráč môže umiestniť spoločníka z mesta pred konečným bodovaním.",
       "player-may-move-a-meeple-from-the-market-district-before-final-scoring": "Hráč môže umiestniť spoločníka z trhoviska pred konečným bodovaním.",
@@ -970,10 +972,13 @@
     "empty": "<span lang="en" dir="ltr" class="mw-content-ltr">—</span>",
     "incompatible": "<span lang="en" dir="ltr" class="mw-content-ltr">Not available with Builder, Dragon, Wagon, Castle, Shepherd, River, Escape, Count or Crop Circles</span>",
     "local-only": "<span lang="en" dir="ltr" class="mw-content-ltr">Not allowed in local games</span>",
+    "no-tiles-left": "<span lang="en" dir="ltr" class="mw-content-ltr">No tiles left to draw</span>",
     "one-seat-notice": "<span lang="en" dir="ltr" class="mw-content-ltr">Pre-draw game — each player plays on their own device, so you can take only one slot.</span>",
     "pass-abbey": "<span lang="en" dir="ltr" class="mw-content-ltr">Pass abbey (draw last tile)</span>",
     "pass-supply-tile": "<span lang="en" dir="ltr" class="mw-content-ltr">Pass {name} (draw last tile)</span>",
-    "pick-hint": "<span lang="en" dir="ltr" class="mw-content-ltr">Click a tile to place it, then choose a spot on the board</span>"
+    "pass-tile-from-supply": "<span lang="en" dir="ltr" class="mw-content-ltr">Pass placing a tile from supply (draw last tile)</span>",
+    "pick-hint": "<span lang="en" dir="ltr" class="mw-content-ltr">Click a tile to place it, then choose a spot on the board</span>",
+    "tiles-in-hand": "<span lang="en" dir="ltr" class="mw-content-ltr">Tiles in hand</span>"
   },
   "server": {
     "translate": "Je nevyhnutná aktualizácia na verziu %VERSION%."

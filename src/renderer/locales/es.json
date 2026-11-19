@@ -2,7 +2,7 @@
   "@author": "Carlium & Meepledrone",
   "@jcz-version": "5.12.1",
   "@fcz-version": "7.2.0",
-  "@version": "0.13.5-ai",
+  "@version": "0.13.6-ai",
   "about": {
     "author": "Autor",
     "configuration-file": "Archivo de configuración",
@@ -268,6 +268,7 @@
       "bazaar-raise-bid-or-pass": "Aumentar la puja o pasar",
       "castle-player-is-allowed-to-place": "Jugador puede colocar",
       "castle-you-are-allowed-to-place": "Puede colocar",
+      "choose-a-tile-from-your-hand": "Elige una loseta de tu mano",
       "coc-player-can-move-the-count": "Jugador puede mover el conde",
       "coc-you-can-move-the-count": "Puede mover el conde",
       "crop-circles-choose-city": "una ciudad",
@@ -299,6 +300,7 @@
       "place-this-tile-instead": "Colocar esta loseta en su lugar",
       "placement-optional-bridge": "Algunas rotaciones colocan un puente aquí, otras no",
       "placement-requires-bridge": "Toda colocación aquí requiere un puente",
+      "player-is-choosing-a-tile": "El jugador está eligiendo una loseta de su mano",
       "player-may-move-a-meeple-from-a-city-district": "Jugador puede mover un seguidor desde un distrito de la ciudad.",
       "player-may-move-a-meeple-from-a-city-district-before-final-scoring": "Jugador puede mover un seguidor desde un distrito de la ciudad antes de la puntuación final",
       "player-may-move-a-meeple-from-the-market-district-before-final-scoring": "Jugador puede mover un seguidor desde el distrito del mercado antes de la puntuación final.",
@@ -973,10 +975,13 @@
     "empty": "—",
     "incompatible": "No disponible con Constructor, Dragón, Carro, Castillo, Pastor, Río, Huida, Conde ni Círculos de cultivo",
     "local-only": "No permitido en partidas locales",
+    "no-tiles-left": "No quedan losetas por robar",
     "one-seat-notice": "Partida con robo previo — cada jugador juega en su propio dispositivo, así que solo puedes ocupar un puesto.",
     "pass-abbey": "Pasar la abadía (robar la última loseta)",
     "pass-supply-tile": "Pasar {name} (robar la última loseta)",
-    "pick-hint": "Haz clic en una loseta para colocarla y luego elige un lugar en el tablero"
+    "pass-tile-from-supply": "Pasar la colocación de una loseta de la reserva (robar la última loseta)",
+    "pick-hint": "Haz clic en una loseta para colocarla y luego elige un lugar en el tablero",
+    "tiles-in-hand": "Losetas en la mano"
   },
   "server": {
     "translate": "Es necesario actualizar a la versión v%VERSION%."

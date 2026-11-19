@@ -389,6 +389,11 @@
     "value": "Ваш счёт — лучший {best}, последний {latest}",
     "source": "manual"
   },
+  "game.action.choose-a-tile-from-your-hand": {
+    "en": "Choose a tile from your hand",
+    "value": "Выберите тайл из руки",
+    "source": "manual"
+  },
   "game.action.host-terminated-the-game": {
     "en": "Host terminated the game. Connection was closed.",
     "value": "Хост завершил игру. Соединение закрыто.",
@@ -407,6 +412,11 @@
   "game.action.placement-requires-bridge": {
     "en": "Every placement here requires a bridge",
     "value": "Любое размещение здесь требует моста",
+    "source": "manual"
+  },
+  "game.action.player-is-choosing-a-tile": {
+    "en": "Player is choosing a tile from their hand",
+    "value": "Игрок выбирает тайл из руки",
     "source": "manual"
   },
   "game.action.ransom-paid": {
@@ -994,6 +1004,11 @@
     "value": "Не разрешено в локальных играх",
     "source": "manual"
   },
+  "predraw.no-tiles-left": {
+    "en": "No tiles left to draw",
+    "value": "Тайлов для взятия больше нет",
+    "source": "manual"
+  },
   "predraw.one-seat-notice": {
     "en": "Pre-draw game — each player plays on their own device, so you can take only one slot.",
     "value": "Игра с предварительным набором — каждый играет на своём устройстве, поэтому вы можете занять только одно место.",
@@ -1009,9 +1024,19 @@
     "value": "Пропустить {name} (взять последний тайл)",
     "source": "manual"
   },
+  "predraw.pass-tile-from-supply": {
+    "en": "Pass placing a tile from supply (draw last tile)",
+    "value": "Пропустить выкладывание тайла из запаса (взять последний тайл)",
+    "source": "manual"
+  },
   "predraw.pick-hint": {
     "en": "Click a tile to place it, then choose a spot on the board",
     "value": "Нажмите на тайл, чтобы выложить его, затем выберите место на поле",
+    "source": "manual"
+  },
+  "predraw.tiles-in-hand": {
+    "en": "Tiles in hand",
+    "value": "Тайлы в руке",
     "source": "manual"
   },
   "predraw.your-hand": {

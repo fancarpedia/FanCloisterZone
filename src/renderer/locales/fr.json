@@ -2,7 +2,7 @@
   "@author": "Black Bear",
   "@jcz-version": "5.12.1",
   "@fcz-version": "7.2.0",
-  "@version": "0.13.5-ai",
+  "@version": "0.13.6-ai",
   "about": {
     "author": "Auteur",
     "configuration-file": "Fichier de configuration",
@@ -268,6 +268,7 @@
       "bazaar-raise-bid-or-pass": "Surenchérissez ou passez",
       "castle-player-is-allowed-to-place": "Le joueur est autorisé à poser",
       "castle-you-are-allowed-to-place": "Vous êtes autorisés à poser",
+      "choose-a-tile-from-your-hand": "Choisissez une tuile de votre main",
       "coc-player-can-move-the-count": "Le joueur peut déplacer le Comte",
       "coc-you-can-move-the-count": "Vous pouvez déplacer le Comte",
       "crop-circles-choose-city": "une ville",
@@ -299,6 +300,7 @@
       "place-this-tile-instead": "Placer plutôt cette tuile",
       "placement-optional-bridge": "Certaines rotations ici permettent de poser un pont ; d’autres non",
       "placement-requires-bridge": "Chaque pose ici nécessite un pont",
+      "player-is-choosing-a-tile": "Le joueur choisit une tuile de sa main",
       "player-may-move-a-meeple-from-a-city-district": "Le joueur peut déplacer un meeple d’un quartier de la ville.",
       "player-may-move-a-meeple-from-a-city-district-before-final-scoring": "Le joueur peut déplacer un meeple d’un quartier de la ville avant l’évaluation finale.",
       "player-may-move-a-meeple-from-the-market-district-before-final-scoring": "Le joueur peut déplacer un meeple du Marché avant l’évaluation finale.",
@@ -973,10 +975,13 @@
     "empty": "—",
     "incompatible": "Non disponible avec le Bâtisseur, le Dragon, le Chariot, la Forteresse, le Berger, la Rivière, l'Évasion, le Comte ou les Agroglyphes",
     "local-only": "Interdit dans les parties locales",
+    "no-tiles-left": "Plus aucune tuile à piocher",
     "one-seat-notice": "Jeu avant la pioche — chaque joueur joue sur son propre appareil ; vous ne pouvez donc occuper qu’un seul emplacement.",
     "pass-abbey": "Passer la phase de placement du Monastère (piocher la dernière tuile)",
     "pass-supply-tile": "Passer {name} (piocher la dernière tuile)",
-    "pick-hint": "Cliquez sur une tuile pour la placer, puis choisissez un emplacement sur l’aire de jeu"
+    "pass-tile-from-supply": "Passer le placement d'une tuile de la réserve (piocher la dernière tuile)",
+    "pick-hint": "Cliquez sur une tuile pour la placer, puis choisissez un emplacement sur l’aire de jeu",
+    "tiles-in-hand": "Tuiles en main"
   },
   "server": {
     "translate": "Une mise à jour vers la version v%VERSION% est nécessaire."

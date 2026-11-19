@@ -1,0 +1,6 @@
+{
+  "predraw.no-tiles-left": "Geen tegels meer om te pakken",
+  "predraw.pass-tile-from-supply": "Tegel uit de voorraad leggen overslaan (laatste tegel pakken)",
+  "predraw.pick-hint": "Klik op een tegel om die te plaatsen en kies daarna een plek op het bord",
+  "predraw.tiles-in-hand": "Tegels in de hand"
+}

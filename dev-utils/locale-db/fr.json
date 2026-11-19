@@ -94,6 +94,11 @@
     "value": "est déplacée sur une tuile",
     "source": "manual"
   },
+  "game.action.choose-a-tile-from-your-hand": {
+    "en": "Choose a tile from your hand",
+    "value": "Choisissez une tuile de votre main",
+    "source": "manual"
+  },
   "game.action.host-terminated-the-game": {
     "en": "Host terminated the game. Connection was closed.",
     "value": "L’hôte a mis fin à la partie. La connexion a été fermée.",
@@ -102,6 +107,11 @@
   "game.action.place-this-tile-instead": {
     "en": "Place this tile instead",
     "value": "Placer plutôt cette tuile",
+    "source": "manual"
+  },
+  "game.action.player-is-choosing-a-tile": {
+    "en": "Player is choosing a tile from their hand",
+    "value": "Le joueur choisit une tuile de sa main",
     "source": "manual"
   },
   "game.action.tile-discarded-notice-plural": {
@@ -424,9 +434,29 @@
     "value": "Nouvelle partie locale",
     "source": "manual"
   },
+  "predraw.no-tiles-left": {
+    "en": "No tiles left to draw",
+    "value": "Plus aucune tuile à piocher",
+    "source": "manual"
+  },
   "predraw.pass-supply-tile": {
     "en": "Pass {name} (draw last tile)",
     "value": "Passer {name} (piocher la dernière tuile)",
+    "source": "manual"
+  },
+  "predraw.pass-tile-from-supply": {
+    "en": "Pass placing a tile from supply (draw last tile)",
+    "value": "Passer le placement d'une tuile de la réserve (piocher la dernière tuile)",
+    "source": "manual"
+  },
+  "predraw.pick-hint": {
+    "en": ">Click a tile to place it, then choose a spot on the board",
+    "value": "Cliquez sur une tuile pour la placer, puis choisissez un emplacement sur l’aire de jeu",
+    "source": "manual"
+  },
+  "predraw.tiles-in-hand": {
+    "en": "Tiles in hand",
+    "value": "Tuiles en main",
     "source": "manual"
   },
   "settings.add-ons.add-on-requires-newer-app": {

@@ -1,0 +1,6 @@
+{
+  "predraw.no-tiles-left": "Nie ma już płytek do dobrania",
+  "predraw.pass-tile-from-supply": "Pomiń położenie płytki z zasobu (dobierz ostatnią płytkę)",
+  "predraw.pick-hint": "Kliknij płytkę, którą chcesz ułożyć, a potem wybierz miejsce na planszy",
+  "predraw.tiles-in-hand": "Płytki w ręce"
+}

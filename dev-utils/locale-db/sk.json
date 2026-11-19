@@ -369,6 +369,11 @@
     "value": "Vaše skóre — najlepšie {best}, posledné {latest}",
     "source": "manual"
   },
+  "game.action.choose-a-tile-from-your-hand": {
+    "en": "Choose a tile from your hand",
+    "value": "Vyberte si kartičku z ruky",
+    "source": "manual"
+  },
   "game.action.host-terminated-the-game": {
     "en": "Host terminated the game. Connection was closed.",
     "value": "Hostiteľ ukončil hru. Spojenie bolo ukončené.",
@@ -387,6 +392,11 @@
   "game.action.placement-requires-bridge": {
     "en": "Every placement here requires a bridge",
     "value": "Každé umiestnenie tu vyžaduje most",
+    "source": "manual"
+  },
+  "game.action.player-is-choosing-a-tile": {
+    "en": "Player is choosing a tile from their hand",
+    "value": "Hráč vyberá kartičku z ruky",
     "source": "manual"
   },
   "game.action.score-first-choose": {
@@ -939,6 +949,11 @@
     "value": "Nie je povolené v lokálnych hrách",
     "source": "manual"
   },
+  "predraw.no-tiles-left": {
+    "en": "No tiles left to draw",
+    "value": "Už nezostali žiadne kartičky na potiahnutie",
+    "source": "manual"
+  },
   "predraw.one-seat-notice": {
     "en": "Pre-draw game — each player plays on their own device, so you can take only one slot.",
     "value": "Hra s predbežným ťahaním — každý hráč hrá na svojom zariadení, takže môžete obsadiť len jedno miesto.",
@@ -954,9 +969,19 @@
     "value": "Preskočiť {name} (potiahnuť poslednú kartičku)",
     "source": "manual"
   },
+  "predraw.pass-tile-from-supply": {
+    "en": "Pass placing a tile from supply (draw last tile)",
+    "value": "Preskočiť umiestnenie kartičky zo zásoby (potiahnuť poslednú kartičku)",
+    "source": "manual"
+  },
   "predraw.pick-hint": {
     "en": "Click a tile to place it, then choose a spot on the board",
     "value": "Kliknite na kartičku, ktorú chcete položiť, a potom vyberte miesto na hracej ploche",
+    "source": "manual"
+  },
+  "predraw.tiles-in-hand": {
+    "en": "Tiles in hand",
+    "value": "Kartičky v ruke",
     "source": "manual"
   },
   "predraw.your-hand": {

@@ -1,0 +1,6 @@
+{
+  "predraw.no-tiles-left": "Už nezostali žiadne kartičky na potiahnutie",
+  "predraw.pass-tile-from-supply": "Preskočiť umiestnenie kartičky zo zásoby (potiahnuť poslednú kartičku)",
+  "predraw.pick-hint": "Kliknite na kartičku, ktorú chcete položiť, a potom vyberte miesto na hracej ploche",
+  "predraw.tiles-in-hand": "Kartičky v ruke"
+}
