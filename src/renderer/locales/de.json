@@ -1,8 +1,8 @@
 {
   "@author": "Challa007 & Bombur",
   "@jcz-version": "5.12.1",
-  "@fcz-version": "7.1.0",
-  "@version": "0.12.17-ai",
+  "@fcz-version": "7.2.0",
+  "@version": "0.13.4-ai",
   "about": {
     "author": "Autor",
     "configuration-file": "Konfigurationsdatei",
@@ -202,6 +202,8 @@
     "hills-and-sheep": "Schafe und Hügel",
     "inns-and-cathedrals": "Wirtshäuser und Kathedralen",
     "king-and-robber": "König und Raubritter",
+    "kingdoms": "Königreiche",
+    "kingdoms-description": "Jeder Spieler hat einen Königreichspalast in seiner Farbe. Statt ein Plättchen zu ziehen, legst du ihn an eine Stadt mit einem deiner Meeple – sie wird deine Hauptstadt. Ist die Hauptstadt fertig, wird sie zum Königreich: Bei Spielende bringt sie 3 Punkte für jede fertige Stadt, die an eine mit ihr verbundene Wiese grenzt.",
     "labyrinth": "Das Labyrinth",
     "mage-and-witch": "Magier und Hexe",
     "meteorites": "Meteoriten",
@@ -293,6 +295,7 @@
       "monasteries-how-do-you-want-place-follower": "Wie willst du den Meeple auf das besondere Kloster setzen?",
       "or": "oder",
       "place-the-tile": "Lege das Plättchen",
+      "place-this-tile-instead": "Stattdessen dieses Plättchen legen",
       "placement-optional-bridge": "Manche Drehungen setzen hier eine Brücke, andere nicht",
       "placement-requires-bridge": "Jede Platzierung hier benötigt eine Brücke",
       "player-may-move-a-meeple-from-a-city-district": "Der Spieler darf 1 Meeple aus einem Stadtviertel herausnehmen.",
@@ -374,6 +377,7 @@
       "ferry": "Fähre",
       "gold": "Goldstücke",
       "king": "König-Karte",
+      "kingdom-palace": "Königreichspalast",
       "little-buildings": "Häuser",
       "mage": "Magier",
       "mayor": "Bürgermeister",
@@ -435,6 +439,8 @@
       "keep-building-move": 1,
       "king": "König",
       "king-and-robber": "König und Raubritter",
+      "kingdom": "Königreich",
+      "kingdoms": "Königreiche",
       "marketplace": "Marktplatz",
       "marketplaces": "Marktplätze",
       "meteorite": "Meteorit",
@@ -667,6 +673,8 @@
     "selected-tiles": "Ausgewählte Plättchen",
     "tiles": {
       "core-sets": "Basispakete",
+      "custom-pack": "Eigener Plättchenstapel (Anzahlen geändert)",
+      "custom-pack-short": "Plättchen",
       "enable-quantity-change": "Anzahländerung erlauben",
       "fan-expansions": "Fan-Erweiterungen",
       "major-expansions": "Haupterweiterungen",
@@ -678,8 +686,7 @@
       "reset-tiles": "Zurücksetzen",
       "separate-expansions": "Erweiterungen trennen",
       "start-tile-excluded": "Die Anzahl der Startplättchen ist auf 0 gesetzt – stelle sie wieder her, um das Spiel zu erstellen",
-      "custom-pack": "Eigener Plättchenstapel (Anzahlen geändert)",
-      "custom-pack-short": "Plättchen",
+      "supply-tiles": "Im Vorrat der Spieler, nicht im Nachziehstapel",
       "custom-pack-move": 1
     },
     "timer": {
@@ -961,26 +968,29 @@
   },
   "predraw": {
     "your-hand": "Deine Hand",
+    "draw": "Plättchen ziehen",
     "empty": "—",
     "incompatible": "Nicht verfügbar mit Baumeister, Drache, Wagen, Burg, Schäfer, Fluss, Flucht, Graf oder Kornkreisen",
     "local-only": "In lokalen Spielen nicht erlaubt",
     "one-seat-notice": "Spiel mit Vorziehen — jeder Spieler spielt auf seinem eigenen Gerät, daher kannst du nur einen Platz einnehmen.",
-    "pick-hint": "Klicke ein Plättchen an, um es zu legen, und wähle dann einen Platz auf dem Spielfeld",
-    "draw": "Plättchen ziehen",
-    "pass-abbey": "Abtei überspringen (letztes Plättchen ziehen)"
+    "pass-abbey": "Abtei überspringen (letztes Plättchen ziehen)",
+    "pass-supply-tile": "{name} überspringen (letztes Plättchen ziehen)",
+    "pick-hint": "Klicke ein Plättchen an, um es zu legen, und wähle dann einen Platz auf dem Spielfeld"
   },
   "server": {
     "translate": "Update auf v%VERSION% ist notwendig."
   },
   "settings": {
     "add-ons": {
-      "add-ons-definition-not-available": "Die Add-On Definition ist nicht verfügbar",
+      "add-on-requires-newer-app": "Das Add-On benötigt FanCloisterZone {version} oder höher",
       "add-on-already-installed": "Das Add-On {id} ist bereits installiert. Wenn du es nochmal installieren möchtest, entferne es bitte zuerst.",
       "add-on-url": "Add-On-URL",
+      "add-ons-definition-not-available": "Die Add-On Definition ist nicht verfügbar",
       "artwork-not-found-internet-connection-is-needed": "Add-On mit Standardgrafik kann nicht gefunden oder heruntergeladen werden. Eine Internetverbindung ist beim ersten Mal notwendig, um sie herunterzuladen.",
       "available-new-add-ons": "Verfügbare neue Add-Ons",
       "download-definition-not-found": "Die Download Definition wurde nicht gefunden",
       "downloaded-file-checksum-mismatch": "Die Check-Summe der heruntergeladenen Datei stimmt nicht überein.",
+      "downloading-classic-artwork": "Klassische Grafik wird heruntergeladen",
       "drag-add-on-here-or-click-here": "Ziehe das Add-On hierher (.jca-Datei) oder klicke hier, um es auszuwählen.",
       "finish-or-leave-game-to-make-changes": "Bitte beende oder verlasse zuerst das Spiel, um hier Änderungen vorzunehmen.",
       "install-add-on": "Add-On installieren",

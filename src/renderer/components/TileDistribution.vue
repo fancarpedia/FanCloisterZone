@@ -86,6 +86,30 @@
         </div>
       </div>
     </div>
+
+    <!-- tiles of supply sets (<tile-set supply="true"> in the expansion XML): they go into the
+         players' supplies, not into the draw pile — listed read-only, per expansion -->
+    <div
+      v-for="group in supplyGroups"
+      :key="group.id"
+      class="group supply-group"
+    >
+      <h3 class="group-title">
+        <ExpansionSymbol v-if="group.expansion" :expansion="group.expansion" class="group-symbol" />
+        {{ group.title }}
+      </h3>
+      <div class="supply-note">{{ $t('game-setup.tiles.supply-tiles') }}</div>
+      <div class="tile-distribution" :class="{ small }">
+        <div
+          v-for="t in group.tiles"
+          :key="t.id"
+          class="tile"
+          :style="{ width: `${tileSize + 4}px` }"
+        >
+          <StandaloneTileImage :tile-id="t.id" :size="tileSize" :rotation="t.rotation" />
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -112,6 +136,8 @@ export default {
     small: { type: Boolean, default: false },
     // read-only overrides for displaying a saved setup (bookmarks etc.)
     tileOverrides: { type: Object, default: null },
+    // elements of a saved setup (bookmarks) — decides which supply tiles are listed
+    setupElements: { type: Object, default: null },
     // game-setup mode: header checkboxes + steppers editing gameSetup.tileOverrides
     editable: { type: Boolean, default: false },
     // whether changing per-tile COUNTS is allowed (the Keep Building variant allows separating
@@ -169,6 +195,7 @@ export default {
         const { elements, sets, start } = setup
         return getSelectedStartingTiles(elements, sets, start)
       },
+      elements: state => (state.gameSetup || state.game.setup || {}).elements,
       storeOverrides: state => state.gameSetup.tileOverrides,
       storeOverridesBySet: state => state.gameSetup.tileOverridesBySet || {}
     }),
@@ -251,6 +278,38 @@ export default {
         }
       }
       return false
+    },
+
+    // supply sets (<tile-set supply="true" element="…">) whose element is on: their tiles go into
+    // the players' supplies instead of the draw pile (plugins/tiles.js keeps them in `supplyTiles`).
+    // Tied to the element, not to a selected set — the abbey can be on without Abbey & Mayor.
+    // In the game setup (editable) or for a saved setup (setupElements given) the setup's elements
+    // decide; in an expansion's detail view (fixed `sets`, no setup) only the supply sets of the
+    // expansions shown — otherwise every expansion's detail listed e.g. the Kingdom Palaces.
+    supplyGroups () {
+      const elements = this.editable ? (this.elements || {}) : this.setupElements
+      const shownExpansions = new Set(
+        Object.keys(this.baseSets).map(id => this.releaseForSet(id)?.expansion).filter(Boolean)
+      )
+      return Object.entries(this.$tiles.sets)
+        .filter(([id, set]) => {
+          if (!set.supplyTiles || !set.element) return false
+          if (elements) return !!elements[set.element]
+          const found = this.releaseForSet(id)
+          return !!found && shownExpansions.has(found.expansion)
+        })
+        .map(([id, set]) => {
+          const ids = Object.keys(set.supplyTiles).filter(tid => this.$tiles.tiles[tid])
+          if (!ids.length) return null
+          const found = this.releaseForSet(id)
+          return {
+            id: 'supply:' + id,
+            title: this.$t('game.element.' + set.element),
+            expansion: found ? found.expansion : null,
+            tiles: ids.map(tid => ({ id: tid, rotation: this.$theme.getTile(tid)?.rotation || 0 }))
+          }
+        })
+        .filter(Boolean)
     },
 
     // one flat pseudo-group, or (editable + separate view) a group per expansion
@@ -493,6 +552,12 @@ export default {
     display: inline-flex
     gap: 2px
     margin-left: 6px
+
+.supply-note
+  font-size: 13px
+  font-style: italic
+  opacity: 0.75
+  margin: -4px 0 6px
 
 .tile-distribution
   display: flex

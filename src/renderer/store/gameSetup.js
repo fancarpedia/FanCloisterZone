@@ -30,6 +30,20 @@ function getEmptySlots () {
   return slots
 }
 
+// Supply tiles in play (abbey, Kingdom Palaces, …) — from the XML supply sets of the enabled elements —
+// as sent to the server (`setup.supply`), so it needs no hardcoded tile ids. Also records the add-on
+// of each such set into `addons`: it is needed even when the element was switched on without
+// selecting the expansion's set.
+function supplyInPlay ($tiles, elements, addons) {
+  const supply = {}
+  Object.entries($tiles.getSupply(elements || {})).forEach(([element, { count, tiles, setId }]) => {
+    supply[element] = { count, tiles }
+    const exp = Expansion.all().find(e => e.releases.some(r => r.sets.includes(setId.split(':')[0])))
+    if (exp && exp.addon) addons[exp.addon.id] = exp.addon.json.version
+  })
+  return supply
+}
+
 // Build the wire `setup` from the current gameSetup state (used by createGame and by the
 // live UPDATE_GAME_SETUP push while editing an online game's setup).
 function buildSetupFromState (vm, state, getters) {
@@ -52,6 +66,7 @@ function buildSetupFromState (vm, state, getters) {
       addons[addon.id] = addon.json.version
     }
   })
+  const supply = supplyInPlay($tiles, state.elements, addons)
 
   const setup = {
     sets,
@@ -89,6 +104,9 @@ function buildSetupFromState (vm, state, getters) {
 
   if (Object.keys(addons).length) {
     setup.addons = addons
+  }
+  if (Object.keys(supply).length) {
+    setup.supply = supply
   }
 
   const rules = {}
@@ -660,6 +678,13 @@ export const actions = {
         }
       })
       setup.rules = rules
+      // a saved / bookmarked / rematch setup may predate the supply list — recompute it from its
+      // elements (the server's pre-draw relies on it to hold back a slot for an unplaced palace)
+      const addons = { ...(setup.addons || {}) }
+      const supply = supplyInPlay($tiles, setup.elements, addons)
+      if (Object.keys(supply).length) setup.supply = supply
+      else delete setup.supply
+      if (Object.keys(addons).length) setup.addons = addons
     } else {
       setup = buildSetupFromState(this._vm, state, getters)
     }

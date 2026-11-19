@@ -16,7 +16,9 @@ const EDGE_CODE = {
   city: 'c',
   road: 'r',
   farm: 'f',
-  river: 'i'
+  river: 'i',
+  // the abbey tile's edges match any neighbour
+  'abbey-edge': '*'
 }
 
 const UNKWNOWN_SET = { expansion: '_UNKNOWN', implies: [], impliesAllowed: [], allows: [] }
@@ -317,6 +319,24 @@ class Tiles extends EventsBase {
     }) !== undefined
   }
 
+  // Supply tiles in play: every supply set (<tile-set supply="true" element="…">) whose element is
+  // on → { [element]: { count, tiles: [tileId…], setId } }. `count` is how many each player holds
+  // (the element value; `true` = 1). Sent with the setup so the server needs no hardcoded tile ids.
+  getSupply (elements) {
+    const supply = {}
+    Object.entries(this.sets).forEach(([setId, set]) => {
+      if (!set.supplyTiles || !set.element) return
+      const value = elements ? elements[set.element] : undefined
+      if (value === undefined || value === null || value === false) return
+      const count = value === true ? 1 : parseInt(value, 10)
+      if (!(count > 0)) return
+      const tiles = Object.keys(set.supplyTiles).filter(id => this.tiles[id])
+      if (!tiles.length) return
+      supply[set.element] = { count, tiles, setId }
+    })
+    return supply
+  }
+
   // returns setup with enforced elements by expansion definitions
   getFullSetup (setup) {
     const elements = { ...setup.elements }
@@ -401,7 +421,14 @@ class Tiles extends EventsBase {
           const count = ref.getAttribute('count')
           setTiles[ref.getAttribute('tile')] = parseInt(count || 1)
         })
-        const set = { tiles: setTiles, allows: [] }
+        // <tile-set supply="true">: tiles the expansion puts into players' supplies, never into the
+        // draw pile (e.g. Kingdoms' Kingdom Palaces). They are kept apart in `supplyTiles` so pack
+        // counts, overrides and the emptied-set logic never see them; the Tiles view lists them
+        // read-only.
+        // `element` names the setup element that hands these tiles out (abbey, kingdom-palace).
+        const set = ts.getAttribute('supply') === 'true'
+          ? { tiles: {}, supplyTiles: setTiles, element: ts.getAttribute('element') || null, allows: [] }
+          : { tiles: setTiles, allows: [] }
         if (max) {
           set.max = parseInt(max)
         }
@@ -549,11 +576,6 @@ class Tiles extends EventsBase {
         })
       })
     })
-
-    tiles['AM/A'] = {
-      symmetry: 4,
-      edge: '****'
-    }
 
     // Merge groups from hardcoded JS expansions (exp.groups set via constructor options)
     // XML expansions already populated expansionGroups during parseXml via <group id="...">

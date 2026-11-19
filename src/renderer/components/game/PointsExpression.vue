@@ -1,7 +1,7 @@
 <template>
   <section @click="onClick">
     <div class="expr-title">
-      <ScoringIcon :name="expr.name" :size="36" class="title-icon" />
+      <ScoringIcon :name="expr.name" :size="60" class="title-icon" />
       <div class="title-text">
         <div>{{ title }}</div>
         <div v-if="subtitle" class="sub">{{ subtitle }}</div>
@@ -75,6 +75,8 @@ const TITLE_MAPPING = {
   // a 0-point entry is named after the feature class: 'yagahut.empty'
   'yagahut': 'game.feature.yaga-hut',
   'field': 'game.feature.field',
+  // Kingdoms: a capital's final score (3 points per city touching its fields)
+  'kingdom': 'game.feature.kingdom',
   'trade-goods': 'game.feature.trade-goods',
   'king': 'game.feature.king',
   'ringmaster': 'game.feature.ringmaster',
@@ -238,6 +240,8 @@ export default {
 
   .title-icon
     flex: none
+    // lifted a little: centred on the whole bar it read as sitting low beside the feature name
+    margin-top: -4px
 
   .title-text
     display: flex

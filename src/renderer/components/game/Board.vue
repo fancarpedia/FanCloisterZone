@@ -119,7 +119,7 @@ const KEY_PRESSED_OFFSET = 30
 // Held down to pan continuously — these drive the repeat loop in onKeyDown.
 const PAN_KEYS = ['a', 's', 'd', 'w']
 // One action per press, however long the key is held: rotate and the hint/history toggles.
-const ACTION_KEYS = ['r', 'f', 'h', 't']
+const ACTION_KEYS = ['r', 'f', 'h', 't', 'p']
 
 // Length of one quarter-turn. Long enough to read as a turn, short enough not to delay play.
 const ROTATE_DURATION = 480
@@ -359,6 +359,9 @@ export default {
               break
             case 't':
               this.$store.commit('toggleGameFeatureHints')
+              break
+            case 'p':
+              this.$store.commit('togglePotentialScore')
               break
           }
           return

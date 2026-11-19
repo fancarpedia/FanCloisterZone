@@ -1,8 +1,8 @@
 {
   "@author": "Bumsakalaka",
   "@jcz-version": "5.12.1",
-  "@fcz-version": "7.1.0",
-  "@version": "0.12.17-ai",
+  "@fcz-version": "7.2.0",
+  "@version": "0.13.4-ai",
   "about": {
     "author": "Autor",
     "configuration-file": "Konfiguračný súbor",
@@ -202,6 +202,8 @@
     "hills-and-sheep": "Kopce a ovce",
     "inns-and-cathedrals": "Hostince a katedrály",
     "king-and-robber": "Kráľ a barón",
+    "kingdoms": "Kráľovstvá",
+    "kingdoms-description": "Každý hráč má Palác kráľovstva vo svojej farbe. Namiesto ťahania kartičky ho môžete priložiť k mestu s jedným z vašich spoločníkov a urobiť z neho svoje hlavné mesto. Keď je hlavné mesto dokončené, stane sa kráľovstvom: na konci hry získa 3 body za každé dokončené mesto, ktoré susedí s lúkou spojenou s ním.",
     "labyrinth": "Labyrint",
     "mage-and-witch": "Mág a čarodejnica",
     "meteorites": "Meteority",
@@ -293,6 +295,7 @@
       "monasteries-how-do-you-want-place-follower": "Ako chcete umiestniť spoločníka na špeciálny kláštor?",
       "or": "alebo",
       "place-the-tile": "Priložte kartičku",
+      "place-this-tile-instead": "Priložiť namiesto toho túto kartičku",
       "placement-optional-bridge": "Niektoré otočenia tu umiestnia most, iné nie",
       "placement-requires-bridge": "Každé umiestnenie tu vyžaduje most",
       "player-may-move-a-meeple-from-a-city-district": "Hráč môže umiestniť spoločníka z mestskej časti.",
@@ -374,6 +377,7 @@
       "ferry": "Priezov",
       "gold": "Zlato",
       "king": "Kráľ",
+      "kingdom-palace": "Palác kráľovstva",
       "little-buildings": "Malé budovy",
       "mage": "Mág",
       "mayor": "Starosta",
@@ -435,6 +439,8 @@
       "keep-building-move": 1,
       "king": "Kráľ",
       "king-and-robber": "Kráľ a lúpežník",
+      "kingdom": "Kráľovstvo",
+      "kingdoms": "Kráľovstvá",
       "marketplace": "Trhovisko",
       "marketplaces": "Throviská",
       "meteorite": "Meteorit",
@@ -667,6 +673,8 @@
     "selected-tiles": "Zvolené kartičky",
     "tiles": {
       "core-sets": "Základné hry",
+      "custom-pack": "Vlastná sada kartičiek (zmenené počty)",
+      "custom-pack-short": "Kartičky",
       "enable-quantity-change": "Povoliť zmenu počtu",
       "fan-expansions": "Fanúšikovské fozšírenia",
       "major-expansions": "Veľké rozšírenia",
@@ -678,8 +686,7 @@
       "reset-tiles": "Obnoviť",
       "separate-expansions": "Oddeliť rozšírenia",
       "start-tile-excluded": "Počet začiatočných kartičiek je nastavený na 0 – obnovte ho, aby ste mohli vytvoriť hru",
-      "custom-pack": "Vlastná sada kartičiek (zmenené počty)",
-      "custom-pack-short": "Kartičky",
+      "supply-tiles": "V zásobe hráčov, nie medzi kartičkami na ťahanie",
       "custom-pack-move": 1
     },
     "timer": {
@@ -961,26 +968,29 @@
   },
   "predraw": {
     "your-hand": "Vaša ruka",
+    "draw": "Potiahnuť kartičku",
     "empty": "—",
     "incompatible": "Nie je dostupné so Staviteľom, Drakom, Vozom, Hradom, Pastierom, Riekou, Únikom, Grófom ani Kruhmi v obilí",
     "local-only": "Nie je povolené v lokálnych hrách",
     "one-seat-notice": "Hra s predbežným ťahaním — každý hráč hrá na svojom zariadení, takže môžete obsadiť len jedno miesto.",
-    "pick-hint": "Kliknite na kartičku, ktorú chcete položiť, a potom vyberte miesto na hracej ploche",
-    "draw": "Potiahnuť kartičku",
-    "pass-abbey": "Preskočiť opátstvo (potiahnuť poslednú kartičku)"
+    "pass-abbey": "Preskočiť opátstvo (potiahnuť poslednú kartičku)",
+    "pass-supply-tile": "Preskočiť {name} (potiahnuť poslednú kartičku)",
+    "pick-hint": "Kliknite na kartičku, ktorú chcete položiť, a potom vyberte miesto na hracej ploche"
   },
   "server": {
     "translate": "Je nevyhnutná aktualizácia na verziu %VERSION%."
   },
   "settings": {
     "add-ons": {
-      "add-ons-definition-not-available": "Nie je dostupná definícia súborov Doplnkov na stiahnutie.",
+      "add-on-requires-newer-app": "Doplnok vyžaduje FanCloisterZone {version} alebo novší",
       "add-on-already-installed": "Doplnok {id} je už nainštalovaný. Pred jeho preinštalovaním, ho musíte najprv odstrániť.",
       "add-on-url": "Adresa URL grafiky kartičiek",
+      "add-ons-definition-not-available": "Nie je dostupná definícia súborov Doplnkov na stiahnutie.",
       "artwork-not-found-internet-connection-is-needed": "Nie je možné nájsť alebo stiahnuť doplnok s predvolenou grafikou kartičiek.",
       "available-new-add-ons": "Dostupné nové doplnky / add-ony",
       "download-definition-not-found": "Nepodarilo sa nájsť definíciu súborov Doplnkov na stiahnutie.",
       "downloaded-file-checksum-mismatch": "Nesúhlasí kontrolný súčet stiahnutého súboru.",
+      "downloading-classic-artwork": "Sťahuje sa klasická grafika",
       "drag-add-on-here-or-click-here": "Potiahnite tu doplnok (súbor .jca) alebo ho vyberte kliknutím.",
       "finish-or-leave-game-to-make-changes": "Ak chcete vykonať zmany, najprv dokončite alebo opustite hru.",
       "install-add-on": "Nainštalujte doplnok",

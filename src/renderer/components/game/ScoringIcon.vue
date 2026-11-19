@@ -35,6 +35,7 @@ const MAPPING = {
   'monastery': { kind: 'img', value: require('~/assets/features/C1/cloister.png') },
   'garden': { kind: 'img', value: require('~/assets/features/C1/garden.png') },
   'field': { kind: 'tile', value: 'GQ/F' },
+  'kingdom': { kind: 'tile', value: 'Kingdoms/KingdomPalaceRed' },
   'special-monastery': { kind: 'tile', value: 'MO/M1' },
   'castle': { kind: 'img', value: require('~/assets/figures/castle.png') },
   'watchtower': { kind: 'tile', value: 'WT/CFff_3C' },
@@ -108,7 +109,8 @@ export default {
     // beside a 46px monastery. A class rule beats the svg's width/height attributes, so the size
     // this component promises has to be stated inline, where nothing else can reach it.
     boxStyle () {
-      return { width: `${this.iconSize}px`, height: `${this.iconSize}px`, transform: 'none' }
+      // ...and the same rule shifts it down (`top: 7px`), which sat the icon low beside the title
+      return { width: `${this.iconSize}px`, height: `${this.iconSize}px`, transform: 'none', top: '0' }
     }
   }
 }

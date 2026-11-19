@@ -380,7 +380,7 @@ export const actions = {
         const title = e.type === 'ERR' ? 'Connection has been rejected.' : 'Unable to connect'
         const content = connectExceptionToMessage(e)
         commit('errorMessage', { title, content }, { root: true })
-        console.error(e)
+        console.error(`Connecting to ${host} failed: ${content}`)
       }
     }
   },
@@ -397,12 +397,14 @@ export const actions = {
         // Silent mode is used by the lobby's automatic startup connect: if the server is
         // unreachable we stay on /online in offline state without an error dialog. Manual
         // connect attempts still surface the error.
+        const content = connectExceptionToMessage(e)
         if (!silent) {
           const title = e.type === 'ERR' ? 'Connection has been rejected.' : 'Unable to connect'
-          const content = connectExceptionToMessage(e)
           commit('errorMessage', { title, content }, { root: true })
         }
-        console.error(e)
+        // readable instead of "[object CloseEvent]"; the silent startup attempt just stays offline
+        const log = silent ? console.warn : console.error
+        log(`Connecting to ${host} failed: ${content}`)
       }
     }
   },

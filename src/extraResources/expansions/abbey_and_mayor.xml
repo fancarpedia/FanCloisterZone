@@ -87,8 +87,18 @@
       <field city="W">NL</field>
       <field city="W">NR</field>
     </tile>
+    <!-- The abbey: a monastery whose every edge matches any neighbour. A supply tile — each
+         player holds `abbey` of them and places one into a hole instead of drawing. -->
+    <tile id="AM/A">
+      <monastery />
+      <abbey-edge>N W S E</abbey-edge>
+    </tile>
   </tiles>
   <sets>
+    <!-- supply="true": into the players' supplies (element `abbey` = how many), never drawn -->
+    <tile-set id="abbey" supply="true" element="abbey">
+      <ref count="1" tile="AM/A" />
+    </tile-set>
     <tile-set id="abbey-and-mayor:1">
       <ref count="1" tile="AM/C++" />
       <ref count="1" tile="AM/CCcc+" />

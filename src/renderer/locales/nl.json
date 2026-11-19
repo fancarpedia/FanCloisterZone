@@ -1,8 +1,8 @@
 {
   "@author": "Kiap1969 & Sinscerly",
   "@jcz-version": "5.12.1",
-  "@fcz-version": "7.1.0",
-  "@version": "0.12.17-ai",
+  "@fcz-version": "7.2.0",
+  "@version": "0.13.4-ai",
   "about": {
     "author": "Auteur",
     "configuration-file": "Configuratiebestand",
@@ -202,6 +202,8 @@
     "hills-and-sheep": "Schapen & Heuvels",
     "inns-and-cathedrals": "Kathedralen & Herbergen",
     "king-and-robber": "Koning & Roofridder",
+    "kingdoms": "Koninkrijken",
+    "kingdoms-description": "Elke speler heeft een Koninkrijkspaleis in zijn eigen kleur. In plaats van een tegel te trekken, leg je het aan een stad met een van je meeples: die wordt je hoofdstad. Zodra je hoofdstad af is, wordt ze een koninkrijk: aan het einde levert ze 3 punten op voor elke voltooide stad die grenst aan een weide die met de hoofdstad verbonden is.",
     "labyrinth": "Het Doolhof",
     "mage-and-witch": "Tovenaar & Heks",
     "meteorites": "Meteorieten",
@@ -293,6 +295,7 @@
       "monasteries-how-do-you-want-place-follower": "Hoe wil je jouw meeple op het bijzondere klooster zetten?",
       "or": "of",
       "place-the-tile": "Leg de tegel aan",
+      "place-this-tile-instead": "Leg in plaats daarvan deze tegel",
       "placement-optional-bridge": "Sommige rotaties plaatsen hier een brug, andere niet",
       "placement-requires-bridge": "Elke plaatsing hier vereist een brug",
       "player-may-move-a-meeple-from-a-city-district": "Speler mag een meeple uit een stadskwartier verzetten.",
@@ -374,6 +377,7 @@
       "ferry": "Veerboot",
       "gold": "Goud",
       "king": "Koning",
+      "kingdom-palace": "Koninkrijkspaleis",
       "little-buildings": "Kleine Gebouwen",
       "mage": "Tovenaar",
       "mayor": "Burgemeester",
@@ -435,6 +439,8 @@
       "keep-building-move": 1,
       "king": "Koning",
       "king-and-robber": "Koning & Roofridder",
+      "kingdom": "Koninkrijk",
+      "kingdoms": "Koninkrijken",
       "marketplace": "Marktplaats",
       "marketplaces": "Marktplaatsen",
       "meteorite": "Meteoriet",
@@ -667,6 +673,8 @@
     "selected-tiles": "Geselecteerde tegels",
     "tiles": {
       "core-sets": "Hoofdsets",
+      "custom-pack": "Eigen tegelstapel (aantallen gewijzigd)",
+      "custom-pack-short": "Tegels",
       "enable-quantity-change": "Aantallen laten wijzigen",
       "fan-expansions": "Fan-uitbreidingen",
       "major-expansions": "Grote uitbreidingen",
@@ -678,8 +686,7 @@
       "reset-tiles": "Herstellen",
       "separate-expansions": "Uitbreidingen scheiden",
       "start-tile-excluded": "Het aantal starttegels staat op 0 – zet het terug om het spel te maken",
-      "custom-pack": "Eigen tegelstapel (aantallen gewijzigd)",
-      "custom-pack-short": "Tegels",
+      "supply-tiles": "In de voorraad van de spelers, niet in de trekstapel",
       "custom-pack-move": 1
     },
     "timer": {
@@ -961,26 +968,29 @@
   },
   "predraw": {
     "your-hand": "Jouw hand",
+    "draw": "Tegel pakken",
     "empty": "—",
     "incompatible": "Niet beschikbaar met Bouwmeester, Draak, Wagen, Kasteel, Schaapherder, Rivier, Ontsnapping, Graaf of Graancirkels",
     "local-only": "Niet toegestaan in lokale spellen",
     "one-seat-notice": "Spel met voorafgaand pakken — elke speler speelt op zijn eigen apparaat, dus je kunt maar één plaats innemen.",
-    "pick-hint": "Klik op een tegel om die te plaatsen en kies daarna een plek op het bord",
-    "draw": "Tegel pakken",
-    "pass-abbey": "Abdij overslaan (laatste tegel pakken)"
+    "pass-abbey": "Abdij overslaan (laatste tegel pakken)",
+    "pass-supply-tile": "{name} overslaan (laatste tegel pakken)",
+    "pick-hint": "Klik op een tegel om die te plaatsen en kies daarna een plek op het bord"
   },
   "server": {
     "translate": "Update naar v%VERSION% is vereist."
   },
   "settings": {
     "add-ons": {
-      "add-ons-definition-not-available": "Add-on definitie niet beschikbaar",
+      "add-on-requires-newer-app": "Add-on vereist FanCloisterZone {version} of hoger",
       "add-on-already-installed": "Add-on {id} is al geïnstalleerd. Als je die opnieuw wilt installeren, dan dien je deze eerst te verwijderen.",
       "add-on-url": "add-on url",
+      "add-ons-definition-not-available": "Add-on definitie niet beschikbaar",
       "artwork-not-found-internet-connection-is-needed": "Kon de add-on met de standaardillustraties niet vinden of downloaden. Er is initieel een internetverbinding nodig om deze te downloaden.",
       "available-new-add-ons": "Beschikbare nieuwe add-ons",
       "download-definition-not-found": "Downloaddefinitie niet gevonden",
       "downloaded-file-checksum-mismatch": "Controlegetal van gedownload bestand komt niet overeen",
+      "downloading-classic-artwork": "Klassieke afbeeldingen downloaden",
       "drag-add-on-here-or-click-here": "Sleep de add-on hierheen (.jca-bestand) of klik hier om deze te selecteren.",
       "finish-or-leave-game-to-make-changes": "Voltooi of verlaat het spel alvorens hier wijzigingen door te voeren.",
       "install-add-on": "Add-on installeren",

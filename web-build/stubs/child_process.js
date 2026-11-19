@@ -52,7 +52,26 @@ class WorkerProcess extends Emitter {
       else if (m.type === 'stderr') this.stderr.emit('data', m.data)
     }
     this.worker.onerror = (e) => {
-      this.emit('error', new Error('Engine worker error: ' + (e.message || e)))
+      // An error thrown INSIDE the worker carries message/filename/lineno. A worker script that
+      // could not be LOADED (404, the SPA fallback page served instead, wrong MIME type, CSP) gives
+      // an empty Event — so ask the server what it actually returns for the worker URL, otherwise
+      // the report is a bare "[object Event]" (and Firefox/Safari consoles show only the stack).
+      if (e && e.message) {
+        this.emit('error', new Error('Engine worker error: ' + e.message +
+          (e.filename ? ' @ ' + e.filename + ':' + e.lineno + ':' + e.colno : '')))
+        return
+      }
+      const fail = (detail) => {
+        const err = new Error('Engine worker failed to load ' + workerUrl + ' — ' + detail)
+        console.error(err.message)
+        this.emit('error', err)
+      }
+      if (typeof fetch !== 'function') return fail('no details available')
+      fetch(workerUrl, { cache: 'no-store' }).then(async (r) => {
+        const type = r.headers.get('content-type') || '?'
+        const head = (await r.text()).slice(0, 80).replace(/\s+/g, ' ')
+        fail('HTTP ' + r.status + ', content-type ' + type + ', starts with: ' + head)
+      }, (fe) => fail('fetch failed: ' + (fe && fe.message)))
     }
 
     // plugins/engine.js writes a command line here; forward it to the worker.

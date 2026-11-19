@@ -619,7 +619,10 @@ export const actions = {
 			gamePhase = 'GameOverPhase'
 		  }
           content.test.assertions.push(`Phase is ${gamePhase}`)
-          if (!endGame && gameState.turnPlayer != null && content.players[gameState.turnPlayer]) {
+          // the game is over → nobody is on turn any more (the engine's leftover turnPlayer is
+          // meaningless), so no turn-player assertion
+          const gameOver = endGame || gamePhase === 'GameOverPhase'
+          if (!gameOver && gameState.turnPlayer != null && content.players[gameState.turnPlayer]) {
             content.test.assertions.push(`Turn player is ${content.players[gameState.turnPlayer].name}`)
           }
           if (!endGame && !!gameState.action && gameState.action.player != null && content.players[gameState.action.player]) {
@@ -1086,6 +1089,9 @@ export const actions = {
         ...(tileOverrides && Object.keys(tileOverrides).length ? { tiles: tileOverrides } : {}),
         gameId: state.id,
         players: players.length,
+        // each player's slot (= colour), in turn order: Kingdoms gives everyone the Kingdom Palace
+        // tile of their colour
+        playerSlots: players.map(p => p.slot),
         initialRandom: state.initialRandom,
         gameAnnotations: annotations
       }

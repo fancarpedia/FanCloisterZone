@@ -1,8 +1,8 @@
 {
   "@author": "Stepukiss",
   "@jcz-version": "5.12.1",
-  "@fcz-version": "7.1.0",
-  "@version": "0.12.17-ai",
+  "@fcz-version": "7.2.0",
+  "@version": "0.13.4-ai",
   "about": {
     "author": "Autorius",
     "configuration-file": "Nustatymų aplankas",
@@ -202,6 +202,8 @@
     "hills-and-sheep": "Kalvos ir Avys",
     "inns-and-cathedrals": "Užeigos ir Katedros",
     "king-and-robber": "Karalius ir Vagis",
+    "kingdoms": "Karalystės",
+    "kingdoms-description": "Kiekvienas žaidėjas turi savo spalvos Karalystės rūmus. Užuot traukę kortelę, galite juos padėti prie miesto, kuriame yra vienas iš jūsų miplų, ir paversti jį savo sostine. Kai sostinė užbaigiama, ji tampa karalyste: žaidimo pabaigoje ji pelno 3 taškus už kiekvieną užbaigtą miestą, besiliečiantį su lauku, sujungtu su ja.",
     "labyrinth": "Labirintas",
     "mage-and-witch": "Burtininkas ir Ragana",
     "meteorites": "Meteoritai",
@@ -293,6 +295,7 @@
       "monasteries-how-do-you-want-place-follower": "Kaip jūs norite padėti Miplą ant specialaus Vienuolyno?",
       "or": "arba",
       "place-the-tile": "Padėti kortelę",
+      "place-this-tile-instead": "Vietoj to padėti šią kortelę",
       "placement-optional-bridge": "Kai kurie pasukimai čia padeda tiltą, kiti — ne",
       "placement-requires-bridge": "Bet kokiam padėjimui čia reikia tilto",
       "player-may-move-a-meeple-from-a-city-district": "Žaidėjas gali perkelti Miplą iš miesto rajono",
@@ -374,6 +377,7 @@
       "ferry": "Keltas",
       "gold": "Auksas",
       "king": "Karalius",
+      "kingdom-palace": "Karalystės rūmai",
       "little-buildings": "Maži pastatai",
       "mage": "Burtininkas",
       "mayor": "Meras",
@@ -435,6 +439,8 @@
       "keep-building-move": 1,
       "king": "Karalius",
       "king-and-robber": "Karalius ir Plėšikas",
+      "kingdom": "Karalystė",
+      "kingdoms": "Karalystės",
       "marketplace": "Prekyvietė",
       "marketplaces": "Prekyvietės",
       "meteorite": "Meteoritas",
@@ -667,6 +673,8 @@
     "selected-tiles": "Pasirinktos kortelės",
     "tiles": {
       "core-sets": "Pagrindiniai rinkiniai",
+      "custom-pack": "Savas kortelių rinkinys (kiekiai pakeisti)",
+      "custom-pack-short": "Kortelės",
       "enable-quantity-change": "Leisti keisti kiekį",
       "fan-expansions": "Fanų papildymai",
       "major-expansions": "Didieji papildymai",
@@ -678,8 +686,7 @@
       "reset-tiles": "Atstatyti",
       "separate-expansions": "Atskirti papildymus",
       "start-tile-excluded": "Pradinių kortelių skaičius yra 0 – atstatykite jį, kad galėtumėte sukurti žaidimą",
-      "custom-pack": "Savas kortelių rinkinys (kiekiai pakeisti)",
-      "custom-pack-short": "Kortelės",
+      "supply-tiles": "Žaidėjų atsargose, ne traukiamų kortelių krūvoje",
       "custom-pack-move": 1
     },
     "timer": {
@@ -961,26 +968,29 @@
   },
   "predraw": {
     "your-hand": "Jūsų ranka",
+    "draw": "Traukti kortelę",
     "empty": "—",
     "incompatible": "Negalima su Statybininku, Drakonu, Vežimu, Pilimi, Aviganiu, Upe, Pabėgimu, Grafu ar Ratais pasėliuose",
     "local-only": "Neleidžiama vietiniuose žaidimuose",
     "one-seat-notice": "Išankstinio traukimo žaidimas — kiekvienas žaidėjas žaidžia savo įrenginiu, todėl galite užimti tik vieną vietą.",
-    "pick-hint": "Paspauskite kortelę, kurią norite padėti, tada pasirinkite vietą lentoje",
-    "draw": "Traukti kortelę",
-    "pass-abbey": "Praleisti abatiją (traukti paskutinę kortelę)"
+    "pass-abbey": "Praleisti abatiją (traukti paskutinę kortelę)",
+    "pass-supply-tile": "Praleisti {name} (traukti paskutinę kortelę)",
+    "pick-hint": "Paspauskite kortelę, kurią norite padėti, tada pasirinkite vietą lentoje"
   },
   "server": {
     "translate": "Reikia atnaujinti į v%VERSION%."
   },
   "settings": {
     "add-ons": {
-      "add-ons-definition-not-available": "Priedų apibrėžimas nepasiekiamas",
+      "add-on-requires-newer-app": "Papildymui reikia FanCloisterZone {version} ar naujesnės versijos",
       "add-on-already-installed": "Toks papildymas (add-on) {id} yra jau įrašytas. Jei jūs norite perrašyti papildymą, pradžioje pašalinkite.",
       "add-on-url": "Papildymo (add-on) nuoroda",
+      "add-ons-definition-not-available": "Priedų apibrėžimas nepasiekiamas",
       "artwork-not-found-internet-connection-is-needed": "Nepavyko rasti arba atsisiųsti priedo su numatytuoju stiliumi. Norint jį atsisiųsti pirmą kartą paleidus, reikalingas interneto ryšys.",
       "available-new-add-ons": "Galimi nauji priedai",
       "download-definition-not-found": "Nepavyko rasti atsisiuntimo elemento",
       "downloaded-file-checksum-mismatch": "Atsisiųsto failo kontrolinės sumos neatitikimas",
+      "downloading-classic-artwork": "Atsisiunčiama klasikinė grafika",
       "drag-add-on-here-or-click-here": "Tempkite priedą (add-on .jca filą) arba paspauskite čia ir pasirinkite jį",
       "finish-or-leave-game-to-make-changes": "Prašome pirma pabaigti arba palikti žaidimą jei norite atlikti pakeitimus čia.",
       "install-add-on": "Įrašyti priedą (add-on)",
