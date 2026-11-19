@@ -1,0 +1,4617 @@
+{
+  "about.fantitle": {
+    "en": "FanCloisterZone Edition",
+    "value": "Видання FanCloisterZone",
+    "source": "manual"
+  },
+  "about.jcloisterzone-game-engine": {
+    "en": "JCloisterZone Game Engine",
+    "value": "Ігровий рушій JCloisterZone",
+    "source": "manual"
+  },
+  "about.title": {
+    "en": "JCloisterZone",
+    "value": "JCloisterZone",
+    "source": "manual"
+  },
+  "bookmarks.description-end": {
+    "en": "button in overview sidebar.",
+    "value": "у боковій панелі огляду.",
+    "source": "manual"
+  },
+  "bookmarks.description-start": {
+    "en": "You do not have game setup in your favorites list. To fix this, create a game first and then select the",
+    "value": "У вашому списку улюбленого немає жодного налаштування гри. Щоб це виправити, спершу створіть гру, а потім натисніть кнопку",
+    "source": "manual"
+  },
+  "bookmarks.nothing-saved": {
+    "en": "Nothing saved.",
+    "value": "Нічого не збережено.",
+    "source": "manual"
+  },
+  "bookmarks.setups-saved-to-file": {
+    "en": "Setups saved to file",
+    "value": "Налаштування збережено у файл",
+    "source": "manual"
+  },
+  "bookmarks.title": {
+    "en": "My favorites",
+    "value": "Моє улюблене",
+    "source": "manual"
+  },
+  "button.add": {
+    "en": "Add",
+    "value": "Додати",
+    "source": "manual"
+  },
+  "button.add-to-favorites": {
+    "en": "Add To Favorites",
+    "value": "Додати до улюбленого",
+    "source": "manual"
+  },
+  "button.as-a-abbot": {
+    "en": "As a Abbot",
+    "value": "Як абата",
+    "source": "manual"
+  },
+  "button.as-a-monk": {
+    "en": "As a Monk",
+    "value": "Як ченця",
+    "source": "manual"
+  },
+  "button.buy": {
+    "en": "Buy",
+    "value": "Купити",
+    "source": "manual"
+  },
+  "button.cancel": {
+    "en": "Cancel",
+    "value": "Скасувати",
+    "source": "manual"
+  },
+  "button.change": {
+    "en": "Change",
+    "value": "Змінити",
+    "source": "manual"
+  },
+  "button.clear-list": {
+    "en": "clear list",
+    "value": "очистити список",
+    "source": "manual"
+  },
+  "button.close": {
+    "en": "Close",
+    "value": "Закрити",
+    "source": "manual"
+  },
+  "button.confirm": {
+    "en": "Confirm",
+    "value": "Підтвердити",
+    "source": "manual"
+  },
+  "button.connect": {
+    "en": "Connect",
+    "value": "Підключитися",
+    "source": "manual"
+  },
+  "button.continue": {
+    "en": "Continue",
+    "value": "Продовжити",
+    "source": "manual"
+  },
+  "button.create": {
+    "en": "Create",
+    "value": "Створити",
+    "source": "manual"
+  },
+  "button.create-game": {
+    "en": "Create Game",
+    "value": "Створити гру",
+    "source": "manual"
+  },
+  "button.create-public-game": {
+    "en": "Create Public Game",
+    "value": "Створити публічну гру",
+    "source": "manual"
+  },
+  "button.disconnect": {
+    "en": "Disconnect",
+    "value": "Відключитися",
+    "source": "manual"
+  },
+  "button.grow-the-flock": {
+    "en": "Grow the Flock",
+    "value": "Збільшити отару",
+    "source": "manual"
+  },
+  "button.hide": {
+    "en": "Hide",
+    "value": "Сховати",
+    "source": "manual"
+  },
+  "button.hide-finished": {
+    "en": "Hide Finished",
+    "value": "Сховати завершені",
+    "source": "manual"
+  },
+  "button.hide-stats": {
+    "en": "Hide Stats",
+    "value": "Сховати статистику",
+    "source": "manual"
+  },
+  "button.join-game": {
+    "en": "Join Game",
+    "value": "Приєднатися до гри",
+    "source": "manual"
+  },
+  "button.load": {
+    "en": "Load",
+    "value": "Завантажити",
+    "source": "manual"
+  },
+  "button.load-setup-from-file": {
+    "en": "Load Setup From File",
+    "value": "Завантажити налаштування з файлу",
+    "source": "manual"
+  },
+  "button.may-deploy": {
+    "en": "May Deploy",
+    "value": "Може розмістити",
+    "source": "manual"
+  },
+  "button.must-remove": {
+    "en": "Must Remove",
+    "value": "Мусить забрати",
+    "source": "manual"
+  },
+  "button.next": {
+    "en": "Next",
+    "value": "Далі",
+    "source": "manual"
+  },
+  "button.open": {
+    "en": "Open",
+    "value": "Відкрити",
+    "source": "manual"
+  },
+  "button.pass": {
+    "en": "Pass",
+    "value": "Пропустити",
+    "source": "manual"
+  },
+  "button.play-again": {
+    "en": "Play Again",
+    "value": "Грати знову",
+    "source": "manual"
+  },
+  "button.play-online": {
+    "en": "Play Online",
+    "value": "Грати онлайн",
+    "source": "manual"
+  },
+  "button.play-online-fan": {
+    "en": "Play Online on Fan Server",
+    "value": "Грати онлайн на фанському сервері",
+    "source": "manual"
+  },
+  "button.play-online-local": {
+    "en": "Play Online on Dev Local Server",
+    "value": "Грати онлайн на локальному сервері розробника",
+    "source": "manual"
+  },
+  "button.plus-description": {
+    "en": "Add Multiple Instances",
+    "value": "Додати кілька примірників",
+    "source": "manual"
+  },
+  "button.raise": {
+    "en": "Raise",
+    "value": "Підвищити",
+    "source": "manual"
+  },
+  "button.rematch": {
+    "en": "Rematch",
+    "value": "Реванш",
+    "source": "manual"
+  },
+  "button.remove": {
+    "en": "Remove",
+    "value": "Забрати",
+    "source": "manual"
+  },
+  "button.remove-from-favorites": {
+    "en": "Remove From Favorites",
+    "value": "Вилучити з улюбленого",
+    "source": "manual"
+  },
+  "button.reset": {
+    "en": "Reset",
+    "value": "Скинути",
+    "source": "manual"
+  },
+  "button.reset-all": {
+    "en": "Reset All",
+    "value": "Скинути все",
+    "source": "manual"
+  },
+  "button.reset-failed": {
+    "en": "Reset Failed",
+    "value": "Скинути невдалі",
+    "source": "manual"
+  },
+  "button.resume": {
+    "en": "Resume",
+    "value": "Продовжити",
+    "source": "manual"
+  },
+  "button.rules": {
+    "en": "Rules",
+    "value": "Правила",
+    "source": "manual"
+  },
+  "button.rules-1st-edition": {
+    "en": "Rules (1st ed.)",
+    "value": "Правила (1-ше вид.)",
+    "source": "manual"
+  },
+  "button.run": {
+    "en": "Run",
+    "value": "Запустити",
+    "source": "manual"
+  },
+  "button.run-all": {
+    "en": "Run All",
+    "value": "Запустити все",
+    "source": "manual"
+  },
+  "button.save-to-file": {
+    "en": "Save To File",
+    "value": "Зберегти у файл",
+    "source": "manual"
+  },
+  "button.score-the-sheep": {
+    "en": "Score the Sheep",
+    "value": "Порахувати очки за овець",
+    "source": "manual"
+  },
+  "button.select": {
+    "en": "Select",
+    "value": "Вибрати",
+    "source": "manual"
+  },
+  "button.sell": {
+    "en": "Sell",
+    "value": "Продати",
+    "source": "manual"
+  },
+  "button.set": {
+    "en": "Set",
+    "value": "Задати",
+    "source": "manual"
+  },
+  "button.show": {
+    "en": "Show",
+    "value": "Показати",
+    "source": "manual"
+  },
+  "button.show-all": {
+    "en": "Show All",
+    "value": "Показати все",
+    "source": "manual"
+  },
+  "button.show-stats": {
+    "en": "Show Stats",
+    "value": "Показати статистику",
+    "source": "manual"
+  },
+  "button.start": {
+    "en": "Start",
+    "value": "Почати",
+    "source": "manual"
+  },
+  "button.stop-running": {
+    "en": "Stop Running",
+    "value": "Зупинити виконання",
+    "source": "manual"
+  },
+  "button.test-runner": {
+    "en": "Test Runner",
+    "value": "Запуск тестів",
+    "source": "manual"
+  },
+  "button.undo": {
+    "en": "Undo",
+    "value": "Скасувати хід",
+    "source": "manual"
+  },
+  "chat.chat": {
+    "en": "Chat",
+    "value": "Чат",
+    "source": "manual"
+  },
+  "chat.close": {
+    "en": "Close chat",
+    "value": "Закрити чат",
+    "source": "manual"
+  },
+  "chat.empty": {
+    "en": "No messages yet — say hello!",
+    "value": "Повідомлень ще немає — привітайтеся!",
+    "source": "manual"
+  },
+  "chat.game-chat": {
+    "en": "Game chat",
+    "value": "Ігровий чат",
+    "source": "manual"
+  },
+  "chat.global-chat": {
+    "en": "Global chat",
+    "value": "Загальний чат",
+    "source": "manual"
+  },
+  "chat.new-message": {
+    "en": "New message",
+    "value": "Нове повідомлення",
+    "source": "manual"
+  },
+  "chat.open": {
+    "en": "Open chat",
+    "value": "Відкрити чат",
+    "source": "manual"
+  },
+  "chat.send": {
+    "en": "Send",
+    "value": "Надіслати",
+    "source": "manual"
+  },
+  "chat.take-slot-hint": {
+    "en": "Take a slot to start chat",
+    "value": "Займіть місце, щоб почати чат",
+    "source": "manual"
+  },
+  "core-messages.bonuses": {
+    "en": "Bonuses",
+    "value": "Бонуси",
+    "source": "manual"
+  },
+  "core-messages.choose": {
+    "en": "Choose",
+    "value": "Виберіть",
+    "source": "manual"
+  },
+  "core-messages.done": {
+    "en": "Done",
+    "value": "Готово",
+    "source": "manual"
+  },
+  "core-messages.engine-error": {
+    "en": "Engine error",
+    "value": "Помилка рушія",
+    "source": "manual"
+  },
+  "core-messages.field-is-required": {
+    "en": "{field} is required",
+    "value": "Потрібно заповнити: {field}",
+    "source": "manual"
+  },
+  "core-messages.game-engine-not-available": {
+    "en": "Game engine not available.",
+    "value": "Ігровий рушій недоступний.",
+    "source": "manual"
+  },
+  "core-messages.incomplete-features": {
+    "en": "Incomplete features",
+    "value": "Незавершені об’єкти",
+    "source": "manual"
+  },
+  "core-messages.no-core-set": {
+    "en": "No Core set!",
+    "value": "Не вибрано основний набір!",
+    "source": "manual"
+  },
+  "core-messages.offline": {
+    "en": "Offline",
+    "value": "Не в мережі",
+    "source": "manual"
+  },
+  "core-messages.penalties": {
+    "en": "Penalties",
+    "value": "Штрафи",
+    "source": "manual"
+  },
+  "core-messages.potential-final-score": {
+    "en": "Potential final score",
+    "value": "Можливий підсумковий рахунок",
+    "source": "manual"
+  },
+  "core-messages.show-available-only": {
+    "en": "show available only",
+    "value": "показати лише доступні",
+    "source": "manual"
+  },
+  "core-messages.special-figures": {
+    "en": "Special Figures",
+    "value": "Особливі фігурки",
+    "source": "manual"
+  },
+  "core-messages.the-biggest-city": {
+    "en": "The Biggest City",
+    "value": "Найбільше місто",
+    "source": "manual"
+  },
+  "core-messages.the-longest-road": {
+    "en": "The Longest Road",
+    "value": "Найдовша дорога",
+    "source": "manual"
+  },
+  "core-messages.tiles": {
+    "en": "Tiles",
+    "value": "Плитки",
+    "source": "manual"
+  },
+  "core-messages.used-time": {
+    "en": "Used time",
+    "value": "Витрачений час",
+    "source": "manual"
+  },
+  "dev.actions": {
+    "en": "Actions",
+    "value": "Дії",
+    "source": "manual"
+  },
+  "dev.continue-game": {
+    "en": "Continue game",
+    "value": "Продовжити гру",
+    "source": "manual"
+  },
+  "dev.dev": {
+    "en": "Dev",
+    "value": "Розробка",
+    "source": "manual"
+  },
+  "dev.dump-hosted-game-server-state": {
+    "en": "Dump Hosted Game Server State",
+    "value": "Вивантажити стан сервера гри",
+    "source": "manual"
+  },
+  "dev.edition": {
+    "en": "Edition",
+    "value": "Видання",
+    "source": "manual"
+  },
+  "dev.fail": {
+    "en": "Fail",
+    "value": "Невдача",
+    "source": "manual"
+  },
+  "dev.filter-tests-by-name": {
+    "en": "Filter tests by name",
+    "value": "Фільтр тестів за назвою",
+    "source": "manual"
+  },
+  "dev.game-created-in-development-mode": {
+    "en": "Game in Development mode",
+    "value": "Гра в режимі розробки",
+    "source": "manual"
+  },
+  "dev.meeples": {
+    "en": "Meeples",
+    "value": "Підданці",
+    "source": "manual"
+  },
+  "dev.mode": {
+    "en": "Mode",
+    "value": "Режим",
+    "source": "manual"
+  },
+  "dev.ok": {
+    "en": "OK",
+    "value": "OK",
+    "source": "manual"
+  },
+  "dev.reload-add-ons": {
+    "en": "Reload Add-ons",
+    "value": "Перезавантажити додатки",
+    "source": "manual"
+  },
+  "dev.result": {
+    "en": "Result",
+    "value": "Результат",
+    "source": "manual"
+  },
+  "dev.save-test-scenario": {
+    "en": "Save Test Scenario",
+    "value": "Зберегти тестовий сценарій",
+    "source": "manual"
+  },
+  "dev.shapes": {
+    "en": "Shapes",
+    "value": "Форми",
+    "source": "manual"
+  },
+  "dev.size": {
+    "en": "Size",
+    "value": "Розмір",
+    "source": "manual"
+  },
+  "dev.step-back-in-save": {
+    "en": "Step Back in Save",
+    "value": "Крок назад у збереженій грі",
+    "source": "manual"
+  },
+  "dev.strokes": {
+    "en": "Strokes",
+    "value": "Обведення",
+    "source": "manual"
+  },
+  "dev.switch-online-server-cancel": {
+    "en": "Keep current server",
+    "value": "Залишити поточний сервер",
+    "source": "manual"
+  },
+  "dev.switch-online-server-confirm": {
+    "en": "Switch and close games",
+    "value": "Змінити й закрити ігри",
+    "source": "manual"
+  },
+  "dev.switch-online-server-message": {
+    "en": "You have {count} online game(s) open. Switching the server will close them.",
+    "value": "У вас відкрито ігор онлайн: {count}. Після зміни сервера вони закриються.",
+    "source": "manual"
+  },
+  "dev.switch-online-server-title": {
+    "en": "Switch online server",
+    "value": "Змінити онлайн-сервер",
+    "source": "manual"
+  },
+  "dev.test": {
+    "en": "Test",
+    "value": "Тест",
+    "source": "manual"
+  },
+  "dev.test-runner": {
+    "en": "Test Runner",
+    "value": "Запуск тестів",
+    "source": "manual"
+  },
+  "dev.test-scenario-saved": {
+    "en": "Test scenario saved",
+    "value": "Тестовий сценарій збережено",
+    "source": "manual"
+  },
+  "dev.test-scenario-saved-hint": {
+    "en": "The test scenario was saved. Open it to replay and check its assertions.",
+    "value": "Тестовий сценарій збережено. Відкрийте його, щоб відтворити гру та перевірити його умови.",
+    "source": "manual"
+  },
+  "dev.theme-inspector": {
+    "en": "Theme Inspector",
+    "value": "Інспектор теми",
+    "source": "manual"
+  },
+  "dev.tile-draw-order-is-predefined": {
+    "en": "Tile draw order is predefined",
+    "value": "Порядок витягування плиток заданий заздалегідь",
+    "source": "manual"
+  },
+  "dev.tiles": {
+    "en": "Tiles",
+    "value": "Плитки",
+    "source": "manual"
+  },
+  "dev.toggle-devtools": {
+    "en": "Toggle DevTools",
+    "value": "Перемкнути DevTools",
+    "source": "manual"
+  },
+  "dev.use-local-play-online": {
+    "en": "Use Local Play Online",
+    "value": "Використовувати локальну гру онлайн",
+    "source": "manual"
+  },
+  "dev.use-remote-engine": {
+    "en": "Use Remote Engine",
+    "value": "Використовувати віддалений рушій",
+    "source": "manual"
+  },
+  "dialog.close-all-games.close-all-games": {
+    "en": "Close All Games",
+    "value": "Закрити всі ігри",
+    "source": "manual"
+  },
+  "dialog.close-all-games.keep-playing": {
+    "en": "Keep Playing",
+    "value": "Продовжити гру",
+    "source": "manual"
+  },
+  "dialog.close-all-games.open-game-windows": {
+    "en": "Open Game Windows",
+    "value": "Відкриті вікна ігор",
+    "source": "manual"
+  },
+  "dialog.close-all-games.open-game-windows-description": {
+    "en": "There are open game windows. Closing the main window will close all of them and quit the app.",
+    "value": "Є відкриті вікна ігор. Якщо закрити головне вікно, усі вони закриються й застосунок завершить роботу.",
+    "source": "manual"
+  },
+  "dialog.close-local-game.continue-playing": {
+    "en": "Continue Playing",
+    "value": "Продовжити гру",
+    "source": "manual"
+  },
+  "dialog.close-local-game.resign-and-close": {
+    "en": "Resign and Close",
+    "value": "Здатися й закрити",
+    "source": "manual"
+  },
+  "dialog.close-local-game.unfinished-local-game": {
+    "en": "Unfinished Local Game",
+    "value": "Незавершена локальна гра",
+    "source": "manual"
+  },
+  "dialog.close-local-game.unfinished-local-game-description": {
+    "en": "You have an unfinished local game. If you close the app window, you will resign and lose your progress in this game.",
+    "value": "У вас є незавершена локальна гра. Якщо ви закриєте вікно застосунку, то здастеся й втратите свій поступ у цій грі.",
+    "source": "manual"
+  },
+  "expansion.-unknown": {
+    "en": "Missing expansion",
+    "value": "Відсутнє доповнення",
+    "source": "manual"
+  },
+  "expansion.abbey-and-mayor": {
+    "en": "Abbey & Mayor",
+    "value": "Абатство та мер",
+    "source": "manual"
+  },
+  "expansion.basic": {
+    "en": "Base game",
+    "value": "Базова гра",
+    "source": "manual"
+  },
+  "expansion.besiegers": {
+    "en": "The Besiegers",
+    "value": "Обложники",
+    "source": "manual"
+  },
+  "expansion.black-tower": {
+    "en": "Black Tower",
+    "value": "Чорна вежа",
+    "source": "manual"
+  },
+  "expansion.black-tower-description": {
+    "en": "New black and white tower floors for The Tower expansion, which allows to capture meeples diagonally when using black floor or permanently lock tower with white floor on the top.",
+    "value": "Нові чорні та білі яруси веж для доповнення «Вежа». Чорний ярус дає змогу захоплювати підданців по діагоналі, а білий ярус зверху назавжди замикає вежу.",
+    "source": "manual"
+  },
+  "expansion.bridges-castles-and-bazaars": {
+    "en": "Bridges, Castles and Bazaars",
+    "value": "Мости, замки та базари",
+    "source": "manual"
+  },
+  "expansion.butterfly-tiles": {
+    "en": "Butterfly Tiles",
+    "value": "Плитки з метеликами",
+    "source": "manual"
+  },
+  "expansion.butterfly-tiles-description": {
+    "en": "16 tiles with new configurations which are missing in the base game and expansions. No new features are introduced.",
+    "value": "16 плиток із новими конфігураціями, яких немає в базовій грі та доповненнях. Нових об’єктів не додається.",
+    "source": "manual"
+  },
+  "expansion.cathars": {
+    "en": "The Cathars",
+    "value": "Катари",
+    "source": "manual"
+  },
+  "expansion.cliffs-and-waterfalls": {
+    "en": "Cliffs and Waterfalls",
+    "value": "Скелі та водоспади",
+    "source": "manual"
+  },
+  "expansion.cliffs-and-waterfalls-description": {
+    "en": "Adds new tactical layers as you build around towering cliffs and cascading waterfalls. Cliffs divide fields, adding tactical depth and creating new ways to outsmart opponents.",
+    "value": "Додає нові тактичні можливості: ви будуєте навколо високих скель і каскадів водоспадів. Скелі розділяють поля, що додає тактичної глибини та нових способів перехитрити суперників.",
+    "source": "manual"
+  },
+  "expansion.corn-circles": {
+    "en": "Crop Circles",
+    "value": "Кола на полях",
+    "source": "manual"
+  },
+  "expansion.count": {
+    "en": "The Count of Carcassonne",
+    "value": "Граф Каркасона",
+    "source": "manual"
+  },
+  "expansion.crop-circles-I": {
+    "en": "Crop Circles I",
+    "value": "Кола на полях I",
+    "source": "manual"
+  },
+  "expansion.crop-circles-II": {
+    "en": "Crop Circles II",
+    "value": "Кола на полях II",
+    "source": "manual"
+  },
+  "expansion.cult": {
+    "en": "The Cult",
+    "value": "Культ",
+    "source": "manual"
+  },
+  "expansion.cult-places": {
+    "en": "Cult places",
+    "value": "Місця культу",
+    "source": "manual"
+  },
+  "expansion.darmstadt": {
+    "en": "Darmstadt",
+    "value": "Дармштадт",
+    "source": "manual"
+  },
+  "expansion.decinsky-sneznik": {
+    "en": "Decinsky Sneznik",
+    "value": "Дечинський Снєжник",
+    "source": "manual"
+  },
+  "expansion.decinsky-sneznik-description": {
+    "en": "A new special figure, the Observation tower, which is placed on a field and completed when surrounded by tiles in all cardinal directions (north, east, south, and west).",
+    "value": "Нова особлива фігурка — оглядова вежа. Її ставлять на поле, і вона вважається завершеною, коли оточена плитками з усіх чотирьох сторін (півночі, сходу, півдня й заходу).",
+    "source": "manual"
+  },
+  "expansion.dutch-monasteries": {
+    "en": "Dutch Monasteries",
+    "value": "Нідерландські монастирі",
+    "source": "manual"
+  },
+  "expansion.dutch-monasteries-description": {
+    "en": "Similar to the German Monasteries, these Dutch Monasteries are intended to replace the cloisters in the base game.",
+    "value": "Як і німецькі монастирі, ці нідерландські монастирі призначені для заміни монастирів базової гри.",
+    "source": "manual"
+  },
+  "expansion.family-feud": {
+    "en": "Family Feud",
+    "value": "Родова ворожнеча",
+    "source": "manual"
+  },
+  "expansion.family-feud-description": {
+    "en": "Tiles with blue/white and red/yellow coats of arms belong to rival families. No tile may be placed in such a way that cities belonging to rival families become connected.",
+    "value": "Плитки з синьо-білими та червоно-жовтими гербами належать ворожим родам. Жодну плитку не можна викласти так, щоб міста ворожих родів з’єдналися.",
+    "source": "manual"
+  },
+  "expansion.farmers-heaven": {
+    "en": "Farmers Heaven",
+    "value": "Рай для фермерів",
+    "source": "manual"
+  },
+  "expansion.farmers-heaven-description": {
+    "en": "Since most of the expansions are mainly focused on the cities, it was time to do something for the farmers.",
+    "value": "Оскільки більшість доповнень зосереджені головно на містах, настав час зробити щось і для фермерів.",
+    "source": "manual"
+  },
+  "expansion.ferries": {
+    "en": "The Ferries",
+    "value": "Пароми",
+    "source": "manual"
+  },
+  "expansion.festival": {
+    "en": "The Festival",
+    "value": "Фестиваль",
+    "source": "manual"
+  },
+  "expansion.fishermen": {
+    "en": "Fishermen",
+    "value": "Рибалки",
+    "source": "manual"
+  },
+  "expansion.fishermen-description": {
+    "en": "River tiles are shuffled into the regular tile stack. Players may place a meeple on a river segment as on any other scoreable feature, score points when the river is completed.",
+    "value": "Плитки річки замішують у звичайний стос плиток. Гравці можуть розміщувати підданця на ділянці річки, як на будь-якому іншому об’єкті, за який нараховують очки, і набирати очки, коли річку завершено.",
+    "source": "manual"
+  },
+  "expansion.fishhuts": {
+    "en": "Fish Huts",
+    "value": "Рибальські хатини",
+    "source": "manual"
+  },
+  "expansion.fishhuts-description": {
+    "en": "Make the River more valuable. A meeple can also be placed to the fish-smoking hut as a poissonnier (French for a person whose job is to prepare fish) and score additional points.",
+    "value": "Робить Річку ціннішою. Підданця можна також розмістити в коптильні як poissonnier (фр. «той, хто готує рибу») і набрати додаткові очки.",
+    "source": "manual"
+  },
+  "expansion.flier": {
+    "en": "The Flying Machines",
+    "value": "Літальні машини",
+    "source": "manual"
+  },
+  "expansion.gamblers-luck": {
+    "en": "Gambler's Luck",
+    "value": "Щастя гравця",
+    "source": "manual"
+  },
+  "expansion.gamblers-luck-description": {
+    "en": "A roll of the die can cause a city to get tokens with additional coat of arms, or nullify existing ones throughout the city.",
+    "value": "Кидок кубика може додати місту жетони з додатковими гербами або ж скасувати ті, що вже є в цьому місті.",
+    "source": "manual"
+  },
+  "expansion.goldmines": {
+    "en": "The Goldmines",
+    "value": "Золоті копальні",
+    "source": "manual"
+  },
+  "expansion.gq11": {
+    "en": "The Mini Expansion (GQ11)",
+    "value": "Міні-доповнення (GQ11)",
+    "source": "manual"
+  },
+  "expansion.heretics-and-shrines": {
+    "en": "Heretics and Shrines",
+    "value": "Єретики та святині",
+    "source": "manual"
+  },
+  "expansion.hills-and-sheep": {
+    "en": "Hills & Sheep",
+    "value": "Пагорби та вівці",
+    "source": "manual"
+  },
+  "expansion.king-and-robber": {
+    "en": "King & Robber",
+    "value": "Король і розбійник",
+    "source": "manual"
+  },
+  "expansion.kingdoms": {
+    "en": "Kingdoms",
+    "value": "Королівства",
+    "source": "manual"
+  },
+  "expansion.kingdoms-description": {
+    "en": "Each player has a Kingdom Palace in their colour. Instead of drawing, place it in a city with one of your followers to make it your capital. Once your capital is completed it becomes a kingdom: at the end, it scores 3 points for every completed city touching a field connected to it.",
+    "value": "Кожен гравець має Палац королівства свого кольору. Замість того щоб тягнути плитку, ви можете викласти його до міста з одним із ваших підданців — місто стане вашою столицею. Щойно столицю завершено, вона стає королівством: наприкінці гри вона приносить 3 очки за кожне завершене місто, що торкається поля, з'єднаного з нею.",
+    "source": "manual"
+  },
+  "expansion.labyrinth": {
+    "en": "The Labyrinth",
+    "value": "Лабіринт",
+    "source": "manual"
+  },
+  "expansion.mage-and-witch": {
+    "en": "Mage & Witch",
+    "value": "Чарівник і чаклунка",
+    "source": "manual"
+  },
+  "expansion.meteorites": {
+    "en": "Meteorites",
+    "value": "Метеорити",
+    "source": "manual"
+  },
+  "expansion.meteorites-description": {
+    "en": "Meteorites strike Carcassonne, causing chaos and destruction, allowing players to settle cleared areas and turn the chaos into strategic opportunities.",
+    "value": "Метеорити падають на Каркасон, спричиняючи хаос і руйнування, що дає гравцям змогу освоювати звільнені ділянки й обертати хаос на стратегічні можливості.",
+    "source": "manual"
+  },
+  "expansion.monasteries": {
+    "en": "Monasteries",
+    "value": "Монастирі",
+    "source": "manual"
+  },
+  "expansion.princess-and-dragon": {
+    "en": "The Princess & the Dragon",
+    "value": "Принцеса та дракон",
+    "source": "manual"
+  },
+  "expansion.river": {
+    "en": "The River",
+    "value": "Річка",
+    "source": "manual"
+  },
+  "expansion.river-I": {
+    "en": "The River I",
+    "value": "Річка I",
+    "source": "manual"
+  },
+  "expansion.river-II": {
+    "en": "The River II",
+    "value": "Річка II",
+    "source": "manual"
+  },
+  "expansion.robbers-son": {
+    "en": "Robber's Son",
+    "value": "Син розбійника",
+    "source": "manual"
+  },
+  "expansion.robbers-son-description": {
+    "en": "The Robber's Son introduces a new gameplay mechanic that allows you to remove any meeple from roads.",
+    "value": "«Син розбійника» додає нову механіку, що дає змогу забрати будь-якого підданця з дороги.",
+    "source": "manual"
+  },
+  "expansion.russian-promos": {
+    "en": "Russian Promos",
+    "value": "Російські промо",
+    "source": "manual"
+  },
+  "expansion.siege": {
+    "en": "Siege",
+    "value": "Облога",
+    "source": "manual"
+  },
+  "expansion.spiel-doch": {
+    "en": "Spiel Doch!",
+    "value": "Spiel Doch!",
+    "source": "manual"
+  },
+  "expansion.start": {
+    "en": "Start tile",
+    "value": "Початкова плитка",
+    "source": "manual"
+  },
+  "expansion.the-city-gates": {
+    "en": "City Gates",
+    "value": "Міські ворота",
+    "source": "manual"
+  },
+  "expansion.the-city-gates-description": {
+    "en": "Allow players to place a city gate on the edge of a tile to another city gate, but also to a road or to a field on the edge of tile, and vice versa.",
+    "value": "Дає гравцям змогу прикладати міські ворота на краю плитки не лише до інших міських воріт, а й до дороги або поля на краю плитки, і навпаки.",
+    "source": "manual"
+  },
+  "expansion.the-flying-machines-2": {
+    "en": "Flying Machines 2",
+    "value": "Літальні машини 2",
+    "source": "manual"
+  },
+  "expansion.the-flying-machines-2-description": {
+    "en": "Similar to its predecessor, but now with cities on the tiles instead of just roads.",
+    "value": "Подібне до попередника, але тепер на плитках є міста, а не лише дороги.",
+    "source": "manual"
+  },
+  "expansion.the-labyrinths": {
+    "en": "Labyrinths",
+    "value": "Лабіринти",
+    "source": "manual"
+  },
+  "expansion.the-labyrinths-description": {
+    "en": "Adds 3 Labyrinth tiles, to be used alone or in conjunction with the original Labyrinth tile.",
+    "value": "Додає 3 плитки лабіринту, які можна використовувати окремо або разом з початковою плиткою лабіринту.",
+    "source": "manual"
+  },
+  "expansion.tower": {
+    "en": "The Tower",
+    "value": "Вежа",
+    "source": "manual"
+  },
+  "expansion.tunnel": {
+    "en": "The Tunnel",
+    "value": "Тунель",
+    "source": "manual"
+  },
+  "expansion.ukraine-promo": {
+    "en": "Ukraine Promo",
+    "value": "Українське промо",
+    "source": "manual"
+  },
+  "expansion.ukraine-promo-description": {
+    "en": "This limited promo tile was released at Spiel 22. The sales proceeds went to the NGO Come Back Alive.",
+    "value": "Ця обмежена промоплитка вийшла на виставці Spiel 22. Виручені кошти передали ГО «Повернись живим».",
+    "source": "manual"
+  },
+  "expansion.under-the-big-top": {
+    "en": "Under The Big Top",
+    "value": "Цирк та артисти",
+    "source": "manual"
+  },
+  "expansion.under-the-big-top-c1": {
+    "en": "Under The Big Top",
+    "value": "Цирк та артисти",
+    "source": "manual"
+  },
+  "expansion.village-life": {
+    "en": "Village Life",
+    "value": "Життя села",
+    "source": "manual"
+  },
+  "expansion.watchtowers": {
+    "en": "The Watchtowers",
+    "value": "Вартові вежі",
+    "source": "manual"
+  },
+  "expansion.wells": {
+    "en": "Wells",
+    "value": "Колодязі",
+    "source": "manual"
+  },
+  "expansion.wells-description": {
+    "en": "A simple expansion where each Well adds 1 point to the value of a Road, or 2 points to a road with a completed Inn.",
+    "value": "Просте доповнення, у якому кожен колодязь додає 1 очко до вартості дороги або 2 очки до дороги із завершеною таверною.",
+    "source": "manual"
+  },
+  "expansion.wind-roses": {
+    "en": "The Wind Roses",
+    "value": "Рози вітрів",
+    "source": "manual"
+  },
+  "expansion.winter": {
+    "en": "Winter",
+    "value": "Зима",
+    "source": "manual"
+  },
+  "file.file-is-not-valid": {
+    "en": "File is not valid",
+    "value": "Файл недійсний",
+    "source": "manual"
+  },
+  "file.load-error": {
+    "en": "Load error",
+    "value": "Помилка завантаження",
+    "source": "manual"
+  },
+  "file.not-possible-in-online-mode": {
+    "en": "It is not possible to open in online mode",
+    "value": "Відкрити в режимі онлайн неможливо",
+    "source": "manual"
+  },
+  "file.save-created-prior-version-is-not-supported": {
+    "en": "Saved file created for prior version {version} is not supported",
+    "value": "Збережений файл, створений для попередньої версії {version}, не підтримується",
+    "source": "manual"
+  },
+  "file.save-game": {
+    "en": "Save Game",
+    "value": "Зберегти гру",
+    "source": "manual"
+  },
+  "file.save-game-setup": {
+    "en": "Save Game Setup",
+    "value": "Зберегти налаштування гри",
+    "source": "manual"
+  },
+  "file.save-test-runner-scenario": {
+    "en": "Save Test Runner Scenario",
+    "value": "Зберегти сценарій запуску тестів",
+    "source": "manual"
+  },
+  "file.saved-game-contains-game-history": {
+    "en": "Saved game contains game history",
+    "value": "Збережена гра містить історію гри",
+    "source": "manual"
+  },
+  "file.saved-game-contains-tests": {
+    "en": "Saved game contains tests",
+    "value": "Збережена гра містить тести",
+    "source": "manual"
+  },
+  "file.saved-game-requires-missing-add-ons": {
+    "en": "Saved game requires missing add-ons: {missing}",
+    "value": "Для збереженої гри потрібні відсутні додатки: {missing}",
+    "source": "manual"
+  },
+  "file.test-scenarios": {
+    "en": "Test Scenarios",
+    "value": "Тестові сценарії",
+    "source": "manual"
+  },
+  "game-setup.additional-elements": {
+    "en": "Additional elements",
+    "value": "Додаткові елементи",
+    "source": "manual"
+  },
+  "game-setup.ai.not-available": {
+    "en": "AI not available",
+    "value": "Комп'ютерний гравець недоступний",
+    "source": "manual"
+  },
+  "game-setup.ai.not-available-hint": {
+    "en": "AI players are not available for game setup",
+    "value": "Комп'ютерні гравці недоступні для цього налаштування гри",
+    "source": "manual"
+  },
+  "game-setup.ai.not-supported": {
+    "en": "The AI does not play",
+    "value": "Комп'ютерний гравець не грає",
+    "source": "manual"
+  },
+  "game-setup.ai.supported": {
+    "en": "The AI can play this",
+    "value": "Комп'ютерний гравець може це грати",
+    "source": "manual"
+  },
+  "game-setup.altered-gameplay": {
+    "en": "Altered Gameplay",
+    "value": "Змінений перебіг гри",
+    "source": "manual"
+  },
+  "game-setup.altered-scoring": {
+    "en": "Altered Scoring",
+    "value": "Змінений підрахунок очок",
+    "source": "manual"
+  },
+  "game-setup.components.followers": {
+    "en": "Meeples",
+    "value": "Підданці",
+    "source": "manual"
+  },
+  "game-setup.components.neutral-figures": {
+    "en": "Neutral Figures",
+    "value": "Нейтральні фігурки",
+    "source": "manual"
+  },
+  "game-setup.components.rewards": {
+    "en": "Rewards",
+    "value": "Нагороди",
+    "source": "manual"
+  },
+  "game-setup.components.tokens": {
+    "en": "Tokens",
+    "value": "Жетони",
+    "source": "manual"
+  },
+  "game-setup.create.ai-player": {
+    "en": "AI player",
+    "value": "Комп'ютерний гравець",
+    "source": "manual"
+  },
+  "game-setup.create.assign": {
+    "en": "assign",
+    "value": "призначити",
+    "source": "manual"
+  },
+  "game-setup.create.click-to-assign": {
+    "en": "click to assign",
+    "value": "натисніть, щоб призначити",
+    "source": "manual"
+  },
+  "game-setup.create.game-full": {
+    "en": "Game full",
+    "value": "Гру заповнено",
+    "source": "manual"
+  },
+  "game-setup.create.kick-player": {
+    "en": "Kick player",
+    "value": "Вигнати гравця",
+    "source": "manual"
+  },
+  "game-setup.create.local-ai-player": {
+    "en": "local ai player",
+    "value": "локальний комп’ютерний гравець",
+    "source": "manual"
+  },
+  "game-setup.create.local-limit-reached": {
+    "en": "Limit reached",
+    "value": "Досягнуто межі",
+    "source": "manual"
+  },
+  "game-setup.create.local-limit-reached-tooltip-plural": {
+    "en": "Maximum {limit} local players allowed | Maximum {limit} local player allowed | Maximum {limit} local players allowed",
+    "value": "Дозволено щонайбільше {limit} локальних гравців | Дозволено щонайбільше {limit} локальний гравець | Дозволено щонайбільше {limit} локальні гравці | Дозволено щонайбільше {limit} локальних гравців",
+    "source": "manual"
+  },
+  "game-setup.create.local-player": {
+    "en": "local player",
+    "value": "локальний гравець",
+    "source": "manual"
+  },
+  "game-setup.create.name": {
+    "en": "Name",
+    "value": "Ім’я",
+    "source": "manual"
+  },
+  "game-setup.create.open-slot": {
+    "en": "open slot",
+    "value": "вільне місце",
+    "source": "manual"
+  },
+  "game-setup.create.release-slot": {
+    "en": "Release slot",
+    "value": "Звільнити місце",
+    "source": "manual"
+  },
+  "game-setup.create.remote-ai-player": {
+    "en": "remote ai player",
+    "value": "віддалений комп’ютерний гравець",
+    "source": "manual"
+  },
+  "game-setup.create.remote-player": {
+    "en": "remote player",
+    "value": "віддалений гравець",
+    "source": "manual"
+  },
+  "game-setup.create.rename-player": {
+    "en": "Rename Player",
+    "value": "Перейменувати гравця",
+    "source": "manual"
+  },
+  "game-setup.create.waiting-for-player": {
+    "en": "waiting for player",
+    "value": "очікування гравця",
+    "source": "manual"
+  },
+  "game-setup.game-element-box.mandatory-for-selected-tiles": {
+    "en": "Mandatory for selected tiles",
+    "value": "Обов’язково для вибраних плиток",
+    "source": "manual"
+  },
+  "game-setup.game-element-box.related-tiles-not-selected": {
+    "en": "Related tiles not selected",
+    "value": "Пов’язані плитки не вибрано",
+    "source": "manual"
+  },
+  "game-setup.game-flow.cooperative": {
+    "en": "Cooperative variant",
+    "value": "Кооперативний варіант",
+    "source": "manual"
+  },
+  "game-setup.game-flow.keep-building-description": {
+    "en": "Every turn you must enlarge an occupied city, road or similar feature, or place a meeple on an unoccupied one. If a player does neither, the game ends and everyone loses. Survive to the last tile and everyone wins with a combined team score.",
+    "value": "Кожного ходу ви мусите розширити зайняте місто, дорогу чи подібний об’єкт або розмістити підданця на незайнятому. Якщо гравець не зробить ні того, ні іншого, гра завершується і всі програють. Протримайтеся до останньої плитки — і всі перемагають зі спільним рахунком команди.",
+    "source": "manual"
+  },
+  "game-setup.game-flow.pre-draw": {
+    "en": "Pre-draw",
+    "value": "Попереднє витягування",
+    "source": "manual"
+  },
+  "game-setup.header.components": {
+    "en": "Components",
+    "value": "Компоненти",
+    "source": "manual"
+  },
+  "game-setup.header.game-setup": {
+    "en": "Game setup",
+    "value": "Налаштування гри",
+    "source": "manual"
+  },
+  "game-setup.header.rules": {
+    "en": "Rules",
+    "value": "Правила",
+    "source": "manual"
+  },
+  "game-setup.header.tiles": {
+    "en": "Tiles",
+    "value": "Плитки",
+    "source": "manual"
+  },
+  "game-setup.header.timer": {
+    "en": "Timer",
+    "value": "Таймер",
+    "source": "manual"
+  },
+  "game-setup.header.variant": {
+    "en": "Variant",
+    "value": "Варіант",
+    "source": "manual"
+  },
+  "game-setup.open-game.assign-all-players-to-start": {
+    "en": "Assign all players to start",
+    "value": "Призначте всіх гравців, щоб почати",
+    "source": "manual"
+  },
+  "game-setup.open-game.hide-remaining-tiles-cheat-sheet": {
+    "en": "Hide remaining tiles cheat sheet",
+    "value": "Сховати підказку про плитки, що залишилися",
+    "source": "manual"
+  },
+  "game-setup.open-game.max-players": {
+    "en": "Max players (public)",
+    "value": "Макс. гравців (публічна)",
+    "source": "manual"
+  },
+  "game-setup.open-game.max-players-no-limit": {
+    "en": "No limit",
+    "value": "Без обмеження",
+    "source": "manual"
+  },
+  "game-setup.open-game.name": {
+    "en": "Name",
+    "value": "Назва",
+    "source": "manual"
+  },
+  "game-setup.open-game.no-ai-in-game": {
+    "en": "No AI in game",
+    "value": "Без комп’ютерних гравців",
+    "source": "manual"
+  },
+  "game-setup.open-game.no-human-player": {
+    "en": "No human in game",
+    "value": "У грі немає людей",
+    "source": "manual"
+  },
+  "game-setup.open-game.no-player-in-game": {
+    "en": "No player in game",
+    "value": "У грі немає гравців",
+    "source": "manual"
+  },
+  "game-setup.open-game.options": {
+    "en": "Options",
+    "value": "Параметри",
+    "source": "manual"
+  },
+  "game-setup.open-game.public-game": {
+    "en": "Public game",
+    "value": "Публічна гра",
+    "source": "manual"
+  },
+  "game-setup.open-game.randomize-seating-order": {
+    "en": "Randomize seating order",
+    "value": "Випадковий порядок розсадження",
+    "source": "manual"
+  },
+  "game-setup.open-game.set-game-title": {
+    "en": "Set Game Title",
+    "value": "Задати назву гри",
+    "source": "manual"
+  },
+  "game-setup.open-game.share-the-key": {
+    "en": "Share the key with other players to let them connect to the game.",
+    "value": "Поділіться ключем з іншими гравцями, щоб вони могли приєднатися до гри.",
+    "source": "manual"
+  },
+  "game-setup.open-game.untitled-game": {
+    "en": "untitled game",
+    "value": "гра без назви",
+    "source": "manual"
+  },
+  "game-setup.open-game.waiting-for-host-to-start-the-game": {
+    "en": "Waiting for host to start the game.",
+    "value": "Очікування, доки господар почне гру.",
+    "source": "manual"
+  },
+  "game-setup.removed-elements": {
+    "en": "Removed Elements",
+    "value": "Вилучені елементи",
+    "source": "manual"
+  },
+  "game-setup.required-expansion": {
+    "en": "Required expansion {expansions}",
+    "value": "Потрібне доповнення {expansions}",
+    "source": "manual"
+  },
+  "game-setup.requires-expansion": {
+    "en": "Requires expansion {expansions}",
+    "value": "Потребує доповнення {expansions}",
+    "source": "manual"
+  },
+  "game-setup.requires-one-from-group": {
+    "en": "Requires one from the group {groups}",
+    "value": "Потребує одного з групи {groups}",
+    "source": "manual"
+  },
+  "game-setup.rules.acrobats-description": {
+    "en": "Placing meeple as an acrobat on acrobat space.",
+    "value": "Розміщення підданця як акробата на полі для акробатів.",
+    "source": "manual"
+  },
+  "game-setup.rules.acrobats-disabled": {
+    "en": "No tile with Acrobats space is in game.",
+    "value": "У грі немає плиток із полем для акробатів.",
+    "source": "manual"
+  },
+  "game-setup.rules.bazaar-description": {
+    "en": "Land tiles are auctioned when a bazaar comes into play.",
+    "value": "Коли в гру входить базар, плитки місцевості продають на аукціоні.",
+    "source": "manual"
+  },
+  "game-setup.rules.bazaar-disabled": {
+    "en": "No tile with Bazaar is in the game.",
+    "value": "У грі немає плиток із базаром.",
+    "source": "manual"
+  },
+  "game-setup.rules.cathedral-description": {
+    "en": "Completed Cities with Cathedral ×3 instead of ×2 and optionally no points during final scoring.",
+    "value": "Завершені міста із собором ×3 замість ×2 і, за бажанням, 0 очок у підсумковому підрахунку.",
+    "source": "manual"
+  },
+  "game-setup.rules.cathedral-disabled": {
+    "en": "No tile with Cathedral is in game.",
+    "value": "У грі немає плиток із собором.",
+    "source": "manual"
+  },
+  "game-setup.rules.escape-description": {
+    "en": "Escape allowed via a neighboring monastery.",
+    "value": "Втеча можлива через сусідній монастир.",
+    "source": "manual"
+  },
+  "game-setup.rules.escape-disabled": {
+    "en": "No tile with Siege is in game.",
+    "value": "У грі немає плиток з облогою.",
+    "source": "manual"
+  },
+  "game-setup.rules.families-description": {
+    "en": "Two families can not join in the city.",
+    "value": "Два роди не можуть з’єднатися в місті.",
+    "source": "manual"
+  },
+  "game-setup.rules.families-disabled": {
+    "en": "No tile with different Family pennant is in the game.",
+    "value": "У грі немає плиток із гербами різних родів.",
+    "source": "manual"
+  },
+  "game-setup.rules.farmers-description": {
+    "en": "Players are allowed to place meeples on fields.",
+    "value": "Гравцям дозволено розміщувати підданців на полях.",
+    "source": "manual"
+  },
+  "game-setup.rules.festival-description": {
+    "en": "With a festival tile you can return one of your own figures instead of placing one.",
+    "value": "Плитка з фестивалем дає змогу повернути одну зі своїх фігурок замість того, щоб розмістити фігурку.",
+    "source": "manual"
+  },
+  "game-setup.rules.festival-disabled": {
+    "en": "No tile with Festival is in game.",
+    "value": "У грі немає плиток із фестивалем.",
+    "source": "manual"
+  },
+  "game-setup.rules.fishermen-description": {
+    "en": "River as regular feature.",
+    "value": "Річка як звичайний об’єкт.",
+    "source": "manual"
+  },
+  "game-setup.rules.fishermen-disabled": {
+    "en": "No tile with River is in the game.",
+    "value": "У грі немає плиток із річкою.",
+    "source": "manual"
+  },
+  "game-setup.rules.fishhut-description": {
+    "en": "Fish Hut feature.",
+    "value": "Об’єкт «Рибальська хатина».",
+    "source": "manual"
+  },
+  "game-setup.rules.fishhut-disabled": {
+    "en": "No tile with Fish Hut is in the game.",
+    "value": "У грі немає плиток із рибальською хатиною.",
+    "source": "manual"
+  },
+  "game-setup.rules.flowers-description": {
+    "en": "Flowers add +3 points to scored feature when they match player's token.",
+    "value": "Квіти додають +3 очки до пораховоного об’єкта, якщо вони відповідають жетону гравця.",
+    "source": "manual"
+  },
+  "game-setup.rules.flowers-disabled": {
+    "en": "No tile with Flowers is in the game.",
+    "value": "У грі немає плиток із квітами.",
+    "source": "manual"
+  },
+  "game-setup.rules.gameplay-variants": {
+    "en": "Gameplay variants",
+    "value": "Варіанти перебігу гри",
+    "source": "manual"
+  },
+  "game-setup.rules.garden-description": {
+    "en": "Can be occupied by an Abbot.",
+    "value": "Може бути зайнятий абатом.",
+    "source": "manual"
+  },
+  "game-setup.rules.garden-disabled": {
+    "en": "Abbot is not selected.",
+    "value": "Абата не вибрано.",
+    "source": "manual"
+  },
+  "game-setup.rules.hill-description": {
+    "en": "Used as a tiebreaker. Also hides one random tile underneath.",
+    "value": "Використовується для розв’язання нічиєї. Також під ним схована одна випадкова плитка.",
+    "source": "manual"
+  },
+  "game-setup.rules.hill-disabled": {
+    "en": "No tile with Hill is in game.",
+    "value": "У грі немає плиток із пагорбом.",
+    "source": "manual"
+  },
+  "game-setup.rules.inn-description": {
+    "en": "Completed roads with Inn ×2 and optionally no points during final scoring.",
+    "value": "Завершені дороги з таверною ×2 і, за бажанням, 0 очок у підсумковому підрахунку.",
+    "source": "manual"
+  },
+  "game-setup.rules.inn-disabled": {
+    "en": "No tile with Inn is in the game.",
+    "value": "У грі немає плиток із таверною.",
+    "source": "manual"
+  },
+  "game-setup.rules.marketplace-description": {
+    "en": "Marketplaces connect several roads into a shared network that only completes when all linked roads are closed. When scored, bonus points equal to the length of the other completed roads in that network are given.",
+    "value": "Ринки з’єднують кілька доріг у спільну мережу, яка завершується лише тоді, коли закрито всі сполучені дороги. Під час підрахунку нараховують бонусні очки, що дорівнюють довжині інших завершених доріг у цій мережі.",
+    "source": "manual"
+  },
+  "game-setup.rules.marketplace-disabled": {
+    "en": "No tile with Marketplace is in the game.",
+    "value": "У грі немає плиток із ринком.",
+    "source": "manual"
+  },
+  "game-setup.rules.meteorite-disabled": {
+    "en": "No tile with Crater is in the game.",
+    "value": "У грі немає плиток із кратером.",
+    "source": "manual"
+  },
+  "game-setup.rules.optional-game-mechanics": {
+    "en": "Optional game mechanics",
+    "value": "Необов’язкові механіки гри",
+    "source": "manual"
+  },
+  "game-setup.rules.pig-herd-description": {
+    "en": "Counts as additional pig on field (farmers scores more points).",
+    "value": "Вважається додатковою свинею на полі (фермери набирають більше очок).",
+    "source": "manual"
+  },
+  "game-setup.rules.pig-herd-disabled": {
+    "en": "No tile with Pig Herd is in the game.",
+    "value": "У грі немає плиток зі стадом свиней.",
+    "source": "manual"
+  },
+  "game-setup.rules.portal-description": {
+    "en": "Through a Magic Portal, a meeple can be placed on any tile.",
+    "value": "Через магічний портал підданця можна розмістити на будь-якій плитці.",
+    "source": "manual"
+  },
+  "game-setup.rules.portal-disabled": {
+    "en": "No tile with Magic Portal is in the game.",
+    "value": "У грі немає плиток із магічним порталом.",
+    "source": "manual"
+  },
+  "game-setup.rules.princess-description": {
+    "en": "Princess can remove a knight from a city.",
+    "value": "Принцеса може забрати лицаря з міста.",
+    "source": "manual"
+  },
+  "game-setup.rules.princess-disabled": {
+    "en": "No tile with Princess is in the game.",
+    "value": "У грі немає плиток із принцесою.",
+    "source": "manual"
+  },
+  "game-setup.rules.robbers-son-description": {
+    "en": "Robber's Son can remove a thief from a road.",
+    "value": "Син розбійника може забрати злодія з дороги.",
+    "source": "manual"
+  },
+  "game-setup.rules.robbers-son-disabled": {
+    "en": "No tile with Robber's Son is in the game.",
+    "value": "У грі немає плиток із сином розбійника.",
+    "source": "manual"
+  },
+  "game-setup.rules.scoring-variants": {
+    "en": "Scoring variants",
+    "value": "Варіанти підрахунку очок",
+    "source": "manual"
+  },
+  "game-setup.rules.shrine-description": {
+    "en": "Shrine placed next to a monastery competes to finish first. (second gets no points)",
+    "value": "Святиня, розміщена поряд із монастирем, змагається за те, хто завершиться першим (другий не отримує очок).",
+    "source": "manual"
+  },
+  "game-setup.rules.shrine-disabled": {
+    "en": "No tile with Shrine is in the game.",
+    "value": "У грі немає плиток зі святинею.",
+    "source": "manual"
+  },
+  "game-setup.rules.siege-description": {
+    "en": "Besieged cities are less valuable.",
+    "value": "Обложені міста коштують менше.",
+    "source": "manual"
+  },
+  "game-setup.rules.siege-disabled": {
+    "en": "No tile with Siege is in the game.",
+    "value": "У грі немає плиток з облогою.",
+    "source": "manual"
+  },
+  "game-setup.rules.starting-tiles-configuration": {
+    "en": "Starting tile(s) configuration",
+    "value": "Налаштування початкової плитки (плиток)",
+    "source": "manual"
+  },
+  "game-setup.rules.starting-tiles-different-configuration": {
+    "en": "Some expansions provides alternative starting configurations.",
+    "value": "Деякі доповнення пропонують інші початкові конфігурації.",
+    "source": "manual"
+  },
+  "game-setup.rules.vineyard-description": {
+    "en": "Additional points for nearby Monastery.",
+    "value": "Додаткові очки за монастир поблизу.",
+    "source": "manual"
+  },
+  "game-setup.rules.vineyard-disabled": {
+    "en": "No tile with Vineyard is in the game.",
+    "value": "У грі немає плиток із виноградником.",
+    "source": "manual"
+  },
+  "game-setup.rules.well-description": {
+    "en": "Add point per Well on roads. Roads with Inn get 2 points when completed and optionally no points during final scoring.",
+    "value": "Додає очко за кожен колодязь на дорогах. Завершені дороги з таверною отримують 2 очки і, за бажанням, 0 очок у підсумковому підрахунку.",
+    "source": "manual"
+  },
+  "game-setup.rules.well-disabled": {
+    "en": "No tile with Well is in the game.",
+    "value": "У грі немає плиток із колодязем.",
+    "source": "manual"
+  },
+  "game-setup.selected-tiles": {
+    "en": "Selected tiles",
+    "value": "Вибрані плитки",
+    "source": "manual"
+  },
+  "game-setup.tiles.core-sets": {
+    "en": "Core sets",
+    "value": "Основні набори",
+    "source": "manual"
+  },
+  "game-setup.tiles.custom-pack": {
+    "en": "Custom tile pack (counts changed)",
+    "value": "Власний набір плиток (кількість змінено)",
+    "source": "manual"
+  },
+  "game-setup.tiles.custom-pack-short": {
+    "en": "Tiles",
+    "value": "Плитки",
+    "source": "manual"
+  },
+  "game-setup.tiles.enable-quantity-change": {
+    "en": "Enable quantity change",
+    "value": "Дозволити зміну кількості",
+    "source": "manual"
+  },
+  "game-setup.tiles.fan-expansions": {
+    "en": "Fan expansions",
+    "value": "Фанські доповнення",
+    "source": "manual"
+  },
+  "game-setup.tiles.major-expansions": {
+    "en": "Major expansions",
+    "value": "Великі доповнення",
+    "source": "manual"
+  },
+  "game-setup.tiles.minor-expansions": {
+    "en": "Minor expansions",
+    "value": "Малі доповнення",
+    "source": "manual"
+  },
+  "game-setup.tiles.next-expansion": {
+    "en": "Next expansion",
+    "value": "Наступне доповнення",
+    "source": "manual"
+  },
+  "game-setup.tiles.previous-expansion": {
+    "en": "Previous expansion",
+    "value": "Попереднє доповнення",
+    "source": "manual"
+  },
+  "game-setup.tiles.promos": {
+    "en": "Promos",
+    "value": "Промо",
+    "source": "manual"
+  },
+  "game-setup.tiles.remove-all-tiles": {
+    "en": "Remove all",
+    "value": "Вилучити всі",
+    "source": "manual"
+  },
+  "game-setup.tiles.reset-tiles": {
+    "en": "Reset",
+    "value": "Скинути",
+    "source": "manual"
+  },
+  "game-setup.tiles.separate-expansions": {
+    "en": "Separate expansions",
+    "value": "Розділяти доповнення",
+    "source": "manual"
+  },
+  "game-setup.tiles.start-tile-excluded": {
+    "en": "Starting tile count is set to 0 – restore it to create the game",
+    "value": "Кількість початкових плиток дорівнює 0 — відновіть її, щоб створити гру",
+    "source": "manual"
+  },
+  "game-setup.tiles.supply-tiles": {
+    "en": "In the players' supply, not in the draw pile",
+    "value": "У запасі гравців, а не в стосі для витягування",
+    "source": "manual"
+  },
+  "game-setup.timer.at-game-start-set-timer-to": {
+    "en": "At game start, set timer to",
+    "value": "На початку гри задати таймер на",
+    "source": "manual"
+  },
+  "game-setup.timer.disable-limits": {
+    "en": "disable limits",
+    "value": "вимкнути обмеження",
+    "source": "manual"
+  },
+  "game-setup.timer.do-nothing": {
+    "en": "do nothing",
+    "value": "нічого не робити",
+    "source": "manual"
+  },
+  "game-setup.timer.each-turn-increase-timer-by": {
+    "en": "Each turn, increase timer by",
+    "value": "Кожного ходу збільшувати таймер на",
+    "source": "manual"
+  },
+  "game-setup.timer.enable-limits": {
+    "en": "enable limits",
+    "value": "увімкнути обмеження",
+    "source": "manual"
+  },
+  "game-setup.timer.player-time-limit": {
+    "en": "Player time limit",
+    "value": "Обмеження часу для гравця",
+    "source": "manual"
+  },
+  "game-setup.timer.unlimited-time": {
+    "en": "unlimited time",
+    "value": "необмежений час",
+    "source": "manual"
+  },
+  "game-setup.timer.when-time-is-over": {
+    "en": "When time is over",
+    "value": "Коли час спливе",
+    "source": "manual"
+  },
+  "game-setup.title": {
+    "en": "Game Setup",
+    "value": "Налаштування гри",
+    "source": "manual"
+  },
+  "game-setup.variant.barn-placement.description": {
+    "en": "Barn {} be placed on a field already occupied by another barn.",
+    "value": "Клуню {} розмістити на полі, яке вже зайняте іншою клунею.",
+    "source": "manual"
+  },
+  "game-setup.variant.barn-placement.not-occupied": {
+    "en": "can't",
+    "value": "не можна",
+    "source": "manual"
+  },
+  "game-setup.variant.barn-placement.occupied": {
+    "en": "can",
+    "value": "можна",
+    "source": "manual"
+  },
+  "game-setup.variant.bazaar-no-auction.description": {
+    "en": "No bazaar bidding. Each player just chooses one tile.",
+    "value": "Без ставок на базарі. Кожен гравець просто вибирає одну плитку.",
+    "source": "manual"
+  },
+  "game-setup.variant.best-setups": {
+    "en": "Best setups",
+    "value": "Найкращі налаштування",
+    "source": "manual"
+  },
+  "game-setup.variant.black-fairy-placement.description": {
+    "en": "The Black Fairy is deployed {}.",
+    "value": "Чорну фею розміщують {}.",
+    "source": "manual"
+  },
+  "game-setup.variant.black-fairy-placement.next-follower": {
+    "en": "next to a meeple",
+    "value": "поряд із підданцем",
+    "source": "manual"
+  },
+  "game-setup.variant.black-fairy-placement.on-tile": {
+    "en": "on a tile",
+    "value": "на плитці",
+    "source": "manual"
+  },
+  "game-setup.variant.choose-variant": {
+    "en": "Choose game variant",
+    "value": "Виберіть варіант гри",
+    "source": "manual"
+  },
+  "game-setup.variant.coc-final-scoring.any-district": {
+    "en": "is not limited (C1)",
+    "value": "не обмежене (C1)",
+    "source": "manual"
+  },
+  "game-setup.variant.coc-final-scoring.description": {
+    "en": "Moving meeples from the City of Carcassonne before final scoring {}.",
+    "value": "Переміщення підданців із Міста Каркасона перед підсумковим підрахунком {}.",
+    "source": "manual"
+  },
+  "game-setup.variant.coc-final-scoring.market-only": {
+    "en": "is allowed only from market district (C2)",
+    "value": "дозволене лише з торгового кварталу (C2)",
+    "source": "manual"
+  },
+  "game-setup.variant.count-move.by-player": {
+    "en": "by player",
+    "value": "гравцем",
+    "source": "manual"
+  },
+  "game-setup.variant.count-move.clockwise": {
+    "en": "clockwise to the next district",
+    "value": "за годинниковою стрілкою до наступного кварталу",
+    "source": "manual"
+  },
+  "game-setup.variant.count-move.description": {
+    "en": "When meeple is deployed to the City of C. then the Count is moved {}.",
+    "value": "Коли підданця розміщують у Місті К., Граф переміщується {}.",
+    "source": "manual"
+  },
+  "game-setup.variant.count-move.follow-meeple": {
+    "en": "to whichever district as the meeple",
+    "value": "до того ж кварталу, що й підданець",
+    "source": "manual"
+  },
+  "game-setup.variant.dragon-move.after-scoring": {
+    "en": "after",
+    "value": "після",
+    "source": "manual"
+  },
+  "game-setup.variant.dragon-move.before-scoring": {
+    "en": "before",
+    "value": "до",
+    "source": "manual"
+  },
+  "game-setup.variant.dragon-move.description": {
+    "en": "Dragon movement occurs {} scoring.",
+    "value": "Переміщення дракона відбувається {} підрахунку очок.",
+    "source": "manual"
+  },
+  "game-setup.variant.espace-variant.any-tile": {
+    "en": "any tile",
+    "value": "будь-якої плитки",
+    "source": "manual"
+  },
+  "game-setup.variant.espace-variant.description": {
+    "en": "Monastery must be placed adjacent to {} of a besieged city to escape.",
+    "value": "Щоб утекти, монастир має бути розміщений поряд із {} обложеного міста.",
+    "source": "manual"
+  },
+  "game-setup.variant.espace-variant.siege-tile": {
+    "en": "siege tile",
+    "value": "плиткою з облогою",
+    "source": "manual"
+  },
+  "game-setup.variant.fairy-placement.description": {
+    "en": "The Fairy is deployed {}.",
+    "value": "Фею розміщують {}.",
+    "source": "manual"
+  },
+  "game-setup.variant.fairy-placement.next-follower": {
+    "en": "next to a meeple",
+    "value": "поряд із підданцем",
+    "source": "manual"
+  },
+  "game-setup.variant.fairy-placement.on-tile": {
+    "en": "on a tile",
+    "value": "на плитці",
+    "source": "manual"
+  },
+  "game-setup.variant.festival-return.description": {
+    "en": "Player may return one of their own {}.",
+    "value": "Гравець може повернути одного зі своїх {}.",
+    "source": "manual"
+  },
+  "game-setup.variant.festival-return.follower": {
+    "en": "meeples",
+    "value": "підданців",
+    "source": "manual"
+  },
+  "game-setup.variant.festival-return.meeple": {
+    "en": "player figures",
+    "value": "фігурок гравця",
+    "source": "manual"
+  },
+  "game-setup.variant.gq11-pig-herd.description": {
+    "en": "Field tile from Games Quarterly 11 expansion {}.",
+    "value": "Плитка поля з доповнення Games Quarterly 11 {}.",
+    "source": "manual"
+  },
+  "game-setup.variant.gq11-pig-herd.nothing": {
+    "en": "is just empty field",
+    "value": "це просто порожнє поле",
+    "source": "manual"
+  },
+  "game-setup.variant.gq11-pig-herd.pig": {
+    "en": "contains Pig Herd",
+    "value": "містить стадо свиней",
+    "source": "manual"
+  },
+  "game-setup.variant.hill-tiebreaker.at-least-one-follower": {
+    "en": "at least one meeple",
+    "value": "хоча б один підданець",
+    "source": "manual"
+  },
+  "game-setup.variant.hill-tiebreaker.description": {
+    "en": "Tiebreaker method: {} on hills.",
+    "value": "Спосіб розв’язання нічиєї: {} на пагорбах.",
+    "source": "manual"
+  },
+  "game-setup.variant.hill-tiebreaker.number-of-followers": {
+    "en": "number of meeples",
+    "value": "кількість підданців",
+    "source": "manual"
+  },
+  "game-setup.variant.inn-and-cathedral-final-scoring.description": {
+    "en": "Inns and Cathedrals {} during final scoring.",
+    "value": "Таверни та собори {} в підсумковому підрахунку.",
+    "source": "manual"
+  },
+  "game-setup.variant.inn-and-cathedral-final-scoring.ignore": {
+    "en": "are ignored",
+    "value": "не враховуються",
+    "source": "manual"
+  },
+  "game-setup.variant.inn-and-cathedral-final-scoring.zero": {
+    "en": "score 0 points",
+    "value": "дають 0 очок",
+    "source": "manual"
+  },
+  "game-setup.variant.keep-monasteries.description": {
+    "en": "Special monasteries {}.",
+    "value": "Особливі монастирі {}.",
+    "source": "manual"
+  },
+  "game-setup.variant.keep-monasteries.keep": {
+    "en": "are just added",
+    "value": "просто додаються",
+    "source": "manual"
+  },
+  "game-setup.variant.keep-monasteries.replace": {
+    "en": "replace original monasteries",
+    "value": "замінюють звичайні монастирі",
+    "source": "manual"
+  },
+  "game-setup.variant.king-and-robber-scoring.10/20": {
+    "en": "10 points per card at the end of the game",
+    "value": "10 очок за картку в кінці гри",
+    "source": "manual"
+  },
+  "game-setup.variant.king-and-robber-scoring.15/40": {
+    "en": "15/40 pts for having single/both cards at the end of the game",
+    "value": "15/40 очок за одну/обидві картки в кінці гри",
+    "source": "manual"
+  },
+  "game-setup.variant.king-and-robber-scoring.continuously": {
+    "en": "1 point for every completed feature during the game",
+    "value": "1 очко за кожен завершений об’єкт протягом гри",
+    "source": "manual"
+  },
+  "game-setup.variant.king-and-robber-scoring.default": {
+    "en": "1 point for every completed feature at the end of the game",
+    "value": "1 очко за кожен завершений об’єкт у кінці гри",
+    "source": "manual"
+  },
+  "game-setup.variant.king-and-robber-scoring.description": {
+    "en": "Score {}.",
+    "value": "Нараховувати {}.",
+    "source": "manual"
+  },
+  "game-setup.variant.labyrinth-variant.advanced": {
+    "en": "advanced",
+    "value": "складний",
+    "source": "manual"
+  },
+  "game-setup.variant.labyrinth-variant.basic": {
+    "en": "basic",
+    "value": "простий",
+    "source": "manual"
+  },
+  "game-setup.variant.labyrinth-variant.description": {
+    "en": "Play {} labyrinth variant",
+    "value": "Грати {} варіант лабіринту",
+    "source": "manual"
+  },
+  "game-setup.variant.leaderboard-empty": {
+    "en": "No finished co-op games yet — set up your own game and be the first on the board!",
+    "value": "Завершених кооперативних ігор ще немає — створіть власну гру й станьте першим у таблиці!",
+    "source": "manual"
+  },
+  "game-setup.variant.leaderboard-loading": {
+    "en": "Loading best setups from the server…",
+    "value": "Завантаження найкращих налаштувань із сервера…",
+    "source": "manual"
+  },
+  "game-setup.variant.leaderboard-online-only": {
+    "en": "Connect to the online server to browse the best co-op setups and scores.",
+    "value": "Підключіться до онлайн-сервера, щоб переглянути найкращі кооперативні налаштування та рахунки.",
+    "source": "manual"
+  },
+  "game-setup.variant.little-buildings-scoring.1/1/1": {
+    "en": "1/1/1",
+    "value": "1/1/1",
+    "source": "manual"
+  },
+  "game-setup.variant.little-buildings-scoring.3/2/1": {
+    "en": "3/2/1",
+    "value": "3/2/1",
+    "source": "manual"
+  },
+  "game-setup.variant.little-buildings-scoring.description": {
+    "en": "Assign {} points for tower/house/shed.",
+    "value": "Нараховувати {} очок за вежу/будинок/сарай.",
+    "source": "manual"
+  },
+  "game-setup.variant.meteorite-impact.combination": {
+    "en": "Combined",
+    "value": "Комбінований",
+    "source": "manual"
+  },
+  "game-setup.variant.meteorite-impact.description": {
+    "en": "{} impact of meteorite destruction.",
+    "value": "{} вплив руйнувань від метеорита.",
+    "source": "manual"
+  },
+  "game-setup.variant.meteorite-impact.extended": {
+    "en": "Stronger",
+    "value": "Сильніший",
+    "source": "manual"
+  },
+  "game-setup.variant.meteorite-impact.standard": {
+    "en": "Standard",
+    "value": "Стандартний",
+    "source": "manual"
+  },
+  "game-setup.variant.more-tunnel-tokens.1/1": {
+    "en": "1/1",
+    "value": "1/1",
+    "source": "manual"
+  },
+  "game-setup.variant.more-tunnel-tokens.2/1": {
+    "en": "2/1",
+    "value": "2/1",
+    "source": "manual"
+  },
+  "game-setup.variant.more-tunnel-tokens.3/2": {
+    "en": "3/2",
+    "value": "3/2",
+    "source": "manual"
+  },
+  "game-setup.variant.more-tunnel-tokens.description": {
+    "en": "Assign {} token sets to each player in a two/three player game.",
+    "value": "Видавати кожному гравцеві {} набори жетонів у грі на двох/трьох гравців.",
+    "source": "manual"
+  },
+  "game-setup.variant.n-players-plural": {
+    "en": "{players} players | {players} player | {players} players",
+    "value": "0 гравців | {players} гравець | {players} гравці | {players} гравців",
+    "source": "manual"
+  },
+  "game-setup.variant.play-it": {
+    "en": "Play it",
+    "value": "Грати",
+    "source": "manual"
+  },
+  "game-setup.variant.popular-addons": {
+    "en": "Most popular add-ons",
+    "value": "Найпопулярніші додатки",
+    "source": "manual"
+  },
+  "game-setup.variant.popular-components": {
+    "en": "Most popular components",
+    "value": "Найпопулярніші компоненти",
+    "source": "manual"
+  },
+  "game-setup.variant.popular-empty": {
+    "en": "No finished games yet — set up your own game and start the statistics!",
+    "value": "Завершених ігор ще немає — створіть власну гру й започаткуйте статистику!",
+    "source": "manual"
+  },
+  "game-setup.variant.popular-online-only": {
+    "en": "Connect to the online server to browse the most-played setups.",
+    "value": "Підключіться до онлайн-сервера, щоб переглянути найпопулярніші налаштування.",
+    "source": "manual"
+  },
+  "game-setup.variant.popular-sets": {
+    "en": "Most popular expansions",
+    "value": "Найпопулярніші доповнення",
+    "source": "manual"
+  },
+  "game-setup.variant.popular-setups": {
+    "en": "Most popular setups",
+    "value": "Найпопулярніші налаштування",
+    "source": "manual"
+  },
+  "game-setup.variant.princess-action.description": {
+    "en": "The Princess {} remove a knight from a city.",
+    "value": "Принцеса {} забрати лицаря з міста.",
+    "source": "manual"
+  },
+  "game-setup.variant.princess-action.may": {
+    "en": "may",
+    "value": "може",
+    "source": "manual"
+  },
+  "game-setup.variant.princess-action.must": {
+    "en": "must",
+    "value": "мусить",
+    "source": "manual"
+  },
+  "game-setup.variant.range-all": {
+    "en": "All time",
+    "value": "За весь час",
+    "source": "manual"
+  },
+  "game-setup.variant.range-month": {
+    "en": "Last month",
+    "value": "Останній місяць",
+    "source": "manual"
+  },
+  "game-setup.variant.range-year": {
+    "en": "Last year",
+    "value": "Останній рік",
+    "source": "manual"
+  },
+  "game-setup.variant.robbers-son-action.description": {
+    "en": "Robber's Son {} remove a thief from a road.",
+    "value": "Син розбійника {} забрати злодія з дороги.",
+    "source": "manual"
+  },
+  "game-setup.variant.robbers-son-action.may": {
+    "en": "may",
+    "value": "може",
+    "source": "manual"
+  },
+  "game-setup.variant.robbers-son-action.must": {
+    "en": "must",
+    "value": "мусить",
+    "source": "manual"
+  },
+  "game-setup.variant.share-of-games": {
+    "en": "{percent}% of finished games",
+    "value": "{percent}% завершених ігор",
+    "source": "manual"
+  },
+  "game-setup.variant.standard": {
+    "en": "Standard rules",
+    "value": "Стандартні правила",
+    "source": "manual"
+  },
+  "game-setup.variant.standard-description": {
+    "en": "The classic competitive game — every player scores for themselves and the highest score wins.",
+    "value": "Класична змагальна гра — кожен гравець набирає очки для себе, а перемагає найвищий рахунок.",
+    "source": "manual"
+  },
+  "game-setup.variant.times-played": {
+    "en": "played {count}×",
+    "value": "зіграно {count}×",
+    "source": "manual"
+  },
+  "game-setup.variant.tiny-city-scoring.2": {
+    "en": "2 points",
+    "value": "2 очки",
+    "source": "manual"
+  },
+  "game-setup.variant.tiny-city-scoring.4": {
+    "en": "4 points",
+    "value": "4 очки",
+    "source": "manual"
+  },
+  "game-setup.variant.tiny-city-scoring.description": {
+    "en": "Tiny city is scored for {}.",
+    "value": "Крихітне місто дає {}.",
+    "source": "manual"
+  },
+  "game-setup.variant.tunnelize-other-expansions.description": {
+    "en": "Apply tunnel rule on tiles from other expansions with depicted tunnels.",
+    "value": "Застосовувати правило тунелю до плиток з інших доповнень, на яких зображено тунелі.",
+    "source": "manual"
+  },
+  "game-setup.variant.vineyards-for-garden.description": {
+    "en": "Apply vineyards bonus during scoring of completed garden.",
+    "value": "Застосовувати бонус за виноградники під час підрахунку завершеного саду.",
+    "source": "manual"
+  },
+  "game-setup.variant.wagon-move.C1": {
+    "en": "connected (road crossing or road heading to a city/monastery) (1st ed.)",
+    "value": "сполучений (перехрестя доріг або дорога, що веде до міста чи монастиря) (1-ше вид.)",
+    "source": "manual"
+  },
+  "game-setup.variant.wagon-move.C2": {
+    "en": "a feature on the same or an adjacent tile (2nd ed.)",
+    "value": "об’єкт на тій самій або сусідній плитці (2-ге вид.)",
+    "source": "manual"
+  },
+  "game-setup.variant.wagon-move.description": {
+    "en": "After scored, wagon can be moved to an adjacent unoccupied, incomplete feature. Adjacent means: {}",
+    "value": "Після підрахунку віз можна перемістити на сусідній незайнятий незавершений об’єкт. Сусідній означає: {}",
+    "source": "manual"
+  },
+  "game-setup.variant.your-score": {
+    "en": "Your score — best {best}, latest {latest}",
+    "value": "Ваш рахунок — найкращий {best}, останній {latest}",
+    "source": "manual"
+  },
+  "game.action.bazaar-buy-sell-the-tile-from-to": {
+    "en": "Buy/Sell the tile from/to",
+    "value": "Купити/продати плитку в/для",
+    "source": "manual"
+  },
+  "game.action.bazaar-choose-a-tile": {
+    "en": "Choose a tile",
+    "value": "Виберіть плитку",
+    "source": "manual"
+  },
+  "game.action.bazaar-choose-a-tile-and-your-bid": {
+    "en": "Choose a tile and place your bid",
+    "value": "Виберіть плитку та зробіть ставку",
+    "source": "manual"
+  },
+  "game.action.bazaar-player-must-buy-sell-the-tile-from-to": {
+    "en": "Player must buy/sell the tile from/to",
+    "value": "Гравець мусить купити/продати плитку в/для",
+    "source": "manual"
+  },
+  "game.action.bazaar-player-must-choose-a-tile": {
+    "en": "Player must choose a tile",
+    "value": "Гравець мусить вибрати плитку",
+    "source": "manual"
+  },
+  "game.action.bazaar-player-must-choose-a-tile-and-bid": {
+    "en": "Player must choose a tile and bid",
+    "value": "Гравець мусить вибрати плитку та зробити ставку",
+    "source": "manual"
+  },
+  "game.action.bazaar-player-must-raise-bid-or-pass": {
+    "en": "Player must raise bid or pass",
+    "value": "Гравець мусить підвищити ставку або пропустити",
+    "source": "manual"
+  },
+  "game.action.bazaar-raise-bid-or-pass": {
+    "en": "Raise bid or pass",
+    "value": "Підвищіть ставку або пропустіть",
+    "source": "manual"
+  },
+  "game.action.castle-player-is-allowed-to-place": {
+    "en": "Player is allowed to place",
+    "value": "Гравцеві дозволено розмістити",
+    "source": "manual"
+  },
+  "game.action.castle-you-are-allowed-to-place": {
+    "en": "You are allowed to place",
+    "value": "Вам дозволено розмістити",
+    "source": "manual"
+  },
+  "game.action.coc-player-can-move-the-count": {
+    "en": "Player can move the Count",
+    "value": "Гравець може перемістити Графа",
+    "source": "manual"
+  },
+  "game.action.coc-you-can-move-the-count": {
+    "en": "You can move the Count",
+    "value": "Ви можете перемістити Графа",
+    "source": "manual"
+  },
+  "game.action.crop-circles-choose-city": {
+    "en": "a city",
+    "value": "місто",
+    "source": "manual"
+  },
+  "game.action.crop-circles-choose-field": {
+    "en": "a field",
+    "value": "поле",
+    "source": "manual"
+  },
+  "game.action.crop-circles-choose-one": {
+    "en": "Choose one. Each player {deploy} or {remove} meeple on/from {feature}.",
+    "value": "Виберіть одне. Кожен гравець {deploy} або {remove} підданця на/з {feature}.",
+    "source": "manual"
+  },
+  "game.action.crop-circles-choose-road": {
+    "en": "a road",
+    "value": "дорогу",
+    "source": "manual"
+  },
+  "game.action.crop-circles-player-must-choose": {
+    "en": "Player must choose: Each player may deploy or must remove meeple on/from {feature}.",
+    "value": "Гравець мусить вибрати: кожен гравець може розмістити або мусить забрати підданця на/з {feature}.",
+    "source": "manual"
+  },
+  "game.action.crop-circles-player-must-return-meeple": {
+    "en": "Player must return a meeple",
+    "value": "Гравець мусить повернути підданця",
+    "source": "manual"
+  },
+  "game.action.crop-circles-you-must-return-meeple": {
+    "en": "You must return one of your meeple.",
+    "value": "Ви мусите повернути одного зі своїх підданців.",
+    "source": "manual"
+  },
+  "game.action.draw-a-tile": {
+    "en": "Draw a tile",
+    "value": "Витягніть плитку",
+    "source": "manual"
+  },
+  "game.action.ferries-place-a-ferry": {
+    "en": "Place a ferry",
+    "value": "Розмістіть пором",
+    "source": "manual"
+  },
+  "game.action.ferries-player-can-move-ferries": {
+    "en": "Player can move ferries",
+    "value": "Гравець може переміщувати пороми",
+    "source": "manual"
+  },
+  "game.action.ferries-player-must-place-a-ferry": {
+    "en": "Player must place a ferry",
+    "value": "Гравець мусить розмістити пором",
+    "source": "manual"
+  },
+  "game.action.ferries-you-can-move-ferries": {
+    "en": "You can move ferries",
+    "value": "Ви можете переміщувати пороми",
+    "source": "manual"
+  },
+  "game.action.gamblers-luck-outcome": {
+    "en": "Gambler’s Luck outcome",
+    "value": "Результат «Щастя гравця»",
+    "source": "manual"
+  },
+  "game.action.goldmines-place-a-gold-ingot": {
+    "en": "Place a gold ingot",
+    "value": "Розмістіть злиток золота",
+    "source": "manual"
+  },
+  "game.action.goldmines-player-must-place-a-gold-ingot": {
+    "en": "Player must place a gold ingot",
+    "value": "Гравець мусить розмістити злиток золота",
+    "source": "manual"
+  },
+  "game.action.hills-and-player-must-choose-grow-or-score-plural": {
+    "en": "Player must choose to grow the flock or score sheep for 0 points. | Player must choose to grow the flock or score sheep for {points} point. | Player must choose to grow the flock or score sheep for {points} points.",
+    "value": "Гравець мусить вибрати: збільшити отару або порахувати 0 очок за овець. | Гравець мусить вибрати: збільшити отару або порахувати {points} очко за овець. | Гравець мусить вибрати: збільшити отару або порахувати {points} очка за овець. | Гравець мусить вибрати: збільшити отару або порахувати {points} очок за овець.",
+    "source": "manual"
+  },
+  "game.action.hills-and-receive-points-plural": {
+    "en": "Receive 0 points | Receive 1 point | Receive {points} points",
+    "value": "Отримати 0 очок | Отримати {points} очко | Отримати {points} очка | Отримати {points} очок",
+    "source": "manual"
+  },
+  "game.action.hills-and-sheep-shepherd-fields-was-expanded": {
+    "en": "Shepherd's field was expanded.",
+    "value": "Поле пастуха було розширено.",
+    "source": "manual"
+  },
+  "game.action.hills-and-sheep-tokens-left-plural": {
+    "en": "None tokens left | 1 token left | {tokens} tokens left",
+    "value": "Жетонів не залишилося | Залишився {tokens} жетон | Залишилося {tokens} жетони | Залишилося {tokens} жетонів",
+    "source": "manual"
+  },
+  "game.action.host-terminated-the-game": {
+    "en": "Host terminated the game. Connection was closed.",
+    "value": "Господар завершив гру. З’єднання закрито.",
+    "source": "manual"
+  },
+  "game.action.mage-and-witch-player-must-remove-mage-or-witch": {
+    "en": "Player must remove mage or witch.",
+    "value": "Гравець мусить забрати чарівника або чаклунку.",
+    "source": "manual"
+  },
+  "game.action.mage-and-witch-remove-mage-or-witch": {
+    "en": "Remove mage or witch.",
+    "value": "Заберіть чарівника або чаклунку.",
+    "source": "manual"
+  },
+  "game.action.meteorite-impact": {
+    "en": "Meteorite impact",
+    "value": "Падіння метеорита",
+    "source": "manual"
+  },
+  "game.action.monasteries-how-do-you-want-place-follower": {
+    "en": "How do you want to place your meeple on the special monastery?",
+    "value": "Як ви хочете розмістити свого підданця в особливому монастирі?",
+    "source": "manual"
+  },
+  "game.action.or": {
+    "en": "or",
+    "value": "або",
+    "source": "manual"
+  },
+  "game.action.place-the-tile": {
+    "en": "Place the tile",
+    "value": "Викладіть плитку",
+    "source": "manual"
+  },
+  "game.action.place-this-tile-instead": {
+    "en": "Place this tile instead",
+    "value": "Натомість викласти цю плитку",
+    "source": "manual"
+  },
+  "game.action.placement-optional-bridge": {
+    "en": "Some rotations here place a bridge; others don't",
+    "value": "За деяких поворотів тут ставиться міст, за інших — ні",
+    "source": "manual"
+  },
+  "game.action.placement-requires-bridge": {
+    "en": "Every placement here requires a bridge",
+    "value": "Будь-яке викладання тут потребує моста",
+    "source": "manual"
+  },
+  "game.action.player-may-move-a-meeple-from-a-city-district": {
+    "en": "Player may move a meeple from a city district.",
+    "value": "Гравець може перемістити підданця з міського кварталу.",
+    "source": "manual"
+  },
+  "game.action.player-may-move-a-meeple-from-a-city-district-before-final-scoring": {
+    "en": "Player may move a meeple from a city district before final scoring.",
+    "value": "Гравець може перемістити підданця з міського кварталу перед підсумковим підрахунком.",
+    "source": "manual"
+  },
+  "game.action.player-may-move-a-meeple-from-the-market-district-before-final-scoring": {
+    "en": "Player may move a meeple from the market district before final scoring.",
+    "value": "Гравець може перемістити підданця з торгового кварталу перед підсумковим підрахунком.",
+    "source": "manual"
+  },
+  "game.action.player-may-place-a-meeple-in-a-city-district": {
+    "en": "Player may place a meeple in a city district.",
+    "value": "Гравець може розмістити підданця в міському кварталі.",
+    "source": "manual"
+  },
+  "game.action.player-may-place-a-meeple-next-to-already-present-one": {
+    "en": "Player may place a meeple next to one already present.",
+    "value": "Гравець може розмістити підданця поряд із тим, що вже там є.",
+    "source": "manual"
+  },
+  "game.action.player-may-place-a-tile-from-supply": {
+    "en": "Player may place a tile from supply",
+    "value": "Гравець може викласти плитку зі свого запасу",
+    "source": "manual"
+  },
+  "game.action.player-may-place-an-abbey": {
+    "en": "Player may place an abbey",
+    "value": "Гравець може викласти абатство",
+    "source": "manual"
+  },
+  "game.action.player-must-place-the-tile": {
+    "en": "Player must place the tile",
+    "value": "Гравець мусить викласти плитку",
+    "source": "manual"
+  },
+  "game.action.ransom-paid": {
+    "en": "Ransom paid",
+    "value": "Викуп сплачено",
+    "source": "manual"
+  },
+  "game.action.score-first-choose": {
+    "en": "Choose which feature to score first",
+    "value": "Виберіть, який об’єкт підрахувати першим",
+    "source": "manual"
+  },
+  "game.action.score-first-player-must-choose": {
+    "en": "Player must choose which feature to score first",
+    "value": "Гравець мусить вибрати, який об’єкт підрахувати першим",
+    "source": "manual"
+  },
+  "game.action.shepherd-placement": {
+    "en": "Shepherd placement",
+    "value": "Розміщення пастуха",
+    "source": "manual"
+  },
+  "game.action.siege-player-can-escape-a-besieged-city": {
+    "en": "Player can escape a besieged city.",
+    "value": "Гравець може втекти з обложеного міста.",
+    "source": "manual"
+  },
+  "game.action.siege-you-can-escape-a-besieged-city": {
+    "en": "You can escape a besieged city.",
+    "value": "Ви можете втекти з обложеного міста.",
+    "source": "manual"
+  },
+  "game.action.skip-action": {
+    "en": "Skip action",
+    "value": "Пропустити дію",
+    "source": "manual"
+  },
+  "game.action.tile-discarded-notice-plural": {
+    "en": "These tiles can't be placed anywhere, so they were discarded | This tile can't be placed anywhere, so it was discarded | These tiles can't be placed anywhere, so they were discarded",
+    "value": "Ці тайли нікуди викласти, тому їх скинуто | Цей тайл нікуди викласти, тому його скинуто | Ці тайли нікуди викласти, тому їх скинуто | Ці тайли нікуди викласти, тому їх скинуто",
+    "source": "manual"
+  },
+  "game.action.tile-placement": {
+    "en": "Tile placement",
+    "value": "Викладання плитки",
+    "source": "manual"
+  },
+  "game.action.tower-player-can-take-a-prisoner": {
+    "en": "Player can take a prisoner",
+    "value": "Гравець може взяти полоненого",
+    "source": "manual"
+  },
+  "game.action.tower-player-must-select-follower-for-exchange": {
+    "en": "Player must select meeple for exchange",
+    "value": "Гравець мусить вибрати підданця для обміну",
+    "source": "manual"
+  },
+  "game.action.tower-select-follower-for-exchange": {
+    "en": "Select meeple for exchange",
+    "value": "Виберіть підданця для обміну",
+    "source": "manual"
+  },
+  "game.action.tower-you-can-take-a-prisoner": {
+    "en": "You can take a prisoner",
+    "value": "Ви можете взяти полоненого",
+    "source": "manual"
+  },
+  "game.action.waiting-for-player-confirmation": {
+    "en": "Waiting for player confirmation.",
+    "value": "Очікування підтвердження від гравця.",
+    "source": "manual"
+  },
+  "game.action.you-may-move-a-meeple-from-a-city-district": {
+    "en": "You may move a meeple from a city district.",
+    "value": "Ви можете перемістити підданця з міського кварталу.",
+    "source": "manual"
+  },
+  "game.action.you-may-move-a-meeple-from-a-city-district-before-final-scoring": {
+    "en": "You may move a meeple from a city district before final scoring.",
+    "value": "Ви можете перемістити підданця з міського кварталу перед підсумковим підрахунком.",
+    "source": "manual"
+  },
+  "game.action.you-may-move-a-meeple-from-the-market-district-before-final-scoring": {
+    "en": "You may move a meeple from the market district before final scoring.",
+    "value": "Ви можете перемістити підданця з торгового кварталу перед підсумковим підрахунком.",
+    "source": "manual"
+  },
+  "game.action.you-may-place-a-meeple-in-a-city-district": {
+    "en": "You may place a meeple in a city district.",
+    "value": "Ви можете розмістити підданця в міському кварталі.",
+    "source": "manual"
+  },
+  "game.action.you-may-place-a-meeple-next-to-already-present-one": {
+    "en": "You may place a meeple next to one already present.",
+    "value": "Ви можете розмістити підданця поряд із тим, що вже там є.",
+    "source": "manual"
+  },
+  "game.action.you-may-place-a-tile-from-supply": {
+    "en": "You may place a tile from supply",
+    "value": "Ви можете викласти плитку зі свого запасу",
+    "source": "manual"
+  },
+  "game.action.you-may-place-an-abbey": {
+    "en": "You may place an abbey",
+    "value": "Ви можете викласти абатство",
+    "source": "manual"
+  },
+  "game.action.your-action": {
+    "en": "your action",
+    "value": "ваша дія",
+    "source": "manual"
+  },
+  "game.cause.caused-by": {
+    "en": "Caused by: {cause}",
+    "value": "Причина: {cause}",
+    "source": "manual"
+  },
+  "game.cause.figure-moved": {
+    "en": "the figure moving here",
+    "value": "фігурка, переміщена сюди",
+    "source": "manual"
+  },
+  "game.cause.meeple-deployed": {
+    "en": "the deployed meeple",
+    "value": "розміщений підданець",
+    "source": "manual"
+  },
+  "game.cause.rule.count-clockwise": {
+    "en": "the Count moving on clockwise",
+    "value": "Граф пересувається за годинниковою стрілкою",
+    "source": "manual"
+  },
+  "game.cause.rule.decinsky-sneznik-scored": {
+    "en": "Děčínský Sněžník scored",
+    "value": "підрахунок Дечинського Снєжника",
+    "source": "manual"
+  },
+  "game.cause.rule.final-scoring": {
+    "en": "final scoring",
+    "value": "фінальний підрахунок",
+    "source": "manual"
+  },
+  "game.cause.rule.flock-expanded": {
+    "en": "a sheep token drawn for the flock",
+    "value": "жетон вівці, витягнутий для отари",
+    "source": "manual"
+  },
+  "game.cause.rule.flock-scored": {
+    "en": "the flock scored",
+    "value": "підрахунок отари",
+    "source": "manual"
+  },
+  "game.cause.rule.game-start": {
+    "en": "the start of the game",
+    "value": "початок гри",
+    "source": "manual"
+  },
+  "game.cause.rule.mage-witch-joined": {
+    "en": "the mage's and the witch's features joined",
+    "value": "об’єкти Чарівника й Чаклунки з’єдналися",
+    "source": "manual"
+  },
+  "game.cause.rule.mage-witch-no-target": {
+    "en": "no open city or road left for the figure",
+    "value": "немає відкритого міста чи дороги для фігурки",
+    "source": "manual"
+  },
+  "game.cause.rule.meteorite": {
+    "en": "a meteorite impact",
+    "value": "падіння метеорита",
+    "source": "manual"
+  },
+  "game.cause.rule.obelisk-scored": {
+    "en": "the obelisk scored",
+    "value": "підрахунок обеліска",
+    "source": "manual"
+  },
+  "game.cause.rule.trap": {
+    "en": "a trap",
+    "value": "пастка",
+    "source": "manual"
+  },
+  "game.cause.rule.windmill-scored": {
+    "en": "the windmill scored",
+    "value": "підрахунок вітряка",
+    "source": "manual"
+  },
+  "game.cause.rule.wolf": {
+    "en": "the wolf drawn",
+    "value": "витягнутий вовк",
+    "source": "manual"
+  },
+  "game.cause.tile-placed": {
+    "en": "the placed tile",
+    "value": "викладена плитка",
+    "source": "manual"
+  },
+  "game.coop.all-lose": {
+    "en": "All players lose",
+    "value": "Усі гравці програють",
+    "source": "manual"
+  },
+  "game.coop.all-win": {
+    "en": "All players win!",
+    "value": "Усі гравці перемагають!",
+    "source": "manual"
+  },
+  "game.coop.team-score-plural": {
+    "en": "Team score: {points} points | Team score: {points} point | Team score: {points} points",
+    "value": "Рахунок команди: 0 очок | Рахунок команди: {points} очко | Рахунок команди: {points} очка | Рахунок команди: {points} очок",
+    "source": "manual"
+  },
+  "game.coop.triggered-by": {
+    "en": "{name} could neither enlarge an occupied feature nor occupy a new one.",
+    "value": "{name} не розширив зайнятого об’єкта й не зайняв нового.",
+    "source": "manual"
+  },
+  "game.element.abbey": {
+    "en": "Abbey",
+    "value": "Абатство",
+    "source": "manual"
+  },
+  "game.element.abbot": {
+    "en": "Abbot",
+    "value": "Абат",
+    "source": "manual"
+  },
+  "game.element.barn": {
+    "en": "Barn",
+    "value": "Клуня",
+    "source": "manual"
+  },
+  "game.element.big-follower": {
+    "en": "Big Meeple",
+    "value": "Великий підданець",
+    "source": "manual"
+  },
+  "game.element.big-top": {
+    "en": "Big Top",
+    "value": "Шапіто",
+    "source": "manual"
+  },
+  "game.element.black-fairy": {
+    "en": "Black Fairy",
+    "value": "Чорна фея",
+    "source": "manual"
+  },
+  "game.element.black-tower": {
+    "en": "Black Tower",
+    "value": "Чорна вежа",
+    "source": "manual"
+  },
+  "game.element.bridge": {
+    "en": "Bridge",
+    "value": "Міст",
+    "source": "manual"
+  },
+  "game.element.builder": {
+    "en": "Builder",
+    "value": "Будівельник",
+    "source": "manual"
+  },
+  "game.element.castle": {
+    "en": "Castle",
+    "value": "Замок",
+    "source": "manual"
+  },
+  "game.element.city-palace": {
+    "en": "City Palace",
+    "value": "Палац",
+    "source": "manual"
+  },
+  "game.element.count": {
+    "en": "Count",
+    "value": "Граф",
+    "source": "manual"
+  },
+  "game.element.courier": {
+    "en": "Courier",
+    "value": "Посланець",
+    "source": "manual"
+  },
+  "game.element.decinsky-sneznik": {
+    "en": "Decinsky Sneznik",
+    "value": "Дечинський Снєжник",
+    "source": "manual"
+  },
+  "game.element.donkey": {
+    "en": "Donkey",
+    "value": "Віслюк",
+    "source": "manual"
+  },
+  "game.element.donkey-description": {
+    "en": "Donkey as an neutral figure, blocks the completion of any feature from the tile it stands on.",
+    "value": "Віслюк — нейтральна фігурка, що блокує завершення будь-якого об’єкта з плитки, на якій він стоїть.",
+    "source": "manual"
+  },
+  "game.element.dragon": {
+    "en": "Dragon",
+    "value": "Дракон",
+    "source": "manual"
+  },
+  "game.element.fairy": {
+    "en": "Fairy",
+    "value": "Фея",
+    "source": "manual"
+  },
+  "game.element.ferry": {
+    "en": "Ferry",
+    "value": "Пором",
+    "source": "manual"
+  },
+  "game.element.gold": {
+    "en": "Gold",
+    "value": "Золото",
+    "source": "manual"
+  },
+  "game.element.king": {
+    "en": "King",
+    "value": "Король",
+    "source": "manual"
+  },
+  "game.element.kingdom-palace": {
+    "en": "Kingdom Palace",
+    "value": "Палац королівства",
+    "source": "manual"
+  },
+  "game.element.kingdoms-palace": {
+    "en": "City Palace",
+    "value": "Палац",
+    "source": "manual"
+  },
+  "game.element.little-buildings": {
+    "en": "Little Buildings",
+    "value": "Маленькі будівлі",
+    "source": "manual"
+  },
+  "game.element.mage": {
+    "en": "Mage",
+    "value": "Чарівник",
+    "source": "manual"
+  },
+  "game.element.mayor": {
+    "en": "Mayor",
+    "value": "Мер",
+    "source": "manual"
+  },
+  "game.element.mini-follower": {
+    "en": "Mini Meeple",
+    "value": "Міні-підданець",
+    "source": "manual"
+  },
+  "game.element.obelisk": {
+    "en": "Obelisk",
+    "value": "Обеліск",
+    "source": "manual"
+  },
+  "game.element.phantom": {
+    "en": "Phantom",
+    "value": "Фантом",
+    "source": "manual"
+  },
+  "game.element.pig": {
+    "en": "Pig",
+    "value": "Свиня",
+    "source": "manual"
+  },
+  "game.element.pre-draw": {
+    "en": "Pre-draw",
+    "value": "Попереднє витягування",
+    "source": "manual"
+  },
+  "game.element.ringmaster": {
+    "en": "Ringmaster",
+    "value": "Директорка цирку",
+    "source": "manual"
+  },
+  "game.element.robber": {
+    "en": "Robber Barron",
+    "value": "Барон-розбійник",
+    "source": "manual"
+  },
+  "game.element.shepherd": {
+    "en": "Shepherd",
+    "value": "Пастух",
+    "source": "manual"
+  },
+  "game.element.small-follower": {
+    "en": "Small Meeple",
+    "value": "Малий підданець",
+    "source": "manual"
+  },
+  "game.element.tower": {
+    "en": "Tower",
+    "value": "Вежа",
+    "source": "manual"
+  },
+  "game.element.traders": {
+    "en": "Trade Goods",
+    "value": "Товари",
+    "source": "manual"
+  },
+  "game.element.tunnel": {
+    "en": "Tunnel",
+    "value": "Тунель",
+    "source": "manual"
+  },
+  "game.element.wagon": {
+    "en": "Wagon",
+    "value": "Віз",
+    "source": "manual"
+  },
+  "game.element.windmill": {
+    "en": "Windmill",
+    "value": "Вітряк",
+    "source": "manual"
+  },
+  "game.element.windmill-description": {
+    "en": "Windmills grant points once surrounded in a large plus-shaped pattern.",
+    "value": "Вітряки дають очки, коли їх оточено великою фігурою у формі плюса.",
+    "source": "manual"
+  },
+  "game.element.witch": {
+    "en": "Witch",
+    "value": "Чаклунка",
+    "source": "manual"
+  },
+  "game.event.meeple-awarded": {
+    "en": "Earned a meeple",
+    "value": "Отримав підданця",
+    "source": "manual"
+  },
+  "game.event.meeple-awarded-hole": {
+    "en": "Filled a hole",
+    "value": "Заповнив прогалину",
+    "source": "manual"
+  },
+  "game.feature.acrobats": {
+    "en": "Acrobats",
+    "value": "Акробати",
+    "source": "manual"
+  },
+  "game.feature.bazaar": {
+    "en": "Bazaar",
+    "value": "Базар",
+    "source": "manual"
+  },
+  "game.feature.big-top": {
+    "en": "Big Top",
+    "value": "Шапіто",
+    "source": "manual"
+  },
+  "game.feature.black-fairy": {
+    "en": "Black Fairy",
+    "value": "Чорна фея",
+    "source": "manual"
+  },
+  "game.feature.castle": {
+    "en": "Castle",
+    "value": "Замок",
+    "source": "manual"
+  },
+  "game.feature.castles": {
+    "en": "Castles",
+    "value": "Замки",
+    "source": "manual"
+  },
+  "game.feature.cathedral": {
+    "en": "Cathedral",
+    "value": "Собор",
+    "source": "manual"
+  },
+  "game.feature.church-bonus": {
+    "en": "Church Bonus",
+    "value": "Бонус за церкву",
+    "source": "manual"
+  },
+  "game.feature.cities": {
+    "en": "Cities",
+    "value": "Міста",
+    "source": "manual"
+  },
+  "game.feature.city": {
+    "en": "City",
+    "value": "Місто",
+    "source": "manual"
+  },
+  "game.feature.city-small": {
+    "en": "Small City",
+    "value": "Маленьке місто",
+    "source": "manual"
+  },
+  "game.feature.coat-of-arms": {
+    "en": "Coat of Arms",
+    "value": "Герб",
+    "source": "manual"
+  },
+  "game.feature.crop-circle": {
+    "en": "Crop Circle",
+    "value": "Коло на полі",
+    "source": "manual"
+  },
+  "game.feature.escape": {
+    "en": "Escape",
+    "value": "Втеча",
+    "source": "manual"
+  },
+  "game.feature.fairy": {
+    "en": "Fairy",
+    "value": "Фея",
+    "source": "manual"
+  },
+  "game.feature.families": {
+    "en": "Families",
+    "value": "Роди",
+    "source": "manual"
+  },
+  "game.feature.family": {
+    "en": "Family",
+    "value": "Рід",
+    "source": "manual"
+  },
+  "game.feature.farmers": {
+    "en": "Farmers",
+    "value": "Фермери",
+    "source": "manual"
+  },
+  "game.feature.festival": {
+    "en": "Festival",
+    "value": "Фестиваль",
+    "source": "manual"
+  },
+  "game.feature.field": {
+    "en": "Field",
+    "value": "Поле",
+    "source": "manual"
+  },
+  "game.feature.fields": {
+    "en": "Fields",
+    "value": "Поля",
+    "source": "manual"
+  },
+  "game.feature.fishermen": {
+    "en": "Fishermen",
+    "value": "Рибалки",
+    "source": "manual"
+  },
+  "game.feature.fishhut": {
+    "en": "Fish Hut",
+    "value": "Рибальська хатина",
+    "source": "manual"
+  },
+  "game.feature.flock": {
+    "en": "Flock",
+    "value": "Отара",
+    "source": "manual"
+  },
+  "game.feature.flowers": {
+    "en": "Flowers",
+    "value": "Квіти",
+    "source": "manual"
+  },
+  "game.feature.garden": {
+    "en": "Garden",
+    "value": "Сад",
+    "source": "manual"
+  },
+  "game.feature.gardens": {
+    "en": "Gardens",
+    "value": "Сади",
+    "source": "manual"
+  },
+  "game.feature.gold": {
+    "en": "Gold",
+    "value": "Золото",
+    "source": "manual"
+  },
+  "game.feature.gold-ingots": {
+    "en": "Gold ingots",
+    "value": "Злитки золота",
+    "source": "manual"
+  },
+  "game.feature.hill": {
+    "en": "Hill",
+    "value": "Пагорб",
+    "source": "manual"
+  },
+  "game.feature.inn": {
+    "en": "Inn",
+    "value": "Таверна",
+    "source": "manual"
+  },
+  "game.feature.keep-building": {
+    "en": "Keep Building (co-op)",
+    "value": "Будуй далі (кооп.)",
+    "source": "manual"
+  },
+  "game.feature.king": {
+    "en": "King",
+    "value": "Король",
+    "source": "manual"
+  },
+  "game.feature.king-and-robber": {
+    "en": "King & Robber",
+    "value": "Король і розбійник",
+    "source": "manual"
+  },
+  "game.feature.kingdom": {
+    "en": "Kingdom",
+    "value": "Королівство",
+    "source": "manual"
+  },
+  "game.feature.kingdoms": {
+    "en": "Kingdoms",
+    "value": "Королівства",
+    "source": "manual"
+  },
+  "game.feature.marketplace": {
+    "en": "Marketplace",
+    "value": "Ринок",
+    "source": "manual"
+  },
+  "game.feature.marketplaces": {
+    "en": "Marketplaces",
+    "value": "Ринки",
+    "source": "manual"
+  },
+  "game.feature.meteorite": {
+    "en": "Meteorite",
+    "value": "Метеорит",
+    "source": "manual"
+  },
+  "game.feature.meteorites": {
+    "en": "Meteorites",
+    "value": "Метеорити",
+    "source": "manual"
+  },
+  "game.feature.monasteries": {
+    "en": "Monasteries",
+    "value": "Монастирі",
+    "source": "manual"
+  },
+  "game.feature.monastery": {
+    "en": "Monastery",
+    "value": "Монастир",
+    "source": "manual"
+  },
+  "game.feature.pig-herd": {
+    "en": "Pig Herd",
+    "value": "Стадо свиней",
+    "source": "manual"
+  },
+  "game.feature.placed-tiles": {
+    "en": "Placed tiles",
+    "value": "Викладені плитки",
+    "source": "manual"
+  },
+  "game.feature.portal": {
+    "en": "Magic portal",
+    "value": "Магічний портал",
+    "source": "manual"
+  },
+  "game.feature.princess": {
+    "en": "Princess",
+    "value": "Принцеса",
+    "source": "manual"
+  },
+  "game.feature.ringmaster": {
+    "en": "Ringmaster",
+    "value": "Директорка цирку",
+    "source": "manual"
+  },
+  "game.feature.road": {
+    "en": "Road",
+    "value": "Дорога",
+    "source": "manual"
+  },
+  "game.feature.roads": {
+    "en": "Roads",
+    "value": "Дороги",
+    "source": "manual"
+  },
+  "game.feature.robber": {
+    "en": "Robber Baron",
+    "value": "Барон-розбійник",
+    "source": "manual"
+  },
+  "game.feature.robbers-son": {
+    "en": "Robber's Son",
+    "value": "Син розбійника",
+    "source": "manual"
+  },
+  "game.feature.sheep": {
+    "en": "Sheep",
+    "value": "Вівці",
+    "source": "manual"
+  },
+  "game.feature.shrine": {
+    "en": "Shrine",
+    "value": "Святиня",
+    "source": "manual"
+  },
+  "game.feature.shrine-challenge": {
+    "en": "Monastery/Shrine challenge",
+    "value": "Виклик монастиря/святині",
+    "source": "manual"
+  },
+  "game.feature.shrines": {
+    "en": "Shrines",
+    "value": "Святині",
+    "source": "manual"
+  },
+  "game.feature.siege": {
+    "en": "Siege",
+    "value": "Облога",
+    "source": "manual"
+  },
+  "game.feature.special-monasteries": {
+    "en": "Special Monasteries",
+    "value": "Особливі монастирі",
+    "source": "manual"
+  },
+  "game.feature.special-monastery": {
+    "en": "Special Monastery",
+    "value": "Особливий монастир",
+    "source": "manual"
+  },
+  "game.feature.tower": {
+    "en": "Tower",
+    "value": "Вежа",
+    "source": "manual"
+  },
+  "game.feature.towers": {
+    "en": "Towers",
+    "value": "Вежі",
+    "source": "manual"
+  },
+  "game.feature.trade-goods": {
+    "en": "Trade Goods",
+    "value": "Товари",
+    "source": "manual"
+  },
+  "game.feature.vineyard": {
+    "en": "Vineyard",
+    "value": "Виноградник",
+    "source": "manual"
+  },
+  "game.feature.vodyanoy": {
+    "en": "Vodyanoy",
+    "value": "Водяник",
+    "source": "manual"
+  },
+  "game.feature.watchtower": {
+    "en": "Watchtower",
+    "value": "Вартова вежа",
+    "source": "manual"
+  },
+  "game.feature.watchtowers": {
+    "en": "Watchtowers",
+    "value": "Вартові вежі",
+    "source": "manual"
+  },
+  "game.feature.well": {
+    "en": "Well",
+    "value": "Колодязь",
+    "source": "manual"
+  },
+  "game.feature.wells": {
+    "en": "Wells",
+    "value": "Колодязі",
+    "source": "manual"
+  },
+  "game.feature.wind-rose": {
+    "en": "Wind Rose",
+    "value": "Роза вітрів",
+    "source": "manual"
+  },
+  "game.feature.wind-roses": {
+    "en": "Wind Roses",
+    "value": "Рози вітрів",
+    "source": "manual"
+  },
+  "game.feature.yaga-hut": {
+    "en": "Baba Yaga Hut",
+    "value": "Хатинка Баби Яги",
+    "source": "manual"
+  },
+  "game.observers.watching": {
+    "en": "Watching",
+    "value": "Спостерігають",
+    "source": "manual"
+  },
+  "game.placement.converted-by": {
+    "en": "Converted by {player}",
+    "value": "Перетворив {player}",
+    "source": "manual"
+  },
+  "game.placement.deployed-by": {
+    "en": "Deployed by {player}",
+    "value": "Розмістив {player}",
+    "source": "manual"
+  },
+  "game.placement.discarded-reason": {
+    "en": "It fits nowhere on the board, so another tile was drawn",
+    "value": "Його нікуди викласти на полі, тому витягнуто інший тайл",
+    "source": "manual"
+  },
+  "game.placement.exchanged-reason": {
+    "en": "Each player got their own meeple back",
+    "value": "Кожен гравець повернув свого підданця",
+    "source": "manual"
+  },
+  "game.placement.moved-by": {
+    "en": "Moved by {player}",
+    "value": "Перемістив {player}",
+    "source": "manual"
+  },
+  "game.placement.placed-by": {
+    "en": "Placed by {player}",
+    "value": "Виклав {player}",
+    "source": "manual"
+  },
+  "game.placement.removed-with": {
+    "en": "{source}, by {player}",
+    "value": "{source}, гравець {player}",
+    "source": "manual"
+  },
+  "game.placement.title.captured": {
+    "en": "{figure} captured",
+    "value": "Полонення: {figure}",
+    "source": "manual"
+  },
+  "game.placement.title.castle-created": {
+    "en": "Small city converted to a castle",
+    "value": "Маленьке місто перетворено на замок",
+    "source": "manual"
+  },
+  "game.placement.title.discarded": {
+    "en": "Discarded",
+    "value": "Скинуто",
+    "source": "manual"
+  },
+  "game.placement.title.exchanged": {
+    "en": "Prisoners exchanged",
+    "value": "Обмін полоненими",
+    "source": "manual"
+  },
+  "game.placement.title.moved": {
+    "en": "{figure} moved",
+    "value": "Переміщення: {figure}",
+    "source": "manual"
+  },
+  "game.placement.title.placed": {
+    "en": "{figure} placed",
+    "value": "Розміщення: {figure}",
+    "source": "manual"
+  },
+  "game.placement.title.placed-on-letter": {
+    "en": "{figure} placed on the Letter",
+    "value": "Розміщення на Листі: {figure}",
+    "source": "manual"
+  },
+  "game.placement.title.removed": {
+    "en": "{figure} removed",
+    "value": "Вилучення: {figure}",
+    "source": "manual"
+  },
+  "game.placement.title.tile-placed": {
+    "en": "Tile placed",
+    "value": "Плитку викладено",
+    "source": "manual"
+  },
+  "game.ransom.already-paid": {
+    "en": "A meeple was already bought back this turn — one per turn",
+    "value": "У цьому ході підданця вже викуплено — лише одного за хід",
+    "source": "manual"
+  },
+  "game.ransom.can": {
+    "en": "Buy back for 3 points",
+    "value": "Викупити за 3 очки",
+    "source": "manual"
+  },
+  "game.ransom.not-enough-points": {
+    "en": "Not enough points to buy back — 3 points are needed",
+    "value": "Недостатньо очок для викупу — потрібно 3 очки",
+    "source": "manual"
+  },
+  "game.ransom.not-their-action": {
+    "en": "Captured — its owner can buy it back for 3 points on their turn",
+    "value": "У полоні — власник може викупити його за 3 очки у свій хід",
+    "source": "manual"
+  },
+  "game.scoring.barn-connected": {
+    "en": "barn connected",
+    "value": "клуню приєднано",
+    "source": "manual"
+  },
+  "game.scoring.barn-placed": {
+    "en": "barn placed",
+    "value": "клуню розміщено",
+    "source": "manual"
+  },
+  "game.scoring.challenged": {
+    "en": "challenged",
+    "value": "кинуто виклик",
+    "source": "manual"
+  },
+  "game.scoring.empty": {
+    "en": "empty",
+    "value": "порожньо",
+    "source": "manual"
+  },
+  "game.scoring.feature-scored": {
+    "en": "feature scored",
+    "value": "об’єкт пораховано",
+    "source": "manual"
+  },
+  "game.scoring.income": {
+    "en": "income",
+    "value": "дохід",
+    "source": "manual"
+  },
+  "game.scoring.incomplete": {
+    "en": "incomplete",
+    "value": "незавершено",
+    "source": "manual"
+  },
+  "game.scoring.item-cloth": {
+    "en": "Cloth",
+    "value": "Тканина",
+    "source": "manual"
+  },
+  "game.scoring.item-darmstadtium": {
+    "en": "Darmstadtium",
+    "value": "Дармштадтій",
+    "source": "manual"
+  },
+  "game.scoring.item-grain": {
+    "en": "Grain",
+    "value": "Зерно",
+    "source": "manual"
+  },
+  "game.scoring.item-house": {
+    "en": "House",
+    "value": "Будинок",
+    "source": "manual"
+  },
+  "game.scoring.item-river-tiles": {
+    "en": "River tiles",
+    "value": "Плитки річки",
+    "source": "manual"
+  },
+  "game.scoring.item-shed": {
+    "en": "Shed",
+    "value": "Сарай",
+    "source": "manual"
+  },
+  "game.scoring.item-tiles-east": {
+    "en": "Tiles to the east",
+    "value": "Плитки на схід",
+    "source": "manual"
+  },
+  "game.scoring.item-tiles-north": {
+    "en": "Tiles to the north",
+    "value": "Плитки на північ",
+    "source": "manual"
+  },
+  "game.scoring.item-tiles-south": {
+    "en": "Tiles to the south",
+    "value": "Плитки на південь",
+    "source": "manual"
+  },
+  "game.scoring.item-tiles-west": {
+    "en": "Tiles to the west",
+    "value": "Плитки на захід",
+    "source": "manual"
+  },
+  "game.scoring.item-tower": {
+    "en": "Tower",
+    "value": "Вежа",
+    "source": "manual"
+  },
+  "game.scoring.item-wine": {
+    "en": "Wine",
+    "value": "Вино",
+    "source": "manual"
+  },
+  "game.scoring.item-wolf": {
+    "en": "Wolf",
+    "value": "Вовк",
+    "source": "manual"
+  },
+  "game.scoring.majority": {
+    "en": "majority",
+    "value": "більшість",
+    "source": "manual"
+  },
+  "game.scoring.no-majority": {
+    "en": "no majority",
+    "value": "немає більшості",
+    "source": "manual"
+  },
+  "game.scoring.payment": {
+    "en": "payment",
+    "value": "виплата",
+    "source": "manual"
+  },
+  "game.scoring.turn-start": {
+    "en": "turn start",
+    "value": "початок ходу",
+    "source": "manual"
+  },
+  "game.tile-pack-dialog.disabled-show-remaining": {
+    "en": "The game was created with an option that doesn't allow showing remaining tiles count.",
+    "value": "Гру створено з налаштуванням, що не дозволяє показувати кількість плиток, які залишилися.",
+    "source": "manual"
+  },
+  "game.tile-pack-dialog.discarded-tiles": {
+    "en": "Discarded tiles",
+    "value": "Відкинуті плитки",
+    "source": "manual"
+  },
+  "game.tile-pack-dialog.game-tiles": {
+    "en": "Game tiles",
+    "value": "Плитки гри",
+    "source": "manual"
+  },
+  "game.tile-pack-dialog.hidden-tiles-under-hill-plural": {
+    "en": "There is no unknown tile under hill. | Don't forget that 1 unknown tile from the list is hidden under a hill. | Don't forget that {count} unknown tiles from the list are hidden under hills.",
+    "value": "Під пагорбом немає невідомих плиток. | Не забувайте, що {count} невідома плитка зі списку схована під пагорбом. | Не забувайте, що {count} невідомі плитки зі списку сховані під пагорбами. | Не забувайте, що {count} невідомих плиток зі списку сховано під пагорбами.",
+    "source": "manual"
+  },
+  "game.tile-pack-dialog.remaining-tiles": {
+    "en": "Remaining tiles",
+    "value": "Плитки, що залишилися",
+    "source": "manual"
+  },
+  "game.tile-pack-dialog.tiles": {
+    "en": "Tiles",
+    "value": "Плитки",
+    "source": "manual"
+  },
+  "game.tile-pack-dialog.tiles-plural": {
+    "en": "tiles | tile | tiles",
+    "value": "плиток | плитка | плитки | плиток",
+    "source": "manual"
+  },
+  "game.tiles-progress": {
+    "en": "Tiles placed",
+    "value": "Викладені плитки",
+    "source": "manual"
+  },
+  "index.automatic-updates-linux-only": {
+    "en": "Automatic updates are currently supported only on the Linux platform. Please download the new version directly and update manually.",
+    "value": "Автоматичні оновлення зараз підтримуються лише на платформі Linux. Будь ласка, завантажте нову версію напряму та оновіть вручну.",
+    "source": "manual"
+  },
+  "index.local.continue-with-recently-saved-games": {
+    "en": "Continue with recently saved games",
+    "value": "Продовжити з недавно збережених ігор",
+    "source": "manual"
+  },
+  "index.local.create-directly-from": {
+    "en": "Create a new game directly from",
+    "value": "Створити нову гру напряму з",
+    "source": "manual"
+  },
+  "index.local.load-game": {
+    "en": "Load game",
+    "value": "Завантажити гру",
+    "source": "manual"
+  },
+  "index.local.local-games": {
+    "en": "Local games",
+    "value": "Локальні ігри",
+    "source": "manual"
+  },
+  "index.local.my-favorites": {
+    "en": "my favorites",
+    "value": "мого улюбленого",
+    "source": "manual"
+  },
+  "index.local.new-game": {
+    "en": "New game",
+    "value": "Нова гра",
+    "source": "manual"
+  },
+  "index.local.new-game-against-ai": {
+    "en": "New game against AI",
+    "value": "Нова гра проти комп’ютера",
+    "source": "manual"
+  },
+  "index.local.new-local-game": {
+    "en": "New local game",
+    "value": "Нова локальна гра",
+    "source": "manual"
+  },
+  "index.local.open-game": {
+    "en": "Open game",
+    "value": "Відкрити гру",
+    "source": "manual"
+  },
+  "index.local.saved-game": {
+    "en": "Saved game",
+    "value": "Збережена гра",
+    "source": "manual"
+  },
+  "index.local.title": {
+    "en": "Player hosted games",
+    "value": "Ігри, створені гравцями",
+    "source": "manual"
+  },
+  "index.online.abandon-game": {
+    "en": "Abandon game",
+    "value": "Покинути гру",
+    "source": "manual"
+  },
+  "index.online.chat-during-game": {
+    "en": "Chat during game",
+    "value": "Чат під час гри",
+    "source": "manual"
+  },
+  "index.online.connected-to": {
+    "en": "Connected to {0}",
+    "value": "Підключено до {0}",
+    "source": "manual"
+  },
+  "index.online.connecting": {
+    "en": "Connecting to server…",
+    "value": "Підключення до сервера…",
+    "source": "manual"
+  },
+  "index.online.disconnect-cancel": {
+    "en": "Stay connected",
+    "value": "Залишитися підключеним",
+    "source": "manual"
+  },
+  "index.online.disconnect-confirm": {
+    "en": "Disconnect and close games",
+    "value": "Відключитися й закрити ігри",
+    "source": "manual"
+  },
+  "index.online.disconnect-message": {
+    "en": "You have {count} online game(s) open. Disconnecting will close them.",
+    "value": "У вас відкрито ігор онлайн: {count}. Після відключення вони закриються.",
+    "source": "manual"
+  },
+  "index.online.disconnect-title": {
+    "en": "Disconnect from server",
+    "value": "Відключитися від сервера",
+    "source": "manual"
+  },
+  "index.online.game-id": {
+    "en": "Game ID",
+    "value": "ID гри",
+    "source": "manual"
+  },
+  "index.online.game-not-found": {
+    "en": "Game not found. Check the game key and try again.",
+    "value": "Гру не знайдено. Перевірте ключ гри та спробуйте ще раз.",
+    "source": "manual"
+  },
+  "index.online.games-in-progress": {
+    "en": "Games in progress",
+    "value": "Ігри, що тривають",
+    "source": "manual"
+  },
+  "index.online.incompatible-version-newer": {
+    "en": "Newer version, cannot play together (protocol {version})",
+    "value": "Новіша версія, спільна гра неможлива (протокол {version})",
+    "source": "manual"
+  },
+  "index.online.incompatible-version-older": {
+    "en": "Older version, cannot play together (protocol {version})",
+    "value": "Старіша версія, спільна гра неможлива (протокол {version})",
+    "source": "manual"
+  },
+  "index.online.incompatible-version-unknown": {
+    "en": "Unknown version, cannot play together",
+    "value": "Невідома версія, спільна гра неможлива",
+    "source": "manual"
+  },
+  "index.online.join-game": {
+    "en": "Join game",
+    "value": "Приєднатися до гри",
+    "source": "manual"
+  },
+  "index.online.loading-game-data": {
+    "en": "Loading game data…",
+    "value": "Завантаження даних гри…",
+    "source": "manual"
+  },
+  "index.online.lobby": {
+    "en": "Lobby",
+    "value": "Лобі",
+    "source": "manual"
+  },
+  "index.online.local-game": {
+    "en": "Local game",
+    "value": "Локальна гра",
+    "source": "manual"
+  },
+  "index.online.max-players-title": {
+    "en": "Players (max)",
+    "value": "Гравці (макс.)",
+    "source": "manual"
+  },
+  "index.online.no-clients": {
+    "en": "No one connected",
+    "value": "Нікого не підключено",
+    "source": "manual"
+  },
+  "index.online.no-public-games": {
+    "en": "No public games",
+    "value": "Публічних ігор немає",
+    "source": "manual"
+  },
+  "index.online.no-random-discovery": {
+    "en": "it means no random player discovery",
+    "value": "це означає, що випадкові гравці вас не знайдуть",
+    "source": "manual"
+  },
+  "index.online.not-yet-started": {
+    "en": "Not yet started",
+    "value": "Ще не почалася",
+    "source": "manual"
+  },
+  "index.online.offline": {
+    "en": "Offline – not connected to {0}",
+    "value": "Не в мережі — немає підключення до {0}",
+    "source": "manual"
+  },
+  "index.online.offline-lobby-hidden": {
+    "en": "Connect to the server to see the public lobby and your games in progress.",
+    "value": "Підключіться до сервера, щоб побачити публічне лобі та свої ігри, що тривають.",
+    "source": "manual"
+  },
+  "index.online.online-game": {
+    "en": "Online game",
+    "value": "Гра онлайн",
+    "source": "manual"
+  },
+  "index.online.online-storage-description": {
+    "en": "Leaving an online game keeps the unfinished game in the background. You can rejoin it from this list whenever you want.",
+    "value": "Якщо ви покинете гру онлайн, незавершена гра залишиться у фоні. Ви можете повернутися до неї з цього списку будь-коли.",
+    "source": "manual"
+  },
+  "index.online.opened-in-window": {
+    "en": "Open in a window",
+    "value": "Відкрити у вікні",
+    "source": "manual"
+  },
+  "index.online.paste-a-game-key": {
+    "en": "Paste a game key provided by host",
+    "value": "Вставте ключ гри, наданий господарем",
+    "source": "manual"
+  },
+  "index.online.players-online": {
+    "en": "Players online ({count})",
+    "value": "Гравців онлайн ({count})",
+    "source": "manual"
+  },
+  "index.online.private-games-only": {
+    "en": "Only private games are now supported.",
+    "value": "Зараз підтримуються лише приватні ігри.",
+    "source": "manual"
+  },
+  "index.online.public-games": {
+    "en": "Public games",
+    "value": "Публічні ігри",
+    "source": "manual"
+  },
+  "index.online.remove-unfinished-game-confirmation": {
+    "en": "Do you want to permanently remove this unfinished game from your list?",
+    "value": "Ви хочете остаточно вилучити цю незавершену гру зі свого списку?",
+    "source": "manual"
+  },
+  "index.online.some-expansions-are-playable-only-here": {
+    "en": "Some expansions are playable only here",
+    "value": "Деякі доповнення доступні лише тут",
+    "source": "manual"
+  },
+  "index.online.status-idle": {
+    "en": "Idle",
+    "value": "Вільний",
+    "source": "manual"
+  },
+  "index.online.status-in-game": {
+    "en": "In game",
+    "value": "У грі",
+    "source": "manual"
+  },
+  "index.online.title": {
+    "en": "Public server hosted games",
+    "value": "Ігри на публічному сервері",
+    "source": "manual"
+  },
+  "index.online.title-fan": {
+    "en": "Games hosted on fan-server",
+    "value": "Ігри на фанському сервері",
+    "source": "manual"
+  },
+  "index.online.title-local": {
+    "en": "Games hosted on dev local",
+    "value": "Ігри на локальному сервері розробника",
+    "source": "manual"
+  },
+  "index.online.you-have-no-game-in-progress": {
+    "en": "You have no game in progress.",
+    "value": "У вас немає ігор, що тривають.",
+    "source": "manual"
+  },
+  "index.update.download": {
+    "en": "Download",
+    "value": "Завантажити",
+    "source": "manual"
+  },
+  "index.update.download-error": {
+    "en": "Download error",
+    "value": "Помилка завантаження",
+    "source": "manual"
+  },
+  "index.update.install-new-version": {
+    "en": "Install new version",
+    "value": "Встановити нову версію",
+    "source": "manual"
+  },
+  "index.update.new-version-available": {
+    "en": "New FanCloisterZone version is available.",
+    "value": "Доступна нова версія FanCloisterZone.",
+    "source": "manual"
+  },
+  "index.update.release-notes": {
+    "en": "Release Notes",
+    "value": "Опис оновлення",
+    "source": "manual"
+  },
+  "index.update.starting": {
+    "en": "Starting",
+    "value": "Запуск",
+    "source": "manual"
+  },
+  "index.update.update-to": {
+    "en": "Update to {version}",
+    "value": "Оновити до {version}",
+    "source": "manual"
+  },
+  "join-game.connect-to-remote-host": {
+    "en": "Connect to remote host with created game.",
+    "value": "Підключіться до віддаленого хоста зі створеною грою.",
+    "source": "manual"
+  },
+  "join-game.description": {
+    "en": "The game on remote host must be in color selection phase.",
+    "value": "Гра на віддаленому хості має бути на етапі вибору кольору.",
+    "source": "manual"
+  },
+  "join-game.host": {
+    "en": "Host",
+    "value": "Хост",
+    "source": "manual"
+  },
+  "join-game.title": {
+    "en": "Join Remote Game",
+    "value": "Приєднатися до віддаленої гри",
+    "source": "manual"
+  },
+  "menu.about": {
+    "en": "About",
+    "value": "Про програму",
+    "source": "manual"
+  },
+  "menu.create-game": {
+    "en": "Create Game",
+    "value": "Створити гру",
+    "source": "manual"
+  },
+  "menu.discord": {
+    "en": "Discord",
+    "value": "Discord",
+    "source": "manual"
+  },
+  "menu.exit": {
+    "en": "Exit",
+    "value": "Вихід",
+    "source": "manual"
+  },
+  "menu.farm-hints": {
+    "en": "Farm hints",
+    "value": "Підказки полів",
+    "source": "manual"
+  },
+  "menu.feature-hints": {
+    "en": "Feature hints",
+    "value": "Підказки об’єктів",
+    "source": "manual"
+  },
+  "menu.file": {
+    "en": "File",
+    "value": "Файл",
+    "source": "manual"
+  },
+  "menu.game": {
+    "en": "Game",
+    "value": "Гра",
+    "source": "manual"
+  },
+  "menu.help": {
+    "en": "Help",
+    "value": "Довідка",
+    "source": "manual"
+  },
+  "menu.home": {
+    "en": "Home",
+    "value": "Початок",
+    "source": "manual"
+  },
+  "menu.join-game": {
+    "en": "Join Game",
+    "value": "Приєднатися до гри",
+    "source": "manual"
+  },
+  "menu.leave-game": {
+    "en": "Leave Game",
+    "value": "Покинути гру",
+    "source": "manual"
+  },
+  "menu.load-setup": {
+    "en": "Load Setup",
+    "value": "Завантажити налаштування",
+    "source": "manual"
+  },
+  "menu.new-game": {
+    "en": "New Game",
+    "value": "Нова гра",
+    "source": "manual"
+  },
+  "menu.new-game-against-ai": {
+    "en": "New Game Against AI",
+    "value": "Нова гра проти комп’ютера",
+    "source": "manual"
+  },
+  "menu.new-local-game": {
+    "en": "New local game",
+    "value": "Нова локальна гра",
+    "source": "manual"
+  },
+  "menu.online": {
+    "en": "Online",
+    "value": "Онлайн",
+    "source": "manual"
+  },
+  "menu.open-game": {
+    "en": "Open Game",
+    "value": "Відкрити гру",
+    "source": "manual"
+  },
+  "menu.playonline-connect": {
+    "en": "Play Online",
+    "value": "Грати онлайн",
+    "source": "manual"
+  },
+  "menu.playonline-disconnect": {
+    "en": "Disconnect",
+    "value": "Відключитися",
+    "source": "manual"
+  },
+  "menu.potential-final-score": {
+    "en": "Potential Final Score",
+    "value": "Можливий підсумковий рахунок",
+    "source": "manual"
+  },
+  "menu.report-bug": {
+    "en": "Report a bug",
+    "value": "Повідомити про помилку",
+    "source": "manual"
+  },
+  "menu.rotate": {
+    "en": "Rotate",
+    "value": "Повернути",
+    "source": "manual"
+  },
+  "menu.rules": {
+    "en": "Rules",
+    "value": "Правила",
+    "source": "manual"
+  },
+  "menu.save-game": {
+    "en": "Save Game",
+    "value": "Зберегти гру",
+    "source": "manual"
+  },
+  "menu.session": {
+    "en": "Session",
+    "value": "Сеанс",
+    "source": "manual"
+  },
+  "menu.settings": {
+    "en": "Settings",
+    "value": "Налаштування",
+    "source": "manual"
+  },
+  "menu.show-game-setup": {
+    "en": "Show Game Setup",
+    "value": "Показати налаштування гри",
+    "source": "manual"
+  },
+  "menu.tiles": {
+    "en": "Tiles",
+    "value": "Плитки",
+    "source": "manual"
+  },
+  "menu.toggle-history": {
+    "en": "Toggle History",
+    "value": "Перемкнути історію",
+    "source": "manual"
+  },
+  "menu.undo": {
+    "en": "Undo",
+    "value": "Скасувати хід",
+    "source": "manual"
+  },
+  "menu.zoom-in": {
+    "en": "Zoom In",
+    "value": "Збільшити",
+    "source": "manual"
+  },
+  "menu.zoom-out": {
+    "en": "Zoom Out",
+    "value": "Зменшити",
+    "source": "manual"
+  },
+  "open-windows.close": {
+    "en": "Close window",
+    "value": "Закрити вікно",
+    "source": "manual"
+  },
+  "open-windows.empty": {
+    "en": "No game windows open",
+    "value": "Немає відкритих вікон ігор",
+    "source": "manual"
+  },
+  "open-windows.focus": {
+    "en": "Bring window to front",
+    "value": "Показати вікно спереду",
+    "source": "manual"
+  },
+  "open-windows.kind.game": {
+    "en": "Game",
+    "value": "Гра",
+    "source": "manual"
+  },
+  "open-windows.kind.local": {
+    "en": "Local game",
+    "value": "Локальна гра",
+    "source": "manual"
+  },
+  "open-windows.kind.online": {
+    "en": "Online game",
+    "value": "Гра онлайн",
+    "source": "manual"
+  },
+  "open-windows.progress": {
+    "en": "Placed tiles / total",
+    "value": "Викладені плитки / усього",
+    "source": "manual"
+  },
+  "open-windows.title": {
+    "en": "Open game windows",
+    "value": "Відкриті вікна ігор",
+    "source": "manual"
+  },
+  "predraw.draw": {
+    "en": "Draw tile",
+    "value": "Витягнути плитку",
+    "source": "manual"
+  },
+  "predraw.empty": {
+    "en": "—",
+    "value": "—",
+    "source": "manual"
+  },
+  "predraw.incompatible": {
+    "en": "Not available with Builder, Dragon, Wagon, Castle, Shepherd, River, Escape, Count or Crop Circles",
+    "value": "Недоступно з Будівельником, Драконом, Возом, Замком, Пастухом, Річкою, Втечею, Графом або Колами на полях",
+    "source": "manual"
+  },
+  "predraw.local-only": {
+    "en": "Not allowed in local games",
+    "value": "Не дозволено в локальних іграх",
+    "source": "manual"
+  },
+  "predraw.one-seat-notice": {
+    "en": "Pre-draw game — each player plays on their own device, so you can take only one slot.",
+    "value": "Гра з попереднім витягуванням — кожен гравець грає на своєму пристрої, тому ви можете зайняти лише одне місце.",
+    "source": "manual"
+  },
+  "predraw.pass-abbey": {
+    "en": "Pass abbey (draw last tile)",
+    "value": "Пропустити абатство (витягнути останню плитку)",
+    "source": "manual"
+  },
+  "predraw.pass-supply-tile": {
+    "en": "Pass {name} (draw last tile)",
+    "value": "Пропустити {name} (витягнути останню плитку)",
+    "source": "manual"
+  },
+  "predraw.pick-hint": {
+    "en": "Click a tile to place it, then choose a spot on the board",
+    "value": "Натисніть плитку, щоб викласти її, а потім виберіть місце на полі",
+    "source": "manual"
+  },
+  "predraw.your-hand": {
+    "en": "Your hand",
+    "value": "Ваша рука",
+    "source": "manual"
+  },
+  "server.translate": {
+    "en": "Update to v%VERSION% is required.",
+    "value": "Потрібно оновити до v%VERSION%.",
+    "source": "manual"
+  },
+  "settings.add-ons.add-on-already-installed": {
+    "en": "Add-on {id} is already installed. If you want to reinstall it, please remove it first.",
+    "value": "Додаток {id} уже встановлено. Якщо ви хочете перевстановити його, спершу вилучіть його.",
+    "source": "manual"
+  },
+  "settings.add-ons.add-on-requires-newer-app": {
+    "en": "Add-on requires FanCloisterZone {version} or higher",
+    "value": "Додаток потребує FanCloisterZone {version} або новішої версії",
+    "source": "manual"
+  },
+  "settings.add-ons.add-on-url": {
+    "en": "add-on url",
+    "value": "посилання на додаток",
+    "source": "manual"
+  },
+  "settings.add-ons.add-ons-definition-not-available": {
+    "en": "Add-ons definition not available",
+    "value": "Опис додатків недоступний",
+    "source": "manual"
+  },
+  "settings.add-ons.artwork-not-found-internet-connection-is-needed": {
+    "en": "Unable to locate or download add-on with default artwork. An Internet connection is needed at first run to download it.",
+    "value": "Не вдалося знайти або завантажити додаток зі стандартною графікою. Для першого запуску потрібне інтернет-підключення, щоб завантажити його.",
+    "source": "manual"
+  },
+  "settings.add-ons.available-new-add-ons": {
+    "en": "Available new add-ons",
+    "value": "Доступні нові додатки",
+    "source": "manual"
+  },
+  "settings.add-ons.download-definition-not-found": {
+    "en": "Download definition not found",
+    "value": "Опис завантаження не знайдено",
+    "source": "manual"
+  },
+  "settings.add-ons.downloaded-file-checksum-mismatch": {
+    "en": "Downloaded file checksum mismatch",
+    "value": "Контрольна сума завантаженого файлу не збігається",
+    "source": "manual"
+  },
+  "settings.add-ons.downloading-classic-artwork": {
+    "en": "Downloading classic artwork",
+    "value": "Завантаження класичної графіки",
+    "source": "manual"
+  },
+  "settings.add-ons.drag-add-on-here-or-click-here": {
+    "en": "Drag add-on here (.jca file) or click here to select it.",
+    "value": "Перетягніть додаток сюди (файл .jca) або натисніть тут, щоб вибрати його.",
+    "source": "manual"
+  },
+  "settings.add-ons.finish-or-leave-game-to-make-changes": {
+    "en": "Please finish or leave the game first to make changes here.",
+    "value": "Щоб внести тут зміни, спершу завершіть або покиньте гру.",
+    "source": "manual"
+  },
+  "settings.add-ons.install-add-on": {
+    "en": "Install add-on",
+    "value": "Встановити додаток",
+    "source": "manual"
+  },
+  "settings.add-ons.installation-is-not-allowed-during-game": {
+    "en": "Installation is not allowed during game.",
+    "value": "Встановлення під час гри не дозволено.",
+    "source": "manual"
+  },
+  "settings.add-ons.installed-add-ons": {
+    "en": "Installed add-ons",
+    "value": "Встановлені додатки",
+    "source": "manual"
+  },
+  "settings.add-ons.invalid-add-on-missing-minimum-version": {
+    "en": "Invalid add-on: minimumJczVersion is missing",
+    "value": "Недійсний додаток: відсутня minimumJczVersion",
+    "source": "manual"
+  },
+  "settings.add-ons.invalid-add-on-multiple-folders-in-root": {
+    "en": "Invalid add-on: package must contain only a single folder in the root",
+    "value": "Недійсний додаток: пакет має містити лише одну теку в корені",
+    "source": "manual"
+  },
+  "settings.add-ons.invalid-add-on-version-not-a-number": {
+    "en": "Invalid add-on: the version must be a number, not text",
+    "value": "Недійсний додаток: версія має бути числом, а не текстом",
+    "source": "manual"
+  },
+  "settings.add-ons.invalid-add-on-version-not-an-integer": {
+    "en": "Invalid add-on: the version must be a whole number, found {version}",
+    "value": "Недійсний додаток: версія має бути цілим числом, знайдено {version}",
+    "source": "manual"
+  },
+  "settings.add-ons.look-at-link-for-add-ons": {
+    "en": "Look at {link} for additional add-ons.",
+    "value": "Додаткові додатки шукайте на {link}.",
+    "source": "manual"
+  },
+  "settings.add-ons.missing-available-version": {
+    "en": "Missing available version",
+    "value": "Відсутня доступна версія",
+    "source": "manual"
+  },
+  "settings.add-ons.no-add-ons-installed": {
+    "en": "No add-ons installed",
+    "value": "Додатків не встановлено",
+    "source": "manual"
+  },
+  "settings.add-ons.not-available-new-add-ons": {
+    "en": "Sorry there is no new add-on.",
+    "value": "На жаль, нових додатків немає.",
+    "source": "manual"
+  },
+  "settings.add-ons.please-check-connectivity-and-restart-app": {
+    "en": "Please check your connectivity and restart the app to try again.",
+    "value": "Перевірте підключення до мережі та перезапустіть застосунок, щоб спробувати знову.",
+    "source": "manual"
+  },
+  "settings.add-ons.title": {
+    "en": "Add-ons",
+    "value": "Додатки",
+    "source": "manual"
+  },
+  "settings.appearance.artworks": {
+    "en": "Artwork",
+    "value": "Графіка",
+    "source": "manual"
+  },
+  "settings.appearance.artworks-description": {
+    "en": "Additional artwork may by provided by add-ons.",
+    "value": "Додаткову графіку можуть надавати додатки.",
+    "source": "manual"
+  },
+  "settings.appearance.illustrated-by": {
+    "en": "(illustrated by {0})",
+    "value": "(ілюстрації: {0})",
+    "source": "manual"
+  },
+  "settings.appearance.theme": {
+    "en": "Theme",
+    "value": "Тема",
+    "source": "manual"
+  },
+  "settings.appearance.theme-dark": {
+    "en": "Dark",
+    "value": "Темна",
+    "source": "manual"
+  },
+  "settings.appearance.theme-light": {
+    "en": "Light",
+    "value": "Світла",
+    "source": "manual"
+  },
+  "settings.appearance.title": {
+    "en": "Appearance",
+    "value": "Вигляд",
+    "source": "manual"
+  },
+  "settings.engine.engine-path-not-exists": {
+    "en": "Can't locate game engine (file {path} doesn't exist or can't be read)",
+    "value": "Не вдалося знайти ігровий рушій (файл {path} не існує або його не можна прочитати)",
+    "source": "manual"
+  },
+  "settings.engine.unable-to-spawn-game-engine": {
+    "en": "Unable to spawn game engine. Details:",
+    "value": "Не вдалося запустити ігровий рушій. Подробиці:",
+    "source": "manual"
+  },
+  "settings.game-interface.active-player-indication": {
+    "en": "Active player indication",
+    "value": "Позначення активного гравця",
+    "source": "manual"
+  },
+  "settings.game-interface.always-enabled": {
+    "en": "always enabled",
+    "value": "завжди увімкнено",
+    "source": "manual"
+  },
+  "settings.game-interface.beep": {
+    "en": "Beep",
+    "value": "Звуковий сигнал",
+    "source": "manual"
+  },
+  "settings.game-interface.beep-description": {
+    "en": "Beep when it is your turn (or when your action is required during an opponent's turn).",
+    "value": "Подавати сигнал, коли настає ваш хід (або коли від вас потрібна дія під час ходу суперника).",
+    "source": "manual"
+  },
+  "settings.game-interface.colored-background-in-right-sidebar": {
+    "en": "colored background in right sidebar",
+    "value": "кольорове тло в правій боковій панелі",
+    "source": "manual"
+  },
+  "settings.game-interface.enable-beep": {
+    "en": "Enable beep",
+    "value": "Увімкнути звуковий сигнал",
+    "source": "manual"
+  },
+  "settings.game-interface.language": {
+    "en": "Language",
+    "value": "Мова",
+    "source": "manual"
+  },
+  "settings.game-interface.multiple-indicators-are-allowed": {
+    "en": "Multiple indicators are allowed.",
+    "value": "Можна вибрати кілька позначень.",
+    "source": "manual"
+  },
+  "settings.game-interface.only-when-meeple-was-deployed-on-a-field": {
+    "en": "only when meeple was deployed on a field",
+    "value": "лише коли підданця розміщено на полі",
+    "source": "manual"
+  },
+  "settings.game-interface.only-when-meeple-was-deployed-on-a-tower": {
+    "en": "only when meeple was deployed on a tower",
+    "value": "лише коли підданця розміщено на вежі",
+    "source": "manual"
+  },
+  "settings.game-interface.player-list": {
+    "en": "Player List",
+    "value": "Список гравців",
+    "source": "manual"
+  },
+  "settings.game-interface.player-list-active-on-top": {
+    "en": "Keep active player always on top",
+    "value": "Завжди тримати активного гравця вгорі",
+    "source": "manual"
+  },
+  "settings.game-interface.player-list-description": {
+    "en": "You may enable player list (right sidebar) rotation.",
+    "value": "Ви можете увімкнути обертання списку гравців (права бокова панель).",
+    "source": "manual"
+  },
+  "settings.game-interface.player-list-local-on-top": {
+    "en": "Keep local player always on top",
+    "value": "Завжди тримати локального гравця вгорі",
+    "source": "manual"
+  },
+  "settings.game-interface.player-list-no-rotate": {
+    "en": "No rotate",
+    "value": "Без обертання",
+    "source": "manual"
+  },
+  "settings.game-interface.title": {
+    "en": "Game Interface",
+    "value": "Інтерфейс гри",
+    "source": "manual"
+  },
+  "settings.game-interface.triangle-in-top-bar": {
+    "en": "triangle in top bar",
+    "value": "трикутник у верхній панелі",
+    "source": "manual"
+  },
+  "settings.game-interface.turn-confirmation": {
+    "en": "Turn Confirmation",
+    "value": "Підтвердження ходу",
+    "source": "manual"
+  },
+  "settings.game-interface.turn-confirmation-description": {
+    "en": "Confirmation allows player to undo performed actions before activity is passed to the next player. It happens before scoring or, for example, during an opponent's turn when you move your wagon, etc. Enable explicit confirmation…",
+    "value": "Підтвердження дає гравцеві змогу скасувати виконані дії, перш ніж хід перейде до наступного гравця. Це відбувається перед підрахунком очок або, наприклад, під час ходу суперника, коли ви переміщуєте свій віз тощо. Увімкнути явне підтвердження…",
+    "source": "manual"
+  },
+  "settings.java.change-in-settings": {
+    "en": "Change it in {settings}.",
+    "value": "Змініть це в {settings}.",
+    "source": "manual"
+  },
+  "settings.java.description": {
+    "en": "Although the FanCloisterZone client is a pure native application, Java is required to play the game.",
+    "value": "Хоч клієнт FanCloisterZone і є суто нативним застосунком, для гри потрібна Java.",
+    "source": "manual"
+  },
+  "settings.java.download-java": {
+    "en": "Download Java",
+    "value": "Завантажити Java",
+    "source": "manual"
+  },
+  "settings.java.java-executable": {
+    "en": "Java executable",
+    "value": "Виконуваний файл Java",
+    "source": "manual"
+  },
+  "settings.java.java-is-not-installed": {
+    "en": "Java is not installed!",
+    "value": "Java не встановлено!",
+    "source": "manual"
+  },
+  "settings.java.java-is-outdated": {
+    "en": "Java is outdated!",
+    "value": "Java застаріла!",
+    "source": "manual"
+  },
+  "settings.java.java-is-required": {
+    "en": "Java is required to start a game.",
+    "value": "Для запуску гри потрібна Java.",
+    "source": "manual"
+  },
+  "settings.java.java-path-is-not-valid": {
+    "en": "Your manually configured Java path is not valid.",
+    "value": "Указаний вами шлях до Java недійсний.",
+    "source": "manual"
+  },
+  "settings.java.java-version-found": {
+    "en": "Java 11 or higher is required (found {version}) to start a game.",
+    "value": "Для запуску гри потрібна Java 11 або новіша (знайдено {version}).",
+    "source": "manual"
+  },
+  "settings.java.select-manually": {
+    "en": "Or select proper Java manually in {settings}.",
+    "value": "Або виберіть потрібну Java вручну в {settings}.",
+    "source": "manual"
+  },
+  "settings.java.selected": {
+    "en": "Selected: {0}",
+    "value": "Вибрано: {0}",
+    "source": "manual"
+  },
+  "settings.java.title": {
+    "en": "Java",
+    "value": "Java",
+    "source": "manual"
+  },
+  "settings.java.unable-to-find-java": {
+    "en": "Unable to locate Java on your system.",
+    "value": "Не вдалося знайти Java у вашій системі.",
+    "source": "manual"
+  },
+  "settings.java.using-system-default": {
+    "en": "Using system default.",
+    "value": "Використовується системна за замовчуванням.",
+    "source": "manual"
+  },
+  "settings.java.verify": {
+    "en": "If Java is already installed, verify if Java has been added to your system path or select Java binary manually in {settings}.",
+    "value": "Якщо Java вже встановлено, перевірте, чи додано її до системного шляху, або виберіть виконуваний файл Java вручну в {settings}.",
+    "source": "manual"
+  },
+  "settings.java.version": {
+    "en": "Java version {0}",
+    "value": "Версія Java {0}",
+    "source": "manual"
+  },
+  "settings.java.warning-file-is-not-java-binary": {
+    "en": "File doesn't look like a Java binary.",
+    "value": "Файл не схожий на виконуваний файл Java.",
+    "source": "manual"
+  },
+  "settings.java.warning-java-not-found": {
+    "en": "Java not found.",
+    "value": "Java не знайдено.",
+    "source": "manual"
+  },
+  "settings.java.you-may-set-path": {
+    "en": "You can set manually path to {0}",
+    "value": "Ви можете вручну вказати шлях до {0}",
+    "source": "manual"
+  },
+  "settings.player.nickname": {
+    "en": "Nickname",
+    "value": "Псевдонім",
+    "source": "manual"
+  },
+  "settings.player.nickname-description": {
+    "en": "Nickname used when player is assigned to a game.",
+    "value": "Псевдонім, який використовується, коли гравця призначають до гри.",
+    "source": "manual"
+  },
+  "settings.player.none": {
+    "en": "None",
+    "value": "Немає",
+    "source": "manual"
+  },
+  "settings.player.preferred-color": {
+    "en": "Preferred Color",
+    "value": "Бажаний колір",
+    "source": "manual"
+  },
+  "settings.player.preferred-color-description": {
+    "en": "Automatically take a color after game join.",
+    "value": "Автоматично займати колір після приєднання до гри.",
+    "source": "manual"
+  },
+  "settings.player.title": {
+    "en": "Player",
+    "value": "Гравець",
+    "source": "manual"
+  },
+  "settings.system.app-channel": {
+    "en": "App updates channel",
+    "value": "Канал оновлень застосунку",
+    "source": "manual"
+  },
+  "settings.system.beta": {
+    "en": "Prove that app and new functions are done",
+    "value": "Переконатися, що застосунок і нові функції готові",
+    "source": "manual"
+  },
+  "settings.system.dev": {
+    "en": "Testing new function during implementations",
+    "value": "Тестування нових функцій під час розробки",
+    "source": "manual"
+  },
+  "settings.system.folder-does-not-exists": {
+    "en": "Folder does not exists",
+    "value": "Тека не існує",
+    "source": "manual"
+  },
+  "settings.system.path-is-not-directory": {
+    "en": "Path is not directory",
+    "value": "Шлях не є текою",
+    "source": "manual"
+  },
+  "settings.system.stable": {
+    "en": "I want just to play and enjoy the game",
+    "value": "Я хочу просто грати й насолоджуватися грою",
+    "source": "manual"
+  },
+  "settings.system.taskbar.grouped": {
+    "en": "Group windows (raise the active game on top when it's your turn)",
+    "value": "Групувати вікна (виводити активну гру вперед, коли настає ваш хід)",
+    "source": "manual"
+  },
+  "settings.system.taskbar.hint": {
+    "en": "Changes how the lobby and game windows appear on the Windows taskbar.",
+    "value": "Змінює те, як лобі та вікна ігор відображаються на панелі завдань Windows.",
+    "source": "manual"
+  },
+  "settings.system.taskbar.separate": {
+    "en": "Separate taskbar buttons (one per window)",
+    "value": "Окремі кнопки на панелі завдань (по одній на вікно)",
+    "source": "manual"
+  },
+  "settings.system.taskbar.title": {
+    "en": "Windows taskbar",
+    "value": "Панель завдань Windows",
+    "source": "manual"
+  },
+  "settings.system.test-runner-folder": {
+    "en": "Test Runner Folder",
+    "value": "Тека запуску тестів",
+    "source": "manual"
+  },
+  "settings.system.title": {
+    "en": "System",
+    "value": "Система",
+    "source": "manual"
+  },
+  "settings.title": {
+    "en": "Settings",
+    "value": "Налаштування",
+    "source": "manual"
+  },
+  "tile-set.abbey-and-mayor-description": {
+    "en": "Each player can also place the Abbey tile from his supply.",
+    "value": "Кожен гравець також може викласти плитку абатства зі свого запасу.",
+    "source": "manual"
+  },
+  "tile-set.abbey-and-mayor-release": {
+    "en": "The fifth major expansion, released in 2007.",
+    "value": "П’яте велике доповнення, випущене 2007 року.",
+    "source": "manual"
+  },
+  "tile-set.base-game-description": {
+    "en": "You can play tiles with 1st Edition or New edition rules (eg. gardens). This can be selected in the second step of game setup.",
+    "value": "Ви можете грати плитками за правилами 1-го видання або нового видання (наприклад, сади). Це можна вибрати на другому кроці налаштування гри.",
+    "source": "manual"
+  },
+  "tile-set.bridges-castles-and-bazaars-release": {
+    "en": "The eighth major expansion, released in 2010. (Sixth major expansion Count, King and Robber is split into individual small modules. Seventh, The Catapult, is obviously skipped)",
+    "value": "Восьме велике доповнення, випущене 2010 року. (Шосте велике доповнення «Граф, король і розбійник» розділене на окремі малі модулі. Сьоме, «Катапульта», очевидно, пропущено.)",
+    "source": "manual"
+  },
+  "tile-set.darmstadt-release": {
+    "en": "Originally released in 2014.",
+    "value": "Початково випущене 2014 року.",
+    "source": "manual"
+  },
+  "tile-set.gq11-release": {
+    "en": "Originally released in Games Quarterly magazine in 2006.",
+    "value": "Початково випущене в журналі Games Quarterly 2006 року.",
+    "source": "manual"
+  },
+  "tile-set.hills-and-sheep-release": {
+    "en": "The ninth major expansion, released in 2014.",
+    "value": "Дев’яте велике доповнення, випущене 2014 року.",
+    "source": "manual"
+  },
+  "tile-set.inns-and-cathedrals-release": {
+    "en": "First major expansion, released in 2002.",
+    "value": "Перше велике доповнення, випущене 2002 року.",
+    "source": "manual"
+  },
+  "tile-set.king-and-robber-release": {
+    "en": "Originally released in 2003 as part of King & Scout and later included in the sixth major expansion: Count, King & Robber (2007)",
+    "value": "Початково випущене 2003 року як частина «King & Scout», а згодом увійшло до шостого великого доповнення «Граф, король і розбійник» (2007).",
+    "source": "manual"
+  },
+  "tile-set.labyrinth-release": {
+    "en": "Originally released in 2016.",
+    "value": "Початково випущене 2016 року.",
+    "source": "manual"
+  },
+  "tile-set.princess-and-dragon-release": {
+    "en": "The third major expansion, released in 2005.",
+    "value": "Третє велике доповнення, випущене 2005 року.",
+    "source": "manual"
+  },
+  "tile-set.river-I-release": {
+    "en": "The River I is a mini expansion released in 2001.",
+    "value": "«Річка I» — міні-доповнення, випущене 2001 року.",
+    "source": "manual"
+  },
+  "tile-set.river-II-release": {
+    "en": "The River II was released in 2006 and later included in the sixth major expansion: Count, King & Robber.",
+    "value": "«Річка II» вийшла 2006 року, а згодом увійшла до шостого великого доповнення «Граф, король і розбійник».",
+    "source": "manual"
+  },
+  "tile-set.russian-promos-2013-title": {
+    "en": "Tiles from 2013",
+    "value": "Плитки 2013 року",
+    "source": "manual"
+  },
+  "tile-set.russian-promos-2016-title": {
+    "en": "Tiles from 2016",
+    "value": "Плитки 2016 року",
+    "source": "manual"
+  },
+  "tile-set.tower-release": {
+    "en": "The fourth major expansion released in 2006.",
+    "value": "Четверте велике доповнення, випущене 2006 року.",
+    "source": "manual"
+  },
+  "tile-set.traders-and-builders-release": {
+    "en": "The second major expansion released in 2003",
+    "value": "Друге велике доповнення, випущене 2003 року",
+    "source": "manual"
+  },
+  "tile-set.under-the-big-top-c1-release": {
+    "en": "The tenth major expansion, released in 2017. C1 Art made by PresetM carcassonne-forum.de member.",
+    "value": "Десяте велике доповнення, випущене 2017 року. Графіку C1 створив PresetM, учасник carcassonne-forum.de.",
+    "source": "manual"
+  },
+  "tile-set.winter-edition-description": {
+    "en": "Basic set from Winter Edition spin-off. Contains basic game extended with 12 additional tiles.",
+    "value": "Базовий набір зі спінофу «Зимове видання». Містить базову гру, розширену 12 додатковими плитками.",
+    "source": "manual"
+  }
+}

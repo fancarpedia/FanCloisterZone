@@ -1,0 +1,9 @@
+{
+  "expansion.kingdoms": "Regnes",
+  "expansion.kingdoms-description": "Cada jugador té un Palau del seu color. En lloc d'agafar una peça, col·loqueu-lo en una ciutat amb un dels vostres seguidors per convertir-la en la vostra capital. Quan la capital es completa, esdevé un regne: al final, puntua 3 punts per cada ciutat que toca un camp connectat amb ella.",
+  "game.action.place-this-tile-instead": "Col·loqueu aquesta peça en canvi",
+  "game.element.kingdom-palace": "Palau",
+  "game.feature.kingdom": "Regne",
+  "game.feature.kingdoms": "Regnes",
+  "game-setup.tiles.supply-tiles": "Al subministrament dels jugadors, no a la pila de peces"
+}

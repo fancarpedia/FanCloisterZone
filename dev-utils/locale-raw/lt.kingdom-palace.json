@@ -1,0 +1,5 @@
+{
+  "game.element.kingdom-palace": "Karalystės rūmai",
+  "expansion.kingdoms-description": "Kiekvienas žaidėjas turi savo spalvos Karalystės rūmus. Užuot traukę kortelę, galite juos padėti prie miesto, kuriame yra vienas iš jūsų miplų, ir paversti jį savo sostine. Kai sostinė užbaigiama, ji tampa karalyste: žaidimo pabaigoje ji pelno 3 taškus už kiekvieną užbaigtą miestą, besiliečiantį su lauku, sujungtu su ja.",
+  "predraw.pass-supply-tile": "Praleisti {name} (traukti paskutinę kortelę)"
+}

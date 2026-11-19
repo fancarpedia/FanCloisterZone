@@ -1,0 +1,452 @@
+{
+  "chat.game-chat": {
+    "en": "Game chat",
+    "value": "Discussion de la partie",
+    "source": "manual"
+  },
+  "dev.continue-game": {
+    "en": "Continue game",
+    "value": "Continuer la partie",
+    "source": "manual"
+  },
+  "dev.filter-tests-by-name": {
+    "en": "Filter tests by name",
+    "value": "Filtrer les tests par nom",
+    "source": "manual"
+  },
+  "dev.step-back-in-save": {
+    "en": "Step Back in Save",
+    "value": "Un pas en arrière dans la partie sauvegardée",
+    "source": "manual"
+  },
+  "expansion.kingdoms": {
+    "en": "Kingdoms",
+    "value": "Royaumes",
+    "source": "manual"
+  },
+  "expansion.kingdoms-description": {
+    "en": "Each player has a Kingdom Palace in their colour. Instead of drawing, place it in a city with one of your followers to make it your capital. Once your capital is completed it becomes a kingdom: at the end, it scores 3 points for every completed city touching a field connected to it.",
+    "value": "Chaque joueur possède un Palais du Royaume de sa couleur. Au lieu de piocher une tuile, placez-le dans une ville où se trouve l'un de vos meeples : elle devient votre capitale. Une fois la capitale achevée, elle devient un royaume : en fin de partie, elle rapporte 3 points pour chaque ville achevée touchant un pré relié à elle.",
+    "source": "manual"
+  },
+  "game-setup.ai.not-available": {
+    "en": "AI not available",
+    "value": "IA non disponible",
+    "source": "manual"
+  },
+  "game-setup.ai.not-available-hint": {
+    "en": "AI players are not available for game setup",
+    "value": "Les joueurs IA ne sont pas disponibles pour cette configuration de partie",
+    "source": "manual"
+  },
+  "game-setup.ai.not-supported": {
+    "en": "The AI does not play",
+    "value": "L'IA ne joue pas",
+    "source": "manual"
+  },
+  "game-setup.ai.supported": {
+    "en": "The AI can play this",
+    "value": "L'IA peut jouer ceci",
+    "source": "manual"
+  },
+  "game-setup.create.ai-player": {
+    "en": "AI player",
+    "value": "Joueur IA",
+    "source": "manual"
+  },
+  "game-setup.create.assign": {
+    "en": "assign",
+    "value": "attribuer",
+    "source": "manual"
+  },
+  "game-setup.create.release-slot": {
+    "en": "Release slot",
+    "value": "Libérer l'emplacement",
+    "source": "manual"
+  },
+  "game-setup.open-game.no-human-player": {
+    "en": "No human in game",
+    "value": "Aucun humain en jeu",
+    "source": "manual"
+  },
+  "game-setup.tiles.supply-tiles": {
+    "en": "In the players' supply, not in the draw pile",
+    "value": "Dans la réserve des joueurs, pas dans la pioche",
+    "source": "manual"
+  },
+  "game-setup.variant.black-fairy-placement.description": {
+    "en": "The Black Fairy is deployed {}.",
+    "value": "La fée noire {}.",
+    "source": "manual"
+  },
+  "game-setup.variant.black-fairy-placement.next-follower": {
+    "en": "next to a meeple",
+    "value": "est assignée à un meeple",
+    "source": "manual"
+  },
+  "game-setup.variant.black-fairy-placement.on-tile": {
+    "en": "on a tile",
+    "value": "est déplacée sur une tuile",
+    "source": "manual"
+  },
+  "game.action.host-terminated-the-game": {
+    "en": "Host terminated the game. Connection was closed.",
+    "value": "L’hôte a mis fin à la partie. La connexion a été fermée.",
+    "source": "manual"
+  },
+  "game.action.place-this-tile-instead": {
+    "en": "Place this tile instead",
+    "value": "Placer plutôt cette tuile",
+    "source": "manual"
+  },
+  "game.action.tile-discarded-notice-plural": {
+    "en": "These tiles can't be placed anywhere, so they were discarded | This tile can't be placed anywhere, so it was discarded | These tiles can't be placed anywhere, so they were discarded",
+    "value": "Ces tuiles ne peuvent être posées nulle part, elles ont donc été défaussées | Cette tuile ne peut être posée nulle part, elle a donc été défaussée | Ces tuiles ne peuvent être posées nulle part, elles ont donc été défaussées",
+    "source": "manual"
+  },
+  "game.cause.caused-by": {
+    "en": "Caused by: {cause}",
+    "value": "Cause : {cause}",
+    "source": "manual"
+  },
+  "game.cause.figure-moved": {
+    "en": "the figure moving here",
+    "value": "la figurine déplacée ici",
+    "source": "manual"
+  },
+  "game.cause.meeple-deployed": {
+    "en": "the deployed meeple",
+    "value": "le meeple posé",
+    "source": "manual"
+  },
+  "game.cause.rule.count-clockwise": {
+    "en": "the Count moving on clockwise",
+    "value": "le Comte avance dans le sens horaire",
+    "source": "manual"
+  },
+  "game.cause.rule.decinsky-sneznik-scored": {
+    "en": "Děčínský Sněžník scored",
+    "value": "Decinsky Sneznik évalué",
+    "source": "manual"
+  },
+  "game.cause.rule.final-scoring": {
+    "en": "final scoring",
+    "value": "décompte final",
+    "source": "manual"
+  },
+  "game.cause.rule.flock-expanded": {
+    "en": "a sheep token drawn for the flock",
+    "value": "un jeton mouton pioché pour le troupeau",
+    "source": "manual"
+  },
+  "game.cause.rule.flock-scored": {
+    "en": "the flock scored",
+    "value": "le troupeau évalué",
+    "source": "manual"
+  },
+  "game.cause.rule.game-start": {
+    "en": "the start of the game",
+    "value": "le début de la partie",
+    "source": "manual"
+  },
+  "game.cause.rule.mage-witch-joined": {
+    "en": "the mage's and the witch's features joined",
+    "value": "les zones du Mage et de la Sorcière se sont rejointes",
+    "source": "manual"
+  },
+  "game.cause.rule.mage-witch-no-target": {
+    "en": "no open city or road left for the figure",
+    "value": "aucune ville ni route ouverte pour la figurine",
+    "source": "manual"
+  },
+  "game.cause.rule.meteorite": {
+    "en": "a meteorite impact",
+    "value": "un impact de météorite",
+    "source": "manual"
+  },
+  "game.cause.rule.obelisk-scored": {
+    "en": "the obelisk scored",
+    "value": "l’obélisque évalué",
+    "source": "manual"
+  },
+  "game.cause.rule.trap": {
+    "en": "a trap",
+    "value": "un piège",
+    "source": "manual"
+  },
+  "game.cause.rule.windmill-scored": {
+    "en": "the windmill scored",
+    "value": "le moulin à vent évalué",
+    "source": "manual"
+  },
+  "game.cause.rule.wolf": {
+    "en": "the wolf drawn",
+    "value": "le loup pioché",
+    "source": "manual"
+  },
+  "game.cause.tile-placed": {
+    "en": "the placed tile",
+    "value": "la tuile posée",
+    "source": "manual"
+  },
+  "game.element.city-palace": {
+    "en": "City Palace",
+    "value": "Palais",
+    "source": "manual"
+  },
+  "game.element.kingdom-palace": {
+    "en": "Kingdom Palace",
+    "value": "Palais du Royaume",
+    "source": "manual"
+  },
+  "game.element.kingdoms-palace": {
+    "en": "City Palace",
+    "value": "Palais",
+    "source": "manual"
+  },
+  "game.feature.kingdom": {
+    "en": "Kingdom",
+    "value": "Royaume",
+    "source": "manual"
+  },
+  "game.feature.kingdoms": {
+    "en": "Kingdoms",
+    "value": "Royaumes",
+    "source": "manual"
+  },
+  "game.observers.watching": {
+    "en": "Watching",
+    "value": "Spectateurs",
+    "source": "manual"
+  },
+  "game.placement.converted-by": {
+    "en": "Converted by {player}",
+    "value": "Transformé par {player}",
+    "source": "manual"
+  },
+  "game.placement.deployed-by": {
+    "en": "Deployed by {player}",
+    "value": "Posé par {player}",
+    "source": "manual"
+  },
+  "game.placement.discarded-reason": {
+    "en": "It fits nowhere on the board, so another tile was drawn",
+    "value": "Elle ne peut être posée nulle part sur le plateau, une autre tuile a donc été piochée",
+    "source": "manual"
+  },
+  "game.placement.exchanged-reason": {
+    "en": "Each player got their own meeple back",
+    "value": "Chaque joueur a récupéré son propre meeple",
+    "source": "manual"
+  },
+  "game.placement.moved-by": {
+    "en": "Moved by {player}",
+    "value": "Déplacé par {player}",
+    "source": "manual"
+  },
+  "game.placement.placed-by": {
+    "en": "Placed by {player}",
+    "value": "Placé par {player}",
+    "source": "manual"
+  },
+  "game.placement.removed-with": {
+    "en": "{source}, by {player}",
+    "value": "{source}, par {player}",
+    "source": "manual"
+  },
+  "game.placement.title.captured": {
+    "en": "{figure} captured",
+    "value": "Capture : {figure}",
+    "source": "manual"
+  },
+  "game.placement.title.castle-created": {
+    "en": "Small city converted to a castle",
+    "value": "Petite ville transformée en forteresse",
+    "source": "manual"
+  },
+  "game.placement.title.discarded": {
+    "en": "Discarded",
+    "value": "Défaussée",
+    "source": "manual"
+  },
+  "game.placement.title.exchanged": {
+    "en": "Prisoners exchanged",
+    "value": "Échange de prisonniers",
+    "source": "manual"
+  },
+  "game.placement.title.moved": {
+    "en": "{figure} moved",
+    "value": "Déplacement : {figure}",
+    "source": "manual"
+  },
+  "game.placement.title.placed": {
+    "en": "{figure} placed",
+    "value": "Pose : {figure}",
+    "source": "manual"
+  },
+  "game.placement.title.placed-on-letter": {
+    "en": "{figure} placed on the Letter",
+    "value": "Pose sur la Lettre : {figure}",
+    "source": "manual"
+  },
+  "game.placement.title.removed": {
+    "en": "{figure} removed",
+    "value": "Retrait : {figure}",
+    "source": "manual"
+  },
+  "game.placement.title.tile-placed": {
+    "en": "Tile placed",
+    "value": "Tuile posée",
+    "source": "manual"
+  },
+  "game.ransom.already-paid": {
+    "en": "A meeple was already bought back this turn — one per turn",
+    "value": "Un meeple a déjà été racheté ce tour — un seul par tour",
+    "source": "manual"
+  },
+  "game.ransom.can": {
+    "en": "Buy back for 3 points",
+    "value": "Racheter pour 3 points",
+    "source": "manual"
+  },
+  "game.ransom.not-enough-points": {
+    "en": "Not enough points to buy back — 3 points are needed",
+    "value": "Pas assez de points pour le rachat — il faut 3 points",
+    "source": "manual"
+  },
+  "game.ransom.not-their-action": {
+    "en": "Captured — its owner can buy it back for 3 points on their turn",
+    "value": "Capturé — son propriétaire peut le racheter pour 3 points pendant son tour",
+    "source": "manual"
+  },
+  "game.scoring.item-cloth": {
+    "en": "Cloth",
+    "value": "Tissu",
+    "source": "manual"
+  },
+  "game.scoring.item-darmstadtium": {
+    "en": "Darmstadtium",
+    "value": "Darmstadtium",
+    "source": "manual"
+  },
+  "game.scoring.item-grain": {
+    "en": "Grain",
+    "value": "Céréales",
+    "source": "manual"
+  },
+  "game.scoring.item-house": {
+    "en": "House",
+    "value": "Maison",
+    "source": "manual"
+  },
+  "game.scoring.item-river-tiles": {
+    "en": "River tiles",
+    "value": "Tuiles Rivière",
+    "source": "manual"
+  },
+  "game.scoring.item-shed": {
+    "en": "Shed",
+    "value": "Cabane",
+    "source": "manual"
+  },
+  "game.scoring.item-tiles-east": {
+    "en": "Tiles to the east",
+    "value": "Tuiles vers l’est",
+    "source": "manual"
+  },
+  "game.scoring.item-tiles-north": {
+    "en": "Tiles to the north",
+    "value": "Tuiles vers le nord",
+    "source": "manual"
+  },
+  "game.scoring.item-tiles-south": {
+    "en": "Tiles to the south",
+    "value": "Tuiles vers le sud",
+    "source": "manual"
+  },
+  "game.scoring.item-tiles-west": {
+    "en": "Tiles to the west",
+    "value": "Tuiles vers l’ouest",
+    "source": "manual"
+  },
+  "game.scoring.item-tower": {
+    "en": "Tower",
+    "value": "Tour",
+    "source": "manual"
+  },
+  "game.scoring.item-wine": {
+    "en": "Wine",
+    "value": "Vin",
+    "source": "manual"
+  },
+  "game.scoring.item-wolf": {
+    "en": "Wolf",
+    "value": "Loup",
+    "source": "manual"
+  },
+  "index.local.new-local-game": {
+    "en": "New local game",
+    "value": "Nouvelle partie locale",
+    "source": "manual"
+  },
+  "index.online.game-not-found": {
+    "en": "Game not found. Check the game key and try again.",
+    "value": "Partie introuvable. Vérifiez la clé de la partie et réessayez.",
+    "source": "manual"
+  },
+  "index.online.incompatible-version-newer": {
+    "en": "Newer version, cannot play together (protocol {version})",
+    "value": "Version plus récente, impossible de jouer ensemble (protocole {version})",
+    "source": "manual"
+  },
+  "index.online.incompatible-version-older": {
+    "en": "Older version, cannot play together (protocol {version})",
+    "value": "Version plus ancienne, impossible de jouer ensemble (protocole {version})",
+    "source": "manual"
+  },
+  "index.online.incompatible-version-unknown": {
+    "en": "Unknown version, cannot play together",
+    "value": "Version inconnue, impossible de jouer ensemble",
+    "source": "manual"
+  },
+  "menu.create-game": {
+    "en": "Create Game",
+    "value": "Créer une partie",
+    "source": "manual"
+  },
+  "menu.new-local-game": {
+    "en": "New local game",
+    "value": "Nouvelle partie locale",
+    "source": "manual"
+  },
+  "predraw.pass-supply-tile": {
+    "en": "Pass {name} (draw last tile)",
+    "value": "Passer {name} (piocher la dernière tuile)",
+    "source": "manual"
+  },
+  "settings.add-ons.add-on-requires-newer-app": {
+    "en": "Add-on requires FanCloisterZone {version} or higher",
+    "value": "Le module complémentaire nécessite FanCloisterZone {version} ou supérieur",
+    "source": "manual"
+  },
+  "settings.add-ons.downloading-classic-artwork": {
+    "en": "Downloading classic artwork",
+    "value": "Téléchargement des graphismes classiques",
+    "source": "manual"
+  },
+  "settings.add-ons.invalid-add-on-missing-minimum-version": {
+    "en": "Invalid add-on: minimumJczVersion is missing",
+    "value": "Module complémentaire invalide : minimumJczVersion est manquant",
+    "source": "manual"
+  },
+  "settings.add-ons.invalid-add-on-version-not-a-number": {
+    "en": "Invalid add-on: the version must be a number, not text",
+    "value": "Module complémentaire invalide : la version doit être un nombre, pas du texte",
+    "source": "manual"
+  },
+  "settings.add-ons.invalid-add-on-version-not-an-integer": {
+    "en": "Invalid add-on: the version must be a whole number, found {version}",
+    "value": "Module complémentaire invalide : la version doit être un nombre entier, trouvé {version}",
+    "source": "manual"
+  }
+}

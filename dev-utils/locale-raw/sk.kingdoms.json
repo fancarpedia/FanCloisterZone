@@ -1,0 +1,9 @@
+{
+  "expansion.kingdoms": "Kráľovstvá",
+  "expansion.kingdoms-description": "Každý hráč má Palác vo svojej farbe. Namiesto ťahania kartičky ho môžete priložiť k mestu s jedným z vašich spoločníkov a urobiť z neho svoje hlavné mesto. Keď je hlavné mesto dokončené, stane sa kráľovstvom: na konci hry získa 3 body za každé mesto, ktoré susedí s lúkou spojenou s ním.",
+  "game.action.place-this-tile-instead": "Priložiť namiesto toho túto kartičku",
+  "game.element.kingdom-palace": "Palác",
+  "game.feature.kingdom": "Kráľovstvo",
+  "game.feature.kingdoms": "Kráľovstvá",
+  "game-setup.tiles.supply-tiles": "V zásobe hráčov, nie medzi kartičkami na ťahanie"
+}

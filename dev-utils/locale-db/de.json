@@ -1,0 +1,1057 @@
+{
+  "button.next": {
+    "en": "Next",
+    "value": "Weiter",
+    "source": "manual"
+  },
+  "button.play-online-local": {
+    "en": "Play Online on Dev Local Server",
+    "value": "Online auf lokalem Dev-Server spielen",
+    "source": "manual"
+  },
+  "button.show": {
+    "en": "Show",
+    "value": "Anzeigen",
+    "source": "manual"
+  },
+  "chat.close": {
+    "en": "Close chat",
+    "value": "Chat schließen",
+    "source": "manual"
+  },
+  "chat.empty": {
+    "en": "No messages yet — say hello!",
+    "value": "Noch keine Nachrichten — sag Hallo!",
+    "source": "manual"
+  },
+  "chat.game-chat": {
+    "en": "Game chat",
+    "value": "Spielchat",
+    "source": "manual"
+  },
+  "chat.global-chat": {
+    "en": "Global chat",
+    "value": "Globaler Chat",
+    "source": "manual"
+  },
+  "chat.open": {
+    "en": "Open chat",
+    "value": "Chat öffnen",
+    "source": "manual"
+  },
+  "chat.send": {
+    "en": "Send",
+    "value": "Senden",
+    "source": "manual"
+  },
+  "core-messages.potential-final-score": {
+    "en": "Potential final score",
+    "value": "Möglicher Endstand",
+    "source": "manual"
+  },
+  "dev.continue-game": {
+    "en": "Continue game",
+    "value": "Spiel fortsetzen",
+    "source": "manual"
+  },
+  "dev.filter-tests-by-name": {
+    "en": "Filter tests by name",
+    "value": "Tests nach Namen filtern",
+    "source": "manual"
+  },
+  "dev.step-back-in-save": {
+    "en": "Step Back in Save",
+    "value": "Einen Schritt zurück im Spielstand",
+    "source": "manual"
+  },
+  "dev.switch-online-server-cancel": {
+    "en": "Keep current server",
+    "value": "Aktuellen Server behalten",
+    "source": "manual"
+  },
+  "dev.switch-online-server-confirm": {
+    "en": "Switch and close games",
+    "value": "Wechseln und Spiele schließen",
+    "source": "manual"
+  },
+  "dev.switch-online-server-message": {
+    "en": "You have {count} online game(s) open. Switching the server will close them.",
+    "value": "Du hast {count} Online-Spiele offen. Beim Wechsel des Servers werden sie geschlossen.",
+    "source": "manual"
+  },
+  "dev.switch-online-server-title": {
+    "en": "Switch online server",
+    "value": "Online-Server wechseln",
+    "source": "manual"
+  },
+  "dev.test-scenario-saved": {
+    "en": "Test scenario saved",
+    "value": "Testszenario gespeichert",
+    "source": "manual"
+  },
+  "dev.test-scenario-saved-hint": {
+    "en": "The test scenario was saved. Open it to replay and check its assertions.",
+    "value": "Das Testszenario wurde gespeichert. Öffne es, um es abzuspielen und seine Bedingungen zu prüfen.",
+    "source": "manual"
+  },
+  "dialog.close-all-games.close-all-games": {
+    "en": "Close All Games",
+    "value": "Alle Spiele schließen",
+    "source": "manual"
+  },
+  "dialog.close-all-games.keep-playing": {
+    "en": "Keep Playing",
+    "value": "Weiterspielen",
+    "source": "manual"
+  },
+  "dialog.close-all-games.open-game-windows": {
+    "en": "Open Game Windows",
+    "value": "Offene Spielfenster",
+    "source": "manual"
+  },
+  "dialog.close-all-games.open-game-windows-description": {
+    "en": "There are open game windows. Closing the main window will close all of them and quit the app.",
+    "value": "Es sind Spielfenster offen. Wenn du das Hauptfenster schließt, werden alle geschlossen und die App beendet.",
+    "source": "manual"
+  },
+  "expansion.kingdoms": {
+    "en": "Kingdoms",
+    "value": "Königreiche",
+    "source": "manual"
+  },
+  "expansion.kingdoms-description": {
+    "en": "Each player has a Kingdom Palace in their colour. Instead of drawing, place it in a city with one of your followers to make it your capital. Once your capital is completed it becomes a kingdom: at the end, it scores 3 points for every completed city touching a field connected to it.",
+    "value": "Jeder Spieler hat einen Königreichspalast in seiner Farbe. Statt ein Plättchen zu ziehen, legst du ihn an eine Stadt mit einem deiner Meeple – sie wird deine Hauptstadt. Ist die Hauptstadt fertig, wird sie zum Königreich: Bei Spielende bringt sie 3 Punkte für jede fertige Stadt, die an eine mit ihr verbundene Wiese grenzt.",
+    "source": "manual"
+  },
+  "expansion.start": {
+    "en": "Start tile",
+    "value": "Startplättchen",
+    "source": "manual"
+  },
+  "game-setup.ai.not-available": {
+    "en": "AI not available",
+    "value": "Computergegner nicht verfügbar",
+    "source": "manual"
+  },
+  "game-setup.ai.not-available-hint": {
+    "en": "AI players are not available for game setup",
+    "value": "Computergegner sind für diese Spieleinstellung nicht verfügbar",
+    "source": "manual"
+  },
+  "game-setup.ai.not-supported": {
+    "en": "The AI does not play",
+    "value": "Der Computergegner spielt nicht",
+    "source": "manual"
+  },
+  "game-setup.ai.supported": {
+    "en": "The AI can play this",
+    "value": "Der Computergegner kann das spielen",
+    "source": "manual"
+  },
+  "game-setup.create.ai-player": {
+    "en": "AI player",
+    "value": "Computergegner",
+    "source": "manual"
+  },
+  "game-setup.create.assign": {
+    "en": "assign",
+    "value": "zuweisen",
+    "source": "manual"
+  },
+  "game-setup.create.game-full": {
+    "en": "Game full",
+    "value": "Spiel voll",
+    "source": "manual"
+  },
+  "game-setup.create.local-limit-reached-tooltip-plural": {
+    "en": "Maximum {limit} local players allowed | Maximum {limit} local player allowed | Maximum {limit} local players allowed",
+    "value": "Maximal {limit} lokale Spieler erlaubt | Maximal {limit} lokaler Spieler erlaubt | Maximal {limit} lokale Spieler erlaubt",
+    "source": "manual"
+  },
+  "game-setup.create.release-slot": {
+    "en": "Release slot",
+    "value": "Slot freigeben",
+    "source": "manual"
+  },
+  "game-setup.game-flow.cooperative": {
+    "en": "Cooperative variant",
+    "value": "Kooperative Variante",
+    "source": "manual"
+  },
+  "game-setup.game-flow.keep-building-description": {
+    "en": "Every turn you must enlarge an occupied city, road or similar feature, or place a meeple on an unoccupied one. If a player does neither, the game ends and everyone loses. Survive to the last tile and everyone wins with a combined team score.",
+    "value": "In jedem Zug musst du eine besetzte Stadt, Straße oder ein ähnliches Gebiet erweitern oder einen Meeple auf ein unbesetztes setzen. Tut ein Spieler keines von beidem, endet das Spiel und alle verlieren. Haltet bis zum letzten Plättchen durch, dann gewinnen alle mit einer gemeinsamen Teampunktzahl.",
+    "source": "manual"
+  },
+  "game-setup.game-flow.pre-draw": {
+    "en": "Pre-draw",
+    "value": "Vorziehen",
+    "source": "manual"
+  },
+  "game-setup.header.game-setup": {
+    "en": "Game setup",
+    "value": "Spieleinrichtung",
+    "source": "manual"
+  },
+  "game-setup.header.variant": {
+    "en": "Variant",
+    "value": "Variante",
+    "source": "manual"
+  },
+  "game-setup.open-game.max-players": {
+    "en": "Max players (public)",
+    "value": "Max. Spieler (öffentlich)",
+    "source": "manual"
+  },
+  "game-setup.open-game.max-players-no-limit": {
+    "en": "No limit",
+    "value": "Kein Limit",
+    "source": "manual"
+  },
+  "game-setup.open-game.no-human-player": {
+    "en": "No human in game",
+    "value": "Kein menschlicher Spieler im Spiel",
+    "source": "manual"
+  },
+  "game-setup.tiles.custom-pack": {
+    "en": "Custom tile pack (counts changed)",
+    "value": "Eigener Plättchenstapel (Anzahlen geändert)",
+    "source": "manual"
+  },
+  "game-setup.tiles.custom-pack-short": {
+    "en": "Tiles",
+    "value": "Plättchen",
+    "source": "manual"
+  },
+  "game-setup.tiles.enable-quantity-change": {
+    "en": "Enable quantity change",
+    "value": "Anzahländerung erlauben",
+    "source": "manual"
+  },
+  "game-setup.tiles.next-expansion": {
+    "en": "Next expansion",
+    "value": "Nächste Erweiterung",
+    "source": "manual"
+  },
+  "game-setup.tiles.previous-expansion": {
+    "en": "Previous expansion",
+    "value": "Vorherige Erweiterung",
+    "source": "manual"
+  },
+  "game-setup.tiles.remove-all-tiles": {
+    "en": "Remove all",
+    "value": "Alle entfernen",
+    "source": "manual"
+  },
+  "game-setup.tiles.reset-tiles": {
+    "en": "Reset",
+    "value": "Zurücksetzen",
+    "source": "manual"
+  },
+  "game-setup.tiles.separate-expansions": {
+    "en": "Separate expansions",
+    "value": "Erweiterungen trennen",
+    "source": "manual"
+  },
+  "game-setup.tiles.start-tile-excluded": {
+    "en": "Starting tile count is set to 0 – restore it to create the game",
+    "value": "Die Anzahl der Startplättchen ist auf 0 gesetzt – stelle sie wieder her, um das Spiel zu erstellen",
+    "source": "manual"
+  },
+  "game-setup.tiles.supply-tiles": {
+    "en": "In the players' supply, not in the draw pile",
+    "value": "Im Vorrat der Spieler, nicht im Nachziehstapel",
+    "source": "manual"
+  },
+  "game-setup.variant.best-setups": {
+    "en": "Best setups",
+    "value": "Beste Konfigurationen",
+    "source": "manual"
+  },
+  "game-setup.variant.black-fairy-placement.description": {
+    "en": "The Black Fairy is deployed {}.",
+    "value": "Die schwarze Fee wird {} gesetzt.",
+    "source": "manual"
+  },
+  "game-setup.variant.black-fairy-placement.next-follower": {
+    "en": "next to a meeple",
+    "value": "neben einen Meeple",
+    "source": "manual"
+  },
+  "game-setup.variant.black-fairy-placement.on-tile": {
+    "en": "on a tile",
+    "value": "auf ein Plättchen",
+    "source": "manual"
+  },
+  "game-setup.variant.choose-variant": {
+    "en": "Choose game variant",
+    "value": "Spielvariante wählen",
+    "source": "manual"
+  },
+  "game-setup.variant.leaderboard-empty": {
+    "en": "No finished co-op games yet — set up your own game and be the first on the board!",
+    "value": "Noch keine beendeten Koop-Spiele — richte dein eigenes Spiel ein und sei der Erste in der Tabelle!",
+    "source": "manual"
+  },
+  "game-setup.variant.leaderboard-loading": {
+    "en": "Loading best setups from the server…",
+    "value": "Beste Konfigurationen werden vom Server geladen…",
+    "source": "manual"
+  },
+  "game-setup.variant.leaderboard-online-only": {
+    "en": "Connect to the online server to browse the best co-op setups and scores.",
+    "value": "Verbinde dich mit dem Online-Server, um die besten Koop-Konfigurationen und Punkte zu durchsuchen.",
+    "source": "manual"
+  },
+  "game-setup.variant.n-players-plural": {
+    "en": "{players} players | {players} player | {players} players",
+    "value": "{players} Spieler | {players} Spieler | {players} Spieler",
+    "source": "manual"
+  },
+  "game-setup.variant.play-it": {
+    "en": "Play it",
+    "value": "Spielen",
+    "source": "manual"
+  },
+  "game-setup.variant.popular-addons": {
+    "en": "Most popular add-ons",
+    "value": "Beliebteste Add-Ons",
+    "source": "manual"
+  },
+  "game-setup.variant.popular-components": {
+    "en": "Most popular components",
+    "value": "Beliebteste Komponenten",
+    "source": "manual"
+  },
+  "game-setup.variant.popular-empty": {
+    "en": "No finished games yet — set up your own game and start the statistics!",
+    "value": "Noch keine beendeten Spiele — richte dein eigenes Spiel ein und starte die Statistik!",
+    "source": "manual"
+  },
+  "game-setup.variant.popular-online-only": {
+    "en": "Connect to the online server to browse the most-played setups.",
+    "value": "Verbinde dich mit dem Online-Server, um die meistgespielten Konfigurationen zu durchsuchen.",
+    "source": "manual"
+  },
+  "game-setup.variant.popular-sets": {
+    "en": "Most popular expansions",
+    "value": "Beliebteste Erweiterungen",
+    "source": "manual"
+  },
+  "game-setup.variant.popular-setups": {
+    "en": "Most popular setups",
+    "value": "Beliebteste Konfigurationen",
+    "source": "manual"
+  },
+  "game-setup.variant.range-all": {
+    "en": "All time",
+    "value": "Gesamter Zeitraum",
+    "source": "manual"
+  },
+  "game-setup.variant.range-month": {
+    "en": "Last month",
+    "value": "Letzter Monat",
+    "source": "manual"
+  },
+  "game-setup.variant.range-year": {
+    "en": "Last year",
+    "value": "Letztes Jahr",
+    "source": "manual"
+  },
+  "game-setup.variant.share-of-games": {
+    "en": "{percent}% of finished games",
+    "value": "{percent} % der beendeten Spiele",
+    "source": "manual"
+  },
+  "game-setup.variant.standard": {
+    "en": "Standard rules",
+    "value": "Standardregeln",
+    "source": "manual"
+  },
+  "game-setup.variant.standard-description": {
+    "en": "The classic competitive game — every player scores for themselves and the highest score wins.",
+    "value": "Das klassische Wettkampfspiel — jeder Spieler punktet für sich und die höchste Punktzahl gewinnt.",
+    "source": "manual"
+  },
+  "game-setup.variant.times-played": {
+    "en": "played {count}×",
+    "value": "{count}× gespielt",
+    "source": "manual"
+  },
+  "game-setup.variant.your-score": {
+    "en": "Your score — best {best}, latest {latest}",
+    "value": "Deine Punkte — beste {best}, letzte {latest}",
+    "source": "manual"
+  },
+  "game.action.host-terminated-the-game": {
+    "en": "Host terminated the game. Connection was closed.",
+    "value": "Der Host hat das Spiel beendet. Die Verbindung wurde getrennt.",
+    "source": "manual"
+  },
+  "game.action.place-this-tile-instead": {
+    "en": "Place this tile instead",
+    "value": "Stattdessen dieses Plättchen legen",
+    "source": "manual"
+  },
+  "game.action.placement-optional-bridge": {
+    "en": "Some rotations here place a bridge; others don't",
+    "value": "Manche Drehungen setzen hier eine Brücke, andere nicht",
+    "source": "manual"
+  },
+  "game.action.placement-requires-bridge": {
+    "en": "Every placement here requires a bridge",
+    "value": "Jede Platzierung hier benötigt eine Brücke",
+    "source": "manual"
+  },
+  "game.action.score-first-choose": {
+    "en": "Choose which feature to score first",
+    "value": "Wähle, welches Gebiet zuerst gewertet wird",
+    "source": "manual"
+  },
+  "game.action.score-first-player-must-choose": {
+    "en": "Player must choose which feature to score first",
+    "value": "Der Spieler muss wählen, welches Gebiet zuerst gewertet wird",
+    "source": "manual"
+  },
+  "game.action.tile-discarded-notice-plural": {
+    "en": "These tiles can't be placed anywhere, so they were discarded | This tile can't be placed anywhere, so it was discarded | These tiles can't be placed anywhere, so they were discarded",
+    "value": "Diese Plättchen passen nirgends und wurden abgelegt | Dieses Plättchen passt nirgends und wurde abgelegt | Diese Plättchen passen nirgends und wurden abgelegt",
+    "source": "manual"
+  },
+  "game.cause.caused-by": {
+    "en": "Caused by: {cause}",
+    "value": "Ursache: {cause}",
+    "source": "manual"
+  },
+  "game.cause.figure-moved": {
+    "en": "the figure moving here",
+    "value": "die hierher gezogene Figur",
+    "source": "manual"
+  },
+  "game.cause.meeple-deployed": {
+    "en": "the deployed meeple",
+    "value": "der eingesetzte Meeple",
+    "source": "manual"
+  },
+  "game.cause.rule.count-clockwise": {
+    "en": "the Count moving on clockwise",
+    "value": "der Graf zieht im Uhrzeigersinn weiter",
+    "source": "manual"
+  },
+  "game.cause.rule.decinsky-sneznik-scored": {
+    "en": "Děčínský Sněžník scored",
+    "value": "Hoher Schneeberg gewertet",
+    "source": "manual"
+  },
+  "game.cause.rule.final-scoring": {
+    "en": "final scoring",
+    "value": "Schlusswertung",
+    "source": "manual"
+  },
+  "game.cause.rule.flock-expanded": {
+    "en": "a sheep token drawn for the flock",
+    "value": "ein Schafplättchen für die Herde gezogen",
+    "source": "manual"
+  },
+  "game.cause.rule.flock-scored": {
+    "en": "the flock scored",
+    "value": "die Herde gewertet",
+    "source": "manual"
+  },
+  "game.cause.rule.game-start": {
+    "en": "the start of the game",
+    "value": "der Spielbeginn",
+    "source": "manual"
+  },
+  "game.cause.rule.mage-witch-joined": {
+    "en": "the mage's and the witch's features joined",
+    "value": "die Gebiete von Magier und Hexe wurden verbunden",
+    "source": "manual"
+  },
+  "game.cause.rule.mage-witch-no-target": {
+    "en": "no open city or road left for the figure",
+    "value": "keine offene Stadt oder Straße mehr für die Figur",
+    "source": "manual"
+  },
+  "game.cause.rule.meteorite": {
+    "en": "a meteorite impact",
+    "value": "ein Meteoriteneinschlag",
+    "source": "manual"
+  },
+  "game.cause.rule.obelisk-scored": {
+    "en": "the obelisk scored",
+    "value": "der Obelisk gewertet",
+    "source": "manual"
+  },
+  "game.cause.rule.trap": {
+    "en": "a trap",
+    "value": "eine Falle",
+    "source": "manual"
+  },
+  "game.cause.rule.windmill-scored": {
+    "en": "the windmill scored",
+    "value": "die Windmühle gewertet",
+    "source": "manual"
+  },
+  "game.cause.rule.wolf": {
+    "en": "the wolf drawn",
+    "value": "der Wolf gezogen",
+    "source": "manual"
+  },
+  "game.cause.tile-placed": {
+    "en": "the placed tile",
+    "value": "das gelegte Plättchen",
+    "source": "manual"
+  },
+  "game.coop.all-lose": {
+    "en": "All players lose",
+    "value": "Alle Spieler verlieren",
+    "source": "manual"
+  },
+  "game.coop.all-win": {
+    "en": "All players win!",
+    "value": "Alle Spieler gewinnen!",
+    "source": "manual"
+  },
+  "game.coop.team-score-plural": {
+    "en": "Team score: {points} points | Team score: {points} point | Team score: {points} points",
+    "value": "Teampunkte: {points} Punkte | Teampunkte: {points} Punkt | Teampunkte: {points} Punkte",
+    "source": "manual"
+  },
+  "game.coop.triggered-by": {
+    "en": "{name} could neither enlarge an occupied feature nor occupy a new one.",
+    "value": "{name} konnte weder ein besetztes Gebiet erweitern noch ein neues besetzen.",
+    "source": "manual"
+  },
+  "game.element.black-fairy": {
+    "en": "Black Fairy",
+    "value": "Schwarze Fee",
+    "source": "manual"
+  },
+  "game.element.city-palace": {
+    "en": "City Palace",
+    "value": "Stadtpalast",
+    "source": "manual"
+  },
+  "game.element.kingdom-palace": {
+    "en": "Kingdom Palace",
+    "value": "Königreichspalast",
+    "source": "manual"
+  },
+  "game.element.kingdoms-palace": {
+    "en": "City Palace",
+    "value": "Stadtpalast",
+    "source": "manual"
+  },
+  "game.element.mini-follower": {
+    "en": "Mini Meeple",
+    "value": "Mini-Meeple",
+    "source": "manual"
+  },
+  "game.element.pre-draw": {
+    "en": "Pre-draw",
+    "value": "Vorziehen",
+    "source": "manual"
+  },
+  "game.event.meeple-awarded": {
+    "en": "Earned a meeple",
+    "value": "Meeple erhalten",
+    "source": "manual"
+  },
+  "game.event.meeple-awarded-hole": {
+    "en": "Filled a hole",
+    "value": "Lücke gefüllt",
+    "source": "manual"
+  },
+  "game.feature.black-fairy": {
+    "en": "Black Fairy",
+    "value": "Schwarze Fee",
+    "source": "manual"
+  },
+  "game.feature.keep-building": {
+    "en": "Keep Building (co-op)",
+    "value": "Weiterbauen (Koop)",
+    "source": "manual"
+  },
+  "game.feature.kingdom": {
+    "en": "Kingdom",
+    "value": "Königreich",
+    "source": "manual"
+  },
+  "game.feature.kingdoms": {
+    "en": "Kingdoms",
+    "value": "Königreiche",
+    "source": "manual"
+  },
+  "game.feature.placed-tiles": {
+    "en": "Placed tiles",
+    "value": "Gelegte Plättchen",
+    "source": "manual"
+  },
+  "game.observers.watching": {
+    "en": "Watching",
+    "value": "Zuschauer",
+    "source": "manual"
+  },
+  "game.placement.converted-by": {
+    "en": "Converted by {player}",
+    "value": "Umgewandelt von {player}",
+    "source": "manual"
+  },
+  "game.placement.deployed-by": {
+    "en": "Deployed by {player}",
+    "value": "Eingesetzt von {player}",
+    "source": "manual"
+  },
+  "game.placement.discarded-reason": {
+    "en": "It fits nowhere on the board, so another tile was drawn",
+    "value": "Es passt nirgends auf den Spielplan, daher wurde ein neues Plättchen gezogen",
+    "source": "manual"
+  },
+  "game.placement.exchanged-reason": {
+    "en": "Each player got their own meeple back",
+    "value": "Jeder Spieler hat seinen eigenen Meeple zurückbekommen",
+    "source": "manual"
+  },
+  "game.placement.moved-by": {
+    "en": "Moved by {player}",
+    "value": "Versetzt von {player}",
+    "source": "manual"
+  },
+  "game.placement.placed-by": {
+    "en": "Placed by {player}",
+    "value": "Gelegt von {player}",
+    "source": "manual"
+  },
+  "game.placement.removed-with": {
+    "en": "{source}, by {player}",
+    "value": "{source}, von {player}",
+    "source": "manual"
+  },
+  "game.placement.title.captured": {
+    "en": "{figure} captured",
+    "value": "{figure} gefangen",
+    "source": "manual"
+  },
+  "game.placement.title.castle-created": {
+    "en": "Small city converted to a castle",
+    "value": "Kleine Stadt in eine Burg umgewandelt",
+    "source": "manual"
+  },
+  "game.placement.title.discarded": {
+    "en": "Discarded",
+    "value": "Abgelegt",
+    "source": "manual"
+  },
+  "game.placement.title.exchanged": {
+    "en": "Prisoners exchanged",
+    "value": "Gefangene ausgetauscht",
+    "source": "manual"
+  },
+  "game.placement.title.moved": {
+    "en": "{figure} moved",
+    "value": "{figure} versetzt",
+    "source": "manual"
+  },
+  "game.placement.title.placed": {
+    "en": "{figure} placed",
+    "value": "{figure} eingesetzt",
+    "source": "manual"
+  },
+  "game.placement.title.placed-on-letter": {
+    "en": "{figure} placed on the Letter",
+    "value": "{figure} auf den Brief gesetzt",
+    "source": "manual"
+  },
+  "game.placement.title.removed": {
+    "en": "{figure} removed",
+    "value": "{figure} entfernt",
+    "source": "manual"
+  },
+  "game.placement.title.tile-placed": {
+    "en": "Tile placed",
+    "value": "Plättchen gelegt",
+    "source": "manual"
+  },
+  "game.ransom.already-paid": {
+    "en": "A meeple was already bought back this turn — one per turn",
+    "value": "In diesem Zug wurde schon ein Meeple freigekauft — nur einer pro Zug",
+    "source": "manual"
+  },
+  "game.ransom.can": {
+    "en": "Buy back for 3 points",
+    "value": "Für 3 Punkte freikaufen",
+    "source": "manual"
+  },
+  "game.ransom.not-enough-points": {
+    "en": "Not enough points to buy back — 3 points are needed",
+    "value": "Nicht genug Punkte zum Freikaufen — 3 Punkte sind nötig",
+    "source": "manual"
+  },
+  "game.ransom.not-their-action": {
+    "en": "Captured — its owner can buy it back for 3 points on their turn",
+    "value": "Gefangen — sein Besitzer kann ihn in seinem Zug für 3 Punkte freikaufen",
+    "source": "manual"
+  },
+  "game.scoring.income": {
+    "en": "income",
+    "value": "Einnahmen",
+    "source": "manual"
+  },
+  "game.scoring.item-cloth": {
+    "en": "Cloth",
+    "value": "Stoff",
+    "source": "manual"
+  },
+  "game.scoring.item-darmstadtium": {
+    "en": "Darmstadtium",
+    "value": "Darmstadtium",
+    "source": "manual"
+  },
+  "game.scoring.item-grain": {
+    "en": "Grain",
+    "value": "Getreide",
+    "source": "manual"
+  },
+  "game.scoring.item-house": {
+    "en": "House",
+    "value": "Haus",
+    "source": "manual"
+  },
+  "game.scoring.item-river-tiles": {
+    "en": "River tiles",
+    "value": "Flussplättchen",
+    "source": "manual"
+  },
+  "game.scoring.item-shed": {
+    "en": "Shed",
+    "value": "Schuppen",
+    "source": "manual"
+  },
+  "game.scoring.item-tiles-east": {
+    "en": "Tiles to the east",
+    "value": "Plättchen nach Osten",
+    "source": "manual"
+  },
+  "game.scoring.item-tiles-north": {
+    "en": "Tiles to the north",
+    "value": "Plättchen nach Norden",
+    "source": "manual"
+  },
+  "game.scoring.item-tiles-south": {
+    "en": "Tiles to the south",
+    "value": "Plättchen nach Süden",
+    "source": "manual"
+  },
+  "game.scoring.item-tiles-west": {
+    "en": "Tiles to the west",
+    "value": "Plättchen nach Westen",
+    "source": "manual"
+  },
+  "game.scoring.item-tower": {
+    "en": "Tower",
+    "value": "Turm",
+    "source": "manual"
+  },
+  "game.scoring.item-wine": {
+    "en": "Wine",
+    "value": "Wein",
+    "source": "manual"
+  },
+  "game.scoring.item-wolf": {
+    "en": "Wolf",
+    "value": "Wolf",
+    "source": "manual"
+  },
+  "game.scoring.majority": {
+    "en": "majority",
+    "value": "Mehrheit",
+    "source": "manual"
+  },
+  "game.scoring.no-majority": {
+    "en": "no majority",
+    "value": "keine Mehrheit",
+    "source": "manual"
+  },
+  "game.scoring.payment": {
+    "en": "payment",
+    "value": "Zahlung",
+    "source": "manual"
+  },
+  "game.tiles-progress": {
+    "en": "Tiles placed",
+    "value": "Gelegte Plättchen",
+    "source": "manual"
+  },
+  "index.local.new-local-game": {
+    "en": "New local game",
+    "value": "Neues lokales Spiel",
+    "source": "manual"
+  },
+  "index.online.connecting": {
+    "en": "Connecting to server…",
+    "value": "Verbinde mit Server…",
+    "source": "manual"
+  },
+  "index.online.disconnect-cancel": {
+    "en": "Stay connected",
+    "value": "Verbunden bleiben",
+    "source": "manual"
+  },
+  "index.online.disconnect-confirm": {
+    "en": "Disconnect and close games",
+    "value": "Trennen und Spiele schließen",
+    "source": "manual"
+  },
+  "index.online.disconnect-message": {
+    "en": "You have {count} online game(s) open. Disconnecting will close them.",
+    "value": "Du hast {count} Online-Spiele offen. Beim Trennen werden sie geschlossen.",
+    "source": "manual"
+  },
+  "index.online.disconnect-title": {
+    "en": "Disconnect from server",
+    "value": "Vom Server trennen",
+    "source": "manual"
+  },
+  "index.online.game-not-found": {
+    "en": "Game not found. Check the game key and try again.",
+    "value": "Spiel nicht gefunden. Prüfe den Spielschlüssel und versuche es erneut.",
+    "source": "manual"
+  },
+  "index.online.incompatible-version-newer": {
+    "en": "Newer version, cannot play together (protocol {version})",
+    "value": "Neuere Version, gemeinsames Spielen nicht möglich (Protokoll {version})",
+    "source": "manual"
+  },
+  "index.online.incompatible-version-older": {
+    "en": "Older version, cannot play together (protocol {version})",
+    "value": "Ältere Version, gemeinsames Spielen nicht möglich (Protokoll {version})",
+    "source": "manual"
+  },
+  "index.online.incompatible-version-unknown": {
+    "en": "Unknown version, cannot play together",
+    "value": "Unbekannte Version, gemeinsames Spielen nicht möglich",
+    "source": "manual"
+  },
+  "index.online.loading-game-data": {
+    "en": "Loading game data…",
+    "value": "Spieldaten werden geladen…",
+    "source": "manual"
+  },
+  "index.online.local-game": {
+    "en": "Local game",
+    "value": "Lokales Spiel",
+    "source": "manual"
+  },
+  "index.online.max-players-title": {
+    "en": "Players (max)",
+    "value": "Spieler (max.)",
+    "source": "manual"
+  },
+  "index.online.no-clients": {
+    "en": "No one connected",
+    "value": "Niemand verbunden",
+    "source": "manual"
+  },
+  "index.online.offline": {
+    "en": "Offline – not connected to {0}",
+    "value": "Offline – nicht verbunden mit {0}",
+    "source": "manual"
+  },
+  "index.online.offline-lobby-hidden": {
+    "en": "Connect to the server to see the public lobby and your games in progress.",
+    "value": "Verbinde dich mit dem Server, um die öffentliche Lobby und deine laufenden Spiele zu sehen.",
+    "source": "manual"
+  },
+  "index.online.online-game": {
+    "en": "Online game",
+    "value": "Online-Spiel",
+    "source": "manual"
+  },
+  "index.online.opened-in-window": {
+    "en": "Open in a window",
+    "value": "In einem Fenster öffnen",
+    "source": "manual"
+  },
+  "index.online.players-online": {
+    "en": "Players online ({count})",
+    "value": "Spieler online ({count})",
+    "source": "manual"
+  },
+  "index.online.status-idle": {
+    "en": "Idle",
+    "value": "Untätig",
+    "source": "manual"
+  },
+  "index.online.status-in-game": {
+    "en": "In game",
+    "value": "Im Spiel",
+    "source": "manual"
+  },
+  "index.online.title-local": {
+    "en": "Games hosted on dev local",
+    "value": "Spiele auf dem lokalen Dev-Server",
+    "source": "manual"
+  },
+  "menu.create-game": {
+    "en": "Create Game",
+    "value": "Spiel erstellen",
+    "source": "manual"
+  },
+  "menu.feature-hints": {
+    "en": "Feature hints",
+    "value": "Gebietshinweise",
+    "source": "manual"
+  },
+  "menu.feature-hints'": {
+    "en": "Feature hints",
+    "value": "Gebietshinweise",
+    "source": "manual"
+  },
+  "menu.home": {
+    "en": "Home",
+    "value": "Start",
+    "source": "manual"
+  },
+  "menu.new-local-game": {
+    "en": "New local game",
+    "value": "Neues lokales Spiel",
+    "source": "manual"
+  },
+  "menu.potential-final-score": {
+    "en": "Potential Final Score",
+    "value": "Möglicher Endstand",
+    "source": "manual"
+  },
+  "open-windows.close": {
+    "en": "Close window",
+    "value": "Fenster schließen",
+    "source": "manual"
+  },
+  "open-windows.empty": {
+    "en": "No game windows open",
+    "value": "Keine Spielfenster offen",
+    "source": "manual"
+  },
+  "open-windows.focus": {
+    "en": "Bring window to front",
+    "value": "Fenster in den Vordergrund holen",
+    "source": "manual"
+  },
+  "open-windows.kind.game": {
+    "en": "Game",
+    "value": "Spiel",
+    "source": "manual"
+  },
+  "open-windows.kind.local": {
+    "en": "Local game",
+    "value": "Lokales Spiel",
+    "source": "manual"
+  },
+  "open-windows.kind.online": {
+    "en": "Online game",
+    "value": "Online-Spiel",
+    "source": "manual"
+  },
+  "open-windows.progress": {
+    "en": "Placed tiles / total",
+    "value": "Gelegte Plättchen / insgesamt",
+    "source": "manual"
+  },
+  "open-windows.title": {
+    "en": "Open game windows",
+    "value": "Offene Spielfenster",
+    "source": "manual"
+  },
+  "predraw.draw": {
+    "en": "Draw tile",
+    "value": "Plättchen ziehen",
+    "source": "manual"
+  },
+  "predraw.empty": {
+    "en": "—",
+    "value": "—",
+    "source": "manual"
+  },
+  "predraw.incompatible": {
+    "en": "Not available with Builder, Dragon, Wagon, Castle, Shepherd, River, Escape, Count or Crop Circles",
+    "value": "Nicht verfügbar mit Baumeister, Drache, Wagen, Burg, Schäfer, Fluss, Flucht, Graf oder Kornkreisen",
+    "source": "manual"
+  },
+  "predraw.local-only": {
+    "en": "Not allowed in local games",
+    "value": "In lokalen Spielen nicht erlaubt",
+    "source": "manual"
+  },
+  "predraw.one-seat-notice": {
+    "en": "Pre-draw game — each player plays on their own device, so you can take only one slot.",
+    "value": "Spiel mit Vorziehen — jeder Spieler spielt auf seinem eigenen Gerät, daher kannst du nur einen Platz einnehmen.",
+    "source": "manual"
+  },
+  "predraw.pass-abbey": {
+    "en": "Pass abbey (draw last tile)",
+    "value": "Abtei überspringen (letztes Plättchen ziehen)",
+    "source": "manual"
+  },
+  "predraw.pass-supply-tile": {
+    "en": "Pass {name} (draw last tile)",
+    "value": "{name} überspringen (letztes Plättchen ziehen)",
+    "source": "manual"
+  },
+  "predraw.pick-hint": {
+    "en": "Click a tile to place it, then choose a spot on the board",
+    "value": "Klicke ein Plättchen an, um es zu legen, und wähle dann einen Platz auf dem Spielfeld",
+    "source": "manual"
+  },
+  "predraw.your-hand": {
+    "en": "Your hand",
+    "value": "Deine Hand",
+    "source": "manual"
+  },
+  "settings.add-ons.add-on-requires-newer-app": {
+    "en": "Add-on requires FanCloisterZone {version} or higher",
+    "value": "Das Add-On benötigt FanCloisterZone {version} oder höher",
+    "source": "manual"
+  },
+  "settings.add-ons.downloading-classic-artwork": {
+    "en": "Downloading classic artwork",
+    "value": "Klassische Grafik wird heruntergeladen",
+    "source": "manual"
+  },
+  "settings.add-ons.invalid-add-on-missing-minimum-version": {
+    "en": "Invalid add-on: minimumJczVersion is missing",
+    "value": "Ungültiges Add-On: minimumJczVersion fehlt",
+    "source": "manual"
+  },
+  "settings.add-ons.invalid-add-on-version-not-a-number": {
+    "en": "Invalid add-on: the version must be a number, not text",
+    "value": "Ungültiges Add-On: Die Version muss eine Zahl sein, kein Text",
+    "source": "manual"
+  },
+  "settings.add-ons.invalid-add-on-version-not-an-integer": {
+    "en": "Invalid add-on: the version must be a whole number, found {version}",
+    "value": "Ungültiges Add-On: Die Version muss eine ganze Zahl sein, gefunden: {version}",
+    "source": "manual"
+  },
+  "settings.system.taskbar.grouped": {
+    "en": "Group windows (raise the active game on top when it's your turn)",
+    "value": "Fenster gruppieren (aktives Spiel in den Vordergrund holen, wenn du am Zug bist)",
+    "source": "manual"
+  },
+  "settings.system.taskbar.hint": {
+    "en": "Changes how the lobby and game windows appear on the Windows taskbar.",
+    "value": "Ändert, wie Lobby- und Spielfenster in der Windows-Taskleiste erscheinen.",
+    "source": "manual"
+  },
+  "settings.system.taskbar.separate": {
+    "en": "Separate taskbar buttons (one per window)",
+    "value": "Separate Taskleisten-Schaltflächen (eine pro Fenster)",
+    "source": "manual"
+  },
+  "settings.system.taskbar.title": {
+    "en": "Windows taskbar",
+    "value": "Windows-Taskleiste",
+    "source": "manual"
+  }
+}

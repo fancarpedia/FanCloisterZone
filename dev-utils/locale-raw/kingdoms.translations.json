@@ -1,0 +1,119 @@
+{
+  "ca": {
+    "expansion.kingdoms": "Regnes",
+    "expansion.kingdoms-description": "Cada jugador té un Palau del seu color. En lloc d'agafar una peça, col·loqueu-lo en una ciutat amb un dels vostres seguidors per convertir-la en la vostra capital. Quan la capital es completa, esdevé un regne: al final, puntua 3 punts per cada ciutat que toca un camp connectat amb ella.",
+    "game.action.place-this-tile-instead": "Col·loqueu aquesta peça en canvi",
+    "game.element.kingdom-palace": "Palau",
+    "game.feature.kingdom": "Regne",
+    "game.feature.kingdoms": "Regnes",
+    "game-setup.tiles.supply-tiles": "Al subministrament dels jugadors, no a la pila de peces"
+  },
+  "cs": {
+    "expansion.kingdoms": "Království",
+    "expansion.kingdoms-description": "Každý hráč má Palác ve své barvě. Místo tažení kartičky ho můžete přiložit k městu s jedním z vašich družiníků a udělat z něj své hlavní město. Jakmile je hlavní město dokončené, stane se královstvím: na konci hry získá 3 body za každé město, které sousedí s loukou spojenou s ním.",
+    "game.action.place-this-tile-instead": "Přiložit místo toho tuto kartičku",
+    "game.element.kingdom-palace": "Palác",
+    "game.feature.kingdom": "Království",
+    "game.feature.kingdoms": "Království",
+    "game-setup.tiles.supply-tiles": "V zásobě hráčů, ne mezi kartičkami k tažení"
+  },
+  "de": {
+    "expansion.kingdoms": "Königreiche",
+    "expansion.kingdoms-description": "Jeder Spieler hat einen Palast in seiner Farbe. Statt ein Plättchen zu ziehen, legst du ihn an eine Stadt mit einem deiner Meeple – sie wird deine Hauptstadt. Ist die Hauptstadt fertig, wird sie zum Königreich: Bei Spielende bringt sie 3 Punkte für jede Stadt, die an eine mit ihr verbundene Wiese grenzt.",
+    "game.action.place-this-tile-instead": "Stattdessen dieses Plättchen legen",
+    "game.element.kingdom-palace": "Stadtpalast",
+    "game.feature.kingdom": "Königreich",
+    "game.feature.kingdoms": "Königreiche",
+    "game-setup.tiles.supply-tiles": "Im Vorrat der Spieler, nicht im Nachziehstapel"
+  },
+  "es": {
+    "expansion.kingdoms": "Reinos",
+    "expansion.kingdoms-description": "Cada jugador tiene un Palacio de su color. En lugar de robar una loseta, puede colocarlo en una ciudad con uno de sus seguidores para convertirla en su capital. Cuando la capital se completa, se convierte en un reino: al final, puntúa 3 puntos por cada ciudad que toque un campo conectado con ella.",
+    "game.action.place-this-tile-instead": "Colocar esta loseta en su lugar",
+    "game.element.kingdom-palace": "Palacio",
+    "game.feature.kingdom": "Reino",
+    "game.feature.kingdoms": "Reinos",
+    "game-setup.tiles.supply-tiles": "En la reserva de los jugadores, no en la pila de robo"
+  },
+  "fr": {
+    "expansion.kingdoms": "Royaumes",
+    "expansion.kingdoms-description": "Chaque joueur possède un Palais de sa couleur. Au lieu de piocher une tuile, placez-le dans une ville où se trouve l'un de vos meeples : elle devient votre capitale. Une fois la capitale achevée, elle devient un royaume : en fin de partie, elle rapporte 3 points pour chaque ville touchant un pré relié à elle.",
+    "game.action.place-this-tile-instead": "Placer plutôt cette tuile",
+    "game.element.kingdom-palace": "Palais",
+    "game.feature.kingdom": "Royaume",
+    "game.feature.kingdoms": "Royaumes",
+    "game-setup.tiles.supply-tiles": "Dans la réserve des joueurs, pas dans la pioche"
+  },
+  "lt": {
+    "expansion.kingdoms": "Karalystės",
+    "expansion.kingdoms-description": "Kiekvienas žaidėjas turi savo spalvos Rūmus. Užuot traukę kortelę, galite juos padėti prie miesto, kuriame yra vienas iš jūsų miplų, ir paversti jį savo sostine. Kai sostinė užbaigiama, ji tampa karalyste: žaidimo pabaigoje ji pelno 3 taškus už kiekvieną miestą, besiliečiantį su lauku, sujungtu su ja.",
+    "game.action.place-this-tile-instead": "Vietoj to padėti šią kortelę",
+    "game.element.kingdom-palace": "Rūmai",
+    "game.feature.kingdom": "Karalystė",
+    "game.feature.kingdoms": "Karalystės",
+    "game-setup.tiles.supply-tiles": "Žaidėjų atsargose, ne traukiamų kortelių krūvoje"
+  },
+  "nl": {
+    "expansion.kingdoms": "Koninkrijken",
+    "expansion.kingdoms-description": "Elke speler heeft een Paleis in zijn eigen kleur. In plaats van een tegel te trekken, leg je het aan een stad met een van je meeples: die wordt je hoofdstad. Zodra je hoofdstad af is, wordt ze een koninkrijk: aan het einde levert ze 3 punten op voor elke stad die grenst aan een weide die met de hoofdstad verbonden is.",
+    "game.action.place-this-tile-instead": "Leg in plaats daarvan deze tegel",
+    "game.element.kingdom-palace": "Paleis",
+    "game.feature.kingdom": "Koninkrijk",
+    "game.feature.kingdoms": "Koninkrijken",
+    "game-setup.tiles.supply-tiles": "In de voorraad van de spelers, niet in de trekstapel"
+  },
+  "pl": {
+    "expansion.kingdoms": "Królestwa",
+    "expansion.kingdoms-description": "Każdy gracz ma Pałac w swoim kolorze. Zamiast losować płytkę, możesz dołożyć go do miasta, w którym stoi jeden z twoich podwładnych – miasto staje się twoją stolicą. Gdy stolica zostanie ukończona, staje się królestwem: na koniec gry zdobywa 3 punkty za każde miasto stykające się z polem połączonym ze stolicą.",
+    "game.action.place-this-tile-instead": "Zamiast tego umieść tę płytkę",
+    "game.element.kingdom-palace": "Pałac",
+    "game.feature.kingdom": "Królestwo",
+    "game.feature.kingdoms": "Królestwa",
+    "game-setup.tiles.supply-tiles": "W zasobie graczy, nie w stosie do losowania"
+  },
+  "ro": {
+    "expansion.kingdoms": "Regate",
+    "expansion.kingdoms-description": "Fiecare jucător are un Palat în culoarea sa. În loc să tragi un cartonaș, îl poți plasa într-un oraș cu unul dintre meeple-ii tăi, iar orașul devine capitala ta. Odată ce capitala este completă, devine un regat: la final, aduce 3 puncte pentru fiecare oraș care atinge un câmp legat de ea.",
+    "game.action.place-this-tile-instead": "Plasează în schimb acest cartonaș",
+    "game.element.kingdom-palace": "Palat",
+    "game.feature.kingdom": "Regat",
+    "game.feature.kingdoms": "Regate",
+    "game-setup.tiles.supply-tiles": "În rezerva jucătorilor, nu în teancul de tras"
+  },
+  "ru": {
+    "expansion.kingdoms": "Королевства",
+    "expansion.kingdoms-description": "У каждого игрока есть Дворец его цвета. Вместо того чтобы брать тайл, вы можете выложить его к городу с одним из ваших миплов — город станет вашей столицей. Когда столица завершена, она становится королевством: в конце игры она приносит 3 очка за каждый город, касающийся поля, связанного с ней.",
+    "game.action.place-this-tile-instead": "Выложить этот тайл вместо другого",
+    "game.element.kingdom-palace": "Дворец",
+    "game.feature.kingdom": "Королевство",
+    "game.feature.kingdoms": "Королевства",
+    "game-setup.tiles.supply-tiles": "В запасе игроков, а не в стопке тайлов"
+  },
+  "sk": {
+    "expansion.kingdoms": "Kráľovstvá",
+    "expansion.kingdoms-description": "Každý hráč má Palác vo svojej farbe. Namiesto ťahania kartičky ho môžete priložiť k mestu s jedným z vašich spoločníkov a urobiť z neho svoje hlavné mesto. Keď je hlavné mesto dokončené, stane sa kráľovstvom: na konci hry získa 3 body za každé mesto, ktoré susedí s lúkou spojenou s ním.",
+    "game.action.place-this-tile-instead": "Priložiť namiesto toho túto kartičku",
+    "game.element.kingdom-palace": "Palác",
+    "game.feature.kingdom": "Kráľovstvo",
+    "game.feature.kingdoms": "Kráľovstvá",
+    "game-setup.tiles.supply-tiles": "V zásobe hráčov, nie medzi kartičkami na ťahanie"
+  },
+  "sl": {
+    "expansion.kingdoms": "Kraljestva",
+    "expansion.kingdoms-description": "Vsak igralec ima Palačo v svoji barvi. Namesto da potegneš ploščico, jo lahko postaviš ob mesto z enim od svojih človečkov in ga narediš za svojo prestolnico. Ko je prestolnica dokončana, postane kraljestvo: na koncu igre prinese 3 točke za vsako mesto, ki se dotika polja, povezanega z njo.",
+    "game.action.place-this-tile-instead": "Namesto tega postavi to ploščico",
+    "game.element.kingdom-palace": "Palača",
+    "game.feature.kingdom": "Kraljestvo",
+    "game.feature.kingdoms": "Kraljestva",
+    "game-setup.tiles.supply-tiles": "V zalogi igralcev, ne na kupu za vlečenje"
+  },
+  "uk": {
+    "expansion.kingdoms": "Королівства",
+    "expansion.kingdoms-description": "Кожен гравець має Палац свого кольору. Замість того щоб тягнути плитку, ви можете викласти його до міста з одним із ваших підданців — місто стане вашою столицею. Щойно столицю завершено, вона стає королівством: наприкінці гри вона приносить 3 очки за кожне місто, що торкається поля, з'єднаного з нею.",
+    "game.action.place-this-tile-instead": "Натомість викласти цю плитку",
+    "game.element.kingdom-palace": "Палац",
+    "game.feature.kingdom": "Королівство",
+    "game.feature.kingdoms": "Королівства",
+    "game-setup.tiles.supply-tiles": "У запасі гравців, а не в стосі для витягування"
+  }
+}

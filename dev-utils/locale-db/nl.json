@@ -1,0 +1,1062 @@
+{
+  "button.next": {
+    "en": "Next",
+    "value": "Volgende",
+    "source": "manual"
+  },
+  "button.play-online-local": {
+    "en": "Play Online on Dev Local Server",
+    "value": "Online spelen op lokale dev-server",
+    "source": "manual"
+  },
+  "button.show": {
+    "en": "Show",
+    "value": "Weergeven",
+    "source": "manual"
+  },
+  "chat.close": {
+    "en": "Close chat",
+    "value": "Chat sluiten",
+    "source": "manual"
+  },
+  "chat.empty": {
+    "en": "No messages yet — say hello!",
+    "value": "Nog geen berichten — zeg eens hallo!",
+    "source": "manual"
+  },
+  "chat.game-chat": {
+    "en": "Game chat",
+    "value": "Spelchat",
+    "source": "manual"
+  },
+  "chat.global-chat": {
+    "en": "Global chat",
+    "value": "Globale chat",
+    "source": "manual"
+  },
+  "chat.open": {
+    "en": "Open chat",
+    "value": "Chat openen",
+    "source": "manual"
+  },
+  "chat.send": {
+    "en": "Send",
+    "value": "Verzenden",
+    "source": "manual"
+  },
+  "core-messages.potential-final-score": {
+    "en": "Potential final score",
+    "value": "Mogelijke eindscore",
+    "source": "manual"
+  },
+  "dev.continue-game": {
+    "en": "Continue game",
+    "value": "Spel voortzetten",
+    "source": "manual"
+  },
+  "dev.filter-tests-by-name": {
+    "en": "Filter tests by name",
+    "value": "Tests filteren op naam",
+    "source": "manual"
+  },
+  "dev.step-back-in-save": {
+    "en": "Step Back in Save",
+    "value": "Stap terug in opgeslagen spel",
+    "source": "manual"
+  },
+  "dev.switch-online-server-cancel": {
+    "en": "Keep current server",
+    "value": "Huidige server behouden",
+    "source": "manual"
+  },
+  "dev.switch-online-server-confirm": {
+    "en": "Switch and close games",
+    "value": "Wisselen en spellen sluiten",
+    "source": "manual"
+  },
+  "dev.switch-online-server-message": {
+    "en": "You have {count} online game(s) open. Switching the server will close them.",
+    "value": "Je hebt {count} online spellen open. Bij het wisselen van server worden ze gesloten.",
+    "source": "manual"
+  },
+  "dev.switch-online-server-title": {
+    "en": "Switch online server",
+    "value": "Online server wisselen",
+    "source": "manual"
+  },
+  "dev.test-scenario-saved": {
+    "en": "Test scenario saved",
+    "value": "Testscenario opgeslagen",
+    "source": "manual"
+  },
+  "dev.test-scenario-saved-hint": {
+    "en": "The test scenario was saved. Open it to replay and check its assertions.",
+    "value": "Het testscenario is opgeslagen. Open het om het opnieuw af te spelen en de voorwaarden te controleren.",
+    "source": "manual"
+  },
+  "dialog.close-all-games.close-all-games": {
+    "en": "Close All Games",
+    "value": "Alle spellen sluiten",
+    "source": "manual"
+  },
+  "dialog.close-all-games.keep-playing": {
+    "en": "Keep Playing",
+    "value": "Doorspelen",
+    "source": "manual"
+  },
+  "dialog.close-all-games.open-game-windows": {
+    "en": "Open Game Windows",
+    "value": "Open spelvensters",
+    "source": "manual"
+  },
+  "dialog.close-all-games.open-game-windows-description": {
+    "en": "There are open game windows. Closing the main window will close all of them and quit the app.",
+    "value": "Er staan spelvensters open. Als je het hoofdvenster sluit, worden ze allemaal gesloten en wordt de app afgesloten.",
+    "source": "manual"
+  },
+  "expansion.kingdoms": {
+    "en": "Kingdoms",
+    "value": "Koninkrijken",
+    "source": "manual"
+  },
+  "expansion.kingdoms-description": {
+    "en": "Each player has a Kingdom Palace in their colour. Instead of drawing, place it in a city with one of your followers to make it your capital. Once your capital is completed it becomes a kingdom: at the end, it scores 3 points for every completed city touching a field connected to it.",
+    "value": "Elke speler heeft een Koninkrijkspaleis in zijn eigen kleur. In plaats van een tegel te trekken, leg je het aan een stad met een van je meeples: die wordt je hoofdstad. Zodra je hoofdstad af is, wordt ze een koninkrijk: aan het einde levert ze 3 punten op voor elke voltooide stad die grenst aan een weide die met de hoofdstad verbonden is.",
+    "source": "manual"
+  },
+  "expansion.start": {
+    "en": "Start tile",
+    "value": "Starttegel",
+    "source": "manual"
+  },
+  "game-setup.ai.not-available": {
+    "en": "AI not available",
+    "value": "AI niet beschikbaar",
+    "source": "manual"
+  },
+  "game-setup.ai.not-available-hint": {
+    "en": "AI players are not available for game setup",
+    "value": "AI-spelers zijn niet beschikbaar voor deze spelinstelling",
+    "source": "manual"
+  },
+  "game-setup.ai.not-supported": {
+    "en": "The AI does not play",
+    "value": "De AI speelt niet",
+    "source": "manual"
+  },
+  "game-setup.ai.supported": {
+    "en": "The AI can play this",
+    "value": "De AI kan dit spelen",
+    "source": "manual"
+  },
+  "game-setup.create.ai-player": {
+    "en": "AI player",
+    "value": "AI-speler",
+    "source": "manual"
+  },
+  "game-setup.create.assign": {
+    "en": "assign",
+    "value": "toewijzen",
+    "source": "manual"
+  },
+  "game-setup.create.game-full": {
+    "en": "Game full",
+    "value": "Spel is vol",
+    "source": "manual"
+  },
+  "game-setup.create.local-limit-reached-tooltip-plural": {
+    "en": "Maximum {limit} local players allowed | Maximum {limit} local player allowed | Maximum {limit} local players allowed",
+    "value": "Maximaal {limit} lokale spelers toegestaan | Maximaal {limit} lokale speler toegestaan | Maximaal {limit} lokale spelers toegestaan",
+    "source": "manual"
+  },
+  "game-setup.create.release-slot": {
+    "en": "Release slot",
+    "value": "Plaats vrijgeven",
+    "source": "manual"
+  },
+  "game-setup.game-flow.cooperative": {
+    "en": "Cooperative variant",
+    "value": "Coöperatieve variant",
+    "source": "manual"
+  },
+  "game-setup.game-flow.keep-building-description": {
+    "en": "Every turn you must enlarge an occupied city, road or similar feature, or place a meeple on an unoccupied one. If a player does neither, the game ends and everyone loses. Survive to the last tile and everyone wins with a combined team score.",
+    "value": "Elke ronde moet je een bezette stad, weg of vergelijkbaar gebied uitbreiden, of een meeple op een onbezet gebied plaatsen. Doet een speler geen van beide, dan eindigt het spel en verliest iedereen. Houd het vol tot de laatste tegel en iedereen wint met een gezamenlijke teamscore.",
+    "source": "manual"
+  },
+  "game-setup.game-flow.pre-draw": {
+    "en": "Pre-draw",
+    "value": "Voorafgaand pakken",
+    "source": "manual"
+  },
+  "game-setup.header.game-setup": {
+    "en": "Game setup",
+    "value": "Spelinstellingen",
+    "source": "manual"
+  },
+  "game-setup.header.variant": {
+    "en": "Variant",
+    "value": "Variant",
+    "source": "manual"
+  },
+  "game-setup.open-game.max-players": {
+    "en": "Max players (public)",
+    "value": "Max. spelers (openbaar)",
+    "source": "manual"
+  },
+  "game-setup.open-game.max-players-no-limit": {
+    "en": "No limit",
+    "value": "Geen limiet",
+    "source": "manual"
+  },
+  "game-setup.open-game.no-human-player": {
+    "en": "No human in game",
+    "value": "Er zijn geen menselijke spelers",
+    "source": "manual"
+  },
+  "game-setup.tiles.custom-pack": {
+    "en": "Custom tile pack (counts changed)",
+    "value": "Eigen tegelstapel (aantallen gewijzigd)",
+    "source": "manual"
+  },
+  "game-setup.tiles.custom-pack-short": {
+    "en": "Tiles",
+    "value": "Tegels",
+    "source": "manual"
+  },
+  "game-setup.tiles.enable-quantity-change": {
+    "en": "Enable quantity change",
+    "value": "Aantallen laten wijzigen",
+    "source": "manual"
+  },
+  "game-setup.tiles.next-expansion": {
+    "en": "Next expansion",
+    "value": "Volgende uitbreiding",
+    "source": "manual"
+  },
+  "game-setup.tiles.previous-expansion": {
+    "en": "Previous expansion",
+    "value": "Vorige uitbreiding",
+    "source": "manual"
+  },
+  "game-setup.tiles.remove-all-tiles": {
+    "en": "Remove all",
+    "value": "Alles verwijderen",
+    "source": "manual"
+  },
+  "game-setup.tiles.reset-tiles": {
+    "en": "Reset",
+    "value": "Herstellen",
+    "source": "manual"
+  },
+  "game-setup.tiles.separate-expansions": {
+    "en": "Separate expansions",
+    "value": "Uitbreidingen scheiden",
+    "source": "manual"
+  },
+  "game-setup.tiles.start-tile-excluded": {
+    "en": "Starting tile count is set to 0 – restore it to create the game",
+    "value": "Het aantal starttegels staat op 0 – zet het terug om het spel te maken",
+    "source": "manual"
+  },
+  "game-setup.tiles.supply-tiles": {
+    "en": "In the players' supply, not in the draw pile",
+    "value": "In de voorraad van de spelers, niet in de trekstapel",
+    "source": "manual"
+  },
+  "game-setup.variant.best-setups": {
+    "en": "Best setups",
+    "value": "Beste instellingen",
+    "source": "manual"
+  },
+  "game-setup.variant.black-fairy-placement.description": {
+    "en": "The Black Fairy is deployed {}.",
+    "value": "De zwarte fee wordt {} gezet.",
+    "source": "manual"
+  },
+  "game-setup.variant.black-fairy-placement.next-follower": {
+    "en": "next to a meeple",
+    "value": "bij een meeple",
+    "source": "manual"
+  },
+  "game-setup.variant.black-fairy-placement.on-tile": {
+    "en": "on a tile",
+    "value": "op een tegel",
+    "source": "manual"
+  },
+  "game-setup.variant.choose-variant": {
+    "en": "Choose game variant",
+    "value": "Kies de spelvariant",
+    "source": "manual"
+  },
+  "game-setup.variant.leaderboard-empty": {
+    "en": "No finished co-op games yet — set up your own game and be the first on the board!",
+    "value": "Nog geen afgeronde coöp-spellen — zet je eigen spel op en wees de eerste op de ranglijst!",
+    "source": "manual"
+  },
+  "game-setup.variant.leaderboard-loading": {
+    "en": "Loading best setups from the server…",
+    "value": "Beste instellingen worden van de server geladen…",
+    "source": "manual"
+  },
+  "game-setup.variant.leaderboard-online-only": {
+    "en": "Connect to the online server to browse the best co-op setups and scores.",
+    "value": "Maak verbinding met de online server om de beste coöp-instellingen en scores te bekijken.",
+    "source": "manual"
+  },
+  "game-setup.variant.n-players-plural": {
+    "en": "{players} players | {players} player | {players} players",
+    "value": "{players} spelers | {players} speler | {players} spelers",
+    "source": "manual"
+  },
+  "game-setup.variant.play-it": {
+    "en": "Play it",
+    "value": "Speel het",
+    "source": "manual"
+  },
+  "game-setup.variant.popular-addons": {
+    "en": "Most popular add-ons",
+    "value": "Populairste add-ons",
+    "source": "manual"
+  },
+  "game-setup.variant.popular-components": {
+    "en": "Most popular components",
+    "value": "Populairste componenten",
+    "source": "manual"
+  },
+  "game-setup.variant.popular-empty": {
+    "en": "No finished games yet — set up your own game and start the statistics!",
+    "value": "Nog geen afgeronde spellen — zet je eigen spel op en begin de statistiek!",
+    "source": "manual"
+  },
+  "game-setup.variant.popular-online-only": {
+    "en": "Connect to the online server to browse the most-played setups.",
+    "value": "Maak verbinding met de online server om de meestgespeelde instellingen te bekijken.",
+    "source": "manual"
+  },
+  "game-setup.variant.popular-sets": {
+    "en": "Most popular expansions",
+    "value": "Populairste uitbreidingen",
+    "source": "manual"
+  },
+  "game-setup.variant.popular-setups": {
+    "en": "Most popular setups",
+    "value": "Populairste instellingen",
+    "source": "manual"
+  },
+  "game-setup.variant.range-all": {
+    "en": "All time",
+    "value": "Alle tijden",
+    "source": "manual"
+  },
+  "game-setup.variant.range-month": {
+    "en": "Last month",
+    "value": "Afgelopen maand",
+    "source": "manual"
+  },
+  "game-setup.variant.range-year": {
+    "en": "Last year",
+    "value": "Afgelopen jaar",
+    "source": "manual"
+  },
+  "game-setup.variant.share-of-games": {
+    "en": "{percent}% of finished games",
+    "value": "{percent}% van de afgeronde spellen",
+    "source": "manual"
+  },
+  "game-setup.variant.standard": {
+    "en": "Standard rules",
+    "value": "Standaardregels",
+    "source": "manual"
+  },
+  "game-setup.variant.standard-description": {
+    "en": "The classic competitive game — every player scores for themselves and the highest score wins.",
+    "value": "Het klassieke competitieve spel — elke speler scoort voor zichzelf en de hoogste score wint.",
+    "source": "manual"
+  },
+  "game-setup.variant.times-played": {
+    "en": "played {count}×",
+    "value": "{count}× gespeeld",
+    "source": "manual"
+  },
+  "game-setup.variant.your-score": {
+    "en": "Your score — best {best}, latest {latest}",
+    "value": "Jouw score — beste {best}, laatste {latest}",
+    "source": "manual"
+  },
+  "game.action.host-terminated-the-game": {
+    "en": "Host terminated the game. Connection was closed.",
+    "value": "De host heeft het spel beëindigd. De verbinding is verbroken.",
+    "source": "manual"
+  },
+  "game.action.place-this-tile-instead": {
+    "en": "Place this tile instead",
+    "value": "Leg in plaats daarvan deze tegel",
+    "source": "manual"
+  },
+  "game.action.placement-optional-bridge": {
+    "en": "Some rotations here place a bridge; others don't",
+    "value": "Sommige rotaties plaatsen hier een brug, andere niet",
+    "source": "manual"
+  },
+  "game.action.placement-requires-bridge": {
+    "en": "Every placement here requires a bridge",
+    "value": "Elke plaatsing hier vereist een brug",
+    "source": "manual"
+  },
+  "game.action.ransom-paid": {
+    "en": "Ransom paid",
+    "value": "Losgeld betaald",
+    "source": "manual"
+  },
+  "game.action.score-first-choose": {
+    "en": "Choose which feature to score first",
+    "value": "Kies welk project als eerste wordt gewaardeerd",
+    "source": "manual"
+  },
+  "game.action.score-first-player-must-choose": {
+    "en": "Player must choose which feature to score first",
+    "value": "Speler moet kiezen welk project als eerste wordt gewaardeerd",
+    "source": "manual"
+  },
+  "game.action.tile-discarded-notice-plural": {
+    "en": "These tiles can't be placed anywhere, so they were discarded | This tile can't be placed anywhere, so it was discarded | These tiles can't be placed anywhere, so they were discarded",
+    "value": "Deze tegels passen nergens en zijn daarom afgelegd | Deze tegel past nergens en is daarom afgelegd | Deze tegels passen nergens en zijn daarom afgelegd",
+    "source": "manual"
+  },
+  "game.cause.caused-by": {
+    "en": "Caused by: {cause}",
+    "value": "Oorzaak: {cause}",
+    "source": "manual"
+  },
+  "game.cause.figure-moved": {
+    "en": "the figure moving here",
+    "value": "de hierheen verplaatste figuur",
+    "source": "manual"
+  },
+  "game.cause.meeple-deployed": {
+    "en": "the deployed meeple",
+    "value": "de geplaatste meeple",
+    "source": "manual"
+  },
+  "game.cause.rule.count-clockwise": {
+    "en": "the Count moving on clockwise",
+    "value": "de Graaf schuift met de klok mee",
+    "source": "manual"
+  },
+  "game.cause.rule.decinsky-sneznik-scored": {
+    "en": "Děčínský Sněžník scored",
+    "value": "Decinsky Sneznik gewaardeerd",
+    "source": "manual"
+  },
+  "game.cause.rule.final-scoring": {
+    "en": "final scoring",
+    "value": "eindtelling",
+    "source": "manual"
+  },
+  "game.cause.rule.flock-expanded": {
+    "en": "a sheep token drawn for the flock",
+    "value": "een schaapfiche getrokken voor de kudde",
+    "source": "manual"
+  },
+  "game.cause.rule.flock-scored": {
+    "en": "the flock scored",
+    "value": "de kudde gewaardeerd",
+    "source": "manual"
+  },
+  "game.cause.rule.game-start": {
+    "en": "the start of the game",
+    "value": "het begin van het spel",
+    "source": "manual"
+  },
+  "game.cause.rule.mage-witch-joined": {
+    "en": "the mage's and the witch's features joined",
+    "value": "de projecten van de Tovenaar en de Heks zijn verbonden",
+    "source": "manual"
+  },
+  "game.cause.rule.mage-witch-no-target": {
+    "en": "no open city or road left for the figure",
+    "value": "geen open stad of weg meer voor de figuur",
+    "source": "manual"
+  },
+  "game.cause.rule.meteorite": {
+    "en": "a meteorite impact",
+    "value": "een meteorietinslag",
+    "source": "manual"
+  },
+  "game.cause.rule.obelisk-scored": {
+    "en": "the obelisk scored",
+    "value": "de obelisk gewaardeerd",
+    "source": "manual"
+  },
+  "game.cause.rule.trap": {
+    "en": "a trap",
+    "value": "een val",
+    "source": "manual"
+  },
+  "game.cause.rule.windmill-scored": {
+    "en": "the windmill scored",
+    "value": "de windmolen gewaardeerd",
+    "source": "manual"
+  },
+  "game.cause.rule.wolf": {
+    "en": "the wolf drawn",
+    "value": "de wolf getrokken",
+    "source": "manual"
+  },
+  "game.cause.tile-placed": {
+    "en": "the placed tile",
+    "value": "de gelegde tegel",
+    "source": "manual"
+  },
+  "game.coop.all-lose": {
+    "en": "All players lose",
+    "value": "Alle spelers verliezen",
+    "source": "manual"
+  },
+  "game.coop.all-win": {
+    "en": "All players win!",
+    "value": "Alle spelers winnen!",
+    "source": "manual"
+  },
+  "game.coop.team-score-plural": {
+    "en": "Team score: {points} points | Team score: {points} point | Team score: {points} points",
+    "value": "Teamscore: {points} punten | Teamscore: {points} punt | Teamscore: {points} punten",
+    "source": "manual"
+  },
+  "game.coop.triggered-by": {
+    "en": "{name} could neither enlarge an occupied feature nor occupy a new one.",
+    "value": "{name} kon geen bezet gebied uitbreiden en geen nieuw gebied bezetten.",
+    "source": "manual"
+  },
+  "game.element.black-fairy": {
+    "en": "Black Fairy",
+    "value": "Zwarte fee",
+    "source": "manual"
+  },
+  "game.element.city-palace": {
+    "en": "City Palace",
+    "value": "Paleis",
+    "source": "manual"
+  },
+  "game.element.kingdom-palace": {
+    "en": "Kingdom Palace",
+    "value": "Koninkrijkspaleis",
+    "source": "manual"
+  },
+  "game.element.kingdoms-palace": {
+    "en": "City Palace",
+    "value": "Paleis",
+    "source": "manual"
+  },
+  "game.element.mini-follower": {
+    "en": "Mini Meeple",
+    "value": "Mini-meeple",
+    "source": "manual"
+  },
+  "game.element.pre-draw": {
+    "en": "Pre-draw",
+    "value": "Voorafgaand pakken",
+    "source": "manual"
+  },
+  "game.event.meeple-awarded": {
+    "en": "Earned a meeple",
+    "value": "Heeft een meeple gekregen",
+    "source": "manual"
+  },
+  "game.event.meeple-awarded-hole": {
+    "en": "Filled a hole",
+    "value": "Heeft een gat opgevuld",
+    "source": "manual"
+  },
+  "game.feature.black-fairy": {
+    "en": "Black Fairy",
+    "value": "Zwarte fee",
+    "source": "manual"
+  },
+  "game.feature.keep-building": {
+    "en": "Keep Building (co-op)",
+    "value": "Blijf bouwen (coöp)",
+    "source": "manual"
+  },
+  "game.feature.kingdom": {
+    "en": "Kingdom",
+    "value": "Koninkrijk",
+    "source": "manual"
+  },
+  "game.feature.kingdoms": {
+    "en": "Kingdoms",
+    "value": "Koninkrijken",
+    "source": "manual"
+  },
+  "game.feature.placed-tiles": {
+    "en": "Placed tiles",
+    "value": "Geplaatste tegels",
+    "source": "manual"
+  },
+  "game.observers.watching": {
+    "en": "Watching",
+    "value": "Kijkt mee",
+    "source": "manual"
+  },
+  "game.placement.converted-by": {
+    "en": "Converted by {player}",
+    "value": "Omgezet door {player}",
+    "source": "manual"
+  },
+  "game.placement.deployed-by": {
+    "en": "Deployed by {player}",
+    "value": "Geplaatst door {player}",
+    "source": "manual"
+  },
+  "game.placement.discarded-reason": {
+    "en": "It fits nowhere on the board, so another tile was drawn",
+    "value": "Hij past nergens op het speelveld, dus is er een andere tegel getrokken",
+    "source": "manual"
+  },
+  "game.placement.exchanged-reason": {
+    "en": "Each player got their own meeple back",
+    "value": "Elke speler heeft zijn eigen meeple terug",
+    "source": "manual"
+  },
+  "game.placement.moved-by": {
+    "en": "Moved by {player}",
+    "value": "Verplaatst door {player}",
+    "source": "manual"
+  },
+  "game.placement.placed-by": {
+    "en": "Placed by {player}",
+    "value": "Gelegd door {player}",
+    "source": "manual"
+  },
+  "game.placement.removed-with": {
+    "en": "{source}, by {player}",
+    "value": "{source}, door {player}",
+    "source": "manual"
+  },
+  "game.placement.title.captured": {
+    "en": "{figure} captured",
+    "value": "{figure} gevangen",
+    "source": "manual"
+  },
+  "game.placement.title.castle-created": {
+    "en": "Small city converted to a castle",
+    "value": "Kleine stad omgezet in een burcht",
+    "source": "manual"
+  },
+  "game.placement.title.discarded": {
+    "en": "Discarded",
+    "value": "Afgelegd",
+    "source": "manual"
+  },
+  "game.placement.title.exchanged": {
+    "en": "Prisoners exchanged",
+    "value": "Gevangenen geruild",
+    "source": "manual"
+  },
+  "game.placement.title.moved": {
+    "en": "{figure} moved",
+    "value": "{figure} verplaatst",
+    "source": "manual"
+  },
+  "game.placement.title.placed": {
+    "en": "{figure} placed",
+    "value": "{figure} geplaatst",
+    "source": "manual"
+  },
+  "game.placement.title.placed-on-letter": {
+    "en": "{figure} placed on the Letter",
+    "value": "{figure} op de Brief geplaatst",
+    "source": "manual"
+  },
+  "game.placement.title.removed": {
+    "en": "{figure} removed",
+    "value": "{figure} verwijderd",
+    "source": "manual"
+  },
+  "game.placement.title.tile-placed": {
+    "en": "Tile placed",
+    "value": "Tegel gelegd",
+    "source": "manual"
+  },
+  "game.ransom.already-paid": {
+    "en": "A meeple was already bought back this turn — one per turn",
+    "value": "Deze beurt is al een meeple vrijgekocht — slechts één per beurt",
+    "source": "manual"
+  },
+  "game.ransom.can": {
+    "en": "Buy back for 3 points",
+    "value": "Vrijkopen voor 3 punten",
+    "source": "manual"
+  },
+  "game.ransom.not-enough-points": {
+    "en": "Not enough points to buy back — 3 points are needed",
+    "value": "Niet genoeg punten om vrij te kopen — er zijn 3 punten nodig",
+    "source": "manual"
+  },
+  "game.ransom.not-their-action": {
+    "en": "Captured — its owner can buy it back for 3 points on their turn",
+    "value": "Gevangen — de eigenaar kan hem in zijn beurt vrijkopen voor 3 punten",
+    "source": "manual"
+  },
+  "game.scoring.income": {
+    "en": "income",
+    "value": "inkomsten",
+    "source": "manual"
+  },
+  "game.scoring.item-cloth": {
+    "en": "Cloth",
+    "value": "Stof",
+    "source": "manual"
+  },
+  "game.scoring.item-darmstadtium": {
+    "en": "Darmstadtium",
+    "value": "Darmstadtium",
+    "source": "manual"
+  },
+  "game.scoring.item-grain": {
+    "en": "Grain",
+    "value": "Graan",
+    "source": "manual"
+  },
+  "game.scoring.item-house": {
+    "en": "House",
+    "value": "Huis",
+    "source": "manual"
+  },
+  "game.scoring.item-river-tiles": {
+    "en": "River tiles",
+    "value": "Riviertegels",
+    "source": "manual"
+  },
+  "game.scoring.item-shed": {
+    "en": "Shed",
+    "value": "Schuur",
+    "source": "manual"
+  },
+  "game.scoring.item-tiles-east": {
+    "en": "Tiles to the east",
+    "value": "Tegels naar het oosten",
+    "source": "manual"
+  },
+  "game.scoring.item-tiles-north": {
+    "en": "Tiles to the north",
+    "value": "Tegels naar het noorden",
+    "source": "manual"
+  },
+  "game.scoring.item-tiles-south": {
+    "en": "Tiles to the south",
+    "value": "Tegels naar het zuiden",
+    "source": "manual"
+  },
+  "game.scoring.item-tiles-west": {
+    "en": "Tiles to the west",
+    "value": "Tegels naar het westen",
+    "source": "manual"
+  },
+  "game.scoring.item-tower": {
+    "en": "Tower",
+    "value": "Toren",
+    "source": "manual"
+  },
+  "game.scoring.item-wine": {
+    "en": "Wine",
+    "value": "Wijn",
+    "source": "manual"
+  },
+  "game.scoring.item-wolf": {
+    "en": "Wolf",
+    "value": "Wolf",
+    "source": "manual"
+  },
+  "game.scoring.majority": {
+    "en": "majority",
+    "value": "meerderheid",
+    "source": "manual"
+  },
+  "game.scoring.no-majority": {
+    "en": "no majority",
+    "value": "geen meerderheid",
+    "source": "manual"
+  },
+  "game.scoring.payment": {
+    "en": "payment",
+    "value": "betaling",
+    "source": "manual"
+  },
+  "game.tiles-progress": {
+    "en": "Tiles placed",
+    "value": "Geplaatste tegels",
+    "source": "manual"
+  },
+  "index.local.new-local-game": {
+    "en": "New local game",
+    "value": "Nieuw lokaal spel",
+    "source": "manual"
+  },
+  "index.online.connecting": {
+    "en": "Connecting to server…",
+    "value": "Verbinden met server…",
+    "source": "manual"
+  },
+  "index.online.disconnect-cancel": {
+    "en": "Stay connected",
+    "value": "Verbonden blijven",
+    "source": "manual"
+  },
+  "index.online.disconnect-confirm": {
+    "en": "Disconnect and close games",
+    "value": "Verbreken en spellen sluiten",
+    "source": "manual"
+  },
+  "index.online.disconnect-message": {
+    "en": "You have {count} online game(s) open. Disconnecting will close them.",
+    "value": "Je hebt {count} online spellen open. Bij het verbreken worden ze gesloten.",
+    "source": "manual"
+  },
+  "index.online.disconnect-title": {
+    "en": "Disconnect from server",
+    "value": "Verbinding met server verbreken",
+    "source": "manual"
+  },
+  "index.online.game-not-found": {
+    "en": "Game not found. Check the game key and try again.",
+    "value": "Spel niet gevonden. Controleer de spelsleutel en probeer het opnieuw.",
+    "source": "manual"
+  },
+  "index.online.incompatible-version-newer": {
+    "en": "Newer version, cannot play together (protocol {version})",
+    "value": "Nieuwere versie, samen spelen niet mogelijk (protocol {version})",
+    "source": "manual"
+  },
+  "index.online.incompatible-version-older": {
+    "en": "Older version, cannot play together (protocol {version})",
+    "value": "Oudere versie, samen spelen niet mogelijk (protocol {version})",
+    "source": "manual"
+  },
+  "index.online.incompatible-version-unknown": {
+    "en": "Unknown version, cannot play together",
+    "value": "Onbekende versie, samen spelen niet mogelijk",
+    "source": "manual"
+  },
+  "index.online.loading-game-data": {
+    "en": "Loading game data…",
+    "value": "Spelgegevens worden geladen…",
+    "source": "manual"
+  },
+  "index.online.local-game": {
+    "en": "Local game",
+    "value": "Lokaal spel",
+    "source": "manual"
+  },
+  "index.online.max-players-title": {
+    "en": "Players (max)",
+    "value": "Spelers (max.)",
+    "source": "manual"
+  },
+  "index.online.no-clients": {
+    "en": "No one connected",
+    "value": "Niemand verbonden",
+    "source": "manual"
+  },
+  "index.online.offline": {
+    "en": "Offline – not connected to {0}",
+    "value": "Offline – niet verbonden met {0}",
+    "source": "manual"
+  },
+  "index.online.offline-lobby-hidden": {
+    "en": "Connect to the server to see the public lobby and your games in progress.",
+    "value": "Maak verbinding met de server om de openbare lobby en je lopende spellen te zien.",
+    "source": "manual"
+  },
+  "index.online.online-game": {
+    "en": "Online game",
+    "value": "Online spel",
+    "source": "manual"
+  },
+  "index.online.opened-in-window": {
+    "en": "Open in a window",
+    "value": "In een venster openen",
+    "source": "manual"
+  },
+  "index.online.players-online": {
+    "en": "Players online ({count})",
+    "value": "Spelers online ({count})",
+    "source": "manual"
+  },
+  "index.online.status-idle": {
+    "en": "Idle",
+    "value": "Inactief",
+    "source": "manual"
+  },
+  "index.online.status-in-game": {
+    "en": "In game",
+    "value": "In spel",
+    "source": "manual"
+  },
+  "index.online.title-local": {
+    "en": "Games hosted on dev local",
+    "value": "Spellen op de lokale dev-server",
+    "source": "manual"
+  },
+  "menu.create-game": {
+    "en": "Create Game",
+    "value": "Spel maken",
+    "source": "manual"
+  },
+  "menu.feature-hints": {
+    "en": "Feature hints",
+    "value": "Gebiedshints",
+    "source": "manual"
+  },
+  "menu.feature-hints'": {
+    "en": "Feature hints",
+    "value": "Gebiedshints",
+    "source": "manual"
+  },
+  "menu.home": {
+    "en": "Home",
+    "value": "Start",
+    "source": "manual"
+  },
+  "menu.new-local-game": {
+    "en": "New local game",
+    "value": "Nieuw lokaal spel",
+    "source": "manual"
+  },
+  "menu.potential-final-score": {
+    "en": "Potential Final Score",
+    "value": "Mogelijke eindscore",
+    "source": "manual"
+  },
+  "open-windows.close": {
+    "en": "Close window",
+    "value": "Venster sluiten",
+    "source": "manual"
+  },
+  "open-windows.empty": {
+    "en": "No game windows open",
+    "value": "Geen spelvensters open",
+    "source": "manual"
+  },
+  "open-windows.focus": {
+    "en": "Bring window to front",
+    "value": "Venster naar voren halen",
+    "source": "manual"
+  },
+  "open-windows.kind.game": {
+    "en": "Game",
+    "value": "Spel",
+    "source": "manual"
+  },
+  "open-windows.kind.local": {
+    "en": "Local game",
+    "value": "Lokaal spel",
+    "source": "manual"
+  },
+  "open-windows.kind.online": {
+    "en": "Online game",
+    "value": "Online spel",
+    "source": "manual"
+  },
+  "open-windows.progress": {
+    "en": "Placed tiles / total",
+    "value": "Geplaatste tegels / totaal",
+    "source": "manual"
+  },
+  "open-windows.title": {
+    "en": "Open game windows",
+    "value": "Open spelvensters",
+    "source": "manual"
+  },
+  "predraw.draw": {
+    "en": "Draw tile",
+    "value": "Tegel pakken",
+    "source": "manual"
+  },
+  "predraw.empty": {
+    "en": "—",
+    "value": "—",
+    "source": "manual"
+  },
+  "predraw.incompatible": {
+    "en": "Not available with Builder, Dragon, Wagon, Castle, Shepherd, River, Escape, Count or Crop Circles",
+    "value": "Niet beschikbaar met Bouwmeester, Draak, Wagen, Kasteel, Schaapherder, Rivier, Ontsnapping, Graaf of Graancirkels",
+    "source": "manual"
+  },
+  "predraw.local-only": {
+    "en": "Not allowed in local games",
+    "value": "Niet toegestaan in lokale spellen",
+    "source": "manual"
+  },
+  "predraw.one-seat-notice": {
+    "en": "Pre-draw game — each player plays on their own device, so you can take only one slot.",
+    "value": "Spel met voorafgaand pakken — elke speler speelt op zijn eigen apparaat, dus je kunt maar één plaats innemen.",
+    "source": "manual"
+  },
+  "predraw.pass-abbey": {
+    "en": "Pass abbey (draw last tile)",
+    "value": "Abdij overslaan (laatste tegel pakken)",
+    "source": "manual"
+  },
+  "predraw.pass-supply-tile": {
+    "en": "Pass {name} (draw last tile)",
+    "value": "{name} overslaan (laatste tegel pakken)",
+    "source": "manual"
+  },
+  "predraw.pick-hint": {
+    "en": "Click a tile to place it, then choose a spot on the board",
+    "value": "Klik op een tegel om die te plaatsen en kies daarna een plek op het bord",
+    "source": "manual"
+  },
+  "predraw.your-hand": {
+    "en": "Your hand",
+    "value": "Jouw hand",
+    "source": "manual"
+  },
+  "settings.add-ons.add-on-requires-newer-app": {
+    "en": "Add-on requires FanCloisterZone {version} or higher",
+    "value": "Add-on vereist FanCloisterZone {version} of hoger",
+    "source": "manual"
+  },
+  "settings.add-ons.downloading-classic-artwork": {
+    "en": "Downloading classic artwork",
+    "value": "Klassieke afbeeldingen downloaden",
+    "source": "manual"
+  },
+  "settings.add-ons.invalid-add-on-missing-minimum-version": {
+    "en": "Invalid add-on: minimumJczVersion is missing",
+    "value": "Ongeldige add-on: minimumJczVersion ontbreekt",
+    "source": "manual"
+  },
+  "settings.add-ons.invalid-add-on-version-not-a-number": {
+    "en": "Invalid add-on: the version must be a number, not text",
+    "value": "Ongeldige add-on: de versie moet een getal zijn, geen tekst",
+    "source": "manual"
+  },
+  "settings.add-ons.invalid-add-on-version-not-an-integer": {
+    "en": "Invalid add-on: the version must be a whole number, found {version}",
+    "value": "Ongeldige add-on: de versie moet een geheel getal zijn, gevonden {version}",
+    "source": "manual"
+  },
+  "settings.system.taskbar.grouped": {
+    "en": "Group windows (raise the active game on top when it's your turn)",
+    "value": "Vensters groeperen (het actieve spel naar voren halen als jij aan zet bent)",
+    "source": "manual"
+  },
+  "settings.system.taskbar.hint": {
+    "en": "Changes how the lobby and game windows appear on the Windows taskbar.",
+    "value": "Wijzigt hoe de lobby en spelvensters op de Windows-taakbalk verschijnen.",
+    "source": "manual"
+  },
+  "settings.system.taskbar.separate": {
+    "en": "Separate taskbar buttons (one per window)",
+    "value": "Aparte taakbalkknoppen (één per venster)",
+    "source": "manual"
+  },
+  "settings.system.taskbar.title": {
+    "en": "Windows taskbar",
+    "value": "Windows-taakbalk",
+    "source": "manual"
+  }
+}

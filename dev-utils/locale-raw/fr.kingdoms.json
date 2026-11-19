@@ -1,0 +1,9 @@
+{
+  "expansion.kingdoms": "Royaumes",
+  "expansion.kingdoms-description": "Chaque joueur possède un Palais de sa couleur. Au lieu de piocher une tuile, placez-le dans une ville où se trouve l'un de vos meeples : elle devient votre capitale. Une fois la capitale achevée, elle devient un royaume : en fin de partie, elle rapporte 3 points pour chaque ville touchant un pré relié à elle.",
+  "game.action.place-this-tile-instead": "Placer plutôt cette tuile",
+  "game.element.kingdom-palace": "Palais",
+  "game.feature.kingdom": "Royaume",
+  "game.feature.kingdoms": "Royaumes",
+  "game-setup.tiles.supply-tiles": "Dans la réserve des joueurs, pas dans la pioche"
+}

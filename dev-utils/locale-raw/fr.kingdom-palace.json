@@ -1,0 +1,5 @@
+{
+  "game.element.kingdom-palace": "Palais du Royaume",
+  "expansion.kingdoms-description": "Chaque joueur possède un Palais du Royaume de sa couleur. Au lieu de piocher une tuile, placez-le dans une ville où se trouve l'un de vos meeples : elle devient votre capitale. Une fois la capitale achevée, elle devient un royaume : en fin de partie, elle rapporte 3 points pour chaque ville achevée touchant un pré relié à elle.",
+  "predraw.pass-supply-tile": "Passer {name} (piocher la dernière tuile)"
+}

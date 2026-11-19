@@ -1,0 +1,5 @@
+{
+  "game.element.kingdom-palace": "Palau del Regne",
+  "expansion.kingdoms-description": "Cada jugador té un Palau del Regne del seu color. En lloc d'agafar una peça, col·loqueu-lo en una ciutat amb un dels vostres seguidors per convertir-la en la vostra capital. Quan la capital es completa, esdevé un regne: al final, puntua 3 punts per cada ciutat completada que toca un camp connectat amb ella.",
+  "predraw.pass-supply-tile": "Passa {name} (agafa l'última peça)"
+}

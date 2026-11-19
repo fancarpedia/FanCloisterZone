@@ -1,0 +1,9 @@
+{
+  "expansion.kingdoms": "Regate",
+  "expansion.kingdoms-description": "Fiecare jucător are un Palat în culoarea sa. În loc să tragi un cartonaș, îl poți plasa într-un oraș cu unul dintre meeple-ii tăi, iar orașul devine capitala ta. Odată ce capitala este completă, devine un regat: la final, aduce 3 puncte pentru fiecare oraș care atinge un câmp legat de ea.",
+  "game.action.place-this-tile-instead": "Plasează în schimb acest cartonaș",
+  "game.element.kingdom-palace": "Palat",
+  "game.feature.kingdom": "Regat",
+  "game.feature.kingdoms": "Regate",
+  "game-setup.tiles.supply-tiles": "În rezerva jucătorilor, nu în teancul de tras"
+}

@@ -1,0 +1,9 @@
+{
+  "expansion.kingdoms": "Koninkrijken",
+  "expansion.kingdoms-description": "Elke speler heeft een Paleis in zijn eigen kleur. In plaats van een tegel te trekken, leg je het aan een stad met een van je meeples: die wordt je hoofdstad. Zodra je hoofdstad af is, wordt ze een koninkrijk: aan het einde levert ze 3 punten op voor elke stad die grenst aan een weide die met de hoofdstad verbonden is.",
+  "game.action.place-this-tile-instead": "Leg in plaats daarvan deze tegel",
+  "game.element.kingdom-palace": "Paleis",
+  "game.feature.kingdom": "Koninkrijk",
+  "game.feature.kingdoms": "Koninkrijken",
+  "game-setup.tiles.supply-tiles": "In de voorraad van de spelers, niet in de trekstapel"
+}

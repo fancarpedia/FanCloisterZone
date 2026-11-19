@@ -1,0 +1,15 @@
+{
+  "ca": "Passa {name} (agafa l'última peça)",
+  "cs": "Přeskočit {name} (vzít poslední kartičku)",
+  "de": "{name} überspringen (letztes Plättchen ziehen)",
+  "es": "Pasar {name} (robar la última loseta)",
+  "fr": "Passer {name} (piocher la dernière tuile)",
+  "lt": "Praleisti {name} (traukti paskutinę kortelę)",
+  "nl": "{name} overslaan (laatste tegel pakken)",
+  "pl": "Pomiń {name} (dobierz ostatnią płytkę)",
+  "ro": "Omite {name} (trage ultimul cartonaș)",
+  "ru": "Пропустить {name} (взять последний тайл)",
+  "sk": "Preskočiť {name} (potiahnuť poslednú kartičku)",
+  "sl": "Preskoči {name} (vzemi zadnjo ploščico)",
+  "uk": "Пропустити {name} (витягнути останню плитку)"
+}

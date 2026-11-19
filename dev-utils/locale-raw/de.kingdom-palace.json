@@ -1,0 +1,5 @@
+{
+  "game.element.kingdom-palace": "Königreichspalast",
+  "expansion.kingdoms-description": "Jeder Spieler hat einen Königreichspalast in seiner Farbe. Statt ein Plättchen zu ziehen, legst du ihn an eine Stadt mit einem deiner Meeple – sie wird deine Hauptstadt. Ist die Hauptstadt fertig, wird sie zum Königreich: Bei Spielende bringt sie 3 Punkte für jede fertige Stadt, die an eine mit ihr verbundene Wiese grenzt.",
+  "predraw.pass-supply-tile": "{name} überspringen (letztes Plättchen ziehen)"
+}

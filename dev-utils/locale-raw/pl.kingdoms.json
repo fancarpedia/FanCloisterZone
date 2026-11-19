@@ -1,0 +1,9 @@
+{
+  "expansion.kingdoms": "Królestwa",
+  "expansion.kingdoms-description": "Każdy gracz ma Pałac w swoim kolorze. Zamiast losować płytkę, możesz dołożyć go do miasta, w którym stoi jeden z twoich podwładnych – miasto staje się twoją stolicą. Gdy stolica zostanie ukończona, staje się królestwem: na koniec gry zdobywa 3 punkty za każde miasto stykające się z polem połączonym ze stolicą.",
+  "game.action.place-this-tile-instead": "Zamiast tego umieść tę płytkę",
+  "game.element.kingdom-palace": "Pałac",
+  "game.feature.kingdom": "Królestwo",
+  "game.feature.kingdoms": "Królestwa",
+  "game-setup.tiles.supply-tiles": "W zasobie graczy, nie w stosie do losowania"
+}

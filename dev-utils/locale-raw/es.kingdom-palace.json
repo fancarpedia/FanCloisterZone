@@ -1,0 +1,5 @@
+{
+  "game.element.kingdom-palace": "Palacio del Reino",
+  "expansion.kingdoms-description": "Cada jugador tiene un Palacio del Reino de su color. En lugar de robar una loseta, puede colocarlo en una ciudad con uno de sus seguidores para convertirla en su capital. Cuando la capital se completa, se convierte en un reino: al final, puntúa 3 puntos por cada ciudad completada que toque un campo conectado con ella.",
+  "predraw.pass-supply-tile": "Pasar {name} (robar la última loseta)"
+}

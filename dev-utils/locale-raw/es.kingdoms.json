@@ -1,0 +1,9 @@
+{
+  "expansion.kingdoms": "Reinos",
+  "expansion.kingdoms-description": "Cada jugador tiene un Palacio de su color. En lugar de robar una loseta, puede colocarlo en una ciudad con uno de sus seguidores para convertirla en su capital. Cuando la capital se completa, se convierte en un reino: al final, puntúa 3 puntos por cada ciudad que toque un campo conectado con ella.",
+  "game.action.place-this-tile-instead": "Colocar esta loseta en su lugar",
+  "game.element.kingdom-palace": "Palacio",
+  "game.feature.kingdom": "Reino",
+  "game.feature.kingdoms": "Reinos",
+  "game-setup.tiles.supply-tiles": "En la reserva de los jugadores, no en la pila de robo"
+}

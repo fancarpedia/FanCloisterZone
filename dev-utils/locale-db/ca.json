@@ -1,0 +1,927 @@
+{
+  "chat.game-chat": {
+    "en": "Game chat",
+    "value": "Xat de la partida",
+    "source": "manual"
+  },
+  "dev.continue-game": {
+    "en": "Continue game",
+    "value": "Continua la partida",
+    "source": "manual"
+  },
+  "dev.filter-tests-by-name": {
+    "en": "Filter tests by name",
+    "value": "Filtra les proves pel nom",
+    "source": "manual"
+  },
+  "dev.step-back-in-save": {
+    "en": "Step Back in Save",
+    "value": "Un pas enrere a la partida desada",
+    "source": "manual"
+  },
+  "expansion.kingdoms": {
+    "en": "Kingdoms",
+    "value": "Regnes",
+    "source": "manual"
+  },
+  "expansion.kingdoms-description": {
+    "en": "Each player has a Kingdom Palace in their colour. Instead of drawing, place it in a city with one of your followers to make it your capital. Once your capital is completed it becomes a kingdom: at the end, it scores 3 points for every completed city touching a field connected to it.",
+    "value": "Cada jugador té un Palau del Regne del seu color. En lloc d'agafar una peça, col·loqueu-lo en una ciutat amb un dels vostres seguidors per convertir-la en la vostra capital. Quan la capital es completa, esdevé un regne: al final, puntua 3 punts per cada ciutat completada que toca un camp connectat amb ella.",
+    "source": "manual"
+  },
+  "expansion.under-the-big-top-c1": {
+    "en": "Under The Big Top",
+    "value": "Sota la Gran Carpa",
+    "source": "manual"
+  },
+  "file.save-created-prior-version-is-not-supported": {
+    "en": "Saved file created for prior version {version} is not supported",
+    "value": "No s'admet un fitxer desat creat per a la versió anterior {version}",
+    "source": "manual"
+  },
+  "file.save-game-setup": {
+    "en": "Save Game Setup",
+    "value": "Desa la configuració de la partida",
+    "source": "manual"
+  },
+  "game-setup.ai.not-available": {
+    "en": "AI not available",
+    "value": "IA no disponible",
+    "source": "manual"
+  },
+  "game-setup.ai.not-available-hint": {
+    "en": "AI players are not available for game setup",
+    "value": "Els jugadors IA no estan disponibles per a aquesta configuració de partida",
+    "source": "manual"
+  },
+  "game-setup.ai.not-supported": {
+    "en": "The AI does not play",
+    "value": "La IA no juga",
+    "source": "manual"
+  },
+  "game-setup.ai.supported": {
+    "en": "The AI can play this",
+    "value": "La IA pot jugar això",
+    "source": "manual"
+  },
+  "game-setup.create.ai-player": {
+    "en": "AI player",
+    "value": "Jugador IA",
+    "source": "manual"
+  },
+  "game-setup.create.assign": {
+    "en": "assign",
+    "value": "assigna",
+    "source": "manual"
+  },
+  "game-setup.create.game-full": {
+    "en": "Game full",
+    "value": "Partida completa",
+    "source": "manual"
+  },
+  "game-setup.create.kick-player": {
+    "en": "Kick player",
+    "value": "Expulsa el jugador",
+    "source": "manual"
+  },
+  "game-setup.create.local-limit-reached": {
+    "en": "Limit reached",
+    "value": "Límit assolit",
+    "source": "manual"
+  },
+  "game-setup.create.local-limit-reached-tooltip-plural": {
+    "en": "Maximum {limit} local players allowed | Maximum {limit} local player allowed | Maximum {limit} local players allowed",
+    "value": "Es permeten com a màxim {limit} jugadors locals | Es permet com a màxim {limit} jugador local | Es permeten com a màxim {limit} jugadors locals",
+    "source": "manual"
+  },
+  "game-setup.create.release-slot": {
+    "en": "Release slot",
+    "value": "Allibera la ranura",
+    "source": "manual"
+  },
+  "game-setup.game-flow.cooperative": {
+    "en": "Cooperative variant",
+    "value": "Variant cooperativa",
+    "source": "manual"
+  },
+  "game-setup.game-flow.keep-building-description": {
+    "en": "Every turn you must enlarge an occupied city, road or similar feature, or place a meeple on an unoccupied one. If a player does neither, the game ends and everyone loses. Survive to the last tile and everyone wins with a combined team score.",
+    "value": "Cada torn heu d'ampliar una ciutat, un camí o una àrea similar ocupada, o col·locar un seguidor en una de desocupada. Si un jugador no fa cap de les dues coses, la partida acaba i tothom perd. Si aguanteu fins a l'última peça, tothom guanya amb una puntuació d'equip conjunta.",
+    "source": "manual"
+  },
+  "game-setup.game-flow.pre-draw": {
+    "en": "Pre-draw",
+    "value": "Agafada prèvia",
+    "source": "manual"
+  },
+  "game-setup.header.game-setup": {
+    "en": "Game setup",
+    "value": "Configuració de la partida",
+    "source": "manual"
+  },
+  "game-setup.open-game.max-players": {
+    "en": "Max players (public)",
+    "value": "Màx. jugadors (pública)",
+    "source": "manual"
+  },
+  "game-setup.open-game.max-players-no-limit": {
+    "en": "No limit",
+    "value": "Sense límit",
+    "source": "manual"
+  },
+  "game-setup.open-game.no-human-player": {
+    "en": "No human in game",
+    "value": "No hi ha cap humà a la partida",
+    "source": "manual"
+  },
+  "game-setup.requires-one-from-group": {
+    "en": "Requires one from the group {groups}",
+    "value": "Requereix un del grup {groups}",
+    "source": "manual"
+  },
+  "game-setup.rules.fishhut-description": {
+    "en": "Fish Hut feature.",
+    "value": "Element de la barraca de pesca.",
+    "source": "manual"
+  },
+  "game-setup.rules.fishhut-disabled": {
+    "en": "No tile with Fish Hut is in the game.",
+    "value": "No hi ha cap peça amb barraca de pesca a la partida.",
+    "source": "manual"
+  },
+  "game-setup.tiles.custom-pack": {
+    "en": "Custom tile pack (counts changed)",
+    "value": "Conjunt de peces personalitzat (quantitats modificades)",
+    "source": "manual"
+  },
+  "game-setup.tiles.enable-quantity-change": {
+    "en": "Enable quantity change",
+    "value": "Permet canviar les quantitats",
+    "source": "manual"
+  },
+  "game-setup.tiles.next-expansion": {
+    "en": "Next expansion",
+    "value": "Expansió següent",
+    "source": "manual"
+  },
+  "game-setup.tiles.previous-expansion": {
+    "en": "Previous expansion",
+    "value": "Expansió anterior",
+    "source": "manual"
+  },
+  "game-setup.tiles.remove-all-tiles": {
+    "en": "Remove all",
+    "value": "Elimina-ho tot",
+    "source": "manual"
+  },
+  "game-setup.tiles.separate-expansions": {
+    "en": "Separate expansions",
+    "value": "Separa les expansions",
+    "source": "manual"
+  },
+  "game-setup.tiles.start-tile-excluded": {
+    "en": "Starting tile count is set to 0 – restore it to create the game",
+    "value": "El nombre de peces inicials és 0 – restaureu-lo per crear la partida",
+    "source": "manual"
+  },
+  "game-setup.tiles.supply-tiles": {
+    "en": "In the players' supply, not in the draw pile",
+    "value": "Al subministrament dels jugadors, no a la pila de peces",
+    "source": "manual"
+  },
+  "game-setup.variant.best-setups": {
+    "en": "Best setups",
+    "value": "Millors configuracions",
+    "source": "manual"
+  },
+  "game-setup.variant.black-fairy-placement.description": {
+    "en": "The Black Fairy is deployed {}.",
+    "value": "La fada negra es posa {}.",
+    "source": "manual"
+  },
+  "game-setup.variant.black-fairy-placement.next-follower": {
+    "en": "next to a meeple",
+    "value": "al costat d'un seguidor",
+    "source": "manual"
+  },
+  "game-setup.variant.black-fairy-placement.on-tile": {
+    "en": "on a tile",
+    "value": "en una peça",
+    "source": "manual"
+  },
+  "game-setup.variant.leaderboard-empty": {
+    "en": "No finished co-op games yet — set up your own game and be the first on the board!",
+    "value": "Encara no hi ha partides cooperatives acabades — prepareu la vostra partida i sigueu els primers a la taula!",
+    "source": "manual"
+  },
+  "game-setup.variant.leaderboard-loading": {
+    "en": "Loading best setups from the server…",
+    "value": "S'estan carregant les millors configuracions del servidor…",
+    "source": "manual"
+  },
+  "game-setup.variant.leaderboard-online-only": {
+    "en": "Connect to the online server to browse the best co-op setups and scores.",
+    "value": "Connecteu-vos al servidor en línia per consultar les millors configuracions i puntuacions cooperatives.",
+    "source": "manual"
+  },
+  "game-setup.variant.n-players-plural": {
+    "en": "{players} players | {players} player | {players} players",
+    "value": "{players} jugadors | {players} jugador | {players} jugadors",
+    "source": "manual"
+  },
+  "game-setup.variant.play-it": {
+    "en": "Play it",
+    "value": "Juga-hi",
+    "source": "manual"
+  },
+  "game-setup.variant.popular-addons": {
+    "en": "Most popular add-ons",
+    "value": "Complements més populars",
+    "source": "manual"
+  },
+  "game-setup.variant.popular-empty": {
+    "en": "No finished games yet — set up your own game and start the statistics!",
+    "value": "Encara no hi ha partides acabades — prepareu la vostra partida i comenceu l'estadística!",
+    "source": "manual"
+  },
+  "game-setup.variant.popular-online-only": {
+    "en": "Connect to the online server to browse the most-played setups.",
+    "value": "Connecteu-vos al servidor en línia per consultar les configuracions més jugades.",
+    "source": "manual"
+  },
+  "game-setup.variant.popular-sets": {
+    "en": "Most popular expansions",
+    "value": "Expansions més populars",
+    "source": "manual"
+  },
+  "game-setup.variant.popular-setups": {
+    "en": "Most popular setups",
+    "value": "Configuracions més populars",
+    "source": "manual"
+  },
+  "game-setup.variant.share-of-games": {
+    "en": "{percent}% of finished games",
+    "value": "{percent}% de les partides acabades",
+    "source": "manual"
+  },
+  "game-setup.variant.standard-description": {
+    "en": "The classic competitive game — every player scores for themselves and the highest score wins.",
+    "value": "El joc competitiu clàssic — cada jugador puntua per a si mateix i guanya la puntuació més alta.",
+    "source": "manual"
+  },
+  "game-setup.variant.times-played": {
+    "en": "played {count}×",
+    "value": "jugada {count}×",
+    "source": "manual"
+  },
+  "game-setup.variant.your-score": {
+    "en": "Your score — best {best}, latest {latest}",
+    "value": "La vostra puntuació — millor {best}, última {latest}",
+    "source": "manual"
+  },
+  "game.action.host-terminated-the-game": {
+    "en": "Host terminated the game. Connection was closed.",
+    "value": "L'amfitrió ha finalitzat la partida. S'ha tancat la connexió.",
+    "source": "manual"
+  },
+  "game.action.place-this-tile-instead": {
+    "en": "Place this tile instead",
+    "value": "Col·loqueu aquesta peça en canvi",
+    "source": "manual"
+  },
+  "game.action.placement-requires-bridge": {
+    "en": "Every placement here requires a bridge",
+    "value": "Cada col·locació aquí requereix un pont",
+    "source": "manual"
+  },
+  "game.action.ransom-paid": {
+    "en": "Ransom paid",
+    "value": "Rescat pagat",
+    "source": "manual"
+  },
+  "game.action.score-first-choose": {
+    "en": "Choose which feature to score first",
+    "value": "Trieu quin element es puntua primer",
+    "source": "manual"
+  },
+  "game.action.score-first-player-must-choose": {
+    "en": "Player must choose which feature to score first",
+    "value": "El jugador ha de triar quin element es puntua primer",
+    "source": "manual"
+  },
+  "game.action.shepherd-placement": {
+    "en": "Shepherd placement",
+    "value": "Col·locació del pastor",
+    "source": "manual"
+  },
+  "game.action.tile-discarded-notice-plural": {
+    "en": "These tiles can't be placed anywhere, so they were discarded | This tile can't be placed anywhere, so it was discarded | These tiles can't be placed anywhere, so they were discarded",
+    "value": "Aquestes peces no es poden col·locar enlloc, per això s'han descartat | Aquesta peça no es pot col·locar enlloc, per això s'ha descartat | Aquestes peces no es poden col·locar enlloc, per això s'han descartat",
+    "source": "manual"
+  },
+  "game.cause.caused-by": {
+    "en": "Caused by: {cause}",
+    "value": "Causa: {cause}",
+    "source": "manual"
+  },
+  "game.cause.figure-moved": {
+    "en": "the figure moving here",
+    "value": "la figura que s'ha mogut aquí",
+    "source": "manual"
+  },
+  "game.cause.meeple-deployed": {
+    "en": "the deployed meeple",
+    "value": "el seguidor col·locat",
+    "source": "manual"
+  },
+  "game.cause.rule.count-clockwise": {
+    "en": "the Count moving on clockwise",
+    "value": "el Comte avança en sentit horari",
+    "source": "manual"
+  },
+  "game.cause.rule.decinsky-sneznik-scored": {
+    "en": "Děčínský Sněžník scored",
+    "value": "Děčínský Sněžník puntuat",
+    "source": "manual"
+  },
+  "game.cause.rule.final-scoring": {
+    "en": "final scoring",
+    "value": "puntuació final",
+    "source": "manual"
+  },
+  "game.cause.rule.flock-expanded": {
+    "en": "a sheep token drawn for the flock",
+    "value": "una fitxa d'ovella treta per al ramat",
+    "source": "manual"
+  },
+  "game.cause.rule.flock-scored": {
+    "en": "the flock scored",
+    "value": "el ramat puntuat",
+    "source": "manual"
+  },
+  "game.cause.rule.game-start": {
+    "en": "the start of the game",
+    "value": "l'inici de la partida",
+    "source": "manual"
+  },
+  "game.cause.rule.mage-witch-joined": {
+    "en": "the mage's and the witch's features joined",
+    "value": "els elements del Mag i la Bruixa s'han unit",
+    "source": "manual"
+  },
+  "game.cause.rule.mage-witch-no-target": {
+    "en": "no open city or road left for the figure",
+    "value": "cap ciutat ni camí obert per a la figura",
+    "source": "manual"
+  },
+  "game.cause.rule.meteorite": {
+    "en": "a meteorite impact",
+    "value": "un impacte de meteorit",
+    "source": "manual"
+  },
+  "game.cause.rule.obelisk-scored": {
+    "en": "the obelisk scored",
+    "value": "l'obelisc puntuat",
+    "source": "manual"
+  },
+  "game.cause.rule.trap": {
+    "en": "a trap",
+    "value": "un parany",
+    "source": "manual"
+  },
+  "game.cause.rule.windmill-scored": {
+    "en": "the windmill scored",
+    "value": "el molí de vent puntuat",
+    "source": "manual"
+  },
+  "game.cause.rule.wolf": {
+    "en": "the wolf drawn",
+    "value": "el llop tret",
+    "source": "manual"
+  },
+  "game.cause.tile-placed": {
+    "en": "the placed tile",
+    "value": "la peça col·locada",
+    "source": "manual"
+  },
+  "game.coop.team-score-plural": {
+    "en": "Team score: {points} points | Team score: {points} point | Team score: {points} points",
+    "value": "Puntuació de l'equip: {points} punts | Puntuació de l'equip: {points} punt | Puntuació de l'equip: {points} punts",
+    "source": "manual"
+  },
+  "game.coop.triggered-by": {
+    "en": "{name} could neither enlarge an occupied feature nor occupy a new one.",
+    "value": "{name} no ha pogut ampliar una àrea ocupada ni ocupar-ne una de nova.",
+    "source": "manual"
+  },
+  "game.element.black-fairy": {
+    "en": "Black Fairy",
+    "value": "Fada negra",
+    "source": "manual"
+  },
+  "game.element.city-palace": {
+    "en": "City Palace",
+    "value": "Palau",
+    "source": "manual"
+  },
+  "game.element.kingdom-palace": {
+    "en": "Kingdom Palace",
+    "value": "Palau del Regne",
+    "source": "manual"
+  },
+  "game.element.kingdoms-palace": {
+    "en": "City Palace",
+    "value": "Palau",
+    "source": "manual"
+  },
+  "game.element.mini-follower": {
+    "en": "Mini Meeple",
+    "value": "Seguidor mini",
+    "source": "manual"
+  },
+  "game.element.pre-draw": {
+    "en": "Pre-draw",
+    "value": "Agafada prèvia",
+    "source": "manual"
+  },
+  "game.event.meeple-awarded": {
+    "en": "Earned a meeple",
+    "value": "Ha obtingut un seguidor",
+    "source": "manual"
+  },
+  "game.event.meeple-awarded-hole": {
+    "en": "Filled a hole",
+    "value": "Ha omplert un buit",
+    "source": "manual"
+  },
+  "game.feature.black-fairy": {
+    "en": "Black Fairy",
+    "value": "Fada negra",
+    "source": "manual"
+  },
+  "game.feature.keep-building": {
+    "en": "Keep Building (co-op)",
+    "value": "Continua construint (coop.)",
+    "source": "manual"
+  },
+  "game.feature.kingdom": {
+    "en": "Kingdom",
+    "value": "Regne",
+    "source": "manual"
+  },
+  "game.feature.kingdoms": {
+    "en": "Kingdoms",
+    "value": "Regnes",
+    "source": "manual"
+  },
+  "game.feature.placed-tiles": {
+    "en": "Placed tiles",
+    "value": "Peces col·locades",
+    "source": "manual"
+  },
+  "game.feature.shrine-challenge": {
+    "en": "Monastery/Shrine challenge",
+    "value": "Desafiament monestir/santuari",
+    "source": "manual"
+  },
+  "game.observers.watching": {
+    "en": "Watching",
+    "value": "Observant",
+    "source": "manual"
+  },
+  "game.placement.converted-by": {
+    "en": "Converted by {player}",
+    "value": "Convertit per {player}",
+    "source": "manual"
+  },
+  "game.placement.deployed-by": {
+    "en": "Deployed by {player}",
+    "value": "Col·locat per {player}",
+    "source": "manual"
+  },
+  "game.placement.discarded-reason": {
+    "en": "It fits nowhere on the board, so another tile was drawn",
+    "value": "No encaixa enlloc del tauler, així que s'ha robat una altra peça",
+    "source": "manual"
+  },
+  "game.placement.exchanged-reason": {
+    "en": "Each player got their own meeple back",
+    "value": "Cada jugador ha recuperat el seu propi seguidor",
+    "source": "manual"
+  },
+  "game.placement.moved-by": {
+    "en": "Moved by {player}",
+    "value": "Mogut per {player}",
+    "source": "manual"
+  },
+  "game.placement.placed-by": {
+    "en": "Placed by {player}",
+    "value": "Posat per {player}",
+    "source": "manual"
+  },
+  "game.placement.removed-with": {
+    "en": "{source}, by {player}",
+    "value": "{source}, per {player}",
+    "source": "manual"
+  },
+  "game.placement.title.captured": {
+    "en": "{figure} captured",
+    "value": "Captura: {figure}",
+    "source": "manual"
+  },
+  "game.placement.title.castle-created": {
+    "en": "Small city converted to a castle",
+    "value": "Ciutat petita convertida en castell",
+    "source": "manual"
+  },
+  "game.placement.title.discarded": {
+    "en": "Discarded",
+    "value": "Descartada",
+    "source": "manual"
+  },
+  "game.placement.title.exchanged": {
+    "en": "Prisoners exchanged",
+    "value": "Intercanvi de presoners",
+    "source": "manual"
+  },
+  "game.placement.title.moved": {
+    "en": "{figure} moved",
+    "value": "Moviment: {figure}",
+    "source": "manual"
+  },
+  "game.placement.title.placed": {
+    "en": "{figure} placed",
+    "value": "Col·locació: {figure}",
+    "source": "manual"
+  },
+  "game.placement.title.placed-on-letter": {
+    "en": "{figure} placed on the Letter",
+    "value": "Col·locació a la Carta: {figure}",
+    "source": "manual"
+  },
+  "game.placement.title.removed": {
+    "en": "{figure} removed",
+    "value": "Retirada: {figure}",
+    "source": "manual"
+  },
+  "game.placement.title.tile-placed": {
+    "en": "Tile placed",
+    "value": "Peça col·locada",
+    "source": "manual"
+  },
+  "game.ransom.already-paid": {
+    "en": "A meeple was already bought back this turn — one per turn",
+    "value": "Ja s'ha rescatat un seguidor aquest torn — només un per torn",
+    "source": "manual"
+  },
+  "game.ransom.can": {
+    "en": "Buy back for 3 points",
+    "value": "Rescata'l per 3 punts",
+    "source": "manual"
+  },
+  "game.ransom.not-enough-points": {
+    "en": "Not enough points to buy back — 3 points are needed",
+    "value": "No tens prou punts per rescatar-lo — calen 3 punts",
+    "source": "manual"
+  },
+  "game.ransom.not-their-action": {
+    "en": "Captured — its owner can buy it back for 3 points on their turn",
+    "value": "Capturat — el seu propietari el pot rescatar per 3 punts al seu torn",
+    "source": "manual"
+  },
+  "game.scoring.income": {
+    "en": "income",
+    "value": "ingrés",
+    "source": "manual"
+  },
+  "game.scoring.item-cloth": {
+    "en": "Cloth",
+    "value": "Teixit",
+    "source": "manual"
+  },
+  "game.scoring.item-darmstadtium": {
+    "en": "Darmstadtium",
+    "value": "Darmstadtium",
+    "source": "manual"
+  },
+  "game.scoring.item-grain": {
+    "en": "Grain",
+    "value": "Gra",
+    "source": "manual"
+  },
+  "game.scoring.item-house": {
+    "en": "House",
+    "value": "Casa",
+    "source": "manual"
+  },
+  "game.scoring.item-river-tiles": {
+    "en": "River tiles",
+    "value": "Peces de riu",
+    "source": "manual"
+  },
+  "game.scoring.item-shed": {
+    "en": "Shed",
+    "value": "Cobert",
+    "source": "manual"
+  },
+  "game.scoring.item-tiles-east": {
+    "en": "Tiles to the east",
+    "value": "Peces cap a l'est",
+    "source": "manual"
+  },
+  "game.scoring.item-tiles-north": {
+    "en": "Tiles to the north",
+    "value": "Peces cap al nord",
+    "source": "manual"
+  },
+  "game.scoring.item-tiles-south": {
+    "en": "Tiles to the south",
+    "value": "Peces cap al sud",
+    "source": "manual"
+  },
+  "game.scoring.item-tiles-west": {
+    "en": "Tiles to the west",
+    "value": "Peces cap a l'oest",
+    "source": "manual"
+  },
+  "game.scoring.item-tower": {
+    "en": "Tower",
+    "value": "Torre",
+    "source": "manual"
+  },
+  "game.scoring.item-wine": {
+    "en": "Wine",
+    "value": "Vi",
+    "source": "manual"
+  },
+  "game.scoring.item-wolf": {
+    "en": "Wolf",
+    "value": "Llop",
+    "source": "manual"
+  },
+  "game.tiles-progress": {
+    "en": "Tiles placed",
+    "value": "Peces col·locades",
+    "source": "manual"
+  },
+  "index.local.new-local-game": {
+    "en": "New local game",
+    "value": "Partida local nova",
+    "source": "manual"
+  },
+  "index.online.connecting": {
+    "en": "Connecting to server…",
+    "value": "S'està connectant al servidor…",
+    "source": "manual"
+  },
+  "index.online.disconnect-cancel": {
+    "en": "Stay connected",
+    "value": "Mantén la connexió",
+    "source": "manual"
+  },
+  "index.online.disconnect-confirm": {
+    "en": "Disconnect and close games",
+    "value": "Desconnecta i tanca les partides",
+    "source": "manual"
+  },
+  "index.online.disconnect-message": {
+    "en": "You have {count} online game(s) open. Disconnecting will close them.",
+    "value": "Teniu {count} partides en línia obertes. Si us desconnecteu, es tancaran.",
+    "source": "manual"
+  },
+  "index.online.game-not-found": {
+    "en": "Game not found. Check the game key and try again.",
+    "value": "No s'ha trobat la partida. Comproveu la clau de la partida i torneu-ho a provar.",
+    "source": "manual"
+  },
+  "index.online.incompatible-version-newer": {
+    "en": "Newer version, cannot play together (protocol {version})",
+    "value": "Versió més nova, no podeu jugar junts (protocol {version})",
+    "source": "manual"
+  },
+  "index.online.incompatible-version-older": {
+    "en": "Older version, cannot play together (protocol {version})",
+    "value": "Versió més antiga, no podeu jugar junts (protocol {version})",
+    "source": "manual"
+  },
+  "index.online.incompatible-version-unknown": {
+    "en": "Unknown version, cannot play together",
+    "value": "Versió desconeguda, no podeu jugar junts",
+    "source": "manual"
+  },
+  "index.online.loading-game-data": {
+    "en": "Loading game data…",
+    "value": "S'estan carregant les dades de la partida…",
+    "source": "manual"
+  },
+  "index.online.max-players-title": {
+    "en": "Players (max)",
+    "value": "Jugadors (màx.)",
+    "source": "manual"
+  },
+  "index.online.no-clients": {
+    "en": "No one connected",
+    "value": "Ningú connectat",
+    "source": "manual"
+  },
+  "index.online.offline": {
+    "en": "Offline – not connected to {0}",
+    "value": "Fora de línia – no connectat a {0}",
+    "source": "manual"
+  },
+  "index.online.offline-lobby-hidden": {
+    "en": "Connect to the server to see the public lobby and your games in progress.",
+    "value": "Connecteu-vos al servidor per veure la sala pública i les vostres partides en curs.",
+    "source": "manual"
+  },
+  "index.online.players-online": {
+    "en": "Players online ({count})",
+    "value": "Jugadors en línia ({count})",
+    "source": "manual"
+  },
+  "index.online.status-idle": {
+    "en": "Idle",
+    "value": "Inactiu",
+    "source": "manual"
+  },
+  "index.online.status-in-game": {
+    "en": "In game",
+    "value": "En partida",
+    "source": "manual"
+  },
+  "menu.create-game": {
+    "en": "Create Game",
+    "value": "Crea una partida",
+    "source": "manual"
+  },
+  "menu.feature-hints": {
+    "en": "Feature hints",
+    "value": "Pistes d'àrees",
+    "source": "manual"
+  },
+  "menu.feature-hints'": {
+    "en": "Feature hints",
+    "value": "Pistes d'àrees",
+    "source": "manual"
+  },
+  "menu.home": {
+    "en": "Home",
+    "value": "Inici",
+    "source": "manual"
+  },
+  "menu.new-local-game": {
+    "en": "New local game",
+    "value": "Partida local nova",
+    "source": "manual"
+  },
+  "menu.potential-final-score": {
+    "en": "Potential Final Score",
+    "value": "Puntuació final potencial",
+    "source": "manual"
+  },
+  "open-windows.close": {
+    "en": "Close window",
+    "value": "Tanca la finestra",
+    "source": "manual"
+  },
+  "open-windows.empty": {
+    "en": "No game windows open",
+    "value": "No hi ha finestres de partida obertes",
+    "source": "manual"
+  },
+  "open-windows.focus": {
+    "en": "Bring window to front",
+    "value": "Porta la finestra al davant",
+    "source": "manual"
+  },
+  "open-windows.kind.game": {
+    "en": "Game",
+    "value": "Partida",
+    "source": "manual"
+  },
+  "open-windows.kind.local": {
+    "en": "Local game",
+    "value": "Partida local",
+    "source": "manual"
+  },
+  "open-windows.kind.online": {
+    "en": "Online game",
+    "value": "Partida en línia",
+    "source": "manual"
+  },
+  "open-windows.progress": {
+    "en": "Placed tiles / total",
+    "value": "Peces col·locades / total",
+    "source": "manual"
+  },
+  "open-windows.title": {
+    "en": "Open game windows",
+    "value": "Finestres de partida obertes",
+    "source": "manual"
+  },
+  "predraw.draw": {
+    "en": "Draw tile",
+    "value": "Agafa una peça",
+    "source": "manual"
+  },
+  "predraw.incompatible": {
+    "en": "Not available with Builder, Dragon, Wagon, Castle, Shepherd, River, Escape, Count or Crop Circles",
+    "value": "No disponible amb Constructor, Drac, Carro, Castell, Pastor, Riu, Fugida, Comte ni Cercles de conreu",
+    "source": "manual"
+  },
+  "predraw.local-only": {
+    "en": "Not allowed in local games",
+    "value": "No permès en partides locals",
+    "source": "manual"
+  },
+  "predraw.one-seat-notice": {
+    "en": "Pre-draw game — each player plays on their own device, so you can take only one slot.",
+    "value": "Partida amb agafada prèvia — cada jugador juga al seu propi dispositiu, de manera que només podeu ocupar una plaça.",
+    "source": "manual"
+  },
+  "predraw.pass-abbey": {
+    "en": "Pass abbey (draw last tile)",
+    "value": "Passa l'abadia (agafa l'última peça)",
+    "source": "manual"
+  },
+  "predraw.pass-supply-tile": {
+    "en": "Pass {name} (draw last tile)",
+    "value": "Passa {name} (agafa l'última peça)",
+    "source": "manual"
+  },
+  "predraw.pick-hint": {
+    "en": "Click a tile to place it, then choose a spot on the board",
+    "value": "Feu clic en una peça per col·locar-la i després trieu un lloc al tauler",
+    "source": "manual"
+  },
+  "predraw.your-hand": {
+    "en": "Your hand",
+    "value": "La vostra mà",
+    "source": "manual"
+  },
+  "settings.add-ons.add-on-requires-newer-app": {
+    "en": "Add-on requires FanCloisterZone {version} or higher",
+    "value": "El complement requereix FanCloisterZone {version} o superior",
+    "source": "manual"
+  },
+  "settings.add-ons.downloading-classic-artwork": {
+    "en": "Downloading classic artwork",
+    "value": "S'estan descarregant els gràfics clàssics",
+    "source": "manual"
+  },
+  "settings.add-ons.invalid-add-on-missing-minimum-version": {
+    "en": "Invalid add-on: minimumJczVersion is missing",
+    "value": "Complement no vàlid: falta minimumJczVersion",
+    "source": "manual"
+  },
+  "settings.add-ons.invalid-add-on-version-not-a-number": {
+    "en": "Invalid add-on: the version must be a number, not text",
+    "value": "Complement no vàlid: la versió ha de ser un número, no text",
+    "source": "manual"
+  },
+  "settings.add-ons.invalid-add-on-version-not-an-integer": {
+    "en": "Invalid add-on: the version must be a whole number, found {version}",
+    "value": "Complement no vàlid: la versió ha de ser un nombre enter, s'ha trobat {version}",
+    "source": "manual"
+  },
+  "settings.system.folder-does-not-exists": {
+    "en": "Folder does not exists",
+    "value": "La carpeta no existeix",
+    "source": "manual"
+  },
+  "settings.system.path-is-not-directory": {
+    "en": "Path is not directory",
+    "value": "El camí no és un directori",
+    "source": "manual"
+  },
+  "settings.system.taskbar.grouped": {
+    "en": "Group windows (raise the active game on top when it's your turn)",
+    "value": "Agrupa les finestres (porta al davant la partida activa quan sigui el vostre torn)",
+    "source": "manual"
+  },
+  "settings.system.taskbar.hint": {
+    "en": "Changes how the lobby and game windows appear on the Windows taskbar.",
+    "value": "Canvia com apareixen la sala i les finestres de partida a la barra de tasques de Windows.",
+    "source": "manual"
+  },
+  "settings.system.taskbar.separate": {
+    "en": "Separate taskbar buttons (one per window)",
+    "value": "Botons separats a la barra de tasques (un per finestra)",
+    "source": "manual"
+  },
+  "settings.system.taskbar.title": {
+    "en": "Windows taskbar",
+    "value": "Barra de tasques de Windows",
+    "source": "manual"
+  },
+  "settings.system.test-runner-folder": {
+    "en": "Test Runner Folder",
+    "value": "Carpeta del Test Runner",
+    "source": "manual"
+  },
+  "tile-set.under-the-big-top-c1-release": {
+    "en": "The tenth major expansion, released in 2017. C1 Art made by PresetM carcassonne-forum.de member.",
+    "value": "La desena gran expansió, publicada el 2017. Grafisme C1 fet per PresetM, membre de carcassonne-forum.de.",
+    "source": "manual"
+  }
+}

@@ -1,0 +1,1062 @@
+{
+  "button.next": {
+    "en": "Next",
+    "value": "Далее",
+    "source": "manual"
+  },
+  "button.play-online-local": {
+    "en": "Play Online on Dev Local Server",
+    "value": "Играть онлайн на локальном dev-сервере",
+    "source": "manual"
+  },
+  "button.show": {
+    "en": "Show",
+    "value": "Показать",
+    "source": "manual"
+  },
+  "chat.close": {
+    "en": "Close chat",
+    "value": "Закрыть чат",
+    "source": "manual"
+  },
+  "chat.empty": {
+    "en": "No messages yet — say hello!",
+    "value": "Сообщений пока нет — поздоровайтесь!",
+    "source": "manual"
+  },
+  "chat.game-chat": {
+    "en": "Game chat",
+    "value": "Игровой чат",
+    "source": "manual"
+  },
+  "chat.global-chat": {
+    "en": "Global chat",
+    "value": "Общий чат",
+    "source": "manual"
+  },
+  "chat.open": {
+    "en": "Open chat",
+    "value": "Открыть чат",
+    "source": "manual"
+  },
+  "chat.send": {
+    "en": "Send",
+    "value": "Отправить",
+    "source": "manual"
+  },
+  "core-messages.potential-final-score": {
+    "en": "Potential final score",
+    "value": "Возможный итоговый счёт",
+    "source": "manual"
+  },
+  "dev.continue-game": {
+    "en": "Continue game",
+    "value": "Продолжить игру",
+    "source": "manual"
+  },
+  "dev.filter-tests-by-name": {
+    "en": "Filter tests by name",
+    "value": "Фильтр тестов по названию",
+    "source": "manual"
+  },
+  "dev.step-back-in-save": {
+    "en": "Step Back in Save",
+    "value": "Шаг назад в сохранённой игре",
+    "source": "manual"
+  },
+  "dev.switch-online-server-cancel": {
+    "en": "Keep current server",
+    "value": "Оставить текущий сервер",
+    "source": "manual"
+  },
+  "dev.switch-online-server-confirm": {
+    "en": "Switch and close games",
+    "value": "Сменить и закрыть игры",
+    "source": "manual"
+  },
+  "dev.switch-online-server-message": {
+    "en": "You have {count} online game(s) open. Switching the server will close them.",
+    "value": "У вас открыто игр онлайн: {count}. При смене сервера они будут закрыты.",
+    "source": "manual"
+  },
+  "dev.switch-online-server-title": {
+    "en": "Switch online server",
+    "value": "Сменить онлайн-сервер",
+    "source": "manual"
+  },
+  "dev.test-scenario-saved": {
+    "en": "Test scenario saved",
+    "value": "Тестовый сценарий сохранён",
+    "source": "manual"
+  },
+  "dev.test-scenario-saved-hint": {
+    "en": "The test scenario was saved. Open it to replay and check its assertions.",
+    "value": "Тестовый сценарий сохранён. Откройте его, чтобы воспроизвести и проверить его условия.",
+    "source": "manual"
+  },
+  "dialog.close-all-games.close-all-games": {
+    "en": "Close All Games",
+    "value": "Закрыть все игры",
+    "source": "manual"
+  },
+  "dialog.close-all-games.keep-playing": {
+    "en": "Keep Playing",
+    "value": "Продолжить игру",
+    "source": "manual"
+  },
+  "dialog.close-all-games.open-game-windows": {
+    "en": "Open Game Windows",
+    "value": "Открытые окна игр",
+    "source": "manual"
+  },
+  "dialog.close-all-games.open-game-windows-description": {
+    "en": "There are open game windows. Closing the main window will close all of them and quit the app.",
+    "value": "Есть открытые окна игр. Если закрыть главное окно, все они закроются и приложение завершится.",
+    "source": "manual"
+  },
+  "expansion.kingdoms": {
+    "en": "Kingdoms",
+    "value": "Королевства",
+    "source": "manual"
+  },
+  "expansion.kingdoms-description": {
+    "en": "Each player has a Kingdom Palace in their colour. Instead of drawing, place it in a city with one of your followers to make it your capital. Once your capital is completed it becomes a kingdom: at the end, it scores 3 points for every completed city touching a field connected to it.",
+    "value": "У каждого игрока есть Дворец королевства его цвета. Вместо того чтобы брать тайл, вы можете выложить его к городу с одним из ваших миплов — город станет вашей столицей. Когда столица завершена, она становится королевством: в конце игры она приносит 3 очка за каждый завершённый город, касающийся поля, связанного с ней.",
+    "source": "manual"
+  },
+  "expansion.start": {
+    "en": "Start tile",
+    "value": "Начальный тайл",
+    "source": "manual"
+  },
+  "game-setup.ai.not-available": {
+    "en": "AI not available",
+    "value": "ИИ недоступен",
+    "source": "manual"
+  },
+  "game-setup.ai.not-available-hint": {
+    "en": "AI players are not available for game setup",
+    "value": "Игроки ИИ недоступны для этой настройки игры",
+    "source": "manual"
+  },
+  "game-setup.ai.not-supported": {
+    "en": "The AI does not play",
+    "value": "ИИ не играет",
+    "source": "manual"
+  },
+  "game-setup.ai.supported": {
+    "en": "The AI can play this",
+    "value": "ИИ может это играть",
+    "source": "manual"
+  },
+  "game-setup.create.ai-player": {
+    "en": "AI player",
+    "value": "ИИ игрок",
+    "source": "manual"
+  },
+  "game-setup.create.assign": {
+    "en": "assign",
+    "value": "назначить",
+    "source": "manual"
+  },
+  "game-setup.create.game-full": {
+    "en": "Game full",
+    "value": "Игра заполнена",
+    "source": "manual"
+  },
+  "game-setup.create.local-limit-reached-tooltip-plural": {
+    "en": "Maximum {limit} local players allowed | Maximum {limit} local player allowed | Maximum {limit} local players allowed",
+    "value": "Разрешено не более {limit} локальных игроков | Разрешён не более {limit} локальный игрок | Разрешено не более {limit} локальных игроков | Разрешено не более {limit} локальных игроков",
+    "source": "manual"
+  },
+  "game-setup.create.release-slot": {
+    "en": "Release slot",
+    "value": "Освободить место",
+    "source": "manual"
+  },
+  "game-setup.game-flow.cooperative": {
+    "en": "Cooperative variant",
+    "value": "Кооперативный вариант",
+    "source": "manual"
+  },
+  "game-setup.game-flow.keep-building-description": {
+    "en": "Every turn you must enlarge an occupied city, road or similar feature, or place a meeple on an unoccupied one. If a player does neither, the game ends and everyone loses. Survive to the last tile and everyone wins with a combined team score.",
+    "value": "Каждый ход вы должны расширить занятый город, дорогу или подобную область либо поставить мипла на незанятую. Если игрок не делает ни того, ни другого, игра заканчивается и все проигрывают. Продержитесь до последнего тайла — и все побеждают с общим командным счётом.",
+    "source": "manual"
+  },
+  "game-setup.game-flow.pre-draw": {
+    "en": "Pre-draw",
+    "value": "Предварительный набор",
+    "source": "manual"
+  },
+  "game-setup.header.game-setup": {
+    "en": "Game setup",
+    "value": "Настройка игры",
+    "source": "manual"
+  },
+  "game-setup.header.variant": {
+    "en": "Variant",
+    "value": "Вариант",
+    "source": "manual"
+  },
+  "game-setup.open-game.max-players": {
+    "en": "Max players (public)",
+    "value": "Макс. игроков (публичная)",
+    "source": "manual"
+  },
+  "game-setup.open-game.max-players-no-limit": {
+    "en": "No limit",
+    "value": "Без ограничения",
+    "source": "manual"
+  },
+  "game-setup.open-game.no-human-player": {
+    "en": "No human in game",
+    "value": "Нет человека в игре",
+    "source": "manual"
+  },
+  "game-setup.tiles.custom-pack": {
+    "en": "Custom tile pack (counts changed)",
+    "value": "Свой набор тайлов (количества изменены)",
+    "source": "manual"
+  },
+  "game-setup.tiles.custom-pack-short": {
+    "en": "Tiles",
+    "value": "Тайлы",
+    "source": "manual"
+  },
+  "game-setup.tiles.enable-quantity-change": {
+    "en": "Enable quantity change",
+    "value": "Разрешить изменение количества",
+    "source": "manual"
+  },
+  "game-setup.tiles.next-expansion": {
+    "en": "Next expansion",
+    "value": "Следующее дополнение",
+    "source": "manual"
+  },
+  "game-setup.tiles.previous-expansion": {
+    "en": "Previous expansion",
+    "value": "Предыдущее дополнение",
+    "source": "manual"
+  },
+  "game-setup.tiles.remove-all-tiles": {
+    "en": "Remove all",
+    "value": "Убрать все",
+    "source": "manual"
+  },
+  "game-setup.tiles.reset-tiles": {
+    "en": "Reset",
+    "value": "Сбросить",
+    "source": "manual"
+  },
+  "game-setup.tiles.separate-expansions": {
+    "en": "Separate expansions",
+    "value": "Разделять дополнения",
+    "source": "manual"
+  },
+  "game-setup.tiles.start-tile-excluded": {
+    "en": "Starting tile count is set to 0 – restore it to create the game",
+    "value": "Количество начальных тайлов равно 0 – восстановите его, чтобы создать игру",
+    "source": "manual"
+  },
+  "game-setup.tiles.supply-tiles": {
+    "en": "In the players' supply, not in the draw pile",
+    "value": "В запасе игроков, а не в стопке тайлов",
+    "source": "manual"
+  },
+  "game-setup.variant.best-setups": {
+    "en": "Best setups",
+    "value": "Лучшие настройки",
+    "source": "manual"
+  },
+  "game-setup.variant.black-fairy-placement.description": {
+    "en": "The Black Fairy is deployed {}.",
+    "value": "Чёрная фея размещается {}.",
+    "source": "manual"
+  },
+  "game-setup.variant.black-fairy-placement.next-follower": {
+    "en": "next to a meeple",
+    "value": "рядом с миплом",
+    "source": "manual"
+  },
+  "game-setup.variant.black-fairy-placement.on-tile": {
+    "en": "on a tile",
+    "value": "на тайле",
+    "source": "manual"
+  },
+  "game-setup.variant.choose-variant": {
+    "en": "Choose game variant",
+    "value": "Выберите вариант игры",
+    "source": "manual"
+  },
+  "game-setup.variant.leaderboard-empty": {
+    "en": "No finished co-op games yet — set up your own game and be the first on the board!",
+    "value": "Завершённых кооперативных игр пока нет — создайте свою игру и станьте первым в таблице!",
+    "source": "manual"
+  },
+  "game-setup.variant.leaderboard-loading": {
+    "en": "Loading best setups from the server…",
+    "value": "Загрузка лучших настроек с сервера…",
+    "source": "manual"
+  },
+  "game-setup.variant.leaderboard-online-only": {
+    "en": "Connect to the online server to browse the best co-op setups and scores.",
+    "value": "Подключитесь к онлайн-серверу, чтобы посмотреть лучшие кооперативные настройки и результаты.",
+    "source": "manual"
+  },
+  "game-setup.variant.n-players-plural": {
+    "en": "{players} players | {players} player | {players} players",
+    "value": "0 игроков | {players} игрок | {players} игрока | {players} игроков",
+    "source": "manual"
+  },
+  "game-setup.variant.play-it": {
+    "en": "Play it",
+    "value": "Играть",
+    "source": "manual"
+  },
+  "game-setup.variant.popular-addons": {
+    "en": "Most popular add-ons",
+    "value": "Самые популярные add-on’ы",
+    "source": "manual"
+  },
+  "game-setup.variant.popular-components": {
+    "en": "Most popular components",
+    "value": "Самые популярные компоненты",
+    "source": "manual"
+  },
+  "game-setup.variant.popular-empty": {
+    "en": "No finished games yet — set up your own game and start the statistics!",
+    "value": "Завершённых игр пока нет — создайте свою игру и начните статистику!",
+    "source": "manual"
+  },
+  "game-setup.variant.popular-online-only": {
+    "en": "Connect to the online server to browse the most-played setups.",
+    "value": "Подключитесь к онлайн-серверу, чтобы посмотреть самые играемые настройки.",
+    "source": "manual"
+  },
+  "game-setup.variant.popular-sets": {
+    "en": "Most popular expansions",
+    "value": "Самые популярные дополнения",
+    "source": "manual"
+  },
+  "game-setup.variant.popular-setups": {
+    "en": "Most popular setups",
+    "value": "Самые популярные настройки",
+    "source": "manual"
+  },
+  "game-setup.variant.range-all": {
+    "en": "All time",
+    "value": "За всё время",
+    "source": "manual"
+  },
+  "game-setup.variant.range-month": {
+    "en": "Last month",
+    "value": "Последний месяц",
+    "source": "manual"
+  },
+  "game-setup.variant.range-year": {
+    "en": "Last year",
+    "value": "Последний год",
+    "source": "manual"
+  },
+  "game-setup.variant.share-of-games": {
+    "en": "{percent}% of finished games",
+    "value": "{percent} % завершённых игр",
+    "source": "manual"
+  },
+  "game-setup.variant.standard": {
+    "en": "Standard rules",
+    "value": "Стандартные правила",
+    "source": "manual"
+  },
+  "game-setup.variant.standard-description": {
+    "en": "The classic competitive game — every player scores for themselves and the highest score wins.",
+    "value": "Классическая игра на победу — каждый игрок зарабатывает очки для себя, побеждает наибольший счёт.",
+    "source": "manual"
+  },
+  "game-setup.variant.times-played": {
+    "en": "played {count}×",
+    "value": "сыграно {count}×",
+    "source": "manual"
+  },
+  "game-setup.variant.your-score": {
+    "en": "Your score — best {best}, latest {latest}",
+    "value": "Ваш счёт — лучший {best}, последний {latest}",
+    "source": "manual"
+  },
+  "game.action.host-terminated-the-game": {
+    "en": "Host terminated the game. Connection was closed.",
+    "value": "Хост завершил игру. Соединение закрыто.",
+    "source": "manual"
+  },
+  "game.action.place-this-tile-instead": {
+    "en": "Place this tile instead",
+    "value": "Выложить этот тайл вместо другого",
+    "source": "manual"
+  },
+  "game.action.placement-optional-bridge": {
+    "en": "Some rotations here place a bridge; others don't",
+    "value": "Некоторые повороты ставят здесь мост, другие — нет",
+    "source": "manual"
+  },
+  "game.action.placement-requires-bridge": {
+    "en": "Every placement here requires a bridge",
+    "value": "Любое размещение здесь требует моста",
+    "source": "manual"
+  },
+  "game.action.ransom-paid": {
+    "en": "Ransom paid",
+    "value": "Выкуп уплачен",
+    "source": "manual"
+  },
+  "game.action.score-first-choose": {
+    "en": "Choose which feature to score first",
+    "value": "Выберите, какое строение подсчитать первым",
+    "source": "manual"
+  },
+  "game.action.score-first-player-must-choose": {
+    "en": "Player must choose which feature to score first",
+    "value": "Игрок должен выбрать, какое строение подсчитать первым",
+    "source": "manual"
+  },
+  "game.action.tile-discarded-notice-plural": {
+    "en": "These tiles can't be placed anywhere, so they were discarded | This tile can't be placed anywhere, so it was discarded | These tiles can't be placed anywhere, so they were discarded",
+    "value": "Эти тайлы некуда выложить, поэтому они сброшены | Этот тайл некуда выложить, поэтому он сброшен | Эти тайлы некуда выложить, поэтому они сброшены | Эти тайлы некуда выложить, поэтому они сброшены",
+    "source": "manual"
+  },
+  "game.cause.caused-by": {
+    "en": "Caused by: {cause}",
+    "value": "Причина: {cause}",
+    "source": "manual"
+  },
+  "game.cause.figure-moved": {
+    "en": "the figure moving here",
+    "value": "фигурка, перемещённая сюда",
+    "source": "manual"
+  },
+  "game.cause.meeple-deployed": {
+    "en": "the deployed meeple",
+    "value": "размещённый мипл",
+    "source": "manual"
+  },
+  "game.cause.rule.count-clockwise": {
+    "en": "the Count moving on clockwise",
+    "value": "Граф сдвигается по часовой стрелке",
+    "source": "manual"
+  },
+  "game.cause.rule.decinsky-sneznik-scored": {
+    "en": "Děčínský Sněžník scored",
+    "value": "подсчёт Дечинского Снежника",
+    "source": "manual"
+  },
+  "game.cause.rule.final-scoring": {
+    "en": "final scoring",
+    "value": "финальный подсчёт",
+    "source": "manual"
+  },
+  "game.cause.rule.flock-expanded": {
+    "en": "a sheep token drawn for the flock",
+    "value": "жетон овцы, вытянутый для стада",
+    "source": "manual"
+  },
+  "game.cause.rule.flock-scored": {
+    "en": "the flock scored",
+    "value": "подсчёт стада",
+    "source": "manual"
+  },
+  "game.cause.rule.game-start": {
+    "en": "the start of the game",
+    "value": "начало игры",
+    "source": "manual"
+  },
+  "game.cause.rule.mage-witch-joined": {
+    "en": "the mage's and the witch's features joined",
+    "value": "объекты Мага и Ведьмы соединились",
+    "source": "manual"
+  },
+  "game.cause.rule.mage-witch-no-target": {
+    "en": "no open city or road left for the figure",
+    "value": "нет открытого города или дороги для фигурки",
+    "source": "manual"
+  },
+  "game.cause.rule.meteorite": {
+    "en": "a meteorite impact",
+    "value": "падение метеорита",
+    "source": "manual"
+  },
+  "game.cause.rule.obelisk-scored": {
+    "en": "the obelisk scored",
+    "value": "подсчёт обелиска",
+    "source": "manual"
+  },
+  "game.cause.rule.trap": {
+    "en": "a trap",
+    "value": "ловушка",
+    "source": "manual"
+  },
+  "game.cause.rule.windmill-scored": {
+    "en": "the windmill scored",
+    "value": "подсчёт мельницы",
+    "source": "manual"
+  },
+  "game.cause.rule.wolf": {
+    "en": "the wolf drawn",
+    "value": "вытянутый волк",
+    "source": "manual"
+  },
+  "game.cause.tile-placed": {
+    "en": "the placed tile",
+    "value": "выложенный тайл",
+    "source": "manual"
+  },
+  "game.coop.all-lose": {
+    "en": "All players lose",
+    "value": "Все игроки проигрывают",
+    "source": "manual"
+  },
+  "game.coop.all-win": {
+    "en": "All players win!",
+    "value": "Все игроки побеждают!",
+    "source": "manual"
+  },
+  "game.coop.team-score-plural": {
+    "en": "Team score: {points} points | Team score: {points} point | Team score: {points} points",
+    "value": "Счёт команды: 0 очков | Счёт команды: {points} очко | Счёт команды: {points} очка | Счёт команды: {points} очков",
+    "source": "manual"
+  },
+  "game.coop.triggered-by": {
+    "en": "{name} could neither enlarge an occupied feature nor occupy a new one.",
+    "value": "{name} не расширил занятую область и не занял новую.",
+    "source": "manual"
+  },
+  "game.element.black-fairy": {
+    "en": "Black Fairy",
+    "value": "Чёрная фея",
+    "source": "manual"
+  },
+  "game.element.city-palace": {
+    "en": "City Palace",
+    "value": "Дворец",
+    "source": "manual"
+  },
+  "game.element.kingdom-palace": {
+    "en": "Kingdom Palace",
+    "value": "Дворец королевства",
+    "source": "manual"
+  },
+  "game.element.kingdoms-palace": {
+    "en": "City Palace",
+    "value": "Дворец",
+    "source": "manual"
+  },
+  "game.element.mini-follower": {
+    "en": "Mini Meeple",
+    "value": "Мини-мипл",
+    "source": "manual"
+  },
+  "game.element.pre-draw": {
+    "en": "Pre-draw",
+    "value": "Предварительный набор",
+    "source": "manual"
+  },
+  "game.event.meeple-awarded": {
+    "en": "Earned a meeple",
+    "value": "Получил мипла",
+    "source": "manual"
+  },
+  "game.event.meeple-awarded-hole": {
+    "en": "Filled a hole",
+    "value": "Заполнил пустое место",
+    "source": "manual"
+  },
+  "game.feature.black-fairy": {
+    "en": "Black Fairy",
+    "value": "Чёрная фея",
+    "source": "manual"
+  },
+  "game.feature.keep-building": {
+    "en": "Keep Building (co-op)",
+    "value": "Продолжай строить (кооп.)",
+    "source": "manual"
+  },
+  "game.feature.kingdom": {
+    "en": "Kingdom",
+    "value": "Королевство",
+    "source": "manual"
+  },
+  "game.feature.kingdoms": {
+    "en": "Kingdoms",
+    "value": "Королевства",
+    "source": "manual"
+  },
+  "game.feature.placed-tiles": {
+    "en": "Placed tiles",
+    "value": "Выложенные тайлы",
+    "source": "manual"
+  },
+  "game.observers.watching": {
+    "en": "Watching",
+    "value": "Наблюдают",
+    "source": "manual"
+  },
+  "game.placement.converted-by": {
+    "en": "Converted by {player}",
+    "value": "Преобразовал {player}",
+    "source": "manual"
+  },
+  "game.placement.deployed-by": {
+    "en": "Deployed by {player}",
+    "value": "Разместил {player}",
+    "source": "manual"
+  },
+  "game.placement.discarded-reason": {
+    "en": "It fits nowhere on the board, so another tile was drawn",
+    "value": "Его некуда выложить на поле, поэтому вытянут другой тайл",
+    "source": "manual"
+  },
+  "game.placement.exchanged-reason": {
+    "en": "Each player got their own meeple back",
+    "value": "Каждый игрок вернул своего мипла",
+    "source": "manual"
+  },
+  "game.placement.moved-by": {
+    "en": "Moved by {player}",
+    "value": "Переместил {player}",
+    "source": "manual"
+  },
+  "game.placement.placed-by": {
+    "en": "Placed by {player}",
+    "value": "Выложил {player}",
+    "source": "manual"
+  },
+  "game.placement.removed-with": {
+    "en": "{source}, by {player}",
+    "value": "{source}, игрок {player}",
+    "source": "manual"
+  },
+  "game.placement.title.captured": {
+    "en": "{figure} captured",
+    "value": "Захват: {figure}",
+    "source": "manual"
+  },
+  "game.placement.title.castle-created": {
+    "en": "Small city converted to a castle",
+    "value": "Маленький город превращён в замок",
+    "source": "manual"
+  },
+  "game.placement.title.discarded": {
+    "en": "Discarded",
+    "value": "Сброшен",
+    "source": "manual"
+  },
+  "game.placement.title.exchanged": {
+    "en": "Prisoners exchanged",
+    "value": "Обмен пленными",
+    "source": "manual"
+  },
+  "game.placement.title.moved": {
+    "en": "{figure} moved",
+    "value": "Перемещение: {figure}",
+    "source": "manual"
+  },
+  "game.placement.title.placed": {
+    "en": "{figure} placed",
+    "value": "Размещение: {figure}",
+    "source": "manual"
+  },
+  "game.placement.title.placed-on-letter": {
+    "en": "{figure} placed on the Letter",
+    "value": "Размещение на Письме: {figure}",
+    "source": "manual"
+  },
+  "game.placement.title.removed": {
+    "en": "{figure} removed",
+    "value": "Удаление: {figure}",
+    "source": "manual"
+  },
+  "game.placement.title.tile-placed": {
+    "en": "Tile placed",
+    "value": "Тайл выложен",
+    "source": "manual"
+  },
+  "game.ransom.already-paid": {
+    "en": "A meeple was already bought back this turn — one per turn",
+    "value": "В этом ходу мипл уже выкуплен — только один за ход",
+    "source": "manual"
+  },
+  "game.ransom.can": {
+    "en": "Buy back for 3 points",
+    "value": "Выкупить за 3 очка",
+    "source": "manual"
+  },
+  "game.ransom.not-enough-points": {
+    "en": "Not enough points to buy back — 3 points are needed",
+    "value": "Недостаточно очков для выкупа — нужно 3 очка",
+    "source": "manual"
+  },
+  "game.ransom.not-their-action": {
+    "en": "Captured — its owner can buy it back for 3 points on their turn",
+    "value": "В плену — владелец может выкупить его за 3 очка в свой ход",
+    "source": "manual"
+  },
+  "game.scoring.income": {
+    "en": "income",
+    "value": "доход",
+    "source": "manual"
+  },
+  "game.scoring.item-cloth": {
+    "en": "Cloth",
+    "value": "Ткань",
+    "source": "manual"
+  },
+  "game.scoring.item-darmstadtium": {
+    "en": "Darmstadtium",
+    "value": "Дармштадтий",
+    "source": "manual"
+  },
+  "game.scoring.item-grain": {
+    "en": "Grain",
+    "value": "Зерно",
+    "source": "manual"
+  },
+  "game.scoring.item-house": {
+    "en": "House",
+    "value": "Дом",
+    "source": "manual"
+  },
+  "game.scoring.item-river-tiles": {
+    "en": "River tiles",
+    "value": "Тайлы реки",
+    "source": "manual"
+  },
+  "game.scoring.item-shed": {
+    "en": "Shed",
+    "value": "Сарай",
+    "source": "manual"
+  },
+  "game.scoring.item-tiles-east": {
+    "en": "Tiles to the east",
+    "value": "Тайлы на восток",
+    "source": "manual"
+  },
+  "game.scoring.item-tiles-north": {
+    "en": "Tiles to the north",
+    "value": "Тайлы на север",
+    "source": "manual"
+  },
+  "game.scoring.item-tiles-south": {
+    "en": "Tiles to the south",
+    "value": "Тайлы на юг",
+    "source": "manual"
+  },
+  "game.scoring.item-tiles-west": {
+    "en": "Tiles to the west",
+    "value": "Тайлы на запад",
+    "source": "manual"
+  },
+  "game.scoring.item-tower": {
+    "en": "Tower",
+    "value": "Башня",
+    "source": "manual"
+  },
+  "game.scoring.item-wine": {
+    "en": "Wine",
+    "value": "Вино",
+    "source": "manual"
+  },
+  "game.scoring.item-wolf": {
+    "en": "Wolf",
+    "value": "Волк",
+    "source": "manual"
+  },
+  "game.scoring.majority": {
+    "en": "majority",
+    "value": "большинство",
+    "source": "manual"
+  },
+  "game.scoring.no-majority": {
+    "en": "no majority",
+    "value": "нет большинства",
+    "source": "manual"
+  },
+  "game.scoring.payment": {
+    "en": "payment",
+    "value": "выплата",
+    "source": "manual"
+  },
+  "game.tiles-progress": {
+    "en": "Tiles placed",
+    "value": "Выложенные тайлы",
+    "source": "manual"
+  },
+  "index.local.new-local-game": {
+    "en": "New local game",
+    "value": "Новая локальная игра",
+    "source": "manual"
+  },
+  "index.online.connecting": {
+    "en": "Connecting to server…",
+    "value": "Подключение к серверу…",
+    "source": "manual"
+  },
+  "index.online.disconnect-cancel": {
+    "en": "Stay connected",
+    "value": "Остаться подключённым",
+    "source": "manual"
+  },
+  "index.online.disconnect-confirm": {
+    "en": "Disconnect and close games",
+    "value": "Отключиться и закрыть игры",
+    "source": "manual"
+  },
+  "index.online.disconnect-message": {
+    "en": "You have {count} online game(s) open. Disconnecting will close them.",
+    "value": "У вас открыто игр онлайн: {count}. При отключении они будут закрыты.",
+    "source": "manual"
+  },
+  "index.online.disconnect-title": {
+    "en": "Disconnect from server",
+    "value": "Отключиться от сервера",
+    "source": "manual"
+  },
+  "index.online.game-not-found": {
+    "en": "Game not found. Check the game key and try again.",
+    "value": "Игра не найдена. Проверьте ключ игры и попробуйте снова.",
+    "source": "manual"
+  },
+  "index.online.incompatible-version-newer": {
+    "en": "Newer version, cannot play together (protocol {version})",
+    "value": "Более новая версия, совместная игра невозможна (протокол {version})",
+    "source": "manual"
+  },
+  "index.online.incompatible-version-older": {
+    "en": "Older version, cannot play together (protocol {version})",
+    "value": "Более старая версия, совместная игра невозможна (протокол {version})",
+    "source": "manual"
+  },
+  "index.online.incompatible-version-unknown": {
+    "en": "Unknown version, cannot play together",
+    "value": "Неизвестная версия, совместная игра невозможна",
+    "source": "manual"
+  },
+  "index.online.loading-game-data": {
+    "en": "Loading game data…",
+    "value": "Загрузка данных игры…",
+    "source": "manual"
+  },
+  "index.online.local-game": {
+    "en": "Local game",
+    "value": "Локальная игра",
+    "source": "manual"
+  },
+  "index.online.max-players-title": {
+    "en": "Players (max)",
+    "value": "Игроки (макс.)",
+    "source": "manual"
+  },
+  "index.online.no-clients": {
+    "en": "No one connected",
+    "value": "Никто не подключён",
+    "source": "manual"
+  },
+  "index.online.offline": {
+    "en": "Offline – not connected to {0}",
+    "value": "Офлайн – нет подключения к {0}",
+    "source": "manual"
+  },
+  "index.online.offline-lobby-hidden": {
+    "en": "Connect to the server to see the public lobby and your games in progress.",
+    "value": "Подключитесь к серверу, чтобы увидеть публичное лобби и свои текущие игры.",
+    "source": "manual"
+  },
+  "index.online.online-game": {
+    "en": "Online game",
+    "value": "Игра онлайн",
+    "source": "manual"
+  },
+  "index.online.opened-in-window": {
+    "en": "Open in a window",
+    "value": "Открыть в окне",
+    "source": "manual"
+  },
+  "index.online.players-online": {
+    "en": "Players online ({count})",
+    "value": "Игроков онлайн ({count})",
+    "source": "manual"
+  },
+  "index.online.status-idle": {
+    "en": "Idle",
+    "value": "Не занят",
+    "source": "manual"
+  },
+  "index.online.status-in-game": {
+    "en": "In game",
+    "value": "В игре",
+    "source": "manual"
+  },
+  "index.online.title-local": {
+    "en": "Games hosted on dev local",
+    "value": "Игры на локальном dev-сервере",
+    "source": "manual"
+  },
+  "menu.create-game": {
+    "en": "Create Game",
+    "value": "Создать игру",
+    "source": "manual"
+  },
+  "menu.feature-hints": {
+    "en": "Feature hints",
+    "value": "Подсказки по областям",
+    "source": "manual"
+  },
+  "menu.feature-hints'": {
+    "en": "Feature hints",
+    "value": "Подсказки по областям",
+    "source": "manual"
+  },
+  "menu.home": {
+    "en": "Home",
+    "value": "Главная",
+    "source": "manual"
+  },
+  "menu.new-local-game": {
+    "en": "New local game",
+    "value": "Новая локальная игра",
+    "source": "manual"
+  },
+  "menu.potential-final-score": {
+    "en": "Potential Final Score",
+    "value": "Возможный итоговый счёт",
+    "source": "manual"
+  },
+  "open-windows.close": {
+    "en": "Close window",
+    "value": "Закрыть окно",
+    "source": "manual"
+  },
+  "open-windows.empty": {
+    "en": "No game windows open",
+    "value": "Нет открытых окон игр",
+    "source": "manual"
+  },
+  "open-windows.focus": {
+    "en": "Bring window to front",
+    "value": "Вывести окно на передний план",
+    "source": "manual"
+  },
+  "open-windows.kind.game": {
+    "en": "Game",
+    "value": "Игра",
+    "source": "manual"
+  },
+  "open-windows.kind.local": {
+    "en": "Local game",
+    "value": "Локальная игра",
+    "source": "manual"
+  },
+  "open-windows.kind.online": {
+    "en": "Online game",
+    "value": "Игра онлайн",
+    "source": "manual"
+  },
+  "open-windows.progress": {
+    "en": "Placed tiles / total",
+    "value": "Выложенные тайлы / всего",
+    "source": "manual"
+  },
+  "open-windows.title": {
+    "en": "Open game windows",
+    "value": "Открытые окна игр",
+    "source": "manual"
+  },
+  "predraw.draw": {
+    "en": "Draw tile",
+    "value": "Взять тайл",
+    "source": "manual"
+  },
+  "predraw.empty": {
+    "en": "—",
+    "value": "—",
+    "source": "manual"
+  },
+  "predraw.incompatible": {
+    "en": "Not available with Builder, Dragon, Wagon, Castle, Shepherd, River, Escape, Count or Crop Circles",
+    "value": "Недоступно со Строителем, Драконом, Повозкой, Замком, Пастухом, Рекой, Побегом, Графом и Кругами на полях",
+    "source": "manual"
+  },
+  "predraw.local-only": {
+    "en": "Not allowed in local games",
+    "value": "Не разрешено в локальных играх",
+    "source": "manual"
+  },
+  "predraw.one-seat-notice": {
+    "en": "Pre-draw game — each player plays on their own device, so you can take only one slot.",
+    "value": "Игра с предварительным набором — каждый играет на своём устройстве, поэтому вы можете занять только одно место.",
+    "source": "manual"
+  },
+  "predraw.pass-abbey": {
+    "en": "Pass abbey (draw last tile)",
+    "value": "Пропустить аббатство (взять последний тайл)",
+    "source": "manual"
+  },
+  "predraw.pass-supply-tile": {
+    "en": "Pass {name} (draw last tile)",
+    "value": "Пропустить {name} (взять последний тайл)",
+    "source": "manual"
+  },
+  "predraw.pick-hint": {
+    "en": "Click a tile to place it, then choose a spot on the board",
+    "value": "Нажмите на тайл, чтобы выложить его, затем выберите место на поле",
+    "source": "manual"
+  },
+  "predraw.your-hand": {
+    "en": "Your hand",
+    "value": "Ваша рука",
+    "source": "manual"
+  },
+  "settings.add-ons.add-on-requires-newer-app": {
+    "en": "Add-on requires FanCloisterZone {version} or higher",
+    "value": "Дополнению требуется FanCloisterZone {version} или новее",
+    "source": "manual"
+  },
+  "settings.add-ons.downloading-classic-artwork": {
+    "en": "Downloading classic artwork",
+    "value": "Загрузка классической графики",
+    "source": "manual"
+  },
+  "settings.add-ons.invalid-add-on-missing-minimum-version": {
+    "en": "Invalid add-on: minimumJczVersion is missing",
+    "value": "Недопустимое дополнение: отсутствует minimumJczVersion",
+    "source": "manual"
+  },
+  "settings.add-ons.invalid-add-on-version-not-a-number": {
+    "en": "Invalid add-on: the version must be a number, not text",
+    "value": "Недопустимое дополнение: версия должна быть числом, а не текстом",
+    "source": "manual"
+  },
+  "settings.add-ons.invalid-add-on-version-not-an-integer": {
+    "en": "Invalid add-on: the version must be a whole number, found {version}",
+    "value": "Недопустимое дополнение: версия должна быть целым числом, найдено {version}",
+    "source": "manual"
+  },
+  "settings.system.taskbar.grouped": {
+    "en": "Group windows (raise the active game on top when it's your turn)",
+    "value": "Группировать окна (выводить активную игру вперёд, когда ваш ход)",
+    "source": "manual"
+  },
+  "settings.system.taskbar.hint": {
+    "en": "Changes how the lobby and game windows appear on the Windows taskbar.",
+    "value": "Меняет то, как лобби и окна игр отображаются на панели задач Windows.",
+    "source": "manual"
+  },
+  "settings.system.taskbar.separate": {
+    "en": "Separate taskbar buttons (one per window)",
+    "value": "Отдельные кнопки на панели задач (по одной на окно)",
+    "source": "manual"
+  },
+  "settings.system.taskbar.title": {
+    "en": "Windows taskbar",
+    "value": "Панель задач Windows",
+    "source": "manual"
+  }
+}

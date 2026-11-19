@@ -1,0 +1,9 @@
+{
+  "expansion.kingdoms": "Království",
+  "expansion.kingdoms-description": "Každý hráč má Palác ve své barvě. Místo tažení kartičky ho můžete přiložit k městu s jedním z vašich družiníků a udělat z něj své hlavní město. Jakmile je hlavní město dokončené, stane se královstvím: na konci hry získá 3 body za každé město, které sousedí s loukou spojenou s ním.",
+  "game.action.place-this-tile-instead": "Přiložit místo toho tuto kartičku",
+  "game.element.kingdom-palace": "Palác",
+  "game.feature.kingdom": "Království",
+  "game.feature.kingdoms": "Království",
+  "game-setup.tiles.supply-tiles": "V zásobě hráčů, ne mezi kartičkami k tažení"
+}
