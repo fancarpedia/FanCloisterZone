@@ -16,17 +16,17 @@ const order = selector => {
 }
 
 describe('the slot page side column', () => {
-  it('reads Options, then Chat, then the game setup', () => {
+  it('reads Options, then the game setup, then Chat', () => {
     expect(order('.options')).toBe(1)
-    expect(order('.chat-section')).toBe(2)
-    expect(order('.game-setup-overview')).toBe(3)
+    expect(order('.game-setup-overview')).toBe(2)
+    expect(order('.chat-section')).toBe(3)
   })
 
   it('in the markup too', () => {
     const options = src.indexOf('class="options"')
     const chat = src.indexOf('class="chat-section"')
     const setup = src.indexOf('<GameSetupOverview')
-    expect(options).toBeLessThan(chat)
-    expect(chat).toBeLessThan(setup)
+    expect(options).toBeLessThan(setup)
+    expect(setup).toBeLessThan(chat)
   })
 })

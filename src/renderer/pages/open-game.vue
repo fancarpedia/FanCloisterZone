@@ -136,13 +136,13 @@
         />
       </div>
 
-      <!-- side column: Options, then Chat, then the game setup (flex order below matches) -->
+      <!-- side column: Options, then the game setup, then Chat (flex order below matches) -->
+      <GameSetupOverview :setup="setup" />
+
       <div v-if="gameKey" class="chat-section">
         <h2>{{ $t('chat.chat') }}</h2>
         <OpenGameChat />
       </div>
-
-      <GameSetupOverview :setup="setup" />
     </template>
   </GameSetupGrid>
   <!-- bottom-left so the bullet clears the chat send button (chat lives in the right column) -->
@@ -578,7 +578,7 @@ h2
 
 .game-setup-overview
   flex: 0 0 33.333%
-  order: 3
+  order: 2
   overflow-y: auto
   box-sizing: border-box
 
@@ -594,7 +594,7 @@ h2
 
 .chat-section
   flex: 0 0 33.333%
-  order: 2
+  order: 3
   padding: 30px 20px 20px
   overflow: hidden
   box-sizing: border-box
