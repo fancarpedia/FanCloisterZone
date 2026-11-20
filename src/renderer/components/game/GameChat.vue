@@ -634,7 +634,8 @@ export default {
       height: 9px
       border-radius: 50%
       flex: 0 0 auto
-      align-self: center
+      // on the FIRST line, with the time (the row's baseline), as in the global chat — centred
+      // on the whole row it sat beside the last lines of a long, wrapped message
 
     .chat-time
       color: #999
