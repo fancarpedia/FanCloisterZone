@@ -14,7 +14,7 @@
       <v-icon small>fa-solid fa-robot</v-icon>
     </div>
     <!-- "i": the tiles carrying it (like the tile-set box's tiles icon) — never toggles the box -->
-    <a href="#" class="detail-link" :title="$t('game-setup.rules.info-title')" @click.stop.prevent="infoOpen = true">
+    <a v-if="hasTiles" href="#" class="detail-link" :title="$t('game-setup.rules.info-title')" @click.stop.prevent="infoOpen = true">
       <v-icon>fas fa-circle-info</v-icon>
     </a>
     <v-dialog v-model="infoOpen" max-width="800">
@@ -61,6 +61,12 @@ export default {
   computed: {
     featureId () {
       return this.fixedFeature || this.item.id
+    },
+
+    // any tile at all carries it (the "i" lists them) — not a variant like Keep Building
+    hasTiles () {
+      void this.$store.state.tilesVersion // eslint-disable-line no-void -- re-read after an add-on install
+      return this.$tiles.getFeatureTiles(this.featureId, {}, null).total > 0
     },
 
     aiPlayable () {

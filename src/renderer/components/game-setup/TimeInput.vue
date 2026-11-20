@@ -35,6 +35,15 @@ export default {
     }
   },
 
+  watch: {
+    // follow the value when it changes from outside (the limits switched back on, a reused
+    // component) — the inputs were filled only once, when the component was created
+    value (v) {
+      this.minutes = v === null ? '00' : pad(parseInt(v / 60))
+      this.seconds = v === null ? '00' : pad(v % 60)
+    }
+  },
+
   methods: {
     onChange () {
       const m = parseInt(this.minutes)

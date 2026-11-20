@@ -34,7 +34,7 @@
         <!-- default icon comes from the element's own definition (models/elements.js ELEMENT_ICONS);
              a parent may still override by passing slot content -->
         <slot><GameElementIcon :item="item" :selected="selected" /></slot>
-        <h3>{{ $t(['game.element',item.id].join('.')) }}</h3>
+        <h3>{{ $t(titleKey) }}</h3>
       </div>
 
       <template v-if="blockedReason" #hover>
@@ -77,6 +77,12 @@ export default {
   },
 
   computed: {
+    // the name: game.element.<id>, else game.feature.<id> (Keep Building is named as a feature)
+    titleKey () {
+      const key = 'game.element.' + this.item.id
+      return this.$te(key) ? key : 'game.feature.' + this.item.id
+    },
+
     aiPlayable () {
       return isAiElement(this.item)
     },
@@ -148,15 +154,16 @@ export default {
     color: map-get($theme, 'cards-text')
     background-color: map-get($theme, 'cards-bg')
 
+  // the same size as the Rules tab boxes (GameMechanicsBox): icon, name, a two-line message
   ::v-deep .box-title
     text-align: center
-    height: 136px
-    padding: 24px 0 8px 0
+    min-height: 122px
+    padding: 20px 0 4px 0
 
     h3
       font-size: 1.09em
       font-weight: 300
-      margin-top: 16px
+      margin-top: 14px
 
     img
       display: block
