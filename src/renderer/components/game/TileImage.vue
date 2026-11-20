@@ -18,6 +18,9 @@ export default {
 
   computed: {
     layers () {
+      // re-computed once the artworks have loaded — a tile rendered before (e.g. a supply tile or
+      // an element icon during start-up) would otherwise keep the "missing image" placeholder
+      void this.$store.state.loaded.artworks // eslint-disable-line no-void
       return this.$theme.getTileLayers(this.tileId, this.rotation).layers
     }
   }

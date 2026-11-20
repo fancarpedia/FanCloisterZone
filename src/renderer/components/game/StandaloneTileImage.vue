@@ -57,6 +57,7 @@ export default {
 
   computed: {
     artwork () {
+      void this.$store.state.loaded.artworks // eslint-disable-line no-void -- re-read once artworks load
       return this.$theme.getTileArtwork(this.tileId)
     },
 

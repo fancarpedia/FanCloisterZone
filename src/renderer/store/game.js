@@ -16,7 +16,7 @@ import Location from '@/models/Location'
 import { randomId } from '@/utils/random'
 import { getAppVersion } from '@/utils/version'
 import { isSameFeature, generateSaveContent } from '@/utils/gameUtils'
-import { verifyScenario, describeActionItem } from '@/utils/testing'
+import { verifyScenario, describeActionItem, rejectionText } from '@/utils/testing'
 import { getDefaultRules } from '@/models/rules'
 import { getSelectedEdition, getSelectedStartingTiles } from '@/utils/gameSetupUtils'
 
@@ -127,6 +127,7 @@ export const state = () => ({
   sheep: null,
   phase: null,
   action: null,
+  rejected: null, // moves the engine refused [{ type, tileId?, message }] — the Test Runner checks them
   history: null,
   gameChat: null,
   undo: {
@@ -289,6 +290,10 @@ export const mutations = {
     })
     if (data.action === undefined) {
       state.action = null
+    }
+    // the engine's refused moves (absent when there are none) — never carried over from an older state
+    if (data.rejected === undefined) {
+      state.rejected = null
     }
   },
 
@@ -619,6 +624,11 @@ export const actions = {
 			gamePhase = 'GameOverPhase'
 		  }
           content.test.assertions.push(`Phase is ${gamePhase}`)
+          // moves the engine refused are part of the scenario: record them, so the strict Test
+          // Runner expects exactly these refusals on a replay
+          for (const r of (gameState.rejected || [])) {
+            content.test.assertions.push(`Rejected: ${rejectionText(r)}`)
+          }
           // the game is over → nobody is on turn any more (the engine's leftover turnPlayer is
           // meaningless), so no turn-player assertion
           const gameOver = endGame || gamePhase === 'GameOverPhase'

@@ -42,6 +42,12 @@ class Theme extends EventsBase {
     this.tiles = {}
     this.tileLayers = {}
     this.ctx = ctx
+    // Artworks load AFTER the expansions (layouts/default.vue loadAddons: addons → expansions →
+    // add-on updates → artworks), so supply tiles / element icons (abbey AM/A, Kingdom Palaces)
+    // render — and look their tile up — before any tile is registered. Not a missing tile yet.
+    this.artworksReady = false
+    // a tile still missing once artworks ARE loaded is reported once, not on every re-render
+    this.warnedMissing = new Set()
   }
 
   async loadArtworks () {
@@ -74,6 +80,8 @@ class Theme extends EventsBase {
     this.artworks = loaded.artworks
     this.tiles = loaded.tiles
     this.tileLayers = {}
+    this.artworksReady = true
+    this.warnedMissing = new Set() // artworks changed: report what is missing now
     this.ctx.app.store.commit('artworksLoaded')
     this.emit('load')
   }
@@ -89,7 +97,8 @@ class Theme extends EventsBase {
 
   getTile (id) {
     const tile = this.tiles[id]
-    if (!tile) {
+    if (!tile && this.artworksReady && !this.warnedMissing.has(id)) {
+      this.warnedMissing.add(id)
       console.warn(`Tile ${id} is not registered`)
     }
     return tile

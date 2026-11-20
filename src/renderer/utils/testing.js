@@ -834,6 +834,32 @@ class SelectPrisonerToExchangeOptionsAssert {
 }
 
 // -------------------- Main verification function --------------------
+// -------------------- Rejected Assert --------------------
+// "Rejected: <tileId> <message>" — the engine REFUSED a recorded move, and the test expects it
+// (e.g. "Rejected: AM/A Invalid placement [5,-2],R0": the abbey may not go into a river gap).
+// The engine lists every refused move in the state's `rejected` (engine 7.1+); the text is the
+// refused message's tile id (when it had one) followed by the engine's error message.
+export const rejectionText = r => (r.tileId ? r.tileId + ' ' : '') + r.message
+
+class RejectedAssert {
+  constructor(state) {
+    this.REGEXP = /^Rejected: (.+)$/
+    this.state = state
+  }
+
+  verify(assertion) {
+    const m = this.REGEXP.exec(assertion)
+    if (m) {
+      const rejected = (this.state.rejected || []).map(rejectionText)
+      if (rejected.includes(m[1])) return { result: true }
+      return {
+        result: false,
+        error: rejected.length ? `RejectedAssert: refused instead: ${rejected.join('; ')}` : 'RejectedAssert: the engine refused nothing'
+      }
+    }
+  }
+}
+
 export function verifyScenario(state, { description, assertions }) {
   const result = { description, assertions: [] }
 
@@ -856,7 +882,8 @@ export function verifyScenario(state, { description, assertions }) {
     new TokenSizeAssert(state),
     new TowerPiecePlacementOptionsAssert(state),
     new CaptureFollowerOptionsAssert(state),
-    new SelectPrisonerToExchangeOptionsAssert(state)
+    new SelectPrisonerToExchangeOptionsAssert(state),
+    new RejectedAssert(state)
   ]
 
   for (const assertion of assertions) {
@@ -875,6 +902,20 @@ export function verifyScenario(state, { description, assertions }) {
     }
 
     result.assertions.push(assertionResult)
+  }
+
+  // Strict: a move the engine refused that no "Rejected:" assertion expects fails the scenario —
+  // the replay went on from a different state than recorded, so passing assertions prove nothing.
+  const expected = new Set(assertions.map(a => /^Rejected: (.+)$/.exec(a)).filter(Boolean).map(m => m[1]))
+  for (const r of (state.rejected || [])) {
+    const text = rejectionText(r)
+    if (!expected.has(text)) {
+      result.assertions.push({
+        assertion: `Rejected: ${text}`,
+        result: false,
+        error: `Unexpected: the engine refused a recorded ${r.type} — expect it with this assertion, or fix the replay`
+      })
+    }
   }
 
   return result
