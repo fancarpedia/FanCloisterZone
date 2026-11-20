@@ -107,6 +107,8 @@
           :style="{ width: `${tileSize + 4}px` }"
         >
           <StandaloneTileImage :tile-id="t.id" :size="tileSize" :rotation="t.rotation" />
+          <!-- the count line, as in the lists above (also what spaces the rows apart) -->
+          <div class="count">{{ t.count }}</div>
         </div>
       </div>
     </div>
@@ -306,7 +308,11 @@ export default {
             id: 'supply:' + id,
             title: this.$t('game.element.' + set.element),
             expansion: found ? found.expansion : null,
-            tiles: ids.map(tid => ({ id: tid, rotation: this.$theme.getTile(tid)?.rotation || 0 }))
+            tiles: ids.map(tid => ({
+              id: tid,
+              rotation: this.$theme.getTile(tid)?.rotation || 0,
+              count: Number(set.supplyTiles[tid]) || 1
+            }))
           }
         })
         .filter(Boolean)
