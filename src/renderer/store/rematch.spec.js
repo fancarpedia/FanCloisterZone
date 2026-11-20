@@ -112,3 +112,20 @@ describe('claimableRematchSlots', () => {
     expect(claimableRematchSlots(rematchSlots, gameSlots)).toEqual([])
   })
 })
+
+describe('rematch keeps AI seats', () => {
+  it('reverseSeatOrder keeps the ai flag of each seat (local rematch hands these slots to the server)', () => {
+    const slots = [
+      { number: 0, name: 'Alice', order: 1, ai: false, sessionId: 's1', gameId: 'g' },
+      { number: 1, name: 'Bot', order: 2, ai: true, sessionId: 's1', gameId: 'g' }
+    ]
+    const out = reverseSeatOrder(slots)
+    expect(out.map(s => [s.number, s.ai, s.order])).toEqual([[0, false, 2], [1, true, 1]])
+  })
+
+  it('claimableRematchSlots passes the ai flag on (online rematch re-takes the seat as AI)', () => {
+    const queued = [{ number: 0, name: 'Alice', ai: false }, { number: 1, name: 'Bot', ai: true }]
+    const gameSlots = [{ number: 0, clientId: null }, { number: 1, clientId: null }]
+    expect(claimableRematchSlots(queued, gameSlots).map(s => s.ai)).toEqual([false, true])
+  })
+})

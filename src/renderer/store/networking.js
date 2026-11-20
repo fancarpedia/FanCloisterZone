@@ -154,7 +154,15 @@ class ConnectionHandler {
           if (rematchSlots && rematchSlots.length && !payload.replay) {
             commit('gameSetup/rematchSlots', null, { root: true })
             for (const rs of claimableRematchSlots(rematchSlots, payload.slots)) {
+              if (rs.ai) {
+                // an AI seat of the finished game: take it and hand it to the AI, as the slot
+                // page's "AI player" button does (shown as AI from the first reply on)
+                commit('game/pendingAiSlot', { number: rs.number, pending: true }, { root: true })
+              }
               await dispatch('gameSetup/takeSlot', { number: rs.number, name: rs.name }, { root: true })
+              if (rs.ai) {
+                await dispatch('gameSetup/changeSlotToAi', { number: rs.number }, { root: true })
+              }
             }
             return
           }

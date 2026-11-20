@@ -150,7 +150,8 @@ export default {
         const ordered = revertedSlots
           .filter(s => s.order !== undefined && s.order !== null)
           .sort((a, b) => a.order - b.order)
-          .map(s => ({ number: s.number, name: s.name }))
+          // an AI seat stays an AI seat (re-taken, then handed to the AI — networking.js)
+          .map(s => ({ number: s.number, name: s.name, ai: !!s.ai }))
         this.$store.commit('gameSetup/rematchSlots', ordered)
       }
 
