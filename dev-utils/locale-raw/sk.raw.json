@@ -334,9 +334,11 @@
     "cause": {
       "caused-by": "<span lang="en" dir="ltr" class="mw-content-ltr">Caused by: {cause}</span>",
       "figure-moved": "<span lang="en" dir="ltr" class="mw-content-ltr">the figure moving here</span>",
+      "figure-moved-bigtop": "<span lang="en" dir="ltr" class="mw-content-ltr">the Big Top moved to the newly placed tile</span>",
       "meeple-deployed": "<span lang="en" dir="ltr" class="mw-content-ltr">the deployed meeple</span>",
       "rule": {
         "count-clockwise": "<span lang="en" dir="ltr" class="mw-content-ltr">the Count moving on clockwise</span>",
+        "crop-circle": "<span lang="en" dir="ltr" class="mw-content-ltr">a crop circle</span>",
         "decinsky-sneznik-scored": "<span lang="en" dir="ltr" class="mw-content-ltr">Děčínský Sněžník scored</span>",
         "final-scoring": "<span lang="en" dir="ltr" class="mw-content-ltr">final scoring</span>",
         "flock-expanded": "<span lang="en" dir="ltr" class="mw-content-ltr">a sheep token drawn for the flock</span>",
@@ -361,6 +363,7 @@
     "element": {
       "abbey": "Opátstvo",
       "abbot": "Opát",
+      "animal-token": "<span lang="en" dir="ltr" class="mw-content-ltr">Animal token</span>",
       "barn": "Stodola",
       "big-follower": "Veľký spoločník",
       "big-top": "Cirkus",
@@ -490,6 +493,8 @@
       "moved-by": "<span lang="en" dir="ltr" class="mw-content-ltr">Moved by {player}</span>",
       "placed-by": "<span lang="en" dir="ltr" class="mw-content-ltr">Placed by {player}</span>",
       "removed-with": "<span lang="en" dir="ltr" class="mw-content-ltr">{source}, by {player}</span>",
+      "source-barn-field-join": "<span lang="en" dir="ltr" class="mw-content-ltr">Its field joined to one with a barn</span>",
+      "source-barn-placement": "<span lang="en" dir="ltr" class="mw-content-ltr">Barn placed on its field</span>",
       "title": {
         "captured": "<span lang="en" dir="ltr" class="mw-content-ltr">{figure} captured</span>",
         "castle-created": "<span lang="en" dir="ltr" class="mw-content-ltr">Small city converted to a castle</span>",
@@ -499,6 +504,7 @@
         "placed": "<span lang="en" dir="ltr" class="mw-content-ltr">{figure} placed</span>",
         "placed-on-letter": "<span lang="en" dir="ltr" class="mw-content-ltr">{figure} placed on the Letter</span>",
         "removed": "<span lang="en" dir="ltr" class="mw-content-ltr">{figure} removed</span>",
+        "revealed": "<span lang="en" dir="ltr" class="mw-content-ltr">{figure} revealed and scored</span>",
         "tile-placed": "<span lang="en" dir="ltr" class="mw-content-ltr">Tile placed</span>"
       }
     },
@@ -551,7 +557,9 @@
       "not-available": "<span lang="en" dir="ltr" class="mw-content-ltr">AI not available</span>",
       "not-available-hint": "<span lang="en" dir="ltr" class="mw-content-ltr">AI players are not available for game setup</span>",
       "not-supported": "<span lang="en" dir="ltr" class="mw-content-ltr">The AI does not play</span>",
-      "supported": "<span lang="en" dir="ltr" class="mw-content-ltr">The AI can play this</span>"
+      "supported": "<span lang="en" dir="ltr" class="mw-content-ltr">The AI can play this</span>",
+      "supported-not-with": "<span lang="en" dir="ltr" class="mw-content-ltr">The AI can play this — not with: {elements}</span>",
+      "supported-only-without": "<span lang="en" dir="ltr" class="mw-content-ltr">The AI can play this only without: {elements}</span>"
     },
     "additional-elements": "Dodatočné prvky",
     "altered-gameplay": "Pozmenené varianty",
@@ -566,6 +574,7 @@
       "assign": "<span lang="en" dir="ltr" class="mw-content-ltr">assign</span>",
       "ai-player": "<span lang="en" dir="ltr" class="mw-content-ltr">AI player</span>",
       "click-to-assign": "kliknutím zvoľte",
+      "color-unavailable": "<span lang="en" dir="ltr" class="mw-content-ltr">Color not available</span>",
       "game-full": "<span lang="en" dir="ltr" class="mw-content-ltr">Game full</span>",
       "kick-player": "Odpojiť hráča",
       "local-ai-player": "miestny AI hráč",
@@ -580,6 +589,7 @@
       "rename-player": "Premenovať hráča",
       "waiting-for-player": "čakáme na hráča"
     },
+    "features": "<span lang="en" dir="ltr" class="mw-content-ltr">Features</span>",
     "game-element-box": {
       "mandatory-for-selected-tiles": "Povinné pre vybrané kartičky",
       "related-tiles-not-selected": "Neboli vybraté žiadne súvisiace kartičky"
@@ -599,6 +609,8 @@
       "timer": "Časovač",
       "variant": "<span lang="en" dir="ltr" class="mw-content-ltr">Variant</span>"
     },
+    "mechanics": "<span lang="en" dir="ltr" class="mw-content-ltr">Mechanics</span>",
+    "modifiers": "<span lang="en" dir="ltr" class="mw-content-ltr">Modifiers</span>",
     "open-game": {
       "assign-all-players-to-start": "Priraďte všetkých hráčov, aby začali",
       "hide-remaining-tiles-cheat-sheet": "Skryť zostávajúce kartičky",
@@ -627,6 +639,8 @@
       "bazaar-disabled": "V hre nie je žiadna kartička s bazárom.",
       "cathedral-description": "Za dokončené mesto s katedrálou sa započítavajú 3 body za kartičku. Pri záverečnom vyhodnotení ale nezískate žiadne body.",
       "cathedral-disabled": "V hre nie je žiadna kartička s katedrálou.",
+	  "city-description": "<span lang="en" dir="ltr" class="mw-content-ltr">City is completed when its walls are fully closed.</span>",
+      "city-scoring": "<span lang="en" dir="ltr" class="mw-content-ltr">City scores 2 points per tile and per coat of arms. An unfinished city scores only 1 point per tile and per coat of arms at the end of the game.</span>",
       "escape-description": "Útek z obliehaného mesta povolený cez susedný kláštor.",
       "escape-disabled": "V hre nie je žiadna kartička s obliehaním.",
       "farmers-description": "Hráči môžu umiestniť spoločníka na polia.",
@@ -645,12 +659,16 @@
       "garden-disabled": "Opát nie je vybraný.",
       "hill-description": "Používa sa pri remíze. Zároveň skrýva náhodnú kartičku pod kopcom.",
       "hill-disabled": "V hre nie je žiadna kartička s kopcom.",
+      "info-title": "<span lang="en" dir="ltr" class="mw-content-ltr">Tiles with this feature</span>",
+      "info-tiles-count": "<span lang="en" dir="ltr" class="mw-content-ltr">Tiles in the game: {count} of {total}</span>",
       "inn-description": "Za ukončenú cestu s hostincom sa započítavajú 2 body za kartičku a voliteľne žiaden bod pri záverečnom vyhodnotení.",
       "inn-disabled": "V hre nie je žiadna kartička s hostincom.",
       "marketplace-description": "Trhovisko spája viaceré cesty tak, že každá z nich je ukončená len vtedy ak sú uzavreté všetky z nich. Pri započítaní bodov každej z nich získate navyše bod za každú kartičku ďalších napojených ciest osobitne.",
       "marketplace-disabled": "V hre nie je žiadna kartička s trhoviskom.",
-      "meteorite-description": "TBA",
+      "meteorite-description": "<span lang="en" dir="ltr" class="mw-content-ltr">Placing a tile with a crater causes a meteorite impact: a die roll decides how far the blast reaches, and every meeple and neutral figure standing on the hit tiles is knocked off the board.</span>",
       "meteorite-disabled": "V hre nie je žiadna kartička s kráterom.",
+	  "monastery-description": "<span lang="en" dir="ltr" class="mw-content-ltr">Monastery is completed when it is surrounded by eight tiles.</span>",
+      "monastery-scoring": "<span lang="en" dir="ltr" class="mw-content-ltr">Monastery scores 9 points. At the end of the game an unfinished monastery scores 1 point for itself and 1 for each neighbouring tile.</span>",
       "optional-game-mechanics": "Voliteľné herné mechaniky",
       "pig-herd-description": "Počíta sa ako ďalšie prasiatko na poli (farmári získajú viac bodov).",
       "pig-herd-disabled": "V hre nie je žiadna kartička so stádom ošípaných.",
@@ -658,11 +676,14 @@
       "portal-disabled": "V hre nie je žiadna kartička s tajnou chodbou.",
       "princess-description": "Princezná môže odstrániť rytiera z mesta.",
       "princess-disabled": "V hre nie je žiadna kartička s princeznou.",
+	  "road-description": "<span lang="en" dir="ltr" class="mw-content-ltr">Road is completed when all of its ends are closed (by a crossing, a city, a monastery or a loop).</span>",
+      "road-scoring": "<span lang="en" dir="ltr" class="mw-content-ltr">Road scores 1 point per tile. An unfinished road still scores 1 point per tile at the end of the game.</span>",
       "robbers-son-description": "Lupičov syn môže odstrániť lupiča z cesty.",
       "robbers-son-disabled": "V hre nie je žiadna kartička s lúpežníkovým synom.",
       "scoring-variants": "Varianty bodovania",
       "shrine-description": "Svätyňa umiestnená vedľa kláštora súťaží, kto ukončí územie ako prvý.",
       "shrine-disabled": "V hre nie je žiadna kartička so svätyňou.",
+      "shrine-scoring": "<span lang="en" dir="ltr" class="mw-content-ltr">A shrine is scored like a monastery.</span>",
       "siege-description": "Obliehané mestá majú menej bodov.",
       "siege-disabled": "V hre nie je žiadna kartička s obliehaním.",
       "starting-tiles-configuration": "Štartovacia konfigurácia",

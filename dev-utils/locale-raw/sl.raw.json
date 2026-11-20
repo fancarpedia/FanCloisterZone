@@ -334,9 +334,11 @@
     "cause": {
       "caused-by": "<span lang="en" dir="ltr" class="mw-content-ltr">Caused by: {cause}</span>",
       "figure-moved": "<span lang="en" dir="ltr" class="mw-content-ltr">the figure moving here</span>",
+      "figure-moved-bigtop": "<span lang="en" dir="ltr" class="mw-content-ltr">the Big Top moved to the newly placed tile</span>",
       "meeple-deployed": "<span lang="en" dir="ltr" class="mw-content-ltr">the deployed meeple</span>",
       "rule": {
         "count-clockwise": "<span lang="en" dir="ltr" class="mw-content-ltr">the Count moving on clockwise</span>",
+        "crop-circle": "<span lang="en" dir="ltr" class="mw-content-ltr">a crop circle</span>",
         "decinsky-sneznik-scored": "<span lang="en" dir="ltr" class="mw-content-ltr">Děčínský Sněžník scored</span>",
         "final-scoring": "<span lang="en" dir="ltr" class="mw-content-ltr">final scoring</span>",
         "flock-expanded": "<span lang="en" dir="ltr" class="mw-content-ltr">a sheep token drawn for the flock</span>",
@@ -361,6 +363,7 @@
     "element": {
       "abbey": "Opatija",
       "abbot": "Opat",
+      "animal-token": "<span lang="en" dir="ltr" class="mw-content-ltr">Animal token</span>",
       "barn": "Skedenj",
       "big-follower": "Veliki Človeček",
       "big-top": "Veliki Šotor",
@@ -490,6 +493,8 @@
       "moved-by": "<span lang="en" dir="ltr" class="mw-content-ltr">Moved by {player}</span>",
       "placed-by": "<span lang="en" dir="ltr" class="mw-content-ltr">Placed by {player}</span>",
       "removed-with": "<span lang="en" dir="ltr" class="mw-content-ltr">{source}, by {player}</span>",
+      "source-barn-field-join": "<span lang="en" dir="ltr" class="mw-content-ltr">Its field joined to one with a barn</span>",
+      "source-barn-placement": "<span lang="en" dir="ltr" class="mw-content-ltr">Barn placed on its field</span>",
       "title": {
         "captured": "<span lang="en" dir="ltr" class="mw-content-ltr">{figure} captured</span>",
         "castle-created": "<span lang="en" dir="ltr" class="mw-content-ltr">Small city converted to a castle</span>",
@@ -499,6 +504,7 @@
         "placed": "<span lang="en" dir="ltr" class="mw-content-ltr">{figure} placed</span>",
         "placed-on-letter": "<span lang="en" dir="ltr" class="mw-content-ltr">{figure} placed on the Letter</span>",
         "removed": "<span lang="en" dir="ltr" class="mw-content-ltr">{figure} removed</span>",
+        "revealed": "<span lang="en" dir="ltr" class="mw-content-ltr">{figure} revealed and scored</span>",
         "tile-placed": "<span lang="en" dir="ltr" class="mw-content-ltr">Tile placed</span>"
       }
     },
@@ -551,7 +557,9 @@
       "not-available": "<span lang="en" dir="ltr" class="mw-content-ltr">AI not available</span>",
       "not-available-hint": "<span lang="en" dir="ltr" class="mw-content-ltr">AI players are not available for game setup</span>",
       "not-supported": "<span lang="en" dir="ltr" class="mw-content-ltr">The AI does not play</span>",
-      "supported": "<span lang="en" dir="ltr" class="mw-content-ltr">The AI can play this</span>"
+      "supported": "<span lang="en" dir="ltr" class="mw-content-ltr">The AI can play this</span>",
+      "supported-not-with": "<span lang="en" dir="ltr" class="mw-content-ltr">The AI can play this — not with: {elements}</span>",
+      "supported-only-without": "<span lang="en" dir="ltr" class="mw-content-ltr">The AI can play this only without: {elements}</span>"
     },
     "additional-elements": "Dodatni elementi",
     "altered-gameplay": "Spremenjena Igra",
@@ -566,6 +574,7 @@
       "assign": "<span lang="en" dir="ltr" class="mw-content-ltr">assign</span>",
       "ai-player": "<span lang="en" dir="ltr" class="mw-content-ltr">AI player</span>",
       "click-to-assign": "klikni za dodelitev",
+      "color-unavailable": "<span lang="en" dir="ltr" class="mw-content-ltr">Color not available</span>",
       "game-full": "<span lang="en" dir="ltr" class="mw-content-ltr">Game full</span>",
       "kick-player": "Izključi igralca",
       "local-ai-player": "Lokalni AI igralec",
@@ -580,6 +589,7 @@
       "rename-player": "Preimenuj Igralca",
       "waiting-for-player": "čakanje na igralca"
     },
+    "features": "<span lang="en" dir="ltr" class="mw-content-ltr">Features</span>",
     "game-element-box": {
       "mandatory-for-selected-tiles": "Obvezno za izbrane ploščice",
       "related-tiles-not-selected": "Povezane ploščice niso izbrane"
@@ -599,6 +609,8 @@
       "timer": "Časovnik",
       "variant": "<span lang="en" dir="ltr" class="mw-content-ltr">Variant</span>"
     },
+    "mechanics": "<span lang="en" dir="ltr" class="mw-content-ltr">Mechanics</span>",
+    "modifiers": "<span lang="en" dir="ltr" class="mw-content-ltr">Modifiers</span>",
     "open-game": {
       "assign-all-players-to-start": "Dodeli vse igralce za začetek",
       "hide-remaining-tiles-cheat-sheet": "Skrij preostale ploščice",
@@ -627,6 +639,8 @@
       "bazaar-disabled": "Nobena ploščica z bazarjem ni v igri.",
       "cathedral-description": "Dokončana mesta s katedralo ×3 namesto ×2 in po izbiri brez točk pri končnem točkovanju.",
       "cathedral-disabled": "Nobena ploščica s katedralo ni v igri.",
+	  "city-description": "<span lang="en" dir="ltr" class="mw-content-ltr">City is completed when its walls are fully closed.</span>",
+      "city-scoring": "<span lang="en" dir="ltr" class="mw-content-ltr">City scores 2 points per tile and per coat of arms. An unfinished city scores only 1 point per tile and per coat of arms at the end of the game.</span>",
       "escape-description": "Pobeg dovoljen preko sosednjega samostana.",
       "escape-disabled": "Nobena ploščica z obleganjem ni v igri.",
       "farmers-description": "Igralci lahko postavijo človeščke na polja.",
@@ -645,12 +659,16 @@
       "garden-disabled": "Opat ni izbran.",
       "hill-description": "Uporablja se kot odločilni dejavnik. Prav tako skrije eno naključno ploščico pod sabo.",
       "hill-disabled": "Nobena ploščica s hribom ni v igri.",
+      "info-title": "<span lang="en" dir="ltr" class="mw-content-ltr">Tiles with this feature</span>",
+      "info-tiles-count": "<span lang="en" dir="ltr" class="mw-content-ltr">Tiles in the game: {count} of {total}</span>",
       "inn-description": "Dokončane ceste z gostilno ×2 in po izbiri brez točk pri končnem točkovanju.",
       "inn-disabled": "Nobena ploščica z gostilno ni v igri.",
       "marketplace-description": "Še ni na voljo",
       "marketplace-disabled": "Nobena ploščica s tržnico ni v igri.",
-      "meteorite-description": "TBA",
+      "meteorite-description": "<span lang="en" dir="ltr" class="mw-content-ltr">Placing a tile with a crater causes a meteorite impact: a die roll decides how far the blast reaches, and every meeple and neutral figure standing on the hit tiles is knocked off the board.</span>",
       "meteorite-disabled": "V igri ni nobene ploščice s kraterjem.",
+	  "monastery-description": "<span lang="en" dir="ltr" class="mw-content-ltr">Monastery is completed when it is surrounded by eight tiles.</span>",
+      "monastery-scoring": "<span lang="en" dir="ltr" class="mw-content-ltr">Monastery scores 9 points. At the end of the game an unfinished monastery scores 1 point for itself and 1 for each neighbouring tile.</span>",
       "optional-game-mechanics": "Neobvezne igralne mehanike",
       "pig-herd-description": "Šteje kot dodatni prašič na polju (kmetje dobijo več točk).",
       "pig-herd-disabled": "Nobena ploščica s čredo prašičev ni v igri.",
@@ -658,11 +676,14 @@
       "portal-disabled": "Nobena ploščica s čarobnim portalom ni v igri.",
       "princess-description": "Princesa lahko odstrani viteza iz mesta.",
       "princess-disabled": "Nobena ploščica s princeso ni v igri.",
+	  "road-description": "<span lang="en" dir="ltr" class="mw-content-ltr">Road is completed when all of its ends are closed (by a crossing, a city, a monastery or a loop).</span>",
+      "road-scoring": "<span lang="en" dir="ltr" class="mw-content-ltr">Road scores 1 point per tile. An unfinished road still scores 1 point per tile at the end of the game.</span>",
       "robbers-son-description": "Razbojnikov sin lahko odstrani tatu s ceste.",
       "robbers-son-disabled": "V igri ni nobene ploščice z Razbojnikovim sinom.",
       "scoring-variants": "Variante točkovanja",
       "shrine-description": "Svetišče postavljeno poleg samostana tekmuje, kdo bo prvi dokončal značilnost. (drugi ne dobi točk)",
       "shrine-disabled": "Nobena ploščica s svetiščem ni v igri.",
+      "shrine-scoring": "<span lang="en" dir="ltr" class="mw-content-ltr">A shrine is scored like a monastery.</span>",
       "siege-description": "Oblegana mesta so manj vredna.",
       "siege-disabled": "Nobena ploščica z obleganjem ni v igri.",
       "starting-tiles-configuration": "Konfiguracija začetnih ploščic",

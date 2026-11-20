@@ -334,9 +334,11 @@
     "cause": {
       "caused-by": "<span lang="en" dir="ltr" class="mw-content-ltr">Caused by: {cause}</span>",
       "figure-moved": "<span lang="en" dir="ltr" class="mw-content-ltr">the figure moving here</span>",
+      "figure-moved-bigtop": "<span lang="en" dir="ltr" class="mw-content-ltr">the Big Top moved to the newly placed tile</span>",
       "meeple-deployed": "<span lang="en" dir="ltr" class="mw-content-ltr">the deployed meeple</span>",
       "rule": {
         "count-clockwise": "<span lang="en" dir="ltr" class="mw-content-ltr">the Count moving on clockwise</span>",
+        "crop-circle": "<span lang="en" dir="ltr" class="mw-content-ltr">a crop circle</span>",
         "decinsky-sneznik-scored": "<span lang="en" dir="ltr" class="mw-content-ltr">Děčínský Sněžník scored</span>",
         "final-scoring": "<span lang="en" dir="ltr" class="mw-content-ltr">final scoring</span>",
         "flock-expanded": "<span lang="en" dir="ltr" class="mw-content-ltr">a sheep token drawn for the flock</span>",
@@ -361,6 +363,7 @@
     "element": {
       "abbey": "Abdij",
       "abbot": "Abt",
+      "animal-token": "<span lang="en" dir="ltr" class="mw-content-ltr">Animal token</span>",
       "barn": "Herenboerderij",
       "big-follower": "Grote meeple",
       "big-top": "Circustent",
@@ -490,6 +493,8 @@
       "moved-by": "<span lang="en" dir="ltr" class="mw-content-ltr">Moved by {player}</span>",
       "placed-by": "<span lang="en" dir="ltr" class="mw-content-ltr">Placed by {player}</span>",
       "removed-with": "<span lang="en" dir="ltr" class="mw-content-ltr">{source}, by {player}</span>",
+      "source-barn-field-join": "<span lang="en" dir="ltr" class="mw-content-ltr">Its field joined to one with a barn</span>",
+      "source-barn-placement": "<span lang="en" dir="ltr" class="mw-content-ltr">Barn placed on its field</span>",
       "title": {
         "captured": "<span lang="en" dir="ltr" class="mw-content-ltr">{figure} captured</span>",
         "castle-created": "<span lang="en" dir="ltr" class="mw-content-ltr">Small city converted to a castle</span>",
@@ -499,6 +504,7 @@
         "placed": "<span lang="en" dir="ltr" class="mw-content-ltr">{figure} placed</span>",
         "placed-on-letter": "<span lang="en" dir="ltr" class="mw-content-ltr">{figure} placed on the Letter</span>",
         "removed": "<span lang="en" dir="ltr" class="mw-content-ltr">{figure} removed</span>",
+        "revealed": "<span lang="en" dir="ltr" class="mw-content-ltr">{figure} revealed and scored</span>",
         "tile-placed": "<span lang="en" dir="ltr" class="mw-content-ltr">Tile placed</span>"
       }
     },
@@ -551,7 +557,9 @@
       "not-available": "<span lang="en" dir="ltr" class="mw-content-ltr">AI not available</span>",
       "not-available-hint": "<span lang="en" dir="ltr" class="mw-content-ltr">AI players are not available for game setup</span>",
       "not-supported": "<span lang="en" dir="ltr" class="mw-content-ltr">The AI does not play</span>",
-      "supported": "<span lang="en" dir="ltr" class="mw-content-ltr">The AI can play this</span>"
+      "supported": "<span lang="en" dir="ltr" class="mw-content-ltr">The AI can play this</span>",
+      "supported-not-with": "<span lang="en" dir="ltr" class="mw-content-ltr">The AI can play this — not with: {elements}</span>",
+      "supported-only-without": "<span lang="en" dir="ltr" class="mw-content-ltr">The AI can play this only without: {elements}</span>"
     },
     "additional-elements": "Aanvullende elementen",
     "altered-gameplay": "Afwijkend spelverloop",
@@ -566,6 +574,7 @@
       "assign": "<span lang="en" dir="ltr" class="mw-content-ltr">assign</span>",
       "ai-player": "<span lang="en" dir="ltr" class="mw-content-ltr">AI player</span>",
       "click-to-assign": "klik om toe te wijzen",
+      "color-unavailable": "<span lang="en" dir="ltr" class="mw-content-ltr">Color not available</span>",
       "game-full": "<span lang="en" dir="ltr" class="mw-content-ltr">Game full</span>",
       "kick-player": "Speler schoppen",
       "local-ai-player": "lokale ai-speler",
@@ -580,6 +589,7 @@
       "rename-player": "Speler hernoemen",
       "waiting-for-player": "wachten op tegenspeler"
     },
+    "features": "<span lang="en" dir="ltr" class="mw-content-ltr">Features</span>",
     "game-element-box": {
       "mandatory-for-selected-tiles": "Verplicht voor de geselecteerde tegels",
       "related-tiles-not-selected": "Niet-geselecteerde gerelateerde tegels"
@@ -599,6 +609,8 @@
       "timer": "Timer",
       "variant": "<span lang="en" dir="ltr" class="mw-content-ltr">Variant</span>"
     },
+    "mechanics": "<span lang="en" dir="ltr" class="mw-content-ltr">Mechanics</span>",
+    "modifiers": "<span lang="en" dir="ltr" class="mw-content-ltr">Modifiers</span>",
     "open-game": {
       "assign-all-players-to-start": "Alle spelers aan het begin toewijzen",
       "hide-remaining-tiles-cheat-sheet": "Afkijklijst met overgebleven tegels verbergen",
@@ -627,6 +639,8 @@
       "bazaar-disabled": "Er zijn geen tegels met bazaars in het spel.",
       "cathedral-description": "Afgebouwde steden met een kathedraal ×3 in plaats van ×2, mogelijk geen punten bij de eindtelling.",
       "cathedral-disabled": "Er zijn geen kathedraaltegels in het spel.",
+	  "city-description": "<span lang="en" dir="ltr" class="mw-content-ltr">City is completed when its walls are fully closed.</span>",
+      "city-scoring": "<span lang="en" dir="ltr" class="mw-content-ltr">City scores 2 points per tile and per coat of arms. An unfinished city scores only 1 point per tile and per coat of arms at the end of the game.</span>",
       "escape-description": "Je mag ontsnappen via een naastgelegen klooster.",
       "escape-disabled": "Er zijn geen tegels met belegeringen in het spel.",
       "farmers-description": "Spelers mogen meeples op weiden zetten.",
@@ -645,12 +659,16 @@
       "garden-disabled": "Abt niet geselecteerd.",
       "hill-description": "Beslist gelijkspel bij meerderheid. Verbergt een willekeurige tegel.",
       "hill-disabled": "Er zijn geen tegels met heuvels in het spel.",
+      "info-title": "<span lang="en" dir="ltr" class="mw-content-ltr">Tiles with this feature</span>",
+      "info-tiles-count": "<span lang="en" dir="ltr" class="mw-content-ltr">Tiles in the game: {count} of {total}</span>",
       "inn-description": "Afgebouwde wegen met een herberg ×2, mogelijk geen punten bij de eindtelling.",
       "inn-disabled": "Er zijn geen tegels met herbergen in het spel.",
       "marketplace-description": "Markten verbinden verschillende wegen tot een gedeeld netwerk dat pas afgebouwd is als alle ermee verbonden wegen afgesloten zijn. Bij de de puntentelling krijg je evenveel bonuspunten als de lengte van de andere afgebouwde wegen in dat netwerk.",
       "marketplace-disabled": "Er zijn geen tegels met een marktplaats in het spel.",
-      "meteorite-description": "TBA",
+      "meteorite-description": "<span lang="en" dir="ltr" class="mw-content-ltr">Placing a tile with a crater causes a meteorite impact: a die roll decides how far the blast reaches, and every meeple and neutral figure standing on the hit tiles is knocked off the board.</span>",
       "meteorite-disabled": "Er zijn geen tegels met kraters in het spel.",
+	  "monastery-description": "<span lang="en" dir="ltr" class="mw-content-ltr">Monastery is completed when it is surrounded by eight tiles.</span>",
+      "monastery-scoring": "<span lang="en" dir="ltr" class="mw-content-ltr">Monastery scores 9 points. At the end of the game an unfinished monastery scores 1 point for itself and 1 for each neighbouring tile.</span>",
       "optional-game-mechanics": "Optionele spelmechanismes",
       "pig-herd-description": "Geldt als een extra varken op de weide (boeren krijgen extra punten).",
       "pig-herd-disabled": "Er is geen tegel met een varkenskudde in het spel.",
@@ -658,11 +676,14 @@
       "portal-disabled": "Er zijn geen tegels met magische poorten in het spel.",
       "princess-description": "De jonkvrouw mag een ridder uit een stad verwijderen.",
       "princess-disabled": "Er zijn geen tegels met jonkvrouwen in het spel.",
+	  "road-description": "<span lang="en" dir="ltr" class="mw-content-ltr">Road is completed when all of its ends are closed (by a crossing, a city, a monastery or a loop).</span>",
+      "road-scoring": "<span lang="en" dir="ltr" class="mw-content-ltr">Road scores 1 point per tile. An unfinished road still scores 1 point per tile at the end of the game.</span>",
       "robbers-son-description": "De roverszoon mag een dief van een weg verwijderen.",
       "robbers-son-disabled": "Er zijn geen tegels met een roverszoon in het spel.",
       "scoring-variants": "Puntentellingvariaties",
       "shrine-description": "Cultusplaats naast een klooster strijdt om wie het project het eerst heeft afgebouwd. (de ander krijgt geen punten)",
       "shrine-disabled": "Er zijn geen tegels met cultusplaatsen in het spel.",
+      "shrine-scoring": "<span lang="en" dir="ltr" class="mw-content-ltr">A shrine is scored like a monastery.</span>",
       "siege-description": "Belegerde steden zijn minder waard.",
       "siege-disabled": "Er zijn geen tegels met belegeringen in het spel.",
       "starting-tiles-configuration": "Configuratie van de starttegel(s)",

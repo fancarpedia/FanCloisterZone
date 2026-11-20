@@ -2,7 +2,7 @@
   "@author": "Snearone",
   "@jcz-version": "5.12.1",
   "@fcz-version": "7.2.0",
-  "@version": "0.13.6-ai",
+  "@version": "0.13.10-ai",
   "about": {
     "author": "Autor",
     "configuration-file": "Plik konfiguracyjny",
@@ -335,9 +335,11 @@
     "cause": {
       "caused-by": "Przyczyna: {cause}",
       "figure-moved": "figurka przesunięta tutaj",
+      "figure-moved-bigtop": "Cyrk objazdowy przeniesiony na nowo położony kafelek",
       "meeple-deployed": "umieszczony podwładny",
       "rule": {
         "count-clockwise": "Hrabia przesuwa się zgodnie z ruchem wskazówek zegara",
+        "crop-circle": "krąg w zbożu",
         "decinsky-sneznik-scored": "podliczony Dieczyński Śnieżnik",
         "final-scoring": "końcowe podliczanie",
         "flock-expanded": "żeton owcy wylosowany dla stada",
@@ -362,6 +364,7 @@
     "element": {
       "abbey": "Opactwo",
       "abbot": "Opat",
+      "animal-token": "Żeton zwierzęcia",
       "barn": "Stodoła",
       "big-follower": "Duży podwładny",
       "big-top": "Cyrk objazdowy",
@@ -491,6 +494,8 @@
       "moved-by": "Przesunął gracz {player}",
       "placed-by": "Położył gracz {player}",
       "removed-with": "{source}, gracz {player}",
+      "source-barn-field-join": "Jego pole połączone z polem ze stodołą",
+      "source-barn-placement": "Stodoła położona na jego polu",
       "title": {
         "captured": "Pojmanie: {figure}",
         "castle-created": "Małe miasto przekształcone w zamek",
@@ -500,6 +505,7 @@
         "placed": "Umieszczenie: {figure}",
         "placed-on-letter": "Umieszczenie na Liście: {figure}",
         "removed": "Usunięcie: {figure}",
+        "revealed": "{figure} odkryty i podliczony",
         "tile-placed": "Płytka położona"
       }
     },
@@ -552,7 +558,9 @@
       "not-available": "AI niedostępne",
       "not-available-hint": "Gracze AI nie są dostępni w tej konfiguracji gry",
       "not-supported": "AI nie gra",
-      "supported": "AI może w to grać"
+      "supported": "AI może w to grać",
+      "supported-not-with": "AI może w to grać — nie z: {elements}",
+      "supported-only-without": "AI może w to grać tylko bez: {elements}"
     },
     "additional-elements": "Elementy dodatkowe",
     "altered-gameplay": "Zmienione zasady",
@@ -567,8 +575,8 @@
       "assign": "przydziel",
       "ai-player": "Gracz AI",
       "click-to-assign": "kliknij, aby przydzielić",
-      "game-full": "Gra jest pełna",
       "color-unavailable": "Kolor niedostępny",
+      "game-full": "Gra jest pełna",
       "kick-player": "Wyrzuć gracza",
       "local-ai-player": "lokalny gracz AI",
       "local-limit-reached": "Limit osiągnięty",
@@ -582,6 +590,7 @@
       "rename-player": "Zmień nazwę",
       "waiting-for-player": "oczekiwanie na gracza"
     },
+    "features": "Elementy",
     "game-element-box": {
       "mandatory-for-selected-tiles": "Obowiązkowe do wybranych płytek",
       "related-tiles-not-selected": "Nie wybrano powiązanych płytek."
@@ -601,6 +610,8 @@
       "timer": "Minutnik",
       "variant": "Wariant"
     },
+    "mechanics": "Mechaniki",
+    "modifiers": "Modyfikatory",
     "open-game": {
       "assign-all-players-to-start": "Przydziel wszystkich graczy by zacząć",
       "hide-remaining-tiles-cheat-sheet": "Ukryj listę pozostałych płytek",
@@ -629,6 +640,8 @@
       "bazaar-disabled": "Nie wybrano płytek z bazarem.",
       "cathedral-description": "Ukończone miasta z katedrą ×3 zamiast ×2 i opcjonalnie bez punktów podczas końcowej punktacji.",
       "cathedral-disabled": "Nie wybrano płytek z katedrą.",
+      "city-description": "Miasto jest ukończone, gdy jego mury są całkowicie zamknięte.",
+      "city-scoring": "Miasto daje 2 punkty za każdy kafelek i każdy proporzec. Nieukończone miasto daje na koniec gry tylko 1 punkt za kafelek i za proporzec.",
       "escape-description": "Ucieczka możliwa poprzez przyległy klasztor.",
       "escape-disabled": "Nie wybrano płytek z oblężeniem.",
       "farmers-description": "Możliwość umieszczenia chłopów na polach.",
@@ -647,12 +660,16 @@
       "garden-disabled": "Nie wybrano Opata.",
       "hill-description": "Wzgórze rozstrzyga remis. Powoduje wykluczenie z gry jednej płytki.",
       "hill-disabled": "Nie wybrano płytek ze wzgórzem.",
+      "info-title": "Kafelki z tym elementem",
+      "info-tiles-count": "Kafelki w grze: {count} z {total}",
       "inn-description": "Ukończona droga z karczmą ×2, opcjonalnie brak punktów na koniec gry.",
       "inn-disabled": "Nie wybrano płytek z karczmą.",
       "marketplace-description": "Targowiska łączą kilka dróg w jedną wspólną sieć, która jest kompletna dopiero wtedy, gdy wszystkie połączone drogi są zamknięte. Po podliczeniu punktów przyznawane są punkty bonusowe równe długości pozostałych ukończonych dróg w tej sieci.",
       "marketplace-disabled": "Brak płytek ze targowiskami w tej grze.",
-      "meteorite-description": "TBA",
+      "meteorite-description": "Położenie kafelka z kraterem wywołuje uderzenie meteorytu: rzut kością decyduje, jak daleko sięga wybuch, a wszyscy podwładni i neutralne figurki na trafionych kafelkach zostają zmieceni z planszy.",
       "meteorite-disabled": "Brak płytek z kraterem w tej grze.",
+      "monastery-description": "Klasztor jest ukończony, gdy otacza go osiem kafelków.",
+      "monastery-scoring": "Klasztor daje 9 punktów. Na koniec gry nieukończony klasztor daje 1 punkt za siebie i 1 za każdy sąsiedni kafelek.",
       "optional-game-mechanics": "Mechaniki gry",
       "pig-herd-description": "Dodatkowe punkty dla chłopów.",
       "pig-herd-disabled": "Nie wybrano płytek ze stadem świń.",
@@ -660,11 +677,14 @@
       "portal-disabled": "Nie wybrano płytek z magiczną ścieżką.",
       "princess-description": "Księżniczka pozwala na usunięcie podwładnego z miasta.",
       "princess-disabled": "Nie wybrano płytek z księżniczką.",
+      "road-description": "Droga jest ukończona, gdy wszystkie jej końce są zamknięte (skrzyżowaniem, miastem, klasztorem lub pętlą).",
+      "road-scoring": "Droga daje 1 punkt za każdy kafelek. Nieukończona droga na koniec gry również daje 1 punkt za kafelek.",
       "robbers-son-description": "Syn złodzieja może usunąć podwładnego z drogi.",
       "robbers-son-disabled": "Brak płytek z synem złodzieja.",
       "scoring-variants": "Warianty punktacji",
       "shrine-description": "Miejsca kultu konkurują z klasztorami.",
       "shrine-disabled": "Nie wybrano płytek z miejscem kultu.",
+      "shrine-scoring": "Siedziba Kultu jest punktowana jak klasztor.",
       "siege-description": "Oblężone miasta są mniej punktowane.",
       "siege-disabled": "Nie wybrano płytek z oblężeniem.",
       "starting-tiles-configuration": "Konfiguracja startowa",
@@ -672,7 +692,10 @@
       "vineyard-description": "Dodatkowe punkty do klasztorów.",
       "vineyard-disabled": "Nie wybrano płytek z winiarnią.",
       "well-description": "Dodaj punkt za każdą studnię przy drodze. Droga z karczmą dostaję 2 punkty przy ukończeniu, opcjonalnie żadnych przy punktach na koniec gry.",
-      "well-disabled": "Brak płytek ze studniami w tej grze."
+      "well-disabled": "Brak płytek ze studniami w tej grze.",
+      "features": "Elementy",
+      "mechanics": "Mechaniki",
+      "modifiers": "Modyfikatory"
     },
     "selected-tiles": "Wybrane płytki",
     "tiles": {

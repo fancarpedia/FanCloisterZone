@@ -2,7 +2,7 @@
   "@author": "J0anJosep",
   "@jcz-version": "5.12.1",
   "@fcz-version": "7.2.0",
-  "@version": "0.13.6-ai",
+  "@version": "0.13.10-ai",
   "about": {
     "author": "Autor",
     "configuration-file": "Fitxer de configuració",
@@ -335,9 +335,11 @@
     "cause": {
       "caused-by": "Causa: {cause}",
       "figure-moved": "la figura que s'ha mogut aquí",
+      "figure-moved-bigtop": "la Carpa traslladada a la peça acabada de col·locar",
       "meeple-deployed": "el seguidor col·locat",
       "rule": {
         "count-clockwise": "el Comte avança en sentit horari",
+        "crop-circle": "un cercle de cultiu",
         "decinsky-sneznik-scored": "Děčínský Sněžník puntuat",
         "final-scoring": "puntuació final",
         "flock-expanded": "una fitxa d'ovella treta per al ramat",
@@ -362,6 +364,7 @@
     "element": {
       "abbey": "Abat",
       "abbot": "Abat",
+      "animal-token": "Fitxa d'animal",
       "barn": "Graner",
       "big-follower": "Seguidor gran",
       "big-top": "Carpa",
@@ -491,6 +494,8 @@
       "moved-by": "Mogut per {player}",
       "placed-by": "Posat per {player}",
       "removed-with": "{source}, per {player}",
+      "source-barn-field-join": "El seu camp s'ha unit a un amb graner",
+      "source-barn-placement": "Graner col·locat al seu camp",
       "title": {
         "captured": "Captura: {figure}",
         "castle-created": "Ciutat petita convertida en castell",
@@ -500,6 +505,7 @@
         "placed": "Col·locació: {figure}",
         "placed-on-letter": "Col·locació a la Carta: {figure}",
         "removed": "Retirada: {figure}",
+        "revealed": "{figure} revelada i puntuada",
         "tile-placed": "Peça col·locada"
       }
     },
@@ -552,7 +558,9 @@
       "not-available": "IA no disponible",
       "not-available-hint": "Els jugadors IA no estan disponibles per a aquesta configuració de partida",
       "not-supported": "La IA no juga",
-      "supported": "La IA pot jugar això"
+      "supported": "La IA pot jugar això",
+      "supported-not-with": "La IA pot jugar això — no amb: {elements}",
+      "supported-only-without": "La IA pot jugar això només sense: {elements}"
     },
     "additional-elements": "Elements addicionals",
     "altered-gameplay": "Modificacions del joc",
@@ -567,8 +575,8 @@
       "assign": "assigna",
       "ai-player": "Jugador IA",
       "click-to-assign": "feu clic per a assignar",
-      "game-full": "Partida completa",
       "color-unavailable": "Color no disponible",
+      "game-full": "Partida completa",
       "kick-player": "Expulsa el jugador",
       "local-ai-player": "jugador ia local",
       "local-limit-reached": "Límit assolit",
@@ -582,6 +590,7 @@
       "rename-player": "Canvia el nom de jugador",
       "waiting-for-player": "s'espera al jugador"
     },
+    "features": "Elements",
     "game-element-box": {
       "mandatory-for-selected-tiles": "Obligatori per a les peces seleccionades",
       "related-tiles-not-selected": "Peces relacionades no seleccionades"
@@ -601,6 +610,8 @@
       "timer": "Cronòmetre",
       "variant": "Variant"
     },
+    "mechanics": "Mecàniques",
+    "modifiers": "Modificadors",
     "open-game": {
       "assign-all-players-to-start": "Assigneu tots els jugadors per a començar",
       "hide-remaining-tiles-cheat-sheet": "Amaga la llista de peces que queden per jugar",
@@ -629,6 +640,8 @@
       "bazaar-disabled": "A la partida no hi ha cap peça amb basars.",
       "cathedral-description": "Les ciutats completades amb una catedral ×3, en lloc de ×2, i opcionalment sense puntuar al recompte final.",
       "cathedral-disabled": "No hi ha caselles amb catedrals a la partida.",
+      "city-description": "La ciutat es completa quan les seves muralles queden totalment tancades.",
+      "city-scoring": "La ciutat puntua 2 punts per peça i per escut. Una ciutat incompleta puntua només 1 punt per peça i per escut al final de la partida.",
       "escape-description": "Escapada permesa a través d'un monestir veí.",
       "escape-disabled": "A la partida no hi ha cap peça amb setges.",
       "farmers-description": "Els jugadors poden posar seguidors als camps.",
@@ -647,12 +660,16 @@
       "garden-disabled": "No s'ha triat un abad.",
       "hill-description": "Es fa servir per als desempats. També amaga una peça a l'atzar a sota.",
       "hill-disabled": "A la partida no hi ha cap peça amb turons.",
+      "info-title": "Peces amb aquest element",
+      "info-tiles-count": "Peces a la partida: {count} de {total}",
       "inn-description": "Els camins completats amb una fonda puntuen ×2 i opcionalment no es tenen en compte les fondes al recompte final.",
       "inn-disabled": "A la partida no hi ha cap peça amb fondes.",
       "marketplace-description": "Els mercats connecten diversos camins en una sola xarxa compartida que es completa quan es tanquen tots els camins involucrats. Quan puntuen, es donen punts de bonificació per la llargada dels altres camins completats.",
       "marketplace-disabled": "A la partida no hi ha cap peça amb mercats.",
-      "meteorite-description": "TBA",
+      "meteorite-description": "Col·locar una peça amb un cràter provoca l'impacte d'un meteorit: una tirada de dau decideix fins on arriba l'explosió, i tots els seguidors i figures neutrals de les peces afectades surten del tauler.",
       "meteorite-disabled": "A la partida no hi ha peces amb cràters.",
+      "monastery-description": "El monestir es completa quan està envoltat per vuit peces.",
+      "monastery-scoring": "El monestir puntua 9 punts. Al final de la partida, un monestir incomplet puntua 1 punt per si mateix i 1 per cada peça veïna.",
       "optional-game-mechanics": "Mecàniques de joc opcionals",
       "pig-herd-description": "Compta com un porc addicional al camp (els grangers puntuen més punts).",
       "pig-herd-disabled": "A la partida no hi ha peces amb porcades.",
@@ -660,11 +677,14 @@
       "portal-disabled": "A la partida no hi ha cap peça amb portals màgics.",
       "princess-description": "La princesa pot traure un cavaller d'una ciutat.",
       "princess-disabled": "A la partida no hi ha peces amb la princesa.",
+      "road-description": "El camí es completa quan tots els seus extrems estan tancats (per un encreuament, una ciutat, un monestir o un bucle).",
+      "road-scoring": "El camí puntua 1 punt per peça. Un camí incomplet també puntua 1 punt per peça al final de la partida.",
       "robbers-son-description": "El fill del viatjant pot traure un lladre del camí.",
       "robbers-son-disabled": "No hi ha cap peça amb el fill del viatjant a la partida.",
       "scoring-variants": "Variants de puntuació",
       "shrine-description": "Un santuari i un monestir un al costat de l'altre competeixen. Qui acabi primer, puntua. El segon, no obté cap punt.",
       "shrine-disabled": "No hi ha caselles amb santuaris a la partida.",
+      "shrine-scoring": "Un santuari es puntua com un monestir.",
       "siege-description": "Les ciutats assetjades tenen menys valor.",
       "siege-disabled": "A la partida no hi ha peces amb setges.",
       "starting-tiles-configuration": "Configuració de les peces inicials",
@@ -672,7 +692,10 @@
       "vineyard-description": "Punts addicionals per monestir proper.",
       "vineyard-disabled": "A la partida no hi ha cap peça amb vinyes.",
       "well-description": "Un punt addicional per cada pou als camins. Si el camí té una fonda quan es completa, se sumen 2 punts. En el recompte final, es puntuarà per fondes de manera opcional.",
-      "well-disabled": "A la partida no hi ha cap peça amb pous."
+      "well-disabled": "A la partida no hi ha cap peça amb pous.",
+      "features": "Elements",
+      "mechanics": "Mecàniques",
+      "modifiers": "Modificadors"
     },
     "selected-tiles": "Peces seleccionades",
     "tiles": {

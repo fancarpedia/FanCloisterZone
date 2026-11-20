@@ -154,6 +154,16 @@
     "value": "Der Computergegner kann das spielen",
     "source": "manual"
   },
+  "game-setup.ai.supported-not-with": {
+    "en": "The AI can play this — not with: {elements}",
+    "value": "Der Computergegner kann das spielen — nicht mit: {elements}",
+    "source": "manual"
+  },
+  "game-setup.ai.supported-only-without": {
+    "en": "The AI can play this only without: {elements}",
+    "value": "Der Computergegner kann das nur spielen ohne: {elements}",
+    "source": "manual"
+  },
   "game-setup.create.ai-player": {
     "en": "AI player",
     "value": "Computergegner",
@@ -162,6 +172,11 @@
   "game-setup.create.assign": {
     "en": "assign",
     "value": "zuweisen",
+    "source": "manual"
+  },
+  "game-setup.create.color-unavailable": {
+    "en": "Color not available",
+    "value": "Farbe nicht verfügbar",
     "source": "manual"
   },
   "game-setup.create.game-full": {
@@ -177,6 +192,11 @@
   "game-setup.create.release-slot": {
     "en": "Release slot",
     "value": "Slot freigeben",
+    "source": "manual"
+  },
+  "game-setup.features": {
+    "en": "Features",
+    "value": "Elemente",
     "source": "manual"
   },
   "game-setup.game-flow.cooperative": {
@@ -204,6 +224,16 @@
     "value": "Variante",
     "source": "manual"
   },
+  "game-setup.mechanics": {
+    "en": "Mechanics",
+    "value": "Mechaniken",
+    "source": "manual"
+  },
+  "game-setup.modifiers": {
+    "en": "Modifiers",
+    "value": "Modifikatoren",
+    "source": "manual"
+  },
   "game-setup.open-game.max-players": {
     "en": "Max players (public)",
     "value": "Max. Spieler (öffentlich)",
@@ -217,6 +247,56 @@
   "game-setup.open-game.no-human-player": {
     "en": "No human in game",
     "value": "Kein menschlicher Spieler im Spiel",
+    "source": "manual"
+  },
+  "game-setup.rules.city-description": {
+    "en": "City is completed when its walls are fully closed.",
+    "value": "Eine Stadt ist fertig, wenn ihre Mauern vollständig geschlossen sind.",
+    "source": "manual"
+  },
+  "game-setup.rules.city-scoring": {
+    "en": "City scores 2 points per tile and per coat of arms. An unfinished city scores only 1 point per tile and per coat of arms at the end of the game.",
+    "value": "Eine Stadt zählt 2 Punkte pro Plättchen und pro Wappen. Eine unfertige Stadt zählt am Spielende nur 1 Punkt pro Plättchen und pro Wappen.",
+    "source": "manual"
+  },
+  "game-setup.rules.info-tiles-count": {
+    "en": "Tiles in the game: {count} of {total}",
+    "value": "Plättchen im Spiel: {count} von {total}",
+    "source": "manual"
+  },
+  "game-setup.rules.info-title": {
+    "en": "Tiles with this feature",
+    "value": "Plättchen mit diesem Element",
+    "source": "manual"
+  },
+  "game-setup.rules.meteorite-description": {
+    "en": "Placing a tile with a crater causes a meteorite impact: a die roll decides how far the blast reaches, and every meeple and neutral figure standing on the hit tiles is knocked off the board.",
+    "value": "Das Legen eines Plättchens mit Krater löst einen Meteoriteneinschlag aus: Ein Würfelwurf entscheidet, wie weit die Explosion reicht, und alle Meeple und neutralen Figuren auf den getroffenen Plättchen werden vom Spielplan gefegt.",
+    "source": "manual"
+  },
+  "game-setup.rules.monastery-description": {
+    "en": "Monastery is completed when it is surrounded by eight tiles.",
+    "value": "Ein Kloster ist fertig, wenn es von acht Plättchen umgeben ist.",
+    "source": "manual"
+  },
+  "game-setup.rules.monastery-scoring": {
+    "en": "Monastery scores 9 points. At the end of the game an unfinished monastery scores 1 point for itself and 1 for each neighbouring tile.",
+    "value": "Ein Kloster zählt 9 Punkte. Ein unfertiges Kloster zählt am Spielende 1 Punkt für sich selbst und 1 Punkt für jedes benachbarte Plättchen.",
+    "source": "manual"
+  },
+  "game-setup.rules.road-description": {
+    "en": "Road is completed when all of its ends are closed (by a crossing, a city, a monastery or a loop).",
+    "value": "Eine Straße ist fertig, wenn alle ihre Enden abgeschlossen sind (durch eine Kreuzung, eine Stadt, ein Kloster oder eine Schleife).",
+    "source": "manual"
+  },
+  "game-setup.rules.road-scoring": {
+    "en": "Road scores 1 point per tile. An unfinished road still scores 1 point per tile at the end of the game.",
+    "value": "Eine Straße zählt 1 Punkt pro Plättchen. Eine unfertige Straße zählt am Spielende ebenfalls 1 Punkt pro Plättchen.",
+    "source": "manual"
+  },
+  "game-setup.rules.shrine-scoring": {
+    "en": "A shrine is scored like a monastery.",
+    "value": "Eine Kultstätte wird wie ein Kloster gewertet.",
     "source": "manual"
   },
   "game-setup.tiles.custom-pack": {
@@ -444,6 +524,11 @@
     "value": "die hierher gezogene Figur",
     "source": "manual"
   },
+  "game.cause.figure-moved-bigtop": {
+    "en": "the Big Top moved to the newly placed tile",
+    "value": "das auf das neu gelegte Plättchen umgezogene Zirkuszelt",
+    "source": "manual"
+  },
   "game.cause.meeple-deployed": {
     "en": "the deployed meeple",
     "value": "der eingesetzte Meeple",
@@ -452,6 +537,11 @@
   "game.cause.rule.count-clockwise": {
     "en": "the Count moving on clockwise",
     "value": "der Graf zieht im Uhrzeigersinn weiter",
+    "source": "manual"
+  },
+  "game.cause.rule.crop-circle": {
+    "en": "a crop circle",
+    "value": "ein Kornkreis",
     "source": "manual"
   },
   "game.cause.rule.decinsky-sneznik-scored": {
@@ -537,6 +627,11 @@
   "game.coop.triggered-by": {
     "en": "{name} could neither enlarge an occupied feature nor occupy a new one.",
     "value": "{name} konnte weder ein besetztes Gebiet erweitern noch ein neues besetzen.",
+    "source": "manual"
+  },
+  "game.element.animal-token": {
+    "en": "Animal token",
+    "value": "Tierplättchen",
     "source": "manual"
   },
   "game.element.black-fairy": {
@@ -644,6 +739,16 @@
     "value": "{source}, von {player}",
     "source": "manual"
   },
+  "game.placement.source-barn-field-join": {
+    "en": "Its field joined to one with a barn",
+    "value": "Seine Wiese mit einer Wiese mit Gutshof verbunden",
+    "source": "manual"
+  },
+  "game.placement.source-barn-placement": {
+    "en": "Barn placed on its field",
+    "value": "Gutshof auf seine Wiese gesetzt",
+    "source": "manual"
+  },
   "game.placement.title.captured": {
     "en": "{figure} captured",
     "value": "{figure} gefangen",
@@ -682,6 +787,11 @@
   "game.placement.title.removed": {
     "en": "{figure} removed",
     "value": "{figure} entfernt",
+    "source": "manual"
+  },
+  "game.placement.title.revealed": {
+    "en": "{figure} revealed and scored",
+    "value": "{figure} aufgedeckt und gewertet",
     "source": "manual"
   },
   "game.placement.title.tile-placed": {

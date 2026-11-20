@@ -50,8 +50,8 @@ const SPAN_UNTRANSLATED = /<span lang="en" dir="ltr" class="mw-content-ltr">/g
 const SPAN_OUTDATED = /<span class="mw-translate-fuzzy">/g
 const SPAN_CLOSE = /<\/span>/g
 
-/** Parse a raw locale block, keeping the wiki's markers as sentinels. */
-function parseRaw (text) {
+/** Parse a raw locale block, keeping the wiki's markers as sentinels. `file` names it in errors. */
+function parseRaw (text, file = 'locale page') {
   const marked = text
     .replace(SPAN_UNTRANSLATED, MARK_UNTRANSLATED)
     .replace(SPAN_OUTDATED, MARK_OUTDATED)
@@ -59,7 +59,17 @@ function parseRaw (text) {
   try {
     return JSON.parse(marked)
   } catch (err) {
-    throw new Error('could not parse as JSON after removing markup: ' + err.message)
+    // say WHERE, in the page as the translators see it: line number + that line (and the one
+    // before — a missing comma is reported on the line after it)
+    const m = /position (\d+)/.exec(err.message)
+    if (!m) throw new Error(path.basename(file) + ' is not valid JSON: ' + err.message)
+    const NL = String.fromCharCode(10)
+    const lineNo = marked.slice(0, Number(m[1])).split(NL).length
+    const all = marked.split(NL)
+    const show = n => plain((all[n - 1] || '').trim())
+    throw new Error(path.basename(file) + ' is not valid JSON at line ' + lineNo + ' (a missing comma or quote?):' + NL +
+      '      line ' + (lineNo - 1) + ': ' + show(lineNo - 1) + NL +
+      '      line ' + lineNo + ': ' + show(lineNo))
   }
 }
 
@@ -196,8 +206,8 @@ function analyse (lang) {
       throw new Error('missing ' + f + ' — run update-locales-download.js first')
     }
   }
-  const tree = parseRaw(fs.readFileSync(rawFile, 'utf8'))
-  const enTree = parseRaw(fs.readFileSync(enFile, 'utf8'))
+  const tree = parseRaw(fs.readFileSync(rawFile, 'utf8'), rawFile)
+  const enTree = parseRaw(fs.readFileSync(enFile, 'utf8'), enFile)
   const db = loadDb(lang)
 
   const resolved = []
@@ -446,4 +456,10 @@ function main () {
   console.log('Memory entries: ' + Object.keys(db).length)
 }
 
-main()
+try {
+  main()
+} catch (err) {
+  // a readable one-paragraph message (sync-locales shows it), not a stack dump
+  console.error('Error: ' + (err && err.message ? err.message : err))
+  process.exit(1)
+}

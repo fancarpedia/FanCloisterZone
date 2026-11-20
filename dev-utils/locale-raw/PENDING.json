@@ -1,0 +1,1346 @@
+{
+  "ca": [
+    {
+      "keyPath": "game.cause.figure-moved-bigtop",
+      "kind": "untranslated",
+      "en": "the Big Top moved to the newly placed tile"
+    },
+    {
+      "keyPath": "game.cause.rule.crop-circle",
+      "kind": "untranslated",
+      "en": "a crop circle"
+    },
+    {
+      "keyPath": "game.element.animal-token",
+      "kind": "untranslated",
+      "en": "Animal token"
+    },
+    {
+      "keyPath": "game.placement.source-barn-field-join",
+      "kind": "untranslated",
+      "en": "Its field joined to one with a barn"
+    },
+    {
+      "keyPath": "game.placement.source-barn-placement",
+      "kind": "untranslated",
+      "en": "Barn placed on its field"
+    },
+    {
+      "keyPath": "game.placement.title.revealed",
+      "kind": "untranslated",
+      "en": "{figure} revealed and scored"
+    },
+    {
+      "keyPath": "game-setup.ai.supported-not-with",
+      "kind": "untranslated",
+      "en": "The AI can play this — not with: {elements}"
+    },
+    {
+      "keyPath": "game-setup.ai.supported-only-without",
+      "kind": "untranslated",
+      "en": "The AI can play this only without: {elements}"
+    },
+    {
+      "keyPath": "game-setup.create.color-unavailable",
+      "kind": "untranslated",
+      "en": "Color not available"
+    },
+    {
+      "keyPath": "game-setup.features",
+      "kind": "untranslated",
+      "en": "Features"
+    },
+    {
+      "keyPath": "game-setup.mechanics",
+      "kind": "untranslated",
+      "en": "Mechanics"
+    },
+    {
+      "keyPath": "game-setup.modifiers",
+      "kind": "untranslated",
+      "en": "Modifiers"
+    },
+    {
+      "keyPath": "game-setup.rules.city-description",
+      "kind": "untranslated",
+      "en": "City is completed when its walls are fully closed."
+    },
+    {
+      "keyPath": "game-setup.rules.city-scoring",
+      "kind": "untranslated",
+      "en": "City scores 2 points per tile and per coat of arms. An unfinished city scores only 1 point per tile and per coat of arms at the end of the game."
+    },
+    {
+      "keyPath": "game-setup.rules.info-title",
+      "kind": "untranslated",
+      "en": "Tiles with this feature"
+    },
+    {
+      "keyPath": "game-setup.rules.info-tiles-count",
+      "kind": "untranslated",
+      "en": "Tiles in the game: {count} of {total}"
+    },
+    {
+      "keyPath": "game-setup.rules.meteorite-description",
+      "kind": "untranslated",
+      "en": "Placing a tile with a crater causes a meteorite impact: a die roll decides how far the blast reaches, and every meeple and neutral figure standing on the hit tiles is knocked off the board."
+    },
+    {
+      "keyPath": "game-setup.rules.monastery-description",
+      "kind": "untranslated",
+      "en": "Monastery is completed when it is surrounded by eight tiles."
+    },
+    {
+      "keyPath": "game-setup.rules.monastery-scoring",
+      "kind": "untranslated",
+      "en": "Monastery scores 9 points. At the end of the game an unfinished monastery scores 1 point for itself and 1 for each neighbouring tile."
+    },
+    {
+      "keyPath": "game-setup.rules.road-description",
+      "kind": "untranslated",
+      "en": "Road is completed when all of its ends are closed (by a crossing, a city, a monastery or a loop)."
+    },
+    {
+      "keyPath": "game-setup.rules.road-scoring",
+      "kind": "untranslated",
+      "en": "Road scores 1 point per tile. An unfinished road still scores 1 point per tile at the end of the game."
+    },
+    {
+      "keyPath": "game-setup.rules.shrine-scoring",
+      "kind": "untranslated",
+      "en": "A shrine is scored like a monastery."
+    }
+  ],
+  "cs": [
+    {
+      "keyPath": "game.cause.figure-moved-bigtop",
+      "kind": "untranslated",
+      "en": "the Big Top moved to the newly placed tile"
+    },
+    {
+      "keyPath": "game.cause.rule.crop-circle",
+      "kind": "untranslated",
+      "en": "a crop circle"
+    },
+    {
+      "keyPath": "game.element.animal-token",
+      "kind": "untranslated",
+      "en": "Animal token"
+    },
+    {
+      "keyPath": "game.placement.source-barn-field-join",
+      "kind": "untranslated",
+      "en": "Its field joined to one with a barn"
+    },
+    {
+      "keyPath": "game.placement.source-barn-placement",
+      "kind": "untranslated",
+      "en": "Barn placed on its field"
+    },
+    {
+      "keyPath": "game.placement.title.revealed",
+      "kind": "untranslated",
+      "en": "{figure} revealed and scored"
+    },
+    {
+      "keyPath": "game-setup.ai.supported-not-with",
+      "kind": "untranslated",
+      "en": "The AI can play this — not with: {elements}"
+    },
+    {
+      "keyPath": "game-setup.ai.supported-only-without",
+      "kind": "untranslated",
+      "en": "The AI can play this only without: {elements}"
+    },
+    {
+      "keyPath": "game-setup.create.color-unavailable",
+      "kind": "untranslated",
+      "en": "Color not available"
+    },
+    {
+      "keyPath": "game-setup.features",
+      "kind": "untranslated",
+      "en": "Features"
+    },
+    {
+      "keyPath": "game-setup.mechanics",
+      "kind": "untranslated",
+      "en": "Mechanics"
+    },
+    {
+      "keyPath": "game-setup.modifiers",
+      "kind": "untranslated",
+      "en": "Modifiers"
+    },
+    {
+      "keyPath": "game-setup.rules.city-description",
+      "kind": "untranslated",
+      "en": "City is completed when its walls are fully closed."
+    },
+    {
+      "keyPath": "game-setup.rules.city-scoring",
+      "kind": "untranslated",
+      "en": "City scores 2 points per tile and per coat of arms. An unfinished city scores only 1 point per tile and per coat of arms at the end of the game."
+    },
+    {
+      "keyPath": "game-setup.rules.info-title",
+      "kind": "untranslated",
+      "en": "Tiles with this feature"
+    },
+    {
+      "keyPath": "game-setup.rules.info-tiles-count",
+      "kind": "untranslated",
+      "en": "Tiles in the game: {count} of {total}"
+    },
+    {
+      "keyPath": "game-setup.rules.meteorite-description",
+      "kind": "untranslated",
+      "en": "Placing a tile with a crater causes a meteorite impact: a die roll decides how far the blast reaches, and every meeple and neutral figure standing on the hit tiles is knocked off the board."
+    },
+    {
+      "keyPath": "game-setup.rules.monastery-description",
+      "kind": "untranslated",
+      "en": "Monastery is completed when it is surrounded by eight tiles."
+    },
+    {
+      "keyPath": "game-setup.rules.monastery-scoring",
+      "kind": "untranslated",
+      "en": "Monastery scores 9 points. At the end of the game an unfinished monastery scores 1 point for itself and 1 for each neighbouring tile."
+    },
+    {
+      "keyPath": "game-setup.rules.road-description",
+      "kind": "untranslated",
+      "en": "Road is completed when all of its ends are closed (by a crossing, a city, a monastery or a loop)."
+    },
+    {
+      "keyPath": "game-setup.rules.road-scoring",
+      "kind": "untranslated",
+      "en": "Road scores 1 point per tile. An unfinished road still scores 1 point per tile at the end of the game."
+    },
+    {
+      "keyPath": "game-setup.rules.shrine-scoring",
+      "kind": "untranslated",
+      "en": "A shrine is scored like a monastery."
+    }
+  ],
+  "de": [
+    {
+      "keyPath": "game.cause.figure-moved-bigtop",
+      "kind": "untranslated",
+      "en": "the Big Top moved to the newly placed tile"
+    },
+    {
+      "keyPath": "game.cause.rule.crop-circle",
+      "kind": "untranslated",
+      "en": "a crop circle"
+    },
+    {
+      "keyPath": "game.element.animal-token",
+      "kind": "untranslated",
+      "en": "Animal token"
+    },
+    {
+      "keyPath": "game.placement.source-barn-field-join",
+      "kind": "untranslated",
+      "en": "Its field joined to one with a barn"
+    },
+    {
+      "keyPath": "game.placement.source-barn-placement",
+      "kind": "untranslated",
+      "en": "Barn placed on its field"
+    },
+    {
+      "keyPath": "game.placement.title.revealed",
+      "kind": "untranslated",
+      "en": "{figure} revealed and scored"
+    },
+    {
+      "keyPath": "game-setup.ai.supported-not-with",
+      "kind": "untranslated",
+      "en": "The AI can play this — not with: {elements}"
+    },
+    {
+      "keyPath": "game-setup.ai.supported-only-without",
+      "kind": "untranslated",
+      "en": "The AI can play this only without: {elements}"
+    },
+    {
+      "keyPath": "game-setup.create.color-unavailable",
+      "kind": "untranslated",
+      "en": "Color not available"
+    },
+    {
+      "keyPath": "game-setup.features",
+      "kind": "untranslated",
+      "en": "Features"
+    },
+    {
+      "keyPath": "game-setup.mechanics",
+      "kind": "untranslated",
+      "en": "Mechanics"
+    },
+    {
+      "keyPath": "game-setup.modifiers",
+      "kind": "untranslated",
+      "en": "Modifiers"
+    },
+    {
+      "keyPath": "game-setup.rules.city-description",
+      "kind": "untranslated",
+      "en": "City is completed when its walls are fully closed."
+    },
+    {
+      "keyPath": "game-setup.rules.city-scoring",
+      "kind": "untranslated",
+      "en": "City scores 2 points per tile and per coat of arms. An unfinished city scores only 1 point per tile and per coat of arms at the end of the game."
+    },
+    {
+      "keyPath": "game-setup.rules.info-title",
+      "kind": "untranslated",
+      "en": "Tiles with this feature"
+    },
+    {
+      "keyPath": "game-setup.rules.info-tiles-count",
+      "kind": "untranslated",
+      "en": "Tiles in the game: {count} of {total}"
+    },
+    {
+      "keyPath": "game-setup.rules.meteorite-description",
+      "kind": "untranslated",
+      "en": "Placing a tile with a crater causes a meteorite impact: a die roll decides how far the blast reaches, and every meeple and neutral figure standing on the hit tiles is knocked off the board."
+    },
+    {
+      "keyPath": "game-setup.rules.monastery-description",
+      "kind": "untranslated",
+      "en": "Monastery is completed when it is surrounded by eight tiles."
+    },
+    {
+      "keyPath": "game-setup.rules.monastery-scoring",
+      "kind": "untranslated",
+      "en": "Monastery scores 9 points. At the end of the game an unfinished monastery scores 1 point for itself and 1 for each neighbouring tile."
+    },
+    {
+      "keyPath": "game-setup.rules.road-description",
+      "kind": "untranslated",
+      "en": "Road is completed when all of its ends are closed (by a crossing, a city, a monastery or a loop)."
+    },
+    {
+      "keyPath": "game-setup.rules.road-scoring",
+      "kind": "untranslated",
+      "en": "Road scores 1 point per tile. An unfinished road still scores 1 point per tile at the end of the game."
+    },
+    {
+      "keyPath": "game-setup.rules.shrine-scoring",
+      "kind": "untranslated",
+      "en": "A shrine is scored like a monastery."
+    }
+  ],
+  "es": [
+    {
+      "keyPath": "game.cause.figure-moved-bigtop",
+      "kind": "untranslated",
+      "en": "the Big Top moved to the newly placed tile"
+    },
+    {
+      "keyPath": "game.cause.rule.crop-circle",
+      "kind": "untranslated",
+      "en": "a crop circle"
+    },
+    {
+      "keyPath": "game.element.animal-token",
+      "kind": "untranslated",
+      "en": "Animal token"
+    },
+    {
+      "keyPath": "game.placement.source-barn-field-join",
+      "kind": "untranslated",
+      "en": "Its field joined to one with a barn"
+    },
+    {
+      "keyPath": "game.placement.source-barn-placement",
+      "kind": "untranslated",
+      "en": "Barn placed on its field"
+    },
+    {
+      "keyPath": "game.placement.title.revealed",
+      "kind": "untranslated",
+      "en": "{figure} revealed and scored"
+    },
+    {
+      "keyPath": "game-setup.ai.supported-not-with",
+      "kind": "untranslated",
+      "en": "The AI can play this — not with: {elements}"
+    },
+    {
+      "keyPath": "game-setup.ai.supported-only-without",
+      "kind": "untranslated",
+      "en": "The AI can play this only without: {elements}"
+    },
+    {
+      "keyPath": "game-setup.create.color-unavailable",
+      "kind": "untranslated",
+      "en": "Color not available"
+    },
+    {
+      "keyPath": "game-setup.features",
+      "kind": "untranslated",
+      "en": "Features"
+    },
+    {
+      "keyPath": "game-setup.mechanics",
+      "kind": "untranslated",
+      "en": "Mechanics"
+    },
+    {
+      "keyPath": "game-setup.modifiers",
+      "kind": "untranslated",
+      "en": "Modifiers"
+    },
+    {
+      "keyPath": "game-setup.rules.city-description",
+      "kind": "untranslated",
+      "en": "City is completed when its walls are fully closed."
+    },
+    {
+      "keyPath": "game-setup.rules.city-scoring",
+      "kind": "untranslated",
+      "en": "City scores 2 points per tile and per coat of arms. An unfinished city scores only 1 point per tile and per coat of arms at the end of the game."
+    },
+    {
+      "keyPath": "game-setup.rules.info-title",
+      "kind": "untranslated",
+      "en": "Tiles with this feature"
+    },
+    {
+      "keyPath": "game-setup.rules.info-tiles-count",
+      "kind": "untranslated",
+      "en": "Tiles in the game: {count} of {total}"
+    },
+    {
+      "keyPath": "game-setup.rules.meteorite-description",
+      "kind": "untranslated",
+      "en": "Placing a tile with a crater causes a meteorite impact: a die roll decides how far the blast reaches, and every meeple and neutral figure standing on the hit tiles is knocked off the board."
+    },
+    {
+      "keyPath": "game-setup.rules.monastery-description",
+      "kind": "untranslated",
+      "en": "Monastery is completed when it is surrounded by eight tiles."
+    },
+    {
+      "keyPath": "game-setup.rules.monastery-scoring",
+      "kind": "untranslated",
+      "en": "Monastery scores 9 points. At the end of the game an unfinished monastery scores 1 point for itself and 1 for each neighbouring tile."
+    },
+    {
+      "keyPath": "game-setup.rules.road-description",
+      "kind": "untranslated",
+      "en": "Road is completed when all of its ends are closed (by a crossing, a city, a monastery or a loop)."
+    },
+    {
+      "keyPath": "game-setup.rules.road-scoring",
+      "kind": "untranslated",
+      "en": "Road scores 1 point per tile. An unfinished road still scores 1 point per tile at the end of the game."
+    },
+    {
+      "keyPath": "game-setup.rules.shrine-scoring",
+      "kind": "untranslated",
+      "en": "A shrine is scored like a monastery."
+    }
+  ],
+  "fr": [
+    {
+      "keyPath": "game.cause.figure-moved-bigtop",
+      "kind": "untranslated",
+      "en": "the Big Top moved to the newly placed tile"
+    },
+    {
+      "keyPath": "game.cause.rule.crop-circle",
+      "kind": "untranslated",
+      "en": "a crop circle"
+    },
+    {
+      "keyPath": "game.element.animal-token",
+      "kind": "untranslated",
+      "en": "Animal token"
+    },
+    {
+      "keyPath": "game.placement.source-barn-field-join",
+      "kind": "untranslated",
+      "en": "Its field joined to one with a barn"
+    },
+    {
+      "keyPath": "game.placement.source-barn-placement",
+      "kind": "untranslated",
+      "en": "Barn placed on its field"
+    },
+    {
+      "keyPath": "game.placement.title.revealed",
+      "kind": "untranslated",
+      "en": "{figure} revealed and scored"
+    },
+    {
+      "keyPath": "game-setup.ai.supported-not-with",
+      "kind": "untranslated",
+      "en": "The AI can play this — not with: {elements}"
+    },
+    {
+      "keyPath": "game-setup.ai.supported-only-without",
+      "kind": "untranslated",
+      "en": "The AI can play this only without: {elements}"
+    },
+    {
+      "keyPath": "game-setup.create.color-unavailable",
+      "kind": "untranslated",
+      "en": "Color not available"
+    },
+    {
+      "keyPath": "game-setup.features",
+      "kind": "untranslated",
+      "en": "Features"
+    },
+    {
+      "keyPath": "game-setup.mechanics",
+      "kind": "untranslated",
+      "en": "Mechanics"
+    },
+    {
+      "keyPath": "game-setup.modifiers",
+      "kind": "untranslated",
+      "en": "Modifiers"
+    },
+    {
+      "keyPath": "game-setup.rules.city-description",
+      "kind": "untranslated",
+      "en": "City is completed when its walls are fully closed."
+    },
+    {
+      "keyPath": "game-setup.rules.city-scoring",
+      "kind": "untranslated",
+      "en": "City scores 2 points per tile and per coat of arms. An unfinished city scores only 1 point per tile and per coat of arms at the end of the game."
+    },
+    {
+      "keyPath": "game-setup.rules.info-title",
+      "kind": "untranslated",
+      "en": "Tiles with this feature"
+    },
+    {
+      "keyPath": "game-setup.rules.info-tiles-count",
+      "kind": "untranslated",
+      "en": "Tiles in the game: {count} of {total}"
+    },
+    {
+      "keyPath": "game-setup.rules.meteorite-description",
+      "kind": "untranslated",
+      "en": "Placing a tile with a crater causes a meteorite impact: a die roll decides how far the blast reaches, and every meeple and neutral figure standing on the hit tiles is knocked off the board."
+    },
+    {
+      "keyPath": "game-setup.rules.monastery-description",
+      "kind": "untranslated",
+      "en": "Monastery is completed when it is surrounded by eight tiles."
+    },
+    {
+      "keyPath": "game-setup.rules.monastery-scoring",
+      "kind": "untranslated",
+      "en": "Monastery scores 9 points. At the end of the game an unfinished monastery scores 1 point for itself and 1 for each neighbouring tile."
+    },
+    {
+      "keyPath": "game-setup.rules.road-description",
+      "kind": "untranslated",
+      "en": "Road is completed when all of its ends are closed (by a crossing, a city, a monastery or a loop)."
+    },
+    {
+      "keyPath": "game-setup.rules.road-scoring",
+      "kind": "untranslated",
+      "en": "Road scores 1 point per tile. An unfinished road still scores 1 point per tile at the end of the game."
+    },
+    {
+      "keyPath": "game-setup.rules.shrine-scoring",
+      "kind": "untranslated",
+      "en": "A shrine is scored like a monastery."
+    }
+  ],
+  "lt": [
+    {
+      "keyPath": "game.cause.figure-moved-bigtop",
+      "kind": "untranslated",
+      "en": "the Big Top moved to the newly placed tile"
+    },
+    {
+      "keyPath": "game.cause.rule.crop-circle",
+      "kind": "untranslated",
+      "en": "a crop circle"
+    },
+    {
+      "keyPath": "game.element.animal-token",
+      "kind": "untranslated",
+      "en": "Animal token"
+    },
+    {
+      "keyPath": "game.placement.source-barn-field-join",
+      "kind": "untranslated",
+      "en": "Its field joined to one with a barn"
+    },
+    {
+      "keyPath": "game.placement.source-barn-placement",
+      "kind": "untranslated",
+      "en": "Barn placed on its field"
+    },
+    {
+      "keyPath": "game.placement.title.revealed",
+      "kind": "untranslated",
+      "en": "{figure} revealed and scored"
+    },
+    {
+      "keyPath": "game-setup.ai.supported-not-with",
+      "kind": "untranslated",
+      "en": "The AI can play this — not with: {elements}"
+    },
+    {
+      "keyPath": "game-setup.ai.supported-only-without",
+      "kind": "untranslated",
+      "en": "The AI can play this only without: {elements}"
+    },
+    {
+      "keyPath": "game-setup.create.color-unavailable",
+      "kind": "untranslated",
+      "en": "Color not available"
+    },
+    {
+      "keyPath": "game-setup.features",
+      "kind": "untranslated",
+      "en": "Features"
+    },
+    {
+      "keyPath": "game-setup.mechanics",
+      "kind": "untranslated",
+      "en": "Mechanics"
+    },
+    {
+      "keyPath": "game-setup.modifiers",
+      "kind": "untranslated",
+      "en": "Modifiers"
+    },
+    {
+      "keyPath": "game-setup.rules.city-description",
+      "kind": "untranslated",
+      "en": "City is completed when its walls are fully closed."
+    },
+    {
+      "keyPath": "game-setup.rules.city-scoring",
+      "kind": "untranslated",
+      "en": "City scores 2 points per tile and per coat of arms. An unfinished city scores only 1 point per tile and per coat of arms at the end of the game."
+    },
+    {
+      "keyPath": "game-setup.rules.info-title",
+      "kind": "untranslated",
+      "en": "Tiles with this feature"
+    },
+    {
+      "keyPath": "game-setup.rules.info-tiles-count",
+      "kind": "untranslated",
+      "en": "Tiles in the game: {count} of {total}"
+    },
+    {
+      "keyPath": "game-setup.rules.meteorite-description",
+      "kind": "untranslated",
+      "en": "Placing a tile with a crater causes a meteorite impact: a die roll decides how far the blast reaches, and every meeple and neutral figure standing on the hit tiles is knocked off the board."
+    },
+    {
+      "keyPath": "game-setup.rules.monastery-description",
+      "kind": "untranslated",
+      "en": "Monastery is completed when it is surrounded by eight tiles."
+    },
+    {
+      "keyPath": "game-setup.rules.monastery-scoring",
+      "kind": "untranslated",
+      "en": "Monastery scores 9 points. At the end of the game an unfinished monastery scores 1 point for itself and 1 for each neighbouring tile."
+    },
+    {
+      "keyPath": "game-setup.rules.road-description",
+      "kind": "untranslated",
+      "en": "Road is completed when all of its ends are closed (by a crossing, a city, a monastery or a loop)."
+    },
+    {
+      "keyPath": "game-setup.rules.road-scoring",
+      "kind": "untranslated",
+      "en": "Road scores 1 point per tile. An unfinished road still scores 1 point per tile at the end of the game."
+    },
+    {
+      "keyPath": "game-setup.rules.shrine-scoring",
+      "kind": "untranslated",
+      "en": "A shrine is scored like a monastery."
+    }
+  ],
+  "nl": [
+    {
+      "keyPath": "game.cause.figure-moved-bigtop",
+      "kind": "untranslated",
+      "en": "the Big Top moved to the newly placed tile"
+    },
+    {
+      "keyPath": "game.cause.rule.crop-circle",
+      "kind": "untranslated",
+      "en": "a crop circle"
+    },
+    {
+      "keyPath": "game.element.animal-token",
+      "kind": "untranslated",
+      "en": "Animal token"
+    },
+    {
+      "keyPath": "game.placement.source-barn-field-join",
+      "kind": "untranslated",
+      "en": "Its field joined to one with a barn"
+    },
+    {
+      "keyPath": "game.placement.source-barn-placement",
+      "kind": "untranslated",
+      "en": "Barn placed on its field"
+    },
+    {
+      "keyPath": "game.placement.title.revealed",
+      "kind": "untranslated",
+      "en": "{figure} revealed and scored"
+    },
+    {
+      "keyPath": "game-setup.ai.supported-not-with",
+      "kind": "untranslated",
+      "en": "The AI can play this — not with: {elements}"
+    },
+    {
+      "keyPath": "game-setup.ai.supported-only-without",
+      "kind": "untranslated",
+      "en": "The AI can play this only without: {elements}"
+    },
+    {
+      "keyPath": "game-setup.create.color-unavailable",
+      "kind": "untranslated",
+      "en": "Color not available"
+    },
+    {
+      "keyPath": "game-setup.features",
+      "kind": "untranslated",
+      "en": "Features"
+    },
+    {
+      "keyPath": "game-setup.mechanics",
+      "kind": "untranslated",
+      "en": "Mechanics"
+    },
+    {
+      "keyPath": "game-setup.modifiers",
+      "kind": "untranslated",
+      "en": "Modifiers"
+    },
+    {
+      "keyPath": "game-setup.rules.city-description",
+      "kind": "untranslated",
+      "en": "City is completed when its walls are fully closed."
+    },
+    {
+      "keyPath": "game-setup.rules.city-scoring",
+      "kind": "untranslated",
+      "en": "City scores 2 points per tile and per coat of arms. An unfinished city scores only 1 point per tile and per coat of arms at the end of the game."
+    },
+    {
+      "keyPath": "game-setup.rules.info-title",
+      "kind": "untranslated",
+      "en": "Tiles with this feature"
+    },
+    {
+      "keyPath": "game-setup.rules.info-tiles-count",
+      "kind": "untranslated",
+      "en": "Tiles in the game: {count} of {total}"
+    },
+    {
+      "keyPath": "game-setup.rules.meteorite-description",
+      "kind": "untranslated",
+      "en": "Placing a tile with a crater causes a meteorite impact: a die roll decides how far the blast reaches, and every meeple and neutral figure standing on the hit tiles is knocked off the board."
+    },
+    {
+      "keyPath": "game-setup.rules.monastery-description",
+      "kind": "untranslated",
+      "en": "Monastery is completed when it is surrounded by eight tiles."
+    },
+    {
+      "keyPath": "game-setup.rules.monastery-scoring",
+      "kind": "untranslated",
+      "en": "Monastery scores 9 points. At the end of the game an unfinished monastery scores 1 point for itself and 1 for each neighbouring tile."
+    },
+    {
+      "keyPath": "game-setup.rules.road-description",
+      "kind": "untranslated",
+      "en": "Road is completed when all of its ends are closed (by a crossing, a city, a monastery or a loop)."
+    },
+    {
+      "keyPath": "game-setup.rules.road-scoring",
+      "kind": "untranslated",
+      "en": "Road scores 1 point per tile. An unfinished road still scores 1 point per tile at the end of the game."
+    },
+    {
+      "keyPath": "game-setup.rules.shrine-scoring",
+      "kind": "untranslated",
+      "en": "A shrine is scored like a monastery."
+    }
+  ],
+  "pl": [
+    {
+      "keyPath": "game.cause.figure-moved-bigtop",
+      "kind": "untranslated",
+      "en": "the Big Top moved to the newly placed tile"
+    },
+    {
+      "keyPath": "game.cause.rule.crop-circle",
+      "kind": "untranslated",
+      "en": "a crop circle"
+    },
+    {
+      "keyPath": "game.element.animal-token",
+      "kind": "untranslated",
+      "en": "Animal token"
+    },
+    {
+      "keyPath": "game.placement.source-barn-field-join",
+      "kind": "untranslated",
+      "en": "Its field joined to one with a barn"
+    },
+    {
+      "keyPath": "game.placement.source-barn-placement",
+      "kind": "untranslated",
+      "en": "Barn placed on its field"
+    },
+    {
+      "keyPath": "game.placement.title.revealed",
+      "kind": "untranslated",
+      "en": "{figure} revealed and scored"
+    },
+    {
+      "keyPath": "game-setup.ai.supported-not-with",
+      "kind": "untranslated",
+      "en": "The AI can play this — not with: {elements}"
+    },
+    {
+      "keyPath": "game-setup.ai.supported-only-without",
+      "kind": "untranslated",
+      "en": "The AI can play this only without: {elements}"
+    },
+    {
+      "keyPath": "game-setup.create.color-unavailable",
+      "kind": "untranslated",
+      "en": "Color not available"
+    },
+    {
+      "keyPath": "game-setup.features",
+      "kind": "untranslated",
+      "en": "Features"
+    },
+    {
+      "keyPath": "game-setup.mechanics",
+      "kind": "untranslated",
+      "en": "Mechanics"
+    },
+    {
+      "keyPath": "game-setup.modifiers",
+      "kind": "untranslated",
+      "en": "Modifiers"
+    },
+    {
+      "keyPath": "game-setup.rules.city-description",
+      "kind": "untranslated",
+      "en": "City is completed when its walls are fully closed."
+    },
+    {
+      "keyPath": "game-setup.rules.city-scoring",
+      "kind": "untranslated",
+      "en": "City scores 2 points per tile and per coat of arms. An unfinished city scores only 1 point per tile and per coat of arms at the end of the game."
+    },
+    {
+      "keyPath": "game-setup.rules.info-title",
+      "kind": "untranslated",
+      "en": "Tiles with this feature"
+    },
+    {
+      "keyPath": "game-setup.rules.info-tiles-count",
+      "kind": "untranslated",
+      "en": "Tiles in the game: {count} of {total}"
+    },
+    {
+      "keyPath": "game-setup.rules.meteorite-description",
+      "kind": "untranslated",
+      "en": "Placing a tile with a crater causes a meteorite impact: a die roll decides how far the blast reaches, and every meeple and neutral figure standing on the hit tiles is knocked off the board."
+    },
+    {
+      "keyPath": "game-setup.rules.monastery-description",
+      "kind": "untranslated",
+      "en": "Monastery is completed when it is surrounded by eight tiles."
+    },
+    {
+      "keyPath": "game-setup.rules.monastery-scoring",
+      "kind": "untranslated",
+      "en": "Monastery scores 9 points. At the end of the game an unfinished monastery scores 1 point for itself and 1 for each neighbouring tile."
+    },
+    {
+      "keyPath": "game-setup.rules.road-description",
+      "kind": "untranslated",
+      "en": "Road is completed when all of its ends are closed (by a crossing, a city, a monastery or a loop)."
+    },
+    {
+      "keyPath": "game-setup.rules.road-scoring",
+      "kind": "untranslated",
+      "en": "Road scores 1 point per tile. An unfinished road still scores 1 point per tile at the end of the game."
+    },
+    {
+      "keyPath": "game-setup.rules.shrine-scoring",
+      "kind": "untranslated",
+      "en": "A shrine is scored like a monastery."
+    }
+  ],
+  "ru": [
+    {
+      "keyPath": "game.cause.figure-moved-bigtop",
+      "kind": "untranslated",
+      "en": "the Big Top moved to the newly placed tile"
+    },
+    {
+      "keyPath": "game.cause.rule.crop-circle",
+      "kind": "untranslated",
+      "en": "a crop circle"
+    },
+    {
+      "keyPath": "game.element.animal-token",
+      "kind": "untranslated",
+      "en": "Animal token"
+    },
+    {
+      "keyPath": "game.placement.source-barn-field-join",
+      "kind": "untranslated",
+      "en": "Its field joined to one with a barn"
+    },
+    {
+      "keyPath": "game.placement.source-barn-placement",
+      "kind": "untranslated",
+      "en": "Barn placed on its field"
+    },
+    {
+      "keyPath": "game.placement.title.revealed",
+      "kind": "untranslated",
+      "en": "{figure} revealed and scored"
+    },
+    {
+      "keyPath": "game-setup.ai.supported-not-with",
+      "kind": "untranslated",
+      "en": "The AI can play this — not with: {elements}"
+    },
+    {
+      "keyPath": "game-setup.ai.supported-only-without",
+      "kind": "untranslated",
+      "en": "The AI can play this only without: {elements}"
+    },
+    {
+      "keyPath": "game-setup.create.color-unavailable",
+      "kind": "untranslated",
+      "en": "Color not available"
+    },
+    {
+      "keyPath": "game-setup.features",
+      "kind": "untranslated",
+      "en": "Features"
+    },
+    {
+      "keyPath": "game-setup.mechanics",
+      "kind": "untranslated",
+      "en": "Mechanics"
+    },
+    {
+      "keyPath": "game-setup.modifiers",
+      "kind": "untranslated",
+      "en": "Modifiers"
+    },
+    {
+      "keyPath": "game-setup.rules.city-description",
+      "kind": "untranslated",
+      "en": "City is completed when its walls are fully closed."
+    },
+    {
+      "keyPath": "game-setup.rules.city-scoring",
+      "kind": "untranslated",
+      "en": "City scores 2 points per tile and per coat of arms. An unfinished city scores only 1 point per tile and per coat of arms at the end of the game."
+    },
+    {
+      "keyPath": "game-setup.rules.info-title",
+      "kind": "untranslated",
+      "en": "Tiles with this feature"
+    },
+    {
+      "keyPath": "game-setup.rules.info-tiles-count",
+      "kind": "untranslated",
+      "en": "Tiles in the game: {count} of {total}"
+    },
+    {
+      "keyPath": "game-setup.rules.meteorite-description",
+      "kind": "untranslated",
+      "en": "Placing a tile with a crater causes a meteorite impact: a die roll decides how far the blast reaches, and every meeple and neutral figure standing on the hit tiles is knocked off the board."
+    },
+    {
+      "keyPath": "game-setup.rules.monastery-description",
+      "kind": "untranslated",
+      "en": "Monastery is completed when it is surrounded by eight tiles."
+    },
+    {
+      "keyPath": "game-setup.rules.monastery-scoring",
+      "kind": "untranslated",
+      "en": "Monastery scores 9 points. At the end of the game an unfinished monastery scores 1 point for itself and 1 for each neighbouring tile."
+    },
+    {
+      "keyPath": "game-setup.rules.road-description",
+      "kind": "untranslated",
+      "en": "Road is completed when all of its ends are closed (by a crossing, a city, a monastery or a loop)."
+    },
+    {
+      "keyPath": "game-setup.rules.road-scoring",
+      "kind": "untranslated",
+      "en": "Road scores 1 point per tile. An unfinished road still scores 1 point per tile at the end of the game."
+    },
+    {
+      "keyPath": "game-setup.rules.shrine-scoring",
+      "kind": "untranslated",
+      "en": "A shrine is scored like a monastery."
+    }
+  ],
+  "sk": [
+    {
+      "keyPath": "game.cause.figure-moved-bigtop",
+      "kind": "untranslated",
+      "en": "the Big Top moved to the newly placed tile"
+    },
+    {
+      "keyPath": "game.cause.rule.crop-circle",
+      "kind": "untranslated",
+      "en": "a crop circle"
+    },
+    {
+      "keyPath": "game.element.animal-token",
+      "kind": "untranslated",
+      "en": "Animal token"
+    },
+    {
+      "keyPath": "game.placement.source-barn-field-join",
+      "kind": "untranslated",
+      "en": "Its field joined to one with a barn"
+    },
+    {
+      "keyPath": "game.placement.source-barn-placement",
+      "kind": "untranslated",
+      "en": "Barn placed on its field"
+    },
+    {
+      "keyPath": "game.placement.title.revealed",
+      "kind": "untranslated",
+      "en": "{figure} revealed and scored"
+    },
+    {
+      "keyPath": "game-setup.ai.supported-not-with",
+      "kind": "untranslated",
+      "en": "The AI can play this — not with: {elements}"
+    },
+    {
+      "keyPath": "game-setup.ai.supported-only-without",
+      "kind": "untranslated",
+      "en": "The AI can play this only without: {elements}"
+    },
+    {
+      "keyPath": "game-setup.create.color-unavailable",
+      "kind": "untranslated",
+      "en": "Color not available"
+    },
+    {
+      "keyPath": "game-setup.features",
+      "kind": "untranslated",
+      "en": "Features"
+    },
+    {
+      "keyPath": "game-setup.mechanics",
+      "kind": "untranslated",
+      "en": "Mechanics"
+    },
+    {
+      "keyPath": "game-setup.modifiers",
+      "kind": "untranslated",
+      "en": "Modifiers"
+    },
+    {
+      "keyPath": "game-setup.rules.city-description",
+      "kind": "untranslated",
+      "en": "City is completed when its walls are fully closed."
+    },
+    {
+      "keyPath": "game-setup.rules.city-scoring",
+      "kind": "untranslated",
+      "en": "City scores 2 points per tile and per coat of arms. An unfinished city scores only 1 point per tile and per coat of arms at the end of the game."
+    },
+    {
+      "keyPath": "game-setup.rules.info-title",
+      "kind": "untranslated",
+      "en": "Tiles with this feature"
+    },
+    {
+      "keyPath": "game-setup.rules.info-tiles-count",
+      "kind": "untranslated",
+      "en": "Tiles in the game: {count} of {total}"
+    },
+    {
+      "keyPath": "game-setup.rules.meteorite-description",
+      "kind": "untranslated",
+      "en": "Placing a tile with a crater causes a meteorite impact: a die roll decides how far the blast reaches, and every meeple and neutral figure standing on the hit tiles is knocked off the board."
+    },
+    {
+      "keyPath": "game-setup.rules.monastery-description",
+      "kind": "untranslated",
+      "en": "Monastery is completed when it is surrounded by eight tiles."
+    },
+    {
+      "keyPath": "game-setup.rules.monastery-scoring",
+      "kind": "untranslated",
+      "en": "Monastery scores 9 points. At the end of the game an unfinished monastery scores 1 point for itself and 1 for each neighbouring tile."
+    },
+    {
+      "keyPath": "game-setup.rules.road-description",
+      "kind": "untranslated",
+      "en": "Road is completed when all of its ends are closed (by a crossing, a city, a monastery or a loop)."
+    },
+    {
+      "keyPath": "game-setup.rules.road-scoring",
+      "kind": "untranslated",
+      "en": "Road scores 1 point per tile. An unfinished road still scores 1 point per tile at the end of the game."
+    },
+    {
+      "keyPath": "game-setup.rules.shrine-scoring",
+      "kind": "untranslated",
+      "en": "A shrine is scored like a monastery."
+    }
+  ],
+  "sl": [
+    {
+      "keyPath": "game.cause.figure-moved-bigtop",
+      "kind": "untranslated",
+      "en": "the Big Top moved to the newly placed tile"
+    },
+    {
+      "keyPath": "game.cause.rule.crop-circle",
+      "kind": "untranslated",
+      "en": "a crop circle"
+    },
+    {
+      "keyPath": "game.element.animal-token",
+      "kind": "untranslated",
+      "en": "Animal token"
+    },
+    {
+      "keyPath": "game.placement.source-barn-field-join",
+      "kind": "untranslated",
+      "en": "Its field joined to one with a barn"
+    },
+    {
+      "keyPath": "game.placement.source-barn-placement",
+      "kind": "untranslated",
+      "en": "Barn placed on its field"
+    },
+    {
+      "keyPath": "game.placement.title.revealed",
+      "kind": "untranslated",
+      "en": "{figure} revealed and scored"
+    },
+    {
+      "keyPath": "game-setup.ai.supported-not-with",
+      "kind": "untranslated",
+      "en": "The AI can play this — not with: {elements}"
+    },
+    {
+      "keyPath": "game-setup.ai.supported-only-without",
+      "kind": "untranslated",
+      "en": "The AI can play this only without: {elements}"
+    },
+    {
+      "keyPath": "game-setup.create.color-unavailable",
+      "kind": "untranslated",
+      "en": "Color not available"
+    },
+    {
+      "keyPath": "game-setup.features",
+      "kind": "untranslated",
+      "en": "Features"
+    },
+    {
+      "keyPath": "game-setup.mechanics",
+      "kind": "untranslated",
+      "en": "Mechanics"
+    },
+    {
+      "keyPath": "game-setup.modifiers",
+      "kind": "untranslated",
+      "en": "Modifiers"
+    },
+    {
+      "keyPath": "game-setup.rules.city-description",
+      "kind": "untranslated",
+      "en": "City is completed when its walls are fully closed."
+    },
+    {
+      "keyPath": "game-setup.rules.city-scoring",
+      "kind": "untranslated",
+      "en": "City scores 2 points per tile and per coat of arms. An unfinished city scores only 1 point per tile and per coat of arms at the end of the game."
+    },
+    {
+      "keyPath": "game-setup.rules.info-title",
+      "kind": "untranslated",
+      "en": "Tiles with this feature"
+    },
+    {
+      "keyPath": "game-setup.rules.info-tiles-count",
+      "kind": "untranslated",
+      "en": "Tiles in the game: {count} of {total}"
+    },
+    {
+      "keyPath": "game-setup.rules.meteorite-description",
+      "kind": "untranslated",
+      "en": "Placing a tile with a crater causes a meteorite impact: a die roll decides how far the blast reaches, and every meeple and neutral figure standing on the hit tiles is knocked off the board."
+    },
+    {
+      "keyPath": "game-setup.rules.monastery-description",
+      "kind": "untranslated",
+      "en": "Monastery is completed when it is surrounded by eight tiles."
+    },
+    {
+      "keyPath": "game-setup.rules.monastery-scoring",
+      "kind": "untranslated",
+      "en": "Monastery scores 9 points. At the end of the game an unfinished monastery scores 1 point for itself and 1 for each neighbouring tile."
+    },
+    {
+      "keyPath": "game-setup.rules.road-description",
+      "kind": "untranslated",
+      "en": "Road is completed when all of its ends are closed (by a crossing, a city, a monastery or a loop)."
+    },
+    {
+      "keyPath": "game-setup.rules.road-scoring",
+      "kind": "untranslated",
+      "en": "Road scores 1 point per tile. An unfinished road still scores 1 point per tile at the end of the game."
+    },
+    {
+      "keyPath": "game-setup.rules.shrine-scoring",
+      "kind": "untranslated",
+      "en": "A shrine is scored like a monastery."
+    }
+  ],
+  "uk": [
+    {
+      "keyPath": "game.cause.figure-moved-bigtop",
+      "kind": "untranslated",
+      "en": "the Big Top moved to the newly placed tile"
+    },
+    {
+      "keyPath": "game.cause.rule.crop-circle",
+      "kind": "untranslated",
+      "en": "a crop circle"
+    },
+    {
+      "keyPath": "game.element.animal-token",
+      "kind": "untranslated",
+      "en": "Animal token"
+    },
+    {
+      "keyPath": "game.placement.source-barn-field-join",
+      "kind": "untranslated",
+      "en": "Its field joined to one with a barn"
+    },
+    {
+      "keyPath": "game.placement.source-barn-placement",
+      "kind": "untranslated",
+      "en": "Barn placed on its field"
+    },
+    {
+      "keyPath": "game.placement.title.revealed",
+      "kind": "untranslated",
+      "en": "{figure} revealed and scored"
+    },
+    {
+      "keyPath": "game-setup.ai.supported-not-with",
+      "kind": "untranslated",
+      "en": "The AI can play this — not with: {elements}"
+    },
+    {
+      "keyPath": "game-setup.ai.supported-only-without",
+      "kind": "untranslated",
+      "en": "The AI can play this only without: {elements}"
+    },
+    {
+      "keyPath": "game-setup.create.color-unavailable",
+      "kind": "untranslated",
+      "en": "Color not available"
+    },
+    {
+      "keyPath": "game-setup.features",
+      "kind": "untranslated",
+      "en": "Features"
+    },
+    {
+      "keyPath": "game-setup.mechanics",
+      "kind": "untranslated",
+      "en": "Mechanics"
+    },
+    {
+      "keyPath": "game-setup.modifiers",
+      "kind": "untranslated",
+      "en": "Modifiers"
+    },
+    {
+      "keyPath": "game-setup.rules.city-description",
+      "kind": "untranslated",
+      "en": "City is completed when its walls are fully closed."
+    },
+    {
+      "keyPath": "game-setup.rules.city-scoring",
+      "kind": "untranslated",
+      "en": "City scores 2 points per tile and per coat of arms. An unfinished city scores only 1 point per tile and per coat of arms at the end of the game."
+    },
+    {
+      "keyPath": "game-setup.rules.info-title",
+      "kind": "untranslated",
+      "en": "Tiles with this feature"
+    },
+    {
+      "keyPath": "game-setup.rules.info-tiles-count",
+      "kind": "untranslated",
+      "en": "Tiles in the game: {count} of {total}"
+    },
+    {
+      "keyPath": "game-setup.rules.meteorite-description",
+      "kind": "untranslated",
+      "en": "Placing a tile with a crater causes a meteorite impact: a die roll decides how far the blast reaches, and every meeple and neutral figure standing on the hit tiles is knocked off the board."
+    },
+    {
+      "keyPath": "game-setup.rules.monastery-description",
+      "kind": "untranslated",
+      "en": "Monastery is completed when it is surrounded by eight tiles."
+    },
+    {
+      "keyPath": "game-setup.rules.monastery-scoring",
+      "kind": "untranslated",
+      "en": "Monastery scores 9 points. At the end of the game an unfinished monastery scores 1 point for itself and 1 for each neighbouring tile."
+    },
+    {
+      "keyPath": "game-setup.rules.road-description",
+      "kind": "untranslated",
+      "en": "Road is completed when all of its ends are closed (by a crossing, a city, a monastery or a loop)."
+    },
+    {
+      "keyPath": "game-setup.rules.road-scoring",
+      "kind": "untranslated",
+      "en": "Road scores 1 point per tile. An unfinished road still scores 1 point per tile at the end of the game."
+    },
+    {
+      "keyPath": "game-setup.rules.shrine-scoring",
+      "kind": "untranslated",
+      "en": "A shrine is scored like a monastery."
+    }
+  ]
+}

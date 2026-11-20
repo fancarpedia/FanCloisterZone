@@ -134,6 +134,16 @@
     "value": "AI tohle umí hrát",
     "source": "manual"
   },
+  "game-setup.ai.supported-not-with": {
+    "en": "The AI can play this — not with: {elements}",
+    "value": "AI to umí hrát — ne s: {elements}",
+    "source": "manual"
+  },
+  "game-setup.ai.supported-only-without": {
+    "en": "The AI can play this only without: {elements}",
+    "value": "AI to umí hrát jen bez: {elements}",
+    "source": "manual"
+  },
   "game-setup.create.ai-player": {
     "en": "AI player",
     "value": "AI hráč",
@@ -142,6 +152,11 @@
   "game-setup.create.assign": {
     "en": "assign",
     "value": "přidat",
+    "source": "manual"
+  },
+  "game-setup.create.color-unavailable": {
+    "en": "Color not available",
+    "value": "Barva není k dispozici",
     "source": "manual"
   },
   "game-setup.create.game-full": {
@@ -157,6 +172,11 @@
   "game-setup.create.release-slot": {
     "en": "Release slot",
     "value": "Uvolnit pozici",
+    "source": "manual"
+  },
+  "game-setup.features": {
+    "en": "Features",
+    "value": "Prvky",
     "source": "manual"
   },
   "game-setup.game-flow.cooperative": {
@@ -184,6 +204,16 @@
     "value": "Varianta",
     "source": "manual"
   },
+  "game-setup.mechanics": {
+    "en": "Mechanics",
+    "value": "Mechaniky",
+    "source": "manual"
+  },
+  "game-setup.modifiers": {
+    "en": "Modifiers",
+    "value": "Modifikátory",
+    "source": "manual"
+  },
   "game-setup.open-game.max-players": {
     "en": "Max players (public)",
     "value": "Max. hráčů (veřejné)",
@@ -197,6 +227,56 @@
   "game-setup.open-game.no-human-player": {
     "en": "No human in game",
     "value": "Žádný člověk ve hře",
+    "source": "manual"
+  },
+  "game-setup.rules.city-description": {
+    "en": "City is completed when its walls are fully closed.",
+    "value": "Město je dokončené, když jsou jeho hradby zcela uzavřené.",
+    "source": "manual"
+  },
+  "game-setup.rules.city-scoring": {
+    "en": "City scores 2 points per tile and per coat of arms. An unfinished city scores only 1 point per tile and per coat of arms at the end of the game.",
+    "value": "Město získá 2 body za každou kartičku a za každý erb. Nedokončené město získá na konci hry jen 1 bod za kartičku a za erb.",
+    "source": "manual"
+  },
+  "game-setup.rules.info-tiles-count": {
+    "en": "Tiles in the game: {count} of {total}",
+    "value": "Kartiček ve hře: {count} z {total}",
+    "source": "manual"
+  },
+  "game-setup.rules.info-title": {
+    "en": "Tiles with this feature",
+    "value": "Kartičky s tímto prvkem",
+    "source": "manual"
+  },
+  "game-setup.rules.meteorite-description": {
+    "en": "Placing a tile with a crater causes a meteorite impact: a die roll decides how far the blast reaches, and every meeple and neutral figure standing on the hit tiles is knocked off the board.",
+    "value": "Položení kartičky s kráterem způsobí dopad meteoritu: hod kostkou rozhodne, kam až výbuch dosáhne, a všichni družiníci i neutrální figurky na zasažených kartičkách jsou smeteni z plánu.",
+    "source": "manual"
+  },
+  "game-setup.rules.monastery-description": {
+    "en": "Monastery is completed when it is surrounded by eight tiles.",
+    "value": "Klášter je dokončený, když je obklopen osmi kartičkami.",
+    "source": "manual"
+  },
+  "game-setup.rules.monastery-scoring": {
+    "en": "Monastery scores 9 points. At the end of the game an unfinished monastery scores 1 point for itself and 1 for each neighbouring tile.",
+    "value": "Klášter získá 9 bodů. Nedokončený klášter získá na konci hry 1 bod za sebe a 1 bod za každou sousední kartičku.",
+    "source": "manual"
+  },
+  "game-setup.rules.road-description": {
+    "en": "Road is completed when all of its ends are closed (by a crossing, a city, a monastery or a loop).",
+    "value": "Cesta je dokončená, když jsou uzavřené všechny její konce (křižovatkou, městem, klášterem nebo smyčkou).",
+    "source": "manual"
+  },
+  "game-setup.rules.road-scoring": {
+    "en": "Road scores 1 point per tile. An unfinished road still scores 1 point per tile at the end of the game.",
+    "value": "Cesta získá 1 bod za každou kartičku. Nedokončená cesta získá na konci hry také 1 bod za kartičku.",
+    "source": "manual"
+  },
+  "game-setup.rules.shrine-scoring": {
+    "en": "A shrine is scored like a monastery.",
+    "value": "Svatyně se hodnotí jako klášter.",
     "source": "manual"
   },
   "game-setup.tiles.custom-pack": {
@@ -424,6 +504,11 @@
     "value": "přesun figurky sem",
     "source": "manual"
   },
+  "game.cause.figure-moved-bigtop": {
+    "en": "the Big Top moved to the newly placed tile",
+    "value": "přesun šapitó na nově položenou kartičku",
+    "source": "manual"
+  },
   "game.cause.meeple-deployed": {
     "en": "the deployed meeple",
     "value": "umístěný družiník",
@@ -432,6 +517,11 @@
   "game.cause.rule.count-clockwise": {
     "en": "the Count moving on clockwise",
     "value": "Hrabě se posunul po směru hodinových ručiček",
+    "source": "manual"
+  },
+  "game.cause.rule.crop-circle": {
+    "en": "a crop circle",
+    "value": "kruh v obilí",
     "source": "manual"
   },
   "game.cause.rule.decinsky-sneznik-scored": {
@@ -517,6 +607,11 @@
   "game.coop.triggered-by": {
     "en": "{name} could neither enlarge an occupied feature nor occupy a new one.",
     "value": "{name} nerozšířil obsazené území ani neobsadil nové.",
+    "source": "manual"
+  },
+  "game.element.animal-token": {
+    "en": "Animal token",
+    "value": "Žeton zvířete",
     "source": "manual"
   },
   "game.element.black-fairy": {
@@ -624,6 +719,16 @@
     "value": "{source}, hráč {player}",
     "source": "manual"
   },
+  "game.placement.source-barn-field-join": {
+    "en": "Its field joined to one with a barn",
+    "value": "Jeho louka se spojila s loukou se statkem",
+    "source": "manual"
+  },
+  "game.placement.source-barn-placement": {
+    "en": "Barn placed on its field",
+    "value": "Statek umístěn na jeho louku",
+    "source": "manual"
+  },
   "game.placement.title.captured": {
     "en": "{figure} captured",
     "value": "Zajetí: {figure}",
@@ -662,6 +767,11 @@
   "game.placement.title.removed": {
     "en": "{figure} removed",
     "value": "Odstranění: {figure}",
+    "source": "manual"
+  },
+  "game.placement.title.revealed": {
+    "en": "{figure} revealed and scored",
+    "value": "{figure} odhalen a vyhodnocen",
     "source": "manual"
   },
   "game.placement.title.tile-placed": {

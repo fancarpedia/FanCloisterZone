@@ -2,7 +2,7 @@
   "@author": "TileLord | Erol",
   "@jcz-version": "5.12.1",
   "@fcz-version": "7.2.0",
-  "@version": "0.13.6-ai",
+  "@version": "0.13.10-ai",
   "about": {
     "author": "Avtor",
     "configuration-file": "Konfiguracijska datoteka",
@@ -335,9 +335,11 @@
     "cause": {
       "caused-by": "Vzrok: {cause}",
       "figure-moved": "figura, premaknjena sem",
+      "figure-moved-bigtop": "Veliki Šotor, premaknjen na pravkar položeno ploščico",
       "meeple-deployed": "postavljeni človeček",
       "rule": {
         "count-clockwise": "Grof se premakne v smeri urinega kazalca",
+        "crop-circle": "žitni krog",
         "decinsky-sneznik-scored": "točkovan Decinsky Sneznik",
         "final-scoring": "končno točkovanje",
         "flock-expanded": "žeton ovce, izvlečen za čredo",
@@ -362,6 +364,7 @@
     "element": {
       "abbey": "Opatija",
       "abbot": "Opat",
+      "animal-token": "Žeton živali",
       "barn": "Skedenj",
       "big-follower": "Veliki Človeček",
       "big-top": "Veliki Šotor",
@@ -491,6 +494,8 @@
       "moved-by": "Premaknil {player}",
       "placed-by": "Položil {player}",
       "removed-with": "{source}, igralec {player}",
+      "source-barn-field-join": "Njegovo polje združeno s poljem s skednjem",
+      "source-barn-placement": "Skedenj postavljen na njegovo polje",
       "title": {
         "captured": "Ujetje: {figure}",
         "castle-created": "Majhno mesto spremenjeno v grad",
@@ -500,6 +505,7 @@
         "placed": "Postavitev: {figure}",
         "placed-on-letter": "Postavitev na Pismo: {figure}",
         "removed": "Odstranitev: {figure}",
+        "revealed": "{figure} razkrit in točkovan",
         "tile-placed": "Ploščica položena"
       }
     },
@@ -552,7 +558,9 @@
       "not-available": "AI ni na voljo",
       "not-available-hint": "AI igralci za to nastavitev igre niso na voljo",
       "not-supported": "AI ne igra",
-      "supported": "AI lahko igra to"
+      "supported": "AI lahko igra to",
+      "supported-not-with": "AI lahko igra to — ne z: {elements}",
+      "supported-only-without": "AI lahko igra to le brez: {elements}"
     },
     "additional-elements": "Dodatni elementi",
     "altered-gameplay": "Spremenjena Igra",
@@ -567,8 +575,8 @@
       "assign": "dodeli",
       "ai-player": "AI igralec",
       "click-to-assign": "klikni za dodelitev",
-      "game-full": "Igra je polna",
       "color-unavailable": "Barva ni na voljo",
+      "game-full": "Igra je polna",
       "kick-player": "Izključi igralca",
       "local-ai-player": "Lokalni AI igralec",
       "local-limit-reached": "Omejitev dosežena",
@@ -582,6 +590,7 @@
       "rename-player": "Preimenuj Igralca",
       "waiting-for-player": "čakanje na igralca"
     },
+    "features": "Elementi",
     "game-element-box": {
       "mandatory-for-selected-tiles": "Obvezno za izbrane ploščice",
       "related-tiles-not-selected": "Povezane ploščice niso izbrane"
@@ -601,6 +610,8 @@
       "timer": "Časovnik",
       "variant": "Različica"
     },
+    "mechanics": "Mehanike",
+    "modifiers": "Modifikatorji",
     "open-game": {
       "assign-all-players-to-start": "Dodeli vse igralce za začetek",
       "hide-remaining-tiles-cheat-sheet": "Skrij preostale ploščice",
@@ -629,6 +640,8 @@
       "bazaar-disabled": "Nobena ploščica z bazarjem ni v igri.",
       "cathedral-description": "Dokončana mesta s katedralo ×3 namesto ×2 in po izbiri brez točk pri končnem točkovanju.",
       "cathedral-disabled": "Nobena ploščica s katedralo ni v igri.",
+      "city-description": "Mesto je dokončano, ko je njegovo obzidje popolnoma zaprto.",
+      "city-scoring": "Mesto prinese 2 točki za vsako ploščico in vsak grb. Nedokončano mesto ob koncu igre prinese le 1 točko za ploščico in za grb.",
       "escape-description": "Pobeg dovoljen preko sosednjega samostana.",
       "escape-disabled": "Nobena ploščica z obleganjem ni v igri.",
       "farmers-description": "Igralci lahko postavijo človeščke na polja.",
@@ -647,12 +660,16 @@
       "garden-disabled": "Opat ni izbran.",
       "hill-description": "Uporablja se kot odločilni dejavnik. Prav tako skrije eno naključno ploščico pod sabo.",
       "hill-disabled": "Nobena ploščica s hribom ni v igri.",
+      "info-title": "Ploščice s tem elementom",
+      "info-tiles-count": "Ploščic v igri: {count} od {total}",
       "inn-description": "Dokončane ceste z gostilno ×2 in po izbiri brez točk pri končnem točkovanju.",
       "inn-disabled": "Nobena ploščica z gostilno ni v igri.",
       "marketplace-description": "Še ni na voljo",
       "marketplace-disabled": "Nobena ploščica s tržnico ni v igri.",
-      "meteorite-description": "TBA",
+      "meteorite-description": "Polaganje ploščice s kraterjem povzroči udar meteorita: met kocke odloči, kako daleč seže eksplozija, in vsi človečki ter nevtralne figure na zadetih ploščicah so odstranjeni s plošče.",
       "meteorite-disabled": "V igri ni nobene ploščice s kraterjem.",
+      "monastery-description": "Samostan je dokončan, ko ga obdaja osem ploščic.",
+      "monastery-scoring": "Samostan prinese 9 točk. Ob koncu igre nedokončan samostan prinese 1 točko zase in 1 za vsako sosednjo ploščico.",
       "optional-game-mechanics": "Neobvezne igralne mehanike",
       "pig-herd-description": "Šteje kot dodatni prašič na polju (kmetje dobijo več točk).",
       "pig-herd-disabled": "Nobena ploščica s čredo prašičev ni v igri.",
@@ -660,11 +677,14 @@
       "portal-disabled": "Nobena ploščica s čarobnim portalom ni v igri.",
       "princess-description": "Princesa lahko odstrani viteza iz mesta.",
       "princess-disabled": "Nobena ploščica s princeso ni v igri.",
+      "road-description": "Cesta je dokončana, ko so zaprti vsi njeni konci (s križiščem, mestom, samostanom ali zanko).",
+      "road-scoring": "Cesta prinese 1 točko za vsako ploščico. Nedokončana cesta ob koncu igre prav tako prinese 1 točko za ploščico.",
       "robbers-son-description": "Razbojnikov sin lahko odstrani tatu s ceste.",
       "robbers-son-disabled": "V igri ni nobene ploščice z Razbojnikovim sinom.",
       "scoring-variants": "Variante točkovanja",
       "shrine-description": "Svetišče postavljeno poleg samostana tekmuje, kdo bo prvi dokončal značilnost. (drugi ne dobi točk)",
       "shrine-disabled": "Nobena ploščica s svetiščem ni v igri.",
+      "shrine-scoring": "Svetišče se točkuje kot samostan.",
       "siege-description": "Oblegana mesta so manj vredna.",
       "siege-disabled": "Nobena ploščica z obleganjem ni v igri.",
       "starting-tiles-configuration": "Konfiguracija začetnih ploščic",
@@ -672,7 +692,10 @@
       "vineyard-description": "Dodatne točke za bližnji samostan.",
       "vineyard-disabled": "Nobena ploščica z vinogradom ni v igri.",
       "well-description": "Dodaj 1 točko za vsak vodnjak na cestah. Ceste z gostilno dobijo 2 točki, ko so dokončane, in po izbiri nobene točke pri končnem točkovanju.",
-      "well-disabled": "Nobena ploščica z vodnjakom ni v igri."
+      "well-disabled": "Nobena ploščica z vodnjakom ni v igri.",
+      "features": "Elementi",
+      "mechanics": "Mehanike",
+      "modifiers": "Modifikatorji"
     },
     "selected-tiles": "Izbrane ploščice",
     "tiles": {

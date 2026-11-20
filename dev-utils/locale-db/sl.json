@@ -154,6 +154,16 @@
     "value": "AI lahko igra to",
     "source": "manual"
   },
+  "game-setup.ai.supported-not-with": {
+    "en": "The AI can play this — not with: {elements}",
+    "value": "AI lahko igra to — ne z: {elements}",
+    "source": "manual"
+  },
+  "game-setup.ai.supported-only-without": {
+    "en": "The AI can play this only without: {elements}",
+    "value": "AI lahko igra to le brez: {elements}",
+    "source": "manual"
+  },
   "game-setup.create.ai-player": {
     "en": "AI player",
     "value": "AI igralec",
@@ -162,6 +172,11 @@
   "game-setup.create.assign": {
     "en": "assign",
     "value": "dodeli",
+    "source": "manual"
+  },
+  "game-setup.create.color-unavailable": {
+    "en": "Color not available",
+    "value": "Barva ni na voljo",
     "source": "manual"
   },
   "game-setup.create.game-full": {
@@ -177,6 +192,11 @@
   "game-setup.create.release-slot": {
     "en": "Release slot",
     "value": "Sprosti pozicijo",
+    "source": "manual"
+  },
+  "game-setup.features": {
+    "en": "Features",
+    "value": "Elementi",
     "source": "manual"
   },
   "game-setup.game-flow.cooperative": {
@@ -204,6 +224,16 @@
     "value": "Različica",
     "source": "manual"
   },
+  "game-setup.mechanics": {
+    "en": "Mechanics",
+    "value": "Mehanike",
+    "source": "manual"
+  },
+  "game-setup.modifiers": {
+    "en": "Modifiers",
+    "value": "Modifikatorji",
+    "source": "manual"
+  },
   "game-setup.open-game.max-players": {
     "en": "Max players (public)",
     "value": "Najv. igralcev (javna)",
@@ -217,6 +247,56 @@
   "game-setup.open-game.no-human-player": {
     "en": "No human in game",
     "value": "Ni človeškega igralca v igri",
+    "source": "manual"
+  },
+  "game-setup.rules.city-description": {
+    "en": "City is completed when its walls are fully closed.",
+    "value": "Mesto je dokončano, ko je njegovo obzidje popolnoma zaprto.",
+    "source": "manual"
+  },
+  "game-setup.rules.city-scoring": {
+    "en": "City scores 2 points per tile and per coat of arms. An unfinished city scores only 1 point per tile and per coat of arms at the end of the game.",
+    "value": "Mesto prinese 2 točki za vsako ploščico in vsak grb. Nedokončano mesto ob koncu igre prinese le 1 točko za ploščico in za grb.",
+    "source": "manual"
+  },
+  "game-setup.rules.info-tiles-count": {
+    "en": "Tiles in the game: {count} of {total}",
+    "value": "Ploščic v igri: {count} od {total}",
+    "source": "manual"
+  },
+  "game-setup.rules.info-title": {
+    "en": "Tiles with this feature",
+    "value": "Ploščice s tem elementom",
+    "source": "manual"
+  },
+  "game-setup.rules.meteorite-description": {
+    "en": "Placing a tile with a crater causes a meteorite impact: a die roll decides how far the blast reaches, and every meeple and neutral figure standing on the hit tiles is knocked off the board.",
+    "value": "Polaganje ploščice s kraterjem povzroči udar meteorita: met kocke odloči, kako daleč seže eksplozija, in vsi človečki ter nevtralne figure na zadetih ploščicah so odstranjeni s plošče.",
+    "source": "manual"
+  },
+  "game-setup.rules.monastery-description": {
+    "en": "Monastery is completed when it is surrounded by eight tiles.",
+    "value": "Samostan je dokončan, ko ga obdaja osem ploščic.",
+    "source": "manual"
+  },
+  "game-setup.rules.monastery-scoring": {
+    "en": "Monastery scores 9 points. At the end of the game an unfinished monastery scores 1 point for itself and 1 for each neighbouring tile.",
+    "value": "Samostan prinese 9 točk. Ob koncu igre nedokončan samostan prinese 1 točko zase in 1 za vsako sosednjo ploščico.",
+    "source": "manual"
+  },
+  "game-setup.rules.road-description": {
+    "en": "Road is completed when all of its ends are closed (by a crossing, a city, a monastery or a loop).",
+    "value": "Cesta je dokončana, ko so zaprti vsi njeni konci (s križiščem, mestom, samostanom ali zanko).",
+    "source": "manual"
+  },
+  "game-setup.rules.road-scoring": {
+    "en": "Road scores 1 point per tile. An unfinished road still scores 1 point per tile at the end of the game.",
+    "value": "Cesta prinese 1 točko za vsako ploščico. Nedokončana cesta ob koncu igre prav tako prinese 1 točko za ploščico.",
+    "source": "manual"
+  },
+  "game-setup.rules.shrine-scoring": {
+    "en": "A shrine is scored like a monastery.",
+    "value": "Svetišče se točkuje kot samostan.",
     "source": "manual"
   },
   "game-setup.tiles.custom-pack": {
@@ -449,6 +529,11 @@
     "value": "figura, premaknjena sem",
     "source": "manual"
   },
+  "game.cause.figure-moved-bigtop": {
+    "en": "the Big Top moved to the newly placed tile",
+    "value": "Veliki Šotor, premaknjen na pravkar položeno ploščico",
+    "source": "manual"
+  },
   "game.cause.meeple-deployed": {
     "en": "the deployed meeple",
     "value": "postavljeni človeček",
@@ -457,6 +542,11 @@
   "game.cause.rule.count-clockwise": {
     "en": "the Count moving on clockwise",
     "value": "Grof se premakne v smeri urinega kazalca",
+    "source": "manual"
+  },
+  "game.cause.rule.crop-circle": {
+    "en": "a crop circle",
+    "value": "žitni krog",
     "source": "manual"
   },
   "game.cause.rule.decinsky-sneznik-scored": {
@@ -542,6 +632,11 @@
   "game.coop.triggered-by": {
     "en": "{name} could neither enlarge an occupied feature nor occupy a new one.",
     "value": "{name} ni niti razširil zasedenega območja niti zasedel novega.",
+    "source": "manual"
+  },
+  "game.element.animal-token": {
+    "en": "Animal token",
+    "value": "Žeton živali",
     "source": "manual"
   },
   "game.element.black-fairy": {
@@ -649,6 +744,16 @@
     "value": "{source}, igralec {player}",
     "source": "manual"
   },
+  "game.placement.source-barn-field-join": {
+    "en": "Its field joined to one with a barn",
+    "value": "Njegovo polje združeno s poljem s skednjem",
+    "source": "manual"
+  },
+  "game.placement.source-barn-placement": {
+    "en": "Barn placed on its field",
+    "value": "Skedenj postavljen na njegovo polje",
+    "source": "manual"
+  },
   "game.placement.title.captured": {
     "en": "{figure} captured",
     "value": "Ujetje: {figure}",
@@ -687,6 +792,11 @@
   "game.placement.title.removed": {
     "en": "{figure} removed",
     "value": "Odstranitev: {figure}",
+    "source": "manual"
+  },
+  "game.placement.title.revealed": {
+    "en": "{figure} revealed and scored",
+    "value": "{figure} razkrit in točkovan",
     "source": "manual"
   },
   "game.placement.title.tile-placed": {

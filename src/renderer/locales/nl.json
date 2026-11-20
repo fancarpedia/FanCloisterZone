@@ -2,7 +2,7 @@
   "@author": "Kiap1969 & Sinscerly",
   "@jcz-version": "5.12.1",
   "@fcz-version": "7.2.0",
-  "@version": "0.13.6-ai",
+  "@version": "0.13.10-ai",
   "about": {
     "author": "Auteur",
     "configuration-file": "Configuratiebestand",
@@ -335,9 +335,11 @@
     "cause": {
       "caused-by": "Oorzaak: {cause}",
       "figure-moved": "de hierheen verplaatste figuur",
+      "figure-moved-bigtop": "de Circustent die naar de zojuist gelegde tegel is verplaatst",
       "meeple-deployed": "de geplaatste meeple",
       "rule": {
         "count-clockwise": "de Graaf schuift met de klok mee",
+        "crop-circle": "een graancirkel",
         "decinsky-sneznik-scored": "Decinsky Sneznik gewaardeerd",
         "final-scoring": "eindtelling",
         "flock-expanded": "een schaapfiche getrokken voor de kudde",
@@ -362,6 +364,7 @@
     "element": {
       "abbey": "Abdij",
       "abbot": "Abt",
+      "animal-token": "Dierenfiche",
       "barn": "Herenboerderij",
       "big-follower": "Grote meeple",
       "big-top": "Circustent",
@@ -491,6 +494,8 @@
       "moved-by": "Verplaatst door {player}",
       "placed-by": "Gelegd door {player}",
       "removed-with": "{source}, door {player}",
+      "source-barn-field-join": "Zijn weide verbonden met een weide met een herenboerderij",
+      "source-barn-placement": "Herenboerderij op zijn weide gezet",
       "title": {
         "captured": "{figure} gevangen",
         "castle-created": "Kleine stad omgezet in een burcht",
@@ -500,6 +505,7 @@
         "placed": "{figure} geplaatst",
         "placed-on-letter": "{figure} op de Brief geplaatst",
         "removed": "{figure} verwijderd",
+        "revealed": "{figure} onthuld en gewaardeerd",
         "tile-placed": "Tegel gelegd"
       }
     },
@@ -552,7 +558,9 @@
       "not-available": "AI niet beschikbaar",
       "not-available-hint": "AI-spelers zijn niet beschikbaar voor deze spelinstelling",
       "not-supported": "De AI speelt niet",
-      "supported": "De AI kan dit spelen"
+      "supported": "De AI kan dit spelen",
+      "supported-not-with": "De AI kan dit spelen — niet met: {elements}",
+      "supported-only-without": "De AI kan dit alleen spelen zonder: {elements}"
     },
     "additional-elements": "Aanvullende elementen",
     "altered-gameplay": "Afwijkend spelverloop",
@@ -567,8 +575,8 @@
       "assign": "toewijzen",
       "ai-player": "AI-speler",
       "click-to-assign": "klik om toe te wijzen",
-      "game-full": "Spel is vol",
       "color-unavailable": "Kleur niet beschikbaar",
+      "game-full": "Spel is vol",
       "kick-player": "Speler schoppen",
       "local-ai-player": "lokale ai-speler",
       "local-limit-reached": "Limiet bereikt",
@@ -582,6 +590,7 @@
       "rename-player": "Speler hernoemen",
       "waiting-for-player": "wachten op tegenspeler"
     },
+    "features": "Elementen",
     "game-element-box": {
       "mandatory-for-selected-tiles": "Verplicht voor de geselecteerde tegels",
       "related-tiles-not-selected": "Niet-geselecteerde gerelateerde tegels"
@@ -601,6 +610,8 @@
       "timer": "Timer",
       "variant": "Variant"
     },
+    "mechanics": "Mechanismes",
+    "modifiers": "Modificatoren",
     "open-game": {
       "assign-all-players-to-start": "Alle spelers aan het begin toewijzen",
       "hide-remaining-tiles-cheat-sheet": "Afkijklijst met overgebleven tegels verbergen",
@@ -629,6 +640,8 @@
       "bazaar-disabled": "Er zijn geen tegels met bazaars in het spel.",
       "cathedral-description": "Afgebouwde steden met een kathedraal ×3 in plaats van ×2, mogelijk geen punten bij de eindtelling.",
       "cathedral-disabled": "Er zijn geen kathedraaltegels in het spel.",
+      "city-description": "Een stad is voltooid wanneer haar muren volledig gesloten zijn.",
+      "city-scoring": "Een stad levert 2 punten per tegel en per wapen op. Een onvoltooide stad levert aan het einde van het spel maar 1 punt per tegel en per wapen op.",
       "escape-description": "Je mag ontsnappen via een naastgelegen klooster.",
       "escape-disabled": "Er zijn geen tegels met belegeringen in het spel.",
       "farmers-description": "Spelers mogen meeples op weiden zetten.",
@@ -647,12 +660,16 @@
       "garden-disabled": "Abt niet geselecteerd.",
       "hill-description": "Beslist gelijkspel bij meerderheid. Verbergt een willekeurige tegel.",
       "hill-disabled": "Er zijn geen tegels met heuvels in het spel.",
+      "info-title": "Tegels met dit element",
+      "info-tiles-count": "Tegels in het spel: {count} van {total}",
       "inn-description": "Afgebouwde wegen met een herberg ×2, mogelijk geen punten bij de eindtelling.",
       "inn-disabled": "Er zijn geen tegels met herbergen in het spel.",
       "marketplace-description": "Markten verbinden verschillende wegen tot een gedeeld netwerk dat pas afgebouwd is als alle ermee verbonden wegen afgesloten zijn. Bij de de puntentelling krijg je evenveel bonuspunten als de lengte van de andere afgebouwde wegen in dat netwerk.",
       "marketplace-disabled": "Er zijn geen tegels met een marktplaats in het spel.",
-      "meteorite-description": "TBA",
+      "meteorite-description": "Het leggen van een tegel met een krater veroorzaakt een meteorietinslag: een worp met de dobbelsteen bepaalt hoe ver de explosie reikt, en alle meeples en neutrale figuren op de getroffen tegels worden van het bord geveegd.",
       "meteorite-disabled": "Er zijn geen tegels met kraters in het spel.",
+      "monastery-description": "Een klooster is voltooid wanneer het door acht tegels is omringd.",
+      "monastery-scoring": "Een klooster levert 9 punten op. Een onvoltooid klooster levert aan het einde van het spel 1 punt voor zichzelf en 1 voor elke aangrenzende tegel op.",
       "optional-game-mechanics": "Optionele spelmechanismes",
       "pig-herd-description": "Geldt als een extra varken op de weide (boeren krijgen extra punten).",
       "pig-herd-disabled": "Er is geen tegel met een varkenskudde in het spel.",
@@ -660,11 +677,14 @@
       "portal-disabled": "Er zijn geen tegels met magische poorten in het spel.",
       "princess-description": "De jonkvrouw mag een ridder uit een stad verwijderen.",
       "princess-disabled": "Er zijn geen tegels met jonkvrouwen in het spel.",
+      "road-description": "Een weg is voltooid wanneer al zijn uiteinden zijn afgesloten (door een kruispunt, een stad, een klooster of een lus).",
+      "road-scoring": "Een weg levert 1 punt per tegel op. Een onvoltooide weg levert aan het einde van het spel ook 1 punt per tegel op.",
       "robbers-son-description": "De roverszoon mag een dief van een weg verwijderen.",
       "robbers-son-disabled": "Er zijn geen tegels met een roverszoon in het spel.",
       "scoring-variants": "Puntentellingvariaties",
       "shrine-description": "Cultusplaats naast een klooster strijdt om wie het project het eerst heeft afgebouwd. (de ander krijgt geen punten)",
       "shrine-disabled": "Er zijn geen tegels met cultusplaatsen in het spel.",
+      "shrine-scoring": "Een cultusplaats wordt gewaardeerd als een klooster.",
       "siege-description": "Belegerde steden zijn minder waard.",
       "siege-disabled": "Er zijn geen tegels met belegeringen in het spel.",
       "starting-tiles-configuration": "Configuratie van de starttegel(s)",
@@ -672,7 +692,10 @@
       "vineyard-description": "Geeft extra punten voor naastgelegen klooster.",
       "vineyard-disabled": "Er zijn geen tegels met wijngaarden in het spel.",
       "well-description": "Tel punt per put aan wegen. Wegen met een herberg krijgen twee punten als ze zijn afgebouwd, maar mogelijk geen punten bij de eindtelling.",
-      "well-disabled": "Er zijn geen tegels met putten in het spel."
+      "well-disabled": "Er zijn geen tegels met putten in het spel.",
+      "features": "Elementen",
+      "mechanics": "Mechanismes",
+      "modifiers": "Modificatoren"
     },
     "selected-tiles": "Geselecteerde tegels",
     "tiles": {

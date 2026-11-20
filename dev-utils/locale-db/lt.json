@@ -269,6 +269,16 @@
     "value": "DI gali tai žaisti",
     "source": "manual"
   },
+  "game-setup.ai.supported-not-with": {
+    "en": "The AI can play this — not with: {elements}",
+    "value": "DI gali tai žaisti — ne su: {elements}",
+    "source": "manual"
+  },
+  "game-setup.ai.supported-only-without": {
+    "en": "The AI can play this only without: {elements}",
+    "value": "DI gali tai žaisti tik be: {elements}",
+    "source": "manual"
+  },
   "game-setup.create.ai-player": {
     "en": "AI player",
     "value": "DI žaidėjas",
@@ -277,6 +287,11 @@
   "game-setup.create.assign": {
     "en": "assign",
     "value": "priskirti",
+    "source": "manual"
+  },
+  "game-setup.create.color-unavailable": {
+    "en": "Color not available",
+    "value": "Spalva neprieinama",
     "source": "manual"
   },
   "game-setup.create.game-full": {
@@ -304,6 +319,11 @@
     "value": "Atlaisvinti vietą",
     "source": "manual"
   },
+  "game-setup.features": {
+    "en": "Features",
+    "value": "Elementai",
+    "source": "manual"
+  },
   "game-setup.game-flow.cooperative": {
     "en": "Cooperative variant",
     "value": "Bendro žaidimo variantas",
@@ -327,6 +347,16 @@
   "game-setup.header.variant": {
     "en": "Variant",
     "value": "Variantas",
+    "source": "manual"
+  },
+  "game-setup.mechanics": {
+    "en": "Mechanics",
+    "value": "Mechanika",
+    "source": "manual"
+  },
+  "game-setup.modifiers": {
+    "en": "Modifiers",
+    "value": "Modifikatoriai",
     "source": "manual"
   },
   "game-setup.open-game.max-players": {
@@ -359,6 +389,16 @@
     "value": "Reikalingas vienas iš grupės {groups}",
     "source": "manual"
   },
+  "game-setup.rules.city-description": {
+    "en": "City is completed when its walls are fully closed.",
+    "value": "Miestas užbaigtas, kai jo sienos visiškai uždarytos.",
+    "source": "manual"
+  },
+  "game-setup.rules.city-scoring": {
+    "en": "City scores 2 points per tile and per coat of arms. An unfinished city scores only 1 point per tile and per coat of arms at the end of the game.",
+    "value": "Miestas duoda 2 taškus už kiekvieną kortelę ir už kiekvieną skydo žymeklį. Neužbaigtas miestas žaidimo pabaigoje duoda tik 1 tašką už kortelę ir už skydo žymeklį.",
+    "source": "manual"
+  },
   "game-setup.rules.fishhut-description": {
     "en": "Fish Hut feature.",
     "value": "Žvejų trobelės objektas.",
@@ -367,6 +407,46 @@
   "game-setup.rules.fishhut-disabled": {
     "en": "No tile with Fish Hut is in the game.",
     "value": "Žaidime nėra nė vienos kortelės su Žvejų trobele.",
+    "source": "manual"
+  },
+  "game-setup.rules.info-tiles-count": {
+    "en": "Tiles in the game: {count} of {total}",
+    "value": "Kortelių žaidime: {count} iš {total}",
+    "source": "manual"
+  },
+  "game-setup.rules.info-title": {
+    "en": "Tiles with this feature",
+    "value": "Kortelės su šiuo elementu",
+    "source": "manual"
+  },
+  "game-setup.rules.meteorite-description": {
+    "en": "Placing a tile with a crater causes a meteorite impact: a die roll decides how far the blast reaches, and every meeple and neutral figure standing on the hit tiles is knocked off the board.",
+    "value": "Padėjus kortelę su krateriu, nukrenta meteoritas: kauliuko metimas nulemia, kaip toli siekia sprogimas, ir visi miplai bei neutralios figūrėlės ant paveiktų kortelių pašalinami nuo lentos.",
+    "source": "manual"
+  },
+  "game-setup.rules.monastery-description": {
+    "en": "Monastery is completed when it is surrounded by eight tiles.",
+    "value": "Vienuolynas užbaigtas, kai jį supa aštuonios kortelės.",
+    "source": "manual"
+  },
+  "game-setup.rules.monastery-scoring": {
+    "en": "Monastery scores 9 points. At the end of the game an unfinished monastery scores 1 point for itself and 1 for each neighbouring tile.",
+    "value": "Vienuolynas duoda 9 taškus. Žaidimo pabaigoje neužbaigtas vienuolynas duoda 1 tašką už save ir po 1 už kiekvieną kaimyninę kortelę.",
+    "source": "manual"
+  },
+  "game-setup.rules.road-description": {
+    "en": "Road is completed when all of its ends are closed (by a crossing, a city, a monastery or a loop).",
+    "value": "Kelias užbaigtas, kai visi jo galai uždaryti (sankryža, miestu, vienuolynu arba kilpa).",
+    "source": "manual"
+  },
+  "game-setup.rules.road-scoring": {
+    "en": "Road scores 1 point per tile. An unfinished road still scores 1 point per tile at the end of the game.",
+    "value": "Kelias duoda 1 tašką už kiekvieną kortelę. Neužbaigtas kelias žaidimo pabaigoje taip pat duoda 1 tašką už kortelę.",
+    "source": "manual"
+  },
+  "game-setup.rules.shrine-scoring": {
+    "en": "A shrine is scored like a monastery.",
+    "value": "Šventovė vertinama kaip vienuolynas.",
     "source": "manual"
   },
   "game-setup.tiles.custom-pack": {
@@ -604,6 +684,11 @@
     "value": "čia perkelta figūrėlė",
     "source": "manual"
   },
+  "game.cause.figure-moved-bigtop": {
+    "en": "the Big Top moved to the newly placed tile",
+    "value": "Šapito, perkeltas ant ką tik padėtos kortelės",
+    "source": "manual"
+  },
   "game.cause.meeple-deployed": {
     "en": "the deployed meeple",
     "value": "padėtas Miplas",
@@ -612,6 +697,11 @@
   "game.cause.rule.count-clockwise": {
     "en": "the Count moving on clockwise",
     "value": "Grafas pasislenka pagal laikrodžio rodyklę",
+    "source": "manual"
+  },
+  "game.cause.rule.crop-circle": {
+    "en": "a crop circle",
+    "value": "ratas pasėliuose",
     "source": "manual"
   },
   "game.cause.rule.decinsky-sneznik-scored": {
@@ -697,6 +787,11 @@
   "game.coop.triggered-by": {
     "en": "{name} could neither enlarge an occupied feature nor occupy a new one.",
     "value": "{name} nei išplėtė užimto objekto, nei užėmė naujo.",
+    "source": "manual"
+  },
+  "game.element.animal-token": {
+    "en": "Animal token",
+    "value": "Gyvūno žetonas",
     "source": "manual"
   },
   "game.element.black-fairy": {
@@ -819,6 +914,16 @@
     "value": "{source}, žaidėjas {player}",
     "source": "manual"
   },
+  "game.placement.source-barn-field-join": {
+    "en": "Its field joined to one with a barn",
+    "value": "Jo laukas sujungtas su lauku, kuriame yra tvartas",
+    "source": "manual"
+  },
+  "game.placement.source-barn-placement": {
+    "en": "Barn placed on its field",
+    "value": "Tvartas pastatytas jo lauke",
+    "source": "manual"
+  },
   "game.placement.title.captured": {
     "en": "{figure} captured",
     "value": "Paėmimas į nelaisvę: {figure}",
@@ -857,6 +962,11 @@
   "game.placement.title.removed": {
     "en": "{figure} removed",
     "value": "Pašalinimas: {figure}",
+    "source": "manual"
+  },
+  "game.placement.title.revealed": {
+    "en": "{figure} revealed and scored",
+    "value": "{figure} atskleistas ir įvertintas",
     "source": "manual"
   },
   "game.placement.title.tile-placed": {

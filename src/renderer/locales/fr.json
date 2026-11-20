@@ -2,7 +2,7 @@
   "@author": "Black Bear",
   "@jcz-version": "5.12.1",
   "@fcz-version": "7.2.0",
-  "@version": "0.13.6-ai",
+  "@version": "0.13.10-ai",
   "about": {
     "author": "Auteur",
     "configuration-file": "Fichier de configuration",
@@ -335,9 +335,11 @@
     "cause": {
       "caused-by": "Cause : {cause}",
       "figure-moved": "la figurine déplacée ici",
+      "figure-moved-bigtop": "le Chapiteau déplacé sur la tuile qui vient d'être posée",
       "meeple-deployed": "le meeple posé",
       "rule": {
         "count-clockwise": "le Comte avance dans le sens horaire",
+        "crop-circle": "un agroglyphe",
         "decinsky-sneznik-scored": "Decinsky Sneznik évalué",
         "final-scoring": "décompte final",
         "flock-expanded": "un jeton mouton pioché pour le troupeau",
@@ -362,6 +364,7 @@
     "element": {
       "abbey": "Monastère",
       "abbot": "Abbé",
+      "animal-token": "Jeton d'animal",
       "barn": "Grange",
       "big-follower": "Grand meeple",
       "big-top": "Chapiteau",
@@ -491,6 +494,8 @@
       "moved-by": "Déplacé par {player}",
       "placed-by": "Placé par {player}",
       "removed-with": "{source}, par {player}",
+      "source-barn-field-join": "Son pré relié à un pré avec une grange",
+      "source-barn-placement": "Grange posée sur son pré",
       "title": {
         "captured": "Capture : {figure}",
         "castle-created": "Petite ville transformée en forteresse",
@@ -500,6 +505,7 @@
         "placed": "Pose : {figure}",
         "placed-on-letter": "Pose sur la Lettre : {figure}",
         "removed": "Retrait : {figure}",
+        "revealed": "{figure} révélé et décompté",
         "tile-placed": "Tuile posée"
       }
     },
@@ -552,7 +558,9 @@
       "not-available": "IA non disponible",
       "not-available-hint": "Les joueurs IA ne sont pas disponibles pour cette configuration de partie",
       "not-supported": "L'IA ne joue pas",
-      "supported": "L'IA peut jouer ceci"
+      "supported": "L'IA peut jouer ceci",
+      "supported-not-with": "L'IA peut jouer ceci — pas avec : {elements}",
+      "supported-only-without": "L'IA peut jouer ceci seulement sans : {elements}"
     },
     "additional-elements": "Éléments supplémentaires",
     "altered-gameplay": "Règles modifiées",
@@ -567,8 +575,8 @@
       "assign": "attribuer",
       "ai-player": "Joueur IA",
       "click-to-assign": "cliquer pour attribuer",
+      "color-unavailable": "Couleur non disponible",
       "game-full": "Partie complète",
-      "color-unavailable": "Couleur indisponible",
       "kick-player": "Exclure un joueur",
       "local-ai-player": "joueur IA local",
       "local-limit-reached": "Limite atteinte",
@@ -582,6 +590,7 @@
       "rename-player": "Renommer le joueur",
       "waiting-for-player": "en attente de joueur"
     },
+    "features": "Éléments",
     "game-element-box": {
       "mandatory-for-selected-tiles": "Obligatoire pour les tuiles sélectionnées",
       "related-tiles-not-selected": "Tuiles connexes non sélectionnées"
@@ -601,6 +610,8 @@
       "timer": "Minuteur",
       "variant": "Variante"
     },
+    "mechanics": "Mécaniques",
+    "modifiers": "Modificateurs",
     "open-game": {
       "assign-all-players-to-start": "Répartir tous les joueurs pour commencer",
       "hide-remaining-tiles-cheat-sheet": "Cacher l’aide-mémoire des tuiles restantes",
@@ -629,6 +640,8 @@
       "bazaar-disabled": "Aucune tuile Bazar n’est en jeu.",
       "cathedral-description": "Villes complétées avec une ou plusieurs cathédrales ×3 au lieu de ×2 et éventuellement aucun point lors de l’évaluation finale.",
       "cathedral-disabled": "Aucune tuile Cathédrale n’est en jeu.",
+      "city-description": "Une ville est achevée lorsque ses remparts sont entièrement fermés.",
+      "city-scoring": "Une ville rapporte 2 points par tuile et par blason. Une ville inachevée ne rapporte que 1 point par tuile et par blason en fin de partie.",
       "escape-description": "Évasion possible via une abbaye voisine.",
       "escape-disabled": "Aucune tuile Siège n’est en jeu.",
       "farmers-description": "Les joueurs sont autorisés à placer des meeples sur les prés.",
@@ -647,12 +660,16 @@
       "garden-disabled": "L’abbé n’est pas sélectionné.",
       "hill-description": "Utilisé pour départager les joueurs. Cache également une tuile aléatoire en dessous.",
       "hill-disabled": "Aucune tuile Colline n’est en jeu.",
+      "info-title": "Tuiles avec cet élément",
+      "info-tiles-count": "Tuiles dans la partie : {count} sur {total}",
       "inn-description": "Routes achevées avec une ou plusieurs auberges au lac ×2 et éventuellement aucun point lors de l’évaluation finale.",
       "inn-disabled": "Aucune tuile Auberge au Lac n’est en jeu.",
       "marketplace-description": "Les places du marché relient plusieurs routes pour former un réseau commun qui n’est complété que lorsque toutes les routes reliées sont fermées. Lors de l’évaluation, des points bonus équivalents à la longueur des autres routes complétées dans ce réseau, sont attribués.",
       "marketplace-disabled": "Aucune tuile Place du marché n’est en jeu.",
-      "meteorite-description": "TBA",
+      "meteorite-description": "Poser une tuile avec un cratère provoque l'impact d'une météorite : un lancer de dé décide jusqu'où porte l'explosion, et tous les meeples et figurines neutres des tuiles touchées sont chassés du plateau.",
       "meteorite-disabled": "Aucune tuile Cratère n’est en jeu.",
+      "monastery-description": "Une abbaye est achevée lorsqu'elle est entourée de huit tuiles.",
+      "monastery-scoring": "Une abbaye rapporte 9 points. En fin de partie, une abbaye inachevée rapporte 1 point pour elle-même et 1 pour chaque tuile voisine.",
       "optional-game-mechanics": "Mécaniques de jeu facultatives",
       "pig-herd-description": "Compte comme un cochon supplémentaire sur le pré (les paysans marquent plus de points).",
       "pig-herd-disabled": "Aucune tuile Troupeau de Porcs n’est en jeu.",
@@ -660,11 +677,14 @@
       "portal-disabled": "Aucune tuile Portail Magique n’est en jeu.",
       "princess-description": "La princesse peut retirer un chevalier d’une ville.",
       "princess-disabled": "Aucune tuile Princesse n’est en jeu.",
+      "road-description": "Une route est achevée lorsque toutes ses extrémités sont fermées (par un carrefour, une ville, une abbaye ou une boucle).",
+      "road-scoring": "Une route rapporte 1 point par tuile. Une route inachevée rapporte aussi 1 point par tuile en fin de partie.",
       "robbers-son-description": "Le fils du voleur peut retirer un voleur d’une route.",
       "robbers-son-disabled": "Aucune tuile Fils du Voleur n’est en jeu.",
       "scoring-variants": "Variantes d’évaluation",
       "shrine-description": "Un lieu de culte placé à côté d’une abbaye la défie. Le premier à finir sa zone obtient tous ses points et le second n’obtient rien.",
       "shrine-disabled": "Aucune tuile Lieu de Culte n’est en jeu.",
+      "shrine-scoring": "Un lieu de culte est décompté comme une abbaye.",
       "siege-description": "Les villes assiégées ont moins de valeur.",
       "siege-disabled": "Aucune tuile Siège n’est en jeu.",
       "starting-tiles-configuration": "Configuration de la ou les tuiles de départ",
@@ -672,7 +692,10 @@
       "vineyard-description": "Points supplémentaires pour les abbayes situées autour.",
       "vineyard-disabled": "Aucune tuile Vignoble n’est en jeu.",
       "well-description": "Ajoute un point par puits sur les routes. Une route avec une auberge au lac rapporte 2 points lorsqu’elle est terminée et éventuellement aucun point lors de l'évaluation finale.",
-      "well-disabled": "Aucune tuile Puits n’est en jeu."
+      "well-disabled": "Aucune tuile Puits n’est en jeu.",
+      "features": "Éléments",
+      "mechanics": "Mécaniques",
+      "modifiers": "Modificateurs"
     },
     "selected-tiles": "Tuiles sélectionnées",
     "tiles": {

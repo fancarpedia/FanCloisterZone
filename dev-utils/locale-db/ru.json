@@ -154,6 +154,16 @@
     "value": "ИИ может это играть",
     "source": "manual"
   },
+  "game-setup.ai.supported-not-with": {
+    "en": "The AI can play this — not with: {elements}",
+    "value": "ИИ может это играть — не с: {elements}",
+    "source": "manual"
+  },
+  "game-setup.ai.supported-only-without": {
+    "en": "The AI can play this only without: {elements}",
+    "value": "ИИ может это играть только без: {elements}",
+    "source": "manual"
+  },
   "game-setup.create.ai-player": {
     "en": "AI player",
     "value": "ИИ игрок",
@@ -162,6 +172,11 @@
   "game-setup.create.assign": {
     "en": "assign",
     "value": "назначить",
+    "source": "manual"
+  },
+  "game-setup.create.color-unavailable": {
+    "en": "Color not available",
+    "value": "Цвет недоступен",
     "source": "manual"
   },
   "game-setup.create.game-full": {
@@ -177,6 +192,11 @@
   "game-setup.create.release-slot": {
     "en": "Release slot",
     "value": "Освободить место",
+    "source": "manual"
+  },
+  "game-setup.features": {
+    "en": "Features",
+    "value": "Элементы",
     "source": "manual"
   },
   "game-setup.game-flow.cooperative": {
@@ -204,6 +224,16 @@
     "value": "Вариант",
     "source": "manual"
   },
+  "game-setup.mechanics": {
+    "en": "Mechanics",
+    "value": "Механики",
+    "source": "manual"
+  },
+  "game-setup.modifiers": {
+    "en": "Modifiers",
+    "value": "Модификаторы",
+    "source": "manual"
+  },
   "game-setup.open-game.max-players": {
     "en": "Max players (public)",
     "value": "Макс. игроков (публичная)",
@@ -217,6 +247,56 @@
   "game-setup.open-game.no-human-player": {
     "en": "No human in game",
     "value": "Нет человека в игре",
+    "source": "manual"
+  },
+  "game-setup.rules.city-description": {
+    "en": "City is completed when its walls are fully closed.",
+    "value": "Город завершён, когда его стены полностью замкнуты.",
+    "source": "manual"
+  },
+  "game-setup.rules.city-scoring": {
+    "en": "City scores 2 points per tile and per coat of arms. An unfinished city scores only 1 point per tile and per coat of arms at the end of the game.",
+    "value": "Город приносит 2 очка за каждый тайл и каждый герб. Незавершённый город в конце игры приносит лишь 1 очко за тайл и за герб.",
+    "source": "manual"
+  },
+  "game-setup.rules.info-tiles-count": {
+    "en": "Tiles in the game: {count} of {total}",
+    "value": "Тайлов в игре: {count} из {total}",
+    "source": "manual"
+  },
+  "game-setup.rules.info-title": {
+    "en": "Tiles with this feature",
+    "value": "Тайлы с этим элементом",
+    "source": "manual"
+  },
+  "game-setup.rules.meteorite-description": {
+    "en": "Placing a tile with a crater causes a meteorite impact: a die roll decides how far the blast reaches, and every meeple and neutral figure standing on the hit tiles is knocked off the board.",
+    "value": "Выкладка тайла с кратером вызывает падение метеорита: бросок кубика решает, как далеко достанет взрыв, и все миплы и нейтральные фигурки на задетых тайлах сметаются с поля.",
+    "source": "manual"
+  },
+  "game-setup.rules.monastery-description": {
+    "en": "Monastery is completed when it is surrounded by eight tiles.",
+    "value": "Монастырь завершён, когда его окружают восемь тайлов.",
+    "source": "manual"
+  },
+  "game-setup.rules.monastery-scoring": {
+    "en": "Monastery scores 9 points. At the end of the game an unfinished monastery scores 1 point for itself and 1 for each neighbouring tile.",
+    "value": "Монастырь приносит 9 очков. В конце игры незавершённый монастырь приносит 1 очко за себя и по 1 за каждый соседний тайл.",
+    "source": "manual"
+  },
+  "game-setup.rules.road-description": {
+    "en": "Road is completed when all of its ends are closed (by a crossing, a city, a monastery or a loop).",
+    "value": "Дорога завершена, когда все её концы закрыты (перекрёстком, городом, монастырём или петлёй).",
+    "source": "manual"
+  },
+  "game-setup.rules.road-scoring": {
+    "en": "Road scores 1 point per tile. An unfinished road still scores 1 point per tile at the end of the game.",
+    "value": "Дорога приносит 1 очко за каждый тайл. Незавершённая дорога в конце игры тоже приносит 1 очко за тайл.",
+    "source": "manual"
+  },
+  "game-setup.rules.shrine-scoring": {
+    "en": "A shrine is scored like a monastery.",
+    "value": "Капище подсчитывается как монастырь.",
     "source": "manual"
   },
   "game-setup.tiles.custom-pack": {
@@ -449,6 +529,11 @@
     "value": "фигурка, перемещённая сюда",
     "source": "manual"
   },
+  "game.cause.figure-moved-bigtop": {
+    "en": "the Big Top moved to the newly placed tile",
+    "value": "Цирковой купол, перенесённый на только что выложенный тайл",
+    "source": "manual"
+  },
   "game.cause.meeple-deployed": {
     "en": "the deployed meeple",
     "value": "размещённый мипл",
@@ -457,6 +542,11 @@
   "game.cause.rule.count-clockwise": {
     "en": "the Count moving on clockwise",
     "value": "Граф сдвигается по часовой стрелке",
+    "source": "manual"
+  },
+  "game.cause.rule.crop-circle": {
+    "en": "a crop circle",
+    "value": "круг на поле",
     "source": "manual"
   },
   "game.cause.rule.decinsky-sneznik-scored": {
@@ -542,6 +632,11 @@
   "game.coop.triggered-by": {
     "en": "{name} could neither enlarge an occupied feature nor occupy a new one.",
     "value": "{name} не расширил занятую область и не занял новую.",
+    "source": "manual"
+  },
+  "game.element.animal-token": {
+    "en": "Animal token",
+    "value": "Жетон животного",
     "source": "manual"
   },
   "game.element.black-fairy": {
@@ -649,6 +744,16 @@
     "value": "{source}, игрок {player}",
     "source": "manual"
   },
+  "game.placement.source-barn-field-join": {
+    "en": "Its field joined to one with a barn",
+    "value": "Его поле соединилось с полем с амбаром",
+    "source": "manual"
+  },
+  "game.placement.source-barn-placement": {
+    "en": "Barn placed on its field",
+    "value": "Амбар выставлен на его поле",
+    "source": "manual"
+  },
   "game.placement.title.captured": {
     "en": "{figure} captured",
     "value": "Захват: {figure}",
@@ -687,6 +792,11 @@
   "game.placement.title.removed": {
     "en": "{figure} removed",
     "value": "Удаление: {figure}",
+    "source": "manual"
+  },
+  "game.placement.title.revealed": {
+    "en": "{figure} revealed and scored",
+    "value": "{figure}: раскрыт и подсчитан",
     "source": "manual"
   },
   "game.placement.title.tile-placed": {

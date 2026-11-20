@@ -154,6 +154,16 @@
     "value": "AI może w to grać",
     "source": "manual"
   },
+  "game-setup.ai.supported-not-with": {
+    "en": "The AI can play this — not with: {elements}",
+    "value": "AI może w to grać — nie z: {elements}",
+    "source": "manual"
+  },
+  "game-setup.ai.supported-only-without": {
+    "en": "The AI can play this only without: {elements}",
+    "value": "AI może w to grać tylko bez: {elements}",
+    "source": "manual"
+  },
   "game-setup.create.ai-player": {
     "en": "AI player",
     "value": "Gracz AI",
@@ -162,6 +172,11 @@
   "game-setup.create.assign": {
     "en": "assign",
     "value": "przydziel",
+    "source": "manual"
+  },
+  "game-setup.create.color-unavailable": {
+    "en": "Color not available",
+    "value": "Kolor niedostępny",
     "source": "manual"
   },
   "game-setup.create.game-full": {
@@ -177,6 +192,11 @@
   "game-setup.create.release-slot": {
     "en": "Release slot",
     "value": "Zwolnij miejsce",
+    "source": "manual"
+  },
+  "game-setup.features": {
+    "en": "Features",
+    "value": "Elementy",
     "source": "manual"
   },
   "game-setup.game-flow.cooperative": {
@@ -204,6 +224,16 @@
     "value": "Wariant",
     "source": "manual"
   },
+  "game-setup.mechanics": {
+    "en": "Mechanics",
+    "value": "Mechaniki",
+    "source": "manual"
+  },
+  "game-setup.modifiers": {
+    "en": "Modifiers",
+    "value": "Modyfikatory",
+    "source": "manual"
+  },
   "game-setup.open-game.max-players": {
     "en": "Max players (public)",
     "value": "Maks. graczy (publiczna)",
@@ -217,6 +247,56 @@
   "game-setup.open-game.no-human-player": {
     "en": "No human in game",
     "value": "Brak ludzkich graczy",
+    "source": "manual"
+  },
+  "game-setup.rules.city-description": {
+    "en": "City is completed when its walls are fully closed.",
+    "value": "Miasto jest ukończone, gdy jego mury są całkowicie zamknięte.",
+    "source": "manual"
+  },
+  "game-setup.rules.city-scoring": {
+    "en": "City scores 2 points per tile and per coat of arms. An unfinished city scores only 1 point per tile and per coat of arms at the end of the game.",
+    "value": "Miasto daje 2 punkty za każdy kafelek i każdy proporzec. Nieukończone miasto daje na koniec gry tylko 1 punkt za kafelek i za proporzec.",
+    "source": "manual"
+  },
+  "game-setup.rules.info-tiles-count": {
+    "en": "Tiles in the game: {count} of {total}",
+    "value": "Kafelki w grze: {count} z {total}",
+    "source": "manual"
+  },
+  "game-setup.rules.info-title": {
+    "en": "Tiles with this feature",
+    "value": "Kafelki z tym elementem",
+    "source": "manual"
+  },
+  "game-setup.rules.meteorite-description": {
+    "en": "Placing a tile with a crater causes a meteorite impact: a die roll decides how far the blast reaches, and every meeple and neutral figure standing on the hit tiles is knocked off the board.",
+    "value": "Położenie kafelka z kraterem wywołuje uderzenie meteorytu: rzut kością decyduje, jak daleko sięga wybuch, a wszyscy podwładni i neutralne figurki na trafionych kafelkach zostają zmieceni z planszy.",
+    "source": "manual"
+  },
+  "game-setup.rules.monastery-description": {
+    "en": "Monastery is completed when it is surrounded by eight tiles.",
+    "value": "Klasztor jest ukończony, gdy otacza go osiem kafelków.",
+    "source": "manual"
+  },
+  "game-setup.rules.monastery-scoring": {
+    "en": "Monastery scores 9 points. At the end of the game an unfinished monastery scores 1 point for itself and 1 for each neighbouring tile.",
+    "value": "Klasztor daje 9 punktów. Na koniec gry nieukończony klasztor daje 1 punkt za siebie i 1 za każdy sąsiedni kafelek.",
+    "source": "manual"
+  },
+  "game-setup.rules.road-description": {
+    "en": "Road is completed when all of its ends are closed (by a crossing, a city, a monastery or a loop).",
+    "value": "Droga jest ukończona, gdy wszystkie jej końce są zamknięte (skrzyżowaniem, miastem, klasztorem lub pętlą).",
+    "source": "manual"
+  },
+  "game-setup.rules.road-scoring": {
+    "en": "Road scores 1 point per tile. An unfinished road still scores 1 point per tile at the end of the game.",
+    "value": "Droga daje 1 punkt za każdy kafelek. Nieukończona droga na koniec gry również daje 1 punkt za kafelek.",
+    "source": "manual"
+  },
+  "game-setup.rules.shrine-scoring": {
+    "en": "A shrine is scored like a monastery.",
+    "value": "Siedziba Kultu jest punktowana jak klasztor.",
     "source": "manual"
   },
   "game-setup.tiles.custom-pack": {
@@ -449,6 +529,11 @@
     "value": "figurka przesunięta tutaj",
     "source": "manual"
   },
+  "game.cause.figure-moved-bigtop": {
+    "en": "the Big Top moved to the newly placed tile",
+    "value": "Cyrk objazdowy przeniesiony na nowo położony kafelek",
+    "source": "manual"
+  },
   "game.cause.meeple-deployed": {
     "en": "the deployed meeple",
     "value": "umieszczony podwładny",
@@ -457,6 +542,11 @@
   "game.cause.rule.count-clockwise": {
     "en": "the Count moving on clockwise",
     "value": "Hrabia przesuwa się zgodnie z ruchem wskazówek zegara",
+    "source": "manual"
+  },
+  "game.cause.rule.crop-circle": {
+    "en": "a crop circle",
+    "value": "krąg w zbożu",
     "source": "manual"
   },
   "game.cause.rule.decinsky-sneznik-scored": {
@@ -542,6 +632,11 @@
   "game.coop.triggered-by": {
     "en": "{name} could neither enlarge an occupied feature nor occupy a new one.",
     "value": "{name} nie powiększył zajętego obszaru ani nie zajął nowego.",
+    "source": "manual"
+  },
+  "game.element.animal-token": {
+    "en": "Animal token",
+    "value": "Żeton zwierzęcia",
     "source": "manual"
   },
   "game.element.black-fairy": {
@@ -649,6 +744,16 @@
     "value": "{source}, gracz {player}",
     "source": "manual"
   },
+  "game.placement.source-barn-field-join": {
+    "en": "Its field joined to one with a barn",
+    "value": "Jego pole połączone z polem ze stodołą",
+    "source": "manual"
+  },
+  "game.placement.source-barn-placement": {
+    "en": "Barn placed on its field",
+    "value": "Stodoła położona na jego polu",
+    "source": "manual"
+  },
   "game.placement.title.captured": {
     "en": "{figure} captured",
     "value": "Pojmanie: {figure}",
@@ -687,6 +792,11 @@
   "game.placement.title.removed": {
     "en": "{figure} removed",
     "value": "Usunięcie: {figure}",
+    "source": "manual"
+  },
+  "game.placement.title.revealed": {
+    "en": "{figure} revealed and scored",
+    "value": "{figure} odkryty i podliczony",
     "source": "manual"
   },
   "game.placement.title.tile-placed": {

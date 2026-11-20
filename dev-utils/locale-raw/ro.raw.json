@@ -2,7 +2,7 @@
   "@author": "Paloi Sciurala",
   "@jcz-version": "5.12.1",
   "@fcz-version": "7.2.0",
-  "@version": "0.13.6",
+  "@version": "0.13.10",
   "about": {
     "author": "Autor",
     "configuration-file": "Fișier de configurație",
@@ -334,9 +334,11 @@
     "cause": {
       "caused-by": "Cauzat de: {cause}",
       "figure-moved": "pionul ce se mută aici",
+      "figure-moved-bigtop": "cortul de circ s-a mutat pe cartonașul tocmai plasat",
       "meeple-deployed": "meepleul depus",
       "rule": {
         "count-clockwise": "contul mutându-se mai departe în sensul acelor de ceasornic",
+        "crop-circle": "un cerc în lan",
         "decinsky-sneznik-scored": "Děčínský Sněžník s-evaluat",
         "final-scoring": "evaluarea finală",
         "flock-expanded": "un jeton de oi tras pentru turmă",
@@ -361,6 +363,7 @@
     "element": {
       "abbey": "Abație",
       "abbot": "Abate",
+      "animal-token": "Jeton cu animal",
       "barn": "Moșie",
       "big-follower": "Meeple mare",
       "big-top": "Cort de circ",
@@ -490,6 +493,8 @@
       "moved-by": "Mutat de {player}",
       "placed-by": "Plasat de {player}",
       "removed-with": "{source}, de {player}",
+      "source-barn-field-join": "Câmpul său s-a alipit de unul cu o moșie",
+      "source-barn-placement": "Moșie plasată pe câmpul său",
       "title": {
         "captured": "{figure} capturat(ă)",
         "castle-created": "Oraș mic convertit în cetate",
@@ -499,6 +504,7 @@
         "placed": "{figure} s-a plasat",
         "placed-on-letter": "{figure} s-a plasat pe Scrisoare",
         "removed": "{figure} s-a înlăturat",
+        "revealed": "{figure}, dezvăluit și evaluat",
         "tile-placed": "Cartonaș plasat"
       }
     },
@@ -551,7 +557,9 @@
       "not-available": "IA nu este disponibilă",
       "not-available-hint": "Jucătorii cu IA nu sunt disponibili pentru configurația partidei",
       "not-supported": "IA nu joacă",
-      "supported": "IA poate juca asta"
+      "supported": "IA poate juca asta",
+      "supported-not-with": "IA poate juca asta — nu cu: {elements}",
+      "supported-only-without": "IA poate juca asta numai fără: {elements}"
     },
     "additional-elements": "Elemente adiționale",
     "altered-gameplay": "Desfășurare a jocului alterată",
@@ -566,6 +574,7 @@
       "assign": "alocă",
       "ai-player": "Jucător cu IA",
       "click-to-assign": "apasă pentru a atribui",
+      "color-unavailable": "Culoarea nu este disponibilă",
       "game-full": "Partidă plină",
       "kick-player": "Dă jucătorul afară",
       "local-ai-player": "jucător local cu IA",
@@ -580,6 +589,7 @@
       "rename-player": "Redenumește jucătorul",
       "waiting-for-player": "se așteaptă după jucător"
     },
+    "features": "Teritorii",
     "game-element-box": {
       "mandatory-for-selected-tiles": "Obligatoriu pentru cartonașele selectate",
       "related-tiles-not-selected": "Cartonașe aferente neselectate"
@@ -599,6 +609,8 @@
       "timer": "Cronometru",
       "variant": "Variantă"
     },
+    "mechanics": "Mecanisme",
+    "modifiers": "Modificatori",
     "open-game": {
       "assign-all-players-to-start": "Atribuie toți jucătorii pentru a începe",
       "hide-remaining-tiles-cheat-sheet": "Ascunde fițuica cartonașelor rămase",
@@ -627,6 +639,8 @@
       "bazaar-disabled": "Nu există niciun cartonaș cu bazar în joc.",
       "cathedral-description": "Orașele finalizate cu catedrală ×3 în loc de ×2 și opțional niciun punct în timpul evaluării finale.",
       "cathedral-disabled": "Nu există niciun cartonaș cu catedrală în joc.",
+	  "city-description": "Orașul este finalizat atunci când zidurile sale sunt împrejmuite în întregime.",
+      "city-scoring": "Orașul aduce câte 2 puncte pentru fiecare cartonaș și pentru fiecare blazon. Un oraș nefinalizat aduce numai câte 1 punct pentru fiecare cartonaș și pentru fiecare blazon la sfârșitul jocului.",
       "escape-description": "Evadare permisă prin intermediul unei mănăstiri învecinate.",
       "escape-disabled": "Nu există niciun cartonaș cu asediu în joc.",
       "farmers-description": "Jucătorilor le este permis să plaseze meepleși pe câmpuri.",
@@ -645,12 +659,16 @@
       "garden-disabled": "Abatele nu este selectat.",
       "hill-description": "Folosit drept întrerupător al situațiilor de egalitate la majoritate. Totodată, ascunde un cartonaș aleatoriu dedesubt.",
       "hill-disabled": "Nu există niciun cartonaș cu deal în joc.",
+      "info-title": "Cartonașe cu acest teritoriu",
+      "info-tiles-count": "Cartonașe în joc: {count} din {total}",
       "inn-description": "Drumurile finalizate cu han ×2 și opțional niciun punct în timpul evaluării finale.",
       "inn-disabled": "Nu există niciun cartonaș cu han în joc.",
       "marketplace-description": "Piețele conectează mai multe drumuri într-o rețea împărtășită care se finalizează numai atunci când se închid toate drumurile legate. Atunci când se evaluează, se acordă puncte bonus egale cu lungimea celorlalte drumuri finalizate din acea rețea.",
       "marketplace-disabled": "Nu există niciun cartonaș cu piață în joc.",
-      "meteorite-description": "TBA",
+      "meteorite-description": "Plasarea unui cartonaș cu crater cauzează un impact de meteorit: o aruncare de zar decide cât de departe ajunge explozia, iar fiecare meeple și pion neutru aflat pe cartonașele lovite este dat afară de pe tablă.",
       "meteorite-disabled": "Nu există niciun cartonaș cu crater în joc.",
+	  "monastery-description": "Mănăstirea este finalizată atunci când este înconjurată de opt cartonașe.",
+      "monastery-scoring": "Mănăstirea aduce 9 puncte. La sfârșitul jocului o mănăstire nefinalizată aduce 1 point pentru ea însăși și 1 pentru fiecare cartonaș învecinat.",
       "optional-game-mechanics": "Mecanisme de joc opționale",
       "pig-herd-description": "Valorează drept porc adițional pe câmp (țăranii primesc mai multe puncte).",
       "pig-herd-disabled": "Nu există niciun cartonaș cu turmă de porci în joc.",
@@ -658,11 +676,14 @@
       "portal-disabled": "Nu există niciun cartonaș cu coridor fermecat în joc.",
       "princess-description": "Prințesa poate îndepărta un cavaler dintr-un oraș.",
       "princess-disabled": "Nu există niciun cartonaș cu prințesă în joc.",
+	  "road-description": "Drumul este finalizat atunci când toate capetele sale sunt închise (de o răscruce, un oraș, o mănăstire sau o buclă).",
+      "road-scoring": "Drumul aduce câte 1 punct pentru fiecare cartonaș. Un drum nefinalizat aduce câte 1 punct pentru fiecare cartonaș la sfârșitul jocului.",
       "robbers-son-description": "Fiul jefuitorului poate îndepărta un tâlhar de pe un drum.",
       "robbers-son-disabled": "Nu există niciun cartonaș cu fiul jefuitorului în joc.",
       "scoring-variants": "Variante de evaluare",
       "shrine-description": "Un lăcaș de cult plasat lângă o mănăstire concurează să se finalizeze primul (cel de pe locul doi nu încasează puncte).",
       "shrine-disabled": "Nu există niciun cartonaș cu lăcaș de cult în joc.",
+      "shrine-scoring": "Un lăcaș de cult este evaluat ca o mănăstire.",
       "siege-description": "Orașele asediate sunt mai puțin valoroase.",
       "siege-disabled": "Nu există niciun cartonaș cu asediu în joc.",
       "starting-tiles-configuration": "Configurația cartonașului/cartonașelor de pornire",

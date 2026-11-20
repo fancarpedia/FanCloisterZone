@@ -2,7 +2,7 @@
   "@author": "Stepukiss",
   "@jcz-version": "5.12.1",
   "@fcz-version": "7.2.0",
-  "@version": "0.13.6-ai",
+  "@version": "0.13.10-ai",
   "about": {
     "author": "Autorius",
     "configuration-file": "Nustatymų aplankas",
@@ -335,9 +335,11 @@
     "cause": {
       "caused-by": "Priežastis: {cause}",
       "figure-moved": "čia perkelta figūrėlė",
+      "figure-moved-bigtop": "Šapito, perkeltas ant ką tik padėtos kortelės",
       "meeple-deployed": "padėtas Miplas",
       "rule": {
         "count-clockwise": "Grafas pasislenka pagal laikrodžio rodyklę",
+        "crop-circle": "ratas pasėliuose",
         "decinsky-sneznik-scored": "įvertintas Decinsky Sneznik",
         "final-scoring": "galutinis taškų skaičiavimas",
         "flock-expanded": "bandai ištrauktas avies žetonas",
@@ -362,6 +364,7 @@
     "element": {
       "abbey": "Abatija",
       "abbot": "Abotas",
+      "animal-token": "Gyvūno žetonas",
       "barn": "Tvartas",
       "big-follower": "Didelis Miplas",
       "big-top": "Šapito",
@@ -491,6 +494,8 @@
       "moved-by": "Perkėlė {player}",
       "placed-by": "Padėjo {player}",
       "removed-with": "{source}, žaidėjas {player}",
+      "source-barn-field-join": "Jo laukas sujungtas su lauku, kuriame yra tvartas",
+      "source-barn-placement": "Tvartas pastatytas jo lauke",
       "title": {
         "captured": "Paėmimas į nelaisvę: {figure}",
         "castle-created": "Mažas miestas paverstas pilimi",
@@ -500,6 +505,7 @@
         "placed": "Padėjimas: {figure}",
         "placed-on-letter": "Padėjimas ant Laiško: {figure}",
         "removed": "Pašalinimas: {figure}",
+        "revealed": "{figure} atskleistas ir įvertintas",
         "tile-placed": "Padėta kortelė"
       }
     },
@@ -552,7 +558,9 @@
       "not-available": "DI negalimas",
       "not-available-hint": "DI žaidėjai negalimi šiai žaidimo sąrankai",
       "not-supported": "DI nežaidžia",
-      "supported": "DI gali tai žaisti"
+      "supported": "DI gali tai žaisti",
+      "supported-not-with": "DI gali tai žaisti — ne su: {elements}",
+      "supported-only-without": "DI gali tai žaisti tik be: {elements}"
     },
     "additional-elements": "Papildomi elementai",
     "altered-gameplay": "Alternatyvi žaidimo eiga",
@@ -567,8 +575,8 @@
       "assign": "priskirti",
       "ai-player": "DI žaidėjas",
       "click-to-assign": "paspausti čia",
-      "game-full": "Žaidimas užpildytas",
       "color-unavailable": "Spalva neprieinama",
+      "game-full": "Žaidimas užpildytas",
       "kick-player": "Išmesti žaidėją",
       "local-ai-player": "vietinis DI žaidėjas",
       "local-limit-reached": "Pasiekta riba",
@@ -582,6 +590,7 @@
       "rename-player": "Pervadinti",
       "waiting-for-player": "laukiama žaidėjų"
     },
+    "features": "Elementai",
     "game-element-box": {
       "mandatory-for-selected-tiles": "Privaloma pasirinktoms kortelėms",
       "related-tiles-not-selected": "Nepasirinktos susijusios kortelės"
@@ -601,6 +610,8 @@
       "timer": "Laikmatis",
       "variant": "Variantas"
     },
+    "mechanics": "Mechanika",
+    "modifiers": "Modifikatoriai",
     "open-game": {
       "assign-all-players-to-start": "Pradėti žaidimą",
       "hide-remaining-tiles-cheat-sheet": "Paslėpti likusių kortelių sąrašą (špargalkę)",
@@ -629,6 +640,8 @@
       "bazaar-disabled": "Kortelių su Turgumi nėra šiame žaidime.",
       "cathedral-description": "Užbaigti miestai su Katedromis ×3 vietoj ×2 ir pasirinktinai be taškų galutiniame taškų skaičiavime.",
       "cathedral-disabled": "Kortelių su Katedra nėra šiame žaidime",
+      "city-description": "Miestas užbaigtas, kai jo sienos visiškai uždarytos.",
+      "city-scoring": "Miestas duoda 2 taškus už kiekvieną kortelę ir už kiekvieną skydo žymeklį. Neužbaigtas miestas žaidimo pabaigoje duoda tik 1 tašką už kortelę ir už skydo žymeklį.",
       "escape-description": "Galima pabėgti per šalia esantį vienuolyną",
       "escape-disabled": "Kortelių su Apgultimi nėra šiame žaidime",
       "farmers-description": "Žaidėjams leidžiama Miplą dėti ant laukų",
@@ -647,12 +660,16 @@
       "garden-disabled": "Abatas yra nepasirinktas",
       "hill-description": "Lygiosioms panaikinti. Paslepia atsitiktinę kortelę po savimi.",
       "hill-disabled": "Kortelių su Kalva nėra šiame žaidime",
+      "info-title": "Kortelės su šiuo elementu",
+      "info-tiles-count": "Kortelių žaidime: {count} iš {total}",
       "inn-description": "Užbaigtas kelias su Užeiga ×2 ir pasirinktinai  0 taškų galutiniame taškų skaičiavime.",
       "inn-disabled": "Kortelių su Užeiga nėra šiame žaidime",
       "marketplace-description": "Prekyvietės sujungia kelis kelius į bendrą tinklą, kuris užbaigiamas tik tada, kai visi sujungti keliai yra uždaryti. Surinkus taškus, suteikiami premijos taškai, lygūs kitų užbaigtų kelių šiame tinkle ilgiui.",
       "marketplace-disabled": "Žaidime nėra kortelių su Prekyviete.",
-      "meteorite-description": "TBA",
+      "meteorite-description": "Padėjus kortelę su krateriu, nukrenta meteoritas: kauliuko metimas nulemia, kaip toli siekia sprogimas, ir visi miplai bei neutralios figūrėlės ant paveiktų kortelių pašalinami nuo lentos.",
       "meteorite-disabled": "Žaidime nėra kortelių su Krateriu.",
+      "monastery-description": "Vienuolynas užbaigtas, kai jį supa aštuonios kortelės.",
+      "monastery-scoring": "Vienuolynas duoda 9 taškus. Žaidimo pabaigoje neužbaigtas vienuolynas duoda 1 tašką už save ir po 1 už kiekvieną kaimyninę kortelę.",
       "optional-game-mechanics": "Neprivaloma žaidimų mechanika",
       "pig-herd-description": "Skaičiuojamas, kaip papildomas Paršelis pievoje (Valstietis surenka papildomai taškų)",
       "pig-herd-disabled": "Žaidime nėra kortelių su Kiaulių kaimene.",
@@ -660,11 +677,14 @@
       "portal-disabled": "Žaidime nėra kortelių su Magišku Portalu.",
       "princess-description": "Princesė gali pašalinti riterį iš miesto.",
       "princess-disabled": "Žaidime nėra kortelių su Princese.",
+      "road-description": "Kelias užbaigtas, kai visi jo galai uždaryti (sankryža, miestu, vienuolynu arba kilpa).",
+      "road-scoring": "Kelias duoda 1 tašką už kiekvieną kortelę. Neužbaigtas kelias žaidimo pabaigoje taip pat duoda 1 tašką už kortelę.",
       "robbers-son-description": "Plėšiko sūnus gali pašalinti vagį iš kelio.",
       "robbers-son-disabled": "Žaidime nėra plytelės su Plėšiko sūnumi.",
       "scoring-variants": "Taškų skaičiavimo pasirinkimai",
       "shrine-description": "Šventykla pastatyta šalia Vienuolyno varžosi, kas pirmas užbaigs objektą. (antrasis užbaigęs negauna taškų)",
       "shrine-disabled": "Žaidime nėra kortelių su Šventykla.",
+      "shrine-scoring": "Šventovė vertinama kaip vienuolynas.",
       "siege-description": "Apgulti miestai mažiau vertingi",
       "siege-disabled": "Žaidime nėra kortelių Apgultimi.",
       "starting-tiles-configuration": "Pradžios kortelės(ių) pasirinkimas",
@@ -672,7 +692,10 @@
       "vineyard-description": "Papildomi taškai už šalia esančius Vienuolynus.",
       "vineyard-disabled": "Žaidime nėra kortelių su Vynuogynu.",
       "well-description": "Pridėkite tašką už kiekvieną šulinį keliuose. Keliai su užeiga gauna 2 taškus, kai yra užbaigti ir pasirinktinai   taškų negaunama galutiniame taškų skaičiavime.",
-      "well-disabled": "Žaidime nėra kortelių su Šuliniu."
+      "well-disabled": "Žaidime nėra kortelių su Šuliniu.",
+      "features": "Elementai",
+      "mechanics": "Mechanika",
+      "modifiers": "Modifikatoriai"
     },
     "selected-tiles": "Pasirinktos kortelės",
     "tiles": {

@@ -69,6 +69,16 @@
     "value": "La IA pot jugar això",
     "source": "manual"
   },
+  "game-setup.ai.supported-not-with": {
+    "en": "The AI can play this — not with: {elements}",
+    "value": "La IA pot jugar això — no amb: {elements}",
+    "source": "manual"
+  },
+  "game-setup.ai.supported-only-without": {
+    "en": "The AI can play this only without: {elements}",
+    "value": "La IA pot jugar això només sense: {elements}",
+    "source": "manual"
+  },
   "game-setup.create.ai-player": {
     "en": "AI player",
     "value": "Jugador IA",
@@ -77,6 +87,11 @@
   "game-setup.create.assign": {
     "en": "assign",
     "value": "assigna",
+    "source": "manual"
+  },
+  "game-setup.create.color-unavailable": {
+    "en": "Color not available",
+    "value": "Color no disponible",
     "source": "manual"
   },
   "game-setup.create.game-full": {
@@ -104,6 +119,11 @@
     "value": "Allibera la ranura",
     "source": "manual"
   },
+  "game-setup.features": {
+    "en": "Features",
+    "value": "Elements",
+    "source": "manual"
+  },
   "game-setup.game-flow.cooperative": {
     "en": "Cooperative variant",
     "value": "Variant cooperativa",
@@ -122,6 +142,16 @@
   "game-setup.header.game-setup": {
     "en": "Game setup",
     "value": "Configuració de la partida",
+    "source": "manual"
+  },
+  "game-setup.mechanics": {
+    "en": "Mechanics",
+    "value": "Mecàniques",
+    "source": "manual"
+  },
+  "game-setup.modifiers": {
+    "en": "Modifiers",
+    "value": "Modificadors",
     "source": "manual"
   },
   "game-setup.open-game.max-players": {
@@ -144,6 +174,16 @@
     "value": "Requereix un del grup {groups}",
     "source": "manual"
   },
+  "game-setup.rules.city-description": {
+    "en": "City is completed when its walls are fully closed.",
+    "value": "La ciutat es completa quan les seves muralles queden totalment tancades.",
+    "source": "manual"
+  },
+  "game-setup.rules.city-scoring": {
+    "en": "City scores 2 points per tile and per coat of arms. An unfinished city scores only 1 point per tile and per coat of arms at the end of the game.",
+    "value": "La ciutat puntua 2 punts per peça i per escut. Una ciutat incompleta puntua només 1 punt per peça i per escut al final de la partida.",
+    "source": "manual"
+  },
   "game-setup.rules.fishhut-description": {
     "en": "Fish Hut feature.",
     "value": "Element de la barraca de pesca.",
@@ -152,6 +192,46 @@
   "game-setup.rules.fishhut-disabled": {
     "en": "No tile with Fish Hut is in the game.",
     "value": "No hi ha cap peça amb barraca de pesca a la partida.",
+    "source": "manual"
+  },
+  "game-setup.rules.info-tiles-count": {
+    "en": "Tiles in the game: {count} of {total}",
+    "value": "Peces a la partida: {count} de {total}",
+    "source": "manual"
+  },
+  "game-setup.rules.info-title": {
+    "en": "Tiles with this feature",
+    "value": "Peces amb aquest element",
+    "source": "manual"
+  },
+  "game-setup.rules.meteorite-description": {
+    "en": "Placing a tile with a crater causes a meteorite impact: a die roll decides how far the blast reaches, and every meeple and neutral figure standing on the hit tiles is knocked off the board.",
+    "value": "Col·locar una peça amb un cràter provoca l'impacte d'un meteorit: una tirada de dau decideix fins on arriba l'explosió, i tots els seguidors i figures neutrals de les peces afectades surten del tauler.",
+    "source": "manual"
+  },
+  "game-setup.rules.monastery-description": {
+    "en": "Monastery is completed when it is surrounded by eight tiles.",
+    "value": "El monestir es completa quan està envoltat per vuit peces.",
+    "source": "manual"
+  },
+  "game-setup.rules.monastery-scoring": {
+    "en": "Monastery scores 9 points. At the end of the game an unfinished monastery scores 1 point for itself and 1 for each neighbouring tile.",
+    "value": "El monestir puntua 9 punts. Al final de la partida, un monestir incomplet puntua 1 punt per si mateix i 1 per cada peça veïna.",
+    "source": "manual"
+  },
+  "game-setup.rules.road-description": {
+    "en": "Road is completed when all of its ends are closed (by a crossing, a city, a monastery or a loop).",
+    "value": "El camí es completa quan tots els seus extrems estan tancats (per un encreuament, una ciutat, un monestir o un bucle).",
+    "source": "manual"
+  },
+  "game-setup.rules.road-scoring": {
+    "en": "Road scores 1 point per tile. An unfinished road still scores 1 point per tile at the end of the game.",
+    "value": "El camí puntua 1 punt per peça. Un camí incomplet també puntua 1 punt per peça al final de la partida.",
+    "source": "manual"
+  },
+  "game-setup.rules.shrine-scoring": {
+    "en": "A shrine is scored like a monastery.",
+    "value": "Un santuari es puntua com un monestir.",
     "source": "manual"
   },
   "game-setup.tiles.custom-pack": {
@@ -344,6 +424,11 @@
     "value": "la figura que s'ha mogut aquí",
     "source": "manual"
   },
+  "game.cause.figure-moved-bigtop": {
+    "en": "the Big Top moved to the newly placed tile",
+    "value": "la Carpa traslladada a la peça acabada de col·locar",
+    "source": "manual"
+  },
   "game.cause.meeple-deployed": {
     "en": "the deployed meeple",
     "value": "el seguidor col·locat",
@@ -352,6 +437,11 @@
   "game.cause.rule.count-clockwise": {
     "en": "the Count moving on clockwise",
     "value": "el Comte avança en sentit horari",
+    "source": "manual"
+  },
+  "game.cause.rule.crop-circle": {
+    "en": "a crop circle",
+    "value": "un cercle de cultiu",
     "source": "manual"
   },
   "game.cause.rule.decinsky-sneznik-scored": {
@@ -427,6 +517,11 @@
   "game.coop.triggered-by": {
     "en": "{name} could neither enlarge an occupied feature nor occupy a new one.",
     "value": "{name} no ha pogut ampliar una àrea ocupada ni ocupar-ne una de nova.",
+    "source": "manual"
+  },
+  "game.element.animal-token": {
+    "en": "Animal token",
+    "value": "Fitxa d'animal",
     "source": "manual"
   },
   "game.element.black-fairy": {
@@ -539,6 +634,16 @@
     "value": "{source}, per {player}",
     "source": "manual"
   },
+  "game.placement.source-barn-field-join": {
+    "en": "Its field joined to one with a barn",
+    "value": "El seu camp s'ha unit a un amb graner",
+    "source": "manual"
+  },
+  "game.placement.source-barn-placement": {
+    "en": "Barn placed on its field",
+    "value": "Graner col·locat al seu camp",
+    "source": "manual"
+  },
   "game.placement.title.captured": {
     "en": "{figure} captured",
     "value": "Captura: {figure}",
@@ -577,6 +682,11 @@
   "game.placement.title.removed": {
     "en": "{figure} removed",
     "value": "Retirada: {figure}",
+    "source": "manual"
+  },
+  "game.placement.title.revealed": {
+    "en": "{figure} revealed and scored",
+    "value": "{figure} revelada i puntuada",
     "source": "manual"
   },
   "game.placement.title.tile-placed": {

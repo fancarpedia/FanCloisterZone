@@ -334,9 +334,11 @@
     "cause": {
       "caused-by": "<span lang="en" dir="ltr" class="mw-content-ltr">Caused by: {cause}</span>",
       "figure-moved": "<span lang="en" dir="ltr" class="mw-content-ltr">the figure moving here</span>",
+      "figure-moved-bigtop": "<span lang="en" dir="ltr" class="mw-content-ltr">the Big Top moved to the newly placed tile</span>",
       "meeple-deployed": "<span lang="en" dir="ltr" class="mw-content-ltr">the deployed meeple</span>",
       "rule": {
         "count-clockwise": "<span lang="en" dir="ltr" class="mw-content-ltr">the Count moving on clockwise</span>",
+        "crop-circle": "<span lang="en" dir="ltr" class="mw-content-ltr">a crop circle</span>",
         "decinsky-sneznik-scored": "<span lang="en" dir="ltr" class="mw-content-ltr">Děčínský Sněžník scored</span>",
         "final-scoring": "<span lang="en" dir="ltr" class="mw-content-ltr">final scoring</span>",
         "flock-expanded": "<span lang="en" dir="ltr" class="mw-content-ltr">a sheep token drawn for the flock</span>",
@@ -361,6 +363,7 @@
     "element": {
       "abbey": "Аббатство",
       "abbot": "Аббат",
+      "animal-token": "<span lang="en" dir="ltr" class="mw-content-ltr">Animal token</span>",
       "barn": "Амбар",
       "big-follower": "Большой мипл",
       "big-top": "Цирковой купол",
@@ -490,6 +493,8 @@
       "moved-by": "<span lang="en" dir="ltr" class="mw-content-ltr">Moved by {player}</span>",
       "placed-by": "<span lang="en" dir="ltr" class="mw-content-ltr">Placed by {player}</span>",
       "removed-with": "<span lang="en" dir="ltr" class="mw-content-ltr">{source}, by {player}</span>",
+      "source-barn-field-join": "<span lang="en" dir="ltr" class="mw-content-ltr">Its field joined to one with a barn</span>",
+      "source-barn-placement": "<span lang="en" dir="ltr" class="mw-content-ltr">Barn placed on its field</span>",
       "title": {
         "captured": "<span lang="en" dir="ltr" class="mw-content-ltr">{figure} captured</span>",
         "castle-created": "<span lang="en" dir="ltr" class="mw-content-ltr">Small city converted to a castle</span>",
@@ -499,6 +504,7 @@
         "placed": "<span lang="en" dir="ltr" class="mw-content-ltr">{figure} placed</span>",
         "placed-on-letter": "<span lang="en" dir="ltr" class="mw-content-ltr">{figure} placed on the Letter</span>",
         "removed": "<span lang="en" dir="ltr" class="mw-content-ltr">{figure} removed</span>",
+        "revealed": "<span lang="en" dir="ltr" class="mw-content-ltr">{figure} revealed and scored</span>",
         "tile-placed": "<span lang="en" dir="ltr" class="mw-content-ltr">Tile placed</span>"
       }
     },
@@ -551,7 +557,9 @@
       "not-available": "<span lang="en" dir="ltr" class="mw-content-ltr">AI not available</span>",
       "not-available-hint": "<span lang="en" dir="ltr" class="mw-content-ltr">AI players are not available for game setup</span>",
       "not-supported": "<span lang="en" dir="ltr" class="mw-content-ltr">The AI does not play</span>",
-      "supported": "<span lang="en" dir="ltr" class="mw-content-ltr">The AI can play this</span>"
+      "supported": "<span lang="en" dir="ltr" class="mw-content-ltr">The AI can play this</span>",
+      "supported-not-with": "<span lang="en" dir="ltr" class="mw-content-ltr">The AI can play this — not with: {elements}</span>",
+      "supported-only-without": "<span lang="en" dir="ltr" class="mw-content-ltr">The AI can play this only without: {elements}</span>"
     },
     "additional-elements": "Дополнительные элементы",
     "altered-gameplay": "Измененный геймплей",
@@ -566,6 +574,7 @@
       "assign": "<span lang="en" dir="ltr" class="mw-content-ltr">assign</span>",
       "ai-player": "<span lang="en" dir="ltr" class="mw-content-ltr">AI player</span>",
       "click-to-assign": "нажмите, чтобы назначить",
+      "color-unavailable": "<span lang="en" dir="ltr" class="mw-content-ltr">Color not available</span>",
       "game-full": "<span lang="en" dir="ltr" class="mw-content-ltr">Game full</span>",
       "kick-player": "Выгнать игрока",
       "local-ai-player": "локальный ИИ игрок",
@@ -580,6 +589,7 @@
       "rename-player": "Переименовать игрока",
       "waiting-for-player": "ожидание игрока"
     },
+    "features": "<span lang="en" dir="ltr" class="mw-content-ltr">Features</span>",
     "game-element-box": {
       "mandatory-for-selected-tiles": "Обязательно для выбранных тайлов",
       "related-tiles-not-selected": "Связанные тайлы не выбраны"
@@ -599,6 +609,8 @@
       "timer": "Таймер",
       "variant": "<span lang="en" dir="ltr" class="mw-content-ltr">Variant</span>"
     },
+    "mechanics": "<span lang="en" dir="ltr" class="mw-content-ltr">Mechanics</span>",
+    "modifiers": "<span lang="en" dir="ltr" class="mw-content-ltr">Modifiers</span>",
     "open-game": {
       "assign-all-players-to-start": "Назначить всех игроков на старт",
       "hide-remaining-tiles-cheat-sheet": "Скрыть обзор оставшихся тайлов",
@@ -627,6 +639,8 @@
       "bazaar-disabled": "В игре нет тайлов с базаром.",
       "cathedral-description": "Завершенные города с собором умножаются на 3 вместо 2 и опционально без очков во время окончательного подсчета.",
       "cathedral-disabled": "В игре нет тайлов с Собором.",
+	  "city-description": "<span lang="en" dir="ltr" class="mw-content-ltr">City is completed when its walls are fully closed.</span>",
+      "city-scoring": "<span lang="en" dir="ltr" class="mw-content-ltr">City scores 2 points per tile and per coat of arms. An unfinished city scores only 1 point per tile and per coat of arms at the end of the game.</span>",
       "escape-description": "Побег возможен через соседний монастырь.",
       "escape-disabled": "В игре нет тайлов с осадой.",
       "farmers-description": "Игроки могут выставлять миплов на поля.",
@@ -645,12 +659,16 @@
       "garden-disabled": "Аббат не выбран.",
       "hill-description": "Используется в качестве разрешающего элемента. Также скрывает один случайный тайл под собой.",
       "hill-disabled": "В игре нет тайла с холмом.",
+      "info-title": "<span lang="en" dir="ltr" class="mw-content-ltr">Tiles with this feature</span>",
+      "info-tiles-count": "<span lang="en" dir="ltr" class="mw-content-ltr">Tiles in the game: {count} of {total}</span>",
       "inn-description": "Завершенные дороги с постоялым двором умножаются на 2 и опционально без очков во время окончательного подсчета.",
       "inn-disabled": "В игре нет тайлов с таверной.",
       "marketplace-description": "Рынки соединяют несколько дорог в единую сеть, которая считается завершённой только тогда, когда закрыты все связанные дороги. При подсчёте начисляются бонусные очки, равные длине остальных завершённых дорог в этой сети.",
       "marketplace-disabled": "В игре нет тайлов с рынком.",
-      "meteorite-description": "TBA",
+      "meteorite-description": "<span lang="en" dir="ltr" class="mw-content-ltr">Placing a tile with a crater causes a meteorite impact: a die roll decides how far the blast reaches, and every meeple and neutral figure standing on the hit tiles is knocked off the board.</span>",
       "meteorite-disabled": "В игре нет тайлов с Кратером.",
+	  "monastery-description": "<span lang="en" dir="ltr" class="mw-content-ltr">Monastery is completed when it is surrounded by eight tiles.</span>",
+      "monastery-scoring": "<span lang="en" dir="ltr" class="mw-content-ltr">Monastery scores 9 points. At the end of the game an unfinished monastery scores 1 point for itself and 1 for each neighbouring tile.</span>",
       "optional-game-mechanics": "Дополнительные игровые механики",
       "pig-herd-description": "Считается дополнительной свиньей на поле (фермеры получают больше очков).",
       "pig-herd-disabled": "В игре нет тайлов со свиным стадом.",
@@ -658,11 +676,14 @@
       "portal-disabled": "В игре нет тайла с магическим порталом.",
       "princess-description": "Принцесса может удалить рыцаря из города.",
       "princess-disabled": "В игре нет тайлов с принцессой.",
+	  "road-description": "<span lang="en" dir="ltr" class="mw-content-ltr">Road is completed when all of its ends are closed (by a crossing, a city, a monastery or a loop).</span>",
+      "road-scoring": "<span lang="en" dir="ltr" class="mw-content-ltr">Road scores 1 point per tile. An unfinished road still scores 1 point per tile at the end of the game.</span>",
       "robbers-son-description": "Сын разбойника может убрать разбойника с дороги.",
       "robbers-son-disabled": "В игре нет тайлов с сыном разбойника.",
       "scoring-variants": "Варианты подсчета очков",
       "shrine-description": "Капище, выложенное рядом с монастырем, соревнуется, кто первым закончит объект. (второй не получает очков)",
       "shrine-disabled": "В игре нет тайлов со капищем.",
+      "shrine-scoring": "<span lang="en" dir="ltr" class="mw-content-ltr">A shrine is scored like a monastery.</span>",
       "siege-description": "Осажденные города менее ценны.",
       "siege-disabled": "В игре нет тайлов с осадой.",
       "starting-tiles-configuration": "Конфигурация начальных тайлов",

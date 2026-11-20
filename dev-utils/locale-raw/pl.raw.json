@@ -334,9 +334,11 @@
     "cause": {
       "caused-by": "<span lang="en" dir="ltr" class="mw-content-ltr">Caused by: {cause}</span>",
       "figure-moved": "<span lang="en" dir="ltr" class="mw-content-ltr">the figure moving here</span>",
+      "figure-moved-bigtop": "<span lang="en" dir="ltr" class="mw-content-ltr">the Big Top moved to the newly placed tile</span>",
       "meeple-deployed": "<span lang="en" dir="ltr" class="mw-content-ltr">the deployed meeple</span>",
       "rule": {
         "count-clockwise": "<span lang="en" dir="ltr" class="mw-content-ltr">the Count moving on clockwise</span>",
+        "crop-circle": "<span lang="en" dir="ltr" class="mw-content-ltr">a crop circle</span>",
         "decinsky-sneznik-scored": "<span lang="en" dir="ltr" class="mw-content-ltr">Děčínský Sněžník scored</span>",
         "final-scoring": "<span lang="en" dir="ltr" class="mw-content-ltr">final scoring</span>",
         "flock-expanded": "<span lang="en" dir="ltr" class="mw-content-ltr">a sheep token drawn for the flock</span>",
@@ -361,6 +363,7 @@
     "element": {
       "abbey": "Opactwo",
       "abbot": "Opat",
+      "animal-token": "<span lang="en" dir="ltr" class="mw-content-ltr">Animal token</span>",
       "barn": "Stodoła",
       "big-follower": "Duży podwładny",
       "big-top": "Cyrk objazdowy",
@@ -490,6 +493,8 @@
       "moved-by": "<span lang="en" dir="ltr" class="mw-content-ltr">Moved by {player}</span>",
       "placed-by": "<span lang="en" dir="ltr" class="mw-content-ltr">Placed by {player}</span>",
       "removed-with": "<span lang="en" dir="ltr" class="mw-content-ltr">{source}, by {player}</span>",
+      "source-barn-field-join": "<span lang="en" dir="ltr" class="mw-content-ltr">Its field joined to one with a barn</span>",
+      "source-barn-placement": "<span lang="en" dir="ltr" class="mw-content-ltr">Barn placed on its field</span>",
       "title": {
         "captured": "<span lang="en" dir="ltr" class="mw-content-ltr">{figure} captured</span>",
         "castle-created": "<span lang="en" dir="ltr" class="mw-content-ltr">Small city converted to a castle</span>",
@@ -499,6 +504,7 @@
         "placed": "<span lang="en" dir="ltr" class="mw-content-ltr">{figure} placed</span>",
         "placed-on-letter": "<span lang="en" dir="ltr" class="mw-content-ltr">{figure} placed on the Letter</span>",
         "removed": "<span lang="en" dir="ltr" class="mw-content-ltr">{figure} removed</span>",
+        "revealed": "<span lang="en" dir="ltr" class="mw-content-ltr">{figure} revealed and scored</span>",
         "tile-placed": "<span lang="en" dir="ltr" class="mw-content-ltr">Tile placed</span>"
       }
     },
@@ -551,7 +557,9 @@
       "not-available": "<span lang="en" dir="ltr" class="mw-content-ltr">AI not available</span>",
       "not-available-hint": "<span lang="en" dir="ltr" class="mw-content-ltr">AI players are not available for game setup</span>",
       "not-supported": "<span lang="en" dir="ltr" class="mw-content-ltr">The AI does not play</span>",
-      "supported": "<span lang="en" dir="ltr" class="mw-content-ltr">The AI can play this</span>"
+      "supported": "<span lang="en" dir="ltr" class="mw-content-ltr">The AI can play this</span>",
+      "supported-not-with": "<span lang="en" dir="ltr" class="mw-content-ltr">The AI can play this — not with: {elements}</span>",
+      "supported-only-without": "<span lang="en" dir="ltr" class="mw-content-ltr">The AI can play this only without: {elements}</span>"
     },
     "additional-elements": "Elementy dodatkowe",
     "altered-gameplay": "Zmienione zasady",
@@ -566,6 +574,7 @@
       "assign": "<span lang="en" dir="ltr" class="mw-content-ltr">assign</span>",
       "ai-player": "<span lang="en" dir="ltr" class="mw-content-ltr">AI player</span>",
       "click-to-assign": "kliknij, aby przydzielić",
+      "color-unavailable": "<span lang="en" dir="ltr" class="mw-content-ltr">Color not available</span>",
       "game-full": "<span lang="en" dir="ltr" class="mw-content-ltr">Game full</span>",
       "kick-player": "Wyrzuć gracza",
       "local-ai-player": "lokalny gracz AI",
@@ -580,6 +589,7 @@
       "rename-player": "Zmień nazwę",
       "waiting-for-player": "oczekiwanie na gracza"
     },
+    "features": "<span lang="en" dir="ltr" class="mw-content-ltr">Features</span>",
     "game-element-box": {
       "mandatory-for-selected-tiles": "Obowiązkowe do wybranych płytek",
       "related-tiles-not-selected": "Nie wybrano powiązanych płytek."
@@ -599,6 +609,8 @@
       "timer": "Minutnik",
       "variant": "<span lang="en" dir="ltr" class="mw-content-ltr">Variant</span>"
     },
+    "mechanics": "<span lang="en" dir="ltr" class="mw-content-ltr">Mechanics</span>",
+    "modifiers": "<span lang="en" dir="ltr" class="mw-content-ltr">Modifiers</span>",
     "open-game": {
       "assign-all-players-to-start": "Przydziel wszystkich graczy by zacząć",
       "hide-remaining-tiles-cheat-sheet": "Ukryj listę pozostałych płytek",
@@ -627,6 +639,8 @@
       "bazaar-disabled": "Nie wybrano płytek z bazarem.",
       "cathedral-description": "Ukończone miasta z katedrą ×3 zamiast ×2 i opcjonalnie bez punktów podczas końcowej punktacji.",
       "cathedral-disabled": "Nie wybrano płytek z katedrą.",
+	  "city-description": "<span lang="en" dir="ltr" class="mw-content-ltr">City is completed when its walls are fully closed.</span>",
+      "city-scoring": "<span lang="en" dir="ltr" class="mw-content-ltr">City scores 2 points per tile and per coat of arms. An unfinished city scores only 1 point per tile and per coat of arms at the end of the game.</span>",
       "escape-description": "Ucieczka możliwa poprzez przyległy klasztor.",
       "escape-disabled": "Nie wybrano płytek z oblężeniem.",
       "farmers-description": "Możliwość umieszczenia chłopów na polach.",
@@ -645,12 +659,16 @@
       "garden-disabled": "Nie wybrano Opata.",
       "hill-description": "Wzgórze rozstrzyga remis. Powoduje wykluczenie z gry jednej płytki.",
       "hill-disabled": "Nie wybrano płytek ze wzgórzem.",
+      "info-title": "<span lang="en" dir="ltr" class="mw-content-ltr">Tiles with this feature</span>",
+      "info-tiles-count": "<span lang="en" dir="ltr" class="mw-content-ltr">Tiles in the game: {count} of {total}</span>",
       "inn-description": "Ukończona droga z karczmą ×2, opcjonalnie brak punktów na koniec gry.",
       "inn-disabled": "Nie wybrano płytek z karczmą.",
       "marketplace-description": "Targowiska łączą kilka dróg w jedną wspólną sieć, która jest kompletna dopiero wtedy, gdy wszystkie połączone drogi są zamknięte. Po podliczeniu punktów przyznawane są punkty bonusowe równe długości pozostałych ukończonych dróg w tej sieci.",
       "marketplace-disabled": "Brak płytek ze targowiskami w tej grze.",
-      "meteorite-description": "TBA",
+      "meteorite-description": "<span lang="en" dir="ltr" class="mw-content-ltr">Placing a tile with a crater causes a meteorite impact: a die roll decides how far the blast reaches, and every meeple and neutral figure standing on the hit tiles is knocked off the board.</span>",
       "meteorite-disabled": "Brak płytek z kraterem w tej grze.",
+	  "monastery-description": "<span lang="en" dir="ltr" class="mw-content-ltr">Monastery is completed when it is surrounded by eight tiles.</span>",
+      "monastery-scoring": "<span lang="en" dir="ltr" class="mw-content-ltr">Monastery scores 9 points. At the end of the game an unfinished monastery scores 1 point for itself and 1 for each neighbouring tile.</span>",
       "optional-game-mechanics": "Mechaniki gry",
       "pig-herd-description": "Dodatkowe punkty dla chłopów.",
       "pig-herd-disabled": "Nie wybrano płytek ze stadem świń.",
@@ -658,11 +676,14 @@
       "portal-disabled": "Nie wybrano płytek z magiczną ścieżką.",
       "princess-description": "Księżniczka pozwala na usunięcie podwładnego z miasta.",
       "princess-disabled": "Nie wybrano płytek z księżniczką.",
+	  "road-description": "<span lang="en" dir="ltr" class="mw-content-ltr">Road is completed when all of its ends are closed (by a crossing, a city, a monastery or a loop).</span>",
+      "road-scoring": "<span lang="en" dir="ltr" class="mw-content-ltr">Road scores 1 point per tile. An unfinished road still scores 1 point per tile at the end of the game.</span>",
       "robbers-son-description": "Syn złodzieja może usunąć podwładnego z drogi.",
       "robbers-son-disabled": "Brak płytek z synem złodzieja.",
       "scoring-variants": "Warianty punktacji",
       "shrine-description": "Miejsca kultu konkurują z klasztorami.",
       "shrine-disabled": "Nie wybrano płytek z miejscem kultu.",
+      "shrine-scoring": "<span lang="en" dir="ltr" class="mw-content-ltr">A shrine is scored like a monastery.</span>",
       "siege-description": "Oblężone miasta są mniej punktowane.",
       "siege-disabled": "Nie wybrano płytek z oblężeniem.",
       "starting-tiles-configuration": "Konfiguracja startowa",

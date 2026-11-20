@@ -154,6 +154,16 @@
     "value": "De AI kan dit spelen",
     "source": "manual"
   },
+  "game-setup.ai.supported-not-with": {
+    "en": "The AI can play this — not with: {elements}",
+    "value": "De AI kan dit spelen — niet met: {elements}",
+    "source": "manual"
+  },
+  "game-setup.ai.supported-only-without": {
+    "en": "The AI can play this only without: {elements}",
+    "value": "De AI kan dit alleen spelen zonder: {elements}",
+    "source": "manual"
+  },
   "game-setup.create.ai-player": {
     "en": "AI player",
     "value": "AI-speler",
@@ -162,6 +172,11 @@
   "game-setup.create.assign": {
     "en": "assign",
     "value": "toewijzen",
+    "source": "manual"
+  },
+  "game-setup.create.color-unavailable": {
+    "en": "Color not available",
+    "value": "Kleur niet beschikbaar",
     "source": "manual"
   },
   "game-setup.create.game-full": {
@@ -177,6 +192,11 @@
   "game-setup.create.release-slot": {
     "en": "Release slot",
     "value": "Plaats vrijgeven",
+    "source": "manual"
+  },
+  "game-setup.features": {
+    "en": "Features",
+    "value": "Elementen",
     "source": "manual"
   },
   "game-setup.game-flow.cooperative": {
@@ -204,6 +224,16 @@
     "value": "Variant",
     "source": "manual"
   },
+  "game-setup.mechanics": {
+    "en": "Mechanics",
+    "value": "Mechanismes",
+    "source": "manual"
+  },
+  "game-setup.modifiers": {
+    "en": "Modifiers",
+    "value": "Modificatoren",
+    "source": "manual"
+  },
   "game-setup.open-game.max-players": {
     "en": "Max players (public)",
     "value": "Max. spelers (openbaar)",
@@ -217,6 +247,56 @@
   "game-setup.open-game.no-human-player": {
     "en": "No human in game",
     "value": "Er zijn geen menselijke spelers",
+    "source": "manual"
+  },
+  "game-setup.rules.city-description": {
+    "en": "City is completed when its walls are fully closed.",
+    "value": "Een stad is voltooid wanneer haar muren volledig gesloten zijn.",
+    "source": "manual"
+  },
+  "game-setup.rules.city-scoring": {
+    "en": "City scores 2 points per tile and per coat of arms. An unfinished city scores only 1 point per tile and per coat of arms at the end of the game.",
+    "value": "Een stad levert 2 punten per tegel en per wapen op. Een onvoltooide stad levert aan het einde van het spel maar 1 punt per tegel en per wapen op.",
+    "source": "manual"
+  },
+  "game-setup.rules.info-tiles-count": {
+    "en": "Tiles in the game: {count} of {total}",
+    "value": "Tegels in het spel: {count} van {total}",
+    "source": "manual"
+  },
+  "game-setup.rules.info-title": {
+    "en": "Tiles with this feature",
+    "value": "Tegels met dit element",
+    "source": "manual"
+  },
+  "game-setup.rules.meteorite-description": {
+    "en": "Placing a tile with a crater causes a meteorite impact: a die roll decides how far the blast reaches, and every meeple and neutral figure standing on the hit tiles is knocked off the board.",
+    "value": "Het leggen van een tegel met een krater veroorzaakt een meteorietinslag: een worp met de dobbelsteen bepaalt hoe ver de explosie reikt, en alle meeples en neutrale figuren op de getroffen tegels worden van het bord geveegd.",
+    "source": "manual"
+  },
+  "game-setup.rules.monastery-description": {
+    "en": "Monastery is completed when it is surrounded by eight tiles.",
+    "value": "Een klooster is voltooid wanneer het door acht tegels is omringd.",
+    "source": "manual"
+  },
+  "game-setup.rules.monastery-scoring": {
+    "en": "Monastery scores 9 points. At the end of the game an unfinished monastery scores 1 point for itself and 1 for each neighbouring tile.",
+    "value": "Een klooster levert 9 punten op. Een onvoltooid klooster levert aan het einde van het spel 1 punt voor zichzelf en 1 voor elke aangrenzende tegel op.",
+    "source": "manual"
+  },
+  "game-setup.rules.road-description": {
+    "en": "Road is completed when all of its ends are closed (by a crossing, a city, a monastery or a loop).",
+    "value": "Een weg is voltooid wanneer al zijn uiteinden zijn afgesloten (door een kruispunt, een stad, een klooster of een lus).",
+    "source": "manual"
+  },
+  "game-setup.rules.road-scoring": {
+    "en": "Road scores 1 point per tile. An unfinished road still scores 1 point per tile at the end of the game.",
+    "value": "Een weg levert 1 punt per tegel op. Een onvoltooide weg levert aan het einde van het spel ook 1 punt per tegel op.",
+    "source": "manual"
+  },
+  "game-setup.rules.shrine-scoring": {
+    "en": "A shrine is scored like a monastery.",
+    "value": "Een cultusplaats wordt gewaardeerd als een klooster.",
     "source": "manual"
   },
   "game-setup.tiles.custom-pack": {
@@ -449,6 +529,11 @@
     "value": "de hierheen verplaatste figuur",
     "source": "manual"
   },
+  "game.cause.figure-moved-bigtop": {
+    "en": "the Big Top moved to the newly placed tile",
+    "value": "de Circustent die naar de zojuist gelegde tegel is verplaatst",
+    "source": "manual"
+  },
   "game.cause.meeple-deployed": {
     "en": "the deployed meeple",
     "value": "de geplaatste meeple",
@@ -457,6 +542,11 @@
   "game.cause.rule.count-clockwise": {
     "en": "the Count moving on clockwise",
     "value": "de Graaf schuift met de klok mee",
+    "source": "manual"
+  },
+  "game.cause.rule.crop-circle": {
+    "en": "a crop circle",
+    "value": "een graancirkel",
     "source": "manual"
   },
   "game.cause.rule.decinsky-sneznik-scored": {
@@ -542,6 +632,11 @@
   "game.coop.triggered-by": {
     "en": "{name} could neither enlarge an occupied feature nor occupy a new one.",
     "value": "{name} kon geen bezet gebied uitbreiden en geen nieuw gebied bezetten.",
+    "source": "manual"
+  },
+  "game.element.animal-token": {
+    "en": "Animal token",
+    "value": "Dierenfiche",
     "source": "manual"
   },
   "game.element.black-fairy": {
@@ -649,6 +744,16 @@
     "value": "{source}, door {player}",
     "source": "manual"
   },
+  "game.placement.source-barn-field-join": {
+    "en": "Its field joined to one with a barn",
+    "value": "Zijn weide verbonden met een weide met een herenboerderij",
+    "source": "manual"
+  },
+  "game.placement.source-barn-placement": {
+    "en": "Barn placed on its field",
+    "value": "Herenboerderij op zijn weide gezet",
+    "source": "manual"
+  },
   "game.placement.title.captured": {
     "en": "{figure} captured",
     "value": "{figure} gevangen",
@@ -687,6 +792,11 @@
   "game.placement.title.removed": {
     "en": "{figure} removed",
     "value": "{figure} verwijderd",
+    "source": "manual"
+  },
+  "game.placement.title.revealed": {
+    "en": "{figure} revealed and scored",
+    "value": "{figure} onthuld en gewaardeerd",
     "source": "manual"
   },
   "game.placement.title.tile-placed": {

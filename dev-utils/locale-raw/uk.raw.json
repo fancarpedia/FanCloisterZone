@@ -334,9 +334,11 @@
     "cause": {
       "caused-by": "<span lang="en" dir="ltr" class="mw-content-ltr">Caused by: {cause}</span>",
       "figure-moved": "<span lang="en" dir="ltr" class="mw-content-ltr">the figure moving here</span>",
+      "figure-moved-bigtop": "<span lang="en" dir="ltr" class="mw-content-ltr">the Big Top moved to the newly placed tile</span>",
       "meeple-deployed": "<span lang="en" dir="ltr" class="mw-content-ltr">the deployed meeple</span>",
       "rule": {
         "count-clockwise": "<span lang="en" dir="ltr" class="mw-content-ltr">the Count moving on clockwise</span>",
+        "crop-circle": "<span lang="en" dir="ltr" class="mw-content-ltr">a crop circle</span>",
         "decinsky-sneznik-scored": "<span lang="en" dir="ltr" class="mw-content-ltr">Děčínský Sněžník scored</span>",
         "final-scoring": "<span lang="en" dir="ltr" class="mw-content-ltr">final scoring</span>",
         "flock-expanded": "<span lang="en" dir="ltr" class="mw-content-ltr">a sheep token drawn for the flock</span>",
@@ -361,6 +363,7 @@
     "element": {
       "abbey": "<span lang="en" dir="ltr" class="mw-content-ltr">Abbey</span>",
       "abbot": "<span lang="en" dir="ltr" class="mw-content-ltr">Abbot</span>",
+      "animal-token": "<span lang="en" dir="ltr" class="mw-content-ltr">Animal token</span>",
       "barn": "<span lang="en" dir="ltr" class="mw-content-ltr">Barn</span>",
       "big-follower": "<span lang="en" dir="ltr" class="mw-content-ltr">Big Meeple</span>",
       "big-top": "<span lang="en" dir="ltr" class="mw-content-ltr">Big Top</span>",
@@ -490,6 +493,8 @@
       "moved-by": "<span lang="en" dir="ltr" class="mw-content-ltr">Moved by {player}</span>",
       "placed-by": "<span lang="en" dir="ltr" class="mw-content-ltr">Placed by {player}</span>",
       "removed-with": "<span lang="en" dir="ltr" class="mw-content-ltr">{source}, by {player}</span>",
+      "source-barn-field-join": "<span lang="en" dir="ltr" class="mw-content-ltr">Its field joined to one with a barn</span>",
+      "source-barn-placement": "<span lang="en" dir="ltr" class="mw-content-ltr">Barn placed on its field</span>",
       "title": {
         "captured": "<span lang="en" dir="ltr" class="mw-content-ltr">{figure} captured</span>",
         "castle-created": "<span lang="en" dir="ltr" class="mw-content-ltr">Small city converted to a castle</span>",
@@ -499,6 +504,7 @@
         "placed": "<span lang="en" dir="ltr" class="mw-content-ltr">{figure} placed</span>",
         "placed-on-letter": "<span lang="en" dir="ltr" class="mw-content-ltr">{figure} placed on the Letter</span>",
         "removed": "<span lang="en" dir="ltr" class="mw-content-ltr">{figure} removed</span>",
+        "revealed": "<span lang="en" dir="ltr" class="mw-content-ltr">{figure} revealed and scored</span>",
         "tile-placed": "<span lang="en" dir="ltr" class="mw-content-ltr">Tile placed</span>"
       }
     },
@@ -551,7 +557,9 @@
       "not-available": "<span lang="en" dir="ltr" class="mw-content-ltr">AI not available</span>",
       "not-available-hint": "<span lang="en" dir="ltr" class="mw-content-ltr">AI players are not available for game setup</span>",
       "not-supported": "<span lang="en" dir="ltr" class="mw-content-ltr">The AI does not play</span>",
-      "supported": "<span lang="en" dir="ltr" class="mw-content-ltr">The AI can play this</span>"
+      "supported": "<span lang="en" dir="ltr" class="mw-content-ltr">The AI can play this</span>",
+      "supported-not-with": "<span lang="en" dir="ltr" class="mw-content-ltr">The AI can play this — not with: {elements}</span>",
+      "supported-only-without": "<span lang="en" dir="ltr" class="mw-content-ltr">The AI can play this only without: {elements}</span>"
     },
     "additional-elements": "<span lang="en" dir="ltr" class="mw-content-ltr">Additional elements</span>",
     "altered-gameplay": "<span lang="en" dir="ltr" class="mw-content-ltr">Altered Gameplay</span>",
@@ -566,6 +574,7 @@
       "assign": "<span lang="en" dir="ltr" class="mw-content-ltr">assign</span>",
       "ai-player": "<span lang="en" dir="ltr" class="mw-content-ltr">AI player</span>",
       "click-to-assign": "<span lang="en" dir="ltr" class="mw-content-ltr">click to assign</span>",
+      "color-unavailable": "<span lang="en" dir="ltr" class="mw-content-ltr">Color not available</span>",
       "game-full": "<span lang="en" dir="ltr" class="mw-content-ltr">Game full</span>",
       "kick-player": "<span lang="en" dir="ltr" class="mw-content-ltr">Kick player</span>",
       "local-ai-player": "<span lang="en" dir="ltr" class="mw-content-ltr">local ai player</span>",
@@ -580,6 +589,7 @@
       "rename-player": "<span lang="en" dir="ltr" class="mw-content-ltr">Rename Player</span>",
       "waiting-for-player": "<span lang="en" dir="ltr" class="mw-content-ltr">waiting for player</span>"
     },
+    "features": "<span lang="en" dir="ltr" class="mw-content-ltr">Features</span>",
     "game-element-box": {
       "mandatory-for-selected-tiles": "<span lang="en" dir="ltr" class="mw-content-ltr">Mandatory for selected tiles</span>",
       "related-tiles-not-selected": "<span lang="en" dir="ltr" class="mw-content-ltr">Related tiles not selected</span>"
@@ -599,6 +609,8 @@
       "timer": "<span lang="en" dir="ltr" class="mw-content-ltr">Timer</span>",
       "variant": "<span lang="en" dir="ltr" class="mw-content-ltr">Variant</span>"
     },
+    "mechanics": "<span lang="en" dir="ltr" class="mw-content-ltr">Mechanics</span>",
+    "modifiers": "<span lang="en" dir="ltr" class="mw-content-ltr">Modifiers</span>",
     "open-game": {
       "assign-all-players-to-start": "<span lang="en" dir="ltr" class="mw-content-ltr">Assign all players to start</span>",
       "hide-remaining-tiles-cheat-sheet": "<span lang="en" dir="ltr" class="mw-content-ltr">Hide remaining tiles cheat sheet</span>",
@@ -627,6 +639,8 @@
       "bazaar-disabled": "<span lang="en" dir="ltr" class="mw-content-ltr">No tile with Bazaar is in the game.</span>",
       "cathedral-description": "<span lang="en" dir="ltr" class="mw-content-ltr">Completed Cities with Cathedral ×3 instead of ×2 and optionally no points during final scoring.</span>",
       "cathedral-disabled": "<span lang="en" dir="ltr" class="mw-content-ltr">No tile with Cathedral is in game.</span>",
+	  "city-description": "<span lang="en" dir="ltr" class="mw-content-ltr">City is completed when its walls are fully closed.</span>",
+      "city-scoring": "<span lang="en" dir="ltr" class="mw-content-ltr">City scores 2 points per tile and per coat of arms. An unfinished city scores only 1 point per tile and per coat of arms at the end of the game.</span>",
       "escape-description": "<span lang="en" dir="ltr" class="mw-content-ltr">Escape allowed via a neighboring monastery.</span>",
       "escape-disabled": "<span lang="en" dir="ltr" class="mw-content-ltr">No tile with Siege is in game.</span>",
       "farmers-description": "<span lang="en" dir="ltr" class="mw-content-ltr">Players are allowed to place meeples on fields.</span>",
@@ -645,12 +659,16 @@
       "garden-disabled": "<span lang="en" dir="ltr" class="mw-content-ltr">Abbot is not selected.</span>",
       "hill-description": "<span lang="en" dir="ltr" class="mw-content-ltr">Used as a tiebreaker. Also hides one random tile underneath.</span>",
       "hill-disabled": "<span lang="en" dir="ltr" class="mw-content-ltr">No tile with Hill is in game.</span>",
+      "info-title": "<span lang="en" dir="ltr" class="mw-content-ltr">Tiles with this feature</span>",
+      "info-tiles-count": "<span lang="en" dir="ltr" class="mw-content-ltr">Tiles in the game: {count} of {total}</span>",
       "inn-description": "<span lang="en" dir="ltr" class="mw-content-ltr">Completed roads with Inn ×2 and optionally no points during final scoring.</span>",
       "inn-disabled": "<span lang="en" dir="ltr" class="mw-content-ltr">No tile with Inn is in the game.</span>",
       "marketplace-description": "<span lang="en" dir="ltr" class="mw-content-ltr">Marketplaces connect several roads into a shared network that only completes when all linked roads are closed. When scored, bonus points equal to the length of the other completed roads in that network are given.</span>",
       "marketplace-disabled": "<span lang="en" dir="ltr" class="mw-content-ltr">No tile with Marketplace is in the game.</span>",
-      "meteorite-description": "TBA",
+      "meteorite-description": "<span lang="en" dir="ltr" class="mw-content-ltr">Placing a tile with a crater causes a meteorite impact: a die roll decides how far the blast reaches, and every meeple and neutral figure standing on the hit tiles is knocked off the board.</span>",
       "meteorite-disabled": "<span lang="en" dir="ltr" class="mw-content-ltr">No tile with Crater is in the game.</span>",
+	  "monastery-description": "<span lang="en" dir="ltr" class="mw-content-ltr">Monastery is completed when it is surrounded by eight tiles.</span>",
+      "monastery-scoring": "<span lang="en" dir="ltr" class="mw-content-ltr">Monastery scores 9 points. At the end of the game an unfinished monastery scores 1 point for itself and 1 for each neighbouring tile.</span>",
       "optional-game-mechanics": "<span lang="en" dir="ltr" class="mw-content-ltr">Optional game mechanics</span>",
       "pig-herd-description": "<span lang="en" dir="ltr" class="mw-content-ltr">Counts as additional pig on field (farmers scores more points).</span>",
       "pig-herd-disabled": "<span lang="en" dir="ltr" class="mw-content-ltr">No tile with Pig Herd is in the game.</span>",
@@ -658,11 +676,14 @@
       "portal-disabled": "<span lang="en" dir="ltr" class="mw-content-ltr">No tile with Magic Portal is in the game.</span>",
       "princess-description": "<span lang="en" dir="ltr" class="mw-content-ltr">Princess can remove a knight from a city.</span>",
       "princess-disabled": "<span lang="en" dir="ltr" class="mw-content-ltr">No tile with Princess is in the game.</span>",
+	  "road-description": "<span lang="en" dir="ltr" class="mw-content-ltr">Road is completed when all of its ends are closed (by a crossing, a city, a monastery or a loop).</span>",
+      "road-scoring": "<span lang="en" dir="ltr" class="mw-content-ltr">Road scores 1 point per tile. An unfinished road still scores 1 point per tile at the end of the game.</span>",
       "robbers-son-description": "<span lang="en" dir="ltr" class="mw-content-ltr">Robber's Son can remove a thief from a road.</span>",
       "robbers-son-disabled": "<span lang="en" dir="ltr" class="mw-content-ltr">No tile with Robber's Son is in the game.</span>",
       "scoring-variants": "<span lang="en" dir="ltr" class="mw-content-ltr">Scoring variants</span>",
       "shrine-description": "<span lang="en" dir="ltr" class="mw-content-ltr">Shrine placed next to a monastery competes to finish first. (second gets no points)</span>",
       "shrine-disabled": "<span lang="en" dir="ltr" class="mw-content-ltr">No tile with Shrine is in the game.</span>",
+      "shrine-scoring": "<span lang="en" dir="ltr" class="mw-content-ltr">A shrine is scored like a monastery.</span>",
       "siege-description": "<span lang="en" dir="ltr" class="mw-content-ltr">Besieged cities are less valuable.</span>",
       "siege-disabled": "<span lang="en" dir="ltr" class="mw-content-ltr">No tile with Siege is in the game.</span>",
       "starting-tiles-configuration": "<span lang="en" dir="ltr" class="mw-content-ltr">Starting tile(s) configuration</span>",

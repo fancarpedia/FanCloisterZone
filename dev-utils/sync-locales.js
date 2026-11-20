@@ -98,6 +98,22 @@ function discoverFromWiki () {
   })
 }
 
+/**
+ * The readable part of a failed script's output: from its "Error: ..." line on (the message and
+ * its detail lines), never the "file.js:62" header or the "at ..." lines of a stack dump.
+ */
+function errorText (out) {
+  const lines = out.split(/\r?\n/)
+  const i = lines.findIndex(l => /^\s*\w*Error:/.test(l))
+  if (i < 0) return (lines.find(l => l.trim()) || 'failed').trim()
+  const msg = []
+  for (const l of lines.slice(i)) {
+    if (/^\s+at /.test(l) || !l.trim()) break
+    msg.push(msg.length ? l : l.trim().replace(/^\w*Error:\s*/, ''))
+  }
+  return msg.join(String.fromCharCode(10))
+}
+
 /** Run one of the sibling scripts and hand back its output; never throws on a non-zero exit. */
 function run (script, scriptArgs) {
   try {
@@ -235,7 +251,7 @@ async function main () {
 
     const res = run('translate-locales.js', ['--lang', lang, ...(args.dryRun ? [] : ['--install'])])
     if (!res.ok) {
-      rows.push({ lang, error: (res.out.split(/\r?\n/).find(l => l.trim()) || 'failed').trim() })
+      rows.push({ lang, error: errorText(res.out) })
       continue
     }
     rows.push({

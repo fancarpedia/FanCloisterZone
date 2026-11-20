@@ -1119,6 +1119,16 @@
     "value": "Комп'ютерний гравець може це грати",
     "source": "manual"
   },
+  "game-setup.ai.supported-not-with": {
+    "en": "The AI can play this — not with: {elements}",
+    "value": "Комп'ютерний гравець може це грати — не з: {elements}",
+    "source": "manual"
+  },
+  "game-setup.ai.supported-only-without": {
+    "en": "The AI can play this only without: {elements}",
+    "value": "Комп'ютерний гравець може це грати лише без: {elements}",
+    "source": "manual"
+  },
   "game-setup.altered-gameplay": {
     "en": "Altered Gameplay",
     "value": "Змінений перебіг гри",
@@ -1162,6 +1172,11 @@
   "game-setup.create.click-to-assign": {
     "en": "click to assign",
     "value": "натисніть, щоб призначити",
+    "source": "manual"
+  },
+  "game-setup.create.color-unavailable": {
+    "en": "Color not available",
+    "value": "Колір недоступний",
     "source": "manual"
   },
   "game-setup.create.game-full": {
@@ -1229,6 +1244,11 @@
     "value": "очікування гравця",
     "source": "manual"
   },
+  "game-setup.features": {
+    "en": "Features",
+    "value": "Елементи",
+    "source": "manual"
+  },
   "game-setup.game-element-box.mandatory-for-selected-tiles": {
     "en": "Mandatory for selected tiles",
     "value": "Обов’язково для вибраних плиток",
@@ -1282,6 +1302,16 @@
   "game-setup.header.variant": {
     "en": "Variant",
     "value": "Варіант",
+    "source": "manual"
+  },
+  "game-setup.mechanics": {
+    "en": "Mechanics",
+    "value": "Механіки",
+    "source": "manual"
+  },
+  "game-setup.modifiers": {
+    "en": "Modifiers",
+    "value": "Модифікатори",
     "source": "manual"
   },
   "game-setup.open-game.assign-all-players-to-start": {
@@ -1409,6 +1439,16 @@
     "value": "У грі немає плиток із собором.",
     "source": "manual"
   },
+  "game-setup.rules.city-description": {
+    "en": "City is completed when its walls are fully closed.",
+    "value": "Місто завершене, коли його мури повністю замкнені.",
+    "source": "manual"
+  },
+  "game-setup.rules.city-scoring": {
+    "en": "City scores 2 points per tile and per coat of arms. An unfinished city scores only 1 point per tile and per coat of arms at the end of the game.",
+    "value": "Місто приносить 2 очки за кожен тайл і кожен герб. Незавершене місто наприкінці гри приносить лише 1 очко за тайл і за герб.",
+    "source": "manual"
+  },
   "game-setup.rules.escape-description": {
     "en": "Escape allowed via a neighboring monastery.",
     "value": "Втеча можлива через сусідній монастир.",
@@ -1499,6 +1539,16 @@
     "value": "У грі немає плиток із пагорбом.",
     "source": "manual"
   },
+  "game-setup.rules.info-tiles-count": {
+    "en": "Tiles in the game: {count} of {total}",
+    "value": "Тайлів у грі: {count} з {total}",
+    "source": "manual"
+  },
+  "game-setup.rules.info-title": {
+    "en": "Tiles with this feature",
+    "value": "Тайли з цим елементом",
+    "source": "manual"
+  },
   "game-setup.rules.inn-description": {
     "en": "Completed roads with Inn ×2 and optionally no points during final scoring.",
     "value": "Завершені дороги з таверною ×2 і, за бажанням, 0 очок у підсумковому підрахунку.",
@@ -1519,9 +1569,24 @@
     "value": "У грі немає плиток із ринком.",
     "source": "manual"
   },
+  "game-setup.rules.meteorite-description": {
+    "en": "Placing a tile with a crater causes a meteorite impact: a die roll decides how far the blast reaches, and every meeple and neutral figure standing on the hit tiles is knocked off the board.",
+    "value": "Викладання тайла з кратером спричиняє падіння метеорита: кидок кубика визначає, як далеко сягне вибух, і всі підданці та нейтральні фігурки на уражених тайлах зметаються з поля.",
+    "source": "manual"
+  },
   "game-setup.rules.meteorite-disabled": {
     "en": "No tile with Crater is in the game.",
     "value": "У грі немає плиток із кратером.",
+    "source": "manual"
+  },
+  "game-setup.rules.monastery-description": {
+    "en": "Monastery is completed when it is surrounded by eight tiles.",
+    "value": "Монастир завершений, коли його оточують вісім тайлів.",
+    "source": "manual"
+  },
+  "game-setup.rules.monastery-scoring": {
+    "en": "Monastery scores 9 points. At the end of the game an unfinished monastery scores 1 point for itself and 1 for each neighbouring tile.",
+    "value": "Монастир приносить 9 очок. Наприкінці гри незавершений монастир приносить 1 очко за себе і по 1 за кожен сусідній тайл.",
     "source": "manual"
   },
   "game-setup.rules.optional-game-mechanics": {
@@ -1559,6 +1624,16 @@
     "value": "У грі немає плиток із принцесою.",
     "source": "manual"
   },
+  "game-setup.rules.road-description": {
+    "en": "Road is completed when all of its ends are closed (by a crossing, a city, a monastery or a loop).",
+    "value": "Дорога завершена, коли всі її кінці закриті (перехрестям, містом, монастирем або петлею).",
+    "source": "manual"
+  },
+  "game-setup.rules.road-scoring": {
+    "en": "Road scores 1 point per tile. An unfinished road still scores 1 point per tile at the end of the game.",
+    "value": "Дорога приносить 1 очко за кожен тайл. Незавершена дорога наприкінці гри теж приносить 1 очко за тайл.",
+    "source": "manual"
+  },
   "game-setup.rules.robbers-son-description": {
     "en": "Robber's Son can remove a thief from a road.",
     "value": "Син розбійника може забрати злодія з дороги.",
@@ -1582,6 +1657,11 @@
   "game-setup.rules.shrine-disabled": {
     "en": "No tile with Shrine is in the game.",
     "value": "У грі немає плиток зі святинею.",
+    "source": "manual"
+  },
+  "game-setup.rules.shrine-scoring": {
+    "en": "A shrine is scored like a monastery.",
+    "value": "Святиня підраховується як монастир.",
     "source": "manual"
   },
   "game-setup.rules.siege-description": {
@@ -2584,6 +2664,11 @@
     "value": "фігурка, переміщена сюди",
     "source": "manual"
   },
+  "game.cause.figure-moved-bigtop": {
+    "en": "the Big Top moved to the newly placed tile",
+    "value": "Шапіто, перенесене на щойно викладений тайл",
+    "source": "manual"
+  },
   "game.cause.meeple-deployed": {
     "en": "the deployed meeple",
     "value": "розміщений підданець",
@@ -2592,6 +2677,11 @@
   "game.cause.rule.count-clockwise": {
     "en": "the Count moving on clockwise",
     "value": "Граф пересувається за годинниковою стрілкою",
+    "source": "manual"
+  },
+  "game.cause.rule.crop-circle": {
+    "en": "a crop circle",
+    "value": "коло на полі",
     "source": "manual"
   },
   "game.cause.rule.decinsky-sneznik-scored": {
@@ -2687,6 +2777,11 @@
   "game.element.abbot": {
     "en": "Abbot",
     "value": "Абат",
+    "source": "manual"
+  },
+  "game.element.animal-token": {
+    "en": "Animal token",
+    "value": "Жетон тварини",
     "source": "manual"
   },
   "game.element.barn": {
@@ -3289,6 +3384,16 @@
     "value": "{source}, гравець {player}",
     "source": "manual"
   },
+  "game.placement.source-barn-field-join": {
+    "en": "Its field joined to one with a barn",
+    "value": "Його поле з'єднано з полем із клунею",
+    "source": "manual"
+  },
+  "game.placement.source-barn-placement": {
+    "en": "Barn placed on its field",
+    "value": "Клуню розміщено на його полі",
+    "source": "manual"
+  },
   "game.placement.title.captured": {
     "en": "{figure} captured",
     "value": "Полонення: {figure}",
@@ -3327,6 +3432,11 @@
   "game.placement.title.removed": {
     "en": "{figure} removed",
     "value": "Вилучення: {figure}",
+    "source": "manual"
+  },
+  "game.placement.title.revealed": {
+    "en": "{figure} revealed and scored",
+    "value": "{figure}: розкрито й підраховано",
     "source": "manual"
   },
   "game.placement.title.tile-placed": {

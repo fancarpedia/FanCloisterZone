@@ -2,7 +2,7 @@
   "@author": "Peťul",
   "@jcz-version": "5.12.1",
   "@fcz-version": "7.2.0",
-  "@version": "0.13.6-ai",
+  "@version": "0.13.10-ai",
   "about": {
     "author": "Autor",
     "configuration-file": "Konfigurační soubor",
@@ -335,9 +335,11 @@
     "cause": {
       "caused-by": "Příčina: {cause}",
       "figure-moved": "přesun figurky sem",
+      "figure-moved-bigtop": "přesun šapitó na nově položenou kartičku",
       "meeple-deployed": "umístěný družiník",
       "rule": {
         "count-clockwise": "Hrabě se posunul po směru hodinových ručiček",
+        "crop-circle": "kruh v obilí",
         "decinsky-sneznik-scored": "vyhodnocený Děčínský Sněžník",
         "final-scoring": "závěrečné vyhodnocení",
         "flock-expanded": "žeton ovce vytažený pro stádo",
@@ -362,6 +364,7 @@
     "element": {
       "abbey": "Opatství",
       "abbot": "Opat",
+      "animal-token": "Žeton zvířete",
       "barn": "Statek",
       "big-follower": "Velký družiník",
       "big-top": "Šapitó",
@@ -491,6 +494,8 @@
       "moved-by": "Přesunul hráč {player}",
       "placed-by": "Položil hráč {player}",
       "removed-with": "{source}, hráč {player}",
+      "source-barn-field-join": "Jeho louka se spojila s loukou se statkem",
+      "source-barn-placement": "Statek umístěn na jeho louku",
       "title": {
         "captured": "Zajetí: {figure}",
         "castle-created": "Malé město přeměněné na hrad",
@@ -500,6 +505,7 @@
         "placed": "Umístění: {figure}",
         "placed-on-letter": "Umístění na Dopis: {figure}",
         "removed": "Odstranění: {figure}",
+        "revealed": "{figure} odhalen a vyhodnocen",
         "tile-placed": "Položená kartička"
       }
     },
@@ -552,7 +558,9 @@
       "not-available": "AI není k dispozici",
       "not-available-hint": "AI hráči nejsou pro toto nastavení hry k dispozici",
       "not-supported": "AI nehraje",
-      "supported": "AI tohle umí hrát"
+      "supported": "AI tohle umí hrát",
+      "supported-not-with": "AI to umí hrát — ne s: {elements}",
+      "supported-only-without": "AI to umí hrát jen bez: {elements}"
     },
     "additional-elements": "Další prvky",
     "altered-gameplay": "Změněná hratelnost",
@@ -567,8 +575,8 @@
       "assign": "přidat",
       "ai-player": "AI hráč",
       "click-to-assign": "Kliknutím přidáte hráče",
-      "game-full": "Hra je plná",
       "color-unavailable": "Barva není k dispozici",
+      "game-full": "Hra je plná",
       "kick-player": "Odpojit hráče",
       "local-ai-player": "místní AI hráč",
       "local-limit-reached": "Dosažený limit",
@@ -582,6 +590,7 @@
       "rename-player": "Přejmenovat hráče",
       "waiting-for-player": "čekáme na hráče"
     },
+    "features": "Prvky",
     "game-element-box": {
       "mandatory-for-selected-tiles": "Povinné pro vybrané kartičky",
       "related-tiles-not-selected": "Nebyly vybrány související kartičky"
@@ -601,6 +610,8 @@
       "timer": "Časovač",
       "variant": "Varianta"
     },
+    "mechanics": "Mechaniky",
+    "modifiers": "Modifikátory",
     "open-game": {
       "assign-all-players-to-start": "Přiřaďte všechny hráče a spusťte hru",
       "hide-remaining-tiles-cheat-sheet": "Skrýt zbývající kartičky",
@@ -629,6 +640,8 @@
       "bazaar-disabled": "Ve hře není žádná kartička s bazarem.",
       "cathedral-description": "Za dokončené město s katedrálou se započítávají 3 body za kartičku. Při závěrečném vyhodnocení ale nezískáte žádné body.",
       "cathedral-disabled": "Ve hře není žádná kartička s katedrálou.",
+      "city-description": "Město je dokončené, když jsou jeho hradby zcela uzavřené.",
+      "city-scoring": "Město získá 2 body za každou kartičku a za každý erb. Nedokončené město získá na konci hry jen 1 bod za kartičku a za erb.",
       "escape-description": "Útěk je možný přes sousední klášter.",
       "escape-disabled": "Ve hře není žádná kartička s katary/obléhateli.",
       "farmers-description": "Hráči mohou umístit družiníka na louku.",
@@ -647,12 +660,16 @@
       "garden-disabled": "Opat není vybrán.",
       "hill-description": "Využívá se při remíze a při přikládání na herní plán pod sebe skryje náhodnou kartičku.",
       "hill-disabled": "Ve hře není žádná kartička s kopcem.",
+      "info-title": "Kartičky s tímto prvkem",
+      "info-tiles-count": "Kartiček ve hře: {count} z {total}",
       "inn-description": "Za ukončenou cestu s hostincem e započítávají 2 body za kartičku a volitelně žádný bod při závěrečném vyhodnocení.",
       "inn-disabled": "Ve hře není žádná kartička s hostincem.",
       "marketplace-description": "Trhy spojují několik cest do jedné společné sítě cest, dokončena je pouze tehdy, pokud jsou uzavřeny všechny propojené cesty. Při hodnocení se udělují bonusové body rovnající se délce ostatních dokončených cest v dané síti cest.",
       "marketplace-disabled": "Ve hře není žádná kartička s trhem.",
-      "meteorite-description": "TBA",
+      "meteorite-description": "Položení kartičky s kráterem způsobí dopad meteoritu: hod kostkou rozhodne, kam až výbuch dosáhne, a všichni družiníci i neutrální figurky na zasažených kartičkách jsou smeteni z plánu.",
       "meteorite-disabled": "Ve hře není žádná kartička s kráterem.",
+      "monastery-description": "Klášter je dokončený, když je obklopen osmi kartičkami.",
+      "monastery-scoring": "Klášter získá 9 bodů. Nedokončený klášter získá na konci hry 1 bod za sebe a 1 bod za každou sousední kartičku.",
       "optional-game-mechanics": "Volitelné herní mechaniky",
       "pig-herd-description": "Počítá se jako další prasátko na louce (sedláci získají body navíc).",
       "pig-herd-disabled": "Ve hře není žádná kartička se stádem prasat.",
@@ -660,11 +677,14 @@
       "portal-disabled": "Ve hře není žádná kartička s tajnou chodbou.",
       "princess-description": "Princezna může odstranit rytíře z města.",
       "princess-disabled": "Ve hře není žádná kartička s princeznou.",
+      "road-description": "Cesta je dokončená, když jsou uzavřené všechny její konce (křižovatkou, městem, klášterem nebo smyčkou).",
+      "road-scoring": "Cesta získá 1 bod za každou kartičku. Nedokončená cesta získá na konci hry také 1 bod za kartičku.",
       "robbers-son-description": "Lupičův syn může odstranit lupiče z cesty.",
       "robbers-son-disabled": "V hře není žádná kartička s lupičovým synem.",
       "scoring-variants": "Volitelná hodnocení",
       "shrine-description": "Při umístění svatyně vedle kláštera dochází k souboji o vliv, kdo dokončí území jako první, vítězí.",
       "shrine-disabled": "Ve hře není žádná kartička se Svatyní.",
+      "shrine-scoring": "Svatyně se hodnotí jako klášter.",
       "siege-description": "Obléhaná města mají menší hodnotu.",
       "siege-disabled": "Ve hře není žádná kartička s obléhateli.",
       "starting-tiles-configuration": "Rozložení startovních kartiček",
@@ -672,7 +692,10 @@
       "vineyard-description": "Body navíc pro dokončený klášter.",
       "vineyard-disabled": "Ve hře není žádná kartička s vinohradem.",
       "well-description": "Bonusový bod za každou studnu u cesty. Je-li na cestě s hostincem získáte 2 body pokud je ukončená a volitelně žádný bod při závěrečném vyhodnocení.",
-      "well-disabled": "Ve hře není žádná kartička se studnou."
+      "well-disabled": "Ve hře není žádná kartička se studnou.",
+      "features": "Prvky",
+      "mechanics": "Mechaniky",
+      "modifiers": "Modifikátory"
     },
     "selected-tiles": "Vybrané kartičky",
     "tiles": {

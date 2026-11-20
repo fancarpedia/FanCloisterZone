@@ -334,9 +334,11 @@
     "cause": {
       "caused-by": "<span lang="en" dir="ltr" class="mw-content-ltr">Caused by: {cause}</span>",
       "figure-moved": "<span lang="en" dir="ltr" class="mw-content-ltr">the figure moving here</span>",
+      "figure-moved-bigtop": "<span lang="en" dir="ltr" class="mw-content-ltr">the Big Top moved to the newly placed tile</span>",
       "meeple-deployed": "<span lang="en" dir="ltr" class="mw-content-ltr">the deployed meeple</span>",
       "rule": {
         "count-clockwise": "<span lang="en" dir="ltr" class="mw-content-ltr">the Count moving on clockwise</span>",
+        "crop-circle": "<span lang="en" dir="ltr" class="mw-content-ltr">a crop circle</span>",
         "decinsky-sneznik-scored": "<span lang="en" dir="ltr" class="mw-content-ltr">Děčínský Sněžník scored</span>",
         "final-scoring": "<span lang="en" dir="ltr" class="mw-content-ltr">final scoring</span>",
         "flock-expanded": "<span lang="en" dir="ltr" class="mw-content-ltr">a sheep token drawn for the flock</span>",
@@ -361,6 +363,7 @@
     "element": {
       "abbey": "Abat",
       "abbot": "Abat",
+      "animal-token": "<span lang="en" dir="ltr" class="mw-content-ltr">Animal token</span>",
       "barn": "Graner",
       "big-follower": "Seguidor gran",
       "big-top": "Carpa",
@@ -490,6 +493,8 @@
       "moved-by": "<span lang="en" dir="ltr" class="mw-content-ltr">Moved by {player}</span>",
       "placed-by": "<span lang="en" dir="ltr" class="mw-content-ltr">Placed by {player}</span>",
       "removed-with": "<span lang="en" dir="ltr" class="mw-content-ltr">{source}, by {player}</span>",
+      "source-barn-field-join": "<span lang="en" dir="ltr" class="mw-content-ltr">Its field joined to one with a barn</span>",
+      "source-barn-placement": "<span lang="en" dir="ltr" class="mw-content-ltr">Barn placed on its field</span>",
       "title": {
         "captured": "<span lang="en" dir="ltr" class="mw-content-ltr">{figure} captured</span>",
         "castle-created": "<span lang="en" dir="ltr" class="mw-content-ltr">Small city converted to a castle</span>",
@@ -499,6 +504,7 @@
         "placed": "<span lang="en" dir="ltr" class="mw-content-ltr">{figure} placed</span>",
         "placed-on-letter": "<span lang="en" dir="ltr" class="mw-content-ltr">{figure} placed on the Letter</span>",
         "removed": "<span lang="en" dir="ltr" class="mw-content-ltr">{figure} removed</span>",
+        "revealed": "<span lang="en" dir="ltr" class="mw-content-ltr">{figure} revealed and scored</span>",
         "tile-placed": "<span lang="en" dir="ltr" class="mw-content-ltr">Tile placed</span>"
       }
     },
@@ -551,7 +557,9 @@
       "not-available": "<span lang="en" dir="ltr" class="mw-content-ltr">AI not available</span>",
       "not-available-hint": "<span lang="en" dir="ltr" class="mw-content-ltr">AI players are not available for game setup</span>",
       "not-supported": "<span lang="en" dir="ltr" class="mw-content-ltr">The AI does not play</span>",
-      "supported": "<span lang="en" dir="ltr" class="mw-content-ltr">The AI can play this</span>"
+      "supported": "<span lang="en" dir="ltr" class="mw-content-ltr">The AI can play this</span>",
+      "supported-not-with": "<span lang="en" dir="ltr" class="mw-content-ltr">The AI can play this — not with: {elements}</span>",
+      "supported-only-without": "<span lang="en" dir="ltr" class="mw-content-ltr">The AI can play this only without: {elements}</span>"
     },
     "additional-elements": "Elements addicionals",
     "altered-gameplay": "Modificacions del joc",
@@ -566,6 +574,7 @@
       "assign": "<span lang="en" dir="ltr" class="mw-content-ltr">assign</span>",
       "ai-player": "<span lang="en" dir="ltr" class="mw-content-ltr">AI player</span>",
       "click-to-assign": "feu clic per a assignar",
+      "color-unavailable": "<span lang="en" dir="ltr" class="mw-content-ltr">Color not available</span>",
       "game-full": "<span lang="en" dir="ltr" class="mw-content-ltr">Game full</span>",
       "kick-player": "<span lang="en" dir="ltr" class="mw-content-ltr">Kick player</span>",
       "local-ai-player": "jugador ia local",
@@ -580,6 +589,7 @@
       "rename-player": "Canvia el nom de jugador",
       "waiting-for-player": "s'espera al jugador"
     },
+    "features": "<span lang="en" dir="ltr" class="mw-content-ltr">Features</span>",
     "game-element-box": {
       "mandatory-for-selected-tiles": "Obligatori per a les peces seleccionades",
       "related-tiles-not-selected": "Peces relacionades no seleccionades"
@@ -599,6 +609,8 @@
       "timer": "Cronòmetre",
       "variant": "Variant"
     },
+    "mechanics": "<span lang="en" dir="ltr" class="mw-content-ltr">Mechanics</span>",
+    "modifiers": "<span lang="en" dir="ltr" class="mw-content-ltr">Modifiers</span>",
     "open-game": {
       "assign-all-players-to-start": "Assigneu tots els jugadors per a començar",
       "hide-remaining-tiles-cheat-sheet": "Amaga la llista de peces que queden per jugar",
@@ -627,6 +639,8 @@
       "bazaar-disabled": "A la partida no hi ha cap peça amb basars.",
       "cathedral-description": "Les ciutats completades amb una catedral ×3, en lloc de ×2, i opcionalment sense puntuar al recompte final.",
       "cathedral-disabled": "No hi ha caselles amb catedrals a la partida.",
+	  "city-description": "<span lang="en" dir="ltr" class="mw-content-ltr">City is completed when its walls are fully closed.</span>",
+      "city-scoring": "<span lang="en" dir="ltr" class="mw-content-ltr">City scores 2 points per tile and per coat of arms. An unfinished city scores only 1 point per tile and per coat of arms at the end of the game.</span>",
       "escape-description": "Escapada permesa a través d'un monestir veí.",
       "escape-disabled": "A la partida no hi ha cap peça amb setges.",
       "farmers-description": "Els jugadors poden posar seguidors als camps.",
@@ -645,12 +659,16 @@
       "garden-disabled": "No s'ha triat un abad.",
       "hill-description": "Es fa servir per als desempats. També amaga una peça a l'atzar a sota.",
       "hill-disabled": "A la partida no hi ha cap peça amb turons.",
+      "info-title": "<span lang="en" dir="ltr" class="mw-content-ltr">Tiles with this feature</span>",
+      "info-tiles-count": "<span lang="en" dir="ltr" class="mw-content-ltr">Tiles in the game: {count} of {total}</span>",
       "inn-description": "Els camins completats amb una fonda puntuen ×2 i opcionalment no es tenen en compte les fondes al recompte final.",
       "inn-disabled": "A la partida no hi ha cap peça amb fondes.",
       "marketplace-description": "Els mercats connecten diversos camins en una sola xarxa compartida que es completa quan es tanquen tots els camins involucrats. Quan puntuen, es donen punts de bonificació per la llargada dels altres camins completats.",
       "marketplace-disabled": "A la partida no hi ha cap peça amb mercats.",
-      "meteorite-description": "TBA",
+      "meteorite-description": "<span lang="en" dir="ltr" class="mw-content-ltr">Placing a tile with a crater causes a meteorite impact: a die roll decides how far the blast reaches, and every meeple and neutral figure standing on the hit tiles is knocked off the board.</span>",
       "meteorite-disabled": "A la partida no hi ha peces amb cràters.",
+	  "monastery-description": "<span lang="en" dir="ltr" class="mw-content-ltr">Monastery is completed when it is surrounded by eight tiles.</span>",
+      "monastery-scoring": "<span lang="en" dir="ltr" class="mw-content-ltr">Monastery scores 9 points. At the end of the game an unfinished monastery scores 1 point for itself and 1 for each neighbouring tile.</span>",
       "optional-game-mechanics": "Mecàniques de joc opcionals",
       "pig-herd-description": "Compta com un porc addicional al camp (els grangers puntuen més punts).",
       "pig-herd-disabled": "A la partida no hi ha peces amb porcades.",
@@ -658,11 +676,14 @@
       "portal-disabled": "A la partida no hi ha cap peça amb portals màgics.",
       "princess-description": "La princesa pot traure un cavaller d'una ciutat.",
       "princess-disabled": "A la partida no hi ha peces amb la princesa.",
+	  "road-description": "<span lang="en" dir="ltr" class="mw-content-ltr">Road is completed when all of its ends are closed (by a crossing, a city, a monastery or a loop).</span>",
+      "road-scoring": "<span lang="en" dir="ltr" class="mw-content-ltr">Road scores 1 point per tile. An unfinished road still scores 1 point per tile at the end of the game.</span>",
       "robbers-son-description": "El fill del viatjant pot traure un lladre del camí.",
       "robbers-son-disabled": "No hi ha cap peça amb el fill del viatjant a la partida.",
       "scoring-variants": "Variants de puntuació",
       "shrine-description": "Un santuari i un monestir un al costat de l'altre competeixen. Qui acabi primer, puntua. El segon, no obté cap punt.",
       "shrine-disabled": "No hi ha caselles amb santuaris a la partida.",
+      "shrine-scoring": "<span lang="en" dir="ltr" class="mw-content-ltr">A shrine is scored like a monastery.</span>",
       "siege-description": "Les ciutats assetjades tenen menys valor.",
       "siege-disabled": "A la partida no hi ha peces amb setges.",
       "starting-tiles-configuration": "Configuració de les peces inicials",

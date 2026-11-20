@@ -334,9 +334,11 @@
     "cause": {
       "caused-by": "<span lang="en" dir="ltr" class="mw-content-ltr">Caused by: {cause}</span>",
       "figure-moved": "<span lang="en" dir="ltr" class="mw-content-ltr">the figure moving here</span>",
+      "figure-moved-bigtop": "<span lang="en" dir="ltr" class="mw-content-ltr">the Big Top moved to the newly placed tile</span>",
       "meeple-deployed": "<span lang="en" dir="ltr" class="mw-content-ltr">the deployed meeple</span>",
       "rule": {
         "count-clockwise": "<span lang="en" dir="ltr" class="mw-content-ltr">the Count moving on clockwise</span>",
+        "crop-circle": "<span lang="en" dir="ltr" class="mw-content-ltr">a crop circle</span>",
         "decinsky-sneznik-scored": "<span lang="en" dir="ltr" class="mw-content-ltr">Děčínský Sněžník scored</span>",
         "final-scoring": "<span lang="en" dir="ltr" class="mw-content-ltr">final scoring</span>",
         "flock-expanded": "<span lang="en" dir="ltr" class="mw-content-ltr">a sheep token drawn for the flock</span>",
@@ -361,6 +363,7 @@
     "element": {
       "abbey": "Abadía",
       "abbot": "Abad",
+      "animal-token": "<span lang="en" dir="ltr" class="mw-content-ltr">Animal token</span>",
       "barn": "Granero",
       "big-follower": "Seguidor mayor",
       "big-top": "Carpa",
@@ -490,6 +493,8 @@
       "moved-by": "<span lang="en" dir="ltr" class="mw-content-ltr">Moved by {player}</span>",
       "placed-by": "<span lang="en" dir="ltr" class="mw-content-ltr">Placed by {player}</span>",
       "removed-with": "<span lang="en" dir="ltr" class="mw-content-ltr">{source}, by {player}</span>",
+      "source-barn-field-join": "<span lang="en" dir="ltr" class="mw-content-ltr">Its field joined to one with a barn</span>",
+      "source-barn-placement": "<span lang="en" dir="ltr" class="mw-content-ltr">Barn placed on its field</span>",
       "title": {
         "captured": "<span lang="en" dir="ltr" class="mw-content-ltr">{figure} captured</span>",
         "castle-created": "<span lang="en" dir="ltr" class="mw-content-ltr">Small city converted to a castle</span>",
@@ -499,6 +504,7 @@
         "placed": "<span lang="en" dir="ltr" class="mw-content-ltr">{figure} placed</span>",
         "placed-on-letter": "<span lang="en" dir="ltr" class="mw-content-ltr">{figure} placed on the Letter</span>",
         "removed": "<span lang="en" dir="ltr" class="mw-content-ltr">{figure} removed</span>",
+        "revealed": "<span lang="en" dir="ltr" class="mw-content-ltr">{figure} revealed and scored</span>",
         "tile-placed": "<span lang="en" dir="ltr" class="mw-content-ltr">Tile placed</span>"
       }
     },
@@ -551,7 +557,9 @@
       "not-available": "<span lang="en" dir="ltr" class="mw-content-ltr">AI not available</span>",
       "not-available-hint": "<span lang="en" dir="ltr" class="mw-content-ltr">AI players are not available for game setup</span>",
       "not-supported": "<span lang="en" dir="ltr" class="mw-content-ltr">The AI does not play</span>",
-      "supported": "<span lang="en" dir="ltr" class="mw-content-ltr">The AI can play this</span>"
+      "supported": "<span lang="en" dir="ltr" class="mw-content-ltr">The AI can play this</span>",
+      "supported-not-with": "<span lang="en" dir="ltr" class="mw-content-ltr">The AI can play this — not with: {elements}</span>",
+      "supported-only-without": "<span lang="en" dir="ltr" class="mw-content-ltr">The AI can play this only without: {elements}</span>"
     },
     "additional-elements": "Elementos adicionales",
     "altered-gameplay": "Modo de juego alterado",
@@ -566,6 +574,7 @@
       "assign": "<span lang="en" dir="ltr" class="mw-content-ltr">assign</span>",
       "ai-player": "<span lang="en" dir="ltr" class="mw-content-ltr">AI player</span>",
       "click-to-assign": "clic para asignar",
+      "color-unavailable": "<span lang="en" dir="ltr" class="mw-content-ltr">Color not available</span>",
       "game-full": "<span lang="en" dir="ltr" class="mw-content-ltr">Game full</span>",
       "kick-player": "Echar jugador",
       "local-ai-player": "jugador IA local",
@@ -580,6 +589,7 @@
       "rename-player": "Renombrar jugador",
       "waiting-for-player": "esperando a jugador"
     },
+    "features": "<span lang="en" dir="ltr" class="mw-content-ltr">Features</span>",
     "game-element-box": {
       "mandatory-for-selected-tiles": "Obligatorio para las losetas seleccionadas",
       "related-tiles-not-selected": "Losetas relacionadas no seleccionadas"
@@ -599,6 +609,8 @@
       "timer": "Temporizador",
       "variant": "<span lang="en" dir="ltr" class="mw-content-ltr">Variant</span>"
     },
+    "mechanics": "<span lang="en" dir="ltr" class="mw-content-ltr">Mechanics</span>",
+    "modifiers": "<span lang="en" dir="ltr" class="mw-content-ltr">Modifiers</span>",
     "open-game": {
       "assign-all-players-to-start": "Asignar todos los jugadores a la salida",
       "hide-remaining-tiles-cheat-sheet": "Ocultar referencia con las losetas restantes",
@@ -627,6 +639,8 @@
       "bazaar-disabled": "No hay ninguna loseta con Mercado en la partida.",
       "cathedral-description": "Ciudades completadas con Catedral ×3 en lugar de ×2, y opcionalmente no puntúan durante la puntuación final.",
       "cathedral-disabled": "No hay ninguna loseta con Catedral en la partida.",
+	  "city-description": "<span lang="en" dir="ltr" class="mw-content-ltr">City is completed when its walls are fully closed.</span>",
+      "city-scoring": "<span lang="en" dir="ltr" class="mw-content-ltr">City scores 2 points per tile and per coat of arms. An unfinished city scores only 1 point per tile and per coat of arms at the end of the game.</span>",
       "escape-description": "Escape permitido a través de un monasterio vecino.",
       "escape-disabled": "No hay ninguna loseta con asedio en la partida.",
       "farmers-description": "Los jugadores pueden colocar seguidores en los campos.",
@@ -645,12 +659,16 @@
       "garden-disabled": "Abad no está seleccionado.",
       "hill-description": "Se utiliza como desempate. También esconde una loseta aleatoria debajo.",
       "hill-disabled": "No hay ninguna loseta con Colina en la partida.",
+      "info-title": "<span lang="en" dir="ltr" class="mw-content-ltr">Tiles with this feature</span>",
+      "info-tiles-count": "<span lang="en" dir="ltr" class="mw-content-ltr">Tiles in the game: {count} of {total}</span>",
       "inn-description": "Los caminos completados con posada ×2, y opcionalmente no dan puntos durante la puntuación final.",
       "inn-disabled": "No hay ninguna loseta con Posada en la partida.",
       "marketplace-description": "Los Grandes Mercados conectan varios caminos formando una red compartida que solo se completa cuando todos los caminos conectados están cerrados. Al puntuarlos, se otorgan puntos de bonificación equivalentes a la longitud de los demás caminos completados en esa red.",
       "marketplace-disabled": "No hay ninguna loseta de Gran Mercado en la partida.",
-      "meteorite-description": "TBA",
+      "meteorite-description": "<span lang="en" dir="ltr" class="mw-content-ltr">Placing a tile with a crater causes a meteorite impact: a die roll decides how far the blast reaches, and every meeple and neutral figure standing on the hit tiles is knocked off the board.</span>",
       "meteorite-disabled": "No hay ninguna loseta de Cráter en la partida.",
+	  "monastery-description": "<span lang="en" dir="ltr" class="mw-content-ltr">Monastery is completed when it is surrounded by eight tiles.</span>",
+      "monastery-scoring": "<span lang="en" dir="ltr" class="mw-content-ltr">Monastery scores 9 points. At the end of the game an unfinished monastery scores 1 point for itself and 1 for each neighbouring tile.</span>",
       "optional-game-mechanics": "Mecánicas de juego opcionales",
       "pig-herd-description": "Cuenta como cerdo adicional en el campo (los campesinos consiguen más puntos).",
       "pig-herd-disabled": "No hay ninguna loseta con Piara de Cerdos en la partida.",
@@ -658,11 +676,14 @@
       "portal-disabled": "No hay ninguna loseta con Portal Mágico en la partida.",
       "princess-description": "La princesa puede retirar un caballero de una ciudad.",
       "princess-disabled": "No hay ninguna loseta con Princesa en la partida.",
+	  "road-description": "<span lang="en" dir="ltr" class="mw-content-ltr">Road is completed when all of its ends are closed (by a crossing, a city, a monastery or a loop).</span>",
+      "road-scoring": "<span lang="en" dir="ltr" class="mw-content-ltr">Road scores 1 point per tile. An unfinished road still scores 1 point per tile at the end of the game.</span>",
       "robbers-son-description": "Hijo del Ladrón permite retirar un ladrón de un camino.",
       "robbers-son-disabled": "No hay losetas de Hijo del Ladrón en la partida.",
       "scoring-variants": "Variantes de puntuación",
       "shrine-description": "Santuario situado junto a un monasterio compiten, quien termine la zona en primer lugar obtiene los puntos. (el segundo no obtiene puntos)",
       "shrine-disabled": "No hay ninguna loseta con Santuario en la partida.",
+      "shrine-scoring": "<span lang="en" dir="ltr" class="mw-content-ltr">A shrine is scored like a monastery.</span>",
       "siege-description": "Las ciudades sitiadas son menos valiosas.",
       "siege-disabled": "No hay ninguna loseta con Asedio en la partida.",
       "starting-tiles-configuration": "Configuración de loseta(s) de inicio",

@@ -2,7 +2,7 @@
   "@author": "Challa007 & Bombur",
   "@jcz-version": "5.12.1",
   "@fcz-version": "7.2.0",
-  "@version": "0.13.6-ai",
+  "@version": "0.13.10-ai",
   "about": {
     "author": "Autor",
     "configuration-file": "Konfigurationsdatei",
@@ -335,9 +335,11 @@
     "cause": {
       "caused-by": "Ursache: {cause}",
       "figure-moved": "die hierher gezogene Figur",
+      "figure-moved-bigtop": "das auf das neu gelegte Plättchen umgezogene Zirkuszelt",
       "meeple-deployed": "der eingesetzte Meeple",
       "rule": {
         "count-clockwise": "der Graf zieht im Uhrzeigersinn weiter",
+        "crop-circle": "ein Kornkreis",
         "decinsky-sneznik-scored": "Hoher Schneeberg gewertet",
         "final-scoring": "Schlusswertung",
         "flock-expanded": "ein Schafplättchen für die Herde gezogen",
@@ -362,6 +364,7 @@
     "element": {
       "abbey": "Abtei",
       "abbot": "Abt",
+      "animal-token": "Tierplättchen",
       "barn": "Gutshof",
       "big-follower": "Großer Meeple",
       "big-top": "Zirkuszelt",
@@ -491,6 +494,8 @@
       "moved-by": "Versetzt von {player}",
       "placed-by": "Gelegt von {player}",
       "removed-with": "{source}, von {player}",
+      "source-barn-field-join": "Seine Wiese mit einer Wiese mit Gutshof verbunden",
+      "source-barn-placement": "Gutshof auf seine Wiese gesetzt",
       "title": {
         "captured": "{figure} gefangen",
         "castle-created": "Kleine Stadt in eine Burg umgewandelt",
@@ -500,6 +505,7 @@
         "placed": "{figure} eingesetzt",
         "placed-on-letter": "{figure} auf den Brief gesetzt",
         "removed": "{figure} entfernt",
+        "revealed": "{figure} aufgedeckt und gewertet",
         "tile-placed": "Plättchen gelegt"
       }
     },
@@ -552,7 +558,9 @@
       "not-available": "Computergegner nicht verfügbar",
       "not-available-hint": "Computergegner sind für diese Spieleinstellung nicht verfügbar",
       "not-supported": "Der Computergegner spielt nicht",
-      "supported": "Der Computergegner kann das spielen"
+      "supported": "Der Computergegner kann das spielen",
+      "supported-not-with": "Der Computergegner kann das spielen — nicht mit: {elements}",
+      "supported-only-without": "Der Computergegner kann das nur spielen ohne: {elements}"
     },
     "additional-elements": "Zusätzliche Elemente",
     "altered-gameplay": "Geänderte Spielregeln",
@@ -567,8 +575,8 @@
       "assign": "zuweisen",
       "ai-player": "Computergegner",
       "click-to-assign": "zum Zuweisen hier klicken",
-      "game-full": "Spiel voll",
       "color-unavailable": "Farbe nicht verfügbar",
+      "game-full": "Spiel voll",
       "kick-player": "Spieler entfernen",
       "local-ai-player": "Lokaler Computergegner",
       "local-limit-reached": "Limit erreicht",
@@ -582,6 +590,7 @@
       "rename-player": "Spieler umbenennen",
       "waiting-for-player": "auf Spieler warten"
     },
+    "features": "Elemente",
     "game-element-box": {
       "mandatory-for-selected-tiles": "Obligatorisch für ausgewählte Plättchen",
       "related-tiles-not-selected": "Zugehörige Plättchen nicht ausgewählt"
@@ -601,6 +610,8 @@
       "timer": "Timer",
       "variant": "Variante"
     },
+    "mechanics": "Mechaniken",
+    "modifiers": "Modifikatoren",
     "open-game": {
       "assign-all-players-to-start": "Setzen Sie alle Spieler an den Start",
       "hide-remaining-tiles-cheat-sheet": "Liste der verbleibenden Plättchen ausblenden",
@@ -629,6 +640,8 @@
       "bazaar-disabled": "Kein Basarplättchen ist im Spiel.",
       "cathedral-description": "Fertige Städte mit Kathedrale ×3 statt ×2, keine Punkte bei der Schlusswertung.",
       "cathedral-disabled": "Kein Plättchen mit Kathedrale ist im Spiel.",
+      "city-description": "Eine Stadt ist fertig, wenn ihre Mauern vollständig geschlossen sind.",
+      "city-scoring": "Eine Stadt zählt 2 Punkte pro Plättchen und pro Wappen. Eine unfertige Stadt zählt am Spielende nur 1 Punkt pro Plättchen und pro Wappen.",
       "escape-description": "Flucht ist erlaubt über ein benachbartes Kloster.",
       "escape-disabled": "Kein Plättchen mit Belagerung ist im Spiel.",
       "farmers-description": "Spieler dürfen Meeples auf Wiesen setzen.",
@@ -647,12 +660,16 @@
       "garden-disabled": "Abt ist nicht ausgewählt.",
       "hill-description": "Wird zum Gewinnen eines Mehrheits-Gleichstands verwendet. Versteckt außerdem ein zufälliges Plättchen unter sich.",
       "hill-disabled": "Kein Plättchen mit Hügel ist im Spiel.",
+      "info-title": "Plättchen mit diesem Element",
+      "info-tiles-count": "Plättchen im Spiel: {count} von {total}",
       "inn-description": "Beendete Straßen mit Wirtshaus zählen doppelt und optional nichts in der Schlusswertung.",
       "inn-disabled": "Kein Plättchen mit Wirtshaus ist im Spiel.",
       "marketplace-description": "Marktplätze verbinden mehrere Straßen zu einem gemeinsamen Netzwerk, welches nur fertiggestellt wird, wenn alle zugehörigen Straßen fertiggestellt sind. Beim Abschluss werden Bonuspunkte im Wert aller anderen verbundenen Straßen erzielt.",
       "marketplace-disabled": "Kein Plättchen mit einem Marktplatz ist im Spiel.",
-      "meteorite-description": "TBA",
+      "meteorite-description": "Das Legen eines Plättchens mit Krater löst einen Meteoriteneinschlag aus: Ein Würfelwurf entscheidet, wie weit die Explosion reicht, und alle Meeple und neutralen Figuren auf den getroffenen Plättchen werden vom Spielplan gefegt.",
       "meteorite-disabled": "Kein Plättchen mit einem Krater ist im Spiel.",
+      "monastery-description": "Ein Kloster ist fertig, wenn es von acht Plättchen umgeben ist.",
+      "monastery-scoring": "Ein Kloster zählt 9 Punkte. Ein unfertiges Kloster zählt am Spielende 1 Punkt für sich selbst und 1 Punkt für jedes benachbarte Plättchen.",
       "optional-game-mechanics": "Optionale Spielmechanik",
       "pig-herd-description": "Zählt als zusätzliches Schwein auf der Wiese (Bauer erhält mehr Punkte).",
       "pig-herd-disabled": "Kein Plättchen mit Schweineherde ist im Spiel.",
@@ -660,11 +677,14 @@
       "portal-disabled": "Kein Plättchen mit Zaubergang ist im Spiel.",
       "princess-description": "Das Burgfräulein kann Ritter aus einer Stadt entfernen.",
       "princess-disabled": "Kein Plättchen mit Burgfräulein ist im Spiel.",
+      "road-description": "Eine Straße ist fertig, wenn alle ihre Enden abgeschlossen sind (durch eine Kreuzung, eine Stadt, ein Kloster oder eine Schleife).",
+      "road-scoring": "Eine Straße zählt 1 Punkt pro Plättchen. Eine unfertige Straße zählt am Spielende ebenfalls 1 Punkt pro Plättchen.",
       "robbers-son-description": "Der Räubersohn kann einen Wegelagerer von der Straße entfernen.",
       "robbers-son-disabled": "Kein Plättchen mit Räubersohn ist im Spiel.",
       "scoring-variants": "Wertungsvarianten",
       "shrine-description": "Neben einem Kloster platzierte Kultstätte bedeutet Herausforderung, wer als Erster das Gebäude fertigstellt. Der Zweite bekommt keine Punkte.",
       "shrine-disabled": "Kein Plättchen mit Kultstätte ist im Spiel.",
+      "shrine-scoring": "Eine Kultstätte wird wie ein Kloster gewertet.",
       "siege-description": "Belagerte Städte sind weniger Punkte wert.",
       "siege-disabled": "Kein Plättchen mit Belagerung ist im Spiel.",
       "starting-tiles-configuration": "Startplättchen-Konfiguration",
@@ -672,7 +692,10 @@
       "vineyard-description": "Zusätzliche Punkte für nahe gelegenes Kloster.",
       "vineyard-disabled": "Kein Plättchen mit Weinberg ist im Spiel.",
       "well-description": "Füge einen Punkt pro Brunnen auf Straßen hinzu. Eine abgeschlossene Straße mit Wirtshaus bekommt 2 Punkte, eine unfertige Straße mit Wirtshaus bekommt 0 Punkte.",
-      "well-disabled": "Es gibt kein Plättchen mit Brunnen im Spiel"
+      "well-disabled": "Es gibt kein Plättchen mit Brunnen im Spiel",
+      "features": "Elemente",
+      "mechanics": "Mechaniken",
+      "modifiers": "Modifikatoren"
     },
     "selected-tiles": "Ausgewählte Plättchen",
     "tiles": {

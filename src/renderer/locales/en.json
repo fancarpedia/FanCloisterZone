@@ -2,7 +2,7 @@
   "@author": "farin & Scott",
   "@jcz-version": "5.12.1",
   "@fcz-version": "7.2.0",
-  "@version": "0.13.6",
+  "@version": "0.13.10",
   "about": {
     "author": "Author",
     "configuration-file": "Configuration file",
@@ -335,9 +335,11 @@
     "cause": {
       "caused-by": "Caused by: {cause}",
       "figure-moved": "the figure moving here",
+      "figure-moved-bigtop": "the Big Top moved to the newly placed tile",
       "meeple-deployed": "the deployed meeple",
       "rule": {
         "count-clockwise": "the Count moving on clockwise",
+        "crop-circle": "a crop circle",
         "decinsky-sneznik-scored": "Děčínský Sněžník scored",
         "final-scoring": "final scoring",
         "flock-expanded": "a sheep token drawn for the flock",
@@ -362,6 +364,7 @@
     "element": {
       "abbey": "Abbey",
       "abbot": "Abbot",
+      "animal-token": "Animal token",
       "barn": "Barn",
       "big-follower": "Big Meeple",
       "big-top": "Big Top",
@@ -491,6 +494,8 @@
       "moved-by": "Moved by {player}",
       "placed-by": "Placed by {player}",
       "removed-with": "{source}, by {player}",
+      "source-barn-field-join": "Its field joined to one with a barn",
+      "source-barn-placement": "Barn placed on its field",
       "title": {
         "captured": "{figure} captured",
         "castle-created": "Small city converted to a castle",
@@ -500,6 +505,7 @@
         "placed": "{figure} placed",
         "placed-on-letter": "{figure} placed on the Letter",
         "removed": "{figure} removed",
+        "revealed": "{figure} revealed and scored",
         "tile-placed": "Tile placed"
       }
     },
@@ -552,7 +558,9 @@
       "not-available": "AI not available",
       "not-available-hint": "AI players are not available for game setup",
       "not-supported": "The AI does not play",
-      "supported": "The AI can play this"
+      "supported": "The AI can play this",
+      "supported-not-with": "The AI can play this — not with: {elements}",
+      "supported-only-without": "The AI can play this only without: {elements}"
     },
     "additional-elements": "Additional elements",
     "altered-gameplay": "Altered Gameplay",
@@ -567,8 +575,8 @@
       "assign": "assign",
       "ai-player": "AI player",
       "click-to-assign": "click to assign",
-      "game-full": "Game full",
       "color-unavailable": "Color not available",
+      "game-full": "Game full",
       "kick-player": "Kick player",
       "local-ai-player": "local ai player",
       "local-limit-reached": "Limit reached",
@@ -582,6 +590,7 @@
       "rename-player": "Rename Player",
       "waiting-for-player": "waiting for player"
     },
+    "features": "Features",
     "game-element-box": {
       "mandatory-for-selected-tiles": "Mandatory for selected tiles",
       "related-tiles-not-selected": "Related tiles not selected"
@@ -601,6 +610,8 @@
       "timer": "Timer",
       "variant": "Variant"
     },
+    "mechanics": "Mechanics",
+    "modifiers": "Modifiers",
     "open-game": {
       "assign-all-players-to-start": "Assign all players to start",
       "hide-remaining-tiles-cheat-sheet": "Hide remaining tiles cheat sheet",
@@ -629,6 +640,8 @@
       "bazaar-disabled": "No tile with Bazaar is in the game.",
       "cathedral-description": "Completed Cities with Cathedral ×3 instead of ×2 and optionally no points during final scoring.",
       "cathedral-disabled": "No tile with Cathedral is in game.",
+      "city-description": "City is completed when its walls are fully closed.",
+      "city-scoring": "City scores 2 points per tile and per coat of arms. An unfinished city scores only 1 point per tile and per coat of arms at the end of the game.",
       "escape-description": "Escape allowed via a neighboring monastery.",
       "escape-disabled": "No tile with Siege is in game.",
       "farmers-description": "Players are allowed to place meeples on fields.",
@@ -647,12 +660,16 @@
       "garden-disabled": "Abbot is not selected.",
       "hill-description": "Used as a tiebreaker. Also hides one random tile underneath.",
       "hill-disabled": "No tile with Hill is in game.",
+      "info-title": "Tiles with this feature",
+      "info-tiles-count": "Tiles in the game: {count} of {total}",
       "inn-description": "Completed roads with Inn ×2 and optionally no points during final scoring.",
       "inn-disabled": "No tile with Inn is in the game.",
       "marketplace-description": "Marketplaces connect several roads into a shared network that only completes when all linked roads are closed. When scored, bonus points equal to the length of the other completed roads in that network are given.",
       "marketplace-disabled": "No tile with Marketplace is in the game.",
-      "meteorite-description": "TBA",
+      "meteorite-description": "Placing a tile with a crater causes a meteorite impact: a die roll decides how far the blast reaches, and every meeple and neutral figure standing on the hit tiles is knocked off the board.",
       "meteorite-disabled": "No tile with Crater is in the game.",
+      "monastery-description": "Monastery is completed when it is surrounded by eight tiles.",
+      "monastery-scoring": "Monastery scores 9 points. At the end of the game an unfinished monastery scores 1 point for itself and 1 for each neighbouring tile.",
       "optional-game-mechanics": "Optional game mechanics",
       "pig-herd-description": "Counts as additional pig on field (farmers scores more points).",
       "pig-herd-disabled": "No tile with Pig Herd is in the game.",
@@ -660,11 +677,14 @@
       "portal-disabled": "No tile with Magic Portal is in the game.",
       "princess-description": "Princess can remove a knight from a city.",
       "princess-disabled": "No tile with Princess is in the game.",
+      "road-description": "Road is completed when all of its ends are closed (by a crossing, a city, a monastery or a loop).",
+      "road-scoring": "Road scores 1 point per tile. An unfinished road still scores 1 point per tile at the end of the game.",
       "robbers-son-description": "Robber's Son can remove a thief from a road.",
       "robbers-son-disabled": "No tile with Robber's Son is in the game.",
       "scoring-variants": "Scoring variants",
       "shrine-description": "Shrine placed next to a monastery competes to finish first. (second gets no points)",
       "shrine-disabled": "No tile with Shrine is in the game.",
+      "shrine-scoring": "A shrine is scored like a monastery.",
       "siege-description": "Besieged cities are less valuable.",
       "siege-disabled": "No tile with Siege is in the game.",
       "starting-tiles-configuration": "Starting tile(s) configuration",
@@ -672,7 +692,10 @@
       "vineyard-description": "Additional points for nearby Monastery.",
       "vineyard-disabled": "No tile with Vineyard is in the game.",
       "well-description": "Add point per Well on roads. Roads with Inn get 2 points when completed and optionally no points during final scoring.",
-      "well-disabled": "No tile with Well is in the game."
+      "well-disabled": "No tile with Well is in the game.",
+      "features": "Features",
+      "mechanics": "Mechanics",
+      "modifiers": "Modifiers"
     },
     "selected-tiles": "Selected tiles",
     "tiles": {

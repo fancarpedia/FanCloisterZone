@@ -2,7 +2,7 @@
   "@author": "Carlium & Meepledrone",
   "@jcz-version": "5.12.1",
   "@fcz-version": "7.2.0",
-  "@version": "0.13.6-ai",
+  "@version": "0.13.10-ai",
   "about": {
     "author": "Autor",
     "configuration-file": "Archivo de configuración",
@@ -335,9 +335,11 @@
     "cause": {
       "caused-by": "Causa: {cause}",
       "figure-moved": "la figura movida aquí",
+      "figure-moved-bigtop": "la Carpa trasladada a la loseta recién colocada",
       "meeple-deployed": "el seguidor colocado",
       "rule": {
         "count-clockwise": "el Conde avanza en el sentido de las agujas del reloj",
+        "crop-circle": "un círculo de cultivo",
         "decinsky-sneznik-scored": "Decinsky Sneznik puntuado",
         "final-scoring": "puntuación final",
         "flock-expanded": "una ficha de oveja robada para el rebaño",
@@ -362,6 +364,7 @@
     "element": {
       "abbey": "Abadía",
       "abbot": "Abad",
+      "animal-token": "Ficha de animal",
       "barn": "Granero",
       "big-follower": "Seguidor mayor",
       "big-top": "Carpa",
@@ -491,6 +494,8 @@
       "moved-by": "Movido por {player}",
       "placed-by": "Puesto por {player}",
       "removed-with": "{source}, por {player}",
+      "source-barn-field-join": "Su campo se unió a uno con granero",
+      "source-barn-placement": "Granero colocado en su campo",
       "title": {
         "captured": "Captura: {figure}",
         "castle-created": "Ciudad pequeña convertida en castillo",
@@ -500,6 +505,7 @@
         "placed": "Colocación: {figure}",
         "placed-on-letter": "Colocación en la Carta: {figure}",
         "removed": "Retirada: {figure}",
+        "revealed": "{figure} revelada y puntuada",
         "tile-placed": "Loseta colocada"
       }
     },
@@ -552,7 +558,9 @@
       "not-available": "IA no disponible",
       "not-available-hint": "Los jugadores IA no están disponibles para esta configuración de partida",
       "not-supported": "La IA no juega",
-      "supported": "La IA puede jugar esto"
+      "supported": "La IA puede jugar esto",
+      "supported-not-with": "La IA puede jugar esto — no con: {elements}",
+      "supported-only-without": "La IA puede jugar esto solo sin: {elements}"
     },
     "additional-elements": "Elementos adicionales",
     "altered-gameplay": "Modo de juego alterado",
@@ -567,8 +575,8 @@
       "assign": "asignar",
       "ai-player": "Jugador IA",
       "click-to-assign": "clic para asignar",
-      "game-full": "Partida completa",
       "color-unavailable": "Color no disponible",
+      "game-full": "Partida completa",
       "kick-player": "Echar jugador",
       "local-ai-player": "jugador IA local",
       "local-limit-reached": "Límite alcanzado",
@@ -582,6 +590,7 @@
       "rename-player": "Renombrar jugador",
       "waiting-for-player": "esperando a jugador"
     },
+    "features": "Elementos",
     "game-element-box": {
       "mandatory-for-selected-tiles": "Obligatorio para las losetas seleccionadas",
       "related-tiles-not-selected": "Losetas relacionadas no seleccionadas"
@@ -601,6 +610,8 @@
       "timer": "Temporizador",
       "variant": "Variante"
     },
+    "mechanics": "Mecánicas",
+    "modifiers": "Modificadores",
     "open-game": {
       "assign-all-players-to-start": "Asignar todos los jugadores a la salida",
       "hide-remaining-tiles-cheat-sheet": "Ocultar referencia con las losetas restantes",
@@ -629,6 +640,8 @@
       "bazaar-disabled": "No hay ninguna loseta con Mercado en la partida.",
       "cathedral-description": "Ciudades completadas con Catedral ×3 en lugar de ×2, y opcionalmente no puntúan durante la puntuación final.",
       "cathedral-disabled": "No hay ninguna loseta con Catedral en la partida.",
+      "city-description": "La ciudad se completa cuando sus murallas quedan totalmente cerradas.",
+      "city-scoring": "La ciudad puntúa 2 puntos por loseta y por escudo. Una ciudad incompleta puntúa solo 1 punto por loseta y por escudo al final de la partida.",
       "escape-description": "Escape permitido a través de un monasterio vecino.",
       "escape-disabled": "No hay ninguna loseta con asedio en la partida.",
       "farmers-description": "Los jugadores pueden colocar seguidores en los campos.",
@@ -647,12 +660,16 @@
       "garden-disabled": "Abad no está seleccionado.",
       "hill-description": "Se utiliza como desempate. También esconde una loseta aleatoria debajo.",
       "hill-disabled": "No hay ninguna loseta con Colina en la partida.",
+      "info-title": "Losetas con este elemento",
+      "info-tiles-count": "Losetas en la partida: {count} de {total}",
       "inn-description": "Los caminos completados con posada ×2, y opcionalmente no dan puntos durante la puntuación final.",
       "inn-disabled": "No hay ninguna loseta con Posada en la partida.",
       "marketplace-description": "Los Grandes Mercados conectan varios caminos formando una red compartida que solo se completa cuando todos los caminos conectados están cerrados. Al puntuarlos, se otorgan puntos de bonificación equivalentes a la longitud de los demás caminos completados en esa red.",
       "marketplace-disabled": "No hay ninguna loseta de Gran Mercado en la partida.",
-      "meteorite-description": "TBA",
+      "meteorite-description": "Colocar una loseta con un cráter provoca el impacto de un meteorito: una tirada de dado decide hasta dónde llega la explosión, y todos los seguidores y figuras neutrales de las losetas alcanzadas salen del tablero.",
       "meteorite-disabled": "No hay ninguna loseta de Cráter en la partida.",
+      "monastery-description": "El monasterio se completa cuando está rodeado por ocho losetas.",
+      "monastery-scoring": "El monasterio puntúa 9 puntos. Al final de la partida, un monasterio incompleto puntúa 1 punto por sí mismo y 1 por cada loseta vecina.",
       "optional-game-mechanics": "Mecánicas de juego opcionales",
       "pig-herd-description": "Cuenta como cerdo adicional en el campo (los campesinos consiguen más puntos).",
       "pig-herd-disabled": "No hay ninguna loseta con Piara de Cerdos en la partida.",
@@ -660,11 +677,14 @@
       "portal-disabled": "No hay ninguna loseta con Portal Mágico en la partida.",
       "princess-description": "La princesa puede retirar un caballero de una ciudad.",
       "princess-disabled": "No hay ninguna loseta con Princesa en la partida.",
+      "road-description": "El camino se completa cuando todos sus extremos están cerrados (por un cruce, una ciudad, un monasterio o un bucle).",
+      "road-scoring": "El camino puntúa 1 punto por loseta. Un camino incompleto también puntúa 1 punto por loseta al final de la partida.",
       "robbers-son-description": "Hijo del Ladrón permite retirar un ladrón de un camino.",
       "robbers-son-disabled": "No hay losetas de Hijo del Ladrón en la partida.",
       "scoring-variants": "Variantes de puntuación",
       "shrine-description": "Santuario situado junto a un monasterio compiten, quien termine la zona en primer lugar obtiene los puntos. (el segundo no obtiene puntos)",
       "shrine-disabled": "No hay ninguna loseta con Santuario en la partida.",
+      "shrine-scoring": "Un santuario puntúa como un monasterio.",
       "siege-description": "Las ciudades sitiadas son menos valiosas.",
       "siege-disabled": "No hay ninguna loseta con Asedio en la partida.",
       "starting-tiles-configuration": "Configuración de loseta(s) de inicio",
@@ -672,7 +692,10 @@
       "vineyard-description": "Puntos adicionales por monasterio cercano.",
       "vineyard-disabled": "No hay ninguna loseta con Viñedo en la partida.",
       "well-description": "Añade un punto por cada pozo en un camino. Los caminos con posadas obtienen 2 puntos cuando se completan, y opcionalmente no obtienen puntos en la puntuación final.",
-      "well-disabled": "No hay ninguna loseta con Pozo en la partida."
+      "well-disabled": "No hay ninguna loseta con Pozo en la partida.",
+      "features": "Elementos",
+      "mechanics": "Mecánicas",
+      "modifiers": "Modificadores"
     },
     "selected-tiles": "Losetas seleccionadas",
     "tiles": {
