@@ -43,6 +43,7 @@
 
       <div class="gc-input">
         <v-text-field
+          v-keep-input-scroll
           v-model="newMessage"
           dense
           hide-details
@@ -68,8 +69,10 @@ import isNil from 'lodash/isNil'
 import CountryFlag from '@/components/CountryFlag'
 
 import ChatBulletDragMixin from '@/components/ChatBulletDragMixin'
+import keepInputScroll from '@/utils/keep-input-scroll'
 
 export default {
+  directives: { keepInputScroll },
   components: { CountryFlag },
 
   mixins: [ChatBulletDragMixin],
