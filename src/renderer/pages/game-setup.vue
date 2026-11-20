@@ -105,8 +105,11 @@ export default {
     const tabParam = this.$route.query.tab
     return {
       // editing an existing game: bookmarks tab is disabled (and the variant is settled), start on tiles;
-      // a fresh setup starts on the Variant tab (standard vs cooperative choice)
-      tab: editing ? Math.max(2, ~~tabParam) : (tabParam === undefined ? 1 : ~~tabParam),
+      // a fresh setup starts on the Favorites tab when there is at least one favourite (pick one and go),
+      // otherwise on the Variant tab (standard vs cooperative choice)
+      tab: editing
+        ? Math.max(2, ~~tabParam)
+        : (tabParam === undefined ? ((this.$store.state.settings.mySetups || []).length > 0 ? 0 : 1) : ~~tabParam),
       selectedSetupDetail: null
     }
   },
