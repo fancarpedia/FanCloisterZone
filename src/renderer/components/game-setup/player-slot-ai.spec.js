@@ -75,6 +75,17 @@ describe('the "AI player" button', () => {
     expect(run(show, { slotState: 'open', readOnly: true })).toBe(false)
   })
 
+  it('past the local players limit an AI player can still be added — only Assign is hidden', () => {
+    const show = PlayerSlot.computed.showAiButton
+    expect(run(show, { slotState: 'open', limitReached: true })).toBe(true)
+    expect(src).toMatch(/v-if="!limitReached"\s+class="kick-btn assign-btn"/)
+    const unavailable = PlayerSlot.computed.unavailable
+    // the seat is greyed out only when not even an AI player can sit there
+    expect(run(unavailable, { slotState: 'open', limitReached: true, canMakeAi: true })).toBe(false)
+    expect(run(unavailable, { slotState: 'open', limitReached: true, canMakeAi: false })).toBe(true)
+    expect(run(unavailable, { slotState: 'open', capReached: true, canMakeAi: true })).toBe(true)
+  })
+
   it('works in any game the AI can play (no separate AI game any more), greyed out otherwise', () => {
     expect(run(canMakeAi, { showAiButton: true, aiSupported: true })).toBe(true)
     expect(run(canMakeAi, { showAiButton: true, aiSupported: false })).toBe(false)

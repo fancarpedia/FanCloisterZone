@@ -349,7 +349,10 @@ export default {
     maxPlayersOptions () {
       const n = (this.slots || []).length
       const opts = [{ text: this.$t('game-setup.open-game.max-players-no-limit'), value: 0 }]
-      for (let i = 2; i <= n; i++) opts.push({ text: String(i), value: i })
+      // a cap below the seats already taken can't be chosen: it would leave more players seated than
+      // the game allows (with 3 seated, "2" is greyed out)
+      const taken = (this.slots || []).filter(s => s.clientId).length
+      for (let i = 2; i <= n; i++) opts.push({ text: String(i), value: i, disabled: i < taken })
       return opts
     },
 

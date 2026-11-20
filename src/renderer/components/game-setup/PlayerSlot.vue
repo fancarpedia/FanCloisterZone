@@ -28,8 +28,10 @@
       class="name"
       @click.stop="openEdit"
     >
-      {{ name }}
-      <v-icon v-if="slotState === 'local' && !readOnly">fas fa-pencil-alt</v-icon>
+      <span class="name-text">
+        {{ name }}
+        <v-icon v-if="slotState === 'local' && !readOnly" class="rename-icon">fas fa-pencil-alt</v-icon>
+      </span>
     </div>
     <div v-else class="name">
       <!-- an empty seat I may take: the Assign / AI player buttons below say what to do -->
@@ -42,15 +44,14 @@
       <span v-else-if="slotState === 'open' && !readOnly && capReached" class="limit-reached">
         {{ $t('game-setup.create.game-full') }}
       </span>
-      <v-tooltip v-else-if="slotState === 'open' && !readOnly && limitReached" bottom>
-        <template #activator="{ on }">
-          <span class="limit-reached" v-on="on">
-            {{ $t('game-setup.create.local-limit-reached') }}
-            <v-icon small>fas fa-question-circle</v-icon>
-          </span>
-        </template>
-        <span>{{ $tc('game-setup.create.local-limit-reached-tooltip-plural', localLimit, { limit: localLimit }) }}</span>
-      </v-tooltip>
+      <span
+        v-else-if="slotState === 'open' && !readOnly && limitReached"
+        class="limit-reached"
+        :title="$tc('game-setup.create.local-limit-reached-tooltip-plural', localLimit, { limit: localLimit })"
+      >
+        {{ $t('game-setup.create.local-limit-reached') }}
+        <v-icon small>fas fa-question-circle</v-icon>
+      </span>
       <template v-else>{{ name }}</template>
     </div>
 
@@ -96,7 +97,9 @@
       class="kick-wrapper slot-actions"
       @click.stop
     >
+      <!-- a human seat for this client: not past the local players limit (AI seats don't count) -->
       <v-btn
+        v-if="!limitReached"
         class="kick-btn assign-btn"
         x-small
         color="secondary"
@@ -191,13 +194,18 @@ export default {
     // an empty seat that cannot be taken, for any reason: the game is full, the local players limit
     // is reached, or its color is not available (no Kingdom Palace in it, …) — drawn greyed out
     unavailable () {
-      return this.slotState === 'open' && !this.readOnly && (this.limitReached || this.capReached || this.colorUnavailable)
+      if (this.slotState !== 'open' || this.readOnly) return false
+      if (this.capReached || this.colorUnavailable) return true
+      // past the local players limit only a human seat is blocked — an AI player can still sit here
+      return this.limitReached && !this.canMakeAi
     },
 
-    // the Assign / AI player choice: only on an empty seat I may take
+    // the Assign / AI player choice: only on an empty seat that can be taken. The local players limit
+    // counts human seats only, so it does not hide the choice — just its Assign button (an AI player
+    // can still be added past the limit)
     showAiButton () {
       if (this.readOnly) return false
-      return this.slotState === 'open' && !this.limitReached && !this.capReached && !this.colorUnavailable
+      return this.slotState === 'open' && !this.capReached && !this.colorUnavailable
     },
 
     // ...and it works only when the AI plays everything in this game's setup
@@ -282,7 +290,7 @@ export default {
 // gaps above are tighter to pay for it: the slot is shorter overall than before the buttons.
 .player-slot
   position: relative
-  padding: 30px 0 34px 0
+  padding: 30px 0 52px 0
 
   display: flex
   flex-direction: column
@@ -338,6 +346,17 @@ export default {
     &:hover i
       visibility: visible
 
+    // the name centred on its own; the rename pencil hangs to its right, outside the centring
+    .name-text
+      position: relative
+
+    .rename-icon
+      position: absolute
+      left: 100%
+      top: 50%
+      transform: translateY(-50%)
+      margin-left: 6px
+
   &.open.editable
     .name
       font-size: 16px
@@ -359,6 +378,15 @@ export default {
 
   .kick-btn
     position: static
+
+  // Release slot / Assign / AI player: larger than Vuetify's x-small (10px), easier to read and hit
+  .release-btn.v-size--x-small, .assign-btn.v-size--x-small, .ai-btn.v-size--x-small
+    font-size: 13px
+    height: 26px
+    padding: 0 10px
+
+    ::v-deep .v-icon
+      font-size: 13px
 
   .slot-actions
     display: flex
@@ -418,10 +446,10 @@ export default {
 
 @media (max-height: 768px)
   .player-slot
-    padding: 12px 0 32px 0
+    padding: 12px 0 42px 0
 
     svg
-      margin-bottom: 10px
+      margin-bottom: 6px
 
     // 80px meeple
     .ai-head
