@@ -13,9 +13,16 @@
     <div v-if="aiPlayable" class="ai-badge" :title="$t('game-setup.ai.supported')">
       <v-icon small>fa-solid fa-robot</v-icon>
     </div>
+    <!-- "i": the tiles carrying it (like the tile-set box's tiles icon) — never toggles the box -->
+    <a href="#" class="detail-link" :title="$t('game-setup.rules.info-title')" @click.stop.prevent="infoOpen = true">
+      <v-icon>fas fa-circle-info</v-icon>
+    </a>
+    <v-dialog v-model="infoOpen" max-width="800">
+      <FeatureInfoDialog v-if="infoOpen" :feature-id="featureId" @close="infoOpen = false" />
+    </v-dialog>
     <div class="box-title">
       <slot name="icon" />
-      <h3>{{ $t(['game.feature',item.id].join('.')) }}</h3>
+      <h3>{{ $t(featureTitleKey(featureId)) }}</h3>
     </div>
     <div class="toggle">
       <div v-if="selected"><v-icon>fas fa-check</v-icon></div>
@@ -31,19 +38,33 @@
 import { mapState } from 'vuex'
 import { isWeb } from '@/utils/version'
 import { isAiElement } from '@/utils/ai-support'
+import FeatureInfoDialog from '@/components/game-setup/FeatureInfoDialog'
+import { featureTitleKey } from '@/utils/feature-title'
 
 export default {
   components: {
+    FeatureInfoDialog
   },
 
   props: {
-    item: { type: Object, required: true },
-    mutable: { type: Boolean, default: true }
+    item: { type: Object, default: null },
+    mutable: { type: Boolean, default: true },
+    // a base feature every game has (road, city, monastery): no element behind it — always on,
+    // cannot be switched off; the id names it (game.feature.<id>)
+    fixedFeature: { type: String, default: null }
+  },
+
+  data () {
+    return { infoOpen: false }
   },
 
   computed: {
+    featureId () {
+      return this.fixedFeature || this.item.id
+    },
+
     aiPlayable () {
-      return isAiElement(this.item)
+      return !!this.fixedFeature || isAiElement(this.item)
     },
 
     ...mapState({
@@ -55,23 +76,26 @@ export default {
 
     // Mechanics not offered when creating a game in the web build (flagged notOnWeb in elements.js).
     hideOnWeb () {
-      return isWeb() && !!this.item.notOnWeb
+      return !this.fixedFeature && isWeb() && !!this.item.notOnWeb
     },
 
     enabled () {
+      if (this.fixedFeature) return true
       return this.$tiles.isElementEnabled(this.item, this.sets, this.elements, this.tileOverrides, this.elements.garden ? 2 : 1)
     },
 
     mandatory () {
-      return !this.mutable && this.enabled
+      return !!this.fixedFeature || (!this.mutable && this.enabled)
     },
 
     selected () {
-      return !!this.elements[this.item.id]
+      return !!this.fixedFeature || !!this.elements[this.item.id]
     }
   },
 
   methods: {
+    featureTitleKey,
+
     toggle () {
       if (this.enabled && !this.mandatory) {
         this.$store.dispatch('gameSetup/setElementConfig', { id: this.item.id, config: !this.selected })
@@ -104,6 +128,27 @@ export default {
   +theme using ($theme)
     color: map-get($theme, 'cards-text')
     background-color: map-get($theme, 'cards-bg')
+
+  // "i" — top-right corner, as the tile-set box's tiles icon
+  .detail-link
+    position: absolute
+    top: 0
+    right: 0
+    z-index: 1
+    text-decoration: none
+    cursor: pointer
+
+    .v-icon
+      font-size: 24px
+      margin: 8px
+      transition: none !important
+
+      +theme using ($theme)
+        color: map-get($theme, 'link-detail-color')
+
+    &:hover .v-icon
+      +theme using ($theme)
+        color: map-get($theme, 'text-color')
 
   .box-title
     text-align: center
@@ -160,6 +205,10 @@ export default {
         opacity: 1
         filter: none
         display: block
+
+  // always on (a base feature, or forced by the setup): nothing to click
+  &.mandatory, &.mandatory .toggle
+    cursor: default
 
   &.disabled
     background: transparent

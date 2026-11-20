@@ -23,6 +23,10 @@ const EDGE_CODE = {
   'abbey-edge': '*'
 }
 
+// the Rules tab's info dialogs: which tiles carry a feature that has no GameElement selector of its
+// own — the base features (road, city, monastery), the farmers' fields and the abbot's gardens
+const INFO_SELECTORS = { road: 'road', city: 'city', monastery: 'monastery', farmers: 'field', garden: 'garden' }
+
 const UNKWNOWN_SET = { expansion: '_UNKNOWN', implies: [], impliesAllowed: [], allows: [] }
 
 function getFeatureSignature (feature) {
@@ -149,6 +153,42 @@ export class Tiles extends EventsBase {
       delete counts['BA/LR']
     }
     return counts
+  }
+
+  /**
+   * The tiles carrying an element / base feature (e.g. 'inn', 'road'), for the Rules tab's info
+   * dialog: { tiles: [{ id, count, total, expansion }], count, total } — `count` how many are in
+   * the chosen pack (sets + per-tile overrides), `total` how many all tile sets of this edition
+   * hold, `expansion` the name of the expansion it comes from (a tile shared by several sets, e.g.
+   * base and Winter, goes to the first one that lists it).
+   */
+  getFeatureTiles (featureId, sets, tileOverrides, edition = '2') {
+    const allSets = {}
+    Object.keys(this.sets).forEach(key => {
+      const m = /^(.*):(\d)$/.exec(key)
+      if (m) {
+        if (m[2] === String(edition)) allSets[m[1]] = 1
+      } else if (!this.sets[key + ':' + edition]) {
+        allSets[key] = 1
+      }
+    })
+    const all = this.getTilesCounts(allSets, null, edition)
+    const owner = {}
+    Object.keys(allSets).forEach(key => {
+      const set = this.sets[key] || this.sets[key + ':' + edition]
+      if (!set || !set.tiles) return
+      Object.keys(set.tiles).forEach(id => { if (!owner[id]) owner[id] = set.expansion || null })
+    })
+    const chosen = this.applyTileOverrides(this.getTilesCounts(sets || {}, null, edition), tileOverrides)
+    const tiles = Object.keys(all)
+      .filter(id => this.tileFeatures[id] && this.tileFeatures[id].has(featureId))
+      .map(id => ({ id, count: chosen[id] || 0, total: all[id], expansion: owner[id] || null }))
+      .sort((a, b) => (b.count > 0) - (a.count > 0) || a.id.localeCompare(b.id))
+    return {
+      tiles,
+      count: tiles.reduce((sum, t) => sum + t.count, 0),
+      total: tiles.reduce((sum, t) => sum + t.total, 0)
+    }
   }
 
   // Per-set (release) RAW tile counts, before the global remove/max/min/start adjustments that
@@ -377,6 +417,8 @@ export class Tiles extends EventsBase {
     const expansionRequiredBy = {}
     const expansionGroups = {}
     const tileAllows = {}
+    // per tile: every element / base feature it carries (selector matches) — Rules tab info dialogs
+    const tileFeatures = {}
     // Kingdom Palace tiles: tile id -> player colour, from the tile attribute kingdom-palace="<colour>"
     const kingdomPalaces = {}
 
@@ -435,6 +477,13 @@ export class Tiles extends EventsBase {
         if (t.querySelectorAll('road[labyrinth=true]').length) {
           allows.add('labyrinth-variant')
         }
+
+        // a feature can be an attribute of another one (the inn of a road: road[inn]) — the
+        // selectors match it either way
+        const feats = tileFeatures[id] = new Set(allows)
+        Object.entries(INFO_SELECTORS).forEach(([fid, sel]) => {
+          if (t.querySelector(sel)) feats.add(fid)
+        })
       })
 
       doc.querySelectorAll('tile-set[id]').forEach(ts => {
@@ -623,6 +672,7 @@ export class Tiles extends EventsBase {
     registerKingdomPalaces(kingdomPalaces)
     this.sets = sets
     this.tileAllows = tileAllows // per-tile element ids (selector matches), for override-aware availability
+    this.tileFeatures = tileFeatures // per-tile element + base feature ids (Rules tab info dialogs)
     this.expansionGroups = expansionGroups
     this.expansions = sortBy(expansions, 'name')
     this.loaded = true

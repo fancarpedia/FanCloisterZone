@@ -9,8 +9,30 @@
       />
     </div>
 
-    <ConfigSection :title="$t('game-setup.rules.optional-game-mechanics')">
+    <!-- the optional elements, grouped: Features (new places on the tiles to occupy and score),
+         Mechanics (new actions / decisions during play), Modifiers (change how an existing
+         feature scores) -->
+    <ConfigSection :title="$t('game-setup.rules.features')">
       <div class="rules-section game-mechanics">
+        <!-- the base features of every game: always on, nothing to switch -->
+        <GameMechanicsBox fixed-feature="road">
+          <template #icon>
+            <StandaloneTileImage tile-id="BA/Rr" :size="55" />
+          </template>
+        </GameMechanicsBox>
+
+        <GameMechanicsBox fixed-feature="city">
+          <template #icon>
+            <StandaloneTileImage tile-id="BA/Cccc+" :size="55" />
+          </template>
+        </GameMechanicsBox>
+
+        <GameMechanicsBox fixed-feature="monastery">
+          <template #icon>
+            <StandaloneTileImage tile-id="BA/L" :size="55" />
+          </template>
+        </GameMechanicsBox>
+
         <!-- farmers are forced off in the Keep Building coop variant -->
         <GameMechanicsBox v-if="!coopVariant" :item="GameElement.FARMERS">
           <template #icon>
@@ -34,22 +56,48 @@
           <template #disabled>{{ $t('game-setup.rules.garden-disabled') }}</template>
         </GameMechanicsBox>
 
-        <GameMechanicsBox :item="GameElement.CATHEDRAL">
+        <GameMechanicsBox v-if="!ai" :item="GameElement.SHRINE">
           <template #icon>
-            <img src="~/assets/features/C1/cathedral.png" height="55">
+            <img src="~/assets/features/C1/shrine-challenge.png" height="55">
           </template>
-          <template #description>{{ $t('game-setup.rules.cathedral-description') }}</template>
-          <template #disabled>{{ $t('game-setup.rules.cathedral-disabled') }}</template>
+          <template #description>{{ $t('game-setup.rules.shrine-description') }}</template>
+          <template #disabled>{{ $t('game-setup.rules.shrine-disabled') }}</template>
         </GameMechanicsBox>
 
-        <GameMechanicsBox :item="GameElement.INN">
+        <GameMechanicsBox v-if="!ai" :item="GameElement.ACROBATS">
           <template #icon>
-            <img src="~/assets/features/C1/inn.png" height="55">
+            <svg class="meeple" width="55" height="55">
+              <g transform="scale(0.55)">
+                <use :href="`${MEEPLES_SVG}#small-follower`" x="22" y="0" />
+                <use :href="`${MEEPLES_SVG}#small-follower`" x="-1" y="41" />
+                <use :href="`${MEEPLES_SVG}#small-follower`" x="46" y="41" />
+              </g>
+            </svg>
           </template>
-          <template #description>{{ $t('game-setup.rules.inn-description') }}</template>
-          <template #disabled>{{ $t('game-setup.rules.inn-disabled') }}</template>
+          <template #description>{{ $t('game-setup.rules.acrobats-description') }}</template>
+          <template #disabled>{{ $t('game-setup.rules.acrobats-disabled') }}</template>
         </GameMechanicsBox>
 
+        <GameMechanicsBox v-if="!ai" :item="GameElement.FISHERMEN">
+          <template #icon>
+            <img src="~/assets/features/C1/fishermen.png" height="55">
+          </template>
+          <template #description>{{ $t('game-setup.rules.fishermen-description') }}</template>
+          <template #disabled>{{ $t('game-setup.rules.fishermen-disabled') }}</template>
+        </GameMechanicsBox>
+
+        <GameMechanicsBox v-if="!ai" :item="GameElement.FISHHUT">
+          <template #icon>
+            <img src="~/assets/features/C1/fishhut.png" height="55">
+          </template>
+          <template #description>{{ $t('game-setup.rules.fishhut-description') }}</template>
+          <template #disabled>{{ $t('game-setup.rules.fishhut-disabled') }}</template>
+        </GameMechanicsBox>
+      </div>
+    </ConfigSection>
+
+    <ConfigSection :title="$t('game-setup.rules.mechanics')">
+      <div class="rules-section game-mechanics">
         <GameMechanicsBox v-if="!ai" :item="GameElement.PRINCESS">
           <template #icon>
             <img src="~/assets/features/C1/princess.png" height="55">
@@ -72,6 +120,74 @@
           </template>
           <template #description>{{ $t('game-setup.rules.bazaar-description') }}</template>
           <template #disabled>{{ $t('game-setup.rules.bazaar-disabled') }}</template>
+        </GameMechanicsBox>
+
+        <GameMechanicsBox v-if="!ai" :item="GameElement.FESTIVAL">
+          <template #icon>
+            <img src="~/assets/features/C1/festival.png" height="55">
+          </template>
+          <template #description>{{ $t('game-setup.rules.festival-description') }}</template>
+          <template #disabled>{{ $t('game-setup.rules.festival-disabled') }}</template>
+        </GameMechanicsBox>
+
+        <GameMechanicsBox v-if="!ai" :item="GameElement.ESCAPE">
+          <template #icon>
+            <img src="~/assets/features/C1/escape.png" height="55">
+          </template>
+          <template #description>{{ $t('game-setup.rules.escape-description') }}</template>
+          <template #disabled>{{ $t('game-setup.rules.escape-disabled') }}</template>
+        </GameMechanicsBox>
+
+        <GameMechanicsBox v-if="!ai" :item="GameElement.FAMILIES">
+          <template #icon>
+            <img src="~/assets/features/C1/families.png" height="55">
+          </template>
+          <template #description>{{ $t('game-setup.rules.families-description') }}</template>
+          <template #disabled>{{ $t('game-setup.rules.families-disabled') }}</template>
+        </GameMechanicsBox>
+
+        <GameMechanicsBox v-if="!ai" :item="GameElement.ROBBERS_SON">
+          <template #icon>
+            <img src="~/assets/features/C1/robbers-son.png" height="55">
+          </template>
+          <template #description>{{ $t('game-setup.rules.robbers-son-description') }}</template>
+          <template #disabled>{{ $t('game-setup.rules.robbers-son-disabled') }}</template>
+        </GameMechanicsBox>
+
+        <GameMechanicsBox v-if="!ai" :item="GameElement.MARKETPLACE">
+          <template #icon>
+            <img src="~/assets/features/C1/marketplace.png" height="55">
+          </template>
+          <template #description>{{ $t('game-setup.rules.marketplace-description') }}</template>
+          <template #disabled>{{ $t('game-setup.rules.marketplace-disabled') }}</template>
+        </GameMechanicsBox>
+
+        <GameMechanicsBox v-if="!ai" :item="GameElement.METEORITE">
+          <template #icon>
+            <img src="~/assets/features/C1/crater.png" height="55">
+          </template>
+          <template #description>{{ $t('game-setup.rules.meteorite-description') }}</template>
+          <template #disabled>{{ $t('game-setup.rules.meteorite-disabled') }}</template>
+        </GameMechanicsBox>
+      </div>
+    </ConfigSection>
+
+    <ConfigSection :title="$t('game-setup.rules.modifiers')">
+      <div class="rules-section game-mechanics">
+        <GameMechanicsBox :item="GameElement.CATHEDRAL">
+          <template #icon>
+            <img src="~/assets/features/C1/cathedral.png" height="55">
+          </template>
+          <template #description>{{ $t('game-setup.rules.cathedral-description') }}</template>
+          <template #disabled>{{ $t('game-setup.rules.cathedral-disabled') }}</template>
+        </GameMechanicsBox>
+
+        <GameMechanicsBox :item="GameElement.INN">
+          <template #icon>
+            <img src="~/assets/features/C1/inn.png" height="55">
+          </template>
+          <template #description>{{ $t('game-setup.rules.inn-description') }}</template>
+          <template #disabled>{{ $t('game-setup.rules.inn-disabled') }}</template>
         </GameMechanicsBox>
 
         <GameMechanicsBox v-if="!ai" :item="GameElement.HILL">
@@ -98,66 +214,12 @@
           <template #disabled>{{ $t('game-setup.rules.pig-herd-disabled') }}</template>
         </GameMechanicsBox>
 
-        <GameMechanicsBox v-if="!ai" :item="GameElement.SHRINE">
-          <template #icon>
-            <img src="~/assets/features/C1/shrine-challenge.png" height="55">
-          </template>
-          <template #description>{{ $t('game-setup.rules.shrine-description') }}</template>
-          <template #disabled>{{ $t('game-setup.rules.shrine-disabled') }}</template>
-        </GameMechanicsBox>
-
-        <GameMechanicsBox v-if="!ai" :item="GameElement.FESTIVAL">
-          <template #icon>
-            <img src="~/assets/features/C1/festival.png" height="55">
-          </template>
-          <template #description>{{ $t('game-setup.rules.festival-description') }}</template>
-          <template #disabled>{{ $t('game-setup.rules.festival-disabled') }}</template>
-        </GameMechanicsBox>
-
         <GameMechanicsBox v-if="!ai" :item="GameElement.SIEGE">
           <template #icon>
             <img src="~/assets/features/C1/siege.png" height="55">
           </template>
           <template #description>{{ $t('game-setup.rules.siege-description') }}</template>
           <template #disabled>{{ $t('game-setup.rules.siege-disabled') }}</template>
-        </GameMechanicsBox>
-
-        <GameMechanicsBox v-if="!ai" :item="GameElement.ESCAPE">
-          <template #icon>
-            <img src="~/assets/features/C1/escape.png" height="55">
-          </template>
-          <template #description>{{ $t('game-setup.rules.escape-description') }}</template>
-          <template #disabled>{{ $t('game-setup.rules.escape-disabled') }}</template>
-        </GameMechanicsBox>
-
-        <GameMechanicsBox v-if="!ai" :item="GameElement.ACROBATS">
-          <template #icon>
-            <svg class="meeple" width="55" height="55">
-              <g transform="scale(0.55)">
-                <use :href="`${MEEPLES_SVG}#small-follower`" x="22" y="0" />
-                <use :href="`${MEEPLES_SVG}#small-follower`" x="-1" y="41" />
-                <use :href="`${MEEPLES_SVG}#small-follower`" x="46" y="41" />
-              </g>
-            </svg>
-          </template>
-          <template #description>{{ $t('game-setup.rules.acrobats-description') }}</template>
-          <template #disabled>{{ $t('game-setup.rules.acrobats-disabled') }}</template>
-        </GameMechanicsBox>
-
-        <GameMechanicsBox v-if="!ai" :item="GameElement.FAMILIES">
-          <template #icon>
-            <img src="~/assets/features/C1/families.png" height="55">
-          </template>
-          <template #description>{{ $t('game-setup.rules.families-description') }}</template>
-          <template #disabled>{{ $t('game-setup.rules.families-disabled') }}</template>
-        </GameMechanicsBox>
-
-        <GameMechanicsBox v-if="!ai" :item="GameElement.ROBBERS_SON">
-          <template #icon>
-            <img src="~/assets/features/C1/robbers-son.png" height="55">
-          </template>
-          <template #description>{{ $t('game-setup.rules.robbers-son-description') }}</template>
-          <template #disabled>{{ $t('game-setup.rules.robbers-son-disabled') }}</template>
         </GameMechanicsBox>
 
         <GameMechanicsBox v-if="!ai" :item="GameElement.WELL">
@@ -175,39 +237,6 @@
           <template #description>{{ $t('game-setup.rules.flowers-description') }}</template>
           <template #disabled>{{ $t('game-setup.rules.flowers-disabled') }}</template>
         </GameMechanicsBox>
-
-        <GameMechanicsBox v-if="!ai" :item="GameElement.MARKETPLACE">
-          <template #icon>
-            <img src="~/assets/features/C1/marketplace.png" height="55">
-          </template>
-          <template #description>{{ $t('game-setup.rules.marketplace-description') }}</template>
-          <template #disabled>{{ $t('game-setup.rules.marketplace-disabled') }}</template>
-        </GameMechanicsBox>
-
-        <GameMechanicsBox v-if="!ai" :item="GameElement.METEORITE">
-          <template #icon>
-            <img src="~/assets/features/C1/crater.png" height="55">
-          </template>
-          <template #description>{{ $t('game-setup.rules.meteorite-description') }}</template>
-          <template #disabled>{{ $t('game-setup.rules.meteorite-disabled') }}</template>
-        </GameMechanicsBox>
-
-        <GameMechanicsBox v-if="!ai" :item="GameElement.FISHERMEN">
-          <template #icon>
-            <img src="~/assets/features/C1/fishermen.png" height="55">
-          </template>
-          <template #description>{{ $t('game-setup.rules.fishermen-description') }}</template>
-          <template #disabled>{{ $t('game-setup.rules.fishermen-disabled') }}</template>
-        </GameMechanicsBox>
-
-        <GameMechanicsBox v-if="!ai" :item="GameElement.FISHHUT">
-          <template #icon>
-            <img src="~/assets/features/C1/fishhut.png" height="55">
-          </template>
-          <template #description>{{ $t('game-setup.rules.fishhut-description') }}</template>
-          <template #disabled>{{ $t('game-setup.rules.fishhut-disabled') }}</template>
-        </GameMechanicsBox>
-
       </div>
     </ConfigSection>
 
