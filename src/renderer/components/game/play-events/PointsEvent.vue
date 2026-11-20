@@ -79,7 +79,9 @@ export default {
         const figure = isBlack ? 'black-fairy' : 'fairy'
         if (ptr) {
           const feature = this.featureOn(ptr)
-          if (feature) this.showFeature(feature)
+          // the scored feature, plus a circle around the fairy itself (next to its meeple)
+          const fairySpot = ptr.position && ptr.feature && ptr.location ? [ptr] : []
+          if (feature) this.showFeature(feature, fairySpot)
           else if (ptr.position) this.showTile(ptr.position)
         }
         // on-tile can affect several meeples on the tile; pulse every one that has been removed
@@ -129,6 +131,34 @@ export default {
           this.$store.dispatch('board/showLayer', {
             layer: 'NeutralFigureGhostLayer',
             props: { ghosts: [{ figure: 'courier', ptr: at, nextToMeeple: at.feature !== 'CourierLetter' }] }
+          })
+        }
+        this.$store.commit('board/pointsExpression', points)
+        return
+      }
+
+      // Big Top: the Big Top's tile and the 8 around it scored. Highlight that area, draw every
+      // follower that scored where it stood (the engine sends them with the points) and the Big Top
+      // itself where it stood — it is usually moved on (or gone, at the end) by now.
+      if (name.startsWith('bigtop')) {
+        const at = this.ptrPosition(ptr)
+        if (at) {
+          const area = []
+          for (let dx = -1; dx <= 1; dx++) {
+            for (let dy = -1; dy <= 1; dy++) area.push([at[0] + dx, at[1] + dy])
+          }
+          this.showTiles(area)
+        }
+        if (meeples && meeples.length) {
+          this.$store.dispatch('board/showLayer', {
+            layer: 'EventMeeplesLayer',
+            props: { meeples, winners: [] }
+          })
+        }
+        if (at) {
+          this.$store.dispatch('board/showLayer', {
+            layer: 'NeutralFigureGhostLayer',
+            props: { figure: 'big-top', ptr: at }
           })
         }
         this.$store.commit('board/pointsExpression', points)

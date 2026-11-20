@@ -72,12 +72,17 @@ export default {
       }
 
       if (fp) {
+        // a circle where the figure went and — for a figure standing next to a meeple (fairy, black
+        // fairy) — also where it came from, so both spots stay lit around its ghosts
+        const fromFp = this.ev.from && (this.ev.from.featurePointer || this.ev.from)
+        const fromSpot = fromFp && fromFp.position && fromFp.feature && fromFp.location ? [fromFp] : []
         this.$store.dispatch('board/showLayer', {
           layer: 'EmphasizeLayer',
           props: {
             emphasis: withCause({
               type: 'meeple',
-              ...fp
+              ...fp,
+              extraPoints: fromSpot
             }, this.ev.cause)
           }
         })
