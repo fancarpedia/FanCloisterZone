@@ -54,6 +54,15 @@
             v-bind="castlePoint()" :r="BASE_SIZE * 0.6"
             :transform="transformPosition(emphasis.positions[0])"
           />
+          <!-- a lit road's tunnel tokens: the token sits on the tile's tunnel spot, outside the road's
+               own shape — open it too, so the whole road incl. its tunnels reads as one (any road
+               highlight: scoring, deploys, …). Circle centred on the token as TokenLayer draws it. -->
+          <circle
+            v-for="(t, idx) in tunnelTransforms"
+            :key="'tunnel-' + idx"
+            cx="-40" cy="-40" :r="TUNNEL_RADIUS"
+            :transform="t"
+          />
           <!-- extra single spots opened on top of any emphasis type (e.g. the courier beside the
                feature it scored) -->
           <circle
@@ -113,7 +122,8 @@ export default {
     // the tile at the origin plus one tile all around it, with a small margin
     const lo = -BASE_SIZE - 20
     const hi = 2 * BASE_SIZE + 20
-    return { BASE_SIZE, FRAME_3X3: [lo, lo, hi, lo, hi, hi, lo, hi].join(' ') }
+    // a tunnel token is drawn 340 wide (TokenLayer) — a little more, so it shows whole
+    return { BASE_SIZE, FRAME_3X3: [lo, lo, hi, lo, hi, hi, lo, hi].join(' '), TUNNEL_RADIUS: 190 }
   },
 
   computed: {
@@ -126,6 +136,34 @@ export default {
 
     extraPointTransforms () {
       return this.toPointTransforms(this.emphasis.extraPoints)
+    },
+
+    // the placed tunnel tokens on the lit road segments: same tile, and the token's side is part of
+    // the segment (a token at "E" belongs to the road segment "E" / "WE" of that tile)
+    tunnelTransforms () {
+      if (this.emphasis.type !== 'feature') return []
+      const tokens = this.$store.state.game.tokens || {}
+      const tunnelEnds = Object.keys(tokens)
+        .filter(k => k.startsWith('TUNNEL_'))
+        .flatMap(k => tokens[k] || [])
+        .filter(t => t && t.position && t.location)
+      if (!tunnelEnds.length) return []
+      const out = []
+      for (const place of this.emphasis.places || []) {
+        if (place.feature !== 'Road' || !place.tile || !place.location) continue
+        const [x, y] = place.tile.position
+        for (const t of tunnelEnds) {
+          if (t.position[0] !== x || t.position[1] !== y) continue
+          if (![...t.location].every(c => place.location.includes(c))) continue
+          try {
+            const tr = this.transformTunnelEnd(t)
+            if (tr) out.push(tr)
+          } catch (e) {
+            console.warn('No tunnel spot for', t)
+          }
+        }
+      }
+      return out
     },
 
     featurePlaces () {
