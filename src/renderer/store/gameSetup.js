@@ -158,6 +158,10 @@ export const state = () => ({
   standardPopularComponents: null
 })
 
+// the player time limit a new game setup starts with (the setup's Game flow tab can turn it off):
+// 3 minutes at the start, +20 s each turn
+export const DEFAULT_TIMER = Object.freeze({ initial: 3 * 60, turn: 20 })
+
 export const mutations = {
   clear (state) {
     const { $tiles } = this._vm
@@ -166,7 +170,7 @@ export const mutations = {
     state.elements = $tiles.getDefaultElements(DEFAULT_SETS)
     state.rules = getDefaultRules()
     state.start = null
-    state.timer = null
+    state.timer = { ...DEFAULT_TIMER } // time limit on by default
     state.gameAnnotations = {}
     state.ai = false
     state.editingGameId = null

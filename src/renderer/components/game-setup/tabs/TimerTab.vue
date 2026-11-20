@@ -1,67 +1,71 @@
 <template>
   <div>
-    <!-- pre-draw is incompatible with the Keep Building coop variant → hidden entirely there -->
-    <ConfigSection v-if="!coopVariant" :title="$t('game-setup.game-flow.pre-draw')">
-      <div class="components">
-        <!-- Pre-draw: private hand of up to 3 tiles (server-authoritative, online only).
-             Disabled in local games, or when an incompatible expansion is selected. -->
-        <GameElementBox
-          :item="GameElement.PRE_DRAW"
-          :max="3"
-          :default-value="3"
-          :blocked-reason="preDrawReason"
-          show-number
-        >
-          <div class="predraw-icon">⤵<span>hand</span></div>
-        </GameElementBox>
-      </div>
-    </ConfigSection>
-
-    <ConfigSection :title="$t('game-setup.game-flow.cooperative')">
-      <div class="components">
-        <!-- Keep Building: cooperative variant — each turn must enlarge an occupied
-             completable feature or occupy a new one, or everyone loses. -->
-        <GameMechanicsBox :item="GameElement.KEEP_BUILDING">
-          <template #icon>
-            <div class="predraw-icon">🤝<span>co-op</span></div>
-          </template>
-          <template #description>{{ $t('game-setup.game-flow.keep-building-description') }}</template>
-        </GameMechanicsBox>
-      </div>
-    </ConfigSection>
-
-    <ConfigSection v-if="!ai" :title="$t('game-setup.timer.player-time-limit')">
-      <template v-if="timer !== null">
-        <!-- TODO use display grid -->
-        <div class="limits-row">
-          <span class="label">{{ $t('game-setup.timer.at-game-start-set-timer-to') }}</span>
-          <div class="clock">
-            <TimeInput v-model="initial" />
+    <!-- time limits, pre-draw and the cooperative variant side by side (in that order); the
+         columns adapt when one is hidden (no timer with AI, no pre-draw in co-op) -->
+    <div class="flow-columns">
+      <ConfigSection v-if="!ai" :title="$t('game-setup.timer.player-time-limit')">
+        <template v-if="timer !== null">
+          <!-- TODO use display grid -->
+          <div class="limits-row">
+            <span class="label">{{ $t('game-setup.timer.at-game-start-set-timer-to') }}</span>
+            <div class="clock">
+              <TimeInput v-model="initial" />
+            </div>
           </div>
-        </div>
-        <div class="limits-row">
-          <span class="label">{{ $t('game-setup.timer.each-turn-increase-timer-by') }}</span>
-          <div class="clock">
-            <TimeInput v-model="turn" />
+          <div class="limits-row">
+            <span class="label">{{ $t('game-setup.timer.each-turn-increase-timer-by') }}</span>
+            <div class="clock">
+              <TimeInput v-model="turn" />
+            </div>
           </div>
+          <!-- <div class="limits-row">
+            <span class="label">{{ $t('game-setup.timer.when-time-is-over') }}</span>
+            <span>{{ $t('game-setup.timer.do-nothing') }}</span>
+          </div> -->
+          <div class="buttons">
+            <v-btn color="secondary" @click="disableLimits">{{ $t('game-setup.timer.disable-limits') }}</v-btn>
+          </div>
+        </template>
+        <template v-else>
+          <div class="unlimited">
+            {{ $t('game-setup.timer.unlimited-time') }}
+          </div>
+          <div class="buttons">
+            <v-btn color="secondary" @click="enableLimits">{{ $t('game-setup.timer.enable-limits') }}</v-btn>
+          </div>
+        </template>
+      </ConfigSection>
+
+      <!-- pre-draw is incompatible with the Keep Building coop variant → hidden entirely there -->
+      <ConfigSection v-if="!coopVariant" :title="$t('game-setup.game-flow.pre-draw')">
+        <div class="components">
+          <!-- Pre-draw: private hand of up to 3 tiles (server-authoritative, online only).
+               Disabled in local games, or when an incompatible expansion is selected. -->
+          <GameElementBox
+            :item="GameElement.PRE_DRAW"
+            :max="3"
+            :default-value="3"
+            :blocked-reason="preDrawReason"
+            show-number
+          >
+            <div class="predraw-icon">⤵<span>hand</span></div>
+          </GameElementBox>
         </div>
-        <!-- <div class="limits-row">
-          <span class="label">{{ $t('game-setup.timer.when-time-is-over') }}</span>
-          <span>{{ $t('game-setup.timer.do-nothing') }}</span>
-        </div> -->
-        <div class="buttons">
-          <v-btn color="secondary" @click="disableLimits">{{ $t('game-setup.timer.disable-limits') }}</v-btn>
+      </ConfigSection>
+
+      <ConfigSection :title="$t('game-setup.game-flow.cooperative')">
+        <div class="components">
+          <!-- Keep Building: cooperative variant — each turn must enlarge an occupied
+               completable feature or occupy a new one, or everyone loses. -->
+          <GameMechanicsBox :item="GameElement.KEEP_BUILDING">
+            <template #icon>
+              <div class="predraw-icon">🤝<span>co-op</span></div>
+            </template>
+            <template #description>{{ $t('game-setup.game-flow.keep-building-description') }}</template>
+          </GameMechanicsBox>
         </div>
-      </template>
-      <template v-else>
-        <div class="unlimited">
-          {{ $t('game-setup.timer.unlimited-time') }}
-        </div>
-        <div class="buttons">
-          <v-btn color="secondary" @click="enableLimits">{{ $t('game-setup.timer.enable-limits') }}</v-btn>
-        </div>
-      </template>
-    </ConfigSection>
+      </ConfigSection>
+    </div>
 
     <ConfigSection :title="$t('game-setup.rules.starting-tiles-configuration')">
       <StartingTiles />
@@ -77,6 +81,7 @@ import GameElementBox from '@/components/game-setup/GameElementBox'
 import GameMechanicsBox from '@/components/game-setup/GameMechanicsBox'
 import StartingTiles from '@/components/game-setup/StartingTiles'
 import { GameElement, PRE_DRAW_INCOMPATIBLE } from '@/models/elements'
+import { DEFAULT_TIMER } from '@/store/gameSetup'
 
 export default {
   components: {
@@ -90,10 +95,7 @@ export default {
   data () {
     return {
       GameElement,
-      storedValue: {
-        initial: 3 * 60,
-        turn: 20
-      }
+      storedValue: { ...DEFAULT_TIMER }
     }
   },
 
@@ -166,6 +168,13 @@ export default {
 </script>
 
 <style lang="sass" scoped>
+// time limits | pre-draw | cooperative in one row; the starting tile configuration below
+.flow-columns
+  display: grid
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr))
+  gap: 0 $panel-gap
+  align-items: start
+
 .components
   margin-top: $panel-gap
   display: grid
@@ -200,16 +209,16 @@ export default {
   margin-top: 40px
   text-align: center
 
+// in its column: the label above its clock, both centred
 .limits-row
-  margin-top: 40px
+  margin-top: 30px
   display: flex
-  justify-content: center
+  flex-direction: column
   align-items: center
 
   .label
-    width: 220px
-    text-align: right
+    text-align: center
 
 .clock
-  margin: 0 40px
+  margin: 8px 0 0
 </style>
