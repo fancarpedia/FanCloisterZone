@@ -564,6 +564,15 @@ h2
   overflow-y: auto
   box-sizing: border-box
 
+  // "Max players (public)" belongs to "Public game": indented under it like the checkbox labels
+  // (past the 32px checkbox), with room above for the select's floating label — which otherwise
+  // sat on top of the "Public game" checkbox
+  .max-players
+    margin-top: 18px
+    margin-bottom: 6px
+    margin-left: 32px
+    max-width: 220px
+
 .game-setup-overview
   flex: 0 0 33.333%
   order: 3
