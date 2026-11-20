@@ -60,13 +60,14 @@ section
   +theme using ($theme)
     color: map-get($theme, 'gray-text-color')
 
+// the discarded tiles: top-right corner — the bottom row belongs to the game code
 .removed-tiles
   position: absolute
   display: flex
   justify-content: center
   align-items: center
-  right: 2px
-  bottom: 2px
+  right: 6px
+  top: 4px
 
   .v-icon, span
     font-size: 24px
@@ -78,14 +79,17 @@ section
     font-weight: bold
     margin-left: 4px
 
+  // a tile (square) with a cross centred on it, the cross ~60% of the square at any size
   .ico-wrapper
     position: relative
+    display: inline-flex
 
     .times
-      font-size: 16px
+      font-size: 14px
       position: absolute
-      left: 5px
-      top: 5.5px
+      left: 50%
+      top: 50%
+      transform: translate(-50%, -50%)
       color: white !important
 
 @media (max-height: 768px)
@@ -93,6 +97,11 @@ section
     font-size: 28px
 
   .removed-tiles
+    top: 2px
+
     .v-icon, span
       font-size: 16px
+
+    .ico-wrapper .times
+      font-size: 9px
 </style>
