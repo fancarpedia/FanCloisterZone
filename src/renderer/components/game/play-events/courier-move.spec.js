@@ -48,8 +48,9 @@ describe('courier move hover', () => {
     expect(moved).toContain("if (e.type === 'neutral-moved' && (e.figure || '').startsWith('courier')) break")
   })
 
-  it('pulses only the scored meeples that left the board', () => {
-    expect(moved).toContain('const removed = [...scored, ...(trigger ? [trigger] : [])].filter(m => m.type && this.isMeepleRemoved(m))')
+  it('rings every scored meeple as counted, and the triggering meeple only once it left the board', () => {
+    expect(moved).toContain('...scored.filter(m => m.type).map(m => ({ ...m, involved: true })),')
+    expect(moved).toContain('...(trigger && this.isMeepleRemoved(trigger) ? [trigger] : [])')
   })
 
   it('gets the whole turn, not just its own row', () => {

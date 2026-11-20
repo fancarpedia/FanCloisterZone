@@ -95,6 +95,19 @@
       width="100%" height="100%"
       mask="url(#emphasis-layer-mask)"
     />
+    <!-- what was counted for a score without scoring itself (a watchtower's monasteries, roads,
+         cities, coat-of-arms segments): tinted in another colour over the lit area -->
+    <g v-if="involvedPlaces.length" :transform="globalTransform" class="involved-shapes">
+      <g
+        v-for="(feature, idx) in involvedPlaces"
+        :key="'involved-' + idx"
+        :transform="transformPosition(feature.tile.position)"
+      >
+        <g :transform="transformRotation(feature.rotation) + ' ' + (feature.transform || '')">
+          <FeatureClip :clip="feature.clip" />
+        </g>
+      </g>
+    </g>
     <!-- optional range frame around a tile (3×3), drawn like the wagon's move range -->
     <g v-if="emphasis.frame" :transform="globalTransform">
       <polygon
@@ -144,6 +157,19 @@ export default {
 
     extraPointTransforms () {
       return this.toPointTransforms(this.emphasis.extraPoints)
+    },
+
+    // emphasis.involved: [{ tile, feature, location }] — the shapes to tint (see the template)
+    involvedPlaces () {
+      try {
+        return (this.emphasis.involved || [])
+          .filter(p => p && p.tile)
+          .map(({ tile, location, feature }) => ({ tile, ...this.$theme.getFeature(tile, feature, location, this.bridges) }))
+          .filter(f => f.clip)
+      } catch (e) {
+        console.error(e)
+        return []
+      }
     },
 
     // where the meeples / figures currently drawn by the history layers stand: a feature point, a
@@ -266,6 +292,13 @@ export default {
 </script>
 
 <style lang="sass" scoped>
+// involved shapes (counted, not scored): amber
+.involved-shapes
+  fill: rgba(255, 179, 0, 0.42)
+  stroke: rgba(255, 143, 0, 0.9)
+  stroke-width: 12
+  pointer-events: none
+
 .emphasize-lightbox
   +theme using ($theme)
     fill: map-get($theme, 'emphasize-lightbox-fill')

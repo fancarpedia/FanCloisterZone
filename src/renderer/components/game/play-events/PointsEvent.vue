@@ -118,11 +118,11 @@ export default {
           const feature = this.featureOn(ptr.featurePointer || ptr)
           if (feature) this.showFeature(feature, extraPoints)
         }
-        const removed = (meeples || []).filter(h => this.isMeepleRemoved(h))
-        if (removed.length) {
+        // every meeple the courier's score counted, ringed — drawn back where it stood
+        if (meeples && meeples.length) {
           this.$store.dispatch('board/showLayer', {
             layer: 'EventMeeplesLayer',
-            props: { meeples: removed, winners: [] }
+            props: { meeples: meeples.map(m => ({ ...m, involved: true })), winners: [] }
           })
         }
         // the courier where it stood when scoring (beside the meeple it walked to): a pulsing ghost,
@@ -131,6 +131,31 @@ export default {
           this.$store.dispatch('board/showLayer', {
             layer: 'NeutralFigureGhostLayer',
             props: { ghosts: [{ figure: 'courier', ptr: at, nextToMeeple: at.feature !== 'CourierLetter' }] }
+          })
+        }
+        this.$store.commit('board/pointsExpression', points)
+        return
+      }
+
+      // Watchtower bonus: the 3×3 range, the meeple on the watchtower that earned it (circled), and
+      // what the watchtower counted in another colour — monasteries / roads / cities / coat-of-arms
+      // segments as tinted shapes, followers (a meeple watchtower) as ringed meeples, drawn even if
+      // they have left the board since.
+      if (name.startsWith('watchtower')) {
+        const involved = (points.involved || []).map(p => ({
+          tile: this.tileOn([p.position[0], p.position[1], p.location]),
+          feature: p.feature,
+          location: p.location
+        }))
+        if (ptr && ptr.positions) this.showTiles(ptr.positions, [], involved)
+        const drawn = [
+          ...(meeples || []),
+          ...(points.involvedMeeples || []).map(m => ({ ...m, involved: true }))
+        ]
+        if (drawn.length) {
+          this.$store.dispatch('board/showLayer', {
+            layer: 'EventMeeplesLayer',
+            props: { meeples: drawn, winners: [] }
           })
         }
         this.$store.commit('board/pointsExpression', points)
@@ -152,7 +177,7 @@ export default {
         if (meeples && meeples.length) {
           this.$store.dispatch('board/showLayer', {
             layer: 'EventMeeplesLayer',
-            props: { meeples, winners: [] }
+            props: { meeples: meeples.map(m => ({ ...m, involved: true })), winners: [] }
           })
         }
         if (at) {
@@ -231,15 +256,17 @@ export default {
       })
     },
 
-    // extraPoints: single spots ({ position, feature, location }) opened on top (the courier's)
-    showTiles (positions, extraPoints = []) {
+    // extraPoints: single spots ({ position, feature, location }) opened on top (the courier's);
+    // involved: shapes ({ tile, feature, location }) tinted in another colour (counted, not scored)
+    showTiles (positions, extraPoints = [], involved = []) {
       this.$store.dispatch('board/showLayer', {
         layer: 'EmphasizeLayer',
         props: {
           emphasis: {
             type: 'tiles',
             positions,
-            extraPoints
+            extraPoints,
+            involved
           }
         }
       })

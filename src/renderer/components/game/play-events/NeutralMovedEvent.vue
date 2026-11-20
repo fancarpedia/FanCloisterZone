@@ -179,11 +179,16 @@ export default {
       // the scored meeples that left the board since, and the deployed meeple that triggered the move
       // if it has left too
       const trigger = causeMeeple(this.ev.cause)
-      const removed = [...scored, ...(trigger ? [trigger] : [])].filter(m => m.type && this.isMeepleRemoved(m))
-      if (removed.length) {
+      // the scored meeples, ringed as counted (drawn back where they stood); the deployed meeple that
+      // triggered the move only if it has left the board since
+      const drawn = [
+        ...scored.filter(m => m.type).map(m => ({ ...m, involved: true })),
+        ...(trigger && this.isMeepleRemoved(trigger) ? [trigger] : [])
+      ]
+      if (drawn.length) {
         this.$store.dispatch('board/showLayer', {
           layer: 'EventMeeplesLayer',
-          props: { meeples: removed, winners: [] }
+          props: { meeples: drawn, winners: [] }
         })
       }
 

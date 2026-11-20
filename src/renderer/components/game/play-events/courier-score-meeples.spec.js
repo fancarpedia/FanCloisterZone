@@ -5,8 +5,8 @@ import { fileURLToPath } from 'node:url'
 import { describe, it, expect } from 'vitest'
 
 // Courier points (name "courier.<feature>") now carry the followers of the scored feature, like a
-// regular score event. Hovering the bullet highlights the feature and pulses only the meeples that
-// have left the board since - the ones still standing there are visible already. No component
+// regular score event. Hovering the bullet highlights the feature and draws every scored meeple back
+// where it stood, with the amber "counted" ring (EventMeeplesLayer `involved`). No component
 // harness here, so the branch is pinned at source level (as castle-score-source.spec.js does).
 const DIR = path.dirname(fileURLToPath(import.meta.url))
 const CR = String.fromCharCode(13)
@@ -27,10 +27,9 @@ describe('the PointsEvent courier hover branch', () => {
     expect(branchBody).toContain('this.showFeature(feature, extraPoints)')
   })
 
-  it('pulses only the meeples no longer on the board', () => {
-    expect(branchBody).toContain('(meeples || []).filter(h => this.isMeepleRemoved(h))')
+  it('draws every scored meeple, ringed as counted', () => {
     expect(branchBody).toContain("layer: 'EventMeeplesLayer'")
-    expect(branchBody).toContain('props: { meeples: removed, winners: [] }')
+    expect(branchBody).toContain('props: { meeples: meeples.map(m => ({ ...m, involved: true })), winners: [] }')
   })
 
   it('still shows the points breakdown and stops there', () => {

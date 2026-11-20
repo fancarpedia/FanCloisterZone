@@ -11,6 +11,13 @@
         :transform="`translate(${meeple.x} ${meeple.y})`"
         :class="colorCssClass(meeple.player)"
       >
+        <!-- counted for a score without scoring itself (watchtower / Big Top / courier): an amber ring -->
+        <circle
+          v-if="meeple.involved"
+          class="involved-ring"
+          cx="0" cy="0"
+          :r="MEEPLE_SIZE * meeple.size * 0.62"
+        />
         <use
           :class="{ meeple: true, 'event-meeple': true, 'rot-90': meeple.rotate90 }"
           :x="-MEEPLE_SIZE * meeple.size / 2"
@@ -134,6 +141,12 @@ export default {
 </script>
 
 <style lang="sass" scoped>
+.involved-ring
+  fill: rgba(255, 179, 0, 0.35)
+  stroke: rgb(255, 143, 0)
+  stroke-width: 10
+  pointer-events: none
+
 .event-meeple
   opacity: 0.85
   // subtle pulse so the temporary event meeple reads as a highlight
