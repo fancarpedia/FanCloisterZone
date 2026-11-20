@@ -4,7 +4,7 @@
       <div>
         <ConfigSection :title="$t('bookmarks.title')">
           <div v-if="!verifiedMySetups.length" class="empty-message">
-            <i>{{ $t('bookmarks.description-start') }}&nbsp;<span class="btn-ref"><v-icon left>far fa-heart</v-icon>{{ $t('button.add-to-favorites') }}</span> {{ $t('bookmarks.description-end') }}</i>
+            <i>{{ $t('bookmarks.description-start') }}&nbsp;<span class="heart-ref" :title="$t('button.add-to-favorites')"><v-icon>far fa-heart</v-icon></span> {{ $t('bookmarks.description-end') }}</i>
           </div>
           <div class="d-flex flex-wrap">
             <GameSetupBox
@@ -246,10 +246,20 @@ export default {
   margin: 30px 0
   text-align: center
 
-  .btn-ref
+  // the heart button of the overview sidebar, as it looks there
+  .heart-ref
+    display: inline-flex
+    align-items: center
+    justify-content: center
+    width: 22px
+    height: 22px
+    border-radius: 50%
     border: 1px solid
-    border-radius: 2px
-    padding: 0 4px
+    vertical-align: middle
+
+    .v-icon
+      font-size: 13px
+      top: 0
 
   .v-icon
     font-size: 16px
