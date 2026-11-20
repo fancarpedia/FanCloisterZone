@@ -9,6 +9,17 @@
       <div v-if="tilesChanged" class="game-type tiles-changed" :title="$t('game-setup.tiles.custom-pack')">
         ✂ {{ $t('game-setup.tiles.custom-pack-short') }}
       </div>
+      <!-- favourite this setup: a heart beside the game type (filled = already a favourite) -->
+      <v-btn
+        icon
+        x-small
+        class="favorite-btn"
+        :class="{ active: isFavorite }"
+        :title="isFavorite ? $t('button.remove-from-favorites') : $t('button.add-to-favorites')"
+        @click="isFavorite ? removeFromMySetups() : addToMySetups()"
+      >
+        <v-icon small>{{ isFavorite ? 'fas fa-heart' : 'far fa-heart' }}</v-icon>
+      </v-btn>
     </div>
     <div class="label">
       <h3>{{ $t('game-setup.selected-tiles') }}</h3>
@@ -69,22 +80,6 @@
       <ScoringVariants :setup="setup" show="changed" read-only />
     </div>
 
-    <v-divider />
-
-    <div class="setup-buttons">
-      <v-btn v-if="!$store.getters['settings/isMySetup'](setup)" small color="secondary" @click="addToMySetups">
-        <v-icon left>far fa-heart</v-icon>
-        {{ $t('button.add-to-favorites') }}
-      </v-btn>
-      <v-btn v-else small color="secondary" @click="removeFromMySetups">
-        <v-icon left>fa-heart</v-icon>
-        {{ $t('button.remove-from-favorites') }}
-      </v-btn>
-      <v-btn small color="secondary" @click="saveGameSetup">
-        <v-icon left>fa-file</v-icon>
-        {{ $t('button.save-to-file') }}
-      </v-btn>
-    </div>
   </div>
 </template>
 
@@ -114,6 +109,10 @@ export default {
   },
 
   computed: {
+    // this setup is one of my favourites (bookmarks)
+    isFavorite () {
+      return this.$store.getters['settings/isMySetup'](this.setup)
+    },
     sets () { return this.setup?.sets },
     rules () { return this.setup?.rules },
     elements () { return this.setup?.elements },
@@ -143,10 +142,6 @@ export default {
 
     removeFromMySetups () {
       this.$store.dispatch('settings/removeMySetup', this.setup)
-    },
-
-    saveGameSetup () {
-      this.$store.dispatch('game/save', { onlySetup: true })
     }
   }
 }
@@ -215,16 +210,11 @@ section
     +theme using ($theme)
       color: map-get($theme, 'gray-text-color')
 
-.v-divider
-  margin-top: 20px
+// the favourite heart beside the game type badge
+.favorite-btn
+  align-self: center
 
-.setup-buttons
-  padding: 20px
-  display: flex
-  flex-direction: column
-  align-items: flex-start
-
-  .v-btn
-    margin-bottom: 10px
+  &.active .v-icon
+    color: #e53935
 
 </style>
