@@ -7,6 +7,8 @@
       <RulesLink :title="$t('button.rules-1st-edition')" href="https://wikicarpedia.com/car/Special:MyLanguage/Crop_Circles_(1st_edition)" />
     </p>
 
+    <AiExpansionInfo />
+
     <h5>{{ $t('expansion.crop-circles-I') }}</h5>
     <TileDistribution :sets="{'corn-circles/1': 1}" />
 
@@ -16,11 +18,13 @@
 </template>
 
 <script>
+import AiExpansionInfo from '@/components/game-setup/AiExpansionInfo'
 import RulesLink from '@/components/RulesLink'
 import TileDistribution from '@/components/TileDistribution'
 
 export default {
   components: {
+    AiExpansionInfo,
     RulesLink,
     TileDistribution
   }

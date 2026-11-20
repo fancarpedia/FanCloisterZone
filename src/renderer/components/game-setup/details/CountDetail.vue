@@ -6,16 +6,20 @@
       <RulesLink :title="$t('button.rules-1st-edition')" href="https://wikicarpedia.com/car/Special:MyLanguage/Count,_King_and_Robber_(1st_edition)" />
     </p>
 
+    <AiExpansionInfo />
+
     <CountMiniboard :size="80" />
   </div>
 </template>
 
 <script>
+import AiExpansionInfo from '@/components/game-setup/AiExpansionInfo'
 import RulesLink from '@/components/RulesLink'
 import CountMiniboard from '@/components/game-setup/details/CountMiniboard'
 
 export default {
   components: {
+    AiExpansionInfo,
     RulesLink,
     CountMiniboard
   }

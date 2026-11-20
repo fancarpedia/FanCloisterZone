@@ -61,6 +61,11 @@ export default {
     expansion: { type: Object, required: true }
   },
 
+  // the AI line (AiExpansionInfo) sits inside each detail, under its links
+  provide () {
+    return { aiExpansion: () => this.expansion }
+  },
+
   computed: {
     detailComponent () {
       return {

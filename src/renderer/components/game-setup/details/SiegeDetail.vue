@@ -6,6 +6,8 @@
       <RulesLink :title="$t('button.rules')" href="https://wikicarpedia.com/car/Special:MyLanguage/Besiegers_Cathars_Siege_(1st_edition)" />
     </p>
 
+    <AiExpansionInfo />
+
     <h5>{{ $t('expansion.cathars') }}</h5>
 
     <TileDistribution :sets="{'siege/cathars': 1}" />
@@ -17,11 +19,13 @@
 </template>
 
 <script>
+import AiExpansionInfo from '@/components/game-setup/AiExpansionInfo'
 import RulesLink from '@/components/RulesLink'
 import TileDistribution from '@/components/TileDistribution'
 
 export default {
   components: {
+    AiExpansionInfo,
     RulesLink,
     TileDistribution
   }

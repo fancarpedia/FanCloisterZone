@@ -6,6 +6,8 @@
       <RulesLink :title="$t('button.rules-1st-edition')" href="https://wikicarpedia.com/car/Special:MyLanguage/Count,_King_and_Robber_(1st_edition)#King_and_Robber_Baron" />
     </p>
 
+    <AiExpansionInfo />
+
     <p>
       {{ $t('tile-set.king-and-robber-release') }}
     </p>
@@ -15,11 +17,13 @@
 </template>
 
 <script>
+import AiExpansionInfo from '@/components/game-setup/AiExpansionInfo'
 import RulesLink from '@/components/RulesLink'
 import TileDistribution from '@/components/TileDistribution'
 
 export default {
   components: {
+    AiExpansionInfo,
     RulesLink,
     TileDistribution
   }

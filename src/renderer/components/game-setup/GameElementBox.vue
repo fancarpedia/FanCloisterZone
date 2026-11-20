@@ -122,11 +122,15 @@ export default {
   // "the AI plays this" — top-left corner, out of the way of the corner controls on the right
   .ai-badge
     position: absolute
-    top: 4px
-    left: 6px
+    top: 9px
+    left: 11px
     z-index: 1
     line-height: 1
     cursor: default
+
+    // the robot in the box's own text colour
+    .v-icon
+      color: inherit !important
 
   .keep-building-badge
     position: absolute

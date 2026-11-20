@@ -8,9 +8,15 @@
       ['multiset-' + expansion.releases.length]: expansion.releases.length > 1
     }"
   >
-    <!-- the AI plays this (utils/ai-support.js): AI players stay available with it -->
-    <div v-if="aiPlayable" class="ai-badge" :title="$t('game-setup.ai.supported')">
+    <!-- the AI plays this (utils/ai-support.js aiExpansionLevel): a robot + a light green check; + a blue "i" when it
+         plays by default but an element it only allows would rule AI out (tunnels); a dimmed robot + an
+         amber "!" when an element it switches on must be turned off first (the tower) — the tooltip
+         names them -->
+    <div v-if="aiPlayable" class="ai-badge" :class="'ai-' + aiLevel.level" :title="aiTitle">
       <v-icon small>fa-solid fa-robot</v-icon>
+      <span v-if="aiLevel.level === 'ai'" class="ai-mark ai-ok">&#10003;</span>
+      <span v-else-if="aiLevel.level === 'allowed'" class="ai-mark ai-info-mark">i</span>
+      <span v-else-if="aiLevel.level === 'implied'" class="ai-mark ai-excl">!</span>
     </div>
     <a href="#" class="detail-link" @click.prevent="open">
       <v-icon>fas fa-layer-group</v-icon>
@@ -58,7 +64,7 @@
 import { mapState } from 'vuex'
 import ExpansionSymbol from '@/components/ExpansionSymbol'
 import ReleaseButtons from '@/components/game-setup/buttons/ReleaseButtons'
-import { isAiExpansion } from '@/utils/ai-support'
+import { aiExpansionLevel, aiLevelText } from '@/utils/ai-support'
 
 export default {
   components: {
@@ -87,8 +93,17 @@ export default {
   },
 
   computed: {
+    // the four AI stages: 'ai' | 'allowed' | 'implied' | 'none'
+    aiLevel () {
+      return aiExpansionLevel(this.expansion)
+    },
+
     aiPlayable () {
-      return isAiExpansion(this.expansion)
+      return this.aiLevel.level !== 'none'
+    },
+
+    aiTitle () {
+      return aiLevelText(this.aiLevel, this)
     },
 
     ...mapState({
@@ -276,11 +291,47 @@ export default {
 // "the AI plays this" — top-left corner, out of the way of the corner controls on the right
 .ai-badge
   position: absolute
-  top: 4px
-  left: 6px
+  top: 9px
+  left: 11px
   z-index: 1
   line-height: 1
   cursor: default
+
+  // the robot head 50% larger than a small icon (16px), so the marks on it read clearly
+  .v-icon
+    font-size: 24px !important
+
+  // AI by default, with a note (an allowed element would rule it out): full robot + blue "i".
+  // AI only after switching something off: dimmed robot + amber "!" — not playable as it is.
+  &.ai-implied .v-icon
+    opacity: 0.45
+
+  .ai-mark
+    position: absolute
+    top: -8px
+    right: -13px
+    width: 21px
+    height: 21px
+    border-radius: 50%
+    color: white
+    font-size: 15px
+    font-weight: 700
+    font-style: normal
+    line-height: 21px
+    text-align: center
+    box-shadow: 0 0 0 1.5px white
+    pointer-events: none
+
+  // fully playable by the AI: a light green check
+  .ai-ok
+    background: #66bb6a
+
+  .ai-info-mark
+    background: #1e88e5
+    font-family: Georgia, serif
+
+  .ai-excl
+    background: #ff8f00
 
 .requirement-warning
   position: absolute

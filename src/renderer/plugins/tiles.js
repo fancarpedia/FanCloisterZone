@@ -4,7 +4,6 @@ import path from 'path'
 import Vue from 'vue'
 import sortBy from 'lodash/sortBy'
 import isNil from 'lodash/isNil'
-import semver from 'semver'
 import { ipcRenderer } from 'electron'
 
 import { Expansion, Release } from '@/models/expansions'
@@ -12,6 +11,7 @@ import { GameElement } from '@/models/elements'
 import { EventsBase } from '@/utils/events'
 import { registerKingdomPalaces } from '@/utils/kingdom-palace'
 import { SLOT_COLORS } from '@/utils/player-colors'
+import { meetsAiVersion } from '@/utils/ai-support'
 
 const SIDES = ['N', 'E', 'S', 'W']
 const EDGE_CODE = {
@@ -485,7 +485,6 @@ export class Tiles extends EventsBase {
       })
       
       const appVersion = await ipcRenderer.invoke('get-app-version')
-      const appVer = semver.coerce(appVersion)
 
       doc.querySelectorAll('expansion').forEach(el => {
         const name = el.getAttribute('id')
@@ -499,10 +498,13 @@ export class Tiles extends EventsBase {
         const tileSets = Array.from(el.querySelectorAll('ref[tile-set]')).map(ref => ref.getAttribute('tile-set'))
         const enforces = Array.from(el.querySelectorAll('enforces[element]')).map(ref => ref.getAttribute('element'))
         const implies = Array.from(el.querySelectorAll('implies[element]')).map(ref => ref.getAttribute('element'))
+        const allowedElements = Array.from(el.querySelectorAll('impliesAllowed[element]')).map(ref => ref.getAttribute('element'))
         const minimumVersionForAI = el.querySelector('minimumVersionForAI') || null
         const maxSets = el.querySelector('maxSets') || null
 		const minSets = el.querySelector('minSets') || null
-        const ai = isNil(minimumVersionForAI) ? false : semver.gte(appVer, semver.coerce(minimumVersionForAI.textContent))
+        // AI players: the add-on's minimumVersionForAI (if any) is met — its elements decide the rest
+        // (utils/ai-support.js aiExpansionLevel)
+        const ai = meetsAiVersion(isNil(minimumVersionForAI) ? null : minimumVersionForAI.textContent.trim(), appVersion)
 
         const svgIcon = el.querySelector('icon svg')
 
@@ -510,6 +512,8 @@ export class Tiles extends EventsBase {
 
         const exp = new Expansion(name, title, { enforces, implies, ai }, [new Release(name, tileSets, { max: maxSets, min: minSets } )])
         if (groups.length) exp.groups = groups
+        // the elements it only allows — for the AI stages, NOT impliesAllowed (they stay off by default)
+        exp.allowedElements = allowedElements
         if (svgIcon) {
           this.symbols.push(`<symbol id="expansion-${name}" viewBox="${svgIcon.getAttribute('viewBox')}">${svgIcon.innerHTML}</symbol>`)
           exp.svgIcon = true

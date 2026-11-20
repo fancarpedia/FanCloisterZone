@@ -91,11 +91,15 @@ export default {
 
   .ai-badge
     position: absolute
-    top: 4px
-    left: 6px
+    top: 9px
+    left: 11px
     z-index: 1
     line-height: 1
     cursor: default
+
+    // the robot in the box's own text colour
+    .v-icon
+      color: inherit !important
 
   +theme using ($theme)
     color: map-get($theme, 'cards-text')

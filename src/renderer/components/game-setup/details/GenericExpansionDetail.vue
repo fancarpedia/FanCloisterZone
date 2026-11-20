@@ -10,6 +10,8 @@
       />
     </p>
 
+    <AiExpansionInfo />
+
     <div v-if="descriptionParagraphs.length">
       <p
         v-for="(text, idx) in descriptionParagraphs"
@@ -31,11 +33,13 @@
 </template>
 
 <script>
+import AiExpansionInfo from '@/components/game-setup/AiExpansionInfo'
 import RulesLink from '@/components/RulesLink'
 import TileDistribution from '@/components/TileDistribution'
 
 export default {
   components: {
+    AiExpansionInfo,
     RulesLink,
     TileDistribution
   },

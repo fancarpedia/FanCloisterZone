@@ -5,6 +5,8 @@
       <RulesLink :title="$t('button.rules')" href="https://wikicarpedia.com/car/Special:MyLanguage/Count,_King_and_Robber#The_cultists" />
     </p>
 
+    <AiExpansionInfo />
+
     <h5>{{ $t('expansion.cult-places') }}</h5>
     <TileDistribution :sets="{'cult/6': 1}" />
 
@@ -14,11 +16,13 @@
 </template>
 
 <script>
+import AiExpansionInfo from '@/components/game-setup/AiExpansionInfo'
 import RulesLink from '@/components/RulesLink'
 import TileDistribution from '@/components/TileDistribution'
 
 export default {
   components: {
+    AiExpansionInfo,
     RulesLink,
     TileDistribution
   }

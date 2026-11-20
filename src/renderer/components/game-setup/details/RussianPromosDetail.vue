@@ -5,6 +5,8 @@
       <RulesLink :title="$t('button.rules')" href="https://wikicarpedia.com/car/Special:MyLanguage/Russian_Promos_(1st_edition)" />
     </p>
 
+    <AiExpansionInfo />
+
     <h5>{{ $t('tile-set.russian-promos-2013-title') }}</h5>
     <TileDistribution :sets="{'russian-promos/2013': 1}" />
 
@@ -14,11 +16,13 @@
 </template>
 
 <script>
+import AiExpansionInfo from '@/components/game-setup/AiExpansionInfo'
 import RulesLink from '@/components/RulesLink'
 import TileDistribution from '@/components/TileDistribution'
 
 export default {
   components: {
+    AiExpansionInfo,
     RulesLink,
     TileDistribution
   }
