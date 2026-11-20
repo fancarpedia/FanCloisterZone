@@ -251,7 +251,8 @@
         </li>
         <li v-if="!otherClients.length" class="client empty">{{ $t('index.online.no-clients') }}</li>
       </ul>
-      <h2>{{ $t('chat.chat') }}</h2>
+      <!-- the section is titled Global chat; the panel's own title bar is not repeated inline -->
+      <h2>{{ $t('chat.global-chat') }}</h2>
       <GlobalChat inline />
     </aside>
     </div>

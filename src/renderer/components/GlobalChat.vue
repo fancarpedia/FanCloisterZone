@@ -17,7 +17,8 @@
     </button>
 
     <div v-show="inline || open" class="gc-panel" :style="inline ? {} : boxAvoidStyle('global-chat-box')">
-      <div class="gc-header">
+      <!-- inline (the lobby) the page section already titles it "Global chat" — no title bar -->
+      <div v-if="!inline" class="gc-header">
         <span class="gc-title"><span class="gc-bullet" />{{ $t('chat.global-chat') }}</span>
         <button v-if="!inline" class="gc-close" :title="$t('chat.close') || 'Close'" @click="open = false">
           <v-icon>fas fa-times</v-icon>
