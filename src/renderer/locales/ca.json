@@ -2,7 +2,7 @@
   "@author": "J0anJosep",
   "@jcz-version": "5.12.1",
   "@fcz-version": "7.2.0",
-  "@version": "0.13.10-ai",
+  "@version": "0.13.11-ai",
   "about": {
     "author": "Autor",
     "configuration-file": "Fitxer de configuració",
@@ -723,6 +723,8 @@
       "each-turn-increase-timer-by": "Cada torn, afegeix al cronòmetre",
       "enable-limits": "activa el límit de temps",
       "player-time-limit": "Temps límit per jugador",
+      "start-short": "Inici de la partida",
+      "turn-short": "Cada torn",
       "unlimited-time": "sense límit",
       "when-time-is-over": "Quan acabi el temps"
     },

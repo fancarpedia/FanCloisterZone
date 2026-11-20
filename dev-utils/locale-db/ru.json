@@ -349,6 +349,16 @@
     "value": "В запасе игроков, а не в стопке тайлов",
     "source": "manual"
   },
+  "game-setup.timer.start-short": {
+    "en": "Game start",
+    "value": "Начало игры",
+    "source": "manual"
+  },
+  "game-setup.timer.turn-short": {
+    "en": "Each turn",
+    "value": "Каждый ход",
+    "source": "manual"
+  },
   "game-setup.variant.best-setups": {
     "en": "Best setups",
     "value": "Лучшие настройки",

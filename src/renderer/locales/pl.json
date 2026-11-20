@@ -2,7 +2,7 @@
   "@author": "Snearone",
   "@jcz-version": "5.12.1",
   "@fcz-version": "7.2.0",
-  "@version": "0.13.10-ai",
+  "@version": "0.13.11-ai",
   "about": {
     "author": "Autor",
     "configuration-file": "Plik konfiguracyjny",
@@ -723,6 +723,8 @@
       "each-turn-increase-timer-by": "Co rundę zwiększ czas o:",
       "enable-limits": "włącz limity",
       "player-time-limit": "Limit czasu gracza",
+      "start-short": "Początek gry",
+      "turn-short": "Każda tura",
       "unlimited-time": "nielimitowany czas",
       "when-time-is-over": "Gdy czas dobiegnie do końca"
     },

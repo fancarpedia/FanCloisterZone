@@ -349,6 +349,16 @@
     "value": "In de voorraad van de spelers, niet in de trekstapel",
     "source": "manual"
   },
+  "game-setup.timer.start-short": {
+    "en": "Game start",
+    "value": "Begin van het spel",
+    "source": "manual"
+  },
+  "game-setup.timer.turn-short": {
+    "en": "Each turn",
+    "value": "Elke beurt",
+    "source": "manual"
+  },
   "game-setup.variant.best-setups": {
     "en": "Best setups",
     "value": "Beste instellingen",

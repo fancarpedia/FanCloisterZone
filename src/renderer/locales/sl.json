@@ -2,7 +2,7 @@
   "@author": "TileLord | Erol",
   "@jcz-version": "5.12.1",
   "@fcz-version": "7.2.0",
-  "@version": "0.13.10-ai",
+  "@version": "0.13.11-ai",
   "about": {
     "author": "Avtor",
     "configuration-file": "Konfiguracijska datoteka",
@@ -723,6 +723,8 @@
       "each-turn-increase-timer-by": "Vsako potezo poveča časovnik za",
       "enable-limits": "omogoči omejitve",
       "player-time-limit": "Časovna omejitev igralca",
+      "start-short": "Začetek igre",
+      "turn-short": "Vsaka poteza",
       "unlimited-time": "neomejen čas",
       "when-time-is-over": "Ko se čas izteče"
     },

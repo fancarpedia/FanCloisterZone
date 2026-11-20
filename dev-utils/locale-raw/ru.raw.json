@@ -718,6 +718,8 @@
       "each-turn-increase-timer-by": "При каждом ходе увеличивать таймер на",
       "enable-limits": "включить ограничения",
       "player-time-limit": "Ограничение времени игрока",
+      "start-short": "<span lang="en" dir="ltr" class="mw-content-ltr">Game start</span>",
+      "turn-short": "<span lang="en" dir="ltr" class="mw-content-ltr">Each turn</span>",
       "unlimited-time": "неограниченное время",
       "when-time-is-over": "Когда время закончится"
     },

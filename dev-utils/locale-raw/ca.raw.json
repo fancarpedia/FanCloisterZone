@@ -718,6 +718,8 @@
       "each-turn-increase-timer-by": "Cada torn, afegeix al cronòmetre",
       "enable-limits": "activa el límit de temps",
       "player-time-limit": "Temps límit per jugador",
+      "start-short": "<span lang="en" dir="ltr" class="mw-content-ltr">Game start</span>",
+      "turn-short": "<span lang="en" dir="ltr" class="mw-content-ltr">Each turn</span>",
       "unlimited-time": "sense límit",
       "when-time-is-over": "Quan acabi el temps"
     },

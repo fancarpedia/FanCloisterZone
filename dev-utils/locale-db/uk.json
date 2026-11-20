@@ -1814,6 +1814,16 @@
     "value": "Обмеження часу для гравця",
     "source": "manual"
   },
+  "game-setup.timer.start-short": {
+    "en": "Game start",
+    "value": "Початок гри",
+    "source": "manual"
+  },
+  "game-setup.timer.turn-short": {
+    "en": "Each turn",
+    "value": "Кожен хід",
+    "source": "manual"
+  },
   "game-setup.timer.unlimited-time": {
     "en": "unlimited time",
     "value": "необмежений час",

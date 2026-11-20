@@ -718,6 +718,8 @@
       "each-turn-increase-timer-by": "<span lang="en" dir="ltr" class="mw-content-ltr">Each turn, increase timer by</span>",
       "enable-limits": "<span lang="en" dir="ltr" class="mw-content-ltr">enable limits</span>",
       "player-time-limit": "<span lang="en" dir="ltr" class="mw-content-ltr">Player time limit</span>",
+      "start-short": "<span lang="en" dir="ltr" class="mw-content-ltr">Game start</span>",
+      "turn-short": "<span lang="en" dir="ltr" class="mw-content-ltr">Each turn</span>",
       "unlimited-time": "<span lang="en" dir="ltr" class="mw-content-ltr">unlimited time</span>",
       "when-time-is-over": "<span lang="en" dir="ltr" class="mw-content-ltr">When time is over</span>"
     },

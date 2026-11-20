@@ -718,6 +718,8 @@
       "each-turn-increase-timer-by": "Každý ťah navýši časovač o",
       "enable-limits": "povoliť limity",
       "player-time-limit": "Časový limit hráča",
+      "start-short": "<span lang="en" dir="ltr" class="mw-content-ltr">Game start</span>",
+      "turn-short": "<span lang="en" dir="ltr" class="mw-content-ltr">Each turn</span>",
       "unlimited-time": "neobmedzený čas",
       "when-time-is-over": "Keď čas vyprší"
     },

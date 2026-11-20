@@ -499,6 +499,16 @@
     "value": "Žaidėjų atsargose, ne traukiamų kortelių krūvoje",
     "source": "manual"
   },
+  "game-setup.timer.start-short": {
+    "en": "Game start",
+    "value": "Žaidimo pradžia",
+    "source": "manual"
+  },
+  "game-setup.timer.turn-short": {
+    "en": "Each turn",
+    "value": "Kiekvienas ėjimas",
+    "source": "manual"
+  },
   "game-setup.variant.best-setups": {
     "en": "Best setups",
     "value": "Geriausi nustatymai",

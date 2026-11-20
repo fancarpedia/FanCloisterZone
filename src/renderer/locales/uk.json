@@ -2,7 +2,7 @@
   "@author": "ai",
   "@jcz-version": "5.12.1",
   "@fcz-version": "7.2.0",
-  "@version": "0.13.10-ai",
+  "@version": "0.13.11-ai",
   "about": {
     "author": "Автор",
     "configuration-file": "Файл конфігурації",
@@ -723,6 +723,8 @@
       "each-turn-increase-timer-by": "Кожного ходу збільшувати таймер на",
       "enable-limits": "увімкнути обмеження",
       "player-time-limit": "Обмеження часу для гравця",
+      "start-short": "Початок гри",
+      "turn-short": "Кожен хід",
       "unlimited-time": "необмежений час",
       "when-time-is-over": "Коли час спливе"
     },

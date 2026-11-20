@@ -329,6 +329,16 @@
     "value": "V zásobě hráčů, ne mezi kartičkami k tažení",
     "source": "manual"
   },
+  "game-setup.timer.start-short": {
+    "en": "Game start",
+    "value": "Začátek hry",
+    "source": "manual"
+  },
+  "game-setup.timer.turn-short": {
+    "en": "Each turn",
+    "value": "Každý tah",
+    "source": "manual"
+  },
   "game-setup.variant.best-setups": {
     "en": "Best setups",
     "value": "Nejlepší nastavení",

@@ -74,6 +74,16 @@
     "value": "În rezerva jucătorilor, nu în teancul de tras",
     "source": "manual"
   },
+  "game-setup.timer.start-short": {
+    "en": "Game start",
+    "value": "Începutul jocului",
+    "source": "manual"
+  },
+  "game-setup.timer.turn-short": {
+    "en": "Each turn",
+    "value": "Fiecare tură",
+    "source": "manual"
+  },
   "game.action.choose-a-tile-from-your-hand": {
     "en": "Choose a tile from your hand",
     "value": "Alege un cartonaș din mână",

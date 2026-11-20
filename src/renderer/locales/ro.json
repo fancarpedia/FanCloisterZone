@@ -2,7 +2,7 @@
   "@author": "Paloi Sciurala",
   "@jcz-version": "5.12.1",
   "@fcz-version": "7.2.0",
-  "@version": "0.13.10",
+  "@version": "0.13.11-ai",
   "about": {
     "author": "Autor",
     "configuration-file": "Fișier de configurație",
@@ -723,6 +723,8 @@
       "each-turn-increase-timer-by": "În fiecare tură, crește durata cronometrului cu",
       "enable-limits": "activează limite",
       "player-time-limit": "Limita de timp a jucătorilor",
+      "start-short": "Începutul jocului",
+      "turn-short": "Fiecare tură",
       "unlimited-time": "timp nelimitat",
       "when-time-is-over": "Atunci când timpul s-a terminat"
     },

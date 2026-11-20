@@ -718,6 +718,8 @@
       "each-turn-increase-timer-by": "Kiekvieną ėjimą padidinti laikmatį",
       "enable-limits": "įjungti limitą",
       "player-time-limit": "Žaidėjo laiko limitas",
+      "start-short": "<span lang="en" dir="ltr" class="mw-content-ltr">Game start</span>",
+      "turn-short": "<span lang="en" dir="ltr" class="mw-content-ltr">Each turn</span>",
       "unlimited-time": "neribotas laikas",
       "when-time-is-over": "Kai laikas baigiasi"
     },

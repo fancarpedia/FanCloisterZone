@@ -718,6 +718,8 @@
       "each-turn-increase-timer-by": "Vsako potezo poveča časovnik za",
       "enable-limits": "omogoči omejitve",
       "player-time-limit": "Časovna omejitev igralca",
+      "start-short": "<span lang="en" dir="ltr" class="mw-content-ltr">Game start</span>",
+      "turn-short": "<span lang="en" dir="ltr" class="mw-content-ltr">Each turn</span>",
       "unlimited-time": "neomejen čas",
       "when-time-is-over": "Ko se čas izteče"
     },

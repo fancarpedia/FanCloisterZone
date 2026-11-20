@@ -159,6 +159,16 @@
     "value": "Dans la réserve des joueurs, pas dans la pioche",
     "source": "manual"
   },
+  "game-setup.timer.start-short": {
+    "en": "Game start",
+    "value": "Début de partie",
+    "source": "manual"
+  },
+  "game-setup.timer.turn-short": {
+    "en": "Each turn",
+    "value": "Chaque tour",
+    "source": "manual"
+  },
   "game-setup.variant.black-fairy-placement.description": {
     "en": "The Black Fairy is deployed {}.",
     "value": "La fée noire {}.",

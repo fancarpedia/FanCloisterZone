@@ -2,7 +2,7 @@
   "@author": "farin & Scott",
   "@jcz-version": "5.12.1",
   "@fcz-version": "7.2.0",
-  "@version": "0.13.10",
+  "@version": "0.13.11",
   "about": {
     "author": "Author",
     "configuration-file": "Configuration file",
@@ -723,6 +723,8 @@
       "each-turn-increase-timer-by": "Each turn, increase timer by",
       "enable-limits": "enable limits",
       "player-time-limit": "Player time limit",
+      "start-short": "Game start",
+      "turn-short": "Each turn",
       "unlimited-time": "unlimited time",
       "when-time-is-over": "When time is over"
     },

@@ -718,6 +718,8 @@
       "each-turn-increase-timer-by": "In jeder Runde den Timer erhöhen um",
       "enable-limits": "Zeitlimit aktivieren",
       "player-time-limit": "Zeitlimit für Spieler",
+      "start-short": "<span lang="en" dir="ltr" class="mw-content-ltr">Game start</span>",
+      "turn-short": "<span lang="en" dir="ltr" class="mw-content-ltr">Each turn</span>",
       "unlimited-time": "unbegrenzte Zeit",
       "when-time-is-over": "Wenn die Zeit vorbei ist"
     },

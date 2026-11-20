@@ -2,7 +2,7 @@
   "@author": "Black Bear",
   "@jcz-version": "5.12.1",
   "@fcz-version": "7.2.0",
-  "@version": "0.13.10-ai",
+  "@version": "0.13.11-ai",
   "about": {
     "author": "Auteur",
     "configuration-file": "Fichier de configuration",
@@ -723,6 +723,8 @@
       "each-turn-increase-timer-by": "À chaque tour, augmenter le compteur de",
       "enable-limits": "activer les limites de temps",
       "player-time-limit": "Limite de temps du joueur",
+      "start-short": "Début de partie",
+      "turn-short": "Chaque tour",
       "unlimited-time": "temps illimité",
       "when-time-is-over": "Lorsque le temps est écoulé"
     },

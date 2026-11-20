@@ -2,7 +2,7 @@
   "@author": "pOison & Dextea & SonicDC",
   "@jcz-version": "5.12.1",
   "@fcz-version": "7.2.0",
-  "@version": "0.13.10-ai",
+  "@version": "0.13.11-ai",
   "about": {
     "author": "Автор",
     "configuration-file": "Файл конфигурации",
@@ -723,6 +723,8 @@
       "each-turn-increase-timer-by": "При каждом ходе увеличивать таймер на",
       "enable-limits": "включить ограничения",
       "player-time-limit": "Ограничение времени игрока",
+      "start-short": "Начало игры",
+      "turn-short": "Каждый ход",
       "unlimited-time": "неограниченное время",
       "when-time-is-over": "Когда время закончится"
     },
