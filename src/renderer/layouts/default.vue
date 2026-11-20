@@ -211,6 +211,9 @@ export default {
     $route (to) {
       this.updateMenu()
       this.updateTitle()
+      // tell the main process which page this window shows (it focuses the Test Runner's window
+      // when one of its test games closes)
+      ipcRenderer.send('window.set-route', to && to.name)
     },
 
     undoAllowed () {
@@ -426,6 +429,7 @@ export default {
   },
 
   async mounted () {
+    ipcRenderer.send('window.set-route', this.$route && this.$route.name)
     // the browser's own automatic dark mode repaints the page; flag it so the light player colours'
     // scoring bullets keep their black text (player-colors.scss)
     markAutoDark()

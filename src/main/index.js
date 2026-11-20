@@ -293,12 +293,22 @@ function buildWindow ({ role = 'main', hidden = false } = {}) {
     if (st && st.role === 'main') {
       app.quit()
     } else {
-      // When a game window closes, bring the main (lobby) window back into focus.
-      const mainWin = BrowserWindow.getAllWindows().find(w => {
+      // When a game window closes, bring back the window that ran it: a window showing the Test
+      // Runner (its test games open in their own windows) if there is one, else the main (lobby).
+      const others = BrowserWindow.getAllWindows().filter(w => w !== win && !w.isDestroyed())
+      const runnerWin = others.find(w => {
+        const s = winState.get(w.webContents.id)
+        return s && s.route === 'test-runner'
+      })
+      const mainWin = others.find(w => {
         const s = winState.get(w.webContents.id)
         return s && s.role === 'main'
       })
-      if (mainWin && !mainWin.isDestroyed()) mainWin.focus()
+      const back = runnerWin || mainWin
+      if (back) {
+        if (back.isMinimized()) back.restore()
+        back.focus()
+      }
     }
   })
 
@@ -382,6 +392,12 @@ ipcMain.on('game-window.ready', (event) => {
 // A renderer (lobby, or test runner) asks to open/focus a game in its own window.
 ipcMain.handle('open-game-window', (event, intent) => {
   openGameWindow(intent)
+})
+
+// Every window reports the page (route name) it shows — e.g. which one runs the Test Runner, so
+// closing a test game can bring it back instead of the lobby.
+ipcMain.on('window.set-route', (event, route) => {
+  stateFor(event.sender).route = route || null
 })
 
 // A game window reports the gameId it ended up running (used for the title/debug indicator).
