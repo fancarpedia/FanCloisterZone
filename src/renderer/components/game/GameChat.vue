@@ -57,6 +57,7 @@
       <div class="chat-input">
         <v-text-field
           ref="chatMessage"
+          v-keep-input-scroll
           v-model="newMessage"
           dense
           hide-details
@@ -94,9 +95,11 @@ import isEqual from 'lodash/isEqual'
 import isNil from 'lodash/isNil'
 
 import ChatBulletDragMixin from '@/components/ChatBulletDragMixin'
+import keepInputScroll from '@/utils/keep-input-scroll'
 import { isWeb } from '@/utils/version'
 
 export default {
+  directives: { keepInputScroll },
   mixins: [ChatBulletDragMixin],
 
   data () {
@@ -241,8 +244,10 @@ export default {
         // this is the echo of the message we just sent
         this.sentMessage = null
       } else if (grew) {
-        // a message arrived from someone else
+        // a message arrived from someone else: beep, and open the chat from its bullet so it
+        // is read right away (not just counted on the badge)
         this.beep()
+        if (!this.open) this.openChat(false)
       }
 
       if (this.open) {
@@ -275,8 +280,10 @@ export default {
       if (which !== 'game' && this.open) this.closeChat()
     },
 
-    openChat() {
-      if (!this.bulletClickAllowed()) return // the click just ended a drag
+    // byUser: a click on the bullet (ignored when it just ended a drag); false = opened by an
+    // incoming message
+    openChat(byUser = true) {
+      if (byUser && !this.bulletClickAllowed()) return // the click just ended a drag
       this.open = true
       // mark everything read
       this.readCount = this.chatEnabled ? this.messages.length : 0
@@ -286,7 +293,16 @@ export default {
         }
         this.clampPosition()
       }
-      this.$nextTick(() => this.scrollToBottom())
+      this.$nextTick(() => {
+        this.scrollToBottom()
+        // opened from its bullet: ready to type. Not when a message opened it — that must not
+        // take the focus (or the keys) from the game in the middle of a turn
+        if (byUser) this.focusInput()
+      })
+    },
+    focusInput() {
+      const field = this.$refs.chatMessage
+      if (field && field.focus) field.focus()
     },
     closeChat() {
       this.open = false

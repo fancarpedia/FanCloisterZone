@@ -43,6 +43,7 @@
 
       <div class="gc-input">
         <v-text-field
+          ref="chatMessage"
           v-keep-input-scroll
           v-model="newMessage"
           dense
@@ -200,6 +201,11 @@ export default {
       this.open = true
       this.readCount = this.messages.length
       this.scrollToBottom()
+      // opened from its bullet: ready to type
+      this.$nextTick(() => {
+        const field = this.$refs.chatMessage
+        if (field && field.focus) field.focus()
+      })
     },
     editing (val) {
       // Suppress the game's spacebar/keyboard shortcuts while typing in-game.
