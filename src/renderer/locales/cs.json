@@ -568,6 +568,7 @@
       "ai-player": "AI hráč",
       "click-to-assign": "Kliknutím přidáte hráče",
       "game-full": "Hra je plná",
+      "color-unavailable": "Barva není k dispozici",
       "kick-player": "Odpojit hráče",
       "local-ai-player": "místní AI hráč",
       "local-limit-reached": "Dosažený limit",

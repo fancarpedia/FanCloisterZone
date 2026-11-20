@@ -568,6 +568,7 @@
       "ai-player": "Computergegner",
       "click-to-assign": "zum Zuweisen hier klicken",
       "game-full": "Spiel voll",
+      "color-unavailable": "Farbe nicht verfügbar",
       "kick-player": "Spieler entfernen",
       "local-ai-player": "Lokaler Computergegner",
       "local-limit-reached": "Limit erreicht",

@@ -1,3 +1,5 @@
+import { anyKingdomPalaceTileId } from '@/utils/kingdom-palace'
+
 export class GameElement {
   /*
     tile sets:
@@ -240,7 +242,8 @@ export const ELEMENT_ICONS = {
   'tower': { fig: 'tower.png' },
   'black-tower': { fig: 'black_and_white_tower.png' },
   'abbey': { tile: 'AM/A' },
-  'kingdom-palace': { tile: 'Kingdoms/KingdomPalaceRed' },
+  // any loaded Kingdom Palace tile (palaces are defined by their XML attribute, not their id)
+  'kingdom-palace': { get tile () { return anyKingdomPalaceTileId() || '' } },
   'bridge': { fig: 'bridge-alt.png' },
   'castle': { fig: 'castle.png', w: 66 },
   'tunnel': { token: 'tunnel' },

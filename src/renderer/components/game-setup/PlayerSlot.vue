@@ -1,5 +1,5 @@
 <template>
-  <div :class="`player-slot color-${number} ${slotState} ${readOnly || (slotState === 'open' && (limitReached || capReached)) ? '' : 'editable'}`" @click="toggle">
+  <div :class="`player-slot color-${number} ${slotState} ${readOnly || unavailable ? '' : 'editable'} ${unavailable ? 'unavailable' : ''}`" @click="toggle">
     <div
       v-if="order !== null && (readOnly || !randomized)"
       :class="`order order-${order}`"
@@ -33,7 +33,11 @@
     </div>
     <div v-else class="name">
       <!-- an empty seat I may take: the Assign / AI player buttons below say what to do -->
-      <template v-if="slotState === 'open' && !readOnly && !limitReached && !capReached" />
+      <!-- this colour has no supply tile the setup requires (e.g. no Kingdom Palace in it) -->
+      <span v-if="slotState === 'open' && !readOnly && colorUnavailable" class="limit-reached">
+        {{ $t('game-setup.create.color-unavailable') }}
+      </span>
+      <template v-else-if="slotState === 'open' && !readOnly && !limitReached && !capReached" />
       <!-- max-players cap reached → this empty seat is locked -->
       <span v-else-if="slotState === 'open' && !readOnly && capReached" class="limit-reached">
         {{ $t('game-setup.create.game-full') }}
@@ -160,6 +164,8 @@ export default {
     localLimit: { type: Number, default: null },
     // max-players cap reached → open seats are locked (can't take a new one)
     capReached: { type: Boolean, default: false },
+    // the setup needs a per-colour supply tile (e.g. a Kingdom Palace) that this colour lacks
+    colorUnavailable: { type: Boolean, default: false },
     isOwner: { type: Boolean, default: false }
   },
 
@@ -182,10 +188,16 @@ export default {
       return !this.readOnly && (this.slotState === 'local' || this.slotState === 'localai')
     },
 
+    // an empty seat that cannot be taken, for any reason: the game is full, the local players limit
+    // is reached, or its color is not available (no Kingdom Palace in it, …) — drawn greyed out
+    unavailable () {
+      return this.slotState === 'open' && !this.readOnly && (this.limitReached || this.capReached || this.colorUnavailable)
+    },
+
     // the Assign / AI player choice: only on an empty seat I may take
     showAiButton () {
       if (this.readOnly) return false
-      return this.slotState === 'open' && !this.limitReached && !this.capReached
+      return this.slotState === 'open' && !this.limitReached && !this.capReached && !this.colorUnavailable
     },
 
     // ...and it works only when the AI plays everything in this game's setup
@@ -223,7 +235,7 @@ export default {
       if (this.slotState === 'local' || this.slotState === 'localai') {
         this.$store.dispatch('gameSetup/releaseSlot', { number })
       } else if (this.slotState === 'open') {
-        if (this.limitReached || this.capReached) return
+        if (this.limitReached || this.capReached || this.colorUnavailable) return
         this.$store.dispatch('gameSetup/takeSlot', { number })
       }
     },
@@ -393,6 +405,16 @@ export default {
   &.open
     .order
       color: #ccc
+
+  // an empty seat that cannot be taken (game full / local players limit / color not available):
+  // hatched and greyed out, with a "not allowed" cursor — the reason is the text on its name line
+  &.open.unavailable
+    cursor: not-allowed
+    background-image: repeating-linear-gradient(135deg, rgba(128, 128, 128, 0.14) 0 10px, transparent 10px 20px)
+
+    .meeple-wrap, .state, .order
+      filter: grayscale(1)
+      opacity: 0.35
 
 @media (max-height: 768px)
   .player-slot

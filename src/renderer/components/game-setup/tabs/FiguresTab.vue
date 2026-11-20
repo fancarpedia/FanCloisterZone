@@ -65,7 +65,6 @@ import { mapState } from 'vuex'
 import ConfigSection from '@/components/game-setup/ConfigSection'
 import { GameElement } from '@/models/elements'
 import GameElementBox from '@/components/game-setup/GameElementBox'
-import { kingdomPalaceTileId } from '@/utils/kingdom-palace'
 
 export default {
   components: {
@@ -90,7 +89,8 @@ export default {
     // Kingdoms is a fan add-on: its Kingdom Palace tiles (and the expansion) exist only when the
     // add-on is installed
     kingdomsInstalled () {
-      return !!this.$tiles.tiles[kingdomPalaceTileId(0)]
+      // a palace is any tile with the kingdom-palace="<colour>" attribute (plugins/tiles.js)
+      return Object.values(this.$tiles.tiles).some(t => t.kingdomPalace)
     }
   }
 }

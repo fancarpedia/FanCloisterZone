@@ -490,8 +490,12 @@ export default {
     await this.$store.dispatch('settings/registerChangeCallback', ['userAddons', () => { this.loadAddons() }])
     await this.$store.dispatch('settings/registerChangeCallback', ['enabledArtworks', (_, source) => {
       if (source === 'load') {
-        // load only when triggered by manual user change, otherwise it's cause by addon install/uninstall and reloaed from her
-        this.$theme.loadArtworks()
+        // Changed in ANOTHER window (shared settings file), or re-read by a claimed pre-booted game
+        // window. An add-on install / uninstall changes enabledArtworks too, and only the window that
+        // installed it reloads its add-ons (the $addons 'change' event below). Reloading just the
+        // artworks left this window without the new add-on's expansions — e.g. no Kingdoms tile set
+        // box until a restart — so reload all of it: add-ons, expansions (XML), then artworks.
+        this.loadAddons()
       }
     }])
     await this.$store.dispatch('settings/registerChangeCallback', ['dev', () => { this.updateMenu() }])

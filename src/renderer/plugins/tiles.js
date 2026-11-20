@@ -10,6 +10,8 @@ import { ipcRenderer } from 'electron'
 import { Expansion, Release } from '@/models/expansions'
 import { GameElement } from '@/models/elements'
 import { EventsBase } from '@/utils/events'
+import { registerKingdomPalaces } from '@/utils/kingdom-palace'
+import { SLOT_COLORS } from '@/utils/player-colors'
 
 const SIDES = ['N', 'E', 'S', 'W']
 const EDGE_CODE = {
@@ -56,7 +58,7 @@ function getEdges (features) {
   return sides.join('')
 }
 
-class Tiles extends EventsBase {
+export class Tiles extends EventsBase {
   constructor (ctx) {
     super()
     this.ctx = ctx
@@ -337,6 +339,21 @@ class Tiles extends EventsBase {
     return supply
   }
 
+  // Player colours a game can seat, given its switched-on supply elements: a supply set whose
+  // tiles belong to a player colour (Kingdom Palaces: kingdom-palace="<colour>") only has tiles for
+  // some colours, and a player of another colour would get none. Returns the Set of allowed slot
+  // numbers, or null when no switched-on element restricts the colours.
+  getAllowedColorSlots (elements) {
+    let allowed = null
+    Object.values(this.getSupply(elements)).forEach(({ tiles }) => {
+      const colors = new Set(tiles.map(id => this.tiles[id]?.kingdomPalace).filter(Boolean))
+      if (!colors.size) return // not a per-colour supply
+      const slots = new Set(SLOT_COLORS.map((c, slot) => colors.has(c) ? slot : null).filter(s => s !== null))
+      allowed = allowed === null ? slots : new Set([...allowed].filter(s => slots.has(s)))
+    })
+    return allowed
+  }
+
   // returns setup with enforced elements by expansion definitions
   getFullSetup (setup) {
     const elements = { ...setup.elements }
@@ -360,6 +377,8 @@ class Tiles extends EventsBase {
     const expansionRequiredBy = {}
     const expansionGroups = {}
     const tileAllows = {}
+    // Kingdom Palace tiles: tile id -> player colour, from the tile attribute kingdom-palace="<colour>"
+    const kingdomPalaces = {}
 
     const parser = new DOMParser()
 
@@ -397,6 +416,12 @@ class Tiles extends EventsBase {
 		if (mn) {
 		  tile.min = parseInt(mn)
 		}
+
+        const palaceColor = t.getAttribute('kingdom-palace')
+        if (palaceColor) {
+          tile.kingdomPalace = palaceColor.trim().toLowerCase()
+          kingdomPalaces[id] = tile.kingdomPalace
+        }
 
         tiles[id] = tile
 
@@ -591,6 +616,7 @@ class Tiles extends EventsBase {
 
     this.xmls = xmls
     this.tiles = tiles
+    registerKingdomPalaces(kingdomPalaces)
     this.sets = sets
     this.tileAllows = tileAllows // per-tile element ids (selector matches), for override-aware availability
     this.expansionGroups = expansionGroups

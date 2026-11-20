@@ -568,6 +568,7 @@
       "ai-player": "AI player",
       "click-to-assign": "click to assign",
       "game-full": "Game full",
+      "color-unavailable": "Color not available",
       "kick-player": "Kick player",
       "local-ai-player": "local ai player",
       "local-limit-reached": "Limit reached",

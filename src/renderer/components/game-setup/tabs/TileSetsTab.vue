@@ -110,6 +110,8 @@ export default {
     },
 
     fanExpansions () {
+      // re-read when the expansions are reloaded (an add-on installed / removed meanwhile)
+      void this.$store.state.tilesVersion // eslint-disable-line no-void
       return this.$tiles.expansions.filter(e => (!this.ai || e.ai) && this.simplifiedOk(e))
     }
   },

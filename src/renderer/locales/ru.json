@@ -568,6 +568,7 @@
       "ai-player": "ИИ игрок",
       "click-to-assign": "нажмите, чтобы назначить",
       "game-full": "Игра заполнена",
+      "color-unavailable": "Цвет недоступен",
       "kick-player": "Выгнать игрока",
       "local-ai-player": "локальный ИИ игрок",
       "local-limit-reached": "Достигнут лимит",

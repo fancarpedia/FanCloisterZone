@@ -74,6 +74,7 @@
           :limit-reached="!!gameKey && localSlotsCount >= LOCAL_PLAYERS_LIMIT"
           :local-limit="LOCAL_PLAYERS_LIMIT"
           :cap-reached="capReached"
+          :color-unavailable="!!allowedColorSlots && !allowedColorSlots.has(slot.number)"
         />
       </div>
 
@@ -216,6 +217,12 @@ export default {
     // the variant is meant to be played without the remaining-tiles crib.
     isCoop () {
       return !!(this.elements && this.elements['keep-building'])
+    },
+
+    // colours this game can seat: with Kingdoms on, only colours that have a Kingdom Palace tile
+    // (null = any colour)
+    allowedColorSlots () {
+      return this.$tiles.getAllowedColorSlots(this.elements || {})
     },
 
     // max-players cap reached → open seats lock (no new joins), mirroring the server gate

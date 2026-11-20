@@ -568,6 +568,7 @@
       "ai-player": "Jugador IA",
       "click-to-assign": "clic para asignar",
       "game-full": "Partida completa",
+      "color-unavailable": "Color no disponible",
       "kick-player": "Echar jugador",
       "local-ai-player": "jugador IA local",
       "local-limit-reached": "Límite alcanzado",

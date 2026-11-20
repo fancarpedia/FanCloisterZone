@@ -568,6 +568,7 @@
       "ai-player": "Комп'ютерний гравець",
       "click-to-assign": "натисніть, щоб призначити",
       "game-full": "Гру заповнено",
+      "color-unavailable": "Колір недоступний",
       "kick-player": "Вигнати гравця",
       "local-ai-player": "локальний комп’ютерний гравець",
       "local-limit-reached": "Досягнуто межі",
