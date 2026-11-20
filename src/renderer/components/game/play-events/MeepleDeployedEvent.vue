@@ -72,7 +72,9 @@ export default {
         this.$store.dispatch('board/showLayer', {
           layer: 'EventMeeplesLayer',
           props: {
-            meeples: [{
+            // the meeples it joined there (a crop circle adds a follower next to the player's own)
+            // are drawn with it — one layer, so they stand side by side on that spot
+            meeples: [...(this.ev.alongside || []), {
               type: meeple,
               player,
               position: to.position,
