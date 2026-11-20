@@ -110,8 +110,10 @@ const SOURCE_KEYS = {
   CORN_CIRCLE: 'game.feature.crop-circle',
   ABBOT_RETURN: 'game.element.abbot',
   MONASTERY_SHRINE_CHALLENGE: 'game.feature.shrine-challenge',
-  BARN_PLACEMENT: 'game.element.barn',
-  BARN_FIELD_JOIN: 'game.element.barn',
+  // the two barn returns say what happened: a barn placed on the meeple's field, or the meeple's
+  // field joined to a field that has a barn
+  BARN_PLACEMENT: 'game.placement.source-barn-placement',
+  BARN_FIELD_JOIN: 'game.placement.source-barn-field-join',
   TRAP: 'game.cause.rule.trap',
   TOWER: 'game.element.tower'
 }
