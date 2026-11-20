@@ -199,7 +199,9 @@ export default {
         for (let k = 0; k < count; k++) tiles.push({ tileId, offered: offered.has(tileId) && !this.abbeyPassed })
       }
       add('AM/A', me.tokens.ABBEY_TILE?.count || 0)
-      add(kingdomPalaceTileId(me.slot), me.tokens.KINGDOM_PALACE?.count || 0)
+      // the palace the engine dealt this player (its token names the tile), else their colour's one
+      const palace = me.tokens.KINGDOM_PALACE?.tile || kingdomPalaceTileId(me.slot)
+      if (palace) add(palace, me.tokens.KINGDOM_PALACE?.count || 0)
       return tiles
     }
   },

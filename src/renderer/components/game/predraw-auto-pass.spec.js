@@ -4,7 +4,7 @@ import { fileURLToPath } from 'node:url'
 
 import { describe, it, expect } from 'vitest'
 
-import { isKingdomPalace } from '@/utils/kingdom-palace'
+import { isKingdomPalace, registerKingdomPalaces } from '@/utils/kingdom-palace'
 
 const dir = path.dirname(fileURLToPath(import.meta.url))
 const src = fs.readFileSync(path.join(dir, 'PreDrawHand.vue'), 'utf8')
@@ -20,6 +20,10 @@ const placeable = (items) => supplyPlaceable.call({ $store: { state: { game: { a
 
 describe('pre-draw: automatic pass of an unplaceable supply tile', () => {
   it('a supply tile counts as placeable only when the engine offers it', () => {
+    // palaces are known by their XML attribute kingdom-palace="<colour>" (plugins/tiles.js registers
+    // them), whatever their id
+    registerKingdomPalaces({ 'Kingdoms/KingdomPalaceBlue': 'blue', 'someaddon/MyPalace': 'red' })
+    expect(placeable([{ type: 'TilePlacement', tileId: 'someaddon/MyPalace' }])).toBe(true)
     expect(placeable([{ type: 'PreDrawPlace' }])).toBe(false)
     expect(placeable([{ type: 'PreDrawPlace' }, { type: 'TilePlacement', tileId: 'AM/A' }])).toBe(true)
     expect(placeable([{ type: 'TilePlacement', tileId: 'Kingdoms/KingdomPalaceBlue' }])).toBe(true)

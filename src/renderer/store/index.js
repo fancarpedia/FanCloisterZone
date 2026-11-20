@@ -3,6 +3,9 @@ import { execFile } from 'child_process'
 import crypto from 'crypto'
 
 export const state = () => ({
+  // bumped on every expansion (re)load — $tiles is not reactive, so views listing expansions
+  // (the Tile Set Boxes) depend on this to show an add-on installed while the app runs
+  tilesVersion: 0,
   loaded: {
     settings: false,
     addons: false,
@@ -36,6 +39,7 @@ export const state = () => ({
 export const mutations = {
   tilesLoaded (state) {
     state.loaded.tiles = true
+    state.tilesVersion++
   },
 
   addonsLoaded (state) {

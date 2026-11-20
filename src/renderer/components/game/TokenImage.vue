@@ -106,10 +106,11 @@ export default {
         }
       }
       if (this.token === 'KINGDOM_PALACE') {
-        // Kingdoms: the palace in the player's own colour (their slot)
+        // Kingdoms: the palace the engine dealt the player (the token names the tile), else the
+        // palace of their colour (slot)
         const p = this.player === null ? null : this.$store.state.game.players?.[this.player]
         return {
-          'tile-id': kingdomPalaceTileId(p ? p.slot : 0),
+          'tile-id': p?.tokens?.KINGDOM_PALACE?.tile || kingdomPalaceTileId(p ? p.slot : 0) || '',
           'size': this.height
         }
       }

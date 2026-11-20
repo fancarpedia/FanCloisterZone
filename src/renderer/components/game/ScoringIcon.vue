@@ -25,6 +25,7 @@ import Meeple from '@/components/game/Meeple'
 import NeutralFigure from '@/components/game/NeutralFigure'
 import StandaloneTileImage from '@/components/game/StandaloneTileImage'
 import TokenImage from '@/components/game/TokenImage'
+import { anyKingdomPalaceTileId } from '@/utils/kingdom-palace'
 
 const MEEPLES_SVG = require('~/assets/meeples.svg')
 
@@ -35,7 +36,8 @@ const MAPPING = {
   'monastery': { kind: 'img', value: require('~/assets/features/C1/cloister.png') },
   'garden': { kind: 'img', value: require('~/assets/features/C1/garden.png') },
   'field': { kind: 'tile', value: 'GQ/F' },
-  'kingdom': { kind: 'tile', value: 'Kingdoms/KingdomPalaceRed' },
+  // any loaded Kingdom Palace tile (palaces are defined by their XML attribute, not their id)
+  'kingdom': { kind: 'tile', get value () { return anyKingdomPalaceTileId() || '' } },
   'special-monastery': { kind: 'tile', value: 'MO/M1' },
   'castle': { kind: 'img', value: require('~/assets/figures/castle.png') },
   'watchtower': { kind: 'tile', value: 'WT/CFff_3C' },
