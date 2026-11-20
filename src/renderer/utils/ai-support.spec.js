@@ -4,7 +4,7 @@ import { fileURLToPath } from 'node:url'
 
 import { describe, it, expect } from 'vitest'
 
-import { aiSupport, isAiExpansion, isAiElement } from './ai-support'
+import { aiSupport, aiExpansionLevel, isAiExpansion, isAiElement } from './ai-support'
 import { Expansion } from '@/models/expansions'
 import { Rule } from '@/models/rules'
 
@@ -15,12 +15,18 @@ const read = f => fs.readFileSync(path.join(dir, f), 'utf8')
 const tiles = { getExpansions: sets => Object.fromEntries(Object.entries(sets).filter(([, n]) => n).map(([id, n]) => [id, n])) }
 
 describe('what the AI plays', () => {
-  it('the tile sets the former AI mode listed', () => {
-    for (const name of ['BASIC', 'START', 'INNS_AND_CATHEDRALS', 'TRADERS_AND_BUILDERS', 'RIVER', 'CULT', 'WATCHTOWERS']) {
+  it('a core expansion by its elements: the former AI mode sets, and Winter (brings no element)', () => {
+    for (const name of ['BASIC', 'START', 'INNS_AND_CATHEDRALS', 'TRADERS_AND_BUILDERS', 'RIVER', 'GQ11', 'CULT',
+      'WIND_ROSES', 'DARMSTADT', 'LABYRINTH', 'SPIEL_DOCH', 'WINTER']) {
       expect(isAiExpansion(name)).toBe(true)
     }
-    for (const name of ['WINTER', 'TOWER', 'ABBEY_AND_MAYOR', 'PRINCESS_AND_DRAGON', 'HILLS_AND_SHEEP']) {
+    // enforcing a mechanic the AI does not play: never
+    for (const name of ['CORN_CIRCLES', 'MONASTERIES', 'FLIER', 'WATCHTOWERS']) {
       expect(isAiExpansion(name)).toBe(false)
+    }
+    // implying one: playable once it is switched off (stage 4)
+    for (const name of ['TOWER', 'ABBEY_AND_MAYOR', 'PRINCESS_AND_DRAGON', 'HILLS_AND_SHEEP', 'TUNNEL']) {
+      expect(aiExpansionLevel(name).level).toBe('implied')
     }
     expect(isAiExpansion(Expansion.BASIC)).toBe(true)
   })
@@ -46,10 +52,18 @@ describe('aiSupport(setup)', () => {
     expect(r).toEqual({ ok: true, expansions: [], elements: [], rules: [] })
   })
 
-  it('names a tile set the AI does not play', () => {
-    const r = aiSupport({ sets: { BASIC: 1, TOWER: 1 }, elements: {}, rules: {} }, tiles)
+  it('names a tile set the AI never plays (it enforces a mechanic the AI does not play)', () => {
+    const r = aiSupport({ sets: { BASIC: 1, CORN_CIRCLES: 1 }, elements: {}, rules: {} }, tiles)
     expect(r.ok).toBe(false)
-    expect(r.expansions).toEqual(['TOWER'])
+    expect(r.expansions).toEqual(['CORN_CIRCLES'])
+  })
+
+  it('stage 4: the Tower with its tower switched on is not AI-playable — switched off it is', () => {
+    const on = aiSupport({ sets: { BASIC: 1, TOWER: 1 }, elements: { tower: 10 }, rules: {} }, tiles)
+    expect(on.ok).toBe(false)
+    expect(on.expansions).toEqual([])
+    expect(on.elements).toEqual(['tower'])
+    expect(aiSupport({ sets: { BASIC: 1, TOWER: 1 }, elements: { tower: 0 }, rules: {} }, tiles).ok).toBe(true)
   })
 
   it('an allowlist: any element switched on that is not listed disables AI — even an unknown one', () => {
@@ -68,6 +82,20 @@ describe('aiSupport(setup)', () => {
     if (shrine) {
       expect(aiSupport({ sets: { BASIC: 1, CULT: 1 }, elements: { shrine: true }, rules: {} }, tiles).elements).toEqual([])
     }
+  })
+
+  it('rules: an allowlist — a listed one at any value is fine, any other one changed disables AI', () => {
+    const listed = Rule.TINY_CITY_SCORING
+    const changed = listed.default === true ? false : (listed.default === false ? true : 'something-else')
+    expect(aiSupport({ sets: { BASIC: 1 }, elements: {}, rules: { [listed.id]: changed } }, tiles).ok).toBe(true)
+    expect(read('ai-support.js')).not.toContain('NON_AI_RULE')
+  })
+
+  it('an element a set only allows (pig herd, wells stay fine, tunnels do not) decides once switched on', () => {
+    expect(aiSupport({ sets: { BASIC: 1, TRADERS_AND_BUILDERS: 1 }, elements: { 'pig-herd': true }, rules: {} }, tiles).ok).toBe(true)
+    expect(aiSupport({ sets: { BASIC: 1 }, elements: { well: true }, rules: {} }, tiles).ok).toBe(true)
+    expect(aiSupport({ sets: { BASIC: 1 }, elements: { tunnel: true }, rules: {} }, tiles).elements).toEqual(['tunnel'])
+    expect(aiSupport({ sets: { BASIC: 1 }, elements: { tunnel: false }, rules: {} }, tiles).ok).toBe(true)
   })
 
   it('names a variant changed from its default', () => {
