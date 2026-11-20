@@ -1,6 +1,6 @@
 <template>
-  <svg :class="`neutral ${figure}` ">
-    <use :href="`${NEUTRAL_SVG}#${figure}`" />
+  <svg :class="`neutral ${symbol}` ">
+    <use :href="`${NEUTRAL_SVG}#${symbol}`" />
   </svg>
 </template>
 
@@ -11,6 +11,13 @@ export default {
 
   props: {
     figure: { type: String, required: true }
+  },
+
+  computed: {
+    // the engine's figure id → its symbol in neutral.svg (the Big Top is "bigtop" in the engine)
+    symbol () {
+      return this.figure === 'bigtop' ? 'big-top' : this.figure
+    }
   },
 
   data () {

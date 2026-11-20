@@ -115,8 +115,10 @@ export default {
         }
       }
       if (this.token.startsWith('BIGTOP_')) {
+        // a round token: as wide as it is tall (an unsized svg would render 300×150 and clip away)
         return {
-          points: parseInt(this.token.split('_')[1], 10)
+          points: parseInt(this.token.split('_')[1], 10),
+          ...(this.height ? { width: this.height, height: this.height } : {})
         }
       }
       const attrs = {}

@@ -164,6 +164,7 @@ export default {
       }
       // tokens with a name of their own (tower pieces, little buildings, tunnels, …)
       if (token && TOKEN_KEYS[token] && this.$te(TOKEN_KEYS[token])) return this.$t(TOKEN_KEYS[token])
+      if (token && /^BIGTOP_/.test(token) && this.$te('game.element.animal-token')) return this.$t('game.element.animal-token')
       if (token && /^TUNNEL_/.test(token) && this.$te('game.element.tunnel')) return this.$t('game.element.tunnel')
       // meeple class names (SmallFollower) and token names (GOLD, SHEEP_2X) → element keys
       // (small-follower, gold, sheep); the raw name only if there is none

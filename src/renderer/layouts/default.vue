@@ -967,7 +967,9 @@ body
   min-height: 100dvh
 
 svg, g, use
-  &.dragon, &.bigtop
+  // the Big Top: "bigtop" on the board, "big-top" (its neutral.svg symbol) in the history,
+  // Placement and Scoring panels — the same colour everywhere
+  &.dragon, &.bigtop, &.big-top
     fill: $dragon-color
 
 svg, g, use

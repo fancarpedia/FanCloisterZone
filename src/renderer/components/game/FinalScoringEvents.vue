@@ -53,9 +53,10 @@ export default {
       }
       item.events.forEach(ev => {
         if (!ev.points?.length) {
-          console.log(ev)
-          if (ev.type !== 'token-placed' || !ev.token.startsWith('BIGTOP_')) {
-            // ignore big top token
+          // the Big Top's animal token, revealed for its final scoring: shown with the figures,
+          // right before the Big Top score it makes (the engine emits it just before)
+          if (ev.type === 'token-placed' && (ev.token || '').startsWith('BIGTOP_')) {
+            rows.figures.events.push(ev)
           }
           return
         }
