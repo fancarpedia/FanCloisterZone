@@ -150,16 +150,18 @@ export default {
       +theme using ($theme)
         color: map-get($theme, 'text-color')
 
+  // sized for the usual content: the icon, the name on one line, and below at most a two-line
+  // message — a longer one (e.g. "No tile with Marketplace…") grows only its own grid row
   .box-title
     text-align: center
-    height: 136px
-    padding: 24px 0 8px 0
+    min-height: 122px
+    padding: 20px 0 4px 0
     line-height: 1
 
     h3
       font-size: 1.09em
       font-weight: 300
-      margin-top: 16px
+      margin-top: 14px
 
     img, svg
       display: block
@@ -174,7 +176,8 @@ export default {
     flex-direction: column
     justify-content: center
     text-align: center
-    min-height: 56px
+    min-height: 44px
+    padding-bottom: 6px
 
     // TODO make mixin from it
     .add-first
@@ -226,6 +229,7 @@ export default {
   .disabled-message
     visibility: hidden
     font-size: 12px
+    line-height: 1.3
     text-transform: uppercase
     font-weight: 300
     padding: 0 6px
