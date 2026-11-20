@@ -62,6 +62,10 @@ export const causeTitle = (cause, vm) => {
   if (cause.type === 'rule') {
     const key = 'game.cause.rule.' + cause.name
     what = vm.$te(key) ? vm.$t(key) : cause.name
+  } else if (cause.type === 'figure-moved' && cause.figure &&
+      vm.$te('game.cause.figure-moved-' + cause.figure.split('.')[0])) {
+    // a figure whose move has its own story (the Big Top leaving for the newly placed circus tile)
+    what = vm.$t('game.cause.figure-moved-' + cause.figure.split('.')[0])
   } else {
     const key = 'game.cause.' + cause.type
     what = vm.$te(key) ? vm.$t(key) : cause.type
