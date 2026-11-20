@@ -63,6 +63,14 @@
             cx="-40" cy="-40" :r="TUNNEL_RADIUS"
             :transform="t"
           />
+          <!-- every meeple / figure the history draws back (EventMeeplesLayer, NeutralFigureGhostLayer)
+               gets a circle in the dimming, so it is never shown greyed out under it -->
+          <circle
+            v-for="(t, idx) in figureTransforms"
+            :key="'figure-' + idx"
+            :x="0" :y="0" :r="BASE_SIZE * 0.3"
+            :transform="t"
+          />
           <!-- extra single spots opened on top of any emphasis type (e.g. the courier beside the
                feature it scored) -->
           <circle
@@ -136,6 +144,46 @@ export default {
 
     extraPointTransforms () {
       return this.toPointTransforms(this.emphasis.extraPoints)
+    },
+
+    // where the meeples / figures currently drawn by the history layers stand: a feature point, a
+    // tile corner (barn, obelisk) or a tile centre (a figure on the tile)
+    figureTransforms () {
+      const layers = this.$store.state.board.layers || {}
+      const out = []
+      const atTileCentre = pos => this.transformPosition(pos) + ` translate(${BASE_SIZE / 2} ${BASE_SIZE / 2})`
+      const add = fn => {
+        try {
+          const t = fn()
+          if (t) out.push(t)
+        } catch (e) {
+          // a spot the artwork does not know — skip it rather than draw at the board origin
+        }
+      }
+      for (const m of (layers.EventMeeplesLayer && layers.EventMeeplesLayer.meeples) || []) {
+        if (!m || !m.position) continue
+        if (m.type === 'Barn' || m.type === 'Obelisk') {
+          add(() => this.transformPosition(m.position)) // stands on the tile corner
+        } else if (m.feature && m.location) {
+          add(() => this.transformPoint(m))
+        }
+      }
+      const ghostLayer = layers.NeutralFigureGhostLayer
+      const ghosts = ghostLayer
+        ? (ghostLayer.ghosts || (ghostLayer.figure && ghostLayer.ptr ? [{ ptr: ghostLayer.ptr }] : []))
+        : []
+      for (const g of ghosts) {
+        const ptr = g && g.ptr
+        if (!ptr) continue
+        if (Array.isArray(ptr)) {
+          if (ptr.length === 2) add(() => atTileCentre(ptr))
+        } else if (ptr.position && ptr.feature && ptr.location) {
+          add(() => this.transformPoint(ptr))
+        } else if (ptr.position) {
+          add(() => atTileCentre(ptr.position))
+        }
+      }
+      return out
     },
 
     // the placed tunnel tokens on the lit road segments: same tile, and the token's side is part of
