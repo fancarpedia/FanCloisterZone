@@ -4,7 +4,9 @@
 //
 // It tracks the app's own version from package.json, prerelease tag included, because semver puts
 // 7.1.0-alpha.1 BEFORE 7.1.0: a bare '7.1.0' here would make this build refuse its own saves.
-export const SAVED_GAME_COMPATIBILITY = '7.1.0-alpha.1'
+// 7.2.0: the engine plays differently (supply tiles / TileFromSupplyPhase, Kingdom Palace, pre-draw,
+// Keep Building, rule fixes) — a 7.1 replay is no longer guaranteed to end in the same state.
+export const SAVED_GAME_COMPATIBILITY = '7.2.0-alpha.1'
 
 // The network protocol version. It is BOTH the current and the minimum accepted version: the
 // handshake compares it for exact equality (localServer.js), so a client only talks to a peer
@@ -12,9 +14,12 @@ export const SAVED_GAME_COMPATIBILITY = '7.1.0-alpha.1'
 //
 // 7.1.0 is the first version carrying ROTATE_TILE and the engine's `tileRotation` state - an
 // older peer neither sends nor understands either, so 6.2.0 clients are intentionally refused.
-export const NETWORK_PROTOCOL_COMPATIBILITY = '7.1.0'
+// 7.2.0: every client runs its own engine on the same moves, and the 7.2 engine plays some of them
+// differently (supply tiles, Kingdom Palace, pre-draw, Keep Building, rule fixes) — a 7.1 peer
+// would drift out of sync mid-game, so it is refused.
+export const NETWORK_PROTOCOL_COMPATIBILITY = '7.2.0'
 
 // The lowest protocol this app can play with, announced in HELLO next to protocolVersion. The
 // server passes both on in the online players list, where the client marks incompatible players
 // (utils/protocol-compat.js). Equal to the current protocol while nothing older is supported.
-export const NETWORK_PROTOCOL_MINIMUM = '7.1.0'
+export const NETWORK_PROTOCOL_MINIMUM = '7.2.0'

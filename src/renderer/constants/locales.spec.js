@@ -85,9 +85,9 @@ describe('ENGINE_MESSAGES', () => {
 // it for exact equality, so bumping it refuses every older peer. Pinned so it cannot drift back
 // by accident along with an unrelated edit to this file.
 describe('NETWORK_PROTOCOL_COMPATIBILITY', () => {
-  it('is 7.1.0 - the version that carries ROTATE_TILE', async () => {
+  it('is 7.2.0 - the engine a 7.1 peer would drift out of sync with', async () => {
     const { NETWORK_PROTOCOL_COMPATIBILITY } = await import('@/constants/versions')
-    expect(NETWORK_PROTOCOL_COMPATIBILITY).toBe('7.1.0')
+    expect(NETWORK_PROTOCOL_COMPATIBILITY).toBe('7.2.0')
   })
 
   it('is the single value the handshake sends and checks', async () => {
@@ -104,9 +104,9 @@ describe('NETWORK_PROTOCOL_COMPATIBILITY', () => {
 // just written - semver puts 7.1.0-alpha.1 before 7.1.0, so a bare '7.1.0' here would do exactly
 // that. This guards the pairing as package.json moves on.
 describe('SAVED_GAME_COMPATIBILITY', () => {
-  it('is 7.1.0-alpha.1', async () => {
+  it('is 7.2.0-alpha.1 - a 7.1 replay may end differently on the 7.2 engine', async () => {
     const { SAVED_GAME_COMPATIBILITY } = await import('@/constants/versions')
-    expect(SAVED_GAME_COMPATIBILITY).toBe('7.1.0-alpha.1')
+    expect(SAVED_GAME_COMPATIBILITY).toBe('7.2.0-alpha.1')
   })
 
   it('does not lock out saves written by this very build', async () => {
