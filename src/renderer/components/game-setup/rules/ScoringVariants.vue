@@ -28,6 +28,17 @@
     </RuleBox>
 
     <RuleBox
+      v-if="!setup.ai"
+      :setup="setup"
+      :rules="[Rule.BARDS_NOTES_STACK]"
+      :read-only="readOnly"
+    >
+      <template #icon>
+        <img src="~/assets/figures/bards_note.png" height="45">
+      </template>
+    </RuleBox>
+
+    <RuleBox
       :setup="setup"
       :rules="[Rule.TINY_CITY_SCORING]"
       :read-only="readOnly"

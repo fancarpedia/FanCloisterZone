@@ -1,0 +1,353 @@
+{
+  "ca": [
+    {
+      "keyPath": "game.action.bards-place-a-note",
+      "kind": "untranslated",
+      "en": "Place a note"
+    },
+    {
+      "keyPath": "game.action.bards-player-must-place-a-note",
+      "kind": "untranslated",
+      "en": "Player must place a note"
+    },
+    {
+      "keyPath": "game.element.bards-note",
+      "kind": "untranslated",
+      "en": "Bards' note"
+    },
+    {
+      "keyPath": "game.element.bards-notes",
+      "kind": "untranslated",
+      "en": "Bards' notes"
+    },
+    {
+      "keyPath": "game-setup.variant.bards-notes-stack.description",
+      "kind": "untranslated",
+      "en": "Advanced variant: Bards' notes stack — every note on a feature adds its bonus (+1 per tile, or per completed city of a field)."
+    }
+  ],
+  "cs": [
+    {
+      "keyPath": "game.action.bards-place-a-note",
+      "kind": "untranslated",
+      "en": "Place a note"
+    },
+    {
+      "keyPath": "game.action.bards-player-must-place-a-note",
+      "kind": "untranslated",
+      "en": "Player must place a note"
+    },
+    {
+      "keyPath": "game.element.bards-note",
+      "kind": "untranslated",
+      "en": "Bards' note"
+    },
+    {
+      "keyPath": "game.element.bards-notes",
+      "kind": "untranslated",
+      "en": "Bards' notes"
+    },
+    {
+      "keyPath": "game-setup.variant.bards-notes-stack.description",
+      "kind": "untranslated",
+      "en": "Advanced variant: Bards' notes stack — every note on a feature adds its bonus (+1 per tile, or per completed city of a field)."
+    }
+  ],
+  "de": [
+    {
+      "keyPath": "game.action.bards-place-a-note",
+      "kind": "untranslated",
+      "en": "Place a note"
+    },
+    {
+      "keyPath": "game.action.bards-player-must-place-a-note",
+      "kind": "untranslated",
+      "en": "Player must place a note"
+    },
+    {
+      "keyPath": "game.element.bards-note",
+      "kind": "untranslated",
+      "en": "Bards' note"
+    },
+    {
+      "keyPath": "game.element.bards-notes",
+      "kind": "untranslated",
+      "en": "Bards' notes"
+    },
+    {
+      "keyPath": "game-setup.variant.bards-notes-stack.description",
+      "kind": "untranslated",
+      "en": "Advanced variant: Bards' notes stack — every note on a feature adds its bonus (+1 per tile, or per completed city of a field)."
+    }
+  ],
+  "es": [
+    {
+      "keyPath": "game.action.bards-place-a-note",
+      "kind": "untranslated",
+      "en": "Place a note"
+    },
+    {
+      "keyPath": "game.action.bards-player-must-place-a-note",
+      "kind": "untranslated",
+      "en": "Player must place a note"
+    },
+    {
+      "keyPath": "game.element.bards-note",
+      "kind": "untranslated",
+      "en": "Bards' note"
+    },
+    {
+      "keyPath": "game.element.bards-notes",
+      "kind": "untranslated",
+      "en": "Bards' notes"
+    },
+    {
+      "keyPath": "game-setup.variant.bards-notes-stack.description",
+      "kind": "untranslated",
+      "en": "Advanced variant: Bards' notes stack — every note on a feature adds its bonus (+1 per tile, or per completed city of a field)."
+    }
+  ],
+  "fr": [
+    {
+      "keyPath": "game.action.bards-place-a-note",
+      "kind": "untranslated",
+      "en": "Place a note"
+    },
+    {
+      "keyPath": "game.action.bards-player-must-place-a-note",
+      "kind": "untranslated",
+      "en": "Player must place a note"
+    },
+    {
+      "keyPath": "game.element.bards-note",
+      "kind": "untranslated",
+      "en": "Bards' note"
+    },
+    {
+      "keyPath": "game.element.bards-notes",
+      "kind": "untranslated",
+      "en": "Bards' notes"
+    },
+    {
+      "keyPath": "game-setup.variant.bards-notes-stack.description",
+      "kind": "untranslated",
+      "en": "Advanced variant: Bards' notes stack — every note on a feature adds its bonus (+1 per tile, or per completed city of a field)."
+    }
+  ],
+  "lt": [
+    {
+      "keyPath": "game.action.bards-place-a-note",
+      "kind": "untranslated",
+      "en": "Place a note"
+    },
+    {
+      "keyPath": "game.action.bards-player-must-place-a-note",
+      "kind": "untranslated",
+      "en": "Player must place a note"
+    },
+    {
+      "keyPath": "game.element.bards-note",
+      "kind": "untranslated",
+      "en": "Bards' note"
+    },
+    {
+      "keyPath": "game.element.bards-notes",
+      "kind": "untranslated",
+      "en": "Bards' notes"
+    },
+    {
+      "keyPath": "game-setup.variant.bards-notes-stack.description",
+      "kind": "untranslated",
+      "en": "Advanced variant: Bards' notes stack — every note on a feature adds its bonus (+1 per tile, or per completed city of a field)."
+    }
+  ],
+  "nl": [
+    {
+      "keyPath": "game.action.bards-place-a-note",
+      "kind": "untranslated",
+      "en": "Place a note"
+    },
+    {
+      "keyPath": "game.action.bards-player-must-place-a-note",
+      "kind": "untranslated",
+      "en": "Player must place a note"
+    },
+    {
+      "keyPath": "game.element.bards-note",
+      "kind": "untranslated",
+      "en": "Bards' note"
+    },
+    {
+      "keyPath": "game.element.bards-notes",
+      "kind": "untranslated",
+      "en": "Bards' notes"
+    },
+    {
+      "keyPath": "game-setup.variant.bards-notes-stack.description",
+      "kind": "untranslated",
+      "en": "Advanced variant: Bards' notes stack — every note on a feature adds its bonus (+1 per tile, or per completed city of a field)."
+    }
+  ],
+  "pl": [
+    {
+      "keyPath": "game.action.bards-place-a-note",
+      "kind": "untranslated",
+      "en": "Place a note"
+    },
+    {
+      "keyPath": "game.action.bards-player-must-place-a-note",
+      "kind": "untranslated",
+      "en": "Player must place a note"
+    },
+    {
+      "keyPath": "game.element.bards-note",
+      "kind": "untranslated",
+      "en": "Bards' note"
+    },
+    {
+      "keyPath": "game.element.bards-notes",
+      "kind": "untranslated",
+      "en": "Bards' notes"
+    },
+    {
+      "keyPath": "game-setup.variant.bards-notes-stack.description",
+      "kind": "untranslated",
+      "en": "Advanced variant: Bards' notes stack — every note on a feature adds its bonus (+1 per tile, or per completed city of a field)."
+    }
+  ],
+  "ro": [
+    {
+      "keyPath": "game.action.bards-place-a-note",
+      "kind": "untranslated",
+      "en": "Place a note"
+    },
+    {
+      "keyPath": "game.action.bards-player-must-place-a-note",
+      "kind": "untranslated",
+      "en": "Player must place a note"
+    },
+    {
+      "keyPath": "game.element.bards-note",
+      "kind": "untranslated",
+      "en": "Bards' note"
+    },
+    {
+      "keyPath": "game.element.bards-notes",
+      "kind": "untranslated",
+      "en": "Bards' notes"
+    },
+    {
+      "keyPath": "game-setup.variant.bards-notes-stack.description",
+      "kind": "untranslated",
+      "en": "Advanced variant: Bards' notes stack — every note on a feature adds its bonus (+1 per tile, or per completed city of a field)."
+    }
+  ],
+  "ru": [
+    {
+      "keyPath": "game.action.bards-place-a-note",
+      "kind": "untranslated",
+      "en": "Place a note"
+    },
+    {
+      "keyPath": "game.action.bards-player-must-place-a-note",
+      "kind": "untranslated",
+      "en": "Player must place a note"
+    },
+    {
+      "keyPath": "game.element.bards-note",
+      "kind": "untranslated",
+      "en": "Bards' note"
+    },
+    {
+      "keyPath": "game.element.bards-notes",
+      "kind": "untranslated",
+      "en": "Bards' notes"
+    },
+    {
+      "keyPath": "game-setup.variant.bards-notes-stack.description",
+      "kind": "untranslated",
+      "en": "Advanced variant: Bards' notes stack — every note on a feature adds its bonus (+1 per tile, or per completed city of a field)."
+    }
+  ],
+  "sk": [
+    {
+      "keyPath": "game.action.bards-place-a-note",
+      "kind": "untranslated",
+      "en": "Place a note"
+    },
+    {
+      "keyPath": "game.action.bards-player-must-place-a-note",
+      "kind": "untranslated",
+      "en": "Player must place a note"
+    },
+    {
+      "keyPath": "game.element.bards-note",
+      "kind": "untranslated",
+      "en": "Bards' note"
+    },
+    {
+      "keyPath": "game.element.bards-notes",
+      "kind": "untranslated",
+      "en": "Bards' notes"
+    },
+    {
+      "keyPath": "game-setup.variant.bards-notes-stack.description",
+      "kind": "untranslated",
+      "en": "Advanced variant: Bards' notes stack — every note on a feature adds its bonus (+1 per tile, or per completed city of a field)."
+    }
+  ],
+  "sl": [
+    {
+      "keyPath": "game.action.bards-place-a-note",
+      "kind": "untranslated",
+      "en": "Place a note"
+    },
+    {
+      "keyPath": "game.action.bards-player-must-place-a-note",
+      "kind": "untranslated",
+      "en": "Player must place a note"
+    },
+    {
+      "keyPath": "game.element.bards-note",
+      "kind": "untranslated",
+      "en": "Bards' note"
+    },
+    {
+      "keyPath": "game.element.bards-notes",
+      "kind": "untranslated",
+      "en": "Bards' notes"
+    },
+    {
+      "keyPath": "game-setup.variant.bards-notes-stack.description",
+      "kind": "untranslated",
+      "en": "Advanced variant: Bards' notes stack — every note on a feature adds its bonus (+1 per tile, or per completed city of a field)."
+    }
+  ],
+  "uk": [
+    {
+      "keyPath": "game.action.bards-place-a-note",
+      "kind": "untranslated",
+      "en": "Place a note"
+    },
+    {
+      "keyPath": "game.action.bards-player-must-place-a-note",
+      "kind": "untranslated",
+      "en": "Player must place a note"
+    },
+    {
+      "keyPath": "game.element.bards-note",
+      "kind": "untranslated",
+      "en": "Bards' note"
+    },
+    {
+      "keyPath": "game.element.bards-notes",
+      "kind": "untranslated",
+      "en": "Bards' notes"
+    },
+    {
+      "keyPath": "game-setup.variant.bards-notes-stack.description",
+      "kind": "untranslated",
+      "en": "Advanced variant: Bards' notes stack — every note on a feature adds its bonus (+1 per tile, or per completed city of a field)."
+    }
+  ]
+}

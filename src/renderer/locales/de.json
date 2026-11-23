@@ -2,7 +2,7 @@
   "@author": "Challa007 & Bombur",
   "@jcz-version": "5.12.1",
   "@fcz-version": "7.3.0",
-  "@version": "0.14.0-ai",
+  "@version": "0.14.1-ai",
   "about": {
     "author": "Autor",
     "configuration-file": "Konfigurationsdatei",
@@ -258,6 +258,8 @@
   },
   "game": {
     "action": {
+      "bards-place-a-note": "Lege eine Note",
+      "bards-player-must-place-a-note": "Der Spieler muss eine Note legen",
       "bazaar-buy-sell-the-tile-from-to": "Plättchen kaufen/verkaufen von/an",
       "bazaar-choose-a-tile": "Wähle ein Plättchen",
       "bazaar-choose-a-tile-and-your-bid": "Wähle ein Plättchen und ein Gebot",
@@ -365,6 +367,8 @@
       "abbey": "Abtei",
       "abbot": "Abt",
       "animal-token": "Tierplättchen",
+      "bards-note": "Barden-Note",
+      "bards-notes": "Barden-Noten",
       "barn": "Gutshof",
       "big-follower": "Großer Meeple",
       "big-top": "Zirkuszelt",
@@ -732,6 +736,9 @@
     },
     "title": "Spiel Setup",
     "variant": {
+      "bards-notes-stack": {
+        "description": "Erweiterte Variante: Barden-Noten summieren sich — jede Note auf einem Gebiet bringt ihren Bonus (+1 pro Plättchen bzw. pro fertiggestellter Stadt einer Wiese)."
+      },
       "barn-placement": {
         "description": "Der Gutshof {} auf eine Wiese gesetzt werden, die bereits von einem anderen Gutshof besetzt ist.",
         "not-occupied": "darf nicht",

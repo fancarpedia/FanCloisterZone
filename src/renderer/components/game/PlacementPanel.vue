@@ -97,7 +97,8 @@ const TOKEN_KEYS = {
   LB_SHED: 'game.scoring.item-shed',
   LB_HOUSE: 'game.scoring.item-house',
   LB_TOWER: 'game.scoring.item-tower',
-  WOLF: 'game.scoring.item-wolf'
+  WOLF: 'game.scoring.item-wolf',
+  BARDS_NOTE: 'game.element.bards-note'
 }
 
 // a meeple's return source (engine ReturnMeepleSource) → its name, and its artwork where the return

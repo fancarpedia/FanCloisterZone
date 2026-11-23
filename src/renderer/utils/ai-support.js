@@ -8,7 +8,7 @@
 import semver from 'semver'
 
 import { Expansion } from '@/models/expansions'
-import { GameElement, isConfigValueEnabled } from '@/models/elements'
+import { GameElement, elementLocaleId, isConfigValueEnabled } from '@/models/elements'
 import { Rule } from '@/models/rules'
 
 // figures and mechanics the AI plays, by GameElement key — an ALLOWLIST: every other element
@@ -86,7 +86,7 @@ export const aiExpansionLevel = exp => {
 export const aiLevelText = ({ level, elements }, vm) => {
   // an element's name: game.element.<id>, else game.feature.<id> (e.g. families), else the id
   const names = elements.map(id => {
-    const key = ['game.element.' + id, 'game.feature.' + id].find(k => vm.$te(k))
+    const key = ['game.element.' + elementLocaleId(id), 'game.feature.' + id].find(k => vm.$te(k))
     return key ? vm.$t(key) : id
   }).join(', ')
   if (level === 'allowed') return vm.$t('game-setup.ai.supported-not-with', { elements: names })

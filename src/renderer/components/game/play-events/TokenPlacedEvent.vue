@@ -16,10 +16,12 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
+
 import TokenImage from '@/components/game/TokenImage'
 import { causeTitle, withCause } from '@/utils/placement-cause'
 
-const FULL_SIZE_TOKENS = new Set(['WOLF', 'SHEEP', 'TUNNEL', 'FERRY', 'LB'])
+const FULL_SIZE_TOKENS = new Set(['WOLF', 'SHEEP', 'TUNNEL', 'FERRY', 'LB', 'BARDS'])
 
 export default {
   components: {
@@ -32,6 +34,8 @@ export default {
   },
 
   computed: {
+    ...mapGetters({ tileOn: 'game/tileOn' }),
+
     // what triggered this when no player chose it (engine PlacementCause), as a tooltip
     causeTitle () {
       return causeTitle(this.ev.cause, this) || null
@@ -69,6 +73,14 @@ export default {
         Object.assign(panel, { player: this.player, byPlayer: true, byKey: 'game.placement.placed-by' })
       }
       this.$store.commit('board/placementPanel', panel)
+      // a token placed ON a feature (a Bards' note, …): only its feature segment on the tile it was
+      // placed on is lit, with a circle around the token — not the whole tile the cause would open,
+      // nor the feature's other tiles. Like gold, nothing is redrawn: the place is shown.
+      const onFeature = this.featureEmphasis()
+      if (onFeature) {
+        this.$store.dispatch('board/showLayer', { layer: 'EmphasizeLayer', props: { emphasis: onFeature } })
+        return
+      }
       let emphasis
       if (this.ev.token === 'BRIDGE' || this.ev.token === 'FERRY') {
         emphasis = {
@@ -92,6 +104,21 @@ export default {
           emphasis: withCause(emphasis, this.ev.cause)
         }
       })
+    },
+
+    // { type: 'feature', places: [the token's own segment] } for a token on a feature pointer, or null
+    featureEmphasis () {
+      const to = this.ev.to
+      if (!to || Array.isArray(to) || !to.feature || !to.location || !to.position) return null
+      if (this.ev.token === 'FERRY') return null // a ferry lies on a lake, shown by its tile
+      const tile = this.tileOn(to.position)
+      if (!tile) return null
+      return {
+        type: 'feature',
+        places: [{ tile, feature: to.feature, location: to.location }],
+        // a lit circle around the token itself, so it reads even where it overhangs the segment
+        extraPoints: [{ position: to.position, feature: to.feature, location: to.location }]
+      }
     },
 
     onMouseLeave () {

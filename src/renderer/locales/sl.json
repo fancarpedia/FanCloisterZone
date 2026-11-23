@@ -2,7 +2,7 @@
   "@author": "TileLord | Erol",
   "@jcz-version": "5.12.1",
   "@fcz-version": "7.3.0",
-  "@version": "0.14.0-ai",
+  "@version": "0.14.1-ai",
   "about": {
     "author": "Avtor",
     "configuration-file": "Konfiguracijska datoteka",
@@ -258,6 +258,8 @@
   },
   "game": {
     "action": {
+      "bards-place-a-note": "Postavi noto",
+      "bards-player-must-place-a-note": "Igralec mora postaviti noto",
       "bazaar-buy-sell-the-tile-from-to": "Kupi/Prodaj ploščico od/na",
       "bazaar-choose-a-tile": "Izberi ploščico",
       "bazaar-choose-a-tile-and-your-bid": "Izberi ploščico in svojo ponudbo",
@@ -365,6 +367,8 @@
       "abbey": "Opatija",
       "abbot": "Opat",
       "animal-token": "Žeton živali",
+      "bards-note": "Nota bardov",
+      "bards-notes": "Note bardov",
       "barn": "Skedenj",
       "big-follower": "Veliki Človeček",
       "big-top": "Veliki Šotor",
@@ -732,6 +736,9 @@
     },
     "title": "Nastavitev Igre",
     "variant": {
+      "bards-notes-stack": {
+        "description": "Napredna različica: note bardov se seštevajo — vsaka nota na območju doda svoj bonus (+1 za ploščico ali za vsako dokončano mesto travnika)."
+      },
       "barn-placement": {
         "description": "Skedenj {} biti postavljen na polje, ki ga že zaseda drug skedenj.",
         "not-occupied": "ne more",

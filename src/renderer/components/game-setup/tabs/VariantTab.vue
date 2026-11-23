@@ -186,7 +186,7 @@ import GameSetupOverviewInline from '@/components/game-setup/overview/GameSetupO
 import ExpansionSymbol from '@/components/ExpansionSymbol'
 import GameElementIcon from '@/components/game/GameElementIcon'
 import { Expansion } from '@/models/expansions'
-import { GameElement } from '@/models/elements'
+import { GameElement, elementLocaleId } from '@/models/elements'
 
 export default {
   components: {
@@ -360,7 +360,7 @@ export default {
     },
 
     componentTitle (id) {
-      const key = 'game.element.' + id
+      const key = 'game.element.' + elementLocaleId(id)
       if (this.$te(key)) return this.$t(key)
       const el = GameElement.get(id)
       return (el && el.title) || id

@@ -46,6 +46,7 @@
         <GameElementBox :item="GameElement.TUNNEL" :mutable="false" />
         <GameElementBox :item="GameElement.FERRY" :mutable="false" />
         <GameElementBox :item="GameElement.LITTLE_BUILDINGS" />
+        <GameElementBox :item="GameElement.BARDS_LUTE" />
       </div>
     </ConfigSection>
 

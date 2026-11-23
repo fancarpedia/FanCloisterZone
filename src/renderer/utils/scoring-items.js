@@ -11,6 +11,7 @@ export const ITEM_LABEL_KEYS = {
   'besieged': 'game.feature.siege',
   'inn': 'game.feature.inn',
   'wells': 'game.feature.wells',
+  'bardsnotes': 'game.element.bards-notes',
   'marketplace': 'game.feature.marketplace',
   'meeples': 'game-setup.components.followers',
   'mage': 'game.element.mage',

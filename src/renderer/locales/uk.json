@@ -2,7 +2,7 @@
   "@author": "ai",
   "@jcz-version": "5.12.1",
   "@fcz-version": "7.3.0",
-  "@version": "0.14.0-ai",
+  "@version": "0.14.1-ai",
   "about": {
     "author": "Автор",
     "configuration-file": "Файл конфігурації",
@@ -258,6 +258,8 @@
   },
   "game": {
     "action": {
+      "bards-place-a-note": "Розмістіть ноту",
+      "bards-player-must-place-a-note": "Гравець мусить розмістити ноту",
       "bazaar-buy-sell-the-tile-from-to": "Купити/продати плитку в/для",
       "bazaar-choose-a-tile": "Виберіть плитку",
       "bazaar-choose-a-tile-and-your-bid": "Виберіть плитку та зробіть ставку",
@@ -365,6 +367,8 @@
       "abbey": "Абатство",
       "abbot": "Абат",
       "animal-token": "Жетон тварини",
+      "bards-note": "Нота бардів",
+      "bards-notes": "Ноти бардів",
       "barn": "Клуня",
       "big-follower": "Великий підданець",
       "big-top": "Шапіто",
@@ -732,6 +736,9 @@
     },
     "title": "Налаштування гри",
     "variant": {
+      "bards-notes-stack": {
+        "description": "Розширений варіант: ноти бардів сумуються — кожна нота на об’єкті додає свій бонус (+1 за плитку або за кожне завершене місто поля)."
+      },
       "barn-placement": {
         "description": "Клуню {} розмістити на полі, яке вже зайняте іншою клунею.",
         "not-occupied": "не можна",

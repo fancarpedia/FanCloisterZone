@@ -56,6 +56,7 @@
 import { mapState } from 'vuex'
 import { isWeb } from '@/utils/version'
 import { isAiElement } from '@/utils/ai-support'
+import { elementLocaleId } from '@/models/elements'
 import GameElementButtons from '@/components/game-setup/buttons/GameElementButtons'
 import GameElementIcon from '@/components/game/GameElementIcon'
 
@@ -79,7 +80,7 @@ export default {
   computed: {
     // the name: game.element.<id>, else game.feature.<id> (Keep Building is named as a feature)
     titleKey () {
-      const key = 'game.element.' + this.item.id
+      const key = 'game.element.' + elementLocaleId(this.item.id)
       return this.$te(key) ? key : 'game.feature.' + this.item.id
     },
 

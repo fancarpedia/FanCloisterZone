@@ -23,6 +23,7 @@ import { mapState } from 'vuex'
 import { Expansion } from '@/models/expansions'
 import { Rule } from '@/models/rules'
 import { aiSupport } from '@/utils/ai-support'
+import { elementLocaleId } from '@/models/elements'
 
 export default {
   computed: {
@@ -46,7 +47,7 @@ export default {
           return this.$te(key) ? this.$t(key) : (e ? e.title : name)
         }),
         ...elements.map(id => {
-          for (const key of ['game.element.' + id, 'game.feature.' + id]) {
+          for (const key of ['game.element.' + elementLocaleId(id), 'game.feature.' + id]) {
             if (this.$te(key)) return this.$t(key)
           }
           return id

@@ -2,7 +2,7 @@
   "@author": "Paloi Sciurala",
   "@jcz-version": "5.12.1",
   "@fcz-version": "7.3.0",
-  "@version": "0.14.0",
+  "@version": "<span class="mw-translate-fuzzy">0.14.0</span>",
   "about": {
     "author": "Autor",
     "configuration-file": "Fișier de configurație",
@@ -257,6 +257,8 @@
   },
   "game": {
     "action": {
+      "bards-place-a-note": "<span lang="en" dir="ltr" class="mw-content-ltr">Place a note</span>",
+      "bards-player-must-place-a-note": "<span lang="en" dir="ltr" class="mw-content-ltr">Player must place a note</span>",
       "bazaar-buy-sell-the-tile-from-to": "Cumpără/Vinde cartonașul de la/către",
       "bazaar-choose-a-tile": "Alege un cartonaș",
       "bazaar-choose-a-tile-and-your-bid": "Alege un cartonaș și fă-ți oferta",
@@ -364,6 +366,8 @@
       "abbey": "Abație",
       "abbot": "Abate",
       "animal-token": "Jeton cu animal",
+      "bards-note": "<span lang="en" dir="ltr" class="mw-content-ltr">Bards' note</span>",
+      "bards-notes": "<span lang="en" dir="ltr" class="mw-content-ltr">Bards' notes</span>",
       "barn": "Moșie",
       "big-follower": "Meeple mare",
       "big-top": "Cort de circ",
@@ -690,7 +694,7 @@
       "starting-tiles-different-configuration": "Unele extensii oferă configurații de pornire alternative.",
       "vineyard-description": "Puncte adiționale pentru mănăstire învecinată.",
       "vineyard-disabled": "Nu există niciun cartonaș cu vie în joc.",
-      "watchtower-description": "<span lang="en" dir="ltr" class="mw-content-ltr">A meeple on a watchtower tile scores a bonus when its feature is scored: points for each matching thing (coat of arms, monastery, city, road or meeple) on the tiles around the watchtower.</span>",
+      "watchtower-description": "Un meeple pe un cartonaș cu turn de veghe încasează un bonus atunci când teritoriul său este evaluat: puncte pentru fiecare lucru care se potrivește (blazon, mănăstire, oraș, drum sau meeple) de pe cartonașele din jurul turnului de veghe.",
       "watchtower-disabled": "Nu există niciun cartonaș cu turn de veghe în joc.",
       "well-description": "Adaugă punct per puț de pe drumuri. Drumurile cu han obțin 2 puncte atunci când este finalizat și opțional niciun punct în timpul evaluării finale.",
       "well-disabled": "Nu există niciun cartonaș cu puț în joc."
@@ -727,6 +731,9 @@
     },
     "title": "Configurarea partidei",
     "variant": {
+      "bards-notes-stack": {
+        "description": "<span lang="en" dir="ltr" class="mw-content-ltr">Advanced variant: Bards' notes stack — every note on a feature adds its bonus (+1 per tile, or per completed city of a field).</span>"
+      },
       "barn-placement": {
         "description": "Moșia {} fi plasată pe un câmp deja ocupat de altă moșie.",
         "not-occupied": "nu poate",

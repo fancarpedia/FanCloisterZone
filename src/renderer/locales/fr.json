@@ -2,7 +2,7 @@
   "@author": "Black Bear",
   "@jcz-version": "5.12.1",
   "@fcz-version": "7.3.0",
-  "@version": "0.14.0-ai",
+  "@version": "0.14.1-ai",
   "about": {
     "author": "Auteur",
     "configuration-file": "Fichier de configuration",
@@ -258,6 +258,8 @@
   },
   "game": {
     "action": {
+      "bards-place-a-note": "Posez une note",
+      "bards-player-must-place-a-note": "Le joueur doit poser une note",
       "bazaar-buy-sell-the-tile-from-to": "Achetez la tuile ou vendez la à",
       "bazaar-choose-a-tile": "Choisissez une tuile",
       "bazaar-choose-a-tile-and-your-bid": "Choisissez une tuile et placez votre enchère",
@@ -365,6 +367,8 @@
       "abbey": "Monastère",
       "abbot": "Abbé",
       "animal-token": "Jeton d'animal",
+      "bards-note": "Note des bardes",
+      "bards-notes": "Notes des bardes",
       "barn": "Grange",
       "big-follower": "Grand meeple",
       "big-top": "Chapiteau",
@@ -732,6 +736,9 @@
     },
     "title": "Configuration de la partie",
     "variant": {
+      "bards-notes-stack": {
+        "description": "Variante avancée : les notes des bardes se cumulent — chaque note sur un élément ajoute son bonus (+1 par tuile, ou par ville achevée d'un pré)."
+      },
       "barn-placement": {
         "description": "La grange {} être posée sur un pré déjà occupé par une autre grange.",
         "not-occupied": "ne peut pas",

@@ -2,7 +2,7 @@
   "@author": "Bumsakalaka",
   "@jcz-version": "5.12.1",
   "@fcz-version": "7.3.0",
-  "@version": "0.14.0-ai",
+  "@version": "0.14.1-ai",
   "about": {
     "author": "Autor",
     "configuration-file": "Konfiguračný súbor",
@@ -258,6 +258,8 @@
   },
   "game": {
     "action": {
+      "bards-place-a-note": "Umiestnite notu",
+      "bards-player-must-place-a-note": "Hráč musí umiestniť notu",
       "bazaar-buy-sell-the-tile-from-to": "Kúpiť/Predať kartičku od/do",
       "bazaar-choose-a-tile": "Vyberte si kartičku",
       "bazaar-choose-a-tile-and-your-bid": "Zvoľte kartičku a svoju ponuku do dražby",
@@ -365,6 +367,8 @@
       "abbey": "Opátstvo",
       "abbot": "Opát",
       "animal-token": "Žetón zvieraťa",
+      "bards-note": "Nota bardov",
+      "bards-notes": "Noty bardov",
       "barn": "Stodola",
       "big-follower": "Veľký spoločník",
       "big-top": "Cirkus",
@@ -732,6 +736,9 @@
     },
     "title": "Nastavenie hry",
     "variant": {
+      "bards-notes-stack": {
+        "description": "Pokročilý variant: noty bardov sa sčítajú — každá nota na prvku pridá svoj bonus (+1 za každú kartičku, pri lúke za každé dokončené mesto)."
+      },
       "barn-placement": {
         "description": "Stodola {} umiestnená na pole, na ktorom už je iná stodola.",
         "not-occupied": "nemôže byť",

@@ -72,6 +72,15 @@
     >
       <image href="~/assets/figures/lb_tower.png" transform="scale(1.2)" />
     </g>
+    <!-- Bards of Carcassonne: the notes, on the feature they were put on (as the old client did) -->
+    <g
+      v-for="pointer in (tokens.BARDS_NOTE || [])"
+      :key="'bards-note-' + pointerAsKey(pointer)"
+      :transform="transformPoint(pointer) + ' translate(-166.5 -172.5) ' + upright(166.5, 172.5)"
+    >
+      <!-- 111×115 image at 3×, tilted around its own centre — so it sits centred on the point -->
+      <image href="~/assets/figures/bards_note.png" transform="scale(3) rotate(15 55.5 57.5)" />
+    </g>
     <g
       v-for="pointer in tokens.GAMBLERSLUCKSHIELD_0"
       :key="'gamblers-luck-shield-' + pointerAsKey(pointer)"

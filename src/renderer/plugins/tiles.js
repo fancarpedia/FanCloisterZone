@@ -469,7 +469,8 @@ export class Tiles extends EventsBase {
 
         const allows = tileAllows[id] = new Set([])
         gameElementsWithSelector.forEach(ge => {
-          if (t.querySelector(ge.selector)) {
+          // a feature on the tile (road[inn], …) or an attribute of the tile itself ([bards-lute])
+          if (t.querySelector(ge.selector) || (t.matches && t.matches(ge.selector))) {
             allows.add(ge.id)
           }
         })

@@ -17,7 +17,7 @@ describe('scoring item labels', () => {
     // from the TS engine's `new ExprItem(...)` calls (dynamic suffixes listed separately below)
     const engineItems = [
       'tiles', 'pennants', 'cathedral', 'besieged', 'darmstadtium', 'mage', 'witch', 'cities', 'castles',
-      'coc', 'pigs', 'pigHerds', 'fishhut', 'river-tiles', 'vineyards', 'inn', 'meeples', 'wells', 'yaga',
+      'coc', 'pigs', 'pigHerds', 'fishhut', 'river-tiles', 'vineyards', 'inn', 'meeples', 'wells', 'bardsnotes', 'yaga',
       'church', 'gold', 'king', 'robber', 'king+robber', 'little-buildings', 'circus', 'acrobats',
       'wind-rose', 'shrine-challenge', 'monasteries', 'roads', 'fairy', 'black-fairy',
       'tiles.N', 'tiles.S', 'tiles.W', 'tiles.E',

@@ -58,6 +58,7 @@
       <template v-else-if="item.name === 'tiles.W'"><v-icon>fas fa-arrow-left</v-icon></template>
       <template v-else-if="item.name === 'tiles.E'"><v-icon>fas fa-arrow-right</v-icon></template>
       <template v-else-if="item.name === 'wells'"><img src="~/assets/features/C2/well.png" width="40" height="40"></template>
+      <template v-else-if="item.name === 'bardsnotes'"><TokenImage token="BARDS_NOTE" :height="40" /></template>
       <template v-else-if="item.name === 'flowers.FLOWERS_BLUE'"><TokenImage token="FLOWERS_BLUE" :height="40" /></template>
       <template v-else-if="item.name === 'flowers.FLOWERS_VIOLET'"><TokenImage token="FLOWERS_VIOLET" :height="40" /></template>
       <template v-else-if="item.name === 'flowers.FLOWERS_WHITE'"><TokenImage token="FLOWERS_WHITE" :height="40" /></template>

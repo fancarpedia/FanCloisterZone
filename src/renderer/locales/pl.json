@@ -2,7 +2,7 @@
   "@author": "Snearone",
   "@jcz-version": "5.12.1",
   "@fcz-version": "7.3.0",
-  "@version": "0.14.0-ai",
+  "@version": "0.14.1-ai",
   "about": {
     "author": "Autor",
     "configuration-file": "Plik konfiguracyjny",
@@ -258,6 +258,8 @@
   },
   "game": {
     "action": {
+      "bards-place-a-note": "Połóż nutę",
+      "bards-player-must-place-a-note": "Gracz musi położyć nutę",
       "bazaar-buy-sell-the-tile-from-to": "Kupno/sprzedaż płytki od/do",
       "bazaar-choose-a-tile": "Wybierz płytkę",
       "bazaar-choose-a-tile-and-your-bid": "Wybierz płytkę i swoją ofertę",
@@ -365,6 +367,8 @@
       "abbey": "Opactwo",
       "abbot": "Opat",
       "animal-token": "Żeton zwierzęcia",
+      "bards-note": "Nuta bardów",
+      "bards-notes": "Nuty bardów",
       "barn": "Stodoła",
       "big-follower": "Duży podwładny",
       "big-top": "Cyrk objazdowy",
@@ -732,6 +736,9 @@
     },
     "title": "Ustawienia gry",
     "variant": {
+      "bards-notes-stack": {
+        "description": "Wariant zaawansowany: nuty bardów się sumują — każda nuta na obszarze dodaje swoją premię (+1 za płytkę lub za ukończone miasto łąki)."
+      },
       "barn-placement": {
         "description": "Stodoła {} być umieszczona na polu zawierającym inną stodołę.",
         "not-occupied": "nie może",

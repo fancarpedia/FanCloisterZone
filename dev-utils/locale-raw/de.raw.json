@@ -257,6 +257,8 @@
   },
   "game": {
     "action": {
+      "bards-place-a-note": "<span lang="en" dir="ltr" class="mw-content-ltr">Place a note</span>",
+      "bards-player-must-place-a-note": "<span lang="en" dir="ltr" class="mw-content-ltr">Player must place a note</span>",
       "bazaar-buy-sell-the-tile-from-to": "Plättchen kaufen/verkaufen von/an",
       "bazaar-choose-a-tile": "Wähle ein Plättchen",
       "bazaar-choose-a-tile-and-your-bid": "Wähle ein Plättchen und ein Gebot",
@@ -364,6 +366,8 @@
       "abbey": "Abtei",
       "abbot": "Abt",
       "animal-token": "<span lang="en" dir="ltr" class="mw-content-ltr">Animal token</span>",
+      "bards-note": "<span lang="en" dir="ltr" class="mw-content-ltr">Bards' note</span>",
+      "bards-notes": "<span lang="en" dir="ltr" class="mw-content-ltr">Bards' notes</span>",
       "barn": "Gutshof",
       "big-follower": "Großer Meeple",
       "big-top": "Zirkuszelt",
@@ -727,6 +731,9 @@
     },
     "title": "Spiel Setup",
     "variant": {
+      "bards-notes-stack": {
+        "description": "<span lang="en" dir="ltr" class="mw-content-ltr">Advanced variant: Bards' notes stack — every note on a feature adds its bonus (+1 per tile, or per completed city of a field).</span>"
+      },
       "barn-placement": {
         "description": "Der Gutshof {} auf eine Wiese gesetzt werden, die bereits von einem anderen Gutshof besetzt ist.",
         "not-occupied": "darf nicht",

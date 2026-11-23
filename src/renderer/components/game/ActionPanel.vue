@@ -120,6 +120,7 @@ import { mapGetters, mapState } from 'vuex'
 
 import ActionButton from '@/components/game/actions/ActionButton'
 import ActionPhaseAction from '@/components/game/actions/ActionPhaseAction.vue'
+import BardsLutePhaseAction from '@/components/game/actions/BardsLutePhaseAction.vue'
 import BazaarPhaseAction from '@/components/game/actions/BazaarPhaseAction.vue'
 import CastlePhaseAction from '@/components/game/actions/CastlePhaseAction.vue'
 import CocCountPhaseAction from '@/components/game/actions/CocCountPhaseAction.vue'
@@ -165,6 +166,7 @@ export default {
   components: {
     ActionButton,
     ActionPhaseAction,
+    BardsLutePhaseAction,
     BazaarPhaseAction,
     CastlePhaseAction,
     CocCountPhaseAction,

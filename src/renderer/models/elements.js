@@ -80,6 +80,9 @@ export const CASTLE = GameElement.CASTLE = new GameElement('castle', 'Castles', 
 export const TUNNEL = GameElement.TUNNEL = new GameElement('tunnel', 'Tunnel tokens', Number, { notOnWeb: true })
 export const FERRY = GameElement.FERRY = new GameElement('ferry', 'Ferries', Number, { selector: 'ferry', notOnWeb: true })
 export const LITTLE_BUILDINGS = GameElement.LITTLE_BUILDINGS = new GameElement('little-buildings', 'Little Buildings', Number, { default: 0, popularComponent: true })
+// Bards of Carcassonne (fan add-on): a tile with a lute (attribute bards-lute on the <tile> itself)
+// lets the player place a note token — opt-out, the add-on switches it on
+export const BARDS_LUTE = GameElement.BARDS_LUTE = new GameElement('bards-lute', "Bards' notes", Boolean, { selector: '[bards-lute]' })
 
 // Variants
 // Pre-draw: private hand of up to N regular tiles (server-authoritative, online only).
@@ -216,6 +219,11 @@ export const COURIER = GameElement.COURIER = new GameElement('courier', 'Courier
 // elements" list) and <OverviewElementTile> (the setup summary in the server game list).
 // A missing entry is how the Mini Meeple once rendered its "+2" badge with no figure at all —
 // add new elements here, never to a consumer's own list.
+// the locale key (game.element.<key>) of an element whose name differs from its id: the
+// `bards-lute` element places the bards' notes
+const ELEMENT_LOCALE_IDS = { 'bards-lute': 'bards-notes' }
+export const elementLocaleId = id => ELEMENT_LOCALE_IDS[id] || id
+
 /* eslint-disable quote-props */
 export const ELEMENT_ICONS = {
   // followers / special meeples
@@ -252,6 +260,7 @@ export const ELEMENT_ICONS = {
   'kingdom-palace': { get tile () { return anyKingdomPalaceTileId() || '' } },
   'bridge': { fig: 'bridge-alt.png' },
   'castle': { fig: 'castle.png', w: 66 },
+  'bards-lute': { fig: 'bards_note.png', h: 50 },
   'tunnel': { token: 'tunnel' },
   'ferry': { fig: 'ferry.png', h: 30 },
   'little-buildings': { fig: 'lb.png' },

@@ -14,10 +14,14 @@ import { File } from 'megajs'
 import { ipcRenderer } from 'electron'
 import fetch from 'node-fetch'
 import semver from 'semver'
-
 import { getAppVersion, isWeb } from '@/utils/version'
 import { assetFileUrl } from '@/utils/asset-url'
 import { EventsBase } from '@/utils/events'
+
+// TEMPORARY (2026-11-23, Bards port on branch bards-ts): add-ons requiring a newer app (e.g. the
+// Bards add-on with minimumJczVersion 7.3.0) are loaded anyway, so they can be developed on the
+// 7.2 app. TURN BACK OFF (false) when the Bards port is done — ask the user first.
+const IGNORE_MINIMUM_JCZ_VERSION = true
 
 class Addons extends EventsBase {
   constructor (ctx) {
@@ -606,13 +610,17 @@ class Addons extends EventsBase {
           json,
           remote: this.AUTO_DOWNLOADED[id] || null
         }
+        if (IGNORE_MINIMUM_JCZ_VERSION && addon.json.minimumJczVersion &&
+            compare(getAppVersion().split('-')[0], addon.json.minimumJczVersion, '<')) {
+          console.warn(`Add-on ${id} requires app ${addon.json.minimumJczVersion} - loaded anyway (IGNORE_MINIMUM_JCZ_VERSION, temporary)`)
+        }
         if (!isNumber(addon.json.version)) {
           addon.error = this._t('settings.add-ons.invalid-add-on-version-not-a-number')
         } else if (parseInt(addon.json.version) !== addon.json.version) {
           addon.error = this._t('settings.add-ons.invalid-add-on-version-not-an-integer', { version: addon.json.version })
         } else if (!addon.json.minimumJczVersion) {
           addon.error = this._t('settings.add-ons.invalid-add-on-missing-minimum-version')
-        } else if (compare(getAppVersion().split('-')[0], addon.json.minimumJczVersion, '<')) {
+        } else if (compare(getAppVersion().split('-')[0], addon.json.minimumJczVersion, '<') && !IGNORE_MINIMUM_JCZ_VERSION) {
           addon.error = this._t('settings.add-ons.add-on-requires-newer-app', { version: addon.json.minimumJczVersion })
         } else if (addon.remote) {
           if (addon.json.version !== addon.remote.version) {

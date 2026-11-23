@@ -2,7 +2,7 @@
   "@author": "Kiap1969 & Sinscerly",
   "@jcz-version": "5.12.1",
   "@fcz-version": "7.3.0",
-  "@version": "0.14.0-ai",
+  "@version": "0.14.1-ai",
   "about": {
     "author": "Auteur",
     "configuration-file": "Configuratiebestand",
@@ -258,6 +258,8 @@
   },
   "game": {
     "action": {
+      "bards-place-a-note": "Noot plaatsen",
+      "bards-player-must-place-a-note": "Speler moet een noot plaatsen",
       "bazaar-buy-sell-the-tile-from-to": "De tegel kopen/verkoopen van/aan",
       "bazaar-choose-a-tile": "Kies een tegel",
       "bazaar-choose-a-tile-and-your-bid": "Kies een tegel en doe een bod",
@@ -365,6 +367,8 @@
       "abbey": "Abdij",
       "abbot": "Abt",
       "animal-token": "Dierenfiche",
+      "bards-note": "Bardennoot",
+      "bards-notes": "Bardennoten",
       "barn": "Herenboerderij",
       "big-follower": "Grote meeple",
       "big-top": "Circustent",
@@ -732,6 +736,9 @@
     },
     "title": "Spelopzet",
     "variant": {
+      "bards-notes-stack": {
+        "description": "Geavanceerde variant: bardennoten stapelen — elke noot op een gebied geeft zijn bonus (+1 per tegel, of per voltooide stad van een weide)."
+      },
       "barn-placement": {
         "description": "De herenboerderij {} op een weide waar al een herenboerderij staat worden gezet.",
         "not-occupied": "mag niet",

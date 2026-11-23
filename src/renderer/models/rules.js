@@ -333,6 +333,16 @@ export const KING_AND_ROBBER_SCORING = Rule.KING_AND_ROBBER_SCORING = new Rule('
   }
 )
 
+// Bards of Carcassonne, advanced variant: every note on a feature adds its bonus (notes stack)
+export const BARDS_NOTES_STACK = Rule.BARDS_NOTES_STACK = new Rule('bards-notes-stack', SCORING,
+  'Advanced variant: Bards\' notes stack.',
+  [GameElement.BARDS_LUTE],
+  Boolean,
+  {
+    link: 'https://wikicarpedia.com/car/Special:MyLanguage/Bards_of_Carcassonne_(Fan_Expansion)#Scoring'
+  }
+)
+
 export const TINY_CITY_SCORING = Rule.TINY_CITY_SCORING = new Rule('tiny-city-scoring', SCORING,
   'Tiny city is scored for {} points',
   [],

@@ -2,7 +2,7 @@
   "@author": "J0anJosep",
   "@jcz-version": "5.12.1",
   "@fcz-version": "7.3.0",
-  "@version": "0.14.0-ai",
+  "@version": "0.14.1-ai",
   "about": {
     "author": "Autor",
     "configuration-file": "Fitxer de configuració",
@@ -258,6 +258,8 @@
   },
   "game": {
     "action": {
+      "bards-place-a-note": "Col·loqueu una nota",
+      "bards-player-must-place-a-note": "El jugador ha de col·locar una nota",
       "bazaar-buy-sell-the-tile-from-to": "Compreu/Veneu la peça a",
       "bazaar-choose-a-tile": "Trieu una peça de territori",
       "bazaar-choose-a-tile-and-your-bid": "Trieu una peça i la vostra oferta",
@@ -365,6 +367,8 @@
       "abbey": "Abat",
       "abbot": "Abat",
       "animal-token": "Fitxa d'animal",
+      "bards-note": "Nota dels bards",
+      "bards-notes": "Notes dels bards",
       "barn": "Graner",
       "big-follower": "Seguidor gran",
       "big-top": "Carpa",
@@ -732,6 +736,9 @@
     },
     "title": "Configuració de la partida",
     "variant": {
+      "bards-notes-stack": {
+        "description": "Variant avançada: les notes dels bards s'acumulen — cada nota d'un element hi afegeix la seva bonificació (+1 per peça, o per ciutat completada d'un camp)."
+      },
       "barn-placement": {
         "description": "El graner {} posar en un camp on ja hi ha un altre graner.",
         "not-occupied": "no es pot",

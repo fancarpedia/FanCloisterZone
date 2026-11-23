@@ -41,6 +41,7 @@ const TOKENS = {
   LB_HOUSE: { tag: 'img', src: require('~/assets/figures/lb_house.png') },
   LB_SHED: { tag: 'img', src: require('~/assets/figures/lb_shed.png') },
   LB_TOWER: { tag: 'img', src: require('~/assets/figures/lb_tower.png') },
+  BARDS_NOTE: { tag: 'img', src: require('~/assets/figures/bards_note.png') },
   FLOWERS_BLUE: { tag: 'img', src: require('~/assets/features/C1/flowers-blue.png') },
   FLOWERS_VIOLET: { tag: 'img', src: require('~/assets/features/C1/flowers-violet.png') },
   FLOWERS_WHITE: { tag: 'img', src: require('~/assets/features/C1/flowers-white.png') },

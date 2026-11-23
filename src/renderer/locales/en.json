@@ -2,7 +2,7 @@
   "@author": "farin & Scott",
   "@jcz-version": "5.12.1",
   "@fcz-version": "7.3.0",
-  "@version": "0.14.0",
+  "@version": "0.14.1",
   "about": {
     "author": "Author",
     "configuration-file": "Configuration file",
@@ -258,6 +258,8 @@
   },
   "game": {
     "action": {
+      "bards-place-a-note": "Place a note",
+      "bards-player-must-place-a-note": "Player must place a note",
       "bazaar-buy-sell-the-tile-from-to": "Buy/Sell the tile from/to",
       "bazaar-choose-a-tile": "Choose a tile",
       "bazaar-choose-a-tile-and-your-bid": "Choose a tile and place your bid",
@@ -365,6 +367,8 @@
       "abbey": "Abbey",
       "abbot": "Abbot",
       "animal-token": "Animal token",
+      "bards-note": "Bards' note",
+      "bards-notes": "Bards' notes",
       "barn": "Barn",
       "big-follower": "Big Meeple",
       "big-top": "Big Top",
@@ -732,6 +736,9 @@
     },
     "title": "Game Setup",
     "variant": {
+      "bards-notes-stack": {
+        "description": "Advanced variant: Bards' notes stack — every note on a feature adds its bonus (+1 per tile, or per completed city of a field)."
+      },
       "barn-placement": {
         "description": "Barn {} be placed on a field already occupied by another barn.",
         "not-occupied": "can't",

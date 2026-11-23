@@ -2,7 +2,7 @@
   "@author": "Carlium & Meepledrone",
   "@jcz-version": "5.12.1",
   "@fcz-version": "7.3.0",
-  "@version": "0.14.0-ai",
+  "@version": "0.14.1-ai",
   "about": {
     "author": "Autor",
     "configuration-file": "Archivo de configuración",
@@ -258,6 +258,8 @@
   },
   "game": {
     "action": {
+      "bards-place-a-note": "Coloca una nota",
+      "bards-player-must-place-a-note": "Jugador debe colocar una nota",
       "bazaar-buy-sell-the-tile-from-to": "Comprar/vender la loseta a",
       "bazaar-choose-a-tile": "Elejir una loseta",
       "bazaar-choose-a-tile-and-your-bid": "Eligir una loseta y hacer su apuesta",
@@ -365,6 +367,8 @@
       "abbey": "Abadía",
       "abbot": "Abad",
       "animal-token": "Ficha de animal",
+      "bards-note": "Nota de los bardos",
+      "bards-notes": "Notas de los bardos",
       "barn": "Granero",
       "big-follower": "Seguidor mayor",
       "big-top": "Carpa",
@@ -732,6 +736,9 @@
     },
     "title": "Configuración de la partida",
     "variant": {
+      "bards-notes-stack": {
+        "description": "Variante avanzada: las notas de los bardos se acumulan — cada nota en un elemento añade su bonificación (+1 por loseta, o por ciudad completada de un campo)."
+      },
       "barn-placement": {
         "description": "El granero {} puede colocarse en un campo ya ocupado por otro granero.",
         "not-occupied": "no puede",

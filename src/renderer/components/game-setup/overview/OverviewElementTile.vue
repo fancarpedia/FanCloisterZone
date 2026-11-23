@@ -46,7 +46,7 @@
 </template>
 
 <script>
-import { getElementIcon } from '@/models/elements'
+import { elementLocaleId, getElementIcon } from '@/models/elements'
 import NeutralFigure from '@/components/game/NeutralFigure'
 import OverviewTile from '@/components/game-setup/overview/OverviewTile'
 import StandaloneTileImage from '@/components/game/StandaloneTileImage'
@@ -122,8 +122,9 @@ export default {
       if (this.$te('game.feature.' + this.element)) {
         return this.$t('game.feature.' + this.element)
       }
-      if (this.$te('game.element.' + this.element)) {
-        return this.$t('game.element.' + this.element)
+      const key = 'game.element.' + elementLocaleId(this.element)
+      if (this.$te(key)) {
+        return this.$t(key)
       }
       return this.element.replace('-', ' ')
     }

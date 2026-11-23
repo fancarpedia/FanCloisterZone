@@ -257,6 +257,8 @@
   },
   "game": {
     "action": {
+      "bards-place-a-note": "<span lang="en" dir="ltr" class="mw-content-ltr">Place a note</span>",
+      "bards-player-must-place-a-note": "<span lang="en" dir="ltr" class="mw-content-ltr">Player must place a note</span>",
       "bazaar-buy-sell-the-tile-from-to": "Kupno/sprzedaż płytki od/do",
       "bazaar-choose-a-tile": "Wybierz płytkę",
       "bazaar-choose-a-tile-and-your-bid": "Wybierz płytkę i swoją ofertę",
@@ -364,6 +366,8 @@
       "abbey": "Opactwo",
       "abbot": "Opat",
       "animal-token": "<span lang="en" dir="ltr" class="mw-content-ltr">Animal token</span>",
+      "bards-note": "<span lang="en" dir="ltr" class="mw-content-ltr">Bards' note</span>",
+      "bards-notes": "<span lang="en" dir="ltr" class="mw-content-ltr">Bards' notes</span>",
       "barn": "Stodoła",
       "big-follower": "Duży podwładny",
       "big-top": "Cyrk objazdowy",
@@ -727,6 +731,9 @@
     },
     "title": "Ustawienia gry",
     "variant": {
+      "bards-notes-stack": {
+        "description": "<span lang="en" dir="ltr" class="mw-content-ltr">Advanced variant: Bards' notes stack — every note on a feature adds its bonus (+1 per tile, or per completed city of a field).</span>"
+      },
       "barn-placement": {
         "description": "Stodoła {} być umieszczona na polu zawierającym inną stodołę.",
         "not-occupied": "nie może",
