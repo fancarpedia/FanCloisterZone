@@ -69,6 +69,11 @@
     "value": "Eliberează locul",
     "source": "manual"
   },
+  "game-setup.rules.watchtower-description": {
+    "en": "A meeple on a watchtower tile scores a bonus when its feature is scored: points for each matching thing (coat of arms, monastery, city, road or meeple) on the tiles around the watchtower.",
+    "value": "Un meeple pe un cartonaș cu turn de veghe primește un bonus când zona sa este punctată: puncte pentru fiecare element potrivit (blazon, mănăstire, oraș, drum sau meeple) de pe cartonașele din jurul turnului.",
+    "source": "manual"
+  },
   "game-setup.tiles.supply-tiles": {
     "en": "In the players' supply, not in the draw pile",
     "value": "În rezerva jucătorilor, nu în teancul de tras",

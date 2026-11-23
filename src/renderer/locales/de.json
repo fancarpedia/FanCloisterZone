@@ -1,8 +1,8 @@
 {
   "@author": "Challa007 & Bombur",
   "@jcz-version": "5.12.1",
-  "@fcz-version": "7.2.0",
-  "@version": "0.13.11-ai",
+  "@fcz-version": "7.3.0",
+  "@version": "0.14.0-ai",
   "about": {
     "author": "Autor",
     "configuration-file": "Konfigurationsdatei",
@@ -691,6 +691,8 @@
       "starting-tiles-different-configuration": "Einige Erweiterungen bieten alternative Startkonfigurationen.",
       "vineyard-description": "Zusätzliche Punkte für nahe gelegenes Kloster.",
       "vineyard-disabled": "Kein Plättchen mit Weinberg ist im Spiel.",
+      "watchtower-description": "Ein Meeple auf einem Plättchen mit Wachturm erhält bei der Wertung seines Gebiets einen Bonus: Punkte für jedes passende Element (Wappen, Kloster, Stadt, Straße oder Meeple) auf den Plättchen rund um den Wachturm.",
+      "watchtower-disabled": "Kein Plättchen mit Wachturm ist im Spiel.",
       "well-description": "Füge einen Punkt pro Brunnen auf Straßen hinzu. Eine abgeschlossene Straße mit Wirtshaus bekommt 2 Punkte, eine unfertige Straße mit Wirtshaus bekommt 0 Punkte.",
       "well-disabled": "Es gibt kein Plättchen mit Brunnen im Spiel",
       "features": "Elemente",

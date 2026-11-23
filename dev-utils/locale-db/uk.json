@@ -1694,6 +1694,16 @@
     "value": "У грі немає плиток із виноградником.",
     "source": "manual"
   },
+  "game-setup.rules.watchtower-description": {
+    "en": "A meeple on a watchtower tile scores a bonus when its feature is scored: points for each matching thing (coat of arms, monastery, city, road or meeple) on the tiles around the watchtower.",
+    "value": "Підданець на тайлі з вартовою вежею отримує бонус під час підрахунку своєї області: очки за кожен відповідний об’єкт (герб, монастир, місто, дорогу чи підданця) на тайлах навколо вежі.",
+    "source": "manual"
+  },
+  "game-setup.rules.watchtower-disabled": {
+    "en": "No tile with Watchtower is in game.",
+    "value": "У грі немає плиток із вартовою вежею.",
+    "source": "manual"
+  },
   "game-setup.rules.well-description": {
     "en": "Add point per Well on roads. Roads with Inn get 2 points when completed and optionally no points during final scoring.",
     "value": "Додає очко за кожен колодязь на дорогах. Завершені дороги з таверною отримують 2 очки і, за бажанням, 0 очок у підсумковому підрахунку.",

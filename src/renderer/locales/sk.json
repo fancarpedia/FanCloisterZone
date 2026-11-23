@@ -1,8 +1,8 @@
 {
   "@author": "Bumsakalaka",
   "@jcz-version": "5.12.1",
-  "@fcz-version": "7.2.0",
-  "@version": "0.13.11-ai",
+  "@fcz-version": "7.3.0",
+  "@version": "0.14.0-ai",
   "about": {
     "author": "Autor",
     "configuration-file": "Konfiguračný súbor",
@@ -691,6 +691,8 @@
       "starting-tiles-different-configuration": "Niektoré rozšírenia poskytujú alternatívne štartovacie konfigurácie.",
       "vineyard-description": "Bonusové body pre ukončený kláštor.",
       "vineyard-disabled": "V hre nie je žiadna kartička s vinicami.",
+      "watchtower-description": "Spoločník na kartičke so strážnou vežou získa pri vyhodnotení svojho územia bonus: body za každú zodpovedajúcu vec (erb, kláštor, mesto, cestu alebo spoločníka) na kartičkách okolo strážnej veže.",
+      "watchtower-disabled": "V hre nie je žiadna kartička so strážnou vežou.",
       "well-description": "Bonusový bod za každú studňu pri ceste. Na ceste s hostincom 2 body, ak je ukončená a voliteľne žiaden bod pri záverečnom hodnotení.",
       "well-disabled": "V hre nie je žiadna kartička so studňou.",
       "features": "Prvky",

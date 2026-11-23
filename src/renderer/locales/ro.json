@@ -1,8 +1,8 @@
 {
   "@author": "Paloi Sciurala",
   "@jcz-version": "5.12.1",
-  "@fcz-version": "7.2.0",
-  "@version": "0.13.11-ai",
+  "@fcz-version": "7.3.0",
+  "@version": "0.14.0-ai",
   "about": {
     "author": "Autor",
     "configuration-file": "Fișier de configurație",
@@ -669,7 +669,7 @@
       "meteorite-description": "Plasarea unui cartonaș cu crater cauzează un impact de meteorit: o aruncare de zar decide cât de departe ajunge explozia, iar fiecare meeple și pion neutru aflat pe cartonașele lovite este dat afară de pe tablă.",
       "meteorite-disabled": "Nu există niciun cartonaș cu crater în joc.",
       "monastery-description": "Mănăstirea este finalizată atunci când este înconjurată de opt cartonașe.",
-      "monastery-scoring": "Mănăstirea aduce 9 puncte. La sfârșitul jocului o mănăstire nefinalizată aduce 1 point pentru ea însăși și 1 pentru fiecare cartonaș învecinat.",
+      "monastery-scoring": "Mănăstirea aduce 9 puncte. La sfârșitul jocului o mănăstire nefinalizată aduce 1 punct pentru ea însăși și 1 pentru fiecare cartonaș învecinat.",
       "optional-game-mechanics": "Mecanisme de joc opționale",
       "pig-herd-description": "Valorează drept porc adițional pe câmp (țăranii primesc mai multe puncte).",
       "pig-herd-disabled": "Nu există niciun cartonaș cu turmă de porci în joc.",
@@ -691,6 +691,8 @@
       "starting-tiles-different-configuration": "Unele extensii oferă configurații de pornire alternative.",
       "vineyard-description": "Puncte adiționale pentru mănăstire învecinată.",
       "vineyard-disabled": "Nu există niciun cartonaș cu vie în joc.",
+      "watchtower-description": "Un meeple pe un cartonaș cu turn de veghe primește un bonus când zona sa este punctată: puncte pentru fiecare element potrivit (blazon, mănăstire, oraș, drum sau meeple) de pe cartonașele din jurul turnului.",
+      "watchtower-disabled": "Nu există niciun cartonaș cu turn de veghe în joc.",
       "well-description": "Adaugă punct per puț de pe drumuri. Drumurile cu han obțin 2 puncte atunci când este finalizat și opțional niciun punct în timpul evaluării finale.",
       "well-disabled": "Nu există niciun cartonaș cu puț în joc.",
       "features": "Elemente",

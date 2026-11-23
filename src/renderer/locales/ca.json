@@ -1,8 +1,8 @@
 {
   "@author": "J0anJosep",
   "@jcz-version": "5.12.1",
-  "@fcz-version": "7.2.0",
-  "@version": "0.13.11-ai",
+  "@fcz-version": "7.3.0",
+  "@version": "0.14.0-ai",
   "about": {
     "author": "Autor",
     "configuration-file": "Fitxer de configuració",
@@ -691,6 +691,8 @@
       "starting-tiles-different-configuration": "Algunes expansions proporcionen configuracions inicials alternatives.",
       "vineyard-description": "Punts addicionals per monestir proper.",
       "vineyard-disabled": "A la partida no hi ha cap peça amb vinyes.",
+      "watchtower-description": "Un seguidor en una casella amb talaia obté un bonus quan es puntua la seva construcció: punts per cada element corresponent (escut, monestir, ciutat, camí o seguidor) a les caselles del voltant de la talaia.",
+      "watchtower-disabled": "No hi ha caselles amb talaia a la partida.",
       "well-description": "Un punt addicional per cada pou als camins. Si el camí té una fonda quan es completa, se sumen 2 punts. En el recompte final, es puntuarà per fondes de manera opcional.",
       "well-disabled": "A la partida no hi ha cap peça amb pous.",
       "features": "Elements",

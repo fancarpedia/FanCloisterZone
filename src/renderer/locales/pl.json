@@ -1,8 +1,8 @@
 {
   "@author": "Snearone",
   "@jcz-version": "5.12.1",
-  "@fcz-version": "7.2.0",
-  "@version": "0.13.11-ai",
+  "@fcz-version": "7.3.0",
+  "@version": "0.14.0-ai",
   "about": {
     "author": "Autor",
     "configuration-file": "Plik konfiguracyjny",
@@ -691,6 +691,8 @@
       "starting-tiles-different-configuration": "Niektóre z roszerzeń pozwalają na alternatywną konfiguracje startową.",
       "vineyard-description": "Dodatkowe punkty do klasztorów.",
       "vineyard-disabled": "Nie wybrano płytek z winiarnią.",
+      "watchtower-description": "Podwładny na kafelku ze strażnicą otrzymuje premię, gdy jego obszar jest punktowany: punkty za każdy pasujący element (proporzec, klasztor, miasto, drogę lub podwładnego) na kafelkach wokół strażnicy.",
+      "watchtower-disabled": "Nie wybrano płytek ze strażnicą.",
       "well-description": "Dodaj punkt za każdą studnię przy drodze. Droga z karczmą dostaję 2 punkty przy ukończeniu, opcjonalnie żadnych przy punktach na koniec gry.",
       "well-disabled": "Brak płytek ze studniami w tej grze.",
       "features": "Elementy",

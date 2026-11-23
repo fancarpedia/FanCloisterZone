@@ -1,0 +1,4 @@
+{
+  "game-setup.rules.watchtower-description": "Un meeple sur une tuile avec une tour de guet gagne un bonus quand sa zone est évaluée : des points pour chaque élément correspondant (blason, abbaye, ville, route ou meeple) sur les tuiles autour de la tour de guet.",
+  "game-setup.rules.watchtower-disabled": "Aucune tuile Tour de guet n’est en jeu."
+}

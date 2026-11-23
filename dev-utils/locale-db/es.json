@@ -299,6 +299,16 @@
     "value": "Un santuario puntúa como un monasterio.",
     "source": "manual"
   },
+  "game-setup.rules.watchtower-description": {
+    "en": "A meeple on a watchtower tile scores a bonus when its feature is scored: points for each matching thing (coat of arms, monastery, city, road or meeple) on the tiles around the watchtower.",
+    "value": "Un seguidor en una loseta con atalaya obtiene un bonus cuando se puntúa su construcción: puntos por cada elemento correspondiente (escudo, monasterio, ciudad, camino o seguidor) en las losetas alrededor de la atalaya.",
+    "source": "manual"
+  },
+  "game-setup.rules.watchtower-disabled": {
+    "en": "No tile with Watchtower is in game.",
+    "value": "No hay ninguna loseta con Atalaya en la partida.",
+    "source": "manual"
+  },
   "game-setup.tiles.custom-pack": {
     "en": "Custom tile pack (counts changed)",
     "value": "Mazo de losetas personalizado (cantidades modificadas)",

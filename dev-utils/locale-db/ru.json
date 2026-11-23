@@ -299,6 +299,16 @@
     "value": "Капище подсчитывается как монастырь.",
     "source": "manual"
   },
+  "game-setup.rules.watchtower-description": {
+    "en": "A meeple on a watchtower tile scores a bonus when its feature is scored: points for each matching thing (coat of arms, monastery, city, road or meeple) on the tiles around the watchtower.",
+    "value": "Мипл на тайле со смотровой башней получает бонус при подсчёте своей области: очки за каждый подходящий объект (герб, монастырь, город, дорогу или мипла) на тайлах вокруг башни.",
+    "source": "manual"
+  },
+  "game-setup.rules.watchtower-disabled": {
+    "en": "No tile with Watchtower is in game.",
+    "value": "В игре нет тайлов со смотровой башней.",
+    "source": "manual"
+  },
   "game-setup.tiles.custom-pack": {
     "en": "Custom tile pack (counts changed)",
     "value": "Свой набор тайлов (количества изменены)",

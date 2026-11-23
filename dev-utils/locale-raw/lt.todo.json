@@ -1,14 +1,1 @@
-{
-  "game-setup.timer.start-short": {
-    "kind": "untranslated",
-    "en": "Game start",
-    "why": "not in memory",
-    "value": ""
-  },
-  "game-setup.timer.turn-short": {
-    "kind": "untranslated",
-    "en": "Each turn",
-    "why": "not in memory",
-    "value": ""
-  }
-}
+{}

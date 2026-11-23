@@ -1,8 +1,8 @@
 {
   "@author": "Stepukiss",
   "@jcz-version": "5.12.1",
-  "@fcz-version": "7.2.0",
-  "@version": "0.13.11-ai",
+  "@fcz-version": "7.3.0",
+  "@version": "0.14.0-ai",
   "about": {
     "author": "Autorius",
     "configuration-file": "Nustatymų aplankas",
@@ -691,6 +691,8 @@
       "starting-tiles-different-configuration": "Kai kurie papildymai suteikia alternatyvias pradžios konfigūracijas",
       "vineyard-description": "Papildomi taškai už šalia esančius Vienuolynus.",
       "vineyard-disabled": "Žaidime nėra kortelių su Vynuogynu.",
+      "watchtower-description": "Miplas ant kortelės su sargybos bokštu gauna premiją, kai vertinama jo vietovė: taškus už kiekvieną atitinkamą dalyką (skydo žymeklį, vienuolyną, miestą, kelią ar miplą) kortelėse aplink sargybos bokštą.",
+      "watchtower-disabled": "Kortelių su sargybos bokštu nėra šiame žaidime",
       "well-description": "Pridėkite tašką už kiekvieną šulinį keliuose. Keliai su užeiga gauna 2 taškus, kai yra užbaigti ir pasirinktinai   taškų negaunama galutiniame taškų skaičiavime.",
       "well-disabled": "Žaidime nėra kortelių su Šuliniu.",
       "features": "Elementai",

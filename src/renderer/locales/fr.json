@@ -1,8 +1,8 @@
 {
   "@author": "Black Bear",
   "@jcz-version": "5.12.1",
-  "@fcz-version": "7.2.0",
-  "@version": "0.13.11-ai",
+  "@fcz-version": "7.3.0",
+  "@version": "0.14.0-ai",
   "about": {
     "author": "Auteur",
     "configuration-file": "Fichier de configuration",
@@ -691,6 +691,8 @@
       "starting-tiles-different-configuration": "Certaines extensions fournissent des configurations de départ alternatives.",
       "vineyard-description": "Points supplémentaires pour les abbayes situées autour.",
       "vineyard-disabled": "Aucune tuile Vignoble n’est en jeu.",
+      "watchtower-description": "Un meeple sur une tuile avec une tour de guet gagne un bonus quand sa zone est évaluée : des points pour chaque élément correspondant (blason, abbaye, ville, route ou meeple) sur les tuiles autour de la tour de guet.",
+      "watchtower-disabled": "Aucune tuile Tour de guet n’est en jeu.",
       "well-description": "Ajoute un point par puits sur les routes. Une route avec une auberge au lac rapporte 2 points lorsqu’elle est terminée et éventuellement aucun point lors de l'évaluation finale.",
       "well-disabled": "Aucune tuile Puits n’est en jeu.",
       "features": "Éléments",

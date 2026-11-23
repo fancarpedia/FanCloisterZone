@@ -1,8 +1,8 @@
 {
   "@author": "farin & Scott",
   "@jcz-version": "5.12.1",
-  "@fcz-version": "7.2.0",
-  "@version": "0.13.11",
+  "@fcz-version": "7.3.0",
+  "@version": "0.14.0",
   "about": {
     "author": "Author",
     "configuration-file": "Configuration file",
@@ -691,6 +691,8 @@
       "starting-tiles-different-configuration": "Some expansions provides alternative starting configurations.",
       "vineyard-description": "Additional points for nearby Monastery.",
       "vineyard-disabled": "No tile with Vineyard is in the game.",
+      "watchtower-description": "A meeple on a watchtower tile scores a bonus when its feature is scored: points for each matching thing (coat of arms, monastery, city, road or meeple) on the tiles around the watchtower.",
+      "watchtower-disabled": "No tile with Watchtower is in game.",
       "well-description": "Add point per Well on roads. Roads with Inn get 2 points when completed and optionally no points during final scoring.",
       "well-disabled": "No tile with Well is in the game.",
       "features": "Features",

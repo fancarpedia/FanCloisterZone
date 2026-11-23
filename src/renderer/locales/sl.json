@@ -1,8 +1,8 @@
 {
   "@author": "TileLord | Erol",
   "@jcz-version": "5.12.1",
-  "@fcz-version": "7.2.0",
-  "@version": "0.13.11-ai",
+  "@fcz-version": "7.3.0",
+  "@version": "0.14.0-ai",
   "about": {
     "author": "Avtor",
     "configuration-file": "Konfiguracijska datoteka",
@@ -691,6 +691,8 @@
       "starting-tiles-different-configuration": "Nekatere razširitve ponujajo alternativne začetne konfiguracije.",
       "vineyard-description": "Dodatne točke za bližnji samostan.",
       "vineyard-disabled": "Nobena ploščica z vinogradom ni v igri.",
+      "watchtower-description": "Človeček na ploščici s stražnim stolpom ob točkovanju svojega območja dobi bonus: točke za vsak ustrezen element (grb, samostan, mesto, cesto ali človečka) na ploščicah okoli stražnega stolpa.",
+      "watchtower-disabled": "Nobena ploščica s stražnim stolpom ni v igri.",
       "well-description": "Dodaj 1 točko za vsak vodnjak na cestah. Ceste z gostilno dobijo 2 točki, ko so dokončane, in po izbiri nobene točke pri končnem točkovanju.",
       "well-disabled": "Nobena ploščica z vodnjakom ni v igri.",
       "features": "Elementi",

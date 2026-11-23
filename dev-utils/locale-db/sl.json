@@ -299,6 +299,16 @@
     "value": "Svetišče se točkuje kot samostan.",
     "source": "manual"
   },
+  "game-setup.rules.watchtower-description": {
+    "en": "A meeple on a watchtower tile scores a bonus when its feature is scored: points for each matching thing (coat of arms, monastery, city, road or meeple) on the tiles around the watchtower.",
+    "value": "Človeček na ploščici s stražnim stolpom ob točkovanju svojega območja dobi bonus: točke za vsak ustrezen element (grb, samostan, mesto, cesto ali človečka) na ploščicah okoli stražnega stolpa.",
+    "source": "manual"
+  },
+  "game-setup.rules.watchtower-disabled": {
+    "en": "No tile with Watchtower is in game.",
+    "value": "Nobena ploščica s stražnim stolpom ni v igri.",
+    "source": "manual"
+  },
   "game-setup.tiles.custom-pack": {
     "en": "Custom tile pack (counts changed)",
     "value": "Lasten nabor ploščic (spremenjene količine)",

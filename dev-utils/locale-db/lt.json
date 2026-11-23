@@ -449,6 +449,16 @@
     "value": "Šventovė vertinama kaip vienuolynas.",
     "source": "manual"
   },
+  "game-setup.rules.watchtower-description": {
+    "en": "A meeple on a watchtower tile scores a bonus when its feature is scored: points for each matching thing (coat of arms, monastery, city, road or meeple) on the tiles around the watchtower.",
+    "value": "Miplas ant kortelės su sargybos bokštu gauna premiją, kai vertinama jo vietovė: taškus už kiekvieną atitinkamą dalyką (skydo žymeklį, vienuolyną, miestą, kelią ar miplą) kortelėse aplink sargybos bokštą.",
+    "source": "manual"
+  },
+  "game-setup.rules.watchtower-disabled": {
+    "en": "No tile with Watchtower is in game.",
+    "value": "Kortelių su sargybos bokštu nėra šiame žaidime",
+    "source": "manual"
+  },
   "game-setup.tiles.custom-pack": {
     "en": "Custom tile pack (counts changed)",
     "value": "Savas kortelių rinkinys (kiekiai pakeisti)",

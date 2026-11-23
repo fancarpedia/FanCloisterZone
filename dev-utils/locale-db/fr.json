@@ -154,6 +154,16 @@
     "value": "Un lieu de culte est décompté comme une abbaye.",
     "source": "manual"
   },
+  "game-setup.rules.watchtower-description": {
+    "en": "A meeple on a watchtower tile scores a bonus when its feature is scored: points for each matching thing (coat of arms, monastery, city, road or meeple) on the tiles around the watchtower.",
+    "value": "Un meeple sur une tuile avec une tour de guet gagne un bonus quand sa zone est évaluée : des points pour chaque élément correspondant (blason, abbaye, ville, route ou meeple) sur les tuiles autour de la tour de guet.",
+    "source": "manual"
+  },
+  "game-setup.rules.watchtower-disabled": {
+    "en": "No tile with Watchtower is in game.",
+    "value": "Aucune tuile Tour de guet n’est en jeu.",
+    "source": "manual"
+  },
   "game-setup.tiles.supply-tiles": {
     "en": "In the players' supply, not in the draw pile",
     "value": "Dans la réserve des joueurs, pas dans la pioche",

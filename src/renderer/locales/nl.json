@@ -1,8 +1,8 @@
 {
   "@author": "Kiap1969 & Sinscerly",
   "@jcz-version": "5.12.1",
-  "@fcz-version": "7.2.0",
-  "@version": "0.13.11-ai",
+  "@fcz-version": "7.3.0",
+  "@version": "0.14.0-ai",
   "about": {
     "author": "Auteur",
     "configuration-file": "Configuratiebestand",
@@ -691,6 +691,8 @@
       "starting-tiles-different-configuration": "Sommige uitbreidingen voorzien in alternatieve startconfiguraties.",
       "vineyard-description": "Geeft extra punten voor naastgelegen klooster.",
       "vineyard-disabled": "Er zijn geen tegels met wijngaarden in het spel.",
+      "watchtower-description": "Een meeple op een tegel met een wachttoren krijgt een bonus wanneer zijn gebied wordt gewaardeerd: punten voor elk passend element (wapen, klooster, stad, weg of meeple) op de tegels rond de wachttoren.",
+      "watchtower-disabled": "Er zijn geen wachttorentegels in het spel.",
       "well-description": "Tel punt per put aan wegen. Wegen met een herberg krijgen twee punten als ze zijn afgebouwd, maar mogelijk geen punten bij de eindtelling.",
       "well-disabled": "Er zijn geen tegels met putten in het spel.",
       "features": "Elementen",

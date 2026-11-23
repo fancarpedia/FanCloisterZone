@@ -1,8 +1,8 @@
 {
   "@author": "Carlium & Meepledrone",
   "@jcz-version": "5.12.1",
-  "@fcz-version": "7.2.0",
-  "@version": "0.13.11-ai",
+  "@fcz-version": "7.3.0",
+  "@version": "0.14.0-ai",
   "about": {
     "author": "Autor",
     "configuration-file": "Archivo de configuración",
@@ -691,6 +691,8 @@
       "starting-tiles-different-configuration": "Algunas expansiones ofrecen configuraciones de inicio alternativas.",
       "vineyard-description": "Puntos adicionales por monasterio cercano.",
       "vineyard-disabled": "No hay ninguna loseta con Viñedo en la partida.",
+      "watchtower-description": "Un seguidor en una loseta con atalaya obtiene un bonus cuando se puntúa su construcción: puntos por cada elemento correspondiente (escudo, monasterio, ciudad, camino o seguidor) en las losetas alrededor de la atalaya.",
+      "watchtower-disabled": "No hay ninguna loseta con Atalaya en la partida.",
       "well-description": "Añade un punto por cada pozo en un camino. Los caminos con posadas obtienen 2 puntos cuando se completan, y opcionalmente no obtienen puntos en la puntuación final.",
       "well-disabled": "No hay ninguna loseta con Pozo en la partida.",
       "features": "Elementos",

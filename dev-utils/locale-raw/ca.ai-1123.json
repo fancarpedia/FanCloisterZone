@@ -1,0 +1,4 @@
+{
+  "game-setup.rules.watchtower-description": "Un seguidor en una casella amb talaia obté un bonus quan es puntua la seva construcció: punts per cada element corresponent (escut, monestir, ciutat, camí o seguidor) a les caselles del voltant de la talaia.",
+  "game-setup.rules.watchtower-disabled": "No hi ha caselles amb talaia a la partida."
+}

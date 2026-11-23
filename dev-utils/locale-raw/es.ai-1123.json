@@ -1,0 +1,4 @@
+{
+  "game-setup.rules.watchtower-description": "Un seguidor en una loseta con atalaya obtiene un bonus cuando se puntúa su construcción: puntos por cada elemento correspondiente (escudo, monasterio, ciudad, camino o seguidor) en las losetas alrededor de la atalaya.",
+  "game-setup.rules.watchtower-disabled": "No hay ninguna loseta con Atalaya en la partida."
+}

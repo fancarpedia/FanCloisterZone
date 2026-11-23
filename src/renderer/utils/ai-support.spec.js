@@ -21,11 +21,11 @@ describe('what the AI plays', () => {
       expect(isAiExpansion(name)).toBe(true)
     }
     // enforcing a mechanic the AI does not play: never
-    for (const name of ['CORN_CIRCLES', 'MONASTERIES', 'FLIER', 'WATCHTOWERS']) {
+    for (const name of ['CORN_CIRCLES', 'MONASTERIES', 'FLIER']) {
       expect(isAiExpansion(name)).toBe(false)
     }
     // implying one: playable once it is switched off (stage 4)
-    for (const name of ['TOWER', 'ABBEY_AND_MAYOR', 'PRINCESS_AND_DRAGON', 'HILLS_AND_SHEEP', 'TUNNEL']) {
+    for (const name of ['TOWER', 'ABBEY_AND_MAYOR', 'PRINCESS_AND_DRAGON', 'HILLS_AND_SHEEP', 'TUNNEL', 'WATCHTOWERS']) {
       expect(aiExpansionLevel(name).level).toBe('implied')
     }
     expect(isAiExpansion(Expansion.BASIC)).toBe(true)

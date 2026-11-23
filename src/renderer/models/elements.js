@@ -192,6 +192,12 @@ export const FISHHUT = GameElement.FISHHUT = new GameElement('fishhut', 'Fish Hu
   selector: 'fishhut', notOnWeb: true
 })
 
+// Watchtowers: the bonus of a watchtower tile — implied by The Watchtowers (on by default), can be
+// switched off like cathedrals / inns; then the tiles are played without it (engine: no capability)
+export const WATCHTOWER = GameElement.WATCHTOWER = new GameElement('watchtower', 'Watchtowers', Boolean, {
+  selector: 'watchtower'
+})
+
 export const COURIER = GameElement.COURIER = new GameElement('courier', 'Courier', Number, {
   selector: 'courier-letter'
 })
@@ -272,7 +278,8 @@ export const ELEMENT_ICONS = {
   'marketplace': { feature: 'C1/marketplace.png', h: 55 },
   'meteorite': { feature: 'C1/crater.png', h: 55 },
   'fishermen': { feature: 'C1/fishermen.png', h: 55 },
-  'fishhut': { feature: 'C1/fishhut.png', h: 55 }
+  'fishhut': { feature: 'C1/fishhut.png', h: 55 },
+  'watchtower': { tile: 'WT/CFff_3C' }
 }
 /* eslint-enable quote-props */
 

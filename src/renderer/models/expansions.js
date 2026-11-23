@@ -181,7 +181,8 @@ export const MAGE_AND_WITCH = Expansion.MAGE_AND_WITCH = new Expansion('MAGE_AND
 
 // $t('expansion.watchtowers')
 export const WATCHTOWERS = Expansion.WATCHTOWERS = new Expansion('WATCHTOWERS', 'The Watchtowers', {
-  enforces: ['watchtower'],
+  // implied (not enforced): on by default, the player may switch the watchtowers off
+  implies: ['watchtower'],
   ai: true
 })
 

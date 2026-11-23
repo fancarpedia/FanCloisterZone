@@ -169,6 +169,14 @@
           <template #description>{{ $t('game-setup.rules.meteorite-description') }}</template>
           <template #disabled>{{ $t('game-setup.rules.meteorite-disabled') }}</template>
         </GameMechanicsBox>
+
+        <GameMechanicsBox v-if="!ai" :item="GameElement.WATCHTOWER">
+          <template #icon>
+            <StandaloneTileImage tile-id="WT/CFff_3C" :size="55" />
+          </template>
+          <template #description>{{ $t('game-setup.rules.watchtower-description') }}</template>
+          <template #disabled>{{ $t('game-setup.rules.watchtower-disabled') }}</template>
+        </GameMechanicsBox>
       </div>
     </ConfigSection>
 

@@ -299,6 +299,16 @@
     "value": "Een cultusplaats wordt gewaardeerd als een klooster.",
     "source": "manual"
   },
+  "game-setup.rules.watchtower-description": {
+    "en": "A meeple on a watchtower tile scores a bonus when its feature is scored: points for each matching thing (coat of arms, monastery, city, road or meeple) on the tiles around the watchtower.",
+    "value": "Een meeple op een tegel met een wachttoren krijgt een bonus wanneer zijn gebied wordt gewaardeerd: punten voor elk passend element (wapen, klooster, stad, weg of meeple) op de tegels rond de wachttoren.",
+    "source": "manual"
+  },
+  "game-setup.rules.watchtower-disabled": {
+    "en": "No tile with Watchtower is in game.",
+    "value": "Er zijn geen wachttorentegels in het spel.",
+    "source": "manual"
+  },
   "game-setup.tiles.custom-pack": {
     "en": "Custom tile pack (counts changed)",
     "value": "Eigen tegelstapel (aantallen gewijzigd)",

@@ -299,6 +299,16 @@
     "value": "Siedziba Kultu jest punktowana jak klasztor.",
     "source": "manual"
   },
+  "game-setup.rules.watchtower-description": {
+    "en": "A meeple on a watchtower tile scores a bonus when its feature is scored: points for each matching thing (coat of arms, monastery, city, road or meeple) on the tiles around the watchtower.",
+    "value": "Podwładny na kafelku ze strażnicą otrzymuje premię, gdy jego obszar jest punktowany: punkty za każdy pasujący element (proporzec, klasztor, miasto, drogę lub podwładnego) na kafelkach wokół strażnicy.",
+    "source": "manual"
+  },
+  "game-setup.rules.watchtower-disabled": {
+    "en": "No tile with Watchtower is in game.",
+    "value": "Nie wybrano płytek ze strażnicą.",
+    "source": "manual"
+  },
   "game-setup.tiles.custom-pack": {
     "en": "Custom tile pack (counts changed)",
     "value": "Własny zestaw płytek (zmienione liczby)",

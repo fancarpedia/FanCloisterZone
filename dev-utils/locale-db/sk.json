@@ -279,6 +279,16 @@
     "value": "Svätyňa sa boduje ako kláštor.",
     "source": "manual"
   },
+  "game-setup.rules.watchtower-description": {
+    "en": "A meeple on a watchtower tile scores a bonus when its feature is scored: points for each matching thing (coat of arms, monastery, city, road or meeple) on the tiles around the watchtower.",
+    "value": "Spoločník na kartičke so strážnou vežou získa pri vyhodnotení svojho územia bonus: body za každú zodpovedajúcu vec (erb, kláštor, mesto, cestu alebo spoločníka) na kartičkách okolo strážnej veže.",
+    "source": "manual"
+  },
+  "game-setup.rules.watchtower-disabled": {
+    "en": "No tile with Watchtower is in game.",
+    "value": "V hre nie je žiadna kartička so strážnou vežou.",
+    "source": "manual"
+  },
   "game-setup.tiles.custom-pack": {
     "en": "Custom tile pack (counts changed)",
     "value": "Vlastná sada kartičiek (zmenené počty)",
