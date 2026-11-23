@@ -928,6 +928,7 @@
       "title": "Partides allotjades en servidors públics",
       "title-fan": "Partides allotjades en servidors públics fan",
       "title-local": "Partides allotjades en local de desenvolupament",
+      "welcome": "<span lang="en" dir="ltr" class="mw-content-ltr">Welcome, {name}</span>",
       "you-have-no-game-in-progress": "No teniu cap partida en curs.",
       "disconnect-title": "Desconnecta del servidor",
       "disconnect-message": "<span lang="en" dir="ltr" class="mw-content-ltr">You have {count} online game(s) open. Disconnecting will close them.</span>",

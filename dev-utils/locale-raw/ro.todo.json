@@ -1,31 +1,7 @@
 {
-  "game.action.bards-place-a-note": {
+  "index.online.welcome": {
     "kind": "untranslated",
-    "en": "Place a note",
-    "why": "not in memory",
-    "value": ""
-  },
-  "game.action.bards-player-must-place-a-note": {
-    "kind": "untranslated",
-    "en": "Player must place a note",
-    "why": "not in memory",
-    "value": ""
-  },
-  "game.element.bards-note": {
-    "kind": "untranslated",
-    "en": "Bards' note",
-    "why": "not in memory",
-    "value": ""
-  },
-  "game.element.bards-notes": {
-    "kind": "untranslated",
-    "en": "Bards' notes",
-    "why": "not in memory",
-    "value": ""
-  },
-  "game-setup.variant.bards-notes-stack.description": {
-    "kind": "untranslated",
-    "en": "Advanced variant: Bards' notes stack — every note on a feature adds its bonus (+1 per tile, or per completed city of a field).",
+    "en": "Welcome, {name}",
     "why": "not in memory",
     "value": ""
   }

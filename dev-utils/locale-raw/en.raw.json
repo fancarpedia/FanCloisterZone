@@ -2,7 +2,7 @@
   "@author": "farin & Scott",
   "@jcz-version": "5.12.1",
   "@fcz-version": "7.3.0",
-  "@version": "0.14.1",
+  "@version": "0.14.2",
   "about": {
     "author": "Author",
     "configuration-file": "Configuration file",
@@ -928,6 +928,7 @@
       "title": "Public server hosted games",
       "title-fan": "Games hosted on fan-server",
       "title-local": "Games hosted on dev local",
+      "welcome": "Welcome, {name}",
       "you-have-no-game-in-progress": "You have no game in progress.",
       "disconnect-title": "Disconnect from server",
       "disconnect-message": "You have {count} online game(s) open. Disconnecting will close them.",

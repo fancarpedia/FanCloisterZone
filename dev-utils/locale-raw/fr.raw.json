@@ -928,6 +928,7 @@
       "title": "Parties hébergées sur un serveur public",
       "title-fan": "Parties hébergées sur un serveur de fan",
       "title-local": "Parties hébergées sur un serveur local de développement",
+      "welcome": "<span lang="en" dir="ltr" class="mw-content-ltr">Welcome, {name}</span>",
       "you-have-no-game-in-progress": "Vous n’avez pas de partie en cours.",
       "disconnect-title": "Se déconnecter du serveur",
       "disconnect-message": "Vous avez {count} partie(s) en ligne ouverte(s). Si vous vous déconnectez, elles seront fermées.",

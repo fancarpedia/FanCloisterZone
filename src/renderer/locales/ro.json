@@ -2,7 +2,7 @@
   "@author": "Paloi Sciurala",
   "@jcz-version": "5.12.1",
   "@fcz-version": "7.3.0",
-  "@version": "0.14.1-ai",
+  "@version": "0.14.2-ai",
   "about": {
     "author": "Autor",
     "configuration-file": "Fișier de configurație",
@@ -367,8 +367,8 @@
       "abbey": "Abație",
       "abbot": "Abate",
       "animal-token": "Jeton cu animal",
-      "bards-note": "Nota bardilor",
-      "bards-notes": "Notele bardilor",
+      "bards-note": "Notă de-a barzilor",
+      "bards-notes": "Note de-a barzilor",
       "barn": "Moșie",
       "big-follower": "Meeple mare",
       "big-top": "Cort de circ",
@@ -737,7 +737,7 @@
     "title": "Configurarea partidei",
     "variant": {
       "bards-notes-stack": {
-        "description": "Variantă avansată: notele bardilor se cumulează — fiecare notă de pe un element adaugă bonusul său (+1 pe cartonaș sau pe oraș terminat al unei pajiști)."
+        "description": "Varianta avansată: notele barzilor se stivuiesc — fiecare notă de pe un teritoriu își adaugă bonusul (+1 pentru fiecare cartonaș, sau pentru fiecare oraș finalizat al unui câmp)."
       },
       "barn-placement": {
         "description": "Moșia {} fi plasată pe un câmp deja ocupat de altă moșie.",
@@ -934,6 +934,7 @@
       "title": "Partide găzduite pe servere publice",
       "title-fan": "Partide găzduite pe serverul fanilor",
       "title-local": "Partide găzduite pe dispozitivul local",
+      "welcome": "Bun venit, {name}",
       "you-have-no-game-in-progress": "Nu ai nicio partidă în curs de desfășurare.",
       "disconnect-title": "Deconectează-te de la server",
       "disconnect-message": "Numărul partidelor online deschise ale tale este de {count}. Deconectarea le va închide.",

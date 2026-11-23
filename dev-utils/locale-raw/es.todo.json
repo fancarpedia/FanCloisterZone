@@ -28,5 +28,11 @@
     "en": "Advanced variant: Bards' notes stack — every note on a feature adds its bonus (+1 per tile, or per completed city of a field).",
     "why": "not in memory",
     "value": ""
+  },
+  "index.online.welcome": {
+    "kind": "untranslated",
+    "en": "Welcome, {name}",
+    "why": "not in memory",
+    "value": ""
   }
 }

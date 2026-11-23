@@ -2,7 +2,7 @@
   "@author": "Black Bear",
   "@jcz-version": "5.12.1",
   "@fcz-version": "7.3.0",
-  "@version": "0.14.1-ai",
+  "@version": "0.14.2-ai",
   "about": {
     "author": "Auteur",
     "configuration-file": "Fichier de configuration",
@@ -934,6 +934,7 @@
       "title": "Parties hébergées sur un serveur public",
       "title-fan": "Parties hébergées sur un serveur de fan",
       "title-local": "Parties hébergées sur un serveur local de développement",
+      "welcome": "Bienvenue, {name}",
       "you-have-no-game-in-progress": "Vous n’avez pas de partie en cours.",
       "disconnect-title": "Se déconnecter du serveur",
       "disconnect-message": "Vous avez {count} partie(s) en ligne ouverte(s). Si vous vous déconnectez, elles seront fermées.",

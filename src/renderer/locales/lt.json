@@ -2,7 +2,7 @@
   "@author": "Stepukiss",
   "@jcz-version": "5.12.1",
   "@fcz-version": "7.3.0",
-  "@version": "0.14.1-ai",
+  "@version": "0.14.2-ai",
   "about": {
     "author": "Autorius",
     "configuration-file": "Nustatymų aplankas",
@@ -934,6 +934,7 @@
       "title": "Viešo serverio sukurti žaidimai",
       "title-fan": "Žaidimai talpinami gerbėjų serveryje",
       "title-local": "Žaidimai vietiniame kūrėjo serveryje",
+      "welcome": "Sveiki, {name}",
       "you-have-no-game-in-progress": "Jūs neturite vykstančio žaidimo",
       "disconnect-title": "Atsijungti nuo serverio",
       "disconnect-message": "Turite atidarytų žaidimų internete: {count}. Atsijungus jie bus uždaryti.",

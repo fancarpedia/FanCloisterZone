@@ -928,6 +928,7 @@
       "title": "<span lang="en" dir="ltr" class="mw-content-ltr">Public server hosted games</span>",
       "title-fan": "<span lang="en" dir="ltr" class="mw-content-ltr">Games hosted on fan-server</span>",
       "title-local": "<span lang="en" dir="ltr" class="mw-content-ltr">Games hosted on dev local</span>",
+      "welcome": "<span lang="en" dir="ltr" class="mw-content-ltr">Welcome, {name}</span>",
       "you-have-no-game-in-progress": "<span lang="en" dir="ltr" class="mw-content-ltr">You have no game in progress.</span>",
       "disconnect-title": "<span lang="en" dir="ltr" class="mw-content-ltr">Disconnect from server</span>",
       "disconnect-message": "<span lang="en" dir="ltr" class="mw-content-ltr">You have {count} online game(s) open. Disconnecting will close them.</span>",

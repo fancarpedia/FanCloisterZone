@@ -2,7 +2,7 @@
   "@author": "Peťul",
   "@jcz-version": "5.12.1",
   "@fcz-version": "7.3.0",
-  "@version": "0.14.1-ai",
+  "@version": "0.14.2-ai",
   "about": {
     "author": "Autor",
     "configuration-file": "Konfigurační soubor",
@@ -934,6 +934,7 @@
       "title": "Hry pro připojení na veřejném serveru",
       "title-fan": "Hry na fanouškovském serveru",
       "title-local": "Hry na místním dev serveru",
+      "welcome": "Vítejte, {name}",
       "you-have-no-game-in-progress": "Nemáte rozehranou žádnou hru.",
       "disconnect-title": "Odpojit se od serveru",
       "disconnect-message": "Máte otevřeno {count} online her. Odpojením se zavřou.",

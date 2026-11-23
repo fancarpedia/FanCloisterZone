@@ -2,7 +2,7 @@
   "@author": "Carlium & Meepledrone",
   "@jcz-version": "5.12.1",
   "@fcz-version": "7.3.0",
-  "@version": "0.14.1-ai",
+  "@version": "0.14.2-ai",
   "about": {
     "author": "Autor",
     "configuration-file": "Archivo de configuración",
@@ -934,6 +934,7 @@
       "title": "Partidas alojadas en servidores públicos",
       "title-fan": "Partidas alojadas en un servidor de fan",
       "title-local": "Partidas alojadas en el dev local",
+      "welcome": "Te damos la bienvenida, {name}",
       "you-have-no-game-in-progress": "No hay partidas en curso.",
       "disconnect-title": "Desconectar del servidor",
       "disconnect-message": "Tienes {count} partidas en línea abiertas. Al desconectar se cerrarán.",

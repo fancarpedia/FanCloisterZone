@@ -2,7 +2,7 @@
   "@author": "pOison & Dextea & SonicDC",
   "@jcz-version": "5.12.1",
   "@fcz-version": "7.3.0",
-  "@version": "0.14.1-ai",
+  "@version": "0.14.2-ai",
   "about": {
     "author": "Автор",
     "configuration-file": "Файл конфигурации",
@@ -934,6 +934,7 @@
       "title": "Игры на общедоступном сервере",
       "title-fan": "Игры, размещённые на фан-сервере",
       "title-local": "Игры на локальном dev-сервере",
+      "welcome": "Добро пожаловать, {name}",
       "you-have-no-game-in-progress": "У вас нет активных игр.",
       "disconnect-title": "Отключиться от сервера",
       "disconnect-message": "У вас открыто игр онлайн: {count}. При отключении они будут закрыты.",

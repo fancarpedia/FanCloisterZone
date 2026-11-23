@@ -42,6 +42,11 @@ describe('the online page', () => {
     expect(online).not.toContain('loadLocalGame')
   })
 
+  it('welcomes the player by their server name, in the header aside', () => {
+    expect(online).toContain('<aside class="header-aside">')
+    expect(online).toContain('path="index.online.welcome"')
+  })
+
   it('does not say "connected to …"', () => {
     expect(status).not.toContain('index.online.connected-to')
     expect(status).toContain('index.online.connecting')

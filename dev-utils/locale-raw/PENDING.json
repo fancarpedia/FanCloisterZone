@@ -24,6 +24,11 @@
       "keyPath": "game-setup.variant.bards-notes-stack.description",
       "kind": "untranslated",
       "en": "Advanced variant: Bards' notes stack — every note on a feature adds its bonus (+1 per tile, or per completed city of a field)."
+    },
+    {
+      "keyPath": "index.online.welcome",
+      "kind": "untranslated",
+      "en": "Welcome, {name}"
     }
   ],
   "cs": [
@@ -51,6 +56,11 @@
       "keyPath": "game-setup.variant.bards-notes-stack.description",
       "kind": "untranslated",
       "en": "Advanced variant: Bards' notes stack — every note on a feature adds its bonus (+1 per tile, or per completed city of a field)."
+    },
+    {
+      "keyPath": "index.online.welcome",
+      "kind": "untranslated",
+      "en": "Welcome, {name}"
     }
   ],
   "de": [
@@ -78,6 +88,11 @@
       "keyPath": "game-setup.variant.bards-notes-stack.description",
       "kind": "untranslated",
       "en": "Advanced variant: Bards' notes stack — every note on a feature adds its bonus (+1 per tile, or per completed city of a field)."
+    },
+    {
+      "keyPath": "index.online.welcome",
+      "kind": "untranslated",
+      "en": "Welcome, {name}"
     }
   ],
   "es": [
@@ -105,6 +120,11 @@
       "keyPath": "game-setup.variant.bards-notes-stack.description",
       "kind": "untranslated",
       "en": "Advanced variant: Bards' notes stack — every note on a feature adds its bonus (+1 per tile, or per completed city of a field)."
+    },
+    {
+      "keyPath": "index.online.welcome",
+      "kind": "untranslated",
+      "en": "Welcome, {name}"
     }
   ],
   "fr": [
@@ -132,6 +152,11 @@
       "keyPath": "game-setup.variant.bards-notes-stack.description",
       "kind": "untranslated",
       "en": "Advanced variant: Bards' notes stack — every note on a feature adds its bonus (+1 per tile, or per completed city of a field)."
+    },
+    {
+      "keyPath": "index.online.welcome",
+      "kind": "untranslated",
+      "en": "Welcome, {name}"
     }
   ],
   "lt": [
@@ -159,6 +184,11 @@
       "keyPath": "game-setup.variant.bards-notes-stack.description",
       "kind": "untranslated",
       "en": "Advanced variant: Bards' notes stack — every note on a feature adds its bonus (+1 per tile, or per completed city of a field)."
+    },
+    {
+      "keyPath": "index.online.welcome",
+      "kind": "untranslated",
+      "en": "Welcome, {name}"
     }
   ],
   "nl": [
@@ -186,6 +216,11 @@
       "keyPath": "game-setup.variant.bards-notes-stack.description",
       "kind": "untranslated",
       "en": "Advanced variant: Bards' notes stack — every note on a feature adds its bonus (+1 per tile, or per completed city of a field)."
+    },
+    {
+      "keyPath": "index.online.welcome",
+      "kind": "untranslated",
+      "en": "Welcome, {name}"
     }
   ],
   "pl": [
@@ -213,33 +248,18 @@
       "keyPath": "game-setup.variant.bards-notes-stack.description",
       "kind": "untranslated",
       "en": "Advanced variant: Bards' notes stack — every note on a feature adds its bonus (+1 per tile, or per completed city of a field)."
+    },
+    {
+      "keyPath": "index.online.welcome",
+      "kind": "untranslated",
+      "en": "Welcome, {name}"
     }
   ],
   "ro": [
     {
-      "keyPath": "game.action.bards-place-a-note",
+      "keyPath": "index.online.welcome",
       "kind": "untranslated",
-      "en": "Place a note"
-    },
-    {
-      "keyPath": "game.action.bards-player-must-place-a-note",
-      "kind": "untranslated",
-      "en": "Player must place a note"
-    },
-    {
-      "keyPath": "game.element.bards-note",
-      "kind": "untranslated",
-      "en": "Bards' note"
-    },
-    {
-      "keyPath": "game.element.bards-notes",
-      "kind": "untranslated",
-      "en": "Bards' notes"
-    },
-    {
-      "keyPath": "game-setup.variant.bards-notes-stack.description",
-      "kind": "untranslated",
-      "en": "Advanced variant: Bards' notes stack — every note on a feature adds its bonus (+1 per tile, or per completed city of a field)."
+      "en": "Welcome, {name}"
     }
   ],
   "ru": [
@@ -267,6 +287,11 @@
       "keyPath": "game-setup.variant.bards-notes-stack.description",
       "kind": "untranslated",
       "en": "Advanced variant: Bards' notes stack — every note on a feature adds its bonus (+1 per tile, or per completed city of a field)."
+    },
+    {
+      "keyPath": "index.online.welcome",
+      "kind": "untranslated",
+      "en": "Welcome, {name}"
     }
   ],
   "sk": [
@@ -294,6 +319,11 @@
       "keyPath": "game-setup.variant.bards-notes-stack.description",
       "kind": "untranslated",
       "en": "Advanced variant: Bards' notes stack — every note on a feature adds its bonus (+1 per tile, or per completed city of a field)."
+    },
+    {
+      "keyPath": "index.online.welcome",
+      "kind": "untranslated",
+      "en": "Welcome, {name}"
     }
   ],
   "sl": [
@@ -321,6 +351,11 @@
       "keyPath": "game-setup.variant.bards-notes-stack.description",
       "kind": "untranslated",
       "en": "Advanced variant: Bards' notes stack — every note on a feature adds its bonus (+1 per tile, or per completed city of a field)."
+    },
+    {
+      "keyPath": "index.online.welcome",
+      "kind": "untranslated",
+      "en": "Welcome, {name}"
     }
   ],
   "uk": [
@@ -348,6 +383,11 @@
       "keyPath": "game-setup.variant.bards-notes-stack.description",
       "kind": "untranslated",
       "en": "Advanced variant: Bards' notes stack — every note on a feature adds its bonus (+1 per tile, or per completed city of a field)."
+    },
+    {
+      "keyPath": "index.online.welcome",
+      "kind": "untranslated",
+      "en": "Welcome, {name}"
     }
   ]
 }

@@ -928,6 +928,7 @@
       "title": "Igre gostovane na javnem strežniku",
       "title-fan": "Igre gostovane na fan-strežniku",
       "title-local": "<span lang="en" dir="ltr" class="mw-content-ltr">Games hosted on dev local</span>",
+      "welcome": "<span lang="en" dir="ltr" class="mw-content-ltr">Welcome, {name}</span>",
       "you-have-no-game-in-progress": "Nimaš igre v teku.",
       "disconnect-title": "<span lang="en" dir="ltr" class="mw-content-ltr">Disconnect from server</span>",
       "disconnect-message": "<span lang="en" dir="ltr" class="mw-content-ltr">You have {count} online game(s) open. Disconnecting will close them.</span>",

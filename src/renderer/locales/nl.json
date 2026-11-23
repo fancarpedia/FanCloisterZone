@@ -2,7 +2,7 @@
   "@author": "Kiap1969 & Sinscerly",
   "@jcz-version": "5.12.1",
   "@fcz-version": "7.3.0",
-  "@version": "0.14.1-ai",
+  "@version": "0.14.2-ai",
   "about": {
     "author": "Auteur",
     "configuration-file": "Configuratiebestand",
@@ -934,6 +934,7 @@
       "title": "Spellen op openbare server",
       "title-fan": "Spellen die beschikbaar zijn op de fan-server",
       "title-local": "Spellen op de lokale dev-server",
+      "welcome": "Welkom, {name}",
       "you-have-no-game-in-progress": "Je hebt geen lopende spellen.",
       "disconnect-title": "Verbinding met server verbreken",
       "disconnect-message": "Je hebt {count} online spellen open. Bij het verbreken worden ze gesloten.",

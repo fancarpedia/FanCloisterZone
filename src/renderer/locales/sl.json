@@ -2,7 +2,7 @@
   "@author": "TileLord | Erol",
   "@jcz-version": "5.12.1",
   "@fcz-version": "7.3.0",
-  "@version": "0.14.1-ai",
+  "@version": "0.14.2-ai",
   "about": {
     "author": "Avtor",
     "configuration-file": "Konfiguracijska datoteka",
@@ -934,6 +934,7 @@
       "title": "Igre gostovane na javnem strežniku",
       "title-fan": "Igre gostovane na fan-strežniku",
       "title-local": "Igre na lokalnem dev strežniku",
+      "welcome": "Dobrodošli, {name}",
       "you-have-no-game-in-progress": "Nimaš igre v teku.",
       "disconnect-title": "Prekini povezavo s strežnikom",
       "disconnect-message": "Odprtih imaš {count} spletnih iger. Ob prekinitvi se bodo zaprle.",

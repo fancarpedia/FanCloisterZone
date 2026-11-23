@@ -928,6 +928,7 @@
       "title": "Partidas alojadas en servidores públicos",
       "title-fan": "Partidas alojadas en un servidor de fan",
       "title-local": "<span lang="en" dir="ltr" class="mw-content-ltr">Games hosted on dev local</span>",
+      "welcome": "<span lang="en" dir="ltr" class="mw-content-ltr">Welcome, {name}</span>",
       "you-have-no-game-in-progress": "No hay partidas en curso.",
       "disconnect-title": "<span lang="en" dir="ltr" class="mw-content-ltr">Disconnect from server</span>",
       "disconnect-message": "<span lang="en" dir="ltr" class="mw-content-ltr">You have {count} online game(s) open. Disconnecting will close them.</span>",

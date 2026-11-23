@@ -2,7 +2,7 @@
   "@author": "Challa007 & Bombur",
   "@jcz-version": "5.12.1",
   "@fcz-version": "7.3.0",
-  "@version": "0.14.1-ai",
+  "@version": "0.14.2-ai",
   "about": {
     "author": "Autor",
     "configuration-file": "Konfigurationsdatei",
@@ -934,6 +934,7 @@
       "title": "Auf öffentlichen Servern gehostete Spiele",
       "title-fan": "Auf dem Fan-Server gehostete Spiele",
       "title-local": "Spiele auf dem lokalen Dev-Server",
+      "welcome": "Willkommen, {name}",
       "you-have-no-game-in-progress": "Du hast kein laufendes Spiel.",
       "disconnect-title": "Vom Server trennen",
       "disconnect-message": "Du hast {count} Online-Spiele offen. Beim Trennen werden sie geschlossen.",

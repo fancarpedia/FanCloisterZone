@@ -2,7 +2,7 @@
   "@author": "J0anJosep",
   "@jcz-version": "5.12.1",
   "@fcz-version": "7.3.0",
-  "@version": "0.14.1-ai",
+  "@version": "0.14.2-ai",
   "about": {
     "author": "Autor",
     "configuration-file": "Fitxer de configuració",
@@ -934,6 +934,7 @@
       "title": "Partides allotjades en servidors públics",
       "title-fan": "Partides allotjades en servidors públics fan",
       "title-local": "Partides allotjades en local de desenvolupament",
+      "welcome": "Et donem la benvinguda, {name}",
       "you-have-no-game-in-progress": "No teniu cap partida en curs.",
       "disconnect-title": "Desconnecta del servidor",
       "disconnect-message": "Teniu {count} partides en línia obertes. Si us desconnecteu, es tancaran.",

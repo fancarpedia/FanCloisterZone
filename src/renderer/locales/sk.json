@@ -2,7 +2,7 @@
   "@author": "Bumsakalaka",
   "@jcz-version": "5.12.1",
   "@fcz-version": "7.3.0",
-  "@version": "0.14.1-ai",
+  "@version": "0.14.2-ai",
   "about": {
     "author": "Autor",
     "configuration-file": "Konfiguračný súbor",
@@ -934,6 +934,7 @@
       "title": "Hry na verejnom serveri",
       "title-fan": "Hry na fanúšikovskom serveri",
       "title-local": "Hry hostované na lokálnom dev serveri",
+      "welcome": "Vitajte, {name}",
       "you-have-no-game-in-progress": "Nemáte rozohranú žiadnu hru.",
       "disconnect-title": "Odpojiť sa od servera",
       "disconnect-message": "Máte otvorených {count} online hier. Odpojením sa zatvoria.",

@@ -2,7 +2,7 @@
   "@author": "Snearone",
   "@jcz-version": "5.12.1",
   "@fcz-version": "7.3.0",
-  "@version": "0.14.1-ai",
+  "@version": "0.14.2-ai",
   "about": {
     "author": "Autor",
     "configuration-file": "Plik konfiguracyjny",
@@ -934,6 +934,7 @@
       "title": "Gry na serwerze publicznym",
       "title-fan": "Gry na fanowskim serwerze",
       "title-local": "Gry na lokalnym serwerze dev",
+      "welcome": "Witaj, {name}",
       "you-have-no-game-in-progress": "Nie masz żadnej gry w toku.",
       "disconnect-title": "Rozłącz się z serwerem",
       "disconnect-message": "Masz otwarte {count} gier online. Rozłączenie je zamknie.",
