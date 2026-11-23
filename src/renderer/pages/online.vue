@@ -17,33 +17,55 @@
         </v-list-item>
       </v-list>
     </v-menu>
-    <header>
-      <section class="button-group">
-        <h3 class="group-title"><OnlineStatus /></h3>
-        <div class="group-buttons">
-          <v-btn :disabled="!connected" large color="primary" @click="createGame()">
-            {{ $t('button.create-game') }}
-          </v-btn>
-
-          <v-btn :disabled="!connected" large color="primary" @click="openJoinGameDialog()">
-            {{ $t('button.join-game') }}
-          </v-btn>
-
-          <!-- No Disconnect in the web build: the lobby IS the app there, and web is online-play
-               only, so going offline leaves nothing to do. Connect still shows when not
-               connected, for the case where the automatic connect did not get through. The
-               template wrapper keeps the v-else paired with "connected" - hiding the button
-               alone would show Connect while already connected. -->
-          <template v-if="connected">
-            <v-btn v-if="!isWeb" large color="secondary" @click="disconnect()">
-              {{ $t('button.disconnect') }}
+    <!-- two parts: the buttons in the middle, the welcome aside on the right. The buttons part is
+         a div, not <main>: the page body below already is the page's one <main>. -->
+    <header :class="{ 'with-menu': isWeb }">
+      <div class="header-main">
+        <section class="button-group">
+          <h3 class="group-title"><OnlineStatus /></h3>
+          <div class="group-buttons">
+            <v-btn :disabled="!connected" large color="primary" @click="createGame()">
+              {{ $t('button.create-game') }}
             </v-btn>
-          </template>
-          <v-btn v-else large color="secondary" :loading="connecting" @click="connect()">
-            {{ $t('button.connect') }}
-          </v-btn>
-        </div>
-      </section>
+
+            <v-btn :disabled="!connected" large color="primary" @click="openJoinGameDialog()">
+              {{ $t('button.join-game') }}
+            </v-btn>
+
+            <!-- dev mode only (settings.devMode, the same switch as the Dev menu): a local game
+                 straight from the lobby, like the menu's New Local Game; needs no connection -->
+            <v-btn
+              v-if="devMode"
+              :disabled="!(engine && engine.ok)"
+              large
+              color="primary"
+              @click="createLocalGame()"
+            >
+              {{ $t('menu.new-local-game') }}
+            </v-btn>
+
+            <!-- No Disconnect in the web build: the lobby IS the app there, and web is online-play
+                 only, so going offline leaves nothing to do. Connect still shows when not
+                 connected, for the case where the automatic connect did not get through. The
+                 template wrapper keeps the v-else paired with "connected" - hiding the button
+                 alone would show Connect while already connected. -->
+            <template v-if="connected">
+              <v-btn v-if="!isWeb" large color="secondary" @click="disconnect()">
+                {{ $t('button.disconnect') }}
+              </v-btn>
+            </template>
+            <v-btn v-else large color="secondary" :loading="connecting" @click="connect()">
+              {{ $t('button.connect') }}
+            </v-btn>
+          </div>
+        </section>
+      </div>
+      <aside class="header-aside">
+        <!-- the name the server knows this client by -->
+        <i18n v-if="connected && myName" path="index.online.welcome" tag="span" class="welcome">
+          <template #name><strong class="name">{{ myName }}</strong></template>
+        </i18n>
+      </aside>
     </header>
     <div class="online-body">
     <main>
@@ -467,6 +489,14 @@ export default {
       }
     },
 
+    // my name as the server lists it (CLIENT_LIST, my client id without its window suffix), else
+    // the nickname from the settings that the connection was made with
+    myName () {
+      const me = this.connectedClients.find(c => this.isMyClient(c.clientId))
+      const name = (me && me.name) || this.$store.state.settings.nickname
+      return name ? String(name).trim() : ''
+    },
+
     // connected clients excluding yourself (you're already represented by the connection UI),
     // the ones this app can play with on top and the incompatible ones at the bottom
     otherClients () {
@@ -475,6 +505,10 @@ export default {
 
     buildBadge () {
       return getBuildBadge()
+    },
+
+    devMode () {
+      return !!this.$store.state.settings.devMode
     },
 
     isWeb () {
@@ -676,6 +710,13 @@ export default {
       this.$router.push('/game-setup')
     },
 
+    // the same as the main menu's New Local Game (layouts/default.vue, menu.new-game)
+    createLocalGame () {
+      if (this.$windows.openGame({ kind: 'new-local' })) return
+      this.$store.dispatch('gameSetup/newGame')
+      this.$router.push('/game-setup')
+    },
+
     formatDate(date) {
       return new Date(date).toLocaleString(this.locale);
     },
@@ -806,9 +847,38 @@ export default {
 
 header
   padding: 8px 0 12px
+  // the same two columns as .online-body below: the buttons centred like the lobby <main>, the
+  // welcome in a column as wide as the chat aside (and stacked under it on narrow windows)
   display: flex
-  align-items: stretch
-  justify-content: center
+  align-items: center
+
+  .header-main
+    flex: 1 1 auto
+    min-width: 0
+    display: flex
+    justify-content: center
+
+  .header-aside
+    flex: 0 0 340px
+    box-sizing: border-box
+    padding: 0 16px
+    font-size: 14px
+    font-weight: 300
+    text-align: center
+
+    .name
+      font-weight: 500
+
+  // the web build's burger sits top-right, over the aside column
+  &.with-menu .header-aside
+    padding-right: 64px
+
+  @media (max-width: 919px)
+    flex-direction: column
+
+    .header-aside
+      flex: 0 0 auto
+      width: 100%
 
   +theme using ($theme)
     background-color: map-get($theme, 'cards-bg')
