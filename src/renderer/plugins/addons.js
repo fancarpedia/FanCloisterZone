@@ -18,10 +18,9 @@ import { getAppVersion, isWeb } from '@/utils/version'
 import { assetFileUrl } from '@/utils/asset-url'
 import { EventsBase } from '@/utils/events'
 
-// TEMPORARY (2026-11-23, Bards port on branch bards-ts): add-ons requiring a newer app (e.g. the
-// Bards add-on with minimumJczVersion 7.3.0) are loaded anyway, so they can be developed on the
-// 7.2 app. TURN BACK OFF (false) when the Bards port is done — ask the user first.
-const IGNORE_MINIMUM_JCZ_VERSION = true
+// Development switch: true loads add-ons that require a newer app anyway (used to develop the
+// Bards add-on, minimumJczVersion 7.3.0, on the 7.2 app). Keep it false.
+const IGNORE_MINIMUM_JCZ_VERSION = false
 
 class Addons extends EventsBase {
   constructor (ctx) {
