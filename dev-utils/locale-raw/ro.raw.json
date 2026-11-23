@@ -2,7 +2,7 @@
   "@author": "Paloi Sciurala",
   "@jcz-version": "5.12.1",
   "@fcz-version": "7.3.0",
-  "@version": "<span class="mw-translate-fuzzy">0.14.1</span>",
+  "@version": "0.14.2",
   "about": {
     "author": "Autor",
     "configuration-file": "Fișier de configurație",

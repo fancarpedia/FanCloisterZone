@@ -349,6 +349,11 @@
     "value": "Každý tah",
     "source": "manual"
   },
+  "game-setup.variant.bards-notes-stack.description": {
+    "en": "Advanced variant: Bards' notes stack — every note on a feature adds its bonus (+1 per tile, or per completed city of a field).",
+    "value": "Pokročilá varianta: noty bardů se sčítají — každá nota na prvku přidá svůj bonus (+1 za každou kartičku, u louky za každé dokončené město).",
+    "source": "manual"
+  },
   "game-setup.variant.best-setups": {
     "en": "Best setups",
     "value": "Nejlepší nastavení",
@@ -467,6 +472,16 @@
   "game-setup.variant.your-score": {
     "en": "Your score — best {best}, latest {latest}",
     "value": "Vaše skóre — nejlepší {best}, poslední {latest}",
+    "source": "manual"
+  },
+  "game.action.bards-place-a-note": {
+    "en": "Place a note",
+    "value": "Umístěte notu",
+    "source": "manual"
+  },
+  "game.action.bards-player-must-place-a-note": {
+    "en": "Player must place a note",
+    "value": "Hráč musí umístit notu",
     "source": "manual"
   },
   "game.action.choose-a-tile-from-your-hand": {
@@ -632,6 +647,16 @@
   "game.element.animal-token": {
     "en": "Animal token",
     "value": "Žeton zvířete",
+    "source": "manual"
+  },
+  "game.element.bards-note": {
+    "en": "Bards' note",
+    "value": "Nota bardů",
+    "source": "manual"
+  },
+  "game.element.bards-notes": {
+    "en": "Bards' notes",
+    "value": "Noty bardů",
     "source": "manual"
   },
   "game.element.black-fairy": {
@@ -997,6 +1022,11 @@
   "index.online.title-local": {
     "en": "Games hosted on dev local",
     "value": "Hry na místním dev serveru",
+    "source": "manual"
+  },
+  "index.online.welcome": {
+    "en": "Welcome, {name}",
+    "value": "Vítejte, {name}",
     "source": "manual"
   },
   "menu.create-game": {

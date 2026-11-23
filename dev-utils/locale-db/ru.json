@@ -369,6 +369,11 @@
     "value": "Каждый ход",
     "source": "manual"
   },
+  "game-setup.variant.bards-notes-stack.description": {
+    "en": "Advanced variant: Bards' notes stack — every note on a feature adds its bonus (+1 per tile, or per completed city of a field).",
+    "value": "Расширенный вариант: ноты бардов суммируются — каждая нота на объекте добавляет свой бонус (+1 за тайл или за каждый завершённый город поля).",
+    "source": "manual"
+  },
   "game-setup.variant.best-setups": {
     "en": "Best setups",
     "value": "Лучшие настройки",
@@ -487,6 +492,16 @@
   "game-setup.variant.your-score": {
     "en": "Your score — best {best}, latest {latest}",
     "value": "Ваш счёт — лучший {best}, последний {latest}",
+    "source": "manual"
+  },
+  "game.action.bards-place-a-note": {
+    "en": "Place a note",
+    "value": "Разместите ноту",
+    "source": "manual"
+  },
+  "game.action.bards-player-must-place-a-note": {
+    "en": "Player must place a note",
+    "value": "Игрок должен разместить ноту",
     "source": "manual"
   },
   "game.action.choose-a-tile-from-your-hand": {
@@ -657,6 +672,16 @@
   "game.element.animal-token": {
     "en": "Animal token",
     "value": "Жетон животного",
+    "source": "manual"
+  },
+  "game.element.bards-note": {
+    "en": "Bards' note",
+    "value": "Нота бардов",
+    "source": "manual"
+  },
+  "game.element.bards-notes": {
+    "en": "Bards' notes",
+    "value": "Ноты бардов",
     "source": "manual"
   },
   "game.element.black-fairy": {
@@ -1042,6 +1067,11 @@
   "index.online.title-local": {
     "en": "Games hosted on dev local",
     "value": "Игры на локальном dev-сервере",
+    "source": "manual"
+  },
+  "index.online.welcome": {
+    "en": "Welcome, {name}",
+    "value": "Добро пожаловать, {name}",
     "source": "manual"
   },
   "menu.create-game": {

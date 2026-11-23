@@ -369,6 +369,11 @@
     "value": "Cada turno",
     "source": "manual"
   },
+  "game-setup.variant.bards-notes-stack.description": {
+    "en": "Advanced variant: Bards' notes stack — every note on a feature adds its bonus (+1 per tile, or per completed city of a field).",
+    "value": "Variante avanzada: las notas de los bardos se acumulan — cada nota en un elemento añade su bonificación (+1 por loseta, o por ciudad completada de un campo).",
+    "source": "manual"
+  },
   "game-setup.variant.best-setups": {
     "en": "Best setups",
     "value": "Mejores configuraciones",
@@ -487,6 +492,16 @@
   "game-setup.variant.your-score": {
     "en": "Your score — best {best}, latest {latest}",
     "value": "Tu puntuación — mejor {best}, última {latest}",
+    "source": "manual"
+  },
+  "game.action.bards-place-a-note": {
+    "en": "Place a note",
+    "value": "Coloca una nota",
+    "source": "manual"
+  },
+  "game.action.bards-player-must-place-a-note": {
+    "en": "Player must place a note",
+    "value": "Jugador debe colocar una nota",
     "source": "manual"
   },
   "game.action.choose-a-tile-from-your-hand": {
@@ -657,6 +672,16 @@
   "game.element.animal-token": {
     "en": "Animal token",
     "value": "Ficha de animal",
+    "source": "manual"
+  },
+  "game.element.bards-note": {
+    "en": "Bards' note",
+    "value": "Nota de los bardos",
+    "source": "manual"
+  },
+  "game.element.bards-notes": {
+    "en": "Bards' notes",
+    "value": "Notas de los bardos",
     "source": "manual"
   },
   "game.element.black-fairy": {
@@ -1042,6 +1067,11 @@
   "index.online.title-local": {
     "en": "Games hosted on dev local",
     "value": "Partidas alojadas en el dev local",
+    "source": "manual"
+  },
+  "index.online.welcome": {
+    "en": "Welcome, {name}",
+    "value": "Te damos la bienvenida, {name}",
     "source": "manual"
   },
   "menu.create-game": {

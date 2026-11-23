@@ -369,6 +369,11 @@
     "value": "Vsaka poteza",
     "source": "manual"
   },
+  "game-setup.variant.bards-notes-stack.description": {
+    "en": "Advanced variant: Bards' notes stack — every note on a feature adds its bonus (+1 per tile, or per completed city of a field).",
+    "value": "Napredna različica: note bardov se seštevajo — vsaka nota na območju doda svoj bonus (+1 za ploščico ali za vsako dokončano mesto travnika).",
+    "source": "manual"
+  },
   "game-setup.variant.best-setups": {
     "en": "Best setups",
     "value": "Najboljše nastavitve",
@@ -487,6 +492,16 @@
   "game-setup.variant.your-score": {
     "en": "Your score — best {best}, latest {latest}",
     "value": "Tvoj izid — najboljši {best}, zadnji {latest}",
+    "source": "manual"
+  },
+  "game.action.bards-place-a-note": {
+    "en": "Place a note",
+    "value": "Postavi noto",
+    "source": "manual"
+  },
+  "game.action.bards-player-must-place-a-note": {
+    "en": "Player must place a note",
+    "value": "Igralec mora postaviti noto",
     "source": "manual"
   },
   "game.action.choose-a-tile-from-your-hand": {
@@ -657,6 +672,16 @@
   "game.element.animal-token": {
     "en": "Animal token",
     "value": "Žeton živali",
+    "source": "manual"
+  },
+  "game.element.bards-note": {
+    "en": "Bards' note",
+    "value": "Nota bardov",
+    "source": "manual"
+  },
+  "game.element.bards-notes": {
+    "en": "Bards' notes",
+    "value": "Note bardov",
     "source": "manual"
   },
   "game.element.black-fairy": {
@@ -1042,6 +1067,11 @@
   "index.online.title-local": {
     "en": "Games hosted on dev local",
     "value": "Igre na lokalnem dev strežniku",
+    "source": "manual"
+  },
+  "index.online.welcome": {
+    "en": "Welcome, {name}",
+    "value": "Dobrodošli, {name}",
     "source": "manual"
   },
   "menu.create-game": {

@@ -519,6 +519,11 @@
     "value": "Kiekvienas ėjimas",
     "source": "manual"
   },
+  "game-setup.variant.bards-notes-stack.description": {
+    "en": "Advanced variant: Bards' notes stack — every note on a feature adds its bonus (+1 per tile, or per completed city of a field).",
+    "value": "Išplėstinis variantas: bardų natos sumuojasi — kiekviena nata ant objekto prideda savo premiją (+1 už kortelę arba už kiekvieną užbaigtą pievos miestą).",
+    "source": "manual"
+  },
   "game-setup.variant.best-setups": {
     "en": "Best setups",
     "value": "Geriausi nustatymai",
@@ -637,6 +642,16 @@
   "game-setup.variant.your-score": {
     "en": "Your score — best {best}, latest {latest}",
     "value": "Jūsų rezultatas — geriausias {best}, paskutinis {latest}",
+    "source": "manual"
+  },
+  "game.action.bards-place-a-note": {
+    "en": "Place a note",
+    "value": "Padėkite natą",
+    "source": "manual"
+  },
+  "game.action.bards-player-must-place-a-note": {
+    "en": "Player must place a note",
+    "value": "Žaidėjas turi padėti natą",
     "source": "manual"
   },
   "game.action.choose-a-tile-from-your-hand": {
@@ -812,6 +827,16 @@
   "game.element.animal-token": {
     "en": "Animal token",
     "value": "Gyvūno žetonas",
+    "source": "manual"
+  },
+  "game.element.bards-note": {
+    "en": "Bards' note",
+    "value": "Bardų nata",
+    "source": "manual"
+  },
+  "game.element.bards-notes": {
+    "en": "Bards' notes",
+    "value": "Bardų natos",
     "source": "manual"
   },
   "game.element.black-fairy": {
@@ -1212,6 +1237,11 @@
   "index.online.title-local": {
     "en": "Games hosted on dev local",
     "value": "Žaidimai vietiniame kūrėjo serveryje",
+    "source": "manual"
+  },
+  "index.online.welcome": {
+    "en": "Welcome, {name}",
+    "value": "Sveiki, {name}",
     "source": "manual"
   },
   "menu.create-game": {

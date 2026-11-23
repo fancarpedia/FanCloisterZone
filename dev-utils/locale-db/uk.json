@@ -1849,6 +1849,11 @@
     "value": "Налаштування гри",
     "source": "manual"
   },
+  "game-setup.variant.bards-notes-stack.description": {
+    "en": "Advanced variant: Bards' notes stack — every note on a feature adds its bonus (+1 per tile, or per completed city of a field).",
+    "value": "Розширений варіант: ноти бардів сумуються — кожна нота на об’єкті додає свій бонус (+1 за плитку або за кожне завершене місто поля).",
+    "source": "manual"
+  },
   "game-setup.variant.barn-placement.description": {
     "en": "Barn {} be placed on a field already occupied by another barn.",
     "value": "Клуню {} розмістити на полі, яке вже зайняте іншою клунею.",
@@ -2307,6 +2312,16 @@
   "game-setup.variant.your-score": {
     "en": "Your score — best {best}, latest {latest}",
     "value": "Ваш рахунок — найкращий {best}, останній {latest}",
+    "source": "manual"
+  },
+  "game.action.bards-place-a-note": {
+    "en": "Place a note",
+    "value": "Розмістіть ноту",
+    "source": "manual"
+  },
+  "game.action.bards-player-must-place-a-note": {
+    "en": "Player must place a note",
+    "value": "Гравець мусить розмістити ноту",
     "source": "manual"
   },
   "game.action.bazaar-buy-sell-the-tile-from-to": {
@@ -2802,6 +2817,16 @@
   "game.element.animal-token": {
     "en": "Animal token",
     "value": "Жетон тварини",
+    "source": "manual"
+  },
+  "game.element.bards-note": {
+    "en": "Bards' note",
+    "value": "Нота бардів",
+    "source": "manual"
+  },
+  "game.element.bards-notes": {
+    "en": "Bards' notes",
+    "value": "Ноти бардів",
     "source": "manual"
   },
   "game.element.barn": {
@@ -3897,6 +3922,11 @@
   "index.online.title-local": {
     "en": "Games hosted on dev local",
     "value": "Ігри на локальному сервері розробника",
+    "source": "manual"
+  },
+  "index.online.welcome": {
+    "en": "Welcome, {name}",
+    "value": "Ласкаво просимо, {name}",
     "source": "manual"
   },
   "index.online.you-have-no-game-in-progress": {

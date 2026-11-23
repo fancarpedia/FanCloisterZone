@@ -324,6 +324,11 @@
     "value": "Partidă locală nouă",
     "source": "manual"
   },
+  "index.online.welcome": {
+    "en": "Welcome, {name}",
+    "value": "Bun venit, {name}",
+    "source": "manual"
+  },
   "menu.new-local-game": {
     "en": "New local game",
     "value": "Partidă locală nouă",

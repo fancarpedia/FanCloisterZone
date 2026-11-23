@@ -369,6 +369,11 @@
     "value": "Każda tura",
     "source": "manual"
   },
+  "game-setup.variant.bards-notes-stack.description": {
+    "en": "Advanced variant: Bards' notes stack — every note on a feature adds its bonus (+1 per tile, or per completed city of a field).",
+    "value": "Wariant zaawansowany: nuty bardów się sumują — każda nuta na obszarze dodaje swoją premię (+1 za płytkę lub za ukończone miasto łąki).",
+    "source": "manual"
+  },
   "game-setup.variant.best-setups": {
     "en": "Best setups",
     "value": "Najlepsze ustawienia",
@@ -487,6 +492,16 @@
   "game-setup.variant.your-score": {
     "en": "Your score — best {best}, latest {latest}",
     "value": "Twój wynik — najlepszy {best}, ostatni {latest}",
+    "source": "manual"
+  },
+  "game.action.bards-place-a-note": {
+    "en": "Place a note",
+    "value": "Połóż nutę",
+    "source": "manual"
+  },
+  "game.action.bards-player-must-place-a-note": {
+    "en": "Player must place a note",
+    "value": "Gracz musi położyć nutę",
     "source": "manual"
   },
   "game.action.choose-a-tile-from-your-hand": {
@@ -657,6 +672,16 @@
   "game.element.animal-token": {
     "en": "Animal token",
     "value": "Żeton zwierzęcia",
+    "source": "manual"
+  },
+  "game.element.bards-note": {
+    "en": "Bards' note",
+    "value": "Nuta bardów",
+    "source": "manual"
+  },
+  "game.element.bards-notes": {
+    "en": "Bards' notes",
+    "value": "Nuty bardów",
     "source": "manual"
   },
   "game.element.black-fairy": {
@@ -1042,6 +1067,11 @@
   "index.online.title-local": {
     "en": "Games hosted on dev local",
     "value": "Gry na lokalnym serwerze dev",
+    "source": "manual"
+  },
+  "index.online.welcome": {
+    "en": "Welcome, {name}",
+    "value": "Witaj, {name}",
     "source": "manual"
   },
   "menu.create-game": {

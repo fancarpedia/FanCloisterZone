@@ -294,6 +294,11 @@
     "value": "Cada torn",
     "source": "manual"
   },
+  "game-setup.variant.bards-notes-stack.description": {
+    "en": "Advanced variant: Bards' notes stack — every note on a feature adds its bonus (+1 per tile, or per completed city of a field).",
+    "value": "Variant avançada: les notes dels bards s'acumulen — cada nota d'un element hi afegeix la seva bonificació (+1 per peça, o per ciutat completada d'un camp).",
+    "source": "manual"
+  },
   "game-setup.variant.best-setups": {
     "en": "Best setups",
     "value": "Millors configuracions",
@@ -382,6 +387,16 @@
   "game-setup.variant.your-score": {
     "en": "Your score — best {best}, latest {latest}",
     "value": "La vostra puntuació — millor {best}, última {latest}",
+    "source": "manual"
+  },
+  "game.action.bards-place-a-note": {
+    "en": "Place a note",
+    "value": "Col·loqueu una nota",
+    "source": "manual"
+  },
+  "game.action.bards-player-must-place-a-note": {
+    "en": "Player must place a note",
+    "value": "El jugador ha de col·locar una nota",
     "source": "manual"
   },
   "game.action.choose-a-tile-from-your-hand": {
@@ -542,6 +557,16 @@
   "game.element.animal-token": {
     "en": "Animal token",
     "value": "Fitxa d'animal",
+    "source": "manual"
+  },
+  "game.element.bards-note": {
+    "en": "Bards' note",
+    "value": "Nota dels bards",
+    "source": "manual"
+  },
+  "game.element.bards-notes": {
+    "en": "Bards' notes",
+    "value": "Notes dels bards",
     "source": "manual"
   },
   "game.element.black-fairy": {
@@ -892,6 +917,11 @@
   "index.online.status-in-game": {
     "en": "In game",
     "value": "En partida",
+    "source": "manual"
+  },
+  "index.online.welcome": {
+    "en": "Welcome, {name}",
+    "value": "Et donem la benvinguda, {name}",
     "source": "manual"
   },
   "menu.create-game": {
