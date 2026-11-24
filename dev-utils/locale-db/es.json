@@ -119,6 +119,16 @@
     "value": "Hay ventanas de partida abiertas. Al cerrar la ventana principal se cerrarán todas y la aplicación se cerrará.",
     "source": "manual"
   },
+  "expansion.action-tiles": {
+    "en": "Action tiles",
+    "value": "Losetas de acción",
+    "source": "manual"
+  },
+  "expansion.bards-of-carcassonne": {
+    "en": "Bards of Carcassonne",
+    "value": "Bardos de Carcassonne",
+    "source": "manual"
+  },
   "expansion.kingdoms": {
     "en": "Kingdoms",
     "value": "Reinos",
@@ -132,6 +142,21 @@
   "expansion.start": {
     "en": "Start tile",
     "value": "Loseta inicial",
+    "source": "manual"
+  },
+  "expansion.the-courier": {
+    "en": "The Courier",
+    "value": "El mensajero",
+    "source": "manual"
+  },
+  "expansion.the-kingdoms": {
+    "en": "The Kingdoms",
+    "value": "Reinos",
+    "source": "manual"
+  },
+  "expansion.the-kingdoms-description": {
+    "en": "Each player has a Kingdom Palace in their colour. Instead of drawing, place it in a city with one of your followers to make it your capital. Once your capital is completed it becomes a kingdom: at the end, it scores 3 points for every completed city touching a field connected to it.",
+    "value": "Cada jugador tiene un Palacio del Reino de su color. En lugar de robar una loseta, puede colocarlo en una ciudad con uno de sus seguidores para convertirla en su capital. Cuando la capital se completa, se convierte en un reino: al final, puntúa 3 puntos por cada ciudad completada que toque un campo conectado con ella.",
     "source": "manual"
   },
   "game-setup.ai.not-available": {

@@ -119,6 +119,16 @@
     "value": "Odprta so okna iger. Če zapreš glavno okno, se bodo vsa zaprla in aplikacija se bo končala.",
     "source": "manual"
   },
+  "expansion.action-tiles": {
+    "en": "Action tiles",
+    "value": "Akcijske ploščice",
+    "source": "manual"
+  },
+  "expansion.bards-of-carcassonne": {
+    "en": "Bards of Carcassonne",
+    "value": "Bardi iz Carcassonna",
+    "source": "manual"
+  },
   "expansion.kingdoms": {
     "en": "Kingdoms",
     "value": "Kraljestva",
@@ -132,6 +142,21 @@
   "expansion.start": {
     "en": "Start tile",
     "value": "Začetna ploščica",
+    "source": "manual"
+  },
+  "expansion.the-courier": {
+    "en": "The Courier",
+    "value": "Kurir",
+    "source": "manual"
+  },
+  "expansion.the-kingdoms": {
+    "en": "The Kingdoms",
+    "value": "Kraljestva",
+    "source": "manual"
+  },
+  "expansion.the-kingdoms-description": {
+    "en": "Each player has a Kingdom Palace in their colour. Instead of drawing, place it in a city with one of your followers to make it your capital. Once your capital is completed it becomes a kingdom: at the end, it scores 3 points for every completed city touching a field connected to it.",
+    "value": "Vsak igralec ima Palačo kraljestva v svoji barvi. Namesto da potegneš ploščico, jo lahko postaviš ob mesto z enim od svojih človečkov in ga narediš za svojo prestolnico. Ko je prestolnica dokončana, postane kraljestvo: na koncu igre prinese 3 točke za vsako dokončano mesto, ki se dotika polja, povezanega z njo.",
     "source": "manual"
   },
   "game-setup.ai.not-available": {

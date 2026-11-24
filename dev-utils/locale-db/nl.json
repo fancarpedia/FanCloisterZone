@@ -119,6 +119,16 @@
     "value": "Er staan spelvensters open. Als je het hoofdvenster sluit, worden ze allemaal gesloten en wordt de app afgesloten.",
     "source": "manual"
   },
+  "expansion.action-tiles": {
+    "en": "Action tiles",
+    "value": "Actietegels",
+    "source": "manual"
+  },
+  "expansion.bards-of-carcassonne": {
+    "en": "Bards of Carcassonne",
+    "value": "Barden van Carcassonne",
+    "source": "manual"
+  },
   "expansion.kingdoms": {
     "en": "Kingdoms",
     "value": "Koninkrijken",
@@ -132,6 +142,21 @@
   "expansion.start": {
     "en": "Start tile",
     "value": "Starttegel",
+    "source": "manual"
+  },
+  "expansion.the-courier": {
+    "en": "The Courier",
+    "value": "De Koerier",
+    "source": "manual"
+  },
+  "expansion.the-kingdoms": {
+    "en": "The Kingdoms",
+    "value": "Koninkrijken",
+    "source": "manual"
+  },
+  "expansion.the-kingdoms-description": {
+    "en": "Each player has a Kingdom Palace in their colour. Instead of drawing, place it in a city with one of your followers to make it your capital. Once your capital is completed it becomes a kingdom: at the end, it scores 3 points for every completed city touching a field connected to it.",
+    "value": "Elke speler heeft een Koninkrijkspaleis in zijn eigen kleur. In plaats van een tegel te trekken, leg je het aan een stad met een van je meeples: die wordt je hoofdstad. Zodra je hoofdstad af is, wordt ze een koninkrijk: aan het einde levert ze 3 punten op voor elke voltooide stad die grenst aan een weide die met de hoofdstad verbonden is.",
     "source": "manual"
   },
   "game-setup.ai.not-available": {

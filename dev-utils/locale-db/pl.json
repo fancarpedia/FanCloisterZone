@@ -119,6 +119,16 @@
     "value": "Są otwarte okna gier. Zamknięcie okna głównego zamknie je wszystkie i zakończy aplikację.",
     "source": "manual"
   },
+  "expansion.action-tiles": {
+    "en": "Action tiles",
+    "value": "Płytki akcji",
+    "source": "manual"
+  },
+  "expansion.bards-of-carcassonne": {
+    "en": "Bards of Carcassonne",
+    "value": "Bardowie z Carcassonne",
+    "source": "manual"
+  },
   "expansion.kingdoms": {
     "en": "Kingdoms",
     "value": "Królestwa",
@@ -132,6 +142,21 @@
   "expansion.start": {
     "en": "Start tile",
     "value": "Płytka początkowa",
+    "source": "manual"
+  },
+  "expansion.the-courier": {
+    "en": "The Courier",
+    "value": "Kurier",
+    "source": "manual"
+  },
+  "expansion.the-kingdoms": {
+    "en": "The Kingdoms",
+    "value": "Królestwa",
+    "source": "manual"
+  },
+  "expansion.the-kingdoms-description": {
+    "en": "Each player has a Kingdom Palace in their colour. Instead of drawing, place it in a city with one of your followers to make it your capital. Once your capital is completed it becomes a kingdom: at the end, it scores 3 points for every completed city touching a field connected to it.",
+    "value": "Każdy gracz ma Pałac Królestwa w swoim kolorze. Zamiast losować płytkę, możesz dołożyć go do miasta, w którym stoi jeden z twoich podwładnych – miasto staje się twoją stolicą. Gdy stolica zostanie ukończona, staje się królestwem: na koniec gry zdobywa 3 punkty za każde ukończone miasto stykające się z polem połączonym ze stolicą.",
     "source": "manual"
   },
   "game-setup.ai.not-available": {

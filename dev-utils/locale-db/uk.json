@@ -669,6 +669,16 @@
     "value": "Абатство та мер",
     "source": "manual"
   },
+  "expansion.action-tiles": {
+    "en": "Action tiles",
+    "value": "Плитки дій",
+    "source": "manual"
+  },
+  "expansion.bards-of-carcassonne": {
+    "en": "Bards of Carcassonne",
+    "value": "Барди Каркассона",
+    "source": "manual"
+  },
   "expansion.basic": {
     "en": "Base game",
     "value": "Базова гра",
@@ -802,6 +812,16 @@
   "expansion.festival": {
     "en": "The Festival",
     "value": "Фестиваль",
+    "source": "manual"
+  },
+  "expansion.fish-huts": {
+    "en": "Fish Huts",
+    "value": "Рибальські хатини",
+    "source": "manual"
+  },
+  "expansion.fish-huts-description": {
+    "en": "Make the River more valuable. A meeple can also be placed to the fish-smoking hut as a poissonnier (French for a person whose job is to prepare fish) and score additional points.",
+    "value": "Робить Річку ціннішою. Підданця можна також розмістити в коптильні як poissonnier (фр. «той, хто готує рибу») і набрати додаткові очки.",
     "source": "manual"
   },
   "expansion.fishermen": {
@@ -959,6 +979,11 @@
     "value": "Дає гравцям змогу прикладати міські ворота на краю плитки не лише до інших міських воріт, а й до дороги або поля на краю плитки, і навпаки.",
     "source": "manual"
   },
+  "expansion.the-courier": {
+    "en": "The Courier",
+    "value": "Кур'єр",
+    "source": "manual"
+  },
   "expansion.the-flying-machines-2": {
     "en": "Flying Machines 2",
     "value": "Літальні машини 2",
@@ -967,6 +992,16 @@
   "expansion.the-flying-machines-2-description": {
     "en": "Similar to its predecessor, but now with cities on the tiles instead of just roads.",
     "value": "Подібне до попередника, але тепер на плитках є міста, а не лише дороги.",
+    "source": "manual"
+  },
+  "expansion.the-kingdoms": {
+    "en": "The Kingdoms",
+    "value": "Королівства",
+    "source": "manual"
+  },
+  "expansion.the-kingdoms-description": {
+    "en": "Each player has a Kingdom Palace in their colour. Instead of drawing, place it in a city with one of your followers to make it your capital. Once your capital is completed it becomes a kingdom: at the end, it scores 3 points for every completed city touching a field connected to it.",
+    "value": "Кожен гравець має Палац королівства свого кольору. Замість того щоб тягнути плитку, ви можете викласти його до міста з одним із ваших підданців — місто стане вашою столицею. Щойно столицю завершено, вона стає королівством: наприкінці гри вона приносить 3 очки за кожне завершене місто, що торкається поля, з'єднаного з нею.",
     "source": "manual"
   },
   "expansion.the-labyrinths": {

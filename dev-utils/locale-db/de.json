@@ -119,6 +119,16 @@
     "value": "Es sind Spielfenster offen. Wenn du das Hauptfenster schließt, werden alle geschlossen und die App beendet.",
     "source": "manual"
   },
+  "expansion.action-tiles": {
+    "en": "Action tiles",
+    "value": "Aktionsplättchen",
+    "source": "manual"
+  },
+  "expansion.bards-of-carcassonne": {
+    "en": "Bards of Carcassonne",
+    "value": "Barden von Carcassonne",
+    "source": "manual"
+  },
   "expansion.kingdoms": {
     "en": "Kingdoms",
     "value": "Königreiche",
@@ -132,6 +142,21 @@
   "expansion.start": {
     "en": "Start tile",
     "value": "Startplättchen",
+    "source": "manual"
+  },
+  "expansion.the-courier": {
+    "en": "The Courier",
+    "value": "Der Bote",
+    "source": "manual"
+  },
+  "expansion.the-kingdoms": {
+    "en": "The Kingdoms",
+    "value": "Königreiche",
+    "source": "manual"
+  },
+  "expansion.the-kingdoms-description": {
+    "en": "Each player has a Kingdom Palace in their colour. Instead of drawing, place it in a city with one of your followers to make it your capital. Once your capital is completed it becomes a kingdom: at the end, it scores 3 points for every completed city touching a field connected to it.",
+    "value": "Jeder Spieler hat einen Königreichspalast in seiner Farbe. Statt ein Plättchen zu ziehen, legst du ihn an eine Stadt mit einem deiner Meeple – sie wird deine Hauptstadt. Ist die Hauptstadt fertig, wird sie zum Königreich: Bei Spielende bringt sie 3 Punkte für jede fertige Stadt, die an eine mit ihr verbundene Wiese grenzt.",
     "source": "manual"
   },
   "game-setup.ai.not-available": {

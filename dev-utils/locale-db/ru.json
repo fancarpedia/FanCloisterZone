@@ -119,6 +119,16 @@
     "value": "Есть открытые окна игр. Если закрыть главное окно, все они закроются и приложение завершится.",
     "source": "manual"
   },
+  "expansion.action-tiles": {
+    "en": "Action tiles",
+    "value": "Тайлы действий",
+    "source": "manual"
+  },
+  "expansion.bards-of-carcassonne": {
+    "en": "Bards of Carcassonne",
+    "value": "Барды Каркассона",
+    "source": "manual"
+  },
   "expansion.kingdoms": {
     "en": "Kingdoms",
     "value": "Королевства",
@@ -132,6 +142,21 @@
   "expansion.start": {
     "en": "Start tile",
     "value": "Начальный тайл",
+    "source": "manual"
+  },
+  "expansion.the-courier": {
+    "en": "The Courier",
+    "value": "Курьер",
+    "source": "manual"
+  },
+  "expansion.the-kingdoms": {
+    "en": "The Kingdoms",
+    "value": "Королевства",
+    "source": "manual"
+  },
+  "expansion.the-kingdoms-description": {
+    "en": "Each player has a Kingdom Palace in their colour. Instead of drawing, place it in a city with one of your followers to make it your capital. Once your capital is completed it becomes a kingdom: at the end, it scores 3 points for every completed city touching a field connected to it.",
+    "value": "У каждого игрока есть Дворец королевства его цвета. Вместо того чтобы брать тайл, вы можете выложить его к городу с одним из ваших миплов — город станет вашей столицей. Когда столица завершена, она становится королевством: в конце игры она приносит 3 очка за каждый завершённый город, касающийся поля, связанного с ней.",
     "source": "manual"
   },
   "game-setup.ai.not-available": {

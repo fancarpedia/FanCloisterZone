@@ -104,12 +104,37 @@
     "value": "Sú otvorené okná hier. Zatvorením hlavného okna sa všetky zatvoria a aplikácia sa ukončí.",
     "source": "manual"
   },
+  "expansion.action-tiles": {
+    "en": "Action tiles",
+    "value": "Akčné kartičky",
+    "source": "manual"
+  },
+  "expansion.bards-of-carcassonne": {
+    "en": "Bards of Carcassonne",
+    "value": "Bardi z Carcassonne",
+    "source": "manual"
+  },
   "expansion.kingdoms": {
     "en": "Kingdoms",
     "value": "Kráľovstvá",
     "source": "manual"
   },
   "expansion.kingdoms-description": {
+    "en": "Each player has a Kingdom Palace in their colour. Instead of drawing, place it in a city with one of your followers to make it your capital. Once your capital is completed it becomes a kingdom: at the end, it scores 3 points for every completed city touching a field connected to it.",
+    "value": "Každý hráč má Palác kráľovstva vo svojej farbe. Namiesto ťahania kartičky ho môžete priložiť k mestu s jedným z vašich spoločníkov a urobiť z neho svoje hlavné mesto. Keď je hlavné mesto dokončené, stane sa kráľovstvom: na konci hry získa 3 body za každé dokončené mesto, ktoré susedí s lúkou spojenou s ním.",
+    "source": "manual"
+  },
+  "expansion.the-courier": {
+    "en": "The Courier",
+    "value": "Kuriér",
+    "source": "manual"
+  },
+  "expansion.the-kingdoms": {
+    "en": "The Kingdoms",
+    "value": "Kráľovstvá",
+    "source": "manual"
+  },
+  "expansion.the-kingdoms-description": {
     "en": "Each player has a Kingdom Palace in their colour. Instead of drawing, place it in a city with one of your followers to make it your capital. Once your capital is completed it becomes a kingdom: at the end, it scores 3 points for every completed city touching a field connected to it.",
     "value": "Každý hráč má Palác kráľovstva vo svojej farbe. Namiesto ťahania kartičky ho môžete priložiť k mestu s jedným z vašich spoločníkov a urobiť z neho svoje hlavné mesto. Keď je hlavné mesto dokončené, stane sa kráľovstvom: na konci hry získa 3 body za každé dokončené mesto, ktoré susedí s lúkou spojenou s ním.",
     "source": "manual"

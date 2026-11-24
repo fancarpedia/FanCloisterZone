@@ -159,6 +159,26 @@
     "value": "Yra atidarytų žaidimų langų. Uždarius pagrindinį langą, jie visi bus uždaryti ir programa baigs darbą.",
     "source": "manual"
   },
+  "expansion.action-tiles": {
+    "en": "Action tiles",
+    "value": "Veiksmo kortelės",
+    "source": "manual"
+  },
+  "expansion.bards-of-carcassonne": {
+    "en": "Bards of Carcassonne",
+    "value": "Karkasono bardai",
+    "source": "manual"
+  },
+  "expansion.fish-huts": {
+    "en": "Fish Huts",
+    "value": "Žvejų trobelės",
+    "source": "manual"
+  },
+  "expansion.fish-huts-description": {
+    "en": "Make the River more valuable. A meeple can also be placed to the fish-smoking hut as a poissonnier (French for a person whose job is to prepare fish) and score additional points.",
+    "value": "Padaro Upę vertingesnę. Miplą galima padėti ir į žuvų rūkymo trobelę kaip žuvų ruošėją (pranc. poissonnier – žmogus, kurio darbas ruošti žuvį) ir gauti papildomų taškų.",
+    "source": "manual"
+  },
   "expansion.fishermen-description": {
     "en": "River tiles are shuffled into the regular tile stack. Players may place a meeple on a river segment as on any other scoreable feature, score points when the river is completed.",
     "value": "Upės kortelės sumaišomos su įprastomis kortelėmis. Žaidėjai gali padėti Miplą ant upės atkarpos kaip ant bet kurio kito objekto, už kurį gaunami taškai, ir gauti taškų, kai upė užbaigiama.",
@@ -187,6 +207,21 @@
   "expansion.start": {
     "en": "Start tile",
     "value": "Pradinė kortelė",
+    "source": "manual"
+  },
+  "expansion.the-courier": {
+    "en": "The Courier",
+    "value": "Kurjeris",
+    "source": "manual"
+  },
+  "expansion.the-kingdoms": {
+    "en": "The Kingdoms",
+    "value": "Karalystės",
+    "source": "manual"
+  },
+  "expansion.the-kingdoms-description": {
+    "en": "Each player has a Kingdom Palace in their colour. Instead of drawing, place it in a city with one of your followers to make it your capital. Once your capital is completed it becomes a kingdom: at the end, it scores 3 points for every completed city touching a field connected to it.",
+    "value": "Kiekvienas žaidėjas turi savo spalvos Karalystės rūmus. Užuot traukę kortelę, galite juos padėti prie miesto, kuriame yra vienas iš jūsų miplų, ir paversti jį savo sostine. Kai sostinė užbaigiama, ji tampa karalyste: žaidimo pabaigoje ji pelno 3 taškus už kiekvieną užbaigtą miestą, besiliečiantį su lauku, sujungtu su ja.",
     "source": "manual"
   },
   "expansion.under-the-big-top-c1": {
