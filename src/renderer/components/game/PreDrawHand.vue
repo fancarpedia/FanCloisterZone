@@ -15,6 +15,7 @@
         >
           <StandaloneTileImage
             :tile-id="tileId"
+            :rotation="currentRotation(tileId)"
             :size="60"
             class="tile selected"
             @click.native="rotateSelected"
@@ -59,6 +60,7 @@
           v-for="(t, si) in supplyTiles"
           :key="'supply' + si"
           :tile-id="t.tileId"
+          :rotation="si === placedSupplyIndex ? currentRotation(t.tileId) : 0"
           :size="60"
           class="tile supply-tile"
           :class="{ selectable: t.offered, unavailable: !t.offered }"
@@ -85,7 +87,10 @@ export default {
       // anchored to the window bottom (locked) — only `left` moves; persisted in settings.
       position: { left: 12, bottom: 12 },
       // the automatic pass (see autoPassDue) was already sent this turn-part
-      autoPassSent: false
+      autoPassSent: false,
+      // the tile being placed from the action panel and how it is turned there
+      // ({ uid, tileId, rotation }, from TilePlacementItem), or null
+      placing: null
     }
   },
 
@@ -187,6 +192,13 @@ export default {
     // the local player's supply tiles (abbey tiles, Kingdom Palaces), always shown; each marked
     // whether it can be placed right now — not once passed this turn (also the automatic pass when a
     // hand tile is placed instead), which only leaves the action panel and dims it here
+    // the supply tile being placed right now (the first offered one with the placed tile's id), whose
+    // thumbnail turns along with the tile in the action panel; -1 when none (e.g. a hand tile is
+    // picked — that one turns instead)
+    placedSupplyIndex () {
+      if (!this.placing || (this.canPlace && this.selected)) return -1
+      return this.supplyTiles.findIndex(t => t.offered && t.tileId === this.placing.tileId)
+    },
     supplyTiles () {
       const { players, action } = this.$store.state.game
       const me = this.mySeat === null || !players ? null : players[this.mySeat]
@@ -234,6 +246,11 @@ export default {
     }
   },
 
+  created () {
+    this.$root.$on('tile-placement.current', this.onPlacingTile)
+    this.$root.$on('tile-placement.gone', this.onPlacingGone)
+  },
+
   mounted () {
     const saved = this.$store.state.settings.preDrawHandPosition
     if (saved && typeof saved.left === 'number') {
@@ -251,6 +268,8 @@ export default {
   },
 
   beforeDestroy () {
+    this.$root.$off('tile-placement.current', this.onPlacingTile)
+    this.$root.$off('tile-placement.gone', this.onPlacingGone)
     this.$store.commit('predraw/setHandRect', null)
     window.removeEventListener('resize', this.clampPosition)
     document.removeEventListener('mousemove', this.onDrag)
@@ -274,6 +293,20 @@ export default {
     // a supply tile was clicked: the action panel (TilePhaseAction) makes it the tile placed
     chooseSupplyTile (tileId) {
       this.$root.$emit('tile-from-supply.choose', tileId)
+    },
+
+    // how the tile being placed is turned in the action panel (0 for any other tile)
+    currentRotation (tileId) {
+      return this.placing && this.placing.tileId === tileId ? this.placing.rotation : 0
+    },
+
+    onPlacingTile (current) {
+      this.placing = current
+    },
+
+    // the tile item went away: forget its rotation, unless a newer item has already reported
+    onPlacingGone (uid) {
+      if (this.placing && this.placing.uid === uid) this.placing = null
     },
 
     // turn the picked tile: its TilePlacementItem (in the action panel) rotates on 'rclick'

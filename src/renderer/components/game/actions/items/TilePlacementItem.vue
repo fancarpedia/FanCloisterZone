@@ -54,6 +54,19 @@ export default {
     }
   },
 
+  watch: {
+    // Tell other views of this tile how it is turned (PreDrawHand shows the supply / hand tile
+    // being placed in the same rotation); 'tile-placement.gone' when this item goes. Both carry
+    // this item's uid: Vue creates the next item before it destroys this one, so a bare "gone"
+    // would wipe out the next tile's rotation.
+    rotation: {
+      immediate: true,
+      handler (rotation) {
+        this.$root.$emit('tile-placement.current', { uid: this._uid, tileId: this.tileId, rotation })
+      }
+    }
+  },
+
   mounted () {
     this.onRightClick = ev => {
       if (this.local) {
@@ -69,6 +82,7 @@ export default {
   },
 
   beforeDestroy () {
+    this.$root.$emit('tile-placement.gone', this._uid)
     this.$root.$off('rclick', this.onRightClick)
     this.$root.$off('tile-placement.select', this.onSelect)
     this.$root.$off('tile-placement.rotation', this.onRotate)
