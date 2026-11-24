@@ -50,6 +50,7 @@
           :rules="rules"
           editable
           :allow-quantity-change="!coopVariant"
+          :sequenced="settings.devMode ? sequencedCounts : null"
           @tile-click="onTileClick"
         />
         <GameAnnotationsPanel v-if="settings.devMode" ref="annotationsPanel" />
@@ -129,7 +130,16 @@ export default {
 
     ...mapGetters({
       loaded: 'loaded'
-    })
+    }),
+
+    // dev mode: how many copies of each tile the draw order (GameAnnotationsPanel) already holds
+    sequencedCounts () {
+      const counts = {}
+      for (const id of (this.$store.state.gameSetup.gameAnnotations?.drawOrder || [])) {
+        counts[id] = (counts[id] || 0) + 1
+      }
+      return counts
+    }
   },
 
   beforeCreate () {

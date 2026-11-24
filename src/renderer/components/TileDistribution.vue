@@ -59,9 +59,17 @@
           v-for="{ id, count, rotation, cap, setKey } in group.tiles"
           :key="id"
           class="tile"
-          :class="{ excluded: count === 0 }"
+          :class="{ excluded: count === 0, 'sequence-empty': sequenced && count > 0 && sequenceLeft(id) <= 0 }"
           :style="{ width: `${tileSize + 4}px` }"
         >
+          <!-- dev mode draw order: how many copies of this tile are still free to add to it -->
+          <div
+            v-if="sequenced && count > 0"
+            class="sequence-left"
+            :title="'Not yet in the draw order: ' + sequenceLeft(id)"
+          >
+            {{ sequenceLeft(id) }}
+          </div>
           <StandaloneTileImage
             :tile-id="id"
             :size="tileSize"
@@ -144,7 +152,10 @@ export default {
     editable: { type: Boolean, default: false },
     // whether changing per-tile COUNTS is allowed (the Keep Building variant allows separating
     // expansions but not editing tile counts, so it passes false here)
-    allowQuantityChange: { type: Boolean, default: true }
+    allowQuantityChange: { type: Boolean, default: true },
+    // dev mode: tile id -> copies already put in the draw order (GameAnnotationsPanel); each tile
+    // then shows how many are still free for it, and is greyed out when none are
+    sequenced: { type: Object, default: null }
   },
 
   data () {
@@ -319,6 +330,18 @@ export default {
     },
 
     // one flat pseudo-group, or (editable + separate view) a group per expansion
+    // a tile's total count over every group it shows in (the separated view lists the same tile
+    // once per set) — what a draw order can hold of it
+    totalCounts () {
+      const totals = {}
+      for (const group of this.displayGroups) {
+        for (const { id, count } of group.tiles) {
+          totals[id] = (totals[id] || 0) + (count || 0)
+        }
+      }
+      return totals
+    },
+
     displayGroups () {
       // collapse to the flat single-group view (no per-expansion arrows) unless separation is
       // both requested AND meaningful (2+ expansions with tiles) — reacts as tiles are removed
@@ -420,7 +443,13 @@ export default {
         this.changeCount(tileId, 0, 1, setKey)
         return
       }
-      this.$emit('tile-click', tileId, count)
+      // the limit for the draw order is the tile's total, not one set's share of it
+      this.$emit('tile-click', tileId, this.totalCounts[tileId] ?? count)
+    },
+
+    // copies of a tile not yet in the dev draw order
+    sequenceLeft (tileId) {
+      return (this.totalCounts[tileId] || 0) - ((this.sequenced && this.sequenced[tileId]) || 0)
     },
 
     // setKey present (separated view) → edit that set's copy independently; else the flat total
@@ -577,6 +606,37 @@ export default {
   .tile.excluded
     svg
       opacity: 0.35
+
+  // dev mode draw order
+  .tile
+    position: relative
+
+  // every copy is already in the draw order
+  .tile.sequence-empty
+    svg
+      opacity: 0.3
+      filter: grayscale(100%)
+
+  // copies still free for the draw order, in the tile's top-right corner
+  .sequence-left
+    position: absolute
+    top: 4px
+    right: 6px
+    z-index: 1
+    min-width: 22px
+    height: 22px
+    padding: 0 5px
+    border-radius: 11px
+    font-size: 13px
+    font-weight: 600
+    line-height: 22px
+    text-align: center
+    pointer-events: none
+    color: white
+    background: rgba(25, 118, 210, 0.9)
+
+  .tile.sequence-empty .sequence-left
+    background: rgba(120, 120, 120, 0.9)
 
   .count
     text-align: center
