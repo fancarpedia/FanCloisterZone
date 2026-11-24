@@ -29,8 +29,9 @@
       </g>
     </svg>
     <TokenImage v-else-if="element === 'flowers'" token="FLOWERS_YELLOW" :height="55" />
-    <div v-else-if="element === 'pre-draw'" class="predraw-icon">⤵<span>hand</span></div>
-    <div v-else-if="element === 'keep-building'" class="predraw-icon">🤝<span>co-op</span></div>
+    <!-- the same glyphs as their boxes in the Game Setup tab (TimerTab.vue) -->
+    <div v-else-if="element === 'pre-draw'" class="flow-icon"><v-icon>fa-solid fa-hand</v-icon></div>
+    <div v-else-if="element === 'keep-building'" class="flow-icon"><v-icon>fa-solid fa-handshake</v-icon></div>
 
     <template #quantity>
       <div class="quantity" :class="enabled ? 'addition': 'removal'">
@@ -151,17 +152,17 @@ export default {
 </script>
 
 <style lang="sass" scoped>
-.predraw-icon
+.flow-icon
   display: flex
-  flex-direction: column
   align-items: center
   justify-content: center
   width: 70px
   height: 70px
-  font-size: 28px
 
-  span
-    font-size: 11px
+  .v-icon
+    font-size: 44px
+    +theme using ($theme)
+      color: map-get($theme, 'gray-text-color')
 
 .tile-img, img
   filter: grayscale(100%)
