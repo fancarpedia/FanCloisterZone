@@ -5,8 +5,19 @@
     </header>
 
     <header class="tiles-header">
-      <TilePackSize v-if="showPackSize" :size="packSize" :setupPhase="true" />
+      <!-- the open game (take a slot) page: clicking the deck counter opens the game's Tiles
+           dialog, the same one as in the game (pages/game.vue) -->
+      <TilePackSize
+        v-if="showPackSize"
+        :class="{ clickable: tilePackDialog }"
+        :size="packSize"
+        :setupPhase="true"
+        @click.native="tilePackDialog && (tilePackOpen = true)"
+      />
     </header>
+    <v-dialog v-if="tilePackDialog" v-model="tilePackOpen" max-width="800">
+      <TilePackDialog v-if="tilePackOpen" @close="tilePackOpen = false" />
+    </v-dialog>
 
     <main>
       <slot name="main" />
@@ -20,11 +31,13 @@
 
 <script>
 import TilePackSize from '@/components/game/TilePackSize'
+import TilePackDialog from '@/components/game/dialogs/TilePackDialog'
 
 import { getSelectedEdition, getSelectedStartingTiles } from '@/utils/gameSetupUtils'
 
 export default {
   components: {
+    TilePackDialog,
     TilePackSize
   },
 
@@ -35,7 +48,16 @@ export default {
     // gameSetup store (setup editor) — open-game passes the game's own setup instead
     setup: { type: Object, default: null },
     showPackSize: { type: Boolean, default: true },
-    showDetail: { type: Boolean, default: true }
+    showDetail: { type: Boolean, default: true },
+    // the deck counter opens the game's Tiles dialog — only where state.game holds the game
+    // (open-game), not in the setup editor (gameSetup store)
+    tilePackDialog: { type: Boolean, default: false }
+  },
+
+  data () {
+    return {
+      tilePackOpen: false
+    }
   },
 
   computed: {
@@ -52,6 +74,9 @@ export default {
 </script>
 
 <style lang="sass" scoped>
+.tile-pack-size.clickable
+  cursor: pointer
+
 .game-setup-grid
   display: grid
   grid-template-columns: minmax(0, 1560px) minmax(372px, 1fr)

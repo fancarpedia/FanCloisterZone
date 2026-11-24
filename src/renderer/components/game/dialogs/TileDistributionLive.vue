@@ -79,7 +79,9 @@ export default {
       const actionItem = this.action?.items[0]
       const drawnId = actionItem?.type === 'TilePlacement' ? actionItem.tileId : null
       const usedTiles = countBy(this.placedTiles, 'id')
-      this.discardedTiles.forEach(id => {
+      // none yet before the game starts (the open game page shows this list too)
+      const discarded = this.discardedTiles || []
+      discarded.forEach(id => {
         if (usedTiles[id]) {
           usedTiles[id] += 1
         } else {

@@ -2,7 +2,7 @@
   <v-card>
     <v-card-title class="headline">
       {{ $t('game.tile-pack-dialog.tiles') }}
-      <div  v-if="!options.puristTiles" class="switch-wrapper">
+      <div  v-if="!options.puristTiles && started" class="switch-wrapper">
         <v-switch
           v-model="showAvailableOnly"
           dense
@@ -12,7 +12,7 @@
       </div>
     </v-card-title>
     <v-card-text>
-      <template v-if="removedTiles.length">
+      <template v-if="removedTiles && removedTiles.length">
         <h2>{{ $t('game.tile-pack-dialog.discarded-tiles') }}</h2>
         <div class="removed-tiles-list">
           <!-- crossed out: a discarded tile is out of the game (the history marks it the same way,
@@ -31,7 +31,12 @@
         </div>
       </template>
 
-      <template v-if="options.puristTiles">
+      <!-- not started yet (the open game / take a slot page): the game's tiles, nothing drawn -->
+      <template v-if="!started">
+        <h2>{{ $t('game.tile-pack-dialog.game-tiles') }}</h2>
+        <TileDistributionLive :sets="sets" :rules="rules" :remaining="false" />
+      </template>
+      <template v-else-if="options.puristTiles">
         <h2>{{ $t('game.tile-pack-dialog.game-tiles') }}</h2>
         <p>{{ $t('game.tile-pack-dialog.disabled-show-remaining') }}</p>
         <TileDistributionLive :sets="sets" :rules="rules" :remaining="false" />
@@ -87,8 +92,10 @@ export default {
       sets: state => state.game.setup?.sets,
       rules: state => state.game.setup?.rules,
       removedTiles: state => state.game.discardedTiles,
-      options: state => state.game.setup.options,
-      underHills: state => state.game.tilePack.underHills
+      options: state => state.game.setup.options || {},
+      // no tile pack before the game starts (the open game page opens this dialog too)
+      started: state => !!state.game.tilePack,
+      underHills: state => state.game.tilePack?.underHills
     })
   }
 }
