@@ -96,11 +96,17 @@ if (VERSION_ONLY) {
 
 // 3. bundle for the BROWSER (not node) as a classic worker script
 fs.mkdirSync(DIST, { recursive: true })
-const esbuild = path.join(ENGINE_REPO, 'node_modules', '.bin', 'esbuild' + (process.platform === 'win32' ? '.cmd' : ''))
+// esbuild/bin/esbuild: on Windows a Node launcher script, run with this very Node — not the
+// node_modules/.bin/esbuild.cmd shim, as Node 18.20.2+ / 20.12.2+ / 22 refuse to spawn a .cmd / .bat
+// without a shell (EINVAL, CVE-2024-27980). Elsewhere esbuild's install has replaced it with the
+// native binary, which is run directly.
+const esbuild = path.join(ENGINE_REPO, 'node_modules', 'esbuild', 'bin', 'esbuild')
 if (!fs.existsSync(esbuild)) fail('esbuild not found in the engine repo: ' + esbuild)
+const [esbuildCmd, esbuildPre] = process.platform === 'win32' ? [process.execPath, [esbuild]] : [esbuild, []]
 
 const out = path.join(DIST, 'jcz-engine.worker.js')
-execFileSync(esbuild, [
+execFileSync(esbuildCmd, [
+  ...esbuildPre,
   path.join(WORK, 'worker-entry.js'),
   '--bundle',
   '--platform=browser',

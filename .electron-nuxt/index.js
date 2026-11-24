@@ -1,4 +1,7 @@
 
+// webpack 4 on Node 17+: MD4 -> SHA-256 (must run before webpack is loaded)
+require('./md4-to-sha256')
+
 const path = require('path')
 const webpack = require('webpack')
 const electron = require('electron')
