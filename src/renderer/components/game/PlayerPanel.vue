@@ -38,8 +38,16 @@
         </div>
       </div>
       <!-- small screens, supply collapsed: the name and the clock row below are hidden there, so
-           the AI marker and the remaining time stay visible here, at the end of the score row -->
-      <div v-if="player.ai || timer" class="compact-status">
+           the offline mark, the AI marker and the remaining time stay visible here, at the end of
+           the score row (offline as an icon: the word does not fit beside the time) -->
+      <div v-if="!slot.sessionId || player.ai || timer" class="compact-status">
+        <v-icon
+          v-if="!slot.sessionId"
+          class="compact-offline"
+          :title="$t('core-messages.offline')"
+        >
+          fa-solid fa-plug-circle-xmark
+        </v-icon>
         <v-icon v-if="player.ai" class="compact-ai">fa-solid fa-robot</v-icon>
         <PlayerClock v-if="timer" :player="index" class="compact-clock" />
       </div>
@@ -662,9 +670,12 @@ aside.shrink-3
   +theme using ($theme)
     color: map-get($theme, 'player-panel-name-color')
 
-  .compact-ai
+  .compact-ai, .compact-offline
     font-size: 18px
     color: inherit
+
+  .compact-offline
+    color: #E53935
 
   // PlayerClock's own spacing is made for its row under the name
   ::v-deep .player-clock.compact-clock
