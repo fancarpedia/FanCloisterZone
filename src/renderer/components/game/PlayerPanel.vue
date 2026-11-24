@@ -37,6 +37,12 @@
           </template>
         </div>
       </div>
+      <!-- small screens, supply collapsed: the name and the clock row below are hidden there, so
+           the AI marker and the remaining time stay visible here, at the end of the score row -->
+      <div v-if="player.ai || timer" class="compact-status">
+        <v-icon v-if="player.ai" class="compact-ai">fa-solid fa-robot</v-icon>
+        <PlayerClock v-if="timer" :player="index" class="compact-clock" />
+      </div>
     </div>
     <PlayerClock v-if="timer" :player="index" />
     <div ref="resources" class="resources">
@@ -645,17 +651,46 @@ aside.shrink-3
     .item:first-child
       padding-left: 0px
 
+// the compact AI marker + clock of the collapsed small-screen row (shown only there, below)
+.compact-status
+  display: none
+  margin-left: auto
+  padding: 0 8px
+  align-items: center
+  gap: 6px
+  white-space: nowrap
+  +theme using ($theme)
+    color: map-get($theme, 'player-panel-name-color')
+
+  .compact-ai
+    font-size: 18px
+    color: inherit
+
+  // PlayerClock's own spacing is made for its row under the name
+  ::v-deep .player-clock.compact-clock
+    margin: 0
+
+    .time
+      font-size: 18px
+
 // Small screens, supply collapsed (the default): the panel keeps only what a player needs at a
-// glance — the score, and the flowers when they hold any (the wrapper is not rendered otherwise).
-// Name, clock, follower/token supply and prisoners are hidden; the meeple toggle in game.vue
-// brings them back. Above the breakpoint the class is inert, so desktop is untouched.
+// glance — the score, the flowers when they hold any (the wrapper is not rendered otherwise),
+// and the AI marker + remaining time (.compact-status). Name, the clock row, follower/token
+// supply and prisoners are hidden; the meeple toggle in game.vue brings them back. Above the
+// breakpoint the class is inert, so desktop is untouched.
 @media (max-width: $small-screen-max-width)
   aside.supply-collapsed
     .name, .resources
       display: none
 
-    ::v-deep .player-clock
+    // NOT ::v-deep: that puts this component's scope attribute on the aside (it belongs to
+    // game.vue), so the rule never matched and the clock row stayed. A child component's root
+    // element carries the parent's scope attribute, so the plain scoped selector reaches it.
+    .player-clock:not(.compact-clock)
       display: none
+
+    .compact-status
+      display: flex
 
     // Hiding the children is not enough to shrink the panel: every shrink level sets an explicit
     // height on .name-box/.points (60/50/40/28px) and a padding-top on the section, so the row
