@@ -1,4 +1,4 @@
-import { app, ipcMain } from 'electron'
+import { app, BrowserWindow, ipcMain } from 'electron'
 import { autoUpdater } from 'electron-updater'
 import electronLogger from 'electron-log'
 import { compareVersions } from 'compare-versions'
@@ -26,6 +26,9 @@ marked.setOptions({ // Settings for GitHub Release markdown
 
 let win = null
 let updateInfo = null
+
+// a running app looks for a new release again every 24 hours after its launch
+const UPDATE_CHECK_INTERVAL_MS = 24 * 60 * 60 * 1000
 
 /**
  * Get the newest release according to channel and SemVer rules
@@ -176,26 +179,49 @@ export default function (settings, appVersion) {
   })
   const channel = settings && settings.devChannel ? settings.devChannel : 'stable'
   
-  function trySendUpdate() {
-    if (win && updateInfo) {
-      win.webContents.once('did-finish-load', () => {
-        win.webContents.send('app-update', updateInfo)
+  // Hand the found release to one window: now if its page is loaded, else once it has loaded.
+  // (Only waiting for did-finish-load lost the release whenever the check finished after the
+  // page had already loaded — and always for a check made later on.)
+  function sendUpdateTo (w) {
+    if (!updateInfo || !w || w.isDestroyed()) return
+    const info = updateInfo
+    const wc = w.webContents
+    if (wc.isLoading()) {
+      wc.once('did-finish-load', () => {
+        if (!w.isDestroyed()) wc.send('app-update', info)
       })
+    } else {
+      wc.send('app-update', info)
     }
   }
-  getLatestReleaseByChannel(channel, appVersion)
-    .then(result => {
-      if (!result) return
-      updateInfo = result
-      trySendUpdate()
-    })
-    .catch(err => console.error(err))
-  
+
+  // Look for a newer release; every open window is told about one it was not told about yet
+  // (a repeated check finding the same release stays quiet). Windows opened later get it from
+  // winCreated.
+  function checkForUpdate () {
+    getLatestReleaseByChannel(channel, appVersion)
+      .then(result => {
+        if (!result) return
+        const isNew = !updateInfo || updateInfo.version !== result.version
+        updateInfo = result
+        if (isNew) BrowserWindow.getAllWindows().forEach(sendUpdateTo)
+      })
+      .catch(err => console.error(err))
+  }
+
+  checkForUpdate()
+  // An app left running for days still learns about new releases: check again every 24 hours
+  // after the launch. unref: the timer never keeps the app from quitting.
+  const updateTimer = setInterval(checkForUpdate, UPDATE_CHECK_INTERVAL_MS)
+  if (updateTimer.unref) updateTimer.unref()
+
   return {
     winCreated (_win) {
       win = _win
-      trySendUpdate()
+      sendUpdateTo(_win)
     },
-    winClosed (_win) { win = null }
+    winClosed (_win) {
+      if (win === _win) win = null
+    }
   }
 }

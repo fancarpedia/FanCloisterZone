@@ -556,10 +556,6 @@ app.whenReady().then(() => {
     modules.push(updater(settings, appVersion))
     modules.push(installer())
 
-    if (process.env.NODE_ENV === 'production') {
-      modules.push(updater(settings))
-    }
-
     createWindow()
   })
 })
