@@ -1036,6 +1036,7 @@
       "available-new-add-ons": "Dostupné nové doplnky / add-ony",
       "download-definition-not-found": "Nepodarilo sa nájsť definíciu súborov Doplnkov na stiahnutie.",
       "downloaded-file-checksum-mismatch": "Nesúhlasí kontrolný súčet stiahnutého súboru.",
+      "downloading-add-on": "<span lang="en" dir="ltr" class="mw-content-ltr">Downloading add-on {current} of {total}: {name}</span>",
       "downloading-classic-artwork": "<span lang="en" dir="ltr" class="mw-content-ltr">Downloading classic artwork</span>",
       "drag-add-on-here-or-click-here": "Potiahnite tu doplnok (súbor .jca) alebo ho vyberte kliknutím.",
       "finish-or-leave-game-to-make-changes": "Ak chcete vykonať zmany, najprv dokončite alebo opustite hru.",

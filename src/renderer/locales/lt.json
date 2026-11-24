@@ -2,7 +2,7 @@
   "@author": "Stepukiss",
   "@jcz-version": "5.12.1",
   "@fcz-version": "7.3.0",
-  "@version": "0.14.5-ai",
+  "@version": "0.14.6-ai",
   "about": {
     "author": "Autorius",
     "configuration-file": "Nustatymų aplankas",
@@ -1042,6 +1042,7 @@
       "available-new-add-ons": "Galimi nauji priedai",
       "download-definition-not-found": "Nepavyko rasti atsisiuntimo elemento",
       "downloaded-file-checksum-mismatch": "Atsisiųsto failo kontrolinės sumos neatitikimas",
+      "downloading-add-on": "Atsisiunčiamas priedas {current} iš {total}: {name}",
       "downloading-classic-artwork": "Atsisiunčiama klasikinė grafika",
       "drag-add-on-here-or-click-here": "Tempkite priedą (add-on .jca filą) arba paspauskite čia ir pasirinkite jį",
       "finish-or-leave-game-to-make-changes": "Prašome pirma pabaigti arba palikti žaidimą jei norite atlikti pakeitimus čia.",

@@ -2,7 +2,7 @@
   "@author": "Bumsakalaka",
   "@jcz-version": "5.12.1",
   "@fcz-version": "7.3.0",
-  "@version": "0.14.5-ai",
+  "@version": "0.14.6-ai",
   "about": {
     "author": "Autor",
     "configuration-file": "Konfiguračný súbor",
@@ -1042,6 +1042,7 @@
       "available-new-add-ons": "Dostupné nové doplnky / add-ony",
       "download-definition-not-found": "Nepodarilo sa nájsť definíciu súborov Doplnkov na stiahnutie.",
       "downloaded-file-checksum-mismatch": "Nesúhlasí kontrolný súčet stiahnutého súboru.",
+      "downloading-add-on": "Sťahuje sa doplnok {current} z {total}: {name}",
       "downloading-classic-artwork": "Sťahuje sa klasická grafika",
       "drag-add-on-here-or-click-here": "Potiahnite tu doplnok (súbor .jca) alebo ho vyberte kliknutím.",
       "finish-or-leave-game-to-make-changes": "Ak chcete vykonať zmany, najprv dokončite alebo opustite hru.",

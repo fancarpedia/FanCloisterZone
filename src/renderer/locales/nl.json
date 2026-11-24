@@ -2,7 +2,7 @@
   "@author": "Kiap1969 & Sinscerly",
   "@jcz-version": "5.12.1",
   "@fcz-version": "7.3.0",
-  "@version": "0.14.5-ai",
+  "@version": "0.14.6-ai",
   "about": {
     "author": "Auteur",
     "configuration-file": "Configuratiebestand",
@@ -1042,6 +1042,7 @@
       "available-new-add-ons": "Beschikbare nieuwe add-ons",
       "download-definition-not-found": "Downloaddefinitie niet gevonden",
       "downloaded-file-checksum-mismatch": "Controlegetal van gedownload bestand komt niet overeen",
+      "downloading-add-on": "Add-on {current} van {total} downloaden: {name}",
       "downloading-classic-artwork": "Klassieke afbeeldingen downloaden",
       "drag-add-on-here-or-click-here": "Sleep de add-on hierheen (.jca-bestand) of klik hier om deze te selecteren.",
       "finish-or-leave-game-to-make-changes": "Voltooi of verlaat het spel alvorens hier wijzigingen door te voeren.",

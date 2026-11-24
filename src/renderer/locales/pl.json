@@ -2,7 +2,7 @@
   "@author": "Snearone",
   "@jcz-version": "5.12.1",
   "@fcz-version": "7.3.0",
-  "@version": "0.14.5-ai",
+  "@version": "0.14.6-ai",
   "about": {
     "author": "Autor",
     "configuration-file": "Plik konfiguracyjny",
@@ -1042,6 +1042,7 @@
       "available-new-add-ons": "Dostępne nowe dodatki",
       "download-definition-not-found": "Nie znaleziono definicji do pobrania",
       "downloaded-file-checksum-mismatch": "Niezgodność sumy kontrolnej pobranego pliku",
+      "downloading-add-on": "Pobieranie dodatku {current} z {total}: {name}",
       "downloading-classic-artwork": "Pobieranie klasycznej grafiki",
       "drag-add-on-here-or-click-here": "Przeciągnij tutaj dodatek (plik .jca) lub kliknij aby go wybrać.",
       "finish-or-leave-game-to-make-changes": "Proszę najpierw zakończyć lub opuścić grę, aby dokonać zmian tutaj.",

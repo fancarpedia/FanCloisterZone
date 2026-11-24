@@ -1,6 +1,10 @@
 <template>
   <div class="app-update-box">
     <div v-if="download" class="download">
+      <!-- what is downloading (e.g. "Downloading add-on 2 of 4: The Courier") and how far -->
+      <div v-if="download.description" class="download-text">
+        {{ download.description }}<span v-if="download.size" class="percent">{{ percent }} %</span>
+      </div>
       <v-progress-linear
         v-if="download.size"
         :value="download.size ? download.progress / download.size * 100 : null"
@@ -49,14 +53,32 @@ export default {
     ...mapState({
       download: state => state.download,
       updateInfo: state => state.updateInfo
-    })
+    }),
+
+    percent () {
+      const { progress, size } = this.download || {}
+      return size ? Math.min(100, Math.round((progress || 0) / size * 100)) : 0
+    }
   }
 }
 </script>
 
 <style lang="sass" scoped>
 .download
-  padding: 0 20px
+  padding: 6px 20px
+
+  .download-text
+    display: flex
+    justify-content: center
+    gap: 10px
+    font-size: 14px
+    margin-bottom: 4px
+
+    +theme using ($theme)
+      color: map-get($theme, 'gray-text-color')
+
+  .percent
+    font-weight: 500
 
 .update-box
   padding: 20px

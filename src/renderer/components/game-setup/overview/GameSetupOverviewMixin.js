@@ -11,6 +11,9 @@ export default {
       const expansions = this.$tiles.getExpansions(this.sets, edition)
       Object.keys(expansions).forEach(expId => {
         const expansion = Expansion[expId]
+        // never take the whole page down for one expansion this app does not know (an add-on not
+        // installed here, or the expansions being reloaded)
+        if (!expansion) return
         for (const release of expansion.releases) {
           const quantities = release.sets
             .filter(id => !this.$tiles.isTileSetExcluded(id, expansions, edition))

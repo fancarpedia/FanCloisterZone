@@ -2,7 +2,7 @@
   "@author": "TileLord | Erol",
   "@jcz-version": "5.12.1",
   "@fcz-version": "7.3.0",
-  "@version": "0.14.5-ai",
+  "@version": "0.14.6-ai",
   "about": {
     "author": "Avtor",
     "configuration-file": "Konfiguracijska datoteka",
@@ -1042,6 +1042,7 @@
       "available-new-add-ons": "Razpoložljivi novi dodatki",
       "download-definition-not-found": "Opisa prenosa ni mogoče najti",
       "downloaded-file-checksum-mismatch": "Neujemanje kontrolne vsote prenesene datoteke",
+      "downloading-add-on": "Prenašanje dodatka {current} od {total}: {name}",
       "downloading-classic-artwork": "Prenašanje klasične grafike",
       "drag-add-on-here-or-click-here": "Povleci dodatek sem (datoteka .jca) ali klikni tukaj za izbiro.",
       "finish-or-leave-game-to-make-changes": "Prosimo, najprej zaključi ali zapusti igro, da lahko narediš spremembe tukaj.",

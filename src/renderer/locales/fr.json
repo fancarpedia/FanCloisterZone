@@ -2,7 +2,7 @@
   "@author": "Black Bear",
   "@jcz-version": "5.12.1",
   "@fcz-version": "7.3.0",
-  "@version": "0.14.5-ai",
+  "@version": "0.14.6-ai",
   "about": {
     "author": "Auteur",
     "configuration-file": "Fichier de configuration",
@@ -1042,6 +1042,7 @@
       "available-new-add-ons": "Nouveaux modules complémentaires disponibles",
       "download-definition-not-found": "Définition de téléchargement introuvable",
       "downloaded-file-checksum-mismatch": "La somme de contrôle du fichier téléchargé ne correspond pas",
+      "downloading-add-on": "Téléchargement du module {current} sur {total} : {name}",
       "downloading-classic-artwork": "Téléchargement des graphismes classiques",
       "drag-add-on-here-or-click-here": "Faites glisser le module complémentaire ici (fichier .jca) ou cliquez ici pour le sélectionner.",
       "finish-or-leave-game-to-make-changes": "Veuillez terminer ou quitter la partie avant de pouvoir effectuer des changements ici.",

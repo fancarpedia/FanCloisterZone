@@ -669,6 +669,11 @@
     "value": "Le module complémentaire nécessite FanCloisterZone {version} ou supérieur",
     "source": "manual"
   },
+  "settings.add-ons.downloading-add-on": {
+    "en": "Downloading add-on {current} of {total}: {name}",
+    "value": "Téléchargement du module {current} sur {total} : {name}",
+    "source": "manual"
+  },
   "settings.add-ons.downloading-classic-artwork": {
     "en": "Downloading classic artwork",
     "value": "Téléchargement des graphismes classiques",

@@ -1036,6 +1036,7 @@
       "available-new-add-ons": "Новые доступные дополнения",
       "download-definition-not-found": "Определение загрузки не найдено",
       "downloaded-file-checksum-mismatch": "Несоответствие контрольной суммы загруженного файла",
+      "downloading-add-on": "<span lang="en" dir="ltr" class="mw-content-ltr">Downloading add-on {current} of {total}: {name}</span>",
       "downloading-classic-artwork": "<span lang="en" dir="ltr" class="mw-content-ltr">Downloading classic artwork</span>",
       "drag-add-on-here-or-click-here": "Перетащите дополнение сюда (файл с расширением .jca) или кликните здесь для выбора.",
       "finish-or-leave-game-to-make-changes": "Сначала завершите или выйдите из текущей игры, чтобы внести изменения.",

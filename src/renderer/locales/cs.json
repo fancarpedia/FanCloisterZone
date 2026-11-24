@@ -2,7 +2,7 @@
   "@author": "Peťul",
   "@jcz-version": "5.12.1",
   "@fcz-version": "7.3.0",
-  "@version": "0.14.5-ai",
+  "@version": "0.14.6-ai",
   "about": {
     "author": "Autor",
     "configuration-file": "Konfigurační soubor",
@@ -1042,6 +1042,7 @@
       "available-new-add-ons": "Dostupné nové doplňky / add-ony",
       "download-definition-not-found": "Nepodařilo se najít definici souborů Doplňků na stažení.",
       "downloaded-file-checksum-mismatch": "Nesouhlasí kontrolní součet stáhnutého souboru.",
+      "downloading-add-on": "Stahuje se doplněk {current} z {total}: {name}",
       "downloading-classic-artwork": "Stahuje se klasická grafika",
       "drag-add-on-here-or-click-here": "Přetáhněte doplněk sem (soubor .jca) nebo jej vyberte kliknutím sem.",
       "finish-or-leave-game-to-make-changes": "Chcete-li provést změny, nejprve dokončete nebo opusťte hru.",

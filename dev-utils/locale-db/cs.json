@@ -1199,6 +1199,11 @@
     "value": "Doplněk vyžaduje FanCloisterZone {version} nebo novější",
     "source": "manual"
   },
+  "settings.add-ons.downloading-add-on": {
+    "en": "Downloading add-on {current} of {total}: {name}",
+    "value": "Stahuje se doplněk {current} z {total}: {name}",
+    "source": "manual"
+  },
   "settings.add-ons.downloading-classic-artwork": {
     "en": "Downloading classic artwork",
     "value": "Stahuje se klasická grafika",

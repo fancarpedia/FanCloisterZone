@@ -1036,6 +1036,7 @@
       "available-new-add-ons": "Complements disponibles",
       "download-definition-not-found": "No s'ha trobat la definició de descàrrega",
       "downloaded-file-checksum-mismatch": "Suma de verificació del fitxer descarregat incorrecta",
+      "downloading-add-on": "<span lang="en" dir="ltr" class="mw-content-ltr">Downloading add-on {current} of {total}: {name}</span>",
       "downloading-classic-artwork": "<span lang="en" dir="ltr" class="mw-content-ltr">Downloading classic artwork</span>",
       "drag-add-on-here-or-click-here": "Arrossegueu el complement aquí (fitxers .jca) o feu clic aquí per a seleccionar-lo.",
       "finish-or-leave-game-to-make-changes": "Acabeu o sortiu de la partida abans de fer canvis.",

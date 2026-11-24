@@ -1444,6 +1444,11 @@
     "value": "Papildymui reikia FanCloisterZone {version} ar naujesnės versijos",
     "source": "manual"
   },
+  "settings.add-ons.downloading-add-on": {
+    "en": "Downloading add-on {current} of {total}: {name}",
+    "value": "Atsisiunčiamas priedas {current} iš {total}: {name}",
+    "source": "manual"
+  },
   "settings.add-ons.downloading-classic-artwork": {
     "en": "Downloading classic artwork",
     "value": "Atsisiunčiama klasikinė grafika",

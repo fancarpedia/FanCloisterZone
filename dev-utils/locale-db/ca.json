@@ -1099,6 +1099,11 @@
     "value": "El complement requereix FanCloisterZone {version} o superior",
     "source": "manual"
   },
+  "settings.add-ons.downloading-add-on": {
+    "en": "Downloading add-on {current} of {total}: {name}",
+    "value": "S'està descarregant el complement {current} de {total}: {name}",
+    "source": "manual"
+  },
   "settings.add-ons.downloading-classic-artwork": {
     "en": "Downloading classic artwork",
     "value": "S'estan descarregant els gràfics clàssics",

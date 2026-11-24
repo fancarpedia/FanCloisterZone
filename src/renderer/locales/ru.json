@@ -2,7 +2,7 @@
   "@author": "pOison & Dextea & SonicDC",
   "@jcz-version": "5.12.1",
   "@fcz-version": "7.3.0",
-  "@version": "0.14.5-ai",
+  "@version": "0.14.6-ai",
   "about": {
     "author": "Автор",
     "configuration-file": "Файл конфигурации",
@@ -1042,6 +1042,7 @@
       "available-new-add-ons": "Новые доступные дополнения",
       "download-definition-not-found": "Определение загрузки не найдено",
       "downloaded-file-checksum-mismatch": "Несоответствие контрольной суммы загруженного файла",
+      "downloading-add-on": "Загрузка дополнения {current} из {total}: {name}",
       "downloading-classic-artwork": "Загрузка классической графики",
       "drag-add-on-here-or-click-here": "Перетащите дополнение сюда (файл с расширением .jca) или кликните здесь для выбора.",
       "finish-or-leave-game-to-make-changes": "Сначала завершите или выйдите из текущей игры, чтобы внести изменения.",

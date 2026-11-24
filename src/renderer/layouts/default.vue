@@ -708,11 +708,18 @@ export default {
     async loadAddons () {
       await this.$addons.loadAddons()
       await this.$tiles.loadExpansions()
-      if (!this.addonsUpdated) {
+      // Download new / updated add-ons ONCE per app run, and only in the lobby window. Every
+      // window (also the hidden pre-booted game window) used to run it at the same time on the same
+      // temp files, so they overwrote ("checksum mismatch"), deleted ("ENOENT") or beat each other
+      // to it ("already installed"). The other windows pick the new add-ons up anyway: an install
+      // changes the shared enabledArtworks setting, which reloads their add-ons.
+      // The flag is set BEFORE the download: each install emits 'change', which calls loadAddons()
+      // again while this one is still running — that must not start a second run.
+      if (!this.addonsUpdated && !this.$windows.isGameWindow()) {
+        this.addonsUpdated = true
         await this.$addons.updateOutdatedAddons()
-        this.addonsUpdated=true
       }
-      
+
       await this.$theme.loadArtworks()
     },
 

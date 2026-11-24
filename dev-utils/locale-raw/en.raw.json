@@ -2,7 +2,7 @@
   "@author": "farin & Scott",
   "@jcz-version": "5.12.1",
   "@fcz-version": "7.3.0",
-  "@version": "0.14.5",
+  "@version": "0.14.6",
   "about": {
     "author": "Author",
     "configuration-file": "Configuration file",
@@ -1036,6 +1036,7 @@
       "available-new-add-ons": "Available new add-ons",
       "download-definition-not-found": "Download definition not found",
       "downloaded-file-checksum-mismatch": "Downloaded file checksum mismatch",
+      "downloading-add-on": "Downloading add-on {current} of {total}: {name}",
       "downloading-classic-artwork": "Downloading classic artwork",
       "drag-add-on-here-or-click-here": "Drag add-on here (.jca file) or click here to select it.",
       "finish-or-leave-game-to-make-changes": "Please finish or leave the game first to make changes here.",

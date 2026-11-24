@@ -1036,6 +1036,7 @@
       "available-new-add-ons": "Nouveaux modules complémentaires disponibles",
       "download-definition-not-found": "Définition de téléchargement introuvable",
       "downloaded-file-checksum-mismatch": "La somme de contrôle du fichier téléchargé ne correspond pas",
+      "downloading-add-on": "<span lang="en" dir="ltr" class="mw-content-ltr">Downloading add-on {current} of {total}: {name}</span>",
       "downloading-classic-artwork": "<span lang="en" dir="ltr" class="mw-content-ltr">Downloading classic artwork</span>",
       "drag-add-on-here-or-click-here": "Faites glisser le module complémentaire ici (fichier .jca) ou cliquez ici pour le sélectionner.",
       "finish-or-leave-game-to-make-changes": "Veuillez terminer ou quitter la partie avant de pouvoir effectuer des changements ici.",

@@ -177,7 +177,9 @@ class Addons extends EventsBase {
       throw new Error($nuxt.$t('settings.add-ons.missing-available-version'))
     }
 
-    const downloadedPath = path.join(os.tmpdir(), `${addonKey}-v${versionDefinition.version}.jca`)
+    // a name of its own per download: two downloads of one add-on (another window, a manual install
+    // during the automatic one) must never write into — or delete — the same temp file
+    const downloadedPath = path.join(os.tmpdir(), `${addonKey}-v${versionDefinition.version}-${process.pid}-${Date.now()}.jca`)
 
     const installed = this.addons.find(a => a.id === addonKey)
     if (installed) {
@@ -217,21 +219,38 @@ class Addons extends EventsBase {
 
     // Download provider
     let downloadPromise
+    // the size and the bytes received go to the store's `download` (shown by AppUpdateBox while
+    // updateOutdatedAddons has set one; without one these commits do nothing)
+    const store = this.ctx.app.store
+    let receivedBytes = 0
+    const onChunk = chunk => {
+      receivedBytes += chunk.length
+      store.commit('downloadProgress', receivedBytes)
+    }
     if (versionDefinition.provider === 'mega') {
       const file = File.fromURL(versionDefinition.url)
+      file.loadAttributes()
+        .then(() => store.commit('downloadSize', file.size))
+        .catch(err => console.warn('Could not load Mega file size:', err))
       downloadPromise = new Promise((resolve, reject) => {
         file
-        .download()
-        .pipe(fs.createWriteStream(downloadedPath))
-        .on('error', reject)
-        .on('finish', resolve)
+          .download()
+          .on('data', onChunk)
+          .on('error', reject)
+          .pipe(fs.createWriteStream(downloadedPath))
+          .on('error', reject)
+          .on('finish', resolve)
       })
     } else if (versionDefinition.provider === 'https') {
       const res = await fetch(versionDefinition.url)
       if (!res.ok) throw new Error(`HTTP ${res.status}`)
+      const total = parseInt(res.headers.get('content-length'))
+      if (total > 0) store.commit('downloadSize', total)
 
       downloadPromise = new Promise((resolve, reject) => {
         const fileStream = fs.createWriteStream(downloadedPath)
+        res.body.on('data', onChunk)
+        res.body.on('error', reject)
         res.body.pipe(fileStream)
         fileStream.on('finish', resolve)
         fileStream.on('error', reject)
@@ -250,8 +269,13 @@ class Addons extends EventsBase {
         throw new Error(this._t('settings.add-ons.downloaded-file-checksum-mismatch'))
       }
     }
-    // Install after verification
-    await this.install(downloadedPath)
+    // Install after verification; the downloaded package is not needed afterwards (each download
+    // has its own temp name, so leaving them would pile up in the temp folder)
+    try {
+      await this.install(downloadedPath)
+    } finally {
+      fs.promises.unlink(downloadedPath).catch(() => {})
+    }
   }
 
   downloadFromMega (link, zipName, file, resolve, reject) {
@@ -531,30 +555,44 @@ class Addons extends EventsBase {
 
     let updated = false
 
+    // First the list of what to fetch (new add-ons, newer versions), so the player can be told
+    // "add-on 2 of 4" while it downloads — before, this ran silently.
+    const todo = []
     for (const available of downloadable) {
       const installed = installedAddons.find(({ id }) => id === available.key)
       // get the highest available version
-      const newest = available.versions.reduce((max, v) => 
+      const newest = available.versions.reduce((max, v) =>
         v.version > max.version ? v : max
       )
+      if (!installed || newest.version > installed.json.version) {
+        todo.push({ available, installed, newest })
+      }
+    }
+
+    const store = this.ctx.app.store
+    for (const [i, { available, installed, newest }] of todo.entries()) {
+      const nameKey = 'expansion.' + available.key
+      const name = this.ctx.app.i18n && this.ctx.app.i18n.te(nameKey) ? this._t(nameKey) : (available.name || available.key)
+      store.commit('download', {
+        name: available.key,
+        description: this._t('settings.add-ons.downloading-add-on', { current: i + 1, total: todo.length, name }),
+        progress: null,
+        size: null
+      })
       if (!installed) {
         console.log(`Installing new addon ${available.key}: v${newest.version}`)
-        try {
-          updated = true
-          await this.installDownloadable(available.key, newest.version)
-        } catch (err) {
-          console.error(`Failed installing ${available.key}`, err)
-        }
-      } else if (newest.version > installed.json.version) {
+      } else {
         console.log(`Updating ${available.key}: v${installed.json.version} → v${newest.version}`)
-        try {
-          updated = true
-          await this.installDownloadable(available.key, newest.version)
-        } catch (err) {
-          console.error(`Failed updating ${available.key}`, err)
-        }
       }
-    }    
+      try {
+        updated = true
+        await this.installDownloadable(available.key, newest.version)
+      } catch (err) {
+        console.error(`Failed ${installed ? 'updating' : 'installing'} ${available.key}`, err)
+      }
+    }
+    if (todo.length) store.commit('download', null)
+
 	if (updated) {
 	  await this.loadAddons()
 	  if (this.ctx.$theme) {
@@ -586,7 +624,11 @@ class Addons extends EventsBase {
   // translated text through the app's i18n (the plugin's own Nuxt context)
   _t (key, values) {
     const i18n = this.ctx && this.ctx.app && this.ctx.app.i18n
-    return i18n ? i18n.t(key, values) : key
+    if (!i18n) return key
+    // The app has no fallback locale: a key not translated yet in the current language would show
+    // as the raw key path. Use the English text until it is.
+    if (!i18n.te(key) && i18n.te(key, 'en')) return i18n.t(key, 'en', values)
+    return i18n.t(key, values)
   }
 
   async _readAddon (id, fullPath) {

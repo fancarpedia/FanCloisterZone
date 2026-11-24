@@ -4354,6 +4354,11 @@
     "value": "Контрольна сума завантаженого файлу не збігається",
     "source": "manual"
   },
+  "settings.add-ons.downloading-add-on": {
+    "en": "Downloading add-on {current} of {total}: {name}",
+    "value": "Завантаження додатка {current} з {total}: {name}",
+    "source": "manual"
+  },
   "settings.add-ons.downloading-classic-artwork": {
     "en": "Downloading classic artwork",
     "value": "Завантаження класичної графіки",

@@ -2,7 +2,7 @@
   "@author": "Challa007 & Bombur",
   "@jcz-version": "5.12.1",
   "@fcz-version": "7.3.0",
-  "@version": "0.14.5-ai",
+  "@version": "0.14.6-ai",
   "about": {
     "author": "Autor",
     "configuration-file": "Konfigurationsdatei",
@@ -1042,6 +1042,7 @@
       "available-new-add-ons": "Verfügbare neue Add-Ons",
       "download-definition-not-found": "Die Download Definition wurde nicht gefunden",
       "downloaded-file-checksum-mismatch": "Die Check-Summe der heruntergeladenen Datei stimmt nicht überein.",
+      "downloading-add-on": "Add-On {current} von {total} wird heruntergeladen: {name}",
       "downloading-classic-artwork": "Klassische Grafik wird heruntergeladen",
       "drag-add-on-here-or-click-here": "Ziehe das Add-On hierher (.jca-Datei) oder klicke hier, um es auszuwählen.",
       "finish-or-leave-game-to-make-changes": "Bitte beende oder verlasse zuerst das Spiel, um hier Änderungen vorzunehmen.",

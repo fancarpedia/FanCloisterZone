@@ -2,7 +2,7 @@
   "@author": "J0anJosep",
   "@jcz-version": "5.12.1",
   "@fcz-version": "7.3.0",
-  "@version": "0.14.5-ai",
+  "@version": "0.14.6-ai",
   "about": {
     "author": "Autor",
     "configuration-file": "Fitxer de configuració",
@@ -1042,6 +1042,7 @@
       "available-new-add-ons": "Complements disponibles",
       "download-definition-not-found": "No s'ha trobat la definició de descàrrega",
       "downloaded-file-checksum-mismatch": "Suma de verificació del fitxer descarregat incorrecta",
+      "downloading-add-on": "S'està descarregant el complement {current} de {total}: {name}",
       "downloading-classic-artwork": "S'estan descarregant els gràfics clàssics",
       "drag-add-on-here-or-click-here": "Arrossegueu el complement aquí (fitxers .jca) o feu clic aquí per a seleccionar-lo.",
       "finish-or-leave-game-to-make-changes": "Acabeu o sortiu de la partida abans de fer canvis.",

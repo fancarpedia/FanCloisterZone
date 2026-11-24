@@ -2,7 +2,7 @@
   "@author": "ai",
   "@jcz-version": "5.12.1",
   "@fcz-version": "7.3.0",
-  "@version": "0.14.5-ai",
+  "@version": "0.14.6-ai",
   "about": {
     "author": "Автор",
     "configuration-file": "Файл конфігурації",
@@ -1042,6 +1042,7 @@
       "available-new-add-ons": "Доступні нові додатки",
       "download-definition-not-found": "Опис завантаження не знайдено",
       "downloaded-file-checksum-mismatch": "Контрольна сума завантаженого файлу не збігається",
+      "downloading-add-on": "Завантаження додатка {current} з {total}: {name}",
       "downloading-classic-artwork": "Завантаження класичної графіки",
       "drag-add-on-here-or-click-here": "Перетягніть додаток сюди (файл .jca) або натисніть тут, щоб вибрати його.",
       "finish-or-leave-game-to-make-changes": "Щоб внести тут зміни, спершу завершіть або покиньте гру.",

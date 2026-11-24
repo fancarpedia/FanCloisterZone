@@ -1036,6 +1036,7 @@
       "available-new-add-ons": "Beschikbare nieuwe add-ons",
       "download-definition-not-found": "Downloaddefinitie niet gevonden",
       "downloaded-file-checksum-mismatch": "Controlegetal van gedownload bestand komt niet overeen",
+      "downloading-add-on": "<span lang="en" dir="ltr" class="mw-content-ltr">Downloading add-on {current} of {total}: {name}</span>",
       "downloading-classic-artwork": "<span lang="en" dir="ltr" class="mw-content-ltr">Downloading classic artwork</span>",
       "drag-add-on-here-or-click-here": "Sleep de add-on hierheen (.jca-bestand) of klik hier om deze te selecteren.",
       "finish-or-leave-game-to-make-changes": "Voltooi of verlaat het spel alvorens hier wijzigingen door te voeren.",

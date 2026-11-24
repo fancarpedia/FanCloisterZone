@@ -1036,6 +1036,7 @@
       "available-new-add-ons": "Nuevos add-ons disponibles",
       "download-definition-not-found": "No se encuentra la definición de descarga",
       "downloaded-file-checksum-mismatch": "La suma de comprobación del archivo descargado no coincide",
+      "downloading-add-on": "<span lang="en" dir="ltr" class="mw-content-ltr">Downloading add-on {current} of {total}: {name}</span>",
       "downloading-classic-artwork": "<span lang="en" dir="ltr" class="mw-content-ltr">Downloading classic artwork</span>",
       "drag-add-on-here-or-click-here": "Arrastre el add-on aquí (archivo .jca) o haga clic aquí para seleccionarlo.",
       "finish-or-leave-game-to-make-changes": "Termine o abandone la partida primero para hacer cambios aquí.",

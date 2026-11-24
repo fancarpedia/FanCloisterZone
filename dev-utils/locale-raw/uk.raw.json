@@ -1036,6 +1036,7 @@
       "available-new-add-ons": "<span lang="en" dir="ltr" class="mw-content-ltr">Available new add-ons</span>",
       "download-definition-not-found": "<span lang="en" dir="ltr" class="mw-content-ltr">Download definition not found</span>",
       "downloaded-file-checksum-mismatch": "<span lang="en" dir="ltr" class="mw-content-ltr">Downloaded file checksum mismatch</span>",
+      "downloading-add-on": "<span lang="en" dir="ltr" class="mw-content-ltr">Downloading add-on {current} of {total}: {name}</span>",
       "downloading-classic-artwork": "<span lang="en" dir="ltr" class="mw-content-ltr">Downloading classic artwork</span>",
       "drag-add-on-here-or-click-here": "<span lang="en" dir="ltr" class="mw-content-ltr">Drag add-on here (.jca file) or click here to select it.</span>",
       "finish-or-leave-game-to-make-changes": "<span lang="en" dir="ltr" class="mw-content-ltr">Please finish or leave the game first to make changes here.</span>",

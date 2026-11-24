@@ -1036,6 +1036,7 @@
       "available-new-add-ons": "Galimi nauji priedai",
       "download-definition-not-found": "Nepavyko rasti atsisiuntimo elemento",
       "downloaded-file-checksum-mismatch": "Atsisiųsto failo kontrolinės sumos neatitikimas",
+      "downloading-add-on": "<span lang="en" dir="ltr" class="mw-content-ltr">Downloading add-on {current} of {total}: {name}</span>",
       "downloading-classic-artwork": "<span lang="en" dir="ltr" class="mw-content-ltr">Downloading classic artwork</span>",
       "drag-add-on-here-or-click-here": "Tempkite priedą (add-on .jca filą) arba paspauskite čia ir pasirinkite jį",
       "finish-or-leave-game-to-make-changes": "Prašome pirma pabaigti arba palikti žaidimą jei norite atlikti pakeitimus čia.",

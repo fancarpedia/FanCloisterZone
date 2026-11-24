@@ -1254,6 +1254,11 @@
     "value": "El add-on requiere FanCloisterZone {version} o superior",
     "source": "manual"
   },
+  "settings.add-ons.downloading-add-on": {
+    "en": "Downloading add-on {current} of {total}: {name}",
+    "value": "Descargando add-on {current} de {total}: {name}",
+    "source": "manual"
+  },
   "settings.add-ons.downloading-classic-artwork": {
     "en": "Downloading classic artwork",
     "value": "Descargando los gráficos clásicos",

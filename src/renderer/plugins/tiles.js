@@ -406,7 +406,27 @@ export class Tiles extends EventsBase {
     return { ...setup, elements }
   }
 
+  // One load at a time: a request while one runs (each add-on install asks for one) is folded into a
+  // single re-run after it, so an older load can never finish last and put back a stale list.
   async loadExpansions () {
+    if (this._expansionsLoading) {
+      this._expansionsReloadPending = true
+      return this._expansionsLoading
+    }
+    this._expansionsLoading = (async () => {
+      do {
+        this._expansionsReloadPending = false
+        await this._loadExpansionsOnce()
+      } while (this._expansionsReloadPending)
+    })()
+    try {
+      await this._expansionsLoading
+    } finally {
+      this._expansionsLoading = null
+    }
+  }
+
+  async _loadExpansionsOnce () {
     const gameElementsWithSelector = GameElement.all().filter(ge => ge.selector)
 
     const tiles = {}
@@ -423,6 +443,8 @@ export class Tiles extends EventsBase {
     const kingdomPalaces = {}
 
     const parser = new DOMParser()
+    // the XML (fan / add-on) expansions read by this load, by name — registered all at once at the end
+    const parsedExpansions = {}
 
     const parseXml = async (xml, addon) => {
       const content = await fs.promises.readFile(xml)
@@ -539,7 +561,8 @@ export class Tiles extends EventsBase {
       doc.querySelectorAll('expansion').forEach(el => {
         const name = el.getAttribute('id')
 
-        if (Expansion[name]) {
+        // defined in JS (built-in), or by an XML already read in this load
+        if (parsedExpansions[name] || (Expansion[name] && !Expansion[name].fan)) {
           console.error(`Expansion ${name} is already defined`)
           return
         }
@@ -582,7 +605,7 @@ export class Tiles extends EventsBase {
 
         exp.description = el.querySelector(':scope > description')?.textContent || ''
 
-        Expansion.register(exp)
+        parsedExpansions[name] = exp
         expansions.push(exp)
         addon?.expansions.push(exp)
       })
@@ -598,12 +621,6 @@ export class Tiles extends EventsBase {
         })
       })
     }
-
-    // clean previosly loaded
-    Expansion.unregisterAll()
-    Expansion.all().forEach(exp => {
-      delete exp.requiredBy
-    })
 
     // load built-in expansions
     const lookupFolder = process.resourcesPath + '/expansions/'
@@ -623,6 +640,16 @@ export class Tiles extends EventsBase {
         await parseXml(fullPath, addon)
       }
     }
+
+    // Swap the expansion registry in ONE step — from here on nothing awaits, so the registry and the
+    // sets below change together. Unregistering first and registering file by file (with awaits in
+    // between) left windows where the old sets named expansions that were gone, and the lobby's
+    // game overview crashed on `Expansion[name].releases` (undefined).
+    Expansion.unregisterAll()
+    Object.values(parsedExpansions).forEach(exp => Expansion.register(exp))
+    Expansion.all().forEach(exp => {
+      delete exp.requiredBy
+    })
 
     Object.entries(expansionRequiredBy).forEach(([expId, deps]) => {
       if (Expansion[expId]) {
