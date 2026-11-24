@@ -124,6 +124,11 @@
     "value": "Losetas de acción",
     "source": "manual"
   },
+  "expansion.action-tiles-description": {
+    "en": "Eight tiles packed with official expansion features: flying machines, magic portals, dragons, mage and witch, towers, hills, vineyards, a bazaar and inns.",
+    "value": "Ocho losetas llenas de elementos de expansiones oficiales: máquinas voladoras, portales mágicos, dragones, mago y bruja, torres, colinas, viñedos, un bazar y posadas.",
+    "source": "manual"
+  },
   "expansion.bards-of-carcassonne": {
     "en": "Bards of Carcassonne",
     "value": "Bardos de Carcassonne",
@@ -149,6 +154,11 @@
     "value": "El mensajero",
     "source": "manual"
   },
+  "expansion.the-courier-description": {
+    "en": "A letter tile calls the neutral Courier. Place a meeple on or next to his tile and he brings you thanks: score all unfinished features with meeples around him.",
+    "value": "Una loseta con carta llama al mensajero neutral. Coloca un seguidor en su loseta o al lado y te da las gracias: puntúa elementos sin terminar con seguidores alrededor.",
+    "source": "manual"
+  },
   "expansion.the-kingdoms": {
     "en": "The Kingdoms",
     "value": "Reinos",
@@ -157,6 +167,11 @@
   "expansion.the-kingdoms-description": {
     "en": "Each player has a Kingdom Palace in their colour. Instead of drawing, place it in a city with one of your followers to make it your capital. Once your capital is completed it becomes a kingdom: at the end, it scores 3 points for every completed city touching a field connected to it.",
     "value": "Cada jugador tiene un Palacio del Reino de su color. En lugar de robar una loseta, puede colocarlo en una ciudad con uno de sus seguidores para convertirla en su capital. Cuando la capital se completa, se convierte en un reino: al final, puntúa 3 puntos por cada ciudad completada que toque un campo conectado con ella.",
+    "source": "manual"
+  },
+  "expansion.village-life-description": {
+    "en": "Bushes end roads and split fields, matching flowers add +3 points, a donkey stops features on its tile from completing, and windmills score once surrounded.",
+    "value": "Los arbustos cierran caminos y dividen campos, las flores de tu color suman +3 puntos, el burro impide completar elementos en su loseta y los molinos puntúan al rodearse.",
     "source": "manual"
   },
   "game-setup.ai.not-available": {

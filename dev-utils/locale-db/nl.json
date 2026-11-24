@@ -124,6 +124,11 @@
     "value": "Actietegels",
     "source": "manual"
   },
+  "expansion.action-tiles-description": {
+    "en": "Eight tiles packed with official expansion features: flying machines, magic portals, dragons, mage and witch, towers, hills, vineyards, a bazaar and inns.",
+    "value": "Acht tegels vol elementen uit officiële uitbreidingen: vliegtuigen, magische poorten, draken, tovenaar en heks, torens, heuvels, wijngaarden, een bazaar en herbergen.",
+    "source": "manual"
+  },
   "expansion.bards-of-carcassonne": {
     "en": "Bards of Carcassonne",
     "value": "Barden van Carcassonne",
@@ -149,6 +154,11 @@
     "value": "De Koerier",
     "source": "manual"
   },
+  "expansion.the-courier-description": {
+    "en": "A letter tile calls the neutral Courier. Place a meeple on or next to his tile and he brings you thanks: score all unfinished features with meeples around him.",
+    "value": "Een tegel met brief roept de neutrale koerier. Zet een meeple op of naast zijn tegel en hij bedankt je: tel alle onvoltooide gebieden met meeples rondom hem.",
+    "source": "manual"
+  },
   "expansion.the-kingdoms": {
     "en": "The Kingdoms",
     "value": "Koninkrijken",
@@ -157,6 +167,11 @@
   "expansion.the-kingdoms-description": {
     "en": "Each player has a Kingdom Palace in their colour. Instead of drawing, place it in a city with one of your followers to make it your capital. Once your capital is completed it becomes a kingdom: at the end, it scores 3 points for every completed city touching a field connected to it.",
     "value": "Elke speler heeft een Koninkrijkspaleis in zijn eigen kleur. In plaats van een tegel te trekken, leg je het aan een stad met een van je meeples: die wordt je hoofdstad. Zodra je hoofdstad af is, wordt ze een koninkrijk: aan het einde levert ze 3 punten op voor elke voltooide stad die grenst aan een weide die met de hoofdstad verbonden is.",
+    "source": "manual"
+  },
+  "expansion.village-life-description": {
+    "en": "Bushes end roads and split fields, matching flowers add +3 points, a donkey stops features on its tile from completing, and windmills score once surrounded.",
+    "value": "Struiken beëindigen wegen en delen weiden, bloemen in jouw kleur geven +3 punten, de ezel blokkeert voltooiing op zijn tegel en windmolens scoren als ze omringd zijn.",
     "source": "manual"
   },
   "game-setup.ai.not-available": {

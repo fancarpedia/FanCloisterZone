@@ -164,6 +164,11 @@
     "value": "Veiksmo kortelės",
     "source": "manual"
   },
+  "expansion.action-tiles-description": {
+    "en": "Eight tiles packed with official expansion features: flying machines, magic portals, dragons, mage and witch, towers, hills, vineyards, a bazaar and inns.",
+    "value": "Aštuonios kortelės su oficialių plėtinių objektais: skraidančios mašinos, magiški portalai, drakonai, burtininkas ir ragana, bokštai, kalvos, vynuogynai, turgus, užeigos.",
+    "source": "manual"
+  },
   "expansion.bards-of-carcassonne": {
     "en": "Bards of Carcassonne",
     "value": "Karkasono bardai",
@@ -214,6 +219,11 @@
     "value": "Kurjeris",
     "source": "manual"
   },
+  "expansion.the-courier-description": {
+    "en": "A letter tile calls the neutral Courier. Place a meeple on or next to his tile and he brings you thanks: score all unfinished features with meeples around him.",
+    "value": "Kortelė su laišku pašaukia neutralų kurjerį. Padėkite miplą ant jo kortelės ar šalia, ir jis padėkos: gausite taškų už neužbaigtus objektus su miplais aplink jį.",
+    "source": "manual"
+  },
   "expansion.the-kingdoms": {
     "en": "The Kingdoms",
     "value": "Karalystės",
@@ -227,6 +237,11 @@
   "expansion.under-the-big-top-c1": {
     "en": "Under The Big Top",
     "value": "Po dideliu stogu",
+    "source": "manual"
+  },
+  "expansion.village-life-description": {
+    "en": "Bushes end roads and split fields, matching flowers add +3 points, a donkey stops features on its tile from completing, and windmills score once surrounded.",
+    "value": "Krūmai užbaigia kelius ir dalija laukus, jūsų spalvos gėlės duoda +3 taškus, asilas neleidžia užbaigti objektų savo kortelėje, o apsupti vėjo malūnai pelno taškų.",
     "source": "manual"
   },
   "file.file-is-not-valid": {

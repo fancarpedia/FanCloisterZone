@@ -29,6 +29,11 @@
     "value": "Peces d'acció",
     "source": "manual"
   },
+  "expansion.action-tiles-description": {
+    "en": "Eight tiles packed with official expansion features: flying machines, magic portals, dragons, mage and witch, towers, hills, vineyards, a bazaar and inns.",
+    "value": "Vuit peces plenes d'elements d'expansions oficials: màquines voladores, portals màgics, dracs, mag i bruixa, torres, turons, vinyes, un basar i fondes.",
+    "source": "manual"
+  },
   "expansion.bards-of-carcassonne": {
     "en": "Bards of Carcassonne",
     "value": "Bards de Carcassona",
@@ -49,6 +54,11 @@
     "value": "El missatger",
     "source": "manual"
   },
+  "expansion.the-courier-description": {
+    "en": "A letter tile calls the neutral Courier. Place a meeple on or next to his tile and he brings you thanks: score all unfinished features with meeples around him.",
+    "value": "Una peça amb carta crida el missatger neutral. Poseu un seguidor a la seva peça o al costat i us dona les gràcies: puntueu elements inacabats amb seguidors al voltant.",
+    "source": "manual"
+  },
   "expansion.the-kingdoms": {
     "en": "The Kingdoms",
     "value": "Regnes",
@@ -62,6 +72,11 @@
   "expansion.under-the-big-top-c1": {
     "en": "Under The Big Top",
     "value": "Sota la Gran Carpa",
+    "source": "manual"
+  },
+  "expansion.village-life-description": {
+    "en": "Bushes end roads and split fields, matching flowers add +3 points, a donkey stops features on its tile from completing, and windmills score once surrounded.",
+    "value": "Els matolls tanquen camins i divideixen camps, les flors del vostre color sumen +3 punts, l'ase impedeix completar elements a la seva peça i els molins puntuen envoltats.",
     "source": "manual"
   },
   "file.save-created-prior-version-is-not-supported": {

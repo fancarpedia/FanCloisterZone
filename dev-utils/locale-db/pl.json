@@ -124,6 +124,11 @@
     "value": "Płytki akcji",
     "source": "manual"
   },
+  "expansion.action-tiles-description": {
+    "en": "Eight tiles packed with official expansion features: flying machines, magic portals, dragons, mage and witch, towers, hills, vineyards, a bazaar and inns.",
+    "value": "Osiem płytek pełnych elementów z oficjalnych rozszerzeń: maszyny latające, magiczne ścieżki, smoki, mag i wiedźma, wieże, wzgórza, winiarnie, bazar i karczmy.",
+    "source": "manual"
+  },
   "expansion.bards-of-carcassonne": {
     "en": "Bards of Carcassonne",
     "value": "Bardowie z Carcassonne",
@@ -149,6 +154,11 @@
     "value": "Kurier",
     "source": "manual"
   },
+  "expansion.the-courier-description": {
+    "en": "A letter tile calls the neutral Courier. Place a meeple on or next to his tile and he brings you thanks: score all unfinished features with meeples around him.",
+    "value": "Płytka z listem przywołuje neutralnego kuriera. Postaw podwładnego na jego płytce lub obok, a on ci podziękuje: liczysz nieukończone obszary z podwładnymi wokół niego.",
+    "source": "manual"
+  },
   "expansion.the-kingdoms": {
     "en": "The Kingdoms",
     "value": "Królestwa",
@@ -157,6 +167,11 @@
   "expansion.the-kingdoms-description": {
     "en": "Each player has a Kingdom Palace in their colour. Instead of drawing, place it in a city with one of your followers to make it your capital. Once your capital is completed it becomes a kingdom: at the end, it scores 3 points for every completed city touching a field connected to it.",
     "value": "Każdy gracz ma Pałac Królestwa w swoim kolorze. Zamiast losować płytkę, możesz dołożyć go do miasta, w którym stoi jeden z twoich podwładnych – miasto staje się twoją stolicą. Gdy stolica zostanie ukończona, staje się królestwem: na koniec gry zdobywa 3 punkty za każde ukończone miasto stykające się z polem połączonym ze stolicą.",
+    "source": "manual"
+  },
+  "expansion.village-life-description": {
+    "en": "Bushes end roads and split fields, matching flowers add +3 points, a donkey stops features on its tile from completing, and windmills score once surrounded.",
+    "value": "Krzaki kończą drogi i dzielą pola, kwiaty twojego koloru dają +3 punkty, osioł blokuje ukończenie obszarów na swojej płytce, a otoczone wiatraki dają punkty.",
     "source": "manual"
   },
   "game-setup.ai.not-available": {

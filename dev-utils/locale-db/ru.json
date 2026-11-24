@@ -124,6 +124,11 @@
     "value": "Тайлы действий",
     "source": "manual"
   },
+  "expansion.action-tiles-description": {
+    "en": "Eight tiles packed with official expansion features: flying machines, magic portals, dragons, mage and witch, towers, hills, vineyards, a bazaar and inns.",
+    "value": "Восемь тайлов, полных элементов официальных дополнений: летательные аппараты, магические порталы, драконы, маг и ведьма, башни, холмы, виноградники, базар и трактиры.",
+    "source": "manual"
+  },
   "expansion.bards-of-carcassonne": {
     "en": "Bards of Carcassonne",
     "value": "Барды Каркассона",
@@ -149,6 +154,11 @@
     "value": "Курьер",
     "source": "manual"
   },
+  "expansion.the-courier-description": {
+    "en": "A letter tile calls the neutral Courier. Place a meeple on or next to his tile and he brings you thanks: score all unfinished features with meeples around him.",
+    "value": "Тайл с письмом зовёт нейтрального курьера. Поставьте мипла на его тайл или рядом, и он вас поблагодарит: подсчитайте незавершённые объекты с миплами вокруг него.",
+    "source": "manual"
+  },
   "expansion.the-kingdoms": {
     "en": "The Kingdoms",
     "value": "Королевства",
@@ -157,6 +167,11 @@
   "expansion.the-kingdoms-description": {
     "en": "Each player has a Kingdom Palace in their colour. Instead of drawing, place it in a city with one of your followers to make it your capital. Once your capital is completed it becomes a kingdom: at the end, it scores 3 points for every completed city touching a field connected to it.",
     "value": "У каждого игрока есть Дворец королевства его цвета. Вместо того чтобы брать тайл, вы можете выложить его к городу с одним из ваших миплов — город станет вашей столицей. Когда столица завершена, она становится королевством: в конце игры она приносит 3 очка за каждый завершённый город, касающийся поля, связанного с ней.",
+    "source": "manual"
+  },
+  "expansion.village-life-description": {
+    "en": "Bushes end roads and split fields, matching flowers add +3 points, a donkey stops features on its tile from completing, and windmills score once surrounded.",
+    "value": "Кусты завершают дороги и делят поля, цветы вашего цвета дают +3 очка, осёл не даёт завершить объекты на своём тайле, а окружённые мельницы приносят очки.",
     "source": "manual"
   },
   "game-setup.ai.not-available": {

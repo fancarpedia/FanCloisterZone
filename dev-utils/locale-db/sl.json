@@ -124,6 +124,11 @@
     "value": "Akcijske ploščice",
     "source": "manual"
   },
+  "expansion.action-tiles-description": {
+    "en": "Eight tiles packed with official expansion features: flying machines, magic portals, dragons, mage and witch, towers, hills, vineyards, a bazaar and inns.",
+    "value": "Osem ploščic, polnih elementov uradnih razširitev: leteči stroji, čarobni portali, zmaji, čarovnik in čarovnica, stolpi, hribi, vinogradi, bazar in gostilne.",
+    "source": "manual"
+  },
   "expansion.bards-of-carcassonne": {
     "en": "Bards of Carcassonne",
     "value": "Bardi iz Carcassonna",
@@ -149,6 +154,11 @@
     "value": "Kurir",
     "source": "manual"
   },
+  "expansion.the-courier-description": {
+    "en": "A letter tile calls the neutral Courier. Place a meeple on or next to his tile and he brings you thanks: score all unfinished features with meeples around him.",
+    "value": "Ploščica s pismom pokliče nevtralnega kurirja. Postavi človečka na njegovo ploščico ali zraven in ti se zahvali: točkuj nedokončana območja s človečki okoli njega.",
+    "source": "manual"
+  },
   "expansion.the-kingdoms": {
     "en": "The Kingdoms",
     "value": "Kraljestva",
@@ -157,6 +167,11 @@
   "expansion.the-kingdoms-description": {
     "en": "Each player has a Kingdom Palace in their colour. Instead of drawing, place it in a city with one of your followers to make it your capital. Once your capital is completed it becomes a kingdom: at the end, it scores 3 points for every completed city touching a field connected to it.",
     "value": "Vsak igralec ima Palačo kraljestva v svoji barvi. Namesto da potegneš ploščico, jo lahko postaviš ob mesto z enim od svojih človečkov in ga narediš za svojo prestolnico. Ko je prestolnica dokončana, postane kraljestvo: na koncu igre prinese 3 točke za vsako dokončano mesto, ki se dotika polja, povezanega z njo.",
+    "source": "manual"
+  },
+  "expansion.village-life-description": {
+    "en": "Bushes end roads and split fields, matching flowers add +3 points, a donkey stops features on its tile from completing, and windmills score once surrounded.",
+    "value": "Grmovje konča ceste in deli polja, rože tvoje barve dajo +3 točke, osel prepreči dokončanje območij na svoji ploščici, obkrožen mlin na veter pa prinese točke.",
     "source": "manual"
   },
   "game-setup.ai.not-available": {

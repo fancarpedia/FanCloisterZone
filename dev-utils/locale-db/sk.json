@@ -109,6 +109,11 @@
     "value": "Akčné kartičky",
     "source": "manual"
   },
+  "expansion.action-tiles-description": {
+    "en": "Eight tiles packed with official expansion features: flying machines, magic portals, dragons, mage and witch, towers, hills, vineyards, a bazaar and inns.",
+    "value": "Osem kartičiek plných prvkov oficiálnych rozšírení: lietacie stroje, tajné chodby, draky, mág a čarodejnica, veže, kopce, vinice, bazár a hostince.",
+    "source": "manual"
+  },
   "expansion.bards-of-carcassonne": {
     "en": "Bards of Carcassonne",
     "value": "Bardi z Carcassonne",
@@ -129,6 +134,11 @@
     "value": "Kuriér",
     "source": "manual"
   },
+  "expansion.the-courier-description": {
+    "en": "A letter tile calls the neutral Courier. Place a meeple on or next to his tile and he brings you thanks: score all unfinished features with meeples around him.",
+    "value": "Kartička s listom privolá neutrálneho kuriéra. Umiestnite spoločníka na jeho kartičku či vedľa a on vám poďakuje: získate body za nedokončené prvky so spoločníkmi okolo.",
+    "source": "manual"
+  },
   "expansion.the-kingdoms": {
     "en": "The Kingdoms",
     "value": "Kráľovstvá",
@@ -137,6 +147,11 @@
   "expansion.the-kingdoms-description": {
     "en": "Each player has a Kingdom Palace in their colour. Instead of drawing, place it in a city with one of your followers to make it your capital. Once your capital is completed it becomes a kingdom: at the end, it scores 3 points for every completed city touching a field connected to it.",
     "value": "Každý hráč má Palác kráľovstva vo svojej farbe. Namiesto ťahania kartičky ho môžete priložiť k mestu s jedným z vašich spoločníkov a urobiť z neho svoje hlavné mesto. Keď je hlavné mesto dokončené, stane sa kráľovstvom: na konci hry získa 3 body za každé dokončené mesto, ktoré susedí s lúkou spojenou s ním.",
+    "source": "manual"
+  },
+  "expansion.village-life-description": {
+    "en": "Bushes end roads and split fields, matching flowers add +3 points, a donkey stops features on its tile from completing, and windmills score once surrounded.",
+    "value": "Kríky ukončujú cesty a delia lúky, kvety vašej farby pridajú +3 body, somár bráni dokončeniu prvkov na svojej kartičke a veterné mlyny bodujú, keď sú obkolesené.",
     "source": "manual"
   },
   "game-setup.ai.not-available": {

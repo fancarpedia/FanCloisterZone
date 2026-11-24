@@ -124,6 +124,11 @@
     "value": "Aktionsplättchen",
     "source": "manual"
   },
+  "expansion.action-tiles-description": {
+    "en": "Eight tiles packed with official expansion features: flying machines, magic portals, dragons, mage and witch, towers, hills, vineyards, a bazaar and inns.",
+    "value": "Acht Plättchen voller Elemente offizieller Erweiterungen: Flugmaschinen, Zaubergänge, Drachen, Magier und Hexe, Türme, Hügel, Weinberge, ein Basar und Wirtshäuser.",
+    "source": "manual"
+  },
   "expansion.bards-of-carcassonne": {
     "en": "Bards of Carcassonne",
     "value": "Barden von Carcassonne",
@@ -149,6 +154,11 @@
     "value": "Der Bote",
     "source": "manual"
   },
+  "expansion.the-courier-description": {
+    "en": "A letter tile calls the neutral Courier. Place a meeple on or next to his tile and he brings you thanks: score all unfinished features with meeples around him.",
+    "value": "Ein Brief-Plättchen ruft den neutralen Boten. Setze einen Meeple auf sein Plättchen oder daneben, und er dankt dir: Werte alle unfertigen Gebiete mit Meeples um ihn.",
+    "source": "manual"
+  },
   "expansion.the-kingdoms": {
     "en": "The Kingdoms",
     "value": "Königreiche",
@@ -157,6 +167,11 @@
   "expansion.the-kingdoms-description": {
     "en": "Each player has a Kingdom Palace in their colour. Instead of drawing, place it in a city with one of your followers to make it your capital. Once your capital is completed it becomes a kingdom: at the end, it scores 3 points for every completed city touching a field connected to it.",
     "value": "Jeder Spieler hat einen Königreichspalast in seiner Farbe. Statt ein Plättchen zu ziehen, legst du ihn an eine Stadt mit einem deiner Meeple – sie wird deine Hauptstadt. Ist die Hauptstadt fertig, wird sie zum Königreich: Bei Spielende bringt sie 3 Punkte für jede fertige Stadt, die an eine mit ihr verbundene Wiese grenzt.",
+    "source": "manual"
+  },
+  "expansion.village-life-description": {
+    "en": "Bushes end roads and split fields, matching flowers add +3 points, a donkey stops features on its tile from completing, and windmills score once surrounded.",
+    "value": "Büsche beenden Straßen und teilen Wiesen, passende Blumen bringen +3 Punkte, der Esel verhindert Fertigstellungen auf seinem Plättchen, Windmühlen punkten umbaut.",
     "source": "manual"
   },
   "game-setup.ai.not-available": {

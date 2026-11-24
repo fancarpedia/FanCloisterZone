@@ -109,6 +109,11 @@
     "value": "Akční kartičky",
     "source": "manual"
   },
+  "expansion.action-tiles-description": {
+    "en": "Eight tiles packed with official expansion features: flying machines, magic portals, dragons, mage and witch, towers, hills, vineyards, a bazaar and inns.",
+    "value": "Osm kartiček plných prvků oficiálních rozšíření: létající stroje, tajné chodby, draci, mág a čarodějnice, věže, kopce, vinice, bazar a hostince.",
+    "source": "manual"
+  },
   "expansion.bards-of-carcassonne": {
     "en": "Bards of Carcassonne",
     "value": "Bardi z Carcassonne",
@@ -129,6 +134,11 @@
     "value": "Kurýr",
     "source": "manual"
   },
+  "expansion.the-courier-description": {
+    "en": "A letter tile calls the neutral Courier. Place a meeple on or next to his tile and he brings you thanks: score all unfinished features with meeples around him.",
+    "value": "Kartička s dopisem přivolá neutrálního kurýra. Umístěte družiníka na jeho kartičku nebo vedle ní a on vám poděkuje: získáte body za nedokončené prvky s družiníky kolem.",
+    "source": "manual"
+  },
   "expansion.the-kingdoms": {
     "en": "The Kingdoms",
     "value": "Království",
@@ -137,6 +147,11 @@
   "expansion.the-kingdoms-description": {
     "en": "Each player has a Kingdom Palace in their colour. Instead of drawing, place it in a city with one of your followers to make it your capital. Once your capital is completed it becomes a kingdom: at the end, it scores 3 points for every completed city touching a field connected to it.",
     "value": "Každý hráč má Palác království ve své barvě. Místo tažení kartičky ho můžete přiložit k městu s jedním z vašich družiníků a udělat z něj své hlavní město. Jakmile je hlavní město dokončené, stane se královstvím: na konci hry získá 3 body za každé dokončené město, které sousedí s loukou spojenou s ním.",
+    "source": "manual"
+  },
+  "expansion.village-life-description": {
+    "en": "Bushes end roads and split fields, matching flowers add +3 points, a donkey stops features on its tile from completing, and windmills score once surrounded.",
+    "value": "Keře ukončují cesty a dělí louky, květiny vaší barvy přidají +3 body, osel brání dokončení prvků na své kartičce a větrné mlýny bodují, když jsou obklopené.",
     "source": "manual"
   },
   "game-setup.ai.not-available": {

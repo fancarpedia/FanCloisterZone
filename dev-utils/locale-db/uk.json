@@ -674,6 +674,11 @@
     "value": "Плитки дій",
     "source": "manual"
   },
+  "expansion.action-tiles-description": {
+    "en": "Eight tiles packed with official expansion features: flying machines, magic portals, dragons, mage and witch, towers, hills, vineyards, a bazaar and inns.",
+    "value": "Вісім плиток, повних елементів офіційних доповнень: літальні машини, магічні портали, дракони, чарівник і чаклунка, вежі, пагорби, виноградники, базар і таверни.",
+    "source": "manual"
+  },
   "expansion.bards-of-carcassonne": {
     "en": "Bards of Carcassonne",
     "value": "Барди Каркассона",
@@ -984,6 +989,11 @@
     "value": "Кур'єр",
     "source": "manual"
   },
+  "expansion.the-courier-description": {
+    "en": "A letter tile calls the neutral Courier. Place a meeple on or next to his tile and he brings you thanks: score all unfinished features with meeples around him.",
+    "value": "Плитка з листом кличе нейтрального кур'єра. Поставте підданця на його плитку чи поруч, і він подякує: рахуйте незавершені об'єкти з підданцями навколо нього.",
+    "source": "manual"
+  },
   "expansion.the-flying-machines-2": {
     "en": "Flying Machines 2",
     "value": "Літальні машини 2",
@@ -1047,6 +1057,11 @@
   "expansion.village-life": {
     "en": "Village Life",
     "value": "Життя села",
+    "source": "manual"
+  },
+  "expansion.village-life-description": {
+    "en": "Bushes end roads and split fields, matching flowers add +3 points, a donkey stops features on its tile from completing, and windmills score once surrounded.",
+    "value": "Кущі завершують дороги й ділять поля, квіти вашого кольору дають +3 очки, віслюк не дає завершити об'єкти на своїй плитці, а оточені вітряки приносять очки.",
     "source": "manual"
   },
   "expansion.watchtowers": {

@@ -29,6 +29,11 @@
     "value": "Cartonașe de acțiune",
     "source": "manual"
   },
+  "expansion.action-tiles-description": {
+    "en": "Eight tiles packed with official expansion features: flying machines, magic portals, dragons, mage and witch, towers, hills, vineyards, a bazaar and inns.",
+    "value": "Opt cartonașe pline de elemente din extensiile oficiale: aparate de zbor, coridoare fermecate, dragoni, magician și vrăjitoare, turnuri, dealuri, vii, un bazar și hanuri.",
+    "source": "manual"
+  },
   "expansion.bards-of-carcassonne": {
     "en": "Bards of Carcassonne",
     "value": "Barzii din Carcassonne",
@@ -49,6 +54,11 @@
     "value": "Curierul",
     "source": "manual"
   },
+  "expansion.the-courier-description": {
+    "en": "A letter tile calls the neutral Courier. Place a meeple on or next to his tile and he brings you thanks: score all unfinished features with meeples around him.",
+    "value": "Un cartonaș cu scrisoare cheamă curierul neutru. Pune un meeple pe cartonașul lui sau lângă și îți mulțumește: punctezi elementele neterminate cu meeple în jurul lui.",
+    "source": "manual"
+  },
   "expansion.the-kingdoms": {
     "en": "The Kingdoms",
     "value": "Regate",
@@ -57,6 +67,11 @@
   "expansion.the-kingdoms-description": {
     "en": "Each player has a Kingdom Palace in their colour. Instead of drawing, place it in a city with one of your followers to make it your capital. Once your capital is completed it becomes a kingdom: at the end, it scores 3 points for every completed city touching a field connected to it.",
     "value": "Fiecare jucător are un palat de regat în culoarea sa. În loc de a trage, plasează-l într-un oraș cu unul dintre supușii tăi pentru a îl face capitala ta. Odată ce capitala ta este finalizată devine un regat: la sfârșit, aduce 3 puncte pentru fiecare oraș finalizat ce se atinge de un câmp conectat la el.",
+    "source": "manual"
+  },
+  "expansion.village-life-description": {
+    "en": "Bushes end roads and split fields, matching flowers add +3 points, a donkey stops features on its tile from completing, and windmills score once surrounded.",
+    "value": "Tufișurile închid drumuri și împart câmpuri, florile culorii tale dau +3 puncte, măgarul blochează finalizarea pe cartonașul lui, iar morile înconjurate aduc puncte.",
     "source": "manual"
   },
   "game-setup.ai.not-available": {
