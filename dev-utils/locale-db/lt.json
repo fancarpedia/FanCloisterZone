@@ -205,8 +205,8 @@
     "source": "manual"
   },
   "expansion.kingdoms-description": {
-    "en": "Each player has a Kingdom Palace in their colour. Instead of drawing, place it in a city with one of your followers to make it your capital. Once your capital is completed it becomes a kingdom: at the end, it scores 3 points for every completed city touching a field connected to it.",
-    "value": "Kiekvienas žaidėjas turi savo spalvos Karalystės rūmus. Užuot traukę kortelę, galite juos padėti prie miesto, kuriame yra vienas iš jūsų miplų, ir paversti jį savo sostine. Kai sostinė užbaigiama, ji tampa karalyste: žaidimo pabaigoje ji pelno 3 taškus už kiekvieną užbaigtą miestą, besiliečiantį su lauku, sujungtu su ja.",
+    "en": "Place your Kingdom Palace in a city with your meeple. Completed, it becomes a capital city of your kingdom: 3 points per completed city touching its fields.",
+    "value": "Padėkite Karalystės rūmus į miestą su savo miplu. Užbaigtas jis tampa jūsų karalystės sostine: 3 taškai už kiekvieną užbaigtą miestą, besiliečiantį su jo laukais.",
     "source": "manual"
   },
   "expansion.start": {
@@ -230,8 +230,8 @@
     "source": "manual"
   },
   "expansion.the-kingdoms-description": {
-    "en": "Each player has a Kingdom Palace in their colour. Instead of drawing, place it in a city with one of your followers to make it your capital. Once your capital is completed it becomes a kingdom: at the end, it scores 3 points for every completed city touching a field connected to it.",
-    "value": "Kiekvienas žaidėjas turi savo spalvos Karalystės rūmus. Užuot traukę kortelę, galite juos padėti prie miesto, kuriame yra vienas iš jūsų miplų, ir paversti jį savo sostine. Kai sostinė užbaigiama, ji tampa karalyste: žaidimo pabaigoje ji pelno 3 taškus už kiekvieną užbaigtą miestą, besiliečiantį su lauku, sujungtu su ja.",
+    "en": "Place your Kingdom Palace in a city with your meeple. Completed, it becomes a capital city of your kingdom: 3 points per completed city touching its fields.",
+    "value": "Padėkite Karalystės rūmus į miestą su savo miplu. Užbaigtas jis tampa jūsų karalystės sostine: 3 taškai už kiekvieną užbaigtą miestą, besiliečiantį su jo laukais.",
     "source": "manual"
   },
   "expansion.under-the-big-top-c1": {

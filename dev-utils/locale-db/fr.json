@@ -45,8 +45,8 @@
     "source": "manual"
   },
   "expansion.kingdoms-description": {
-    "en": "Each player has a Kingdom Palace in their colour. Instead of drawing, place it in a city with one of your followers to make it your capital. Once your capital is completed it becomes a kingdom: at the end, it scores 3 points for every completed city touching a field connected to it.",
-    "value": "Chaque joueur possède un Palais du Royaume de sa couleur. Au lieu de piocher une tuile, placez-le dans une ville où se trouve l'un de vos meeples : elle devient votre capitale. Une fois la capitale achevée, elle devient un royaume : en fin de partie, elle rapporte 3 points pour chaque ville achevée touchant un pré relié à elle.",
+    "en": "Place your Kingdom Palace in a city with your meeple. Completed, it becomes a capital city of your kingdom: 3 points per completed city touching its fields.",
+    "value": "Placez votre Palais du Royaume dans une ville avec votre meeple. Achevée, elle devient la capitale de votre royaume : 3 points par ville achevée touchant ses prés.",
     "source": "manual"
   },
   "expansion.the-courier": {
@@ -65,8 +65,8 @@
     "source": "manual"
   },
   "expansion.the-kingdoms-description": {
-    "en": "Each player has a Kingdom Palace in their colour. Instead of drawing, place it in a city with one of your followers to make it your capital. Once your capital is completed it becomes a kingdom: at the end, it scores 3 points for every completed city touching a field connected to it.",
-    "value": "Chaque joueur possède un Palais du Royaume de sa couleur. Au lieu de piocher une tuile, placez-le dans une ville où se trouve l'un de vos meeples : elle devient votre capitale. Une fois la capitale achevée, elle devient un royaume : en fin de partie, elle rapporte 3 points pour chaque ville achevée touchant un pré relié à elle.",
+    "en": "Place your Kingdom Palace in a city with your meeple. Completed, it becomes a capital city of your kingdom: 3 points per completed city touching its fields.",
+    "value": "Placez votre Palais du Royaume dans une ville avec votre meeple. Achevée, elle devient la capitale de votre royaume : 3 points par ville achevée touchant ses prés.",
     "source": "manual"
   },
   "expansion.village-life-description": {

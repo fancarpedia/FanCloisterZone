@@ -895,8 +895,8 @@
     "source": "manual"
   },
   "expansion.kingdoms-description": {
-    "en": "Each player has a Kingdom Palace in their colour. Instead of drawing, place it in a city with one of your followers to make it your capital. Once your capital is completed it becomes a kingdom: at the end, it scores 3 points for every completed city touching a field connected to it.",
-    "value": "Кожен гравець має Палац королівства свого кольору. Замість того щоб тягнути плитку, ви можете викласти його до міста з одним із ваших підданців — місто стане вашою столицею. Щойно столицю завершено, вона стає королівством: наприкінці гри вона приносить 3 очки за кожне завершене місто, що торкається поля, з'єднаного з нею.",
+    "en": "Place your Kingdom Palace in a city with your meeple. Completed, it becomes a capital city of your kingdom: 3 points per completed city touching its fields.",
+    "value": "Викладіть свій Палац королівства до міста зі своїм підданцем. Завершене, воно стає столицею вашого королівства: 3 очки за кожне завершене місто біля його полів.",
     "source": "manual"
   },
   "expansion.labyrinth": {
@@ -1010,8 +1010,8 @@
     "source": "manual"
   },
   "expansion.the-kingdoms-description": {
-    "en": "Each player has a Kingdom Palace in their colour. Instead of drawing, place it in a city with one of your followers to make it your capital. Once your capital is completed it becomes a kingdom: at the end, it scores 3 points for every completed city touching a field connected to it.",
-    "value": "Кожен гравець має Палац королівства свого кольору. Замість того щоб тягнути плитку, ви можете викласти його до міста з одним із ваших підданців — місто стане вашою столицею. Щойно столицю завершено, вона стає королівством: наприкінці гри вона приносить 3 очки за кожне завершене місто, що торкається поля, з'єднаного з нею.",
+    "en": "Place your Kingdom Palace in a city with your meeple. Completed, it becomes a capital city of your kingdom: 3 points per completed city touching its fields.",
+    "value": "Викладіть свій Палац королівства до міста зі своїм підданцем. Завершене, воно стає столицею вашого королівства: 3 очки за кожне завершене місто біля його полів.",
     "source": "manual"
   },
   "expansion.the-labyrinths": {

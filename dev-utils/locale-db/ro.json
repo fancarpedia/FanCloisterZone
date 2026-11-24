@@ -45,8 +45,8 @@
     "source": "manual"
   },
   "expansion.kingdoms-description": {
-    "en": "Each player has a Kingdom Palace in their colour. Instead of drawing, place it in a city with one of your followers to make it your capital. Once your capital is completed it becomes a kingdom: at the end, it scores 3 points for every completed city touching a field connected to it.",
-    "value": "Fiecare jucător are un Palat al regatului în culoarea sa. În loc de a trage, plasează-l într-un oraș cu unul dintre supușii tăi pentru a îl face capitala ta. Odată ce capitala ta este finalizată devine un regat: la sfârșit, aduce 3 puncte pentru fiecare oraș finalizat ce se atinge de un câmp conectat la el.",
+    "en": "Place your Kingdom Palace in a city with your meeple. Completed, it becomes a capital city of your kingdom: 3 points per completed city touching its fields.",
+    "value": "Plasează palatul de regat într-un oraș cu meeple-ul tău. Finalizat, devine capitala regatului tău: 3 puncte pentru fiecare oraș finalizat ce atinge câmpurile sale.",
     "source": "manual"
   },
   "expansion.the-courier": {
@@ -65,8 +65,8 @@
     "source": "manual"
   },
   "expansion.the-kingdoms-description": {
-    "en": "Each player has a Kingdom Palace in their colour. Instead of drawing, place it in a city with one of your followers to make it your capital. Once your capital is completed it becomes a kingdom: at the end, it scores 3 points for every completed city touching a field connected to it.",
-    "value": "Fiecare jucător are un palat de regat în culoarea sa. În loc de a trage, plasează-l într-un oraș cu unul dintre supușii tăi pentru a îl face capitala ta. Odată ce capitala ta este finalizată devine un regat: la sfârșit, aduce 3 puncte pentru fiecare oraș finalizat ce se atinge de un câmp conectat la el.",
+    "en": "Place your Kingdom Palace in a city with your meeple. Completed, it becomes a capital city of your kingdom: 3 points per completed city touching its fields.",
+    "value": "Plasează palatul de regat într-un oraș cu meeple-ul tău. Finalizat, devine capitala regatului tău: 3 puncte pentru fiecare oraș finalizat ce atinge câmpurile sale.",
     "source": "manual"
   },
   "expansion.village-life-description": {

@@ -140,8 +140,8 @@
     "source": "manual"
   },
   "expansion.kingdoms-description": {
-    "en": "Each player has a Kingdom Palace in their colour. Instead of drawing, place it in a city with one of your followers to make it your capital. Once your capital is completed it becomes a kingdom: at the end, it scores 3 points for every completed city touching a field connected to it.",
-    "value": "У каждого игрока есть Дворец королевства его цвета. Вместо того чтобы брать тайл, вы можете выложить его к городу с одним из ваших миплов — город станет вашей столицей. Когда столица завершена, она становится королевством: в конце игры она приносит 3 очка за каждый завершённый город, касающийся поля, связанного с ней.",
+    "en": "Place your Kingdom Palace in a city with your meeple. Completed, it becomes a capital city of your kingdom: 3 points per completed city touching its fields.",
+    "value": "Выложите свой Дворец королевства в город со своим миплом. Завершённый, он становится столицей вашего королевства: 3 очка за каждый завершённый город у его полей.",
     "source": "manual"
   },
   "expansion.start": {
@@ -165,8 +165,8 @@
     "source": "manual"
   },
   "expansion.the-kingdoms-description": {
-    "en": "Each player has a Kingdom Palace in their colour. Instead of drawing, place it in a city with one of your followers to make it your capital. Once your capital is completed it becomes a kingdom: at the end, it scores 3 points for every completed city touching a field connected to it.",
-    "value": "У каждого игрока есть Дворец королевства его цвета. Вместо того чтобы брать тайл, вы можете выложить его к городу с одним из ваших миплов — город станет вашей столицей. Когда столица завершена, она становится королевством: в конце игры она приносит 3 очка за каждый завершённый город, касающийся поля, связанного с ней.",
+    "en": "Place your Kingdom Palace in a city with your meeple. Completed, it becomes a capital city of your kingdom: 3 points per completed city touching its fields.",
+    "value": "Выложите свой Дворец королевства в город со своим миплом. Завершённый, он становится столицей вашего королевства: 3 очка за каждый завершённый город у его полей.",
     "source": "manual"
   },
   "expansion.village-life-description": {

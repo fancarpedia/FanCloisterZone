@@ -140,8 +140,8 @@
     "source": "manual"
   },
   "expansion.kingdoms-description": {
-    "en": "Each player has a Kingdom Palace in their colour. Instead of drawing, place it in a city with one of your followers to make it your capital. Once your capital is completed it becomes a kingdom: at the end, it scores 3 points for every completed city touching a field connected to it.",
-    "value": "Elke speler heeft een Koninkrijkspaleis in zijn eigen kleur. In plaats van een tegel te trekken, leg je het aan een stad met een van je meeples: die wordt je hoofdstad. Zodra je hoofdstad af is, wordt ze een koninkrijk: aan het einde levert ze 3 punten op voor elke voltooide stad die grenst aan een weide die met de hoofdstad verbonden is.",
+    "en": "Place your Kingdom Palace in a city with your meeple. Completed, it becomes a capital city of your kingdom: 3 points per completed city touching its fields.",
+    "value": "Leg je Koninkrijkspaleis in een stad met je meeple. Voltooid wordt ze de hoofdstad van je koninkrijk: 3 punten per voltooide stad die aan haar weiden grenst.",
     "source": "manual"
   },
   "expansion.start": {
@@ -165,8 +165,8 @@
     "source": "manual"
   },
   "expansion.the-kingdoms-description": {
-    "en": "Each player has a Kingdom Palace in their colour. Instead of drawing, place it in a city with one of your followers to make it your capital. Once your capital is completed it becomes a kingdom: at the end, it scores 3 points for every completed city touching a field connected to it.",
-    "value": "Elke speler heeft een Koninkrijkspaleis in zijn eigen kleur. In plaats van een tegel te trekken, leg je het aan een stad met een van je meeples: die wordt je hoofdstad. Zodra je hoofdstad af is, wordt ze een koninkrijk: aan het einde levert ze 3 punten op voor elke voltooide stad die grenst aan een weide die met de hoofdstad verbonden is.",
+    "en": "Place your Kingdom Palace in a city with your meeple. Completed, it becomes a capital city of your kingdom: 3 points per completed city touching its fields.",
+    "value": "Leg je Koninkrijkspaleis in een stad met je meeple. Voltooid wordt ze de hoofdstad van je koninkrijk: 3 punten per voltooide stad die aan haar weiden grenst.",
     "source": "manual"
   },
   "expansion.village-life-description": {

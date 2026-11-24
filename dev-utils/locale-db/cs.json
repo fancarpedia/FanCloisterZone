@@ -125,8 +125,8 @@
     "source": "manual"
   },
   "expansion.kingdoms-description": {
-    "en": "Each player has a Kingdom Palace in their colour. Instead of drawing, place it in a city with one of your followers to make it your capital. Once your capital is completed it becomes a kingdom: at the end, it scores 3 points for every completed city touching a field connected to it.",
-    "value": "Každý hráč má Palác království ve své barvě. Místo tažení kartičky ho můžete přiložit k městu s jedním z vašich družiníků a udělat z něj své hlavní město. Jakmile je hlavní město dokončené, stane se královstvím: na konci hry získá 3 body za každé dokončené město, které sousedí s loukou spojenou s ním.",
+    "en": "Place your Kingdom Palace in a city with your meeple. Completed, it becomes a capital city of your kingdom: 3 points per completed city touching its fields.",
+    "value": "Přiložte svůj Palác království k městu se svým družiníkem. Dokončené se stane hlavním městem vašeho království: 3 body za dokončené město sousedící s jeho loukami.",
     "source": "manual"
   },
   "expansion.the-courier": {
@@ -145,8 +145,8 @@
     "source": "manual"
   },
   "expansion.the-kingdoms-description": {
-    "en": "Each player has a Kingdom Palace in their colour. Instead of drawing, place it in a city with one of your followers to make it your capital. Once your capital is completed it becomes a kingdom: at the end, it scores 3 points for every completed city touching a field connected to it.",
-    "value": "Každý hráč má Palác království ve své barvě. Místo tažení kartičky ho můžete přiložit k městu s jedním z vašich družiníků a udělat z něj své hlavní město. Jakmile je hlavní město dokončené, stane se královstvím: na konci hry získá 3 body za každé dokončené město, které sousedí s loukou spojenou s ním.",
+    "en": "Place your Kingdom Palace in a city with your meeple. Completed, it becomes a capital city of your kingdom: 3 points per completed city touching its fields.",
+    "value": "Přiložte svůj Palác království k městu se svým družiníkem. Dokončené se stane hlavním městem vašeho království: 3 body za dokončené město sousedící s jeho loukami.",
     "source": "manual"
   },
   "expansion.village-life-description": {

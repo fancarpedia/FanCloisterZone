@@ -140,8 +140,8 @@
     "source": "manual"
   },
   "expansion.kingdoms-description": {
-    "en": "Each player has a Kingdom Palace in their colour. Instead of drawing, place it in a city with one of your followers to make it your capital. Once your capital is completed it becomes a kingdom: at the end, it scores 3 points for every completed city touching a field connected to it.",
-    "value": "Vsak igralec ima Palačo kraljestva v svoji barvi. Namesto da potegneš ploščico, jo lahko postaviš ob mesto z enim od svojih človečkov in ga narediš za svojo prestolnico. Ko je prestolnica dokončana, postane kraljestvo: na koncu igre prinese 3 točke za vsako dokončano mesto, ki se dotika polja, povezanega z njo.",
+    "en": "Place your Kingdom Palace in a city with your meeple. Completed, it becomes a capital city of your kingdom: 3 points per completed city touching its fields.",
+    "value": "Postavi svojo Palačo kraljestva v mesto s svojim človečkom. Dokončano postane prestolnica tvojega kraljestva: 3 točke za vsako dokončano mesto ob njegovih poljih.",
     "source": "manual"
   },
   "expansion.start": {
@@ -165,8 +165,8 @@
     "source": "manual"
   },
   "expansion.the-kingdoms-description": {
-    "en": "Each player has a Kingdom Palace in their colour. Instead of drawing, place it in a city with one of your followers to make it your capital. Once your capital is completed it becomes a kingdom: at the end, it scores 3 points for every completed city touching a field connected to it.",
-    "value": "Vsak igralec ima Palačo kraljestva v svoji barvi. Namesto da potegneš ploščico, jo lahko postaviš ob mesto z enim od svojih človečkov in ga narediš za svojo prestolnico. Ko je prestolnica dokončana, postane kraljestvo: na koncu igre prinese 3 točke za vsako dokončano mesto, ki se dotika polja, povezanega z njo.",
+    "en": "Place your Kingdom Palace in a city with your meeple. Completed, it becomes a capital city of your kingdom: 3 points per completed city touching its fields.",
+    "value": "Postavi svojo Palačo kraljestva v mesto s svojim človečkom. Dokončano postane prestolnica tvojega kraljestva: 3 točke za vsako dokončano mesto ob njegovih poljih.",
     "source": "manual"
   },
   "expansion.village-life-description": {
