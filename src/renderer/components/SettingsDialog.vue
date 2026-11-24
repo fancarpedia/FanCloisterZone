@@ -1,9 +1,11 @@
 <template>
-  <v-card class="d-flex flex-column">
+  <!-- title, menu and Close stay in place; only the section content scrolls (a long section used
+       to scroll the whole dialog, taking the menu away and hiding Close below the fold) -->
+  <v-card class="settings-card d-flex flex-column">
     <v-card-title class="headline">{{ $t('settings.title') }}</v-card-title>
-    <v-card-text class="flex-grow-1">
-      <div class="d-flex">
-        <v-list class="flex-shrink-0">
+    <v-card-text class="settings-body flex-grow-1">
+      <div class="settings-columns d-flex">
+        <v-list class="settings-menu flex-shrink-0">
           <!-- explicit :value so hiding items (web build) doesn't renumber the sections -->
           <v-list-item-group v-model="section" mandatory>
             <v-list-item :value="0">
@@ -70,6 +72,38 @@ export default {
 </script>
 
 <style lang="sass">
+// the dialog (content-class settings-dialog, 80vh, layouts/default.vue) never scrolls itself
+.settings-dialog
+  overflow: hidden
+
+.settings-card
+  height: 100%
+  overflow: hidden
+
+  .v-card__title, .v-card__actions
+    flex: 0 0 auto
+
+  // min-height 0 lets the flex children shrink below their content, so they scroll instead
+  .settings-body
+    min-height: 0
+    overflow: hidden
+    display: flex
+
+  .settings-columns
+    flex: 1 1 auto
+    min-height: 0
+    width: 100%
+
+  // the menu: always visible, scrolls on its own only if it is ever taller than the dialog
+  .settings-menu
+    max-height: 100%
+    overflow-y: auto
+
+  // the only part that scrolls with the section content
+  .settings-dialog-content
+    min-height: 0
+    overflow-y: auto
+
 .settings-dialog-content
   .v-list
     width: 160px

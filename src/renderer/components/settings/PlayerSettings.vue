@@ -1,6 +1,5 @@
 <template>
   <div>
-    <h3 class="mt-2 mb-4">{{ $t('settings.player.title') }}</h3>
 
     <h4>{{ $t('settings.player.nickname') }}</h4>
     <em>{{ $t('settings.player.nickname-description') }}</em>

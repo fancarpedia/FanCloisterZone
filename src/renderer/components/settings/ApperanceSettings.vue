@@ -1,6 +1,5 @@
 <template>
   <div>
-    <h3 class="mt-2 mb-4">{{ $t('settings.appearance.title') }}</h3>
 
     <h4>{{ $t('settings.appearance.theme') }}</h4>
     <v-radio-group

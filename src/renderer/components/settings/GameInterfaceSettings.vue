@@ -1,6 +1,5 @@
 <template>
   <div>
-    <h3 class="mt-2 mb-4">{{ $t('settings.game-interface.title') }}</h3>
     <h4>{{ $t('settings.game-interface.language') }}</h4>
     <v-select
       v-model="locale"

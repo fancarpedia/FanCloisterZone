@@ -1,6 +1,5 @@
 <template>
   <div>
-    <h3 class="mt-2 mb-4">{{ $t('settings.add-ons.title') }}</h3>
 
     <v-alert
       v-if="gameOpen"

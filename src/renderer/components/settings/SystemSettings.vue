@@ -1,6 +1,5 @@
 <template>
   <div>
-    <h3 class="mt-2 mb-4">{{ $t('settings.system.title') }}</h3>
 
     <h4>{{ $t('settings.system.app-channel') }}</h4>
     <v-select
