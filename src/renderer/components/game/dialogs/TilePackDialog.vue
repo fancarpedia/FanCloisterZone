@@ -15,15 +15,18 @@
       <template v-if="removedTiles.length">
         <h2>{{ $t('game.tile-pack-dialog.discarded-tiles') }}</h2>
         <div class="removed-tiles-list">
+          <!-- crossed out: a discarded tile is out of the game (the history marks it the same way,
+               in the same colour) -->
           <div
             v-for="(id, idx) in removedTiles"
             :key="idx"
-            class="tile"
+            class="tile discarded"
           >
             <StandaloneTileImage
               :tile-id="id"
               :size="100"
             />
+            <v-icon class="discarded-mark">fas fa-times</v-icon>
           </div>
         </div>
       </template>
@@ -109,6 +112,26 @@ h2
 
   svg
     margin: 0 2px
+
+  .tile.discarded
+    position: relative
+
+  // a big X over the whole tile
+  .discarded-mark
+    position: absolute
+    top: 50%
+    left: 50%
+    transform: translate(-50%, -50%)
+    font-size: 96px
+    pointer-events: none
+    opacity: 0.85
+    // a black border around the X, so it reads on light and dark tiles alike. Drop-shadows in four
+    // directions draw it OUTSIDE the glyph (-webkit-text-stroke would eat into the thin strokes,
+    // and paint-order for HTML text needs a newer Chromium than Electron 21's)
+    filter: drop-shadow(2px 0 0 #000) drop-shadow(-2px 0 0 #000) drop-shadow(0 2px 0 #000) drop-shadow(0 -2px 0 #000)
+
+    +theme using ($theme)
+      color: map-get($theme, 'removed-color')
 
 p
   text-align: center
