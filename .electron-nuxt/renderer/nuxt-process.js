@@ -1,3 +1,5 @@
+// a forked process: webpack 4 on Node 17+ needs MD4 -> SHA-256 here too, before nuxt loads
+require('../md4-to-sha256')
 const { Nuxt, Builder, Generator } = require('nuxt')
 const { SERVER_PORT } = require('../config')
 const nuxtConfig = require('./nuxt.config.js')

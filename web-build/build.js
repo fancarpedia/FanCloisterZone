@@ -10,6 +10,8 @@ process.env.BROWSERSLIST_IGNORE_OLD_DATA = '1'
 const fs = require('fs')
 const path = require('path')
 const crypto = require('crypto')
+// webpack 4 on Node 17+: MD4 -> SHA-256 (must run before nuxt / webpack are loaded)
+require('../.electron-nuxt/md4-to-sha256')
 const { Nuxt, Builder, Generator } = require('nuxt')
 
 const config = require('./nuxt.config.web.js')
