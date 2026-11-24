@@ -2,7 +2,7 @@
   "@author": "Snearone",
   "@jcz-version": "5.12.1",
   "@fcz-version": "7.3.0",
-  "@version": "0.14.3-ai",
+  "@version": "0.14.4-ai",
   "about": {
     "author": "Autor",
     "configuration-file": "Plik konfiguracyjny",
@@ -402,7 +402,8 @@
       "obelisk": "Obelisk",
       "phantom": "Świta",
       "pig": "Świnia",
-      "pre-draw": "Wcześniejsze dobranie",
+      "pre-draw": "Wariant strategiczny",
+      "pre-draw-old": "Wcześniejsze dobranie",
       "pre-draw-move": 1,
       "ringmaster": "Dyrektor cyrku",
       "robber": "Baron Rabusiów",

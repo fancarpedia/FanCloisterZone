@@ -2,7 +2,7 @@
   "@author": "Carlium & Meepledrone",
   "@jcz-version": "5.12.1",
   "@fcz-version": "7.3.0",
-  "@version": "0.14.3-ai",
+  "@version": "0.14.4-ai",
   "about": {
     "author": "Autor",
     "configuration-file": "Archivo de configuración",
@@ -402,7 +402,8 @@
       "obelisk": "Obelisco",
       "phantom": "Fantasma",
       "pig": "Cerdo",
-      "pre-draw": "Robo previo",
+      "pre-draw": "Variante estratégica",
+      "pre-draw-old": "Robo previo",
       "pre-draw-move": 1,
       "ringmaster": "Director de circo",
       "robber": "El Ladrón",

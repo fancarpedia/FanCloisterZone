@@ -710,6 +710,11 @@
     "source": "manual"
   },
   "game.element.pre-draw": {
+    "en": "Strategic Variant",
+    "value": "Strategická varianta",
+    "source": "manual"
+  },
+  "game.element.pre-draw-old": {
     "en": "Pre-draw",
     "value": "Předběžné tažení",
     "source": "manual"

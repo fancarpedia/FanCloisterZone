@@ -2,7 +2,7 @@
   "@author": "pOison & Dextea & SonicDC",
   "@jcz-version": "5.12.1",
   "@fcz-version": "7.3.0",
-  "@version": "0.14.3-ai",
+  "@version": "0.14.4-ai",
   "about": {
     "author": "Автор",
     "configuration-file": "Файл конфигурации",
@@ -402,7 +402,8 @@
       "obelisk": "Обелиск",
       "phantom": "Фантом",
       "pig": "Свинья",
-      "pre-draw": "Предварительный набор",
+      "pre-draw": "Стратегический вариант",
+      "pre-draw-old": "Предварительный набор",
       "pre-draw-move": 1,
       "ringmaster": "Ведущий цирка",
       "robber": "Грабитель-барон",

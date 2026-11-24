@@ -384,6 +384,11 @@
     "value": "Palais",
     "source": "manual"
   },
+  "game.element.pre-draw": {
+    "en": "Strategic Variant",
+    "value": "Variante stratégique",
+    "source": "manual"
+  },
   "game.feature.kingdom": {
     "en": "Kingdom",
     "value": "Royaume",

@@ -905,6 +905,11 @@
     "source": "manual"
   },
   "game.element.pre-draw": {
+    "en": "Strategic Variant",
+    "value": "Strateginis variantas",
+    "source": "manual"
+  },
+  "game.element.pre-draw-old": {
     "en": "Pre-draw",
     "value": "Išankstinis traukimas",
     "source": "manual"

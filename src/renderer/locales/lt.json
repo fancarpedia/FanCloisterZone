@@ -2,7 +2,7 @@
   "@author": "Stepukiss",
   "@jcz-version": "5.12.1",
   "@fcz-version": "7.3.0",
-  "@version": "0.14.3-ai",
+  "@version": "0.14.4-ai",
   "about": {
     "author": "Autorius",
     "configuration-file": "Nustatymų aplankas",
@@ -402,7 +402,8 @@
       "obelisk": "Obeliskas",
       "phantom": "Fantomas",
       "pig": "Kiaulė",
-      "pre-draw": "Išankstinis traukimas",
+      "pre-draw": "Strateginis variantas",
+      "pre-draw-old": "Išankstinis traukimas",
       "pre-draw-move": 1,
       "ringmaster": "Ringmeisteris",
       "robber": "Vagių Baronas",

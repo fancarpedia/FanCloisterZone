@@ -2,7 +2,7 @@
   "@author": "J0anJosep",
   "@jcz-version": "5.12.1",
   "@fcz-version": "7.3.0",
-  "@version": "0.14.3-ai",
+  "@version": "0.14.4-ai",
   "about": {
     "author": "Autor",
     "configuration-file": "Fitxer de configuració",
@@ -402,7 +402,8 @@
       "obelisk": "Obelisc",
       "phantom": "Fantasma",
       "pig": "Porc",
-      "pre-draw": "Agafada prèvia",
+      "pre-draw": "Variant estratègica",
+      "pre-draw-old": "Agafada prèvia",
       "pre-draw-move": 1,
       "ringmaster": "Mestre de cerimònies",
       "robber": "Lladre",

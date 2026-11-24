@@ -3005,6 +3005,11 @@
     "source": "manual"
   },
   "game.element.pre-draw": {
+    "en": "Strategic Variant",
+    "value": "Стратегічний варіант",
+    "source": "manual"
+  },
+  "game.element.pre-draw-old": {
     "en": "Pre-draw",
     "value": "Попереднє витягування",
     "source": "manual"

@@ -2,7 +2,7 @@
   "@author": "farin & Scott",
   "@jcz-version": "5.12.1",
   "@fcz-version": "7.3.0",
-  "@version": "0.14.3",
+  "@version": "0.14.4",
   "about": {
     "author": "Author",
     "configuration-file": "Configuration file",
@@ -401,7 +401,8 @@
       "obelisk": "Obelisk",
       "phantom": "Phantom",
       "pig": "Pig",
-      "pre-draw": "Pre-draw",
+      "pre-draw": "Strategic Variant",
+      "pre-draw-old": "Pre-draw",
 "pre-draw-move": 1,
       "ringmaster": "Ringmaster",
       "robber": "Robber Barron",

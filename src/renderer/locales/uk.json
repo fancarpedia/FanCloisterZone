@@ -2,7 +2,7 @@
   "@author": "ai",
   "@jcz-version": "5.12.1",
   "@fcz-version": "7.3.0",
-  "@version": "0.14.3-ai",
+  "@version": "0.14.4-ai",
   "about": {
     "author": "Автор",
     "configuration-file": "Файл конфігурації",
@@ -402,7 +402,8 @@
       "obelisk": "Обеліск",
       "phantom": "Фантом",
       "pig": "Свиня",
-      "pre-draw": "Попереднє витягування",
+      "pre-draw": "Стратегічний варіант",
+      "pre-draw-old": "Попереднє витягування",
       "pre-draw-move": 1,
       "ringmaster": "Директорка цирку",
       "robber": "Барон-розбійник",

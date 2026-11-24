@@ -620,6 +620,11 @@
     "source": "manual"
   },
   "game.element.pre-draw": {
+    "en": "Strategic Variant",
+    "value": "Variant estratègica",
+    "source": "manual"
+  },
+  "game.element.pre-draw-old": {
     "en": "Pre-draw",
     "value": "Agafada prèvia",
     "source": "manual"

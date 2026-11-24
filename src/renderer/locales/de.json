@@ -2,7 +2,7 @@
   "@author": "Challa007 & Bombur",
   "@jcz-version": "5.12.1",
   "@fcz-version": "7.3.0",
-  "@version": "0.14.3-ai",
+  "@version": "0.14.4-ai",
   "about": {
     "author": "Autor",
     "configuration-file": "Konfigurationsdatei",
@@ -402,7 +402,8 @@
       "obelisk": "Obelisk",
       "phantom": "Phantom",
       "pig": "Schwein",
-      "pre-draw": "Vorziehen",
+      "pre-draw": "Strategische Variante",
+      "pre-draw-old": "Vorziehen",
       "pre-draw-move": 1,
       "ringmaster": "Zirkusdirektor",
       "robber": "Raubritter-Karte",

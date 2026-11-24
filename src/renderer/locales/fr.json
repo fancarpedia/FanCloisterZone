@@ -2,7 +2,7 @@
   "@author": "Black Bear",
   "@jcz-version": "5.12.1",
   "@fcz-version": "7.3.0",
-  "@version": "0.14.3-ai",
+  "@version": "0.14.4-ai",
   "about": {
     "author": "Auteur",
     "configuration-file": "Fichier de configuration",
@@ -402,7 +402,8 @@
       "obelisk": "Obélisque",
       "phantom": "Fantôme",
       "pig": "Cochon",
-      "pre-draw": "Pioche préliminaire",
+      "pre-draw": "Variante stratégique",
+      "pre-draw-old": "Pioche préliminaire",
       "pre-draw-move": 1,
       "ringmaster": "Directeur de cirque",
       "robber": "Chevalier-brigand",

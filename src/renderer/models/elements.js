@@ -87,7 +87,7 @@ export const BARDS_LUTE = GameElement.BARDS_LUTE = new GameElement('bards-lute',
 // Variants
 // Pre-draw: private hand of up to N regular tiles (server-authoritative, online only).
 // See PREDRAW_RULES.md / PREDRAW_DESIGN.md in the engine repo.
-export const PRE_DRAW = GameElement.PRE_DRAW = new GameElement('pre-draw', 'Pre-draw hand', Number, { default: 0 })
+export const PRE_DRAW = GameElement.PRE_DRAW = new GameElement('pre-draw', 'Strategic Variant', Number, { default: 0 })
 
 // Keep Building: cooperative variant. Every turn the player must enlarge an occupied
 // completable feature or occupy a new one — otherwise the game ends and ALL players lose.

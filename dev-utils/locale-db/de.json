@@ -730,6 +730,11 @@
     "source": "manual"
   },
   "game.element.pre-draw": {
+    "en": "Strategic Variant",
+    "value": "Strategische Variante",
+    "source": "manual"
+  },
+  "game.element.pre-draw-old": {
     "en": "Pre-draw",
     "value": "Vorziehen",
     "source": "manual"

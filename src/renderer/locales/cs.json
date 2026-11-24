@@ -2,7 +2,7 @@
   "@author": "Peťul",
   "@jcz-version": "5.12.1",
   "@fcz-version": "7.3.0",
-  "@version": "0.14.3-ai",
+  "@version": "0.14.4-ai",
   "about": {
     "author": "Autor",
     "configuration-file": "Konfigurační soubor",
@@ -402,7 +402,8 @@
       "obelisk": "Obelisk",
       "phantom": "Fantom",
       "pig": "Prasátko",
-      "pre-draw": "Předběžné tažení",
+      "pre-draw": "Strategická varianta",
+      "pre-draw-old": "Předběžné tažení",
       "pre-draw-move": 1,
       "ringmaster": "Ředitel",
       "robber": "Loupeživý rytíř",

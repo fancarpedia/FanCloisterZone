@@ -239,6 +239,11 @@
     "value": "Palat",
     "source": "manual"
   },
+  "game.element.pre-draw": {
+    "en": "Strategic Variant",
+    "value": "Variantă strategică",
+    "source": "manual"
+  },
   "game.feature.kingdom": {
     "en": "Kingdom",
     "value": "Regat",
