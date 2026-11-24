@@ -6,7 +6,10 @@
 // 7.1.0-alpha.1 BEFORE 7.1.0: a bare '7.1.0' here would make this build refuse its own saves.
 // 7.2.0: the engine plays differently (supply tiles / TileFromSupplyPhase, Kingdom Palace, pre-draw,
 // Keep Building, rule fixes) — a 7.1 replay is no longer guaranteed to end in the same state.
-export const SAVED_GAME_COMPATIBILITY = '7.2.0-alpha.1'
+// 7.3.0: Watchtowers became an opt-out element (`watchtower`) — a 7.2 save never sets it, so its
+// replay would be played without Watchtowers on the 7.3 engine and end in a different state.
+// (The network protocol stays 7.2.0.)
+export const SAVED_GAME_COMPATIBILITY = '7.3.0-alpha.1'
 
 // The network protocol version. It is BOTH the current and the minimum accepted version: the
 // handshake compares it for exact equality (localServer.js), so a client only talks to a peer

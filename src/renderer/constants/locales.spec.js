@@ -104,9 +104,9 @@ describe('NETWORK_PROTOCOL_COMPATIBILITY', () => {
 // just written - semver puts 7.1.0-alpha.1 before 7.1.0, so a bare '7.1.0' here would do exactly
 // that. This guards the pairing as package.json moves on.
 describe('SAVED_GAME_COMPATIBILITY', () => {
-  it('is 7.2.0-alpha.1 - a 7.1 replay may end differently on the 7.2 engine', async () => {
+  it('is 7.3.0-alpha.1 - a 7.2 save has no watchtower element (opt-out since 7.3)', async () => {
     const { SAVED_GAME_COMPATIBILITY } = await import('@/constants/versions')
-    expect(SAVED_GAME_COMPATIBILITY).toBe('7.2.0-alpha.1')
+    expect(SAVED_GAME_COMPATIBILITY).toBe('7.3.0-alpha.1')
   })
 
   it('does not lock out saves written by this very build', async () => {
@@ -123,7 +123,7 @@ describe('SAVED_GAME_COMPATIBILITY', () => {
   it('still refuses saves from before the rotation protocol', async () => {
     const { SAVED_GAME_COMPATIBILITY } = await import('@/constants/versions')
     const { compare } = await import('compare-versions')
-    for (const old of ['6.2.1', '6.3.0', '7.0.0']) {
+    for (const old of ['6.2.1', '6.3.0', '7.0.0', '7.2.0']) {
       expect(compare(old, SAVED_GAME_COMPATIBILITY, '<')).toBe(true)
     }
   })
