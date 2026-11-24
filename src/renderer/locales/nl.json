@@ -2,7 +2,7 @@
   "@author": "Kiap1969 & Sinscerly",
   "@jcz-version": "5.12.1",
   "@fcz-version": "7.3.0",
-  "@version": "0.14.6-ai",
+  "@version": "0.14.7-ai",
   "about": {
     "author": "Auteur",
     "configuration-file": "Configuratiebestand",
@@ -207,7 +207,7 @@
     "inns-and-cathedrals": "Kathedralen & Herbergen",
     "king-and-robber": "Koning & Roofridder",
     "kingdoms": "Koninkrijken",
-    "kingdoms-description": "Elke speler heeft een Koninkrijkspaleis in zijn eigen kleur. In plaats van een tegel te trekken, leg je het aan een stad met een van je meeples: die wordt je hoofdstad. Zodra je hoofdstad af is, wordt ze een koninkrijk: aan het einde levert ze 3 punten op voor elke voltooide stad die grenst aan een weide die met de hoofdstad verbonden is.",
+    "kingdoms-description": "Leg je Koninkrijkspaleis in een stad met je meeple. Voltooid wordt ze de hoofdstad van je koninkrijk: 3 punten per voltooide stad die aan haar weiden grenst.",
     "labyrinth": "Het Doolhof",
     "mage-and-witch": "Tovenaar & Heks",
     "meteorites": "Meteorieten",

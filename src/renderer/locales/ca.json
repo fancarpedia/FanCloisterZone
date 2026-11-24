@@ -2,7 +2,7 @@
   "@author": "J0anJosep",
   "@jcz-version": "5.12.1",
   "@fcz-version": "7.3.0",
-  "@version": "0.14.6-ai",
+  "@version": "0.14.7-ai",
   "about": {
     "author": "Autor",
     "configuration-file": "Fitxer de configuració",
@@ -207,7 +207,7 @@
     "inns-and-cathedrals": "Fondes i catedrals",
     "king-and-robber": "El rei i el lladre",
     "kingdoms": "Regnes",
-    "kingdoms-description": "Cada jugador té un Palau del Regne del seu color. En lloc d'agafar una peça, col·loqueu-lo en una ciutat amb un dels vostres seguidors per convertir-la en la vostra capital. Quan la capital es completa, esdevé un regne: al final, puntua 3 punts per cada ciutat completada que toca un camp connectat amb ella.",
+    "kingdoms-description": "Poseu el vostre Palau del Regne en una ciutat amb el vostre seguidor. Completada, és la capital del vostre regne: 3 punts per ciutat completada que toca els seus camps.",
     "labyrinth": "El laberint",
     "mage-and-witch": "El mag i la bruixa",
     "meteorites": "Meteorits",

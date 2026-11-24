@@ -2,7 +2,7 @@
   "@author": "TileLord | Erol",
   "@jcz-version": "5.12.1",
   "@fcz-version": "7.3.0",
-  "@version": "0.14.6-ai",
+  "@version": "0.14.7-ai",
   "about": {
     "author": "Avtor",
     "configuration-file": "Konfiguracijska datoteka",
@@ -207,7 +207,7 @@
     "inns-and-cathedrals": "Gostilne & Katedrale",
     "king-and-robber": "Kralj & Razbojnik",
     "kingdoms": "Kraljestva",
-    "kingdoms-description": "Vsak igralec ima Palačo kraljestva v svoji barvi. Namesto da potegneš ploščico, jo lahko postaviš ob mesto z enim od svojih človečkov in ga narediš za svojo prestolnico. Ko je prestolnica dokončana, postane kraljestvo: na koncu igre prinese 3 točke za vsako dokončano mesto, ki se dotika polja, povezanega z njo.",
+    "kingdoms-description": "Postavi svojo Palačo kraljestva v mesto s svojim človečkom. Dokončano postane prestolnica tvojega kraljestva: 3 točke za vsako dokončano mesto ob njegovih poljih.",
     "labyrinth": "Labirint",
     "mage-and-witch": "Čarovnik & Čarovnica",
     "meteorites": "Meteoriti",

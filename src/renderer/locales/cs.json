@@ -2,7 +2,7 @@
   "@author": "Peťul",
   "@jcz-version": "5.12.1",
   "@fcz-version": "7.3.0",
-  "@version": "0.14.6-ai",
+  "@version": "0.14.7-ai",
   "about": {
     "author": "Autor",
     "configuration-file": "Konfigurační soubor",
@@ -207,7 +207,7 @@
     "inns-and-cathedrals": "Hostince a katedrály",
     "king-and-robber": "Král a loupeživý rytíř",
     "kingdoms": "Království",
-    "kingdoms-description": "Každý hráč má Palác království ve své barvě. Místo tažení kartičky ho můžete přiložit k městu s jedním z vašich družiníků a udělat z něj své hlavní město. Jakmile je hlavní město dokončené, stane se královstvím: na konci hry získá 3 body za každé dokončené město, které sousedí s loukou spojenou s ním.",
+    "kingdoms-description": "Přiložte svůj Palác království k městu se svým družiníkem. Dokončené se stane hlavním městem vašeho království: 3 body za dokončené město sousedící s jeho loukami.",
     "labyrinth": "Labyrint",
     "mage-and-witch": "Mág a čarodějnice",
     "meteorites": "Meteority",

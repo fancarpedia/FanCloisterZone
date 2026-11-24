@@ -2,7 +2,7 @@
   "@author": "Carlium & Meepledrone",
   "@jcz-version": "5.12.1",
   "@fcz-version": "7.3.0",
-  "@version": "0.14.6-ai",
+  "@version": "0.14.7-ai",
   "about": {
     "author": "Autor",
     "configuration-file": "Archivo de configuración",
@@ -207,7 +207,7 @@
     "inns-and-cathedrals": "Posadas y Catedrales",
     "king-and-robber": "El Rey y el Ladrón",
     "kingdoms": "Reinos",
-    "kingdoms-description": "Cada jugador tiene un Palacio del Reino de su color. En lugar de robar una loseta, puede colocarlo en una ciudad con uno de sus seguidores para convertirla en su capital. Cuando la capital se completa, se convierte en un reino: al final, puntúa 3 puntos por cada ciudad completada que toque un campo conectado con ella.",
+    "kingdoms-description": "Coloca tu Palacio del Reino en una ciudad con tu seguidor. Completada, se convierte en la capital de tu reino: 3 puntos por cada ciudad completada que toque sus campos.",
     "labyrinth": "El Laberinto",
     "mage-and-witch": "Mago y Bruja",
     "meteorites": "Meteoritos",

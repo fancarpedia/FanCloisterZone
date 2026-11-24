@@ -2,7 +2,7 @@
   "@author": "Snearone",
   "@jcz-version": "5.12.1",
   "@fcz-version": "7.3.0",
-  "@version": "0.14.6-ai",
+  "@version": "0.14.7-ai",
   "about": {
     "author": "Autor",
     "configuration-file": "Plik konfiguracyjny",
@@ -207,7 +207,7 @@
     "inns-and-cathedrals": "Karczmy i katedry",
     "king-and-robber": "Król i Baron rabusiów",
     "kingdoms": "Królestwa",
-    "kingdoms-description": "Każdy gracz ma Pałac Królestwa w swoim kolorze. Zamiast losować płytkę, możesz dołożyć go do miasta, w którym stoi jeden z twoich podwładnych – miasto staje się twoją stolicą. Gdy stolica zostanie ukończona, staje się królestwem: na koniec gry zdobywa 3 punkty za każde ukończone miasto stykające się z polem połączonym ze stolicą.",
+    "kingdoms-description": "Dołóż swój Pałac Królestwa do miasta ze swoim podwładnym. Ukończone staje się stolicą twojego królestwa: 3 punkty za każde ukończone miasto stykające się z jego polami.",
     "labyrinth": "Labirynt",
     "mage-and-witch": "Mag i Wiedźma",
     "meteorites": "Meteoryty",

@@ -2,7 +2,7 @@
   "@author": "Bumsakalaka",
   "@jcz-version": "5.12.1",
   "@fcz-version": "7.3.0",
-  "@version": "0.14.6-ai",
+  "@version": "0.14.7-ai",
   "about": {
     "author": "Autor",
     "configuration-file": "Konfiguračný súbor",
@@ -207,7 +207,7 @@
     "inns-and-cathedrals": "Hostince a katedrály",
     "king-and-robber": "Kráľ a barón",
     "kingdoms": "Kráľovstvá",
-    "kingdoms-description": "Každý hráč má Palác kráľovstva vo svojej farbe. Namiesto ťahania kartičky ho môžete priložiť k mestu s jedným z vašich spoločníkov a urobiť z neho svoje hlavné mesto. Keď je hlavné mesto dokončené, stane sa kráľovstvom: na konci hry získa 3 body za každé dokončené mesto, ktoré susedí s lúkou spojenou s ním.",
+    "kingdoms-description": "Priložte svoj Palác kráľovstva k mestu so svojím spoločníkom. Dokončené sa stane hlavným mestom vášho kráľovstva: 3 body za dokončené mesto susediace s jeho lúkami.",
     "labyrinth": "Labyrint",
     "mage-and-witch": "Mág a čarodejnica",
     "meteorites": "Meteority",

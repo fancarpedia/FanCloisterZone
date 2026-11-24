@@ -2,7 +2,7 @@
   "@author": "farin & Scott",
   "@jcz-version": "5.12.1",
   "@fcz-version": "7.3.0",
-  "@version": "0.14.6",
+  "@version": "0.14.7",
   "about": {
     "author": "Author",
     "configuration-file": "Configuration file",
@@ -207,7 +207,7 @@
     "inns-and-cathedrals": "Inns & Cathedrals",
     "king-and-robber": "King & Robber",
     "kingdoms": "Kingdoms",
-    "kingdoms-description": "Each player has a Kingdom Palace in their colour. Instead of drawing, place it in a city with one of your followers to make it your capital. Once your capital is completed it becomes a kingdom: at the end, it scores 3 points for every completed city touching a field connected to it.",
+    "kingdoms-description": "Place your Kingdom Palace in a city with your meeple. Completed, it becomes a capital city of your kingdom: 3 points per completed city touching its fields.",
     "labyrinth": "The Labyrinth",
     "mage-and-witch": "Mage & Witch",
     "meteorites": "Meteorites",

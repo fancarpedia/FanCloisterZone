@@ -2,7 +2,7 @@
   "@author": "Challa007 & Bombur",
   "@jcz-version": "5.12.1",
   "@fcz-version": "7.3.0",
-  "@version": "0.14.6-ai",
+  "@version": "0.14.7-ai",
   "about": {
     "author": "Autor",
     "configuration-file": "Konfigurationsdatei",
@@ -207,7 +207,7 @@
     "inns-and-cathedrals": "Wirtshäuser und Kathedralen",
     "king-and-robber": "König und Raubritter",
     "kingdoms": "Königreiche",
-    "kingdoms-description": "Jeder Spieler hat einen Königreichspalast in seiner Farbe. Statt ein Plättchen zu ziehen, legst du ihn an eine Stadt mit einem deiner Meeple – sie wird deine Hauptstadt. Ist die Hauptstadt fertig, wird sie zum Königreich: Bei Spielende bringt sie 3 Punkte für jede fertige Stadt, die an eine mit ihr verbundene Wiese grenzt.",
+    "kingdoms-description": "Lege deinen Königreichspalast in eine Stadt mit deinem Meeple. Fertig wird sie zur Hauptstadt deines Königreichs: 3 Punkte je fertiger Stadt an ihren Wiesen.",
     "labyrinth": "Das Labyrinth",
     "mage-and-witch": "Magier und Hexe",
     "meteorites": "Meteoriten",

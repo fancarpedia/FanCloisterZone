@@ -2,7 +2,7 @@
   "@author": "Black Bear",
   "@jcz-version": "5.12.1",
   "@fcz-version": "7.3.0",
-  "@version": "0.14.6-ai",
+  "@version": "0.14.7-ai",
   "about": {
     "author": "Auteur",
     "configuration-file": "Fichier de configuration",
@@ -207,7 +207,7 @@
     "inns-and-cathedrals": "Auberges et Cathédrales",
     "king-and-robber": "Roi et Chevalier-brigand",
     "kingdoms": "Royaumes",
-    "kingdoms-description": "Chaque joueur possède un Palais du Royaume de sa couleur. Au lieu de piocher une tuile, placez-le dans une ville où se trouve l'un de vos meeples : elle devient votre capitale. Une fois la capitale achevée, elle devient un royaume : en fin de partie, elle rapporte 3 points pour chaque ville achevée touchant un pré relié à elle.",
+    "kingdoms-description": "Placez votre Palais du Royaume dans une ville avec votre meeple. Achevée, elle devient la capitale de votre royaume : 3 points par ville achevée touchant ses prés.",
     "labyrinth": "Le Labyrinthe",
     "mage-and-witch": "Mage et Sorcière",
     "meteorites": "Les Météorites",
