@@ -137,6 +137,16 @@ $colors: (
   }
 }
 
+// The black player's meeple on the dark theme: black art with a black outline nearly vanished on the
+// dark panels (player panel, victory panel, final stats, history). A thin soft light outline keeps
+// it readable — the colour stays black. UI meeples only (the Meeple component is an svg.meeple; the
+// board draws its meeples as use.meeple on the light tiles, untouched).
+#app.theme--dark {
+  .color-8 svg.meeple, svg.meeple.color-8 {
+    filter: drop-shadow(0 0 1px rgba(225, 225, 225, 0.95)) drop-shadow(0 0 1px rgba(225, 225, 225, 0.6));
+  }
+}
+
 // A browser's automatic dark mode (html.auto-dark) repaints colours itself, so CSS colours alone
 // cannot hold. `color-scheme: only light` asks it to leave the meeples alone: they keep their
 // player colours everywhere, and on the board their black outline (drawn into the meeple artwork;
