@@ -359,6 +359,16 @@
     "value": "Тайлы",
     "source": "manual"
   },
+  "game-setup.tiles.draw-order-left": {
+    "en": "Not yet in the draw order: {count}",
+    "value": "Ещё не в порядке вытягивания: {count}",
+    "source": "manual"
+  },
+  "game-setup.tiles.draw-order-overflow": {
+    "en": "Draw order has more tiles than the game: {tiles}",
+    "value": "В порядке вытягивания больше тайлов, чем в игре: {tiles}",
+    "source": "manual"
+  },
   "game-setup.tiles.enable-quantity-change": {
     "en": "Enable quantity change",
     "value": "Разрешить изменение количества",

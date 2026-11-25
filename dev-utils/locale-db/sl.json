@@ -359,6 +359,16 @@
     "value": "Ploščice",
     "source": "manual"
   },
+  "game-setup.tiles.draw-order-left": {
+    "en": "Not yet in the draw order: {count}",
+    "value": "Še ni v vrstnem redu vlečenja: {count}",
+    "source": "manual"
+  },
+  "game-setup.tiles.draw-order-overflow": {
+    "en": "Draw order has more tiles than the game: {tiles}",
+    "value": "Vrstni red vlečenja ima več ploščic kot igra: {tiles}",
+    "source": "manual"
+  },
   "game-setup.tiles.enable-quantity-change": {
     "en": "Enable quantity change",
     "value": "Dovoli spreminjanje količine",

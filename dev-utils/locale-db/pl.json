@@ -359,6 +359,16 @@
     "value": "Płytki",
     "source": "manual"
   },
+  "game-setup.tiles.draw-order-left": {
+    "en": "Not yet in the draw order: {count}",
+    "value": "Jeszcze poza kolejnością dobierania: {count}",
+    "source": "manual"
+  },
+  "game-setup.tiles.draw-order-overflow": {
+    "en": "Draw order has more tiles than the game: {tiles}",
+    "value": "Kolejność dobierania ma więcej płytek niż gra: {tiles}",
+    "source": "manual"
+  },
   "game-setup.tiles.enable-quantity-change": {
     "en": "Enable quantity change",
     "value": "Pozwól zmieniać liczbę",

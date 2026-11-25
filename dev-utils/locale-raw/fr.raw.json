@@ -710,6 +710,8 @@
       "core-sets": "Jeux de base",
       "custom-pack": "Pack de tuiles personnalisées (nombre de tuiles modifié)",
       "custom-pack-short": "Tuiles",
+      "draw-order-left": "<span lang="en" dir="ltr" class="mw-content-ltr">Not yet in the draw order: {count}</span>",
+      "draw-order-overflow": "<span lang="en" dir="ltr" class="mw-content-ltr">Draw order has more tiles than the game: {tiles}</span>",
       "enable-quantity-change": "Autoriser la modification de la quantité",
       "fan-expansions": "Extensions de fans",
       "major-expansions": "Extensions majeures",

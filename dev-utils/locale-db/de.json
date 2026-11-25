@@ -359,6 +359,16 @@
     "value": "Plättchen",
     "source": "manual"
   },
+  "game-setup.tiles.draw-order-left": {
+    "en": "Not yet in the draw order: {count}",
+    "value": "Noch nicht in der Ziehreihenfolge: {count}",
+    "source": "manual"
+  },
+  "game-setup.tiles.draw-order-overflow": {
+    "en": "Draw order has more tiles than the game: {tiles}",
+    "value": "Die Ziehreihenfolge enthält mehr Plättchen als das Spiel: {tiles}",
+    "source": "manual"
+  },
   "game-setup.tiles.enable-quantity-change": {
     "en": "Enable quantity change",
     "value": "Anzahländerung erlauben",

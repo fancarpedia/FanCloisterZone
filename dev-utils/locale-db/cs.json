@@ -339,6 +339,16 @@
     "value": "Kartičky",
     "source": "manual"
   },
+  "game-setup.tiles.draw-order-left": {
+    "en": "Not yet in the draw order: {count}",
+    "value": "Zatím mimo pořadí tažení: {count}",
+    "source": "manual"
+  },
+  "game-setup.tiles.draw-order-overflow": {
+    "en": "Draw order has more tiles than the game: {tiles}",
+    "value": "Pořadí tažení má víc kartiček, než má hra: {tiles}",
+    "source": "manual"
+  },
   "game-setup.tiles.enable-quantity-change": {
     "en": "Enable quantity change",
     "value": "Povolit změnu počtu",

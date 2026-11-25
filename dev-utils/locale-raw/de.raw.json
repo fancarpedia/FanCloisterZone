@@ -710,6 +710,8 @@
       "core-sets": "Basispakete",
       "custom-pack": "<span lang="en" dir="ltr" class="mw-content-ltr">Custom tile pack (counts changed)</span>",
       "custom-pack-short": "<span lang="en" dir="ltr" class="mw-content-ltr">Tiles</span>",
+      "draw-order-left": "<span lang="en" dir="ltr" class="mw-content-ltr">Not yet in the draw order: {count}</span>",
+      "draw-order-overflow": "<span lang="en" dir="ltr" class="mw-content-ltr">Draw order has more tiles than the game: {tiles}</span>",
       "enable-quantity-change": "<span lang="en" dir="ltr" class="mw-content-ltr">Enable quantity change</span>",
       "fan-expansions": "Fan-Erweiterungen",
       "major-expansions": "Haupterweiterungen",

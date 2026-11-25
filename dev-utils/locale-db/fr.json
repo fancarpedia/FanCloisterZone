@@ -204,6 +204,16 @@
     "value": "Aucune tuile Tour de guet n’est en jeu.",
     "source": "manual"
   },
+  "game-setup.tiles.draw-order-left": {
+    "en": "Not yet in the draw order: {count}",
+    "value": "Pas encore dans l'ordre de pioche : {count}",
+    "source": "manual"
+  },
+  "game-setup.tiles.draw-order-overflow": {
+    "en": "Draw order has more tiles than the game: {tiles}",
+    "value": "L'ordre de pioche contient plus de tuiles que la partie : {tiles}",
+    "source": "manual"
+  },
   "game-setup.tiles.supply-tiles": {
     "en": "In the players' supply, not in the draw pile",
     "value": "Dans la réserve des joueurs, pas dans la pioche",

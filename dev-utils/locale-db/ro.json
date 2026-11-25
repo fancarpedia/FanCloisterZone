@@ -114,6 +114,16 @@
     "value": "Un meeple pe un cartonaș cu turn de veghe primește un bonus când zona sa este punctată: puncte pentru fiecare element potrivit (blazon, mănăstire, oraș, drum sau meeple) de pe cartonașele din jurul turnului.",
     "source": "manual"
   },
+  "game-setup.tiles.draw-order-left": {
+    "en": "Not yet in the draw order: {count}",
+    "value": "Încă nu sunt în ordinea de tragere: {count}",
+    "source": "manual"
+  },
+  "game-setup.tiles.draw-order-overflow": {
+    "en": "Draw order has more tiles than the game: {tiles}",
+    "value": "Ordinea de tragere are mai multe cartonașe decât jocul: {tiles}",
+    "source": "manual"
+  },
   "game-setup.tiles.supply-tiles": {
     "en": "In the players' supply, not in the draw pile",
     "value": "În rezerva jucătorilor, nu în teancul de tras",

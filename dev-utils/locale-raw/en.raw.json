@@ -2,7 +2,7 @@
   "@author": "farin & Scott",
   "@jcz-version": "5.12.1",
   "@fcz-version": "7.3.0",
-  "@version": "0.14.7",
+  "@version": "0.14.8",
   "about": {
     "author": "Author",
     "configuration-file": "Configuration file",
@@ -710,6 +710,8 @@
       "core-sets": "Core sets",
       "custom-pack": "Custom tile pack (counts changed)",
       "custom-pack-short": "Tiles",
+      "draw-order-left": "Not yet in the draw order: {count}",
+      "draw-order-overflow": "Draw order has more tiles than the game: {tiles}",
       "enable-quantity-change": "Enable quantity change",
       "fan-expansions": "Fan expansions",
       "major-expansions": "Major expansions",
