@@ -317,6 +317,10 @@ export default {
           const ids = Object.keys(set.supplyTiles).filter(tid => this.$tiles.tiles[tid])
           if (!ids.length) return null
           const found = this.releaseForSet(id)
+          // how many each player gets: the number chosen for the element (Abbey 2, Kingdom Palace
+          // 3 …; on = 1) — the same rule as the game's supply ($tiles.getSupply)
+          const value = elements ? elements[set.element] : undefined
+          const perPlayer = value === true || value === undefined ? 1 : (parseInt(value, 10) || 1)
           return {
             id: 'supply:' + id,
             title: this.$t('game.element.' + set.element),
@@ -324,7 +328,7 @@ export default {
             tiles: ids.map(tid => ({
               id: tid,
               rotation: this.$theme.getTile(tid)?.rotation || 0,
-              count: Number(set.supplyTiles[tid]) || 1
+              count: (Number(set.supplyTiles[tid]) || 1) * perPlayer
             }))
           }
         })
