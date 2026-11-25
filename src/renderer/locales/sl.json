@@ -2,7 +2,7 @@
   "@author": "TileLord | Erol",
   "@jcz-version": "5.12.1",
   "@fcz-version": "7.3.0",
-  "@version": "0.14.7-ai",
+  "@version": "0.14.8-ai",
   "about": {
     "author": "Avtor",
     "configuration-file": "Konfiguracijska datoteka",
@@ -718,6 +718,8 @@
       "core-sets": "Osnovni seti",
       "custom-pack": "Lasten nabor ploščic (spremenjene količine)",
       "custom-pack-short": "Ploščice",
+      "draw-order-left": "Še ni v vrstnem redu vlečenja: {count}",
+      "draw-order-overflow": "Vrstni red vlečenja ima več ploščic kot igra: {tiles}",
       "enable-quantity-change": "Dovoli spreminjanje količine",
       "fan-expansions": "Navijače razširitve",
       "major-expansions": "Velike razširitve",

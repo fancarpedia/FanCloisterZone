@@ -2,7 +2,7 @@
   "@author": "pOison & Dextea & SonicDC",
   "@jcz-version": "5.12.1",
   "@fcz-version": "7.3.0",
-  "@version": "0.14.7-ai",
+  "@version": "0.14.8-ai",
   "about": {
     "author": "Автор",
     "configuration-file": "Файл конфигурации",
@@ -718,6 +718,8 @@
       "core-sets": "Основные наборы",
       "custom-pack": "Свой набор тайлов (количества изменены)",
       "custom-pack-short": "Тайлы",
+      "draw-order-left": "Ещё не в порядке вытягивания: {count}",
+      "draw-order-overflow": "В порядке вытягивания больше тайлов, чем в игре: {tiles}",
       "enable-quantity-change": "Разрешить изменение количества",
       "fan-expansions": "Пользовательские дополнения",
       "major-expansions": "Основные дополнения",

@@ -67,7 +67,7 @@
             v-if="sequenced && (count > 0 || sequenceLeft(id) < 0)"
             class="sequence-left"
             :class="{ over: sequenceLeft(id) < 0 }"
-            :title="'Not yet in the draw order: ' + sequenceLeft(id)"
+            :title="$t('game-setup.tiles.draw-order-left', { count: sequenceLeft(id) })"
           >
             {{ sequenceLeft(id) }}
           </div>

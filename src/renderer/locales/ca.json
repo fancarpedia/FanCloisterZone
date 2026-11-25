@@ -2,7 +2,7 @@
   "@author": "J0anJosep",
   "@jcz-version": "5.12.1",
   "@fcz-version": "7.3.0",
-  "@version": "0.14.7-ai",
+  "@version": "0.14.8-ai",
   "about": {
     "author": "Autor",
     "configuration-file": "Fitxer de configuració",
@@ -718,6 +718,8 @@
       "core-sets": "Jocs base",
       "custom-pack": "Conjunt de peces personalitzat (quantitats modificades)",
       "custom-pack-short": "Peces",
+      "draw-order-left": "Encara fora de l'ordre de robatori: {count}",
+      "draw-order-overflow": "L'ordre de robatori té més peces que la partida: {tiles}",
       "enable-quantity-change": "Permet canviar les quantitats",
       "fan-expansions": "Expansions dels fans",
       "major-expansions": "Expansions majors",

@@ -2,7 +2,7 @@
   "@author": "Snearone",
   "@jcz-version": "5.12.1",
   "@fcz-version": "7.3.0",
-  "@version": "0.14.7-ai",
+  "@version": "0.14.8-ai",
   "about": {
     "author": "Autor",
     "configuration-file": "Plik konfiguracyjny",
@@ -718,6 +718,8 @@
       "core-sets": "Gra podstawowa",
       "custom-pack": "Własny zestaw płytek (zmienione liczby)",
       "custom-pack-short": "Płytki",
+      "draw-order-left": "Jeszcze poza kolejnością dobierania: {count}",
+      "draw-order-overflow": "Kolejność dobierania ma więcej płytek niż gra: {tiles}",
       "enable-quantity-change": "Pozwól zmieniać liczbę",
       "fan-expansions": "Fanowskie rozszerzenia",
       "major-expansions": "Duże rozszerzenia",

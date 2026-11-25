@@ -2,7 +2,7 @@
   "@author": "Bumsakalaka",
   "@jcz-version": "5.12.1",
   "@fcz-version": "7.3.0",
-  "@version": "0.14.7-ai",
+  "@version": "0.14.8-ai",
   "about": {
     "author": "Autor",
     "configuration-file": "Konfiguračný súbor",
@@ -718,6 +718,8 @@
       "core-sets": "Základné hry",
       "custom-pack": "Vlastná sada kartičiek (zmenené počty)",
       "custom-pack-short": "Kartičky",
+      "draw-order-left": "Zatiaľ mimo poradia ťahania: {count}",
+      "draw-order-overflow": "Poradie ťahania má viac kartičiek, než má hra: {tiles}",
       "enable-quantity-change": "Povoliť zmenu počtu",
       "fan-expansions": "Fanúšikovské fozšírenia",
       "major-expansions": "Veľké rozšírenia",

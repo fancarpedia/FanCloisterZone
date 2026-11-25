@@ -2,7 +2,7 @@
   "@author": "Peťul",
   "@jcz-version": "5.12.1",
   "@fcz-version": "7.3.0",
-  "@version": "0.14.7-ai",
+  "@version": "0.14.8-ai",
   "about": {
     "author": "Autor",
     "configuration-file": "Konfigurační soubor",
@@ -718,6 +718,8 @@
       "core-sets": "Základní sady",
       "custom-pack": "Vlastní sada kartiček (změněné počty)",
       "custom-pack-short": "Kartičky",
+      "draw-order-left": "Zatím mimo pořadí tažení: {count}",
+      "draw-order-overflow": "Pořadí tažení má víc kartiček, než má hra: {tiles}",
       "enable-quantity-change": "Povolit změnu počtu",
       "fan-expansions": "Fanouškovská rozšíření",
       "major-expansions": "Velká rozšíření",

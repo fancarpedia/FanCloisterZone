@@ -2,7 +2,7 @@
   "@author": "Kiap1969 & Sinscerly",
   "@jcz-version": "5.12.1",
   "@fcz-version": "7.3.0",
-  "@version": "0.14.7-ai",
+  "@version": "0.14.8-ai",
   "about": {
     "author": "Auteur",
     "configuration-file": "Configuratiebestand",
@@ -718,6 +718,8 @@
       "core-sets": "Hoofdsets",
       "custom-pack": "Eigen tegelstapel (aantallen gewijzigd)",
       "custom-pack-short": "Tegels",
+      "draw-order-left": "Nog niet in de trekvolgorde: {count}",
+      "draw-order-overflow": "De trekvolgorde bevat meer tegels dan het spel: {tiles}",
       "enable-quantity-change": "Aantallen laten wijzigen",
       "fan-expansions": "Fan-uitbreidingen",
       "major-expansions": "Grote uitbreidingen",

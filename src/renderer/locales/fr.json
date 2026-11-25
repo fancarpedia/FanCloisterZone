@@ -2,7 +2,7 @@
   "@author": "Black Bear",
   "@jcz-version": "5.12.1",
   "@fcz-version": "7.3.0",
-  "@version": "0.14.7-ai",
+  "@version": "0.14.8-ai",
   "about": {
     "author": "Auteur",
     "configuration-file": "Fichier de configuration",
@@ -718,6 +718,8 @@
       "core-sets": "Jeux de base",
       "custom-pack": "Pack de tuiles personnalisées (nombre de tuiles modifié)",
       "custom-pack-short": "Tuiles",
+      "draw-order-left": "Pas encore dans l'ordre de pioche : {count}",
+      "draw-order-overflow": "L'ordre de pioche contient plus de tuiles que la partie : {tiles}",
       "enable-quantity-change": "Autoriser la modification de la quantité",
       "fan-expansions": "Extensions de fans",
       "major-expansions": "Extensions majeures",

@@ -2,7 +2,7 @@
   "@author": "Stepukiss",
   "@jcz-version": "5.12.1",
   "@fcz-version": "7.3.0",
-  "@version": "0.14.7-ai",
+  "@version": "0.14.8-ai",
   "about": {
     "author": "Autorius",
     "configuration-file": "Nustatymų aplankas",
@@ -718,6 +718,8 @@
       "core-sets": "Pagrindiniai rinkiniai",
       "custom-pack": "Savas kortelių rinkinys (kiekiai pakeisti)",
       "custom-pack-short": "Kortelės",
+      "draw-order-left": "Dar ne traukimo eilėje: {count}",
+      "draw-order-overflow": "Traukimo eilėje daugiau kortelių nei žaidime: {tiles}",
       "enable-quantity-change": "Leisti keisti kiekį",
       "fan-expansions": "Fanų papildymai",
       "major-expansions": "Didieji papildymai",

@@ -2,7 +2,7 @@
   "@author": "ai",
   "@jcz-version": "5.12.1",
   "@fcz-version": "7.3.0",
-  "@version": "0.14.7-ai",
+  "@version": "0.14.8-ai",
   "about": {
     "author": "Автор",
     "configuration-file": "Файл конфігурації",
@@ -718,6 +718,8 @@
       "core-sets": "Основні набори",
       "custom-pack": "Власний набір плиток (кількість змінено)",
       "custom-pack-short": "Плитки",
+      "draw-order-left": "Ще не в порядку витягування: {count}",
+      "draw-order-overflow": "У порядку витягування більше плиток, ніж у грі: {tiles}",
       "enable-quantity-change": "Дозволити зміну кількості",
       "fan-expansions": "Фанські доповнення",
       "major-expansions": "Великі доповнення",

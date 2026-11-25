@@ -31,7 +31,7 @@
       <span
         v-if="drawOrderOverflow.length"
         class="draw-order-overflow"
-        :title="'Draw order has more tiles than the game: ' + drawOrderOverflow.join(', ')"
+        :title="$t('game-setup.tiles.draw-order-overflow', { tiles: drawOrderOverflow.join(', ') })"
       >
         <v-icon>fas fa-exclamation-triangle</v-icon>
       </span>

@@ -2,7 +2,7 @@
   "@author": "Carlium & Meepledrone",
   "@jcz-version": "5.12.1",
   "@fcz-version": "7.3.0",
-  "@version": "0.14.7-ai",
+  "@version": "0.14.8-ai",
   "about": {
     "author": "Autor",
     "configuration-file": "Archivo de configuración",
@@ -718,6 +718,8 @@
       "core-sets": "Sets básicos",
       "custom-pack": "Mazo de losetas personalizado (cantidades modificadas)",
       "custom-pack-short": "Losetas",
+      "draw-order-left": "Aún fuera del orden de robo: {count}",
+      "draw-order-overflow": "El orden de robo tiene más losetas que la partida: {tiles}",
       "enable-quantity-change": "Permitir cambiar las cantidades",
       "fan-expansions": "Expansiones de fans",
       "major-expansions": "Expansiones mayores",
