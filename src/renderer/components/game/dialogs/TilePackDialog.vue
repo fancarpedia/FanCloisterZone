@@ -31,10 +31,30 @@
         </div>
       </template>
 
-      <!-- not started yet (the open game / take a slot page): the game's tiles, nothing drawn -->
+      <!-- not started yet (the open game / take a slot page): the starting tiles, then the game's
+           tiles as the setup shows them — the supply tiles included, groupable by tile set -->
       <template v-if="!started">
+        <template v-if="startTiles.length">
+          <h2>{{ $t('game-setup.rules.starting-tiles-configuration') }}</h2>
+          <div class="start-tiles-list">
+            <StandaloneTileImage
+              v-for="(t, idx) in startTiles"
+              :key="idx"
+              :tile-id="t.tile"
+              :size="80"
+            />
+          </div>
+        </template>
         <h2>{{ $t('game.tile-pack-dialog.game-tiles') }}</h2>
-        <TileDistributionLive :sets="sets" :rules="rules" :remaining="false" />
+        <TileDistribution
+          :sets="sets"
+          :rules="rules"
+          :setup="setup"
+          :tile-overrides="setup.tileOverrides || null"
+          :setup-elements="setup.elements || {}"
+          :tile-size="80"
+          groupable
+        />
       </template>
       <template v-else-if="options.puristTiles">
         <h2>{{ $t('game.tile-pack-dialog.game-tiles') }}</h2>
@@ -71,10 +91,13 @@ import { mapState } from 'vuex'
 
 import TileDistributionLive from '@/components/game/dialogs/TileDistributionLive'
 import StandaloneTileImage from '@/components/game/StandaloneTileImage'
+import TileDistribution from '@/components/TileDistribution'
+import { getSelectedStartingTiles } from '@/utils/gameSetupUtils'
 
 export default {
   components: {
     StandaloneTileImage,
+    TileDistribution,
     TileDistributionLive
   },
 
@@ -89,6 +112,7 @@ export default {
 
   computed: {
     ...mapState({
+      setup: state => state.game.setup || {},
       sets: state => state.game.setup?.sets,
       rules: state => state.game.setup?.rules,
       removedTiles: state => state.game.discardedTiles,
@@ -96,7 +120,13 @@ export default {
       // no tile pack before the game starts (the open game page opens this dialog too)
       started: state => !!state.game.tilePack,
       underHills: state => state.game.tilePack?.underHills
-    })
+    }),
+
+    // the tiles the selected starting configuration lays out (River spring, Spiel Doch's two, …)
+    startTiles () {
+      const { elements, sets, start } = this.setup
+      return getSelectedStartingTiles(elements, sets || {}, start)?.value || []
+    }
   }
 }
 
@@ -112,6 +142,13 @@ h2
 
   +theme using ($theme)
     color: map-get($theme, 'gray-text-color')
+
+.start-tiles-list
+  display: flex
+  flex-wrap: wrap
+  justify-content: center
+  gap: 4px
+  margin-bottom: 10px
 
 .removed-tiles-list
   display: flex
