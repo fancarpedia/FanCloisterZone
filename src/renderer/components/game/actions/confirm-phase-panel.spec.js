@@ -51,9 +51,18 @@ describe('the Rotate option in ActionPanel', () => {
     expect(media).toMatch(/\.rotate-placed\n {4}display: block/)
   })
 
-  it('has no "or" separators at all: actions and buttons only', () => {
-    // "Confirm Rotate Undo" on every screen size, no "or" / "or skip action" texts
-    expect(panel).not.toContain('skip-text')
+  it('has no "or" separators for the player on turn: actions and buttons only', () => {
+    // "Confirm Rotate Undo" on every screen size, no "or" between the buttons
+    const start = panel.indexOf('<template v-if="local && !ai">')
+    const end = panel.indexOf('<template v-else-if="action.canPass">')
+    expect(start).toBeGreaterThan(-1)
+    expect(end).toBeGreaterThan(start)
+    expect(panel.slice(start, end)).not.toContain("game.action.or'")
+  })
+
+  it('tells everyone else that the player on turn may skip (they have no buttons)', () => {
+    const observer = panel.slice(panel.indexOf('<template v-else-if="action.canPass">'))
+    expect(observer).toContain(`<span class="skip-text text">{{ $t('game.action.or') }}<span class="skip-label">{{ $t('game.action.skip-action') }}</span></span>`)
   })
 })
 

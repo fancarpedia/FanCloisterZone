@@ -64,7 +64,7 @@
         v-if="action.canPass || undoAllowed"
         #default="{ label }"
       >
-        <!-- the action panel shows actions and buttons only: no "or" / "or skip action" texts -->
+        <!-- the player on turn: actions and buttons only, no "or" texts between them -->
         <template v-if="local && !ai">
           <template v-if="action.canPass">
             <div class="pass-item">
@@ -89,6 +89,11 @@
               />
             </div>
           </template>
+        </template>
+        <!-- everyone else: no buttons, so say what the player on turn may do besides the actions
+             shown (without it they saw only the meeples) -->
+        <template v-else-if="action.canPass">
+          <span class="skip-text text">{{ $t('game.action.or') }}<span class="skip-label">{{ $t('game.action.skip-action') }}</span></span>
         </template>
       </template>
     </component>
@@ -479,6 +484,14 @@ export default {
     .pass-item
       margin-left: 10px
       text-align: center
+
+    .skip-text
+      margin-left: 10px
+      white-space: nowrap
+
+      // "or" and "Skip action" clearly apart
+      .skip-label
+        margin-left: 14px
 
   .tile-img
     position: relative
