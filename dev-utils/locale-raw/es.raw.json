@@ -731,6 +731,8 @@
       "do-nothing": "no hacer nada",
       "each-turn-increase-timer-by": "Cada turno aumenta el temporizador en",
       "enable-limits": "activar límites",
+      "lost-on-time": "<span lang="en" dir="ltr" class="mw-content-ltr">Lost on time</span>",
+      "over-time": "<span lang="en" dir="ltr" class="mw-content-ltr">Over time</span>",
       "player-time-limit": "Límite de tiempo por jugador",
       "start-short": "<span lang="en" dir="ltr" class="mw-content-ltr">Game start</span>",
       "turn-short": "<span lang="en" dir="ltr" class="mw-content-ltr">Each turn</span>",

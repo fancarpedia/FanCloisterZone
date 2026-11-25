@@ -219,6 +219,16 @@
     "value": "Dans la réserve des joueurs, pas dans la pioche",
     "source": "manual"
   },
+  "game-setup.timer.lost-on-time": {
+    "en": "Lost on time",
+    "value": "Perdu au temps",
+    "source": "manual"
+  },
+  "game-setup.timer.over-time": {
+    "en": "Over time",
+    "value": "Temps dépassé",
+    "source": "manual"
+  },
   "game-setup.timer.start-short": {
     "en": "Game start",
     "value": "Début de partie",

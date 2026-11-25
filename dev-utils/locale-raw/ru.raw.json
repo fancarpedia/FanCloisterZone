@@ -731,6 +731,8 @@
       "do-nothing": "ничего не делать",
       "each-turn-increase-timer-by": "При каждом ходе увеличивать таймер на",
       "enable-limits": "включить ограничения",
+      "lost-on-time": "<span lang="en" dir="ltr" class="mw-content-ltr">Lost on time</span>",
+      "over-time": "<span lang="en" dir="ltr" class="mw-content-ltr">Over time</span>",
       "player-time-limit": "Ограничение времени игрока",
       "start-short": "<span lang="en" dir="ltr" class="mw-content-ltr">Game start</span>",
       "turn-short": "<span lang="en" dir="ltr" class="mw-content-ltr">Each turn</span>",

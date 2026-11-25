@@ -409,6 +409,16 @@
     "value": "W zasobie graczy, nie w stosie do losowania",
     "source": "manual"
   },
+  "game-setup.timer.lost-on-time": {
+    "en": "Lost on time",
+    "value": "Przegrana na czas",
+    "source": "manual"
+  },
+  "game-setup.timer.over-time": {
+    "en": "Over time",
+    "value": "Przekroczony czas",
+    "source": "manual"
+  },
   "game-setup.timer.start-short": {
     "en": "Game start",
     "value": "Początek gry",

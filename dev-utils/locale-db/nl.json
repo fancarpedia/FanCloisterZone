@@ -409,6 +409,16 @@
     "value": "In de voorraad van de spelers, niet in de trekstapel",
     "source": "manual"
   },
+  "game-setup.timer.lost-on-time": {
+    "en": "Lost on time",
+    "value": "Verloren op tijd",
+    "source": "manual"
+  },
+  "game-setup.timer.over-time": {
+    "en": "Over time",
+    "value": "Tijdoverschrijding",
+    "source": "manual"
+  },
   "game-setup.timer.start-short": {
     "en": "Game start",
     "value": "Begin van het spel",

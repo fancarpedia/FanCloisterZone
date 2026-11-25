@@ -409,6 +409,16 @@
     "value": "В запасе игроков, а не в стопке тайлов",
     "source": "manual"
   },
+  "game-setup.timer.lost-on-time": {
+    "en": "Lost on time",
+    "value": "Поражение по времени",
+    "source": "manual"
+  },
+  "game-setup.timer.over-time": {
+    "en": "Over time",
+    "value": "Превышение времени",
+    "source": "manual"
+  },
   "game-setup.timer.start-short": {
     "en": "Game start",
     "value": "Начало игры",

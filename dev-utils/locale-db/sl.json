@@ -409,6 +409,16 @@
     "value": "V zalogi igralcev, ne na kupu za vlečenje",
     "source": "manual"
   },
+  "game-setup.timer.lost-on-time": {
+    "en": "Lost on time",
+    "value": "Izgubil na čas",
+    "source": "manual"
+  },
+  "game-setup.timer.over-time": {
+    "en": "Over time",
+    "value": "Prekoračen čas",
+    "source": "manual"
+  },
   "game-setup.timer.start-short": {
     "en": "Game start",
     "value": "Začetek igre",

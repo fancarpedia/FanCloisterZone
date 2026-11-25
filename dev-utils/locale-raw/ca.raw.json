@@ -731,6 +731,8 @@
       "do-nothing": "no facis res",
       "each-turn-increase-timer-by": "Cada torn, afegeix al cronòmetre",
       "enable-limits": "activa el límit de temps",
+      "lost-on-time": "<span lang="en" dir="ltr" class="mw-content-ltr">Lost on time</span>",
+      "over-time": "<span lang="en" dir="ltr" class="mw-content-ltr">Over time</span>",
       "player-time-limit": "Temps límit per jugador",
       "start-short": "<span lang="en" dir="ltr" class="mw-content-ltr">Game start</span>",
       "turn-short": "<span lang="en" dir="ltr" class="mw-content-ltr">Each turn</span>",

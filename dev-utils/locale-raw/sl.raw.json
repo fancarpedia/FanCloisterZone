@@ -731,6 +731,8 @@
       "do-nothing": "ne naredi ničesar",
       "each-turn-increase-timer-by": "Vsako potezo poveča časovnik za",
       "enable-limits": "omogoči omejitve",
+      "lost-on-time": "<span lang="en" dir="ltr" class="mw-content-ltr">Lost on time</span>",
+      "over-time": "<span lang="en" dir="ltr" class="mw-content-ltr">Over time</span>",
       "player-time-limit": "Časovna omejitev igralca",
       "start-short": "<span lang="en" dir="ltr" class="mw-content-ltr">Game start</span>",
       "turn-short": "<span lang="en" dir="ltr" class="mw-content-ltr">Each turn</span>",

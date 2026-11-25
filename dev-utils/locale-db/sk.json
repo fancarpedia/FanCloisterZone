@@ -389,6 +389,16 @@
     "value": "V zásobe hráčov, nie medzi kartičkami na ťahanie",
     "source": "manual"
   },
+  "game-setup.timer.lost-on-time": {
+    "en": "Lost on time",
+    "value": "Prehra na čas",
+    "source": "manual"
+  },
+  "game-setup.timer.over-time": {
+    "en": "Over time",
+    "value": "Prekročený čas",
+    "source": "manual"
+  },
   "game-setup.timer.start-short": {
     "en": "Game start",
     "value": "Začiatok hry",

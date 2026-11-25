@@ -731,6 +731,8 @@
       "do-nothing": "<span lang="en" dir="ltr" class="mw-content-ltr">do nothing</span>",
       "each-turn-increase-timer-by": "<span lang="en" dir="ltr" class="mw-content-ltr">Each turn, increase timer by</span>",
       "enable-limits": "<span lang="en" dir="ltr" class="mw-content-ltr">enable limits</span>",
+      "lost-on-time": "<span lang="en" dir="ltr" class="mw-content-ltr">Lost on time</span>",
+      "over-time": "<span lang="en" dir="ltr" class="mw-content-ltr">Over time</span>",
       "player-time-limit": "<span lang="en" dir="ltr" class="mw-content-ltr">Player time limit</span>",
       "start-short": "<span lang="en" dir="ltr" class="mw-content-ltr">Game start</span>",
       "turn-short": "<span lang="en" dir="ltr" class="mw-content-ltr">Each turn</span>",

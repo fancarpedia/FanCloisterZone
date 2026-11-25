@@ -731,6 +731,8 @@
       "do-nothing": "nieko nedaryti",
       "each-turn-increase-timer-by": "Kiekvieną ėjimą padidinti laikmatį",
       "enable-limits": "įjungti limitą",
+      "lost-on-time": "<span lang="en" dir="ltr" class="mw-content-ltr">Lost on time</span>",
+      "over-time": "<span lang="en" dir="ltr" class="mw-content-ltr">Over time</span>",
       "player-time-limit": "Žaidėjo laiko limitas",
       "start-short": "<span lang="en" dir="ltr" class="mw-content-ltr">Game start</span>",
       "turn-short": "<span lang="en" dir="ltr" class="mw-content-ltr">Each turn</span>",

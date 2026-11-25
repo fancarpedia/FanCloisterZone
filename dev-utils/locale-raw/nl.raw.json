@@ -731,6 +731,8 @@
       "do-nothing": "doe niets",
       "each-turn-increase-timer-by": "Verhoog de timer elke beurt met",
       "enable-limits": "limiet instellen",
+      "lost-on-time": "<span lang="en" dir="ltr" class="mw-content-ltr">Lost on time</span>",
+      "over-time": "<span lang="en" dir="ltr" class="mw-content-ltr">Over time</span>",
       "player-time-limit": "Tijdslimiet voor spelers",
       "start-short": "<span lang="en" dir="ltr" class="mw-content-ltr">Game start</span>",
       "turn-short": "<span lang="en" dir="ltr" class="mw-content-ltr">Each turn</span>",

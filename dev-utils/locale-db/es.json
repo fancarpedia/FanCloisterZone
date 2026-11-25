@@ -409,6 +409,16 @@
     "value": "En la reserva de los jugadores, no en la pila de robo",
     "source": "manual"
   },
+  "game-setup.timer.lost-on-time": {
+    "en": "Lost on time",
+    "value": "Perdió por tiempo",
+    "source": "manual"
+  },
+  "game-setup.timer.over-time": {
+    "en": "Over time",
+    "value": "Tiempo excedido",
+    "source": "manual"
+  },
   "game-setup.timer.start-short": {
     "en": "Game start",
     "value": "Inicio de la partida",

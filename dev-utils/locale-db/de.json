@@ -409,6 +409,16 @@
     "value": "Im Vorrat der Spieler, nicht im Nachziehstapel",
     "source": "manual"
   },
+  "game-setup.timer.lost-on-time": {
+    "en": "Lost on time",
+    "value": "Auf Zeit verloren",
+    "source": "manual"
+  },
+  "game-setup.timer.over-time": {
+    "en": "Over time",
+    "value": "Zeitüberschreitung",
+    "source": "manual"
+  },
   "game-setup.timer.start-short": {
     "en": "Game start",
     "value": "Spielbeginn",

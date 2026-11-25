@@ -569,6 +569,16 @@
     "value": "Žaidėjų atsargose, ne traukiamų kortelių krūvoje",
     "source": "manual"
   },
+  "game-setup.timer.lost-on-time": {
+    "en": "Lost on time",
+    "value": "Pralaimėjo dėl laiko",
+    "source": "manual"
+  },
+  "game-setup.timer.over-time": {
+    "en": "Over time",
+    "value": "Viršytas laikas",
+    "source": "manual"
+  },
   "game-setup.timer.start-short": {
     "en": "Game start",
     "value": "Žaidimo pradžia",

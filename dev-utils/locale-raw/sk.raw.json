@@ -731,6 +731,8 @@
       "do-nothing": "nerob nič",
       "each-turn-increase-timer-by": "Každý ťah navýši časovač o",
       "enable-limits": "povoliť limity",
+      "lost-on-time": "<span lang="en" dir="ltr" class="mw-content-ltr">Lost on time</span>",
+      "over-time": "<span lang="en" dir="ltr" class="mw-content-ltr">Over time</span>",
       "player-time-limit": "Časový limit hráča",
       "start-short": "<span lang="en" dir="ltr" class="mw-content-ltr">Game start</span>",
       "turn-short": "<span lang="en" dir="ltr" class="mw-content-ltr">Each turn</span>",

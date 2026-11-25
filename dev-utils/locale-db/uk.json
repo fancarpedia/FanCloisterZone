@@ -1879,6 +1879,16 @@
     "value": "увімкнути обмеження",
     "source": "manual"
   },
+  "game-setup.timer.lost-on-time": {
+    "en": "Lost on time",
+    "value": "Поразка за часом",
+    "source": "manual"
+  },
+  "game-setup.timer.over-time": {
+    "en": "Over time",
+    "value": "Перевищення часу",
+    "source": "manual"
+  },
   "game-setup.timer.player-time-limit": {
     "en": "Player time limit",
     "value": "Обмеження часу для гравця",
