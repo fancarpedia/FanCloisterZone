@@ -1,6 +1,6 @@
 <template>
   <div class="tile-distribution-wrap">
-    <div v-if="editable" class="distribution-controls">
+    <div v-if="editable || groupable" class="distribution-controls">
       <!-- separating expansions only makes sense with 2+ expansions that still have tiles -->
       <v-checkbox
         v-if="canSeparate"
@@ -9,7 +9,7 @@
         dense hide-details
       />
       <v-checkbox
-        v-if="allowQuantityChange"
+        v-if="editable && allowQuantityChange"
         v-model="quantityChange"
         :label="$t('game-setup.tiles.enable-quantity-change')"
         dense hide-details
@@ -149,6 +149,11 @@ export default {
     tileOverrides: { type: Object, default: null },
     // elements of a saved setup (bookmarks) — decides which supply tiles are listed
     setupElements: { type: Object, default: null },
+    // read-only: the setup shown (edition, starting tiles, per-set counts) when it is not the one in
+    // the setup editor — the open game (take a slot) page passes the game's own setup
+    setup: { type: Object, default: null },
+    // read-only: offer "Separate expansions" too (the tiles grouped by tile set)
+    groupable: { type: Boolean, default: false },
     // game-setup mode: header checkboxes + steppers editing gameSetup.tileOverrides
     editable: { type: Boolean, default: false },
     // whether changing per-tile COUNTS is allowed (the Keep Building variant allows separating
@@ -200,19 +205,31 @@ export default {
     },
 
     ...mapState({
-      edition: state => {
-        const setup = state.gameSetup || state.game.setup
-        return getSelectedEdition(setup.elements)
-      },
-      start: state => {
-        const setup = state.gameSetup || state.game.setup
-        const { elements, sets, start } = setup
-        return getSelectedStartingTiles(elements, sets, start)
-      },
-      elements: state => (state.gameSetup || state.game.setup || {}).elements,
       storeOverrides: state => state.gameSetup.tileOverrides,
-      storeOverridesBySet: state => state.gameSetup.tileOverridesBySet || {}
+      editorOverridesBySet: state => state.gameSetup.tileOverridesBySet || {}
     }),
+
+    // the setup the list describes: the given one (open game page), else the setup editor's
+    sourceSetup () {
+      return this.setup || this.$store.state.gameSetup || this.$store.state.game.setup || {}
+    },
+
+    edition () {
+      return getSelectedEdition(this.sourceSetup.elements)
+    },
+
+    start () {
+      const { elements, sets, start } = this.sourceSetup
+      return getSelectedStartingTiles(elements, sets, start)
+    },
+
+    elements () {
+      return this.sourceSetup.elements
+    },
+
+    storeOverridesBySet () {
+      return this.setup ? (this.setup.tileOverridesBySet || {}) : this.editorOverridesBySet
+    },
 
     quantityEditActive () {
       return this.editable && this.quantityChange && this.allowQuantityChange
@@ -351,7 +368,7 @@ export default {
     displayGroups () {
       // collapse to the flat single-group view (no per-expansion arrows) unless separation is
       // both requested AND meaningful (2+ expansions with tiles) — reacts as tiles are removed
-      if (!this.editable || !this.separateExpansions || !this.canSeparate) {
+      if ((!this.editable && !this.groupable) || !this.separateExpansions || !this.canSeparate) {
         return [{
           id: 'all',
           title: null,
