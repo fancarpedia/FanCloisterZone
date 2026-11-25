@@ -2,7 +2,7 @@
   <div v-if="loaded" class="theme-inspector">
     <header>
       <div class="close"> 
-        <v-btn color="error closebutton" @click="$router.push('/')">
+        <v-btn color="error closebutton" @click="close">
           <v-icon left>fa-times</v-icon>
           {{ $nuxt.$t('button.close') }}
         </v-btn>
@@ -98,6 +98,7 @@ import ExpansionSymbol from '@/components/ExpansionSymbol'
 import StandaloneTileImage from '@/components/game/StandaloneTileImage'
 import CountMiniboard from '@/components/game-setup/details/CountMiniboard'
 import ThemeInspectorFeatures from '@/components/dev/ThemeInspectorFeatures'
+import { homeRoute } from '@/store/networking'
 
 export default {
   components: {
@@ -178,6 +179,11 @@ export default {
   },
 
   methods: {
+    // back home: the online lobby in the lobby window (not the old landing page, index.vue)
+    close () {
+      this.$router.push(homeRoute(this.$windows))
+    },
+
     showTooltip (loc) {
       this.location = loc
     },

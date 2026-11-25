@@ -89,7 +89,7 @@ import { getAppVersion, getBuildBadge, isWeb } from '@/utils/version'
 import { installReloadHook, takePendingRejoin } from '@/utils/reload-rejoin'
 import { markAutoDark } from '@/utils/auto-dark'
 
-import { STATUS_CONNECTED } from '@/store/networking'
+import { STATUS_CONNECTED, homeRoute } from '@/store/networking'
 
 const ZOOM_SENSITIVITY = 1.4
 
@@ -871,7 +871,8 @@ export default {
 
         if (this.$windows.isGameWindow()) { this.$store.dispatch('game/close', { redirect: false }); this.$windows.closeSelf(); return }
         this.$store.dispatch('game/close')
-        this.$router.push('/')
+        // the lobby window's home is the online lobby, not the old landing page (index.vue)
+        this.$router.push(homeRoute(this.$windows))
       }
     },
 
