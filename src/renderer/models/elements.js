@@ -288,7 +288,8 @@ export const ELEMENT_ICONS = {
   'meteorite': { feature: 'C1/crater.png', h: 55 },
   'fishermen': { feature: 'C1/fishermen.png', h: 55 },
   'fishhut': { feature: 'C1/fishhut.png', h: 55 },
-  'watchtower': { tile: 'WT/CFff_3C' }
+  // the Edition 1 watchtower artwork (108×119), like the other tile features above
+  'watchtower': { feature: 'C1/watchtower.png', h: 55 }
 }
 /* eslint-enable quote-props */
 
