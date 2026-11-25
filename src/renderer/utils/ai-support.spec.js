@@ -114,7 +114,8 @@ describe('where it shows', () => {
   })
 
   it('the setup header warns, expansion and element boxes carry the AI badge', () => {
-    expect(read('../pages/game-setup.vue')).toContain('<AiSupportBadge />')
+    // from the Tiles tab on (no tiles are chosen on the bookmarks / variant tabs)
+    expect(read('../pages/game-setup.vue')).toContain('<AiSupportBadge v-if="tab > 1" />')
     for (const f of ['ExpansionBox.vue', 'GameElementBox.vue', 'GameMechanicsBox.vue']) {
       expect(read('../components/game-setup/' + f)).toContain('<div v-if="aiPlayable" class="ai-badge"')
     }

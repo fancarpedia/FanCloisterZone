@@ -4,12 +4,14 @@
        tooltip names what is in the way. -->
   <v-tooltip v-if="!support.ok" bottom max-width="420">
     <template #activator="{ on }">
+      <!-- an icon only, like the draw-order alert beside it (the header above the aside is
+           narrow); the text is in the tooltip -->
       <div class="ai-not-available" v-on="on">
-        <v-icon small>fa-solid fa-robot</v-icon>
+        <v-icon>fa-solid fa-robot</v-icon>
         <v-icon x-small class="slash">fas fa-ban</v-icon>
-        <span>{{ $t('game-setup.ai.not-available') }}</span>
       </div>
     </template>
+    <div class="ai-title">{{ $t('game-setup.ai.not-available') }}</div>
     <div>{{ $t('game-setup.ai.not-supported') }}</div>
     <ul>
       <li v-for="name in blockers" :key="name">{{ name }}</li>
@@ -66,22 +68,24 @@ export default {
 .ai-not-available
   display: inline-flex
   align-items: center
-  gap: 4px
-  margin: 0 8px
-  padding: 2px 10px
-  border-radius: 12px
-  font-size: 13px
-  white-space: nowrap
-  color: white
-  background: #b26a00
-  cursor: default
+  position: relative
+  cursor: help
 
   .v-icon
-    color: white
+    color: #b26a00
 
+  // the "no" mark on the robot's lower right
   .slash
-    margin-left: -8px
-    margin-top: 8px
+    position: absolute
+    right: -5px
+    bottom: -3px
+    border-radius: 50%
+    +theme using ($theme)
+      background: map-get($theme, 'cards-bg')
+
+.ai-title
+  font-weight: 600
+  margin-bottom: 2px
 
 ul
   margin: 4px 0 0

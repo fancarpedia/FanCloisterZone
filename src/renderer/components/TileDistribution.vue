@@ -64,8 +64,9 @@
         >
           <!-- dev mode draw order: how many copies of this tile are still free to add to it -->
           <div
-            v-if="sequenced && count > 0"
+            v-if="sequenced && (count > 0 || sequenceLeft(id) < 0)"
             class="sequence-left"
+            :class="{ over: sequenceLeft(id) < 0 }"
             :title="'Not yet in the draw order: ' + sequenceLeft(id)"
           >
             {{ sequenceLeft(id) }}
@@ -632,11 +633,21 @@ export default {
     line-height: 22px
     text-align: center
     pointer-events: none
-    color: white
-    background: rgba(25, 118, 210, 0.9)
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3)
+
+    // the same neutral bubble as the counts in the player panels
+    +theme using ($theme)
+      background: map-get($theme, 'player-panel-count-bg')
+      color: map-get($theme, 'player-panel-count-text')
 
   .tile.sequence-empty .sequence-left
-    background: rgba(120, 120, 120, 0.9)
+    opacity: 0.5
+
+  // the draw order holds more of this tile than the game has: blocks creating the game
+  .sequence-left.over
+    opacity: 1 !important
+    color: white !important
+    background: #D32F2F !important
 
   .count
     text-align: center

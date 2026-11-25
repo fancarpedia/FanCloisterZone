@@ -192,12 +192,18 @@ export default {
 </script>
 
 <style lang="sass" scoped>
-// time limits | pre-draw | cooperative in one row; the starting tile configuration below
+// time limits | pre-draw | cooperative in one row; the starting tile configuration below.
+// Each column only as wide as its content (title + box), side by side from the left with a small
+// gap — not stretched over the full width; they wrap on a narrow window.
 .flow-columns
-  display: grid
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr))
-  gap: 0 $panel-gap
-  align-items: start
+  display: flex
+  flex-wrap: wrap
+  justify-content: flex-start
+  align-items: flex-start
+  gap: 0 24px
+
+  > *
+    flex: 0 0 auto
 
 .components
   margin-top: $panel-gap
