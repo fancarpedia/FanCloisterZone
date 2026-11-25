@@ -2,7 +2,7 @@
   "@author": "Stepukiss",
   "@jcz-version": "5.12.1",
   "@fcz-version": "7.3.0",
-  "@version": "0.14.8-ai",
+  "@version": "0.14.9-ai",
   "about": {
     "author": "Autorius",
     "configuration-file": "Nustatymų aplankas",
@@ -740,6 +740,8 @@
       "do-nothing": "nieko nedaryti",
       "each-turn-increase-timer-by": "Kiekvieną ėjimą padidinti laikmatį",
       "enable-limits": "įjungti limitą",
+      "lost-on-time": "Pralaimėjo dėl laiko",
+      "over-time": "Viršytas laikas",
       "player-time-limit": "Žaidėjo laiko limitas",
       "start-short": "Žaidimo pradžia",
       "turn-short": "Kiekvienas ėjimas",

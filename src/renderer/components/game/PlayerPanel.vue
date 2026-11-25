@@ -35,6 +35,8 @@
             <br>
             <span class="offline-label">{{ $t('core-messages.offline') }}</span>
           </template>
+          <!-- the clock under the player's name -->
+          <PlayerClock v-if="timer" :player="index" class="name-clock" />
         </div>
       </div>
       <!-- small screens, supply collapsed: the name and the clock row below are hidden there, so
@@ -52,7 +54,8 @@
         <PlayerClock v-if="timer" :player="index" class="compact-clock" />
       </div>
     </div>
-    <PlayerClock v-if="timer" :player="index" />
+    <!-- the clock's own row: only where the name (and its clock) is hidden — the smallest panels -->
+    <PlayerClock v-if="timer" :player="index" class="row-clock" />
     <div ref="resources" class="resources">
       <div
         v-for="({ follower, count }) in followers"
@@ -331,6 +334,23 @@ section
   white-space: nowrap
   padding-left: 16px
   line-height: 1.2
+
+  // the clock under the name, left-aligned with it and a little smaller (PlayerClock's own
+  // spacing is made for its separate row)
+  ::v-deep .player-clock.name-clock
+    justify-content: flex-start
+    margin: 1px 0 0
+
+    .time
+      font-size: 0.9em
+      line-height: 1.1
+
+// the clock's own row is only for the smallest panels (shrink-3), where the name area is hidden
+.player-clock.row-clock
+  display: none
+
+aside.shrink-3 .player-clock.row-clock
+  display: flex
 
   +theme using ($theme)
     color: map-get($theme, 'player-panel-name-color')

@@ -8,6 +8,8 @@
         <!-- coop: no ranking — the whole team wins or loses together -->
         <div v-for="p in players" :key="'rank-'+p.index" class="rank">
           <template v-if="coop">{{ coop.lost ? '💔' : '🏆' }}</template>
+          <!-- the first player whose time ran out: lost on time, placed last -->
+          <template v-else-if="p.timedOut"><span :title="$t('game-setup.timer.lost-on-time')">⏱</span></template>
           <template v-else-if="p.rank == 1">🥇</template>
           <template v-else-if="p.rank == 2">🥈</template>
           <template v-else-if="p.rank == 3">🥉</template>
@@ -45,6 +47,24 @@
         <div v-for="(val, idx) in stats.tiles" :key="'tiles-'+idx" class="tiles value">
           {{ val }}
         </div>
+
+        <!-- a game with a time limit where someone went over it: how far over, for those players only -->
+        <template v-if="overTime">
+          <div class="header time-left" :title="$t('game-setup.timer.over-time')">
+            <v-icon class="time-left-icon">fas fa-stopwatch</v-icon>
+            <div class="header-label">
+              <div class="header-title">{{ $t('game-setup.timer.over-time') }}</div>
+            </div>
+          </div>
+          <div
+            v-for="(t, idx) in overTime"
+            :key="'time-'+idx"
+            class="time-left value over"
+            :title="t && t.lost ? $t('game-setup.timer.lost-on-time') : null"
+          >
+            {{ t ? t.text : '' }}
+          </div>
+        </template>
       </div>
 
       <div
@@ -97,6 +117,8 @@ import { mapGetters, mapState } from 'vuex'
 
 import flatten from 'lodash/flatten'
 import debounce from 'lodash/debounce'
+
+import { remainingTimeSec } from '@/store/game'
 
 import ExpressionItem from '@/components/game/ExpressionItem'
 import Meeple from '@/components/game/Meeple'
@@ -174,7 +196,34 @@ export default {
       if (this.coop) {
         return this.$store.state.game.players.map((p, index) => ({ ...p, index, rank: null }))
       }
-      return flatten(this.ranks.map(r => r.players.map(p => ({ ...p, rank: r.rank }))))
+      return flatten(this.ranks.map(r => r.players.map(p => ({ ...p, rank: r.rank, timedOut: !!r.timedOut }))))
+    },
+
+    // how far over the time limit each player went, in the order of the columns: { text, lost } for
+    // a player over it, null for one within it — and null for the whole row when nobody went over
+    // (or there is no time limit). The player who lost on time shows how far over they were when
+    // they ran out, not their clock at the end (later turn bonuses may have brought it back up).
+    overTimeByPlayer () {
+      const { setup, clock, timedOut, timedOutSec } = this.$store.state.game
+      const timer = setup?.timer
+      if (!timer || !clock) return null
+      return this.players.map(p => {
+        const turns = (this.history || []).reduce((n, h) => n + (h.player === p.index ? 1 : 0), 0)
+        const lost = p.index === timedOut && timedOutSec !== null && timedOutSec !== undefined
+        const sec = Math.round(lost ? timedOutSec : remainingTimeSec(timer, turns, clock[p.index] || 0))
+        const abs = Math.abs(sec)
+        const h = Math.floor(abs / 3600)
+        const m = Math.floor(abs / 60) % 60
+        const s = abs % 60
+        const pad = n => (n < 10 ? '0' : '') + n
+        if (!(sec < 0 || lost)) return null
+        return { text: (h ? h + ':' + pad(m) : m) + ':' + pad(s), lost }
+      })
+    },
+
+    overTime () {
+      const rows = this.overTimeByPlayer
+      return rows && rows.some(Boolean) ? rows : null
     },
 
     cols () {
@@ -430,6 +479,20 @@ export default {
     .value.item-value
       font-size: 0.7em
       opacity: 0.7
+
+    // time left at the end: the stopwatch sized like the other row icons; over the limit in red
+    .time-left-icon
+      font-size: 30px
+
+      +theme using ($theme)
+        color: map-get($theme, 'gray-text-color')
+
+    .value.time-left.over
+      color: #D32F2F
+
+      // a lighter red on the dark theme (the light theme's red was hard to read there)
+      #app.theme--dark &
+        color: #FF6E6E
 
   // a category that has a sub-feature breakdown is boxed together as one group
   // (neutral tint works in both light and dark themes)

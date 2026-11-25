@@ -2,7 +2,7 @@
   "@author": "Peťul",
   "@jcz-version": "5.12.1",
   "@fcz-version": "7.3.0",
-  "@version": "0.14.8-ai",
+  "@version": "0.14.9-ai",
   "about": {
     "author": "Autor",
     "configuration-file": "Konfigurační soubor",
@@ -740,6 +740,8 @@
       "do-nothing": "nestane se nic",
       "each-turn-increase-timer-by": "Každý tah navýší čas o:",
       "enable-limits": "Zapnout časový limit",
+      "lost-on-time": "Prohra na čas",
+      "over-time": "Překročený čas",
       "player-time-limit": "Časový limit hráče",
       "start-short": "Začátek hry",
       "turn-short": "Každý tah",

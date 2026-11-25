@@ -21,7 +21,7 @@
           :key="r.rank"
           class="rank"
         >
-          <template v-if="r.rank == 1">
+          <template v-if="r.rank == 1 && !r.timedOut">
             <div class="num">🥇</div>
             <div
               v-for="p in r.players"
@@ -30,6 +30,18 @@
             >
               <Meeple type="SmallFollower" :ai="!!p.ai" />
             </div>
+          </template>
+          <!-- the first player whose time ran out: lost on time, whatever their points -->
+          <template v-else-if="r.timedOut">
+            <div class="num">⏱</div>
+            <div
+              v-for="p in r.players"
+              :key="p.index"
+              :class="colorCssClass(p.index)"
+            >
+              <Meeple type="SmallFollower" :ai="!!p.ai" />
+            </div>
+            <div class="lost-on-time">{{ $t('game-setup.timer.lost-on-time') }}</div>
           </template>
         </div>
       </template>
@@ -198,7 +210,7 @@ svg.meeple
   display: flex
   margin: 0 35px
 
-  .coop-result
+  .coop-result, .lost-on-time
     align-self: center
     margin-left: 14px
     font-size: 22px

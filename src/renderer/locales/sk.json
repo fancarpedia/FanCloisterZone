@@ -2,7 +2,7 @@
   "@author": "Bumsakalaka",
   "@jcz-version": "5.12.1",
   "@fcz-version": "7.3.0",
-  "@version": "0.14.8-ai",
+  "@version": "0.14.9-ai",
   "about": {
     "author": "Autor",
     "configuration-file": "Konfiguračný súbor",
@@ -740,6 +740,8 @@
       "do-nothing": "nerob nič",
       "each-turn-increase-timer-by": "Každý ťah navýši časovač o",
       "enable-limits": "povoliť limity",
+      "lost-on-time": "Prehra na čas",
+      "over-time": "Prekročený čas",
       "player-time-limit": "Časový limit hráča",
       "start-short": "Začiatok hry",
       "turn-short": "Každý ťah",

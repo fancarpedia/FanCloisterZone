@@ -117,4 +117,8 @@ export default {
 
 .out-of-time
   color: #D32F2F
+
+  // a lighter red on the dark theme: the light theme's red was hard to read on the dark panels
+  #app.theme--dark &
+    color: #FF6E6E
 </style>

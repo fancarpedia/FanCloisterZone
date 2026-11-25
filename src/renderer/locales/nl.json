@@ -2,7 +2,7 @@
   "@author": "Kiap1969 & Sinscerly",
   "@jcz-version": "5.12.1",
   "@fcz-version": "7.3.0",
-  "@version": "0.14.8-ai",
+  "@version": "0.14.9-ai",
   "about": {
     "author": "Auteur",
     "configuration-file": "Configuratiebestand",
@@ -740,6 +740,8 @@
       "do-nothing": "doe niets",
       "each-turn-increase-timer-by": "Verhoog de timer elke beurt met",
       "enable-limits": "limiet instellen",
+      "lost-on-time": "Verloren op tijd",
+      "over-time": "Tijdoverschrijding",
       "player-time-limit": "Tijdslimiet voor spelers",
       "start-short": "Begin van het spel",
       "turn-short": "Elke beurt",

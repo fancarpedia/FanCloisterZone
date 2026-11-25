@@ -69,16 +69,70 @@ const deployedOnTower = (state, response) => {
   return false
 }
 
-const computeClock = (playersCount, messages) => {
+// Going over the time limit by less than this (seconds) does not count as losing on time — a move
+// that reaches the server a moment late must not decide the game
+export const TIMEOUT_GRACE_SEC = 4
+
+// A player's time left (seconds): the start time plus the per-turn bonus for every turn of theirs,
+// minus the time they used (clock, ms) — the same as PlayerClock shows
+export const remainingTimeSec = (timer, turns, clockMs) =>
+  timer.initial + timer.turn * turns - clockMs / 1000
+
+// The final order of a finished standard game, as the result panel ranks it: one entry per player,
+// best first — seat, name, client id, points, position (ties share it), whether they lost on time
+// (the first to run out, placed last whatever their points) and how many seconds over the time limit
+// they were (null within it; for the player who lost on time, when they ran out)
+export const finalResults = (state, ranks) => {
+  const timer = state.setup?.timer
+  const overTime = index => {
+    if (!timer || !state.clock) return null
+    if (index === state.timedOut && state.timedOutSec !== null && state.timedOutSec !== undefined) {
+      return Math.max(1, Math.round(-state.timedOutSec))
+    }
+    const turns = (state.history || []).reduce((n, h) => n + (h.player === index ? 1 : 0), 0)
+    const left = Math.round(remainingTimeSec(timer, turns, state.clock[index] || 0))
+    return left < 0 ? -left : null
+  }
+  const results = []
+  ;(ranks || []).forEach(r => r.players.forEach(p => results.push({
+    seat: p.index,
+    name: p.name,
+    clientId: p.clientId || null,
+    points: p.points,
+    position: r.rank,
+    lostOnTime: !!r.timedOut,
+    overTime: overTime(p.index)
+  })))
+  return results
+}
+
+// The clocks after the given messages (a loaded / re-joined game, replayed in one go), and the
+// first player whose time ran out along the way (null if none) — checked move by move, in order,
+// so "first" is the same as during live play
+export const computeClock = (playersCount, messages, timer = null) => {
   const clocks = (new Array(playersCount)).fill(0)
+  const turns = (new Array(playersCount)).fill(0)
   let active = 0
+  turns[0] = 1
   let prevClock = 0
+  let timedOut = null
+  let timedOutSec = null
   messages.forEach(({ clock, player }) => {
     clocks[active] += clock - prevClock
+    if (timer && timedOut === null) {
+      const left = remainingTimeSec(timer, turns[active], clocks[active])
+      if (left <= -TIMEOUT_GRACE_SEC) {
+        timedOut = active
+        timedOutSec = left
+      }
+    }
+    if (player !== active && player !== undefined && player !== null) {
+      turns[player] = (turns[player] || 0) + 1
+    }
     active = player
     prevClock = clock
   })
-  return clocks
+  return { clocks, timedOut, timedOutSec }
 }
 
 const applySetup = (state, value, vm) => {
@@ -115,6 +169,11 @@ export const state = () => ({
   observers: [],
   players: null,
   clock: null,
+  // the first player whose time ran out (player index), or null — kept for the rest of the game,
+  // even if later turn bonuses bring that clock back above zero: that player lost on time
+  timedOut: null,
+  // that player's time left (seconds, negative) when it happened — what the final stats show for them
+  timedOutSec: null,
   lastMessageClock: null,
   lastMessageClockLocal: null,
   tilePack: null,
@@ -161,6 +220,8 @@ export const mutations = {
     state.observers = []
     state.players = null
     state.clock = null
+    state.timedOut = null
+    state.timedOutSec = null
     state.lastMessageClock = null
     state.lastMessageClockLocal = null
     state.tilePack = null
@@ -272,9 +333,25 @@ export const mutations = {
     }
   },
 
+  timedOut (state, value) {
+    // { player, sec } (or null)
+    state.timedOut = value ? value.player : null
+    state.timedOutSec = value ? value.sec : null
+  },
+
   updateClock (state, { player, clock, shiftLocal = 0 }) {
     if (player !== null && player !== undefined) {
       Vue.set(state.clock, player, state.clock[player] + clock - state.lastMessageClock)
+      // the first player to run out of time is remembered (see timedOut)
+      const timer = state.setup?.timer
+      if (timer && state.timedOut === null) {
+        const turns = (state.history || []).reduce((n, h) => n + (h.player === player ? 1 : 0), 0)
+        const left = remainingTimeSec(timer, turns, state.clock[player])
+        if (left <= -TIMEOUT_GRACE_SEC) {
+          state.timedOut = player
+          state.timedOutSec = left
+        }
+      }
     }
     state.lastMessageClock = clock
     state.lastMessageClockLocal = Date.now() + shiftLocal
@@ -481,8 +558,12 @@ export const getters = {
     return !!state.tileRotation && getters.isUndoAllowed
   },
 
+  // ranks by points; the player who ran out of time first is not ranked by points but placed
+  // last ({ timedOut: true }), whatever their points or their clock at the end
   ranks (state) {
-    const playersWithIndex = state.players.map((p, index) => ({ ...p, index }))
+    const all = state.players.map((p, index) => ({ ...p, index }))
+    const lostOnTime = state.timedOut === null || state.timedOut === undefined ? null : all[state.timedOut]
+    const playersWithIndex = lostOnTime ? all.filter(p => p.index !== lostOnTime.index) : all
     const groups = groupBy(playersWithIndex, 'points')
     const points = Object.keys(groups).map(p => parseInt(p))
     points.sort((a, b) => b - a)
@@ -496,6 +577,9 @@ export const getters = {
       })
       rank += groups[p].length
     })
+    if (lostOnTime) {
+      ranks.push({ points: lostOnTime.points, players: [lostOnTime], rank: rank + 1, timedOut: true })
+    }
     return ranks
   }
 }
@@ -1112,7 +1196,9 @@ export const actions = {
     }
 
     if (state.gameMessages?.length) {
-      commit('resetClock', computeClock(players.length, state.gameMessages))
+      const { clocks, timedOut, timedOutSec } = computeClock(players.length, state.gameMessages, state.setup?.timer)
+      commit('resetClock', clocks)
+      commit('timedOut', timedOut === null ? null : { player: timedOut, sec: timedOutSec })
       await engine.writeMessage(setupMessage)
       for (const msg of state.gameMessages) {
         await engine.writeMessage(msg)
@@ -1231,7 +1317,7 @@ export const actions = {
     }
   },
 
-  async applyEngineResponse ({ state, commit, dispatch, rootState }, { response, hash, message, allowAutoCommit }) {
+  async applyEngineResponse ({ state, commit, dispatch, getters, rootState }, { response, hash, message, allowAutoCommit }) {
     const local = rootState.networking.sessionId === state.players[response.action?.player]?.sessionId
     const aiPlayer = state.players[response.action?.player]?.ai && rootState.networking.sessionId === state.players[response.action?.player]?.sessionId
     let autoCommit = false
@@ -1266,7 +1352,9 @@ export const actions = {
             gameId: state.id,
             points: state.players.map(p => p.points),
             // Keep Building (coop variant) outcome — the server stores it for the leaderboard
-            coop: state.coop
+            coop: state.coop,
+            // a standard game's final order — the server stores it (jczserver_game_result)
+            results: state.coop ? null : finalResults(state, getters.ranks)
           },
           force: true
         })

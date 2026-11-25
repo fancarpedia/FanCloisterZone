@@ -184,6 +184,7 @@ describe('one robot head across the app (Meeple.vue)', () => {
     const stats = fs.readFileSync(path.join(dir, '../game/FinalStats.vue'), 'utf8')
     const result = fs.readFileSync(path.join(dir, '../game/GameResultPanel.vue'), 'utf8')
     expect(stats).toContain('<Meeple type="SmallFollower" :ai="!!p.ai" />')
-    expect(result.split(':ai="!!p.ai"')).toHaveLength(3)
+    // coop team, the winners, and the player who lost on time
+    expect(result.split(':ai="!!p.ai"')).toHaveLength(4)
   })
 })

@@ -2,7 +2,7 @@
   "@author": "Carlium & Meepledrone",
   "@jcz-version": "5.12.1",
   "@fcz-version": "7.3.0",
-  "@version": "0.14.8-ai",
+  "@version": "0.14.9-ai",
   "about": {
     "author": "Autor",
     "configuration-file": "Archivo de configuración",
@@ -740,6 +740,8 @@
       "do-nothing": "no hacer nada",
       "each-turn-increase-timer-by": "Cada turno aumenta el temporizador en",
       "enable-limits": "activar límites",
+      "lost-on-time": "Perdió por tiempo",
+      "over-time": "Tiempo excedido",
       "player-time-limit": "Límite de tiempo por jugador",
       "start-short": "Inicio de la partida",
       "turn-short": "Cada turno",

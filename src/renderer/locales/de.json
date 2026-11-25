@@ -2,7 +2,7 @@
   "@author": "Challa007 & Bombur",
   "@jcz-version": "5.12.1",
   "@fcz-version": "7.3.0",
-  "@version": "0.14.8-ai",
+  "@version": "0.14.9-ai",
   "about": {
     "author": "Autor",
     "configuration-file": "Konfigurationsdatei",
@@ -740,6 +740,8 @@
       "do-nothing": "nichts tun",
       "each-turn-increase-timer-by": "In jeder Runde den Timer erhöhen um",
       "enable-limits": "Zeitlimit aktivieren",
+      "lost-on-time": "Auf Zeit verloren",
+      "over-time": "Zeitüberschreitung",
       "player-time-limit": "Zeitlimit für Spieler",
       "start-short": "Spielbeginn",
       "turn-short": "Jeder Zug",
