@@ -4,6 +4,25 @@ import { ENGINE_MESSAGES } from '@/constants/messages'
 import { connectExceptionToMessage } from '@/utils/networking'
 import { claimableRematchSlots } from '@/store/rematch'
 
+/**
+ * The seat to take automatically on entering a new game: the preferred colour when it is free,
+ * else a random free one. None when this client already sits (a re-join), the max-players cap is
+ * reached, or nothing is free. Only colours the setup can seat (Kingdom Palaces) are considered.
+ */
+export function pickAutoSlot (game, preferredColor, sessionId, $tiles, random = Math.random) {
+  const slots = game.slots || []
+  if (sessionId && slots.some(s => s.sessionId === sessionId)) return null
+  const max = game.setup?.options?.maxPlayers || 0
+  if (max && slots.filter(s => s.clientId).length >= max) return null
+  const allowed = $tiles?.getAllowedColorSlots ? $tiles.getAllowedColorSlots(game.setup?.elements || {}) : null
+  const free = slots.filter(s => !s.clientId && (!allowed || allowed.has(s.number)))
+  if (!free.length) return null
+  const preferred = preferredColor !== null && preferredColor !== undefined
+    ? free.find(s => s.number === preferredColor)
+    : null
+  return preferred || free[Math.floor(random() * free.length)]
+}
+
 export const STATUS_CONNECTING = 'connecting'
 export const STATUS_RECONNECTING = 'reconnecting'
 export const STATUS_CONNECTED = 'connected'
@@ -20,7 +39,7 @@ function homeRoute ($windows) {
 }
 
 class ConnectionHandler {
-  constructor (ctx, host, $router, $addons, $connection, resolve, $windows) {
+  constructor (ctx, host, $router, $addons, $connection, resolve, $windows, $tiles) {
     this.ctx = ctx
     this.host = host
     this.$router = $router
@@ -28,6 +47,9 @@ class ConnectionHandler {
     this.$connection = $connection
     this.resolve = resolve
     this.$windows = $windows
+    // the tile sets (the colours a setup can seat, for the automatic seat) — this class is not the
+    // store, so it has no this._vm to reach them through
+    this.$tiles = $tiles
     this.messageBuffer = []
     this.onMessageLock = false
   }
@@ -166,10 +188,11 @@ class ConnectionHandler {
             }
             return
           }
-          const { preferredColor } = rootState.settings
-          if (preferredColor !== null && !payload.replay) {
-            // player has auto assign enabled and game is a new game
-            const slot = payload.slots.find(s => s.number === preferredColor && !s.clientId)
+          // a new game (created or joined): take a seat — the preferred colour when it is free,
+          // otherwise (taken, or no preference) a random free one. No moves yet also counts as new
+          // (a server may send replay: [] instead of null for a fresh game).
+          if (!payload.replay || !payload.replay.length) {
+            const slot = pickAutoSlot(payload, rootState.settings.preferredColor, state.sessionId, this.$tiles)
             if (slot) {
               await dispatch('gameSetup/takeSlot', { number: slot.number }, { root: true })
             }
@@ -360,7 +383,7 @@ export const actions = {
       commit('connectionType', connectionType)
       commit('connectionStatus', STATUS_CONNECTING)
     }
-    const { $connection, $addons, $windows } = this._vm
+    const { $connection, $addons, $windows, $tiles } = this._vm
     if (!host.match(/:\d+/) && connectionType === 'direct') {
       host = `${host}:${rootState.settings.port}`
     }
@@ -373,7 +396,7 @@ export const actions = {
     }
     rootState.onlineHostName = (new URL(host)).hostname
     return new Promise((resolve, reject) => {
-      const handler = new ConnectionHandler(ctx, host, this.$router, $addons, $connection, resolve, $windows)
+      const handler = new ConnectionHandler(ctx, host, this.$router, $addons, $connection, resolve, $windows, $tiles)
       $connection.connect(host, {
         onMessage: handler.onMessage.bind(handler),
         onClose: handler.onClose.bind(handler)
