@@ -111,6 +111,12 @@ ipcMain.handle("get-app-version", () => {
   return getAppVersion()
 })
 
+// A note from a renderer for the APP console (this terminal), not the browser devtools — e.g. the
+// tiles plugins/tiles.js leaves out on purpose
+ipcMain.on('app-console-log', (event, message) => {
+  console.log(`[app] ${message}`)
+})
+
 ipcMain.on('set-local-game', (event, value) => {
   stateFor(event.sender).hasLocalGame = value
 })
