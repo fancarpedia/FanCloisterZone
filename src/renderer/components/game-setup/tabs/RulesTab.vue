@@ -172,7 +172,7 @@
 
         <GameMechanicsBox v-if="!ai" :item="GameElement.WATCHTOWER">
           <template #icon>
-            <StandaloneTileImage tile-id="WT/CFff_3C" :size="55" />
+            <img src="~/assets/features/C1/watchtower.png" height="55">
           </template>
           <template #description>{{ $t('game-setup.rules.watchtower-description') }}</template>
           <template #disabled>{{ $t('game-setup.rules.watchtower-disabled') }}</template>
