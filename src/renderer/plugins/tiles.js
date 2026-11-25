@@ -573,8 +573,14 @@ export class Tiles extends EventsBase {
         const implies = Array.from(el.querySelectorAll('implies[element]')).map(ref => ref.getAttribute('element'))
         const allowedElements = Array.from(el.querySelectorAll('impliesAllowed[element]')).map(ref => ref.getAttribute('element'))
         const minimumVersionForAI = el.querySelector('minimumVersionForAI') || null
-        const maxSets = el.querySelector('maxSets') || null
-		const minSets = el.querySelector('minSets') || null
+        // <maxSets>1</maxSets> / <minSets>: how many copies of the tile set a game may hold — the
+        // NUMBER in the element (passing the element itself made Math.min() in ReleaseButtons NaN)
+        const setsLimit = tag => {
+          const n = parseInt(el.querySelector(tag)?.textContent, 10)
+          return Number.isFinite(n) && n > 0 ? n : null
+        }
+        const maxSets = setsLimit('maxSets')
+        const minSets = setsLimit('minSets')
         // AI players: the add-on's minimumVersionForAI (if any) is met — its elements decide the rest
         // (utils/ai-support.js aiExpansionLevel)
         const ai = meetsAiVersion(isNil(minimumVersionForAI) ? null : minimumVersionForAI.textContent.trim(), appVersion)
