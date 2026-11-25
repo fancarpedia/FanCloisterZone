@@ -161,6 +161,10 @@ export default {
         this.$tiles.getTilesCounts(this.sets, this.rules, edition, start),
         setup.tileOverrides
       )
+      // the starting tiles' copies are on the board from the start, never drawn
+      for (const { tile } of (start?.value || [])) {
+        if (counts[tile]) counts[tile] -= 1
+      }
       return Object.entries(this.sequencedCounts)
         .filter(([id, n]) => n > (counts[id] || 0))
         .map(([id]) => id)

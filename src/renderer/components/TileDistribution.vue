@@ -222,7 +222,8 @@ export default {
       return !!this.storeOverrides && Object.keys(this.storeOverrides).length > 0
     },
 
-    // pre-placed starting tiles must stay in the pack: tileId -> minimum kept count
+    // pre-placed starting tiles must stay in the pack: tileId -> minimum kept count. They are on the
+    // board from the start, so never drawn: the dev draw order can't hold these copies either.
     startTileCounts () {
       const counts = {}
       if (this.start && this.start.value) {
@@ -332,7 +333,7 @@ export default {
 
     // one flat pseudo-group, or (editable + separate view) a group per expansion
     // a tile's total count over every group it shows in (the separated view lists the same tile
-    // once per set) — what a draw order can hold of it
+    // once per set)
     totalCounts () {
       const totals = {}
       for (const group of this.displayGroups) {
@@ -444,13 +445,20 @@ export default {
         this.changeCount(tileId, 0, 1, setKey)
         return
       }
-      // the limit for the draw order is the tile's total, not one set's share of it
-      this.$emit('tile-click', tileId, this.totalCounts[tileId] ?? count)
+      // the limit for the draw order: the tile's total (not one set's share of it) without the
+      // copies the starting tiles take
+      this.$emit('tile-click', tileId, this.drawableCount(tileId) ?? count)
     },
 
-    // copies of a tile not yet in the dev draw order
+    // copies of a tile that can be drawn at all: its total minus the starting tiles' copies
+    drawableCount (tileId) {
+      if (this.totalCounts[tileId] === undefined) return undefined
+      return this.totalCounts[tileId] - (this.startTileCounts[tileId] || 0)
+    },
+
+    // copies of a tile not yet in the dev draw order (starting tiles already taken off)
     sequenceLeft (tileId) {
-      return (this.totalCounts[tileId] || 0) - ((this.sequenced && this.sequenced[tileId]) || 0)
+      return (this.drawableCount(tileId) || 0) - ((this.sequenced && this.sequenced[tileId]) || 0)
     },
 
     // setKey present (separated view) → edit that set's copy independently; else the flat total
