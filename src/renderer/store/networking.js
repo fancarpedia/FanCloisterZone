@@ -34,7 +34,7 @@ let scheduledReconnect = null
 
 // Where "go home" leads. Game windows return to '/' so the windowing guard can tear them
 // down; the lobby ('main') window stays in the online lobby ('/online', the default screen).
-function homeRoute ($windows) {
+export function homeRoute ($windows) {
   return ($windows && $windows.isGameWindow && $windows.isGameWindow()) ? '/' : '/online'
 }
 
