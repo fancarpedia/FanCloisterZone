@@ -656,6 +656,8 @@ export const actions = {
 
     commit('setEditingGameId', existingGameId)
     await dispatch('load', existingSetup)
+    // dev mode: keep the game's draw order / turn limit (load resets them with the setup)
+    commit('gameAnnotations', { ...(rootState.game.gameAnnotations || {}) })
     this.$router.push('/game-setup')
   },
 
@@ -699,6 +701,8 @@ export const actions = {
         type: 'UPDATE_GAME_SETUP',
         payload: { gameId: state.editingGameId, setup }
       })
+      // the edited draw order / turn limit (dev mode) is what the game starts with
+      commit('game/gameAnnotations', { ...state.gameAnnotations }, { root: true })
       commit('setEditingGameId', null)
     } else {
       const finalSlots = slots || getEmptySlots()

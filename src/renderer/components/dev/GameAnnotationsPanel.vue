@@ -61,10 +61,13 @@ export default {
     StandaloneTileImage
   },
 
+  // starts from the stored annotations: coming back to the setup ("Change" on the open game page,
+  // or the panel shown again) must not drop a draw order that was already set
   data () {
+    const stored = this.$store.state.gameSetup.gameAnnotations || {}
     return {
-      limitPackSize: '',
-      drawOrder: [],
+      limitPackSize: stored.endTurn ? String(stored.endTurn) : '',
+      drawOrder: [...(stored.drawOrder || [])],
       visible: false
     }
   },
