@@ -27,6 +27,12 @@ const EDGE_CODE = {
 // own — the base features (road, city, monastery), the farmers' fields and the abbot's gardens
 const INFO_SELECTORS = { road: 'road', city: 'city', monastery: 'monastery', farmers: 'field', garden: 'garden' }
 
+// Tiles NOT registered in the app (their tile-set references are dropped too): BT/* = Under the
+// Big Top. Which tiles were skipped is printed to the APP console (the terminal, via the main
+// process), not the browser devtools — a reminder that they are left out on purpose.
+export const SKIPPED_TILE_PREFIXES = ['BT/']
+const isSkippedTile = id => SKIPPED_TILE_PREFIXES.some(prefix => id.startsWith(prefix))
+
 const UNKWNOWN_SET = { expansion: '_UNKNOWN', implies: [], impliesAllowed: [], allows: [] }
 
 function getFeatureSignature (feature) {
@@ -445,6 +451,8 @@ export class Tiles extends EventsBase {
     const parser = new DOMParser()
     // the XML (fan / add-on) expansions read by this load, by name — registered all at once at the end
     const parsedExpansions = {}
+    // tiles left out on purpose (SKIPPED_TILE_PREFIXES), reported once at the end of the load
+    const skippedTiles = new Set()
 
     const parseXml = async (xml, addon) => {
       const content = await fs.promises.readFile(xml)
@@ -454,6 +462,10 @@ export class Tiles extends EventsBase {
 
       doc.querySelectorAll('tile[id]').forEach(t => {
         const id = t.getAttribute('id')
+        if (isSkippedTile(id)) {
+          skippedTiles.add(id)
+          return
+        }
         const features = {}
         for (const feature of t.children) {
           if (feature.childElementCount) continue // wagon move etc
@@ -515,8 +527,10 @@ export class Tiles extends EventsBase {
 		const min = ts.getAttribute('min')
         const setTiles = {}
         ts.querySelectorAll('ref').forEach(ref => {
+          const tileId = ref.getAttribute('tile')
+          if (tileId && isSkippedTile(tileId)) return // not registered (SKIPPED_TILE_PREFIXES)
           const count = ref.getAttribute('count')
-          setTiles[ref.getAttribute('tile')] = parseInt(count || 1)
+          setTiles[tileId] = parseInt(count || 1)
         })
         // <tile-set supply="true">: tiles the expansion puts into players' supplies, never into the
         // draw pile (e.g. Kingdoms' Kingdom Palaces). They are kept apart in `supplyTiles` so pack
@@ -651,6 +665,12 @@ export class Tiles extends EventsBase {
     // sets below change together. Unregistering first and registering file by file (with awaits in
     // between) left windows where the old sets named expansions that were gone, and the lobby's
     // game overview crashed on `Expansion[name].releases` (undefined).
+    if (skippedTiles.size) {
+      const list = Array.from(skippedTiles).sort()
+      ipcRenderer.send('app-console-log',
+        `Tiles not registered on purpose (SKIPPED_TILE_PREFIXES ${SKIPPED_TILE_PREFIXES.join(', ')} in plugins/tiles.js): ${list.length} — ${list.join(', ')}`)
+    }
+
     Expansion.unregisterAll()
     Object.values(parsedExpansions).forEach(exp => Expansion.register(exp))
     Expansion.all().forEach(exp => {
