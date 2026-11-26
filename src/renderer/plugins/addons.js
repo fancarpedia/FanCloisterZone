@@ -22,6 +22,20 @@ import { EventsBase } from '@/utils/events'
 // Bards add-on, minimumJczVersion 7.3.0, on the 7.2 app). Keep it false.
 const IGNORE_MINIMUM_JCZ_VERSION = false
 
+// Move an unpacked add-on folder into its final destination, falling back to fs-extra's
+// copy-and-remove move when source and destination sit on different mount points (EXDEV).
+export async function moveAddonDirectory (srcPath, destPath, fsImpl = fs) {
+  try {
+    await fsImpl.promises.rename(srcPath, destPath)
+  } catch (err) {
+    if (err && err.code === 'EXDEV') {
+      await fsImpl.move(srcPath, destPath)
+    } else {
+      throw err
+    }
+  }
+}
+
 class Addons extends EventsBase {
   constructor (ctx) {
     super()
@@ -329,36 +343,47 @@ class Addons extends EventsBase {
   async install (filePath) {
     const addonsFolder = await this.mkAddonsFolder()
 
-    const tmpFolder = await fs.promises.mkdtemp(path.join(os.tmpdir(), 'addon-'))
+    // Stage inside the userData parent folder (same filesystem as addonsFolder, outside addonsFolder
+    // itself so loadAddons() never scans the staging directory) for an atomic rename, and still fall
+    // back via moveAddonDirectory if addonsFolder is a cross-device mount/symlink.
+    const tmpFolder = await fs.promises.mkdtemp(path.join(path.dirname(addonsFolder), '.addon-tmp-'))
+    let id
+    let addon
+    let destPath
 
-    // TODO UNPACK FIRST TO TEMP DIR AND VALIDATE
-    await fs.createReadStream(filePath)
-      .pipe(unzipper.Extract({ path: tmpFolder }))
-      .promise()
-
-    const listing = await fs.promises.readdir(tmpFolder)
-    if (listing.length !== 1) {
-      throw new Error($nuxt.$t('settings.add-ons.invalid-add-on-multiple-folders-in-root'))
-    }
-    const id = listing[0]
-
-    const tmpAddonPath = path.join(tmpFolder, id)
-    const addon = await this._readAddon(id, tmpAddonPath)
-    if (addon.error) {
-      throw new Error(addon.error)
-    }
-
-    const destPath = path.join(addonsFolder, id)
     try {
-      await fs.promises.access(destPath)
-      throw new Error($nuxt.$t('settings.add-ons.add-on-already-installed', { id }))
-    } catch (err) {
-      if (err.code !== 'ENOENT') throw err
-      // directory does not exist yet — safe to proceed
-    }
+      await fs.createReadStream(filePath)
+        .pipe(unzipper.Extract({ path: tmpFolder }))
+        .promise()
 
-    await fs.promises.rename(tmpAddonPath, destPath)
-    await fs.promises.rm(tmpFolder, { recursive: true, force: true })
+      const listing = await fs.promises.readdir(tmpFolder)
+      if (listing.length !== 1) {
+        throw new Error($nuxt.$t('settings.add-ons.invalid-add-on-multiple-folders-in-root'))
+      }
+      id = listing[0]
+
+      const tmpAddonPath = path.join(tmpFolder, id)
+      addon = await this._readAddon(id, tmpAddonPath)
+      if (!addon) {
+        throw new Error(this._t('file.file-is-not-valid'))
+      }
+      if (addon.error) {
+        throw new Error(addon.error)
+      }
+
+      destPath = path.join(addonsFolder, id)
+      try {
+        await fs.promises.access(destPath)
+        throw new Error($nuxt.$t('settings.add-ons.add-on-already-installed', { id }))
+      } catch (err) {
+        if (err.code !== 'ENOENT') throw err
+        // directory does not exist yet — safe to proceed
+      }
+
+      await moveAddonDirectory(tmpAddonPath, destPath)
+    } finally {
+      await fs.promises.rm(tmpFolder, { recursive: true, force: true }).catch(() => {})
+    }
 
     // Re-read from final location and update in-memory list immediately
     const installedAddon = await this._readAddon(id, destPath)
@@ -368,7 +393,7 @@ class Addons extends EventsBase {
       this.addons.push(installedAddon)
     }
 
-    const enabledArtworks = uniq([...this.ctx.store.state.settings.enabledArtworks, ...addon.json.artworks.map(artwork => `${id}/${artwork}`)])
+    const enabledArtworks = uniq([...this.ctx.store.state.settings.enabledArtworks, ...(addon.json.artworks || []).map(artwork => `${id}/${artwork}`)])
     await this.ctx.store.dispatch('settings/update', { enabledArtworks })
 
     await new Promise(resolve => {
