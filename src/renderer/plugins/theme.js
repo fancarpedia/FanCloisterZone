@@ -50,7 +50,27 @@ class Theme extends EventsBase {
     this.warnedMissing = new Set()
   }
 
+  // Serialize artwork reloads like Tiles.loadExpansions so overlapping reloads (e.g. while
+  // several add-ons install in a row) never wipe #theme-resources mid-load.
   async loadArtworks () {
+    if (this._artworksLoading) {
+      this._artworksReloadPending = true
+      return this._artworksLoading
+    }
+    this._artworksLoading = (async () => {
+      do {
+        this._artworksReloadPending = false
+        await this._loadArtworksOnce()
+      } while (this._artworksReloadPending)
+    })()
+    try {
+      await this._artworksLoading
+    } finally {
+      this._artworksLoading = null
+    }
+  }
+
+  async _loadArtworksOnce () {
     const { settings } = this.ctx.store.state
 
     let resourcesContainer = document.getElementById('theme-resources')

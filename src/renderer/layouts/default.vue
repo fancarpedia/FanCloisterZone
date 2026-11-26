@@ -493,9 +493,13 @@ export default {
       }
     })
     
-    this.$store.dispatch('checkEngineVersion')
+    this.$store.dispatch('checkEngineVersion').catch(() => {})
 
-    await this.loadAddons()
+    try {
+      await this.loadAddons()
+    } catch (e) {
+      console.error('Failed loading add-ons on mount:', e)
+    }
 
     // Deliberately here, right after loadAddons: joining a game sets the engine up from
     // $tiles.xmls, which loadExpansions() only fills in above. Everything else that joins a
@@ -533,14 +537,23 @@ export default {
       await this.loadAddons()
     })
 
+    ipcRenderer.on('addons.changed', () => {
+      this.loadAddons()
+    })
+
     // Multi-window: a dedicated game window asks the main process for its launch intent and runs it.
     if (this.$windows.isGameWindow()) {
-      // A warm (pre-booted, hidden) window mounted with whatever settings were current at warm-up
-      // time, which can be minutes old. Re-read them on claim so the window shows the language the
-      // user has on screen NOW, not the one from app start.
+      // A warm (pre-booted, hidden) window mounted with whatever settings and add-ons were current
+      // at warm-up time, which can be minutes old. Re-read settings and ensure local add-ons /
+      // expansions / artworks are reloaded before running the game intent.
       ipcRenderer.on('game-window.init', async (ev, { intent }) => {
         await this.$store.dispatch('settings/loaded', await ipcRenderer.invoke('settings.get'))
         this.applyLocale()
+        try {
+          await this.loadAddons()
+        } catch (e) {
+          console.error('Failed reloading add-ons for game window:', e)
+        }
         this.handleGameWindowInit(intent)
       })
       ipcRenderer.send('game-window.ready')
@@ -720,21 +733,34 @@ export default {
     },
 
     async loadAddons () {
-      await this.$addons.loadAddons()
-      await this.$tiles.loadExpansions()
-      // Download new / updated add-ons ONCE per app run, and only in the lobby window. Every
-      // window (also the hidden pre-booted game window) used to run it at the same time on the same
-      // temp files, so they overwrote ("checksum mismatch"), deleted ("ENOENT") or beat each other
-      // to it ("already installed"). The other windows pick the new add-ons up anyway: an install
-      // changes the shared enabledArtworks setting, which reloads their add-ons.
-      // The flag is set BEFORE the download: each install emits 'change', which calls loadAddons()
-      // again while this one is still running — that must not start a second run.
-      if (!this.addonsUpdated && !this.$windows.isGameWindow()) {
-        this.addonsUpdated = true
-        await this.$addons.updateOutdatedAddons()
+      if (this._addonsLoading) {
+        this._addonsReloadPending = true
+        return this._addonsLoading
+      }
+      this._addonsLoading = (async () => {
+        do {
+          this._addonsReloadPending = false
+          await this.$addons.loadAddons()
+          await this.$tiles.loadExpansions()
+          await this.$theme.loadArtworks()
+        } while (this._addonsReloadPending)
+      })()
+      try {
+        await this._addonsLoading
+      } finally {
+        this._addonsLoading = null
       }
 
-      await this.$theme.loadArtworks()
+      // Download new / updated add-ons ONCE per app run, in the background of the lobby window only,
+      // after local expansions and artworks are already loaded so neither the lobby nor any game
+      // window blocks startup on network downloads. Each installed add-on emits 'change' / updates
+      // enabledArtworks, reloading this window and any open/warm game windows automatically.
+      if (!this.addonsUpdated && !this.$windows.isGameWindow()) {
+        this.addonsUpdated = true
+        this.$addons.updateOutdatedAddons().catch(err => {
+          console.error('Failed updating outdated add-ons:', err)
+        })
+      }
     },
 
     updateMenu () {

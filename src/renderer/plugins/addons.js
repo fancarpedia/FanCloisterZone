@@ -456,7 +456,9 @@ class Addons extends EventsBase {
     // `jcz/simplified` (theme.js always enables it), so classic is never required — pulling ~32MB
     // from Mega on first run would be wrong (and is what triggered the "default artwork not found"
     // warning). Desktop still defaults to classic and downloads it on first run.
-    if (isWeb()) return
+    // Game windows also skip the download: only the main (lobby) window fetches classic so multiple
+    // windows never race on the archive or block game-window readiness on a ~32MB download.
+    if (isWeb() || (this.ctx.$windows && this.ctx.$windows.isGameWindow())) return
     const classicArtwork = installedAddons.find(({ id }) => id === 'classic')
     if (classicArtwork) {
       if (!classicArtwork.outdated && !classicArtwork.error) {
@@ -494,6 +496,10 @@ class Addons extends EventsBase {
       }
     }
 
+    if (!link) {
+      return
+    }
+
     this.ctx.app.store.commit('download', {
       name: 'classic.jca',
       description: this._t('settings.add-ons.downloading-classic-artwork'),
@@ -502,14 +508,7 @@ class Addons extends EventsBase {
       link
     })
 
-    const zipName = path.join(addonsFolder, 'classic.jca')
-    try {
-      if ((await fs.promises.stat(zipName)).isFile()) {
-        await fs.promises.unlink(zipName)
-      }
-    } catch {
-      // ignore
-    }
+    const zipName = path.join(path.dirname(addonsFolder), `.classic-${process.pid}-${Date.now()}.jca`)
     const file = fs.createWriteStream(zipName)
     try {
       await new Promise((resolve, reject) => {
@@ -541,6 +540,7 @@ class Addons extends EventsBase {
         }
       })
     } catch (e) {
+      await fs.promises.unlink(zipName).catch(() => {})
       this.ctx.app.store.commit('download', null)
       return
     }
@@ -555,7 +555,7 @@ class Addons extends EventsBase {
         size: this.AUTO_DOWNLOADED.classic.size,
         link
       })
-      await fs.promises.unlink(zipName)
+      await fs.promises.unlink(zipName).catch(() => {})
       return
     }
 
@@ -564,14 +564,18 @@ class Addons extends EventsBase {
       console.log('Removing outdated artwork ' + classicArtwork.folder)
       await fs.promises.rm(classicArtwork.folder, { recursive: true, force: true })
     }
-    await fs.createReadStream(zipName)
-      .pipe(unzipper.Extract({ path: path.join(addonsFolder, 'classic') }))
-      .promise()
-    await fs.promises.unlink(zipName)
+    try {
+      await fs.createReadStream(zipName)
+        .pipe(unzipper.Extract({ path: path.join(addonsFolder, 'classic') }))
+        .promise()
+    } finally {
+      await fs.promises.unlink(zipName).catch(() => {})
+    }
     this.ctx.app.store.commit('download', null)
 
     const artwork = await this._readAddon('classic', fullPath)
     installedAddons.unshift(artwork)
+    ipcRenderer.send('broadcast-addons-changed')
   }
 
   async updateOutdatedAddons () {
