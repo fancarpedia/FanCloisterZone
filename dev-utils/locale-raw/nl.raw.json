@@ -524,6 +524,13 @@
       "not-enough-points": "<span lang="en" dir="ltr" class="mw-content-ltr">Not enough points to buy back — 3 points are needed</span>",
       "not-their-action": "<span lang="en" dir="ltr" class="mw-content-ltr">Captured — its owner can buy it back for 3 points on their turn</span>"
     },
+    "resign": {
+      "confirm": "<span lang="en" dir="ltr" class="mw-content-ltr">Do you really want to resign? The game ends at once and the other players win.</span>",
+      "player-resigned": "<span lang="en" dir="ltr" class="mw-content-ltr">{name} resigned the game.</span>",
+      "winner": "<span lang="en" dir="ltr" class="mw-content-ltr">{name} wins.</span>",
+      "you-resigned": "<span lang="en" dir="ltr" class="mw-content-ltr">You resigned the game.</span>",
+      "you-win": "<span lang="en" dir="ltr" class="mw-content-ltr">You win!</span>"
+    },
     "scoring": {
       "barn-connected": "herenboerderij gekoppeld",
       "barn-placed": "herenboerderij gezet",
@@ -898,6 +905,7 @@
       "new-game": "Nieuw spel",
       "new-game-against-ai": "Nieuw spel tegen ai",
       "open-game": "Open spel",
+      "resign-game": "<span lang="en" dir="ltr" class="mw-content-ltr">Resign game</span>",
       "saved-game": "Opgeslagen spel",
       "title": "Door speler georganiseerde spellen"
     },
@@ -985,6 +993,7 @@
     "playonline-disconnect": "Verbinding verbreken",
     "potential-final-score": "<span lang="en" dir="ltr" class="mw-content-ltr">Potential Final Score</span>",
     "report-bug": "Probleem melden",
+    "resign-game": "<span lang="en" dir="ltr" class="mw-content-ltr">Resign Game</span>",
     "rotate": "Draaien",
     "rules": "Spelregels",
     "save-game": "Spel opslaan",

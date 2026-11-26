@@ -2,7 +2,7 @@
   "@author": "pOison & Dextea & SonicDC",
   "@jcz-version": "5.12.1",
   "@fcz-version": "7.3.0",
-  "@version": "0.14.9-ai",
+  "@version": "0.14.11-ai",
   "about": {
     "author": "Автор",
     "configuration-file": "Файл конфигурации",
@@ -529,6 +529,13 @@
       "not-enough-points": "Недостаточно очков для выкупа — нужно 3 очка",
       "not-their-action": "В плену — владелец может выкупить его за 3 очка в свой ход"
     },
+    "resign": {
+      "confirm": "Вы действительно хотите сдаться? Игра сразу закончится, и другие игроки победят.",
+      "player-resigned": "{name} сдался.",
+      "winner": "Побеждает {name}.",
+      "you-resigned": "Вы сдались.",
+      "you-win": "Вы победили!"
+    },
     "scoring": {
       "barn-connected": "амбар подключен",
       "barn-placed": "амбар выставлен",
@@ -907,6 +914,7 @@
       "new-game": "Новая игра",
       "new-game-against-ai": "Новая игра против ИИ",
       "open-game": "Открыть игру",
+      "resign-game": "Сдаться",
       "saved-game": "Сохранённая игра",
       "title": "Игры, созданные игроками",
       "new-local-game": "Новая локальная игра"
@@ -995,6 +1003,7 @@
     "playonline-disconnect": "Отключиться",
     "potential-final-score": "Возможный итоговый счёт",
     "report-bug": "Сообщить об ошибке",
+    "resign-game": "Сдаться",
     "rotate": "Повернуть",
     "rules": "Правила",
     "save-game": "Сохранить игру",

@@ -934,6 +934,31 @@
     "value": "Zakładnik — jego właściciel może go wykupić za 3 punkty w swojej turze",
     "source": "manual"
   },
+  "game.resign.confirm": {
+    "en": "Do you really want to resign? The game ends at once and the other players win.",
+    "value": "Czy na pewno chcesz się poddać? Gra natychmiast się kończy, a pozostali gracze wygrywają.",
+    "source": "manual"
+  },
+  "game.resign.player-resigned": {
+    "en": "{name} resigned the game.",
+    "value": "{name} poddał grę.",
+    "source": "manual"
+  },
+  "game.resign.winner": {
+    "en": "{name} wins.",
+    "value": "Wygrywa {name}.",
+    "source": "manual"
+  },
+  "game.resign.you-resigned": {
+    "en": "You resigned the game.",
+    "value": "Poddałeś grę.",
+    "source": "manual"
+  },
+  "game.resign.you-win": {
+    "en": "You win!",
+    "value": "Wygrałeś!",
+    "source": "manual"
+  },
   "game.scoring.income": {
     "en": "income",
     "value": "przychód",
@@ -1027,6 +1052,11 @@
   "index.local.new-local-game": {
     "en": "New local game",
     "value": "Nowa gra lokalna",
+    "source": "manual"
+  },
+  "index.local.resign-game": {
+    "en": "Resign game",
+    "value": "Poddaj grę",
     "source": "manual"
   },
   "index.online.connecting": {
@@ -1167,6 +1197,11 @@
   "menu.potential-final-score": {
     "en": "Potential Final Score",
     "value": "Potencjalny wynik końcowy",
+    "source": "manual"
+  },
+  "menu.resign-game": {
+    "en": "Resign Game",
+    "value": "Poddaj grę",
     "source": "manual"
   },
   "open-windows.close": {

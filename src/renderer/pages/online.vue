@@ -158,7 +158,7 @@
 
             <div class="buttons">
               <v-btn color="primary" :disabled="!valid || !connected" @click="resume(game)"><v-icon left>fa-play</v-icon> {{ $t('button.join-game') }}</v-btn>
-              <v-btn color="secondary" :disabled="!isOwner || !connected" @click="del(game)"><v-icon>fa-trash-alt</v-icon></v-btn>
+              <v-btn v-if="!isStarted" color="secondary" :disabled="!isOwner || !connected" :title="$t('index.online.abandon-game')" @click="del(game)"><v-icon>fa-trash-alt</v-icon></v-btn>
             </div>
           </div>
         </div>
@@ -183,7 +183,7 @@
 
         <div class="game-list player">
           <div
-            v-for="{ game, slots, valid, isOwner, isStarted, isOpen } in verifiedGameList"
+            v-for="{ game, slots, valid, isOwner, isStarted, isOpen, isSeated, resigned } in verifiedGameList"
             :key="game.gameId + '#' + addonsReloadTick"
             class="game"
             :class="{ 'open-in-window': isOpen }"
@@ -237,9 +237,22 @@
               <GameSetupOverviewInline :sets="game.setup.sets" :elements="game.setup.elements" :tile-overrides="game.setup.tileOverrides" />
             </div>
 
+            <!-- resigned while this player was away: who resigned and who won, until dismissed -->
+            <div v-if="resigned" class="resigned-info">
+              <v-icon small>fas fa-flag</v-icon>
+              <span>{{ $t('game.resign.player-resigned', { name: resigned.name }) }}</span>
+              <span v-if="resigned.iWon" class="winner">{{ $t('game.resign.you-win') }}</span>
+              <span v-else-if="resigned.winners" class="winner">{{ $t('game.resign.winner', { name: resigned.winners }) }}</span>
+            </div>
+
             <div class="buttons">
               <v-btn color="primary" :disabled="!valid || !connected" @click="resume(game)"><v-icon left>fa-play</v-icon> {{ $t('button.resume') }}</v-btn>
-              <v-btn color="secondary" :disabled="!isOwner || !connected" @click="del(game)"><v-icon>fa-trash-alt</v-icon></v-btn>
+              <!-- a resigned game: dismiss it from the list -->
+              <v-btn v-if="resigned" color="secondary" :disabled="!connected" :title="$t('button.close')" @click="dismissResigned(game)"><v-icon>fa-times</v-icon></v-btn>
+              <!-- a started game: resign it (all of this player's seats) -->
+              <v-btn v-else-if="isStarted" color="secondary" :disabled="!isSeated || !connected" :title="$t('menu.resign-game')" @click="resign(game)"><v-icon>fas fa-flag</v-icon></v-btn>
+              <!-- not started yet: the owner can delete it -->
+              <v-btn v-else color="secondary" :disabled="!isOwner || !connected" :title="$t('index.online.abandon-game')" @click="del(game)"><v-icon>fa-trash-alt</v-icon></v-btn>
             </div>
           </div>
         </div>
@@ -409,6 +422,7 @@ import EngineAlerts from '@/components/EngineAlerts'
 import AppUpdateBox from '@/components/AppUpdateBox'
 
 import { STATUS_CONNECTED, STATUS_CONNECTING, STATUS_RECONNECTING } from '@/store/networking'
+import { resignDialogTexts } from '@/store/game'
 import { getAppVersion, getBuildBadge, isWeb } from '@/utils/version'
 import { protocolMismatch, sortByCompatibility, OWN_PROTOCOL } from '@/utils/protocol-compat'
 
@@ -532,7 +546,9 @@ export default {
         const isOwner = game.owner === this.$store.state.settings.clientId
         const isStarted = !(game.started == null || game.started === '')
         const isOpen = this.openGameIds.has(game.gameId)
-        return { game, valid, slots, isOwner, isStarted, isOpen }
+        const clientId = this.$store.state.settings.clientId
+        const isSeated = slots.some(s => s.clientId === clientId)
+        return { game, valid, slots, isOwner, isStarted, isOpen, isSeated, resigned: this.resignedInfo(game, clientId) }
       })
     },
 
@@ -790,6 +806,32 @@ export default {
       this.$connection.send({ type: 'JOIN_GAME', payload: { gameId: game.gameId } })
     },
 
+    // a game resigned while this player was away (server state FX): who resigned and who won
+    resignedInfo (game, clientId) {
+      const r = game.state === 'FX' ? game.resigned : null
+      if (!r) return null
+      const winners = (r.results || []).filter(x => x.position === 1 && !x.resigned)
+      return {
+        name: r.name || '',
+        winners: winners.map(w => w.name).join(', '),
+        iWon: winners.some(w => w.clientId === clientId)
+      }
+    },
+
+    // Resign a started game from the lobby: the same confirmation as in the game. The lobby has no
+    // scores, so the server ranks the other players first together. A window with the game open
+    // gets GAME_RESIGNED; the server sends this lobby a fresh game list.
+    async resign (game) {
+      if (!await ipcRenderer.invoke('confirm-resign-game', resignDialogTexts(this.$t.bind(this)))) return
+      this.$connection.send({ type: 'RESIGN_GAME', payload: { gameId: game.gameId } })
+    },
+
+    // seen: the resigned game leaves this player's list (the server answers with a fresh list)
+    dismissResigned (game) {
+      this.$store.commit('online/dismissResigned', game.gameId) // gone at once, whatever the server answers
+      this.$connection.send({ type: 'DISMISS_RESIGNED', payload: { gameId: game.gameId } })
+    },
+
     del (game) {
       this.showDeleteDialog = true
       this.showDeleteGameId = game.gameId
@@ -963,6 +1005,20 @@ h2
 
     .v-btn
       margin-right: 10px
+
+  .resigned-info
+    display: flex
+    flex-wrap: wrap
+    align-items: center
+    gap: 6px
+    margin: 0 8px 12px
+    font-size: 14px
+
+    .v-icon
+      color: inherit
+
+    .winner
+      font-weight: 500
 
   +theme using ($theme)
     color: map-get($theme, 'cards-text')

@@ -2,7 +2,7 @@
   "@author": "Snearone",
   "@jcz-version": "5.12.1",
   "@fcz-version": "7.3.0",
-  "@version": "0.14.9-ai",
+  "@version": "0.14.11-ai",
   "about": {
     "author": "Autor",
     "configuration-file": "Plik konfiguracyjny",
@@ -529,6 +529,13 @@
       "not-enough-points": "Za mało punktów na okup — potrzeba 3 punktów",
       "not-their-action": "Zakładnik — jego właściciel może go wykupić za 3 punkty w swojej turze"
     },
+    "resign": {
+      "confirm": "Czy na pewno chcesz się poddać? Gra natychmiast się kończy, a pozostali gracze wygrywają.",
+      "player-resigned": "{name} poddał grę.",
+      "winner": "Wygrywa {name}.",
+      "you-resigned": "Poddałeś grę.",
+      "you-win": "Wygrałeś!"
+    },
     "scoring": {
       "barn-connected": "połączona stodoła",
       "barn-placed": "położona stodoła",
@@ -907,6 +914,7 @@
       "new-game": "Nowa gra",
       "new-game-against-ai": "Nowa gra przeciwko AI",
       "open-game": "Otwarta gra",
+      "resign-game": "Poddaj grę",
       "saved-game": "Zapisana gra",
       "title": "Gry prywatne",
       "new-local-game": "Nowa gra lokalna"
@@ -995,6 +1003,7 @@
     "playonline-disconnect": "Rozłącz",
     "potential-final-score": "Potencjalny wynik końcowy",
     "report-bug": "Zgłoś błąd",
+    "resign-game": "Poddaj grę",
     "rotate": "Obrócić",
     "rules": "Zasady",
     "save-game": "Zapisz grę",

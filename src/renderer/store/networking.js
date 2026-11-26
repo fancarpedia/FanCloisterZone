@@ -151,7 +151,12 @@ class ConnectionHandler {
       }
 
       await dispatch('game/handleGameMessage', payload, { root: true })
-      if (payload.state === 'R' || payload.state === 'F') { // running or finished
+      // a game resigned while this player was away (server state FX): show the board with who
+      // resigned and who won (the action panel) — set before the replay, so no AI moves start
+      if (payload.state === 'FX' && payload.resigned) {
+        await dispatch('game/handleResigned', payload.resigned, { root: true })
+      }
+      if (payload.state === 'R' || payload.state === 'F' || payload.state === 'FX') { // running, finished or resigned
         await dispatch('game/handleStartMessage', {
           clock: message.clock,
           id: null,
@@ -211,6 +216,9 @@ class ConnectionHandler {
       if (!rootState.gameSetup.editingGameId && path !== '/open-game') {
         this.$router.push('/open-game')
       }
+    } else if (type === 'GAME_RESIGNED') {
+      // a player resigned: the game is over (server state FX), the others win
+      await dispatch('game/handleResigned', payload, { root: true })
     } else if (type === 'GAME_OPTION') {
       commit('game/options', { [payload.key]: payload.value }, { root: true })
     } else if (type === 'GAME_CHAT') {

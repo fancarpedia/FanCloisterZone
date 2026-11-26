@@ -2,7 +2,7 @@
   "@author": "Paloi Sciurala",
   "@jcz-version": "5.12.1",
   "@fcz-version": "7.3.0",
-  "@version": "0.14.9-ai",
+  "@version": "0.14.11",
   "about": {
     "author": "Autor",
     "configuration-file": "Fișier de configurație",
@@ -529,6 +529,13 @@
       "not-enough-points": "Insuficiente puncte pentru a răscumpăra — sunt necesare 3 puncte",
       "not-their-action": "Capturat — proprietarul său îl poate răscumpăra pe 3 puncte în tura sa"
     },
+    "resign": {
+      "confirm": "Chiar vrei să te retragi? Partida se sfârșește de numaidecât și câștigă ceilalți jucători.",
+      "player-resigned": "{name} s-a retras din partidă.",
+      "winner": "{name} câștigă.",
+      "you-resigned": "Te-ai retras din partidă.",
+      "you-win": "Tu câștigi!"
+    },
     "scoring": {
       "barn-connected": "moșie conectată",
       "barn-placed": "moșie plasată",
@@ -741,7 +748,7 @@
       "each-turn-increase-timer-by": "În fiecare tură, crește durata cronometrului cu",
       "enable-limits": "activează limite",
       "lost-on-time": "A pierdut la timp",
-      "over-time": "Timp depășit",
+      "over-time": "A trecut peste timp",
       "player-time-limit": "Limita de timp a jucătorilor",
       "start-short": "Începutul jocului",
       "turn-short": "Fiecare tură",
@@ -907,6 +914,7 @@
       "new-game": "Partidă nouă",
       "new-game-against-ai": "Partidă nouă împotriva IA",
       "open-game": "Deschide partidă",
+      "resign-game": "Retrage-te din partidă",
       "saved-game": "Partidă salvată",
       "title": "Partide găzduite de jucător",
       "new-local-game": "Partidă locală nouă"
@@ -995,6 +1003,7 @@
     "playonline-disconnect": "Deconectează-te",
     "potential-final-score": "Punctaj final potențial",
     "report-bug": "Raportează un bug",
+    "resign-game": "Retrage-te din partidă",
     "rotate": "Rotește",
     "rules": "Reguli",
     "save-game": "Salvează partida",

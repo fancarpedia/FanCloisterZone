@@ -524,6 +524,13 @@
       "not-enough-points": "<span lang="en" dir="ltr" class="mw-content-ltr">Not enough points to buy back — 3 points are needed</span>",
       "not-their-action": "<span lang="en" dir="ltr" class="mw-content-ltr">Captured — its owner can buy it back for 3 points on their turn</span>"
     },
+    "resign": {
+      "confirm": "<span lang="en" dir="ltr" class="mw-content-ltr">Do you really want to resign? The game ends at once and the other players win.</span>",
+      "player-resigned": "<span lang="en" dir="ltr" class="mw-content-ltr">{name} resigned the game.</span>",
+      "winner": "<span lang="en" dir="ltr" class="mw-content-ltr">{name} wins.</span>",
+      "you-resigned": "<span lang="en" dir="ltr" class="mw-content-ltr">You resigned the game.</span>",
+      "you-win": "<span lang="en" dir="ltr" class="mw-content-ltr">You win!</span>"
+    },
     "scoring": {
       "barn-connected": "Gutshof verbunden",
       "barn-placed": "Gutshof gesetzt",
@@ -898,6 +905,7 @@
       "new-game": "Neues Spiel",
       "new-game-against-ai": "Neues Spiel gegen den Computer",
       "open-game": "öffne Spiel",
+      "resign-game": "<span lang="en" dir="ltr" class="mw-content-ltr">Resign game</span>",
       "saved-game": "Gespeichertes Spiel",
       "title": "Vom Spieler gehostete Spiele"
     },
@@ -985,6 +993,7 @@
     "playonline-disconnect": "Onlinespiel Trennen",
     "potential-final-score": "<span lang="en" dir="ltr" class="mw-content-ltr">Potential Final Score</span>",
     "report-bug": "einen Fehler melden",
+    "resign-game": "<span lang="en" dir="ltr" class="mw-content-ltr">Resign Game</span>",
     "rotate": "Rotieren",
     "rules": "Regeln",
     "save-game": "Spiel speichern",

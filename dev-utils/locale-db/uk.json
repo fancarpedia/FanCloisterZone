@@ -3584,6 +3584,31 @@
     "value": "У полоні — власник може викупити його за 3 очки у свій хід",
     "source": "manual"
   },
+  "game.resign.confirm": {
+    "en": "Do you really want to resign? The game ends at once and the other players win.",
+    "value": "Ви справді хочете здатися? Гра одразу закінчиться, і інші гравці переможуть.",
+    "source": "manual"
+  },
+  "game.resign.player-resigned": {
+    "en": "{name} resigned the game.",
+    "value": "{name} здався.",
+    "source": "manual"
+  },
+  "game.resign.winner": {
+    "en": "{name} wins.",
+    "value": "Перемагає {name}.",
+    "source": "manual"
+  },
+  "game.resign.you-resigned": {
+    "en": "You resigned the game.",
+    "value": "Ви здалися.",
+    "source": "manual"
+  },
+  "game.resign.you-win": {
+    "en": "You win!",
+    "value": "Ви перемогли!",
+    "source": "manual"
+  },
   "game.scoring.barn-connected": {
     "en": "barn connected",
     "value": "клуню приєднано",
@@ -3792,6 +3817,11 @@
   "index.local.open-game": {
     "en": "Open game",
     "value": "Відкрити гру",
+    "source": "manual"
+  },
+  "index.local.resign-game": {
+    "en": "Resign game",
+    "value": "Здатися",
     "source": "manual"
   },
   "index.local.saved-game": {
@@ -4172,6 +4202,11 @@
   "menu.report-bug": {
     "en": "Report a bug",
     "value": "Повідомити про помилку",
+    "source": "manual"
+  },
+  "menu.resign-game": {
+    "en": "Resign Game",
+    "value": "Здатися",
     "source": "manual"
   },
   "menu.rotate": {

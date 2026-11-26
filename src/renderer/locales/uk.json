@@ -2,7 +2,7 @@
   "@author": "ai",
   "@jcz-version": "5.12.1",
   "@fcz-version": "7.3.0",
-  "@version": "0.14.9-ai",
+  "@version": "0.14.11-ai",
   "about": {
     "author": "Автор",
     "configuration-file": "Файл конфігурації",
@@ -529,6 +529,13 @@
       "not-enough-points": "Недостатньо очок для викупу — потрібно 3 очки",
       "not-their-action": "У полоні — власник може викупити його за 3 очки у свій хід"
     },
+    "resign": {
+      "confirm": "Ви справді хочете здатися? Гра одразу закінчиться, і інші гравці переможуть.",
+      "player-resigned": "{name} здався.",
+      "winner": "Перемагає {name}.",
+      "you-resigned": "Ви здалися.",
+      "you-win": "Ви перемогли!"
+    },
     "scoring": {
       "barn-connected": "клуню приєднано",
       "barn-placed": "клуню розміщено",
@@ -907,6 +914,7 @@
       "new-game": "Нова гра",
       "new-game-against-ai": "Нова гра проти комп’ютера",
       "open-game": "Відкрити гру",
+      "resign-game": "Здатися",
       "saved-game": "Збережена гра",
       "title": "Ігри, створені гравцями",
       "new-local-game": "Нова локальна гра"
@@ -995,6 +1003,7 @@
     "playonline-disconnect": "Відключитися",
     "potential-final-score": "Можливий підсумковий рахунок",
     "report-bug": "Повідомити про помилку",
+    "resign-game": "Здатися",
     "rotate": "Повернути",
     "rules": "Правила",
     "save-game": "Зберегти гру",

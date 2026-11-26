@@ -524,6 +524,13 @@
       "not-enough-points": "<span lang="en" dir="ltr" class="mw-content-ltr">Not enough points to buy back — 3 points are needed</span>",
       "not-their-action": "<span lang="en" dir="ltr" class="mw-content-ltr">Captured — its owner can buy it back for 3 points on their turn</span>"
     },
+    "resign": {
+      "confirm": "<span lang="en" dir="ltr" class="mw-content-ltr">Do you really want to resign? The game ends at once and the other players win.</span>",
+      "player-resigned": "<span lang="en" dir="ltr" class="mw-content-ltr">{name} resigned the game.</span>",
+      "winner": "<span lang="en" dir="ltr" class="mw-content-ltr">{name} wins.</span>",
+      "you-resigned": "<span lang="en" dir="ltr" class="mw-content-ltr">You resigned the game.</span>",
+      "you-win": "<span lang="en" dir="ltr" class="mw-content-ltr">You win!</span>"
+    },
     "scoring": {
       "barn-connected": "grange connectée",
       "barn-placed": "grange posée",
@@ -898,6 +905,7 @@
       "new-game": "Nouvelle partie",
       "new-game-against-ai": "Nouvelle partie contre une IA",
       "open-game": "Ouvrir une partie",
+      "resign-game": "<span lang="en" dir="ltr" class="mw-content-ltr">Resign game</span>",
       "saved-game": "Partie sauvegardée",
       "title": "Parties hébergées par le joueur"
     },
@@ -985,6 +993,7 @@
     "playonline-disconnect": "Se déconnecter",
     "potential-final-score": "Score final probable",
     "report-bug": "Signaler un bug",
+    "resign-game": "<span lang="en" dir="ltr" class="mw-content-ltr">Resign Game</span>",
     "rotate": "Pivoter",
     "rules": "Règles",
     "save-game": "Sauvegarder la partie",

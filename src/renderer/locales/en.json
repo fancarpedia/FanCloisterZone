@@ -2,7 +2,7 @@
   "@author": "farin & Scott",
   "@jcz-version": "5.12.1",
   "@fcz-version": "7.3.0",
-  "@version": "0.14.9",
+  "@version": "0.14.11",
   "about": {
     "author": "Author",
     "configuration-file": "Configuration file",
@@ -529,6 +529,14 @@
       "not-enough-points": "Not enough points to buy back — 3 points are needed",
       "not-their-action": "Captured — its owner can buy it back for 3 points on their turn"
     },
+    "resign": {
+      "confirm": "Do you really want to resign? The game ends at once and the other players win.",
+      "player-resigned": "{name} resigned the game.",
+      "winner": "{name} wins.",
+      "you-resigned": "You resigned the game.",
+      "you-win": "You win!",
+      "resign": "Resign"
+    },
     "scoring": {
       "barn-connected": "barn connected",
       "barn-placed": "barn placed",
@@ -907,6 +915,7 @@
       "new-game": "New game",
       "new-game-against-ai": "New game against AI",
       "open-game": "Open game",
+      "resign-game": "Resign game",
       "saved-game": "Saved game",
       "title": "Player hosted games",
       "new-local-game": "New local game"
@@ -995,6 +1004,7 @@
     "playonline-disconnect": "Disconnect",
     "potential-final-score": "Potential Final Score",
     "report-bug": "Report a bug",
+    "resign-game": "Resign Game",
     "rotate": "Rotate",
     "rules": "Rules",
     "save-game": "Save Game",

@@ -2,7 +2,7 @@
   "@author": "Stepukiss",
   "@jcz-version": "5.12.1",
   "@fcz-version": "7.3.0",
-  "@version": "0.14.9-ai",
+  "@version": "0.14.11-ai",
   "about": {
     "author": "Autorius",
     "configuration-file": "Nustatymų aplankas",
@@ -529,6 +529,13 @@
       "not-enough-points": "Nepakanka taškų išpirkai — reikia 3 taškų",
       "not-their-action": "Paimtas į nelaisvę — jo savininkas gali jį išpirkti už 3 taškus savo ėjimo metu"
     },
+    "resign": {
+      "confirm": "Ar tikrai norite pasiduoti? Žaidimas iškart baigsis, o kiti žaidėjai laimės.",
+      "player-resigned": "{name} pasidavė.",
+      "winner": "Laimi {name}.",
+      "you-resigned": "Jūs pasidavėte.",
+      "you-win": "Jūs laimėjote!"
+    },
     "scoring": {
       "barn-connected": "tvartas sujungtas",
       "barn-placed": "tvartas pastatytas",
@@ -907,6 +914,7 @@
       "new-game": "Naujas žaidimas",
       "new-game-against-ai": "Naujas žaidimas preš DI",
       "open-game": "Atviras žaidimas",
+      "resign-game": "Pasiduoti",
       "saved-game": "Išsaugoti žaidimą",
       "title": "Žaidėjui priklausantys žaidimai",
       "new-local-game": "Naujas vietinis žaidimas"
@@ -995,6 +1003,7 @@
     "playonline-disconnect": "Atsijungti",
     "potential-final-score": "Galimas galutinis rezultatas",
     "report-bug": "Pranešti apie klaidą",
+    "resign-game": "Pasiduoti",
     "rotate": "Pasukti",
     "rules": "Taisyklės",
     "save-game": "Išsaugoti Žaidimą",

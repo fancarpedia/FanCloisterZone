@@ -2,7 +2,7 @@
   "@author": "J0anJosep",
   "@jcz-version": "5.12.1",
   "@fcz-version": "7.3.0",
-  "@version": "0.14.9-ai",
+  "@version": "0.14.11-ai",
   "about": {
     "author": "Autor",
     "configuration-file": "Fitxer de configuració",
@@ -529,6 +529,13 @@
       "not-enough-points": "No tens prou punts per rescatar-lo — calen 3 punts",
       "not-their-action": "Capturat — el seu propietari el pot rescatar per 3 punts al seu torn"
     },
+    "resign": {
+      "confirm": "Segur que voleu abandonar? La partida acaba ara mateix i guanyen els altres jugadors.",
+      "player-resigned": "{name} ha abandonat la partida.",
+      "winner": "Guanya {name}.",
+      "you-resigned": "Heu abandonat la partida.",
+      "you-win": "Heu guanyat!"
+    },
     "scoring": {
       "barn-connected": "graner connectat",
       "barn-placed": "graner col·locat",
@@ -907,6 +914,7 @@
       "new-game": "Partida nova",
       "new-game-against-ai": "Partida nova contra IA",
       "open-game": "Partida oberta",
+      "resign-game": "Abandonar la partida",
       "saved-game": "Partida desada",
       "title": "Partides organitzades pel jugador",
       "new-local-game": "Partida local nova"
@@ -995,6 +1003,7 @@
     "playonline-disconnect": "Desconnecta",
     "potential-final-score": "Puntuació final potencial",
     "report-bug": "Informa d'un error",
+    "resign-game": "Abandonar la partida",
     "rotate": "Gira",
     "rules": "Regles",
     "save-game": "Desa la partida",

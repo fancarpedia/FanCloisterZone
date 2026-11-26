@@ -2,7 +2,7 @@
   "@author": "Kiap1969 & Sinscerly",
   "@jcz-version": "5.12.1",
   "@fcz-version": "7.3.0",
-  "@version": "0.14.9-ai",
+  "@version": "0.14.11-ai",
   "about": {
     "author": "Auteur",
     "configuration-file": "Configuratiebestand",
@@ -529,6 +529,13 @@
       "not-enough-points": "Niet genoeg punten om vrij te kopen — er zijn 3 punten nodig",
       "not-their-action": "Gevangen — de eigenaar kan hem in zijn beurt vrijkopen voor 3 punten"
     },
+    "resign": {
+      "confirm": "Wil je echt opgeven? Het spel eindigt meteen en de andere spelers winnen.",
+      "player-resigned": "{name} heeft opgegeven.",
+      "winner": "{name} wint.",
+      "you-resigned": "Je hebt opgegeven.",
+      "you-win": "Je hebt gewonnen!"
+    },
     "scoring": {
       "barn-connected": "herenboerderij gekoppeld",
       "barn-placed": "herenboerderij gezet",
@@ -907,6 +914,7 @@
       "new-game": "Nieuw spel",
       "new-game-against-ai": "Nieuw spel tegen ai",
       "open-game": "Open spel",
+      "resign-game": "Spel opgeven",
       "saved-game": "Opgeslagen spel",
       "title": "Door speler georganiseerde spellen",
       "new-local-game": "Nieuw lokaal spel"
@@ -995,6 +1003,7 @@
     "playonline-disconnect": "Verbinding verbreken",
     "potential-final-score": "Mogelijke eindscore",
     "report-bug": "Probleem melden",
+    "resign-game": "Spel opgeven",
     "rotate": "Draaien",
     "rules": "Spelregels",
     "save-game": "Spel opslaan",

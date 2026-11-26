@@ -934,6 +934,31 @@
     "value": "В плену — владелец может выкупить его за 3 очка в свой ход",
     "source": "manual"
   },
+  "game.resign.confirm": {
+    "en": "Do you really want to resign? The game ends at once and the other players win.",
+    "value": "Вы действительно хотите сдаться? Игра сразу закончится, и другие игроки победят.",
+    "source": "manual"
+  },
+  "game.resign.player-resigned": {
+    "en": "{name} resigned the game.",
+    "value": "{name} сдался.",
+    "source": "manual"
+  },
+  "game.resign.winner": {
+    "en": "{name} wins.",
+    "value": "Побеждает {name}.",
+    "source": "manual"
+  },
+  "game.resign.you-resigned": {
+    "en": "You resigned the game.",
+    "value": "Вы сдались.",
+    "source": "manual"
+  },
+  "game.resign.you-win": {
+    "en": "You win!",
+    "value": "Вы победили!",
+    "source": "manual"
+  },
   "game.scoring.income": {
     "en": "income",
     "value": "доход",
@@ -1027,6 +1052,11 @@
   "index.local.new-local-game": {
     "en": "New local game",
     "value": "Новая локальная игра",
+    "source": "manual"
+  },
+  "index.local.resign-game": {
+    "en": "Resign game",
+    "value": "Сдаться",
     "source": "manual"
   },
   "index.online.connecting": {
@@ -1167,6 +1197,11 @@
   "menu.potential-final-score": {
     "en": "Potential Final Score",
     "value": "Возможный итоговый счёт",
+    "source": "manual"
+  },
+  "menu.resign-game": {
+    "en": "Resign Game",
+    "value": "Сдаться",
     "source": "manual"
   },
   "open-windows.close": {

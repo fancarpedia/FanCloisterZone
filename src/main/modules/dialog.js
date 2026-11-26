@@ -119,6 +119,28 @@ export default function () {
   }
 }
 
+// Resign an online game (in-game menu or the lobby): the same warning dialog as closing an
+// unfinished local game. The renderer passes the translated texts; true = resign.
+ipcMain.handle('confirm-resign-game', async (ev, texts = {}) => {
+  const win = BrowserWindow.fromWebContents(ev.sender)
+  const opts = {
+    type: 'warning',
+    buttons: [texts.confirm || 'Resign', texts.cancel || 'Continue Playing'],
+    defaultId: 1,
+    cancelId: 1,
+    title: texts.title || 'Resign Game',
+    message: texts.message || 'Do you really want to resign? The game ends at once and the other players win.'
+  }
+  try {
+    const target = win && !win.isDestroyed() ? win : null
+    const result = target ? await dialog.showMessageBox(target, opts) : await dialog.showMessageBox(opts)
+    return result.response === 0
+  } catch (err) {
+    console.error('Dialog error:', err)
+    return false
+  }
+})
+
 ipcMain.handle('confirm-leave-game', async (ev) => {
   const choice = await showUnfinishedGameDialog(BrowserWindow.fromWebContents(ev.sender))
   // choice === 0 → user confirmed leaving

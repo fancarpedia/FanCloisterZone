@@ -24,6 +24,11 @@
             <v-list-item-icon><v-icon small>fas fa-house</v-icon></v-list-item-icon>
             <v-list-item-title>{{ $t('menu.home') }}</v-list-item-title>
           </v-list-item>
+          <!-- resign an online game (the layout asks first and checks it is allowed) -->
+          <v-list-item v-if="canResign" @click="resign">
+            <v-list-item-icon><v-icon small>fas fa-flag</v-icon></v-list-item-icon>
+            <v-list-item-title>{{ $t('menu.resign-game') }}</v-list-item-title>
+          </v-list-item>
         </v-list>
       </v-menu>
       <!-- same collapsed class as the aside below: the deck counter sits directly above the
@@ -172,6 +177,12 @@ export default {
   },
 
   computed: {
+    // the web menu's Resign: a running online game that is not over or resigned yet
+    canResign () {
+      const game = this.$store.state.game
+      return this.online && !!game.id && !game.resignation && game.phase !== 'GameOverPhase'
+    },
+
     ...mapState({
       action: state => state.game.action,
       activePlayerIdx: state => state.game.action?.player,
@@ -343,6 +354,10 @@ export default {
       // reuse the layout's leaveGame flow (online LEAVE_GAME / offline confirm + close + redirect);
       // default.vue listens on this channel, and the electron stub's emit() delivers it on web too
       ipcRenderer.emit('menu.leave-game')
+    },
+
+    resign () {
+      ipcRenderer.emit('menu.resign-game')
     },
 
     openSettings () {

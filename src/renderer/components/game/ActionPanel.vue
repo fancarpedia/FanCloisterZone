@@ -8,6 +8,8 @@
         {{ $t('game.action.host-terminated-the-game') }}
       </v-alert>
     </div>
+    <!-- an online game ended by a resignation: who resigned and who won, no more actions -->
+    <ResignationPanel v-else-if="resignation" />
     <PointsExpression
       v-else-if="pointsExpression"
       :expr="pointsExpression"
@@ -39,7 +41,7 @@
          GoldPiecePhase, MageAndWitchPhase) and withdrawn as soon as the engine raises
          TILE_ROTATION_DISALLOWED (see canRotatePlacedTile). -->
     <div
-      v-if="action && local && !ai && canRotatePlacedTile"
+      v-if="action && local && !ai && canRotatePlacedTile && !resignation"
       v-show="!pointsExpression && !notifyConnectionClosed && !returnedMeeplePanel && !awardedMeeplePanel && !returnedTokenPanel && !diceRollPanel && !placementPanel"
       class="pass-item rotate-placed rotate-first"
     >
@@ -53,7 +55,7 @@
     <!-- use v-show bit v-if for pointsExoression - to not hide related layers when pointExpression is triggered by mouse hover  -->
     <component
       :is="actionComponent"
-      v-if="action"
+      v-if="action && !resignation"
       v-show="!pointsExpression && !notifyConnectionClosed && !returnedMeeplePanel && !awardedMeeplePanel && !returnedTokenPanel && !diceRollPanel && !placementPanel"
       :action="action"
       :phase="phase"
@@ -138,6 +140,7 @@ import DragonMovePhaseAction from '@/components/game/actions/DragonMovePhaseActi
 import EscapePhaseAction from '@/components/game/actions/EscapePhaseAction.vue'
 import FerryPhaseAction from '@/components/game/actions/FerryPhaseAction.vue'
 import GameResultPanel from '@/components/game/GameResultPanel.vue'
+import ResignationPanel from '@/components/game/ResignationPanel.vue'
 import GoldPiecePhaseAction from '@/components/game/actions/GoldPiecePhaseAction.vue'
 import PointsExpression from '@/components/game/PointsExpression.vue'
 import RemoveMageOrWitchAction from '@/components/game/actions/RemoveMageOrWitchAction.vue'
@@ -183,6 +186,7 @@ export default {
     DragonMovePhaseAction,
     EscapePhaseAction,
     GameResultPanel,
+    ResignationPanel,
     GoldPiecePhaseAction,
     FerryPhaseAction,
     PointsExpression,
@@ -226,6 +230,7 @@ export default {
     }),
 
     ...mapState({
+      resignation: state => state.game.resignation,
       connectionState: state => state.networking.connectionStatus,
       diceRollPanel: state => state.board.diceRollPanel,
       pointsExpression: state => state.board.pointsExpression,

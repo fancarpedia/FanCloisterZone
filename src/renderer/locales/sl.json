@@ -2,7 +2,7 @@
   "@author": "TileLord | Erol",
   "@jcz-version": "5.12.1",
   "@fcz-version": "7.3.0",
-  "@version": "0.14.9-ai",
+  "@version": "0.14.11-ai",
   "about": {
     "author": "Avtor",
     "configuration-file": "Konfiguracijska datoteka",
@@ -529,6 +529,13 @@
       "not-enough-points": "Premalo točk za odkupnino — potrebne so 3 točke",
       "not-their-action": "Ujet — lastnik ga lahko odkupi za 3 točke v svoji potezi"
     },
+    "resign": {
+      "confirm": "Ali se res želiš predati? Igra se takoj konča in drugi igralci zmagajo.",
+      "player-resigned": "{name} se je predal.",
+      "winner": "Zmaga {name}.",
+      "you-resigned": "Predal si igro.",
+      "you-win": "Zmagal si!"
+    },
     "scoring": {
       "barn-connected": "skedenj povezan",
       "barn-placed": "skedenj postavljen",
@@ -907,6 +914,7 @@
       "new-game": "Nova igra",
       "new-game-against-ai": "Nova igra proti AI",
       "open-game": "Odpri igro",
+      "resign-game": "Predaj igro",
       "saved-game": "Shranjena igra",
       "title": "Igre gostovane pri igralcu",
       "new-local-game": "Nova lokalna igra"
@@ -995,6 +1003,7 @@
     "playonline-disconnect": "Prekini Povezavo",
     "potential-final-score": "Možen končni izid",
     "report-bug": "Prijavi napako",
+    "resign-game": "Predaj Igro",
     "rotate": "Zasukaj",
     "rules": "Pravila",
     "save-game": "Shrani Igro",

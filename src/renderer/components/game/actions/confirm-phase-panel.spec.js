@@ -78,8 +78,9 @@ describe('Rotate comes first in the action panel', () => {
   })
 
   it('only for the local player, hidden while a history panel stands in for the action', () => {
-    expect(panel).toContain('v-if="action && local && !ai && canRotatePlacedTile"')
-    const block = panel.slice(panel.indexOf('v-if="action && local && !ai && canRotatePlacedTile"'), panel.indexOf('class="pass-item rotate-placed rotate-first"'))
+    // … and not once the game was resigned
+    expect(panel).toContain('v-if="action && local && !ai && canRotatePlacedTile && !resignation"')
+    const block = panel.slice(panel.indexOf('v-if="action && local && !ai && canRotatePlacedTile && !resignation"'), panel.indexOf('class="pass-item rotate-placed rotate-first"'))
     expect(block).toContain('!pointsExpression')
     expect(block).toContain('!placementPanel')
   })

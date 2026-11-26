@@ -824,6 +824,31 @@
     "value": "Capturat — el seu propietari el pot rescatar per 3 punts al seu torn",
     "source": "manual"
   },
+  "game.resign.confirm": {
+    "en": "Do you really want to resign? The game ends at once and the other players win.",
+    "value": "Segur que voleu abandonar? La partida acaba ara mateix i guanyen els altres jugadors.",
+    "source": "manual"
+  },
+  "game.resign.player-resigned": {
+    "en": "{name} resigned the game.",
+    "value": "{name} ha abandonat la partida.",
+    "source": "manual"
+  },
+  "game.resign.winner": {
+    "en": "{name} wins.",
+    "value": "Guanya {name}.",
+    "source": "manual"
+  },
+  "game.resign.you-resigned": {
+    "en": "You resigned the game.",
+    "value": "Heu abandonat la partida.",
+    "source": "manual"
+  },
+  "game.resign.you-win": {
+    "en": "You win!",
+    "value": "Heu guanyat!",
+    "source": "manual"
+  },
   "game.scoring.income": {
     "en": "income",
     "value": "ingrés",
@@ -902,6 +927,11 @@
   "index.local.new-local-game": {
     "en": "New local game",
     "value": "Partida local nova",
+    "source": "manual"
+  },
+  "index.local.resign-game": {
+    "en": "Resign game",
+    "value": "Abandonar la partida",
     "source": "manual"
   },
   "index.online.connecting": {
@@ -1017,6 +1047,11 @@
   "menu.potential-final-score": {
     "en": "Potential Final Score",
     "value": "Puntuació final potencial",
+    "source": "manual"
+  },
+  "menu.resign-game": {
+    "en": "Resign Game",
+    "value": "Abandonar la partida",
     "source": "manual"
   },
   "open-windows.close": {

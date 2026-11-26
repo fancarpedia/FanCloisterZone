@@ -524,6 +524,13 @@
       "not-enough-points": "<span lang="en" dir="ltr" class="mw-content-ltr">Not enough points to buy back — 3 points are needed</span>",
       "not-their-action": "<span lang="en" dir="ltr" class="mw-content-ltr">Captured — its owner can buy it back for 3 points on their turn</span>"
     },
+    "resign": {
+      "confirm": "<span lang="en" dir="ltr" class="mw-content-ltr">Do you really want to resign? The game ends at once and the other players win.</span>",
+      "player-resigned": "<span lang="en" dir="ltr" class="mw-content-ltr">{name} resigned the game.</span>",
+      "winner": "<span lang="en" dir="ltr" class="mw-content-ltr">{name} wins.</span>",
+      "you-resigned": "<span lang="en" dir="ltr" class="mw-content-ltr">You resigned the game.</span>",
+      "you-win": "<span lang="en" dir="ltr" class="mw-content-ltr">You win!</span>"
+    },
     "scoring": {
       "barn-connected": "амбар подключен",
       "barn-placed": "амбар выставлен",
@@ -898,6 +905,7 @@
       "new-game": "Новая игра",
       "new-game-against-ai": "Новая игра против ИИ",
       "open-game": "Открыть игру",
+      "resign-game": "<span lang="en" dir="ltr" class="mw-content-ltr">Resign game</span>",
       "saved-game": "Сохранённая игра",
       "title": "Игры, созданные игроками"
     },
@@ -985,6 +993,7 @@
     "playonline-disconnect": "Отключиться",
     "potential-final-score": "<span lang="en" dir="ltr" class="mw-content-ltr">Potential Final Score</span>",
     "report-bug": "Сообщить об ошибке",
+    "resign-game": "<span lang="en" dir="ltr" class="mw-content-ltr">Resign Game</span>",
     "rotate": "Повернуть",
     "rules": "Правила",
     "save-game": "Сохранить игру",

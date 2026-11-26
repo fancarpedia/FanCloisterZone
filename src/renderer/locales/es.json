@@ -2,7 +2,7 @@
   "@author": "Carlium & Meepledrone",
   "@jcz-version": "5.12.1",
   "@fcz-version": "7.3.0",
-  "@version": "0.14.9-ai",
+  "@version": "0.14.11-ai",
   "about": {
     "author": "Autor",
     "configuration-file": "Archivo de configuración",
@@ -529,6 +529,13 @@
       "not-enough-points": "No hay puntos suficientes para el rescate — se necesitan 3 puntos",
       "not-their-action": "Capturado — su propietario puede rescatarlo por 3 puntos en su turno"
     },
+    "resign": {
+      "confirm": "¿Seguro que quieres rendirte? La partida termina al instante y ganan los demás jugadores.",
+      "player-resigned": "{name} se ha rendido.",
+      "winner": "Gana {name}.",
+      "you-resigned": "Te has rendido.",
+      "you-win": "¡Has ganado!"
+    },
     "scoring": {
       "barn-connected": "granero conectado",
       "barn-placed": "granero colocado",
@@ -907,6 +914,7 @@
       "new-game": "Nueva partida",
       "new-game-against-ai": "Nueva partida contra IA",
       "open-game": "Abrir partida",
+      "resign-game": "Rendirse",
       "saved-game": "Juego grabado",
       "title": "Partidas organizadas por el jugador",
       "new-local-game": "Nueva partida local"
@@ -995,6 +1003,7 @@
     "playonline-disconnect": "Desconectar",
     "potential-final-score": "Puntuación final potencial",
     "report-bug": "Reporte un error",
+    "resign-game": "Rendirse",
     "rotate": "Rotar",
     "rules": "Reglas",
     "save-game": "Guardar la partida",

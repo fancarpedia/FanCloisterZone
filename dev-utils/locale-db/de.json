@@ -929,6 +929,31 @@
     "value": "Gefangen — sein Besitzer kann ihn in seinem Zug für 3 Punkte freikaufen",
     "source": "manual"
   },
+  "game.resign.confirm": {
+    "en": "Do you really want to resign? The game ends at once and the other players win.",
+    "value": "Willst du wirklich aufgeben? Das Spiel endet sofort und die anderen Spieler gewinnen.",
+    "source": "manual"
+  },
+  "game.resign.player-resigned": {
+    "en": "{name} resigned the game.",
+    "value": "{name} hat das Spiel aufgegeben.",
+    "source": "manual"
+  },
+  "game.resign.winner": {
+    "en": "{name} wins.",
+    "value": "{name} gewinnt.",
+    "source": "manual"
+  },
+  "game.resign.you-resigned": {
+    "en": "You resigned the game.",
+    "value": "Du hast das Spiel aufgegeben.",
+    "source": "manual"
+  },
+  "game.resign.you-win": {
+    "en": "You win!",
+    "value": "Du hast gewonnen!",
+    "source": "manual"
+  },
   "game.scoring.income": {
     "en": "income",
     "value": "Einnahmen",
@@ -1022,6 +1047,11 @@
   "index.local.new-local-game": {
     "en": "New local game",
     "value": "Neues lokales Spiel",
+    "source": "manual"
+  },
+  "index.local.resign-game": {
+    "en": "Resign game",
+    "value": "Spiel aufgeben",
     "source": "manual"
   },
   "index.online.connecting": {
@@ -1162,6 +1192,11 @@
   "menu.potential-final-score": {
     "en": "Potential Final Score",
     "value": "Möglicher Endstand",
+    "source": "manual"
+  },
+  "menu.resign-game": {
+    "en": "Resign Game",
+    "value": "Spiel aufgeben",
     "source": "manual"
   },
   "open-windows.close": {

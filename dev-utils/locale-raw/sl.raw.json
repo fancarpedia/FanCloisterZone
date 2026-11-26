@@ -524,6 +524,13 @@
       "not-enough-points": "<span lang="en" dir="ltr" class="mw-content-ltr">Not enough points to buy back — 3 points are needed</span>",
       "not-their-action": "<span lang="en" dir="ltr" class="mw-content-ltr">Captured — its owner can buy it back for 3 points on their turn</span>"
     },
+    "resign": {
+      "confirm": "<span lang="en" dir="ltr" class="mw-content-ltr">Do you really want to resign? The game ends at once and the other players win.</span>",
+      "player-resigned": "<span lang="en" dir="ltr" class="mw-content-ltr">{name} resigned the game.</span>",
+      "winner": "<span lang="en" dir="ltr" class="mw-content-ltr">{name} wins.</span>",
+      "you-resigned": "<span lang="en" dir="ltr" class="mw-content-ltr">You resigned the game.</span>",
+      "you-win": "<span lang="en" dir="ltr" class="mw-content-ltr">You win!</span>"
+    },
     "scoring": {
       "barn-connected": "skedenj povezan",
       "barn-placed": "skedenj postavljen",
@@ -898,6 +905,7 @@
       "new-game": "Nova igra",
       "new-game-against-ai": "Nova igra proti AI",
       "open-game": "Odpri igro",
+      "resign-game": "<span lang="en" dir="ltr" class="mw-content-ltr">Resign game</span>",
       "saved-game": "Shranjena igra",
       "title": "Igre gostovane pri igralcu"
     },
@@ -985,6 +993,7 @@
     "playonline-disconnect": "Prekini Povezavo",
     "potential-final-score": "<span lang="en" dir="ltr" class="mw-content-ltr">Potential Final Score</span>",
     "report-bug": "Prijavi napako",
+    "resign-game": "<span lang="en" dir="ltr" class="mw-content-ltr">Resign Game</span>",
     "rotate": "Zasukaj",
     "rules": "Pravila",
     "save-game": "Shrani Igro",

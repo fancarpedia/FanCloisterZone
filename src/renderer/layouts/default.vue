@@ -90,6 +90,7 @@ import { installReloadHook, takePendingRejoin } from '@/utils/reload-rejoin'
 import { markAutoDark } from '@/utils/auto-dark'
 
 import { STATUS_CONNECTED, homeRoute } from '@/store/networking'
+import { resignDialogTexts } from '@/store/game'
 
 const ZOOM_SENSITIVITY = 1.4
 
@@ -133,6 +134,12 @@ export default {
     ...mapGetters({
       undoAllowed: 'game/isUndoAllowed'
     }),
+
+    // Resign is offered in a running online game that is not over (or already resigned)
+    resignAllowed () {
+      const game = this.$store.state.game
+      return this.onlineConnected && !!game.id && !game.resignation && game.phase !== 'GameOverPhase'
+    },
 
     showJoinDialog: {
       get () {
@@ -217,6 +224,10 @@ export default {
     },
 
     undoAllowed () {
+      this.updateMenu()
+    },
+
+    resignAllowed () {
       this.updateMenu()
     },
 
@@ -349,6 +360,9 @@ export default {
     })
     ipcRenderer.on('menu.leave-game', () => {
       this.leaveGame()
+    })
+    ipcRenderer.on('menu.resign-game', () => {
+      this.resignGame()
     })
     ipcRenderer.on('menu.save-game', () => {
       this.$store.dispatch('game/save')
@@ -739,6 +753,7 @@ export default {
         'new-game': !gameOpen && this.engine?.ok,
         'join-game': onlineReady,
         'leave-game': gameOpen,
+        'resign-game': gameRunning && this.resignAllowed,
         'save-game': gameRunning,
         'load-game': !gameOpen && this.engine?.ok,
         'undo': gameRunning && this.undoAllowed,
@@ -849,6 +864,15 @@ export default {
       const title = `${this.pageTitle()}${this.gameTitle()}${base}`
       this.windowTitle = title
       document.title = title
+    },
+
+    // Resign the online game (all of this client's seats, its AI players too): asked first — the
+    // game ends at once and the other players win
+    async resignGame () {
+      if (!this.resignAllowed) return
+      // the same dialog as closing an unfinished local game
+      if (!await ipcRenderer.invoke('confirm-resign-game', resignDialogTexts(this.$t.bind(this)))) return
+      this.$store.dispatch('game/resign')
     },
 
     async leaveGame () {

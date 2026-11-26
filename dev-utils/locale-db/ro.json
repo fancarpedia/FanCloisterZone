@@ -384,9 +384,39 @@
     "value": "Capturat — proprietarul îl poate răscumpăra pentru 3 puncte în tura sa",
     "source": "manual"
   },
+  "game.resign.confirm": {
+    "en": "Do you really want to resign? The game ends at once and the other players win.",
+    "value": "Sigur vrei să abandonezi? Jocul se termină imediat și ceilalți jucători câștigă.",
+    "source": "manual"
+  },
+  "game.resign.player-resigned": {
+    "en": "{name} resigned the game.",
+    "value": "{name} a abandonat jocul.",
+    "source": "manual"
+  },
+  "game.resign.winner": {
+    "en": "{name} wins.",
+    "value": "Câștigă {name}.",
+    "source": "manual"
+  },
+  "game.resign.you-resigned": {
+    "en": "You resigned the game.",
+    "value": "Ai abandonat jocul.",
+    "source": "manual"
+  },
+  "game.resign.you-win": {
+    "en": "You win!",
+    "value": "Ai câștigat!",
+    "source": "manual"
+  },
   "index.local.new-local-game": {
     "en": "New local game",
     "value": "Partidă locală nouă",
+    "source": "manual"
+  },
+  "index.local.resign-game": {
+    "en": "Resign game",
+    "value": "Abandonează jocul",
     "source": "manual"
   },
   "index.online.welcome": {
@@ -397,6 +427,11 @@
   "menu.new-local-game": {
     "en": "New local game",
     "value": "Partidă locală nouă",
+    "source": "manual"
+  },
+  "menu.resign-game": {
+    "en": "Resign Game",
+    "value": "Abandonează jocul",
     "source": "manual"
   },
   "predraw.pass-supply-tile": {

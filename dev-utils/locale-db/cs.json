@@ -909,6 +909,31 @@
     "value": "Zajatý — jeho majitel ho může ve svém tahu vykoupit za 3 body",
     "source": "manual"
   },
+  "game.resign.confirm": {
+    "en": "Do you really want to resign? The game ends at once and the other players win.",
+    "value": "Opravdu se chcete vzdát? Hra okamžitě skončí a ostatní hráči vyhrají.",
+    "source": "manual"
+  },
+  "game.resign.player-resigned": {
+    "en": "{name} resigned the game.",
+    "value": "{name} se vzdal hry.",
+    "source": "manual"
+  },
+  "game.resign.winner": {
+    "en": "{name} wins.",
+    "value": "Vyhrává {name}.",
+    "source": "manual"
+  },
+  "game.resign.you-resigned": {
+    "en": "You resigned the game.",
+    "value": "Vzdali jste hru.",
+    "source": "manual"
+  },
+  "game.resign.you-win": {
+    "en": "You win!",
+    "value": "Vyhráli jste!",
+    "source": "manual"
+  },
   "game.scoring.item-cloth": {
     "en": "Cloth",
     "value": "Sukno",
@@ -982,6 +1007,11 @@
   "index.local.new-local-game": {
     "en": "New local game",
     "value": "Nová místní hra",
+    "source": "manual"
+  },
+  "index.local.resign-game": {
+    "en": "Resign game",
+    "value": "Vzdát hru",
     "source": "manual"
   },
   "index.online.connecting": {
@@ -1112,6 +1142,11 @@
   "menu.potential-final-score": {
     "en": "Potential Final Score",
     "value": "Koncové skóre",
+    "source": "manual"
+  },
+  "menu.resign-game": {
+    "en": "Resign Game",
+    "value": "Vzdát hru",
     "source": "manual"
   },
   "open-windows.close": {

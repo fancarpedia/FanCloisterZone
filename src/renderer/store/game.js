@@ -106,6 +106,36 @@ export const finalResults = (state, ranks) => {
   return results
 }
 
+// Texts of the Resign confirmation (main process `confirm-resign-game`): the same dialog as closing
+// an unfinished local game — Resign, or Continue Playing
+export const resignDialogTexts = $t => ({
+  title: $t('menu.resign-game'),
+  message: $t('game.resign.confirm'),
+  confirm: $t('game.resign.resign'),
+  cancel: $t('dialog.close-local-game.continue-playing')
+})
+
+// The final order when the given seats resign: everyone else as finalResults ranks them (positions
+// renumbered without the resigned), then the resigned seats last, marked `resigned`
+export const resignResults = (state, ranks, resignedSeats) => {
+  const resigned = new Set(resignedSeats)
+  const all = finalResults(state, ranks)
+  const stay = all.filter(r => !resigned.has(r.seat))
+  const out = []
+  let position = 0
+  let prevKey = null
+  stay.forEach((r, i) => {
+    // equal points keep a shared position (as ranks does); lost-on-time stays after them
+    const key = r.lostOnTime ? 'lost' : 'p' + r.points
+    if (key !== prevKey) position = i + 1
+    prevKey = key
+    out.push({ ...r, position, resigned: false })
+  })
+  const last = stay.length + 1
+  all.filter(r => resigned.has(r.seat)).forEach(r => out.push({ ...r, position: last, resigned: true }))
+  return out
+}
+
 // The clocks after the given messages (a loaded / re-joined game, replayed in one go), and the
 // first player whose time ran out along the way (null if none) — checked move by move, in order,
 // so "first" is the same as during live play
@@ -174,6 +204,9 @@ export const state = () => ({
   timedOut: null,
   // that player's time left (seconds, negative) when it happened — what the final stats show for them
   timedOutSec: null,
+  // an online game ended by a resignation (server GAME_RESIGNED): { clientId, name, seats, results,
+  // mine } — `seats` all the resigning client's seats (its AI players too), `mine` this client
+  resignation: null,
   lastMessageClock: null,
   lastMessageClockLocal: null,
   tilePack: null,
@@ -222,6 +255,7 @@ export const mutations = {
     state.clock = null
     state.timedOut = null
     state.timedOutSec = null
+    state.resignation = null
     state.lastMessageClock = null
     state.lastMessageClockLocal = null
     state.tilePack = null
@@ -331,6 +365,10 @@ export const mutations = {
       const clock = new Array(state.players.length)
       state.clock = clock.fill(0)
     }
+  },
+
+  resignation (state, value) {
+    state.resignation = value
   },
 
   timedOut (state, value) {
@@ -1089,6 +1127,46 @@ export const actions = {
     $connection.send({ type: 'RENAME_GAME', payload: { gameId: state.id, name: name.trim() } })
   },
 
+  // Resign an online game: every seat of this client (its AI players too) resigns, the game ends
+  // (server state FX) and the others win. The final order goes with it, for the stored result.
+  resign ({ state, getters, rootState }) {
+    if (!state.id || state.resignation) return
+    const mySession = rootState.networking.sessionId
+    const seats = (state.players || []).map((p, i) => (p.sessionId === mySession ? i : null)).filter(i => i !== null)
+    if (!seats.length) return
+    const { $connection } = this._vm
+    $connection.send({
+      type: 'RESIGN_GAME',
+      payload: { gameId: state.id, seats, results: resignResults(state, getters.ranks, seats) }
+    })
+  },
+
+  // GAME_RESIGNED from the server: the game is over — the action panel shows who resigned and who won
+  handleResigned ({ state, commit, rootState }, payload) {
+    if (!payload || (state.id && payload.gameId && payload.gameId !== state.id)) return
+    // a client id may carry a per-window suffix (--…): compare the base, as the lobby does
+    const base = id => (id ? String(id).split('--')[0] : null)
+    const mine = !!payload.clientId && base(payload.clientId) === base(rootState.settings.clientId)
+    // The server names the resigning seats by SLOT number (the colour seat, 0–8); everything on this
+    // side (colours, panels, results.seat) works with the PLAYER index — translate, or the panel's
+    // colour lookup read players[slot] (undefined) and crashed. Fall back to the results' flags.
+    const players = state.players || []
+    let seats = (payload.seats || [])
+      .map(slot => players.findIndex(p => p.slot === slot))
+      .filter(i => i >= 0)
+    if (!seats.length) {
+      // (no players yet: keep the flagged seats — the panel shows only those the game has)
+      seats = (payload.results || []).filter(r => r.resigned && (!players.length || players[r.seat])).map(r => r.seat)
+    }
+    commit('resignation', {
+      clientId: payload.clientId || null,
+      name: payload.name || '',
+      seats,
+      results: payload.results || [],
+      mine
+    })
+  },
+
   async chat ({ state }, payload) {
     const { $connection } = this._vm
     payload.gameId = state.id
@@ -1372,6 +1450,7 @@ export const actions = {
   async aiEngineRequest ({ state, dispatch }) {
     const player = state.action?.player
     if (player === undefined || player === null) return
+    if (state.resignation) return // a resigned game is over: no more moves
     const engine = this._vm.$engine.get()
     const { response } = await engine.writeMessage({
       id: randomId(),

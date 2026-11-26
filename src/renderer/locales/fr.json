@@ -2,7 +2,7 @@
   "@author": "Black Bear",
   "@jcz-version": "5.12.1",
   "@fcz-version": "7.3.0",
-  "@version": "0.14.9-ai",
+  "@version": "0.14.11-ai",
   "about": {
     "author": "Auteur",
     "configuration-file": "Fichier de configuration",
@@ -529,6 +529,13 @@
       "not-enough-points": "Pas assez de points pour le rachat — il faut 3 points",
       "not-their-action": "Capturé — son propriétaire peut le racheter pour 3 points pendant son tour"
     },
+    "resign": {
+      "confirm": "Voulez-vous vraiment abandonner ? La partie se termine aussitôt et les autres joueurs gagnent.",
+      "player-resigned": "{name} a abandonné la partie.",
+      "winner": "{name} gagne.",
+      "you-resigned": "Vous avez abandonné la partie.",
+      "you-win": "Vous avez gagné !"
+    },
     "scoring": {
       "barn-connected": "grange connectée",
       "barn-placed": "grange posée",
@@ -907,6 +914,7 @@
       "new-game": "Nouvelle partie",
       "new-game-against-ai": "Nouvelle partie contre une IA",
       "open-game": "Ouvrir une partie",
+      "resign-game": "Abandonner la partie",
       "saved-game": "Partie sauvegardée",
       "title": "Parties hébergées par le joueur",
       "new-local-game": "Nouvelle partie locale"
@@ -995,6 +1003,7 @@
     "playonline-disconnect": "Se déconnecter",
     "potential-final-score": "Score final probable",
     "report-bug": "Signaler un bug",
+    "resign-game": "Abandonner la partie",
     "rotate": "Pivoter",
     "rules": "Règles",
     "save-game": "Sauvegarder la partie",

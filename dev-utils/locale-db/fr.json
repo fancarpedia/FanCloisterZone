@@ -554,6 +554,31 @@
     "value": "Capturé — son propriétaire peut le racheter pour 3 points pendant son tour",
     "source": "manual"
   },
+  "game.resign.confirm": {
+    "en": "Do you really want to resign? The game ends at once and the other players win.",
+    "value": "Voulez-vous vraiment abandonner ? La partie se termine aussitôt et les autres joueurs gagnent.",
+    "source": "manual"
+  },
+  "game.resign.player-resigned": {
+    "en": "{name} resigned the game.",
+    "value": "{name} a abandonné la partie.",
+    "source": "manual"
+  },
+  "game.resign.winner": {
+    "en": "{name} wins.",
+    "value": "{name} gagne.",
+    "source": "manual"
+  },
+  "game.resign.you-resigned": {
+    "en": "You resigned the game.",
+    "value": "Vous avez abandonné la partie.",
+    "source": "manual"
+  },
+  "game.resign.you-win": {
+    "en": "You win!",
+    "value": "Vous avez gagné !",
+    "source": "manual"
+  },
   "game.scoring.item-cloth": {
     "en": "Cloth",
     "value": "Tissu",
@@ -624,6 +649,11 @@
     "value": "Nouvelle partie locale",
     "source": "manual"
   },
+  "index.local.resign-game": {
+    "en": "Resign game",
+    "value": "Abandonner la partie",
+    "source": "manual"
+  },
   "index.online.game-not-found": {
     "en": "Game not found. Check the game key and try again.",
     "value": "Partie introuvable. Vérifiez la clé de la partie et réessayez.",
@@ -657,6 +687,11 @@
   "menu.new-local-game": {
     "en": "New local game",
     "value": "Nouvelle partie locale",
+    "source": "manual"
+  },
+  "menu.resign-game": {
+    "en": "Resign Game",
+    "value": "Abandonner la partie",
     "source": "manual"
   },
   "predraw.no-tiles-left": {

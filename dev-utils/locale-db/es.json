@@ -934,6 +934,31 @@
     "value": "Capturado — su propietario puede rescatarlo por 3 puntos en su turno",
     "source": "manual"
   },
+  "game.resign.confirm": {
+    "en": "Do you really want to resign? The game ends at once and the other players win.",
+    "value": "¿Seguro que quieres rendirte? La partida termina al instante y ganan los demás jugadores.",
+    "source": "manual"
+  },
+  "game.resign.player-resigned": {
+    "en": "{name} resigned the game.",
+    "value": "{name} se ha rendido.",
+    "source": "manual"
+  },
+  "game.resign.winner": {
+    "en": "{name} wins.",
+    "value": "Gana {name}.",
+    "source": "manual"
+  },
+  "game.resign.you-resigned": {
+    "en": "You resigned the game.",
+    "value": "Te has rendido.",
+    "source": "manual"
+  },
+  "game.resign.you-win": {
+    "en": "You win!",
+    "value": "¡Has ganado!",
+    "source": "manual"
+  },
   "game.scoring.income": {
     "en": "income",
     "value": "ingreso",
@@ -1027,6 +1052,11 @@
   "index.local.new-local-game": {
     "en": "New local game",
     "value": "Nueva partida local",
+    "source": "manual"
+  },
+  "index.local.resign-game": {
+    "en": "Resign game",
+    "value": "Rendirse",
     "source": "manual"
   },
   "index.online.connecting": {
@@ -1167,6 +1197,11 @@
   "menu.potential-final-score": {
     "en": "Potential Final Score",
     "value": "Puntuación final potencial",
+    "source": "manual"
+  },
+  "menu.resign-game": {
+    "en": "Resign Game",
+    "value": "Rendirse",
     "source": "manual"
   },
   "open-windows.close": {

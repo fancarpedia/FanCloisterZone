@@ -2,7 +2,7 @@
   "@author": "Challa007 & Bombur",
   "@jcz-version": "5.12.1",
   "@fcz-version": "7.3.0",
-  "@version": "0.14.9-ai",
+  "@version": "0.14.11-ai",
   "about": {
     "author": "Autor",
     "configuration-file": "Konfigurationsdatei",
@@ -529,6 +529,13 @@
       "not-enough-points": "Nicht genug Punkte zum Freikaufen — 3 Punkte sind nötig",
       "not-their-action": "Gefangen — sein Besitzer kann ihn in seinem Zug für 3 Punkte freikaufen"
     },
+    "resign": {
+      "confirm": "Willst du wirklich aufgeben? Das Spiel endet sofort und die anderen Spieler gewinnen.",
+      "player-resigned": "{name} hat das Spiel aufgegeben.",
+      "winner": "{name} gewinnt.",
+      "you-resigned": "Du hast das Spiel aufgegeben.",
+      "you-win": "Du hast gewonnen!"
+    },
     "scoring": {
       "barn-connected": "Gutshof verbunden",
       "barn-placed": "Gutshof gesetzt",
@@ -907,6 +914,7 @@
       "new-game": "Neues Spiel",
       "new-game-against-ai": "Neues Spiel gegen den Computer",
       "open-game": "öffne Spiel",
+      "resign-game": "Spiel aufgeben",
       "saved-game": "Gespeichertes Spiel",
       "title": "Vom Spieler gehostete Spiele",
       "new-local-game": "Neues lokales Spiel"
@@ -995,6 +1003,7 @@
     "playonline-disconnect": "Onlinespiel Trennen",
     "potential-final-score": "Möglicher Endstand",
     "report-bug": "einen Fehler melden",
+    "resign-game": "Spiel aufgeben",
     "rotate": "Rotieren",
     "rules": "Regeln",
     "save-game": "Spiel speichern",

@@ -1114,6 +1114,31 @@
     "value": "Paimtas į nelaisvę — jo savininkas gali jį išpirkti už 3 taškus savo ėjimo metu",
     "source": "manual"
   },
+  "game.resign.confirm": {
+    "en": "Do you really want to resign? The game ends at once and the other players win.",
+    "value": "Ar tikrai norite pasiduoti? Žaidimas iškart baigsis, o kiti žaidėjai laimės.",
+    "source": "manual"
+  },
+  "game.resign.player-resigned": {
+    "en": "{name} resigned the game.",
+    "value": "{name} pasidavė.",
+    "source": "manual"
+  },
+  "game.resign.winner": {
+    "en": "{name} wins.",
+    "value": "Laimi {name}.",
+    "source": "manual"
+  },
+  "game.resign.you-resigned": {
+    "en": "You resigned the game.",
+    "value": "Jūs pasidavėte.",
+    "source": "manual"
+  },
+  "game.resign.you-win": {
+    "en": "You win!",
+    "value": "Jūs laimėjote!",
+    "source": "manual"
+  },
   "game.scoring.income": {
     "en": "income",
     "value": "pajamos",
@@ -1207,6 +1232,11 @@
   "index.local.new-local-game": {
     "en": "New local game",
     "value": "Naujas vietinis žaidimas",
+    "source": "manual"
+  },
+  "index.local.resign-game": {
+    "en": "Resign game",
+    "value": "Pasiduoti",
     "source": "manual"
   },
   "index.online.connecting": {
@@ -1352,6 +1382,11 @@
   "menu.potential-final-score": {
     "en": "Potential Final Score",
     "value": "Galimas galutinis rezultatas",
+    "source": "manual"
+  },
+  "menu.resign-game": {
+    "en": "Resign Game",
+    "value": "Pasiduoti",
     "source": "manual"
   },
   "open-windows.close": {

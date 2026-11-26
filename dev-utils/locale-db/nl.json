@@ -934,6 +934,31 @@
     "value": "Gevangen — de eigenaar kan hem in zijn beurt vrijkopen voor 3 punten",
     "source": "manual"
   },
+  "game.resign.confirm": {
+    "en": "Do you really want to resign? The game ends at once and the other players win.",
+    "value": "Wil je echt opgeven? Het spel eindigt meteen en de andere spelers winnen.",
+    "source": "manual"
+  },
+  "game.resign.player-resigned": {
+    "en": "{name} resigned the game.",
+    "value": "{name} heeft opgegeven.",
+    "source": "manual"
+  },
+  "game.resign.winner": {
+    "en": "{name} wins.",
+    "value": "{name} wint.",
+    "source": "manual"
+  },
+  "game.resign.you-resigned": {
+    "en": "You resigned the game.",
+    "value": "Je hebt opgegeven.",
+    "source": "manual"
+  },
+  "game.resign.you-win": {
+    "en": "You win!",
+    "value": "Je hebt gewonnen!",
+    "source": "manual"
+  },
   "game.scoring.income": {
     "en": "income",
     "value": "inkomsten",
@@ -1027,6 +1052,11 @@
   "index.local.new-local-game": {
     "en": "New local game",
     "value": "Nieuw lokaal spel",
+    "source": "manual"
+  },
+  "index.local.resign-game": {
+    "en": "Resign game",
+    "value": "Spel opgeven",
     "source": "manual"
   },
   "index.online.connecting": {
@@ -1167,6 +1197,11 @@
   "menu.potential-final-score": {
     "en": "Potential Final Score",
     "value": "Mogelijke eindscore",
+    "source": "manual"
+  },
+  "menu.resign-game": {
+    "en": "Resign Game",
+    "value": "Spel opgeven",
     "source": "manual"
   },
   "open-windows.close": {
