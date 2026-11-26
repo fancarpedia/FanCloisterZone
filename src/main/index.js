@@ -41,10 +41,31 @@ const winState = new Map() // webContents.id -> { role, intent, gameId, hasLocal
 function stateFor (wc) {
   let s = winState.get(wc.id)
   if (!s) {
-    s = { role: 'main', intent: null, gameId: null, key: null, setup: null, progress: null, active: null, hasLocalGame: false, isForceClosing: false }
+    s = { role: 'main', intent: null, gameId: null, key: null, setup: null, progress: null, active: null, hasLocalGame: false, isForceClosing: false, winCreatedNotified: false }
     winState.set(wc.id, s)
   }
   return s
+}
+
+function notifyWinCreated (win) {
+  if (!win || win.isDestroyed()) return
+  const st = stateFor(win.webContents)
+  if (st.winCreatedNotified) return
+  st.winCreatedNotified = true
+  modules.forEach(m => m.winCreated(win))
+}
+
+function showGameWindow (win) {
+  if (!win || win.isDestroyed()) return
+  const st = stateFor(win.webContents)
+  const firstShow = !st.winCreatedNotified
+  notifyWinCreated(win)
+  if (firstShow) {
+    win.maximize()
+  }
+  if (win.isMinimized()) win.restore()
+  win.show()
+  win.focus()
 }
 
 // --- open game-windows registry (for the lobby's "open windows" list) -----------------------------
@@ -239,7 +260,7 @@ function buildWindow ({ role = 'main', hidden = false } = {}) {
   if (!hidden) {
     win.once('ready-to-show', () => {
       win.maximize()
-      modules.forEach(m => m.winCreated(win))
+      notifyWinCreated(win)
     })
   }
 
@@ -353,9 +374,7 @@ function openGameWindow (intent) {
     if (warmWinReady) {
       // Already booted — deliver intent immediately and show
       win.webContents.send('game-window.init', { role: 'game', intent: intent || null })
-      win.maximize()
-      win.show()
-      win.focus() // bring the new game window to the front (show() alone doesn't steal focus on Windows)
+      showGameWindow(win)
     }
     // else: still loading — game-window.ready handler will deliver intent + show it
     warmWinReady = false
@@ -388,9 +407,7 @@ ipcMain.on('game-window.ready', (event) => {
   wc.send('game-window.init', { role: st.role, intent: st.intent })
   const win = BrowserWindow.fromWebContents(wc)
   if (win && !win.isDestroyed() && !win.isVisible()) {
-    win.maximize()
-    win.show()
-    win.focus() // bring the new game window to the front (show() alone doesn't steal focus on Windows)
+    showGameWindow(win)
   }
   broadcastGameWindows() // window is now shown with its intent → refresh the list
 })
@@ -465,9 +482,7 @@ ipcMain.handle('get-my-window-id', (event) => event.sender.id)
 ipcMain.on('focus-game-window', (event, id) => {
   const win = findWindowByWcId(id)
   if (win) {
-    if (win.isMinimized()) win.restore()
-    win.show()
-    win.focus()
+    showGameWindow(win)
   }
 })
 
@@ -530,6 +545,15 @@ ipcMain.on('broadcast-settings-update', async (event, update) => {
   }
   for (const win of BrowserWindow.getAllWindows()) {
     if (!win.isDestroyed()) win.webContents.send('settings.shared-update', update)
+  }
+})
+
+// Notify every OTHER window when add-ons on disk changed without a settings diff (e.g. classic).
+ipcMain.on('broadcast-addons-changed', event => {
+  for (const win of BrowserWindow.getAllWindows()) {
+    if (!win.isDestroyed() && win.webContents.id !== event.sender.id) {
+      win.webContents.send('addons.changed')
+    }
   }
 })
 

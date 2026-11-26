@@ -1,5 +1,5 @@
 import fs from 'fs'
-import { app } from 'electron'
+import { app, BrowserWindow } from 'electron'
 
 import { loadSettings, isSaveInProgress, SETTINGS_FILE } from '../settings'
 
@@ -8,13 +8,20 @@ let watcher = null
 
 export default function () {
   return {
-    winCreated (win) {
+    winCreated () {
+      if (watcher || timeout) return
       timeout = setTimeout(() => {
+        timeout = null
         try {
           watcher = fs.watch(SETTINGS_FILE, eventType => {
             if (eventType === 'change' && !isSaveInProgress()) {
               loadSettings().then(settings => {
-                win.webContents.send('settings.changed', { settings, file: SETTINGS_FILE, systemLocale: app.getSystemLocale() || 'en-US' })
+                const payload = { settings, file: SETTINGS_FILE, systemLocale: app.getSystemLocale() || 'en-US' }
+                for (const win of BrowserWindow.getAllWindows()) {
+                  if (!win.isDestroyed()) {
+                    win.webContents.send('settings.changed', payload)
+                  }
+                }
               })
             }
           })
@@ -26,7 +33,11 @@ export default function () {
     },
 
     winClosed () {
+      const remaining = BrowserWindow.getAllWindows().filter(w => !w.isDestroyed())
+      if (remaining.length > 0) return
+
       clearTimeout(timeout)
+      timeout = null
 
       if (watcher) {
         watcher.close()

@@ -439,6 +439,7 @@ export class Tiles extends EventsBase {
     const sets = {}
     const expansions = []
     const xmls = []
+    const symbols = []
 
     const expansionRequiredBy = {}
     const expansionGroups = {}
@@ -608,7 +609,7 @@ export class Tiles extends EventsBase {
         // the elements it only allows — for the AI stages, NOT impliesAllowed (they stay off by default)
         exp.allowedElements = allowedElements
         if (svgIcon) {
-          this.symbols.push(`<symbol id="expansion-${name}" viewBox="${svgIcon.getAttribute('viewBox')}">${svgIcon.innerHTML}</symbol>`)
+          symbols.push(`<symbol id="expansion-${name}" viewBox="${svgIcon.getAttribute('viewBox')}">${svgIcon.innerHTML}</symbol>`)
           exp.svgIcon = true
         }
         if (addon) {
@@ -722,6 +723,7 @@ export class Tiles extends EventsBase {
     })
 
     this.xmls = xmls
+    this.symbols = symbols
     this.tiles = tiles
     registerKingdomPalaces(kingdomPalaces)
     this.sets = sets
