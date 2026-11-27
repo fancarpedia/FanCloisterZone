@@ -141,6 +141,33 @@ ipcMain.handle('confirm-resign-game', async (ev, texts = {}) => {
   }
 })
 
+// Leaving a running online game with a time limit: your clock keeps running on your turns, so offer
+// to propose turn-based play (the other players must accept). The renderer passes the translated
+// texts; answers 'propose' | 'leave' | 'cancel'. Without `propose` (a player's app is too old for
+// turn-based play) only Leave anyway / Continue Playing.
+ipcMain.handle('confirm-leave-timed-game', async (ev, texts = {}) => {
+  const win = BrowserWindow.fromWebContents(ev.sender)
+  const answers = texts.propose ? ['propose', 'leave', 'cancel'] : ['leave', 'cancel']
+  const labels = { propose: texts.propose, leave: texts.leave || 'Leave anyway', cancel: texts.cancel || 'Continue Playing' }
+  const opts = {
+    type: 'warning',
+    buttons: answers.map(a => labels[a]),
+    defaultId: 0,
+    cancelId: answers.length - 1,
+    title: texts.title || 'Game with a time limit',
+    message: texts.message || 'Your clock keeps running on your turns while you are away, and you can lose on time.',
+    detail: texts.detail || ''
+  }
+  try {
+    const target = win && !win.isDestroyed() ? win : null
+    const result = target ? await dialog.showMessageBox(target, opts) : await dialog.showMessageBox(opts)
+    return answers[result.response] || 'cancel'
+  } catch (err) {
+    console.error('Dialog error:', err)
+    return 'leave'
+  }
+})
+
 ipcMain.handle('confirm-leave-game', async (ev) => {
   const choice = await showUnfinishedGameDialog(BrowserWindow.fromWebContents(ev.sender))
   // choice === 0 → user confirmed leaving

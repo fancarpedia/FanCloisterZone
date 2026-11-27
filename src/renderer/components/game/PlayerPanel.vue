@@ -135,6 +135,8 @@
 <script>
 import { mapGetters, mapState } from 'vuex'
 
+import { activeTimer } from '@/store/game'
+
 import Meeple from '@/components/game/Meeple'
 import TokenImage from '@/components/game/TokenImage'
 import PlayerClock from '@/components/game/PlayerClock'
@@ -167,7 +169,7 @@ export default {
       return pd.counts[this.index] || 0
     },
     ...mapState({
-      timer: state => state.game.setup.timer,
+      timer: state => activeTimer(state.game.setup),
       turnPlayer: state => state.game.turnPlayer,
       actionPlayer: state => state.game.action?.player,
       bazaar: state => state.game.bazaar,

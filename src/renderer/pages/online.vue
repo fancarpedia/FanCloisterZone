@@ -145,6 +145,11 @@
                 <div class="meeple">
                   <!-- an AI seat (played by its owner's client): a robot head on the meeple -->
                   <Meeple type="SmallFollower" :ai="!!s.ai" />
+                  <!-- before the start: ✓ a player who pressed Ready on the slot page, ✗ one who has not
+                       (only players whose app has the Ready button; AI seats have none) -->
+                  <span v-if="!isStarted && readyMark(s, game)" class="ready-mark" :class="readyMark(s, game)" :title="readyMark(s, game) === 'ready' ? $t('game-setup.open-game.ready') : $t('game-setup.open-game.not-ready')">
+                    <v-icon>{{ readyMark(s, game) === 'ready' ? 'fas fa-check' : 'fas fa-times' }}</v-icon>
+                  </span>
                 </div>
                 <div class="name">
                   {{ s.name }}
@@ -226,6 +231,11 @@
                 <div class="meeple">
                   <!-- an AI seat (played by its owner's client): a robot head on the meeple -->
                   <Meeple type="SmallFollower" :ai="!!s.ai" />
+                  <!-- before the start: ✓ a player who pressed Ready on the slot page, ✗ one who has not
+                       (only players whose app has the Ready button; AI seats have none) -->
+                  <span v-if="!isStarted && readyMark(s, game)" class="ready-mark" :class="readyMark(s, game)" :title="readyMark(s, game) === 'ready' ? $t('game-setup.open-game.ready') : $t('game-setup.open-game.not-ready')">
+                    <v-icon>{{ readyMark(s, game) === 'ready' ? 'fas fa-check' : 'fas fa-times' }}</v-icon>
+                  </span>
                 </div>
                 <div class="name">
                   {{ s.name }}
@@ -806,6 +816,15 @@ export default {
       this.$connection.send({ type: 'JOIN_GAME', payload: { gameId: game.gameId } })
     },
 
+    // a seat's Ready mark before the start: 'ready', 'not-ready' (its app has the Ready button and
+    // it was not pressed), or null (empty / AI seat, older app)
+    readyMark (s, game) {
+      if (!s.clientId || s.ai) return null
+      // the creator starts the game: always ready (also on a server that does not mark it)
+      if (s.ready || s.clientId === game.owner) return 'ready'
+      return s.canReady ? 'not-ready' : null
+    },
+
     // a game resigned while this player was away (server state FX): who resigned and who won
     resignedInfo (game, clientId) {
       const r = game.state === 'FX' ? game.resigned : null
@@ -1080,6 +1099,27 @@ h2
 
     .meeple
       position: relative
+
+    // Ready (slot page): a green check over the meeple's top right
+    .ready-mark
+      position: absolute
+      top: 0
+      right: 0
+      width: 16px
+      height: 16px
+      border-radius: 50%
+      display: flex
+      align-items: center
+      justify-content: center
+      background: var(--v-success-base)
+      box-shadow: 0 0 0 1.5px white
+
+      &.not-ready
+        background: var(--v-error-base)
+
+      .v-icon
+        font-size: 9px
+        color: white
 
     &.local
       font-weight: bolder

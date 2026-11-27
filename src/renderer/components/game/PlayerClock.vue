@@ -7,6 +7,8 @@
 <script>
 import { mapState } from 'vuex'
 
+import { activeTimer } from '@/store/game'
+
 export default {
   props: {
     player: { type: Number, required: true }
@@ -21,7 +23,7 @@ export default {
   computed: {
     ...mapState({
       clock: state => state.game.clock,
-      timer: state => state.game.setup.timer,
+      timer: state => activeTimer(state.game.setup),
       lastMessageClockLocal: state => state.game.lastMessageClockLocal
     }),
 

@@ -118,7 +118,7 @@ import { mapGetters, mapState } from 'vuex'
 import flatten from 'lodash/flatten'
 import debounce from 'lodash/debounce'
 
-import { remainingTimeSec } from '@/store/game'
+import { activeTimer, remainingTimeSec } from '@/store/game'
 
 import ExpressionItem from '@/components/game/ExpressionItem'
 import Meeple from '@/components/game/Meeple'
@@ -205,7 +205,7 @@ export default {
     // they ran out, not their clock at the end (later turn bonuses may have brought it back up).
     overTimeByPlayer () {
       const { setup, clock, timedOut, timedOutSec } = this.$store.state.game
-      const timer = setup?.timer
+      const timer = activeTimer(setup)
       if (!timer || !clock) return null
       return this.players.map(p => {
         const turns = (this.history || []).reduce((n, h) => n + (h.player === p.index ? 1 : 0), 0)

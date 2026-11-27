@@ -124,6 +124,9 @@ class ConnectionHandler {
       commit('online/gameList', payload.games, { root: true })
     } else if (type === 'GAME_PUBLIC_LIST') {
       commit('online/gamePublicList', payload.games, { root: true })
+    } else if (type === 'READY') {
+      // which seats are ready to play (slot page)
+      commit('game/slotsReady', payload, { root: true })
     } else if (type === 'SLOT') {
       await dispatch('game/handleSlotMessage', payload, { root: true })
     } else if (type === 'START') {

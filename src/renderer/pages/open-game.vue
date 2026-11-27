@@ -49,6 +49,20 @@
       />
 
       <template v-else>
+        <!-- a seated player tells the host they are ready. The button shows the player's state —
+             ✗ Not ready / ✓ Ready — and a click switches it -->
+        <div v-if="canSetReady" class="header-ready-button">
+          <v-btn
+            :large="$vuetify.breakpoint.height > 768"
+            :color="iAmReady ? 'success' : 'error'"
+            :outlined="iAmReady"
+            :title="iAmReady ? $t('game-setup.open-game.not-ready-title') : $t('game-setup.open-game.ready-title')"
+            @click="toggleReady"
+          >
+            <v-icon left>{{ iAmReady ? 'fas fa-check-circle' : 'fas fa-times' }}</v-icon>
+            {{ iAmReady ? $t('game-setup.open-game.ready') : $t('game-setup.open-game.not-ready') }}
+          </v-btn>
+        </div>
         <span class="text">{{ $t('game-setup.open-game.waiting-for-host-to-start-the-game') }}</span>
       </template>
 
@@ -70,6 +84,9 @@
           :order="slot.order"
           :read-only="readOnly || isRematch"
           :ai="slot.ai || false"
+          :ready-state="readyStateOf(slot)"
+          :ready-toggle="canSetReady && slot.sessionId === sessionId && !slot.ai"
+          @toggle-ready="toggleReady"
           :is-owner="isOwner"
           :limit-reached="!!gameKey && localSlotsCount >= LOCAL_PLAYERS_LIMIT"
           :local-limit="LOCAL_PLAYERS_LIMIT"
@@ -250,7 +267,35 @@ export default {
     // player — a game of AI players only is not started
     canStart () {
       if (!this.slots) return false // the game has not arrived yet
-      return this.slotsAssigned && this.slotsReserved
+      return this.slotsAssigned && this.slotsReserved && !this.notReadySlots.length
+    },
+
+    // Ready applies to a new online game (not a resumed one): seats on this page
+    readyUsed () {
+      return !!this.gameKey && !this.readOnly
+    },
+
+    // the seats the host waits for: other players' human seats whose app has the Ready button
+    // (canReady — an older app cannot press it) and that are not ready. The host's own seats and
+    // AI seats count as ready.
+    notReadySlots () {
+      if (!this.readyUsed || !this.slots) return []
+      const owner = this.$store.state.game.owner
+      return this.slots.filter(s => s.clientId && !s.ai && s.clientId !== owner && s.canReady && !s.ready)
+    },
+
+    // my human seats (a player who is not the host)
+    myHumanSlots () {
+      if (!this.slots || !this.sessionId) return []
+      return this.slots.filter(s => s.sessionId === this.sessionId && !s.ai)
+    },
+
+    canSetReady () {
+      return this.readyUsed && !this.isOwner && this.myHumanSlots.length > 0
+    },
+
+    iAmReady () {
+      return this.myHumanSlots.length > 0 && this.myHumanSlots.every(s => s.ready)
     },
 
     // what still keeps the game from starting, shown in the header (null = nothing)
@@ -263,6 +308,11 @@ export default {
       }
       if (!this.slotsReserved) {
         return this.$t('game-setup.open-game.no-human-player')
+      }
+      // who the host waits for (the players themselves have the Ready button instead)
+      if (this.isOwner && this.notReadySlots.length) {
+        const names = [...new Set(this.notReadySlots.map(s => s.name).filter(Boolean))].join(', ')
+        return this.$t('game-setup.open-game.waiting-for-ready', { names })
       }
       return null
     },
@@ -412,6 +462,19 @@ export default {
       this.$store.dispatch('game/start')
     },
 
+    // the seat's Ready badge: 'ready', 'not-ready' (a player who can press Ready and has not), or
+    // null — no Ready here (local / resumed game), an empty or AI seat, or an older app
+    readyStateOf (slot) {
+      if (!this.readyUsed || !slot.clientId || slot.ai) return null
+      // the creator starts the game: always ready (also on a server that does not mark it)
+      if (slot.ready || slot.clientId === this.$store.state.game.owner) return 'ready'
+      return slot.canReady ? 'not-ready' : null
+    },
+
+    toggleReady () {
+      this.$store.dispatch('gameSetup/setReady', !this.iAmReady)
+    },
+
     async changeGameSetup () {
       await this.$store.dispatch('gameSetup/changeGameSetup')
     },
@@ -446,6 +509,11 @@ export default {
 </script>
 
 <style lang="sass" scoped>
+.header-ready-button
+  display: flex
+  align-items: center
+  padding-right: 1ex
+
 *
   user-select: none
 

@@ -80,6 +80,8 @@
       <PlayEvents />
       <!-- a drawn tile that fits nowhere was discarded: tell the players -->
       <DiscardedTileNotice />
+      <!-- a player who left proposed to drop the time limit: accept / decline, or its outcome -->
+      <TurnBasedProposal />
       <GameChat />
       <!-- Single-window web replaces the online lobby when a game starts, so surface the lobby-wide
            global chat here too (floating bullet). Self-hides when not connected online. Web only —
@@ -134,6 +136,7 @@ import GlobalChat from '@/components/GlobalChat'
 import ChooseMonkOrAbbotDialog from '@/components/game/dialogs/ChooseMonkOrAbbotDialog.vue'
 import PlayerPanel from '@/components/game/PlayerPanel.vue'
 import DiscardedTileNotice from '@/components/game/DiscardedTileNotice'
+import TurnBasedProposal from '@/components/game/TurnBasedProposal'
 import ObserversPanel from '@/components/game/ObserversPanel'
 import PlayEvents from '@/components/game/PlayEvents.vue'
 import TestResult from '@/components/game/TestResult.vue'
@@ -152,6 +155,7 @@ export default {
   components: {
     ObserversPanel,
     DiscardedTileNotice,
+    TurnBasedProposal,
     ActionPanel,
     Board,
     ChooseMonkOrAbbotDialog,

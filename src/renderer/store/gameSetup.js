@@ -616,6 +616,14 @@ export const actions = {
     this._vm.$connection.send({ type: 'STANDARD_POPULAR', payload })
   },
 
+  // Ready (or not) to play: all of my human seats in this online game, before the start
+  setReady ({ rootState }, ready) {
+    this._vm.$connection.send({
+      type: 'SET_READY',
+      payload: { gameId: rootState.game.id, ready: !!ready }
+    })
+  },
+
   takeSlot ({ rootState }, { number, name }) {
     const g = rootState.game
     // Pre-draw is one-seat-per-app (the secret-hand redaction boundary): refuse a 2nd local slot.

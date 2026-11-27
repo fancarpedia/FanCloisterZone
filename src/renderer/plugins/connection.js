@@ -104,7 +104,11 @@ class ConnectionPlugin extends EventsBase {
         // resolved locale in the web build). The server stores it with the connection.
         systemLocale: getSystemLocale(),
         gameId: gameId,
-        platform: process.platform
+        platform: process.platform,
+        // what this app can do that older ones cannot: 'ready' = the Ready button on the slot page
+        // (the server records it on a taken seat as canReady, so an older app never holds up Start)
+        // 'turn-based' = can answer a proposal to drop a game's time limit, and stops counting it
+        features: ['ready', 'turn-based']
       }
     }))
     this.heartbeat()

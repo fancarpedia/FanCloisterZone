@@ -121,6 +121,11 @@ ipcMain.on('set-local-game', (event, value) => {
   stateFor(event.sender).hasLocalGame = value
 })
 
+// the window shows a running online game with a time limit, where leaving offers turn-based play
+ipcMain.on('set-timed-online-game', (event, value) => {
+  stateFor(event.sender).hasTimedOnlineGame = !!value
+})
+
 ipcMain.handle('open-load-game-dialog', async (event, options) => {
   const win = BrowserWindow.fromWebContents(event.sender)
   if (!win) return { canceled: true }
@@ -278,6 +283,15 @@ function buildWindow ({ role = 'main', hidden = false } = {}) {
         st.hasLocalGame = false
         win.destroy() // Force close the window
       }
+      return
+    }
+
+    // A running online game with a time limit (and a seat of mine): closing the window is leaving
+    // the game — the renderer asks whether to propose turn-based play first (menu.leave-game), then
+    // closes the window itself (close-self-window), or stays on Continue Playing.
+    if (st && st.hasTimedOnlineGame && !st.isForceClosing) {
+      event.preventDefault()
+      win.webContents.send('menu.leave-game')
     }
   })
 
@@ -474,7 +488,11 @@ ipcMain.on('focus-game-window', (event, id) => {
 // Close a game window from the list (goes through the window's own close guard).
 ipcMain.on('close-game-window', (event, id) => {
   const win = findWindowByWcId(id)
-  if (win) win.close()
+  if (!win) return
+  // closed by the lobby (disconnect, server switch — already confirmed there): no turn-based question
+  const st = winState.get(win.webContents.id)
+  if (st) st.hasTimedOnlineGame = false
+  win.close()
 })
 
 // In-game "close/leave" → close just this window (the renderer has already confirmed and cleaned up).
@@ -483,6 +501,7 @@ ipcMain.on('close-self-window', (event) => {
   const win = BrowserWindow.fromWebContents(event.sender)
   if (win && !win.isDestroyed()) {
     stateFor(event.sender).hasLocalGame = false
+    stateFor(event.sender).hasTimedOnlineGame = false
     win.close()
   }
 })

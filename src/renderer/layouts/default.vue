@@ -90,7 +90,7 @@ import { installReloadHook, takePendingRejoin } from '@/utils/reload-rejoin'
 import { markAutoDark } from '@/utils/auto-dark'
 
 import { STATUS_CONNECTED, homeRoute } from '@/store/networking'
-import { resignDialogTexts } from '@/store/game'
+import { leaveTimedGameTexts, resignDialogTexts } from '@/store/game'
 
 const ZOOM_SENSITIVITY = 1.4
 
@@ -136,6 +136,11 @@ export default {
     }),
 
     // Resign is offered in a running online game that is not over (or already resigned)
+    // a running online game with a time limit where leaving offers turn-based play
+    timedOnlineGame () {
+      return !!this.$store.getters['game/canProposeTurnBased']
+    },
+
     resignAllowed () {
       const game = this.$store.state.game
       return this.onlineConnected && !!game.id && !game.resignation && game.phase !== 'GameOverPhase'
@@ -229,6 +234,15 @@ export default {
 
     resignAllowed () {
       this.updateMenu()
+    },
+
+    // tell the main process: closing this window is leaving a timed online game (it then asks via
+    // menu.leave-game whether to propose turn-based play)
+    timedOnlineGame: {
+      immediate: true,
+      handler (value) {
+        ipcRenderer.send('set-timed-online-game', !!value)
+      }
     },
 
     onlineConnected () {
@@ -879,10 +893,18 @@ export default {
       if (this.onlineConnected) {
         const { $connection } = this
         const gameId = this.$store.state.game.id
-        if (gameId) {
-          if (this.$store.state.networking.connectionStatus === STATUS_CONNECTED) {
-            $connection.send({ type: 'LEAVE_GAME', payload: { gameId } })
+        const connected = this.$store.state.networking.connectionStatus === STATUS_CONNECTED
+        // a time limit keeps counting on my turns while I am away: offer to propose turn-based play
+        // (every other player must accept; until then the timer stays on)
+        if (gameId && connected && this.$store.getters['game/canProposeTurnBased']) {
+          const answer = await ipcRenderer.invoke('confirm-leave-timed-game', leaveTimedGameTexts(this.$t.bind(this), this.$store.getters['game/turnBasedBlockers']))
+          if (answer === 'cancel') return
+          if (answer === 'propose') {
+            $connection.send({ type: 'PROPOSE_TURN_BASED', payload: { gameId } })
           }
+        }
+        if (gameId && connected) {
+          $connection.send({ type: 'LEAVE_GAME', payload: { gameId } })
         }
         // In a dedicated game window, leaving the game closes the window instead of showing a
         // lobby. Close WITHOUT navigating: routing to '/' first would re-render the game page

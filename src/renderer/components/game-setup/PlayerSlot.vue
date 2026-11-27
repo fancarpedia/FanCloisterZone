@@ -6,6 +6,18 @@
     >
       {{ order }}
     </div>
+    <!-- online slot page: the player is ready to play, or not yet -->
+    <!-- on my own seat it is a switch too (as the header's Ready button) -->
+    <div
+      v-if="readyState && (slotState === 'local' || slotState === 'remote')"
+      class="ready-badge"
+      :class="[readyState, { toggle: readyToggle }]"
+      :title="readyToggle ? (readyState === 'ready' ? $t('game-setup.open-game.not-ready-title') : $t('game-setup.open-game.ready-title')) : null"
+      @click.stop="readyToggle && $emit('toggle-ready')"
+    >
+      <v-icon x-small>{{ readyState === 'ready' ? 'fas fa-check' : 'fas fa-times' }}</v-icon>
+      {{ readyState === 'ready' ? $t('game-setup.open-game.ready') : $t('game-setup.open-game.not-ready') }}
+    </div>
     <div class="meeple-wrap">
       <!-- an AI seat: a robot head on the meeple, as in the online lobby's game lists -->
       <Meeple
@@ -161,6 +173,10 @@ export default {
     client: { type: String, default: null },
     name: { type: String, default: null },
     ai: { type: Boolean, default: false },
+    // 'ready' | 'not-ready' | null (no Ready on this page / seat)
+    readyState: { type: String, default: null },
+    // the badge switches my own Ready (emits toggle-ready)
+    readyToggle: { type: Boolean, default: false },
     order: { type: Number, default: null },
     readOnly: { type: Boolean },
     limitReached: { type: Boolean, default: false },
@@ -365,6 +381,36 @@ export default {
 
       +theme using ($theme)
         color: map-get($theme, 'slot-assign-text')
+
+  .ready-badge
+    position: absolute
+    top: 8px
+    left: 8px
+    z-index: 2
+    display: flex
+    align-items: center
+    gap: 4px
+    padding: 2px 10px
+    border-radius: 12px
+    font-size: 13px
+    font-weight: 600
+    text-transform: uppercase
+    color: white
+    background: var(--v-success-base)
+
+    &.not-ready
+      background: var(--v-error-base)
+
+    &.toggle
+      cursor: pointer
+      transition: transform 0.15s, filter 0.15s
+
+      &:hover
+        transform: scale(1.08)
+        filter: brightness(1.15) drop-shadow(0 3px 6px rgba(0, 0, 0, 0.35))
+
+    .v-icon
+      color: white
 
   .kick-wrapper
     position: absolute

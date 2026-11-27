@@ -75,6 +75,10 @@ export const TIMEOUT_GRACE_SEC = 4
 
 // A player's time left (seconds): the start time plus the per-turn bonus for every turn of theirs,
 // minus the time they used (clock, ms) — the same as PlayerClock shows
+// The time limit in force: none once every player agreed to play the rest of the game turn-based
+// (game option timerOff, see TurnBasedProposal)
+export const activeTimer = setup => (setup?.options?.timerOff ? null : setup?.timer || null)
+
 export const remainingTimeSec = (timer, turns, clockMs) =>
   timer.initial + timer.turn * turns - clockMs / 1000
 
@@ -83,7 +87,7 @@ export const remainingTimeSec = (timer, turns, clockMs) =>
 // (the first to run out, placed last whatever their points) and how many seconds over the time limit
 // they were (null within it; for the player who lost on time, when they ran out)
 export const finalResults = (state, ranks) => {
-  const timer = state.setup?.timer
+  const timer = activeTimer(state.setup)
   const overTime = index => {
     if (!timer || !state.clock) return null
     if (index === state.timedOut && state.timedOutSec !== null && state.timedOutSec !== undefined) {
@@ -105,6 +109,19 @@ export const finalResults = (state, ranks) => {
   })))
   return results
 }
+
+// Texts of the dialog when leaving a game with a time limit (main process `confirm-leave-timed-game`)
+// `blockers`: the players with an app too old for turn-based play — then there is no Propose button
+export const leaveTimedGameTexts = ($t, blockers = []) => ({
+  title: $t('game.turn-based.leave-title'),
+  message: $t('game.turn-based.leave-message'),
+  detail: blockers.length
+    ? $t('game.turn-based.old-app', { names: blockers.join(', ') })
+    : $t('game.turn-based.leave-detail'),
+  propose: blockers.length ? null : $t('game.turn-based.propose-and-leave'),
+  leave: $t('game.turn-based.leave-anyway'),
+  cancel: $t('dialog.close-local-game.continue-playing')
+})
 
 // Texts of the Resign confirmation (main process `confirm-resign-game`): the same dialog as closing
 // an unfinished local game — Resign, or Continue Playing
@@ -354,6 +371,13 @@ export const mutations = {
     state.slots = slots
   },
 
+  // READY {gameId, ready: [slot numbers]}: exactly these seats are ready to play
+  slotsReady (state, { gameId, ready } = {}) {
+    if (!state.slots || (gameId && state.id && gameId !== state.id)) return
+    const set = new Set(ready || [])
+    state.slots = state.slots.map(s => (!!s.ready === set.has(s.number) ? s : { ...s, ready: set.has(s.number) }))
+  },
+
   players (state, players) {
     state.players = players
   },
@@ -381,7 +405,7 @@ export const mutations = {
     if (player !== null && player !== undefined) {
       Vue.set(state.clock, player, state.clock[player] + clock - state.lastMessageClock)
       // the first player to run out of time is remembered (see timedOut)
-      const timer = state.setup?.timer
+      const timer = activeTimer(state.setup)
       if (timer && state.timedOut === null) {
         const turns = (state.history || []).reduce((n, h) => n + (h.player === player ? 1 : 0), 0)
         const left = remainingTimeSec(timer, turns, state.clock[player])
@@ -454,6 +478,35 @@ export const mutations = {
 }
 
 export const getters = {
+  // Turn-based proposal (game option turnBasedProposal: { status: 'open' | 'accepted' | 'declined',
+  // clientId, name, accepted: [clientIds], declinedBy }), or null
+  turnBasedProposal: state => state.setup?.options?.turnBasedProposal || null,
+
+  // Leaving a running online game that still has a time limit, with a seat of mine in it: offer to
+  // propose turn-based play (not while a proposal is open, nor once somebody lost on time)
+  canProposeTurnBased: (state, getters, rootState) => {
+    if (!state.id || !state.key || state.gameMessages === null) return false
+    if (state.resignation || state.phase === 'GameOverPhase' || state.timedOut !== null) return false
+    if (!activeTimer(state.setup)) return false
+    if (getters.turnBasedProposal?.status === 'open') return false
+    const me = rootState.settings?.clientId
+    return !!me && (state.slots || []).some(s => s.clientId === me)
+  },
+
+  // the players whose app is too old for turn-based play (cannot answer a proposal, keeps counting
+  // the time): while one is seated, no proposal is possible. Their names, one per client.
+  turnBasedBlockers: state => {
+    const names = []
+    const seen = new Set()
+    for (const s of state.slots || []) {
+      if (!s.clientId || s.canTurnBased || seen.has(s.clientId)) continue
+      seen.add(s.clientId)
+      const human = (state.slots || []).find(x => x.clientId === s.clientId && !x.ai)
+      names.push((human || s).name || '?')
+    }
+    return names
+  },
+
   // playerSlot: state => idx => state.setup.players[idx].slot,
   colorCssClass: state => player => 'color color-' + state.players[player].slot,
 
@@ -1274,7 +1327,7 @@ export const actions = {
     }
 
     if (state.gameMessages?.length) {
-      const { clocks, timedOut, timedOutSec } = computeClock(players.length, state.gameMessages, state.setup?.timer)
+      const { clocks, timedOut, timedOutSec } = computeClock(players.length, state.gameMessages, activeTimer(state.setup))
       commit('resetClock', clocks)
       commit('timedOut', timedOut === null ? null : { player: timedOut, sec: timedOutSec })
       await engine.writeMessage(setupMessage)

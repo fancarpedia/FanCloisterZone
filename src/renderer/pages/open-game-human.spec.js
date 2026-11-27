@@ -31,7 +31,7 @@ describe('a game needs a human player to start', () => {
 
   it('a human with AI players starts', () => {
     const slots = [human, ai]
-    const ctx = { slots, slotsAssigned: true, slotsReserved: slotsReserved({ slots }), $t: t }
+    const ctx = { slots, slotsAssigned: true, slotsReserved: slotsReserved({ slots }), notReadySlots: [], $t: t }
     expect(canStart(ctx)).toBe(true)
     expect(startInfo(ctx)).toBe(null)
   })
@@ -40,6 +40,30 @@ describe('a game needs a human player to start', () => {
     const ctx = { slots: [{}], slotsAssigned: false, slotsReserved: false, readOnly: false, $t: t }
     expect(canStart(ctx)).toBe(false)
     expect(startInfo(ctx)).toBe('game-setup.open-game.no-player-in-game')
+  })
+
+  // Ready (online slot page): the host waits for the other players' human seats that can press it
+  const notReadySlots = computed('notReadySlots')
+  const host = { clientId: 'H', sessionId: 'h', ai: false }
+  const bob = { clientId: 'B', sessionId: 'b', ai: false, canReady: true, name: 'Bob' }
+  const ready = (slots, extra = {}) => notReadySlots({ readyUsed: true, slots, $store: { state: { game: { owner: 'H' } } }, ...extra })
+
+  it('Start waits until the other players are ready', () => {
+    const slots = [host, bob]
+    const ctx = { slots, slotsAssigned: true, slotsReserved: true, isOwner: true, notReadySlots: ready(slots), $t: (k, p) => k + (p ? ':' + p.names : '') }
+    expect(canStart(ctx)).toBe(false)
+    expect(startInfo(ctx)).toBe('game-setup.open-game.waiting-for-ready:Bob')
+  })
+
+  it('ready, an older app (no Ready button), AI and the host seats do not hold it up', () => {
+    expect(ready([host, { ...bob, ready: true }])).toEqual([])
+    expect(ready([host, { ...bob, canReady: false }])).toEqual([])
+    expect(ready([host, { ...bob, ai: true }])).toEqual([])
+    expect(ready([host, { ...host, sessionId: 'h' }])).toEqual([])
+  })
+
+  it('a local game or a resumed one has no Ready', () => {
+    expect(ready([host, bob], { readyUsed: false })).toEqual([])
   })
 
   it('the header shows it', () => {
