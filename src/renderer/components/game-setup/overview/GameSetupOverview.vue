@@ -1,12 +1,12 @@
 <template>
-  <div class="game-setup-overview">
+  <div class="game-setup-overview" :class="{ compact }">
     <!-- game type: standard vs Keep Building (co-op) — same badge as the inline overview,
          plus a "custom pack" marker when tile counts were edited -->
     <div class="game-type-wrap">
       <div class="game-type" :class="{ coop: isCoop }">
         {{ isCoop ? $t('game.feature.keep-building') : $t('game-setup.variant.standard') }}
       </div>
-      <div v-if="tilesChanged" class="game-type tiles-changed" :title="$t('game-setup.tiles.custom-pack')">
+      <div v-if="tilesChanged" class="game-type tiles-changed" :class="hl('tiles')" :title="$t('game-setup.tiles.custom-pack')">
         ✂ {{ $t('game-setup.tiles.custom-pack-short') }}
       </div>
       <!-- favourite this setup: a heart beside the game type (filled = already a favourite) -->
@@ -21,59 +21,66 @@
         <v-icon small>{{ isFavorite ? 'fas fa-heart' : 'far fa-heart' }}</v-icon>
       </v-btn>
     </div>
-    <div class="label">
-      <h3>{{ $t('game-setup.selected-tiles') }}</h3>
+    <!-- compact: tile sets and elements in one row, as in the lobby -->
+    <div class="tiles-row">
+      <div class="label" :class="hl('sets', 'tiles')">
+        <h3>{{ $t('game-setup.selected-tiles') }}</h3>
+      </div>
+      <section :class="hl('sets', 'tiles')">
+        <OverviewExpansionTile
+          v-for="{ expansion, id, title, quantity, lang } in releases"
+          :key="id"
+          :expansion="expansion"
+          :title="title"
+          :quantity="quantity"
+          :lang="lang"
+          :class="compact ? hl('sets', 'tiles') : null"
+        />
+      </section>
+      <div v-if="additions.length" class="label" :class="hl('elements')">
+        <h3>{{ $t('game-setup.additional-elements') }}</h3>
+      </div>
+      <section :class="hl('elements')">
+        <OverviewElementTile
+          v-for="([element, value]) in additions"
+          :key="element"
+          :element="element"
+          :value="value"
+          :class="compact ? hl('elements') : null"
+        />
+      </section>
+      <div v-if="removals.length" class="label" :class="hl('elements')">
+        <h3>{{ $t('game-setup.removed-elements') }}</h3>
+      </div>
+      <section :class="hl('elements')">
+        <OverviewElementTile
+          v-for="([element, value]) in removals"
+          :key="element"
+          :element="element"
+          :value="value"
+          :class="compact ? hl('elements') : null"
+        />
+      </section>
     </div>
-    <section>
-      <OverviewExpansionTile
-        v-for="{ expansion, id, title, quantity, lang } in releases"
-        :key="id"
-        :expansion="expansion"
-        :title="title"
-        :quantity="quantity"
-        :lang="lang"
-      />
-    </section>
-    <div v-if="additions.length" class="label">
-      <h3>{{ $t('game-setup.additional-elements') }}</h3>
-    </div>
-    <section>
-      <OverviewElementTile
-        v-for="([element, value]) in additions"
-        :key="element"
-        :element="element"
-        :value="value"
-      />
-    </section>
-    <div v-if="removals.length" class="label">
-      <h3>{{ $t('game-setup.removed-elements') }}</h3>
-    </div>
-    <section>
-      <OverviewElementTile
-        v-for="([element, value]) in removals"
-        :key="element"
-        :element="element"
-        :value="value"
-      />
-    </section>
-    <div v-if="timer" class="label">
+    <div v-if="timer" class="label" :class="hl('timer')">
       <h3>{{ $t('game-setup.header.timer') }}</h3>
     </div>
-    <section v-if="timer" class="timer">
+    <section v-if="timer" class="timer" :class="hl('timer')">
+      <v-icon v-if="compact" class="timer-icon">far fa-clock</v-icon>
       <TimerValue :value="timer.initial" />
       <template v-if="timer.turn">
         &emsp;+&thinsp;<TimerValue :value="timer.turn" />
       </template>
     </section>
 
-    <div v-if="gameplayAltred" class="rules">
+    <div v-if="gameplayAltred" class="rules" :class="hl('rules')">
       <div class="label">
         <h3>{{ $t('game-setup.altered-gameplay') }}</h3>
       </div>
       <GameplayVariants :setup="setup" show="changed" read-only />
     </div>
 
-    <div v-if="scoringAltred" class="rules">
+    <div v-if="scoringAltred" class="rules" :class="hl('rules')">
       <div class="label">
         <h3>{{ $t('game-setup.altered-scoring') }}</h3>
       </div>
@@ -105,7 +112,12 @@ export default {
   mixins: [GameSetupOverviewMixin],
 
   props: {
-    setup: { type: Object, required: true }
+    setup: { type: Object, required: true },
+    // what the owner just changed (setup categories: sets, tiles, elements, rules, timer, start) —
+    // those parts are highlighted for a moment
+    changed: { type: Array, default: () => [] },
+    // smaller tiles and no section headers (the aside of the take-slot page)
+    compact: { type: Boolean, default: false }
   },
 
   computed: {
@@ -136,6 +148,11 @@ export default {
   },
 
   methods: {
+    // the highlight class of a part, when one of its categories just changed
+    hl (...categories) {
+      return { 'just-changed': categories.some(c => this.changed.includes(c)) }
+    },
+
     addToMySetups () {
       this.$store.dispatch('settings/addMySetup', this.setup)
     },
@@ -148,6 +165,17 @@ export default {
 </script>
 
 <style lang="sass" scoped>
+// the owner just changed this part of the setup: a highlight that fades out
+@keyframes just-changed
+  0%, 30%
+    background-color: rgba(255, 193, 7, 0.55)
+  100%
+    background-color: rgba(255, 193, 7, 0)
+
+.just-changed
+  border-radius: 4px
+  animation: just-changed 8s ease-out forwards
+
 .game-type-wrap
   text-align: center
   margin-top: 10px
@@ -217,4 +245,38 @@ section
   &.active .v-icon
     color: #e53935
 
+
+// compact (the take-slot page's aside): no section headers, the tiles at about the lobby's size
+.game-setup-overview.compact
+  .label
+    display: none
+
+  section
+    padding: 0 8px
+    justify-content: center
+
+  .tiles-row
+    display: flex
+    flex-wrap: wrap
+    justify-content: center
+    padding: 4px 8px 0
+
+    section
+      display: contents
+
+    ::v-deep .element-box
+      zoom: 0.6
+
+  .rules
+    margin-top: 8px
+    zoom: 0.75
+
+  section.timer
+    margin-top: 8px
+    font-size: 20px
+
+    .timer-icon
+      font-size: 18px
+      margin-right: 6px
+      vertical-align: baseline
 </style>

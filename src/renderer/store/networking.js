@@ -226,6 +226,10 @@ class ConnectionHandler {
       commit('game/options', { [payload.key]: payload.value }, { root: true })
     } else if (type === 'GAME_CHAT') {
       commit('game/chatCommit', { message: payload }, { root: true })
+      // the owner changed the game (a system line): highlight what changed — for the others
+      if (payload.system && payload.clientId !== rootState.settings.clientId) {
+        commit('game/recentChange', { system: payload.system, key: payload.key || null, changes: payload.changes || [], at: Date.now() }, { root: true })
+      }
     } else if (type === 'GLOBAL_CHAT') {
       await dispatch('globalChat/handleMessage', payload, { root: true })
     } else if (type === 'ALERT') {

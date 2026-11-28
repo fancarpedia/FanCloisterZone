@@ -56,10 +56,10 @@
           groupable
         />
       </template>
+      <!-- Tournament mode (game option puristTiles): no tile list at all once the game is on — not the
+           remaining tiles, nor the game's tiles (only the discarded ones above, which all saw) -->
       <template v-else-if="options.puristTiles">
-        <h2>{{ $t('game.tile-pack-dialog.game-tiles') }}</h2>
         <p>{{ $t('game.tile-pack-dialog.disabled-show-remaining') }}</p>
-        <TileDistributionLive :sets="sets" :rules="rules" :remaining="false" />
       </template>
       <template v-else>
         <h2>{{ $t('game.tile-pack-dialog.remaining-tiles') }}</h2>

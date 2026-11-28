@@ -36,6 +36,10 @@ export const state = () => ({
   runningTests: false
 })
 
+// Tournament mode: the game option puristTiles (its old name — it first only hid the remaining tiles).
+// No remaining-tiles list, no farm / feature hints (majorities), no potential final score.
+export const tournamentMode = state => !!state.game?.setup?.options?.puristTiles
+
 export const mutations = {
   tilesLoaded (state) {
     state.loaded.tiles = true
@@ -74,16 +78,24 @@ export const mutations = {
     state.showSettings = value
   },
 
+  // Tournament mode (game option puristTiles): no farm / feature hints, no potential final score
   toggleGameFarmHints (state) {
-    state.showGameFarmHints = !state.showGameFarmHints
+    state.showGameFarmHints = !tournamentMode(state) && !state.showGameFarmHints
   },
 
   toggleGameFeatureHints (state) {
-    state.showGameFeatureHints = !state.showGameFeatureHints
+    state.showGameFeatureHints = !tournamentMode(state) && !state.showGameFeatureHints
   },
 
   togglePotentialScore (state) {
-    state.showPotentialScore = !state.showPotentialScore
+    state.showPotentialScore = !tournamentMode(state) && !state.showPotentialScore
+  },
+
+  // a tournament game opened: switch the aids off (they may still be on from an earlier game)
+  tournamentAidsOff (state) {
+    state.showGameFarmHints = false
+    state.showGameFeatureHints = false
+    state.showPotentialScore = false
   },
 
   toggleGameHistory (state) {

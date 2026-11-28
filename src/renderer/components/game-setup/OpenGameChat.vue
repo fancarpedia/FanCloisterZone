@@ -8,6 +8,7 @@
         v-for="(m, idx) in messages"
         :key="idx"
         class="message"
+        :class="{ system: !!m.system }"
       >
         <div
           :class="'sender color-bg-important color color-overlay color-' + m.player"
@@ -18,7 +19,7 @@
             class="sender-name"
             :class="{ 'player-changed': isPlayerChanged(m) }"
           >{{ m.name || getSenderName(m.player) }}</span>
-          {{ m.message }}
+          {{ systemText(m) || m.message }}
         </div>
       </div>
       <div ref="endOfChat" />
@@ -58,6 +59,8 @@
 import isArray from 'lodash/isArray'
 import isNil from 'lodash/isNil'
 import { mapState } from 'vuex'
+
+import { systemChatText } from '@/utils/chat-system'
 
 export default {
   data () {
@@ -104,6 +107,11 @@ export default {
   },
 
   methods: {
+    // a change the owner made, in my language (null for an ordinary message)
+    systemText (message) {
+      return systemChatText(message, this.$t.bind(this), this.$te.bind(this), this.$i18n.locale)
+    },
+
     isPlayerChanged (message) {
       if (!message.clientId || !this.slots) return false
       const slot = this.slots.find(s => s.number === message.player)
@@ -196,6 +204,12 @@ export default {
     overflow-x: hidden
     padding: 5px
     min-height: 0
+    // the slot page turns text selection off for everything: the chat can be copied
+    user-select: text
+    cursor: auto
+
+    *
+      user-select: text
 
   .send-message-wrapper
     display: flex
@@ -257,6 +271,11 @@ export default {
         &.player-changed
           text-decoration: line-through
           opacity: 0.6
+
+    // the owner's change of the game (a system line): set apart from the talk
+    &.system .message-text
+      font-style: italic
+      font-weight: normal
 
   .theme--dark .message .message-text
     color: white

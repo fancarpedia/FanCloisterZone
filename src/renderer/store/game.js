@@ -224,6 +224,9 @@ export const state = () => ({
   // an online game ended by a resignation (server GAME_RESIGNED): { clientId, name, seats, results,
   // mine } — `seats` all the resigning client's seats (its AI players too), `mine` this client
   resignation: null,
+  // the owner just changed the game on the slot page (a system chat line from the server):
+  // { system: 'option', key } | { system: 'setup', changes }, with `at` — highlighted for a moment
+  recentChange: null,
   lastMessageClock: null,
   lastMessageClockLocal: null,
   tilePack: null,
@@ -389,6 +392,10 @@ export const mutations = {
       const clock = new Array(state.players.length)
       state.clock = clock.fill(0)
     }
+  },
+
+  recentChange (state, value) {
+    state.recentChange = value
   },
 
   resignation (state, value) {

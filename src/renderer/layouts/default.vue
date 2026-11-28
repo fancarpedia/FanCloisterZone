@@ -90,6 +90,7 @@ import { installReloadHook, takePendingRejoin } from '@/utils/reload-rejoin'
 import { markAutoDark } from '@/utils/auto-dark'
 
 import { STATUS_CONNECTED, homeRoute } from '@/store/networking'
+import { tournamentMode } from '@/store/index'
 import { leaveTimedGameTexts, resignDialogTexts } from '@/store/game'
 
 const ZOOM_SENSITIVITY = 1.4
@@ -136,6 +137,11 @@ export default {
     }),
 
     // Resign is offered in a running online game that is not over (or already resigned)
+    // Tournament mode (game option puristTiles): the hint / potential-score aids are off
+    tournament () {
+      return tournamentMode(this.$store.state)
+    },
+
     // a running online game with a time limit where leaving offers turn-based play
     timedOnlineGame () {
       return !!this.$store.getters['game/canProposeTurnBased']
@@ -277,6 +283,14 @@ export default {
       this.syncMenuChecks()
     },
 
+    tournament: {
+      immediate: true,
+      handler (value) {
+        if (value) this.$store.commit('tournamentAidsOff')
+        this.updateMenu()
+      }
+    },
+
     showGameFeatureHints () {
       this.syncMenuChecks()
     },
@@ -403,6 +417,7 @@ export default {
       this.$root.$emit('request-rotate', 90)
     })
     ipcRenderer.on('menu.game-tiles', () => {
+      if (this.tournament) return // Tournament mode: no tile list
       this.$store.commit('showGameTiles', !this.$store.state.showGameTiles)
     })
     ipcRenderer.on('menu.game-farm-hints', () => {
@@ -775,10 +790,11 @@ export default {
         'zoom-out': gameRunning,
         'rotate': gameRunning,
         'toggle-history': gameRunning,
-        'game-tiles': gameRunning,
-        'game-farm-hints': gameRunning,
-        'game-feature-hints': gameRunning,
-        'game-potential-score': gameRunning,
+        'game-tiles': gameRunning && !this.tournament,
+        // Tournament mode: no farm / feature hints, no potential final score
+        'game-farm-hints': gameRunning && !this.tournament,
+        'game-feature-hints': gameRunning && !this.tournament,
+        'game-potential-score': gameRunning && !this.tournament,
         'game-setup': gameRunning,
         'dump-server': this.$server.isRunning(),
         'theme-inspector': !gameOpen,

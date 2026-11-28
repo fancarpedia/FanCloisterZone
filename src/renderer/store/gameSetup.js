@@ -6,6 +6,7 @@ import { GameElement, isConfigValueEnabled, PRE_DRAW_INCOMPATIBLE } from '@/mode
 import { Rule, getDefaultRules } from '@/models/rules'
 import { Expansion } from '@/models/expansions'
 import { getSelectedEdition, getSelectedStartingTiles, getStartingTilesOptions } from '@/utils/gameSetupUtils'
+import { isAiElement, isAiExpansion, isAiRule, isSwitchable } from '@/utils/ai-support'
 
 const DEFAULT_SETS = {
   basic: 1
@@ -358,6 +359,8 @@ export const actions = {
 
   setReleaseQuantity ({ state, getters, commit, dispatch }, { release, quantity }) {
     const { $tiles } = this._vm
+    // changing the setup of a game with AI players: no tile set the AI cannot play (Kingdoms)
+    if (getters.aiLocked && quantity > 0 && release.expansion && !isAiExpansion(release.expansion)) return
     const enabledStateChanged = (!!release.sets.find(id => !!state.sets[id])) !== (quantity > 0)
     const before = enabledStateChanged ? $tiles.getDefaultElements(state.sets) : null
     release.sets.forEach(id => {
@@ -405,6 +408,9 @@ export const actions = {
         }
       })
     }
+
+    // ...and what a tile set switches on by default that the AI does not play stays off (Tower)
+    if (getters.aiLocked) dispatch('dropNonAiElements')
 
     // A set may have enforced/removed an expansion (in)compatible with pre-draw — suspend or restore.
     dispatch('reconcilePreDraw')
@@ -531,7 +537,18 @@ export const actions = {
     }
   },
 
-  setElementConfig ({ commit, state, dispatch }, { id, config }) {
+  // switch off every element the AI does not play (one that can be switched off)
+  dropNonAiElements ({ state, commit }) {
+    Object.entries(state.elements || {}).forEach(([id, value]) => {
+      if (isConfigValueEnabled(value) && !isAiElement(id) && isSwitchable(id)) {
+        commit('elementConfig', { id, config: typeof value === 'number' ? 0 : false })
+      }
+    })
+  },
+
+  setElementConfig ({ commit, state, getters, dispatch }, { id, config }) {
+    // changing the setup of a game with AI players: nothing on that the AI does not play
+    if (getters.aiLocked && isConfigValueEnabled(config) && !isAiElement(id)) return
     commit('elementConfig', { id, config })
 
     const linkedPairs = {
@@ -590,7 +607,12 @@ export const actions = {
     }
   },
 
-  setRuleConfig ({ commit }, { id, config }) {
+  setRuleConfig ({ commit, getters }, { id, config }) {
+    // changing the setup of a game with AI players: a rule the AI does not play stays at its default
+    if (getters.aiLocked && !isAiRule(id)) {
+      const rule = Rule.all().find(r => r.id === id)
+      if (rule && config !== rule.default) return
+    }
     commit('ruleConfig', { id, config })
   },
 
@@ -705,9 +727,11 @@ export const actions = {
 
     if (state.editingGameId) {
       // Update existing game instead of creating a new one
+      // final: the edit is done — the server tells the players what changed (game chat) and they
+      // confirm Ready again (the live pushes while editing do neither)
       this._vm.$connection.send({
         type: 'UPDATE_GAME_SETUP',
-        payload: { gameId: state.editingGameId, setup }
+        payload: { gameId: state.editingGameId, setup, final: true }
       })
       // the edited draw order / turn limit (dev mode) is what the game starts with
       commit('game/gameAnnotations', { ...state.gameAnnotations }, { root: true })
@@ -736,6 +760,9 @@ export const actions = {
 }
 
 export const getters = {
+  // changing the setup of an online game that has AI players: only what the AI plays may be chosen
+  aiLocked: (state, getters, rootState) => !!state.editingGameId &&
+    (rootState.game?.slots || []).some(s => s && s.ai),
   getSelectedEdition: state => getSelectedEdition(state.elements),
   startingTilesOptions: state => getStartingTilesOptions(state.elements, state.sets),
   selectedStartingTiles: state => getSelectedStartingTiles(state.elements, state.sets, state.start)

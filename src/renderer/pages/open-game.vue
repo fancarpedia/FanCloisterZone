@@ -125,36 +125,45 @@
           dense hide-details
           :label="$t('game-setup.open-game.public-game')"
           :disabled="!isOwner"
+          :class="{ 'just-changed': changedOption === 'publicGame' }"
         />
         <!-- max players for a public game: once this many seats are taken the game leaves the
              public list and its remaining empty seats lock. Owner-only, public games only. -->
-        <v-select
+        <div
           v-if="gameKey && publicGame && !readOnly && !isRematch"
-          v-model="maxPlayers"
-          :items="maxPlayersOptions"
-          dense hide-details
           class="max-players"
-          :label="$t('game-setup.open-game.max-players')"
-          :disabled="!isOwner"
-        />
+          :class="{ 'just-changed': changedOption === 'maxPlayers' }"
+        >
+          <span class="max-players-label">{{ $t('game-setup.open-game.max-players') }}</span>
+          <v-select
+            v-model="maxPlayers"
+            :items="maxPlayersOptions"
+            dense hide-details
+            class="max-players-select"
+            :disabled="!isOwner"
+          />
+        </div>
         <v-checkbox
           v-if="!readOnly && !isRematch"
           v-model="randomizeSeating"
           dense hide-details
           :label="$t('game-setup.open-game.randomize-seating-order')"
           :disabled="!isOwner"
+          :class="{ 'just-changed': changedOption === 'randomizeSeating' }"
         />
         <v-checkbox
           v-if="!isRematch"
           v-model="puristTiles"
           dense hide-details
-          :label="$t('game-setup.open-game.hide-remaining-tiles-cheat-sheet')"
+          :label="$t('game-setup.open-game.tournament-mode')"
+          :title="$t('game-setup.open-game.tournament-mode-hint')"
           :disabled="readOnly || !isOwner || isCoop"
+          :class="{ 'just-changed': changedOption === 'puristTiles' }"
         />
       </div>
 
       <!-- side column: Options, then the game setup, then Chat (flex order below matches) -->
-      <GameSetupOverview :setup="setup" />
+      <GameSetupOverview :setup="setup" :changed="changedSetup" compact />
 
       <div v-if="gameKey" class="chat-section">
         <h2>{{ $t('chat.chat') }}</h2>
@@ -180,6 +189,8 @@ import OpenGameChat from '@/components/game-setup/OpenGameChat'
 import PlayerSlot from '@/components/game-setup/PlayerSlot'
 
 const LOCAL_PLAYERS_LIMIT = 4
+// how long the owner's last change stays highlighted (the highlight fades out over it)
+const RECENT_CHANGE_MS = 8000
 
 export default {
   components: {
@@ -268,6 +279,17 @@ export default {
     canStart () {
       if (!this.slots) return false // the game has not arrived yet
       return this.slotsAssigned && this.slotsReserved && !this.notReadySlots.length
+    },
+
+    // the owner just changed an option / the setup (a system chat line): highlighted for a moment
+    changedOption () {
+      const c = this.$store.state.game.recentChange
+      return c && c.system === 'option' ? c.key : null
+    },
+
+    changedSetup () {
+      const c = this.$store.state.game.recentChange
+      return c && c.system === 'setup' ? c.changes : []
     },
 
     // Ready applies to a new online game (not a resumed one): seats on this page
@@ -436,6 +458,15 @@ export default {
       }
     },
 
+    // a highlighted change fades out after a while
+    '$store.state.game.recentChange' (value) {
+      if (!value) return
+      clearTimeout(this._recentChangeTimer)
+      this._recentChangeTimer = setTimeout(() => {
+        if (this.$store.state.game.recentChange === value) this.$store.commit('game/recentChange', null)
+      }, RECENT_CHANGE_MS)
+    },
+
     // turning a game public reveals the max-players select and gives it a sensible default (all
     // seats) so it isn't left unset — the owner can then lower it
     publicGame (val) {
@@ -455,6 +486,7 @@ export default {
 
   beforeDestroy () {
     this._onClose && this.$connection.off('close', this._onClose)
+    clearTimeout(this._recentChangeTimer)
   },
 
   methods: {
@@ -509,6 +541,17 @@ export default {
 </script>
 
 <style lang="sass" scoped>
+// the owner just changed this option: a highlight that fades out (RECENT_CHANGE_MS)
+@keyframes just-changed
+  0%, 30%
+    background-color: rgba(255, 193, 7, 0.55)
+  100%
+    background-color: rgba(255, 193, 7, 0)
+
+.just-changed
+  border-radius: 4px
+  animation: just-changed 8s ease-out forwards
+
 .header-ready-button
   display: flex
   align-items: center
@@ -638,11 +681,21 @@ h2
   // "Max players (public)" belongs to "Public game": indented under it like the checkbox labels
   // (past the 32px checkbox), with room above for the select's floating label — which otherwise
   // sat on top of the "Public game" checkbox
+  // the label, its select on the right
   .max-players
-    margin-top: 18px
-    margin-bottom: 6px
-    margin-left: 32px
-    max-width: 220px
+    display: flex
+    align-items: center
+    gap: 10px
+    margin: 6px 0 6px 32px
+
+    .max-players-label
+      white-space: nowrap
+
+    .max-players-select
+      flex: 0 0 auto
+      width: 110px
+      margin-top: 0
+      padding-top: 0
 
 .game-setup-overview
   flex: 0 0 33.333%

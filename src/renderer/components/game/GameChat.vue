@@ -43,11 +43,11 @@
           v-for="(m, i) in messages"
           :key="i"
           class="chat-message"
-          :class="{ 'author-inactive': !isMessageAuthorActive(m) }"
+          :class="{ 'author-inactive': !isMessageAuthorActive(m), system: !!m.system }"
         >
           <span :class="'chat-author color-bg-important color-' + getMessageSlotColor(m)" />
           <span class="chat-time">{{ getMessageTime(m) }}</span>
-          <span class="chat-text">{{ m.message }}</span>
+          <span class="chat-text">{{ systemText(m) || m.message }}</span>
         </div>
         <div v-if="sentMessage" class="chat-message pending">
           <span class="chat-text">{{ sentMessage }}</span>
@@ -97,6 +97,7 @@ import isNil from 'lodash/isNil'
 import ChatBulletDragMixin from '@/components/ChatBulletDragMixin'
 import keepInputScroll from '@/utils/keep-input-scroll'
 import { isWeb } from '@/utils/version'
+import { systemChatText } from '@/utils/chat-system'
 
 export default {
   directives: { keepInputScroll },
@@ -267,6 +268,15 @@ export default {
   },
 
   methods: {
+    // a change the owner made before the start, in my language (null for an ordinary message)
+    // (this chat shows the sender by colour only: the line starts with their name)
+    systemText (message) {
+      if (!message.system) return null
+      // the server's English line when my language pack lacks a text
+      const text = systemChatText(message, this.$t.bind(this), this.$te.bind(this), this.$i18n.locale) || message.message
+      return text && message.name ? message.name + ' ' + text : text
+    },
+
     onLauncherClick () {
       if (this.open) {
         if (!this.bulletClickAllowed()) return // the click just ended a drag
@@ -644,6 +654,10 @@ export default {
 
     .chat-text
       word-break: break-word
+
+    // the owner's change of the game before the start (a system line): set apart from the talk
+    &.system .chat-text
+      font-style: italic
 
     // author's seat no longer connected: dim the bullet only, the text stays readable
     &.author-inactive .chat-author
